@@ -19,7 +19,15 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
      * 
      */
     private @Nullable List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> embeddingSourceColumns;
+    /**
+     * @return array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     * 
+     */
     private @Nullable List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> embeddingVectorColumns;
+    /**
+     * @return Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
+     * 
+     */
     private @Nullable String embeddingWritebackTable;
     /**
      * @return ID of the associated Delta Live Table pipeline.
@@ -47,9 +55,17 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
     public List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> embeddingSourceColumns() {
         return this.embeddingSourceColumns == null ? List.of() : this.embeddingSourceColumns;
     }
+    /**
+     * @return array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     * 
+     */
     public List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> embeddingVectorColumns() {
         return this.embeddingVectorColumns == null ? List.of() : this.embeddingVectorColumns;
     }
+    /**
+     * @return Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
+     * 
+     */
     public Optional<String> embeddingWritebackTable() {
         return Optional.ofNullable(this.embeddingWritebackTable);
     }

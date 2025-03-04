@@ -16,22 +16,30 @@ public final class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs 
 
     public static final VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs Empty = new VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs();
 
+    /**
+     * Dimension of the embedding vector.
+     * 
+     */
     @Import(name="embeddingDimension")
     private @Nullable Output<Integer> embeddingDimension;
 
+    /**
+     * @return Dimension of the embedding vector.
+     * 
+     */
     public Optional<Output<Integer>> embeddingDimension() {
         return Optional.ofNullable(this.embeddingDimension);
     }
 
     /**
-     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+     * The name of the column.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+     * @return The name of the column.
      * 
      */
     public Optional<Output<String>> name() {
@@ -63,17 +71,29 @@ public final class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs 
             $ = new VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param embeddingDimension Dimension of the embedding vector.
+         * 
+         * @return builder
+         * 
+         */
         public Builder embeddingDimension(@Nullable Output<Integer> embeddingDimension) {
             $.embeddingDimension = embeddingDimension;
             return this;
         }
 
+        /**
+         * @param embeddingDimension Dimension of the embedding vector.
+         * 
+         * @return builder
+         * 
+         */
         public Builder embeddingDimension(Integer embeddingDimension) {
             return embeddingDimension(Output.of(embeddingDimension));
         }
 
         /**
-         * @param name Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+         * @param name The name of the column.
          * 
          * @return builder
          * 
@@ -84,7 +104,7 @@ public final class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs 
         }
 
         /**
-         * @param name Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+         * @param name The name of the column.
          * 
          * @return builder
          * 

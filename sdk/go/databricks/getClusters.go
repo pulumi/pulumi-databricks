@@ -67,6 +67,64 @@ import (
 //
 // ```
 //
+// ### Filtering clusters
+//
+// Listing clusters can be slow for workspaces containing many clusters. Use filters to limit the number of clusters returned for better performance. You can filter clusters by state, source, policy, or pinned status:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetClusters(ctx, &databricks.GetClustersArgs{
+//				FilterBy: databricks.GetClustersFilterBy{
+//					ClusterStates: []string{
+//						"RUNNING",
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.GetClusters(ctx, &databricks.GetClustersArgs{
+//				FilterBy: databricks.GetClustersFilterBy{
+//					PolicyId: pulumi.StringRef("1234-5678-9012"),
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.GetClusters(ctx, &databricks.GetClustersArgs{
+//				FilterBy: databricks.GetClustersFilterBy{
+//					ClusterSources: []string{
+//						"API",
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.GetClusters(ctx, &databricks.GetClustersArgs{
+//				FilterBy: databricks.GetClustersFilterBy{
+//					IsPinned: pulumi.BoolRef(true),
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Related Resources
 //
 // The following resources are used in the same context:

@@ -26,12 +26,19 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("embeddingVectorColumns")]
         private InputList<Inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnGetArgs>? _embeddingVectorColumns;
+
+        /// <summary>
+        /// array of objects representing columns that contain the embedding vectors. Each entry consists of:
+        /// </summary>
         public InputList<Inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnGetArgs> EmbeddingVectorColumns
         {
             get => _embeddingVectorColumns ?? (_embeddingVectorColumns = new InputList<Inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnGetArgs>());
             set => _embeddingVectorColumns = value;
         }
 
+        /// <summary>
+        /// Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
+        /// </summary>
         [Input("embeddingWritebackTable")]
         public Input<string>? EmbeddingWritebackTable { get; set; }
 

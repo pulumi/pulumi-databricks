@@ -13,150 +13,25 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ConnectionArgs', 'Connection']
 
 @pulumi.input_type
 class ConnectionArgs:
     def __init__(__self__, *,
-                 connection_type: pulumi.Input[str],
-                 options: pulumi.Input[Mapping[str, pulumi.Input[str]]],
-                 comment: Optional[pulumi.Input[str]] = None,
-                 metastore_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 owner: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 read_only: Optional[pulumi.Input[bool]] = None):
-        """
-        The set of arguments for constructing a Connection resource.
-        :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-        :param pulumi.Input[str] comment: Free-form text.
-        :param pulumi.Input[str] name: Name of the Connection.
-        :param pulumi.Input[str] owner: Name of the connection owner.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Free-form connection properties.
-        """
-        pulumi.set(__self__, "connection_type", connection_type)
-        pulumi.set(__self__, "options", options)
-        if comment is not None:
-            pulumi.set(__self__, "comment", comment)
-        if metastore_id is not None:
-            pulumi.set(__self__, "metastore_id", metastore_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if owner is not None:
-            pulumi.set(__self__, "owner", owner)
-        if properties is not None:
-            pulumi.set(__self__, "properties", properties)
-        if read_only is not None:
-            pulumi.set(__self__, "read_only", read_only)
-
-    @property
-    @pulumi.getter(name="connectionType")
-    def connection_type(self) -> pulumi.Input[str]:
-        """
-        Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
-        """
-        return pulumi.get(self, "connection_type")
-
-    @connection_type.setter
-    def connection_type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "connection_type", value)
-
-    @property
-    @pulumi.getter
-    def options(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
-        """
-        The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-        """
-        return pulumi.get(self, "options")
-
-    @options.setter
-    def options(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
-        pulumi.set(self, "options", value)
-
-    @property
-    @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[str]]:
-        """
-        Free-form text.
-        """
-        return pulumi.get(self, "comment")
-
-    @comment.setter
-    def comment(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "comment", value)
-
-    @property
-    @pulumi.getter(name="metastoreId")
-    def metastore_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "metastore_id")
-
-    @metastore_id.setter
-    def metastore_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "metastore_id", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the Connection.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the connection owner.
-        """
-        return pulumi.get(self, "owner")
-
-    @owner.setter
-    def owner(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "owner", value)
-
-    @property
-    @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Free-form connection properties.
-        """
-        return pulumi.get(self, "properties")
-
-    @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "properties", value)
-
-    @property
-    @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "read_only")
-
-    @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "read_only", value)
-
-
-@pulumi.input_type
-class _ConnectionState:
-    def __init__(__self__, *,
                  comment: Optional[pulumi.Input[str]] = None,
                  connection_type: Optional[pulumi.Input[str]] = None,
-                 metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None):
         """
-        Input properties used for looking up and filtering Connection resources.
+        The set of arguments for constructing a Connection resource.
         :param pulumi.Input[str] comment: Free-form text.
-        :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         :param pulumi.Input[str] name: Name of the Connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         :param pulumi.Input[str] owner: Name of the connection owner.
@@ -166,8 +41,6 @@ class _ConnectionState:
             pulumi.set(__self__, "comment", comment)
         if connection_type is not None:
             pulumi.set(__self__, "connection_type", connection_type)
-        if metastore_id is not None:
-            pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if options is not None:
@@ -195,22 +68,13 @@ class _ConnectionState:
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         """
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
     def connection_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "connection_type", value)
-
-    @property
-    @pulumi.getter(name="metastoreId")
-    def metastore_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "metastore_id")
-
-    @metastore_id.setter
-    def metastore_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "metastore_id", value)
 
     @property
     @pulumi.getter
@@ -270,6 +134,294 @@ class _ConnectionState:
         pulumi.set(self, "read_only", value)
 
 
+@pulumi.input_type
+class _ConnectionState:
+    def __init__(__self__, *,
+                 comment: Optional[pulumi.Input[str]] = None,
+                 connection_id: Optional[pulumi.Input[str]] = None,
+                 connection_type: Optional[pulumi.Input[str]] = None,
+                 created_at: Optional[pulumi.Input[int]] = None,
+                 created_by: Optional[pulumi.Input[str]] = None,
+                 credential_type: Optional[pulumi.Input[str]] = None,
+                 full_name: Optional[pulumi.Input[str]] = None,
+                 metastore_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 provisioning_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 securable_type: Optional[pulumi.Input[str]] = None,
+                 updated_at: Optional[pulumi.Input[int]] = None,
+                 updated_by: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Connection resources.
+        :param pulumi.Input[str] comment: Free-form text.
+        :param pulumi.Input[str] connection_id: Unique ID of the connection.
+        :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        :param pulumi.Input[int] created_at: Time at which this connection was created, in epoch milliseconds.
+        :param pulumi.Input[str] created_by: Username of connection creator.
+        :param pulumi.Input[str] credential_type: The type of credential for this connection.
+        :param pulumi.Input[str] full_name: Full name of connection.
+        :param pulumi.Input[str] metastore_id: Unique ID of the UC metastore for this connection.
+        :param pulumi.Input[str] name: Name of the Connection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+        :param pulumi.Input[str] owner: Name of the connection owner.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Free-form connection properties.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]] provisioning_infos: Object with the status of an asynchronously provisioned resource.
+        :param pulumi.Input[int] updated_at: Time at which connection this was last modified, in epoch milliseconds.
+        :param pulumi.Input[str] updated_by: Username of user who last modified the connection.
+        :param pulumi.Input[str] url: URL of the remote data source, extracted from options.
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if connection_id is not None:
+            pulumi.set(__self__, "connection_id", connection_id)
+        if connection_type is not None:
+            pulumi.set(__self__, "connection_type", connection_type)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if credential_type is not None:
+            pulumi.set(__self__, "credential_type", credential_type)
+        if full_name is not None:
+            pulumi.set(__self__, "full_name", full_name)
+        if metastore_id is not None:
+            pulumi.set(__self__, "metastore_id", metastore_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if provisioning_infos is not None:
+            pulumi.set(__self__, "provisioning_infos", provisioning_infos)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if securable_type is not None:
+            pulumi.set(__self__, "securable_type", securable_type)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Free-form text.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique ID of the connection.
+        """
+        return pulumi.get(self, "connection_id")
+
+    @connection_id.setter
+    def connection_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_id", value)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        """
+        return pulumi.get(self, "connection_type")
+
+    @connection_type.setter
+    def connection_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_type", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time at which this connection was created, in epoch milliseconds.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username of connection creator.
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter(name="credentialType")
+    def credential_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of credential for this connection.
+        """
+        return pulumi.get(self, "credential_type")
+
+    @credential_type.setter
+    def credential_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "credential_type", value)
+
+    @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Full name of connection.
+        """
+        return pulumi.get(self, "full_name")
+
+    @full_name.setter
+    def full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "full_name", value)
+
+    @property
+    @pulumi.getter(name="metastoreId")
+    def metastore_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique ID of the UC metastore for this connection.
+        """
+        return pulumi.get(self, "metastore_id")
+
+    @metastore_id.setter
+    def metastore_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metastore_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Connection.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the connection owner.
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "owner", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Free-form connection properties.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="provisioningInfos")
+    def provisioning_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]]]:
+        """
+        Object with the status of an asynchronously provisioned resource.
+        """
+        return pulumi.get(self, "provisioning_infos")
+
+    @provisioning_infos.setter
+    def provisioning_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]]]):
+        pulumi.set(self, "provisioning_infos", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="securableType")
+    def securable_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "securable_type")
+
+    @securable_type.setter
+    def securable_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "securable_type", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time at which connection this was last modified, in epoch milliseconds.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "updated_at", value)
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username of user who last modified the connection.
+        """
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the remote data source, extracted from options.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+
 class Connection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -277,7 +429,6 @@ class Connection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  connection_type: Optional[pulumi.Input[str]] = None,
-                 metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -351,6 +502,21 @@ class Connection(pulumi.CustomResource):
             })
         ```
 
+        Create a connection to builtin Hive Metastore
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.Connection("this",
+            name="hms-builtin",
+            connection_type="HIVE_METASTORE",
+            comment="This is a connection to builtin HMS",
+            options={
+                "builtin": "true",
+            })
+        ```
+
         ## Import
 
         This resource can be imported by `id`:
@@ -364,7 +530,7 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Free-form text.
-        :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         :param pulumi.Input[str] name: Name of the Connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         :param pulumi.Input[str] owner: Name of the connection owner.
@@ -374,7 +540,7 @@ class Connection(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConnectionArgs,
+                 args: Optional[ConnectionArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         > This resource can only be used with a workspace-level provider!
@@ -443,6 +609,21 @@ class Connection(pulumi.CustomResource):
             })
         ```
 
+        Create a connection to builtin Hive Metastore
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.Connection("this",
+            name="hms-builtin",
+            connection_type="HIVE_METASTORE",
+            comment="This is a connection to builtin HMS",
+            options={
+                "builtin": "true",
+            })
+        ```
+
         ## Import
 
         This resource can be imported by `id`:
@@ -470,7 +651,6 @@ class Connection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  connection_type: Optional[pulumi.Input[str]] = None,
-                 metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -486,17 +666,23 @@ class Connection(pulumi.CustomResource):
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
             __props__.__dict__["comment"] = comment
-            if connection_type is None and not opts.urn:
-                raise TypeError("Missing required property 'connection_type'")
             __props__.__dict__["connection_type"] = connection_type
-            __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
-            if options is None and not opts.urn:
-                raise TypeError("Missing required property 'options'")
             __props__.__dict__["options"] = None if options is None else pulumi.Output.secret(options)
             __props__.__dict__["owner"] = owner
             __props__.__dict__["properties"] = properties
             __props__.__dict__["read_only"] = read_only
+            __props__.__dict__["connection_id"] = None
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["created_by"] = None
+            __props__.__dict__["credential_type"] = None
+            __props__.__dict__["full_name"] = None
+            __props__.__dict__["metastore_id"] = None
+            __props__.__dict__["provisioning_infos"] = None
+            __props__.__dict__["securable_type"] = None
+            __props__.__dict__["updated_at"] = None
+            __props__.__dict__["updated_by"] = None
+            __props__.__dict__["url"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["options"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Connection, __self__).__init__(
@@ -510,13 +696,23 @@ class Connection(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             comment: Optional[pulumi.Input[str]] = None,
+            connection_id: Optional[pulumi.Input[str]] = None,
             connection_type: Optional[pulumi.Input[str]] = None,
+            created_at: Optional[pulumi.Input[int]] = None,
+            created_by: Optional[pulumi.Input[str]] = None,
+            credential_type: Optional[pulumi.Input[str]] = None,
+            full_name: Optional[pulumi.Input[str]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             owner: Optional[pulumi.Input[str]] = None,
             properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            read_only: Optional[pulumi.Input[bool]] = None) -> 'Connection':
+            provisioning_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionProvisioningInfoArgs', 'ConnectionProvisioningInfoArgsDict']]]]] = None,
+            read_only: Optional[pulumi.Input[bool]] = None,
+            securable_type: Optional[pulumi.Input[str]] = None,
+            updated_at: Optional[pulumi.Input[int]] = None,
+            updated_by: Optional[pulumi.Input[str]] = None,
+            url: Optional[pulumi.Input[str]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -525,24 +721,44 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Free-form text.
-        :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        :param pulumi.Input[str] connection_id: Unique ID of the connection.
+        :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        :param pulumi.Input[int] created_at: Time at which this connection was created, in epoch milliseconds.
+        :param pulumi.Input[str] created_by: Username of connection creator.
+        :param pulumi.Input[str] credential_type: The type of credential for this connection.
+        :param pulumi.Input[str] full_name: Full name of connection.
+        :param pulumi.Input[str] metastore_id: Unique ID of the UC metastore for this connection.
         :param pulumi.Input[str] name: Name of the Connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         :param pulumi.Input[str] owner: Name of the connection owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Free-form connection properties.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionProvisioningInfoArgs', 'ConnectionProvisioningInfoArgsDict']]]] provisioning_infos: Object with the status of an asynchronously provisioned resource.
+        :param pulumi.Input[int] updated_at: Time at which connection this was last modified, in epoch milliseconds.
+        :param pulumi.Input[str] updated_by: Username of user who last modified the connection.
+        :param pulumi.Input[str] url: URL of the remote data source, extracted from options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ConnectionState.__new__(_ConnectionState)
 
         __props__.__dict__["comment"] = comment
+        __props__.__dict__["connection_id"] = connection_id
         __props__.__dict__["connection_type"] = connection_type
+        __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["created_by"] = created_by
+        __props__.__dict__["credential_type"] = credential_type
+        __props__.__dict__["full_name"] = full_name
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
         __props__.__dict__["options"] = options
         __props__.__dict__["owner"] = owner
         __props__.__dict__["properties"] = properties
+        __props__.__dict__["provisioning_infos"] = provisioning_infos
         __props__.__dict__["read_only"] = read_only
+        __props__.__dict__["securable_type"] = securable_type
+        __props__.__dict__["updated_at"] = updated_at
+        __props__.__dict__["updated_by"] = updated_by
+        __props__.__dict__["url"] = url
         return Connection(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -554,16 +770,59 @@ class Connection(pulumi.CustomResource):
         return pulumi.get(self, "comment")
 
     @property
-    @pulumi.getter(name="connectionType")
-    def connection_type(self) -> pulumi.Output[str]:
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> pulumi.Output[str]:
         """
-        Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        Unique ID of the connection.
+        """
+        return pulumi.get(self, "connection_id")
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         """
         return pulumi.get(self, "connection_type")
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[int]:
+        """
+        Time at which this connection was created, in epoch milliseconds.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> pulumi.Output[str]:
+        """
+        Username of connection creator.
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="credentialType")
+    def credential_type(self) -> pulumi.Output[str]:
+        """
+        The type of credential for this connection.
+        """
+        return pulumi.get(self, "credential_type")
+
+    @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> pulumi.Output[str]:
+        """
+        Full name of connection.
+        """
+        return pulumi.get(self, "full_name")
+
+    @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Output[str]:
+        """
+        Unique ID of the UC metastore for this connection.
+        """
         return pulumi.get(self, "metastore_id")
 
     @property
@@ -576,7 +835,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def options(self) -> pulumi.Output[Mapping[str, str]]:
+    def options(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         """
@@ -599,7 +858,44 @@ class Connection(pulumi.CustomResource):
         return pulumi.get(self, "properties")
 
     @property
+    @pulumi.getter(name="provisioningInfos")
+    def provisioning_infos(self) -> pulumi.Output[Sequence['outputs.ConnectionProvisioningInfo']]:
+        """
+        Object with the status of an asynchronously provisioned resource.
+        """
+        return pulumi.get(self, "provisioning_infos")
+
+    @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> pulumi.Output[bool]:
         return pulumi.get(self, "read_only")
+
+    @property
+    @pulumi.getter(name="securableType")
+    def securable_type(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "securable_type")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[int]:
+        """
+        Time at which connection this was last modified, in epoch milliseconds.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> pulumi.Output[str]:
+        """
+        Username of user who last modified the connection.
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Output[str]:
+        """
+        URL of the remote data source, extracted from options.
+        """
+        return pulumi.get(self, "url")
 

@@ -17,7 +17,13 @@ namespace Pulumi.Databricks.Outputs
         /// array of objects representing columns that contain the embedding source.  Each entry consists of:
         /// </summary>
         public readonly ImmutableArray<Outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> EmbeddingSourceColumns;
+        /// <summary>
+        /// array of objects representing columns that contain the embedding vectors. Each entry consists of:
+        /// </summary>
         public readonly ImmutableArray<Outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> EmbeddingVectorColumns;
+        /// <summary>
+        /// Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
+        /// </summary>
         public readonly string? EmbeddingWritebackTable;
         /// <summary>
         /// ID of the associated Delta Live Table pipeline.

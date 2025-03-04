@@ -76,11 +76,11 @@ export class VectorSearchIndex extends pulumi.CustomResource {
      */
     public /*out*/ readonly creator!: pulumi.Output<string>;
     /**
-     * Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`.
+     * Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`. This field is a block and is documented below.
      */
     public readonly deltaSyncIndexSpec!: pulumi.Output<outputs.VectorSearchIndexDeltaSyncIndexSpec | undefined>;
     /**
-     * Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`.
+     * Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
      */
     public readonly directAccessIndexSpec!: pulumi.Output<outputs.VectorSearchIndexDirectAccessIndexSpec | undefined>;
     /**
@@ -161,11 +161,11 @@ export interface VectorSearchIndexState {
      */
     creator?: pulumi.Input<string>;
     /**
-     * Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`.
+     * Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`. This field is a block and is documented below.
      */
     deltaSyncIndexSpec?: pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpec>;
     /**
-     * Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`.
+     * Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
      */
     directAccessIndexSpec?: pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpec>;
     /**
@@ -197,11 +197,11 @@ export interface VectorSearchIndexState {
  */
 export interface VectorSearchIndexArgs {
     /**
-     * Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`.
+     * Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`. This field is a block and is documented below.
      */
     deltaSyncIndexSpec?: pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpec>;
     /**
-     * Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`.
+     * Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
      */
     directAccessIndexSpec?: pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpec>;
     /**

@@ -33,16 +33,32 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
         return Optional.ofNullable(this.embeddingSourceColumns);
     }
 
+    /**
+     * array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     * 
+     */
     @Import(name="embeddingVectorColumns")
     private @Nullable Output<List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs>> embeddingVectorColumns;
 
+    /**
+     * @return array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     * 
+     */
     public Optional<Output<List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs>>> embeddingVectorColumns() {
         return Optional.ofNullable(this.embeddingVectorColumns);
     }
 
+    /**
+     * Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
+     * 
+     */
     @Import(name="embeddingWritebackTable")
     private @Nullable Output<String> embeddingWritebackTable;
 
+    /**
+     * @return Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
+     * 
+     */
     public Optional<Output<String>> embeddingWritebackTable() {
         return Optional.ofNullable(this.embeddingWritebackTable);
     }
@@ -156,24 +172,54 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
             return embeddingSourceColumns(List.of(embeddingSourceColumns));
         }
 
+        /**
+         * @param embeddingVectorColumns array of objects representing columns that contain the embedding vectors. Each entry consists of:
+         * 
+         * @return builder
+         * 
+         */
         public Builder embeddingVectorColumns(@Nullable Output<List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs>> embeddingVectorColumns) {
             $.embeddingVectorColumns = embeddingVectorColumns;
             return this;
         }
 
+        /**
+         * @param embeddingVectorColumns array of objects representing columns that contain the embedding vectors. Each entry consists of:
+         * 
+         * @return builder
+         * 
+         */
         public Builder embeddingVectorColumns(List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs> embeddingVectorColumns) {
             return embeddingVectorColumns(Output.of(embeddingVectorColumns));
         }
 
+        /**
+         * @param embeddingVectorColumns array of objects representing columns that contain the embedding vectors. Each entry consists of:
+         * 
+         * @return builder
+         * 
+         */
         public Builder embeddingVectorColumns(VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs... embeddingVectorColumns) {
             return embeddingVectorColumns(List.of(embeddingVectorColumns));
         }
 
+        /**
+         * @param embeddingWritebackTable Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder embeddingWritebackTable(@Nullable Output<String> embeddingWritebackTable) {
             $.embeddingWritebackTable = embeddingWritebackTable;
             return this;
         }
 
+        /**
+         * @param embeddingWritebackTable Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder embeddingWritebackTable(String embeddingWritebackTable) {
             return embeddingWritebackTable(Output.of(embeddingWritebackTable));
         }

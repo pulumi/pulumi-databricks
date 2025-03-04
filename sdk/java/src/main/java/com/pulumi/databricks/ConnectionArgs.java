@@ -5,7 +5,6 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -34,25 +33,18 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+     * Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
      * 
      */
-    @Import(name="connectionType", required=true)
-    private Output<String> connectionType;
+    @Import(name="connectionType")
+    private @Nullable Output<String> connectionType;
 
     /**
-     * @return Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+     * @return Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
      * 
      */
-    public Output<String> connectionType() {
-        return this.connectionType;
-    }
-
-    @Import(name="metastoreId")
-    private @Nullable Output<String> metastoreId;
-
-    public Optional<Output<String>> metastoreId() {
-        return Optional.ofNullable(this.metastoreId);
+    public Optional<Output<String>> connectionType() {
+        return Optional.ofNullable(this.connectionType);
     }
 
     /**
@@ -74,15 +66,15 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
      * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      * 
      */
-    @Import(name="options", required=true)
-    private Output<Map<String,String>> options;
+    @Import(name="options")
+    private @Nullable Output<Map<String,String>> options;
 
     /**
      * @return The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      * 
      */
-    public Output<Map<String,String>> options() {
-        return this.options;
+    public Optional<Output<Map<String,String>>> options() {
+        return Optional.ofNullable(this.options);
     }
 
     /**
@@ -127,7 +119,6 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     private ConnectionArgs(ConnectionArgs $) {
         this.comment = $.comment;
         this.connectionType = $.connectionType;
-        this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.options = $.options;
         this.owner = $.owner;
@@ -175,33 +166,24 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionType Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+         * @param connectionType Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
          * 
          * @return builder
          * 
          */
-        public Builder connectionType(Output<String> connectionType) {
+        public Builder connectionType(@Nullable Output<String> connectionType) {
             $.connectionType = connectionType;
             return this;
         }
 
         /**
-         * @param connectionType Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+         * @param connectionType Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
          * 
          * @return builder
          * 
          */
         public Builder connectionType(String connectionType) {
             return connectionType(Output.of(connectionType));
-        }
-
-        public Builder metastoreId(@Nullable Output<String> metastoreId) {
-            $.metastoreId = metastoreId;
-            return this;
-        }
-
-        public Builder metastoreId(String metastoreId) {
-            return metastoreId(Output.of(metastoreId));
         }
 
         /**
@@ -231,7 +213,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder options(Output<Map<String,String>> options) {
+        public Builder options(@Nullable Output<Map<String,String>> options) {
             $.options = options;
             return this;
         }
@@ -298,12 +280,6 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ConnectionArgs build() {
-            if ($.connectionType == null) {
-                throw new MissingRequiredPropertyException("ConnectionArgs", "connectionType");
-            }
-            if ($.options == null) {
-                throw new MissingRequiredPropertyException("ConnectionArgs", "options");
-            }
             return $;
         }
     }
