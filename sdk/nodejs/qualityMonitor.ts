@@ -181,7 +181,7 @@ export class QualityMonitor extends pulumi.CustomResource {
      */
     public readonly schedule!: pulumi.Output<outputs.QualityMonitorSchedule | undefined>;
     /**
-     * Whether to skip creating a default dashboard summarizing data quality metrics.
+     * Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
      */
     public readonly skipBuiltinDashboard!: pulumi.Output<boolean | undefined>;
     /**
@@ -205,7 +205,7 @@ export class QualityMonitor extends pulumi.CustomResource {
      */
     public readonly timeSeries!: pulumi.Output<outputs.QualityMonitorTimeSeries | undefined>;
     /**
-     * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+     * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
      */
     public readonly warehouseId!: pulumi.Output<string | undefined>;
 
@@ -340,7 +340,7 @@ export interface QualityMonitorState {
      */
     schedule?: pulumi.Input<inputs.QualityMonitorSchedule>;
     /**
-     * Whether to skip creating a default dashboard summarizing data quality metrics.
+     * Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
      */
     skipBuiltinDashboard?: pulumi.Input<boolean>;
     /**
@@ -364,7 +364,7 @@ export interface QualityMonitorState {
      */
     timeSeries?: pulumi.Input<inputs.QualityMonitorTimeSeries>;
     /**
-     * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+     * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
      */
     warehouseId?: pulumi.Input<string>;
 }
@@ -412,7 +412,7 @@ export interface QualityMonitorArgs {
      */
     schedule?: pulumi.Input<inputs.QualityMonitorSchedule>;
     /**
-     * Whether to skip creating a default dashboard summarizing data quality metrics.
+     * Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
      */
     skipBuiltinDashboard?: pulumi.Input<boolean>;
     /**
@@ -432,7 +432,7 @@ export interface QualityMonitorArgs {
      */
     timeSeries?: pulumi.Input<inputs.QualityMonitorTimeSeries>;
     /**
-     * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+     * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
      */
     warehouseId?: pulumi.Input<string>;
 }

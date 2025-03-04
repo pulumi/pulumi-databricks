@@ -145,6 +145,8 @@ __all__ = [
     'ClusterWorkloadTypeClientsArgsDict',
     'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs',
     'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgsDict',
+    'ConnectionProvisioningInfoArgs',
+    'ConnectionProvisioningInfoArgsDict',
     'CredentialAwsIamRoleArgs',
     'CredentialAwsIamRoleArgsDict',
     'CredentialAzureManagedIdentityArgs',
@@ -5909,6 +5911,29 @@ class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspac
     @is_enabled.setter
     def is_enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "is_enabled", value)
+
+
+if not MYPY:
+    class ConnectionProvisioningInfoArgsDict(TypedDict):
+        state: NotRequired[pulumi.Input[str]]
+elif False:
+    ConnectionProvisioningInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionProvisioningInfoArgs:
+    def __init__(__self__, *,
+                 state: Optional[pulumi.Input[str]] = None):
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
 
 if not MYPY:
@@ -35273,7 +35298,13 @@ if not MYPY:
         array of objects representing columns that contain the embedding source.  Each entry consists of:
         """
         embedding_vector_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgsDict']]]]
+        """
+        array of objects representing columns that contain the embedding vectors. Each entry consists of:
+        """
         embedding_writeback_table: NotRequired[pulumi.Input[str]]
+        """
+        Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
+        """
         pipeline_id: NotRequired[pulumi.Input[str]]
         """
         ID of the associated Delta Live Table pipeline.
@@ -35302,6 +35333,8 @@ class VectorSearchIndexDeltaSyncIndexSpecArgs:
                  source_table: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs']]] embedding_source_columns: array of objects representing columns that contain the embedding source.  Each entry consists of:
+        :param pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs']]] embedding_vector_columns: array of objects representing columns that contain the embedding vectors. Each entry consists of:
+        :param pulumi.Input[str] embedding_writeback_table: Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
         :param pulumi.Input[str] pipeline_id: ID of the associated Delta Live Table pipeline.
         :param pulumi.Input[str] pipeline_type: Pipeline execution mode. Possible values are:
                * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
@@ -35336,6 +35369,9 @@ class VectorSearchIndexDeltaSyncIndexSpecArgs:
     @property
     @pulumi.getter(name="embeddingVectorColumns")
     def embedding_vector_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs']]]]:
+        """
+        array of objects representing columns that contain the embedding vectors. Each entry consists of:
+        """
         return pulumi.get(self, "embedding_vector_columns")
 
     @embedding_vector_columns.setter
@@ -35345,6 +35381,9 @@ class VectorSearchIndexDeltaSyncIndexSpecArgs:
     @property
     @pulumi.getter(name="embeddingWritebackTable")
     def embedding_writeback_table(self) -> Optional[pulumi.Input[str]]:
+        """
+        Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
+        """
         return pulumi.get(self, "embedding_writeback_table")
 
     @embedding_writeback_table.setter
@@ -35393,9 +35432,12 @@ class VectorSearchIndexDeltaSyncIndexSpecArgs:
 if not MYPY:
     class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgsDict(TypedDict):
         embedding_model_endpoint_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the embedding model endpoint
+        """
         name: NotRequired[pulumi.Input[str]]
         """
-        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        The name of the column
         """
 elif False:
     VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgsDict: TypeAlias = Mapping[str, Any]
@@ -35406,7 +35448,8 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs:
                  embedding_model_endpoint_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        :param pulumi.Input[str] embedding_model_endpoint_name: The name of the embedding model endpoint
+        :param pulumi.Input[str] name: The name of the column
         """
         if embedding_model_endpoint_name is not None:
             pulumi.set(__self__, "embedding_model_endpoint_name", embedding_model_endpoint_name)
@@ -35416,6 +35459,9 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs:
     @property
     @pulumi.getter(name="embeddingModelEndpointName")
     def embedding_model_endpoint_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the embedding model endpoint
+        """
         return pulumi.get(self, "embedding_model_endpoint_name")
 
     @embedding_model_endpoint_name.setter
@@ -35426,7 +35472,7 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        The name of the column
         """
         return pulumi.get(self, "name")
 
@@ -35438,9 +35484,12 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs:
 if not MYPY:
     class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgsDict(TypedDict):
         embedding_dimension: NotRequired[pulumi.Input[int]]
+        """
+        Dimension of the embedding vector.
+        """
         name: NotRequired[pulumi.Input[str]]
         """
-        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        The name of the column.
         """
 elif False:
     VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgsDict: TypeAlias = Mapping[str, Any]
@@ -35451,7 +35500,8 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs:
                  embedding_dimension: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        :param pulumi.Input[int] embedding_dimension: Dimension of the embedding vector.
+        :param pulumi.Input[str] name: The name of the column.
         """
         if embedding_dimension is not None:
             pulumi.set(__self__, "embedding_dimension", embedding_dimension)
@@ -35461,6 +35511,9 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs:
     @property
     @pulumi.getter(name="embeddingDimension")
     def embedding_dimension(self) -> Optional[pulumi.Input[int]]:
+        """
+        Dimension of the embedding vector.
+        """
         return pulumi.get(self, "embedding_dimension")
 
     @embedding_dimension.setter
@@ -35471,7 +35524,7 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        The name of the column.
         """
         return pulumi.get(self, "name")
 
@@ -35487,6 +35540,9 @@ if not MYPY:
         array of objects representing columns that contain the embedding source.  Each entry consists of:
         """
         embedding_vector_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgsDict']]]]
+        """
+        array of objects representing columns that contain the embedding vectors. Each entry consists of:
+        """
         schema_json: NotRequired[pulumi.Input[str]]
         """
         The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
@@ -35502,6 +35558,7 @@ class VectorSearchIndexDirectAccessIndexSpecArgs:
                  schema_json: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs']]] embedding_source_columns: array of objects representing columns that contain the embedding source.  Each entry consists of:
+        :param pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs']]] embedding_vector_columns: array of objects representing columns that contain the embedding vectors. Each entry consists of:
         :param pulumi.Input[str] schema_json: The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
         """
         if embedding_source_columns is not None:
@@ -35526,6 +35583,9 @@ class VectorSearchIndexDirectAccessIndexSpecArgs:
     @property
     @pulumi.getter(name="embeddingVectorColumns")
     def embedding_vector_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs']]]]:
+        """
+        array of objects representing columns that contain the embedding vectors. Each entry consists of:
+        """
         return pulumi.get(self, "embedding_vector_columns")
 
     @embedding_vector_columns.setter
@@ -35548,9 +35608,12 @@ class VectorSearchIndexDirectAccessIndexSpecArgs:
 if not MYPY:
     class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgsDict(TypedDict):
         embedding_model_endpoint_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the embedding model endpoint
+        """
         name: NotRequired[pulumi.Input[str]]
         """
-        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        The name of the column
         """
 elif False:
     VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgsDict: TypeAlias = Mapping[str, Any]
@@ -35561,7 +35624,8 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs:
                  embedding_model_endpoint_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        :param pulumi.Input[str] embedding_model_endpoint_name: The name of the embedding model endpoint
+        :param pulumi.Input[str] name: The name of the column
         """
         if embedding_model_endpoint_name is not None:
             pulumi.set(__self__, "embedding_model_endpoint_name", embedding_model_endpoint_name)
@@ -35571,6 +35635,9 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs:
     @property
     @pulumi.getter(name="embeddingModelEndpointName")
     def embedding_model_endpoint_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the embedding model endpoint
+        """
         return pulumi.get(self, "embedding_model_endpoint_name")
 
     @embedding_model_endpoint_name.setter
@@ -35581,7 +35648,7 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        The name of the column
         """
         return pulumi.get(self, "name")
 
@@ -35593,9 +35660,12 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs:
 if not MYPY:
     class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgsDict(TypedDict):
         embedding_dimension: NotRequired[pulumi.Input[int]]
+        """
+        Dimension of the embedding vector.
+        """
         name: NotRequired[pulumi.Input[str]]
         """
-        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        The name of the column.
         """
 elif False:
     VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgsDict: TypeAlias = Mapping[str, Any]
@@ -35606,7 +35676,8 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs:
                  embedding_dimension: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        :param pulumi.Input[int] embedding_dimension: Dimension of the embedding vector.
+        :param pulumi.Input[str] name: The name of the column.
         """
         if embedding_dimension is not None:
             pulumi.set(__self__, "embedding_dimension", embedding_dimension)
@@ -35616,6 +35687,9 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs:
     @property
     @pulumi.getter(name="embeddingDimension")
     def embedding_dimension(self) -> Optional[pulumi.Input[int]]:
+        """
+        Dimension of the embedding vector.
+        """
         return pulumi.get(self, "embedding_dimension")
 
     @embedding_dimension.setter
@@ -35626,7 +35700,7 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        The name of the column.
         """
         return pulumi.get(self, "name")
 
@@ -36268,14 +36342,14 @@ if not MYPY:
         cluster_cores: NotRequired[float]
         cluster_id: NotRequired[str]
         """
-        The id of the cluster
+        The id of the cluster.
         """
         cluster_log_conf: NotRequired['GetClusterClusterInfoClusterLogConfArgsDict']
         cluster_log_status: NotRequired['GetClusterClusterInfoClusterLogStatusArgsDict']
         cluster_memory_mb: NotRequired[int]
         cluster_name: NotRequired[str]
         """
-        The exact name of the cluster to search
+        The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         """
         cluster_source: NotRequired[str]
         creator_user_name: NotRequired[str]
@@ -36416,8 +36490,8 @@ class GetClusterClusterInfoArgs:
                  workload_type: Optional['GetClusterClusterInfoWorkloadTypeArgs'] = None):
         """
         :param int autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
-        :param str cluster_id: The id of the cluster
-        :param str cluster_name: The exact name of the cluster to search
+        :param str cluster_id: The id of the cluster.
+        :param str cluster_name: The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         :param Mapping[str, str] custom_tags: Additional tags for cluster resources.
         :param str data_security_mode: Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
         :param str driver_instance_pool_id: similar to `instance_pool_id`, but for driver node.
@@ -36583,7 +36657,7 @@ class GetClusterClusterInfoArgs:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[str]:
         """
-        The id of the cluster
+        The id of the cluster.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -36622,7 +36696,7 @@ class GetClusterClusterInfoArgs:
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> Optional[str]:
         """
-        The exact name of the cluster to search
+        The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         """
         return pulumi.get(self, "cluster_name")
 
@@ -38266,7 +38340,7 @@ if not MYPY:
     class GetClusterClusterInfoSpecArgsDict(TypedDict):
         cluster_id: str
         """
-        The id of the cluster
+        The id of the cluster.
         """
         driver_instance_pool_id: str
         """
@@ -38300,7 +38374,7 @@ if not MYPY:
         cluster_mount_infos: NotRequired[Sequence['GetClusterClusterInfoSpecClusterMountInfoArgsDict']]
         cluster_name: NotRequired[str]
         """
-        The exact name of the cluster to search
+        The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         """
         custom_tags: NotRequired[Mapping[str, str]]
         """
@@ -38391,14 +38465,14 @@ class GetClusterClusterInfoSpecArgs:
                  use_ml_runtime: Optional[bool] = None,
                  workload_type: Optional['GetClusterClusterInfoSpecWorkloadTypeArgs'] = None):
         """
-        :param str cluster_id: The id of the cluster
+        :param str cluster_id: The id of the cluster.
         :param str driver_instance_pool_id: similar to `instance_pool_id`, but for driver node.
         :param str driver_node_type_id: The node type of the Spark driver.
         :param bool enable_elastic_disk: Use autoscaling local storage.
         :param bool enable_local_disk_encryption: Enable local disk encryption.
         :param str node_type_id: Any supported get_node_type id.
         :param str spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
-        :param str cluster_name: The exact name of the cluster to search
+        :param str cluster_name: The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         :param Mapping[str, str] custom_tags: Additional tags for cluster resources.
         :param str data_security_mode: Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
         :param str idempotency_token: An optional token to guarantee the idempotency of cluster creation requests.
@@ -38474,7 +38548,7 @@ class GetClusterClusterInfoSpecArgs:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
         """
-        The id of the cluster
+        The id of the cluster.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -38612,7 +38686,7 @@ class GetClusterClusterInfoSpecArgs:
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> Optional[str]:
         """
-        The exact name of the cluster to search
+        The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         """
         return pulumi.get(self, "cluster_name")
 

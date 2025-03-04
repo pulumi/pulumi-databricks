@@ -10,7 +10,9 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.ConnectionArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ConnectionState;
+import com.pulumi.databricks.outputs.ConnectionProvisioningInfo;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -130,6 +132,44 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * Create a connection to builtin Hive Metastore
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Connection;
+ * import com.pulumi.databricks.ConnectionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new Connection("this", ConnectionArgs.builder()
+ *             .name("hms-builtin")
+ *             .connectionType("HIVE_METASTORE")
+ *             .comment("This is a connection to builtin HMS")
+ *             .options(Map.of("builtin", "true"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * This resource can be imported by `id`:
@@ -158,22 +198,100 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.comment);
     }
     /**
-     * Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+     * Unique ID of the connection.
+     * 
+     */
+    @Export(name="connectionId", refs={String.class}, tree="[0]")
+    private Output<String> connectionId;
+
+    /**
+     * @return Unique ID of the connection.
+     * 
+     */
+    public Output<String> connectionId() {
+        return this.connectionId;
+    }
+    /**
+     * Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
      * 
      */
     @Export(name="connectionType", refs={String.class}, tree="[0]")
-    private Output<String> connectionType;
+    private Output</* @Nullable */ String> connectionType;
 
     /**
-     * @return Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+     * @return Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
      * 
      */
-    public Output<String> connectionType() {
-        return this.connectionType;
+    public Output<Optional<String>> connectionType() {
+        return Codegen.optional(this.connectionType);
     }
+    /**
+     * Time at which this connection was created, in epoch milliseconds.
+     * 
+     */
+    @Export(name="createdAt", refs={Integer.class}, tree="[0]")
+    private Output<Integer> createdAt;
+
+    /**
+     * @return Time at which this connection was created, in epoch milliseconds.
+     * 
+     */
+    public Output<Integer> createdAt() {
+        return this.createdAt;
+    }
+    /**
+     * Username of connection creator.
+     * 
+     */
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
+    private Output<String> createdBy;
+
+    /**
+     * @return Username of connection creator.
+     * 
+     */
+    public Output<String> createdBy() {
+        return this.createdBy;
+    }
+    /**
+     * The type of credential for this connection.
+     * 
+     */
+    @Export(name="credentialType", refs={String.class}, tree="[0]")
+    private Output<String> credentialType;
+
+    /**
+     * @return The type of credential for this connection.
+     * 
+     */
+    public Output<String> credentialType() {
+        return this.credentialType;
+    }
+    /**
+     * Full name of connection.
+     * 
+     */
+    @Export(name="fullName", refs={String.class}, tree="[0]")
+    private Output<String> fullName;
+
+    /**
+     * @return Full name of connection.
+     * 
+     */
+    public Output<String> fullName() {
+        return this.fullName;
+    }
+    /**
+     * Unique ID of the UC metastore for this connection.
+     * 
+     */
     @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
+    /**
+     * @return Unique ID of the UC metastore for this connection.
+     * 
+     */
     public Output<String> metastoreId() {
         return this.metastoreId;
     }
@@ -196,14 +314,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="options", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> options;
+    private Output</* @Nullable */ Map<String,String>> options;
 
     /**
      * @return The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      * 
      */
-    public Output<Map<String,String>> options() {
-        return this.options;
+    public Output<Optional<Map<String,String>>> options() {
+        return Codegen.optional(this.options);
     }
     /**
      * Name of the connection owner.
@@ -233,11 +351,73 @@ public class Connection extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> properties() {
         return Codegen.optional(this.properties);
     }
+    /**
+     * Object with the status of an asynchronously provisioned resource.
+     * 
+     */
+    @Export(name="provisioningInfos", refs={List.class,ConnectionProvisioningInfo.class}, tree="[0,1]")
+    private Output<List<ConnectionProvisioningInfo>> provisioningInfos;
+
+    /**
+     * @return Object with the status of an asynchronously provisioned resource.
+     * 
+     */
+    public Output<List<ConnectionProvisioningInfo>> provisioningInfos() {
+        return this.provisioningInfos;
+    }
     @Export(name="readOnly", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> readOnly;
 
     public Output<Boolean> readOnly() {
         return this.readOnly;
+    }
+    @Export(name="securableType", refs={String.class}, tree="[0]")
+    private Output<String> securableType;
+
+    public Output<String> securableType() {
+        return this.securableType;
+    }
+    /**
+     * Time at which connection this was last modified, in epoch milliseconds.
+     * 
+     */
+    @Export(name="updatedAt", refs={Integer.class}, tree="[0]")
+    private Output<Integer> updatedAt;
+
+    /**
+     * @return Time at which connection this was last modified, in epoch milliseconds.
+     * 
+     */
+    public Output<Integer> updatedAt() {
+        return this.updatedAt;
+    }
+    /**
+     * Username of user who last modified the connection.
+     * 
+     */
+    @Export(name="updatedBy", refs={String.class}, tree="[0]")
+    private Output<String> updatedBy;
+
+    /**
+     * @return Username of user who last modified the connection.
+     * 
+     */
+    public Output<String> updatedBy() {
+        return this.updatedBy;
+    }
+    /**
+     * URL of the remote data source, extracted from options.
+     * 
+     */
+    @Export(name="url", refs={String.class}, tree="[0]")
+    private Output<String> url;
+
+    /**
+     * @return URL of the remote data source, extracted from options.
+     * 
+     */
+    public Output<String> url() {
+        return this.url;
     }
 
     /**
@@ -252,7 +432,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Connection(java.lang.String name, ConnectionArgs args) {
+    public Connection(java.lang.String name, @Nullable ConnectionArgs args) {
         this(name, args, null);
     }
     /**
@@ -261,7 +441,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Connection(java.lang.String name, ConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Connection(java.lang.String name, @Nullable ConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("databricks:index/connection:Connection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -269,7 +449,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
         super("databricks:index/connection:Connection", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static ConnectionArgs makeArgs(ConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ConnectionArgs makeArgs(@Nullable ConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

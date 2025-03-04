@@ -356,7 +356,12 @@
             },
             "databricks_connection": {
                 "current": "databricks:index/connection:Connection",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provisioning_info": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "databricks_credential": {
                 "current": "databricks:index/credential:Credential",
@@ -3532,6 +3537,15 @@
                 "current": "databricks:index/getCurrentUser:getCurrentUser",
                 "majorVersion": 1
             },
+            "databricks_dashboards": {
+                "current": "databricks:index/getDashboards:getDashboards",
+                "majorVersion": 1,
+                "fields": {
+                    "dashboards": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_dbfs_file": {
                 "current": "databricks:index/getDbfsFile:getDbfsFile",
                 "majorVersion": 1
@@ -5532,6 +5546,7 @@
             "databricks:index/getCurrentConfig:getCurrentConfig": 0,
             "databricks:index/getCurrentMetastore:getCurrentMetastore": 0,
             "databricks:index/getCurrentUser:getCurrentUser": 0,
+            "databricks:index/getDashboards:getDashboards": 1,
             "databricks:index/getDbfsFile:getDbfsFile": 0,
             "databricks:index/getDbfsFilePaths:getDbfsFilePaths": 0,
             "databricks:index/getDirectory:getDirectory": 0,
