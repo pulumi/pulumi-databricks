@@ -197,6 +197,13 @@ func Provider() tfbridge.ProviderInfo {
 					"https://github.com/pulumi/pulumi-databricks",
 				),
 			},
+			"databricks_budget_policy": {
+				ComputeID: tfbridge.DelegateIDField(
+					"policyId",
+					"databricks",
+					"https://github.com/pulumi/pulumi-databricks",
+				),
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"databricks_aws_crossaccount_policy": {
