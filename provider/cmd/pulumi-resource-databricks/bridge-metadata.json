@@ -176,6 +176,15 @@
                     }
                 }
             },
+            "databricks_budget_policy": {
+                "current": "databricks:index/budgetPolicy:BudgetPolicy",
+                "majorVersion": 1,
+                "fields": {
+                    "custom_tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_catalog": {
                 "current": "databricks:index/catalog:Catalog",
                 "majorVersion": 1
@@ -356,7 +365,12 @@
             },
             "databricks_connection": {
                 "current": "databricks:index/connection:Connection",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provisioning_info": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "databricks_credential": {
                 "current": "databricks:index/credential:Credential",
@@ -1086,6 +1100,16 @@
                                                                 }
                                                             }
                                                         },
+                                                        "gen_ai_compute_task": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "compute": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "health": {
                                                             "maxItemsOne": true,
                                                             "elem": {
@@ -1373,6 +1397,16 @@
                                                         }
                                                     }
                                                 }
+                                            }
+                                        }
+                                    }
+                                },
+                                "gen_ai_compute_task": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "compute": {
+                                                "maxItemsOne": true
                                             }
                                         }
                                     }
@@ -3210,6 +3244,31 @@
                 "current": "databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy",
                 "majorVersion": 1
             },
+            "databricks_budget_policies": {
+                "current": "databricks:index/getBudgetPolicies:getBudgetPolicies",
+                "majorVersion": 1,
+                "fields": {
+                    "budget_policies": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "custom_tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_budget_policy": {
+                "current": "databricks:index/getBudgetPolicy:getBudgetPolicy",
+                "majorVersion": 1,
+                "fields": {
+                    "custom_tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_catalog": {
                 "current": "databricks:index/getCatalog:getCatalog",
                 "majorVersion": 1,
@@ -3531,6 +3590,15 @@
             "databricks_current_user": {
                 "current": "databricks:index/getCurrentUser:getCurrentUser",
                 "majorVersion": 1
+            },
+            "databricks_dashboards": {
+                "current": "databricks:index/getDashboards:getDashboards",
+                "majorVersion": 1,
+                "fields": {
+                    "dashboards": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "databricks_dbfs_file": {
                 "current": "databricks:index/getDbfsFile:getDbfsFile",
@@ -5421,6 +5489,7 @@
             "databricks:index/artifactAllowlist:ArtifactAllowlist": 0,
             "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting": 0,
             "databricks:index/budget:Budget": 0,
+            "databricks:index/budgetPolicy:BudgetPolicy": 1,
             "databricks:index/catalog:Catalog": 0,
             "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding": 0,
             "databricks:index/cluster:Cluster": 0,
@@ -5524,6 +5593,8 @@
             "databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy": 0,
             "databricks:index/getAwsUnityCatalogAssumeRolePolicy:getAwsUnityCatalogAssumeRolePolicy": 0,
             "databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy": 0,
+            "databricks:index/getBudgetPolicies:getBudgetPolicies": 1,
+            "databricks:index/getBudgetPolicy:getBudgetPolicy": 1,
             "databricks:index/getCatalog:getCatalog": 0,
             "databricks:index/getCatalogs:getCatalogs": 0,
             "databricks:index/getCluster:getCluster": 0,
@@ -5532,6 +5603,7 @@
             "databricks:index/getCurrentConfig:getCurrentConfig": 0,
             "databricks:index/getCurrentMetastore:getCurrentMetastore": 0,
             "databricks:index/getCurrentUser:getCurrentUser": 0,
+            "databricks:index/getDashboards:getDashboards": 1,
             "databricks:index/getDbfsFile:getDbfsFile": 0,
             "databricks:index/getDbfsFilePaths:getDbfsFilePaths": 0,
             "databricks:index/getDirectory:getDirectory": 0,
