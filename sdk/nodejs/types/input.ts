@@ -381,6 +381,17 @@ export interface BudgetFilterWorkspaceId {
     values?: pulumi.Input<pulumi.Input<number>[]>;
 }
 
+export interface BudgetPolicyCustomTag {
+    /**
+     * The key of the tag. - Must be unique among all custom tags of the same policy. Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" as these tags are preserved.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value of the tag.
+     */
+    value?: pulumi.Input<string>;
+}
+
 export interface ClusterAutoscale {
     /**
      * The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
@@ -817,6 +828,10 @@ export interface ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProf
     isEnabled: pulumi.Input<boolean>;
 }
 
+export interface ConnectionProvisioningInfo {
+    state?: pulumi.Input<string>;
+}
+
 export interface CredentialAwsIamRole {
     externalId?: pulumi.Input<string>;
     /**
@@ -903,6 +918,16 @@ export interface ExternalLocationEncryptionDetails {
 export interface ExternalLocationEncryptionDetailsSseEncryptionDetails {
     algorithm?: pulumi.Input<string>;
     awsKmsKeyArn?: pulumi.Input<string>;
+}
+
+export interface GetBudgetPolicyCustomTag {
+    key: string;
+    value?: string;
+}
+
+export interface GetBudgetPolicyCustomTagArgs {
+    key: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface GetCatalogCatalogInfo {
@@ -1113,14 +1138,14 @@ export interface GetClusterClusterInfo {
     azureAttributes?: inputs.GetClusterClusterInfoAzureAttributes;
     clusterCores?: number;
     /**
-     * The id of the cluster
+     * The id of the cluster.
      */
     clusterId?: string;
     clusterLogConf?: inputs.GetClusterClusterInfoClusterLogConf;
     clusterLogStatus?: inputs.GetClusterClusterInfoClusterLogStatus;
     clusterMemoryMb?: number;
     /**
-     * The exact name of the cluster to search
+     * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      */
     clusterName?: string;
     clusterSource?: string;
@@ -1218,14 +1243,14 @@ export interface GetClusterClusterInfoArgs {
     azureAttributes?: pulumi.Input<inputs.GetClusterClusterInfoAzureAttributesArgs>;
     clusterCores?: pulumi.Input<number>;
     /**
-     * The id of the cluster
+     * The id of the cluster.
      */
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfArgs>;
     clusterLogStatus?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogStatusArgs>;
     clusterMemoryMb?: pulumi.Input<number>;
     /**
-     * The exact name of the cluster to search
+     * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      */
     clusterName?: pulumi.Input<string>;
     clusterSource?: pulumi.Input<string>;
@@ -1619,13 +1644,13 @@ export interface GetClusterClusterInfoSpec {
     awsAttributes?: inputs.GetClusterClusterInfoSpecAwsAttributes;
     azureAttributes?: inputs.GetClusterClusterInfoSpecAzureAttributes;
     /**
-     * The id of the cluster
+     * The id of the cluster.
      */
     clusterId?: string;
     clusterLogConf?: inputs.GetClusterClusterInfoSpecClusterLogConf;
     clusterMountInfos?: inputs.GetClusterClusterInfoSpecClusterMountInfo[];
     /**
-     * The exact name of the cluster to search
+     * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      */
     clusterName?: string;
     /**
@@ -1709,13 +1734,13 @@ export interface GetClusterClusterInfoSpecArgs {
     awsAttributes?: pulumi.Input<inputs.GetClusterClusterInfoSpecAwsAttributesArgs>;
     azureAttributes?: pulumi.Input<inputs.GetClusterClusterInfoSpecAzureAttributesArgs>;
     /**
-     * The id of the cluster
+     * The id of the cluster.
      */
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterLogConfArgs>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoSpecClusterMountInfoArgs>[]>;
     /**
-     * The exact name of the cluster to search
+     * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      */
     clusterName?: pulumi.Input<string>;
     /**
@@ -7074,6 +7099,7 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAmazo
     awsSecretAccessKey?: string;
     awsSecretAccessKeyPlaintext?: string;
     bedrockProvider: string;
+    instanceProfileArn?: string;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs {
@@ -7083,6 +7109,7 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAmazo
     awsSecretAccessKey?: pulumi.Input<string>;
     awsSecretAccessKeyPlaintext?: pulumi.Input<string>;
     bedrockProvider: pulumi.Input<string>;
+    instanceProfileArn?: pulumi.Input<string>;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig {
@@ -9027,6 +9054,7 @@ export interface JobTask {
      */
     existingClusterId?: pulumi.Input<string>;
     forEachTask?: pulumi.Input<inputs.JobTaskForEachTask>;
+    genAiComputeTask?: pulumi.Input<inputs.JobTaskGenAiComputeTask>;
     /**
      * block described below that specifies health conditions for a given task.
      */
@@ -9241,6 +9269,7 @@ export interface JobTaskForEachTaskTask {
      * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
      */
     existingClusterId?: pulumi.Input<string>;
+    genAiComputeTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskGenAiComputeTask>;
     /**
      * block described below that specifies health conditions for a given task.
      */
@@ -9410,6 +9439,23 @@ export interface JobTaskForEachTaskTaskEmailNotifications {
      * (List) list of emails to notify when the run completes successfully.
      */
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface JobTaskForEachTaskTaskGenAiComputeTask {
+    command?: pulumi.Input<string>;
+    compute?: pulumi.Input<inputs.JobTaskForEachTaskTaskGenAiComputeTaskCompute>;
+    dlRuntimeImage: pulumi.Input<string>;
+    mlflowExperimentName?: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
+    trainingScriptPath?: pulumi.Input<string>;
+    yamlParameters?: pulumi.Input<string>;
+    yamlParametersFilePath?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskGenAiComputeTaskCompute {
+    gpuNodePoolId: pulumi.Input<string>;
+    gpuType?: pulumi.Input<string>;
+    numGpus: pulumi.Input<number>;
 }
 
 export interface JobTaskForEachTaskTaskHealth {
@@ -10000,6 +10046,23 @@ export interface JobTaskForEachTaskTaskWebhookNotificationsOnSuccess {
      * ID of the job
      */
     id: pulumi.Input<string>;
+}
+
+export interface JobTaskGenAiComputeTask {
+    command?: pulumi.Input<string>;
+    compute?: pulumi.Input<inputs.JobTaskGenAiComputeTaskCompute>;
+    dlRuntimeImage: pulumi.Input<string>;
+    mlflowExperimentName?: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
+    trainingScriptPath?: pulumi.Input<string>;
+    yamlParameters?: pulumi.Input<string>;
+    yamlParametersFilePath?: pulumi.Input<string>;
+}
+
+export interface JobTaskGenAiComputeTaskCompute {
+    gpuNodePoolId: pulumi.Input<string>;
+    gpuType?: pulumi.Input<string>;
+    numGpus: pulumi.Input<number>;
 }
 
 export interface JobTaskHealth {
@@ -11206,6 +11269,7 @@ export interface ModelServingConfigServedEntityExternalModelAmazonBedrockConfig 
      * The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
      */
     bedrockProvider: pulumi.Input<string>;
+    instanceProfileArn?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelAnthropicConfig {
@@ -12925,7 +12989,13 @@ export interface VectorSearchIndexDeltaSyncIndexSpec {
      * array of objects representing columns that contain the embedding source.  Each entry consists of:
      */
     embeddingSourceColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn>[]>;
+    /**
+     * array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     */
     embeddingVectorColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn>[]>;
+    /**
+     * Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
+     */
     embeddingWritebackTable?: pulumi.Input<string>;
     /**
      * ID of the associated Delta Live Table pipeline.
@@ -12944,17 +13014,23 @@ export interface VectorSearchIndexDeltaSyncIndexSpec {
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
+    /**
+     * The name of the embedding model endpoint
+     */
     embeddingModelEndpointName?: pulumi.Input<string>;
     /**
-     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+     * The name of the column
      */
     name?: pulumi.Input<string>;
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
+    /**
+     * Dimension of the embedding vector.
+     */
     embeddingDimension?: pulumi.Input<number>;
     /**
-     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+     * The name of the column.
      */
     name?: pulumi.Input<string>;
 }
@@ -12964,6 +13040,9 @@ export interface VectorSearchIndexDirectAccessIndexSpec {
      * array of objects representing columns that contain the embedding source.  Each entry consists of:
      */
     embeddingSourceColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn>[]>;
+    /**
+     * array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     */
     embeddingVectorColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn>[]>;
     /**
      * The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
@@ -12972,17 +13051,23 @@ export interface VectorSearchIndexDirectAccessIndexSpec {
 }
 
 export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
+    /**
+     * The name of the embedding model endpoint
+     */
     embeddingModelEndpointName?: pulumi.Input<string>;
     /**
-     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+     * The name of the column
      */
     name?: pulumi.Input<string>;
 }
 
 export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
+    /**
+     * Dimension of the embedding vector.
+     */
     embeddingDimension?: pulumi.Input<number>;
     /**
-     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+     * The name of the column.
      */
     name?: pulumi.Input<string>;
 }

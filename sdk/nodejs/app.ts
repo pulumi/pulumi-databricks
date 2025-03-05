@@ -66,6 +66,7 @@ export class App extends pulumi.CustomResource {
      * attribute
      */
     public /*out*/ readonly appStatus!: pulumi.Output<outputs.AppAppStatus>;
+    public readonly budgetPolicyId!: pulumi.Output<string | undefined>;
     /**
      * attribute
      */
@@ -86,6 +87,7 @@ export class App extends pulumi.CustomResource {
      * The description of the app.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly effectiveBudgetPolicyId!: pulumi.Output<string>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
@@ -133,11 +135,13 @@ export class App extends pulumi.CustomResource {
             const state = argsOrState as AppState | undefined;
             resourceInputs["activeDeployment"] = state ? state.activeDeployment : undefined;
             resourceInputs["appStatus"] = state ? state.appStatus : undefined;
+            resourceInputs["budgetPolicyId"] = state ? state.budgetPolicyId : undefined;
             resourceInputs["computeStatus"] = state ? state.computeStatus : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["creator"] = state ? state.creator : undefined;
             resourceInputs["defaultSourceCodePath"] = state ? state.defaultSourceCodePath : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveBudgetPolicyId"] = state ? state.effectiveBudgetPolicyId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["noCompute"] = state ? state.noCompute : undefined;
             resourceInputs["pendingDeployment"] = state ? state.pendingDeployment : undefined;
@@ -150,6 +154,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as AppArgs | undefined;
+            resourceInputs["budgetPolicyId"] = args ? args.budgetPolicyId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["noCompute"] = args ? args.noCompute : undefined;
@@ -160,6 +165,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["defaultSourceCodePath"] = undefined /*out*/;
+            resourceInputs["effectiveBudgetPolicyId"] = undefined /*out*/;
             resourceInputs["pendingDeployment"] = undefined /*out*/;
             resourceInputs["servicePrincipalClientId"] = undefined /*out*/;
             resourceInputs["servicePrincipalId"] = undefined /*out*/;
@@ -182,6 +188,7 @@ export interface AppState {
      * attribute
      */
     appStatus?: pulumi.Input<inputs.AppAppStatus>;
+    budgetPolicyId?: pulumi.Input<string>;
     /**
      * attribute
      */
@@ -202,6 +209,7 @@ export interface AppState {
      * The description of the app.
      */
     description?: pulumi.Input<string>;
+    effectiveBudgetPolicyId?: pulumi.Input<string>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
@@ -239,6 +247,7 @@ export interface AppState {
  * The set of arguments for constructing a App resource.
  */
 export interface AppArgs {
+    budgetPolicyId?: pulumi.Input<string>;
     /**
      * The description of the app.
      */

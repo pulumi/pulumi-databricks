@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     /// <summary>
     /// ## Import
     /// 
-    /// This resource can be imported by its full name:
+    /// This resource can be imported by its full name.
     /// 
     /// bash
     /// 
@@ -69,13 +69,13 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, string>?> Options { get; private set; } = null!;
 
         /// <summary>
-        /// User name/group name/sp application_id of the schema owner.
+        /// User name/group name/sp application_id of the table owner.
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
-        /// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+        /// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
         /// </summary>
         [Output("partitions")]
         public Output<ImmutableArray<string>> Partitions { get; private set; } = null!;
@@ -228,7 +228,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// User name/group name/sp application_id of the schema owner.
+        /// User name/group name/sp application_id of the table owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -237,7 +237,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _partitions;
 
         /// <summary>
-        /// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+        /// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
         /// </summary>
         public InputList<string> Partitions
         {
@@ -369,7 +369,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// User name/group name/sp application_id of the schema owner.
+        /// User name/group name/sp application_id of the table owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -378,7 +378,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _partitions;
 
         /// <summary>
-        /// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+        /// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
         /// </summary>
         public InputList<string> Partitions
         {

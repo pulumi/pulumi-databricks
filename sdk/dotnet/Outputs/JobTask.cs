@@ -41,6 +41,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? ExistingClusterId;
         public readonly Outputs.JobTaskForEachTask? ForEachTask;
+        public readonly Outputs.JobTaskGenAiComputeTask? GenAiComputeTask;
         /// <summary>
         /// block described below that specifies health conditions for a given task.
         /// </summary>
@@ -123,6 +124,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskForEachTask? forEachTask,
 
+            Outputs.JobTaskGenAiComputeTask? genAiComputeTask,
+
             Outputs.JobTaskHealth? health,
 
             string? jobClusterKey,
@@ -173,6 +176,7 @@ namespace Pulumi.Databricks.Outputs
             EnvironmentKey = environmentKey;
             ExistingClusterId = existingClusterId;
             ForEachTask = forEachTask;
+            GenAiComputeTask = genAiComputeTask;
             Health = health;
             JobClusterKey = jobClusterKey;
             Libraries = libraries;

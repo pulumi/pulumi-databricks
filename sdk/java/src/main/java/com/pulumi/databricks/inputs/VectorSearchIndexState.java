@@ -35,14 +35,14 @@ public final class VectorSearchIndexState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`.
+     * Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`. This field is a block and is documented below.
      * 
      */
     @Import(name="deltaSyncIndexSpec")
     private @Nullable Output<VectorSearchIndexDeltaSyncIndexSpecArgs> deltaSyncIndexSpec;
 
     /**
-     * @return Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`.
+     * @return Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`. This field is a block and is documented below.
      * 
      */
     public Optional<Output<VectorSearchIndexDeltaSyncIndexSpecArgs>> deltaSyncIndexSpec() {
@@ -50,14 +50,14 @@ public final class VectorSearchIndexState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
+     * Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`. This field is a block and is documented below.
      * 
      */
     @Import(name="directAccessIndexSpec")
     private @Nullable Output<VectorSearchIndexDirectAccessIndexSpecArgs> directAccessIndexSpec;
 
     /**
-     * @return Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
+     * @return Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`. This field is a block and is documented below.
      * 
      */
     public Optional<Output<VectorSearchIndexDirectAccessIndexSpecArgs>> directAccessIndexSpec() {
@@ -196,7 +196,7 @@ public final class VectorSearchIndexState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deltaSyncIndexSpec Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`.
+         * @param deltaSyncIndexSpec Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`. This field is a block and is documented below.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class VectorSearchIndexState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deltaSyncIndexSpec Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`.
+         * @param deltaSyncIndexSpec Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`. This field is a block and is documented below.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class VectorSearchIndexState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param directAccessIndexSpec Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
+         * @param directAccessIndexSpec Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`. This field is a block and is documented below.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class VectorSearchIndexState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param directAccessIndexSpec Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
+         * @param directAccessIndexSpec Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`. This field is a block and is documented below.
          * 
          * @return builder
          * 

@@ -135,6 +135,12 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<AppAppStatus> appStatus() {
         return this.appStatus;
     }
+    @Export(name="budgetPolicyId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> budgetPolicyId;
+
+    public Output<Optional<String>> budgetPolicyId() {
+        return Codegen.optional(this.budgetPolicyId);
+    }
     /**
      * attribute
      * 
@@ -204,6 +210,12 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    @Export(name="effectiveBudgetPolicyId", refs={String.class}, tree="[0]")
+    private Output<String> effectiveBudgetPolicyId;
+
+    public Output<String> effectiveBudgetPolicyId() {
+        return this.effectiveBudgetPolicyId;
     }
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.

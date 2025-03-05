@@ -58,6 +58,13 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
         return this.bedrockProvider;
     }
 
+    @Import(name="instanceProfileArn")
+    private @Nullable Output<String> instanceProfileArn;
+
+    public Optional<Output<String>> instanceProfileArn() {
+        return Optional.ofNullable(this.instanceProfileArn);
+    }
+
     private GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs() {}
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs(GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs $) {
@@ -67,6 +74,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
         this.awsSecretAccessKey = $.awsSecretAccessKey;
         this.awsSecretAccessKeyPlaintext = $.awsSecretAccessKeyPlaintext;
         this.bedrockProvider = $.bedrockProvider;
+        this.instanceProfileArn = $.instanceProfileArn;
     }
 
     public static Builder builder() {
@@ -139,6 +147,15 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelAma
 
         public Builder bedrockProvider(String bedrockProvider) {
             return bedrockProvider(Output.of(bedrockProvider));
+        }
+
+        public Builder instanceProfileArn(@Nullable Output<String> instanceProfileArn) {
+            $.instanceProfileArn = instanceProfileArn;
+            return this;
+        }
+
+        public Builder instanceProfileArn(String instanceProfileArn) {
+            return instanceProfileArn(Output.of(instanceProfileArn));
         }
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs build() {

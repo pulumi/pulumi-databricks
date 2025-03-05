@@ -49,6 +49,7 @@ __all__ = [
     'BudgetFilterTag',
     'BudgetFilterTagValue',
     'BudgetFilterWorkspaceId',
+    'BudgetPolicyCustomTag',
     'ClusterAutoscale',
     'ClusterAwsAttributes',
     'ClusterAzureAttributes',
@@ -81,6 +82,7 @@ __all__ = [
     'ClusterWorkloadType',
     'ClusterWorkloadTypeClients',
     'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace',
+    'ConnectionProvisioningInfo',
     'CredentialAwsIamRole',
     'CredentialAzureManagedIdentity',
     'CredentialAzureServicePrincipal',
@@ -199,6 +201,8 @@ __all__ = [
     'JobTaskForEachTaskTaskDbtTask',
     'JobTaskForEachTaskTaskDependsOn',
     'JobTaskForEachTaskTaskEmailNotifications',
+    'JobTaskForEachTaskTaskGenAiComputeTask',
+    'JobTaskForEachTaskTaskGenAiComputeTaskCompute',
     'JobTaskForEachTaskTaskHealth',
     'JobTaskForEachTaskTaskHealthRule',
     'JobTaskForEachTaskTaskLibrary',
@@ -255,6 +259,8 @@ __all__ = [
     'JobTaskForEachTaskTaskWebhookNotificationsOnStart',
     'JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded',
     'JobTaskForEachTaskTaskWebhookNotificationsOnSuccess',
+    'JobTaskGenAiComputeTask',
+    'JobTaskGenAiComputeTaskCompute',
     'JobTaskHealth',
     'JobTaskHealthRule',
     'JobTaskLibrary',
@@ -553,6 +559,9 @@ __all__ = [
     'GetAppsAppResourceSecretResult',
     'GetAppsAppResourceServingEndpointResult',
     'GetAppsAppResourceSqlWarehouseResult',
+    'GetBudgetPoliciesBudgetPolicyResult',
+    'GetBudgetPoliciesBudgetPolicyCustomTagResult',
+    'GetBudgetPolicyCustomTagResult',
     'GetCatalogCatalogInfoResult',
     'GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagResult',
     'GetCatalogCatalogInfoProvisioningInfoResult',
@@ -614,6 +623,7 @@ __all__ = [
     'GetClusterClusterInfoWorkloadTypeClientsResult',
     'GetClustersFilterByResult',
     'GetCurrentMetastoreMetastoreInfoResult',
+    'GetDashboardsDashboardResult',
     'GetDbfsFilePathsPathListResult',
     'GetExternalLocationExternalLocationInfoResult',
     'GetExternalLocationExternalLocationInfoEncryptionDetailsResult',
@@ -2407,6 +2417,36 @@ class BudgetFilterWorkspaceId(dict):
 
 
 @pulumi.output_type
+class BudgetPolicyCustomTag(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: Optional[str] = None):
+        """
+        :param str key: The key of the tag. - Must be unique among all custom tags of the same policy. Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" as these tags are preserved.
+        :param str value: The value of the tag.
+        """
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key of the tag. - Must be unique among all custom tags of the same policy. Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" as these tags are preserved.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The value of the tag.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class ClusterAutoscale(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3965,6 +4005,19 @@ class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspac
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> bool:
         return pulumi.get(self, "is_enabled")
+
+
+@pulumi.output_type
+class ConnectionProvisioningInfo(dict):
+    def __init__(__self__, *,
+                 state: Optional[str] = None):
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
@@ -9101,6 +9154,8 @@ class JobTask(dict):
             suggest = "existing_cluster_id"
         elif key == "forEachTask":
             suggest = "for_each_task"
+        elif key == "genAiComputeTask":
+            suggest = "gen_ai_compute_task"
         elif key == "jobClusterKey":
             suggest = "job_cluster_key"
         elif key == "maxRetries":
@@ -9159,6 +9214,7 @@ class JobTask(dict):
                  environment_key: Optional[str] = None,
                  existing_cluster_id: Optional[str] = None,
                  for_each_task: Optional['outputs.JobTaskForEachTask'] = None,
+                 gen_ai_compute_task: Optional['outputs.JobTaskGenAiComputeTask'] = None,
                  health: Optional['outputs.JobTaskHealth'] = None,
                  job_cluster_key: Optional[str] = None,
                  libraries: Optional[Sequence['outputs.JobTaskLibrary']] = None,
@@ -9222,6 +9278,8 @@ class JobTask(dict):
             pulumi.set(__self__, "existing_cluster_id", existing_cluster_id)
         if for_each_task is not None:
             pulumi.set(__self__, "for_each_task", for_each_task)
+        if gen_ai_compute_task is not None:
+            pulumi.set(__self__, "gen_ai_compute_task", gen_ai_compute_task)
         if health is not None:
             pulumi.set(__self__, "health", health)
         if job_cluster_key is not None:
@@ -9337,6 +9395,11 @@ class JobTask(dict):
     @pulumi.getter(name="forEachTask")
     def for_each_task(self) -> Optional['outputs.JobTaskForEachTask']:
         return pulumi.get(self, "for_each_task")
+
+    @property
+    @pulumi.getter(name="genAiComputeTask")
+    def gen_ai_compute_task(self) -> Optional['outputs.JobTaskGenAiComputeTask']:
+        return pulumi.get(self, "gen_ai_compute_task")
 
     @property
     @pulumi.getter
@@ -9927,6 +9990,8 @@ class JobTaskForEachTaskTask(dict):
             suggest = "environment_key"
         elif key == "existingClusterId":
             suggest = "existing_cluster_id"
+        elif key == "genAiComputeTask":
+            suggest = "gen_ai_compute_task"
         elif key == "jobClusterKey":
             suggest = "job_cluster_key"
         elif key == "maxRetries":
@@ -9984,6 +10049,7 @@ class JobTaskForEachTaskTask(dict):
                  email_notifications: Optional['outputs.JobTaskForEachTaskTaskEmailNotifications'] = None,
                  environment_key: Optional[str] = None,
                  existing_cluster_id: Optional[str] = None,
+                 gen_ai_compute_task: Optional['outputs.JobTaskForEachTaskTaskGenAiComputeTask'] = None,
                  health: Optional['outputs.JobTaskForEachTaskTaskHealth'] = None,
                  job_cluster_key: Optional[str] = None,
                  libraries: Optional[Sequence['outputs.JobTaskForEachTaskTaskLibrary']] = None,
@@ -10045,6 +10111,8 @@ class JobTaskForEachTaskTask(dict):
             pulumi.set(__self__, "environment_key", environment_key)
         if existing_cluster_id is not None:
             pulumi.set(__self__, "existing_cluster_id", existing_cluster_id)
+        if gen_ai_compute_task is not None:
+            pulumi.set(__self__, "gen_ai_compute_task", gen_ai_compute_task)
         if health is not None:
             pulumi.set(__self__, "health", health)
         if job_cluster_key is not None:
@@ -10155,6 +10223,11 @@ class JobTaskForEachTaskTask(dict):
         Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
         """
         return pulumi.get(self, "existing_cluster_id")
+
+    @property
+    @pulumi.getter(name="genAiComputeTask")
+    def gen_ai_compute_task(self) -> Optional['outputs.JobTaskForEachTaskTaskGenAiComputeTask']:
+        return pulumi.get(self, "gen_ai_compute_task")
 
     @property
     @pulumi.getter
@@ -10679,6 +10752,147 @@ class JobTaskForEachTaskTaskEmailNotifications(dict):
         (List) list of emails to notify when the run completes successfully.
         """
         return pulumi.get(self, "on_successes")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskGenAiComputeTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dlRuntimeImage":
+            suggest = "dl_runtime_image"
+        elif key == "mlflowExperimentName":
+            suggest = "mlflow_experiment_name"
+        elif key == "trainingScriptPath":
+            suggest = "training_script_path"
+        elif key == "yamlParameters":
+            suggest = "yaml_parameters"
+        elif key == "yamlParametersFilePath":
+            suggest = "yaml_parameters_file_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskGenAiComputeTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskGenAiComputeTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskGenAiComputeTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dl_runtime_image: str,
+                 command: Optional[str] = None,
+                 compute: Optional['outputs.JobTaskForEachTaskTaskGenAiComputeTaskCompute'] = None,
+                 mlflow_experiment_name: Optional[str] = None,
+                 source: Optional[str] = None,
+                 training_script_path: Optional[str] = None,
+                 yaml_parameters: Optional[str] = None,
+                 yaml_parameters_file_path: Optional[str] = None):
+        pulumi.set(__self__, "dl_runtime_image", dl_runtime_image)
+        if command is not None:
+            pulumi.set(__self__, "command", command)
+        if compute is not None:
+            pulumi.set(__self__, "compute", compute)
+        if mlflow_experiment_name is not None:
+            pulumi.set(__self__, "mlflow_experiment_name", mlflow_experiment_name)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if training_script_path is not None:
+            pulumi.set(__self__, "training_script_path", training_script_path)
+        if yaml_parameters is not None:
+            pulumi.set(__self__, "yaml_parameters", yaml_parameters)
+        if yaml_parameters_file_path is not None:
+            pulumi.set(__self__, "yaml_parameters_file_path", yaml_parameters_file_path)
+
+    @property
+    @pulumi.getter(name="dlRuntimeImage")
+    def dl_runtime_image(self) -> str:
+        return pulumi.get(self, "dl_runtime_image")
+
+    @property
+    @pulumi.getter
+    def command(self) -> Optional[str]:
+        return pulumi.get(self, "command")
+
+    @property
+    @pulumi.getter
+    def compute(self) -> Optional['outputs.JobTaskForEachTaskTaskGenAiComputeTaskCompute']:
+        return pulumi.get(self, "compute")
+
+    @property
+    @pulumi.getter(name="mlflowExperimentName")
+    def mlflow_experiment_name(self) -> Optional[str]:
+        return pulumi.get(self, "mlflow_experiment_name")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="trainingScriptPath")
+    def training_script_path(self) -> Optional[str]:
+        return pulumi.get(self, "training_script_path")
+
+    @property
+    @pulumi.getter(name="yamlParameters")
+    def yaml_parameters(self) -> Optional[str]:
+        return pulumi.get(self, "yaml_parameters")
+
+    @property
+    @pulumi.getter(name="yamlParametersFilePath")
+    def yaml_parameters_file_path(self) -> Optional[str]:
+        return pulumi.get(self, "yaml_parameters_file_path")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskGenAiComputeTaskCompute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gpuNodePoolId":
+            suggest = "gpu_node_pool_id"
+        elif key == "numGpus":
+            suggest = "num_gpus"
+        elif key == "gpuType":
+            suggest = "gpu_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskGenAiComputeTaskCompute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskGenAiComputeTaskCompute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskGenAiComputeTaskCompute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gpu_node_pool_id: str,
+                 num_gpus: int,
+                 gpu_type: Optional[str] = None):
+        pulumi.set(__self__, "gpu_node_pool_id", gpu_node_pool_id)
+        pulumi.set(__self__, "num_gpus", num_gpus)
+        if gpu_type is not None:
+            pulumi.set(__self__, "gpu_type", gpu_type)
+
+    @property
+    @pulumi.getter(name="gpuNodePoolId")
+    def gpu_node_pool_id(self) -> str:
+        return pulumi.get(self, "gpu_node_pool_id")
+
+    @property
+    @pulumi.getter(name="numGpus")
+    def num_gpus(self) -> int:
+        return pulumi.get(self, "num_gpus")
+
+    @property
+    @pulumi.getter(name="gpuType")
+    def gpu_type(self) -> Optional[str]:
+        return pulumi.get(self, "gpu_type")
 
 
 @pulumi.output_type
@@ -13468,6 +13682,147 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnSuccess(dict):
         ID of the job
         """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class JobTaskGenAiComputeTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dlRuntimeImage":
+            suggest = "dl_runtime_image"
+        elif key == "mlflowExperimentName":
+            suggest = "mlflow_experiment_name"
+        elif key == "trainingScriptPath":
+            suggest = "training_script_path"
+        elif key == "yamlParameters":
+            suggest = "yaml_parameters"
+        elif key == "yamlParametersFilePath":
+            suggest = "yaml_parameters_file_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskGenAiComputeTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskGenAiComputeTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskGenAiComputeTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dl_runtime_image: str,
+                 command: Optional[str] = None,
+                 compute: Optional['outputs.JobTaskGenAiComputeTaskCompute'] = None,
+                 mlflow_experiment_name: Optional[str] = None,
+                 source: Optional[str] = None,
+                 training_script_path: Optional[str] = None,
+                 yaml_parameters: Optional[str] = None,
+                 yaml_parameters_file_path: Optional[str] = None):
+        pulumi.set(__self__, "dl_runtime_image", dl_runtime_image)
+        if command is not None:
+            pulumi.set(__self__, "command", command)
+        if compute is not None:
+            pulumi.set(__self__, "compute", compute)
+        if mlflow_experiment_name is not None:
+            pulumi.set(__self__, "mlflow_experiment_name", mlflow_experiment_name)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if training_script_path is not None:
+            pulumi.set(__self__, "training_script_path", training_script_path)
+        if yaml_parameters is not None:
+            pulumi.set(__self__, "yaml_parameters", yaml_parameters)
+        if yaml_parameters_file_path is not None:
+            pulumi.set(__self__, "yaml_parameters_file_path", yaml_parameters_file_path)
+
+    @property
+    @pulumi.getter(name="dlRuntimeImage")
+    def dl_runtime_image(self) -> str:
+        return pulumi.get(self, "dl_runtime_image")
+
+    @property
+    @pulumi.getter
+    def command(self) -> Optional[str]:
+        return pulumi.get(self, "command")
+
+    @property
+    @pulumi.getter
+    def compute(self) -> Optional['outputs.JobTaskGenAiComputeTaskCompute']:
+        return pulumi.get(self, "compute")
+
+    @property
+    @pulumi.getter(name="mlflowExperimentName")
+    def mlflow_experiment_name(self) -> Optional[str]:
+        return pulumi.get(self, "mlflow_experiment_name")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="trainingScriptPath")
+    def training_script_path(self) -> Optional[str]:
+        return pulumi.get(self, "training_script_path")
+
+    @property
+    @pulumi.getter(name="yamlParameters")
+    def yaml_parameters(self) -> Optional[str]:
+        return pulumi.get(self, "yaml_parameters")
+
+    @property
+    @pulumi.getter(name="yamlParametersFilePath")
+    def yaml_parameters_file_path(self) -> Optional[str]:
+        return pulumi.get(self, "yaml_parameters_file_path")
+
+
+@pulumi.output_type
+class JobTaskGenAiComputeTaskCompute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gpuNodePoolId":
+            suggest = "gpu_node_pool_id"
+        elif key == "numGpus":
+            suggest = "num_gpus"
+        elif key == "gpuType":
+            suggest = "gpu_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskGenAiComputeTaskCompute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskGenAiComputeTaskCompute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskGenAiComputeTaskCompute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gpu_node_pool_id: str,
+                 num_gpus: int,
+                 gpu_type: Optional[str] = None):
+        pulumi.set(__self__, "gpu_node_pool_id", gpu_node_pool_id)
+        pulumi.set(__self__, "num_gpus", num_gpus)
+        if gpu_type is not None:
+            pulumi.set(__self__, "gpu_type", gpu_type)
+
+    @property
+    @pulumi.getter(name="gpuNodePoolId")
+    def gpu_node_pool_id(self) -> str:
+        return pulumi.get(self, "gpu_node_pool_id")
+
+    @property
+    @pulumi.getter(name="numGpus")
+    def num_gpus(self) -> int:
+        return pulumi.get(self, "num_gpus")
+
+    @property
+    @pulumi.getter(name="gpuType")
+    def gpu_type(self) -> Optional[str]:
+        return pulumi.get(self, "gpu_type")
 
 
 @pulumi.output_type
@@ -18681,6 +19036,8 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfig(dict):
             suggest = "aws_secret_access_key"
         elif key == "awsSecretAccessKeyPlaintext":
             suggest = "aws_secret_access_key_plaintext"
+        elif key == "instanceProfileArn":
+            suggest = "instance_profile_arn"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ModelServingConfigServedEntityExternalModelAmazonBedrockConfig. Access the value via the '{suggest}' property getter instead.")
@@ -18699,7 +19056,8 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfig(dict):
                  aws_access_key_id: Optional[str] = None,
                  aws_access_key_id_plaintext: Optional[str] = None,
                  aws_secret_access_key: Optional[str] = None,
-                 aws_secret_access_key_plaintext: Optional[str] = None):
+                 aws_secret_access_key_plaintext: Optional[str] = None,
+                 instance_profile_arn: Optional[str] = None):
         """
         :param str aws_region: The AWS region to use. Bedrock has to be enabled there.
         :param str bedrock_provider: The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
@@ -18718,6 +19076,8 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfig(dict):
             pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
         if aws_secret_access_key_plaintext is not None:
             pulumi.set(__self__, "aws_secret_access_key_plaintext", aws_secret_access_key_plaintext)
+        if instance_profile_arn is not None:
+            pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
 
     @property
     @pulumi.getter(name="awsRegion")
@@ -18766,6 +19126,11 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfig(dict):
         An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
         """
         return pulumi.get(self, "aws_secret_access_key_plaintext")
+
+    @property
+    @pulumi.getter(name="instanceProfileArn")
+    def instance_profile_arn(self) -> Optional[str]:
+        return pulumi.get(self, "instance_profile_arn")
 
 
 @pulumi.output_type
@@ -27146,6 +27511,8 @@ class VectorSearchIndexDeltaSyncIndexSpec(dict):
                  source_table: Optional[str] = None):
         """
         :param Sequence['VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs'] embedding_source_columns: array of objects representing columns that contain the embedding source.  Each entry consists of:
+        :param Sequence['VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs'] embedding_vector_columns: array of objects representing columns that contain the embedding vectors. Each entry consists of:
+        :param str embedding_writeback_table: Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
         :param str pipeline_id: ID of the associated Delta Live Table pipeline.
         :param str pipeline_type: Pipeline execution mode. Possible values are:
                * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
@@ -27176,11 +27543,17 @@ class VectorSearchIndexDeltaSyncIndexSpec(dict):
     @property
     @pulumi.getter(name="embeddingVectorColumns")
     def embedding_vector_columns(self) -> Optional[Sequence['outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn']]:
+        """
+        array of objects representing columns that contain the embedding vectors. Each entry consists of:
+        """
         return pulumi.get(self, "embedding_vector_columns")
 
     @property
     @pulumi.getter(name="embeddingWritebackTable")
     def embedding_writeback_table(self) -> Optional[str]:
+        """
+        Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
+        """
         return pulumi.get(self, "embedding_writeback_table")
 
     @property
@@ -27233,7 +27606,8 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn(dict):
                  embedding_model_endpoint_name: Optional[str] = None,
                  name: Optional[str] = None):
         """
-        :param str name: Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        :param str embedding_model_endpoint_name: The name of the embedding model endpoint
+        :param str name: The name of the column
         """
         if embedding_model_endpoint_name is not None:
             pulumi.set(__self__, "embedding_model_endpoint_name", embedding_model_endpoint_name)
@@ -27243,13 +27617,16 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn(dict):
     @property
     @pulumi.getter(name="embeddingModelEndpointName")
     def embedding_model_endpoint_name(self) -> Optional[str]:
+        """
+        The name of the embedding model endpoint
+        """
         return pulumi.get(self, "embedding_model_endpoint_name")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        The name of the column
         """
         return pulumi.get(self, "name")
 
@@ -27277,7 +27654,8 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn(dict):
                  embedding_dimension: Optional[int] = None,
                  name: Optional[str] = None):
         """
-        :param str name: Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        :param int embedding_dimension: Dimension of the embedding vector.
+        :param str name: The name of the column.
         """
         if embedding_dimension is not None:
             pulumi.set(__self__, "embedding_dimension", embedding_dimension)
@@ -27287,13 +27665,16 @@ class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn(dict):
     @property
     @pulumi.getter(name="embeddingDimension")
     def embedding_dimension(self) -> Optional[int]:
+        """
+        Dimension of the embedding vector.
+        """
         return pulumi.get(self, "embedding_dimension")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        The name of the column.
         """
         return pulumi.get(self, "name")
 
@@ -27327,6 +27708,7 @@ class VectorSearchIndexDirectAccessIndexSpec(dict):
                  schema_json: Optional[str] = None):
         """
         :param Sequence['VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs'] embedding_source_columns: array of objects representing columns that contain the embedding source.  Each entry consists of:
+        :param Sequence['VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs'] embedding_vector_columns: array of objects representing columns that contain the embedding vectors. Each entry consists of:
         :param str schema_json: The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
         """
         if embedding_source_columns is not None:
@@ -27347,6 +27729,9 @@ class VectorSearchIndexDirectAccessIndexSpec(dict):
     @property
     @pulumi.getter(name="embeddingVectorColumns")
     def embedding_vector_columns(self) -> Optional[Sequence['outputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn']]:
+        """
+        array of objects representing columns that contain the embedding vectors. Each entry consists of:
+        """
         return pulumi.get(self, "embedding_vector_columns")
 
     @property
@@ -27381,7 +27766,8 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn(dict):
                  embedding_model_endpoint_name: Optional[str] = None,
                  name: Optional[str] = None):
         """
-        :param str name: Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        :param str embedding_model_endpoint_name: The name of the embedding model endpoint
+        :param str name: The name of the column
         """
         if embedding_model_endpoint_name is not None:
             pulumi.set(__self__, "embedding_model_endpoint_name", embedding_model_endpoint_name)
@@ -27391,13 +27777,16 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn(dict):
     @property
     @pulumi.getter(name="embeddingModelEndpointName")
     def embedding_model_endpoint_name(self) -> Optional[str]:
+        """
+        The name of the embedding model endpoint
+        """
         return pulumi.get(self, "embedding_model_endpoint_name")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        The name of the column
         """
         return pulumi.get(self, "name")
 
@@ -27425,7 +27814,8 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn(dict):
                  embedding_dimension: Optional[int] = None,
                  name: Optional[str] = None):
         """
-        :param str name: Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        :param int embedding_dimension: Dimension of the embedding vector.
+        :param str name: The name of the column.
         """
         if embedding_dimension is not None:
             pulumi.set(__self__, "embedding_dimension", embedding_dimension)
@@ -27435,13 +27825,16 @@ class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn(dict):
     @property
     @pulumi.getter(name="embeddingDimension")
     def embedding_dimension(self) -> Optional[int]:
+        """
+        Dimension of the embedding vector.
+        """
         return pulumi.get(self, "embedding_dimension")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        The name of the column.
         """
         return pulumi.get(self, "name")
 
@@ -27529,6 +27922,7 @@ class GetAppAppResult(dict):
                  create_time: str,
                  creator: str,
                  default_source_code_path: str,
+                 effective_budget_policy_id: str,
                  id: str,
                  name: str,
                  pending_deployment: 'outputs.GetAppAppPendingDeploymentResult',
@@ -27538,6 +27932,7 @@ class GetAppAppResult(dict):
                  update_time: str,
                  updater: str,
                  url: str,
+                 budget_policy_id: Optional[str] = None,
                  description: Optional[str] = None,
                  resources: Optional[Sequence['outputs.GetAppAppResourceResult']] = None):
         """
@@ -27562,6 +27957,7 @@ class GetAppAppResult(dict):
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "creator", creator)
         pulumi.set(__self__, "default_source_code_path", default_source_code_path)
+        pulumi.set(__self__, "effective_budget_policy_id", effective_budget_policy_id)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "pending_deployment", pending_deployment)
@@ -27571,6 +27967,8 @@ class GetAppAppResult(dict):
         pulumi.set(__self__, "update_time", update_time)
         pulumi.set(__self__, "updater", updater)
         pulumi.set(__self__, "url", url)
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if resources is not None:
@@ -27620,6 +28018,11 @@ class GetAppAppResult(dict):
         The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
         """
         return pulumi.get(self, "default_source_code_path")
+
+    @property
+    @pulumi.getter(name="effectiveBudgetPolicyId")
+    def effective_budget_policy_id(self) -> str:
+        return pulumi.get(self, "effective_budget_policy_id")
 
     @property
     @pulumi.getter
@@ -27686,6 +28089,11 @@ class GetAppAppResult(dict):
         The URL of the app once it is deployed.
         """
         return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[str]:
+        return pulumi.get(self, "budget_policy_id")
 
     @property
     @pulumi.getter
@@ -28216,6 +28624,7 @@ class GetAppsAppResult(dict):
                  create_time: str,
                  creator: str,
                  default_source_code_path: str,
+                 effective_budget_policy_id: str,
                  id: str,
                  name: str,
                  pending_deployment: 'outputs.GetAppsAppPendingDeploymentResult',
@@ -28225,6 +28634,7 @@ class GetAppsAppResult(dict):
                  update_time: str,
                  updater: str,
                  url: str,
+                 budget_policy_id: Optional[str] = None,
                  description: Optional[str] = None,
                  resources: Optional[Sequence['outputs.GetAppsAppResourceResult']] = None):
         """
@@ -28249,6 +28659,7 @@ class GetAppsAppResult(dict):
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "creator", creator)
         pulumi.set(__self__, "default_source_code_path", default_source_code_path)
+        pulumi.set(__self__, "effective_budget_policy_id", effective_budget_policy_id)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "pending_deployment", pending_deployment)
@@ -28258,6 +28669,8 @@ class GetAppsAppResult(dict):
         pulumi.set(__self__, "update_time", update_time)
         pulumi.set(__self__, "updater", updater)
         pulumi.set(__self__, "url", url)
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if resources is not None:
@@ -28307,6 +28720,11 @@ class GetAppsAppResult(dict):
         The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
         """
         return pulumi.get(self, "default_source_code_path")
+
+    @property
+    @pulumi.getter(name="effectiveBudgetPolicyId")
+    def effective_budget_policy_id(self) -> str:
+        return pulumi.get(self, "effective_budget_policy_id")
 
     @property
     @pulumi.getter
@@ -28373,6 +28791,11 @@ class GetAppsAppResult(dict):
         The URL of the app once it is deployed.
         """
         return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[str]:
+        return pulumi.get(self, "budget_policy_id")
 
     @property
     @pulumi.getter
@@ -28895,6 +29318,80 @@ class GetAppsAppResourceSqlWarehouseResult(dict):
 
 
 @pulumi.output_type
+class GetBudgetPoliciesBudgetPolicyResult(dict):
+    def __init__(__self__, *,
+                 policy_id: str,
+                 custom_tags: Optional[Sequence['outputs.GetBudgetPoliciesBudgetPolicyCustomTagResult']] = None,
+                 policy_name: Optional[str] = None):
+        """
+        :param str policy_name: The partial name of policies to be filtered on. If unspecified, all policies will be returned.
+        """
+        pulumi.set(__self__, "policy_id", policy_id)
+        if custom_tags is not None:
+            pulumi.set(__self__, "custom_tags", custom_tags)
+        if policy_name is not None:
+            pulumi.set(__self__, "policy_name", policy_name)
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> str:
+        return pulumi.get(self, "policy_id")
+
+    @property
+    @pulumi.getter(name="customTags")
+    def custom_tags(self) -> Optional[Sequence['outputs.GetBudgetPoliciesBudgetPolicyCustomTagResult']]:
+        return pulumi.get(self, "custom_tags")
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> Optional[str]:
+        """
+        The partial name of policies to be filtered on. If unspecified, all policies will be returned.
+        """
+        return pulumi.get(self, "policy_name")
+
+
+@pulumi.output_type
+class GetBudgetPoliciesBudgetPolicyCustomTagResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetBudgetPolicyCustomTagResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class GetCatalogCatalogInfoResult(dict):
     def __init__(__self__, *,
                  browse_only: Optional[bool] = None,
@@ -29263,8 +29760,8 @@ class GetClusterClusterInfoResult(dict):
                  workload_type: Optional['outputs.GetClusterClusterInfoWorkloadTypeResult'] = None):
         """
         :param int autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
-        :param str cluster_id: The id of the cluster
-        :param str cluster_name: The exact name of the cluster to search
+        :param str cluster_id: The id of the cluster.
+        :param str cluster_name: The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         :param Mapping[str, str] custom_tags: Additional tags for cluster resources.
         :param str data_security_mode: Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
         :param str driver_instance_pool_id: similar to `instance_pool_id`, but for driver node.
@@ -29410,7 +29907,7 @@ class GetClusterClusterInfoResult(dict):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[str]:
         """
-        The id of the cluster
+        The id of the cluster.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -29433,7 +29930,7 @@ class GetClusterClusterInfoResult(dict):
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> Optional[str]:
         """
-        The exact name of the cluster to search
+        The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         """
         return pulumi.get(self, "cluster_name")
 
@@ -30444,14 +30941,14 @@ class GetClusterClusterInfoSpecResult(dict):
                  use_ml_runtime: Optional[bool] = None,
                  workload_type: Optional['outputs.GetClusterClusterInfoSpecWorkloadTypeResult'] = None):
         """
-        :param str cluster_id: The id of the cluster
+        :param str cluster_id: The id of the cluster.
         :param str driver_instance_pool_id: similar to `instance_pool_id`, but for driver node.
         :param str driver_node_type_id: The node type of the Spark driver.
         :param bool enable_elastic_disk: Use autoscaling local storage.
         :param bool enable_local_disk_encryption: Enable local disk encryption.
         :param str node_type_id: Any supported get_node_type id.
         :param str spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
-        :param str cluster_name: The exact name of the cluster to search
+        :param str cluster_name: The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         :param Mapping[str, str] custom_tags: Additional tags for cluster resources.
         :param str data_security_mode: Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
         :param str idempotency_token: An optional token to guarantee the idempotency of cluster creation requests.
@@ -30527,7 +31024,7 @@ class GetClusterClusterInfoSpecResult(dict):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
         """
-        The id of the cluster
+        The id of the cluster.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -30613,7 +31110,7 @@ class GetClusterClusterInfoSpecResult(dict):
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> Optional[str]:
         """
-        The exact name of the cluster to search
+        The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         """
         return pulumi.get(self, "cluster_name")
 
@@ -31857,6 +32354,98 @@ class GetCurrentMetastoreMetastoreInfoResult(dict):
         the ID of the identity that updated the current metastore.
         """
         return pulumi.get(self, "updated_by")
+
+
+@pulumi.output_type
+class GetDashboardsDashboardResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 dashboard_id: str,
+                 etag: str,
+                 lifecycle_state: str,
+                 parent_path: str,
+                 path: str,
+                 update_time: str,
+                 display_name: Optional[str] = None,
+                 serialized_dashboard: Optional[str] = None,
+                 warehouse_id: Optional[str] = None):
+        """
+        :param str create_time: The timestamp of when the dashboard was created.
+        :param str dashboard_id: The unique ID of the dashboard.
+        :param str display_name: The display name of the dashboard.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "dashboard_id", dashboard_id)
+        pulumi.set(__self__, "etag", etag)
+        pulumi.set(__self__, "lifecycle_state", lifecycle_state)
+        pulumi.set(__self__, "parent_path", parent_path)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "update_time", update_time)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if serialized_dashboard is not None:
+            pulumi.set(__self__, "serialized_dashboard", serialized_dashboard)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The timestamp of when the dashboard was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dashboardId")
+    def dashboard_id(self) -> str:
+        """
+        The unique ID of the dashboard.
+        """
+        return pulumi.get(self, "dashboard_id")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="lifecycleState")
+    def lifecycle_state(self) -> str:
+        return pulumi.get(self, "lifecycle_state")
+
+    @property
+    @pulumi.getter(name="parentPath")
+    def parent_path(self) -> str:
+        return pulumi.get(self, "parent_path")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        The display name of the dashboard.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="serializedDashboard")
+    def serialized_dashboard(self) -> Optional[str]:
+        return pulumi.get(self, "serialized_dashboard")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[str]:
+        return pulumi.get(self, "warehouse_id")
 
 
 @pulumi.output_type
@@ -42215,7 +42804,8 @@ class GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockCon
                  aws_access_key_id: Optional[str] = None,
                  aws_access_key_id_plaintext: Optional[str] = None,
                  aws_secret_access_key: Optional[str] = None,
-                 aws_secret_access_key_plaintext: Optional[str] = None):
+                 aws_secret_access_key_plaintext: Optional[str] = None,
+                 instance_profile_arn: Optional[str] = None):
         pulumi.set(__self__, "aws_region", aws_region)
         pulumi.set(__self__, "bedrock_provider", bedrock_provider)
         if aws_access_key_id is not None:
@@ -42226,6 +42816,8 @@ class GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockCon
             pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
         if aws_secret_access_key_plaintext is not None:
             pulumi.set(__self__, "aws_secret_access_key_plaintext", aws_secret_access_key_plaintext)
+        if instance_profile_arn is not None:
+            pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
 
     @property
     @pulumi.getter(name="awsRegion")
@@ -42256,6 +42848,11 @@ class GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockCon
     @pulumi.getter(name="awsSecretAccessKeyPlaintext")
     def aws_secret_access_key_plaintext(self) -> Optional[str]:
         return pulumi.get(self, "aws_secret_access_key_plaintext")
+
+    @property
+    @pulumi.getter(name="instanceProfileArn")
+    def instance_profile_arn(self) -> Optional[str]:
+        return pulumi.get(self, "instance_profile_arn")
 
 
 @pulumi.output_type

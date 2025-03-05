@@ -5138,6 +5138,112 @@ func (o BudgetFilterWorkspaceIdPtrOutput) Values() pulumi.IntArrayOutput {
 	}).(pulumi.IntArrayOutput)
 }
 
+type BudgetPolicyCustomTag struct {
+	// The key of the tag. - Must be unique among all custom tags of the same policy. Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" as these tags are preserved.
+	Key string `pulumi:"key"`
+	// The value of the tag.
+	Value *string `pulumi:"value"`
+}
+
+// BudgetPolicyCustomTagInput is an input type that accepts BudgetPolicyCustomTagArgs and BudgetPolicyCustomTagOutput values.
+// You can construct a concrete instance of `BudgetPolicyCustomTagInput` via:
+//
+//	BudgetPolicyCustomTagArgs{...}
+type BudgetPolicyCustomTagInput interface {
+	pulumi.Input
+
+	ToBudgetPolicyCustomTagOutput() BudgetPolicyCustomTagOutput
+	ToBudgetPolicyCustomTagOutputWithContext(context.Context) BudgetPolicyCustomTagOutput
+}
+
+type BudgetPolicyCustomTagArgs struct {
+	// The key of the tag. - Must be unique among all custom tags of the same policy. Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" as these tags are preserved.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the tag.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (BudgetPolicyCustomTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetPolicyCustomTag)(nil)).Elem()
+}
+
+func (i BudgetPolicyCustomTagArgs) ToBudgetPolicyCustomTagOutput() BudgetPolicyCustomTagOutput {
+	return i.ToBudgetPolicyCustomTagOutputWithContext(context.Background())
+}
+
+func (i BudgetPolicyCustomTagArgs) ToBudgetPolicyCustomTagOutputWithContext(ctx context.Context) BudgetPolicyCustomTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetPolicyCustomTagOutput)
+}
+
+// BudgetPolicyCustomTagArrayInput is an input type that accepts BudgetPolicyCustomTagArray and BudgetPolicyCustomTagArrayOutput values.
+// You can construct a concrete instance of `BudgetPolicyCustomTagArrayInput` via:
+//
+//	BudgetPolicyCustomTagArray{ BudgetPolicyCustomTagArgs{...} }
+type BudgetPolicyCustomTagArrayInput interface {
+	pulumi.Input
+
+	ToBudgetPolicyCustomTagArrayOutput() BudgetPolicyCustomTagArrayOutput
+	ToBudgetPolicyCustomTagArrayOutputWithContext(context.Context) BudgetPolicyCustomTagArrayOutput
+}
+
+type BudgetPolicyCustomTagArray []BudgetPolicyCustomTagInput
+
+func (BudgetPolicyCustomTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BudgetPolicyCustomTag)(nil)).Elem()
+}
+
+func (i BudgetPolicyCustomTagArray) ToBudgetPolicyCustomTagArrayOutput() BudgetPolicyCustomTagArrayOutput {
+	return i.ToBudgetPolicyCustomTagArrayOutputWithContext(context.Background())
+}
+
+func (i BudgetPolicyCustomTagArray) ToBudgetPolicyCustomTagArrayOutputWithContext(ctx context.Context) BudgetPolicyCustomTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetPolicyCustomTagArrayOutput)
+}
+
+type BudgetPolicyCustomTagOutput struct{ *pulumi.OutputState }
+
+func (BudgetPolicyCustomTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetPolicyCustomTag)(nil)).Elem()
+}
+
+func (o BudgetPolicyCustomTagOutput) ToBudgetPolicyCustomTagOutput() BudgetPolicyCustomTagOutput {
+	return o
+}
+
+func (o BudgetPolicyCustomTagOutput) ToBudgetPolicyCustomTagOutputWithContext(ctx context.Context) BudgetPolicyCustomTagOutput {
+	return o
+}
+
+// The key of the tag. - Must be unique among all custom tags of the same policy. Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" as these tags are preserved.
+func (o BudgetPolicyCustomTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v BudgetPolicyCustomTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the tag.
+func (o BudgetPolicyCustomTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BudgetPolicyCustomTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type BudgetPolicyCustomTagArrayOutput struct{ *pulumi.OutputState }
+
+func (BudgetPolicyCustomTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BudgetPolicyCustomTag)(nil)).Elem()
+}
+
+func (o BudgetPolicyCustomTagArrayOutput) ToBudgetPolicyCustomTagArrayOutput() BudgetPolicyCustomTagArrayOutput {
+	return o
+}
+
+func (o BudgetPolicyCustomTagArrayOutput) ToBudgetPolicyCustomTagArrayOutputWithContext(ctx context.Context) BudgetPolicyCustomTagArrayOutput {
+	return o
+}
+
+func (o BudgetPolicyCustomTagArrayOutput) Index(i pulumi.IntInput) BudgetPolicyCustomTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BudgetPolicyCustomTag {
+		return vs[0].([]BudgetPolicyCustomTag)[vs[1].(int)]
+	}).(BudgetPolicyCustomTagOutput)
+}
+
 type ClusterAutoscale struct {
 	// The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
 	//
@@ -10782,6 +10888,100 @@ func (o ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorksp
 		}
 		return &v.IsEnabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionProvisioningInfo struct {
+	State *string `pulumi:"state"`
+}
+
+// ConnectionProvisioningInfoInput is an input type that accepts ConnectionProvisioningInfoArgs and ConnectionProvisioningInfoOutput values.
+// You can construct a concrete instance of `ConnectionProvisioningInfoInput` via:
+//
+//	ConnectionProvisioningInfoArgs{...}
+type ConnectionProvisioningInfoInput interface {
+	pulumi.Input
+
+	ToConnectionProvisioningInfoOutput() ConnectionProvisioningInfoOutput
+	ToConnectionProvisioningInfoOutputWithContext(context.Context) ConnectionProvisioningInfoOutput
+}
+
+type ConnectionProvisioningInfoArgs struct {
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (ConnectionProvisioningInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProvisioningInfo)(nil)).Elem()
+}
+
+func (i ConnectionProvisioningInfoArgs) ToConnectionProvisioningInfoOutput() ConnectionProvisioningInfoOutput {
+	return i.ToConnectionProvisioningInfoOutputWithContext(context.Background())
+}
+
+func (i ConnectionProvisioningInfoArgs) ToConnectionProvisioningInfoOutputWithContext(ctx context.Context) ConnectionProvisioningInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProvisioningInfoOutput)
+}
+
+// ConnectionProvisioningInfoArrayInput is an input type that accepts ConnectionProvisioningInfoArray and ConnectionProvisioningInfoArrayOutput values.
+// You can construct a concrete instance of `ConnectionProvisioningInfoArrayInput` via:
+//
+//	ConnectionProvisioningInfoArray{ ConnectionProvisioningInfoArgs{...} }
+type ConnectionProvisioningInfoArrayInput interface {
+	pulumi.Input
+
+	ToConnectionProvisioningInfoArrayOutput() ConnectionProvisioningInfoArrayOutput
+	ToConnectionProvisioningInfoArrayOutputWithContext(context.Context) ConnectionProvisioningInfoArrayOutput
+}
+
+type ConnectionProvisioningInfoArray []ConnectionProvisioningInfoInput
+
+func (ConnectionProvisioningInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionProvisioningInfo)(nil)).Elem()
+}
+
+func (i ConnectionProvisioningInfoArray) ToConnectionProvisioningInfoArrayOutput() ConnectionProvisioningInfoArrayOutput {
+	return i.ToConnectionProvisioningInfoArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionProvisioningInfoArray) ToConnectionProvisioningInfoArrayOutputWithContext(ctx context.Context) ConnectionProvisioningInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProvisioningInfoArrayOutput)
+}
+
+type ConnectionProvisioningInfoOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProvisioningInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProvisioningInfo)(nil)).Elem()
+}
+
+func (o ConnectionProvisioningInfoOutput) ToConnectionProvisioningInfoOutput() ConnectionProvisioningInfoOutput {
+	return o
+}
+
+func (o ConnectionProvisioningInfoOutput) ToConnectionProvisioningInfoOutputWithContext(ctx context.Context) ConnectionProvisioningInfoOutput {
+	return o
+}
+
+func (o ConnectionProvisioningInfoOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProvisioningInfo) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProvisioningInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProvisioningInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionProvisioningInfo)(nil)).Elem()
+}
+
+func (o ConnectionProvisioningInfoArrayOutput) ToConnectionProvisioningInfoArrayOutput() ConnectionProvisioningInfoArrayOutput {
+	return o
+}
+
+func (o ConnectionProvisioningInfoArrayOutput) ToConnectionProvisioningInfoArrayOutputWithContext(ctx context.Context) ConnectionProvisioningInfoArrayOutput {
+	return o
+}
+
+func (o ConnectionProvisioningInfoArrayOutput) Index(i pulumi.IntInput) ConnectionProvisioningInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionProvisioningInfo {
+		return vs[0].([]ConnectionProvisioningInfo)[vs[1].(int)]
+	}).(ConnectionProvisioningInfoOutput)
 }
 
 type CredentialAwsIamRole struct {
@@ -27751,8 +27951,9 @@ type JobTask struct {
 	// identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
 	EnvironmentKey *string `pulumi:"environmentKey"`
 	// Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
-	ExistingClusterId *string             `pulumi:"existingClusterId"`
-	ForEachTask       *JobTaskForEachTask `pulumi:"forEachTask"`
+	ExistingClusterId *string                  `pulumi:"existingClusterId"`
+	ForEachTask       *JobTaskForEachTask      `pulumi:"forEachTask"`
+	GenAiComputeTask  *JobTaskGenAiComputeTask `pulumi:"genAiComputeTask"`
 	// block described below that specifies health conditions for a given task.
 	Health *JobTaskHealth `pulumi:"health"`
 	// Identifier of the Job cluster specified in the `jobCluster` block.
@@ -27816,8 +28017,9 @@ type JobTaskArgs struct {
 	// identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
 	EnvironmentKey pulumi.StringPtrInput `pulumi:"environmentKey"`
 	// Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
-	ExistingClusterId pulumi.StringPtrInput      `pulumi:"existingClusterId"`
-	ForEachTask       JobTaskForEachTaskPtrInput `pulumi:"forEachTask"`
+	ExistingClusterId pulumi.StringPtrInput           `pulumi:"existingClusterId"`
+	ForEachTask       JobTaskForEachTaskPtrInput      `pulumi:"forEachTask"`
+	GenAiComputeTask  JobTaskGenAiComputeTaskPtrInput `pulumi:"genAiComputeTask"`
 	// block described below that specifies health conditions for a given task.
 	Health JobTaskHealthPtrInput `pulumi:"health"`
 	// Identifier of the Job cluster specified in the `jobCluster` block.
@@ -27950,6 +28152,10 @@ func (o JobTaskOutput) ExistingClusterId() pulumi.StringPtrOutput {
 
 func (o JobTaskOutput) ForEachTask() JobTaskForEachTaskPtrOutput {
 	return o.ApplyT(func(v JobTask) *JobTaskForEachTask { return v.ForEachTask }).(JobTaskForEachTaskPtrOutput)
+}
+
+func (o JobTaskOutput) GenAiComputeTask() JobTaskGenAiComputeTaskPtrOutput {
+	return o.ApplyT(func(v JobTask) *JobTaskGenAiComputeTask { return v.GenAiComputeTask }).(JobTaskGenAiComputeTaskPtrOutput)
 }
 
 // block described below that specifies health conditions for a given task.
@@ -29249,7 +29455,8 @@ type JobTaskForEachTaskTask struct {
 	// identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
 	EnvironmentKey *string `pulumi:"environmentKey"`
 	// Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
-	ExistingClusterId *string `pulumi:"existingClusterId"`
+	ExistingClusterId *string                                 `pulumi:"existingClusterId"`
+	GenAiComputeTask  *JobTaskForEachTaskTaskGenAiComputeTask `pulumi:"genAiComputeTask"`
 	// block described below that specifies health conditions for a given task.
 	Health *JobTaskForEachTaskTaskHealth `pulumi:"health"`
 	// Identifier of the Job cluster specified in the `jobCluster` block.
@@ -29313,7 +29520,8 @@ type JobTaskForEachTaskTaskArgs struct {
 	// identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
 	EnvironmentKey pulumi.StringPtrInput `pulumi:"environmentKey"`
 	// Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
-	ExistingClusterId pulumi.StringPtrInput `pulumi:"existingClusterId"`
+	ExistingClusterId pulumi.StringPtrInput                          `pulumi:"existingClusterId"`
+	GenAiComputeTask  JobTaskForEachTaskTaskGenAiComputeTaskPtrInput `pulumi:"genAiComputeTask"`
 	// block described below that specifies health conditions for a given task.
 	Health JobTaskForEachTaskTaskHealthPtrInput `pulumi:"health"`
 	// Identifier of the Job cluster specified in the `jobCluster` block.
@@ -29470,6 +29678,10 @@ func (o JobTaskForEachTaskTaskOutput) EnvironmentKey() pulumi.StringPtrOutput {
 // Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
 func (o JobTaskForEachTaskTaskOutput) ExistingClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *string { return v.ExistingClusterId }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskOutput) GenAiComputeTask() JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTask) *JobTaskForEachTaskTaskGenAiComputeTask { return v.GenAiComputeTask }).(JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput)
 }
 
 // block described below that specifies health conditions for a given task.
@@ -29680,6 +29892,15 @@ func (o JobTaskForEachTaskTaskPtrOutput) ExistingClusterId() pulumi.StringPtrOut
 		}
 		return v.ExistingClusterId
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPtrOutput) GenAiComputeTask() JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTask) *JobTaskForEachTaskTaskGenAiComputeTask {
+		if v == nil {
+			return nil
+		}
+		return v.GenAiComputeTask
+	}).(JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput)
 }
 
 // block described below that specifies health conditions for a given task.
@@ -30871,6 +31092,409 @@ func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) OnSuccesses() pulumi.
 		}
 		return v.OnSuccesses
 	}).(pulumi.StringArrayOutput)
+}
+
+type JobTaskForEachTaskTaskGenAiComputeTask struct {
+	Command                *string                                        `pulumi:"command"`
+	Compute                *JobTaskForEachTaskTaskGenAiComputeTaskCompute `pulumi:"compute"`
+	DlRuntimeImage         string                                         `pulumi:"dlRuntimeImage"`
+	MlflowExperimentName   *string                                        `pulumi:"mlflowExperimentName"`
+	Source                 *string                                        `pulumi:"source"`
+	TrainingScriptPath     *string                                        `pulumi:"trainingScriptPath"`
+	YamlParameters         *string                                        `pulumi:"yamlParameters"`
+	YamlParametersFilePath *string                                        `pulumi:"yamlParametersFilePath"`
+}
+
+// JobTaskForEachTaskTaskGenAiComputeTaskInput is an input type that accepts JobTaskForEachTaskTaskGenAiComputeTaskArgs and JobTaskForEachTaskTaskGenAiComputeTaskOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskGenAiComputeTaskInput` via:
+//
+//	JobTaskForEachTaskTaskGenAiComputeTaskArgs{...}
+type JobTaskForEachTaskTaskGenAiComputeTaskInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskGenAiComputeTaskOutput() JobTaskForEachTaskTaskGenAiComputeTaskOutput
+	ToJobTaskForEachTaskTaskGenAiComputeTaskOutputWithContext(context.Context) JobTaskForEachTaskTaskGenAiComputeTaskOutput
+}
+
+type JobTaskForEachTaskTaskGenAiComputeTaskArgs struct {
+	Command                pulumi.StringPtrInput                                 `pulumi:"command"`
+	Compute                JobTaskForEachTaskTaskGenAiComputeTaskComputePtrInput `pulumi:"compute"`
+	DlRuntimeImage         pulumi.StringInput                                    `pulumi:"dlRuntimeImage"`
+	MlflowExperimentName   pulumi.StringPtrInput                                 `pulumi:"mlflowExperimentName"`
+	Source                 pulumi.StringPtrInput                                 `pulumi:"source"`
+	TrainingScriptPath     pulumi.StringPtrInput                                 `pulumi:"trainingScriptPath"`
+	YamlParameters         pulumi.StringPtrInput                                 `pulumi:"yamlParameters"`
+	YamlParametersFilePath pulumi.StringPtrInput                                 `pulumi:"yamlParametersFilePath"`
+}
+
+func (JobTaskForEachTaskTaskGenAiComputeTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskGenAiComputeTask)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskGenAiComputeTaskArgs) ToJobTaskForEachTaskTaskGenAiComputeTaskOutput() JobTaskForEachTaskTaskGenAiComputeTaskOutput {
+	return i.ToJobTaskForEachTaskTaskGenAiComputeTaskOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskGenAiComputeTaskArgs) ToJobTaskForEachTaskTaskGenAiComputeTaskOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskGenAiComputeTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskGenAiComputeTaskOutput)
+}
+
+func (i JobTaskForEachTaskTaskGenAiComputeTaskArgs) ToJobTaskForEachTaskTaskGenAiComputeTaskPtrOutput() JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput {
+	return i.ToJobTaskForEachTaskTaskGenAiComputeTaskPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskGenAiComputeTaskArgs) ToJobTaskForEachTaskTaskGenAiComputeTaskPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskGenAiComputeTaskOutput).ToJobTaskForEachTaskTaskGenAiComputeTaskPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskGenAiComputeTaskPtrInput is an input type that accepts JobTaskForEachTaskTaskGenAiComputeTaskArgs, JobTaskForEachTaskTaskGenAiComputeTaskPtr and JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskGenAiComputeTaskPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskGenAiComputeTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskGenAiComputeTaskPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskGenAiComputeTaskPtrOutput() JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput
+	ToJobTaskForEachTaskTaskGenAiComputeTaskPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput
+}
+
+type jobTaskForEachTaskTaskGenAiComputeTaskPtrType JobTaskForEachTaskTaskGenAiComputeTaskArgs
+
+func JobTaskForEachTaskTaskGenAiComputeTaskPtr(v *JobTaskForEachTaskTaskGenAiComputeTaskArgs) JobTaskForEachTaskTaskGenAiComputeTaskPtrInput {
+	return (*jobTaskForEachTaskTaskGenAiComputeTaskPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskGenAiComputeTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskGenAiComputeTask)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskGenAiComputeTaskPtrType) ToJobTaskForEachTaskTaskGenAiComputeTaskPtrOutput() JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput {
+	return i.ToJobTaskForEachTaskTaskGenAiComputeTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskGenAiComputeTaskPtrType) ToJobTaskForEachTaskTaskGenAiComputeTaskPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput)
+}
+
+type JobTaskForEachTaskTaskGenAiComputeTaskOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskGenAiComputeTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskGenAiComputeTask)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskOutput) ToJobTaskForEachTaskTaskGenAiComputeTaskOutput() JobTaskForEachTaskTaskGenAiComputeTaskOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskOutput) ToJobTaskForEachTaskTaskGenAiComputeTaskOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskGenAiComputeTaskOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskOutput) ToJobTaskForEachTaskTaskGenAiComputeTaskPtrOutput() JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput {
+	return o.ToJobTaskForEachTaskTaskGenAiComputeTaskPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskOutput) ToJobTaskForEachTaskTaskGenAiComputeTaskPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskGenAiComputeTask) *JobTaskForEachTaskTaskGenAiComputeTask {
+		return &v
+	}).(JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskOutput) Command() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskGenAiComputeTask) *string { return v.Command }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskOutput) Compute() JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskGenAiComputeTask) *JobTaskForEachTaskTaskGenAiComputeTaskCompute {
+		return v.Compute
+	}).(JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskOutput) DlRuntimeImage() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskGenAiComputeTask) string { return v.DlRuntimeImage }).(pulumi.StringOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskOutput) MlflowExperimentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskGenAiComputeTask) *string { return v.MlflowExperimentName }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskGenAiComputeTask) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskOutput) TrainingScriptPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskGenAiComputeTask) *string { return v.TrainingScriptPath }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskOutput) YamlParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskGenAiComputeTask) *string { return v.YamlParameters }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskOutput) YamlParametersFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskGenAiComputeTask) *string { return v.YamlParametersFilePath }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskGenAiComputeTask)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput) ToJobTaskForEachTaskTaskGenAiComputeTaskPtrOutput() JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput) ToJobTaskForEachTaskTaskGenAiComputeTaskPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput) Elem() JobTaskForEachTaskTaskGenAiComputeTaskOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskGenAiComputeTask) JobTaskForEachTaskTaskGenAiComputeTask {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskGenAiComputeTask
+		return ret
+	}).(JobTaskForEachTaskTaskGenAiComputeTaskOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput) Command() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskGenAiComputeTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Command
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput) Compute() JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskGenAiComputeTask) *JobTaskForEachTaskTaskGenAiComputeTaskCompute {
+		if v == nil {
+			return nil
+		}
+		return v.Compute
+	}).(JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput) DlRuntimeImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskGenAiComputeTask) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DlRuntimeImage
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput) MlflowExperimentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskGenAiComputeTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MlflowExperimentName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskGenAiComputeTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput) TrainingScriptPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskGenAiComputeTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrainingScriptPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput) YamlParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskGenAiComputeTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.YamlParameters
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput) YamlParametersFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskGenAiComputeTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.YamlParametersFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskGenAiComputeTaskCompute struct {
+	GpuNodePoolId string  `pulumi:"gpuNodePoolId"`
+	GpuType       *string `pulumi:"gpuType"`
+	NumGpus       int     `pulumi:"numGpus"`
+}
+
+// JobTaskForEachTaskTaskGenAiComputeTaskComputeInput is an input type that accepts JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs and JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskGenAiComputeTaskComputeInput` via:
+//
+//	JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs{...}
+type JobTaskForEachTaskTaskGenAiComputeTaskComputeInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskGenAiComputeTaskComputeOutput() JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput
+	ToJobTaskForEachTaskTaskGenAiComputeTaskComputeOutputWithContext(context.Context) JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput
+}
+
+type JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs struct {
+	GpuNodePoolId pulumi.StringInput    `pulumi:"gpuNodePoolId"`
+	GpuType       pulumi.StringPtrInput `pulumi:"gpuType"`
+	NumGpus       pulumi.IntInput       `pulumi:"numGpus"`
+}
+
+func (JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskGenAiComputeTaskCompute)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs) ToJobTaskForEachTaskTaskGenAiComputeTaskComputeOutput() JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput {
+	return i.ToJobTaskForEachTaskTaskGenAiComputeTaskComputeOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs) ToJobTaskForEachTaskTaskGenAiComputeTaskComputeOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput)
+}
+
+func (i JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs) ToJobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput() JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput {
+	return i.ToJobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs) ToJobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput).ToJobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskGenAiComputeTaskComputePtrInput is an input type that accepts JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs, JobTaskForEachTaskTaskGenAiComputeTaskComputePtr and JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskGenAiComputeTaskComputePtrInput` via:
+//
+//	        JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskGenAiComputeTaskComputePtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput() JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput
+	ToJobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutputWithContext(context.Context) JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput
+}
+
+type jobTaskForEachTaskTaskGenAiComputeTaskComputePtrType JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs
+
+func JobTaskForEachTaskTaskGenAiComputeTaskComputePtr(v *JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs) JobTaskForEachTaskTaskGenAiComputeTaskComputePtrInput {
+	return (*jobTaskForEachTaskTaskGenAiComputeTaskComputePtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskGenAiComputeTaskComputePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskGenAiComputeTaskCompute)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskGenAiComputeTaskComputePtrType) ToJobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput() JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput {
+	return i.ToJobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskGenAiComputeTaskComputePtrType) ToJobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput)
+}
+
+type JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskGenAiComputeTaskCompute)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput) ToJobTaskForEachTaskTaskGenAiComputeTaskComputeOutput() JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput) ToJobTaskForEachTaskTaskGenAiComputeTaskComputeOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput) ToJobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput() JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput {
+	return o.ToJobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput) ToJobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskGenAiComputeTaskCompute) *JobTaskForEachTaskTaskGenAiComputeTaskCompute {
+		return &v
+	}).(JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput) GpuNodePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskGenAiComputeTaskCompute) string { return v.GpuNodePoolId }).(pulumi.StringOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput) GpuType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskGenAiComputeTaskCompute) *string { return v.GpuType }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput) NumGpus() pulumi.IntOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskGenAiComputeTaskCompute) int { return v.NumGpus }).(pulumi.IntOutput)
+}
+
+type JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskGenAiComputeTaskCompute)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput) ToJobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput() JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput) ToJobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput) Elem() JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskGenAiComputeTaskCompute) JobTaskForEachTaskTaskGenAiComputeTaskCompute {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskGenAiComputeTaskCompute
+		return ret
+	}).(JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput) GpuNodePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskGenAiComputeTaskCompute) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GpuNodePoolId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput) GpuType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskGenAiComputeTaskCompute) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GpuType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput) NumGpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskGenAiComputeTaskCompute) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.NumGpus
+	}).(pulumi.IntPtrOutput)
 }
 
 type JobTaskForEachTaskTaskHealth struct {
@@ -40215,6 +40839,407 @@ func (o JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArrayOutput) Index(i 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskForEachTaskTaskWebhookNotificationsOnSuccess {
 		return vs[0].([]JobTaskForEachTaskTaskWebhookNotificationsOnSuccess)[vs[1].(int)]
 	}).(JobTaskForEachTaskTaskWebhookNotificationsOnSuccessOutput)
+}
+
+type JobTaskGenAiComputeTask struct {
+	Command                *string                         `pulumi:"command"`
+	Compute                *JobTaskGenAiComputeTaskCompute `pulumi:"compute"`
+	DlRuntimeImage         string                          `pulumi:"dlRuntimeImage"`
+	MlflowExperimentName   *string                         `pulumi:"mlflowExperimentName"`
+	Source                 *string                         `pulumi:"source"`
+	TrainingScriptPath     *string                         `pulumi:"trainingScriptPath"`
+	YamlParameters         *string                         `pulumi:"yamlParameters"`
+	YamlParametersFilePath *string                         `pulumi:"yamlParametersFilePath"`
+}
+
+// JobTaskGenAiComputeTaskInput is an input type that accepts JobTaskGenAiComputeTaskArgs and JobTaskGenAiComputeTaskOutput values.
+// You can construct a concrete instance of `JobTaskGenAiComputeTaskInput` via:
+//
+//	JobTaskGenAiComputeTaskArgs{...}
+type JobTaskGenAiComputeTaskInput interface {
+	pulumi.Input
+
+	ToJobTaskGenAiComputeTaskOutput() JobTaskGenAiComputeTaskOutput
+	ToJobTaskGenAiComputeTaskOutputWithContext(context.Context) JobTaskGenAiComputeTaskOutput
+}
+
+type JobTaskGenAiComputeTaskArgs struct {
+	Command                pulumi.StringPtrInput                  `pulumi:"command"`
+	Compute                JobTaskGenAiComputeTaskComputePtrInput `pulumi:"compute"`
+	DlRuntimeImage         pulumi.StringInput                     `pulumi:"dlRuntimeImage"`
+	MlflowExperimentName   pulumi.StringPtrInput                  `pulumi:"mlflowExperimentName"`
+	Source                 pulumi.StringPtrInput                  `pulumi:"source"`
+	TrainingScriptPath     pulumi.StringPtrInput                  `pulumi:"trainingScriptPath"`
+	YamlParameters         pulumi.StringPtrInput                  `pulumi:"yamlParameters"`
+	YamlParametersFilePath pulumi.StringPtrInput                  `pulumi:"yamlParametersFilePath"`
+}
+
+func (JobTaskGenAiComputeTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskGenAiComputeTask)(nil)).Elem()
+}
+
+func (i JobTaskGenAiComputeTaskArgs) ToJobTaskGenAiComputeTaskOutput() JobTaskGenAiComputeTaskOutput {
+	return i.ToJobTaskGenAiComputeTaskOutputWithContext(context.Background())
+}
+
+func (i JobTaskGenAiComputeTaskArgs) ToJobTaskGenAiComputeTaskOutputWithContext(ctx context.Context) JobTaskGenAiComputeTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskGenAiComputeTaskOutput)
+}
+
+func (i JobTaskGenAiComputeTaskArgs) ToJobTaskGenAiComputeTaskPtrOutput() JobTaskGenAiComputeTaskPtrOutput {
+	return i.ToJobTaskGenAiComputeTaskPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskGenAiComputeTaskArgs) ToJobTaskGenAiComputeTaskPtrOutputWithContext(ctx context.Context) JobTaskGenAiComputeTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskGenAiComputeTaskOutput).ToJobTaskGenAiComputeTaskPtrOutputWithContext(ctx)
+}
+
+// JobTaskGenAiComputeTaskPtrInput is an input type that accepts JobTaskGenAiComputeTaskArgs, JobTaskGenAiComputeTaskPtr and JobTaskGenAiComputeTaskPtrOutput values.
+// You can construct a concrete instance of `JobTaskGenAiComputeTaskPtrInput` via:
+//
+//	        JobTaskGenAiComputeTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskGenAiComputeTaskPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskGenAiComputeTaskPtrOutput() JobTaskGenAiComputeTaskPtrOutput
+	ToJobTaskGenAiComputeTaskPtrOutputWithContext(context.Context) JobTaskGenAiComputeTaskPtrOutput
+}
+
+type jobTaskGenAiComputeTaskPtrType JobTaskGenAiComputeTaskArgs
+
+func JobTaskGenAiComputeTaskPtr(v *JobTaskGenAiComputeTaskArgs) JobTaskGenAiComputeTaskPtrInput {
+	return (*jobTaskGenAiComputeTaskPtrType)(v)
+}
+
+func (*jobTaskGenAiComputeTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskGenAiComputeTask)(nil)).Elem()
+}
+
+func (i *jobTaskGenAiComputeTaskPtrType) ToJobTaskGenAiComputeTaskPtrOutput() JobTaskGenAiComputeTaskPtrOutput {
+	return i.ToJobTaskGenAiComputeTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskGenAiComputeTaskPtrType) ToJobTaskGenAiComputeTaskPtrOutputWithContext(ctx context.Context) JobTaskGenAiComputeTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskGenAiComputeTaskPtrOutput)
+}
+
+type JobTaskGenAiComputeTaskOutput struct{ *pulumi.OutputState }
+
+func (JobTaskGenAiComputeTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskGenAiComputeTask)(nil)).Elem()
+}
+
+func (o JobTaskGenAiComputeTaskOutput) ToJobTaskGenAiComputeTaskOutput() JobTaskGenAiComputeTaskOutput {
+	return o
+}
+
+func (o JobTaskGenAiComputeTaskOutput) ToJobTaskGenAiComputeTaskOutputWithContext(ctx context.Context) JobTaskGenAiComputeTaskOutput {
+	return o
+}
+
+func (o JobTaskGenAiComputeTaskOutput) ToJobTaskGenAiComputeTaskPtrOutput() JobTaskGenAiComputeTaskPtrOutput {
+	return o.ToJobTaskGenAiComputeTaskPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskGenAiComputeTaskOutput) ToJobTaskGenAiComputeTaskPtrOutputWithContext(ctx context.Context) JobTaskGenAiComputeTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskGenAiComputeTask) *JobTaskGenAiComputeTask {
+		return &v
+	}).(JobTaskGenAiComputeTaskPtrOutput)
+}
+
+func (o JobTaskGenAiComputeTaskOutput) Command() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskGenAiComputeTask) *string { return v.Command }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskGenAiComputeTaskOutput) Compute() JobTaskGenAiComputeTaskComputePtrOutput {
+	return o.ApplyT(func(v JobTaskGenAiComputeTask) *JobTaskGenAiComputeTaskCompute { return v.Compute }).(JobTaskGenAiComputeTaskComputePtrOutput)
+}
+
+func (o JobTaskGenAiComputeTaskOutput) DlRuntimeImage() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskGenAiComputeTask) string { return v.DlRuntimeImage }).(pulumi.StringOutput)
+}
+
+func (o JobTaskGenAiComputeTaskOutput) MlflowExperimentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskGenAiComputeTask) *string { return v.MlflowExperimentName }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskGenAiComputeTaskOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskGenAiComputeTask) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskGenAiComputeTaskOutput) TrainingScriptPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskGenAiComputeTask) *string { return v.TrainingScriptPath }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskGenAiComputeTaskOutput) YamlParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskGenAiComputeTask) *string { return v.YamlParameters }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskGenAiComputeTaskOutput) YamlParametersFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskGenAiComputeTask) *string { return v.YamlParametersFilePath }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskGenAiComputeTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskGenAiComputeTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskGenAiComputeTask)(nil)).Elem()
+}
+
+func (o JobTaskGenAiComputeTaskPtrOutput) ToJobTaskGenAiComputeTaskPtrOutput() JobTaskGenAiComputeTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskGenAiComputeTaskPtrOutput) ToJobTaskGenAiComputeTaskPtrOutputWithContext(ctx context.Context) JobTaskGenAiComputeTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskGenAiComputeTaskPtrOutput) Elem() JobTaskGenAiComputeTaskOutput {
+	return o.ApplyT(func(v *JobTaskGenAiComputeTask) JobTaskGenAiComputeTask {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskGenAiComputeTask
+		return ret
+	}).(JobTaskGenAiComputeTaskOutput)
+}
+
+func (o JobTaskGenAiComputeTaskPtrOutput) Command() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskGenAiComputeTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Command
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskGenAiComputeTaskPtrOutput) Compute() JobTaskGenAiComputeTaskComputePtrOutput {
+	return o.ApplyT(func(v *JobTaskGenAiComputeTask) *JobTaskGenAiComputeTaskCompute {
+		if v == nil {
+			return nil
+		}
+		return v.Compute
+	}).(JobTaskGenAiComputeTaskComputePtrOutput)
+}
+
+func (o JobTaskGenAiComputeTaskPtrOutput) DlRuntimeImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskGenAiComputeTask) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DlRuntimeImage
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskGenAiComputeTaskPtrOutput) MlflowExperimentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskGenAiComputeTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MlflowExperimentName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskGenAiComputeTaskPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskGenAiComputeTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskGenAiComputeTaskPtrOutput) TrainingScriptPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskGenAiComputeTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrainingScriptPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskGenAiComputeTaskPtrOutput) YamlParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskGenAiComputeTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.YamlParameters
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskGenAiComputeTaskPtrOutput) YamlParametersFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskGenAiComputeTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.YamlParametersFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskGenAiComputeTaskCompute struct {
+	GpuNodePoolId string  `pulumi:"gpuNodePoolId"`
+	GpuType       *string `pulumi:"gpuType"`
+	NumGpus       int     `pulumi:"numGpus"`
+}
+
+// JobTaskGenAiComputeTaskComputeInput is an input type that accepts JobTaskGenAiComputeTaskComputeArgs and JobTaskGenAiComputeTaskComputeOutput values.
+// You can construct a concrete instance of `JobTaskGenAiComputeTaskComputeInput` via:
+//
+//	JobTaskGenAiComputeTaskComputeArgs{...}
+type JobTaskGenAiComputeTaskComputeInput interface {
+	pulumi.Input
+
+	ToJobTaskGenAiComputeTaskComputeOutput() JobTaskGenAiComputeTaskComputeOutput
+	ToJobTaskGenAiComputeTaskComputeOutputWithContext(context.Context) JobTaskGenAiComputeTaskComputeOutput
+}
+
+type JobTaskGenAiComputeTaskComputeArgs struct {
+	GpuNodePoolId pulumi.StringInput    `pulumi:"gpuNodePoolId"`
+	GpuType       pulumi.StringPtrInput `pulumi:"gpuType"`
+	NumGpus       pulumi.IntInput       `pulumi:"numGpus"`
+}
+
+func (JobTaskGenAiComputeTaskComputeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskGenAiComputeTaskCompute)(nil)).Elem()
+}
+
+func (i JobTaskGenAiComputeTaskComputeArgs) ToJobTaskGenAiComputeTaskComputeOutput() JobTaskGenAiComputeTaskComputeOutput {
+	return i.ToJobTaskGenAiComputeTaskComputeOutputWithContext(context.Background())
+}
+
+func (i JobTaskGenAiComputeTaskComputeArgs) ToJobTaskGenAiComputeTaskComputeOutputWithContext(ctx context.Context) JobTaskGenAiComputeTaskComputeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskGenAiComputeTaskComputeOutput)
+}
+
+func (i JobTaskGenAiComputeTaskComputeArgs) ToJobTaskGenAiComputeTaskComputePtrOutput() JobTaskGenAiComputeTaskComputePtrOutput {
+	return i.ToJobTaskGenAiComputeTaskComputePtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskGenAiComputeTaskComputeArgs) ToJobTaskGenAiComputeTaskComputePtrOutputWithContext(ctx context.Context) JobTaskGenAiComputeTaskComputePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskGenAiComputeTaskComputeOutput).ToJobTaskGenAiComputeTaskComputePtrOutputWithContext(ctx)
+}
+
+// JobTaskGenAiComputeTaskComputePtrInput is an input type that accepts JobTaskGenAiComputeTaskComputeArgs, JobTaskGenAiComputeTaskComputePtr and JobTaskGenAiComputeTaskComputePtrOutput values.
+// You can construct a concrete instance of `JobTaskGenAiComputeTaskComputePtrInput` via:
+//
+//	        JobTaskGenAiComputeTaskComputeArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskGenAiComputeTaskComputePtrInput interface {
+	pulumi.Input
+
+	ToJobTaskGenAiComputeTaskComputePtrOutput() JobTaskGenAiComputeTaskComputePtrOutput
+	ToJobTaskGenAiComputeTaskComputePtrOutputWithContext(context.Context) JobTaskGenAiComputeTaskComputePtrOutput
+}
+
+type jobTaskGenAiComputeTaskComputePtrType JobTaskGenAiComputeTaskComputeArgs
+
+func JobTaskGenAiComputeTaskComputePtr(v *JobTaskGenAiComputeTaskComputeArgs) JobTaskGenAiComputeTaskComputePtrInput {
+	return (*jobTaskGenAiComputeTaskComputePtrType)(v)
+}
+
+func (*jobTaskGenAiComputeTaskComputePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskGenAiComputeTaskCompute)(nil)).Elem()
+}
+
+func (i *jobTaskGenAiComputeTaskComputePtrType) ToJobTaskGenAiComputeTaskComputePtrOutput() JobTaskGenAiComputeTaskComputePtrOutput {
+	return i.ToJobTaskGenAiComputeTaskComputePtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskGenAiComputeTaskComputePtrType) ToJobTaskGenAiComputeTaskComputePtrOutputWithContext(ctx context.Context) JobTaskGenAiComputeTaskComputePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskGenAiComputeTaskComputePtrOutput)
+}
+
+type JobTaskGenAiComputeTaskComputeOutput struct{ *pulumi.OutputState }
+
+func (JobTaskGenAiComputeTaskComputeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskGenAiComputeTaskCompute)(nil)).Elem()
+}
+
+func (o JobTaskGenAiComputeTaskComputeOutput) ToJobTaskGenAiComputeTaskComputeOutput() JobTaskGenAiComputeTaskComputeOutput {
+	return o
+}
+
+func (o JobTaskGenAiComputeTaskComputeOutput) ToJobTaskGenAiComputeTaskComputeOutputWithContext(ctx context.Context) JobTaskGenAiComputeTaskComputeOutput {
+	return o
+}
+
+func (o JobTaskGenAiComputeTaskComputeOutput) ToJobTaskGenAiComputeTaskComputePtrOutput() JobTaskGenAiComputeTaskComputePtrOutput {
+	return o.ToJobTaskGenAiComputeTaskComputePtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskGenAiComputeTaskComputeOutput) ToJobTaskGenAiComputeTaskComputePtrOutputWithContext(ctx context.Context) JobTaskGenAiComputeTaskComputePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskGenAiComputeTaskCompute) *JobTaskGenAiComputeTaskCompute {
+		return &v
+	}).(JobTaskGenAiComputeTaskComputePtrOutput)
+}
+
+func (o JobTaskGenAiComputeTaskComputeOutput) GpuNodePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskGenAiComputeTaskCompute) string { return v.GpuNodePoolId }).(pulumi.StringOutput)
+}
+
+func (o JobTaskGenAiComputeTaskComputeOutput) GpuType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskGenAiComputeTaskCompute) *string { return v.GpuType }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskGenAiComputeTaskComputeOutput) NumGpus() pulumi.IntOutput {
+	return o.ApplyT(func(v JobTaskGenAiComputeTaskCompute) int { return v.NumGpus }).(pulumi.IntOutput)
+}
+
+type JobTaskGenAiComputeTaskComputePtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskGenAiComputeTaskComputePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskGenAiComputeTaskCompute)(nil)).Elem()
+}
+
+func (o JobTaskGenAiComputeTaskComputePtrOutput) ToJobTaskGenAiComputeTaskComputePtrOutput() JobTaskGenAiComputeTaskComputePtrOutput {
+	return o
+}
+
+func (o JobTaskGenAiComputeTaskComputePtrOutput) ToJobTaskGenAiComputeTaskComputePtrOutputWithContext(ctx context.Context) JobTaskGenAiComputeTaskComputePtrOutput {
+	return o
+}
+
+func (o JobTaskGenAiComputeTaskComputePtrOutput) Elem() JobTaskGenAiComputeTaskComputeOutput {
+	return o.ApplyT(func(v *JobTaskGenAiComputeTaskCompute) JobTaskGenAiComputeTaskCompute {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskGenAiComputeTaskCompute
+		return ret
+	}).(JobTaskGenAiComputeTaskComputeOutput)
+}
+
+func (o JobTaskGenAiComputeTaskComputePtrOutput) GpuNodePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskGenAiComputeTaskCompute) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GpuNodePoolId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskGenAiComputeTaskComputePtrOutput) GpuType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskGenAiComputeTaskCompute) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GpuType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskGenAiComputeTaskComputePtrOutput) NumGpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobTaskGenAiComputeTaskCompute) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.NumGpus
+	}).(pulumi.IntPtrOutput)
 }
 
 type JobTaskHealth struct {
@@ -56952,7 +57977,8 @@ type ModelServingConfigServedEntityExternalModelAmazonBedrockConfig struct {
 	// An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
 	AwsSecretAccessKeyPlaintext *string `pulumi:"awsSecretAccessKeyPlaintext"`
 	// The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-	BedrockProvider string `pulumi:"bedrockProvider"`
+	BedrockProvider    string  `pulumi:"bedrockProvider"`
+	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
 }
 
 // ModelServingConfigServedEntityExternalModelAmazonBedrockConfigInput is an input type that accepts ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs and ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput values.
@@ -56978,7 +58004,8 @@ type ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs struct {
 	// An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
 	AwsSecretAccessKeyPlaintext pulumi.StringPtrInput `pulumi:"awsSecretAccessKeyPlaintext"`
 	// The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-	BedrockProvider pulumi.StringInput `pulumi:"bedrockProvider"`
+	BedrockProvider    pulumi.StringInput    `pulumi:"bedrockProvider"`
+	InstanceProfileArn pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
 }
 
 func (ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs) ElementType() reflect.Type {
@@ -57098,6 +58125,12 @@ func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) Be
 	}).(pulumi.StringOutput)
 }
 
+func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) InstanceProfileArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
+		return v.InstanceProfileArn
+	}).(pulumi.StringPtrOutput)
+}
+
 type ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) ElementType() reflect.Type {
@@ -57179,6 +58212,15 @@ func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput)
 			return nil
 		}
 		return &v.BedrockProvider
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) InstanceProfileArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceProfileArn
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -81556,1053 +82598,6 @@ func (o SqlWidgetPositionPtrOutput) SizeY() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-type StorageCredentialAwsIamRole struct {
-	ExternalId *string `pulumi:"externalId"`
-	// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-	//
-	// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
-	RoleArn            string  `pulumi:"roleArn"`
-	UnityCatalogIamArn *string `pulumi:"unityCatalogIamArn"`
-}
-
-// StorageCredentialAwsIamRoleInput is an input type that accepts StorageCredentialAwsIamRoleArgs and StorageCredentialAwsIamRoleOutput values.
-// You can construct a concrete instance of `StorageCredentialAwsIamRoleInput` via:
-//
-//	StorageCredentialAwsIamRoleArgs{...}
-type StorageCredentialAwsIamRoleInput interface {
-	pulumi.Input
-
-	ToStorageCredentialAwsIamRoleOutput() StorageCredentialAwsIamRoleOutput
-	ToStorageCredentialAwsIamRoleOutputWithContext(context.Context) StorageCredentialAwsIamRoleOutput
-}
-
-type StorageCredentialAwsIamRoleArgs struct {
-	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
-	// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-	//
-	// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
-	RoleArn            pulumi.StringInput    `pulumi:"roleArn"`
-	UnityCatalogIamArn pulumi.StringPtrInput `pulumi:"unityCatalogIamArn"`
-}
-
-func (StorageCredentialAwsIamRoleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageCredentialAwsIamRole)(nil)).Elem()
-}
-
-func (i StorageCredentialAwsIamRoleArgs) ToStorageCredentialAwsIamRoleOutput() StorageCredentialAwsIamRoleOutput {
-	return i.ToStorageCredentialAwsIamRoleOutputWithContext(context.Background())
-}
-
-func (i StorageCredentialAwsIamRoleArgs) ToStorageCredentialAwsIamRoleOutputWithContext(ctx context.Context) StorageCredentialAwsIamRoleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAwsIamRoleOutput)
-}
-
-func (i StorageCredentialAwsIamRoleArgs) ToStorageCredentialAwsIamRolePtrOutput() StorageCredentialAwsIamRolePtrOutput {
-	return i.ToStorageCredentialAwsIamRolePtrOutputWithContext(context.Background())
-}
-
-func (i StorageCredentialAwsIamRoleArgs) ToStorageCredentialAwsIamRolePtrOutputWithContext(ctx context.Context) StorageCredentialAwsIamRolePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAwsIamRoleOutput).ToStorageCredentialAwsIamRolePtrOutputWithContext(ctx)
-}
-
-// StorageCredentialAwsIamRolePtrInput is an input type that accepts StorageCredentialAwsIamRoleArgs, StorageCredentialAwsIamRolePtr and StorageCredentialAwsIamRolePtrOutput values.
-// You can construct a concrete instance of `StorageCredentialAwsIamRolePtrInput` via:
-//
-//	        StorageCredentialAwsIamRoleArgs{...}
-//
-//	or:
-//
-//	        nil
-type StorageCredentialAwsIamRolePtrInput interface {
-	pulumi.Input
-
-	ToStorageCredentialAwsIamRolePtrOutput() StorageCredentialAwsIamRolePtrOutput
-	ToStorageCredentialAwsIamRolePtrOutputWithContext(context.Context) StorageCredentialAwsIamRolePtrOutput
-}
-
-type storageCredentialAwsIamRolePtrType StorageCredentialAwsIamRoleArgs
-
-func StorageCredentialAwsIamRolePtr(v *StorageCredentialAwsIamRoleArgs) StorageCredentialAwsIamRolePtrInput {
-	return (*storageCredentialAwsIamRolePtrType)(v)
-}
-
-func (*storageCredentialAwsIamRolePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageCredentialAwsIamRole)(nil)).Elem()
-}
-
-func (i *storageCredentialAwsIamRolePtrType) ToStorageCredentialAwsIamRolePtrOutput() StorageCredentialAwsIamRolePtrOutput {
-	return i.ToStorageCredentialAwsIamRolePtrOutputWithContext(context.Background())
-}
-
-func (i *storageCredentialAwsIamRolePtrType) ToStorageCredentialAwsIamRolePtrOutputWithContext(ctx context.Context) StorageCredentialAwsIamRolePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAwsIamRolePtrOutput)
-}
-
-type StorageCredentialAwsIamRoleOutput struct{ *pulumi.OutputState }
-
-func (StorageCredentialAwsIamRoleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageCredentialAwsIamRole)(nil)).Elem()
-}
-
-func (o StorageCredentialAwsIamRoleOutput) ToStorageCredentialAwsIamRoleOutput() StorageCredentialAwsIamRoleOutput {
-	return o
-}
-
-func (o StorageCredentialAwsIamRoleOutput) ToStorageCredentialAwsIamRoleOutputWithContext(ctx context.Context) StorageCredentialAwsIamRoleOutput {
-	return o
-}
-
-func (o StorageCredentialAwsIamRoleOutput) ToStorageCredentialAwsIamRolePtrOutput() StorageCredentialAwsIamRolePtrOutput {
-	return o.ToStorageCredentialAwsIamRolePtrOutputWithContext(context.Background())
-}
-
-func (o StorageCredentialAwsIamRoleOutput) ToStorageCredentialAwsIamRolePtrOutputWithContext(ctx context.Context) StorageCredentialAwsIamRolePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageCredentialAwsIamRole) *StorageCredentialAwsIamRole {
-		return &v
-	}).(StorageCredentialAwsIamRolePtrOutput)
-}
-
-func (o StorageCredentialAwsIamRoleOutput) ExternalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StorageCredentialAwsIamRole) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
-}
-
-// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-//
-// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
-func (o StorageCredentialAwsIamRoleOutput) RoleArn() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageCredentialAwsIamRole) string { return v.RoleArn }).(pulumi.StringOutput)
-}
-
-func (o StorageCredentialAwsIamRoleOutput) UnityCatalogIamArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StorageCredentialAwsIamRole) *string { return v.UnityCatalogIamArn }).(pulumi.StringPtrOutput)
-}
-
-type StorageCredentialAwsIamRolePtrOutput struct{ *pulumi.OutputState }
-
-func (StorageCredentialAwsIamRolePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageCredentialAwsIamRole)(nil)).Elem()
-}
-
-func (o StorageCredentialAwsIamRolePtrOutput) ToStorageCredentialAwsIamRolePtrOutput() StorageCredentialAwsIamRolePtrOutput {
-	return o
-}
-
-func (o StorageCredentialAwsIamRolePtrOutput) ToStorageCredentialAwsIamRolePtrOutputWithContext(ctx context.Context) StorageCredentialAwsIamRolePtrOutput {
-	return o
-}
-
-func (o StorageCredentialAwsIamRolePtrOutput) Elem() StorageCredentialAwsIamRoleOutput {
-	return o.ApplyT(func(v *StorageCredentialAwsIamRole) StorageCredentialAwsIamRole {
-		if v != nil {
-			return *v
-		}
-		var ret StorageCredentialAwsIamRole
-		return ret
-	}).(StorageCredentialAwsIamRoleOutput)
-}
-
-func (o StorageCredentialAwsIamRolePtrOutput) ExternalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialAwsIamRole) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ExternalId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-//
-// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
-func (o StorageCredentialAwsIamRolePtrOutput) RoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialAwsIamRole) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.RoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o StorageCredentialAwsIamRolePtrOutput) UnityCatalogIamArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialAwsIamRole) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UnityCatalogIamArn
-	}).(pulumi.StringPtrOutput)
-}
-
-type StorageCredentialAzureManagedIdentity struct {
-	// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
-	AccessConnectorId string  `pulumi:"accessConnectorId"`
-	CredentialId      *string `pulumi:"credentialId"`
-	// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
-	//
-	// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
-	ManagedIdentityId *string `pulumi:"managedIdentityId"`
-}
-
-// StorageCredentialAzureManagedIdentityInput is an input type that accepts StorageCredentialAzureManagedIdentityArgs and StorageCredentialAzureManagedIdentityOutput values.
-// You can construct a concrete instance of `StorageCredentialAzureManagedIdentityInput` via:
-//
-//	StorageCredentialAzureManagedIdentityArgs{...}
-type StorageCredentialAzureManagedIdentityInput interface {
-	pulumi.Input
-
-	ToStorageCredentialAzureManagedIdentityOutput() StorageCredentialAzureManagedIdentityOutput
-	ToStorageCredentialAzureManagedIdentityOutputWithContext(context.Context) StorageCredentialAzureManagedIdentityOutput
-}
-
-type StorageCredentialAzureManagedIdentityArgs struct {
-	// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
-	AccessConnectorId pulumi.StringInput    `pulumi:"accessConnectorId"`
-	CredentialId      pulumi.StringPtrInput `pulumi:"credentialId"`
-	// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
-	//
-	// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
-	ManagedIdentityId pulumi.StringPtrInput `pulumi:"managedIdentityId"`
-}
-
-func (StorageCredentialAzureManagedIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageCredentialAzureManagedIdentity)(nil)).Elem()
-}
-
-func (i StorageCredentialAzureManagedIdentityArgs) ToStorageCredentialAzureManagedIdentityOutput() StorageCredentialAzureManagedIdentityOutput {
-	return i.ToStorageCredentialAzureManagedIdentityOutputWithContext(context.Background())
-}
-
-func (i StorageCredentialAzureManagedIdentityArgs) ToStorageCredentialAzureManagedIdentityOutputWithContext(ctx context.Context) StorageCredentialAzureManagedIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAzureManagedIdentityOutput)
-}
-
-func (i StorageCredentialAzureManagedIdentityArgs) ToStorageCredentialAzureManagedIdentityPtrOutput() StorageCredentialAzureManagedIdentityPtrOutput {
-	return i.ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i StorageCredentialAzureManagedIdentityArgs) ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(ctx context.Context) StorageCredentialAzureManagedIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAzureManagedIdentityOutput).ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(ctx)
-}
-
-// StorageCredentialAzureManagedIdentityPtrInput is an input type that accepts StorageCredentialAzureManagedIdentityArgs, StorageCredentialAzureManagedIdentityPtr and StorageCredentialAzureManagedIdentityPtrOutput values.
-// You can construct a concrete instance of `StorageCredentialAzureManagedIdentityPtrInput` via:
-//
-//	        StorageCredentialAzureManagedIdentityArgs{...}
-//
-//	or:
-//
-//	        nil
-type StorageCredentialAzureManagedIdentityPtrInput interface {
-	pulumi.Input
-
-	ToStorageCredentialAzureManagedIdentityPtrOutput() StorageCredentialAzureManagedIdentityPtrOutput
-	ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(context.Context) StorageCredentialAzureManagedIdentityPtrOutput
-}
-
-type storageCredentialAzureManagedIdentityPtrType StorageCredentialAzureManagedIdentityArgs
-
-func StorageCredentialAzureManagedIdentityPtr(v *StorageCredentialAzureManagedIdentityArgs) StorageCredentialAzureManagedIdentityPtrInput {
-	return (*storageCredentialAzureManagedIdentityPtrType)(v)
-}
-
-func (*storageCredentialAzureManagedIdentityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageCredentialAzureManagedIdentity)(nil)).Elem()
-}
-
-func (i *storageCredentialAzureManagedIdentityPtrType) ToStorageCredentialAzureManagedIdentityPtrOutput() StorageCredentialAzureManagedIdentityPtrOutput {
-	return i.ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i *storageCredentialAzureManagedIdentityPtrType) ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(ctx context.Context) StorageCredentialAzureManagedIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAzureManagedIdentityPtrOutput)
-}
-
-type StorageCredentialAzureManagedIdentityOutput struct{ *pulumi.OutputState }
-
-func (StorageCredentialAzureManagedIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageCredentialAzureManagedIdentity)(nil)).Elem()
-}
-
-func (o StorageCredentialAzureManagedIdentityOutput) ToStorageCredentialAzureManagedIdentityOutput() StorageCredentialAzureManagedIdentityOutput {
-	return o
-}
-
-func (o StorageCredentialAzureManagedIdentityOutput) ToStorageCredentialAzureManagedIdentityOutputWithContext(ctx context.Context) StorageCredentialAzureManagedIdentityOutput {
-	return o
-}
-
-func (o StorageCredentialAzureManagedIdentityOutput) ToStorageCredentialAzureManagedIdentityPtrOutput() StorageCredentialAzureManagedIdentityPtrOutput {
-	return o.ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(context.Background())
-}
-
-func (o StorageCredentialAzureManagedIdentityOutput) ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(ctx context.Context) StorageCredentialAzureManagedIdentityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageCredentialAzureManagedIdentity) *StorageCredentialAzureManagedIdentity {
-		return &v
-	}).(StorageCredentialAzureManagedIdentityPtrOutput)
-}
-
-// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
-func (o StorageCredentialAzureManagedIdentityOutput) AccessConnectorId() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageCredentialAzureManagedIdentity) string { return v.AccessConnectorId }).(pulumi.StringOutput)
-}
-
-func (o StorageCredentialAzureManagedIdentityOutput) CredentialId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StorageCredentialAzureManagedIdentity) *string { return v.CredentialId }).(pulumi.StringPtrOutput)
-}
-
-// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
-//
-// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
-func (o StorageCredentialAzureManagedIdentityOutput) ManagedIdentityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StorageCredentialAzureManagedIdentity) *string { return v.ManagedIdentityId }).(pulumi.StringPtrOutput)
-}
-
-type StorageCredentialAzureManagedIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (StorageCredentialAzureManagedIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageCredentialAzureManagedIdentity)(nil)).Elem()
-}
-
-func (o StorageCredentialAzureManagedIdentityPtrOutput) ToStorageCredentialAzureManagedIdentityPtrOutput() StorageCredentialAzureManagedIdentityPtrOutput {
-	return o
-}
-
-func (o StorageCredentialAzureManagedIdentityPtrOutput) ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(ctx context.Context) StorageCredentialAzureManagedIdentityPtrOutput {
-	return o
-}
-
-func (o StorageCredentialAzureManagedIdentityPtrOutput) Elem() StorageCredentialAzureManagedIdentityOutput {
-	return o.ApplyT(func(v *StorageCredentialAzureManagedIdentity) StorageCredentialAzureManagedIdentity {
-		if v != nil {
-			return *v
-		}
-		var ret StorageCredentialAzureManagedIdentity
-		return ret
-	}).(StorageCredentialAzureManagedIdentityOutput)
-}
-
-// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
-func (o StorageCredentialAzureManagedIdentityPtrOutput) AccessConnectorId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialAzureManagedIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AccessConnectorId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o StorageCredentialAzureManagedIdentityPtrOutput) CredentialId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialAzureManagedIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CredentialId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
-//
-// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
-func (o StorageCredentialAzureManagedIdentityPtrOutput) ManagedIdentityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialAzureManagedIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ManagedIdentityId
-	}).(pulumi.StringPtrOutput)
-}
-
-type StorageCredentialAzureServicePrincipal struct {
-	// The application ID of the application registration within the referenced AAD tenant
-	ApplicationId string `pulumi:"applicationId"`
-	// The client secret generated for the above app ID in AAD. **This field is redacted on output**
-	ClientSecret string `pulumi:"clientSecret"`
-	// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-	DirectoryId string `pulumi:"directoryId"`
-}
-
-// StorageCredentialAzureServicePrincipalInput is an input type that accepts StorageCredentialAzureServicePrincipalArgs and StorageCredentialAzureServicePrincipalOutput values.
-// You can construct a concrete instance of `StorageCredentialAzureServicePrincipalInput` via:
-//
-//	StorageCredentialAzureServicePrincipalArgs{...}
-type StorageCredentialAzureServicePrincipalInput interface {
-	pulumi.Input
-
-	ToStorageCredentialAzureServicePrincipalOutput() StorageCredentialAzureServicePrincipalOutput
-	ToStorageCredentialAzureServicePrincipalOutputWithContext(context.Context) StorageCredentialAzureServicePrincipalOutput
-}
-
-type StorageCredentialAzureServicePrincipalArgs struct {
-	// The application ID of the application registration within the referenced AAD tenant
-	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
-	// The client secret generated for the above app ID in AAD. **This field is redacted on output**
-	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
-	// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
-}
-
-func (StorageCredentialAzureServicePrincipalArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageCredentialAzureServicePrincipal)(nil)).Elem()
-}
-
-func (i StorageCredentialAzureServicePrincipalArgs) ToStorageCredentialAzureServicePrincipalOutput() StorageCredentialAzureServicePrincipalOutput {
-	return i.ToStorageCredentialAzureServicePrincipalOutputWithContext(context.Background())
-}
-
-func (i StorageCredentialAzureServicePrincipalArgs) ToStorageCredentialAzureServicePrincipalOutputWithContext(ctx context.Context) StorageCredentialAzureServicePrincipalOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAzureServicePrincipalOutput)
-}
-
-func (i StorageCredentialAzureServicePrincipalArgs) ToStorageCredentialAzureServicePrincipalPtrOutput() StorageCredentialAzureServicePrincipalPtrOutput {
-	return i.ToStorageCredentialAzureServicePrincipalPtrOutputWithContext(context.Background())
-}
-
-func (i StorageCredentialAzureServicePrincipalArgs) ToStorageCredentialAzureServicePrincipalPtrOutputWithContext(ctx context.Context) StorageCredentialAzureServicePrincipalPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAzureServicePrincipalOutput).ToStorageCredentialAzureServicePrincipalPtrOutputWithContext(ctx)
-}
-
-// StorageCredentialAzureServicePrincipalPtrInput is an input type that accepts StorageCredentialAzureServicePrincipalArgs, StorageCredentialAzureServicePrincipalPtr and StorageCredentialAzureServicePrincipalPtrOutput values.
-// You can construct a concrete instance of `StorageCredentialAzureServicePrincipalPtrInput` via:
-//
-//	        StorageCredentialAzureServicePrincipalArgs{...}
-//
-//	or:
-//
-//	        nil
-type StorageCredentialAzureServicePrincipalPtrInput interface {
-	pulumi.Input
-
-	ToStorageCredentialAzureServicePrincipalPtrOutput() StorageCredentialAzureServicePrincipalPtrOutput
-	ToStorageCredentialAzureServicePrincipalPtrOutputWithContext(context.Context) StorageCredentialAzureServicePrincipalPtrOutput
-}
-
-type storageCredentialAzureServicePrincipalPtrType StorageCredentialAzureServicePrincipalArgs
-
-func StorageCredentialAzureServicePrincipalPtr(v *StorageCredentialAzureServicePrincipalArgs) StorageCredentialAzureServicePrincipalPtrInput {
-	return (*storageCredentialAzureServicePrincipalPtrType)(v)
-}
-
-func (*storageCredentialAzureServicePrincipalPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageCredentialAzureServicePrincipal)(nil)).Elem()
-}
-
-func (i *storageCredentialAzureServicePrincipalPtrType) ToStorageCredentialAzureServicePrincipalPtrOutput() StorageCredentialAzureServicePrincipalPtrOutput {
-	return i.ToStorageCredentialAzureServicePrincipalPtrOutputWithContext(context.Background())
-}
-
-func (i *storageCredentialAzureServicePrincipalPtrType) ToStorageCredentialAzureServicePrincipalPtrOutputWithContext(ctx context.Context) StorageCredentialAzureServicePrincipalPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAzureServicePrincipalPtrOutput)
-}
-
-type StorageCredentialAzureServicePrincipalOutput struct{ *pulumi.OutputState }
-
-func (StorageCredentialAzureServicePrincipalOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageCredentialAzureServicePrincipal)(nil)).Elem()
-}
-
-func (o StorageCredentialAzureServicePrincipalOutput) ToStorageCredentialAzureServicePrincipalOutput() StorageCredentialAzureServicePrincipalOutput {
-	return o
-}
-
-func (o StorageCredentialAzureServicePrincipalOutput) ToStorageCredentialAzureServicePrincipalOutputWithContext(ctx context.Context) StorageCredentialAzureServicePrincipalOutput {
-	return o
-}
-
-func (o StorageCredentialAzureServicePrincipalOutput) ToStorageCredentialAzureServicePrincipalPtrOutput() StorageCredentialAzureServicePrincipalPtrOutput {
-	return o.ToStorageCredentialAzureServicePrincipalPtrOutputWithContext(context.Background())
-}
-
-func (o StorageCredentialAzureServicePrincipalOutput) ToStorageCredentialAzureServicePrincipalPtrOutputWithContext(ctx context.Context) StorageCredentialAzureServicePrincipalPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageCredentialAzureServicePrincipal) *StorageCredentialAzureServicePrincipal {
-		return &v
-	}).(StorageCredentialAzureServicePrincipalPtrOutput)
-}
-
-// The application ID of the application registration within the referenced AAD tenant
-func (o StorageCredentialAzureServicePrincipalOutput) ApplicationId() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageCredentialAzureServicePrincipal) string { return v.ApplicationId }).(pulumi.StringOutput)
-}
-
-// The client secret generated for the above app ID in AAD. **This field is redacted on output**
-func (o StorageCredentialAzureServicePrincipalOutput) ClientSecret() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageCredentialAzureServicePrincipal) string { return v.ClientSecret }).(pulumi.StringOutput)
-}
-
-// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-func (o StorageCredentialAzureServicePrincipalOutput) DirectoryId() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageCredentialAzureServicePrincipal) string { return v.DirectoryId }).(pulumi.StringOutput)
-}
-
-type StorageCredentialAzureServicePrincipalPtrOutput struct{ *pulumi.OutputState }
-
-func (StorageCredentialAzureServicePrincipalPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageCredentialAzureServicePrincipal)(nil)).Elem()
-}
-
-func (o StorageCredentialAzureServicePrincipalPtrOutput) ToStorageCredentialAzureServicePrincipalPtrOutput() StorageCredentialAzureServicePrincipalPtrOutput {
-	return o
-}
-
-func (o StorageCredentialAzureServicePrincipalPtrOutput) ToStorageCredentialAzureServicePrincipalPtrOutputWithContext(ctx context.Context) StorageCredentialAzureServicePrincipalPtrOutput {
-	return o
-}
-
-func (o StorageCredentialAzureServicePrincipalPtrOutput) Elem() StorageCredentialAzureServicePrincipalOutput {
-	return o.ApplyT(func(v *StorageCredentialAzureServicePrincipal) StorageCredentialAzureServicePrincipal {
-		if v != nil {
-			return *v
-		}
-		var ret StorageCredentialAzureServicePrincipal
-		return ret
-	}).(StorageCredentialAzureServicePrincipalOutput)
-}
-
-// The application ID of the application registration within the referenced AAD tenant
-func (o StorageCredentialAzureServicePrincipalPtrOutput) ApplicationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialAzureServicePrincipal) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ApplicationId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The client secret generated for the above app ID in AAD. **This field is redacted on output**
-func (o StorageCredentialAzureServicePrincipalPtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialAzureServicePrincipal) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ClientSecret
-	}).(pulumi.StringPtrOutput)
-}
-
-// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-func (o StorageCredentialAzureServicePrincipalPtrOutput) DirectoryId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialAzureServicePrincipal) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DirectoryId
-	}).(pulumi.StringPtrOutput)
-}
-
-type StorageCredentialCloudflareApiToken struct {
-	// R2 API token access key ID
-	AccessKeyId string `pulumi:"accessKeyId"`
-	// R2 account ID
-	AccountId string `pulumi:"accountId"`
-	// R2 API token secret access key
-	//
-	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
-	SecretAccessKey string `pulumi:"secretAccessKey"`
-}
-
-// StorageCredentialCloudflareApiTokenInput is an input type that accepts StorageCredentialCloudflareApiTokenArgs and StorageCredentialCloudflareApiTokenOutput values.
-// You can construct a concrete instance of `StorageCredentialCloudflareApiTokenInput` via:
-//
-//	StorageCredentialCloudflareApiTokenArgs{...}
-type StorageCredentialCloudflareApiTokenInput interface {
-	pulumi.Input
-
-	ToStorageCredentialCloudflareApiTokenOutput() StorageCredentialCloudflareApiTokenOutput
-	ToStorageCredentialCloudflareApiTokenOutputWithContext(context.Context) StorageCredentialCloudflareApiTokenOutput
-}
-
-type StorageCredentialCloudflareApiTokenArgs struct {
-	// R2 API token access key ID
-	AccessKeyId pulumi.StringInput `pulumi:"accessKeyId"`
-	// R2 account ID
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// R2 API token secret access key
-	//
-	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
-	SecretAccessKey pulumi.StringInput `pulumi:"secretAccessKey"`
-}
-
-func (StorageCredentialCloudflareApiTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageCredentialCloudflareApiToken)(nil)).Elem()
-}
-
-func (i StorageCredentialCloudflareApiTokenArgs) ToStorageCredentialCloudflareApiTokenOutput() StorageCredentialCloudflareApiTokenOutput {
-	return i.ToStorageCredentialCloudflareApiTokenOutputWithContext(context.Background())
-}
-
-func (i StorageCredentialCloudflareApiTokenArgs) ToStorageCredentialCloudflareApiTokenOutputWithContext(ctx context.Context) StorageCredentialCloudflareApiTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialCloudflareApiTokenOutput)
-}
-
-func (i StorageCredentialCloudflareApiTokenArgs) ToStorageCredentialCloudflareApiTokenPtrOutput() StorageCredentialCloudflareApiTokenPtrOutput {
-	return i.ToStorageCredentialCloudflareApiTokenPtrOutputWithContext(context.Background())
-}
-
-func (i StorageCredentialCloudflareApiTokenArgs) ToStorageCredentialCloudflareApiTokenPtrOutputWithContext(ctx context.Context) StorageCredentialCloudflareApiTokenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialCloudflareApiTokenOutput).ToStorageCredentialCloudflareApiTokenPtrOutputWithContext(ctx)
-}
-
-// StorageCredentialCloudflareApiTokenPtrInput is an input type that accepts StorageCredentialCloudflareApiTokenArgs, StorageCredentialCloudflareApiTokenPtr and StorageCredentialCloudflareApiTokenPtrOutput values.
-// You can construct a concrete instance of `StorageCredentialCloudflareApiTokenPtrInput` via:
-//
-//	        StorageCredentialCloudflareApiTokenArgs{...}
-//
-//	or:
-//
-//	        nil
-type StorageCredentialCloudflareApiTokenPtrInput interface {
-	pulumi.Input
-
-	ToStorageCredentialCloudflareApiTokenPtrOutput() StorageCredentialCloudflareApiTokenPtrOutput
-	ToStorageCredentialCloudflareApiTokenPtrOutputWithContext(context.Context) StorageCredentialCloudflareApiTokenPtrOutput
-}
-
-type storageCredentialCloudflareApiTokenPtrType StorageCredentialCloudflareApiTokenArgs
-
-func StorageCredentialCloudflareApiTokenPtr(v *StorageCredentialCloudflareApiTokenArgs) StorageCredentialCloudflareApiTokenPtrInput {
-	return (*storageCredentialCloudflareApiTokenPtrType)(v)
-}
-
-func (*storageCredentialCloudflareApiTokenPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageCredentialCloudflareApiToken)(nil)).Elem()
-}
-
-func (i *storageCredentialCloudflareApiTokenPtrType) ToStorageCredentialCloudflareApiTokenPtrOutput() StorageCredentialCloudflareApiTokenPtrOutput {
-	return i.ToStorageCredentialCloudflareApiTokenPtrOutputWithContext(context.Background())
-}
-
-func (i *storageCredentialCloudflareApiTokenPtrType) ToStorageCredentialCloudflareApiTokenPtrOutputWithContext(ctx context.Context) StorageCredentialCloudflareApiTokenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialCloudflareApiTokenPtrOutput)
-}
-
-type StorageCredentialCloudflareApiTokenOutput struct{ *pulumi.OutputState }
-
-func (StorageCredentialCloudflareApiTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageCredentialCloudflareApiToken)(nil)).Elem()
-}
-
-func (o StorageCredentialCloudflareApiTokenOutput) ToStorageCredentialCloudflareApiTokenOutput() StorageCredentialCloudflareApiTokenOutput {
-	return o
-}
-
-func (o StorageCredentialCloudflareApiTokenOutput) ToStorageCredentialCloudflareApiTokenOutputWithContext(ctx context.Context) StorageCredentialCloudflareApiTokenOutput {
-	return o
-}
-
-func (o StorageCredentialCloudflareApiTokenOutput) ToStorageCredentialCloudflareApiTokenPtrOutput() StorageCredentialCloudflareApiTokenPtrOutput {
-	return o.ToStorageCredentialCloudflareApiTokenPtrOutputWithContext(context.Background())
-}
-
-func (o StorageCredentialCloudflareApiTokenOutput) ToStorageCredentialCloudflareApiTokenPtrOutputWithContext(ctx context.Context) StorageCredentialCloudflareApiTokenPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageCredentialCloudflareApiToken) *StorageCredentialCloudflareApiToken {
-		return &v
-	}).(StorageCredentialCloudflareApiTokenPtrOutput)
-}
-
-// R2 API token access key ID
-func (o StorageCredentialCloudflareApiTokenOutput) AccessKeyId() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageCredentialCloudflareApiToken) string { return v.AccessKeyId }).(pulumi.StringOutput)
-}
-
-// R2 account ID
-func (o StorageCredentialCloudflareApiTokenOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageCredentialCloudflareApiToken) string { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// R2 API token secret access key
-//
-// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
-func (o StorageCredentialCloudflareApiTokenOutput) SecretAccessKey() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageCredentialCloudflareApiToken) string { return v.SecretAccessKey }).(pulumi.StringOutput)
-}
-
-type StorageCredentialCloudflareApiTokenPtrOutput struct{ *pulumi.OutputState }
-
-func (StorageCredentialCloudflareApiTokenPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageCredentialCloudflareApiToken)(nil)).Elem()
-}
-
-func (o StorageCredentialCloudflareApiTokenPtrOutput) ToStorageCredentialCloudflareApiTokenPtrOutput() StorageCredentialCloudflareApiTokenPtrOutput {
-	return o
-}
-
-func (o StorageCredentialCloudflareApiTokenPtrOutput) ToStorageCredentialCloudflareApiTokenPtrOutputWithContext(ctx context.Context) StorageCredentialCloudflareApiTokenPtrOutput {
-	return o
-}
-
-func (o StorageCredentialCloudflareApiTokenPtrOutput) Elem() StorageCredentialCloudflareApiTokenOutput {
-	return o.ApplyT(func(v *StorageCredentialCloudflareApiToken) StorageCredentialCloudflareApiToken {
-		if v != nil {
-			return *v
-		}
-		var ret StorageCredentialCloudflareApiToken
-		return ret
-	}).(StorageCredentialCloudflareApiTokenOutput)
-}
-
-// R2 API token access key ID
-func (o StorageCredentialCloudflareApiTokenPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialCloudflareApiToken) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AccessKeyId
-	}).(pulumi.StringPtrOutput)
-}
-
-// R2 account ID
-func (o StorageCredentialCloudflareApiTokenPtrOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialCloudflareApiToken) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AccountId
-	}).(pulumi.StringPtrOutput)
-}
-
-// R2 API token secret access key
-//
-// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
-func (o StorageCredentialCloudflareApiTokenPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialCloudflareApiToken) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.SecretAccessKey
-	}).(pulumi.StringPtrOutput)
-}
-
-type StorageCredentialDatabricksGcpServiceAccount struct {
-	CredentialId *string `pulumi:"credentialId"`
-	// The email of the GCP service account created, to be granted access to relevant buckets.
-	//
-	// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-	Email *string `pulumi:"email"`
-}
-
-// StorageCredentialDatabricksGcpServiceAccountInput is an input type that accepts StorageCredentialDatabricksGcpServiceAccountArgs and StorageCredentialDatabricksGcpServiceAccountOutput values.
-// You can construct a concrete instance of `StorageCredentialDatabricksGcpServiceAccountInput` via:
-//
-//	StorageCredentialDatabricksGcpServiceAccountArgs{...}
-type StorageCredentialDatabricksGcpServiceAccountInput interface {
-	pulumi.Input
-
-	ToStorageCredentialDatabricksGcpServiceAccountOutput() StorageCredentialDatabricksGcpServiceAccountOutput
-	ToStorageCredentialDatabricksGcpServiceAccountOutputWithContext(context.Context) StorageCredentialDatabricksGcpServiceAccountOutput
-}
-
-type StorageCredentialDatabricksGcpServiceAccountArgs struct {
-	CredentialId pulumi.StringPtrInput `pulumi:"credentialId"`
-	// The email of the GCP service account created, to be granted access to relevant buckets.
-	//
-	// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-	Email pulumi.StringPtrInput `pulumi:"email"`
-}
-
-func (StorageCredentialDatabricksGcpServiceAccountArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageCredentialDatabricksGcpServiceAccount)(nil)).Elem()
-}
-
-func (i StorageCredentialDatabricksGcpServiceAccountArgs) ToStorageCredentialDatabricksGcpServiceAccountOutput() StorageCredentialDatabricksGcpServiceAccountOutput {
-	return i.ToStorageCredentialDatabricksGcpServiceAccountOutputWithContext(context.Background())
-}
-
-func (i StorageCredentialDatabricksGcpServiceAccountArgs) ToStorageCredentialDatabricksGcpServiceAccountOutputWithContext(ctx context.Context) StorageCredentialDatabricksGcpServiceAccountOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialDatabricksGcpServiceAccountOutput)
-}
-
-func (i StorageCredentialDatabricksGcpServiceAccountArgs) ToStorageCredentialDatabricksGcpServiceAccountPtrOutput() StorageCredentialDatabricksGcpServiceAccountPtrOutput {
-	return i.ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(context.Background())
-}
-
-func (i StorageCredentialDatabricksGcpServiceAccountArgs) ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(ctx context.Context) StorageCredentialDatabricksGcpServiceAccountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialDatabricksGcpServiceAccountOutput).ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(ctx)
-}
-
-// StorageCredentialDatabricksGcpServiceAccountPtrInput is an input type that accepts StorageCredentialDatabricksGcpServiceAccountArgs, StorageCredentialDatabricksGcpServiceAccountPtr and StorageCredentialDatabricksGcpServiceAccountPtrOutput values.
-// You can construct a concrete instance of `StorageCredentialDatabricksGcpServiceAccountPtrInput` via:
-//
-//	        StorageCredentialDatabricksGcpServiceAccountArgs{...}
-//
-//	or:
-//
-//	        nil
-type StorageCredentialDatabricksGcpServiceAccountPtrInput interface {
-	pulumi.Input
-
-	ToStorageCredentialDatabricksGcpServiceAccountPtrOutput() StorageCredentialDatabricksGcpServiceAccountPtrOutput
-	ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(context.Context) StorageCredentialDatabricksGcpServiceAccountPtrOutput
-}
-
-type storageCredentialDatabricksGcpServiceAccountPtrType StorageCredentialDatabricksGcpServiceAccountArgs
-
-func StorageCredentialDatabricksGcpServiceAccountPtr(v *StorageCredentialDatabricksGcpServiceAccountArgs) StorageCredentialDatabricksGcpServiceAccountPtrInput {
-	return (*storageCredentialDatabricksGcpServiceAccountPtrType)(v)
-}
-
-func (*storageCredentialDatabricksGcpServiceAccountPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageCredentialDatabricksGcpServiceAccount)(nil)).Elem()
-}
-
-func (i *storageCredentialDatabricksGcpServiceAccountPtrType) ToStorageCredentialDatabricksGcpServiceAccountPtrOutput() StorageCredentialDatabricksGcpServiceAccountPtrOutput {
-	return i.ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(context.Background())
-}
-
-func (i *storageCredentialDatabricksGcpServiceAccountPtrType) ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(ctx context.Context) StorageCredentialDatabricksGcpServiceAccountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialDatabricksGcpServiceAccountPtrOutput)
-}
-
-type StorageCredentialDatabricksGcpServiceAccountOutput struct{ *pulumi.OutputState }
-
-func (StorageCredentialDatabricksGcpServiceAccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageCredentialDatabricksGcpServiceAccount)(nil)).Elem()
-}
-
-func (o StorageCredentialDatabricksGcpServiceAccountOutput) ToStorageCredentialDatabricksGcpServiceAccountOutput() StorageCredentialDatabricksGcpServiceAccountOutput {
-	return o
-}
-
-func (o StorageCredentialDatabricksGcpServiceAccountOutput) ToStorageCredentialDatabricksGcpServiceAccountOutputWithContext(ctx context.Context) StorageCredentialDatabricksGcpServiceAccountOutput {
-	return o
-}
-
-func (o StorageCredentialDatabricksGcpServiceAccountOutput) ToStorageCredentialDatabricksGcpServiceAccountPtrOutput() StorageCredentialDatabricksGcpServiceAccountPtrOutput {
-	return o.ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(context.Background())
-}
-
-func (o StorageCredentialDatabricksGcpServiceAccountOutput) ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(ctx context.Context) StorageCredentialDatabricksGcpServiceAccountPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageCredentialDatabricksGcpServiceAccount) *StorageCredentialDatabricksGcpServiceAccount {
-		return &v
-	}).(StorageCredentialDatabricksGcpServiceAccountPtrOutput)
-}
-
-func (o StorageCredentialDatabricksGcpServiceAccountOutput) CredentialId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StorageCredentialDatabricksGcpServiceAccount) *string { return v.CredentialId }).(pulumi.StringPtrOutput)
-}
-
-// The email of the GCP service account created, to be granted access to relevant buckets.
-//
-// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-func (o StorageCredentialDatabricksGcpServiceAccountOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StorageCredentialDatabricksGcpServiceAccount) *string { return v.Email }).(pulumi.StringPtrOutput)
-}
-
-type StorageCredentialDatabricksGcpServiceAccountPtrOutput struct{ *pulumi.OutputState }
-
-func (StorageCredentialDatabricksGcpServiceAccountPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageCredentialDatabricksGcpServiceAccount)(nil)).Elem()
-}
-
-func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) ToStorageCredentialDatabricksGcpServiceAccountPtrOutput() StorageCredentialDatabricksGcpServiceAccountPtrOutput {
-	return o
-}
-
-func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(ctx context.Context) StorageCredentialDatabricksGcpServiceAccountPtrOutput {
-	return o
-}
-
-func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) Elem() StorageCredentialDatabricksGcpServiceAccountOutput {
-	return o.ApplyT(func(v *StorageCredentialDatabricksGcpServiceAccount) StorageCredentialDatabricksGcpServiceAccount {
-		if v != nil {
-			return *v
-		}
-		var ret StorageCredentialDatabricksGcpServiceAccount
-		return ret
-	}).(StorageCredentialDatabricksGcpServiceAccountOutput)
-}
-
-func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) CredentialId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialDatabricksGcpServiceAccount) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CredentialId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The email of the GCP service account created, to be granted access to relevant buckets.
-//
-// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialDatabricksGcpServiceAccount) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Email
-	}).(pulumi.StringPtrOutput)
-}
-
-type StorageCredentialGcpServiceAccountKey struct {
-	// The email of the GCP service account created, to be granted access to relevant buckets.
-	//
-	// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-	Email        string `pulumi:"email"`
-	PrivateKey   string `pulumi:"privateKey"`
-	PrivateKeyId string `pulumi:"privateKeyId"`
-}
-
-// StorageCredentialGcpServiceAccountKeyInput is an input type that accepts StorageCredentialGcpServiceAccountKeyArgs and StorageCredentialGcpServiceAccountKeyOutput values.
-// You can construct a concrete instance of `StorageCredentialGcpServiceAccountKeyInput` via:
-//
-//	StorageCredentialGcpServiceAccountKeyArgs{...}
-type StorageCredentialGcpServiceAccountKeyInput interface {
-	pulumi.Input
-
-	ToStorageCredentialGcpServiceAccountKeyOutput() StorageCredentialGcpServiceAccountKeyOutput
-	ToStorageCredentialGcpServiceAccountKeyOutputWithContext(context.Context) StorageCredentialGcpServiceAccountKeyOutput
-}
-
-type StorageCredentialGcpServiceAccountKeyArgs struct {
-	// The email of the GCP service account created, to be granted access to relevant buckets.
-	//
-	// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-	Email        pulumi.StringInput `pulumi:"email"`
-	PrivateKey   pulumi.StringInput `pulumi:"privateKey"`
-	PrivateKeyId pulumi.StringInput `pulumi:"privateKeyId"`
-}
-
-func (StorageCredentialGcpServiceAccountKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageCredentialGcpServiceAccountKey)(nil)).Elem()
-}
-
-func (i StorageCredentialGcpServiceAccountKeyArgs) ToStorageCredentialGcpServiceAccountKeyOutput() StorageCredentialGcpServiceAccountKeyOutput {
-	return i.ToStorageCredentialGcpServiceAccountKeyOutputWithContext(context.Background())
-}
-
-func (i StorageCredentialGcpServiceAccountKeyArgs) ToStorageCredentialGcpServiceAccountKeyOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialGcpServiceAccountKeyOutput)
-}
-
-func (i StorageCredentialGcpServiceAccountKeyArgs) ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput {
-	return i.ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(context.Background())
-}
-
-func (i StorageCredentialGcpServiceAccountKeyArgs) ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialGcpServiceAccountKeyOutput).ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx)
-}
-
-// StorageCredentialGcpServiceAccountKeyPtrInput is an input type that accepts StorageCredentialGcpServiceAccountKeyArgs, StorageCredentialGcpServiceAccountKeyPtr and StorageCredentialGcpServiceAccountKeyPtrOutput values.
-// You can construct a concrete instance of `StorageCredentialGcpServiceAccountKeyPtrInput` via:
-//
-//	        StorageCredentialGcpServiceAccountKeyArgs{...}
-//
-//	or:
-//
-//	        nil
-type StorageCredentialGcpServiceAccountKeyPtrInput interface {
-	pulumi.Input
-
-	ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput
-	ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput
-}
-
-type storageCredentialGcpServiceAccountKeyPtrType StorageCredentialGcpServiceAccountKeyArgs
-
-func StorageCredentialGcpServiceAccountKeyPtr(v *StorageCredentialGcpServiceAccountKeyArgs) StorageCredentialGcpServiceAccountKeyPtrInput {
-	return (*storageCredentialGcpServiceAccountKeyPtrType)(v)
-}
-
-func (*storageCredentialGcpServiceAccountKeyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageCredentialGcpServiceAccountKey)(nil)).Elem()
-}
-
-func (i *storageCredentialGcpServiceAccountKeyPtrType) ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput {
-	return i.ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *storageCredentialGcpServiceAccountKeyPtrType) ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialGcpServiceAccountKeyPtrOutput)
-}
-
-type StorageCredentialGcpServiceAccountKeyOutput struct{ *pulumi.OutputState }
-
-func (StorageCredentialGcpServiceAccountKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageCredentialGcpServiceAccountKey)(nil)).Elem()
-}
-
-func (o StorageCredentialGcpServiceAccountKeyOutput) ToStorageCredentialGcpServiceAccountKeyOutput() StorageCredentialGcpServiceAccountKeyOutput {
-	return o
-}
-
-func (o StorageCredentialGcpServiceAccountKeyOutput) ToStorageCredentialGcpServiceAccountKeyOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyOutput {
-	return o
-}
-
-func (o StorageCredentialGcpServiceAccountKeyOutput) ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput {
-	return o.ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(context.Background())
-}
-
-func (o StorageCredentialGcpServiceAccountKeyOutput) ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageCredentialGcpServiceAccountKey) *StorageCredentialGcpServiceAccountKey {
-		return &v
-	}).(StorageCredentialGcpServiceAccountKeyPtrOutput)
-}
-
-// The email of the GCP service account created, to be granted access to relevant buckets.
-//
-// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-func (o StorageCredentialGcpServiceAccountKeyOutput) Email() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageCredentialGcpServiceAccountKey) string { return v.Email }).(pulumi.StringOutput)
-}
-
-func (o StorageCredentialGcpServiceAccountKeyOutput) PrivateKey() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageCredentialGcpServiceAccountKey) string { return v.PrivateKey }).(pulumi.StringOutput)
-}
-
-func (o StorageCredentialGcpServiceAccountKeyOutput) PrivateKeyId() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageCredentialGcpServiceAccountKey) string { return v.PrivateKeyId }).(pulumi.StringOutput)
-}
-
-type StorageCredentialGcpServiceAccountKeyPtrOutput struct{ *pulumi.OutputState }
-
-func (StorageCredentialGcpServiceAccountKeyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageCredentialGcpServiceAccountKey)(nil)).Elem()
-}
-
-func (o StorageCredentialGcpServiceAccountKeyPtrOutput) ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput {
-	return o
-}
-
-func (o StorageCredentialGcpServiceAccountKeyPtrOutput) ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput {
-	return o
-}
-
-func (o StorageCredentialGcpServiceAccountKeyPtrOutput) Elem() StorageCredentialGcpServiceAccountKeyOutput {
-	return o.ApplyT(func(v *StorageCredentialGcpServiceAccountKey) StorageCredentialGcpServiceAccountKey {
-		if v != nil {
-			return *v
-		}
-		var ret StorageCredentialGcpServiceAccountKey
-		return ret
-	}).(StorageCredentialGcpServiceAccountKeyOutput)
-}
-
-// The email of the GCP service account created, to be granted access to relevant buckets.
-//
-// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-func (o StorageCredentialGcpServiceAccountKeyPtrOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialGcpServiceAccountKey) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Email
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o StorageCredentialGcpServiceAccountKeyPtrOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialGcpServiceAccountKey) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrivateKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o StorageCredentialGcpServiceAccountKeyPtrOutput) PrivateKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialGcpServiceAccountKey) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrivateKeyId
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
@@ -82670,6 +82665,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BudgetFilterTagValuePtrInput)(nil)).Elem(), BudgetFilterTagValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BudgetFilterWorkspaceIdInput)(nil)).Elem(), BudgetFilterWorkspaceIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BudgetFilterWorkspaceIdPtrInput)(nil)).Elem(), BudgetFilterWorkspaceIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetPolicyCustomTagInput)(nil)).Elem(), BudgetPolicyCustomTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BudgetPolicyCustomTagArrayInput)(nil)).Elem(), BudgetPolicyCustomTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscaleInput)(nil)).Elem(), ClusterAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalePtrInput)(nil)).Elem(), ClusterAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAwsAttributesInput)(nil)).Elem(), ClusterAwsAttributesArgs{})
@@ -82733,6 +82730,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterWorkloadTypeClientsPtrInput)(nil)).Elem(), ClusterWorkloadTypeClientsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceInput)(nil)).Elem(), ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspacePtrInput)(nil)).Elem(), ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProvisioningInfoInput)(nil)).Elem(), ConnectionProvisioningInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProvisioningInfoArrayInput)(nil)).Elem(), ConnectionProvisioningInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CredentialAwsIamRoleInput)(nil)).Elem(), CredentialAwsIamRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CredentialAwsIamRolePtrInput)(nil)).Elem(), CredentialAwsIamRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CredentialAzureManagedIdentityInput)(nil)).Elem(), CredentialAzureManagedIdentityArgs{})
@@ -82966,6 +82965,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDependsOnArrayInput)(nil)).Elem(), JobTaskForEachTaskTaskDependsOnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskEmailNotificationsInput)(nil)).Elem(), JobTaskForEachTaskTaskEmailNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskEmailNotificationsPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskEmailNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskGenAiComputeTaskInput)(nil)).Elem(), JobTaskForEachTaskTaskGenAiComputeTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskGenAiComputeTaskPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskGenAiComputeTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskGenAiComputeTaskComputeInput)(nil)).Elem(), JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskGenAiComputeTaskComputePtrInput)(nil)).Elem(), JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskHealthInput)(nil)).Elem(), JobTaskForEachTaskTaskHealthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskHealthPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskHealthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskHealthRuleInput)(nil)).Elem(), JobTaskForEachTaskTaskHealthRuleArgs{})
@@ -83077,6 +83080,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayInput)(nil)).Elem(), JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskWebhookNotificationsOnSuccessInput)(nil)).Elem(), JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArrayInput)(nil)).Elem(), JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskGenAiComputeTaskInput)(nil)).Elem(), JobTaskGenAiComputeTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskGenAiComputeTaskPtrInput)(nil)).Elem(), JobTaskGenAiComputeTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskGenAiComputeTaskComputeInput)(nil)).Elem(), JobTaskGenAiComputeTaskComputeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskGenAiComputeTaskComputePtrInput)(nil)).Elem(), JobTaskGenAiComputeTaskComputeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskHealthInput)(nil)).Elem(), JobTaskHealthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskHealthPtrInput)(nil)).Elem(), JobTaskHealthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskHealthRuleInput)(nil)).Elem(), JobTaskHealthRuleArgs{})
@@ -83586,18 +83593,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlWidgetParameterArrayInput)(nil)).Elem(), SqlWidgetParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlWidgetPositionInput)(nil)).Elem(), SqlWidgetPositionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlWidgetPositionPtrInput)(nil)).Elem(), SqlWidgetPositionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAwsIamRoleInput)(nil)).Elem(), StorageCredentialAwsIamRoleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAwsIamRolePtrInput)(nil)).Elem(), StorageCredentialAwsIamRoleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAzureManagedIdentityInput)(nil)).Elem(), StorageCredentialAzureManagedIdentityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAzureManagedIdentityPtrInput)(nil)).Elem(), StorageCredentialAzureManagedIdentityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAzureServicePrincipalInput)(nil)).Elem(), StorageCredentialAzureServicePrincipalArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAzureServicePrincipalPtrInput)(nil)).Elem(), StorageCredentialAzureServicePrincipalArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialCloudflareApiTokenInput)(nil)).Elem(), StorageCredentialCloudflareApiTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialCloudflareApiTokenPtrInput)(nil)).Elem(), StorageCredentialCloudflareApiTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialDatabricksGcpServiceAccountInput)(nil)).Elem(), StorageCredentialDatabricksGcpServiceAccountArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialDatabricksGcpServiceAccountPtrInput)(nil)).Elem(), StorageCredentialDatabricksGcpServiceAccountArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialGcpServiceAccountKeyInput)(nil)).Elem(), StorageCredentialGcpServiceAccountKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialGcpServiceAccountKeyPtrInput)(nil)).Elem(), StorageCredentialGcpServiceAccountKeyArgs{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
 	pulumi.RegisterOutputType(AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput{})
@@ -83664,6 +83659,8 @@ func init() {
 	pulumi.RegisterOutputType(BudgetFilterTagValuePtrOutput{})
 	pulumi.RegisterOutputType(BudgetFilterWorkspaceIdOutput{})
 	pulumi.RegisterOutputType(BudgetFilterWorkspaceIdPtrOutput{})
+	pulumi.RegisterOutputType(BudgetPolicyCustomTagOutput{})
+	pulumi.RegisterOutputType(BudgetPolicyCustomTagArrayOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscaleOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalePtrOutput{})
 	pulumi.RegisterOutputType(ClusterAwsAttributesOutput{})
@@ -83727,6 +83724,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterWorkloadTypeClientsPtrOutput{})
 	pulumi.RegisterOutputType(ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceOutput{})
 	pulumi.RegisterOutputType(ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspacePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProvisioningInfoOutput{})
+	pulumi.RegisterOutputType(ConnectionProvisioningInfoArrayOutput{})
 	pulumi.RegisterOutputType(CredentialAwsIamRoleOutput{})
 	pulumi.RegisterOutputType(CredentialAwsIamRolePtrOutput{})
 	pulumi.RegisterOutputType(CredentialAzureManagedIdentityOutput{})
@@ -83960,6 +83959,10 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDependsOnArrayOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskEmailNotificationsOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskEmailNotificationsPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskGenAiComputeTaskOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskGenAiComputeTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskGenAiComputeTaskComputeOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskGenAiComputeTaskComputePtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskHealthOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskHealthPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskHealthRuleOutput{})
@@ -84071,6 +84074,10 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskWebhookNotificationsOnSuccessOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArrayOutput{})
+	pulumi.RegisterOutputType(JobTaskGenAiComputeTaskOutput{})
+	pulumi.RegisterOutputType(JobTaskGenAiComputeTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskGenAiComputeTaskComputeOutput{})
+	pulumi.RegisterOutputType(JobTaskGenAiComputeTaskComputePtrOutput{})
 	pulumi.RegisterOutputType(JobTaskHealthOutput{})
 	pulumi.RegisterOutputType(JobTaskHealthPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskHealthRuleOutput{})
@@ -84580,16 +84587,4 @@ func init() {
 	pulumi.RegisterOutputType(SqlWidgetParameterArrayOutput{})
 	pulumi.RegisterOutputType(SqlWidgetPositionOutput{})
 	pulumi.RegisterOutputType(SqlWidgetPositionPtrOutput{})
-	pulumi.RegisterOutputType(StorageCredentialAwsIamRoleOutput{})
-	pulumi.RegisterOutputType(StorageCredentialAwsIamRolePtrOutput{})
-	pulumi.RegisterOutputType(StorageCredentialAzureManagedIdentityOutput{})
-	pulumi.RegisterOutputType(StorageCredentialAzureManagedIdentityPtrOutput{})
-	pulumi.RegisterOutputType(StorageCredentialAzureServicePrincipalOutput{})
-	pulumi.RegisterOutputType(StorageCredentialAzureServicePrincipalPtrOutput{})
-	pulumi.RegisterOutputType(StorageCredentialCloudflareApiTokenOutput{})
-	pulumi.RegisterOutputType(StorageCredentialCloudflareApiTokenPtrOutput{})
-	pulumi.RegisterOutputType(StorageCredentialDatabricksGcpServiceAccountOutput{})
-	pulumi.RegisterOutputType(StorageCredentialDatabricksGcpServiceAccountPtrOutput{})
-	pulumi.RegisterOutputType(StorageCredentialGcpServiceAccountKeyOutput{})
-	pulumi.RegisterOutputType(StorageCredentialGcpServiceAccountKeyPtrOutput{})
 }

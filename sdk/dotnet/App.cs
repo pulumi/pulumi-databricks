@@ -48,6 +48,9 @@ namespace Pulumi.Databricks
         [Output("appStatus")]
         public Output<Outputs.AppAppStatus> AppStatus { get; private set; } = null!;
 
+        [Output("budgetPolicyId")]
+        public Output<string?> BudgetPolicyId { get; private set; } = null!;
+
         /// <summary>
         /// attribute
         /// </summary>
@@ -77,6 +80,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        [Output("effectiveBudgetPolicyId")]
+        public Output<string> EffectiveBudgetPolicyId { get; private set; } = null!;
 
         /// <summary>
         /// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -175,6 +181,9 @@ namespace Pulumi.Databricks
 
     public sealed class AppArgs : global::Pulumi.ResourceArgs
     {
+        [Input("budgetPolicyId")]
+        public Input<string>? BudgetPolicyId { get; set; }
+
         /// <summary>
         /// The description of the app.
         /// </summary>
@@ -219,6 +228,9 @@ namespace Pulumi.Databricks
         [Input("appStatus")]
         public Input<Inputs.AppAppStatusGetArgs>? AppStatus { get; set; }
 
+        [Input("budgetPolicyId")]
+        public Input<string>? BudgetPolicyId { get; set; }
+
         /// <summary>
         /// attribute
         /// </summary>
@@ -248,6 +260,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("effectiveBudgetPolicyId")]
+        public Input<string>? EffectiveBudgetPolicyId { get; set; }
 
         /// <summary>
         /// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.

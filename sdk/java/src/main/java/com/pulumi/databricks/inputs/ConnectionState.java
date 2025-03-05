@@ -5,8 +5,11 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.ConnectionProvisioningInfoArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -33,23 +36,106 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+     * Unique ID of the connection.
+     * 
+     */
+    @Import(name="connectionId")
+    private @Nullable Output<String> connectionId;
+
+    /**
+     * @return Unique ID of the connection.
+     * 
+     */
+    public Optional<Output<String>> connectionId() {
+        return Optional.ofNullable(this.connectionId);
+    }
+
+    /**
+     * Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
      * 
      */
     @Import(name="connectionType")
     private @Nullable Output<String> connectionType;
 
     /**
-     * @return Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+     * @return Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
      * 
      */
     public Optional<Output<String>> connectionType() {
         return Optional.ofNullable(this.connectionType);
     }
 
+    /**
+     * Time at which this connection was created, in epoch milliseconds.
+     * 
+     */
+    @Import(name="createdAt")
+    private @Nullable Output<Integer> createdAt;
+
+    /**
+     * @return Time at which this connection was created, in epoch milliseconds.
+     * 
+     */
+    public Optional<Output<Integer>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * Username of connection creator.
+     * 
+     */
+    @Import(name="createdBy")
+    private @Nullable Output<String> createdBy;
+
+    /**
+     * @return Username of connection creator.
+     * 
+     */
+    public Optional<Output<String>> createdBy() {
+        return Optional.ofNullable(this.createdBy);
+    }
+
+    /**
+     * The type of credential for this connection.
+     * 
+     */
+    @Import(name="credentialType")
+    private @Nullable Output<String> credentialType;
+
+    /**
+     * @return The type of credential for this connection.
+     * 
+     */
+    public Optional<Output<String>> credentialType() {
+        return Optional.ofNullable(this.credentialType);
+    }
+
+    /**
+     * Full name of connection.
+     * 
+     */
+    @Import(name="fullName")
+    private @Nullable Output<String> fullName;
+
+    /**
+     * @return Full name of connection.
+     * 
+     */
+    public Optional<Output<String>> fullName() {
+        return Optional.ofNullable(this.fullName);
+    }
+
+    /**
+     * Unique ID of the UC metastore for this connection.
+     * 
+     */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
+    /**
+     * @return Unique ID of the UC metastore for this connection.
+     * 
+     */
     public Optional<Output<String>> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
@@ -114,6 +200,21 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.properties);
     }
 
+    /**
+     * Object with the status of an asynchronously provisioned resource.
+     * 
+     */
+    @Import(name="provisioningInfos")
+    private @Nullable Output<List<ConnectionProvisioningInfoArgs>> provisioningInfos;
+
+    /**
+     * @return Object with the status of an asynchronously provisioned resource.
+     * 
+     */
+    public Optional<Output<List<ConnectionProvisioningInfoArgs>>> provisioningInfos() {
+        return Optional.ofNullable(this.provisioningInfos);
+    }
+
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
@@ -121,17 +222,79 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.readOnly);
     }
 
+    @Import(name="securableType")
+    private @Nullable Output<String> securableType;
+
+    public Optional<Output<String>> securableType() {
+        return Optional.ofNullable(this.securableType);
+    }
+
+    /**
+     * Time at which connection this was last modified, in epoch milliseconds.
+     * 
+     */
+    @Import(name="updatedAt")
+    private @Nullable Output<Integer> updatedAt;
+
+    /**
+     * @return Time at which connection this was last modified, in epoch milliseconds.
+     * 
+     */
+    public Optional<Output<Integer>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
+    }
+
+    /**
+     * Username of user who last modified the connection.
+     * 
+     */
+    @Import(name="updatedBy")
+    private @Nullable Output<String> updatedBy;
+
+    /**
+     * @return Username of user who last modified the connection.
+     * 
+     */
+    public Optional<Output<String>> updatedBy() {
+        return Optional.ofNullable(this.updatedBy);
+    }
+
+    /**
+     * URL of the remote data source, extracted from options.
+     * 
+     */
+    @Import(name="url")
+    private @Nullable Output<String> url;
+
+    /**
+     * @return URL of the remote data source, extracted from options.
+     * 
+     */
+    public Optional<Output<String>> url() {
+        return Optional.ofNullable(this.url);
+    }
+
     private ConnectionState() {}
 
     private ConnectionState(ConnectionState $) {
         this.comment = $.comment;
+        this.connectionId = $.connectionId;
         this.connectionType = $.connectionType;
+        this.createdAt = $.createdAt;
+        this.createdBy = $.createdBy;
+        this.credentialType = $.credentialType;
+        this.fullName = $.fullName;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.options = $.options;
         this.owner = $.owner;
         this.properties = $.properties;
+        this.provisioningInfos = $.provisioningInfos;
         this.readOnly = $.readOnly;
+        this.securableType = $.securableType;
+        this.updatedAt = $.updatedAt;
+        this.updatedBy = $.updatedBy;
+        this.url = $.url;
     }
 
     public static Builder builder() {
@@ -174,7 +337,28 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionType Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+         * @param connectionId Unique ID of the connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionId(@Nullable Output<String> connectionId) {
+            $.connectionId = connectionId;
+            return this;
+        }
+
+        /**
+         * @param connectionId Unique ID of the connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionId(String connectionId) {
+            return connectionId(Output.of(connectionId));
+        }
+
+        /**
+         * @param connectionType Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
          * 
          * @return builder
          * 
@@ -185,7 +369,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionType Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+         * @param connectionType Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
          * 
          * @return builder
          * 
@@ -194,11 +378,107 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
             return connectionType(Output.of(connectionType));
         }
 
+        /**
+         * @param createdAt Time at which this connection was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(@Nullable Output<Integer> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        /**
+         * @param createdAt Time at which this connection was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(Integer createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param createdBy Username of connection creator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdBy(@Nullable Output<String> createdBy) {
+            $.createdBy = createdBy;
+            return this;
+        }
+
+        /**
+         * @param createdBy Username of connection creator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdBy(String createdBy) {
+            return createdBy(Output.of(createdBy));
+        }
+
+        /**
+         * @param credentialType The type of credential for this connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credentialType(@Nullable Output<String> credentialType) {
+            $.credentialType = credentialType;
+            return this;
+        }
+
+        /**
+         * @param credentialType The type of credential for this connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credentialType(String credentialType) {
+            return credentialType(Output.of(credentialType));
+        }
+
+        /**
+         * @param fullName Full name of connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fullName(@Nullable Output<String> fullName) {
+            $.fullName = fullName;
+            return this;
+        }
+
+        /**
+         * @param fullName Full name of connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fullName(String fullName) {
+            return fullName(Output.of(fullName));
+        }
+
+        /**
+         * @param metastoreId Unique ID of the UC metastore for this connection.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metastoreId(@Nullable Output<String> metastoreId) {
             $.metastoreId = metastoreId;
             return this;
         }
 
+        /**
+         * @param metastoreId Unique ID of the UC metastore for this connection.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metastoreId(String metastoreId) {
             return metastoreId(Output.of(metastoreId));
         }
@@ -287,6 +567,37 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
             return properties(Output.of(properties));
         }
 
+        /**
+         * @param provisioningInfos Object with the status of an asynchronously provisioned resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisioningInfos(@Nullable Output<List<ConnectionProvisioningInfoArgs>> provisioningInfos) {
+            $.provisioningInfos = provisioningInfos;
+            return this;
+        }
+
+        /**
+         * @param provisioningInfos Object with the status of an asynchronously provisioned resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisioningInfos(List<ConnectionProvisioningInfoArgs> provisioningInfos) {
+            return provisioningInfos(Output.of(provisioningInfos));
+        }
+
+        /**
+         * @param provisioningInfos Object with the status of an asynchronously provisioned resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisioningInfos(ConnectionProvisioningInfoArgs... provisioningInfos) {
+            return provisioningInfos(List.of(provisioningInfos));
+        }
+
         public Builder readOnly(@Nullable Output<Boolean> readOnly) {
             $.readOnly = readOnly;
             return this;
@@ -294,6 +605,78 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         public Builder readOnly(Boolean readOnly) {
             return readOnly(Output.of(readOnly));
+        }
+
+        public Builder securableType(@Nullable Output<String> securableType) {
+            $.securableType = securableType;
+            return this;
+        }
+
+        public Builder securableType(String securableType) {
+            return securableType(Output.of(securableType));
+        }
+
+        /**
+         * @param updatedAt Time at which connection this was last modified, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedAt(@Nullable Output<Integer> updatedAt) {
+            $.updatedAt = updatedAt;
+            return this;
+        }
+
+        /**
+         * @param updatedAt Time at which connection this was last modified, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedAt(Integer updatedAt) {
+            return updatedAt(Output.of(updatedAt));
+        }
+
+        /**
+         * @param updatedBy Username of user who last modified the connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedBy(@Nullable Output<String> updatedBy) {
+            $.updatedBy = updatedBy;
+            return this;
+        }
+
+        /**
+         * @param updatedBy Username of user who last modified the connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedBy(String updatedBy) {
+            return updatedBy(Output.of(updatedBy));
+        }
+
+        /**
+         * @param url URL of the remote data source, extracted from options.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder url(@Nullable Output<String> url) {
+            $.url = url;
+            return this;
+        }
+
+        /**
+         * @param url URL of the remote data source, extracted from options.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder url(String url) {
+            return url(Output.of(url));
         }
 
         public ConnectionState build() {

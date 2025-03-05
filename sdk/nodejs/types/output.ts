@@ -381,6 +381,17 @@ export interface BudgetFilterWorkspaceId {
     values?: number[];
 }
 
+export interface BudgetPolicyCustomTag {
+    /**
+     * The key of the tag. - Must be unique among all custom tags of the same policy. Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" as these tags are preserved.
+     */
+    key: string;
+    /**
+     * The value of the tag.
+     */
+    value?: string;
+}
+
 export interface ClusterAutoscale {
     /**
      * The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
@@ -817,6 +828,10 @@ export interface ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProf
     isEnabled: boolean;
 }
 
+export interface ConnectionProvisioningInfo {
+    state?: string;
+}
+
 export interface CredentialAwsIamRole {
     externalId: string;
     /**
@@ -911,6 +926,7 @@ export interface GetAppApp {
      * attribute
      */
     appStatus: outputs.GetAppAppAppStatus;
+    budgetPolicyId?: string;
     /**
      * attribute
      */
@@ -931,6 +947,7 @@ export interface GetAppApp {
      * The description of the resource.
      */
     description?: string;
+    effectiveBudgetPolicyId: string;
     /**
      * Id of the job to grant permission on.
      */
@@ -1140,6 +1157,7 @@ export interface GetAppsApp {
      * attribute
      */
     appStatus: outputs.GetAppsAppAppStatus;
+    budgetPolicyId?: string;
     /**
      * attribute
      */
@@ -1160,6 +1178,7 @@ export interface GetAppsApp {
      * The description of the resource.
      */
     description?: string;
+    effectiveBudgetPolicyId: string;
     /**
      * Id of the job to grant permission on.
      */
@@ -1363,6 +1382,25 @@ export interface GetAppsAppResourceSqlWarehouse {
     permission: string;
 }
 
+export interface GetBudgetPoliciesBudgetPolicy {
+    customTags?: outputs.GetBudgetPoliciesBudgetPolicyCustomTag[];
+    policyId: string;
+    /**
+     * The partial name of policies to be filtered on. If unspecified, all policies will be returned.
+     */
+    policyName?: string;
+}
+
+export interface GetBudgetPoliciesBudgetPolicyCustomTag {
+    key: string;
+    value?: string;
+}
+
+export interface GetBudgetPolicyCustomTag {
+    key: string;
+    value?: string;
+}
+
 export interface GetCatalogCatalogInfo {
     browseOnly?: boolean;
     /**
@@ -1472,14 +1510,14 @@ export interface GetClusterClusterInfo {
     azureAttributes?: outputs.GetClusterClusterInfoAzureAttributes;
     clusterCores?: number;
     /**
-     * The id of the cluster
+     * The id of the cluster.
      */
     clusterId?: string;
     clusterLogConf?: outputs.GetClusterClusterInfoClusterLogConf;
     clusterLogStatus?: outputs.GetClusterClusterInfoClusterLogStatus;
     clusterMemoryMb?: number;
     /**
-     * The exact name of the cluster to search
+     * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      */
     clusterName?: string;
     clusterSource?: string;
@@ -1723,13 +1761,13 @@ export interface GetClusterClusterInfoSpec {
     awsAttributes?: outputs.GetClusterClusterInfoSpecAwsAttributes;
     azureAttributes?: outputs.GetClusterClusterInfoSpecAzureAttributes;
     /**
-     * The id of the cluster
+     * The id of the cluster.
      */
     clusterId: string;
     clusterLogConf?: outputs.GetClusterClusterInfoSpecClusterLogConf;
     clusterMountInfos?: outputs.GetClusterClusterInfoSpecClusterMountInfo[];
     /**
-     * The exact name of the cluster to search
+     * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      */
     clusterName?: string;
     /**
@@ -2078,6 +2116,28 @@ export interface GetCurrentMetastoreMetastoreInfo {
      * the ID of the identity that updated the current metastore.
      */
     updatedBy?: string;
+}
+
+export interface GetDashboardsDashboard {
+    /**
+     * The timestamp of when the dashboard was created.
+     */
+    createTime: string;
+    /**
+     * The unique ID of the dashboard.
+     */
+    dashboardId: string;
+    /**
+     * The display name of the dashboard.
+     */
+    displayName?: string;
+    etag: string;
+    lifecycleState: string;
+    parentPath: string;
+    path: string;
+    serializedDashboard?: string;
+    updateTime: string;
+    warehouseId?: string;
 }
 
 export interface GetDbfsFilePathsPathList {
@@ -4482,6 +4542,7 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAmazo
     awsSecretAccessKey?: string;
     awsSecretAccessKeyPlaintext?: string;
     bedrockProvider: string;
+    instanceProfileArn?: string;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig {
@@ -5921,6 +5982,7 @@ export interface JobTask {
      */
     existingClusterId?: string;
     forEachTask?: outputs.JobTaskForEachTask;
+    genAiComputeTask?: outputs.JobTaskGenAiComputeTask;
     /**
      * block described below that specifies health conditions for a given task.
      */
@@ -6135,6 +6197,7 @@ export interface JobTaskForEachTaskTask {
      * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
      */
     existingClusterId?: string;
+    genAiComputeTask?: outputs.JobTaskForEachTaskTaskGenAiComputeTask;
     /**
      * block described below that specifies health conditions for a given task.
      */
@@ -6304,6 +6367,23 @@ export interface JobTaskForEachTaskTaskEmailNotifications {
      * (List) list of emails to notify when the run completes successfully.
      */
     onSuccesses?: string[];
+}
+
+export interface JobTaskForEachTaskTaskGenAiComputeTask {
+    command?: string;
+    compute?: outputs.JobTaskForEachTaskTaskGenAiComputeTaskCompute;
+    dlRuntimeImage: string;
+    mlflowExperimentName?: string;
+    source?: string;
+    trainingScriptPath?: string;
+    yamlParameters?: string;
+    yamlParametersFilePath?: string;
+}
+
+export interface JobTaskForEachTaskTaskGenAiComputeTaskCompute {
+    gpuNodePoolId: string;
+    gpuType?: string;
+    numGpus: number;
 }
 
 export interface JobTaskForEachTaskTaskHealth {
@@ -6894,6 +6974,23 @@ export interface JobTaskForEachTaskTaskWebhookNotificationsOnSuccess {
      * ID of the job
      */
     id: string;
+}
+
+export interface JobTaskGenAiComputeTask {
+    command?: string;
+    compute?: outputs.JobTaskGenAiComputeTaskCompute;
+    dlRuntimeImage: string;
+    mlflowExperimentName?: string;
+    source?: string;
+    trainingScriptPath?: string;
+    yamlParameters?: string;
+    yamlParametersFilePath?: string;
+}
+
+export interface JobTaskGenAiComputeTaskCompute {
+    gpuNodePoolId: string;
+    gpuType?: string;
+    numGpus: number;
 }
 
 export interface JobTaskHealth {
@@ -8100,6 +8197,7 @@ export interface ModelServingConfigServedEntityExternalModelAmazonBedrockConfig 
      * The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
      */
     bedrockProvider: string;
+    instanceProfileArn?: string;
 }
 
 export interface ModelServingConfigServedEntityExternalModelAnthropicConfig {
@@ -9819,7 +9917,13 @@ export interface VectorSearchIndexDeltaSyncIndexSpec {
      * array of objects representing columns that contain the embedding source.  Each entry consists of:
      */
     embeddingSourceColumns?: outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn[];
+    /**
+     * array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     */
     embeddingVectorColumns?: outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn[];
+    /**
+     * Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
+     */
     embeddingWritebackTable?: string;
     /**
      * ID of the associated Delta Live Table pipeline.
@@ -9838,17 +9942,23 @@ export interface VectorSearchIndexDeltaSyncIndexSpec {
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
+    /**
+     * The name of the embedding model endpoint
+     */
     embeddingModelEndpointName?: string;
     /**
-     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+     * The name of the column
      */
     name?: string;
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
+    /**
+     * Dimension of the embedding vector.
+     */
     embeddingDimension?: number;
     /**
-     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+     * The name of the column.
      */
     name?: string;
 }
@@ -9858,6 +9968,9 @@ export interface VectorSearchIndexDirectAccessIndexSpec {
      * array of objects representing columns that contain the embedding source.  Each entry consists of:
      */
     embeddingSourceColumns?: outputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn[];
+    /**
+     * array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     */
     embeddingVectorColumns?: outputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn[];
     /**
      * The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
@@ -9866,17 +9979,23 @@ export interface VectorSearchIndexDirectAccessIndexSpec {
 }
 
 export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
+    /**
+     * The name of the embedding model endpoint
+     */
     embeddingModelEndpointName?: string;
     /**
-     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+     * The name of the column
      */
     name?: string;
 }
 
 export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
+    /**
+     * Dimension of the embedding vector.
+     */
     embeddingDimension?: number;
     /**
-     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+     * The name of the column.
      */
     name?: string;
 }

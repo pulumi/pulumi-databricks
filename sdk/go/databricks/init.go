@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AutomaticClusterUpdateWorkspaceSetting{}
 	case "databricks:index/budget:Budget":
 		r = &Budget{}
+	case "databricks:index/budgetPolicy:BudgetPolicy":
+		r = &BudgetPolicy{}
 	case "databricks:index/catalog:Catalog":
 		r = &Catalog{}
 	case "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding":
@@ -294,6 +296,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/budget",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/budgetPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

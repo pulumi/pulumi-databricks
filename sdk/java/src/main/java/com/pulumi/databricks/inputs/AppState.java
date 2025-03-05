@@ -45,6 +45,13 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.appStatus);
     }
 
+    @Import(name="budgetPolicyId")
+    private @Nullable Output<String> budgetPolicyId;
+
+    public Optional<Output<String>> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
+    }
+
     /**
      * attribute
      * 
@@ -118,6 +125,13 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    @Import(name="effectiveBudgetPolicyId")
+    private @Nullable Output<String> effectiveBudgetPolicyId;
+
+    public Optional<Output<String>> effectiveBudgetPolicyId() {
+        return Optional.ofNullable(this.effectiveBudgetPolicyId);
     }
 
     /**
@@ -251,11 +265,13 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
     private AppState(AppState $) {
         this.activeDeployment = $.activeDeployment;
         this.appStatus = $.appStatus;
+        this.budgetPolicyId = $.budgetPolicyId;
         this.computeStatus = $.computeStatus;
         this.createTime = $.createTime;
         this.creator = $.creator;
         this.defaultSourceCodePath = $.defaultSourceCodePath;
         this.description = $.description;
+        this.effectiveBudgetPolicyId = $.effectiveBudgetPolicyId;
         this.name = $.name;
         this.noCompute = $.noCompute;
         this.pendingDeployment = $.pendingDeployment;
@@ -314,6 +330,15 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder appStatus(AppAppStatusArgs appStatus) {
             return appStatus(Output.of(appStatus));
+        }
+
+        public Builder budgetPolicyId(@Nullable Output<String> budgetPolicyId) {
+            $.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+
+        public Builder budgetPolicyId(String budgetPolicyId) {
+            return budgetPolicyId(Output.of(budgetPolicyId));
         }
 
         /**
@@ -419,6 +444,15 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        public Builder effectiveBudgetPolicyId(@Nullable Output<String> effectiveBudgetPolicyId) {
+            $.effectiveBudgetPolicyId = effectiveBudgetPolicyId;
+            return this;
+        }
+
+        public Builder effectiveBudgetPolicyId(String effectiveBudgetPolicyId) {
+            return effectiveBudgetPolicyId(Output.of(effectiveBudgetPolicyId));
         }
 
         /**

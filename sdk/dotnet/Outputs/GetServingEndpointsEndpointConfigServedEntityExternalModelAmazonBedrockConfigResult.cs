@@ -19,6 +19,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? AwsSecretAccessKey;
         public readonly string? AwsSecretAccessKeyPlaintext;
         public readonly string BedrockProvider;
+        public readonly string? InstanceProfileArn;
 
         [OutputConstructor]
         private GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigResult(
@@ -32,7 +33,9 @@ namespace Pulumi.Databricks.Outputs
 
             string? awsSecretAccessKeyPlaintext,
 
-            string bedrockProvider)
+            string bedrockProvider,
+
+            string? instanceProfileArn)
         {
             AwsAccessKeyId = awsAccessKeyId;
             AwsAccessKeyIdPlaintext = awsAccessKeyIdPlaintext;
@@ -40,6 +43,7 @@ namespace Pulumi.Databricks.Outputs
             AwsSecretAccessKey = awsSecretAccessKey;
             AwsSecretAccessKeyPlaintext = awsSecretAccessKeyPlaintext;
             BedrockProvider = bedrockProvider;
+            InstanceProfileArn = instanceProfileArn;
         }
     }
 }
