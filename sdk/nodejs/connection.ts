@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -72,6 +74,22 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * Create a connection to builtin Hive Metastore
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.Connection("this", {
+ *     name: "hms-builtin",
+ *     connectionType: "HIVE_METASTORE",
+ *     comment: "This is a connection to builtin HMS",
+ *     options: {
+ *         builtin: "true",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by `id`:
@@ -115,10 +133,33 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+     * Unique ID of the connection.
      */
-    public readonly connectionType!: pulumi.Output<string>;
-    public readonly metastoreId!: pulumi.Output<string>;
+    public /*out*/ readonly connectionId!: pulumi.Output<string>;
+    /**
+     * Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+     */
+    public readonly connectionType!: pulumi.Output<string | undefined>;
+    /**
+     * Time at which this connection was created, in epoch milliseconds.
+     */
+    public /*out*/ readonly createdAt!: pulumi.Output<number>;
+    /**
+     * Username of connection creator.
+     */
+    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    /**
+     * The type of credential for this connection.
+     */
+    public /*out*/ readonly credentialType!: pulumi.Output<string>;
+    /**
+     * Full name of connection.
+     */
+    public /*out*/ readonly fullName!: pulumi.Output<string>;
+    /**
+     * Unique ID of the UC metastore for this connection.
+     */
+    public /*out*/ readonly metastoreId!: pulumi.Output<string>;
     /**
      * Name of the Connection.
      */
@@ -126,7 +167,7 @@ export class Connection extends pulumi.CustomResource {
     /**
      * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      */
-    public readonly options!: pulumi.Output<{[key: string]: string}>;
+    public readonly options!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of the connection owner.
      */
@@ -135,7 +176,24 @@ export class Connection extends pulumi.CustomResource {
      * Free-form connection properties.
      */
     public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Object with the status of an asynchronously provisioned resource.
+     */
+    public /*out*/ readonly provisioningInfos!: pulumi.Output<outputs.ConnectionProvisioningInfo[]>;
     public readonly readOnly!: pulumi.Output<boolean>;
+    public /*out*/ readonly securableType!: pulumi.Output<string>;
+    /**
+     * Time at which connection this was last modified, in epoch milliseconds.
+     */
+    public /*out*/ readonly updatedAt!: pulumi.Output<number>;
+    /**
+     * Username of user who last modified the connection.
+     */
+    public /*out*/ readonly updatedBy!: pulumi.Output<string>;
+    /**
+     * URL of the remote data source, extracted from options.
+     */
+    public /*out*/ readonly url!: pulumi.Output<string>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -144,36 +202,50 @@ export class Connection extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ConnectionArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectionArgs | ConnectionState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["connectionId"] = state ? state.connectionId : undefined;
             resourceInputs["connectionType"] = state ? state.connectionType : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
+            resourceInputs["credentialType"] = state ? state.credentialType : undefined;
+            resourceInputs["fullName"] = state ? state.fullName : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["options"] = state ? state.options : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
             resourceInputs["properties"] = state ? state.properties : undefined;
+            resourceInputs["provisioningInfos"] = state ? state.provisioningInfos : undefined;
             resourceInputs["readOnly"] = state ? state.readOnly : undefined;
+            resourceInputs["securableType"] = state ? state.securableType : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["updatedBy"] = state ? state.updatedBy : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if ((!args || args.connectionType === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'connectionType'");
-            }
-            if ((!args || args.options === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'options'");
-            }
             resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["connectionType"] = args ? args.connectionType : undefined;
-            resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["options"] = args?.options ? pulumi.secret(args.options) : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["readOnly"] = args ? args.readOnly : undefined;
+            resourceInputs["connectionId"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["createdBy"] = undefined /*out*/;
+            resourceInputs["credentialType"] = undefined /*out*/;
+            resourceInputs["fullName"] = undefined /*out*/;
+            resourceInputs["metastoreId"] = undefined /*out*/;
+            resourceInputs["provisioningInfos"] = undefined /*out*/;
+            resourceInputs["securableType"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["updatedBy"] = undefined /*out*/;
+            resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["options"] };
@@ -191,9 +263,32 @@ export interface ConnectionState {
      */
     comment?: pulumi.Input<string>;
     /**
-     * Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+     * Unique ID of the connection.
+     */
+    connectionId?: pulumi.Input<string>;
+    /**
+     * Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
      */
     connectionType?: pulumi.Input<string>;
+    /**
+     * Time at which this connection was created, in epoch milliseconds.
+     */
+    createdAt?: pulumi.Input<number>;
+    /**
+     * Username of connection creator.
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * The type of credential for this connection.
+     */
+    credentialType?: pulumi.Input<string>;
+    /**
+     * Full name of connection.
+     */
+    fullName?: pulumi.Input<string>;
+    /**
+     * Unique ID of the UC metastore for this connection.
+     */
     metastoreId?: pulumi.Input<string>;
     /**
      * Name of the Connection.
@@ -211,7 +306,24 @@ export interface ConnectionState {
      * Free-form connection properties.
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Object with the status of an asynchronously provisioned resource.
+     */
+    provisioningInfos?: pulumi.Input<pulumi.Input<inputs.ConnectionProvisioningInfo>[]>;
     readOnly?: pulumi.Input<boolean>;
+    securableType?: pulumi.Input<string>;
+    /**
+     * Time at which connection this was last modified, in epoch milliseconds.
+     */
+    updatedAt?: pulumi.Input<number>;
+    /**
+     * Username of user who last modified the connection.
+     */
+    updatedBy?: pulumi.Input<string>;
+    /**
+     * URL of the remote data source, extracted from options.
+     */
+    url?: pulumi.Input<string>;
 }
 
 /**
@@ -223,10 +335,9 @@ export interface ConnectionArgs {
      */
     comment?: pulumi.Input<string>;
     /**
-     * Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+     * Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
      */
-    connectionType: pulumi.Input<string>;
-    metastoreId?: pulumi.Input<string>;
+    connectionType?: pulumi.Input<string>;
     /**
      * Name of the Connection.
      */
@@ -234,7 +345,7 @@ export interface ConnectionArgs {
     /**
      * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      */
-    options: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the connection owner.
      */

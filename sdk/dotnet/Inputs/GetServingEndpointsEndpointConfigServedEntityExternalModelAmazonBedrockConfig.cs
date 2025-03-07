@@ -30,6 +30,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("bedrockProvider", required: true)]
         public string BedrockProvider { get; set; } = null!;
 
+        [Input("instanceProfileArn")]
+        public string? InstanceProfileArn { get; set; }
+
         public GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs()
         {
         }

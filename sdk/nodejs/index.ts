@@ -45,6 +45,11 @@ export type Budget = import("./budget").Budget;
 export const Budget: typeof import("./budget").Budget = null as any;
 utilities.lazyLoad(exports, ["Budget"], () => require("./budget"));
 
+export { BudgetPolicyArgs, BudgetPolicyState } from "./budgetPolicy";
+export type BudgetPolicy = import("./budgetPolicy").BudgetPolicy;
+export const BudgetPolicy: typeof import("./budgetPolicy").BudgetPolicy = null as any;
+utilities.lazyLoad(exports, ["BudgetPolicy"], () => require("./budgetPolicy"));
+
 export { CatalogArgs, CatalogState } from "./catalog";
 export type Catalog = import("./catalog").Catalog;
 export const Catalog: typeof import("./catalog").Catalog = null as any;
@@ -160,6 +165,16 @@ export const getAwsUnityCatalogPolicy: typeof import("./getAwsUnityCatalogPolicy
 export const getAwsUnityCatalogPolicyOutput: typeof import("./getAwsUnityCatalogPolicy").getAwsUnityCatalogPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAwsUnityCatalogPolicy","getAwsUnityCatalogPolicyOutput"], () => require("./getAwsUnityCatalogPolicy"));
 
+export { GetBudgetPoliciesResult } from "./getBudgetPolicies";
+export const getBudgetPolicies: typeof import("./getBudgetPolicies").getBudgetPolicies = null as any;
+export const getBudgetPoliciesOutput: typeof import("./getBudgetPolicies").getBudgetPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getBudgetPolicies","getBudgetPoliciesOutput"], () => require("./getBudgetPolicies"));
+
+export { GetBudgetPolicyArgs, GetBudgetPolicyResult, GetBudgetPolicyOutputArgs } from "./getBudgetPolicy";
+export const getBudgetPolicy: typeof import("./getBudgetPolicy").getBudgetPolicy = null as any;
+export const getBudgetPolicyOutput: typeof import("./getBudgetPolicy").getBudgetPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getBudgetPolicy","getBudgetPolicyOutput"], () => require("./getBudgetPolicy"));
+
 export { GetCatalogArgs, GetCatalogResult, GetCatalogOutputArgs } from "./getCatalog";
 export const getCatalog: typeof import("./getCatalog").getCatalog = null as any;
 export const getCatalogOutput: typeof import("./getCatalog").getCatalogOutput = null as any;
@@ -199,6 +214,11 @@ export { GetCurrentUserResult } from "./getCurrentUser";
 export const getCurrentUser: typeof import("./getCurrentUser").getCurrentUser = null as any;
 export const getCurrentUserOutput: typeof import("./getCurrentUser").getCurrentUserOutput = null as any;
 utilities.lazyLoad(exports, ["getCurrentUser","getCurrentUserOutput"], () => require("./getCurrentUser"));
+
+export { GetDashboardsArgs, GetDashboardsResult, GetDashboardsOutputArgs } from "./getDashboards";
+export const getDashboards: typeof import("./getDashboards").getDashboards = null as any;
+export const getDashboardsOutput: typeof import("./getDashboards").getDashboardsOutput = null as any;
+utilities.lazyLoad(exports, ["getDashboards","getDashboardsOutput"], () => require("./getDashboards"));
 
 export { GetDbfsFileArgs, GetDbfsFileResult, GetDbfsFileOutputArgs } from "./getDbfsFile";
 export const getDbfsFile: typeof import("./getDbfsFile").getDbfsFile = null as any;
@@ -855,6 +875,8 @@ const _module = {
                 return new AutomaticClusterUpdateWorkspaceSetting(name, <any>undefined, { urn })
             case "databricks:index/budget:Budget":
                 return new Budget(name, <any>undefined, { urn })
+            case "databricks:index/budgetPolicy:BudgetPolicy":
+                return new BudgetPolicy(name, <any>undefined, { urn })
             case "databricks:index/catalog:Catalog":
                 return new Catalog(name, <any>undefined, { urn })
             case "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding":
@@ -1056,6 +1078,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/app", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/artifactAllowlist", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/automaticClusterUpdateWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/budget", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/budgetPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/catalog", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/catalogWorkspaceBinding", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/cluster", _module)

@@ -10,6 +10,7 @@ import com.pulumi.databricks.outputs.JobTaskDbtTask;
 import com.pulumi.databricks.outputs.JobTaskDependsOn;
 import com.pulumi.databricks.outputs.JobTaskEmailNotifications;
 import com.pulumi.databricks.outputs.JobTaskForEachTask;
+import com.pulumi.databricks.outputs.JobTaskGenAiComputeTask;
 import com.pulumi.databricks.outputs.JobTaskHealth;
 import com.pulumi.databricks.outputs.JobTaskLibrary;
 import com.pulumi.databricks.outputs.JobTaskNewCluster;
@@ -68,6 +69,7 @@ public final class JobTask {
      */
     private @Nullable String existingClusterId;
     private @Nullable JobTaskForEachTask forEachTask;
+    private @Nullable JobTaskGenAiComputeTask genAiComputeTask;
     /**
      * @return block described below that specifies health conditions for a given task.
      * 
@@ -194,6 +196,9 @@ public final class JobTask {
     }
     public Optional<JobTaskForEachTask> forEachTask() {
         return Optional.ofNullable(this.forEachTask);
+    }
+    public Optional<JobTaskGenAiComputeTask> genAiComputeTask() {
+        return Optional.ofNullable(this.genAiComputeTask);
     }
     /**
      * @return block described below that specifies health conditions for a given task.
@@ -326,6 +331,7 @@ public final class JobTask {
         private @Nullable String environmentKey;
         private @Nullable String existingClusterId;
         private @Nullable JobTaskForEachTask forEachTask;
+        private @Nullable JobTaskGenAiComputeTask genAiComputeTask;
         private @Nullable JobTaskHealth health;
         private @Nullable String jobClusterKey;
         private @Nullable List<JobTaskLibrary> libraries;
@@ -359,6 +365,7 @@ public final class JobTask {
     	      this.environmentKey = defaults.environmentKey;
     	      this.existingClusterId = defaults.existingClusterId;
     	      this.forEachTask = defaults.forEachTask;
+    	      this.genAiComputeTask = defaults.genAiComputeTask;
     	      this.health = defaults.health;
     	      this.jobClusterKey = defaults.jobClusterKey;
     	      this.libraries = defaults.libraries;
@@ -442,6 +449,12 @@ public final class JobTask {
         public Builder forEachTask(@Nullable JobTaskForEachTask forEachTask) {
 
             this.forEachTask = forEachTask;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder genAiComputeTask(@Nullable JobTaskGenAiComputeTask genAiComputeTask) {
+
+            this.genAiComputeTask = genAiComputeTask;
             return this;
         }
         @CustomType.Setter
@@ -581,6 +594,7 @@ public final class JobTask {
             _resultValue.environmentKey = environmentKey;
             _resultValue.existingClusterId = existingClusterId;
             _resultValue.forEachTask = forEachTask;
+            _resultValue.genAiComputeTask = genAiComputeTask;
             _resultValue.health = health;
             _resultValue.jobClusterKey = jobClusterKey;
             _resultValue.libraries = libraries;

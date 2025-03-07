@@ -37,6 +37,7 @@ namespace Pulumi.Databricks.Outputs
         /// The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
         /// </summary>
         public readonly string BedrockProvider;
+        public readonly string? InstanceProfileArn;
 
         [OutputConstructor]
         private ModelServingConfigServedEntityExternalModelAmazonBedrockConfig(
@@ -50,7 +51,9 @@ namespace Pulumi.Databricks.Outputs
 
             string? awsSecretAccessKeyPlaintext,
 
-            string bedrockProvider)
+            string bedrockProvider,
+
+            string? instanceProfileArn)
         {
             AwsAccessKeyId = awsAccessKeyId;
             AwsAccessKeyIdPlaintext = awsAccessKeyIdPlaintext;
@@ -58,6 +61,7 @@ namespace Pulumi.Databricks.Outputs
             AwsSecretAccessKey = awsSecretAccessKey;
             AwsSecretAccessKeyPlaintext = awsSecretAccessKeyPlaintext;
             BedrockProvider = bedrockProvider;
+            InstanceProfileArn = instanceProfileArn;
         }
     }
 }

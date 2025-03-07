@@ -42,6 +42,7 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
      * 
      */
     private String bedrockProvider;
+    private @Nullable String instanceProfileArn;
 
     private ModelServingConfigServedEntityExternalModelAmazonBedrockConfig() {}
     /**
@@ -86,6 +87,9 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
     public String bedrockProvider() {
         return this.bedrockProvider;
     }
+    public Optional<String> instanceProfileArn() {
+        return Optional.ofNullable(this.instanceProfileArn);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -102,6 +106,7 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
         private @Nullable String awsSecretAccessKey;
         private @Nullable String awsSecretAccessKeyPlaintext;
         private String bedrockProvider;
+        private @Nullable String instanceProfileArn;
         public Builder() {}
         public Builder(ModelServingConfigServedEntityExternalModelAmazonBedrockConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -111,6 +116,7 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
     	      this.awsSecretAccessKey = defaults.awsSecretAccessKey;
     	      this.awsSecretAccessKeyPlaintext = defaults.awsSecretAccessKeyPlaintext;
     	      this.bedrockProvider = defaults.bedrockProvider;
+    	      this.instanceProfileArn = defaults.instanceProfileArn;
         }
 
         @CustomType.Setter
@@ -153,6 +159,12 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
             this.bedrockProvider = bedrockProvider;
             return this;
         }
+        @CustomType.Setter
+        public Builder instanceProfileArn(@Nullable String instanceProfileArn) {
+
+            this.instanceProfileArn = instanceProfileArn;
+            return this;
+        }
         public ModelServingConfigServedEntityExternalModelAmazonBedrockConfig build() {
             final var _resultValue = new ModelServingConfigServedEntityExternalModelAmazonBedrockConfig();
             _resultValue.awsAccessKeyId = awsAccessKeyId;
@@ -161,6 +173,7 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
             _resultValue.awsSecretAccessKey = awsSecretAccessKey;
             _resultValue.awsSecretAccessKeyPlaintext = awsSecretAccessKeyPlaintext;
             _resultValue.bedrockProvider = bedrockProvider;
+            _resultValue.instanceProfileArn = instanceProfileArn;
             return _resultValue;
         }
     }

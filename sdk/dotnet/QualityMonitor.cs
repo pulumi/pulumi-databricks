@@ -239,7 +239,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.QualityMonitorSchedule?> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to skip creating a default dashboard summarizing data quality metrics.
+        /// Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
         /// </summary>
         [Output("skipBuiltinDashboard")]
         public Output<bool?> SkipBuiltinDashboard { get; private set; } = null!;
@@ -275,7 +275,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.QualityMonitorTimeSeries?> TimeSeries { get; private set; } = null!;
 
         /// <summary>
-        /// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+        /// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
         /// </summary>
         [Output("warehouseId")]
         public Output<string?> WarehouseId { get; private set; } = null!;
@@ -391,7 +391,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.QualityMonitorScheduleArgs>? Schedule { get; set; }
 
         /// <summary>
-        /// Whether to skip creating a default dashboard summarizing data quality metrics.
+        /// Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
         /// </summary>
         [Input("skipBuiltinDashboard")]
         public Input<bool>? SkipBuiltinDashboard { get; set; }
@@ -427,7 +427,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.QualityMonitorTimeSeriesArgs>? TimeSeries { get; set; }
 
         /// <summary>
-        /// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+        /// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
         /// </summary>
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }
@@ -529,7 +529,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.QualityMonitorScheduleGetArgs>? Schedule { get; set; }
 
         /// <summary>
-        /// Whether to skip creating a default dashboard summarizing data quality metrics.
+        /// Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
         /// </summary>
         [Input("skipBuiltinDashboard")]
         public Input<bool>? SkipBuiltinDashboard { get; set; }
@@ -571,7 +571,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.QualityMonitorTimeSeriesGetArgs>? TimeSeries { get; set; }
 
         /// <summary>
-        /// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+        /// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
         /// </summary>
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }

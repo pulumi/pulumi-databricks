@@ -9,6 +9,7 @@ import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskConditionTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskDbtTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskDependsOn;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskEmailNotifications;
+import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskGenAiComputeTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskHealth;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskLibrary;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskNewCluster;
@@ -66,6 +67,7 @@ public final class JobTaskForEachTaskTask {
      * 
      */
     private @Nullable String existingClusterId;
+    private @Nullable JobTaskForEachTaskTaskGenAiComputeTask genAiComputeTask;
     /**
      * @return block described below that specifies health conditions for a given task.
      * 
@@ -189,6 +191,9 @@ public final class JobTaskForEachTaskTask {
      */
     public Optional<String> existingClusterId() {
         return Optional.ofNullable(this.existingClusterId);
+    }
+    public Optional<JobTaskForEachTaskTaskGenAiComputeTask> genAiComputeTask() {
+        return Optional.ofNullable(this.genAiComputeTask);
     }
     /**
      * @return block described below that specifies health conditions for a given task.
@@ -320,6 +325,7 @@ public final class JobTaskForEachTaskTask {
         private @Nullable JobTaskForEachTaskTaskEmailNotifications emailNotifications;
         private @Nullable String environmentKey;
         private @Nullable String existingClusterId;
+        private @Nullable JobTaskForEachTaskTaskGenAiComputeTask genAiComputeTask;
         private @Nullable JobTaskForEachTaskTaskHealth health;
         private @Nullable String jobClusterKey;
         private @Nullable List<JobTaskForEachTaskTaskLibrary> libraries;
@@ -352,6 +358,7 @@ public final class JobTaskForEachTaskTask {
     	      this.emailNotifications = defaults.emailNotifications;
     	      this.environmentKey = defaults.environmentKey;
     	      this.existingClusterId = defaults.existingClusterId;
+    	      this.genAiComputeTask = defaults.genAiComputeTask;
     	      this.health = defaults.health;
     	      this.jobClusterKey = defaults.jobClusterKey;
     	      this.libraries = defaults.libraries;
@@ -429,6 +436,12 @@ public final class JobTaskForEachTaskTask {
         public Builder existingClusterId(@Nullable String existingClusterId) {
 
             this.existingClusterId = existingClusterId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder genAiComputeTask(@Nullable JobTaskForEachTaskTaskGenAiComputeTask genAiComputeTask) {
+
+            this.genAiComputeTask = genAiComputeTask;
             return this;
         }
         @CustomType.Setter
@@ -567,6 +580,7 @@ public final class JobTaskForEachTaskTask {
             _resultValue.emailNotifications = emailNotifications;
             _resultValue.environmentKey = environmentKey;
             _resultValue.existingClusterId = existingClusterId;
+            _resultValue.genAiComputeTask = genAiComputeTask;
             _resultValue.health = health;
             _resultValue.jobClusterKey = jobClusterKey;
             _resultValue.libraries = libraries;

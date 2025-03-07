@@ -41,7 +41,8 @@ type App struct {
 
 	ActiveDeployment AppActiveDeploymentOutput `pulumi:"activeDeployment"`
 	// attribute
-	AppStatus AppAppStatusOutput `pulumi:"appStatus"`
+	AppStatus      AppAppStatusOutput     `pulumi:"appStatus"`
+	BudgetPolicyId pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
 	// attribute
 	ComputeStatus AppComputeStatusOutput `pulumi:"computeStatus"`
 	// The creation time of the app.
@@ -51,7 +52,8 @@ type App struct {
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath pulumi.StringOutput `pulumi:"defaultSourceCodePath"`
 	// The description of the app.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description             pulumi.StringPtrOutput `pulumi:"description"`
+	EffectiveBudgetPolicyId pulumi.StringOutput    `pulumi:"effectiveBudgetPolicyId"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name              pulumi.StringOutput        `pulumi:"name"`
 	NoCompute         pulumi.BoolPtrOutput       `pulumi:"noCompute"`
@@ -103,7 +105,8 @@ func GetApp(ctx *pulumi.Context,
 type appState struct {
 	ActiveDeployment *AppActiveDeployment `pulumi:"activeDeployment"`
 	// attribute
-	AppStatus *AppAppStatus `pulumi:"appStatus"`
+	AppStatus      *AppAppStatus `pulumi:"appStatus"`
+	BudgetPolicyId *string       `pulumi:"budgetPolicyId"`
 	// attribute
 	ComputeStatus *AppComputeStatus `pulumi:"computeStatus"`
 	// The creation time of the app.
@@ -113,7 +116,8 @@ type appState struct {
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath *string `pulumi:"defaultSourceCodePath"`
 	// The description of the app.
-	Description *string `pulumi:"description"`
+	Description             *string `pulumi:"description"`
+	EffectiveBudgetPolicyId *string `pulumi:"effectiveBudgetPolicyId"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name              *string               `pulumi:"name"`
 	NoCompute         *bool                 `pulumi:"noCompute"`
@@ -136,7 +140,8 @@ type appState struct {
 type AppState struct {
 	ActiveDeployment AppActiveDeploymentPtrInput
 	// attribute
-	AppStatus AppAppStatusPtrInput
+	AppStatus      AppAppStatusPtrInput
+	BudgetPolicyId pulumi.StringPtrInput
 	// attribute
 	ComputeStatus AppComputeStatusPtrInput
 	// The creation time of the app.
@@ -146,7 +151,8 @@ type AppState struct {
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath pulumi.StringPtrInput
 	// The description of the app.
-	Description pulumi.StringPtrInput
+	Description             pulumi.StringPtrInput
+	EffectiveBudgetPolicyId pulumi.StringPtrInput
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name              pulumi.StringPtrInput
 	NoCompute         pulumi.BoolPtrInput
@@ -171,6 +177,7 @@ func (AppState) ElementType() reflect.Type {
 }
 
 type appArgs struct {
+	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
 	// The description of the app.
 	Description *string `pulumi:"description"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -182,6 +189,7 @@ type appArgs struct {
 
 // The set of arguments for constructing a App resource.
 type AppArgs struct {
+	BudgetPolicyId pulumi.StringPtrInput
 	// The description of the app.
 	Description pulumi.StringPtrInput
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -287,6 +295,10 @@ func (o AppOutput) AppStatus() AppAppStatusOutput {
 	return o.ApplyT(func(v *App) AppAppStatusOutput { return v.AppStatus }).(AppAppStatusOutput)
 }
 
+func (o AppOutput) BudgetPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
+}
+
 // attribute
 func (o AppOutput) ComputeStatus() AppComputeStatusOutput {
 	return o.ApplyT(func(v *App) AppComputeStatusOutput { return v.ComputeStatus }).(AppComputeStatusOutput)
@@ -310,6 +322,10 @@ func (o AppOutput) DefaultSourceCodePath() pulumi.StringOutput {
 // The description of the app.
 func (o AppOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AppOutput) EffectiveBudgetPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.EffectiveBudgetPolicyId }).(pulumi.StringOutput)
 }
 
 // The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.

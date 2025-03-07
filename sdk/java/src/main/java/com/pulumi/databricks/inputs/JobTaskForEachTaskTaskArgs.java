@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskConditionTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskDbtTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskDependsOnArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskEmailNotificationsArgs;
+import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskGenAiComputeTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskHealthArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskLibraryArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterArgs;
@@ -146,6 +147,13 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
      */
     public Optional<Output<String>> existingClusterId() {
         return Optional.ofNullable(this.existingClusterId);
+    }
+
+    @Import(name="genAiComputeTask")
+    private @Nullable Output<JobTaskForEachTaskTaskGenAiComputeTaskArgs> genAiComputeTask;
+
+    public Optional<Output<JobTaskForEachTaskTaskGenAiComputeTaskArgs>> genAiComputeTask() {
+        return Optional.ofNullable(this.genAiComputeTask);
     }
 
     /**
@@ -402,6 +410,7 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         this.emailNotifications = $.emailNotifications;
         this.environmentKey = $.environmentKey;
         this.existingClusterId = $.existingClusterId;
+        this.genAiComputeTask = $.genAiComputeTask;
         this.health = $.health;
         this.jobClusterKey = $.jobClusterKey;
         this.libraries = $.libraries;
@@ -603,6 +612,15 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
          */
         public Builder existingClusterId(String existingClusterId) {
             return existingClusterId(Output.of(existingClusterId));
+        }
+
+        public Builder genAiComputeTask(@Nullable Output<JobTaskForEachTaskTaskGenAiComputeTaskArgs> genAiComputeTask) {
+            $.genAiComputeTask = genAiComputeTask;
+            return this;
+        }
+
+        public Builder genAiComputeTask(JobTaskForEachTaskTaskGenAiComputeTaskArgs genAiComputeTask) {
+            return genAiComputeTask(Output.of(genAiComputeTask));
         }
 
         /**

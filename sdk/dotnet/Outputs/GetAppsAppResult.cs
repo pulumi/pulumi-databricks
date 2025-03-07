@@ -18,6 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// attribute
         /// </summary>
         public readonly Outputs.GetAppsAppAppStatusResult AppStatus;
+        public readonly string? BudgetPolicyId;
         /// <summary>
         /// attribute
         /// </summary>
@@ -38,6 +39,7 @@ namespace Pulumi.Databricks.Outputs
         /// The description of the resource.
         /// </summary>
         public readonly string? Description;
+        public readonly string EffectiveBudgetPolicyId;
         /// <summary>
         /// Id of the job to grant permission on.
         /// </summary>
@@ -79,6 +81,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetAppsAppAppStatusResult appStatus,
 
+            string? budgetPolicyId,
+
             Outputs.GetAppsAppComputeStatusResult computeStatus,
 
             string createTime,
@@ -88,6 +92,8 @@ namespace Pulumi.Databricks.Outputs
             string defaultSourceCodePath,
 
             string? description,
+
+            string effectiveBudgetPolicyId,
 
             string id,
 
@@ -111,11 +117,13 @@ namespace Pulumi.Databricks.Outputs
         {
             ActiveDeployment = activeDeployment;
             AppStatus = appStatus;
+            BudgetPolicyId = budgetPolicyId;
             ComputeStatus = computeStatus;
             CreateTime = createTime;
             Creator = creator;
             DefaultSourceCodePath = defaultSourceCodePath;
             Description = description;
+            EffectiveBudgetPolicyId = effectiveBudgetPolicyId;
             Id = id;
             Name = name;
             PendingDeployment = pendingDeployment;

@@ -40,6 +40,7 @@ namespace Pulumi.Databricks.Outputs
         /// Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
         /// </summary>
         public readonly string? ExistingClusterId;
+        public readonly Outputs.JobTaskForEachTaskTaskGenAiComputeTask? GenAiComputeTask;
         /// <summary>
         /// block described below that specifies health conditions for a given task.
         /// </summary>
@@ -120,6 +121,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? existingClusterId,
 
+            Outputs.JobTaskForEachTaskTaskGenAiComputeTask? genAiComputeTask,
+
             Outputs.JobTaskForEachTaskTaskHealth? health,
 
             string? jobClusterKey,
@@ -169,6 +172,7 @@ namespace Pulumi.Databricks.Outputs
             EmailNotifications = emailNotifications;
             EnvironmentKey = environmentKey;
             ExistingClusterId = existingClusterId;
+            GenAiComputeTask = genAiComputeTask;
             Health = health;
             JobClusterKey = jobClusterKey;
             Libraries = libraries;

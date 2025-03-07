@@ -13,6 +13,1053 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type StorageCredentialAwsIamRole struct {
+	ExternalId *string `pulumi:"externalId"`
+	// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+	//
+	// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
+	RoleArn            string  `pulumi:"roleArn"`
+	UnityCatalogIamArn *string `pulumi:"unityCatalogIamArn"`
+}
+
+// StorageCredentialAwsIamRoleInput is an input type that accepts StorageCredentialAwsIamRoleArgs and StorageCredentialAwsIamRoleOutput values.
+// You can construct a concrete instance of `StorageCredentialAwsIamRoleInput` via:
+//
+//	StorageCredentialAwsIamRoleArgs{...}
+type StorageCredentialAwsIamRoleInput interface {
+	pulumi.Input
+
+	ToStorageCredentialAwsIamRoleOutput() StorageCredentialAwsIamRoleOutput
+	ToStorageCredentialAwsIamRoleOutputWithContext(context.Context) StorageCredentialAwsIamRoleOutput
+}
+
+type StorageCredentialAwsIamRoleArgs struct {
+	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
+	// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+	//
+	// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
+	RoleArn            pulumi.StringInput    `pulumi:"roleArn"`
+	UnityCatalogIamArn pulumi.StringPtrInput `pulumi:"unityCatalogIamArn"`
+}
+
+func (StorageCredentialAwsIamRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageCredentialAwsIamRole)(nil)).Elem()
+}
+
+func (i StorageCredentialAwsIamRoleArgs) ToStorageCredentialAwsIamRoleOutput() StorageCredentialAwsIamRoleOutput {
+	return i.ToStorageCredentialAwsIamRoleOutputWithContext(context.Background())
+}
+
+func (i StorageCredentialAwsIamRoleArgs) ToStorageCredentialAwsIamRoleOutputWithContext(ctx context.Context) StorageCredentialAwsIamRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAwsIamRoleOutput)
+}
+
+func (i StorageCredentialAwsIamRoleArgs) ToStorageCredentialAwsIamRolePtrOutput() StorageCredentialAwsIamRolePtrOutput {
+	return i.ToStorageCredentialAwsIamRolePtrOutputWithContext(context.Background())
+}
+
+func (i StorageCredentialAwsIamRoleArgs) ToStorageCredentialAwsIamRolePtrOutputWithContext(ctx context.Context) StorageCredentialAwsIamRolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAwsIamRoleOutput).ToStorageCredentialAwsIamRolePtrOutputWithContext(ctx)
+}
+
+// StorageCredentialAwsIamRolePtrInput is an input type that accepts StorageCredentialAwsIamRoleArgs, StorageCredentialAwsIamRolePtr and StorageCredentialAwsIamRolePtrOutput values.
+// You can construct a concrete instance of `StorageCredentialAwsIamRolePtrInput` via:
+//
+//	        StorageCredentialAwsIamRoleArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageCredentialAwsIamRolePtrInput interface {
+	pulumi.Input
+
+	ToStorageCredentialAwsIamRolePtrOutput() StorageCredentialAwsIamRolePtrOutput
+	ToStorageCredentialAwsIamRolePtrOutputWithContext(context.Context) StorageCredentialAwsIamRolePtrOutput
+}
+
+type storageCredentialAwsIamRolePtrType StorageCredentialAwsIamRoleArgs
+
+func StorageCredentialAwsIamRolePtr(v *StorageCredentialAwsIamRoleArgs) StorageCredentialAwsIamRolePtrInput {
+	return (*storageCredentialAwsIamRolePtrType)(v)
+}
+
+func (*storageCredentialAwsIamRolePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageCredentialAwsIamRole)(nil)).Elem()
+}
+
+func (i *storageCredentialAwsIamRolePtrType) ToStorageCredentialAwsIamRolePtrOutput() StorageCredentialAwsIamRolePtrOutput {
+	return i.ToStorageCredentialAwsIamRolePtrOutputWithContext(context.Background())
+}
+
+func (i *storageCredentialAwsIamRolePtrType) ToStorageCredentialAwsIamRolePtrOutputWithContext(ctx context.Context) StorageCredentialAwsIamRolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAwsIamRolePtrOutput)
+}
+
+type StorageCredentialAwsIamRoleOutput struct{ *pulumi.OutputState }
+
+func (StorageCredentialAwsIamRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageCredentialAwsIamRole)(nil)).Elem()
+}
+
+func (o StorageCredentialAwsIamRoleOutput) ToStorageCredentialAwsIamRoleOutput() StorageCredentialAwsIamRoleOutput {
+	return o
+}
+
+func (o StorageCredentialAwsIamRoleOutput) ToStorageCredentialAwsIamRoleOutputWithContext(ctx context.Context) StorageCredentialAwsIamRoleOutput {
+	return o
+}
+
+func (o StorageCredentialAwsIamRoleOutput) ToStorageCredentialAwsIamRolePtrOutput() StorageCredentialAwsIamRolePtrOutput {
+	return o.ToStorageCredentialAwsIamRolePtrOutputWithContext(context.Background())
+}
+
+func (o StorageCredentialAwsIamRoleOutput) ToStorageCredentialAwsIamRolePtrOutputWithContext(ctx context.Context) StorageCredentialAwsIamRolePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageCredentialAwsIamRole) *StorageCredentialAwsIamRole {
+		return &v
+	}).(StorageCredentialAwsIamRolePtrOutput)
+}
+
+func (o StorageCredentialAwsIamRoleOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageCredentialAwsIamRole) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
+}
+
+// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+//
+// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
+func (o StorageCredentialAwsIamRoleOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageCredentialAwsIamRole) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+func (o StorageCredentialAwsIamRoleOutput) UnityCatalogIamArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageCredentialAwsIamRole) *string { return v.UnityCatalogIamArn }).(pulumi.StringPtrOutput)
+}
+
+type StorageCredentialAwsIamRolePtrOutput struct{ *pulumi.OutputState }
+
+func (StorageCredentialAwsIamRolePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageCredentialAwsIamRole)(nil)).Elem()
+}
+
+func (o StorageCredentialAwsIamRolePtrOutput) ToStorageCredentialAwsIamRolePtrOutput() StorageCredentialAwsIamRolePtrOutput {
+	return o
+}
+
+func (o StorageCredentialAwsIamRolePtrOutput) ToStorageCredentialAwsIamRolePtrOutputWithContext(ctx context.Context) StorageCredentialAwsIamRolePtrOutput {
+	return o
+}
+
+func (o StorageCredentialAwsIamRolePtrOutput) Elem() StorageCredentialAwsIamRoleOutput {
+	return o.ApplyT(func(v *StorageCredentialAwsIamRole) StorageCredentialAwsIamRole {
+		if v != nil {
+			return *v
+		}
+		var ret StorageCredentialAwsIamRole
+		return ret
+	}).(StorageCredentialAwsIamRoleOutput)
+}
+
+func (o StorageCredentialAwsIamRolePtrOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialAwsIamRole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+//
+// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
+func (o StorageCredentialAwsIamRolePtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialAwsIamRole) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o StorageCredentialAwsIamRolePtrOutput) UnityCatalogIamArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialAwsIamRole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UnityCatalogIamArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type StorageCredentialAzureManagedIdentity struct {
+	// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+	AccessConnectorId string  `pulumi:"accessConnectorId"`
+	CredentialId      *string `pulumi:"credentialId"`
+	// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+	//
+	// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
+	ManagedIdentityId *string `pulumi:"managedIdentityId"`
+}
+
+// StorageCredentialAzureManagedIdentityInput is an input type that accepts StorageCredentialAzureManagedIdentityArgs and StorageCredentialAzureManagedIdentityOutput values.
+// You can construct a concrete instance of `StorageCredentialAzureManagedIdentityInput` via:
+//
+//	StorageCredentialAzureManagedIdentityArgs{...}
+type StorageCredentialAzureManagedIdentityInput interface {
+	pulumi.Input
+
+	ToStorageCredentialAzureManagedIdentityOutput() StorageCredentialAzureManagedIdentityOutput
+	ToStorageCredentialAzureManagedIdentityOutputWithContext(context.Context) StorageCredentialAzureManagedIdentityOutput
+}
+
+type StorageCredentialAzureManagedIdentityArgs struct {
+	// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+	AccessConnectorId pulumi.StringInput    `pulumi:"accessConnectorId"`
+	CredentialId      pulumi.StringPtrInput `pulumi:"credentialId"`
+	// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+	//
+	// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
+	ManagedIdentityId pulumi.StringPtrInput `pulumi:"managedIdentityId"`
+}
+
+func (StorageCredentialAzureManagedIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageCredentialAzureManagedIdentity)(nil)).Elem()
+}
+
+func (i StorageCredentialAzureManagedIdentityArgs) ToStorageCredentialAzureManagedIdentityOutput() StorageCredentialAzureManagedIdentityOutput {
+	return i.ToStorageCredentialAzureManagedIdentityOutputWithContext(context.Background())
+}
+
+func (i StorageCredentialAzureManagedIdentityArgs) ToStorageCredentialAzureManagedIdentityOutputWithContext(ctx context.Context) StorageCredentialAzureManagedIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAzureManagedIdentityOutput)
+}
+
+func (i StorageCredentialAzureManagedIdentityArgs) ToStorageCredentialAzureManagedIdentityPtrOutput() StorageCredentialAzureManagedIdentityPtrOutput {
+	return i.ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i StorageCredentialAzureManagedIdentityArgs) ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(ctx context.Context) StorageCredentialAzureManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAzureManagedIdentityOutput).ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(ctx)
+}
+
+// StorageCredentialAzureManagedIdentityPtrInput is an input type that accepts StorageCredentialAzureManagedIdentityArgs, StorageCredentialAzureManagedIdentityPtr and StorageCredentialAzureManagedIdentityPtrOutput values.
+// You can construct a concrete instance of `StorageCredentialAzureManagedIdentityPtrInput` via:
+//
+//	        StorageCredentialAzureManagedIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageCredentialAzureManagedIdentityPtrInput interface {
+	pulumi.Input
+
+	ToStorageCredentialAzureManagedIdentityPtrOutput() StorageCredentialAzureManagedIdentityPtrOutput
+	ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(context.Context) StorageCredentialAzureManagedIdentityPtrOutput
+}
+
+type storageCredentialAzureManagedIdentityPtrType StorageCredentialAzureManagedIdentityArgs
+
+func StorageCredentialAzureManagedIdentityPtr(v *StorageCredentialAzureManagedIdentityArgs) StorageCredentialAzureManagedIdentityPtrInput {
+	return (*storageCredentialAzureManagedIdentityPtrType)(v)
+}
+
+func (*storageCredentialAzureManagedIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageCredentialAzureManagedIdentity)(nil)).Elem()
+}
+
+func (i *storageCredentialAzureManagedIdentityPtrType) ToStorageCredentialAzureManagedIdentityPtrOutput() StorageCredentialAzureManagedIdentityPtrOutput {
+	return i.ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *storageCredentialAzureManagedIdentityPtrType) ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(ctx context.Context) StorageCredentialAzureManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAzureManagedIdentityPtrOutput)
+}
+
+type StorageCredentialAzureManagedIdentityOutput struct{ *pulumi.OutputState }
+
+func (StorageCredentialAzureManagedIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageCredentialAzureManagedIdentity)(nil)).Elem()
+}
+
+func (o StorageCredentialAzureManagedIdentityOutput) ToStorageCredentialAzureManagedIdentityOutput() StorageCredentialAzureManagedIdentityOutput {
+	return o
+}
+
+func (o StorageCredentialAzureManagedIdentityOutput) ToStorageCredentialAzureManagedIdentityOutputWithContext(ctx context.Context) StorageCredentialAzureManagedIdentityOutput {
+	return o
+}
+
+func (o StorageCredentialAzureManagedIdentityOutput) ToStorageCredentialAzureManagedIdentityPtrOutput() StorageCredentialAzureManagedIdentityPtrOutput {
+	return o.ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o StorageCredentialAzureManagedIdentityOutput) ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(ctx context.Context) StorageCredentialAzureManagedIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageCredentialAzureManagedIdentity) *StorageCredentialAzureManagedIdentity {
+		return &v
+	}).(StorageCredentialAzureManagedIdentityPtrOutput)
+}
+
+// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+func (o StorageCredentialAzureManagedIdentityOutput) AccessConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageCredentialAzureManagedIdentity) string { return v.AccessConnectorId }).(pulumi.StringOutput)
+}
+
+func (o StorageCredentialAzureManagedIdentityOutput) CredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageCredentialAzureManagedIdentity) *string { return v.CredentialId }).(pulumi.StringPtrOutput)
+}
+
+// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+//
+// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
+func (o StorageCredentialAzureManagedIdentityOutput) ManagedIdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageCredentialAzureManagedIdentity) *string { return v.ManagedIdentityId }).(pulumi.StringPtrOutput)
+}
+
+type StorageCredentialAzureManagedIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageCredentialAzureManagedIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageCredentialAzureManagedIdentity)(nil)).Elem()
+}
+
+func (o StorageCredentialAzureManagedIdentityPtrOutput) ToStorageCredentialAzureManagedIdentityPtrOutput() StorageCredentialAzureManagedIdentityPtrOutput {
+	return o
+}
+
+func (o StorageCredentialAzureManagedIdentityPtrOutput) ToStorageCredentialAzureManagedIdentityPtrOutputWithContext(ctx context.Context) StorageCredentialAzureManagedIdentityPtrOutput {
+	return o
+}
+
+func (o StorageCredentialAzureManagedIdentityPtrOutput) Elem() StorageCredentialAzureManagedIdentityOutput {
+	return o.ApplyT(func(v *StorageCredentialAzureManagedIdentity) StorageCredentialAzureManagedIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret StorageCredentialAzureManagedIdentity
+		return ret
+	}).(StorageCredentialAzureManagedIdentityOutput)
+}
+
+// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+func (o StorageCredentialAzureManagedIdentityPtrOutput) AccessConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialAzureManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessConnectorId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o StorageCredentialAzureManagedIdentityPtrOutput) CredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialAzureManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CredentialId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+//
+// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
+func (o StorageCredentialAzureManagedIdentityPtrOutput) ManagedIdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialAzureManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedIdentityId
+	}).(pulumi.StringPtrOutput)
+}
+
+type StorageCredentialAzureServicePrincipal struct {
+	// The application ID of the application registration within the referenced AAD tenant
+	ApplicationId string `pulumi:"applicationId"`
+	// The client secret generated for the above app ID in AAD. **This field is redacted on output**
+	ClientSecret string `pulumi:"clientSecret"`
+	// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+	DirectoryId string `pulumi:"directoryId"`
+}
+
+// StorageCredentialAzureServicePrincipalInput is an input type that accepts StorageCredentialAzureServicePrincipalArgs and StorageCredentialAzureServicePrincipalOutput values.
+// You can construct a concrete instance of `StorageCredentialAzureServicePrincipalInput` via:
+//
+//	StorageCredentialAzureServicePrincipalArgs{...}
+type StorageCredentialAzureServicePrincipalInput interface {
+	pulumi.Input
+
+	ToStorageCredentialAzureServicePrincipalOutput() StorageCredentialAzureServicePrincipalOutput
+	ToStorageCredentialAzureServicePrincipalOutputWithContext(context.Context) StorageCredentialAzureServicePrincipalOutput
+}
+
+type StorageCredentialAzureServicePrincipalArgs struct {
+	// The application ID of the application registration within the referenced AAD tenant
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// The client secret generated for the above app ID in AAD. **This field is redacted on output**
+	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
+	// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
+}
+
+func (StorageCredentialAzureServicePrincipalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageCredentialAzureServicePrincipal)(nil)).Elem()
+}
+
+func (i StorageCredentialAzureServicePrincipalArgs) ToStorageCredentialAzureServicePrincipalOutput() StorageCredentialAzureServicePrincipalOutput {
+	return i.ToStorageCredentialAzureServicePrincipalOutputWithContext(context.Background())
+}
+
+func (i StorageCredentialAzureServicePrincipalArgs) ToStorageCredentialAzureServicePrincipalOutputWithContext(ctx context.Context) StorageCredentialAzureServicePrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAzureServicePrincipalOutput)
+}
+
+func (i StorageCredentialAzureServicePrincipalArgs) ToStorageCredentialAzureServicePrincipalPtrOutput() StorageCredentialAzureServicePrincipalPtrOutput {
+	return i.ToStorageCredentialAzureServicePrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i StorageCredentialAzureServicePrincipalArgs) ToStorageCredentialAzureServicePrincipalPtrOutputWithContext(ctx context.Context) StorageCredentialAzureServicePrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAzureServicePrincipalOutput).ToStorageCredentialAzureServicePrincipalPtrOutputWithContext(ctx)
+}
+
+// StorageCredentialAzureServicePrincipalPtrInput is an input type that accepts StorageCredentialAzureServicePrincipalArgs, StorageCredentialAzureServicePrincipalPtr and StorageCredentialAzureServicePrincipalPtrOutput values.
+// You can construct a concrete instance of `StorageCredentialAzureServicePrincipalPtrInput` via:
+//
+//	        StorageCredentialAzureServicePrincipalArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageCredentialAzureServicePrincipalPtrInput interface {
+	pulumi.Input
+
+	ToStorageCredentialAzureServicePrincipalPtrOutput() StorageCredentialAzureServicePrincipalPtrOutput
+	ToStorageCredentialAzureServicePrincipalPtrOutputWithContext(context.Context) StorageCredentialAzureServicePrincipalPtrOutput
+}
+
+type storageCredentialAzureServicePrincipalPtrType StorageCredentialAzureServicePrincipalArgs
+
+func StorageCredentialAzureServicePrincipalPtr(v *StorageCredentialAzureServicePrincipalArgs) StorageCredentialAzureServicePrincipalPtrInput {
+	return (*storageCredentialAzureServicePrincipalPtrType)(v)
+}
+
+func (*storageCredentialAzureServicePrincipalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageCredentialAzureServicePrincipal)(nil)).Elem()
+}
+
+func (i *storageCredentialAzureServicePrincipalPtrType) ToStorageCredentialAzureServicePrincipalPtrOutput() StorageCredentialAzureServicePrincipalPtrOutput {
+	return i.ToStorageCredentialAzureServicePrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i *storageCredentialAzureServicePrincipalPtrType) ToStorageCredentialAzureServicePrincipalPtrOutputWithContext(ctx context.Context) StorageCredentialAzureServicePrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialAzureServicePrincipalPtrOutput)
+}
+
+type StorageCredentialAzureServicePrincipalOutput struct{ *pulumi.OutputState }
+
+func (StorageCredentialAzureServicePrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageCredentialAzureServicePrincipal)(nil)).Elem()
+}
+
+func (o StorageCredentialAzureServicePrincipalOutput) ToStorageCredentialAzureServicePrincipalOutput() StorageCredentialAzureServicePrincipalOutput {
+	return o
+}
+
+func (o StorageCredentialAzureServicePrincipalOutput) ToStorageCredentialAzureServicePrincipalOutputWithContext(ctx context.Context) StorageCredentialAzureServicePrincipalOutput {
+	return o
+}
+
+func (o StorageCredentialAzureServicePrincipalOutput) ToStorageCredentialAzureServicePrincipalPtrOutput() StorageCredentialAzureServicePrincipalPtrOutput {
+	return o.ToStorageCredentialAzureServicePrincipalPtrOutputWithContext(context.Background())
+}
+
+func (o StorageCredentialAzureServicePrincipalOutput) ToStorageCredentialAzureServicePrincipalPtrOutputWithContext(ctx context.Context) StorageCredentialAzureServicePrincipalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageCredentialAzureServicePrincipal) *StorageCredentialAzureServicePrincipal {
+		return &v
+	}).(StorageCredentialAzureServicePrincipalPtrOutput)
+}
+
+// The application ID of the application registration within the referenced AAD tenant
+func (o StorageCredentialAzureServicePrincipalOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageCredentialAzureServicePrincipal) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// The client secret generated for the above app ID in AAD. **This field is redacted on output**
+func (o StorageCredentialAzureServicePrincipalOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageCredentialAzureServicePrincipal) string { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+func (o StorageCredentialAzureServicePrincipalOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageCredentialAzureServicePrincipal) string { return v.DirectoryId }).(pulumi.StringOutput)
+}
+
+type StorageCredentialAzureServicePrincipalPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageCredentialAzureServicePrincipalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageCredentialAzureServicePrincipal)(nil)).Elem()
+}
+
+func (o StorageCredentialAzureServicePrincipalPtrOutput) ToStorageCredentialAzureServicePrincipalPtrOutput() StorageCredentialAzureServicePrincipalPtrOutput {
+	return o
+}
+
+func (o StorageCredentialAzureServicePrincipalPtrOutput) ToStorageCredentialAzureServicePrincipalPtrOutputWithContext(ctx context.Context) StorageCredentialAzureServicePrincipalPtrOutput {
+	return o
+}
+
+func (o StorageCredentialAzureServicePrincipalPtrOutput) Elem() StorageCredentialAzureServicePrincipalOutput {
+	return o.ApplyT(func(v *StorageCredentialAzureServicePrincipal) StorageCredentialAzureServicePrincipal {
+		if v != nil {
+			return *v
+		}
+		var ret StorageCredentialAzureServicePrincipal
+		return ret
+	}).(StorageCredentialAzureServicePrincipalOutput)
+}
+
+// The application ID of the application registration within the referenced AAD tenant
+func (o StorageCredentialAzureServicePrincipalPtrOutput) ApplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialAzureServicePrincipal) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplicationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The client secret generated for the above app ID in AAD. **This field is redacted on output**
+func (o StorageCredentialAzureServicePrincipalPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialAzureServicePrincipal) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+func (o StorageCredentialAzureServicePrincipalPtrOutput) DirectoryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialAzureServicePrincipal) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DirectoryId
+	}).(pulumi.StringPtrOutput)
+}
+
+type StorageCredentialCloudflareApiToken struct {
+	// R2 API token access key ID
+	AccessKeyId string `pulumi:"accessKeyId"`
+	// R2 account ID
+	AccountId string `pulumi:"accountId"`
+	// R2 API token secret access key
+	//
+	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
+	SecretAccessKey string `pulumi:"secretAccessKey"`
+}
+
+// StorageCredentialCloudflareApiTokenInput is an input type that accepts StorageCredentialCloudflareApiTokenArgs and StorageCredentialCloudflareApiTokenOutput values.
+// You can construct a concrete instance of `StorageCredentialCloudflareApiTokenInput` via:
+//
+//	StorageCredentialCloudflareApiTokenArgs{...}
+type StorageCredentialCloudflareApiTokenInput interface {
+	pulumi.Input
+
+	ToStorageCredentialCloudflareApiTokenOutput() StorageCredentialCloudflareApiTokenOutput
+	ToStorageCredentialCloudflareApiTokenOutputWithContext(context.Context) StorageCredentialCloudflareApiTokenOutput
+}
+
+type StorageCredentialCloudflareApiTokenArgs struct {
+	// R2 API token access key ID
+	AccessKeyId pulumi.StringInput `pulumi:"accessKeyId"`
+	// R2 account ID
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// R2 API token secret access key
+	//
+	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
+	SecretAccessKey pulumi.StringInput `pulumi:"secretAccessKey"`
+}
+
+func (StorageCredentialCloudflareApiTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageCredentialCloudflareApiToken)(nil)).Elem()
+}
+
+func (i StorageCredentialCloudflareApiTokenArgs) ToStorageCredentialCloudflareApiTokenOutput() StorageCredentialCloudflareApiTokenOutput {
+	return i.ToStorageCredentialCloudflareApiTokenOutputWithContext(context.Background())
+}
+
+func (i StorageCredentialCloudflareApiTokenArgs) ToStorageCredentialCloudflareApiTokenOutputWithContext(ctx context.Context) StorageCredentialCloudflareApiTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialCloudflareApiTokenOutput)
+}
+
+func (i StorageCredentialCloudflareApiTokenArgs) ToStorageCredentialCloudflareApiTokenPtrOutput() StorageCredentialCloudflareApiTokenPtrOutput {
+	return i.ToStorageCredentialCloudflareApiTokenPtrOutputWithContext(context.Background())
+}
+
+func (i StorageCredentialCloudflareApiTokenArgs) ToStorageCredentialCloudflareApiTokenPtrOutputWithContext(ctx context.Context) StorageCredentialCloudflareApiTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialCloudflareApiTokenOutput).ToStorageCredentialCloudflareApiTokenPtrOutputWithContext(ctx)
+}
+
+// StorageCredentialCloudflareApiTokenPtrInput is an input type that accepts StorageCredentialCloudflareApiTokenArgs, StorageCredentialCloudflareApiTokenPtr and StorageCredentialCloudflareApiTokenPtrOutput values.
+// You can construct a concrete instance of `StorageCredentialCloudflareApiTokenPtrInput` via:
+//
+//	        StorageCredentialCloudflareApiTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageCredentialCloudflareApiTokenPtrInput interface {
+	pulumi.Input
+
+	ToStorageCredentialCloudflareApiTokenPtrOutput() StorageCredentialCloudflareApiTokenPtrOutput
+	ToStorageCredentialCloudflareApiTokenPtrOutputWithContext(context.Context) StorageCredentialCloudflareApiTokenPtrOutput
+}
+
+type storageCredentialCloudflareApiTokenPtrType StorageCredentialCloudflareApiTokenArgs
+
+func StorageCredentialCloudflareApiTokenPtr(v *StorageCredentialCloudflareApiTokenArgs) StorageCredentialCloudflareApiTokenPtrInput {
+	return (*storageCredentialCloudflareApiTokenPtrType)(v)
+}
+
+func (*storageCredentialCloudflareApiTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageCredentialCloudflareApiToken)(nil)).Elem()
+}
+
+func (i *storageCredentialCloudflareApiTokenPtrType) ToStorageCredentialCloudflareApiTokenPtrOutput() StorageCredentialCloudflareApiTokenPtrOutput {
+	return i.ToStorageCredentialCloudflareApiTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *storageCredentialCloudflareApiTokenPtrType) ToStorageCredentialCloudflareApiTokenPtrOutputWithContext(ctx context.Context) StorageCredentialCloudflareApiTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialCloudflareApiTokenPtrOutput)
+}
+
+type StorageCredentialCloudflareApiTokenOutput struct{ *pulumi.OutputState }
+
+func (StorageCredentialCloudflareApiTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageCredentialCloudflareApiToken)(nil)).Elem()
+}
+
+func (o StorageCredentialCloudflareApiTokenOutput) ToStorageCredentialCloudflareApiTokenOutput() StorageCredentialCloudflareApiTokenOutput {
+	return o
+}
+
+func (o StorageCredentialCloudflareApiTokenOutput) ToStorageCredentialCloudflareApiTokenOutputWithContext(ctx context.Context) StorageCredentialCloudflareApiTokenOutput {
+	return o
+}
+
+func (o StorageCredentialCloudflareApiTokenOutput) ToStorageCredentialCloudflareApiTokenPtrOutput() StorageCredentialCloudflareApiTokenPtrOutput {
+	return o.ToStorageCredentialCloudflareApiTokenPtrOutputWithContext(context.Background())
+}
+
+func (o StorageCredentialCloudflareApiTokenOutput) ToStorageCredentialCloudflareApiTokenPtrOutputWithContext(ctx context.Context) StorageCredentialCloudflareApiTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageCredentialCloudflareApiToken) *StorageCredentialCloudflareApiToken {
+		return &v
+	}).(StorageCredentialCloudflareApiTokenPtrOutput)
+}
+
+// R2 API token access key ID
+func (o StorageCredentialCloudflareApiTokenOutput) AccessKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageCredentialCloudflareApiToken) string { return v.AccessKeyId }).(pulumi.StringOutput)
+}
+
+// R2 account ID
+func (o StorageCredentialCloudflareApiTokenOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageCredentialCloudflareApiToken) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// R2 API token secret access key
+//
+// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
+func (o StorageCredentialCloudflareApiTokenOutput) SecretAccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageCredentialCloudflareApiToken) string { return v.SecretAccessKey }).(pulumi.StringOutput)
+}
+
+type StorageCredentialCloudflareApiTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageCredentialCloudflareApiTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageCredentialCloudflareApiToken)(nil)).Elem()
+}
+
+func (o StorageCredentialCloudflareApiTokenPtrOutput) ToStorageCredentialCloudflareApiTokenPtrOutput() StorageCredentialCloudflareApiTokenPtrOutput {
+	return o
+}
+
+func (o StorageCredentialCloudflareApiTokenPtrOutput) ToStorageCredentialCloudflareApiTokenPtrOutputWithContext(ctx context.Context) StorageCredentialCloudflareApiTokenPtrOutput {
+	return o
+}
+
+func (o StorageCredentialCloudflareApiTokenPtrOutput) Elem() StorageCredentialCloudflareApiTokenOutput {
+	return o.ApplyT(func(v *StorageCredentialCloudflareApiToken) StorageCredentialCloudflareApiToken {
+		if v != nil {
+			return *v
+		}
+		var ret StorageCredentialCloudflareApiToken
+		return ret
+	}).(StorageCredentialCloudflareApiTokenOutput)
+}
+
+// R2 API token access key ID
+func (o StorageCredentialCloudflareApiTokenPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialCloudflareApiToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// R2 account ID
+func (o StorageCredentialCloudflareApiTokenPtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialCloudflareApiToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// R2 API token secret access key
+//
+// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
+func (o StorageCredentialCloudflareApiTokenPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialCloudflareApiToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretAccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type StorageCredentialDatabricksGcpServiceAccount struct {
+	CredentialId *string `pulumi:"credentialId"`
+	// The email of the GCP service account created, to be granted access to relevant buckets.
+	//
+	// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
+	Email *string `pulumi:"email"`
+}
+
+// StorageCredentialDatabricksGcpServiceAccountInput is an input type that accepts StorageCredentialDatabricksGcpServiceAccountArgs and StorageCredentialDatabricksGcpServiceAccountOutput values.
+// You can construct a concrete instance of `StorageCredentialDatabricksGcpServiceAccountInput` via:
+//
+//	StorageCredentialDatabricksGcpServiceAccountArgs{...}
+type StorageCredentialDatabricksGcpServiceAccountInput interface {
+	pulumi.Input
+
+	ToStorageCredentialDatabricksGcpServiceAccountOutput() StorageCredentialDatabricksGcpServiceAccountOutput
+	ToStorageCredentialDatabricksGcpServiceAccountOutputWithContext(context.Context) StorageCredentialDatabricksGcpServiceAccountOutput
+}
+
+type StorageCredentialDatabricksGcpServiceAccountArgs struct {
+	CredentialId pulumi.StringPtrInput `pulumi:"credentialId"`
+	// The email of the GCP service account created, to be granted access to relevant buckets.
+	//
+	// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
+	Email pulumi.StringPtrInput `pulumi:"email"`
+}
+
+func (StorageCredentialDatabricksGcpServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageCredentialDatabricksGcpServiceAccount)(nil)).Elem()
+}
+
+func (i StorageCredentialDatabricksGcpServiceAccountArgs) ToStorageCredentialDatabricksGcpServiceAccountOutput() StorageCredentialDatabricksGcpServiceAccountOutput {
+	return i.ToStorageCredentialDatabricksGcpServiceAccountOutputWithContext(context.Background())
+}
+
+func (i StorageCredentialDatabricksGcpServiceAccountArgs) ToStorageCredentialDatabricksGcpServiceAccountOutputWithContext(ctx context.Context) StorageCredentialDatabricksGcpServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialDatabricksGcpServiceAccountOutput)
+}
+
+func (i StorageCredentialDatabricksGcpServiceAccountArgs) ToStorageCredentialDatabricksGcpServiceAccountPtrOutput() StorageCredentialDatabricksGcpServiceAccountPtrOutput {
+	return i.ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i StorageCredentialDatabricksGcpServiceAccountArgs) ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(ctx context.Context) StorageCredentialDatabricksGcpServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialDatabricksGcpServiceAccountOutput).ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(ctx)
+}
+
+// StorageCredentialDatabricksGcpServiceAccountPtrInput is an input type that accepts StorageCredentialDatabricksGcpServiceAccountArgs, StorageCredentialDatabricksGcpServiceAccountPtr and StorageCredentialDatabricksGcpServiceAccountPtrOutput values.
+// You can construct a concrete instance of `StorageCredentialDatabricksGcpServiceAccountPtrInput` via:
+//
+//	        StorageCredentialDatabricksGcpServiceAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageCredentialDatabricksGcpServiceAccountPtrInput interface {
+	pulumi.Input
+
+	ToStorageCredentialDatabricksGcpServiceAccountPtrOutput() StorageCredentialDatabricksGcpServiceAccountPtrOutput
+	ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(context.Context) StorageCredentialDatabricksGcpServiceAccountPtrOutput
+}
+
+type storageCredentialDatabricksGcpServiceAccountPtrType StorageCredentialDatabricksGcpServiceAccountArgs
+
+func StorageCredentialDatabricksGcpServiceAccountPtr(v *StorageCredentialDatabricksGcpServiceAccountArgs) StorageCredentialDatabricksGcpServiceAccountPtrInput {
+	return (*storageCredentialDatabricksGcpServiceAccountPtrType)(v)
+}
+
+func (*storageCredentialDatabricksGcpServiceAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageCredentialDatabricksGcpServiceAccount)(nil)).Elem()
+}
+
+func (i *storageCredentialDatabricksGcpServiceAccountPtrType) ToStorageCredentialDatabricksGcpServiceAccountPtrOutput() StorageCredentialDatabricksGcpServiceAccountPtrOutput {
+	return i.ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *storageCredentialDatabricksGcpServiceAccountPtrType) ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(ctx context.Context) StorageCredentialDatabricksGcpServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialDatabricksGcpServiceAccountPtrOutput)
+}
+
+type StorageCredentialDatabricksGcpServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (StorageCredentialDatabricksGcpServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageCredentialDatabricksGcpServiceAccount)(nil)).Elem()
+}
+
+func (o StorageCredentialDatabricksGcpServiceAccountOutput) ToStorageCredentialDatabricksGcpServiceAccountOutput() StorageCredentialDatabricksGcpServiceAccountOutput {
+	return o
+}
+
+func (o StorageCredentialDatabricksGcpServiceAccountOutput) ToStorageCredentialDatabricksGcpServiceAccountOutputWithContext(ctx context.Context) StorageCredentialDatabricksGcpServiceAccountOutput {
+	return o
+}
+
+func (o StorageCredentialDatabricksGcpServiceAccountOutput) ToStorageCredentialDatabricksGcpServiceAccountPtrOutput() StorageCredentialDatabricksGcpServiceAccountPtrOutput {
+	return o.ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (o StorageCredentialDatabricksGcpServiceAccountOutput) ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(ctx context.Context) StorageCredentialDatabricksGcpServiceAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageCredentialDatabricksGcpServiceAccount) *StorageCredentialDatabricksGcpServiceAccount {
+		return &v
+	}).(StorageCredentialDatabricksGcpServiceAccountPtrOutput)
+}
+
+func (o StorageCredentialDatabricksGcpServiceAccountOutput) CredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageCredentialDatabricksGcpServiceAccount) *string { return v.CredentialId }).(pulumi.StringPtrOutput)
+}
+
+// The email of the GCP service account created, to be granted access to relevant buckets.
+//
+// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
+func (o StorageCredentialDatabricksGcpServiceAccountOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageCredentialDatabricksGcpServiceAccount) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+type StorageCredentialDatabricksGcpServiceAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageCredentialDatabricksGcpServiceAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageCredentialDatabricksGcpServiceAccount)(nil)).Elem()
+}
+
+func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) ToStorageCredentialDatabricksGcpServiceAccountPtrOutput() StorageCredentialDatabricksGcpServiceAccountPtrOutput {
+	return o
+}
+
+func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) ToStorageCredentialDatabricksGcpServiceAccountPtrOutputWithContext(ctx context.Context) StorageCredentialDatabricksGcpServiceAccountPtrOutput {
+	return o
+}
+
+func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) Elem() StorageCredentialDatabricksGcpServiceAccountOutput {
+	return o.ApplyT(func(v *StorageCredentialDatabricksGcpServiceAccount) StorageCredentialDatabricksGcpServiceAccount {
+		if v != nil {
+			return *v
+		}
+		var ret StorageCredentialDatabricksGcpServiceAccount
+		return ret
+	}).(StorageCredentialDatabricksGcpServiceAccountOutput)
+}
+
+func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) CredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialDatabricksGcpServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CredentialId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The email of the GCP service account created, to be granted access to relevant buckets.
+//
+// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
+func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialDatabricksGcpServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+type StorageCredentialGcpServiceAccountKey struct {
+	// The email of the GCP service account created, to be granted access to relevant buckets.
+	//
+	// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
+	Email        string `pulumi:"email"`
+	PrivateKey   string `pulumi:"privateKey"`
+	PrivateKeyId string `pulumi:"privateKeyId"`
+}
+
+// StorageCredentialGcpServiceAccountKeyInput is an input type that accepts StorageCredentialGcpServiceAccountKeyArgs and StorageCredentialGcpServiceAccountKeyOutput values.
+// You can construct a concrete instance of `StorageCredentialGcpServiceAccountKeyInput` via:
+//
+//	StorageCredentialGcpServiceAccountKeyArgs{...}
+type StorageCredentialGcpServiceAccountKeyInput interface {
+	pulumi.Input
+
+	ToStorageCredentialGcpServiceAccountKeyOutput() StorageCredentialGcpServiceAccountKeyOutput
+	ToStorageCredentialGcpServiceAccountKeyOutputWithContext(context.Context) StorageCredentialGcpServiceAccountKeyOutput
+}
+
+type StorageCredentialGcpServiceAccountKeyArgs struct {
+	// The email of the GCP service account created, to be granted access to relevant buckets.
+	//
+	// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
+	Email        pulumi.StringInput `pulumi:"email"`
+	PrivateKey   pulumi.StringInput `pulumi:"privateKey"`
+	PrivateKeyId pulumi.StringInput `pulumi:"privateKeyId"`
+}
+
+func (StorageCredentialGcpServiceAccountKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageCredentialGcpServiceAccountKey)(nil)).Elem()
+}
+
+func (i StorageCredentialGcpServiceAccountKeyArgs) ToStorageCredentialGcpServiceAccountKeyOutput() StorageCredentialGcpServiceAccountKeyOutput {
+	return i.ToStorageCredentialGcpServiceAccountKeyOutputWithContext(context.Background())
+}
+
+func (i StorageCredentialGcpServiceAccountKeyArgs) ToStorageCredentialGcpServiceAccountKeyOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialGcpServiceAccountKeyOutput)
+}
+
+func (i StorageCredentialGcpServiceAccountKeyArgs) ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput {
+	return i.ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(context.Background())
+}
+
+func (i StorageCredentialGcpServiceAccountKeyArgs) ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialGcpServiceAccountKeyOutput).ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx)
+}
+
+// StorageCredentialGcpServiceAccountKeyPtrInput is an input type that accepts StorageCredentialGcpServiceAccountKeyArgs, StorageCredentialGcpServiceAccountKeyPtr and StorageCredentialGcpServiceAccountKeyPtrOutput values.
+// You can construct a concrete instance of `StorageCredentialGcpServiceAccountKeyPtrInput` via:
+//
+//	        StorageCredentialGcpServiceAccountKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageCredentialGcpServiceAccountKeyPtrInput interface {
+	pulumi.Input
+
+	ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput
+	ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput
+}
+
+type storageCredentialGcpServiceAccountKeyPtrType StorageCredentialGcpServiceAccountKeyArgs
+
+func StorageCredentialGcpServiceAccountKeyPtr(v *StorageCredentialGcpServiceAccountKeyArgs) StorageCredentialGcpServiceAccountKeyPtrInput {
+	return (*storageCredentialGcpServiceAccountKeyPtrType)(v)
+}
+
+func (*storageCredentialGcpServiceAccountKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageCredentialGcpServiceAccountKey)(nil)).Elem()
+}
+
+func (i *storageCredentialGcpServiceAccountKeyPtrType) ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput {
+	return i.ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *storageCredentialGcpServiceAccountKeyPtrType) ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialGcpServiceAccountKeyPtrOutput)
+}
+
+type StorageCredentialGcpServiceAccountKeyOutput struct{ *pulumi.OutputState }
+
+func (StorageCredentialGcpServiceAccountKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageCredentialGcpServiceAccountKey)(nil)).Elem()
+}
+
+func (o StorageCredentialGcpServiceAccountKeyOutput) ToStorageCredentialGcpServiceAccountKeyOutput() StorageCredentialGcpServiceAccountKeyOutput {
+	return o
+}
+
+func (o StorageCredentialGcpServiceAccountKeyOutput) ToStorageCredentialGcpServiceAccountKeyOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyOutput {
+	return o
+}
+
+func (o StorageCredentialGcpServiceAccountKeyOutput) ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput {
+	return o.ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(context.Background())
+}
+
+func (o StorageCredentialGcpServiceAccountKeyOutput) ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageCredentialGcpServiceAccountKey) *StorageCredentialGcpServiceAccountKey {
+		return &v
+	}).(StorageCredentialGcpServiceAccountKeyPtrOutput)
+}
+
+// The email of the GCP service account created, to be granted access to relevant buckets.
+//
+// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
+func (o StorageCredentialGcpServiceAccountKeyOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageCredentialGcpServiceAccountKey) string { return v.Email }).(pulumi.StringOutput)
+}
+
+func (o StorageCredentialGcpServiceAccountKeyOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageCredentialGcpServiceAccountKey) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+func (o StorageCredentialGcpServiceAccountKeyOutput) PrivateKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageCredentialGcpServiceAccountKey) string { return v.PrivateKeyId }).(pulumi.StringOutput)
+}
+
+type StorageCredentialGcpServiceAccountKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageCredentialGcpServiceAccountKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageCredentialGcpServiceAccountKey)(nil)).Elem()
+}
+
+func (o StorageCredentialGcpServiceAccountKeyPtrOutput) ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput {
+	return o
+}
+
+func (o StorageCredentialGcpServiceAccountKeyPtrOutput) ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput {
+	return o
+}
+
+func (o StorageCredentialGcpServiceAccountKeyPtrOutput) Elem() StorageCredentialGcpServiceAccountKeyOutput {
+	return o.ApplyT(func(v *StorageCredentialGcpServiceAccountKey) StorageCredentialGcpServiceAccountKey {
+		if v != nil {
+			return *v
+		}
+		var ret StorageCredentialGcpServiceAccountKey
+		return ret
+	}).(StorageCredentialGcpServiceAccountKeyOutput)
+}
+
+// The email of the GCP service account created, to be granted access to relevant buckets.
+//
+// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
+func (o StorageCredentialGcpServiceAccountKeyPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialGcpServiceAccountKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o StorageCredentialGcpServiceAccountKeyPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialGcpServiceAccountKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o StorageCredentialGcpServiceAccountKeyPtrOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialGcpServiceAccountKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
 type TableColumn struct {
 	Comment          *string `pulumi:"comment"`
 	Name             string  `pulumi:"name"`
@@ -275,9 +1322,11 @@ func (o VectorSearchEndpointEndpointStatusArrayOutput) Index(i pulumi.IntInput) 
 
 type VectorSearchIndexDeltaSyncIndexSpec struct {
 	// array of objects representing columns that contain the embedding source.  Each entry consists of:
-	EmbeddingSourceColumns  []VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn `pulumi:"embeddingSourceColumns"`
-	EmbeddingVectorColumns  []VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn `pulumi:"embeddingVectorColumns"`
-	EmbeddingWritebackTable *string                                                    `pulumi:"embeddingWritebackTable"`
+	EmbeddingSourceColumns []VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn `pulumi:"embeddingSourceColumns"`
+	// array of objects representing columns that contain the embedding vectors. Each entry consists of:
+	EmbeddingVectorColumns []VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn `pulumi:"embeddingVectorColumns"`
+	// Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
+	EmbeddingWritebackTable *string `pulumi:"embeddingWritebackTable"`
 	// ID of the associated Delta Live Table pipeline.
 	PipelineId *string `pulumi:"pipelineId"`
 	// Pipeline execution mode. Possible values are:
@@ -301,9 +1350,11 @@ type VectorSearchIndexDeltaSyncIndexSpecInput interface {
 
 type VectorSearchIndexDeltaSyncIndexSpecArgs struct {
 	// array of objects representing columns that contain the embedding source.  Each entry consists of:
-	EmbeddingSourceColumns  VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayInput `pulumi:"embeddingSourceColumns"`
-	EmbeddingVectorColumns  VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayInput `pulumi:"embeddingVectorColumns"`
-	EmbeddingWritebackTable pulumi.StringPtrInput                                              `pulumi:"embeddingWritebackTable"`
+	EmbeddingSourceColumns VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayInput `pulumi:"embeddingSourceColumns"`
+	// array of objects representing columns that contain the embedding vectors. Each entry consists of:
+	EmbeddingVectorColumns VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayInput `pulumi:"embeddingVectorColumns"`
+	// Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
+	EmbeddingWritebackTable pulumi.StringPtrInput `pulumi:"embeddingWritebackTable"`
 	// ID of the associated Delta Live Table pipeline.
 	PipelineId pulumi.StringPtrInput `pulumi:"pipelineId"`
 	// Pipeline execution mode. Possible values are:
@@ -398,12 +1449,14 @@ func (o VectorSearchIndexDeltaSyncIndexSpecOutput) EmbeddingSourceColumns() Vect
 	}).(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput)
 }
 
+// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 func (o VectorSearchIndexDeltaSyncIndexSpecOutput) EmbeddingVectorColumns() VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpec) []VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
 		return v.EmbeddingVectorColumns
 	}).(VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput)
 }
 
+// Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
 func (o VectorSearchIndexDeltaSyncIndexSpecOutput) EmbeddingWritebackTable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpec) *string { return v.EmbeddingWritebackTable }).(pulumi.StringPtrOutput)
 }
@@ -459,6 +1512,7 @@ func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) EmbeddingSourceColumns() V
 	}).(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput)
 }
 
+// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) EmbeddingVectorColumns() VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput {
 	return o.ApplyT(func(v *VectorSearchIndexDeltaSyncIndexSpec) []VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
 		if v == nil {
@@ -468,6 +1522,7 @@ func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) EmbeddingVectorColumns() V
 	}).(VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput)
 }
 
+// Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
 func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) EmbeddingWritebackTable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VectorSearchIndexDeltaSyncIndexSpec) *string {
 		if v == nil {
@@ -510,8 +1565,9 @@ func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) SourceTable() pulumi.Strin
 }
 
 type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn struct {
+	// The name of the embedding model endpoint
 	EmbeddingModelEndpointName *string `pulumi:"embeddingModelEndpointName"`
-	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+	// The name of the column
 	Name *string `pulumi:"name"`
 }
 
@@ -527,8 +1583,9 @@ type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnInput interface {
 }
 
 type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs struct {
+	// The name of the embedding model endpoint
 	EmbeddingModelEndpointName pulumi.StringPtrInput `pulumi:"embeddingModelEndpointName"`
-	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+	// The name of the column
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -583,13 +1640,14 @@ func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput) ToVector
 	return o
 }
 
+// The name of the embedding model endpoint
 func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput) EmbeddingModelEndpointName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn) *string {
 		return v.EmbeddingModelEndpointName
 	}).(pulumi.StringPtrOutput)
 }
 
-// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+// The name of the column
 func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -615,8 +1673,9 @@ func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput) Ind
 }
 
 type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn struct {
+	// Dimension of the embedding vector.
 	EmbeddingDimension *int `pulumi:"embeddingDimension"`
-	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+	// The name of the column.
 	Name *string `pulumi:"name"`
 }
 
@@ -632,8 +1691,9 @@ type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnInput interface {
 }
 
 type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs struct {
+	// Dimension of the embedding vector.
 	EmbeddingDimension pulumi.IntPtrInput `pulumi:"embeddingDimension"`
-	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+	// The name of the column.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -688,11 +1748,12 @@ func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput) ToVector
 	return o
 }
 
+// Dimension of the embedding vector.
 func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput) EmbeddingDimension() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn) *int { return v.EmbeddingDimension }).(pulumi.IntPtrOutput)
 }
 
-// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+// The name of the column.
 func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -720,6 +1781,7 @@ func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput) Ind
 type VectorSearchIndexDirectAccessIndexSpec struct {
 	// array of objects representing columns that contain the embedding source.  Each entry consists of:
 	EmbeddingSourceColumns []VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn `pulumi:"embeddingSourceColumns"`
+	// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 	EmbeddingVectorColumns []VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn `pulumi:"embeddingVectorColumns"`
 	// The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
 	SchemaJson *string `pulumi:"schemaJson"`
@@ -739,6 +1801,7 @@ type VectorSearchIndexDirectAccessIndexSpecInput interface {
 type VectorSearchIndexDirectAccessIndexSpecArgs struct {
 	// array of objects representing columns that contain the embedding source.  Each entry consists of:
 	EmbeddingSourceColumns VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayInput `pulumi:"embeddingSourceColumns"`
+	// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 	EmbeddingVectorColumns VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayInput `pulumi:"embeddingVectorColumns"`
 	// The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
 	SchemaJson pulumi.StringPtrInput `pulumi:"schemaJson"`
@@ -828,6 +1891,7 @@ func (o VectorSearchIndexDirectAccessIndexSpecOutput) EmbeddingSourceColumns() V
 	}).(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput)
 }
 
+// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 func (o VectorSearchIndexDirectAccessIndexSpecOutput) EmbeddingVectorColumns() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput {
 	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpec) []VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
 		return v.EmbeddingVectorColumns
@@ -873,6 +1937,7 @@ func (o VectorSearchIndexDirectAccessIndexSpecPtrOutput) EmbeddingSourceColumns(
 	}).(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput)
 }
 
+// array of objects representing columns that contain the embedding vectors. Each entry consists of:
 func (o VectorSearchIndexDirectAccessIndexSpecPtrOutput) EmbeddingVectorColumns() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput {
 	return o.ApplyT(func(v *VectorSearchIndexDirectAccessIndexSpec) []VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
 		if v == nil {
@@ -893,8 +1958,9 @@ func (o VectorSearchIndexDirectAccessIndexSpecPtrOutput) SchemaJson() pulumi.Str
 }
 
 type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn struct {
+	// The name of the embedding model endpoint
 	EmbeddingModelEndpointName *string `pulumi:"embeddingModelEndpointName"`
-	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+	// The name of the column
 	Name *string `pulumi:"name"`
 }
 
@@ -910,8 +1976,9 @@ type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnInput interface 
 }
 
 type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs struct {
+	// The name of the embedding model endpoint
 	EmbeddingModelEndpointName pulumi.StringPtrInput `pulumi:"embeddingModelEndpointName"`
-	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+	// The name of the column
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -966,13 +2033,14 @@ func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) ToVec
 	return o
 }
 
+// The name of the embedding model endpoint
 func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) EmbeddingModelEndpointName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn) *string {
 		return v.EmbeddingModelEndpointName
 	}).(pulumi.StringPtrOutput)
 }
 
-// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+// The name of the column
 func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -998,8 +2066,9 @@ func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput) 
 }
 
 type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn struct {
+	// Dimension of the embedding vector.
 	EmbeddingDimension *int `pulumi:"embeddingDimension"`
-	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+	// The name of the column.
 	Name *string `pulumi:"name"`
 }
 
@@ -1015,8 +2084,9 @@ type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnInput interface 
 }
 
 type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs struct {
+	// Dimension of the embedding vector.
 	EmbeddingDimension pulumi.IntPtrInput `pulumi:"embeddingDimension"`
-	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+	// The name of the column.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -1071,11 +2141,12 @@ func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) ToVec
 	return o
 }
 
+// Dimension of the embedding vector.
 func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) EmbeddingDimension() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn) *int { return v.EmbeddingDimension }).(pulumi.IntPtrOutput)
 }
 
-// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+// The name of the column.
 func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1227,7 +2298,8 @@ func (o VectorSearchIndexStatusArrayOutput) Index(i pulumi.IntInput) VectorSearc
 type GetAppApp struct {
 	ActiveDeployment GetAppAppActiveDeployment `pulumi:"activeDeployment"`
 	// attribute
-	AppStatus GetAppAppAppStatus `pulumi:"appStatus"`
+	AppStatus      GetAppAppAppStatus `pulumi:"appStatus"`
+	BudgetPolicyId *string            `pulumi:"budgetPolicyId"`
 	// attribute
 	ComputeStatus GetAppAppComputeStatus `pulumi:"computeStatus"`
 	// The creation time of the app.
@@ -1237,7 +2309,8 @@ type GetAppApp struct {
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath string `pulumi:"defaultSourceCodePath"`
 	// The description of the resource.
-	Description *string `pulumi:"description"`
+	Description             *string `pulumi:"description"`
+	EffectiveBudgetPolicyId string  `pulumi:"effectiveBudgetPolicyId"`
 	// Id of the job to grant permission on.
 	Id string `pulumi:"id"`
 	// The name of the app.
@@ -1272,7 +2345,8 @@ type GetAppAppInput interface {
 type GetAppAppArgs struct {
 	ActiveDeployment GetAppAppActiveDeploymentInput `pulumi:"activeDeployment"`
 	// attribute
-	AppStatus GetAppAppAppStatusInput `pulumi:"appStatus"`
+	AppStatus      GetAppAppAppStatusInput `pulumi:"appStatus"`
+	BudgetPolicyId pulumi.StringPtrInput   `pulumi:"budgetPolicyId"`
 	// attribute
 	ComputeStatus GetAppAppComputeStatusInput `pulumi:"computeStatus"`
 	// The creation time of the app.
@@ -1282,7 +2356,8 @@ type GetAppAppArgs struct {
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath pulumi.StringInput `pulumi:"defaultSourceCodePath"`
 	// The description of the resource.
-	Description pulumi.StringPtrInput `pulumi:"description"`
+	Description             pulumi.StringPtrInput `pulumi:"description"`
+	EffectiveBudgetPolicyId pulumi.StringInput    `pulumi:"effectiveBudgetPolicyId"`
 	// Id of the job to grant permission on.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The name of the app.
@@ -1338,6 +2413,10 @@ func (o GetAppAppOutput) AppStatus() GetAppAppAppStatusOutput {
 	return o.ApplyT(func(v GetAppApp) GetAppAppAppStatus { return v.AppStatus }).(GetAppAppAppStatusOutput)
 }
 
+func (o GetAppAppOutput) BudgetPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppApp) *string { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
+}
+
 // attribute
 func (o GetAppAppOutput) ComputeStatus() GetAppAppComputeStatusOutput {
 	return o.ApplyT(func(v GetAppApp) GetAppAppComputeStatus { return v.ComputeStatus }).(GetAppAppComputeStatusOutput)
@@ -1361,6 +2440,10 @@ func (o GetAppAppOutput) DefaultSourceCodePath() pulumi.StringOutput {
 // The description of the resource.
 func (o GetAppAppOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppApp) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppAppOutput) EffectiveBudgetPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppApp) string { return v.EffectiveBudgetPolicyId }).(pulumi.StringOutput)
 }
 
 // Id of the job to grant permission on.
@@ -2745,7 +3828,8 @@ func (o GetAppAppResourceSqlWarehousePtrOutput) Permission() pulumi.StringPtrOut
 type GetAppsApp struct {
 	ActiveDeployment GetAppsAppActiveDeployment `pulumi:"activeDeployment"`
 	// attribute
-	AppStatus GetAppsAppAppStatus `pulumi:"appStatus"`
+	AppStatus      GetAppsAppAppStatus `pulumi:"appStatus"`
+	BudgetPolicyId *string             `pulumi:"budgetPolicyId"`
 	// attribute
 	ComputeStatus GetAppsAppComputeStatus `pulumi:"computeStatus"`
 	// The creation time of the app.
@@ -2755,7 +3839,8 @@ type GetAppsApp struct {
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath string `pulumi:"defaultSourceCodePath"`
 	// The description of the resource.
-	Description *string `pulumi:"description"`
+	Description             *string `pulumi:"description"`
+	EffectiveBudgetPolicyId string  `pulumi:"effectiveBudgetPolicyId"`
 	// Id of the job to grant permission on.
 	Id string `pulumi:"id"`
 	// Name of the serving endpoint to grant permission on.
@@ -2790,7 +3875,8 @@ type GetAppsAppInput interface {
 type GetAppsAppArgs struct {
 	ActiveDeployment GetAppsAppActiveDeploymentInput `pulumi:"activeDeployment"`
 	// attribute
-	AppStatus GetAppsAppAppStatusInput `pulumi:"appStatus"`
+	AppStatus      GetAppsAppAppStatusInput `pulumi:"appStatus"`
+	BudgetPolicyId pulumi.StringPtrInput    `pulumi:"budgetPolicyId"`
 	// attribute
 	ComputeStatus GetAppsAppComputeStatusInput `pulumi:"computeStatus"`
 	// The creation time of the app.
@@ -2800,7 +3886,8 @@ type GetAppsAppArgs struct {
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath pulumi.StringInput `pulumi:"defaultSourceCodePath"`
 	// The description of the resource.
-	Description pulumi.StringPtrInput `pulumi:"description"`
+	Description             pulumi.StringPtrInput `pulumi:"description"`
+	EffectiveBudgetPolicyId pulumi.StringInput    `pulumi:"effectiveBudgetPolicyId"`
 	// Id of the job to grant permission on.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Name of the serving endpoint to grant permission on.
@@ -2881,6 +3968,10 @@ func (o GetAppsAppOutput) AppStatus() GetAppsAppAppStatusOutput {
 	return o.ApplyT(func(v GetAppsApp) GetAppsAppAppStatus { return v.AppStatus }).(GetAppsAppAppStatusOutput)
 }
 
+func (o GetAppsAppOutput) BudgetPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppsApp) *string { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
+}
+
 // attribute
 func (o GetAppsAppOutput) ComputeStatus() GetAppsAppComputeStatusOutput {
 	return o.ApplyT(func(v GetAppsApp) GetAppsAppComputeStatus { return v.ComputeStatus }).(GetAppsAppComputeStatusOutput)
@@ -2904,6 +3995,10 @@ func (o GetAppsAppOutput) DefaultSourceCodePath() pulumi.StringOutput {
 // The description of the resource.
 func (o GetAppsAppOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppsApp) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppsAppOutput) EffectiveBudgetPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppsApp) string { return v.EffectiveBudgetPolicyId }).(pulumi.StringOutput)
 }
 
 // Id of the job to grant permission on.
@@ -4305,6 +5400,315 @@ func (o GetAppsAppResourceSqlWarehousePtrOutput) Permission() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetBudgetPoliciesBudgetPolicy struct {
+	CustomTags []GetBudgetPoliciesBudgetPolicyCustomTag `pulumi:"customTags"`
+	PolicyId   string                                   `pulumi:"policyId"`
+	// The partial name of policies to be filtered on. If unspecified, all policies will be returned.
+	PolicyName *string `pulumi:"policyName"`
+}
+
+// GetBudgetPoliciesBudgetPolicyInput is an input type that accepts GetBudgetPoliciesBudgetPolicyArgs and GetBudgetPoliciesBudgetPolicyOutput values.
+// You can construct a concrete instance of `GetBudgetPoliciesBudgetPolicyInput` via:
+//
+//	GetBudgetPoliciesBudgetPolicyArgs{...}
+type GetBudgetPoliciesBudgetPolicyInput interface {
+	pulumi.Input
+
+	ToGetBudgetPoliciesBudgetPolicyOutput() GetBudgetPoliciesBudgetPolicyOutput
+	ToGetBudgetPoliciesBudgetPolicyOutputWithContext(context.Context) GetBudgetPoliciesBudgetPolicyOutput
+}
+
+type GetBudgetPoliciesBudgetPolicyArgs struct {
+	CustomTags GetBudgetPoliciesBudgetPolicyCustomTagArrayInput `pulumi:"customTags"`
+	PolicyId   pulumi.StringInput                               `pulumi:"policyId"`
+	// The partial name of policies to be filtered on. If unspecified, all policies will be returned.
+	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
+}
+
+func (GetBudgetPoliciesBudgetPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBudgetPoliciesBudgetPolicy)(nil)).Elem()
+}
+
+func (i GetBudgetPoliciesBudgetPolicyArgs) ToGetBudgetPoliciesBudgetPolicyOutput() GetBudgetPoliciesBudgetPolicyOutput {
+	return i.ToGetBudgetPoliciesBudgetPolicyOutputWithContext(context.Background())
+}
+
+func (i GetBudgetPoliciesBudgetPolicyArgs) ToGetBudgetPoliciesBudgetPolicyOutputWithContext(ctx context.Context) GetBudgetPoliciesBudgetPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBudgetPoliciesBudgetPolicyOutput)
+}
+
+// GetBudgetPoliciesBudgetPolicyArrayInput is an input type that accepts GetBudgetPoliciesBudgetPolicyArray and GetBudgetPoliciesBudgetPolicyArrayOutput values.
+// You can construct a concrete instance of `GetBudgetPoliciesBudgetPolicyArrayInput` via:
+//
+//	GetBudgetPoliciesBudgetPolicyArray{ GetBudgetPoliciesBudgetPolicyArgs{...} }
+type GetBudgetPoliciesBudgetPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetBudgetPoliciesBudgetPolicyArrayOutput() GetBudgetPoliciesBudgetPolicyArrayOutput
+	ToGetBudgetPoliciesBudgetPolicyArrayOutputWithContext(context.Context) GetBudgetPoliciesBudgetPolicyArrayOutput
+}
+
+type GetBudgetPoliciesBudgetPolicyArray []GetBudgetPoliciesBudgetPolicyInput
+
+func (GetBudgetPoliciesBudgetPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBudgetPoliciesBudgetPolicy)(nil)).Elem()
+}
+
+func (i GetBudgetPoliciesBudgetPolicyArray) ToGetBudgetPoliciesBudgetPolicyArrayOutput() GetBudgetPoliciesBudgetPolicyArrayOutput {
+	return i.ToGetBudgetPoliciesBudgetPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBudgetPoliciesBudgetPolicyArray) ToGetBudgetPoliciesBudgetPolicyArrayOutputWithContext(ctx context.Context) GetBudgetPoliciesBudgetPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBudgetPoliciesBudgetPolicyArrayOutput)
+}
+
+type GetBudgetPoliciesBudgetPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetBudgetPoliciesBudgetPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBudgetPoliciesBudgetPolicy)(nil)).Elem()
+}
+
+func (o GetBudgetPoliciesBudgetPolicyOutput) ToGetBudgetPoliciesBudgetPolicyOutput() GetBudgetPoliciesBudgetPolicyOutput {
+	return o
+}
+
+func (o GetBudgetPoliciesBudgetPolicyOutput) ToGetBudgetPoliciesBudgetPolicyOutputWithContext(ctx context.Context) GetBudgetPoliciesBudgetPolicyOutput {
+	return o
+}
+
+func (o GetBudgetPoliciesBudgetPolicyOutput) CustomTags() GetBudgetPoliciesBudgetPolicyCustomTagArrayOutput {
+	return o.ApplyT(func(v GetBudgetPoliciesBudgetPolicy) []GetBudgetPoliciesBudgetPolicyCustomTag { return v.CustomTags }).(GetBudgetPoliciesBudgetPolicyCustomTagArrayOutput)
+}
+
+func (o GetBudgetPoliciesBudgetPolicyOutput) PolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBudgetPoliciesBudgetPolicy) string { return v.PolicyId }).(pulumi.StringOutput)
+}
+
+// The partial name of policies to be filtered on. If unspecified, all policies will be returned.
+func (o GetBudgetPoliciesBudgetPolicyOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBudgetPoliciesBudgetPolicy) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
+}
+
+type GetBudgetPoliciesBudgetPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBudgetPoliciesBudgetPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBudgetPoliciesBudgetPolicy)(nil)).Elem()
+}
+
+func (o GetBudgetPoliciesBudgetPolicyArrayOutput) ToGetBudgetPoliciesBudgetPolicyArrayOutput() GetBudgetPoliciesBudgetPolicyArrayOutput {
+	return o
+}
+
+func (o GetBudgetPoliciesBudgetPolicyArrayOutput) ToGetBudgetPoliciesBudgetPolicyArrayOutputWithContext(ctx context.Context) GetBudgetPoliciesBudgetPolicyArrayOutput {
+	return o
+}
+
+func (o GetBudgetPoliciesBudgetPolicyArrayOutput) Index(i pulumi.IntInput) GetBudgetPoliciesBudgetPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBudgetPoliciesBudgetPolicy {
+		return vs[0].([]GetBudgetPoliciesBudgetPolicy)[vs[1].(int)]
+	}).(GetBudgetPoliciesBudgetPolicyOutput)
+}
+
+type GetBudgetPoliciesBudgetPolicyCustomTag struct {
+	Key   string  `pulumi:"key"`
+	Value *string `pulumi:"value"`
+}
+
+// GetBudgetPoliciesBudgetPolicyCustomTagInput is an input type that accepts GetBudgetPoliciesBudgetPolicyCustomTagArgs and GetBudgetPoliciesBudgetPolicyCustomTagOutput values.
+// You can construct a concrete instance of `GetBudgetPoliciesBudgetPolicyCustomTagInput` via:
+//
+//	GetBudgetPoliciesBudgetPolicyCustomTagArgs{...}
+type GetBudgetPoliciesBudgetPolicyCustomTagInput interface {
+	pulumi.Input
+
+	ToGetBudgetPoliciesBudgetPolicyCustomTagOutput() GetBudgetPoliciesBudgetPolicyCustomTagOutput
+	ToGetBudgetPoliciesBudgetPolicyCustomTagOutputWithContext(context.Context) GetBudgetPoliciesBudgetPolicyCustomTagOutput
+}
+
+type GetBudgetPoliciesBudgetPolicyCustomTagArgs struct {
+	Key   pulumi.StringInput    `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetBudgetPoliciesBudgetPolicyCustomTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBudgetPoliciesBudgetPolicyCustomTag)(nil)).Elem()
+}
+
+func (i GetBudgetPoliciesBudgetPolicyCustomTagArgs) ToGetBudgetPoliciesBudgetPolicyCustomTagOutput() GetBudgetPoliciesBudgetPolicyCustomTagOutput {
+	return i.ToGetBudgetPoliciesBudgetPolicyCustomTagOutputWithContext(context.Background())
+}
+
+func (i GetBudgetPoliciesBudgetPolicyCustomTagArgs) ToGetBudgetPoliciesBudgetPolicyCustomTagOutputWithContext(ctx context.Context) GetBudgetPoliciesBudgetPolicyCustomTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBudgetPoliciesBudgetPolicyCustomTagOutput)
+}
+
+// GetBudgetPoliciesBudgetPolicyCustomTagArrayInput is an input type that accepts GetBudgetPoliciesBudgetPolicyCustomTagArray and GetBudgetPoliciesBudgetPolicyCustomTagArrayOutput values.
+// You can construct a concrete instance of `GetBudgetPoliciesBudgetPolicyCustomTagArrayInput` via:
+//
+//	GetBudgetPoliciesBudgetPolicyCustomTagArray{ GetBudgetPoliciesBudgetPolicyCustomTagArgs{...} }
+type GetBudgetPoliciesBudgetPolicyCustomTagArrayInput interface {
+	pulumi.Input
+
+	ToGetBudgetPoliciesBudgetPolicyCustomTagArrayOutput() GetBudgetPoliciesBudgetPolicyCustomTagArrayOutput
+	ToGetBudgetPoliciesBudgetPolicyCustomTagArrayOutputWithContext(context.Context) GetBudgetPoliciesBudgetPolicyCustomTagArrayOutput
+}
+
+type GetBudgetPoliciesBudgetPolicyCustomTagArray []GetBudgetPoliciesBudgetPolicyCustomTagInput
+
+func (GetBudgetPoliciesBudgetPolicyCustomTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBudgetPoliciesBudgetPolicyCustomTag)(nil)).Elem()
+}
+
+func (i GetBudgetPoliciesBudgetPolicyCustomTagArray) ToGetBudgetPoliciesBudgetPolicyCustomTagArrayOutput() GetBudgetPoliciesBudgetPolicyCustomTagArrayOutput {
+	return i.ToGetBudgetPoliciesBudgetPolicyCustomTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetBudgetPoliciesBudgetPolicyCustomTagArray) ToGetBudgetPoliciesBudgetPolicyCustomTagArrayOutputWithContext(ctx context.Context) GetBudgetPoliciesBudgetPolicyCustomTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBudgetPoliciesBudgetPolicyCustomTagArrayOutput)
+}
+
+type GetBudgetPoliciesBudgetPolicyCustomTagOutput struct{ *pulumi.OutputState }
+
+func (GetBudgetPoliciesBudgetPolicyCustomTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBudgetPoliciesBudgetPolicyCustomTag)(nil)).Elem()
+}
+
+func (o GetBudgetPoliciesBudgetPolicyCustomTagOutput) ToGetBudgetPoliciesBudgetPolicyCustomTagOutput() GetBudgetPoliciesBudgetPolicyCustomTagOutput {
+	return o
+}
+
+func (o GetBudgetPoliciesBudgetPolicyCustomTagOutput) ToGetBudgetPoliciesBudgetPolicyCustomTagOutputWithContext(ctx context.Context) GetBudgetPoliciesBudgetPolicyCustomTagOutput {
+	return o
+}
+
+func (o GetBudgetPoliciesBudgetPolicyCustomTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBudgetPoliciesBudgetPolicyCustomTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetBudgetPoliciesBudgetPolicyCustomTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBudgetPoliciesBudgetPolicyCustomTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetBudgetPoliciesBudgetPolicyCustomTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBudgetPoliciesBudgetPolicyCustomTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBudgetPoliciesBudgetPolicyCustomTag)(nil)).Elem()
+}
+
+func (o GetBudgetPoliciesBudgetPolicyCustomTagArrayOutput) ToGetBudgetPoliciesBudgetPolicyCustomTagArrayOutput() GetBudgetPoliciesBudgetPolicyCustomTagArrayOutput {
+	return o
+}
+
+func (o GetBudgetPoliciesBudgetPolicyCustomTagArrayOutput) ToGetBudgetPoliciesBudgetPolicyCustomTagArrayOutputWithContext(ctx context.Context) GetBudgetPoliciesBudgetPolicyCustomTagArrayOutput {
+	return o
+}
+
+func (o GetBudgetPoliciesBudgetPolicyCustomTagArrayOutput) Index(i pulumi.IntInput) GetBudgetPoliciesBudgetPolicyCustomTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBudgetPoliciesBudgetPolicyCustomTag {
+		return vs[0].([]GetBudgetPoliciesBudgetPolicyCustomTag)[vs[1].(int)]
+	}).(GetBudgetPoliciesBudgetPolicyCustomTagOutput)
+}
+
+type GetBudgetPolicyCustomTag struct {
+	Key   string  `pulumi:"key"`
+	Value *string `pulumi:"value"`
+}
+
+// GetBudgetPolicyCustomTagInput is an input type that accepts GetBudgetPolicyCustomTagArgs and GetBudgetPolicyCustomTagOutput values.
+// You can construct a concrete instance of `GetBudgetPolicyCustomTagInput` via:
+//
+//	GetBudgetPolicyCustomTagArgs{...}
+type GetBudgetPolicyCustomTagInput interface {
+	pulumi.Input
+
+	ToGetBudgetPolicyCustomTagOutput() GetBudgetPolicyCustomTagOutput
+	ToGetBudgetPolicyCustomTagOutputWithContext(context.Context) GetBudgetPolicyCustomTagOutput
+}
+
+type GetBudgetPolicyCustomTagArgs struct {
+	Key   pulumi.StringInput    `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetBudgetPolicyCustomTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBudgetPolicyCustomTag)(nil)).Elem()
+}
+
+func (i GetBudgetPolicyCustomTagArgs) ToGetBudgetPolicyCustomTagOutput() GetBudgetPolicyCustomTagOutput {
+	return i.ToGetBudgetPolicyCustomTagOutputWithContext(context.Background())
+}
+
+func (i GetBudgetPolicyCustomTagArgs) ToGetBudgetPolicyCustomTagOutputWithContext(ctx context.Context) GetBudgetPolicyCustomTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBudgetPolicyCustomTagOutput)
+}
+
+// GetBudgetPolicyCustomTagArrayInput is an input type that accepts GetBudgetPolicyCustomTagArray and GetBudgetPolicyCustomTagArrayOutput values.
+// You can construct a concrete instance of `GetBudgetPolicyCustomTagArrayInput` via:
+//
+//	GetBudgetPolicyCustomTagArray{ GetBudgetPolicyCustomTagArgs{...} }
+type GetBudgetPolicyCustomTagArrayInput interface {
+	pulumi.Input
+
+	ToGetBudgetPolicyCustomTagArrayOutput() GetBudgetPolicyCustomTagArrayOutput
+	ToGetBudgetPolicyCustomTagArrayOutputWithContext(context.Context) GetBudgetPolicyCustomTagArrayOutput
+}
+
+type GetBudgetPolicyCustomTagArray []GetBudgetPolicyCustomTagInput
+
+func (GetBudgetPolicyCustomTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBudgetPolicyCustomTag)(nil)).Elem()
+}
+
+func (i GetBudgetPolicyCustomTagArray) ToGetBudgetPolicyCustomTagArrayOutput() GetBudgetPolicyCustomTagArrayOutput {
+	return i.ToGetBudgetPolicyCustomTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetBudgetPolicyCustomTagArray) ToGetBudgetPolicyCustomTagArrayOutputWithContext(ctx context.Context) GetBudgetPolicyCustomTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBudgetPolicyCustomTagArrayOutput)
+}
+
+type GetBudgetPolicyCustomTagOutput struct{ *pulumi.OutputState }
+
+func (GetBudgetPolicyCustomTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBudgetPolicyCustomTag)(nil)).Elem()
+}
+
+func (o GetBudgetPolicyCustomTagOutput) ToGetBudgetPolicyCustomTagOutput() GetBudgetPolicyCustomTagOutput {
+	return o
+}
+
+func (o GetBudgetPolicyCustomTagOutput) ToGetBudgetPolicyCustomTagOutputWithContext(ctx context.Context) GetBudgetPolicyCustomTagOutput {
+	return o
+}
+
+func (o GetBudgetPolicyCustomTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBudgetPolicyCustomTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetBudgetPolicyCustomTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBudgetPolicyCustomTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetBudgetPolicyCustomTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBudgetPolicyCustomTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBudgetPolicyCustomTag)(nil)).Elem()
+}
+
+func (o GetBudgetPolicyCustomTagArrayOutput) ToGetBudgetPolicyCustomTagArrayOutput() GetBudgetPolicyCustomTagArrayOutput {
+	return o
+}
+
+func (o GetBudgetPolicyCustomTagArrayOutput) ToGetBudgetPolicyCustomTagArrayOutputWithContext(ctx context.Context) GetBudgetPolicyCustomTagArrayOutput {
+	return o
+}
+
+func (o GetBudgetPolicyCustomTagArrayOutput) Index(i pulumi.IntInput) GetBudgetPolicyCustomTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBudgetPolicyCustomTag {
+		return vs[0].([]GetBudgetPolicyCustomTag)[vs[1].(int)]
+	}).(GetBudgetPolicyCustomTagOutput)
+}
+
 type GetCatalogCatalogInfo struct {
 	BrowseOnly *bool `pulumi:"browseOnly"`
 	// Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
@@ -5157,12 +6561,12 @@ type GetClusterClusterInfo struct {
 	AwsAttributes          *GetClusterClusterInfoAwsAttributes   `pulumi:"awsAttributes"`
 	AzureAttributes        *GetClusterClusterInfoAzureAttributes `pulumi:"azureAttributes"`
 	ClusterCores           *float64                              `pulumi:"clusterCores"`
-	// The id of the cluster
+	// The id of the cluster.
 	ClusterId        *string                                `pulumi:"clusterId"`
 	ClusterLogConf   *GetClusterClusterInfoClusterLogConf   `pulumi:"clusterLogConf"`
 	ClusterLogStatus *GetClusterClusterInfoClusterLogStatus `pulumi:"clusterLogStatus"`
 	ClusterMemoryMb  *int                                   `pulumi:"clusterMemoryMb"`
-	// The exact name of the cluster to search
+	// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
 	ClusterName     *string `pulumi:"clusterName"`
 	ClusterSource   *string `pulumi:"clusterSource"`
 	CreatorUserName *string `pulumi:"creatorUserName"`
@@ -5237,12 +6641,12 @@ type GetClusterClusterInfoArgs struct {
 	AwsAttributes          GetClusterClusterInfoAwsAttributesPtrInput   `pulumi:"awsAttributes"`
 	AzureAttributes        GetClusterClusterInfoAzureAttributesPtrInput `pulumi:"azureAttributes"`
 	ClusterCores           pulumi.Float64PtrInput                       `pulumi:"clusterCores"`
-	// The id of the cluster
+	// The id of the cluster.
 	ClusterId        pulumi.StringPtrInput                         `pulumi:"clusterId"`
 	ClusterLogConf   GetClusterClusterInfoClusterLogConfPtrInput   `pulumi:"clusterLogConf"`
 	ClusterLogStatus GetClusterClusterInfoClusterLogStatusPtrInput `pulumi:"clusterLogStatus"`
 	ClusterMemoryMb  pulumi.IntPtrInput                            `pulumi:"clusterMemoryMb"`
-	// The exact name of the cluster to search
+	// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
 	ClusterName     pulumi.StringPtrInput `pulumi:"clusterName"`
 	ClusterSource   pulumi.StringPtrInput `pulumi:"clusterSource"`
 	CreatorUserName pulumi.StringPtrInput `pulumi:"creatorUserName"`
@@ -5397,7 +6801,7 @@ func (o GetClusterClusterInfoOutput) ClusterCores() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *float64 { return v.ClusterCores }).(pulumi.Float64PtrOutput)
 }
 
-// The id of the cluster
+// The id of the cluster.
 func (o GetClusterClusterInfoOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
@@ -5414,7 +6818,7 @@ func (o GetClusterClusterInfoOutput) ClusterMemoryMb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *int { return v.ClusterMemoryMb }).(pulumi.IntPtrOutput)
 }
 
-// The exact name of the cluster to search
+// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
 func (o GetClusterClusterInfoOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
@@ -5656,7 +7060,7 @@ func (o GetClusterClusterInfoPtrOutput) ClusterCores() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The id of the cluster
+// The id of the cluster.
 func (o GetClusterClusterInfoPtrOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) *string {
 		if v == nil {
@@ -5693,7 +7097,7 @@ func (o GetClusterClusterInfoPtrOutput) ClusterMemoryMb() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The exact name of the cluster to search
+// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
 func (o GetClusterClusterInfoPtrOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) *string {
 		if v == nil {
@@ -9891,11 +11295,11 @@ type GetClusterClusterInfoSpec struct {
 	Autoscale                *GetClusterClusterInfoSpecAutoscale       `pulumi:"autoscale"`
 	AwsAttributes            *GetClusterClusterInfoSpecAwsAttributes   `pulumi:"awsAttributes"`
 	AzureAttributes          *GetClusterClusterInfoSpecAzureAttributes `pulumi:"azureAttributes"`
-	// The id of the cluster
+	// The id of the cluster.
 	ClusterId         string                                      `pulumi:"clusterId"`
 	ClusterLogConf    *GetClusterClusterInfoSpecClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos []GetClusterClusterInfoSpecClusterMountInfo `pulumi:"clusterMountInfos"`
-	// The exact name of the cluster to search
+	// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
 	ClusterName *string `pulumi:"clusterName"`
 	// Additional tags for cluster resources.
 	CustomTags map[string]string `pulumi:"customTags"`
@@ -9956,11 +11360,11 @@ type GetClusterClusterInfoSpecArgs struct {
 	Autoscale                GetClusterClusterInfoSpecAutoscalePtrInput       `pulumi:"autoscale"`
 	AwsAttributes            GetClusterClusterInfoSpecAwsAttributesPtrInput   `pulumi:"awsAttributes"`
 	AzureAttributes          GetClusterClusterInfoSpecAzureAttributesPtrInput `pulumi:"azureAttributes"`
-	// The id of the cluster
+	// The id of the cluster.
 	ClusterId         pulumi.StringInput                                  `pulumi:"clusterId"`
 	ClusterLogConf    GetClusterClusterInfoSpecClusterLogConfPtrInput     `pulumi:"clusterLogConf"`
 	ClusterMountInfos GetClusterClusterInfoSpecClusterMountInfoArrayInput `pulumi:"clusterMountInfos"`
-	// The exact name of the cluster to search
+	// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
 	// Additional tags for cluster resources.
 	CustomTags pulumi.StringMapInput `pulumi:"customTags"`
@@ -10098,7 +11502,7 @@ func (o GetClusterClusterInfoSpecOutput) AzureAttributes() GetClusterClusterInfo
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecAzureAttributes { return v.AzureAttributes }).(GetClusterClusterInfoSpecAzureAttributesPtrOutput)
 }
 
-// The id of the cluster
+// The id of the cluster.
 func (o GetClusterClusterInfoSpecOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) string { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -10113,7 +11517,7 @@ func (o GetClusterClusterInfoSpecOutput) ClusterMountInfos() GetClusterClusterIn
 	}).(GetClusterClusterInfoSpecClusterMountInfoArrayOutput)
 }
 
-// The exact name of the cluster to search
+// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
 func (o GetClusterClusterInfoSpecOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
@@ -10294,7 +11698,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) AzureAttributes() GetClusterClusterI
 	}).(GetClusterClusterInfoSpecAzureAttributesPtrOutput)
 }
 
-// The id of the cluster
+// The id of the cluster.
 func (o GetClusterClusterInfoSpecPtrOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
 		if v == nil {
@@ -10322,7 +11726,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) ClusterMountInfos() GetClusterCluste
 	}).(GetClusterClusterInfoSpecClusterMountInfoArrayOutput)
 }
 
-// The exact name of the cluster to search
+// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
 func (o GetClusterClusterInfoSpecPtrOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
 		if v == nil {
@@ -15785,6 +17189,163 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) UpdatedBy() pulumi.StringPtrO
 		}
 		return v.UpdatedBy
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetDashboardsDashboard struct {
+	// The timestamp of when the dashboard was created.
+	CreateTime string `pulumi:"createTime"`
+	// The unique ID of the dashboard.
+	DashboardId string `pulumi:"dashboardId"`
+	// The display name of the dashboard.
+	DisplayName         *string `pulumi:"displayName"`
+	Etag                string  `pulumi:"etag"`
+	LifecycleState      string  `pulumi:"lifecycleState"`
+	ParentPath          string  `pulumi:"parentPath"`
+	Path                string  `pulumi:"path"`
+	SerializedDashboard *string `pulumi:"serializedDashboard"`
+	UpdateTime          string  `pulumi:"updateTime"`
+	WarehouseId         *string `pulumi:"warehouseId"`
+}
+
+// GetDashboardsDashboardInput is an input type that accepts GetDashboardsDashboardArgs and GetDashboardsDashboardOutput values.
+// You can construct a concrete instance of `GetDashboardsDashboardInput` via:
+//
+//	GetDashboardsDashboardArgs{...}
+type GetDashboardsDashboardInput interface {
+	pulumi.Input
+
+	ToGetDashboardsDashboardOutput() GetDashboardsDashboardOutput
+	ToGetDashboardsDashboardOutputWithContext(context.Context) GetDashboardsDashboardOutput
+}
+
+type GetDashboardsDashboardArgs struct {
+	// The timestamp of when the dashboard was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The unique ID of the dashboard.
+	DashboardId pulumi.StringInput `pulumi:"dashboardId"`
+	// The display name of the dashboard.
+	DisplayName         pulumi.StringPtrInput `pulumi:"displayName"`
+	Etag                pulumi.StringInput    `pulumi:"etag"`
+	LifecycleState      pulumi.StringInput    `pulumi:"lifecycleState"`
+	ParentPath          pulumi.StringInput    `pulumi:"parentPath"`
+	Path                pulumi.StringInput    `pulumi:"path"`
+	SerializedDashboard pulumi.StringPtrInput `pulumi:"serializedDashboard"`
+	UpdateTime          pulumi.StringInput    `pulumi:"updateTime"`
+	WarehouseId         pulumi.StringPtrInput `pulumi:"warehouseId"`
+}
+
+func (GetDashboardsDashboardArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDashboardsDashboard)(nil)).Elem()
+}
+
+func (i GetDashboardsDashboardArgs) ToGetDashboardsDashboardOutput() GetDashboardsDashboardOutput {
+	return i.ToGetDashboardsDashboardOutputWithContext(context.Background())
+}
+
+func (i GetDashboardsDashboardArgs) ToGetDashboardsDashboardOutputWithContext(ctx context.Context) GetDashboardsDashboardOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDashboardsDashboardOutput)
+}
+
+// GetDashboardsDashboardArrayInput is an input type that accepts GetDashboardsDashboardArray and GetDashboardsDashboardArrayOutput values.
+// You can construct a concrete instance of `GetDashboardsDashboardArrayInput` via:
+//
+//	GetDashboardsDashboardArray{ GetDashboardsDashboardArgs{...} }
+type GetDashboardsDashboardArrayInput interface {
+	pulumi.Input
+
+	ToGetDashboardsDashboardArrayOutput() GetDashboardsDashboardArrayOutput
+	ToGetDashboardsDashboardArrayOutputWithContext(context.Context) GetDashboardsDashboardArrayOutput
+}
+
+type GetDashboardsDashboardArray []GetDashboardsDashboardInput
+
+func (GetDashboardsDashboardArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDashboardsDashboard)(nil)).Elem()
+}
+
+func (i GetDashboardsDashboardArray) ToGetDashboardsDashboardArrayOutput() GetDashboardsDashboardArrayOutput {
+	return i.ToGetDashboardsDashboardArrayOutputWithContext(context.Background())
+}
+
+func (i GetDashboardsDashboardArray) ToGetDashboardsDashboardArrayOutputWithContext(ctx context.Context) GetDashboardsDashboardArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDashboardsDashboardArrayOutput)
+}
+
+type GetDashboardsDashboardOutput struct{ *pulumi.OutputState }
+
+func (GetDashboardsDashboardOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDashboardsDashboard)(nil)).Elem()
+}
+
+func (o GetDashboardsDashboardOutput) ToGetDashboardsDashboardOutput() GetDashboardsDashboardOutput {
+	return o
+}
+
+func (o GetDashboardsDashboardOutput) ToGetDashboardsDashboardOutputWithContext(ctx context.Context) GetDashboardsDashboardOutput {
+	return o
+}
+
+// The timestamp of when the dashboard was created.
+func (o GetDashboardsDashboardOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The unique ID of the dashboard.
+func (o GetDashboardsDashboardOutput) DashboardId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) string { return v.DashboardId }).(pulumi.StringOutput)
+}
+
+// The display name of the dashboard.
+func (o GetDashboardsDashboardOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDashboardsDashboardOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+func (o GetDashboardsDashboardOutput) LifecycleState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) string { return v.LifecycleState }).(pulumi.StringOutput)
+}
+
+func (o GetDashboardsDashboardOutput) ParentPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) string { return v.ParentPath }).(pulumi.StringOutput)
+}
+
+func (o GetDashboardsDashboardOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o GetDashboardsDashboardOutput) SerializedDashboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) *string { return v.SerializedDashboard }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDashboardsDashboardOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func (o GetDashboardsDashboardOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+}
+
+type GetDashboardsDashboardArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDashboardsDashboardArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDashboardsDashboard)(nil)).Elem()
+}
+
+func (o GetDashboardsDashboardArrayOutput) ToGetDashboardsDashboardArrayOutput() GetDashboardsDashboardArrayOutput {
+	return o
+}
+
+func (o GetDashboardsDashboardArrayOutput) ToGetDashboardsDashboardArrayOutputWithContext(ctx context.Context) GetDashboardsDashboardArrayOutput {
+	return o
+}
+
+func (o GetDashboardsDashboardArrayOutput) Index(i pulumi.IntInput) GetDashboardsDashboardOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDashboardsDashboard {
+		return vs[0].([]GetDashboardsDashboard)[vs[1].(int)]
+	}).(GetDashboardsDashboardOutput)
 }
 
 type GetDbfsFilePathsPathList struct {
@@ -56831,6 +58392,7 @@ type GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConf
 	AwsSecretAccessKey          *string `pulumi:"awsSecretAccessKey"`
 	AwsSecretAccessKeyPlaintext *string `pulumi:"awsSecretAccessKeyPlaintext"`
 	BedrockProvider             string  `pulumi:"bedrockProvider"`
+	InstanceProfileArn          *string `pulumi:"instanceProfileArn"`
 }
 
 // GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigInput is an input type that accepts GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs and GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigOutput values.
@@ -56851,6 +58413,7 @@ type GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConf
 	AwsSecretAccessKey          pulumi.StringPtrInput `pulumi:"awsSecretAccessKey"`
 	AwsSecretAccessKeyPlaintext pulumi.StringPtrInput `pulumi:"awsSecretAccessKeyPlaintext"`
 	BedrockProvider             pulumi.StringInput    `pulumi:"bedrockProvider"`
+	InstanceProfileArn          pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
 }
 
 func (GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs) ElementType() reflect.Type {
@@ -56938,6 +58501,12 @@ func (o GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockC
 	return o.ApplyT(func(v GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig) string {
 		return v.BedrockProvider
 	}).(pulumi.StringOutput)
+}
+
+func (o GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigOutput) InstanceProfileArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig) *string {
+		return v.InstanceProfileArn
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArrayOutput struct{ *pulumi.OutputState }
@@ -64201,6 +65770,18 @@ func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) AwsKm
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAwsIamRoleInput)(nil)).Elem(), StorageCredentialAwsIamRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAwsIamRolePtrInput)(nil)).Elem(), StorageCredentialAwsIamRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAzureManagedIdentityInput)(nil)).Elem(), StorageCredentialAzureManagedIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAzureManagedIdentityPtrInput)(nil)).Elem(), StorageCredentialAzureManagedIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAzureServicePrincipalInput)(nil)).Elem(), StorageCredentialAzureServicePrincipalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialAzureServicePrincipalPtrInput)(nil)).Elem(), StorageCredentialAzureServicePrincipalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialCloudflareApiTokenInput)(nil)).Elem(), StorageCredentialCloudflareApiTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialCloudflareApiTokenPtrInput)(nil)).Elem(), StorageCredentialCloudflareApiTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialDatabricksGcpServiceAccountInput)(nil)).Elem(), StorageCredentialDatabricksGcpServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialDatabricksGcpServiceAccountPtrInput)(nil)).Elem(), StorageCredentialDatabricksGcpServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialGcpServiceAccountKeyInput)(nil)).Elem(), StorageCredentialGcpServiceAccountKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialGcpServiceAccountKeyPtrInput)(nil)).Elem(), StorageCredentialGcpServiceAccountKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableColumnInput)(nil)).Elem(), TableColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableColumnArrayInput)(nil)).Elem(), TableColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchEndpointEndpointStatusInput)(nil)).Elem(), VectorSearchEndpointEndpointStatusArgs{})
@@ -64258,6 +65839,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppResourceServingEndpointPtrInput)(nil)).Elem(), GetAppsAppResourceServingEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppResourceSqlWarehouseInput)(nil)).Elem(), GetAppsAppResourceSqlWarehouseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppResourceSqlWarehousePtrInput)(nil)).Elem(), GetAppsAppResourceSqlWarehouseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBudgetPoliciesBudgetPolicyInput)(nil)).Elem(), GetBudgetPoliciesBudgetPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBudgetPoliciesBudgetPolicyArrayInput)(nil)).Elem(), GetBudgetPoliciesBudgetPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBudgetPoliciesBudgetPolicyCustomTagInput)(nil)).Elem(), GetBudgetPoliciesBudgetPolicyCustomTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBudgetPoliciesBudgetPolicyCustomTagArrayInput)(nil)).Elem(), GetBudgetPoliciesBudgetPolicyCustomTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBudgetPolicyCustomTagInput)(nil)).Elem(), GetBudgetPolicyCustomTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBudgetPolicyCustomTagArrayInput)(nil)).Elem(), GetBudgetPolicyCustomTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogCatalogInfoInput)(nil)).Elem(), GetCatalogCatalogInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogCatalogInfoPtrInput)(nil)).Elem(), GetCatalogCatalogInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagInput)(nil)).Elem(), GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs{})
@@ -64379,6 +65966,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersFilterByPtrInput)(nil)).Elem(), GetClustersFilterByArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCurrentMetastoreMetastoreInfoInput)(nil)).Elem(), GetCurrentMetastoreMetastoreInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCurrentMetastoreMetastoreInfoPtrInput)(nil)).Elem(), GetCurrentMetastoreMetastoreInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDashboardsDashboardInput)(nil)).Elem(), GetDashboardsDashboardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDashboardsDashboardArrayInput)(nil)).Elem(), GetDashboardsDashboardArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbfsFilePathsPathListInput)(nil)).Elem(), GetDbfsFilePathsPathListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbfsFilePathsPathListArrayInput)(nil)).Elem(), GetDbfsFilePathsPathListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalLocationExternalLocationInfoInput)(nil)).Elem(), GetExternalLocationExternalLocationInfoArgs{})
@@ -64976,6 +66565,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
+	pulumi.RegisterOutputType(StorageCredentialAwsIamRoleOutput{})
+	pulumi.RegisterOutputType(StorageCredentialAwsIamRolePtrOutput{})
+	pulumi.RegisterOutputType(StorageCredentialAzureManagedIdentityOutput{})
+	pulumi.RegisterOutputType(StorageCredentialAzureManagedIdentityPtrOutput{})
+	pulumi.RegisterOutputType(StorageCredentialAzureServicePrincipalOutput{})
+	pulumi.RegisterOutputType(StorageCredentialAzureServicePrincipalPtrOutput{})
+	pulumi.RegisterOutputType(StorageCredentialCloudflareApiTokenOutput{})
+	pulumi.RegisterOutputType(StorageCredentialCloudflareApiTokenPtrOutput{})
+	pulumi.RegisterOutputType(StorageCredentialDatabricksGcpServiceAccountOutput{})
+	pulumi.RegisterOutputType(StorageCredentialDatabricksGcpServiceAccountPtrOutput{})
+	pulumi.RegisterOutputType(StorageCredentialGcpServiceAccountKeyOutput{})
+	pulumi.RegisterOutputType(StorageCredentialGcpServiceAccountKeyPtrOutput{})
 	pulumi.RegisterOutputType(TableColumnOutput{})
 	pulumi.RegisterOutputType(TableColumnArrayOutput{})
 	pulumi.RegisterOutputType(VectorSearchEndpointEndpointStatusOutput{})
@@ -65033,6 +66634,12 @@ func init() {
 	pulumi.RegisterOutputType(GetAppsAppResourceServingEndpointPtrOutput{})
 	pulumi.RegisterOutputType(GetAppsAppResourceSqlWarehouseOutput{})
 	pulumi.RegisterOutputType(GetAppsAppResourceSqlWarehousePtrOutput{})
+	pulumi.RegisterOutputType(GetBudgetPoliciesBudgetPolicyOutput{})
+	pulumi.RegisterOutputType(GetBudgetPoliciesBudgetPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetBudgetPoliciesBudgetPolicyCustomTagOutput{})
+	pulumi.RegisterOutputType(GetBudgetPoliciesBudgetPolicyCustomTagArrayOutput{})
+	pulumi.RegisterOutputType(GetBudgetPolicyCustomTagOutput{})
+	pulumi.RegisterOutputType(GetBudgetPolicyCustomTagArrayOutput{})
 	pulumi.RegisterOutputType(GetCatalogCatalogInfoOutput{})
 	pulumi.RegisterOutputType(GetCatalogCatalogInfoPtrOutput{})
 	pulumi.RegisterOutputType(GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagOutput{})
@@ -65154,6 +66761,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClustersFilterByPtrOutput{})
 	pulumi.RegisterOutputType(GetCurrentMetastoreMetastoreInfoOutput{})
 	pulumi.RegisterOutputType(GetCurrentMetastoreMetastoreInfoPtrOutput{})
+	pulumi.RegisterOutputType(GetDashboardsDashboardOutput{})
+	pulumi.RegisterOutputType(GetDashboardsDashboardArrayOutput{})
 	pulumi.RegisterOutputType(GetDbfsFilePathsPathListOutput{})
 	pulumi.RegisterOutputType(GetDbfsFilePathsPathListArrayOutput{})
 	pulumi.RegisterOutputType(GetExternalLocationExternalLocationInfoOutput{})

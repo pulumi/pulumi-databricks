@@ -18,14 +18,22 @@ public final class MetastoreAssignmentState extends com.pulumi.resources.Resourc
     /**
      * Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
      * 
+     * @deprecated
+     * Use databricks.DefaultNamespaceSetting resource instead
+     * 
      */
+    @Deprecated /* Use databricks.DefaultNamespaceSetting resource instead */
     @Import(name="defaultCatalogName")
     private @Nullable Output<String> defaultCatalogName;
 
     /**
      * @return Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
      * 
+     * @deprecated
+     * Use databricks.DefaultNamespaceSetting resource instead
+     * 
      */
+    @Deprecated /* Use databricks.DefaultNamespaceSetting resource instead */
     public Optional<Output<String>> defaultCatalogName() {
         return Optional.ofNullable(this.defaultCatalogName);
     }
@@ -91,7 +99,11 @@ public final class MetastoreAssignmentState extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use databricks.DefaultNamespaceSetting resource instead
+         * 
          */
+        @Deprecated /* Use databricks.DefaultNamespaceSetting resource instead */
         public Builder defaultCatalogName(@Nullable Output<String> defaultCatalogName) {
             $.defaultCatalogName = defaultCatalogName;
             return this;
@@ -102,7 +114,11 @@ public final class MetastoreAssignmentState extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use databricks.DefaultNamespaceSetting resource instead
+         * 
          */
+        @Deprecated /* Use databricks.DefaultNamespaceSetting resource instead */
         public Builder defaultCatalogName(String defaultCatalogName) {
             return defaultCatalogName(Output.of(defaultCatalogName));
         }

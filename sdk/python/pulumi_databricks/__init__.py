@@ -13,6 +13,7 @@ from .app import *
 from .artifact_allowlist import *
 from .automatic_cluster_update_workspace_setting import *
 from .budget import *
+from .budget_policy import *
 from .catalog import *
 from .catalog_workspace_binding import *
 from .cluster import *
@@ -36,6 +37,8 @@ from .get_aws_bucket_policy import *
 from .get_aws_cross_account_policy import *
 from .get_aws_unity_catalog_assume_role_policy import *
 from .get_aws_unity_catalog_policy import *
+from .get_budget_policies import *
+from .get_budget_policy import *
 from .get_catalog import *
 from .get_catalogs import *
 from .get_cluster import *
@@ -44,6 +47,7 @@ from .get_clusters import *
 from .get_current_config import *
 from .get_current_metastore import *
 from .get_current_user import *
+from .get_dashboards import *
 from .get_dbfs_file import *
 from .get_dbfs_file_paths import *
 from .get_directory import *
@@ -244,6 +248,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/budget:Budget": "Budget"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/budgetPolicy",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/budgetPolicy:BudgetPolicy": "BudgetPolicy"
   }
  },
  {

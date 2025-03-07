@@ -25,6 +25,7 @@ public final class GetAppsApp {
      * 
      */
     private GetAppsAppAppStatus appStatus;
+    private @Nullable String budgetPolicyId;
     /**
      * @return attribute
      * 
@@ -50,6 +51,7 @@ public final class GetAppsApp {
      * 
      */
     private @Nullable String description;
+    private String effectiveBudgetPolicyId;
     /**
      * @return Id of the job to grant permission on.
      * 
@@ -104,6 +106,9 @@ public final class GetAppsApp {
     public GetAppsAppAppStatus appStatus() {
         return this.appStatus;
     }
+    public Optional<String> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
+    }
     /**
      * @return attribute
      * 
@@ -138,6 +143,9 @@ public final class GetAppsApp {
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
+    }
+    public String effectiveBudgetPolicyId() {
+        return this.effectiveBudgetPolicyId;
     }
     /**
      * @return Id of the job to grant permission on.
@@ -213,11 +221,13 @@ public final class GetAppsApp {
     public static final class Builder {
         private GetAppsAppActiveDeployment activeDeployment;
         private GetAppsAppAppStatus appStatus;
+        private @Nullable String budgetPolicyId;
         private GetAppsAppComputeStatus computeStatus;
         private String createTime;
         private String creator;
         private String defaultSourceCodePath;
         private @Nullable String description;
+        private String effectiveBudgetPolicyId;
         private String id;
         private String name;
         private GetAppsAppPendingDeployment pendingDeployment;
@@ -233,11 +243,13 @@ public final class GetAppsApp {
     	      Objects.requireNonNull(defaults);
     	      this.activeDeployment = defaults.activeDeployment;
     	      this.appStatus = defaults.appStatus;
+    	      this.budgetPolicyId = defaults.budgetPolicyId;
     	      this.computeStatus = defaults.computeStatus;
     	      this.createTime = defaults.createTime;
     	      this.creator = defaults.creator;
     	      this.defaultSourceCodePath = defaults.defaultSourceCodePath;
     	      this.description = defaults.description;
+    	      this.effectiveBudgetPolicyId = defaults.effectiveBudgetPolicyId;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.pendingDeployment = defaults.pendingDeployment;
@@ -264,6 +276,12 @@ public final class GetAppsApp {
               throw new MissingRequiredPropertyException("GetAppsApp", "appStatus");
             }
             this.appStatus = appStatus;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder budgetPolicyId(@Nullable String budgetPolicyId) {
+
+            this.budgetPolicyId = budgetPolicyId;
             return this;
         }
         @CustomType.Setter
@@ -302,6 +320,14 @@ public final class GetAppsApp {
         public Builder description(@Nullable String description) {
 
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveBudgetPolicyId(String effectiveBudgetPolicyId) {
+            if (effectiveBudgetPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "effectiveBudgetPolicyId");
+            }
+            this.effectiveBudgetPolicyId = effectiveBudgetPolicyId;
             return this;
         }
         @CustomType.Setter
@@ -389,11 +415,13 @@ public final class GetAppsApp {
             final var _resultValue = new GetAppsApp();
             _resultValue.activeDeployment = activeDeployment;
             _resultValue.appStatus = appStatus;
+            _resultValue.budgetPolicyId = budgetPolicyId;
             _resultValue.computeStatus = computeStatus;
             _resultValue.createTime = createTime;
             _resultValue.creator = creator;
             _resultValue.defaultSourceCodePath = defaultSourceCodePath;
             _resultValue.description = description;
+            _resultValue.effectiveBudgetPolicyId = effectiveBudgetPolicyId;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.pendingDeployment = pendingDeployment;

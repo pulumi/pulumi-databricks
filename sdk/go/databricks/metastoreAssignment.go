@@ -68,7 +68,9 @@ type MetastoreAssignment struct {
 	pulumi.CustomResourceState
 
 	// Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
-	DefaultCatalogName pulumi.StringPtrOutput `pulumi:"defaultCatalogName"`
+	//
+	// Deprecated: Use DefaultNamespaceSetting resource instead
+	DefaultCatalogName pulumi.StringOutput `pulumi:"defaultCatalogName"`
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
 	// id of the workspace for the assignment
@@ -112,6 +114,8 @@ func GetMetastoreAssignment(ctx *pulumi.Context,
 // Input properties used for looking up and filtering MetastoreAssignment resources.
 type metastoreAssignmentState struct {
 	// Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
+	//
+	// Deprecated: Use DefaultNamespaceSetting resource instead
 	DefaultCatalogName *string `pulumi:"defaultCatalogName"`
 	// Unique identifier of the parent Metastore
 	MetastoreId *string `pulumi:"metastoreId"`
@@ -121,6 +125,8 @@ type metastoreAssignmentState struct {
 
 type MetastoreAssignmentState struct {
 	// Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
+	//
+	// Deprecated: Use DefaultNamespaceSetting resource instead
 	DefaultCatalogName pulumi.StringPtrInput
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringPtrInput
@@ -134,6 +140,8 @@ func (MetastoreAssignmentState) ElementType() reflect.Type {
 
 type metastoreAssignmentArgs struct {
 	// Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
+	//
+	// Deprecated: Use DefaultNamespaceSetting resource instead
 	DefaultCatalogName *string `pulumi:"defaultCatalogName"`
 	// Unique identifier of the parent Metastore
 	MetastoreId string `pulumi:"metastoreId"`
@@ -144,6 +152,8 @@ type metastoreAssignmentArgs struct {
 // The set of arguments for constructing a MetastoreAssignment resource.
 type MetastoreAssignmentArgs struct {
 	// Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
+	//
+	// Deprecated: Use DefaultNamespaceSetting resource instead
 	DefaultCatalogName pulumi.StringPtrInput
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringInput
@@ -239,8 +249,10 @@ func (o MetastoreAssignmentOutput) ToMetastoreAssignmentOutputWithContext(ctx co
 }
 
 // Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
-func (o MetastoreAssignmentOutput) DefaultCatalogName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MetastoreAssignment) pulumi.StringPtrOutput { return v.DefaultCatalogName }).(pulumi.StringPtrOutput)
+//
+// Deprecated: Use DefaultNamespaceSetting resource instead
+func (o MetastoreAssignmentOutput) DefaultCatalogName() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetastoreAssignment) pulumi.StringOutput { return v.DefaultCatalogName }).(pulumi.StringOutput)
 }
 
 // Unique identifier of the parent Metastore

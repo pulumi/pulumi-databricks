@@ -31,14 +31,14 @@ public final class GetClusterClusterInfoSpec {
     private @Nullable GetClusterClusterInfoSpecAwsAttributes awsAttributes;
     private @Nullable GetClusterClusterInfoSpecAzureAttributes azureAttributes;
     /**
-     * @return The id of the cluster
+     * @return The id of the cluster.
      * 
      */
     private String clusterId;
     private @Nullable GetClusterClusterInfoSpecClusterLogConf clusterLogConf;
     private @Nullable List<GetClusterClusterInfoSpecClusterMountInfo> clusterMountInfos;
     /**
-     * @return The exact name of the cluster to search
+     * @return The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      * 
      */
     private @Nullable String clusterName;
@@ -146,7 +146,7 @@ public final class GetClusterClusterInfoSpec {
         return Optional.ofNullable(this.azureAttributes);
     }
     /**
-     * @return The id of the cluster
+     * @return The id of the cluster.
      * 
      */
     public String clusterId() {
@@ -159,7 +159,7 @@ public final class GetClusterClusterInfoSpec {
         return this.clusterMountInfos == null ? List.of() : this.clusterMountInfos;
     }
     /**
-     * @return The exact name of the cluster to search
+     * @return The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      * 
      */
     public Optional<String> clusterName() {

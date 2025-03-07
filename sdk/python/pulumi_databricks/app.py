@@ -21,6 +21,7 @@ __all__ = ['AppArgs', 'App']
 @pulumi.input_type
 class AppArgs:
     def __init__(__self__, *,
+                 budget_policy_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  no_compute: Optional[pulumi.Input[bool]] = None,
@@ -31,6 +32,8 @@ class AppArgs:
         :param pulumi.Input[str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         :param pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]] resources: A list of resources that the app have access to.
         """
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -39,6 +42,15 @@ class AppArgs:
             pulumi.set(__self__, "no_compute", no_compute)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "budget_policy_id")
+
+    @budget_policy_id.setter
+    def budget_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "budget_policy_id", value)
 
     @property
     @pulumi.getter
@@ -91,11 +103,13 @@ class _AppState:
     def __init__(__self__, *,
                  active_deployment: Optional[pulumi.Input['AppActiveDeploymentArgs']] = None,
                  app_status: Optional[pulumi.Input['AppAppStatusArgs']] = None,
+                 budget_policy_id: Optional[pulumi.Input[str]] = None,
                  compute_status: Optional[pulumi.Input['AppComputeStatusArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  creator: Optional[pulumi.Input[str]] = None,
                  default_source_code_path: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_budget_policy_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  no_compute: Optional[pulumi.Input[bool]] = None,
                  pending_deployment: Optional[pulumi.Input['AppPendingDeploymentArgs']] = None,
@@ -126,6 +140,8 @@ class _AppState:
             pulumi.set(__self__, "active_deployment", active_deployment)
         if app_status is not None:
             pulumi.set(__self__, "app_status", app_status)
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if compute_status is not None:
             pulumi.set(__self__, "compute_status", compute_status)
         if create_time is not None:
@@ -136,6 +152,8 @@ class _AppState:
             pulumi.set(__self__, "default_source_code_path", default_source_code_path)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_budget_policy_id is not None:
+            pulumi.set(__self__, "effective_budget_policy_id", effective_budget_policy_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if no_compute is not None:
@@ -177,6 +195,15 @@ class _AppState:
     @app_status.setter
     def app_status(self, value: Optional[pulumi.Input['AppAppStatusArgs']]):
         pulumi.set(self, "app_status", value)
+
+    @property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "budget_policy_id")
+
+    @budget_policy_id.setter
+    def budget_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "budget_policy_id", value)
 
     @property
     @pulumi.getter(name="computeStatus")
@@ -237,6 +264,15 @@ class _AppState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="effectiveBudgetPolicyId")
+    def effective_budget_policy_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "effective_budget_policy_id")
+
+    @effective_budget_policy_id.setter
+    def effective_budget_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effective_budget_policy_id", value)
 
     @property
     @pulumi.getter
@@ -355,6 +391,7 @@ class App(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 budget_policy_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  no_compute: Optional[pulumi.Input[bool]] = None,
@@ -441,6 +478,7 @@ class App(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 budget_policy_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  no_compute: Optional[pulumi.Input[bool]] = None,
@@ -454,6 +492,7 @@ class App(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AppArgs.__new__(AppArgs)
 
+            __props__.__dict__["budget_policy_id"] = budget_policy_id
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["no_compute"] = no_compute
@@ -464,6 +503,7 @@ class App(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["creator"] = None
             __props__.__dict__["default_source_code_path"] = None
+            __props__.__dict__["effective_budget_policy_id"] = None
             __props__.__dict__["pending_deployment"] = None
             __props__.__dict__["service_principal_client_id"] = None
             __props__.__dict__["service_principal_id"] = None
@@ -483,11 +523,13 @@ class App(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             active_deployment: Optional[pulumi.Input[Union['AppActiveDeploymentArgs', 'AppActiveDeploymentArgsDict']]] = None,
             app_status: Optional[pulumi.Input[Union['AppAppStatusArgs', 'AppAppStatusArgsDict']]] = None,
+            budget_policy_id: Optional[pulumi.Input[str]] = None,
             compute_status: Optional[pulumi.Input[Union['AppComputeStatusArgs', 'AppComputeStatusArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             creator: Optional[pulumi.Input[str]] = None,
             default_source_code_path: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_budget_policy_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             no_compute: Optional[pulumi.Input[bool]] = None,
             pending_deployment: Optional[pulumi.Input[Union['AppPendingDeploymentArgs', 'AppPendingDeploymentArgsDict']]] = None,
@@ -525,11 +567,13 @@ class App(pulumi.CustomResource):
 
         __props__.__dict__["active_deployment"] = active_deployment
         __props__.__dict__["app_status"] = app_status
+        __props__.__dict__["budget_policy_id"] = budget_policy_id
         __props__.__dict__["compute_status"] = compute_status
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["creator"] = creator
         __props__.__dict__["default_source_code_path"] = default_source_code_path
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_budget_policy_id"] = effective_budget_policy_id
         __props__.__dict__["name"] = name
         __props__.__dict__["no_compute"] = no_compute
         __props__.__dict__["pending_deployment"] = pending_deployment
@@ -554,6 +598,11 @@ class App(pulumi.CustomResource):
         attribute
         """
         return pulumi.get(self, "app_status")
+
+    @property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "budget_policy_id")
 
     @property
     @pulumi.getter(name="computeStatus")
@@ -594,6 +643,11 @@ class App(pulumi.CustomResource):
         The description of the app.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="effectiveBudgetPolicyId")
+    def effective_budget_policy_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "effective_budget_policy_id")
 
     @property
     @pulumi.getter

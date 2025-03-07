@@ -11,6 +11,7 @@ import com.pulumi.databricks.inputs.JobTaskDbtTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskDependsOnArgs;
 import com.pulumi.databricks.inputs.JobTaskEmailNotificationsArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskArgs;
+import com.pulumi.databricks.inputs.JobTaskGenAiComputeTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskHealthArgs;
 import com.pulumi.databricks.inputs.JobTaskLibraryArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterArgs;
@@ -154,6 +155,13 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<JobTaskForEachTaskArgs>> forEachTask() {
         return Optional.ofNullable(this.forEachTask);
+    }
+
+    @Import(name="genAiComputeTask")
+    private @Nullable Output<JobTaskGenAiComputeTaskArgs> genAiComputeTask;
+
+    public Optional<Output<JobTaskGenAiComputeTaskArgs>> genAiComputeTask() {
+        return Optional.ofNullable(this.genAiComputeTask);
     }
 
     /**
@@ -411,6 +419,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         this.environmentKey = $.environmentKey;
         this.existingClusterId = $.existingClusterId;
         this.forEachTask = $.forEachTask;
+        this.genAiComputeTask = $.genAiComputeTask;
         this.health = $.health;
         this.jobClusterKey = $.jobClusterKey;
         this.libraries = $.libraries;
@@ -621,6 +630,15 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder forEachTask(JobTaskForEachTaskArgs forEachTask) {
             return forEachTask(Output.of(forEachTask));
+        }
+
+        public Builder genAiComputeTask(@Nullable Output<JobTaskGenAiComputeTaskArgs> genAiComputeTask) {
+            $.genAiComputeTask = genAiComputeTask;
+            return this;
+        }
+
+        public Builder genAiComputeTask(JobTaskGenAiComputeTaskArgs genAiComputeTask) {
+            return genAiComputeTask(Output.of(genAiComputeTask));
         }
 
         /**
