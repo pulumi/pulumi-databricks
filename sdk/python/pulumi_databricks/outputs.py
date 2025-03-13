@@ -933,11 +933,13 @@ class AccessControlRuleSetGrantRule(dict):
                  role: str,
                  principals: Optional[Sequence[str]] = None):
         """
-        :param str role: Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
+        :param str role: Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions).
                * `roles/servicePrincipal.manager` - Manager of a service principal.
                * `roles/servicePrincipal.user` - User of a service principal.
                * `roles/group.manager` - Manager of a group.
                * `roles/marketplace.admin` - Admin of marketplace.
+               * `roles/budgetPolicy.manager` - Manager of a budget policy.
+               * `roles/budgetPolicy.user` - User of a budget policy.
         :param Sequence[str] principals: a list of principals who are granted a role. The following format is supported:
                * `users/{username}` (also exposed as `acl_principal_id` attribute of `User` resource).
                * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `Group` resource).
@@ -951,11 +953,13 @@ class AccessControlRuleSetGrantRule(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
+        Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions).
         * `roles/servicePrincipal.manager` - Manager of a service principal.
         * `roles/servicePrincipal.user` - User of a service principal.
         * `roles/group.manager` - Manager of a group.
         * `roles/marketplace.admin` - Admin of marketplace.
+        * `roles/budgetPolicy.manager` - Manager of a budget policy.
+        * `roles/budgetPolicy.user` - User of a budget policy.
         """
         return pulumi.get(self, "role")
 
@@ -27941,6 +27945,7 @@ class GetAppAppResult(dict):
         :param str create_time: The creation time of the app.
         :param str creator: The email of the user that created the app.
         :param str default_source_code_path: The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+        :param str effective_budget_policy_id: The effective budget policy ID.
         :param str id: Id of the job to grant permission on.
         :param str name: The name of the app.
         :param int service_principal_id: id of the app service principal
@@ -27948,6 +27953,7 @@ class GetAppAppResult(dict):
         :param str update_time: The update time of the app.
         :param str updater: The email of the user that last updated the app.
         :param str url: The URL of the app once it is deployed.
+        :param str budget_policy_id: The Budget Policy ID set for this resource.
         :param str description: The description of the resource.
         :param Sequence['GetAppAppResourceArgs'] resources: A list of resources that the app have access to.
         """
@@ -28022,6 +28028,9 @@ class GetAppAppResult(dict):
     @property
     @pulumi.getter(name="effectiveBudgetPolicyId")
     def effective_budget_policy_id(self) -> str:
+        """
+        The effective budget policy ID.
+        """
         return pulumi.get(self, "effective_budget_policy_id")
 
     @property
@@ -28093,6 +28102,9 @@ class GetAppAppResult(dict):
     @property
     @pulumi.getter(name="budgetPolicyId")
     def budget_policy_id(self) -> Optional[str]:
+        """
+        The Budget Policy ID set for this resource.
+        """
         return pulumi.get(self, "budget_policy_id")
 
     @property
@@ -28643,6 +28655,7 @@ class GetAppsAppResult(dict):
         :param str create_time: The creation time of the app.
         :param str creator: The email of the user that created the app.
         :param str default_source_code_path: The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+        :param str effective_budget_policy_id: The effective budget policy ID.
         :param str id: Id of the job to grant permission on.
         :param str name: Name of the serving endpoint to grant permission on.
         :param int service_principal_id: id of the app service principal
@@ -28650,6 +28663,7 @@ class GetAppsAppResult(dict):
         :param str update_time: The update time of the app.
         :param str updater: The email of the user that last updated the app.
         :param str url: The URL of the app once it is deployed.
+        :param str budget_policy_id: The Budget Policy ID set for this resource.
         :param str description: The description of the resource.
         :param Sequence['GetAppsAppResourceArgs'] resources: A list of resources that the app have access to.
         """
@@ -28724,6 +28738,9 @@ class GetAppsAppResult(dict):
     @property
     @pulumi.getter(name="effectiveBudgetPolicyId")
     def effective_budget_policy_id(self) -> str:
+        """
+        The effective budget policy ID.
+        """
         return pulumi.get(self, "effective_budget_policy_id")
 
     @property
@@ -28795,6 +28812,9 @@ class GetAppsAppResult(dict):
     @property
     @pulumi.getter(name="budgetPolicyId")
     def budget_policy_id(self) -> Optional[str]:
+        """
+        The Budget Policy ID set for this resource.
+        """
         return pulumi.get(self, "budget_policy_id")
 
     @property

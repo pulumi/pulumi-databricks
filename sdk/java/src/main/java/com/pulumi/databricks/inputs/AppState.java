@@ -45,9 +45,17 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.appStatus);
     }
 
+    /**
+     * The optional Budget Policy ID set for this resource.
+     * 
+     */
     @Import(name="budgetPolicyId")
     private @Nullable Output<String> budgetPolicyId;
 
+    /**
+     * @return The optional Budget Policy ID set for this resource.
+     * 
+     */
     public Optional<Output<String>> budgetPolicyId() {
         return Optional.ofNullable(this.budgetPolicyId);
     }
@@ -127,9 +135,17 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * The effective budget policy ID.
+     * 
+     */
     @Import(name="effectiveBudgetPolicyId")
     private @Nullable Output<String> effectiveBudgetPolicyId;
 
+    /**
+     * @return The effective budget policy ID.
+     * 
+     */
     public Optional<Output<String>> effectiveBudgetPolicyId() {
         return Optional.ofNullable(this.effectiveBudgetPolicyId);
     }
@@ -332,11 +348,23 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
             return appStatus(Output.of(appStatus));
         }
 
+        /**
+         * @param budgetPolicyId The optional Budget Policy ID set for this resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder budgetPolicyId(@Nullable Output<String> budgetPolicyId) {
             $.budgetPolicyId = budgetPolicyId;
             return this;
         }
 
+        /**
+         * @param budgetPolicyId The optional Budget Policy ID set for this resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder budgetPolicyId(String budgetPolicyId) {
             return budgetPolicyId(Output.of(budgetPolicyId));
         }
@@ -446,11 +474,23 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        /**
+         * @param effectiveBudgetPolicyId The effective budget policy ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveBudgetPolicyId(@Nullable Output<String> effectiveBudgetPolicyId) {
             $.effectiveBudgetPolicyId = effectiveBudgetPolicyId;
             return this;
         }
 
+        /**
+         * @param effectiveBudgetPolicyId The effective budget policy ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveBudgetPolicyId(String effectiveBudgetPolicyId) {
             return effectiveBudgetPolicyId(Output.of(effectiveBudgetPolicyId));
         }

@@ -48,6 +48,7 @@ public final class AccessControlRuleSetState extends com.pulumi.resources.Resour
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
      * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
      * * `accounts/{account_id}/ruleSets/default`
+     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
      * 
      */
     @Import(name="name")
@@ -58,6 +59,7 @@ public final class AccessControlRuleSetState extends com.pulumi.resources.Resour
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
      * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
      * * `accounts/{account_id}/ruleSets/default`
+     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
      * 
      */
     public Optional<Output<String>> name() {
@@ -141,6 +143,7 @@ public final class AccessControlRuleSetState extends com.pulumi.resources.Resour
          * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
          * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
          * * `accounts/{account_id}/ruleSets/default`
+         * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
          * 
          * @return builder
          * 
@@ -155,6 +158,7 @@ public final class AccessControlRuleSetState extends com.pulumi.resources.Resour
          * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
          * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
          * * `accounts/{account_id}/ruleSets/default`
+         * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
          * 
          * @return builder
          * 

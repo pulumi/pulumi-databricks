@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Outputs
         /// attribute
         /// </summary>
         public readonly Outputs.GetAppsAppAppStatusResult AppStatus;
+        /// <summary>
+        /// The Budget Policy ID set for this resource.
+        /// </summary>
         public readonly string? BudgetPolicyId;
         /// <summary>
         /// attribute
@@ -39,6 +42,9 @@ namespace Pulumi.Databricks.Outputs
         /// The description of the resource.
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// The effective budget policy ID.
+        /// </summary>
         public readonly string EffectiveBudgetPolicyId;
         /// <summary>
         /// Id of the job to grant permission on.

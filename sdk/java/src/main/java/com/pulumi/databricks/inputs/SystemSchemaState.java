@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,13 @@ import javax.annotation.Nullable;
 public final class SystemSchemaState extends com.pulumi.resources.ResourceArgs {
 
     public static final SystemSchemaState Empty = new SystemSchemaState();
+
+    @Import(name="autoEnabled")
+    private @Nullable Output<Boolean> autoEnabled;
+
+    public Optional<Output<Boolean>> autoEnabled() {
+        return Optional.ofNullable(this.autoEnabled);
+    }
 
     /**
      * the full name of the system schema, in form of `system.&lt;schema&gt;`.
@@ -70,6 +78,7 @@ public final class SystemSchemaState extends com.pulumi.resources.ResourceArgs {
     private SystemSchemaState() {}
 
     private SystemSchemaState(SystemSchemaState $) {
+        this.autoEnabled = $.autoEnabled;
         this.fullName = $.fullName;
         this.metastoreId = $.metastoreId;
         this.schema = $.schema;
@@ -92,6 +101,15 @@ public final class SystemSchemaState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SystemSchemaState defaults) {
             $ = new SystemSchemaState(Objects.requireNonNull(defaults));
+        }
+
+        public Builder autoEnabled(@Nullable Output<Boolean> autoEnabled) {
+            $.autoEnabled = autoEnabled;
+            return this;
+        }
+
+        public Builder autoEnabled(Boolean autoEnabled) {
+            return autoEnabled(Output.of(autoEnabled));
         }
 
         /**

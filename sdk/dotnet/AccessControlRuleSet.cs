@@ -299,6 +299,71 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ## Budget policy usage
+    /// 
+    /// Access to budget policies could be controlled with this resource:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var accountId = "00000000-0000-0000-0000-000000000000";
+    /// 
+    ///     // account level group
+    ///     var ds = Databricks.GetGroup.Invoke(new()
+    ///     {
+    ///         DisplayName = "Data Science",
+    ///     });
+    /// 
+    ///     var john = Databricks.GetUser.Invoke(new()
+    ///     {
+    ///         UserName = "john.doe@example.com",
+    ///     });
+    /// 
+    ///     var @this = new Databricks.BudgetPolicy("this", new()
+    ///     {
+    ///         PolicyName = "data-science-budget-policy",
+    ///         CustomTags = new[]
+    ///         {
+    ///             new Databricks.Inputs.BudgetPolicyCustomTagArgs
+    ///             {
+    ///                 Key = "mykey",
+    ///                 Value = "myvalue",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var budgetPolicyUsage = new Databricks.AccessControlRuleSet("budget_policy_usage", new()
+    ///     {
+    ///         Name = @this.PolicyId.Apply(policyId =&gt; $"accounts/{accountId}/budgetPolicies/{policyId}/ruleSets/default"),
+    ///         GrantRules = new[]
+    ///         {
+    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
+    ///             {
+    ///                 Principals = new[]
+    ///                 {
+    ///                     john.Apply(getUserResult =&gt; getUserResult.AclPrincipalId),
+    ///                 },
+    ///                 Role = "roles/budgetPolicy.manager",
+    ///             },
+    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
+    ///             {
+    ///                 Principals = new[]
+    ///                 {
+    ///                     ds.Apply(getGroupResult =&gt; getGroupResult.AclPrincipalId),
+    ///                 },
+    ///                 Role = "roles/budgetPolicy.user",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Related Resources
     /// 
     /// The following resources are often used in the same context:
@@ -326,6 +391,7 @@ namespace Pulumi.Databricks
         /// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
         /// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
         /// * `accounts/{account_id}/ruleSets/default`
+        /// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -395,6 +461,7 @@ namespace Pulumi.Databricks
         /// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
         /// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
         /// * `accounts/{account_id}/ruleSets/default`
+        /// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -429,6 +496,7 @@ namespace Pulumi.Databricks
         /// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
         /// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
         /// * `accounts/{account_id}/ruleSets/default`
+        /// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

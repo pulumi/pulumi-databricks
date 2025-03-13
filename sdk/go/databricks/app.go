@@ -41,7 +41,8 @@ type App struct {
 
 	ActiveDeployment AppActiveDeploymentOutput `pulumi:"activeDeployment"`
 	// attribute
-	AppStatus      AppAppStatusOutput     `pulumi:"appStatus"`
+	AppStatus AppAppStatusOutput `pulumi:"appStatus"`
+	// The optional Budget Policy ID set for this resource.
 	BudgetPolicyId pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
 	// attribute
 	ComputeStatus AppComputeStatusOutput `pulumi:"computeStatus"`
@@ -52,8 +53,9 @@ type App struct {
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath pulumi.StringOutput `pulumi:"defaultSourceCodePath"`
 	// The description of the app.
-	Description             pulumi.StringPtrOutput `pulumi:"description"`
-	EffectiveBudgetPolicyId pulumi.StringOutput    `pulumi:"effectiveBudgetPolicyId"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The effective budget policy ID.
+	EffectiveBudgetPolicyId pulumi.StringOutput `pulumi:"effectiveBudgetPolicyId"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name              pulumi.StringOutput        `pulumi:"name"`
 	NoCompute         pulumi.BoolPtrOutput       `pulumi:"noCompute"`
@@ -105,8 +107,9 @@ func GetApp(ctx *pulumi.Context,
 type appState struct {
 	ActiveDeployment *AppActiveDeployment `pulumi:"activeDeployment"`
 	// attribute
-	AppStatus      *AppAppStatus `pulumi:"appStatus"`
-	BudgetPolicyId *string       `pulumi:"budgetPolicyId"`
+	AppStatus *AppAppStatus `pulumi:"appStatus"`
+	// The optional Budget Policy ID set for this resource.
+	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
 	// attribute
 	ComputeStatus *AppComputeStatus `pulumi:"computeStatus"`
 	// The creation time of the app.
@@ -116,7 +119,8 @@ type appState struct {
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath *string `pulumi:"defaultSourceCodePath"`
 	// The description of the app.
-	Description             *string `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// The effective budget policy ID.
 	EffectiveBudgetPolicyId *string `pulumi:"effectiveBudgetPolicyId"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name              *string               `pulumi:"name"`
@@ -140,7 +144,8 @@ type appState struct {
 type AppState struct {
 	ActiveDeployment AppActiveDeploymentPtrInput
 	// attribute
-	AppStatus      AppAppStatusPtrInput
+	AppStatus AppAppStatusPtrInput
+	// The optional Budget Policy ID set for this resource.
 	BudgetPolicyId pulumi.StringPtrInput
 	// attribute
 	ComputeStatus AppComputeStatusPtrInput
@@ -151,7 +156,8 @@ type AppState struct {
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath pulumi.StringPtrInput
 	// The description of the app.
-	Description             pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// The effective budget policy ID.
 	EffectiveBudgetPolicyId pulumi.StringPtrInput
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name              pulumi.StringPtrInput
@@ -177,6 +183,7 @@ func (AppState) ElementType() reflect.Type {
 }
 
 type appArgs struct {
+	// The optional Budget Policy ID set for this resource.
 	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
 	// The description of the app.
 	Description *string `pulumi:"description"`
@@ -189,6 +196,7 @@ type appArgs struct {
 
 // The set of arguments for constructing a App resource.
 type AppArgs struct {
+	// The optional Budget Policy ID set for this resource.
 	BudgetPolicyId pulumi.StringPtrInput
 	// The description of the app.
 	Description pulumi.StringPtrInput
@@ -295,6 +303,7 @@ func (o AppOutput) AppStatus() AppAppStatusOutput {
 	return o.ApplyT(func(v *App) AppAppStatusOutput { return v.AppStatus }).(AppAppStatusOutput)
 }
 
+// The optional Budget Policy ID set for this resource.
 func (o AppOutput) BudgetPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
 }
@@ -324,6 +333,7 @@ func (o AppOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The effective budget policy ID.
 func (o AppOutput) EffectiveBudgetPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.EffectiveBudgetPolicyId }).(pulumi.StringOutput)
 }

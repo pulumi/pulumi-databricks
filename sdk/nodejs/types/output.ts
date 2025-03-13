@@ -14,11 +14,13 @@ export interface AccessControlRuleSetGrantRule {
      */
     principals?: string[];
     /**
-     * Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
+     * Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions).
      * * `roles/servicePrincipal.manager` - Manager of a service principal.
      * * `roles/servicePrincipal.user` - User of a service principal.
      * * `roles/group.manager` - Manager of a group.
      * * `roles/marketplace.admin` - Admin of marketplace.
+     * * `roles/budgetPolicy.manager` - Manager of a budget policy.
+     * * `roles/budgetPolicy.user` - User of a budget policy.
      */
     role: string;
 }
@@ -926,6 +928,9 @@ export interface GetAppApp {
      * attribute
      */
     appStatus: outputs.GetAppAppAppStatus;
+    /**
+     * The Budget Policy ID set for this resource.
+     */
     budgetPolicyId?: string;
     /**
      * attribute
@@ -947,6 +952,9 @@ export interface GetAppApp {
      * The description of the resource.
      */
     description?: string;
+    /**
+     * The effective budget policy ID.
+     */
     effectiveBudgetPolicyId: string;
     /**
      * Id of the job to grant permission on.
@@ -1157,6 +1165,9 @@ export interface GetAppsApp {
      * attribute
      */
     appStatus: outputs.GetAppsAppAppStatus;
+    /**
+     * The Budget Policy ID set for this resource.
+     */
     budgetPolicyId?: string;
     /**
      * attribute
@@ -1178,6 +1189,9 @@ export interface GetAppsApp {
      * The description of the resource.
      */
     description?: string;
+    /**
+     * The effective budget policy ID.
+     */
     effectiveBudgetPolicyId: string;
     /**
      * Id of the job to grant permission on.

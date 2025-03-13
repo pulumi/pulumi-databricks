@@ -28,6 +28,7 @@ class AppArgs:
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]]] = None):
         """
         The set of arguments for constructing a App resource.
+        :param pulumi.Input[str] budget_policy_id: The optional Budget Policy ID set for this resource.
         :param pulumi.Input[str] description: The description of the app.
         :param pulumi.Input[str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         :param pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]] resources: A list of resources that the app have access to.
@@ -46,6 +47,9 @@ class AppArgs:
     @property
     @pulumi.getter(name="budgetPolicyId")
     def budget_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The optional Budget Policy ID set for this resource.
+        """
         return pulumi.get(self, "budget_policy_id")
 
     @budget_policy_id.setter
@@ -123,11 +127,13 @@ class _AppState:
         """
         Input properties used for looking up and filtering App resources.
         :param pulumi.Input['AppAppStatusArgs'] app_status: attribute
+        :param pulumi.Input[str] budget_policy_id: The optional Budget Policy ID set for this resource.
         :param pulumi.Input['AppComputeStatusArgs'] compute_status: attribute
         :param pulumi.Input[str] create_time: The creation time of the app.
         :param pulumi.Input[str] creator: The email of the user that created the app.
         :param pulumi.Input[str] default_source_code_path: The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
         :param pulumi.Input[str] description: The description of the app.
+        :param pulumi.Input[str] effective_budget_policy_id: The effective budget policy ID.
         :param pulumi.Input[str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         :param pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]] resources: A list of resources that the app have access to.
         :param pulumi.Input[int] service_principal_id: id of the app service principal
@@ -199,6 +205,9 @@ class _AppState:
     @property
     @pulumi.getter(name="budgetPolicyId")
     def budget_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The optional Budget Policy ID set for this resource.
+        """
         return pulumi.get(self, "budget_policy_id")
 
     @budget_policy_id.setter
@@ -268,6 +277,9 @@ class _AppState:
     @property
     @pulumi.getter(name="effectiveBudgetPolicyId")
     def effective_budget_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The effective budget policy ID.
+        """
         return pulumi.get(self, "effective_budget_policy_id")
 
     @effective_budget_policy_id.setter
@@ -426,6 +438,7 @@ class App(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] budget_policy_id: The optional Budget Policy ID set for this resource.
         :param pulumi.Input[str] description: The description of the app.
         :param pulumi.Input[str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]] resources: A list of resources that the app have access to.
@@ -548,11 +561,13 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AppAppStatusArgs', 'AppAppStatusArgsDict']] app_status: attribute
+        :param pulumi.Input[str] budget_policy_id: The optional Budget Policy ID set for this resource.
         :param pulumi.Input[Union['AppComputeStatusArgs', 'AppComputeStatusArgsDict']] compute_status: attribute
         :param pulumi.Input[str] create_time: The creation time of the app.
         :param pulumi.Input[str] creator: The email of the user that created the app.
         :param pulumi.Input[str] default_source_code_path: The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
         :param pulumi.Input[str] description: The description of the app.
+        :param pulumi.Input[str] effective_budget_policy_id: The effective budget policy ID.
         :param pulumi.Input[str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]] resources: A list of resources that the app have access to.
         :param pulumi.Input[int] service_principal_id: id of the app service principal
@@ -602,6 +617,9 @@ class App(pulumi.CustomResource):
     @property
     @pulumi.getter(name="budgetPolicyId")
     def budget_policy_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The optional Budget Policy ID set for this resource.
+        """
         return pulumi.get(self, "budget_policy_id")
 
     @property
@@ -647,6 +665,9 @@ class App(pulumi.CustomResource):
     @property
     @pulumi.getter(name="effectiveBudgetPolicyId")
     def effective_budget_policy_id(self) -> pulumi.Output[str]:
+        """
+        The effective budget policy ID.
+        """
         return pulumi.get(self, "effective_budget_policy_id")
 
     @property

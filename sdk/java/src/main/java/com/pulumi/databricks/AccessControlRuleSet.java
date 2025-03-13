@@ -374,6 +374,78 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Budget policy usage
+ * 
+ * Access to budget policies could be controlled with this resource:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetGroupArgs;
+ * import com.pulumi.databricks.inputs.GetUserArgs;
+ * import com.pulumi.databricks.BudgetPolicy;
+ * import com.pulumi.databricks.BudgetPolicyArgs;
+ * import com.pulumi.databricks.inputs.BudgetPolicyCustomTagArgs;
+ * import com.pulumi.databricks.AccessControlRuleSet;
+ * import com.pulumi.databricks.AccessControlRuleSetArgs;
+ * import com.pulumi.databricks.inputs.AccessControlRuleSetGrantRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var accountId = "00000000-0000-0000-0000-000000000000";
+ * 
+ *         // account level group
+ *         final var ds = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+ *             .displayName("Data Science")
+ *             .build());
+ * 
+ *         final var john = DatabricksFunctions.getUser(GetUserArgs.builder()
+ *             .userName("john.doe}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *         var this_ = new BudgetPolicy("this", BudgetPolicyArgs.builder()
+ *             .policyName("data-science-budget-policy")
+ *             .customTags(BudgetPolicyCustomTagArgs.builder()
+ *                 .key("mykey")
+ *                 .value("myvalue")
+ *                 .build())
+ *             .build());
+ * 
+ *         var budgetPolicyUsage = new AccessControlRuleSet("budgetPolicyUsage", AccessControlRuleSetArgs.builder()
+ *             .name(this_.policyId().applyValue(policyId -> String.format("accounts/%s/budgetPolicies/%s/ruleSets/default", accountId,policyId)))
+ *             .grantRules(            
+ *                 AccessControlRuleSetGrantRuleArgs.builder()
+ *                     .principals(john.applyValue(getUserResult -> getUserResult.aclPrincipalId()))
+ *                     .role("roles/budgetPolicy.manager")
+ *                     .build(),
+ *                 AccessControlRuleSetGrantRuleArgs.builder()
+ *                     .principals(ds.applyValue(getGroupResult -> getGroupResult.aclPrincipalId()))
+ *                     .role("roles/budgetPolicy.user")
+ *                     .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Related Resources
  * 
  * The following resources are often used in the same context:
@@ -414,6 +486,7 @@ public class AccessControlRuleSet extends com.pulumi.resources.CustomResource {
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
      * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
      * * `accounts/{account_id}/ruleSets/default`
+     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -424,6 +497,7 @@ public class AccessControlRuleSet extends com.pulumi.resources.CustomResource {
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
      * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
      * * `accounts/{account_id}/ruleSets/default`
+     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
      * 
      */
     public Output<String> name() {

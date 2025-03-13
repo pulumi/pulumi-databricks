@@ -25,6 +25,10 @@ public final class GetAppsApp {
      * 
      */
     private GetAppsAppAppStatus appStatus;
+    /**
+     * @return The Budget Policy ID set for this resource.
+     * 
+     */
     private @Nullable String budgetPolicyId;
     /**
      * @return attribute
@@ -51,6 +55,10 @@ public final class GetAppsApp {
      * 
      */
     private @Nullable String description;
+    /**
+     * @return The effective budget policy ID.
+     * 
+     */
     private String effectiveBudgetPolicyId;
     /**
      * @return Id of the job to grant permission on.
@@ -106,6 +114,10 @@ public final class GetAppsApp {
     public GetAppsAppAppStatus appStatus() {
         return this.appStatus;
     }
+    /**
+     * @return The Budget Policy ID set for this resource.
+     * 
+     */
     public Optional<String> budgetPolicyId() {
         return Optional.ofNullable(this.budgetPolicyId);
     }
@@ -144,6 +156,10 @@ public final class GetAppsApp {
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return The effective budget policy ID.
+     * 
+     */
     public String effectiveBudgetPolicyId() {
         return this.effectiveBudgetPolicyId;
     }

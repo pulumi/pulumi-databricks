@@ -14,6 +14,8 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!
     /// 
+    /// &gt; Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.
+    /// 
     /// Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
     /// 
     /// ## Example Usage
@@ -49,6 +51,9 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/systemSchema:SystemSchema")]
     public partial class SystemSchema : global::Pulumi.CustomResource
     {
+        [Output("autoEnabled")]
+        public Output<bool> AutoEnabled { get; private set; } = null!;
+
         /// <summary>
         /// the full name of the system schema, in form of `system.&lt;schema&gt;`.
         /// </summary>
@@ -136,6 +141,9 @@ namespace Pulumi.Databricks
 
     public sealed class SystemSchemaState : global::Pulumi.ResourceArgs
     {
+        [Input("autoEnabled")]
+        public Input<bool>? AutoEnabled { get; set; }
+
         /// <summary>
         /// the full name of the system schema, in form of `system.&lt;schema&gt;`.
         /// </summary>

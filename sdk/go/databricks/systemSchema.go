@@ -15,6 +15,8 @@ import (
 //
 // > This resource can only be used with a workspace-level provider!
 //
+// > Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.
+//
 // Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
 //
 // ## Example Usage
@@ -57,6 +59,7 @@ import (
 type SystemSchema struct {
 	pulumi.CustomResourceState
 
+	AutoEnabled pulumi.BoolOutput `pulumi:"autoEnabled"`
 	// the full name of the system schema, in form of `system.<schema>`.
 	FullName    pulumi.StringOutput `pulumi:"fullName"`
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
@@ -96,6 +99,7 @@ func GetSystemSchema(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SystemSchema resources.
 type systemSchemaState struct {
+	AutoEnabled *bool `pulumi:"autoEnabled"`
 	// the full name of the system schema, in form of `system.<schema>`.
 	FullName    *string `pulumi:"fullName"`
 	MetastoreId *string `pulumi:"metastoreId"`
@@ -106,6 +110,7 @@ type systemSchemaState struct {
 }
 
 type SystemSchemaState struct {
+	AutoEnabled pulumi.BoolPtrInput
 	// the full name of the system schema, in form of `system.<schema>`.
 	FullName    pulumi.StringPtrInput
 	MetastoreId pulumi.StringPtrInput
@@ -219,6 +224,10 @@ func (o SystemSchemaOutput) ToSystemSchemaOutput() SystemSchemaOutput {
 
 func (o SystemSchemaOutput) ToSystemSchemaOutputWithContext(ctx context.Context) SystemSchemaOutput {
 	return o
+}
+
+func (o SystemSchemaOutput) AutoEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SystemSchema) pulumi.BoolOutput { return v.AutoEnabled }).(pulumi.BoolOutput)
 }
 
 // the full name of the system schema, in form of `system.<schema>`.

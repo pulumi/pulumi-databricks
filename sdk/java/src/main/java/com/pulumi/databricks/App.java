@@ -135,9 +135,17 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<AppAppStatus> appStatus() {
         return this.appStatus;
     }
+    /**
+     * The optional Budget Policy ID set for this resource.
+     * 
+     */
     @Export(name="budgetPolicyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> budgetPolicyId;
 
+    /**
+     * @return The optional Budget Policy ID set for this resource.
+     * 
+     */
     public Output<Optional<String>> budgetPolicyId() {
         return Codegen.optional(this.budgetPolicyId);
     }
@@ -211,9 +219,17 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * The effective budget policy ID.
+     * 
+     */
     @Export(name="effectiveBudgetPolicyId", refs={String.class}, tree="[0]")
     private Output<String> effectiveBudgetPolicyId;
 
+    /**
+     * @return The effective budget policy ID.
+     * 
+     */
     public Output<String> effectiveBudgetPolicyId() {
         return this.effectiveBudgetPolicyId;
     }
