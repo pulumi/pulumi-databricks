@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * Administrators can use budget policies to ensure that the correct tags appear automatically on serverless resources without depending on users to attach tags manually, allowing for customized cost reporting and chargebacks. Budget policies consist of tags that are applied to any serverless compute activity incurred by a user assigned to the policy. The tags are logged in your billing records, allowing you to attribute serverless usage to specific budgets.
  *
- * > **Note** This resource can only be used with an account-level provider!
+ * > This resource can only be used with an account-level provider!
  *
  * ## Example Usage
  *
@@ -25,6 +25,10 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Access Control
+ *
+ * * databricks.AccessControlRuleSet can control which groups or individual users can manage or use the given budget policy.
  *
  * ## Import
  *

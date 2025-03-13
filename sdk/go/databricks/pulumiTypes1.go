@@ -2298,8 +2298,9 @@ func (o VectorSearchIndexStatusArrayOutput) Index(i pulumi.IntInput) VectorSearc
 type GetAppApp struct {
 	ActiveDeployment GetAppAppActiveDeployment `pulumi:"activeDeployment"`
 	// attribute
-	AppStatus      GetAppAppAppStatus `pulumi:"appStatus"`
-	BudgetPolicyId *string            `pulumi:"budgetPolicyId"`
+	AppStatus GetAppAppAppStatus `pulumi:"appStatus"`
+	// The Budget Policy ID set for this resource.
+	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
 	// attribute
 	ComputeStatus GetAppAppComputeStatus `pulumi:"computeStatus"`
 	// The creation time of the app.
@@ -2309,8 +2310,9 @@ type GetAppApp struct {
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath string `pulumi:"defaultSourceCodePath"`
 	// The description of the resource.
-	Description             *string `pulumi:"description"`
-	EffectiveBudgetPolicyId string  `pulumi:"effectiveBudgetPolicyId"`
+	Description *string `pulumi:"description"`
+	// The effective budget policy ID.
+	EffectiveBudgetPolicyId string `pulumi:"effectiveBudgetPolicyId"`
 	// Id of the job to grant permission on.
 	Id string `pulumi:"id"`
 	// The name of the app.
@@ -2345,8 +2347,9 @@ type GetAppAppInput interface {
 type GetAppAppArgs struct {
 	ActiveDeployment GetAppAppActiveDeploymentInput `pulumi:"activeDeployment"`
 	// attribute
-	AppStatus      GetAppAppAppStatusInput `pulumi:"appStatus"`
-	BudgetPolicyId pulumi.StringPtrInput   `pulumi:"budgetPolicyId"`
+	AppStatus GetAppAppAppStatusInput `pulumi:"appStatus"`
+	// The Budget Policy ID set for this resource.
+	BudgetPolicyId pulumi.StringPtrInput `pulumi:"budgetPolicyId"`
 	// attribute
 	ComputeStatus GetAppAppComputeStatusInput `pulumi:"computeStatus"`
 	// The creation time of the app.
@@ -2356,8 +2359,9 @@ type GetAppAppArgs struct {
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath pulumi.StringInput `pulumi:"defaultSourceCodePath"`
 	// The description of the resource.
-	Description             pulumi.StringPtrInput `pulumi:"description"`
-	EffectiveBudgetPolicyId pulumi.StringInput    `pulumi:"effectiveBudgetPolicyId"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The effective budget policy ID.
+	EffectiveBudgetPolicyId pulumi.StringInput `pulumi:"effectiveBudgetPolicyId"`
 	// Id of the job to grant permission on.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The name of the app.
@@ -2413,6 +2417,7 @@ func (o GetAppAppOutput) AppStatus() GetAppAppAppStatusOutput {
 	return o.ApplyT(func(v GetAppApp) GetAppAppAppStatus { return v.AppStatus }).(GetAppAppAppStatusOutput)
 }
 
+// The Budget Policy ID set for this resource.
 func (o GetAppAppOutput) BudgetPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppApp) *string { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
 }
@@ -2442,6 +2447,7 @@ func (o GetAppAppOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppApp) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The effective budget policy ID.
 func (o GetAppAppOutput) EffectiveBudgetPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppApp) string { return v.EffectiveBudgetPolicyId }).(pulumi.StringOutput)
 }
@@ -3828,8 +3834,9 @@ func (o GetAppAppResourceSqlWarehousePtrOutput) Permission() pulumi.StringPtrOut
 type GetAppsApp struct {
 	ActiveDeployment GetAppsAppActiveDeployment `pulumi:"activeDeployment"`
 	// attribute
-	AppStatus      GetAppsAppAppStatus `pulumi:"appStatus"`
-	BudgetPolicyId *string             `pulumi:"budgetPolicyId"`
+	AppStatus GetAppsAppAppStatus `pulumi:"appStatus"`
+	// The Budget Policy ID set for this resource.
+	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
 	// attribute
 	ComputeStatus GetAppsAppComputeStatus `pulumi:"computeStatus"`
 	// The creation time of the app.
@@ -3839,8 +3846,9 @@ type GetAppsApp struct {
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath string `pulumi:"defaultSourceCodePath"`
 	// The description of the resource.
-	Description             *string `pulumi:"description"`
-	EffectiveBudgetPolicyId string  `pulumi:"effectiveBudgetPolicyId"`
+	Description *string `pulumi:"description"`
+	// The effective budget policy ID.
+	EffectiveBudgetPolicyId string `pulumi:"effectiveBudgetPolicyId"`
 	// Id of the job to grant permission on.
 	Id string `pulumi:"id"`
 	// Name of the serving endpoint to grant permission on.
@@ -3875,8 +3883,9 @@ type GetAppsAppInput interface {
 type GetAppsAppArgs struct {
 	ActiveDeployment GetAppsAppActiveDeploymentInput `pulumi:"activeDeployment"`
 	// attribute
-	AppStatus      GetAppsAppAppStatusInput `pulumi:"appStatus"`
-	BudgetPolicyId pulumi.StringPtrInput    `pulumi:"budgetPolicyId"`
+	AppStatus GetAppsAppAppStatusInput `pulumi:"appStatus"`
+	// The Budget Policy ID set for this resource.
+	BudgetPolicyId pulumi.StringPtrInput `pulumi:"budgetPolicyId"`
 	// attribute
 	ComputeStatus GetAppsAppComputeStatusInput `pulumi:"computeStatus"`
 	// The creation time of the app.
@@ -3886,8 +3895,9 @@ type GetAppsAppArgs struct {
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath pulumi.StringInput `pulumi:"defaultSourceCodePath"`
 	// The description of the resource.
-	Description             pulumi.StringPtrInput `pulumi:"description"`
-	EffectiveBudgetPolicyId pulumi.StringInput    `pulumi:"effectiveBudgetPolicyId"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The effective budget policy ID.
+	EffectiveBudgetPolicyId pulumi.StringInput `pulumi:"effectiveBudgetPolicyId"`
 	// Id of the job to grant permission on.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Name of the serving endpoint to grant permission on.
@@ -3968,6 +3978,7 @@ func (o GetAppsAppOutput) AppStatus() GetAppsAppAppStatusOutput {
 	return o.ApplyT(func(v GetAppsApp) GetAppsAppAppStatus { return v.AppStatus }).(GetAppsAppAppStatusOutput)
 }
 
+// The Budget Policy ID set for this resource.
 func (o GetAppsAppOutput) BudgetPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppsApp) *string { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
 }
@@ -3997,6 +4008,7 @@ func (o GetAppsAppOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppsApp) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The effective budget policy ID.
 func (o GetAppsAppOutput) EffectiveBudgetPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsApp) string { return v.EffectiveBudgetPolicyId }).(pulumi.StringOutput)
 }

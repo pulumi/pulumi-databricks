@@ -18,9 +18,17 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppArgs Empty = new AppArgs();
 
+    /**
+     * The optional Budget Policy ID set for this resource.
+     * 
+     */
     @Import(name="budgetPolicyId")
     private @Nullable Output<String> budgetPolicyId;
 
+    /**
+     * @return The optional Budget Policy ID set for this resource.
+     * 
+     */
     public Optional<Output<String>> budgetPolicyId() {
         return Optional.ofNullable(this.budgetPolicyId);
     }
@@ -105,11 +113,23 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
             $ = new AppArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param budgetPolicyId The optional Budget Policy ID set for this resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder budgetPolicyId(@Nullable Output<String> budgetPolicyId) {
             $.budgetPolicyId = budgetPolicyId;
             return this;
         }
 
+        /**
+         * @param budgetPolicyId The optional Budget Policy ID set for this resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder budgetPolicyId(String budgetPolicyId) {
             return budgetPolicyId(Output.of(budgetPolicyId));
         }

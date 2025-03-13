@@ -18,7 +18,7 @@ import (
 //
 // Two different resources help you manage your Unity Catalog grants for a securable. Each of these resources serves a different use case:
 //
-// - databricks_grants: Authoritative. Sets the grants of a securable and replaces any existing grants defined inside or outside of Pulumi.
+// - databricks_grants: Authoritative. Sets the grants of a securable and *replaces* any existing grants defined inside or outside of Pulumi.
 // - databricks_grant: Authoritative for a given principal. Updates the grants of a securable to a single principal. Other principals within the grants for the securables are preserved.
 //
 // In Unity Catalog all users initially have no access to data. Only Metastore Admins can create objects and can grant/revoke access on individual objects to users and groups. Every securable object in Unity Catalog has an owner. The owner can be any account-level user or group, called principals in general. The principal that creates an object becomes its owner. Owners receive `ALL_PRIVILEGES` on the securable object (e.g., `SELECT` and `MODIFY` on a table), as well as the permission to grant privileges to other principals.
@@ -33,6 +33,8 @@ import (
 // For the latest list of privilege types that apply to each securable object in Unity Catalog, please refer to the [official documentation](https://docs.databricks.com/en/data-governance/unity-catalog/manage-privileges/privileges.html#privilege-types-by-securable-object-in-unity-catalog)
 //
 // Pulumi will handle any configuration drift on every `pulumi up` run, even when grants are changed outside of Pulumi state.
+//
+// When applying grants using an identity with [`MANAGE` permission](https://docs.databricks.com/aws/en/data-governance/unity-catalog/manage-privileges/ownership#ownership-versus-the-manage-privilege), their `MANAGE` permission must also be defined, otherwise Pulumi will remove their permissions, leading to errors.
 //
 // Unlike the [SQL specification](https://docs.databricks.com/sql/language-manual/sql-ref-privileges.html#privilege-types), all privileges to be written with underscore instead of space, e.g. `CREATE_TABLE` and not `CREATE TABLE`. Below summarizes which privilege types apply to each securable object in the catalog:
 //
@@ -149,7 +151,7 @@ import (
 //
 // ## Schema grants
 //
-// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME`, `MANAGE` and `USE_SCHEMA` privileges to _`catalog.schema`_ specified in the `schema` attribute. You can also grant `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` at the schema level to apply them to the pertinent current and future securable objects within the schema:
+// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME`, `MANAGE` and `USE_SCHEMA` privileges to *`catalog.schema`* specified in the `schema` attribute. You can also grant `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` at the schema level to apply them to the pertinent current and future securable objects within the schema:
 //
 // ```go
 // package main
@@ -197,7 +199,7 @@ import (
 //
 // ## Table grants
 //
-// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `MANAGE`, `SELECT` and `MODIFY` privileges to _`catalog.schema.table`_ specified in the `table` attribute.
+// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `MANAGE`, `SELECT` and `MODIFY` privileges to *`catalog.schema.table`* specified in the `table` attribute.
 //
 // ```go
 // package main
@@ -286,7 +288,7 @@ import (
 //
 // ## View grants
 //
-// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `MANAGE` and `SELECT` privileges to _`catalog.schema.view`_ specified in `table` attribute.
+// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `MANAGE` and `SELECT` privileges to *`catalog.schema.view`* specified in `table` attribute.
 //
 // ```go
 // package main
@@ -368,7 +370,7 @@ import (
 //
 // ## Volume grants
 //
-// You can grant `ALL_PRIVILEGES`, `MANAGE`, `READ_VOLUME` and `WRITE_VOLUME` privileges to _`catalog.schema.volume`_ specified in the `volume` attribute.
+// You can grant `ALL_PRIVILEGES`, `MANAGE`, `READ_VOLUME` and `WRITE_VOLUME` privileges to *`catalog.schema.volume`* specified in the `volume` attribute.
 //
 // ```go
 // package main
@@ -415,7 +417,7 @@ import (
 //
 // ## Registered model grants
 //
-// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, and `MANAGE` privileges to _`catalog.schema.model`_ specified in the `model` attribute.
+// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, and `MANAGE` privileges to *`catalog.schema.model`* specified in the `model` attribute.
 //
 // ```go
 // package main
@@ -458,7 +460,7 @@ import (
 //
 // ## Function grants
 //
-// You can grant `ALL_PRIVILEGES`, `EXECUTE`, and `MANAGE` privileges to _`catalog.schema.function`_ specified in the `function` attribute.
+// You can grant `ALL_PRIVILEGES`, `EXECUTE`, and `MANAGE` privileges to *`catalog.schema.function`* specified in the `function` attribute.
 //
 // ```go
 // package main

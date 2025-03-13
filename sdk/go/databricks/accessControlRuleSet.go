@@ -353,6 +353,78 @@ import (
 //
 // ```
 //
+// ## Budget policy usage
+//
+// Access to budget policies could be controlled with this resource:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			accountId := "00000000-0000-0000-0000-000000000000"
+//			// account level group
+//			ds, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//				DisplayName: "Data Science",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			john, err := databricks.LookupUser(ctx, &databricks.LookupUserArgs{
+//				UserName: pulumi.StringRef("john.doe@example.com"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			this, err := databricks.NewBudgetPolicy(ctx, "this", &databricks.BudgetPolicyArgs{
+//				PolicyName: pulumi.String("data-science-budget-policy"),
+//				CustomTags: databricks.BudgetPolicyCustomTagArray{
+//					&databricks.BudgetPolicyCustomTagArgs{
+//						Key:   pulumi.String("mykey"),
+//						Value: pulumi.String("myvalue"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewAccessControlRuleSet(ctx, "budget_policy_usage", &databricks.AccessControlRuleSetArgs{
+//				Name: this.PolicyId.ApplyT(func(policyId string) (string, error) {
+//					return fmt.Sprintf("accounts/%v/budgetPolicies/%v/ruleSets/default", accountId, policyId), nil
+//				}).(pulumi.StringOutput),
+//				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
+//					&databricks.AccessControlRuleSetGrantRuleArgs{
+//						Principals: pulumi.StringArray{
+//							pulumi.String(john.AclPrincipalId),
+//						},
+//						Role: pulumi.String("roles/budgetPolicy.manager"),
+//					},
+//					&databricks.AccessControlRuleSetGrantRuleArgs{
+//						Principals: pulumi.StringArray{
+//							pulumi.String(ds.AclPrincipalId),
+//						},
+//						Role: pulumi.String("roles/budgetPolicy.user"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Related Resources
 //
 // The following resources are often used in the same context:
@@ -372,6 +444,7 @@ type AccessControlRuleSet struct {
 	// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
 	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
 	// * `accounts/{account_id}/ruleSets/default`
+	// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -414,6 +487,7 @@ type accessControlRuleSetState struct {
 	// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
 	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
 	// * `accounts/{account_id}/ruleSets/default`
+	// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
 	Name *string `pulumi:"name"`
 }
 
@@ -427,6 +501,7 @@ type AccessControlRuleSetState struct {
 	// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
 	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
 	// * `accounts/{account_id}/ruleSets/default`
+	// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
 	Name pulumi.StringPtrInput
 }
 
@@ -443,6 +518,7 @@ type accessControlRuleSetArgs struct {
 	// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
 	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
 	// * `accounts/{account_id}/ruleSets/default`
+	// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
 	Name *string `pulumi:"name"`
 }
 
@@ -456,6 +532,7 @@ type AccessControlRuleSetArgs struct {
 	// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
 	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
 	// * `accounts/{account_id}/ruleSets/default`
+	// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
 	Name pulumi.StringPtrInput
 }
 
@@ -561,6 +638,7 @@ func (o AccessControlRuleSetOutput) GrantRules() AccessControlRuleSetGrantRuleAr
 // * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
 // * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
 // * `accounts/{account_id}/ruleSets/default`
+// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
 func (o AccessControlRuleSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessControlRuleSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

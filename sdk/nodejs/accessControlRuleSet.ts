@@ -162,6 +162,44 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ## Budget policy usage
+ *
+ * Access to budget policies could be controlled with this resource:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const accountId = "00000000-0000-0000-0000-000000000000";
+ * // account level group
+ * const ds = databricks.getGroup({
+ *     displayName: "Data Science",
+ * });
+ * const john = databricks.getUser({
+ *     userName: "john.doe@example.com",
+ * });
+ * const _this = new databricks.BudgetPolicy("this", {
+ *     policyName: "data-science-budget-policy",
+ *     customTags: [{
+ *         key: "mykey",
+ *         value: "myvalue",
+ *     }],
+ * });
+ * const budgetPolicyUsage = new databricks.AccessControlRuleSet("budget_policy_usage", {
+ *     name: pulumi.interpolate`accounts/${accountId}/budgetPolicies/${_this.policyId}/ruleSets/default`,
+ *     grantRules: [
+ *         {
+ *             principals: [john.then(john => john.aclPrincipalId)],
+ *             role: "roles/budgetPolicy.manager",
+ *         },
+ *         {
+ *             principals: [ds.then(ds => ds.aclPrincipalId)],
+ *             role: "roles/budgetPolicy.user",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -210,6 +248,7 @@ export class AccessControlRuleSet extends pulumi.CustomResource {
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
      * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
      * * `accounts/{account_id}/ruleSets/default`
+     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -256,6 +295,7 @@ export interface AccessControlRuleSetState {
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
      * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
      * * `accounts/{account_id}/ruleSets/default`
+     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
      */
     name?: pulumi.Input<string>;
 }
@@ -275,6 +315,7 @@ export interface AccessControlRuleSetArgs {
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
      * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
      * * `accounts/{account_id}/ruleSets/default`
+     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
      */
     name?: pulumi.Input<string>;
 }

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.SystemSchemaArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SystemSchemaState;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,6 +19,8 @@ import javax.annotation.Nullable;
  * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
  * 
  * &gt; This resource can only be used with a workspace-level provider!
+ * 
+ * &gt; Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.
  * 
  * Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
  * 
@@ -71,6 +74,12 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/systemSchema:SystemSchema")
 public class SystemSchema extends com.pulumi.resources.CustomResource {
+    @Export(name="autoEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> autoEnabled;
+
+    public Output<Boolean> autoEnabled() {
+        return this.autoEnabled;
+    }
     /**
      * the full name of the system schema, in form of `system.&lt;schema&gt;`.
      * 

@@ -66,6 +66,9 @@ export class App extends pulumi.CustomResource {
      * attribute
      */
     public /*out*/ readonly appStatus!: pulumi.Output<outputs.AppAppStatus>;
+    /**
+     * The optional Budget Policy ID set for this resource.
+     */
     public readonly budgetPolicyId!: pulumi.Output<string | undefined>;
     /**
      * attribute
@@ -87,6 +90,9 @@ export class App extends pulumi.CustomResource {
      * The description of the app.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The effective budget policy ID.
+     */
     public /*out*/ readonly effectiveBudgetPolicyId!: pulumi.Output<string>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -188,6 +194,9 @@ export interface AppState {
      * attribute
      */
     appStatus?: pulumi.Input<inputs.AppAppStatus>;
+    /**
+     * The optional Budget Policy ID set for this resource.
+     */
     budgetPolicyId?: pulumi.Input<string>;
     /**
      * attribute
@@ -209,6 +218,9 @@ export interface AppState {
      * The description of the app.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The effective budget policy ID.
+     */
     effectiveBudgetPolicyId?: pulumi.Input<string>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -247,6 +259,9 @@ export interface AppState {
  * The set of arguments for constructing a App resource.
  */
 export interface AppArgs {
+    /**
+     * The optional Budget Policy ID set for this resource.
+     */
     budgetPolicyId?: pulumi.Input<string>;
     /**
      * The description of the app.

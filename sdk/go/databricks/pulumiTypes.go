@@ -19,11 +19,13 @@ type AccessControlRuleSetGrantRule struct {
 	// * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `Group` resource).
 	// * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `ServicePrincipal` resource).
 	Principals []string `pulumi:"principals"`
-	// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
+	// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions).
 	// * `roles/servicePrincipal.manager` - Manager of a service principal.
 	// * `roles/servicePrincipal.user` - User of a service principal.
 	// * `roles/group.manager` - Manager of a group.
 	// * `roles/marketplace.admin` - Admin of marketplace.
+	// * `roles/budgetPolicy.manager` - Manager of a budget policy.
+	// * `roles/budgetPolicy.user` - User of a budget policy.
 	Role string `pulumi:"role"`
 }
 
@@ -44,11 +46,13 @@ type AccessControlRuleSetGrantRuleArgs struct {
 	// * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `Group` resource).
 	// * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `ServicePrincipal` resource).
 	Principals pulumi.StringArrayInput `pulumi:"principals"`
-	// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
+	// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions).
 	// * `roles/servicePrincipal.manager` - Manager of a service principal.
 	// * `roles/servicePrincipal.user` - User of a service principal.
 	// * `roles/group.manager` - Manager of a group.
 	// * `roles/marketplace.admin` - Admin of marketplace.
+	// * `roles/budgetPolicy.manager` - Manager of a budget policy.
+	// * `roles/budgetPolicy.user` - User of a budget policy.
 	Role pulumi.StringInput `pulumi:"role"`
 }
 
@@ -111,11 +115,13 @@ func (o AccessControlRuleSetGrantRuleOutput) Principals() pulumi.StringArrayOutp
 	return o.ApplyT(func(v AccessControlRuleSetGrantRule) []string { return v.Principals }).(pulumi.StringArrayOutput)
 }
 
-// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
+// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions).
 // * `roles/servicePrincipal.manager` - Manager of a service principal.
 // * `roles/servicePrincipal.user` - User of a service principal.
 // * `roles/group.manager` - Manager of a group.
 // * `roles/marketplace.admin` - Admin of marketplace.
+// * `roles/budgetPolicy.manager` - Manager of a budget policy.
+// * `roles/budgetPolicy.user` - User of a budget policy.
 func (o AccessControlRuleSetGrantRuleOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessControlRuleSetGrantRule) string { return v.Role }).(pulumi.StringOutput)
 }

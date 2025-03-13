@@ -48,6 +48,9 @@ namespace Pulumi.Databricks
         [Output("appStatus")]
         public Output<Outputs.AppAppStatus> AppStatus { get; private set; } = null!;
 
+        /// <summary>
+        /// The optional Budget Policy ID set for this resource.
+        /// </summary>
         [Output("budgetPolicyId")]
         public Output<string?> BudgetPolicyId { get; private set; } = null!;
 
@@ -81,6 +84,9 @@ namespace Pulumi.Databricks
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The effective budget policy ID.
+        /// </summary>
         [Output("effectiveBudgetPolicyId")]
         public Output<string> EffectiveBudgetPolicyId { get; private set; } = null!;
 
@@ -181,6 +187,9 @@ namespace Pulumi.Databricks
 
     public sealed class AppArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The optional Budget Policy ID set for this resource.
+        /// </summary>
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
 
@@ -228,6 +237,9 @@ namespace Pulumi.Databricks
         [Input("appStatus")]
         public Input<Inputs.AppAppStatusGetArgs>? AppStatus { get; set; }
 
+        /// <summary>
+        /// The optional Budget Policy ID set for this resource.
+        /// </summary>
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
 
@@ -261,6 +273,9 @@ namespace Pulumi.Databricks
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The effective budget policy ID.
+        /// </summary>
         [Input("effectiveBudgetPolicyId")]
         public Input<string>? EffectiveBudgetPolicyId { get; set; }
 

@@ -59,6 +59,7 @@ class SystemSchemaArgs:
 @pulumi.input_type
 class _SystemSchemaState:
     def __init__(__self__, *,
+                 auto_enabled: Optional[pulumi.Input[bool]] = None,
                  full_name: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
@@ -69,6 +70,8 @@ class _SystemSchemaState:
         :param pulumi.Input[str] schema: name of the system schema.
         :param pulumi.Input[str] state: The current state of enablement for the system schema.
         """
+        if auto_enabled is not None:
+            pulumi.set(__self__, "auto_enabled", auto_enabled)
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
         if metastore_id is not None:
@@ -77,6 +80,15 @@ class _SystemSchemaState:
             pulumi.set(__self__, "schema", schema)
         if state is not None:
             pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="autoEnabled")
+    def auto_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "auto_enabled")
+
+    @auto_enabled.setter
+    def auto_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_enabled", value)
 
     @property
     @pulumi.getter(name="fullName")
@@ -137,6 +149,8 @@ class SystemSchema(pulumi.CustomResource):
 
         > This resource can only be used with a workspace-level provider!
 
+        > Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.
+
         Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
 
         ## Example Usage
@@ -175,6 +189,8 @@ class SystemSchema(pulumi.CustomResource):
         > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
 
         > This resource can only be used with a workspace-level provider!
+
+        > Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.
 
         Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
 
@@ -227,6 +243,7 @@ class SystemSchema(pulumi.CustomResource):
 
             __props__.__dict__["schema"] = schema
             __props__.__dict__["state"] = state
+            __props__.__dict__["auto_enabled"] = None
             __props__.__dict__["full_name"] = None
             __props__.__dict__["metastore_id"] = None
         super(SystemSchema, __self__).__init__(
@@ -239,6 +256,7 @@ class SystemSchema(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_enabled: Optional[pulumi.Input[bool]] = None,
             full_name: Optional[pulumi.Input[str]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             schema: Optional[pulumi.Input[str]] = None,
@@ -258,11 +276,17 @@ class SystemSchema(pulumi.CustomResource):
 
         __props__ = _SystemSchemaState.__new__(_SystemSchemaState)
 
+        __props__.__dict__["auto_enabled"] = auto_enabled
         __props__.__dict__["full_name"] = full_name
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["schema"] = schema
         __props__.__dict__["state"] = state
         return SystemSchema(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoEnabled")
+    def auto_enabled(self) -> pulumi.Output[bool]:
+        return pulumi.get(self, "auto_enabled")
 
     @property
     @pulumi.getter(name="fullName")

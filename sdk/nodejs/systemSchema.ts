@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
  *
  * > This resource can only be used with a workspace-level provider!
  *
+ * > Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.
+ *
  * Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
  *
  * ## Example Usage
@@ -60,6 +62,7 @@ export class SystemSchema extends pulumi.CustomResource {
         return obj['__pulumiType'] === SystemSchema.__pulumiType;
     }
 
+    public /*out*/ readonly autoEnabled!: pulumi.Output<boolean>;
     /**
      * the full name of the system schema, in form of `system.<schema>`.
      */
@@ -87,6 +90,7 @@ export class SystemSchema extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SystemSchemaState | undefined;
+            resourceInputs["autoEnabled"] = state ? state.autoEnabled : undefined;
             resourceInputs["fullName"] = state ? state.fullName : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["schema"] = state ? state.schema : undefined;
@@ -95,6 +99,7 @@ export class SystemSchema extends pulumi.CustomResource {
             const args = argsOrState as SystemSchemaArgs | undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["autoEnabled"] = undefined /*out*/;
             resourceInputs["fullName"] = undefined /*out*/;
             resourceInputs["metastoreId"] = undefined /*out*/;
         }
@@ -107,6 +112,7 @@ export class SystemSchema extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SystemSchema resources.
  */
 export interface SystemSchemaState {
+    autoEnabled?: pulumi.Input<boolean>;
     /**
      * the full name of the system schema, in form of `system.<schema>`.
      */
