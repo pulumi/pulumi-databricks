@@ -305,7 +305,11 @@ class SqlPermissions(pulumi.CustomResource):
 
         It is required to define all permissions for a securable in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
 
-        ``` SHOW GRANT ON TABLE `default`.`foo`  ```
+        ## Example Usage
+
+        The following resource definition will enforce access control on a table by executing the following SQL queries on a special auto-terminating cluster it would create for this operation:
+
+        * ``` SHOW GRANT ON TABLE `default`.`foo`  ```
         * ```REVOKE ALL PRIVILEGES ON TABLE `default`.`foo` FROM ... every group and user that has access to it ...```
         * ``` GRANT MODIFY, SELECT ON TABLE `default`.`foo` TO `serge@example.com`  ```
         * ``` GRANT SELECT ON TABLE `default`.`foo` TO `special group`  ```
@@ -395,7 +399,11 @@ class SqlPermissions(pulumi.CustomResource):
 
         It is required to define all permissions for a securable in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
 
-        ``` SHOW GRANT ON TABLE `default`.`foo`  ```
+        ## Example Usage
+
+        The following resource definition will enforce access control on a table by executing the following SQL queries on a special auto-terminating cluster it would create for this operation:
+
+        * ``` SHOW GRANT ON TABLE `default`.`foo`  ```
         * ```REVOKE ALL PRIVILEGES ON TABLE `default`.`foo` FROM ... every group and user that has access to it ...```
         * ``` GRANT MODIFY, SELECT ON TABLE `default`.`foo` TO `serge@example.com`  ```
         * ``` GRANT SELECT ON TABLE `default`.`foo` TO `special group`  ```
