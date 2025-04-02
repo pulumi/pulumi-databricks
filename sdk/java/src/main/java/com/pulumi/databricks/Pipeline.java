@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.PipelineState;
 import com.pulumi.databricks.outputs.PipelineCluster;
 import com.pulumi.databricks.outputs.PipelineDeployment;
+import com.pulumi.databricks.outputs.PipelineEventLog;
 import com.pulumi.databricks.outputs.PipelineFilters;
 import com.pulumi.databricks.outputs.PipelineGatewayDefinition;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinition;
@@ -296,6 +297,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> edition() {
         return Codegen.optional(this.edition);
+    }
+    @Export(name="eventLog", refs={PipelineEventLog.class}, tree="[0]")
+    private Output</* @Nullable */ PipelineEventLog> eventLog;
+
+    public Output<Optional<PipelineEventLog>> eventLog() {
+        return Codegen.optional(this.eventLog);
     }
     @Export(name="expectedLastModified", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> expectedLastModified;

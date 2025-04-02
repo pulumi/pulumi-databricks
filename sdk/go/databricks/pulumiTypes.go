@@ -19,11 +19,16 @@ type AccessControlRuleSetGrantRule struct {
 	// * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `Group` resource).
 	// * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `ServicePrincipal` resource).
 	Principals []string `pulumi:"principals"`
-	// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions).
+	// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions), depending on the `name` defined:
+	// * `accounts/{account_id}/ruleSets/default`
+	// * `roles/marketplace.admin` - Databricks Marketplace administrator.
+	// * `roles/billing.admin` - Billing administrator.
+	// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
 	// * `roles/servicePrincipal.manager` - Manager of a service principal.
 	// * `roles/servicePrincipal.user` - User of a service principal.
+	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
 	// * `roles/group.manager` - Manager of a group.
-	// * `roles/marketplace.admin` - Admin of marketplace.
+	// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
 	// * `roles/budgetPolicy.manager` - Manager of a budget policy.
 	// * `roles/budgetPolicy.user` - User of a budget policy.
 	Role string `pulumi:"role"`
@@ -46,11 +51,16 @@ type AccessControlRuleSetGrantRuleArgs struct {
 	// * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `Group` resource).
 	// * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `ServicePrincipal` resource).
 	Principals pulumi.StringArrayInput `pulumi:"principals"`
-	// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions).
+	// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions), depending on the `name` defined:
+	// * `accounts/{account_id}/ruleSets/default`
+	// * `roles/marketplace.admin` - Databricks Marketplace administrator.
+	// * `roles/billing.admin` - Billing administrator.
+	// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
 	// * `roles/servicePrincipal.manager` - Manager of a service principal.
 	// * `roles/servicePrincipal.user` - User of a service principal.
+	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
 	// * `roles/group.manager` - Manager of a group.
-	// * `roles/marketplace.admin` - Admin of marketplace.
+	// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
 	// * `roles/budgetPolicy.manager` - Manager of a budget policy.
 	// * `roles/budgetPolicy.user` - User of a budget policy.
 	Role pulumi.StringInput `pulumi:"role"`
@@ -115,11 +125,16 @@ func (o AccessControlRuleSetGrantRuleOutput) Principals() pulumi.StringArrayOutp
 	return o.ApplyT(func(v AccessControlRuleSetGrantRule) []string { return v.Principals }).(pulumi.StringArrayOutput)
 }
 
-// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions).
+// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions), depending on the `name` defined:
+// * `accounts/{account_id}/ruleSets/default`
+// * `roles/marketplace.admin` - Databricks Marketplace administrator.
+// * `roles/billing.admin` - Billing administrator.
+// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
 // * `roles/servicePrincipal.manager` - Manager of a service principal.
 // * `roles/servicePrincipal.user` - User of a service principal.
+// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
 // * `roles/group.manager` - Manager of a group.
-// * `roles/marketplace.admin` - Admin of marketplace.
+// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
 // * `roles/budgetPolicy.manager` - Manager of a budget policy.
 // * `roles/budgetPolicy.user` - User of a budget policy.
 func (o AccessControlRuleSetGrantRuleOutput) Role() pulumi.StringOutput {
@@ -5639,7 +5654,7 @@ type ClusterAwsAttributes struct {
 	EbsVolumeThroughput *int `pulumi:"ebsVolumeThroughput"`
 	// The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
 	EbsVolumeType *string `pulumi:"ebsVolumeType"`
-	// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
+	// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. If unspecified, the default value is 0.
 	FirstOnDemand *int `pulumi:"firstOnDemand"`
 	// Nodes for this cluster will only be placed on AWS instances with this instance profile. Please see InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
@@ -5671,7 +5686,7 @@ type ClusterAwsAttributesArgs struct {
 	EbsVolumeThroughput pulumi.IntPtrInput `pulumi:"ebsVolumeThroughput"`
 	// The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
 	EbsVolumeType pulumi.StringPtrInput `pulumi:"ebsVolumeType"`
-	// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
+	// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. If unspecified, the default value is 0.
 	FirstOnDemand pulumi.IntPtrInput `pulumi:"firstOnDemand"`
 	// Nodes for this cluster will only be placed on AWS instances with this instance profile. Please see InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
 	InstanceProfileArn pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
@@ -5786,7 +5801,7 @@ func (o ClusterAwsAttributesOutput) EbsVolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAwsAttributes) *string { return v.EbsVolumeType }).(pulumi.StringPtrOutput)
 }
 
-// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
+// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. If unspecified, the default value is 0.
 func (o ClusterAwsAttributesOutput) FirstOnDemand() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterAwsAttributes) *int { return v.FirstOnDemand }).(pulumi.IntPtrOutput)
 }
@@ -5888,7 +5903,7 @@ func (o ClusterAwsAttributesPtrOutput) EbsVolumeType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
+// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. If unspecified, the default value is 0.
 func (o ClusterAwsAttributesPtrOutput) FirstOnDemand() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterAwsAttributes) *int {
 		if v == nil {
@@ -16022,7 +16037,7 @@ func (o JobHealthPtrOutput) Rules() JobHealthRuleArrayOutput {
 }
 
 type JobHealthRule struct {
-	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+	// string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
 	Metric string `pulumi:"metric"`
 	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 	Op string `pulumi:"op"`
@@ -16042,7 +16057,7 @@ type JobHealthRuleInput interface {
 }
 
 type JobHealthRuleArgs struct {
-	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+	// string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
 	Metric pulumi.StringInput `pulumi:"metric"`
 	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 	Op pulumi.StringInput `pulumi:"op"`
@@ -16101,7 +16116,7 @@ func (o JobHealthRuleOutput) ToJobHealthRuleOutputWithContext(ctx context.Contex
 	return o
 }
 
-// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+// string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
 func (o JobHealthRuleOutput) Metric() pulumi.StringOutput {
 	return o.ApplyT(func(v JobHealthRule) string { return v.Metric }).(pulumi.StringOutput)
 }
@@ -31641,7 +31656,7 @@ func (o JobTaskForEachTaskTaskHealthPtrOutput) Rules() JobTaskForEachTaskTaskHea
 }
 
 type JobTaskForEachTaskTaskHealthRule struct {
-	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+	// string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
 	Metric string `pulumi:"metric"`
 	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 	Op string `pulumi:"op"`
@@ -31661,7 +31676,7 @@ type JobTaskForEachTaskTaskHealthRuleInput interface {
 }
 
 type JobTaskForEachTaskTaskHealthRuleArgs struct {
-	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+	// string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
 	Metric pulumi.StringInput `pulumi:"metric"`
 	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 	Op pulumi.StringInput `pulumi:"op"`
@@ -31720,7 +31735,7 @@ func (o JobTaskForEachTaskTaskHealthRuleOutput) ToJobTaskForEachTaskTaskHealthRu
 	return o
 }
 
-// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+// string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
 func (o JobTaskForEachTaskTaskHealthRuleOutput) Metric() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskHealthRule) string { return v.Metric }).(pulumi.StringOutput)
 }
@@ -41386,7 +41401,7 @@ func (o JobTaskHealthPtrOutput) Rules() JobTaskHealthRuleArrayOutput {
 }
 
 type JobTaskHealthRule struct {
-	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+	// string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
 	Metric string `pulumi:"metric"`
 	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 	Op string `pulumi:"op"`
@@ -41406,7 +41421,7 @@ type JobTaskHealthRuleInput interface {
 }
 
 type JobTaskHealthRuleArgs struct {
-	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+	// string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
 	Metric pulumi.StringInput `pulumi:"metric"`
 	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
 	Op pulumi.StringInput `pulumi:"op"`
@@ -41465,7 +41480,7 @@ func (o JobTaskHealthRuleOutput) ToJobTaskHealthRuleOutputWithContext(ctx contex
 	return o
 }
 
-// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+// string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
 func (o JobTaskHealthRuleOutput) Metric() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskHealthRule) string { return v.Metric }).(pulumi.StringOutput)
 }
@@ -55426,6 +55441,7 @@ func (o MlflowWebhookJobSpecPtrOutput) WorkspaceUrl() pulumi.StringPtrOutput {
 }
 
 type ModelServingAiGateway struct {
+	FallbackConfig *ModelServingAiGatewayFallbackConfig `pulumi:"fallbackConfig"`
 	// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
 	Guardrails *ModelServingAiGatewayGuardrails `pulumi:"guardrails"`
 	// Block describing the configuration of usage tracking. Consists of the following attributes:
@@ -55448,6 +55464,7 @@ type ModelServingAiGatewayInput interface {
 }
 
 type ModelServingAiGatewayArgs struct {
+	FallbackConfig ModelServingAiGatewayFallbackConfigPtrInput `pulumi:"fallbackConfig"`
 	// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
 	Guardrails ModelServingAiGatewayGuardrailsPtrInput `pulumi:"guardrails"`
 	// Block describing the configuration of usage tracking. Consists of the following attributes:
@@ -55535,6 +55552,10 @@ func (o ModelServingAiGatewayOutput) ToModelServingAiGatewayPtrOutputWithContext
 	}).(ModelServingAiGatewayPtrOutput)
 }
 
+func (o ModelServingAiGatewayOutput) FallbackConfig() ModelServingAiGatewayFallbackConfigPtrOutput {
+	return o.ApplyT(func(v ModelServingAiGateway) *ModelServingAiGatewayFallbackConfig { return v.FallbackConfig }).(ModelServingAiGatewayFallbackConfigPtrOutput)
+}
+
 // Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
 func (o ModelServingAiGatewayOutput) Guardrails() ModelServingAiGatewayGuardrailsPtrOutput {
 	return o.ApplyT(func(v ModelServingAiGateway) *ModelServingAiGatewayGuardrails { return v.Guardrails }).(ModelServingAiGatewayGuardrailsPtrOutput)
@@ -55581,6 +55602,15 @@ func (o ModelServingAiGatewayPtrOutput) Elem() ModelServingAiGatewayOutput {
 	}).(ModelServingAiGatewayOutput)
 }
 
+func (o ModelServingAiGatewayPtrOutput) FallbackConfig() ModelServingAiGatewayFallbackConfigPtrOutput {
+	return o.ApplyT(func(v *ModelServingAiGateway) *ModelServingAiGatewayFallbackConfig {
+		if v == nil {
+			return nil
+		}
+		return v.FallbackConfig
+	}).(ModelServingAiGatewayFallbackConfigPtrOutput)
+}
+
 // Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
 func (o ModelServingAiGatewayPtrOutput) Guardrails() ModelServingAiGatewayGuardrailsPtrOutput {
 	return o.ApplyT(func(v *ModelServingAiGateway) *ModelServingAiGatewayGuardrails {
@@ -55619,6 +55649,139 @@ func (o ModelServingAiGatewayPtrOutput) UsageTrackingConfig() ModelServingAiGate
 		}
 		return v.UsageTrackingConfig
 	}).(ModelServingAiGatewayUsageTrackingConfigPtrOutput)
+}
+
+type ModelServingAiGatewayFallbackConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ModelServingAiGatewayFallbackConfigInput is an input type that accepts ModelServingAiGatewayFallbackConfigArgs and ModelServingAiGatewayFallbackConfigOutput values.
+// You can construct a concrete instance of `ModelServingAiGatewayFallbackConfigInput` via:
+//
+//	ModelServingAiGatewayFallbackConfigArgs{...}
+type ModelServingAiGatewayFallbackConfigInput interface {
+	pulumi.Input
+
+	ToModelServingAiGatewayFallbackConfigOutput() ModelServingAiGatewayFallbackConfigOutput
+	ToModelServingAiGatewayFallbackConfigOutputWithContext(context.Context) ModelServingAiGatewayFallbackConfigOutput
+}
+
+type ModelServingAiGatewayFallbackConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ModelServingAiGatewayFallbackConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingAiGatewayFallbackConfig)(nil)).Elem()
+}
+
+func (i ModelServingAiGatewayFallbackConfigArgs) ToModelServingAiGatewayFallbackConfigOutput() ModelServingAiGatewayFallbackConfigOutput {
+	return i.ToModelServingAiGatewayFallbackConfigOutputWithContext(context.Background())
+}
+
+func (i ModelServingAiGatewayFallbackConfigArgs) ToModelServingAiGatewayFallbackConfigOutputWithContext(ctx context.Context) ModelServingAiGatewayFallbackConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayFallbackConfigOutput)
+}
+
+func (i ModelServingAiGatewayFallbackConfigArgs) ToModelServingAiGatewayFallbackConfigPtrOutput() ModelServingAiGatewayFallbackConfigPtrOutput {
+	return i.ToModelServingAiGatewayFallbackConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ModelServingAiGatewayFallbackConfigArgs) ToModelServingAiGatewayFallbackConfigPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayFallbackConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayFallbackConfigOutput).ToModelServingAiGatewayFallbackConfigPtrOutputWithContext(ctx)
+}
+
+// ModelServingAiGatewayFallbackConfigPtrInput is an input type that accepts ModelServingAiGatewayFallbackConfigArgs, ModelServingAiGatewayFallbackConfigPtr and ModelServingAiGatewayFallbackConfigPtrOutput values.
+// You can construct a concrete instance of `ModelServingAiGatewayFallbackConfigPtrInput` via:
+//
+//	        ModelServingAiGatewayFallbackConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ModelServingAiGatewayFallbackConfigPtrInput interface {
+	pulumi.Input
+
+	ToModelServingAiGatewayFallbackConfigPtrOutput() ModelServingAiGatewayFallbackConfigPtrOutput
+	ToModelServingAiGatewayFallbackConfigPtrOutputWithContext(context.Context) ModelServingAiGatewayFallbackConfigPtrOutput
+}
+
+type modelServingAiGatewayFallbackConfigPtrType ModelServingAiGatewayFallbackConfigArgs
+
+func ModelServingAiGatewayFallbackConfigPtr(v *ModelServingAiGatewayFallbackConfigArgs) ModelServingAiGatewayFallbackConfigPtrInput {
+	return (*modelServingAiGatewayFallbackConfigPtrType)(v)
+}
+
+func (*modelServingAiGatewayFallbackConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingAiGatewayFallbackConfig)(nil)).Elem()
+}
+
+func (i *modelServingAiGatewayFallbackConfigPtrType) ToModelServingAiGatewayFallbackConfigPtrOutput() ModelServingAiGatewayFallbackConfigPtrOutput {
+	return i.ToModelServingAiGatewayFallbackConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *modelServingAiGatewayFallbackConfigPtrType) ToModelServingAiGatewayFallbackConfigPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayFallbackConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingAiGatewayFallbackConfigPtrOutput)
+}
+
+type ModelServingAiGatewayFallbackConfigOutput struct{ *pulumi.OutputState }
+
+func (ModelServingAiGatewayFallbackConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingAiGatewayFallbackConfig)(nil)).Elem()
+}
+
+func (o ModelServingAiGatewayFallbackConfigOutput) ToModelServingAiGatewayFallbackConfigOutput() ModelServingAiGatewayFallbackConfigOutput {
+	return o
+}
+
+func (o ModelServingAiGatewayFallbackConfigOutput) ToModelServingAiGatewayFallbackConfigOutputWithContext(ctx context.Context) ModelServingAiGatewayFallbackConfigOutput {
+	return o
+}
+
+func (o ModelServingAiGatewayFallbackConfigOutput) ToModelServingAiGatewayFallbackConfigPtrOutput() ModelServingAiGatewayFallbackConfigPtrOutput {
+	return o.ToModelServingAiGatewayFallbackConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ModelServingAiGatewayFallbackConfigOutput) ToModelServingAiGatewayFallbackConfigPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayFallbackConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingAiGatewayFallbackConfig) *ModelServingAiGatewayFallbackConfig {
+		return &v
+	}).(ModelServingAiGatewayFallbackConfigPtrOutput)
+}
+
+func (o ModelServingAiGatewayFallbackConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ModelServingAiGatewayFallbackConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ModelServingAiGatewayFallbackConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ModelServingAiGatewayFallbackConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingAiGatewayFallbackConfig)(nil)).Elem()
+}
+
+func (o ModelServingAiGatewayFallbackConfigPtrOutput) ToModelServingAiGatewayFallbackConfigPtrOutput() ModelServingAiGatewayFallbackConfigPtrOutput {
+	return o
+}
+
+func (o ModelServingAiGatewayFallbackConfigPtrOutput) ToModelServingAiGatewayFallbackConfigPtrOutputWithContext(ctx context.Context) ModelServingAiGatewayFallbackConfigPtrOutput {
+	return o
+}
+
+func (o ModelServingAiGatewayFallbackConfigPtrOutput) Elem() ModelServingAiGatewayFallbackConfigOutput {
+	return o.ApplyT(func(v *ModelServingAiGatewayFallbackConfig) ModelServingAiGatewayFallbackConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ModelServingAiGatewayFallbackConfig
+		return ret
+	}).(ModelServingAiGatewayFallbackConfigOutput)
+}
+
+func (o ModelServingAiGatewayFallbackConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ModelServingAiGatewayFallbackConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ModelServingAiGatewayGuardrails struct {
@@ -57478,7 +57641,8 @@ type ModelServingConfigServedEntityExternalModel struct {
 	// Anthropic Config
 	AnthropicConfig *ModelServingConfigServedEntityExternalModelAnthropicConfig `pulumi:"anthropicConfig"`
 	// Cohere Config
-	CohereConfig *ModelServingConfigServedEntityExternalModelCohereConfig `pulumi:"cohereConfig"`
+	CohereConfig         *ModelServingConfigServedEntityExternalModelCohereConfig         `pulumi:"cohereConfig"`
+	CustomProviderConfig *ModelServingConfigServedEntityExternalModelCustomProviderConfig `pulumi:"customProviderConfig"`
 	// Databricks Model Serving Config
 	DatabricksModelServingConfig *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig `pulumi:"databricksModelServingConfig"`
 	// Google Cloud Vertex AI Config.
@@ -57514,7 +57678,8 @@ type ModelServingConfigServedEntityExternalModelArgs struct {
 	// Anthropic Config
 	AnthropicConfig ModelServingConfigServedEntityExternalModelAnthropicConfigPtrInput `pulumi:"anthropicConfig"`
 	// Cohere Config
-	CohereConfig ModelServingConfigServedEntityExternalModelCohereConfigPtrInput `pulumi:"cohereConfig"`
+	CohereConfig         ModelServingConfigServedEntityExternalModelCohereConfigPtrInput         `pulumi:"cohereConfig"`
+	CustomProviderConfig ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrInput `pulumi:"customProviderConfig"`
 	// Databricks Model Serving Config
 	DatabricksModelServingConfig ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrInput `pulumi:"databricksModelServingConfig"`
 	// Google Cloud Vertex AI Config.
@@ -57636,6 +57801,12 @@ func (o ModelServingConfigServedEntityExternalModelOutput) CohereConfig() ModelS
 	}).(ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput)
 }
 
+func (o ModelServingConfigServedEntityExternalModelOutput) CustomProviderConfig() ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelCustomProviderConfig {
+		return v.CustomProviderConfig
+	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput)
+}
+
 // Databricks Model Serving Config
 func (o ModelServingConfigServedEntityExternalModelOutput) DatabricksModelServingConfig() ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
@@ -57741,6 +57912,15 @@ func (o ModelServingConfigServedEntityExternalModelPtrOutput) CohereConfig() Mod
 		}
 		return v.CohereConfig
 	}).(ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput)
+}
+
+func (o ModelServingConfigServedEntityExternalModelPtrOutput) CustomProviderConfig() ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
+	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelCustomProviderConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CustomProviderConfig
+	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput)
 }
 
 // Databricks Model Serving Config
@@ -58558,6 +58738,498 @@ func (o ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput) Cohere
 			return nil
 		}
 		return v.CohereApiKeyPlaintext
+	}).(pulumi.StringPtrOutput)
+}
+
+type ModelServingConfigServedEntityExternalModelCustomProviderConfig struct {
+	ApiKeyAuth        *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth      `pulumi:"apiKeyAuth"`
+	BearerTokenAuth   *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth `pulumi:"bearerTokenAuth"`
+	CustomProviderUrl string                                                                          `pulumi:"customProviderUrl"`
+}
+
+// ModelServingConfigServedEntityExternalModelCustomProviderConfigInput is an input type that accepts ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs and ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput values.
+// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelCustomProviderConfigInput` via:
+//
+//	ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs{...}
+type ModelServingConfigServedEntityExternalModelCustomProviderConfigInput interface {
+	pulumi.Input
+
+	ToModelServingConfigServedEntityExternalModelCustomProviderConfigOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput
+	ToModelServingConfigServedEntityExternalModelCustomProviderConfigOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput
+}
+
+type ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs struct {
+	ApiKeyAuth        ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrInput      `pulumi:"apiKeyAuth"`
+	BearerTokenAuth   ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrInput `pulumi:"bearerTokenAuth"`
+	CustomProviderUrl pulumi.StringInput                                                                     `pulumi:"customProviderUrl"`
+}
+
+func (ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfig)(nil)).Elem()
+}
+
+func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput {
+	return i.ToModelServingConfigServedEntityExternalModelCustomProviderConfigOutputWithContext(context.Background())
+}
+
+func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput)
+}
+
+func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
+	return i.ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput).ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutputWithContext(ctx)
+}
+
+// ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrInput is an input type that accepts ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs, ModelServingConfigServedEntityExternalModelCustomProviderConfigPtr and ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput values.
+// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrInput` via:
+//
+//	        ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput
+	ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput
+}
+
+type modelServingConfigServedEntityExternalModelCustomProviderConfigPtrType ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs
+
+func ModelServingConfigServedEntityExternalModelCustomProviderConfigPtr(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs) ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrInput {
+	return (*modelServingConfigServedEntityExternalModelCustomProviderConfigPtrType)(v)
+}
+
+func (*modelServingConfigServedEntityExternalModelCustomProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelCustomProviderConfig)(nil)).Elem()
+}
+
+func (i *modelServingConfigServedEntityExternalModelCustomProviderConfigPtrType) ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
+	return i.ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *modelServingConfigServedEntityExternalModelCustomProviderConfigPtrType) ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput)
+}
+
+type ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfig)(nil)).Elem()
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput {
+	return o
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput {
+	return o
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
+	return o.ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigServedEntityExternalModelCustomProviderConfig) *ModelServingConfigServedEntityExternalModelCustomProviderConfig {
+		return &v
+	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput)
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) ApiKeyAuth() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfig) *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
+		return v.ApiKeyAuth
+	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput)
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) BearerTokenAuth() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfig) *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
+		return v.BearerTokenAuth
+	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput)
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) CustomProviderUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfig) string {
+		return v.CustomProviderUrl
+	}).(pulumi.StringOutput)
+}
+
+type ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelCustomProviderConfig)(nil)).Elem()
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
+	return o
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
+	return o
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput) Elem() ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput {
+	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfig) ModelServingConfigServedEntityExternalModelCustomProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ModelServingConfigServedEntityExternalModelCustomProviderConfig
+		return ret
+	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput)
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput) ApiKeyAuth() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
+	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfig) *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKeyAuth
+	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput)
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput) BearerTokenAuth() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
+	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfig) *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
+		if v == nil {
+			return nil
+		}
+		return v.BearerTokenAuth
+	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput)
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput) CustomProviderUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CustomProviderUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth struct {
+	Key string `pulumi:"key"`
+	// The value field for a tag.
+	Value          *string `pulumi:"value"`
+	ValuePlaintext *string `pulumi:"valuePlaintext"`
+}
+
+// ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthInput is an input type that accepts ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs and ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput values.
+// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthInput` via:
+//
+//	ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs{...}
+type ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthInput interface {
+	pulumi.Input
+
+	ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput
+	ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput
+}
+
+type ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs struct {
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value field for a tag.
+	Value          pulumi.StringPtrInput `pulumi:"value"`
+	ValuePlaintext pulumi.StringPtrInput `pulumi:"valuePlaintext"`
+}
+
+func (ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth)(nil)).Elem()
+}
+
+func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput {
+	return i.ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutputWithContext(context.Background())
+}
+
+func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput)
+}
+
+func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
+	return i.ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutputWithContext(context.Background())
+}
+
+func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput).ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutputWithContext(ctx)
+}
+
+// ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrInput is an input type that accepts ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs, ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtr and ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput values.
+// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrInput` via:
+//
+//	        ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrInput interface {
+	pulumi.Input
+
+	ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput
+	ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput
+}
+
+type modelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrType ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs
+
+func ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtr(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrInput {
+	return (*modelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrType)(v)
+}
+
+func (*modelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth)(nil)).Elem()
+}
+
+func (i *modelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrType) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
+	return i.ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *modelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrType) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput)
+}
+
+type ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput struct{ *pulumi.OutputState }
+
+func (ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth)(nil)).Elem()
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput {
+	return o
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput {
+	return o
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
+	return o.ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutputWithContext(context.Background())
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
+		return &v
+	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput)
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value field for a tag.
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput) ValuePlaintext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) *string {
+		return v.ValuePlaintext
+	}).(pulumi.StringPtrOutput)
+}
+
+type ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth)(nil)).Elem()
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
+	return o
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
+	return o
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput) Elem() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput {
+	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
+		if v != nil {
+			return *v
+		}
+		var ret ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth
+		return ret
+	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput)
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value field for a tag.
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput) ValuePlaintext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ValuePlaintext
+	}).(pulumi.StringPtrOutput)
+}
+
+type ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth struct {
+	Token          *string `pulumi:"token"`
+	TokenPlaintext *string `pulumi:"tokenPlaintext"`
+}
+
+// ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthInput is an input type that accepts ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs and ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput values.
+// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthInput` via:
+//
+//	ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs{...}
+type ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthInput interface {
+	pulumi.Input
+
+	ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput
+	ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput
+}
+
+type ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs struct {
+	Token          pulumi.StringPtrInput `pulumi:"token"`
+	TokenPlaintext pulumi.StringPtrInput `pulumi:"tokenPlaintext"`
+}
+
+func (ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth)(nil)).Elem()
+}
+
+func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput {
+	return i.ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutputWithContext(context.Background())
+}
+
+func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput)
+}
+
+func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
+	return i.ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutputWithContext(context.Background())
+}
+
+func (i ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput).ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutputWithContext(ctx)
+}
+
+// ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrInput is an input type that accepts ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs, ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtr and ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput values.
+// You can construct a concrete instance of `ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrInput` via:
+//
+//	        ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrInput interface {
+	pulumi.Input
+
+	ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput
+	ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutputWithContext(context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput
+}
+
+type modelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrType ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs
+
+func ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtr(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrInput {
+	return (*modelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrType)(v)
+}
+
+func (*modelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth)(nil)).Elem()
+}
+
+func (i *modelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrType) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
+	return i.ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *modelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrType) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput)
+}
+
+type ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput struct{ *pulumi.OutputState }
+
+func (ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth)(nil)).Elem()
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput {
+	return o
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput {
+	return o
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
+	return o.ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutputWithContext(context.Background())
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth) *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
+		return &v
+	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput)
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth) *string {
+		return v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput) TokenPlaintext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth) *string {
+		return v.TokenPlaintext
+	}).(pulumi.StringPtrOutput)
+}
+
+type ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth)(nil)).Elem()
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
+	return o
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput) ToModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutputWithContext(ctx context.Context) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
+	return o
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput) Elem() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput {
+	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth) ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
+		if v != nil {
+			return *v
+		}
+		var ret ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth
+		return ret
+	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput)
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput) TokenPlaintext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenPlaintext
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -62405,9 +63077,13 @@ type MwsNetworksGcpNetworkInfo struct {
 	// The Google Cloud project ID of the VPC network.
 	NetworkProjectId string `pulumi:"networkProjectId"`
 	// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-	PodIpRangeName string `pulumi:"podIpRangeName"`
+	//
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
+	PodIpRangeName *string `pulumi:"podIpRangeName"`
 	// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-	ServiceIpRangeName string `pulumi:"serviceIpRangeName"`
+	//
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
+	ServiceIpRangeName *string `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId string `pulumi:"subnetId"`
 	// The Google Cloud region of the workspace data plane. For example, `us-east4`.
@@ -62431,9 +63107,13 @@ type MwsNetworksGcpNetworkInfoArgs struct {
 	// The Google Cloud project ID of the VPC network.
 	NetworkProjectId pulumi.StringInput `pulumi:"networkProjectId"`
 	// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-	PodIpRangeName pulumi.StringInput `pulumi:"podIpRangeName"`
+	//
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
+	PodIpRangeName pulumi.StringPtrInput `pulumi:"podIpRangeName"`
 	// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-	ServiceIpRangeName pulumi.StringInput `pulumi:"serviceIpRangeName"`
+	//
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
+	ServiceIpRangeName pulumi.StringPtrInput `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
 	// The Google Cloud region of the workspace data plane. For example, `us-east4`.
@@ -62525,13 +63205,17 @@ func (o MwsNetworksGcpNetworkInfoOutput) NetworkProjectId() pulumi.StringOutput 
 }
 
 // The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-func (o MwsNetworksGcpNetworkInfoOutput) PodIpRangeName() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) string { return v.PodIpRangeName }).(pulumi.StringOutput)
+//
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
+func (o MwsNetworksGcpNetworkInfoOutput) PodIpRangeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.PodIpRangeName }).(pulumi.StringPtrOutput)
 }
 
 // The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-func (o MwsNetworksGcpNetworkInfoOutput) ServiceIpRangeName() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) string { return v.ServiceIpRangeName }).(pulumi.StringOutput)
+//
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
+func (o MwsNetworksGcpNetworkInfoOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.ServiceIpRangeName }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the subnet associated with this network.
@@ -62584,22 +63268,26 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) NetworkProjectId() pulumi.StringPtrO
 }
 
 // The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
+//
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.PodIpRangeName
+		return v.PodIpRangeName
 	}).(pulumi.StringPtrOutput)
 }
 
 // The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
+//
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ServiceIpRangeName
+		return v.ServiceIpRangeName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -63432,9 +64120,11 @@ func (o MwsWorkspacesExternalCustomerInfoPtrOutput) CustomerName() pulumi.String
 }
 
 type MwsWorkspacesGcpManagedNetworkConfig struct {
-	GkeClusterPodIpRange     string `pulumi:"gkeClusterPodIpRange"`
-	GkeClusterServiceIpRange string `pulumi:"gkeClusterServiceIpRange"`
-	SubnetCidr               string `pulumi:"subnetCidr"`
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	GkeClusterPodIpRange *string `pulumi:"gkeClusterPodIpRange"`
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	GkeClusterServiceIpRange *string `pulumi:"gkeClusterServiceIpRange"`
+	SubnetCidr               string  `pulumi:"subnetCidr"`
 }
 
 // MwsWorkspacesGcpManagedNetworkConfigInput is an input type that accepts MwsWorkspacesGcpManagedNetworkConfigArgs and MwsWorkspacesGcpManagedNetworkConfigOutput values.
@@ -63449,9 +64139,11 @@ type MwsWorkspacesGcpManagedNetworkConfigInput interface {
 }
 
 type MwsWorkspacesGcpManagedNetworkConfigArgs struct {
-	GkeClusterPodIpRange     pulumi.StringInput `pulumi:"gkeClusterPodIpRange"`
-	GkeClusterServiceIpRange pulumi.StringInput `pulumi:"gkeClusterServiceIpRange"`
-	SubnetCidr               pulumi.StringInput `pulumi:"subnetCidr"`
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	GkeClusterPodIpRange pulumi.StringPtrInput `pulumi:"gkeClusterPodIpRange"`
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	GkeClusterServiceIpRange pulumi.StringPtrInput `pulumi:"gkeClusterServiceIpRange"`
+	SubnetCidr               pulumi.StringInput    `pulumi:"subnetCidr"`
 }
 
 func (MwsWorkspacesGcpManagedNetworkConfigArgs) ElementType() reflect.Type {
@@ -63531,12 +64223,14 @@ func (o MwsWorkspacesGcpManagedNetworkConfigOutput) ToMwsWorkspacesGcpManagedNet
 	}).(MwsWorkspacesGcpManagedNetworkConfigPtrOutput)
 }
 
-func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterPodIpRange() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) string { return v.GkeClusterPodIpRange }).(pulumi.StringOutput)
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterPodIpRange }).(pulumi.StringPtrOutput)
 }
 
-func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterServiceIpRange() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) string { return v.GkeClusterServiceIpRange }).(pulumi.StringOutput)
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterServiceIpRange }).(pulumi.StringPtrOutput)
 }
 
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) SubnetCidr() pulumi.StringOutput {
@@ -63567,21 +64261,23 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) Elem() MwsWorkspacesGcpMa
 	}).(MwsWorkspacesGcpManagedNetworkConfigOutput)
 }
 
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.GkeClusterPodIpRange
+		return v.GkeClusterPodIpRange
 	}).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.GkeClusterServiceIpRange
+		return v.GkeClusterServiceIpRange
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -63596,9 +64292,9 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) SubnetCidr() pulumi.Strin
 
 type MwsWorkspacesGkeConfig struct {
 	// Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
-	ConnectivityType string `pulumi:"connectivityType"`
+	ConnectivityType *string `pulumi:"connectivityType"`
 	// The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
-	MasterIpRange string `pulumi:"masterIpRange"`
+	MasterIpRange *string `pulumi:"masterIpRange"`
 }
 
 // MwsWorkspacesGkeConfigInput is an input type that accepts MwsWorkspacesGkeConfigArgs and MwsWorkspacesGkeConfigOutput values.
@@ -63614,9 +64310,9 @@ type MwsWorkspacesGkeConfigInput interface {
 
 type MwsWorkspacesGkeConfigArgs struct {
 	// Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
-	ConnectivityType pulumi.StringInput `pulumi:"connectivityType"`
+	ConnectivityType pulumi.StringPtrInput `pulumi:"connectivityType"`
 	// The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
-	MasterIpRange pulumi.StringInput `pulumi:"masterIpRange"`
+	MasterIpRange pulumi.StringPtrInput `pulumi:"masterIpRange"`
 }
 
 func (MwsWorkspacesGkeConfigArgs) ElementType() reflect.Type {
@@ -63697,13 +64393,13 @@ func (o MwsWorkspacesGkeConfigOutput) ToMwsWorkspacesGkeConfigPtrOutputWithConte
 }
 
 // Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
-func (o MwsWorkspacesGkeConfigOutput) ConnectivityType() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsWorkspacesGkeConfig) string { return v.ConnectivityType }).(pulumi.StringOutput)
+func (o MwsWorkspacesGkeConfigOutput) ConnectivityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsWorkspacesGkeConfig) *string { return v.ConnectivityType }).(pulumi.StringPtrOutput)
 }
 
 // The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
-func (o MwsWorkspacesGkeConfigOutput) MasterIpRange() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsWorkspacesGkeConfig) string { return v.MasterIpRange }).(pulumi.StringOutput)
+func (o MwsWorkspacesGkeConfigOutput) MasterIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsWorkspacesGkeConfig) *string { return v.MasterIpRange }).(pulumi.StringPtrOutput)
 }
 
 type MwsWorkspacesGkeConfigPtrOutput struct{ *pulumi.OutputState }
@@ -63736,7 +64432,7 @@ func (o MwsWorkspacesGkeConfigPtrOutput) ConnectivityType() pulumi.StringPtrOutp
 		if v == nil {
 			return nil
 		}
-		return &v.ConnectivityType
+		return v.ConnectivityType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -63746,7 +64442,7 @@ func (o MwsWorkspacesGkeConfigPtrOutput) MasterIpRange() pulumi.StringPtrOutput 
 		if v == nil {
 			return nil
 		}
-		return &v.MasterIpRange
+		return v.MasterIpRange
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -70033,6 +70729,181 @@ func (o PipelineDeploymentPtrOutput) MetadataFilePath() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.MetadataFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineEventLog struct {
+	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	Catalog *string `pulumi:"catalog"`
+	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+	Name *string `pulumi:"name"`
+	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+	Schema *string `pulumi:"schema"`
+}
+
+// PipelineEventLogInput is an input type that accepts PipelineEventLogArgs and PipelineEventLogOutput values.
+// You can construct a concrete instance of `PipelineEventLogInput` via:
+//
+//	PipelineEventLogArgs{...}
+type PipelineEventLogInput interface {
+	pulumi.Input
+
+	ToPipelineEventLogOutput() PipelineEventLogOutput
+	ToPipelineEventLogOutputWithContext(context.Context) PipelineEventLogOutput
+}
+
+type PipelineEventLogArgs struct {
+	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	Catalog pulumi.StringPtrInput `pulumi:"catalog"`
+	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+	Schema pulumi.StringPtrInput `pulumi:"schema"`
+}
+
+func (PipelineEventLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineEventLog)(nil)).Elem()
+}
+
+func (i PipelineEventLogArgs) ToPipelineEventLogOutput() PipelineEventLogOutput {
+	return i.ToPipelineEventLogOutputWithContext(context.Background())
+}
+
+func (i PipelineEventLogArgs) ToPipelineEventLogOutputWithContext(ctx context.Context) PipelineEventLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineEventLogOutput)
+}
+
+func (i PipelineEventLogArgs) ToPipelineEventLogPtrOutput() PipelineEventLogPtrOutput {
+	return i.ToPipelineEventLogPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineEventLogArgs) ToPipelineEventLogPtrOutputWithContext(ctx context.Context) PipelineEventLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineEventLogOutput).ToPipelineEventLogPtrOutputWithContext(ctx)
+}
+
+// PipelineEventLogPtrInput is an input type that accepts PipelineEventLogArgs, PipelineEventLogPtr and PipelineEventLogPtrOutput values.
+// You can construct a concrete instance of `PipelineEventLogPtrInput` via:
+//
+//	        PipelineEventLogArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineEventLogPtrInput interface {
+	pulumi.Input
+
+	ToPipelineEventLogPtrOutput() PipelineEventLogPtrOutput
+	ToPipelineEventLogPtrOutputWithContext(context.Context) PipelineEventLogPtrOutput
+}
+
+type pipelineEventLogPtrType PipelineEventLogArgs
+
+func PipelineEventLogPtr(v *PipelineEventLogArgs) PipelineEventLogPtrInput {
+	return (*pipelineEventLogPtrType)(v)
+}
+
+func (*pipelineEventLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineEventLog)(nil)).Elem()
+}
+
+func (i *pipelineEventLogPtrType) ToPipelineEventLogPtrOutput() PipelineEventLogPtrOutput {
+	return i.ToPipelineEventLogPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineEventLogPtrType) ToPipelineEventLogPtrOutputWithContext(ctx context.Context) PipelineEventLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineEventLogPtrOutput)
+}
+
+type PipelineEventLogOutput struct{ *pulumi.OutputState }
+
+func (PipelineEventLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineEventLog)(nil)).Elem()
+}
+
+func (o PipelineEventLogOutput) ToPipelineEventLogOutput() PipelineEventLogOutput {
+	return o
+}
+
+func (o PipelineEventLogOutput) ToPipelineEventLogOutputWithContext(ctx context.Context) PipelineEventLogOutput {
+	return o
+}
+
+func (o PipelineEventLogOutput) ToPipelineEventLogPtrOutput() PipelineEventLogPtrOutput {
+	return o.ToPipelineEventLogPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineEventLogOutput) ToPipelineEventLogPtrOutputWithContext(ctx context.Context) PipelineEventLogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineEventLog) *PipelineEventLog {
+		return &v
+	}).(PipelineEventLogPtrOutput)
+}
+
+// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+func (o PipelineEventLogOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineEventLog) *string { return v.Catalog }).(pulumi.StringPtrOutput)
+}
+
+// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+func (o PipelineEventLogOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineEventLog) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+func (o PipelineEventLogOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineEventLog) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+type PipelineEventLogPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineEventLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineEventLog)(nil)).Elem()
+}
+
+func (o PipelineEventLogPtrOutput) ToPipelineEventLogPtrOutput() PipelineEventLogPtrOutput {
+	return o
+}
+
+func (o PipelineEventLogPtrOutput) ToPipelineEventLogPtrOutputWithContext(ctx context.Context) PipelineEventLogPtrOutput {
+	return o
+}
+
+func (o PipelineEventLogPtrOutput) Elem() PipelineEventLogOutput {
+	return o.ApplyT(func(v *PipelineEventLog) PipelineEventLog {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineEventLog
+		return ret
+	}).(PipelineEventLogOutput)
+}
+
+// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+func (o PipelineEventLogPtrOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineEventLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Catalog
+	}).(pulumi.StringPtrOutput)
+}
+
+// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+func (o PipelineEventLogPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineEventLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+func (o PipelineEventLogPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineEventLog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -81807,803 +82678,6 @@ func (o SqlQueryScheduleContinuousPtrOutput) UntilDate() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-type SqlQueryScheduleDaily struct {
-	IntervalDays int     `pulumi:"intervalDays"`
-	TimeOfDay    string  `pulumi:"timeOfDay"`
-	UntilDate    *string `pulumi:"untilDate"`
-}
-
-// SqlQueryScheduleDailyInput is an input type that accepts SqlQueryScheduleDailyArgs and SqlQueryScheduleDailyOutput values.
-// You can construct a concrete instance of `SqlQueryScheduleDailyInput` via:
-//
-//	SqlQueryScheduleDailyArgs{...}
-type SqlQueryScheduleDailyInput interface {
-	pulumi.Input
-
-	ToSqlQueryScheduleDailyOutput() SqlQueryScheduleDailyOutput
-	ToSqlQueryScheduleDailyOutputWithContext(context.Context) SqlQueryScheduleDailyOutput
-}
-
-type SqlQueryScheduleDailyArgs struct {
-	IntervalDays pulumi.IntInput       `pulumi:"intervalDays"`
-	TimeOfDay    pulumi.StringInput    `pulumi:"timeOfDay"`
-	UntilDate    pulumi.StringPtrInput `pulumi:"untilDate"`
-}
-
-func (SqlQueryScheduleDailyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryScheduleDaily)(nil)).Elem()
-}
-
-func (i SqlQueryScheduleDailyArgs) ToSqlQueryScheduleDailyOutput() SqlQueryScheduleDailyOutput {
-	return i.ToSqlQueryScheduleDailyOutputWithContext(context.Background())
-}
-
-func (i SqlQueryScheduleDailyArgs) ToSqlQueryScheduleDailyOutputWithContext(ctx context.Context) SqlQueryScheduleDailyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryScheduleDailyOutput)
-}
-
-func (i SqlQueryScheduleDailyArgs) ToSqlQueryScheduleDailyPtrOutput() SqlQueryScheduleDailyPtrOutput {
-	return i.ToSqlQueryScheduleDailyPtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryScheduleDailyArgs) ToSqlQueryScheduleDailyPtrOutputWithContext(ctx context.Context) SqlQueryScheduleDailyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryScheduleDailyOutput).ToSqlQueryScheduleDailyPtrOutputWithContext(ctx)
-}
-
-// SqlQueryScheduleDailyPtrInput is an input type that accepts SqlQueryScheduleDailyArgs, SqlQueryScheduleDailyPtr and SqlQueryScheduleDailyPtrOutput values.
-// You can construct a concrete instance of `SqlQueryScheduleDailyPtrInput` via:
-//
-//	        SqlQueryScheduleDailyArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryScheduleDailyPtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryScheduleDailyPtrOutput() SqlQueryScheduleDailyPtrOutput
-	ToSqlQueryScheduleDailyPtrOutputWithContext(context.Context) SqlQueryScheduleDailyPtrOutput
-}
-
-type sqlQueryScheduleDailyPtrType SqlQueryScheduleDailyArgs
-
-func SqlQueryScheduleDailyPtr(v *SqlQueryScheduleDailyArgs) SqlQueryScheduleDailyPtrInput {
-	return (*sqlQueryScheduleDailyPtrType)(v)
-}
-
-func (*sqlQueryScheduleDailyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryScheduleDaily)(nil)).Elem()
-}
-
-func (i *sqlQueryScheduleDailyPtrType) ToSqlQueryScheduleDailyPtrOutput() SqlQueryScheduleDailyPtrOutput {
-	return i.ToSqlQueryScheduleDailyPtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryScheduleDailyPtrType) ToSqlQueryScheduleDailyPtrOutputWithContext(ctx context.Context) SqlQueryScheduleDailyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryScheduleDailyPtrOutput)
-}
-
-type SqlQueryScheduleDailyOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryScheduleDailyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryScheduleDaily)(nil)).Elem()
-}
-
-func (o SqlQueryScheduleDailyOutput) ToSqlQueryScheduleDailyOutput() SqlQueryScheduleDailyOutput {
-	return o
-}
-
-func (o SqlQueryScheduleDailyOutput) ToSqlQueryScheduleDailyOutputWithContext(ctx context.Context) SqlQueryScheduleDailyOutput {
-	return o
-}
-
-func (o SqlQueryScheduleDailyOutput) ToSqlQueryScheduleDailyPtrOutput() SqlQueryScheduleDailyPtrOutput {
-	return o.ToSqlQueryScheduleDailyPtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryScheduleDailyOutput) ToSqlQueryScheduleDailyPtrOutputWithContext(ctx context.Context) SqlQueryScheduleDailyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryScheduleDaily) *SqlQueryScheduleDaily {
-		return &v
-	}).(SqlQueryScheduleDailyPtrOutput)
-}
-
-func (o SqlQueryScheduleDailyOutput) IntervalDays() pulumi.IntOutput {
-	return o.ApplyT(func(v SqlQueryScheduleDaily) int { return v.IntervalDays }).(pulumi.IntOutput)
-}
-
-func (o SqlQueryScheduleDailyOutput) TimeOfDay() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryScheduleDaily) string { return v.TimeOfDay }).(pulumi.StringOutput)
-}
-
-func (o SqlQueryScheduleDailyOutput) UntilDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlQueryScheduleDaily) *string { return v.UntilDate }).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryScheduleDailyPtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryScheduleDailyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryScheduleDaily)(nil)).Elem()
-}
-
-func (o SqlQueryScheduleDailyPtrOutput) ToSqlQueryScheduleDailyPtrOutput() SqlQueryScheduleDailyPtrOutput {
-	return o
-}
-
-func (o SqlQueryScheduleDailyPtrOutput) ToSqlQueryScheduleDailyPtrOutputWithContext(ctx context.Context) SqlQueryScheduleDailyPtrOutput {
-	return o
-}
-
-func (o SqlQueryScheduleDailyPtrOutput) Elem() SqlQueryScheduleDailyOutput {
-	return o.ApplyT(func(v *SqlQueryScheduleDaily) SqlQueryScheduleDaily {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryScheduleDaily
-		return ret
-	}).(SqlQueryScheduleDailyOutput)
-}
-
-func (o SqlQueryScheduleDailyPtrOutput) IntervalDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SqlQueryScheduleDaily) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.IntervalDays
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o SqlQueryScheduleDailyPtrOutput) TimeOfDay() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryScheduleDaily) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TimeOfDay
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o SqlQueryScheduleDailyPtrOutput) UntilDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryScheduleDaily) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UntilDate
-	}).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryScheduleWeekly struct {
-	DayOfWeek     string  `pulumi:"dayOfWeek"`
-	IntervalWeeks int     `pulumi:"intervalWeeks"`
-	TimeOfDay     string  `pulumi:"timeOfDay"`
-	UntilDate     *string `pulumi:"untilDate"`
-}
-
-// SqlQueryScheduleWeeklyInput is an input type that accepts SqlQueryScheduleWeeklyArgs and SqlQueryScheduleWeeklyOutput values.
-// You can construct a concrete instance of `SqlQueryScheduleWeeklyInput` via:
-//
-//	SqlQueryScheduleWeeklyArgs{...}
-type SqlQueryScheduleWeeklyInput interface {
-	pulumi.Input
-
-	ToSqlQueryScheduleWeeklyOutput() SqlQueryScheduleWeeklyOutput
-	ToSqlQueryScheduleWeeklyOutputWithContext(context.Context) SqlQueryScheduleWeeklyOutput
-}
-
-type SqlQueryScheduleWeeklyArgs struct {
-	DayOfWeek     pulumi.StringInput    `pulumi:"dayOfWeek"`
-	IntervalWeeks pulumi.IntInput       `pulumi:"intervalWeeks"`
-	TimeOfDay     pulumi.StringInput    `pulumi:"timeOfDay"`
-	UntilDate     pulumi.StringPtrInput `pulumi:"untilDate"`
-}
-
-func (SqlQueryScheduleWeeklyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryScheduleWeekly)(nil)).Elem()
-}
-
-func (i SqlQueryScheduleWeeklyArgs) ToSqlQueryScheduleWeeklyOutput() SqlQueryScheduleWeeklyOutput {
-	return i.ToSqlQueryScheduleWeeklyOutputWithContext(context.Background())
-}
-
-func (i SqlQueryScheduleWeeklyArgs) ToSqlQueryScheduleWeeklyOutputWithContext(ctx context.Context) SqlQueryScheduleWeeklyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryScheduleWeeklyOutput)
-}
-
-func (i SqlQueryScheduleWeeklyArgs) ToSqlQueryScheduleWeeklyPtrOutput() SqlQueryScheduleWeeklyPtrOutput {
-	return i.ToSqlQueryScheduleWeeklyPtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryScheduleWeeklyArgs) ToSqlQueryScheduleWeeklyPtrOutputWithContext(ctx context.Context) SqlQueryScheduleWeeklyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryScheduleWeeklyOutput).ToSqlQueryScheduleWeeklyPtrOutputWithContext(ctx)
-}
-
-// SqlQueryScheduleWeeklyPtrInput is an input type that accepts SqlQueryScheduleWeeklyArgs, SqlQueryScheduleWeeklyPtr and SqlQueryScheduleWeeklyPtrOutput values.
-// You can construct a concrete instance of `SqlQueryScheduleWeeklyPtrInput` via:
-//
-//	        SqlQueryScheduleWeeklyArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryScheduleWeeklyPtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryScheduleWeeklyPtrOutput() SqlQueryScheduleWeeklyPtrOutput
-	ToSqlQueryScheduleWeeklyPtrOutputWithContext(context.Context) SqlQueryScheduleWeeklyPtrOutput
-}
-
-type sqlQueryScheduleWeeklyPtrType SqlQueryScheduleWeeklyArgs
-
-func SqlQueryScheduleWeeklyPtr(v *SqlQueryScheduleWeeklyArgs) SqlQueryScheduleWeeklyPtrInput {
-	return (*sqlQueryScheduleWeeklyPtrType)(v)
-}
-
-func (*sqlQueryScheduleWeeklyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryScheduleWeekly)(nil)).Elem()
-}
-
-func (i *sqlQueryScheduleWeeklyPtrType) ToSqlQueryScheduleWeeklyPtrOutput() SqlQueryScheduleWeeklyPtrOutput {
-	return i.ToSqlQueryScheduleWeeklyPtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryScheduleWeeklyPtrType) ToSqlQueryScheduleWeeklyPtrOutputWithContext(ctx context.Context) SqlQueryScheduleWeeklyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryScheduleWeeklyPtrOutput)
-}
-
-type SqlQueryScheduleWeeklyOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryScheduleWeeklyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryScheduleWeekly)(nil)).Elem()
-}
-
-func (o SqlQueryScheduleWeeklyOutput) ToSqlQueryScheduleWeeklyOutput() SqlQueryScheduleWeeklyOutput {
-	return o
-}
-
-func (o SqlQueryScheduleWeeklyOutput) ToSqlQueryScheduleWeeklyOutputWithContext(ctx context.Context) SqlQueryScheduleWeeklyOutput {
-	return o
-}
-
-func (o SqlQueryScheduleWeeklyOutput) ToSqlQueryScheduleWeeklyPtrOutput() SqlQueryScheduleWeeklyPtrOutput {
-	return o.ToSqlQueryScheduleWeeklyPtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryScheduleWeeklyOutput) ToSqlQueryScheduleWeeklyPtrOutputWithContext(ctx context.Context) SqlQueryScheduleWeeklyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryScheduleWeekly) *SqlQueryScheduleWeekly {
-		return &v
-	}).(SqlQueryScheduleWeeklyPtrOutput)
-}
-
-func (o SqlQueryScheduleWeeklyOutput) DayOfWeek() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryScheduleWeekly) string { return v.DayOfWeek }).(pulumi.StringOutput)
-}
-
-func (o SqlQueryScheduleWeeklyOutput) IntervalWeeks() pulumi.IntOutput {
-	return o.ApplyT(func(v SqlQueryScheduleWeekly) int { return v.IntervalWeeks }).(pulumi.IntOutput)
-}
-
-func (o SqlQueryScheduleWeeklyOutput) TimeOfDay() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryScheduleWeekly) string { return v.TimeOfDay }).(pulumi.StringOutput)
-}
-
-func (o SqlQueryScheduleWeeklyOutput) UntilDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlQueryScheduleWeekly) *string { return v.UntilDate }).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryScheduleWeeklyPtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryScheduleWeeklyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryScheduleWeekly)(nil)).Elem()
-}
-
-func (o SqlQueryScheduleWeeklyPtrOutput) ToSqlQueryScheduleWeeklyPtrOutput() SqlQueryScheduleWeeklyPtrOutput {
-	return o
-}
-
-func (o SqlQueryScheduleWeeklyPtrOutput) ToSqlQueryScheduleWeeklyPtrOutputWithContext(ctx context.Context) SqlQueryScheduleWeeklyPtrOutput {
-	return o
-}
-
-func (o SqlQueryScheduleWeeklyPtrOutput) Elem() SqlQueryScheduleWeeklyOutput {
-	return o.ApplyT(func(v *SqlQueryScheduleWeekly) SqlQueryScheduleWeekly {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryScheduleWeekly
-		return ret
-	}).(SqlQueryScheduleWeeklyOutput)
-}
-
-func (o SqlQueryScheduleWeeklyPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryScheduleWeekly) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DayOfWeek
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o SqlQueryScheduleWeeklyPtrOutput) IntervalWeeks() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SqlQueryScheduleWeekly) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.IntervalWeeks
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o SqlQueryScheduleWeeklyPtrOutput) TimeOfDay() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryScheduleWeekly) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TimeOfDay
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o SqlQueryScheduleWeeklyPtrOutput) UntilDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryScheduleWeekly) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UntilDate
-	}).(pulumi.StringPtrOutput)
-}
-
-type SqlTableColumn struct {
-	// User-supplied free-form text.
-	Comment *string `pulumi:"comment"`
-	// Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
-	Identity *string `pulumi:"identity"`
-	// User-visible name of column
-	Name string `pulumi:"name"`
-	// Whether field is nullable (Default: `true`)
-	Nullable *bool `pulumi:"nullable"`
-	// Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
-	Type     *string `pulumi:"type"`
-	TypeJson *string `pulumi:"typeJson"`
-}
-
-// SqlTableColumnInput is an input type that accepts SqlTableColumnArgs and SqlTableColumnOutput values.
-// You can construct a concrete instance of `SqlTableColumnInput` via:
-//
-//	SqlTableColumnArgs{...}
-type SqlTableColumnInput interface {
-	pulumi.Input
-
-	ToSqlTableColumnOutput() SqlTableColumnOutput
-	ToSqlTableColumnOutputWithContext(context.Context) SqlTableColumnOutput
-}
-
-type SqlTableColumnArgs struct {
-	// User-supplied free-form text.
-	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	// Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
-	Identity pulumi.StringPtrInput `pulumi:"identity"`
-	// User-visible name of column
-	Name pulumi.StringInput `pulumi:"name"`
-	// Whether field is nullable (Default: `true`)
-	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
-	// Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
-	Type     pulumi.StringPtrInput `pulumi:"type"`
-	TypeJson pulumi.StringPtrInput `pulumi:"typeJson"`
-}
-
-func (SqlTableColumnArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlTableColumn)(nil)).Elem()
-}
-
-func (i SqlTableColumnArgs) ToSqlTableColumnOutput() SqlTableColumnOutput {
-	return i.ToSqlTableColumnOutputWithContext(context.Background())
-}
-
-func (i SqlTableColumnArgs) ToSqlTableColumnOutputWithContext(ctx context.Context) SqlTableColumnOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlTableColumnOutput)
-}
-
-// SqlTableColumnArrayInput is an input type that accepts SqlTableColumnArray and SqlTableColumnArrayOutput values.
-// You can construct a concrete instance of `SqlTableColumnArrayInput` via:
-//
-//	SqlTableColumnArray{ SqlTableColumnArgs{...} }
-type SqlTableColumnArrayInput interface {
-	pulumi.Input
-
-	ToSqlTableColumnArrayOutput() SqlTableColumnArrayOutput
-	ToSqlTableColumnArrayOutputWithContext(context.Context) SqlTableColumnArrayOutput
-}
-
-type SqlTableColumnArray []SqlTableColumnInput
-
-func (SqlTableColumnArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SqlTableColumn)(nil)).Elem()
-}
-
-func (i SqlTableColumnArray) ToSqlTableColumnArrayOutput() SqlTableColumnArrayOutput {
-	return i.ToSqlTableColumnArrayOutputWithContext(context.Background())
-}
-
-func (i SqlTableColumnArray) ToSqlTableColumnArrayOutputWithContext(ctx context.Context) SqlTableColumnArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlTableColumnArrayOutput)
-}
-
-type SqlTableColumnOutput struct{ *pulumi.OutputState }
-
-func (SqlTableColumnOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlTableColumn)(nil)).Elem()
-}
-
-func (o SqlTableColumnOutput) ToSqlTableColumnOutput() SqlTableColumnOutput {
-	return o
-}
-
-func (o SqlTableColumnOutput) ToSqlTableColumnOutputWithContext(ctx context.Context) SqlTableColumnOutput {
-	return o
-}
-
-// User-supplied free-form text.
-func (o SqlTableColumnOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlTableColumn) *string { return v.Comment }).(pulumi.StringPtrOutput)
-}
-
-// Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
-func (o SqlTableColumnOutput) Identity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlTableColumn) *string { return v.Identity }).(pulumi.StringPtrOutput)
-}
-
-// User-visible name of column
-func (o SqlTableColumnOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlTableColumn) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Whether field is nullable (Default: `true`)
-func (o SqlTableColumnOutput) Nullable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SqlTableColumn) *bool { return v.Nullable }).(pulumi.BoolPtrOutput)
-}
-
-// Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
-func (o SqlTableColumnOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlTableColumn) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-func (o SqlTableColumnOutput) TypeJson() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlTableColumn) *string { return v.TypeJson }).(pulumi.StringPtrOutput)
-}
-
-type SqlTableColumnArrayOutput struct{ *pulumi.OutputState }
-
-func (SqlTableColumnArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SqlTableColumn)(nil)).Elem()
-}
-
-func (o SqlTableColumnArrayOutput) ToSqlTableColumnArrayOutput() SqlTableColumnArrayOutput {
-	return o
-}
-
-func (o SqlTableColumnArrayOutput) ToSqlTableColumnArrayOutputWithContext(ctx context.Context) SqlTableColumnArrayOutput {
-	return o
-}
-
-func (o SqlTableColumnArrayOutput) Index(i pulumi.IntInput) SqlTableColumnOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlTableColumn {
-		return vs[0].([]SqlTableColumn)[vs[1].(int)]
-	}).(SqlTableColumnOutput)
-}
-
-type SqlWidgetParameter struct {
-	MapTo  *string  `pulumi:"mapTo"`
-	Name   string   `pulumi:"name"`
-	Title  *string  `pulumi:"title"`
-	Type   string   `pulumi:"type"`
-	Value  *string  `pulumi:"value"`
-	Values []string `pulumi:"values"`
-}
-
-// SqlWidgetParameterInput is an input type that accepts SqlWidgetParameterArgs and SqlWidgetParameterOutput values.
-// You can construct a concrete instance of `SqlWidgetParameterInput` via:
-//
-//	SqlWidgetParameterArgs{...}
-type SqlWidgetParameterInput interface {
-	pulumi.Input
-
-	ToSqlWidgetParameterOutput() SqlWidgetParameterOutput
-	ToSqlWidgetParameterOutputWithContext(context.Context) SqlWidgetParameterOutput
-}
-
-type SqlWidgetParameterArgs struct {
-	MapTo  pulumi.StringPtrInput   `pulumi:"mapTo"`
-	Name   pulumi.StringInput      `pulumi:"name"`
-	Title  pulumi.StringPtrInput   `pulumi:"title"`
-	Type   pulumi.StringInput      `pulumi:"type"`
-	Value  pulumi.StringPtrInput   `pulumi:"value"`
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (SqlWidgetParameterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlWidgetParameter)(nil)).Elem()
-}
-
-func (i SqlWidgetParameterArgs) ToSqlWidgetParameterOutput() SqlWidgetParameterOutput {
-	return i.ToSqlWidgetParameterOutputWithContext(context.Background())
-}
-
-func (i SqlWidgetParameterArgs) ToSqlWidgetParameterOutputWithContext(ctx context.Context) SqlWidgetParameterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlWidgetParameterOutput)
-}
-
-// SqlWidgetParameterArrayInput is an input type that accepts SqlWidgetParameterArray and SqlWidgetParameterArrayOutput values.
-// You can construct a concrete instance of `SqlWidgetParameterArrayInput` via:
-//
-//	SqlWidgetParameterArray{ SqlWidgetParameterArgs{...} }
-type SqlWidgetParameterArrayInput interface {
-	pulumi.Input
-
-	ToSqlWidgetParameterArrayOutput() SqlWidgetParameterArrayOutput
-	ToSqlWidgetParameterArrayOutputWithContext(context.Context) SqlWidgetParameterArrayOutput
-}
-
-type SqlWidgetParameterArray []SqlWidgetParameterInput
-
-func (SqlWidgetParameterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SqlWidgetParameter)(nil)).Elem()
-}
-
-func (i SqlWidgetParameterArray) ToSqlWidgetParameterArrayOutput() SqlWidgetParameterArrayOutput {
-	return i.ToSqlWidgetParameterArrayOutputWithContext(context.Background())
-}
-
-func (i SqlWidgetParameterArray) ToSqlWidgetParameterArrayOutputWithContext(ctx context.Context) SqlWidgetParameterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlWidgetParameterArrayOutput)
-}
-
-type SqlWidgetParameterOutput struct{ *pulumi.OutputState }
-
-func (SqlWidgetParameterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlWidgetParameter)(nil)).Elem()
-}
-
-func (o SqlWidgetParameterOutput) ToSqlWidgetParameterOutput() SqlWidgetParameterOutput {
-	return o
-}
-
-func (o SqlWidgetParameterOutput) ToSqlWidgetParameterOutputWithContext(ctx context.Context) SqlWidgetParameterOutput {
-	return o
-}
-
-func (o SqlWidgetParameterOutput) MapTo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlWidgetParameter) *string { return v.MapTo }).(pulumi.StringPtrOutput)
-}
-
-func (o SqlWidgetParameterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlWidgetParameter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o SqlWidgetParameterOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlWidgetParameter) *string { return v.Title }).(pulumi.StringPtrOutput)
-}
-
-func (o SqlWidgetParameterOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlWidgetParameter) string { return v.Type }).(pulumi.StringOutput)
-}
-
-func (o SqlWidgetParameterOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlWidgetParameter) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-func (o SqlWidgetParameterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SqlWidgetParameter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type SqlWidgetParameterArrayOutput struct{ *pulumi.OutputState }
-
-func (SqlWidgetParameterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SqlWidgetParameter)(nil)).Elem()
-}
-
-func (o SqlWidgetParameterArrayOutput) ToSqlWidgetParameterArrayOutput() SqlWidgetParameterArrayOutput {
-	return o
-}
-
-func (o SqlWidgetParameterArrayOutput) ToSqlWidgetParameterArrayOutputWithContext(ctx context.Context) SqlWidgetParameterArrayOutput {
-	return o
-}
-
-func (o SqlWidgetParameterArrayOutput) Index(i pulumi.IntInput) SqlWidgetParameterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlWidgetParameter {
-		return vs[0].([]SqlWidgetParameter)[vs[1].(int)]
-	}).(SqlWidgetParameterOutput)
-}
-
-type SqlWidgetPosition struct {
-	AutoHeight *bool `pulumi:"autoHeight"`
-	PosX       *int  `pulumi:"posX"`
-	PosY       *int  `pulumi:"posY"`
-	SizeX      int   `pulumi:"sizeX"`
-	SizeY      int   `pulumi:"sizeY"`
-}
-
-// SqlWidgetPositionInput is an input type that accepts SqlWidgetPositionArgs and SqlWidgetPositionOutput values.
-// You can construct a concrete instance of `SqlWidgetPositionInput` via:
-//
-//	SqlWidgetPositionArgs{...}
-type SqlWidgetPositionInput interface {
-	pulumi.Input
-
-	ToSqlWidgetPositionOutput() SqlWidgetPositionOutput
-	ToSqlWidgetPositionOutputWithContext(context.Context) SqlWidgetPositionOutput
-}
-
-type SqlWidgetPositionArgs struct {
-	AutoHeight pulumi.BoolPtrInput `pulumi:"autoHeight"`
-	PosX       pulumi.IntPtrInput  `pulumi:"posX"`
-	PosY       pulumi.IntPtrInput  `pulumi:"posY"`
-	SizeX      pulumi.IntInput     `pulumi:"sizeX"`
-	SizeY      pulumi.IntInput     `pulumi:"sizeY"`
-}
-
-func (SqlWidgetPositionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlWidgetPosition)(nil)).Elem()
-}
-
-func (i SqlWidgetPositionArgs) ToSqlWidgetPositionOutput() SqlWidgetPositionOutput {
-	return i.ToSqlWidgetPositionOutputWithContext(context.Background())
-}
-
-func (i SqlWidgetPositionArgs) ToSqlWidgetPositionOutputWithContext(ctx context.Context) SqlWidgetPositionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlWidgetPositionOutput)
-}
-
-func (i SqlWidgetPositionArgs) ToSqlWidgetPositionPtrOutput() SqlWidgetPositionPtrOutput {
-	return i.ToSqlWidgetPositionPtrOutputWithContext(context.Background())
-}
-
-func (i SqlWidgetPositionArgs) ToSqlWidgetPositionPtrOutputWithContext(ctx context.Context) SqlWidgetPositionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlWidgetPositionOutput).ToSqlWidgetPositionPtrOutputWithContext(ctx)
-}
-
-// SqlWidgetPositionPtrInput is an input type that accepts SqlWidgetPositionArgs, SqlWidgetPositionPtr and SqlWidgetPositionPtrOutput values.
-// You can construct a concrete instance of `SqlWidgetPositionPtrInput` via:
-//
-//	        SqlWidgetPositionArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlWidgetPositionPtrInput interface {
-	pulumi.Input
-
-	ToSqlWidgetPositionPtrOutput() SqlWidgetPositionPtrOutput
-	ToSqlWidgetPositionPtrOutputWithContext(context.Context) SqlWidgetPositionPtrOutput
-}
-
-type sqlWidgetPositionPtrType SqlWidgetPositionArgs
-
-func SqlWidgetPositionPtr(v *SqlWidgetPositionArgs) SqlWidgetPositionPtrInput {
-	return (*sqlWidgetPositionPtrType)(v)
-}
-
-func (*sqlWidgetPositionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlWidgetPosition)(nil)).Elem()
-}
-
-func (i *sqlWidgetPositionPtrType) ToSqlWidgetPositionPtrOutput() SqlWidgetPositionPtrOutput {
-	return i.ToSqlWidgetPositionPtrOutputWithContext(context.Background())
-}
-
-func (i *sqlWidgetPositionPtrType) ToSqlWidgetPositionPtrOutputWithContext(ctx context.Context) SqlWidgetPositionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlWidgetPositionPtrOutput)
-}
-
-type SqlWidgetPositionOutput struct{ *pulumi.OutputState }
-
-func (SqlWidgetPositionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlWidgetPosition)(nil)).Elem()
-}
-
-func (o SqlWidgetPositionOutput) ToSqlWidgetPositionOutput() SqlWidgetPositionOutput {
-	return o
-}
-
-func (o SqlWidgetPositionOutput) ToSqlWidgetPositionOutputWithContext(ctx context.Context) SqlWidgetPositionOutput {
-	return o
-}
-
-func (o SqlWidgetPositionOutput) ToSqlWidgetPositionPtrOutput() SqlWidgetPositionPtrOutput {
-	return o.ToSqlWidgetPositionPtrOutputWithContext(context.Background())
-}
-
-func (o SqlWidgetPositionOutput) ToSqlWidgetPositionPtrOutputWithContext(ctx context.Context) SqlWidgetPositionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlWidgetPosition) *SqlWidgetPosition {
-		return &v
-	}).(SqlWidgetPositionPtrOutput)
-}
-
-func (o SqlWidgetPositionOutput) AutoHeight() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SqlWidgetPosition) *bool { return v.AutoHeight }).(pulumi.BoolPtrOutput)
-}
-
-func (o SqlWidgetPositionOutput) PosX() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SqlWidgetPosition) *int { return v.PosX }).(pulumi.IntPtrOutput)
-}
-
-func (o SqlWidgetPositionOutput) PosY() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SqlWidgetPosition) *int { return v.PosY }).(pulumi.IntPtrOutput)
-}
-
-func (o SqlWidgetPositionOutput) SizeX() pulumi.IntOutput {
-	return o.ApplyT(func(v SqlWidgetPosition) int { return v.SizeX }).(pulumi.IntOutput)
-}
-
-func (o SqlWidgetPositionOutput) SizeY() pulumi.IntOutput {
-	return o.ApplyT(func(v SqlWidgetPosition) int { return v.SizeY }).(pulumi.IntOutput)
-}
-
-type SqlWidgetPositionPtrOutput struct{ *pulumi.OutputState }
-
-func (SqlWidgetPositionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlWidgetPosition)(nil)).Elem()
-}
-
-func (o SqlWidgetPositionPtrOutput) ToSqlWidgetPositionPtrOutput() SqlWidgetPositionPtrOutput {
-	return o
-}
-
-func (o SqlWidgetPositionPtrOutput) ToSqlWidgetPositionPtrOutputWithContext(ctx context.Context) SqlWidgetPositionPtrOutput {
-	return o
-}
-
-func (o SqlWidgetPositionPtrOutput) Elem() SqlWidgetPositionOutput {
-	return o.ApplyT(func(v *SqlWidgetPosition) SqlWidgetPosition {
-		if v != nil {
-			return *v
-		}
-		var ret SqlWidgetPosition
-		return ret
-	}).(SqlWidgetPositionOutput)
-}
-
-func (o SqlWidgetPositionPtrOutput) AutoHeight() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SqlWidgetPosition) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AutoHeight
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o SqlWidgetPositionPtrOutput) PosX() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SqlWidgetPosition) *int {
-		if v == nil {
-			return nil
-		}
-		return v.PosX
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o SqlWidgetPositionPtrOutput) PosY() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SqlWidgetPosition) *int {
-		if v == nil {
-			return nil
-		}
-		return v.PosY
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o SqlWidgetPositionPtrOutput) SizeX() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SqlWidgetPosition) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.SizeX
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o SqlWidgetPositionPtrOutput) SizeY() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SqlWidgetPosition) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.SizeY
-	}).(pulumi.IntPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
@@ -83267,6 +83341,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MlflowWebhookJobSpecPtrInput)(nil)).Elem(), MlflowWebhookJobSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayInput)(nil)).Elem(), ModelServingAiGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayPtrInput)(nil)).Elem(), ModelServingAiGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayFallbackConfigInput)(nil)).Elem(), ModelServingAiGatewayFallbackConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayFallbackConfigPtrInput)(nil)).Elem(), ModelServingAiGatewayFallbackConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayGuardrailsInput)(nil)).Elem(), ModelServingAiGatewayGuardrailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayGuardrailsPtrInput)(nil)).Elem(), ModelServingAiGatewayGuardrailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingAiGatewayGuardrailsInputTypeInput)(nil)).Elem(), ModelServingAiGatewayGuardrailsInputTypeArgs{})
@@ -83299,6 +83375,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelAnthropicConfigPtrInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelAnthropicConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCohereConfigInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelCohereConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCohereConfigPtrInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelCohereConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigInput)(nil)).Elem(), ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs{})
@@ -83437,6 +83519,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineClusterInitScriptWorkspacePtrInput)(nil)).Elem(), PipelineClusterInitScriptWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDeploymentInput)(nil)).Elem(), PipelineDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDeploymentPtrInput)(nil)).Elem(), PipelineDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineEventLogInput)(nil)).Elem(), PipelineEventLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineEventLogPtrInput)(nil)).Elem(), PipelineEventLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineFiltersInput)(nil)).Elem(), PipelineFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineFiltersPtrInput)(nil)).Elem(), PipelineFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineGatewayDefinitionInput)(nil)).Elem(), PipelineGatewayDefinitionArgs{})
@@ -83589,16 +83673,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQuerySchedulePtrInput)(nil)).Elem(), SqlQueryScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryScheduleContinuousInput)(nil)).Elem(), SqlQueryScheduleContinuousArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryScheduleContinuousPtrInput)(nil)).Elem(), SqlQueryScheduleContinuousArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryScheduleDailyInput)(nil)).Elem(), SqlQueryScheduleDailyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryScheduleDailyPtrInput)(nil)).Elem(), SqlQueryScheduleDailyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryScheduleWeeklyInput)(nil)).Elem(), SqlQueryScheduleWeeklyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryScheduleWeeklyPtrInput)(nil)).Elem(), SqlQueryScheduleWeeklyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlTableColumnInput)(nil)).Elem(), SqlTableColumnArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlTableColumnArrayInput)(nil)).Elem(), SqlTableColumnArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlWidgetParameterInput)(nil)).Elem(), SqlWidgetParameterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlWidgetParameterArrayInput)(nil)).Elem(), SqlWidgetParameterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlWidgetPositionInput)(nil)).Elem(), SqlWidgetPositionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlWidgetPositionPtrInput)(nil)).Elem(), SqlWidgetPositionArgs{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
 	pulumi.RegisterOutputType(AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput{})
@@ -84261,6 +84335,8 @@ func init() {
 	pulumi.RegisterOutputType(MlflowWebhookJobSpecPtrOutput{})
 	pulumi.RegisterOutputType(ModelServingAiGatewayOutput{})
 	pulumi.RegisterOutputType(ModelServingAiGatewayPtrOutput{})
+	pulumi.RegisterOutputType(ModelServingAiGatewayFallbackConfigOutput{})
+	pulumi.RegisterOutputType(ModelServingAiGatewayFallbackConfigPtrOutput{})
 	pulumi.RegisterOutputType(ModelServingAiGatewayGuardrailsOutput{})
 	pulumi.RegisterOutputType(ModelServingAiGatewayGuardrailsPtrOutput{})
 	pulumi.RegisterOutputType(ModelServingAiGatewayGuardrailsInputTypeOutput{})
@@ -84293,6 +84369,12 @@ func init() {
 	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput{})
 	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelCohereConfigOutput{})
 	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput{})
+	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput{})
+	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput{})
+	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput{})
+	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput{})
+	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput{})
 	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput{})
 	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput{})
@@ -84431,6 +84513,8 @@ func init() {
 	pulumi.RegisterOutputType(PipelineClusterInitScriptWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(PipelineDeploymentOutput{})
 	pulumi.RegisterOutputType(PipelineDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(PipelineEventLogOutput{})
+	pulumi.RegisterOutputType(PipelineEventLogPtrOutput{})
 	pulumi.RegisterOutputType(PipelineFiltersOutput{})
 	pulumi.RegisterOutputType(PipelineFiltersPtrOutput{})
 	pulumi.RegisterOutputType(PipelineGatewayDefinitionOutput{})
@@ -84583,14 +84667,4 @@ func init() {
 	pulumi.RegisterOutputType(SqlQuerySchedulePtrOutput{})
 	pulumi.RegisterOutputType(SqlQueryScheduleContinuousOutput{})
 	pulumi.RegisterOutputType(SqlQueryScheduleContinuousPtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryScheduleDailyOutput{})
-	pulumi.RegisterOutputType(SqlQueryScheduleDailyPtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryScheduleWeeklyOutput{})
-	pulumi.RegisterOutputType(SqlQueryScheduleWeeklyPtrOutput{})
-	pulumi.RegisterOutputType(SqlTableColumnOutput{})
-	pulumi.RegisterOutputType(SqlTableColumnArrayOutput{})
-	pulumi.RegisterOutputType(SqlWidgetParameterOutput{})
-	pulumi.RegisterOutputType(SqlWidgetParameterArrayOutput{})
-	pulumi.RegisterOutputType(SqlWidgetPositionOutput{})
-	pulumi.RegisterOutputType(SqlWidgetPositionPtrOutput{})
 }

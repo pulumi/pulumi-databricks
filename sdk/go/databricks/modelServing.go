@@ -100,7 +100,8 @@ type ModelServing struct {
 	pulumi.CustomResourceState
 
 	// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
-	AiGateway ModelServingAiGatewayPtrOutput `pulumi:"aiGateway"`
+	AiGateway      ModelServingAiGatewayPtrOutput `pulumi:"aiGateway"`
+	BudgetPolicyId pulumi.StringPtrOutput         `pulumi:"budgetPolicyId"`
 	// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
 	Config ModelServingConfigOutput `pulumi:"config"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
@@ -146,7 +147,8 @@ func GetModelServing(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ModelServing resources.
 type modelServingState struct {
 	// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
-	AiGateway *ModelServingAiGateway `pulumi:"aiGateway"`
+	AiGateway      *ModelServingAiGateway `pulumi:"aiGateway"`
+	BudgetPolicyId *string                `pulumi:"budgetPolicyId"`
 	// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
 	Config *ModelServingConfig `pulumi:"config"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
@@ -163,7 +165,8 @@ type modelServingState struct {
 
 type ModelServingState struct {
 	// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
-	AiGateway ModelServingAiGatewayPtrInput
+	AiGateway      ModelServingAiGatewayPtrInput
+	BudgetPolicyId pulumi.StringPtrInput
 	// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
 	Config ModelServingConfigPtrInput
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
@@ -184,7 +187,8 @@ func (ModelServingState) ElementType() reflect.Type {
 
 type modelServingArgs struct {
 	// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
-	AiGateway *ModelServingAiGateway `pulumi:"aiGateway"`
+	AiGateway      *ModelServingAiGateway `pulumi:"aiGateway"`
+	BudgetPolicyId *string                `pulumi:"budgetPolicyId"`
 	// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
 	Config *ModelServingConfig `pulumi:"config"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
@@ -200,7 +204,8 @@ type modelServingArgs struct {
 // The set of arguments for constructing a ModelServing resource.
 type ModelServingArgs struct {
 	// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
-	AiGateway ModelServingAiGatewayPtrInput
+	AiGateway      ModelServingAiGatewayPtrInput
+	BudgetPolicyId pulumi.StringPtrInput
 	// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
 	Config ModelServingConfigPtrInput
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
@@ -303,6 +308,10 @@ func (o ModelServingOutput) ToModelServingOutputWithContext(ctx context.Context)
 // A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
 func (o ModelServingOutput) AiGateway() ModelServingAiGatewayPtrOutput {
 	return o.ApplyT(func(v *ModelServing) ModelServingAiGatewayPtrOutput { return v.AiGateway }).(ModelServingAiGatewayPtrOutput)
+}
+
+func (o ModelServingOutput) BudgetPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServing) pulumi.StringPtrOutput { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
 }
 
 // The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.

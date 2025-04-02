@@ -55,11 +55,14 @@ type App struct {
 	// The description of the app.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The effective budget policy ID.
-	EffectiveBudgetPolicyId pulumi.StringOutput `pulumi:"effectiveBudgetPolicyId"`
+	EffectiveBudgetPolicyId pulumi.StringOutput      `pulumi:"effectiveBudgetPolicyId"`
+	EffectiveUserApiScopes  pulumi.StringArrayOutput `pulumi:"effectiveUserApiScopes"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
-	Name              pulumi.StringOutput        `pulumi:"name"`
-	NoCompute         pulumi.BoolPtrOutput       `pulumi:"noCompute"`
-	PendingDeployment AppPendingDeploymentOutput `pulumi:"pendingDeployment"`
+	Name                   pulumi.StringOutput        `pulumi:"name"`
+	NoCompute              pulumi.BoolPtrOutput       `pulumi:"noCompute"`
+	Oauth2AppClientId      pulumi.StringOutput        `pulumi:"oauth2AppClientId"`
+	Oauth2AppIntegrationId pulumi.StringOutput        `pulumi:"oauth2AppIntegrationId"`
+	PendingDeployment      AppPendingDeploymentOutput `pulumi:"pendingDeployment"`
 	// A list of resources that the app have access to.
 	Resources                AppResourceArrayOutput `pulumi:"resources"`
 	ServicePrincipalClientId pulumi.StringOutput    `pulumi:"servicePrincipalClientId"`
@@ -72,7 +75,8 @@ type App struct {
 	// The email of the user that last updated the app.
 	Updater pulumi.StringOutput `pulumi:"updater"`
 	// The URL of the app once it is deployed.
-	Url pulumi.StringOutput `pulumi:"url"`
+	Url           pulumi.StringOutput      `pulumi:"url"`
+	UserApiScopes pulumi.StringArrayOutput `pulumi:"userApiScopes"`
 }
 
 // NewApp registers a new resource with the given unique name, arguments, and options.
@@ -121,11 +125,14 @@ type appState struct {
 	// The description of the app.
 	Description *string `pulumi:"description"`
 	// The effective budget policy ID.
-	EffectiveBudgetPolicyId *string `pulumi:"effectiveBudgetPolicyId"`
+	EffectiveBudgetPolicyId *string  `pulumi:"effectiveBudgetPolicyId"`
+	EffectiveUserApiScopes  []string `pulumi:"effectiveUserApiScopes"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
-	Name              *string               `pulumi:"name"`
-	NoCompute         *bool                 `pulumi:"noCompute"`
-	PendingDeployment *AppPendingDeployment `pulumi:"pendingDeployment"`
+	Name                   *string               `pulumi:"name"`
+	NoCompute              *bool                 `pulumi:"noCompute"`
+	Oauth2AppClientId      *string               `pulumi:"oauth2AppClientId"`
+	Oauth2AppIntegrationId *string               `pulumi:"oauth2AppIntegrationId"`
+	PendingDeployment      *AppPendingDeployment `pulumi:"pendingDeployment"`
 	// A list of resources that the app have access to.
 	Resources                []AppResource `pulumi:"resources"`
 	ServicePrincipalClientId *string       `pulumi:"servicePrincipalClientId"`
@@ -138,7 +145,8 @@ type appState struct {
 	// The email of the user that last updated the app.
 	Updater *string `pulumi:"updater"`
 	// The URL of the app once it is deployed.
-	Url *string `pulumi:"url"`
+	Url           *string  `pulumi:"url"`
+	UserApiScopes []string `pulumi:"userApiScopes"`
 }
 
 type AppState struct {
@@ -159,10 +167,13 @@ type AppState struct {
 	Description pulumi.StringPtrInput
 	// The effective budget policy ID.
 	EffectiveBudgetPolicyId pulumi.StringPtrInput
+	EffectiveUserApiScopes  pulumi.StringArrayInput
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
-	Name              pulumi.StringPtrInput
-	NoCompute         pulumi.BoolPtrInput
-	PendingDeployment AppPendingDeploymentPtrInput
+	Name                   pulumi.StringPtrInput
+	NoCompute              pulumi.BoolPtrInput
+	Oauth2AppClientId      pulumi.StringPtrInput
+	Oauth2AppIntegrationId pulumi.StringPtrInput
+	PendingDeployment      AppPendingDeploymentPtrInput
 	// A list of resources that the app have access to.
 	Resources                AppResourceArrayInput
 	ServicePrincipalClientId pulumi.StringPtrInput
@@ -175,7 +186,8 @@ type AppState struct {
 	// The email of the user that last updated the app.
 	Updater pulumi.StringPtrInput
 	// The URL of the app once it is deployed.
-	Url pulumi.StringPtrInput
+	Url           pulumi.StringPtrInput
+	UserApiScopes pulumi.StringArrayInput
 }
 
 func (AppState) ElementType() reflect.Type {
@@ -191,7 +203,8 @@ type appArgs struct {
 	Name      *string `pulumi:"name"`
 	NoCompute *bool   `pulumi:"noCompute"`
 	// A list of resources that the app have access to.
-	Resources []AppResource `pulumi:"resources"`
+	Resources     []AppResource `pulumi:"resources"`
+	UserApiScopes []string      `pulumi:"userApiScopes"`
 }
 
 // The set of arguments for constructing a App resource.
@@ -204,7 +217,8 @@ type AppArgs struct {
 	Name      pulumi.StringPtrInput
 	NoCompute pulumi.BoolPtrInput
 	// A list of resources that the app have access to.
-	Resources AppResourceArrayInput
+	Resources     AppResourceArrayInput
+	UserApiScopes pulumi.StringArrayInput
 }
 
 func (AppArgs) ElementType() reflect.Type {
@@ -338,6 +352,10 @@ func (o AppOutput) EffectiveBudgetPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.EffectiveBudgetPolicyId }).(pulumi.StringOutput)
 }
 
+func (o AppOutput) EffectiveUserApiScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *App) pulumi.StringArrayOutput { return v.EffectiveUserApiScopes }).(pulumi.StringArrayOutput)
+}
+
 // The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 func (o AppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -345,6 +363,14 @@ func (o AppOutput) Name() pulumi.StringOutput {
 
 func (o AppOutput) NoCompute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.BoolPtrOutput { return v.NoCompute }).(pulumi.BoolPtrOutput)
+}
+
+func (o AppOutput) Oauth2AppClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Oauth2AppClientId }).(pulumi.StringOutput)
+}
+
+func (o AppOutput) Oauth2AppIntegrationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Oauth2AppIntegrationId }).(pulumi.StringOutput)
 }
 
 func (o AppOutput) PendingDeployment() AppPendingDeploymentOutput {
@@ -383,6 +409,10 @@ func (o AppOutput) Updater() pulumi.StringOutput {
 // The URL of the app once it is deployed.
 func (o AppOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o AppOutput) UserApiScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *App) pulumi.StringArrayOutput { return v.UserApiScopes }).(pulumi.StringArrayOutput)
 }
 
 type AppArrayOutput struct{ *pulumi.OutputState }

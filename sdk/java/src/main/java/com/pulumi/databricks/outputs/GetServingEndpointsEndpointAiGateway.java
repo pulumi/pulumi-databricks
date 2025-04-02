@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetServingEndpointsEndpointAiGatewayFallbackConfig;
 import com.pulumi.databricks.outputs.GetServingEndpointsEndpointAiGatewayGuardrail;
 import com.pulumi.databricks.outputs.GetServingEndpointsEndpointAiGatewayInferenceTableConfig;
 import com.pulumi.databricks.outputs.GetServingEndpointsEndpointAiGatewayRateLimit;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServingEndpointsEndpointAiGateway {
+    private @Nullable List<GetServingEndpointsEndpointAiGatewayFallbackConfig> fallbackConfigs;
     private @Nullable List<GetServingEndpointsEndpointAiGatewayGuardrail> guardrails;
     private @Nullable List<GetServingEndpointsEndpointAiGatewayInferenceTableConfig> inferenceTableConfigs;
     /**
@@ -24,6 +26,9 @@ public final class GetServingEndpointsEndpointAiGateway {
     private @Nullable List<GetServingEndpointsEndpointAiGatewayUsageTrackingConfig> usageTrackingConfigs;
 
     private GetServingEndpointsEndpointAiGateway() {}
+    public List<GetServingEndpointsEndpointAiGatewayFallbackConfig> fallbackConfigs() {
+        return this.fallbackConfigs == null ? List.of() : this.fallbackConfigs;
+    }
     public List<GetServingEndpointsEndpointAiGatewayGuardrail> guardrails() {
         return this.guardrails == null ? List.of() : this.guardrails;
     }
@@ -50,6 +55,7 @@ public final class GetServingEndpointsEndpointAiGateway {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<GetServingEndpointsEndpointAiGatewayFallbackConfig> fallbackConfigs;
         private @Nullable List<GetServingEndpointsEndpointAiGatewayGuardrail> guardrails;
         private @Nullable List<GetServingEndpointsEndpointAiGatewayInferenceTableConfig> inferenceTableConfigs;
         private @Nullable List<GetServingEndpointsEndpointAiGatewayRateLimit> rateLimits;
@@ -57,12 +63,22 @@ public final class GetServingEndpointsEndpointAiGateway {
         public Builder() {}
         public Builder(GetServingEndpointsEndpointAiGateway defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.fallbackConfigs = defaults.fallbackConfigs;
     	      this.guardrails = defaults.guardrails;
     	      this.inferenceTableConfigs = defaults.inferenceTableConfigs;
     	      this.rateLimits = defaults.rateLimits;
     	      this.usageTrackingConfigs = defaults.usageTrackingConfigs;
         }
 
+        @CustomType.Setter
+        public Builder fallbackConfigs(@Nullable List<GetServingEndpointsEndpointAiGatewayFallbackConfig> fallbackConfigs) {
+
+            this.fallbackConfigs = fallbackConfigs;
+            return this;
+        }
+        public Builder fallbackConfigs(GetServingEndpointsEndpointAiGatewayFallbackConfig... fallbackConfigs) {
+            return fallbackConfigs(List.of(fallbackConfigs));
+        }
         @CustomType.Setter
         public Builder guardrails(@Nullable List<GetServingEndpointsEndpointAiGatewayGuardrail> guardrails) {
 
@@ -101,6 +117,7 @@ public final class GetServingEndpointsEndpointAiGateway {
         }
         public GetServingEndpointsEndpointAiGateway build() {
             final var _resultValue = new GetServingEndpointsEndpointAiGateway();
+            _resultValue.fallbackConfigs = fallbackConfigs;
             _resultValue.guardrails = guardrails;
             _resultValue.inferenceTableConfigs = inferenceTableConfigs;
             _resultValue.rateLimits = rateLimits;

@@ -12,6 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetServingEndpointsEndpointAiGatewayInputArgs : global::Pulumi.ResourceArgs
     {
+        [Input("fallbackConfigs")]
+        private InputList<Inputs.GetServingEndpointsEndpointAiGatewayFallbackConfigInputArgs>? _fallbackConfigs;
+        public InputList<Inputs.GetServingEndpointsEndpointAiGatewayFallbackConfigInputArgs> FallbackConfigs
+        {
+            get => _fallbackConfigs ?? (_fallbackConfigs = new InputList<Inputs.GetServingEndpointsEndpointAiGatewayFallbackConfigInputArgs>());
+            set => _fallbackConfigs = value;
+        }
+
         [Input("guardrails")]
         private InputList<Inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputArgs>? _guardrails;
         public InputList<Inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputArgs> Guardrails

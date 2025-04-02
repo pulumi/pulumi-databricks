@@ -17,6 +17,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigResult> AmazonBedrockConfigs;
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigResult> AnthropicConfigs;
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigResult> CohereConfigs;
+        public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigResult> CustomProviderConfigs;
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigResult> DatabricksModelServingConfigs;
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigResult> GoogleCloudVertexAiConfigs;
         /// <summary>
@@ -38,6 +39,8 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<Outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigResult> cohereConfigs,
 
+            ImmutableArray<Outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigResult> customProviderConfigs,
+
             ImmutableArray<Outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigResult> databricksModelServingConfigs,
 
             ImmutableArray<Outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigResult> googleCloudVertexAiConfigs,
@@ -56,6 +59,7 @@ namespace Pulumi.Databricks.Outputs
             AmazonBedrockConfigs = amazonBedrockConfigs;
             AnthropicConfigs = anthropicConfigs;
             CohereConfigs = cohereConfigs;
+            CustomProviderConfigs = customProviderConfigs;
             DatabricksModelServingConfigs = databricksModelServingConfigs;
             GoogleCloudVertexAiConfigs = googleCloudVertexAiConfigs;
             Name = name;

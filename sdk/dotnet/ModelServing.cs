@@ -105,6 +105,9 @@ namespace Pulumi.Databricks
         [Output("aiGateway")]
         public Output<Outputs.ModelServingAiGateway?> AiGateway { get; private set; } = null!;
 
+        [Output("budgetPolicyId")]
+        public Output<string?> BudgetPolicyId { get; private set; } = null!;
+
         /// <summary>
         /// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
         /// </summary>
@@ -193,6 +196,9 @@ namespace Pulumi.Databricks
         [Input("aiGateway")]
         public Input<Inputs.ModelServingAiGatewayArgs>? AiGateway { get; set; }
 
+        [Input("budgetPolicyId")]
+        public Input<string>? BudgetPolicyId { get; set; }
+
         /// <summary>
         /// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
         /// </summary>
@@ -248,6 +254,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("aiGateway")]
         public Input<Inputs.ModelServingAiGatewayGetArgs>? AiGateway { get; set; }
+
+        [Input("budgetPolicyId")]
+        public Input<string>? BudgetPolicyId { get; set; }
 
         /// <summary>
         /// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.

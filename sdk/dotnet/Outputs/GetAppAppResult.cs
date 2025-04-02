@@ -46,6 +46,7 @@ namespace Pulumi.Databricks.Outputs
         /// The effective budget policy ID.
         /// </summary>
         public readonly string EffectiveBudgetPolicyId;
+        public readonly ImmutableArray<string> EffectiveUserApiScopes;
         /// <summary>
         /// Id of the job to grant permission on.
         /// </summary>
@@ -54,6 +55,8 @@ namespace Pulumi.Databricks.Outputs
         /// The name of the app.
         /// </summary>
         public readonly string Name;
+        public readonly string Oauth2AppClientId;
+        public readonly string Oauth2AppIntegrationId;
         public readonly Outputs.GetAppAppPendingDeploymentResult PendingDeployment;
         /// <summary>
         /// A list of resources that the app have access to.
@@ -80,6 +83,7 @@ namespace Pulumi.Databricks.Outputs
         /// The URL of the app once it is deployed.
         /// </summary>
         public readonly string Url;
+        public readonly ImmutableArray<string> UserApiScopes;
 
         [OutputConstructor]
         private GetAppAppResult(
@@ -101,9 +105,15 @@ namespace Pulumi.Databricks.Outputs
 
             string effectiveBudgetPolicyId,
 
+            ImmutableArray<string> effectiveUserApiScopes,
+
             string id,
 
             string name,
+
+            string oauth2AppClientId,
+
+            string oauth2AppIntegrationId,
 
             Outputs.GetAppAppPendingDeploymentResult pendingDeployment,
 
@@ -119,7 +129,9 @@ namespace Pulumi.Databricks.Outputs
 
             string updater,
 
-            string url)
+            string url,
+
+            ImmutableArray<string> userApiScopes)
         {
             ActiveDeployment = activeDeployment;
             AppStatus = appStatus;
@@ -130,8 +142,11 @@ namespace Pulumi.Databricks.Outputs
             DefaultSourceCodePath = defaultSourceCodePath;
             Description = description;
             EffectiveBudgetPolicyId = effectiveBudgetPolicyId;
+            EffectiveUserApiScopes = effectiveUserApiScopes;
             Id = id;
             Name = name;
+            Oauth2AppClientId = oauth2AppClientId;
+            Oauth2AppIntegrationId = oauth2AppIntegrationId;
             PendingDeployment = pendingDeployment;
             Resources = resources;
             ServicePrincipalClientId = servicePrincipalClientId;
@@ -140,6 +155,7 @@ namespace Pulumi.Databricks.Outputs
             UpdateTime = updateTime;
             Updater = updater;
             Url = url;
+            UserApiScopes = userApiScopes;
         }
     }
 }

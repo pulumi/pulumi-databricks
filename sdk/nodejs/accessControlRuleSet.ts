@@ -11,9 +11,10 @@ import * as utilities from "./utilities";
  *
  * This resource allows you to manage access rules on Databricks account level resources. For convenience we allow accessing this resource through the Databricks account and workspace.
  *
- * > Currently, we only support managing access rules on service principal, group and account resources through `databricks.AccessControlRuleSet`.
- *
+ * > Currently, we only support managing access rules on specific object resources (service principal, group, budget policies and account) through `databricks.AccessControlRuleSet`.
  * !> `databricks.AccessControlRuleSet` cannot be used to manage access rules for resources supported by databricks_permissions. Refer to its documentation for more information.
+ *
+ * > This resource is _authoritative_ for permissions on objects. Configuring this resource for an object will **OVERWRITE** any existing permissions of the same type unless imported, and changes made outside of Pulumi will be reset.
  *
  * ## Service principal rule set usage
  *
@@ -240,15 +241,15 @@ export class AccessControlRuleSet extends pulumi.CustomResource {
     /**
      * The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
      *
-     * !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+     * !> Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
      */
     public readonly grantRules!: pulumi.Output<outputs.AccessControlRuleSetGrantRule[] | undefined>;
     /**
-     * Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-     * * `accounts/{account_id}/ruleSets/default`
-     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
+     * Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
+     * * `accounts/{account_id}/ruleSets/default` - account-level access control.
+     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
+     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
+     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -287,15 +288,15 @@ export interface AccessControlRuleSetState {
     /**
      * The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
      *
-     * !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+     * !> Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
      */
     grantRules?: pulumi.Input<pulumi.Input<inputs.AccessControlRuleSetGrantRule>[]>;
     /**
-     * Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-     * * `accounts/{account_id}/ruleSets/default`
-     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
+     * Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
+     * * `accounts/{account_id}/ruleSets/default` - account-level access control.
+     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
+     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
+     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
      */
     name?: pulumi.Input<string>;
 }
@@ -307,15 +308,15 @@ export interface AccessControlRuleSetArgs {
     /**
      * The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
      *
-     * !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+     * !> Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
      */
     grantRules?: pulumi.Input<pulumi.Input<inputs.AccessControlRuleSetGrantRule>[]>;
     /**
-     * Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-     * * `accounts/{account_id}/ruleSets/default`
-     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
+     * Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
+     * * `accounts/{account_id}/ruleSets/default` - account-level access control.
+     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
+     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
+     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
      */
     name?: pulumi.Input<string>;
 }

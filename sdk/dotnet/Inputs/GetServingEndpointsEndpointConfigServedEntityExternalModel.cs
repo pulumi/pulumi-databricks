@@ -44,6 +44,14 @@ namespace Pulumi.Databricks.Inputs
             set => _cohereConfigs = value;
         }
 
+        [Input("customProviderConfigs")]
+        private List<Inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigArgs>? _customProviderConfigs;
+        public List<Inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigArgs> CustomProviderConfigs
+        {
+            get => _customProviderConfigs ?? (_customProviderConfigs = new List<Inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigArgs>());
+            set => _customProviderConfigs = value;
+        }
+
         [Input("databricksModelServingConfigs")]
         private List<Inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigArgs>? _databricksModelServingConfigs;
         public List<Inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigArgs> DatabricksModelServingConfigs

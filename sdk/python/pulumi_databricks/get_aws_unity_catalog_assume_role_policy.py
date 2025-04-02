@@ -139,10 +139,10 @@ def get_aws_unity_catalog_assume_role_policy(aws_account_id: Optional[str] = Non
 
 
     :param str aws_account_id: The Account ID of the current AWS account (not your Databricks account).
-    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+    :param str aws_partition: AWS partition. The options are `aws`,`aws-us-gov` or `aws-us-gov-dod`. Defaults to `aws`
     :param str external_id: The storage credential external id.
     :param str role_name: The name of the AWS IAM role to be created for Unity Catalog.
-    :param str unity_catalog_iam_arn: The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection and `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection
+    :param str unity_catalog_iam_arn: The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection, `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection, and `arn:aws-us-gov:iam::170661010020:role/unity-catalog-prod-UCMasterRole-1DI6DL6ZP26AS` on GovCloud DoD partition selection
     """
     __args__ = dict()
     __args__['awsAccountId'] = aws_account_id
@@ -197,10 +197,10 @@ def get_aws_unity_catalog_assume_role_policy_output(aws_account_id: Optional[pul
 
 
     :param str aws_account_id: The Account ID of the current AWS account (not your Databricks account).
-    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+    :param str aws_partition: AWS partition. The options are `aws`,`aws-us-gov` or `aws-us-gov-dod`. Defaults to `aws`
     :param str external_id: The storage credential external id.
     :param str role_name: The name of the AWS IAM role to be created for Unity Catalog.
-    :param str unity_catalog_iam_arn: The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection and `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection
+    :param str unity_catalog_iam_arn: The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection, `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection, and `arn:aws-us-gov:iam::170661010020:role/unity-catalog-prod-UCMasterRole-1DI6DL6ZP26AS` on GovCloud DoD partition selection
     """
     __args__ = dict()
     __args__['awsAccountId'] = aws_account_id

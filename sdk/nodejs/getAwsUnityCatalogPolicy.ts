@@ -58,7 +58,7 @@ export interface GetAwsUnityCatalogPolicyArgs {
      */
     awsAccountId: string;
     /**
-     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
      */
     awsPartition?: string;
     /**
@@ -147,7 +147,7 @@ export interface GetAwsUnityCatalogPolicyOutputArgs {
      */
     awsAccountId: pulumi.Input<string>;
     /**
-     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
      */
     awsPartition?: pulumi.Input<string>;
     /**

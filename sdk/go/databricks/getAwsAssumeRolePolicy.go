@@ -102,7 +102,7 @@ func GetAwsAssumeRolePolicy(ctx *pulumi.Context, args *GetAwsAssumeRolePolicyArg
 
 // A collection of arguments for invoking getAwsAssumeRolePolicy.
 type GetAwsAssumeRolePolicyArgs struct {
-	// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+	// AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
 	AwsPartition *string `pulumi:"awsPartition"`
 	// Deprecated: databricks_account_id will be will be removed in the next major release.
 	DatabricksAccountId *string `pulumi:"databricksAccountId"`
@@ -136,7 +136,7 @@ func GetAwsAssumeRolePolicyOutput(ctx *pulumi.Context, args GetAwsAssumeRolePoli
 
 // A collection of arguments for invoking getAwsAssumeRolePolicy.
 type GetAwsAssumeRolePolicyOutputArgs struct {
-	// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+	// AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
 	AwsPartition pulumi.StringPtrInput `pulumi:"awsPartition"`
 	// Deprecated: databricks_account_id will be will be removed in the next major release.
 	DatabricksAccountId pulumi.StringPtrInput `pulumi:"databricksAccountId"`

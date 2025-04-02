@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingAiGateway
     {
+        public readonly Outputs.ModelServingAiGatewayFallbackConfig? FallbackConfig;
         /// <summary>
         /// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
         /// </summary>
@@ -32,6 +33,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private ModelServingAiGateway(
+            Outputs.ModelServingAiGatewayFallbackConfig? fallbackConfig,
+
             Outputs.ModelServingAiGatewayGuardrails? guardrails,
 
             Outputs.ModelServingAiGatewayInferenceTableConfig? inferenceTableConfig,
@@ -40,6 +43,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.ModelServingAiGatewayUsageTrackingConfig? usageTrackingConfig)
         {
+            FallbackConfig = fallbackConfig;
             Guardrails = guardrails;
             InferenceTableConfig = inferenceTableConfig;
             RateLimits = rateLimits;

@@ -110,6 +110,7 @@ export class ModelServing extends pulumi.CustomResource {
      * A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
      */
     public readonly aiGateway!: pulumi.Output<outputs.ModelServingAiGateway | undefined>;
+    public readonly budgetPolicyId!: pulumi.Output<string | undefined>;
     /**
      * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
      */
@@ -149,6 +150,7 @@ export class ModelServing extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ModelServingState | undefined;
             resourceInputs["aiGateway"] = state ? state.aiGateway : undefined;
+            resourceInputs["budgetPolicyId"] = state ? state.budgetPolicyId : undefined;
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["rateLimits"] = state ? state.rateLimits : undefined;
@@ -158,6 +160,7 @@ export class ModelServing extends pulumi.CustomResource {
         } else {
             const args = argsOrState as ModelServingArgs | undefined;
             resourceInputs["aiGateway"] = args ? args.aiGateway : undefined;
+            resourceInputs["budgetPolicyId"] = args ? args.budgetPolicyId : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["rateLimits"] = args ? args.rateLimits : undefined;
@@ -178,6 +181,7 @@ export interface ModelServingState {
      * A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
      */
     aiGateway?: pulumi.Input<inputs.ModelServingAiGateway>;
+    budgetPolicyId?: pulumi.Input<string>;
     /**
      * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
      */
@@ -212,6 +216,7 @@ export interface ModelServingArgs {
      * A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
      */
     aiGateway?: pulumi.Input<inputs.ModelServingAiGateway>;
+    budgetPolicyId?: pulumi.Input<string>;
     /**
      * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
      */

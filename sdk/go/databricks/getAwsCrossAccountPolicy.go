@@ -63,7 +63,7 @@ func GetAwsCrossAccountPolicy(ctx *pulumi.Context, args *GetAwsCrossAccountPolic
 type GetAwsCrossAccountPolicyArgs struct {
 	// — Your AWS account ID, which is a number.
 	AwsAccountId *string `pulumi:"awsAccountId"`
-	// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+	// AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
 	AwsPartition *string `pulumi:"awsPartition"`
 	// List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
 	// The below arguments are only valid for `restricted` policy type
@@ -106,7 +106,7 @@ func GetAwsCrossAccountPolicyOutput(ctx *pulumi.Context, args GetAwsCrossAccount
 type GetAwsCrossAccountPolicyOutputArgs struct {
 	// — Your AWS account ID, which is a number.
 	AwsAccountId pulumi.StringPtrInput `pulumi:"awsAccountId"`
-	// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+	// AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
 	AwsPartition pulumi.StringPtrInput `pulumi:"awsPartition"`
 	// List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
 	// The below arguments are only valid for `restricted` policy type

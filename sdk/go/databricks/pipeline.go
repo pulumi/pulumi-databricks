@@ -143,8 +143,9 @@ type Pipeline struct {
 	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
 	Development pulumi.BoolPtrOutput `pulumi:"development"`
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-	Edition              pulumi.StringPtrOutput `pulumi:"edition"`
-	ExpectedLastModified pulumi.IntPtrOutput    `pulumi:"expectedLastModified"`
+	Edition              pulumi.StringPtrOutput    `pulumi:"edition"`
+	EventLog             PipelineEventLogPtrOutput `pulumi:"eventLog"`
+	ExpectedLastModified pulumi.IntPtrOutput       `pulumi:"expectedLastModified"`
 	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
 	Filters PipelineFiltersPtrOutput `pulumi:"filters"`
 	// The definition of a gateway pipeline to support CDC. Consists of following attributes:
@@ -229,8 +230,9 @@ type pipelineState struct {
 	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
 	Development *bool `pulumi:"development"`
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-	Edition              *string `pulumi:"edition"`
-	ExpectedLastModified *int    `pulumi:"expectedLastModified"`
+	Edition              *string           `pulumi:"edition"`
+	EventLog             *PipelineEventLog `pulumi:"eventLog"`
+	ExpectedLastModified *int              `pulumi:"expectedLastModified"`
 	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
 	Filters *PipelineFilters `pulumi:"filters"`
 	// The definition of a gateway pipeline to support CDC. Consists of following attributes:
@@ -287,6 +289,7 @@ type PipelineState struct {
 	Development pulumi.BoolPtrInput
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
 	Edition              pulumi.StringPtrInput
+	EventLog             PipelineEventLogPtrInput
 	ExpectedLastModified pulumi.IntPtrInput
 	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
 	Filters PipelineFiltersPtrInput
@@ -347,8 +350,9 @@ type pipelineArgs struct {
 	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
 	Development *bool `pulumi:"development"`
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-	Edition              *string `pulumi:"edition"`
-	ExpectedLastModified *int    `pulumi:"expectedLastModified"`
+	Edition              *string           `pulumi:"edition"`
+	EventLog             *PipelineEventLog `pulumi:"eventLog"`
+	ExpectedLastModified *int              `pulumi:"expectedLastModified"`
 	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
 	Filters *PipelineFilters `pulumi:"filters"`
 	// The definition of a gateway pipeline to support CDC. Consists of following attributes:
@@ -405,6 +409,7 @@ type PipelineArgs struct {
 	Development pulumi.BoolPtrInput
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
 	Edition              pulumi.StringPtrInput
+	EventLog             PipelineEventLogPtrInput
 	ExpectedLastModified pulumi.IntPtrInput
 	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
 	Filters PipelineFiltersPtrInput
@@ -584,6 +589,10 @@ func (o PipelineOutput) Development() pulumi.BoolPtrOutput {
 // optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
 func (o PipelineOutput) Edition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Edition }).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineOutput) EventLog() PipelineEventLogPtrOutput {
+	return o.ApplyT(func(v *Pipeline) PipelineEventLogPtrOutput { return v.EventLog }).(PipelineEventLogPtrOutput)
 }
 
 func (o PipelineOutput) ExpectedLastModified() pulumi.IntPtrOutput {

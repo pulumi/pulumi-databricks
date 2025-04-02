@@ -133,7 +133,7 @@ namespace Pulumi.Databricks
     public sealed class GetAwsBucketPolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+        /// AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
         /// </summary>
         [Input("awsPartition")]
         public string? AwsPartition { get; set; }
@@ -168,7 +168,7 @@ namespace Pulumi.Databricks
     public sealed class GetAwsBucketPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+        /// AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
         /// </summary>
         [Input("awsPartition")]
         public Input<string>? AwsPartition { get; set; }

@@ -159,7 +159,7 @@ def get_aws_cross_account_policy(aws_account_id: Optional[str] = None,
 
 
     :param str aws_account_id: — Your AWS account ID, which is a number.
-    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+    :param str aws_partition: AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
     :param Sequence[str] pass_roles: List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
            The below arguments are only valid for `restricted` policy type
     :param str policy_type: The type of cross account policy to generated: `managed` for Databricks-managed VPC and `customer` for customer-managed VPC, `restricted` for customer-managed VPC with policy restrictions
@@ -223,7 +223,7 @@ def get_aws_cross_account_policy_output(aws_account_id: Optional[pulumi.Input[Op
 
 
     :param str aws_account_id: — Your AWS account ID, which is a number.
-    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+    :param str aws_partition: AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
     :param Sequence[str] pass_roles: List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
            The below arguments are only valid for `restricted` policy type
     :param str policy_type: The type of cross account policy to generated: `managed` for Databricks-managed VPC and `customer` for customer-managed VPC, `restricted` for customer-managed VPC with policy restrictions

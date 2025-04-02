@@ -17,14 +17,14 @@ public final class GetAwsAssumeRolePolicyPlainArgs extends com.pulumi.resources.
     public static final GetAwsAssumeRolePolicyPlainArgs Empty = new GetAwsAssumeRolePolicyPlainArgs();
 
     /**
-     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
      * 
      */
     @Import(name="awsPartition")
     private @Nullable String awsPartition;
 
     /**
-     * @return AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * @return AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
      * 
      */
     public Optional<String> awsPartition() {
@@ -108,7 +108,7 @@ public final class GetAwsAssumeRolePolicyPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param awsPartition AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+         * @param awsPartition AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
          * 
          * @return builder
          * 

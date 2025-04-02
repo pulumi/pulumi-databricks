@@ -159,6 +159,7 @@ export class Pipeline extends pulumi.CustomResource {
      * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      */
     public readonly edition!: pulumi.Output<string | undefined>;
+    public readonly eventLog!: pulumi.Output<outputs.PipelineEventLog | undefined>;
     public readonly expectedLastModified!: pulumi.Output<number | undefined>;
     /**
      * Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
@@ -237,6 +238,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["deployment"] = state ? state.deployment : undefined;
             resourceInputs["development"] = state ? state.development : undefined;
             resourceInputs["edition"] = state ? state.edition : undefined;
+            resourceInputs["eventLog"] = state ? state.eventLog : undefined;
             resourceInputs["expectedLastModified"] = state ? state.expectedLastModified : undefined;
             resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["gatewayDefinition"] = state ? state.gatewayDefinition : undefined;
@@ -273,6 +275,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["deployment"] = args ? args.deployment : undefined;
             resourceInputs["development"] = args ? args.development : undefined;
             resourceInputs["edition"] = args ? args.edition : undefined;
+            resourceInputs["eventLog"] = args ? args.eventLog : undefined;
             resourceInputs["expectedLastModified"] = args ? args.expectedLastModified : undefined;
             resourceInputs["filters"] = args ? args.filters : undefined;
             resourceInputs["gatewayDefinition"] = args ? args.gatewayDefinition : undefined;
@@ -347,6 +350,7 @@ export interface PipelineState {
      * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      */
     edition?: pulumi.Input<string>;
+    eventLog?: pulumi.Input<inputs.PipelineEventLog>;
     expectedLastModified?: pulumi.Input<number>;
     /**
      * Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
@@ -447,6 +451,7 @@ export interface PipelineArgs {
      * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      */
     edition?: pulumi.Input<string>;
+    eventLog?: pulumi.Input<inputs.PipelineEventLog>;
     expectedLastModified?: pulumi.Input<number>;
     /**
      * Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:

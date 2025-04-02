@@ -24,6 +24,9 @@ namespace Pulumi.Databricks.Inputs
             set => _aiGateways = value;
         }
 
+        [Input("budgetPolicyId")]
+        public string? BudgetPolicyId { get; set; }
+
         [Input("configs")]
         private List<Inputs.GetServingEndpointsEndpointConfigArgs>? _configs;
 

@@ -142,7 +142,7 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[str] = None,
 
 
     :param str aws_account_id: The Account ID of the current AWS account (not your Databricks account).
-    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+    :param str aws_partition: AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
     :param str bucket_name: The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
     :param str kms_name: If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
     :param str role_name: The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
@@ -200,7 +200,7 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[st
 
 
     :param str aws_account_id: The Account ID of the current AWS account (not your Databricks account).
-    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+    :param str aws_partition: AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
     :param str bucket_name: The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
     :param str kms_name: If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
     :param str role_name: The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).

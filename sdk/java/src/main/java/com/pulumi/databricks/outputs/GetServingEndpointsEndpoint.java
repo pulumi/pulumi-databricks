@@ -22,6 +22,7 @@ public final class GetServingEndpointsEndpoint {
      * 
      */
     private @Nullable List<GetServingEndpointsEndpointAiGateway> aiGateways;
+    private @Nullable String budgetPolicyId;
     /**
      * @return The model serving endpoint configuration.
      * 
@@ -51,6 +52,9 @@ public final class GetServingEndpointsEndpoint {
      */
     public List<GetServingEndpointsEndpointAiGateway> aiGateways() {
         return this.aiGateways == null ? List.of() : this.aiGateways;
+    }
+    public Optional<String> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
     }
     /**
      * @return The model serving endpoint configuration.
@@ -102,6 +106,7 @@ public final class GetServingEndpointsEndpoint {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetServingEndpointsEndpointAiGateway> aiGateways;
+        private @Nullable String budgetPolicyId;
         private @Nullable List<GetServingEndpointsEndpointConfig> configs;
         private @Nullable Integer creationTimestamp;
         private @Nullable String creator;
@@ -115,6 +120,7 @@ public final class GetServingEndpointsEndpoint {
         public Builder(GetServingEndpointsEndpoint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aiGateways = defaults.aiGateways;
+    	      this.budgetPolicyId = defaults.budgetPolicyId;
     	      this.configs = defaults.configs;
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.creator = defaults.creator;
@@ -134,6 +140,12 @@ public final class GetServingEndpointsEndpoint {
         }
         public Builder aiGateways(GetServingEndpointsEndpointAiGateway... aiGateways) {
             return aiGateways(List.of(aiGateways));
+        }
+        @CustomType.Setter
+        public Builder budgetPolicyId(@Nullable String budgetPolicyId) {
+
+            this.budgetPolicyId = budgetPolicyId;
+            return this;
         }
         @CustomType.Setter
         public Builder configs(@Nullable List<GetServingEndpointsEndpointConfig> configs) {
@@ -201,6 +213,7 @@ public final class GetServingEndpointsEndpoint {
         public GetServingEndpointsEndpoint build() {
             final var _resultValue = new GetServingEndpointsEndpoint();
             _resultValue.aiGateways = aiGateways;
+            _resultValue.budgetPolicyId = budgetPolicyId;
             _resultValue.configs = configs;
             _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.creator = creator;

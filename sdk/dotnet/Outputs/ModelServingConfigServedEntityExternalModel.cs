@@ -29,6 +29,7 @@ namespace Pulumi.Databricks.Outputs
         /// Cohere Config
         /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelCohereConfig? CohereConfig;
+        public readonly Outputs.ModelServingConfigServedEntityExternalModelCustomProviderConfig? CustomProviderConfig;
         /// <summary>
         /// Databricks Model Serving Config
         /// </summary>
@@ -68,6 +69,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.ModelServingConfigServedEntityExternalModelCohereConfig? cohereConfig,
 
+            Outputs.ModelServingConfigServedEntityExternalModelCustomProviderConfig? customProviderConfig,
+
             Outputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig? databricksModelServingConfig,
 
             Outputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig? googleCloudVertexAiConfig,
@@ -86,6 +89,7 @@ namespace Pulumi.Databricks.Outputs
             AmazonBedrockConfig = amazonBedrockConfig;
             AnthropicConfig = anthropicConfig;
             CohereConfig = cohereConfig;
+            CustomProviderConfig = customProviderConfig;
             DatabricksModelServingConfig = databricksModelServingConfig;
             GoogleCloudVertexAiConfig = googleCloudVertexAiConfig;
             Name = name;

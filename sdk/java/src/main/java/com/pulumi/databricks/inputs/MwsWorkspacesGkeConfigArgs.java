@@ -5,9 +5,10 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class MwsWorkspacesGkeConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,30 +19,30 @@ public final class MwsWorkspacesGkeConfigArgs extends com.pulumi.resources.Resou
      * Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
      * 
      */
-    @Import(name="connectivityType", required=true)
-    private Output<String> connectivityType;
+    @Import(name="connectivityType")
+    private @Nullable Output<String> connectivityType;
 
     /**
      * @return Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
      * 
      */
-    public Output<String> connectivityType() {
-        return this.connectivityType;
+    public Optional<Output<String>> connectivityType() {
+        return Optional.ofNullable(this.connectivityType);
     }
 
     /**
      * The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
      * 
      */
-    @Import(name="masterIpRange", required=true)
-    private Output<String> masterIpRange;
+    @Import(name="masterIpRange")
+    private @Nullable Output<String> masterIpRange;
 
     /**
      * @return The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
      * 
      */
-    public Output<String> masterIpRange() {
-        return this.masterIpRange;
+    public Optional<Output<String>> masterIpRange() {
+        return Optional.ofNullable(this.masterIpRange);
     }
 
     private MwsWorkspacesGkeConfigArgs() {}
@@ -75,7 +76,7 @@ public final class MwsWorkspacesGkeConfigArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder connectivityType(Output<String> connectivityType) {
+        public Builder connectivityType(@Nullable Output<String> connectivityType) {
             $.connectivityType = connectivityType;
             return this;
         }
@@ -96,7 +97,7 @@ public final class MwsWorkspacesGkeConfigArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder masterIpRange(Output<String> masterIpRange) {
+        public Builder masterIpRange(@Nullable Output<String> masterIpRange) {
             $.masterIpRange = masterIpRange;
             return this;
         }
@@ -112,12 +113,6 @@ public final class MwsWorkspacesGkeConfigArgs extends com.pulumi.resources.Resou
         }
 
         public MwsWorkspacesGkeConfigArgs build() {
-            if ($.connectivityType == null) {
-                throw new MissingRequiredPropertyException("MwsWorkspacesGkeConfigArgs", "connectivityType");
-            }
-            if ($.masterIpRange == null) {
-                throw new MissingRequiredPropertyException("MwsWorkspacesGkeConfigArgs", "masterIpRange");
-            }
             return $;
         }
     }

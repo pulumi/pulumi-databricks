@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingAiGatewayArgs : global::Pulumi.ResourceArgs
     {
+        [Input("fallbackConfig")]
+        public Input<Inputs.ModelServingAiGatewayFallbackConfigArgs>? FallbackConfig { get; set; }
+
         /// <summary>
         /// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
         /// </summary>

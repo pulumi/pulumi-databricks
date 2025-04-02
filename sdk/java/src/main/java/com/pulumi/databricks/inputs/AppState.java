@@ -150,6 +150,13 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.effectiveBudgetPolicyId);
     }
 
+    @Import(name="effectiveUserApiScopes")
+    private @Nullable Output<List<String>> effectiveUserApiScopes;
+
+    public Optional<Output<List<String>>> effectiveUserApiScopes() {
+        return Optional.ofNullable(this.effectiveUserApiScopes);
+    }
+
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      * 
@@ -170,6 +177,20 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<Boolean>> noCompute() {
         return Optional.ofNullable(this.noCompute);
+    }
+
+    @Import(name="oauth2AppClientId")
+    private @Nullable Output<String> oauth2AppClientId;
+
+    public Optional<Output<String>> oauth2AppClientId() {
+        return Optional.ofNullable(this.oauth2AppClientId);
+    }
+
+    @Import(name="oauth2AppIntegrationId")
+    private @Nullable Output<String> oauth2AppIntegrationId;
+
+    public Optional<Output<String>> oauth2AppIntegrationId() {
+        return Optional.ofNullable(this.oauth2AppIntegrationId);
     }
 
     @Import(name="pendingDeployment")
@@ -276,6 +297,13 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.url);
     }
 
+    @Import(name="userApiScopes")
+    private @Nullable Output<List<String>> userApiScopes;
+
+    public Optional<Output<List<String>>> userApiScopes() {
+        return Optional.ofNullable(this.userApiScopes);
+    }
+
     private AppState() {}
 
     private AppState(AppState $) {
@@ -288,8 +316,11 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.defaultSourceCodePath = $.defaultSourceCodePath;
         this.description = $.description;
         this.effectiveBudgetPolicyId = $.effectiveBudgetPolicyId;
+        this.effectiveUserApiScopes = $.effectiveUserApiScopes;
         this.name = $.name;
         this.noCompute = $.noCompute;
+        this.oauth2AppClientId = $.oauth2AppClientId;
+        this.oauth2AppIntegrationId = $.oauth2AppIntegrationId;
         this.pendingDeployment = $.pendingDeployment;
         this.resources = $.resources;
         this.servicePrincipalClientId = $.servicePrincipalClientId;
@@ -298,6 +329,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.updateTime = $.updateTime;
         this.updater = $.updater;
         this.url = $.url;
+        this.userApiScopes = $.userApiScopes;
     }
 
     public static Builder builder() {
@@ -495,6 +527,19 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
             return effectiveBudgetPolicyId(Output.of(effectiveBudgetPolicyId));
         }
 
+        public Builder effectiveUserApiScopes(@Nullable Output<List<String>> effectiveUserApiScopes) {
+            $.effectiveUserApiScopes = effectiveUserApiScopes;
+            return this;
+        }
+
+        public Builder effectiveUserApiScopes(List<String> effectiveUserApiScopes) {
+            return effectiveUserApiScopes(Output.of(effectiveUserApiScopes));
+        }
+
+        public Builder effectiveUserApiScopes(String... effectiveUserApiScopes) {
+            return effectiveUserApiScopes(List.of(effectiveUserApiScopes));
+        }
+
         /**
          * @param name The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
          * 
@@ -523,6 +568,24 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
 
         public Builder noCompute(Boolean noCompute) {
             return noCompute(Output.of(noCompute));
+        }
+
+        public Builder oauth2AppClientId(@Nullable Output<String> oauth2AppClientId) {
+            $.oauth2AppClientId = oauth2AppClientId;
+            return this;
+        }
+
+        public Builder oauth2AppClientId(String oauth2AppClientId) {
+            return oauth2AppClientId(Output.of(oauth2AppClientId));
+        }
+
+        public Builder oauth2AppIntegrationId(@Nullable Output<String> oauth2AppIntegrationId) {
+            $.oauth2AppIntegrationId = oauth2AppIntegrationId;
+            return this;
+        }
+
+        public Builder oauth2AppIntegrationId(String oauth2AppIntegrationId) {
+            return oauth2AppIntegrationId(Output.of(oauth2AppIntegrationId));
         }
 
         public Builder pendingDeployment(@Nullable Output<AppPendingDeploymentArgs> pendingDeployment) {
@@ -677,6 +740,19 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder url(String url) {
             return url(Output.of(url));
+        }
+
+        public Builder userApiScopes(@Nullable Output<List<String>> userApiScopes) {
+            $.userApiScopes = userApiScopes;
+            return this;
+        }
+
+        public Builder userApiScopes(List<String> userApiScopes) {
+            return userApiScopes(Output.of(userApiScopes));
+        }
+
+        public Builder userApiScopes(String... userApiScopes) {
+            return userApiScopes(List.of(userApiScopes));
         }
 
         public AppState build() {

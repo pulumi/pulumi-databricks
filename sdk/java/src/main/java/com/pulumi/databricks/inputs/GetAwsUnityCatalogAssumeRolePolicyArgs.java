@@ -32,14 +32,14 @@ public final class GetAwsUnityCatalogAssumeRolePolicyArgs extends com.pulumi.res
     }
 
     /**
-     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * AWS partition. The options are `aws`,`aws-us-gov` or `aws-us-gov-dod`. Defaults to `aws`
      * 
      */
     @Import(name="awsPartition")
     private @Nullable Output<String> awsPartition;
 
     /**
-     * @return AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * @return AWS partition. The options are `aws`,`aws-us-gov` or `aws-us-gov-dod`. Defaults to `aws`
      * 
      */
     public Optional<Output<String>> awsPartition() {
@@ -77,14 +77,14 @@ public final class GetAwsUnityCatalogAssumeRolePolicyArgs extends com.pulumi.res
     }
 
     /**
-     * The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection and `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection
+     * The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection, `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection, and `arn:aws-us-gov:iam::170661010020:role/unity-catalog-prod-UCMasterRole-1DI6DL6ZP26AS` on GovCloud DoD partition selection
      * 
      */
     @Import(name="unityCatalogIamArn")
     private @Nullable Output<String> unityCatalogIamArn;
 
     /**
-     * @return The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection and `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection
+     * @return The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection, `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection, and `arn:aws-us-gov:iam::170661010020:role/unity-catalog-prod-UCMasterRole-1DI6DL6ZP26AS` on GovCloud DoD partition selection
      * 
      */
     public Optional<Output<String>> unityCatalogIamArn() {
@@ -141,7 +141,7 @@ public final class GetAwsUnityCatalogAssumeRolePolicyArgs extends com.pulumi.res
         }
 
         /**
-         * @param awsPartition AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+         * @param awsPartition AWS partition. The options are `aws`,`aws-us-gov` or `aws-us-gov-dod`. Defaults to `aws`
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class GetAwsUnityCatalogAssumeRolePolicyArgs extends com.pulumi.res
         }
 
         /**
-         * @param awsPartition AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+         * @param awsPartition AWS partition. The options are `aws`,`aws-us-gov` or `aws-us-gov-dod`. Defaults to `aws`
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class GetAwsUnityCatalogAssumeRolePolicyArgs extends com.pulumi.res
         }
 
         /**
-         * @param unityCatalogIamArn The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection and `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection
+         * @param unityCatalogIamArn The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection, `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection, and `arn:aws-us-gov:iam::170661010020:role/unity-catalog-prod-UCMasterRole-1DI6DL6ZP26AS` on GovCloud DoD partition selection
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class GetAwsUnityCatalogAssumeRolePolicyArgs extends com.pulumi.res
         }
 
         /**
-         * @param unityCatalogIamArn The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection and `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection
+         * @param unityCatalogIamArn The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection, `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection, and `arn:aws-us-gov:iam::170661010020:role/unity-catalog-prod-UCMasterRole-1DI6DL6ZP26AS` on GovCloud DoD partition selection
          * 
          * @return builder
          * 

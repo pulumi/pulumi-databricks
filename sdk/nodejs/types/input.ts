@@ -14,11 +14,16 @@ export interface AccessControlRuleSetGrantRule {
      */
     principals?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions).
+     * Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions), depending on the `name` defined:
+     * * `accounts/{account_id}/ruleSets/default`
+     * * `roles/marketplace.admin` - Databricks Marketplace administrator.
+     * * `roles/billing.admin` - Billing administrator.
+     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
      * * `roles/servicePrincipal.manager` - Manager of a service principal.
      * * `roles/servicePrincipal.user` - User of a service principal.
+     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
      * * `roles/group.manager` - Manager of a group.
-     * * `roles/marketplace.admin` - Admin of marketplace.
+     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
      * * `roles/budgetPolicy.manager` - Manager of a budget policy.
      * * `roles/budgetPolicy.user` - User of a budget policy.
      */
@@ -461,7 +466,7 @@ export interface ClusterAwsAttributes {
      */
     ebsVolumeType?: pulumi.Input<string>;
     /**
-     * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
+     * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. If unspecified, the default value is 0.
      */
     firstOnDemand?: pulumi.Input<number>;
     /**
@@ -6865,6 +6870,7 @@ export interface GetServingEndpointsEndpoint {
      * A block with AI Gateway configuration for the serving endpoint.
      */
     aiGateways?: inputs.GetServingEndpointsEndpointAiGateway[];
+    budgetPolicyId?: string;
     /**
      * The model serving endpoint configuration.
      */
@@ -6890,6 +6896,7 @@ export interface GetServingEndpointsEndpointArgs {
      * A block with AI Gateway configuration for the serving endpoint.
      */
     aiGateways?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayArgs>[]>;
+    budgetPolicyId?: pulumi.Input<string>;
     /**
      * The model serving endpoint configuration.
      */
@@ -6911,6 +6918,7 @@ export interface GetServingEndpointsEndpointArgs {
 }
 
 export interface GetServingEndpointsEndpointAiGateway {
+    fallbackConfigs?: inputs.GetServingEndpointsEndpointAiGatewayFallbackConfig[];
     guardrails?: inputs.GetServingEndpointsEndpointAiGatewayGuardrail[];
     inferenceTableConfigs?: inputs.GetServingEndpointsEndpointAiGatewayInferenceTableConfig[];
     /**
@@ -6921,6 +6929,7 @@ export interface GetServingEndpointsEndpointAiGateway {
 }
 
 export interface GetServingEndpointsEndpointAiGatewayArgs {
+    fallbackConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayFallbackConfigArgs>[]>;
     guardrails?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailArgs>[]>;
     inferenceTableConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayInferenceTableConfigArgs>[]>;
     /**
@@ -6928,6 +6937,14 @@ export interface GetServingEndpointsEndpointAiGatewayArgs {
      */
     rateLimits?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayRateLimitArgs>[]>;
     usageTrackingConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayUsageTrackingConfigArgs>[]>;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayFallbackConfig {
+    enabled: boolean;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayFallbackConfigArgs {
+    enabled: pulumi.Input<boolean>;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrail {
@@ -7055,6 +7072,7 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModel {
     amazonBedrockConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig[];
     anthropicConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig[];
     cohereConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig[];
+    customProviderConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfig[];
     databricksModelServingConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig[];
     googleCloudVertexAiConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig[];
     /**
@@ -7072,6 +7090,7 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelArgs 
     amazonBedrockConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs>[]>;
     anthropicConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigArgs>[]>;
     cohereConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigArgs>[]>;
+    customProviderConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigArgs>[]>;
     databricksModelServingConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigArgs>[]>;
     googleCloudVertexAiConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs>[]>;
     /**
@@ -7134,6 +7153,40 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCoher
     cohereApiBase?: pulumi.Input<string>;
     cohereApiKey?: pulumi.Input<string>;
     cohereApiKeyPlaintext?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfig {
+    apiKeyAuths?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth[];
+    bearerTokenAuths?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth[];
+    customProviderUrl: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigArgs {
+    apiKeyAuths?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs>[]>;
+    bearerTokenAuths?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs>[]>;
+    customProviderUrl: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
+    key: string;
+    value?: string;
+    valuePlaintext?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs {
+    key: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+    valuePlaintext?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
+    token?: string;
+    tokenPlaintext?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs {
+    token?: pulumi.Input<string>;
+    tokenPlaintext?: pulumi.Input<string>;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig {
@@ -8383,7 +8436,7 @@ export interface JobHealth {
 
 export interface JobHealthRule {
     /**
-     * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
      */
     metric: pulumi.Input<string>;
     /**
@@ -9469,7 +9522,7 @@ export interface JobTaskForEachTaskTaskHealth {
 
 export interface JobTaskForEachTaskTaskHealthRule {
     /**
-     * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
      */
     metric: pulumi.Input<string>;
     /**
@@ -10076,7 +10129,7 @@ export interface JobTaskHealth {
 
 export interface JobTaskHealthRule {
     /**
-     * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
      */
     metric: pulumi.Input<string>;
     /**
@@ -10982,6 +11035,7 @@ export interface MlflowWebhookJobSpec {
 }
 
 export interface ModelServingAiGateway {
+    fallbackConfig?: pulumi.Input<inputs.ModelServingAiGatewayFallbackConfig>;
     /**
      * Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
      */
@@ -10998,6 +11052,10 @@ export interface ModelServingAiGateway {
      * Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
      */
     usageTrackingConfig?: pulumi.Input<inputs.ModelServingAiGatewayUsageTrackingConfig>;
+}
+
+export interface ModelServingAiGatewayFallbackConfig {
+    enabled: pulumi.Input<boolean>;
 }
 
 export interface ModelServingAiGatewayGuardrails {
@@ -11205,6 +11263,7 @@ export interface ModelServingConfigServedEntityExternalModel {
      * Cohere Config
      */
     cohereConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCohereConfig>;
+    customProviderConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCustomProviderConfig>;
     /**
      * Databricks Model Serving Config
      */
@@ -11295,6 +11354,26 @@ export interface ModelServingConfigServedEntityExternalModelCohereConfig {
      * The Cohere API key provided as a plaintext string.
      */
     cohereApiKeyPlaintext?: pulumi.Input<string>;
+}
+
+export interface ModelServingConfigServedEntityExternalModelCustomProviderConfig {
+    apiKeyAuth?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth>;
+    bearerTokenAuth?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth>;
+    customProviderUrl: pulumi.Input<string>;
+}
+
+export interface ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
+    key: pulumi.Input<string>;
+    /**
+     * The value field for a tag.
+     */
+    value?: pulumi.Input<string>;
+    valuePlaintext?: pulumi.Input<string>;
+}
+
+export interface ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
+    token?: pulumi.Input<string>;
+    tokenPlaintext?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
@@ -11614,12 +11693,16 @@ export interface MwsNetworksGcpNetworkInfo {
     networkProjectId: pulumi.Input<string>;
     /**
      * The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
+     *
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
      */
-    podIpRangeName: pulumi.Input<string>;
+    podIpRangeName?: pulumi.Input<string>;
     /**
      * The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
+     *
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
      */
-    serviceIpRangeName: pulumi.Input<string>;
+    serviceIpRangeName?: pulumi.Input<string>;
     /**
      * The ID of the subnet associated with this network.
      */
@@ -11683,8 +11766,14 @@ export interface MwsWorkspacesExternalCustomerInfo {
 }
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
-    gkeClusterPodIpRange: pulumi.Input<string>;
-    gkeClusterServiceIpRange: pulumi.Input<string>;
+    /**
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     */
+    gkeClusterPodIpRange?: pulumi.Input<string>;
+    /**
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     */
+    gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;
 }
 
@@ -11692,11 +11781,11 @@ export interface MwsWorkspacesGkeConfig {
     /**
      * Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
      */
-    connectivityType: pulumi.Input<string>;
+    connectivityType?: pulumi.Input<string>;
     /**
      * The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
      */
-    masterIpRange: pulumi.Input<string>;
+    masterIpRange?: pulumi.Input<string>;
 }
 
 export interface MwsWorkspacesToken {
@@ -12044,6 +12133,21 @@ export interface PipelineDeployment {
      * The path to the file containing metadata about the deployment.
      */
     metadataFilePath?: pulumi.Input<string>;
+}
+
+export interface PipelineEventLog {
+    /**
+     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     */
+    catalog?: pulumi.Input<string>;
+    /**
+     * A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
+    schema?: pulumi.Input<string>;
 }
 
 export interface PipelineFilters {

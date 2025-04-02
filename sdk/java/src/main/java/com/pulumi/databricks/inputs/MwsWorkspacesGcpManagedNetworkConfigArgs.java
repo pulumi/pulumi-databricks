@@ -8,24 +8,50 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class MwsWorkspacesGcpManagedNetworkConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MwsWorkspacesGcpManagedNetworkConfigArgs Empty = new MwsWorkspacesGcpManagedNetworkConfigArgs();
 
-    @Import(name="gkeClusterPodIpRange", required=true)
-    private Output<String> gkeClusterPodIpRange;
+    /**
+     * @deprecated
+     * gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * 
+     */
+    @Deprecated /* gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Import(name="gkeClusterPodIpRange")
+    private @Nullable Output<String> gkeClusterPodIpRange;
 
-    public Output<String> gkeClusterPodIpRange() {
-        return this.gkeClusterPodIpRange;
+    /**
+     * @deprecated
+     * gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * 
+     */
+    @Deprecated /* gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    public Optional<Output<String>> gkeClusterPodIpRange() {
+        return Optional.ofNullable(this.gkeClusterPodIpRange);
     }
 
-    @Import(name="gkeClusterServiceIpRange", required=true)
-    private Output<String> gkeClusterServiceIpRange;
+    /**
+     * @deprecated
+     * gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * 
+     */
+    @Deprecated /* gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Import(name="gkeClusterServiceIpRange")
+    private @Nullable Output<String> gkeClusterServiceIpRange;
 
-    public Output<String> gkeClusterServiceIpRange() {
-        return this.gkeClusterServiceIpRange;
+    /**
+     * @deprecated
+     * gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * 
+     */
+    @Deprecated /* gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    public Optional<Output<String>> gkeClusterServiceIpRange() {
+        return Optional.ofNullable(this.gkeClusterServiceIpRange);
     }
 
     @Import(name="subnetCidr", required=true)
@@ -61,20 +87,52 @@ public final class MwsWorkspacesGcpManagedNetworkConfigArgs extends com.pulumi.r
             $ = new MwsWorkspacesGcpManagedNetworkConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder gkeClusterPodIpRange(Output<String> gkeClusterPodIpRange) {
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+         * 
+         */
+        @Deprecated /* gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+        public Builder gkeClusterPodIpRange(@Nullable Output<String> gkeClusterPodIpRange) {
             $.gkeClusterPodIpRange = gkeClusterPodIpRange;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+         * 
+         */
+        @Deprecated /* gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
         public Builder gkeClusterPodIpRange(String gkeClusterPodIpRange) {
             return gkeClusterPodIpRange(Output.of(gkeClusterPodIpRange));
         }
 
-        public Builder gkeClusterServiceIpRange(Output<String> gkeClusterServiceIpRange) {
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+         * 
+         */
+        @Deprecated /* gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+        public Builder gkeClusterServiceIpRange(@Nullable Output<String> gkeClusterServiceIpRange) {
             $.gkeClusterServiceIpRange = gkeClusterServiceIpRange;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+         * 
+         */
+        @Deprecated /* gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
         public Builder gkeClusterServiceIpRange(String gkeClusterServiceIpRange) {
             return gkeClusterServiceIpRange(Output.of(gkeClusterServiceIpRange));
         }
@@ -89,12 +147,6 @@ public final class MwsWorkspacesGcpManagedNetworkConfigArgs extends com.pulumi.r
         }
 
         public MwsWorkspacesGcpManagedNetworkConfigArgs build() {
-            if ($.gkeClusterPodIpRange == null) {
-                throw new MissingRequiredPropertyException("MwsWorkspacesGcpManagedNetworkConfigArgs", "gkeClusterPodIpRange");
-            }
-            if ($.gkeClusterServiceIpRange == null) {
-                throw new MissingRequiredPropertyException("MwsWorkspacesGcpManagedNetworkConfigArgs", "gkeClusterServiceIpRange");
-            }
             if ($.subnetCidr == null) {
                 throw new MissingRequiredPropertyException("MwsWorkspacesGcpManagedNetworkConfigArgs", "subnetCidr");
             }

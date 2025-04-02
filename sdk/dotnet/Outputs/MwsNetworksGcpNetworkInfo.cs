@@ -20,11 +20,11 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
         /// </summary>
-        public readonly string PodIpRangeName;
+        public readonly string? PodIpRangeName;
         /// <summary>
         /// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
         /// </summary>
-        public readonly string ServiceIpRangeName;
+        public readonly string? ServiceIpRangeName;
         /// <summary>
         /// The ID of the subnet associated with this network.
         /// </summary>
@@ -42,9 +42,9 @@ namespace Pulumi.Databricks.Outputs
         private MwsNetworksGcpNetworkInfo(
             string networkProjectId,
 
-            string podIpRangeName,
+            string? podIpRangeName,
 
-            string serviceIpRangeName,
+            string? serviceIpRangeName,
 
             string subnetId,
 

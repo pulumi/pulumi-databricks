@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.ModelServingAiGatewayFallbackConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingAiGatewayGuardrailsArgs;
 import com.pulumi.databricks.inputs.ModelServingAiGatewayInferenceTableConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingAiGatewayRateLimitArgs;
@@ -18,6 +19,13 @@ import javax.annotation.Nullable;
 public final class ModelServingAiGatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ModelServingAiGatewayArgs Empty = new ModelServingAiGatewayArgs();
+
+    @Import(name="fallbackConfig")
+    private @Nullable Output<ModelServingAiGatewayFallbackConfigArgs> fallbackConfig;
+
+    public Optional<Output<ModelServingAiGatewayFallbackConfigArgs>> fallbackConfig() {
+        return Optional.ofNullable(this.fallbackConfig);
+    }
 
     /**
      * Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
@@ -82,6 +90,7 @@ public final class ModelServingAiGatewayArgs extends com.pulumi.resources.Resour
     private ModelServingAiGatewayArgs() {}
 
     private ModelServingAiGatewayArgs(ModelServingAiGatewayArgs $) {
+        this.fallbackConfig = $.fallbackConfig;
         this.guardrails = $.guardrails;
         this.inferenceTableConfig = $.inferenceTableConfig;
         this.rateLimits = $.rateLimits;
@@ -104,6 +113,15 @@ public final class ModelServingAiGatewayArgs extends com.pulumi.resources.Resour
 
         public Builder(ModelServingAiGatewayArgs defaults) {
             $ = new ModelServingAiGatewayArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder fallbackConfig(@Nullable Output<ModelServingAiGatewayFallbackConfigArgs> fallbackConfig) {
+            $.fallbackConfig = fallbackConfig;
+            return this;
+        }
+
+        public Builder fallbackConfig(ModelServingAiGatewayFallbackConfigArgs fallbackConfig) {
+            return fallbackConfig(Output.of(fallbackConfig));
         }
 
         /**

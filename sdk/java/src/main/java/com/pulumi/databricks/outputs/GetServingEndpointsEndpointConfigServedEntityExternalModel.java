@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.GetServingEndpointsEndpointConfigServedEnti
 import com.pulumi.databricks.outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig;
 import com.pulumi.databricks.outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig;
 import com.pulumi.databricks.outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig;
+import com.pulumi.databricks.outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfig;
 import com.pulumi.databricks.outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig;
 import com.pulumi.databricks.outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig;
 import com.pulumi.databricks.outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig;
@@ -24,6 +25,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModel {
     private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig> amazonBedrockConfigs;
     private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig> anthropicConfigs;
     private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig> cohereConfigs;
+    private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfig> customProviderConfigs;
     private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig> databricksModelServingConfigs;
     private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig> googleCloudVertexAiConfigs;
     /**
@@ -48,6 +50,9 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModel {
     }
     public List<GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig> cohereConfigs() {
         return this.cohereConfigs == null ? List.of() : this.cohereConfigs;
+    }
+    public List<GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfig> customProviderConfigs() {
+        return this.customProviderConfigs == null ? List.of() : this.customProviderConfigs;
     }
     public List<GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig> databricksModelServingConfigs() {
         return this.databricksModelServingConfigs == null ? List.of() : this.databricksModelServingConfigs;
@@ -88,6 +93,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModel {
         private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig> amazonBedrockConfigs;
         private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig> anthropicConfigs;
         private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig> cohereConfigs;
+        private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfig> customProviderConfigs;
         private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig> databricksModelServingConfigs;
         private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig> googleCloudVertexAiConfigs;
         private String name;
@@ -102,6 +108,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModel {
     	      this.amazonBedrockConfigs = defaults.amazonBedrockConfigs;
     	      this.anthropicConfigs = defaults.anthropicConfigs;
     	      this.cohereConfigs = defaults.cohereConfigs;
+    	      this.customProviderConfigs = defaults.customProviderConfigs;
     	      this.databricksModelServingConfigs = defaults.databricksModelServingConfigs;
     	      this.googleCloudVertexAiConfigs = defaults.googleCloudVertexAiConfigs;
     	      this.name = defaults.name;
@@ -146,6 +153,15 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModel {
         }
         public Builder cohereConfigs(GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig... cohereConfigs) {
             return cohereConfigs(List.of(cohereConfigs));
+        }
+        @CustomType.Setter
+        public Builder customProviderConfigs(@Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfig> customProviderConfigs) {
+
+            this.customProviderConfigs = customProviderConfigs;
+            return this;
+        }
+        public Builder customProviderConfigs(GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfig... customProviderConfigs) {
+            return customProviderConfigs(List.of(customProviderConfigs));
         }
         @CustomType.Setter
         public Builder databricksModelServingConfigs(@Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig> databricksModelServingConfigs) {
@@ -213,6 +229,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModel {
             _resultValue.amazonBedrockConfigs = amazonBedrockConfigs;
             _resultValue.anthropicConfigs = anthropicConfigs;
             _resultValue.cohereConfigs = cohereConfigs;
+            _resultValue.customProviderConfigs = customProviderConfigs;
             _resultValue.databricksModelServingConfigs = databricksModelServingConfigs;
             _resultValue.googleCloudVertexAiConfigs = googleCloudVertexAiConfigs;
             _resultValue.name = name;

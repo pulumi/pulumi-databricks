@@ -67,7 +67,7 @@ export function getAwsAssumeRolePolicy(args: GetAwsAssumeRolePolicyArgs, opts?: 
  */
 export interface GetAwsAssumeRolePolicyArgs {
     /**
-     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
      */
     awsPartition?: string;
     /**
@@ -167,7 +167,7 @@ export function getAwsAssumeRolePolicyOutput(args: GetAwsAssumeRolePolicyOutputA
  */
 export interface GetAwsAssumeRolePolicyOutputArgs {
     /**
-     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
      */
     awsPartition?: pulumi.Input<string>;
     /**

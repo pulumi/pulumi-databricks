@@ -90,6 +90,9 @@ namespace Pulumi.Databricks
         [Output("effectiveBudgetPolicyId")]
         public Output<string> EffectiveBudgetPolicyId { get; private set; } = null!;
 
+        [Output("effectiveUserApiScopes")]
+        public Output<ImmutableArray<string>> EffectiveUserApiScopes { get; private set; } = null!;
+
         /// <summary>
         /// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         /// </summary>
@@ -98,6 +101,12 @@ namespace Pulumi.Databricks
 
         [Output("noCompute")]
         public Output<bool?> NoCompute { get; private set; } = null!;
+
+        [Output("oauth2AppClientId")]
+        public Output<string> Oauth2AppClientId { get; private set; } = null!;
+
+        [Output("oauth2AppIntegrationId")]
+        public Output<string> Oauth2AppIntegrationId { get; private set; } = null!;
 
         [Output("pendingDeployment")]
         public Output<Outputs.AppPendingDeployment> PendingDeployment { get; private set; } = null!;
@@ -140,6 +149,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
+
+        [Output("userApiScopes")]
+        public Output<ImmutableArray<string>> UserApiScopes { get; private set; } = null!;
 
 
         /// <summary>
@@ -220,6 +232,14 @@ namespace Pulumi.Databricks
             set => _resources = value;
         }
 
+        [Input("userApiScopes")]
+        private InputList<string>? _userApiScopes;
+        public InputList<string> UserApiScopes
+        {
+            get => _userApiScopes ?? (_userApiScopes = new InputList<string>());
+            set => _userApiScopes = value;
+        }
+
         public AppArgs()
         {
         }
@@ -279,6 +299,14 @@ namespace Pulumi.Databricks
         [Input("effectiveBudgetPolicyId")]
         public Input<string>? EffectiveBudgetPolicyId { get; set; }
 
+        [Input("effectiveUserApiScopes")]
+        private InputList<string>? _effectiveUserApiScopes;
+        public InputList<string> EffectiveUserApiScopes
+        {
+            get => _effectiveUserApiScopes ?? (_effectiveUserApiScopes = new InputList<string>());
+            set => _effectiveUserApiScopes = value;
+        }
+
         /// <summary>
         /// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         /// </summary>
@@ -287,6 +315,12 @@ namespace Pulumi.Databricks
 
         [Input("noCompute")]
         public Input<bool>? NoCompute { get; set; }
+
+        [Input("oauth2AppClientId")]
+        public Input<string>? Oauth2AppClientId { get; set; }
+
+        [Input("oauth2AppIntegrationId")]
+        public Input<string>? Oauth2AppIntegrationId { get; set; }
 
         [Input("pendingDeployment")]
         public Input<Inputs.AppPendingDeploymentGetArgs>? PendingDeployment { get; set; }
@@ -335,6 +369,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
+
+        [Input("userApiScopes")]
+        private InputList<string>? _userApiScopes;
+        public InputList<string> UserApiScopes
+        {
+            get => _userApiScopes ?? (_userApiScopes = new InputList<string>());
+            set => _userApiScopes = value;
+        }
 
         public AppState()
         {
