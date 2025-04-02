@@ -20,7 +20,7 @@ public final class AccessControlRuleSetArgs extends com.pulumi.resources.Resourc
     /**
      * The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
      * 
-     * !&gt; **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+     * !&gt; Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
      * 
      */
     @Import(name="grantRules")
@@ -29,7 +29,7 @@ public final class AccessControlRuleSetArgs extends com.pulumi.resources.Resourc
     /**
      * @return The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
      * 
-     * !&gt; **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+     * !&gt; Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
      * 
      */
     public Optional<Output<List<AccessControlRuleSetGrantRuleArgs>>> grantRules() {
@@ -37,22 +37,22 @@ public final class AccessControlRuleSetArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-     * * `accounts/{account_id}/ruleSets/default`
-     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
+     * Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
+     * * `accounts/{account_id}/ruleSets/default` - account-level access control.
+     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
+     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
+     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-     * * `accounts/{account_id}/ruleSets/default`
-     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
+     * @return Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
+     * * `accounts/{account_id}/ruleSets/default` - account-level access control.
+     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
+     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
+     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
      * 
      */
     public Optional<Output<String>> name() {
@@ -87,7 +87,7 @@ public final class AccessControlRuleSetArgs extends com.pulumi.resources.Resourc
         /**
          * @param grantRules The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
          * 
-         * !&gt; **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+         * !&gt; Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class AccessControlRuleSetArgs extends com.pulumi.resources.Resourc
         /**
          * @param grantRules The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
          * 
-         * !&gt; **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+         * !&gt; Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class AccessControlRuleSetArgs extends com.pulumi.resources.Resourc
         /**
          * @param grantRules The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
          * 
-         * !&gt; **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+         * !&gt; Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
          * 
          * @return builder
          * 
@@ -122,11 +122,11 @@ public final class AccessControlRuleSetArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-         * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-         * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-         * * `accounts/{account_id}/ruleSets/default`
-         * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
+         * @param name Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
+         * * `accounts/{account_id}/ruleSets/default` - account-level access control.
+         * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
+         * * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
+         * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
          * 
          * @return builder
          * 
@@ -137,11 +137,11 @@ public final class AccessControlRuleSetArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-         * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-         * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-         * * `accounts/{account_id}/ruleSets/default`
-         * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
+         * @param name Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
+         * * `accounts/{account_id}/ruleSets/default` - account-level access control.
+         * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
+         * * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
+         * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
          * 
          * @return builder
          * 

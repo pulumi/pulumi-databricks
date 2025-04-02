@@ -34,6 +34,7 @@ class PipelineArgs:
                  deployment: Optional[pulumi.Input['PipelineDeploymentArgs']] = None,
                  development: Optional[pulumi.Input[bool]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
+                 event_log: Optional[pulumi.Input['PipelineEventLogArgs']] = None,
                  expected_last_modified: Optional[pulumi.Input[int]] = None,
                  filters: Optional[pulumi.Input['PipelineFiltersArgs']] = None,
                  gateway_definition: Optional[pulumi.Input['PipelineGatewayDefinitionArgs']] = None,
@@ -103,6 +104,8 @@ class PipelineArgs:
             pulumi.set(__self__, "development", development)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
+        if event_log is not None:
+            pulumi.set(__self__, "event_log", event_log)
         if expected_last_modified is not None:
             pulumi.set(__self__, "expected_last_modified", expected_last_modified)
         if filters is not None:
@@ -290,6 +293,15 @@ class PipelineArgs:
     @edition.setter
     def edition(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "edition", value)
+
+    @property
+    @pulumi.getter(name="eventLog")
+    def event_log(self) -> Optional[pulumi.Input['PipelineEventLogArgs']]:
+        return pulumi.get(self, "event_log")
+
+    @event_log.setter
+    def event_log(self, value: Optional[pulumi.Input['PipelineEventLogArgs']]):
+        pulumi.set(self, "event_log", value)
 
     @property
     @pulumi.getter(name="expectedLastModified")
@@ -518,6 +530,7 @@ class _PipelineState:
                  deployment: Optional[pulumi.Input['PipelineDeploymentArgs']] = None,
                  development: Optional[pulumi.Input[bool]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
+                 event_log: Optional[pulumi.Input['PipelineEventLogArgs']] = None,
                  expected_last_modified: Optional[pulumi.Input[int]] = None,
                  filters: Optional[pulumi.Input['PipelineFiltersArgs']] = None,
                  gateway_definition: Optional[pulumi.Input['PipelineGatewayDefinitionArgs']] = None,
@@ -588,6 +601,8 @@ class _PipelineState:
             pulumi.set(__self__, "development", development)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
+        if event_log is not None:
+            pulumi.set(__self__, "event_log", event_log)
         if expected_last_modified is not None:
             pulumi.set(__self__, "expected_last_modified", expected_last_modified)
         if filters is not None:
@@ -777,6 +792,15 @@ class _PipelineState:
     @edition.setter
     def edition(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "edition", value)
+
+    @property
+    @pulumi.getter(name="eventLog")
+    def event_log(self) -> Optional[pulumi.Input['PipelineEventLogArgs']]:
+        return pulumi.get(self, "event_log")
+
+    @event_log.setter
+    def event_log(self, value: Optional[pulumi.Input['PipelineEventLogArgs']]):
+        pulumi.set(self, "event_log", value)
 
     @property
     @pulumi.getter(name="expectedLastModified")
@@ -1016,6 +1040,7 @@ class Pipeline(pulumi.CustomResource):
                  deployment: Optional[pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']]] = None,
                  development: Optional[pulumi.Input[bool]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
+                 event_log: Optional[pulumi.Input[Union['PipelineEventLogArgs', 'PipelineEventLogArgsDict']]] = None,
                  expected_last_modified: Optional[pulumi.Input[int]] = None,
                  filters: Optional[pulumi.Input[Union['PipelineFiltersArgs', 'PipelineFiltersArgsDict']]] = None,
                  gateway_definition: Optional[pulumi.Input[Union['PipelineGatewayDefinitionArgs', 'PipelineGatewayDefinitionArgsDict']]] = None,
@@ -1256,6 +1281,7 @@ class Pipeline(pulumi.CustomResource):
                  deployment: Optional[pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']]] = None,
                  development: Optional[pulumi.Input[bool]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
+                 event_log: Optional[pulumi.Input[Union['PipelineEventLogArgs', 'PipelineEventLogArgsDict']]] = None,
                  expected_last_modified: Optional[pulumi.Input[int]] = None,
                  filters: Optional[pulumi.Input[Union['PipelineFiltersArgs', 'PipelineFiltersArgsDict']]] = None,
                  gateway_definition: Optional[pulumi.Input[Union['PipelineGatewayDefinitionArgs', 'PipelineGatewayDefinitionArgsDict']]] = None,
@@ -1298,6 +1324,7 @@ class Pipeline(pulumi.CustomResource):
             __props__.__dict__["deployment"] = deployment
             __props__.__dict__["development"] = development
             __props__.__dict__["edition"] = edition
+            __props__.__dict__["event_log"] = event_log
             __props__.__dict__["expected_last_modified"] = expected_last_modified
             __props__.__dict__["filters"] = filters
             __props__.__dict__["gateway_definition"] = gateway_definition
@@ -1342,6 +1369,7 @@ class Pipeline(pulumi.CustomResource):
             deployment: Optional[pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']]] = None,
             development: Optional[pulumi.Input[bool]] = None,
             edition: Optional[pulumi.Input[str]] = None,
+            event_log: Optional[pulumi.Input[Union['PipelineEventLogArgs', 'PipelineEventLogArgsDict']]] = None,
             expected_last_modified: Optional[pulumi.Input[int]] = None,
             filters: Optional[pulumi.Input[Union['PipelineFiltersArgs', 'PipelineFiltersArgsDict']]] = None,
             gateway_definition: Optional[pulumi.Input[Union['PipelineGatewayDefinitionArgs', 'PipelineGatewayDefinitionArgsDict']]] = None,
@@ -1408,6 +1436,7 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["deployment"] = deployment
         __props__.__dict__["development"] = development
         __props__.__dict__["edition"] = edition
+        __props__.__dict__["event_log"] = event_log
         __props__.__dict__["expected_last_modified"] = expected_last_modified
         __props__.__dict__["filters"] = filters
         __props__.__dict__["gateway_definition"] = gateway_definition
@@ -1525,6 +1554,11 @@ class Pipeline(pulumi.CustomResource):
         optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
         """
         return pulumi.get(self, "edition")
+
+    @property
+    @pulumi.getter(name="eventLog")
+    def event_log(self) -> pulumi.Output[Optional['outputs.PipelineEventLog']]:
+        return pulumi.get(self, "event_log")
 
     @property
     @pulumi.getter(name="expectedLastModified")

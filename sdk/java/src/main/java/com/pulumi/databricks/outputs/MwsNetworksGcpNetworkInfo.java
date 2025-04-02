@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class MwsNetworksGcpNetworkInfo {
@@ -18,13 +20,21 @@ public final class MwsNetworksGcpNetworkInfo {
     /**
      * @return The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
      * 
+     * @deprecated
+     * gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
+     * 
      */
-    private String podIpRangeName;
+    @Deprecated /* gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc */
+    private @Nullable String podIpRangeName;
     /**
      * @return The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
      * 
+     * @deprecated
+     * gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
+     * 
      */
-    private String serviceIpRangeName;
+    @Deprecated /* gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc */
+    private @Nullable String serviceIpRangeName;
     /**
      * @return The ID of the subnet associated with this network.
      * 
@@ -52,16 +62,24 @@ public final class MwsNetworksGcpNetworkInfo {
     /**
      * @return The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
      * 
+     * @deprecated
+     * gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
+     * 
      */
-    public String podIpRangeName() {
-        return this.podIpRangeName;
+    @Deprecated /* gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc */
+    public Optional<String> podIpRangeName() {
+        return Optional.ofNullable(this.podIpRangeName);
     }
     /**
      * @return The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
      * 
+     * @deprecated
+     * gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
+     * 
      */
-    public String serviceIpRangeName() {
-        return this.serviceIpRangeName;
+    @Deprecated /* gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc */
+    public Optional<String> serviceIpRangeName() {
+        return Optional.ofNullable(this.serviceIpRangeName);
     }
     /**
      * @return The ID of the subnet associated with this network.
@@ -95,8 +113,8 @@ public final class MwsNetworksGcpNetworkInfo {
     @CustomType.Builder
     public static final class Builder {
         private String networkProjectId;
-        private String podIpRangeName;
-        private String serviceIpRangeName;
+        private @Nullable String podIpRangeName;
+        private @Nullable String serviceIpRangeName;
         private String subnetId;
         private String subnetRegion;
         private String vpcId;
@@ -120,18 +138,14 @@ public final class MwsNetworksGcpNetworkInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder podIpRangeName(String podIpRangeName) {
-            if (podIpRangeName == null) {
-              throw new MissingRequiredPropertyException("MwsNetworksGcpNetworkInfo", "podIpRangeName");
-            }
+        public Builder podIpRangeName(@Nullable String podIpRangeName) {
+
             this.podIpRangeName = podIpRangeName;
             return this;
         }
         @CustomType.Setter
-        public Builder serviceIpRangeName(String serviceIpRangeName) {
-            if (serviceIpRangeName == null) {
-              throw new MissingRequiredPropertyException("MwsNetworksGcpNetworkInfo", "serviceIpRangeName");
-            }
+        public Builder serviceIpRangeName(@Nullable String serviceIpRangeName) {
+
             this.serviceIpRangeName = serviceIpRangeName;
             return this;
         }

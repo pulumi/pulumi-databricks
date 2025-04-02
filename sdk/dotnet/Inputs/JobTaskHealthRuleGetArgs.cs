@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class JobTaskHealthRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+        /// string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
         /// </summary>
         [Input("metric", required: true)]
         public Input<string> Metric { get; set; } = null!;

@@ -67,7 +67,7 @@ func GetAwsBucketPolicy(ctx *pulumi.Context, args *GetAwsBucketPolicyArgs, opts 
 
 // A collection of arguments for invoking getAwsBucketPolicy.
 type GetAwsBucketPolicyArgs struct {
-	// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+	// AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
 	AwsPartition *string `pulumi:"awsPartition"`
 	// AWS S3 Bucket name for which to generate the policy document.
 	Bucket string `pulumi:"bucket"`
@@ -104,7 +104,7 @@ func GetAwsBucketPolicyOutput(ctx *pulumi.Context, args GetAwsBucketPolicyOutput
 
 // A collection of arguments for invoking getAwsBucketPolicy.
 type GetAwsBucketPolicyOutputArgs struct {
-	// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+	// AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
 	AwsPartition pulumi.StringPtrInput `pulumi:"awsPartition"`
 	// AWS S3 Bucket name for which to generate the policy document.
 	Bucket pulumi.StringInput `pulumi:"bucket"`

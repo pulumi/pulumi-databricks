@@ -22,6 +22,7 @@ __all__ = ['ModelServingArgs', 'ModelServing']
 class ModelServingArgs:
     def __init__(__self__, *,
                  ai_gateway: Optional[pulumi.Input['ModelServingAiGatewayArgs']] = None,
+                 budget_policy_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['ModelServingConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]] = None,
@@ -38,6 +39,8 @@ class ModelServingArgs:
         """
         if ai_gateway is not None:
             pulumi.set(__self__, "ai_gateway", ai_gateway)
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if name is not None:
@@ -60,6 +63,15 @@ class ModelServingArgs:
     @ai_gateway.setter
     def ai_gateway(self, value: Optional[pulumi.Input['ModelServingAiGatewayArgs']]):
         pulumi.set(self, "ai_gateway", value)
+
+    @property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "budget_policy_id")
+
+    @budget_policy_id.setter
+    def budget_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "budget_policy_id", value)
 
     @property
     @pulumi.getter
@@ -126,6 +138,7 @@ class ModelServingArgs:
 class _ModelServingState:
     def __init__(__self__, *,
                  ai_gateway: Optional[pulumi.Input['ModelServingAiGatewayArgs']] = None,
+                 budget_policy_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['ModelServingConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]] = None,
@@ -144,6 +157,8 @@ class _ModelServingState:
         """
         if ai_gateway is not None:
             pulumi.set(__self__, "ai_gateway", ai_gateway)
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if name is not None:
@@ -168,6 +183,15 @@ class _ModelServingState:
     @ai_gateway.setter
     def ai_gateway(self, value: Optional[pulumi.Input['ModelServingAiGatewayArgs']]):
         pulumi.set(self, "ai_gateway", value)
+
+    @property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "budget_policy_id")
+
+    @budget_policy_id.setter
+    def budget_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "budget_policy_id", value)
 
     @property
     @pulumi.getter
@@ -248,6 +272,7 @@ class ModelServing(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ai_gateway: Optional[pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']]] = None,
+                 budget_policy_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
@@ -427,6 +452,7 @@ class ModelServing(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ai_gateway: Optional[pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']]] = None,
+                 budget_policy_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
@@ -442,6 +468,7 @@ class ModelServing(pulumi.CustomResource):
             __props__ = ModelServingArgs.__new__(ModelServingArgs)
 
             __props__.__dict__["ai_gateway"] = ai_gateway
+            __props__.__dict__["budget_policy_id"] = budget_policy_id
             __props__.__dict__["config"] = config
             __props__.__dict__["name"] = name
             __props__.__dict__["rate_limits"] = rate_limits
@@ -459,6 +486,7 @@ class ModelServing(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             ai_gateway: Optional[pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']]] = None,
+            budget_policy_id: Optional[pulumi.Input[str]] = None,
             config: Optional[pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
@@ -485,6 +513,7 @@ class ModelServing(pulumi.CustomResource):
         __props__ = _ModelServingState.__new__(_ModelServingState)
 
         __props__.__dict__["ai_gateway"] = ai_gateway
+        __props__.__dict__["budget_policy_id"] = budget_policy_id
         __props__.__dict__["config"] = config
         __props__.__dict__["name"] = name
         __props__.__dict__["rate_limits"] = rate_limits
@@ -500,6 +529,11 @@ class ModelServing(pulumi.CustomResource):
         A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
         """
         return pulumi.get(self, "ai_gateway")
+
+    @property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "budget_policy_id")
 
     @property
     @pulumi.getter

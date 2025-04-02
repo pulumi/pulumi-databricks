@@ -133,6 +133,12 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
     public Output<Optional<ModelServingAiGateway>> aiGateway() {
         return Codegen.optional(this.aiGateway);
     }
+    @Export(name="budgetPolicyId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> budgetPolicyId;
+
+    public Output<Optional<String>> budgetPolicyId() {
+        return Codegen.optional(this.budgetPolicyId);
+    }
     /**
      * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
      * 

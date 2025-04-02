@@ -17,6 +17,7 @@ namespace Pulumi.Databricks.Outputs
         /// A block with AI Gateway configuration for the serving endpoint.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayResult> AiGateways;
+        public readonly string? BudgetPolicyId;
         /// <summary>
         /// The model serving endpoint configuration.
         /// </summary>
@@ -40,6 +41,8 @@ namespace Pulumi.Databricks.Outputs
         private GetServingEndpointsEndpointResult(
             ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayResult> aiGateways,
 
+            string? budgetPolicyId,
+
             ImmutableArray<Outputs.GetServingEndpointsEndpointConfigResult> configs,
 
             int? creationTimestamp,
@@ -59,6 +62,7 @@ namespace Pulumi.Databricks.Outputs
             string? task)
         {
             AiGateways = aiGateways;
+            BudgetPolicyId = budgetPolicyId;
             Configs = configs;
             CreationTimestamp = creationTimestamp;
             Creator = creator;

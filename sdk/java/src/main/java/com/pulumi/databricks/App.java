@@ -233,6 +233,12 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<String> effectiveBudgetPolicyId() {
         return this.effectiveBudgetPolicyId;
     }
+    @Export(name="effectiveUserApiScopes", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> effectiveUserApiScopes;
+
+    public Output<List<String>> effectiveUserApiScopes() {
+        return this.effectiveUserApiScopes;
+    }
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      * 
@@ -252,6 +258,18 @@ public class App extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<Boolean>> noCompute() {
         return Codegen.optional(this.noCompute);
+    }
+    @Export(name="oauth2AppClientId", refs={String.class}, tree="[0]")
+    private Output<String> oauth2AppClientId;
+
+    public Output<String> oauth2AppClientId() {
+        return this.oauth2AppClientId;
+    }
+    @Export(name="oauth2AppIntegrationId", refs={String.class}, tree="[0]")
+    private Output<String> oauth2AppIntegrationId;
+
+    public Output<String> oauth2AppIntegrationId() {
+        return this.oauth2AppIntegrationId;
     }
     @Export(name="pendingDeployment", refs={AppPendingDeployment.class}, tree="[0]")
     private Output<AppPendingDeployment> pendingDeployment;
@@ -348,6 +366,12 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<String> url() {
         return this.url;
+    }
+    @Export(name="userApiScopes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> userApiScopes;
+
+    public Output<Optional<List<String>>> userApiScopes() {
+        return Codegen.optional(this.userApiScopes);
     }
 
     /**

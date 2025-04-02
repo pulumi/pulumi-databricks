@@ -15,14 +15,14 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
         /// </summary>
-        [Input("connectivityType", required: true)]
-        public Input<string> ConnectivityType { get; set; } = null!;
+        [Input("connectivityType")]
+        public Input<string>? ConnectivityType { get; set; }
 
         /// <summary>
         /// The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
         /// </summary>
-        [Input("masterIpRange", required: true)]
-        public Input<string> MasterIpRange { get; set; } = null!;
+        [Input("masterIpRange")]
+        public Input<string>? MasterIpRange { get; set; }
 
         public MwsWorkspacesGkeConfigGetArgs()
         {

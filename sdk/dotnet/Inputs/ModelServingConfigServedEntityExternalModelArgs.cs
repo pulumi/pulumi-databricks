@@ -36,6 +36,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("cohereConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelCohereConfigArgs>? CohereConfig { get; set; }
 
+        [Input("customProviderConfig")]
+        public Input<Inputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs>? CustomProviderConfig { get; set; }
+
         /// <summary>
         /// Databricks Model Serving Config
         /// </summary>

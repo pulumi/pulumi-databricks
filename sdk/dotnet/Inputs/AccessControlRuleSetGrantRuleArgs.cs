@@ -28,11 +28,16 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions).
+        /// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions), depending on the `name` defined:
+        /// * `accounts/{account_id}/ruleSets/default`
+        /// * `roles/marketplace.admin` - Databricks Marketplace administrator.
+        /// * `roles/billing.admin` - Billing administrator.
+        /// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
         /// * `roles/servicePrincipal.manager` - Manager of a service principal.
         /// * `roles/servicePrincipal.user` - User of a service principal.
+        /// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
         /// * `roles/group.manager` - Manager of a group.
-        /// * `roles/marketplace.admin` - Admin of marketplace.
+        /// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
         /// * `roles/budgetPolicy.manager` - Manager of a budget policy.
         /// * `roles/budgetPolicy.user` - User of a budget policy.
         /// </summary>

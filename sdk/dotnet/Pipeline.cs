@@ -189,6 +189,9 @@ namespace Pulumi.Databricks
         [Output("edition")]
         public Output<string?> Edition { get; private set; } = null!;
 
+        [Output("eventLog")]
+        public Output<Outputs.PipelineEventLog?> EventLog { get; private set; } = null!;
+
         [Output("expectedLastModified")]
         public Output<int?> ExpectedLastModified { get; private set; } = null!;
 
@@ -409,6 +412,9 @@ namespace Pulumi.Databricks
         [Input("edition")]
         public Input<string>? Edition { get; set; }
 
+        [Input("eventLog")]
+        public Input<Inputs.PipelineEventLogArgs>? EventLog { get; set; }
+
         [Input("expectedLastModified")]
         public Input<int>? ExpectedLastModified { get; set; }
 
@@ -603,6 +609,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
+
+        [Input("eventLog")]
+        public Input<Inputs.PipelineEventLogGetArgs>? EventLog { get; set; }
 
         [Input("expectedLastModified")]
         public Input<int>? ExpectedLastModified { get; set; }

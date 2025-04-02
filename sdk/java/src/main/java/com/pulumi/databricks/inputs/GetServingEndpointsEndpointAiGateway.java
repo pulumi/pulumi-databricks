@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetServingEndpointsEndpointAiGatewayFallbackConfig;
 import com.pulumi.databricks.inputs.GetServingEndpointsEndpointAiGatewayGuardrail;
 import com.pulumi.databricks.inputs.GetServingEndpointsEndpointAiGatewayInferenceTableConfig;
 import com.pulumi.databricks.inputs.GetServingEndpointsEndpointAiGatewayRateLimit;
@@ -17,6 +18,13 @@ import javax.annotation.Nullable;
 public final class GetServingEndpointsEndpointAiGateway extends com.pulumi.resources.InvokeArgs {
 
     public static final GetServingEndpointsEndpointAiGateway Empty = new GetServingEndpointsEndpointAiGateway();
+
+    @Import(name="fallbackConfigs")
+    private @Nullable List<GetServingEndpointsEndpointAiGatewayFallbackConfig> fallbackConfigs;
+
+    public Optional<List<GetServingEndpointsEndpointAiGatewayFallbackConfig>> fallbackConfigs() {
+        return Optional.ofNullable(this.fallbackConfigs);
+    }
 
     @Import(name="guardrails")
     private @Nullable List<GetServingEndpointsEndpointAiGatewayGuardrail> guardrails;
@@ -57,6 +65,7 @@ public final class GetServingEndpointsEndpointAiGateway extends com.pulumi.resou
     private GetServingEndpointsEndpointAiGateway() {}
 
     private GetServingEndpointsEndpointAiGateway(GetServingEndpointsEndpointAiGateway $) {
+        this.fallbackConfigs = $.fallbackConfigs;
         this.guardrails = $.guardrails;
         this.inferenceTableConfigs = $.inferenceTableConfigs;
         this.rateLimits = $.rateLimits;
@@ -79,6 +88,15 @@ public final class GetServingEndpointsEndpointAiGateway extends com.pulumi.resou
 
         public Builder(GetServingEndpointsEndpointAiGateway defaults) {
             $ = new GetServingEndpointsEndpointAiGateway(Objects.requireNonNull(defaults));
+        }
+
+        public Builder fallbackConfigs(@Nullable List<GetServingEndpointsEndpointAiGatewayFallbackConfig> fallbackConfigs) {
+            $.fallbackConfigs = fallbackConfigs;
+            return this;
+        }
+
+        public Builder fallbackConfigs(GetServingEndpointsEndpointAiGatewayFallbackConfig... fallbackConfigs) {
+            return fallbackConfigs(List.of(fallbackConfigs));
         }
 
         public Builder guardrails(@Nullable List<GetServingEndpointsEndpointAiGatewayGuardrail> guardrails) {

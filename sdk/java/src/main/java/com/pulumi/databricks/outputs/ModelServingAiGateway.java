@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.ModelServingAiGatewayFallbackConfig;
 import com.pulumi.databricks.outputs.ModelServingAiGatewayGuardrails;
 import com.pulumi.databricks.outputs.ModelServingAiGatewayInferenceTableConfig;
 import com.pulumi.databricks.outputs.ModelServingAiGatewayRateLimit;
@@ -15,6 +16,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingAiGateway {
+    private @Nullable ModelServingAiGatewayFallbackConfig fallbackConfig;
     /**
      * @return Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
      * 
@@ -37,6 +39,9 @@ public final class ModelServingAiGateway {
     private @Nullable ModelServingAiGatewayUsageTrackingConfig usageTrackingConfig;
 
     private ModelServingAiGateway() {}
+    public Optional<ModelServingAiGatewayFallbackConfig> fallbackConfig() {
+        return Optional.ofNullable(this.fallbackConfig);
+    }
     /**
      * @return Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
      * 
@@ -75,6 +80,7 @@ public final class ModelServingAiGateway {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ModelServingAiGatewayFallbackConfig fallbackConfig;
         private @Nullable ModelServingAiGatewayGuardrails guardrails;
         private @Nullable ModelServingAiGatewayInferenceTableConfig inferenceTableConfig;
         private @Nullable List<ModelServingAiGatewayRateLimit> rateLimits;
@@ -82,12 +88,19 @@ public final class ModelServingAiGateway {
         public Builder() {}
         public Builder(ModelServingAiGateway defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.fallbackConfig = defaults.fallbackConfig;
     	      this.guardrails = defaults.guardrails;
     	      this.inferenceTableConfig = defaults.inferenceTableConfig;
     	      this.rateLimits = defaults.rateLimits;
     	      this.usageTrackingConfig = defaults.usageTrackingConfig;
         }
 
+        @CustomType.Setter
+        public Builder fallbackConfig(@Nullable ModelServingAiGatewayFallbackConfig fallbackConfig) {
+
+            this.fallbackConfig = fallbackConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder guardrails(@Nullable ModelServingAiGatewayGuardrails guardrails) {
 
@@ -117,6 +130,7 @@ public final class ModelServingAiGateway {
         }
         public ModelServingAiGateway build() {
             final var _resultValue = new ModelServingAiGateway();
+            _resultValue.fallbackConfig = fallbackConfig;
             _resultValue.guardrails = guardrails;
             _resultValue.inferenceTableConfig = inferenceTableConfig;
             _resultValue.rateLimits = rateLimits;

@@ -45,7 +45,7 @@ export function getAwsBucketPolicy(args: GetAwsBucketPolicyArgs, opts?: pulumi.I
  */
 export interface GetAwsBucketPolicyArgs {
     /**
-     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
      */
     awsPartition?: string;
     /**
@@ -128,7 +128,7 @@ export function getAwsBucketPolicyOutput(args: GetAwsBucketPolicyOutputArgs, opt
  */
 export interface GetAwsBucketPolicyOutputArgs {
     /**
-     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
      */
     awsPartition?: pulumi.Input<string>;
     /**

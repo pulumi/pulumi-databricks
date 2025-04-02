@@ -60,6 +60,7 @@ public final class GetAppApp {
      * 
      */
     private String effectiveBudgetPolicyId;
+    private List<String> effectiveUserApiScopes;
     /**
      * @return Id of the job to grant permission on.
      * 
@@ -70,6 +71,8 @@ public final class GetAppApp {
      * 
      */
     private String name;
+    private String oauth2AppClientId;
+    private String oauth2AppIntegrationId;
     private GetAppAppPendingDeployment pendingDeployment;
     /**
      * @return A list of resources that the app have access to.
@@ -102,6 +105,7 @@ public final class GetAppApp {
      * 
      */
     private String url;
+    private @Nullable List<String> userApiScopes;
 
     private GetAppApp() {}
     public GetAppAppActiveDeployment activeDeployment() {
@@ -163,6 +167,9 @@ public final class GetAppApp {
     public String effectiveBudgetPolicyId() {
         return this.effectiveBudgetPolicyId;
     }
+    public List<String> effectiveUserApiScopes() {
+        return this.effectiveUserApiScopes;
+    }
     /**
      * @return Id of the job to grant permission on.
      * 
@@ -176,6 +183,12 @@ public final class GetAppApp {
      */
     public String name() {
         return this.name;
+    }
+    public String oauth2AppClientId() {
+        return this.oauth2AppClientId;
+    }
+    public String oauth2AppIntegrationId() {
+        return this.oauth2AppIntegrationId;
     }
     public GetAppAppPendingDeployment pendingDeployment() {
         return this.pendingDeployment;
@@ -225,6 +238,9 @@ public final class GetAppApp {
     public String url() {
         return this.url;
     }
+    public List<String> userApiScopes() {
+        return this.userApiScopes == null ? List.of() : this.userApiScopes;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -244,8 +260,11 @@ public final class GetAppApp {
         private String defaultSourceCodePath;
         private @Nullable String description;
         private String effectiveBudgetPolicyId;
+        private List<String> effectiveUserApiScopes;
         private String id;
         private String name;
+        private String oauth2AppClientId;
+        private String oauth2AppIntegrationId;
         private GetAppAppPendingDeployment pendingDeployment;
         private @Nullable List<GetAppAppResource> resources;
         private String servicePrincipalClientId;
@@ -254,6 +273,7 @@ public final class GetAppApp {
         private String updateTime;
         private String updater;
         private String url;
+        private @Nullable List<String> userApiScopes;
         public Builder() {}
         public Builder(GetAppApp defaults) {
     	      Objects.requireNonNull(defaults);
@@ -266,8 +286,11 @@ public final class GetAppApp {
     	      this.defaultSourceCodePath = defaults.defaultSourceCodePath;
     	      this.description = defaults.description;
     	      this.effectiveBudgetPolicyId = defaults.effectiveBudgetPolicyId;
+    	      this.effectiveUserApiScopes = defaults.effectiveUserApiScopes;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.oauth2AppClientId = defaults.oauth2AppClientId;
+    	      this.oauth2AppIntegrationId = defaults.oauth2AppIntegrationId;
     	      this.pendingDeployment = defaults.pendingDeployment;
     	      this.resources = defaults.resources;
     	      this.servicePrincipalClientId = defaults.servicePrincipalClientId;
@@ -276,6 +299,7 @@ public final class GetAppApp {
     	      this.updateTime = defaults.updateTime;
     	      this.updater = defaults.updater;
     	      this.url = defaults.url;
+    	      this.userApiScopes = defaults.userApiScopes;
         }
 
         @CustomType.Setter
@@ -347,6 +371,17 @@ public final class GetAppApp {
             return this;
         }
         @CustomType.Setter
+        public Builder effectiveUserApiScopes(List<String> effectiveUserApiScopes) {
+            if (effectiveUserApiScopes == null) {
+              throw new MissingRequiredPropertyException("GetAppApp", "effectiveUserApiScopes");
+            }
+            this.effectiveUserApiScopes = effectiveUserApiScopes;
+            return this;
+        }
+        public Builder effectiveUserApiScopes(String... effectiveUserApiScopes) {
+            return effectiveUserApiScopes(List.of(effectiveUserApiScopes));
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetAppApp", "id");
@@ -360,6 +395,22 @@ public final class GetAppApp {
               throw new MissingRequiredPropertyException("GetAppApp", "name");
             }
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oauth2AppClientId(String oauth2AppClientId) {
+            if (oauth2AppClientId == null) {
+              throw new MissingRequiredPropertyException("GetAppApp", "oauth2AppClientId");
+            }
+            this.oauth2AppClientId = oauth2AppClientId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oauth2AppIntegrationId(String oauth2AppIntegrationId) {
+            if (oauth2AppIntegrationId == null) {
+              throw new MissingRequiredPropertyException("GetAppApp", "oauth2AppIntegrationId");
+            }
+            this.oauth2AppIntegrationId = oauth2AppIntegrationId;
             return this;
         }
         @CustomType.Setter
@@ -427,6 +478,15 @@ public final class GetAppApp {
             this.url = url;
             return this;
         }
+        @CustomType.Setter
+        public Builder userApiScopes(@Nullable List<String> userApiScopes) {
+
+            this.userApiScopes = userApiScopes;
+            return this;
+        }
+        public Builder userApiScopes(String... userApiScopes) {
+            return userApiScopes(List.of(userApiScopes));
+        }
         public GetAppApp build() {
             final var _resultValue = new GetAppApp();
             _resultValue.activeDeployment = activeDeployment;
@@ -438,8 +498,11 @@ public final class GetAppApp {
             _resultValue.defaultSourceCodePath = defaultSourceCodePath;
             _resultValue.description = description;
             _resultValue.effectiveBudgetPolicyId = effectiveBudgetPolicyId;
+            _resultValue.effectiveUserApiScopes = effectiveUserApiScopes;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.oauth2AppClientId = oauth2AppClientId;
+            _resultValue.oauth2AppIntegrationId = oauth2AppIntegrationId;
             _resultValue.pendingDeployment = pendingDeployment;
             _resultValue.resources = resources;
             _resultValue.servicePrincipalClientId = servicePrincipalClientId;
@@ -448,6 +511,7 @@ public final class GetAppApp {
             _resultValue.updateTime = updateTime;
             _resultValue.updater = updater;
             _resultValue.url = url;
+            _resultValue.userApiScopes = userApiScopes;
             return _resultValue;
         }
     }

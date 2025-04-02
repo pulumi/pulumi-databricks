@@ -85,7 +85,7 @@ func GetAwsUnityCatalogPolicy(ctx *pulumi.Context, args *GetAwsUnityCatalogPolic
 type GetAwsUnityCatalogPolicyArgs struct {
 	// The Account ID of the current AWS account (not your Databricks account).
 	AwsAccountId string `pulumi:"awsAccountId"`
-	// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+	// AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
 	AwsPartition *string `pulumi:"awsPartition"`
 	// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
 	BucketName string `pulumi:"bucketName"`
@@ -121,7 +121,7 @@ func GetAwsUnityCatalogPolicyOutput(ctx *pulumi.Context, args GetAwsUnityCatalog
 type GetAwsUnityCatalogPolicyOutputArgs struct {
 	// The Account ID of the current AWS account (not your Databricks account).
 	AwsAccountId pulumi.StringInput `pulumi:"awsAccountId"`
-	// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+	// AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
 	AwsPartition pulumi.StringPtrInput `pulumi:"awsPartition"`
 	// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`

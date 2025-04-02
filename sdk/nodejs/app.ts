@@ -94,11 +94,14 @@ export class App extends pulumi.CustomResource {
      * The effective budget policy ID.
      */
     public /*out*/ readonly effectiveBudgetPolicyId!: pulumi.Output<string>;
+    public /*out*/ readonly effectiveUserApiScopes!: pulumi.Output<string[]>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly noCompute!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly oauth2AppClientId!: pulumi.Output<string>;
+    public /*out*/ readonly oauth2AppIntegrationId!: pulumi.Output<string>;
     public /*out*/ readonly pendingDeployment!: pulumi.Output<outputs.AppPendingDeployment>;
     /**
      * A list of resources that the app have access to.
@@ -125,6 +128,7 @@ export class App extends pulumi.CustomResource {
      * The URL of the app once it is deployed.
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
+    public readonly userApiScopes!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a App resource with the given unique name, arguments, and options.
@@ -148,8 +152,11 @@ export class App extends pulumi.CustomResource {
             resourceInputs["defaultSourceCodePath"] = state ? state.defaultSourceCodePath : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveBudgetPolicyId"] = state ? state.effectiveBudgetPolicyId : undefined;
+            resourceInputs["effectiveUserApiScopes"] = state ? state.effectiveUserApiScopes : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["noCompute"] = state ? state.noCompute : undefined;
+            resourceInputs["oauth2AppClientId"] = state ? state.oauth2AppClientId : undefined;
+            resourceInputs["oauth2AppIntegrationId"] = state ? state.oauth2AppIntegrationId : undefined;
             resourceInputs["pendingDeployment"] = state ? state.pendingDeployment : undefined;
             resourceInputs["resources"] = state ? state.resources : undefined;
             resourceInputs["servicePrincipalClientId"] = state ? state.servicePrincipalClientId : undefined;
@@ -158,6 +165,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["updater"] = state ? state.updater : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["userApiScopes"] = state ? state.userApiScopes : undefined;
         } else {
             const args = argsOrState as AppArgs | undefined;
             resourceInputs["budgetPolicyId"] = args ? args.budgetPolicyId : undefined;
@@ -165,6 +173,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["noCompute"] = args ? args.noCompute : undefined;
             resourceInputs["resources"] = args ? args.resources : undefined;
+            resourceInputs["userApiScopes"] = args ? args.userApiScopes : undefined;
             resourceInputs["activeDeployment"] = undefined /*out*/;
             resourceInputs["appStatus"] = undefined /*out*/;
             resourceInputs["computeStatus"] = undefined /*out*/;
@@ -172,6 +181,9 @@ export class App extends pulumi.CustomResource {
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["defaultSourceCodePath"] = undefined /*out*/;
             resourceInputs["effectiveBudgetPolicyId"] = undefined /*out*/;
+            resourceInputs["effectiveUserApiScopes"] = undefined /*out*/;
+            resourceInputs["oauth2AppClientId"] = undefined /*out*/;
+            resourceInputs["oauth2AppIntegrationId"] = undefined /*out*/;
             resourceInputs["pendingDeployment"] = undefined /*out*/;
             resourceInputs["servicePrincipalClientId"] = undefined /*out*/;
             resourceInputs["servicePrincipalId"] = undefined /*out*/;
@@ -222,11 +234,14 @@ export interface AppState {
      * The effective budget policy ID.
      */
     effectiveBudgetPolicyId?: pulumi.Input<string>;
+    effectiveUserApiScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
     name?: pulumi.Input<string>;
     noCompute?: pulumi.Input<boolean>;
+    oauth2AppClientId?: pulumi.Input<string>;
+    oauth2AppIntegrationId?: pulumi.Input<string>;
     pendingDeployment?: pulumi.Input<inputs.AppPendingDeployment>;
     /**
      * A list of resources that the app have access to.
@@ -253,6 +268,7 @@ export interface AppState {
      * The URL of the app once it is deployed.
      */
     url?: pulumi.Input<string>;
+    userApiScopes?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -276,4 +292,5 @@ export interface AppArgs {
      * A list of resources that the app have access to.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.AppResource>[]>;
+    userApiScopes?: pulumi.Input<pulumi.Input<string>[]>;
 }

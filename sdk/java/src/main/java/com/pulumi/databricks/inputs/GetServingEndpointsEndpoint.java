@@ -35,6 +35,13 @@ public final class GetServingEndpointsEndpoint extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.aiGateways);
     }
 
+    @Import(name="budgetPolicyId")
+    private @Nullable String budgetPolicyId;
+
+    public Optional<String> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
+    }
+
     /**
      * The model serving endpoint configuration.
      * 
@@ -126,6 +133,7 @@ public final class GetServingEndpointsEndpoint extends com.pulumi.resources.Invo
 
     private GetServingEndpointsEndpoint(GetServingEndpointsEndpoint $) {
         this.aiGateways = $.aiGateways;
+        this.budgetPolicyId = $.budgetPolicyId;
         this.configs = $.configs;
         this.creationTimestamp = $.creationTimestamp;
         this.creator = $.creator;
@@ -174,6 +182,11 @@ public final class GetServingEndpointsEndpoint extends com.pulumi.resources.Invo
          */
         public Builder aiGateways(GetServingEndpointsEndpointAiGateway... aiGateways) {
             return aiGateways(List.of(aiGateways));
+        }
+
+        public Builder budgetPolicyId(@Nullable String budgetPolicyId) {
+            $.budgetPolicyId = budgetPolicyId;
+            return this;
         }
 
         /**

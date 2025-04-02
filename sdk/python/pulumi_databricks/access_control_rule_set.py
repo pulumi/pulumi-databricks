@@ -27,12 +27,12 @@ class AccessControlRuleSetArgs:
         The set of arguments for constructing a AccessControlRuleSet resource.
         :param pulumi.Input[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]] grant_rules: The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
                
-               !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
-        :param pulumi.Input[str] name: Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-               * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-               * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-               * `accounts/{account_id}/ruleSets/default`
-               * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
+               !> Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+        :param pulumi.Input[str] name: Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
+               * `accounts/{account_id}/ruleSets/default` - account-level access control.
+               * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
+               * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
+               * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
         """
         if grant_rules is not None:
             pulumi.set(__self__, "grant_rules", grant_rules)
@@ -45,7 +45,7 @@ class AccessControlRuleSetArgs:
         """
         The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
 
-        !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+        !> Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
         """
         return pulumi.get(self, "grant_rules")
 
@@ -57,11 +57,11 @@ class AccessControlRuleSetArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-        * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-        * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-        * `accounts/{account_id}/ruleSets/default`
-        * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
+        Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
+        * `accounts/{account_id}/ruleSets/default` - account-level access control.
+        * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
+        * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
+        * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
         """
         return pulumi.get(self, "name")
 
@@ -80,12 +80,12 @@ class _AccessControlRuleSetState:
         Input properties used for looking up and filtering AccessControlRuleSet resources.
         :param pulumi.Input[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]] grant_rules: The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
                
-               !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
-        :param pulumi.Input[str] name: Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-               * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-               * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-               * `accounts/{account_id}/ruleSets/default`
-               * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
+               !> Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+        :param pulumi.Input[str] name: Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
+               * `accounts/{account_id}/ruleSets/default` - account-level access control.
+               * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
+               * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
+               * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
         """
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -109,7 +109,7 @@ class _AccessControlRuleSetState:
         """
         The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
 
-        !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+        !> Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
         """
         return pulumi.get(self, "grant_rules")
 
@@ -121,11 +121,11 @@ class _AccessControlRuleSetState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-        * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-        * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-        * `accounts/{account_id}/ruleSets/default`
-        * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
+        Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
+        * `accounts/{account_id}/ruleSets/default` - account-level access control.
+        * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
+        * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
+        * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
         """
         return pulumi.get(self, "name")
 
@@ -147,9 +147,10 @@ class AccessControlRuleSet(pulumi.CustomResource):
 
         This resource allows you to manage access rules on Databricks account level resources. For convenience we allow accessing this resource through the Databricks account and workspace.
 
-        > Currently, we only support managing access rules on service principal, group and account resources through `AccessControlRuleSet`.
-
+        > Currently, we only support managing access rules on specific object resources (service principal, group, budget policies and account) through `AccessControlRuleSet`.
         !> `AccessControlRuleSet` cannot be used to manage access rules for resources supported by databricks_permissions. Refer to its documentation for more information.
+
+        > This resource is _authoritative_ for permissions on objects. Configuring this resource for an object will **OVERWRITE** any existing permissions of the same type unless imported, and changes made outside of Pulumi will be reset.
 
         ## Service principal rule set usage
 
@@ -323,12 +324,12 @@ class AccessControlRuleSet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict']]]] grant_rules: The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
                
-               !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
-        :param pulumi.Input[str] name: Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-               * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-               * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-               * `accounts/{account_id}/ruleSets/default`
-               * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
+               !> Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+        :param pulumi.Input[str] name: Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
+               * `accounts/{account_id}/ruleSets/default` - account-level access control.
+               * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
+               * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
+               * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
         """
         ...
     @overload
@@ -341,9 +342,10 @@ class AccessControlRuleSet(pulumi.CustomResource):
 
         This resource allows you to manage access rules on Databricks account level resources. For convenience we allow accessing this resource through the Databricks account and workspace.
 
-        > Currently, we only support managing access rules on service principal, group and account resources through `AccessControlRuleSet`.
-
+        > Currently, we only support managing access rules on specific object resources (service principal, group, budget policies and account) through `AccessControlRuleSet`.
         !> `AccessControlRuleSet` cannot be used to manage access rules for resources supported by databricks_permissions. Refer to its documentation for more information.
+
+        > This resource is _authoritative_ for permissions on objects. Configuring this resource for an object will **OVERWRITE** any existing permissions of the same type unless imported, and changes made outside of Pulumi will be reset.
 
         ## Service principal rule set usage
 
@@ -564,12 +566,12 @@ class AccessControlRuleSet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict']]]] grant_rules: The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
                
-               !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
-        :param pulumi.Input[str] name: Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-               * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-               * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-               * `accounts/{account_id}/ruleSets/default`
-               * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
+               !> Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+        :param pulumi.Input[str] name: Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
+               * `accounts/{account_id}/ruleSets/default` - account-level access control.
+               * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
+               * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
+               * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -591,7 +593,7 @@ class AccessControlRuleSet(pulumi.CustomResource):
         """
         The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
 
-        !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+        !> Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
         """
         return pulumi.get(self, "grant_rules")
 
@@ -599,11 +601,11 @@ class AccessControlRuleSet(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-        * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-        * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-        * `accounts/{account_id}/ruleSets/default`
-        * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
+        Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
+        * `accounts/{account_id}/ruleSets/default` - account-level access control.
+        * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
+        * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
+        * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
         """
         return pulumi.get(self, "name")
 

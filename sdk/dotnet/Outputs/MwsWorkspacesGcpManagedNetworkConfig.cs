@@ -13,15 +13,15 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MwsWorkspacesGcpManagedNetworkConfig
     {
-        public readonly string GkeClusterPodIpRange;
-        public readonly string GkeClusterServiceIpRange;
+        public readonly string? GkeClusterPodIpRange;
+        public readonly string? GkeClusterServiceIpRange;
         public readonly string SubnetCidr;
 
         [OutputConstructor]
         private MwsWorkspacesGcpManagedNetworkConfig(
-            string gkeClusterPodIpRange,
+            string? gkeClusterPodIpRange,
 
-            string gkeClusterServiceIpRange,
+            string? gkeClusterServiceIpRange,
 
             string subnetCidr)
         {

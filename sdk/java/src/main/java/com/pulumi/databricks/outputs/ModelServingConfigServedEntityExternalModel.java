@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.ModelServingConfigServedEntityExternalModel
 import com.pulumi.databricks.outputs.ModelServingConfigServedEntityExternalModelAmazonBedrockConfig;
 import com.pulumi.databricks.outputs.ModelServingConfigServedEntityExternalModelAnthropicConfig;
 import com.pulumi.databricks.outputs.ModelServingConfigServedEntityExternalModelCohereConfig;
+import com.pulumi.databricks.outputs.ModelServingConfigServedEntityExternalModelCustomProviderConfig;
 import com.pulumi.databricks.outputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig;
 import com.pulumi.databricks.outputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig;
 import com.pulumi.databricks.outputs.ModelServingConfigServedEntityExternalModelOpenaiConfig;
@@ -40,6 +41,7 @@ public final class ModelServingConfigServedEntityExternalModel {
      * 
      */
     private @Nullable ModelServingConfigServedEntityExternalModelCohereConfig cohereConfig;
+    private @Nullable ModelServingConfigServedEntityExternalModelCustomProviderConfig customProviderConfig;
     /**
      * @return Databricks Model Serving Config
      * 
@@ -105,6 +107,9 @@ public final class ModelServingConfigServedEntityExternalModel {
     public Optional<ModelServingConfigServedEntityExternalModelCohereConfig> cohereConfig() {
         return Optional.ofNullable(this.cohereConfig);
     }
+    public Optional<ModelServingConfigServedEntityExternalModelCustomProviderConfig> customProviderConfig() {
+        return Optional.ofNullable(this.customProviderConfig);
+    }
     /**
      * @return Databricks Model Serving Config
      * 
@@ -168,6 +173,7 @@ public final class ModelServingConfigServedEntityExternalModel {
         private @Nullable ModelServingConfigServedEntityExternalModelAmazonBedrockConfig amazonBedrockConfig;
         private @Nullable ModelServingConfigServedEntityExternalModelAnthropicConfig anthropicConfig;
         private @Nullable ModelServingConfigServedEntityExternalModelCohereConfig cohereConfig;
+        private @Nullable ModelServingConfigServedEntityExternalModelCustomProviderConfig customProviderConfig;
         private @Nullable ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig databricksModelServingConfig;
         private @Nullable ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig googleCloudVertexAiConfig;
         private String name;
@@ -182,6 +188,7 @@ public final class ModelServingConfigServedEntityExternalModel {
     	      this.amazonBedrockConfig = defaults.amazonBedrockConfig;
     	      this.anthropicConfig = defaults.anthropicConfig;
     	      this.cohereConfig = defaults.cohereConfig;
+    	      this.customProviderConfig = defaults.customProviderConfig;
     	      this.databricksModelServingConfig = defaults.databricksModelServingConfig;
     	      this.googleCloudVertexAiConfig = defaults.googleCloudVertexAiConfig;
     	      this.name = defaults.name;
@@ -213,6 +220,12 @@ public final class ModelServingConfigServedEntityExternalModel {
         public Builder cohereConfig(@Nullable ModelServingConfigServedEntityExternalModelCohereConfig cohereConfig) {
 
             this.cohereConfig = cohereConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customProviderConfig(@Nullable ModelServingConfigServedEntityExternalModelCustomProviderConfig customProviderConfig) {
+
+            this.customProviderConfig = customProviderConfig;
             return this;
         }
         @CustomType.Setter
@@ -269,6 +282,7 @@ public final class ModelServingConfigServedEntityExternalModel {
             _resultValue.amazonBedrockConfig = amazonBedrockConfig;
             _resultValue.anthropicConfig = anthropicConfig;
             _resultValue.cohereConfig = cohereConfig;
+            _resultValue.customProviderConfig = customProviderConfig;
             _resultValue.databricksModelServingConfig = databricksModelServingConfig;
             _resultValue.googleCloudVertexAiConfig = googleCloudVertexAiConfig;
             _resultValue.name = name;

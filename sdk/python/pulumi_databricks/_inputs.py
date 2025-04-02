@@ -683,6 +683,8 @@ __all__ = [
     'MlflowWebhookJobSpecArgsDict',
     'ModelServingAiGatewayArgs',
     'ModelServingAiGatewayArgsDict',
+    'ModelServingAiGatewayFallbackConfigArgs',
+    'ModelServingAiGatewayFallbackConfigArgsDict',
     'ModelServingAiGatewayGuardrailsArgs',
     'ModelServingAiGatewayGuardrailsArgsDict',
     'ModelServingAiGatewayGuardrailsInputArgs',
@@ -715,6 +717,12 @@ __all__ = [
     'ModelServingConfigServedEntityExternalModelAnthropicConfigArgsDict',
     'ModelServingConfigServedEntityExternalModelCohereConfigArgs',
     'ModelServingConfigServedEntityExternalModelCohereConfigArgsDict',
+    'ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs',
+    'ModelServingConfigServedEntityExternalModelCustomProviderConfigArgsDict',
+    'ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs',
+    'ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgsDict',
+    'ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs',
+    'ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgsDict',
     'ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs',
     'ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgsDict',
     'ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs',
@@ -853,6 +861,8 @@ __all__ = [
     'PipelineClusterInitScriptWorkspaceArgsDict',
     'PipelineDeploymentArgs',
     'PipelineDeploymentArgsDict',
+    'PipelineEventLogArgs',
+    'PipelineEventLogArgsDict',
     'PipelineFiltersArgs',
     'PipelineFiltersArgsDict',
     'PipelineGatewayDefinitionArgs',
@@ -1651,6 +1661,8 @@ __all__ = [
     'GetServingEndpointsEndpointArgsDict',
     'GetServingEndpointsEndpointAiGatewayArgs',
     'GetServingEndpointsEndpointAiGatewayArgsDict',
+    'GetServingEndpointsEndpointAiGatewayFallbackConfigArgs',
+    'GetServingEndpointsEndpointAiGatewayFallbackConfigArgsDict',
     'GetServingEndpointsEndpointAiGatewayGuardrailArgs',
     'GetServingEndpointsEndpointAiGatewayGuardrailArgsDict',
     'GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs',
@@ -1681,6 +1693,12 @@ __all__ = [
     'GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigArgsDict',
     'GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigArgs',
     'GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigArgsDict',
+    'GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigArgs',
+    'GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigArgsDict',
+    'GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs',
+    'GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgsDict',
+    'GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs',
+    'GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgsDict',
     'GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigArgs',
     'GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigArgsDict',
     'GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs',
@@ -1773,11 +1791,16 @@ if not MYPY:
     class AccessControlRuleSetGrantRuleArgsDict(TypedDict):
         role: pulumi.Input[str]
         """
-        Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions).
+        Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions), depending on the `name` defined:
+        * `accounts/{account_id}/ruleSets/default`
+        * `roles/marketplace.admin` - Databricks Marketplace administrator.
+        * `roles/billing.admin` - Billing administrator.
+        * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
         * `roles/servicePrincipal.manager` - Manager of a service principal.
         * `roles/servicePrincipal.user` - User of a service principal.
+        * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
         * `roles/group.manager` - Manager of a group.
-        * `roles/marketplace.admin` - Admin of marketplace.
+        * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
         * `roles/budgetPolicy.manager` - Manager of a budget policy.
         * `roles/budgetPolicy.user` - User of a budget policy.
         """
@@ -1797,11 +1820,16 @@ class AccessControlRuleSetGrantRuleArgs:
                  role: pulumi.Input[str],
                  principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] role: Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions).
+        :param pulumi.Input[str] role: Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions), depending on the `name` defined:
+               * `accounts/{account_id}/ruleSets/default`
+               * `roles/marketplace.admin` - Databricks Marketplace administrator.
+               * `roles/billing.admin` - Billing administrator.
+               * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
                * `roles/servicePrincipal.manager` - Manager of a service principal.
                * `roles/servicePrincipal.user` - User of a service principal.
+               * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
                * `roles/group.manager` - Manager of a group.
-               * `roles/marketplace.admin` - Admin of marketplace.
+               * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
                * `roles/budgetPolicy.manager` - Manager of a budget policy.
                * `roles/budgetPolicy.user` - User of a budget policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] principals: a list of principals who are granted a role. The following format is supported:
@@ -1817,11 +1845,16 @@ class AccessControlRuleSetGrantRuleArgs:
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
         """
-        Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions).
+        Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions), depending on the `name` defined:
+        * `accounts/{account_id}/ruleSets/default`
+        * `roles/marketplace.admin` - Databricks Marketplace administrator.
+        * `roles/billing.admin` - Billing administrator.
+        * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
         * `roles/servicePrincipal.manager` - Manager of a service principal.
         * `roles/servicePrincipal.user` - User of a service principal.
+        * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
         * `roles/group.manager` - Manager of a group.
-        * `roles/marketplace.admin` - Admin of marketplace.
+        * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
         * `roles/budgetPolicy.manager` - Manager of a budget policy.
         * `roles/budgetPolicy.user` - User of a budget policy.
         """
@@ -3941,7 +3974,7 @@ if not MYPY:
         """
         first_on_demand: NotRequired[pulumi.Input[int]]
         """
-        The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
+        The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. If unspecified, the default value is 0.
         """
         instance_profile_arn: NotRequired[pulumi.Input[str]]
         """
@@ -3976,7 +4009,7 @@ class ClusterAwsAttributesArgs:
         :param pulumi.Input[int] ebs_volume_count: The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
         :param pulumi.Input[int] ebs_volume_size: The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
         :param pulumi.Input[str] ebs_volume_type: The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
-        :param pulumi.Input[int] first_on_demand: The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
+        :param pulumi.Input[int] first_on_demand: The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. If unspecified, the default value is 0.
         :param pulumi.Input[str] instance_profile_arn: Nodes for this cluster will only be placed on AWS instances with this instance profile. Please see InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
         :param pulumi.Input[int] spot_bid_price_percent: The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the cluster needs a new `i3.xlarge` spot instance, then the max price is half of the price of on-demand `i3.xlarge` instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand `i3.xlarge` instances. If not specified, the default value is `100`. When spot instances are requested for this cluster, only spot instances whose max price percentage matches this field will be considered. For safety, we enforce this field to be no more than `10000`.
         :param pulumi.Input[str] zone_id: Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-west-2a`. The provided availability zone must be in the same region as the Databricks deployment. For example, `us-west-2a` is not a valid zone ID if the Databricks deployment resides in the `us-east-1` region. Enable automatic availability zone selection ("Auto-AZ"), by setting the value `auto`. Databricks selects the AZ based on available IPs in the workspace subnets and retries in other availability zones if AWS returns insufficient capacity errors.
@@ -4072,7 +4105,7 @@ class ClusterAwsAttributesArgs:
     @pulumi.getter(name="firstOnDemand")
     def first_on_demand(self) -> Optional[pulumi.Input[int]]:
         """
-        The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
+        The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. If unspecified, the default value is 0.
         """
         return pulumi.get(self, "first_on_demand")
 
@@ -7781,7 +7814,7 @@ if not MYPY:
     class JobHealthRuleArgsDict(TypedDict):
         metric: pulumi.Input[str]
         """
-        string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+        string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
         """
         op: pulumi.Input[str]
         """
@@ -7801,7 +7834,7 @@ class JobHealthRuleArgs:
                  op: pulumi.Input[str],
                  value: pulumi.Input[int]):
         """
-        :param pulumi.Input[str] metric: string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+        :param pulumi.Input[str] metric: string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
         :param pulumi.Input[str] op: string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
         :param pulumi.Input[int] value: integer value used to compare to the given metric.
         """
@@ -7813,7 +7846,7 @@ class JobHealthRuleArgs:
     @pulumi.getter
     def metric(self) -> pulumi.Input[str]:
         """
-        string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+        string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
         """
         return pulumi.get(self, "metric")
 
@@ -14840,7 +14873,7 @@ if not MYPY:
     class JobTaskForEachTaskTaskHealthRuleArgsDict(TypedDict):
         metric: pulumi.Input[str]
         """
-        string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+        string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
         """
         op: pulumi.Input[str]
         """
@@ -14860,7 +14893,7 @@ class JobTaskForEachTaskTaskHealthRuleArgs:
                  op: pulumi.Input[str],
                  value: pulumi.Input[int]):
         """
-        :param pulumi.Input[str] metric: string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+        :param pulumi.Input[str] metric: string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
         :param pulumi.Input[str] op: string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
         :param pulumi.Input[int] value: integer value used to compare to the given metric.
         """
@@ -14872,7 +14905,7 @@ class JobTaskForEachTaskTaskHealthRuleArgs:
     @pulumi.getter
     def metric(self) -> pulumi.Input[str]:
         """
-        string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+        string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
         """
         return pulumi.get(self, "metric")
 
@@ -18666,7 +18699,7 @@ if not MYPY:
     class JobTaskHealthRuleArgsDict(TypedDict):
         metric: pulumi.Input[str]
         """
-        string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+        string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
         """
         op: pulumi.Input[str]
         """
@@ -18686,7 +18719,7 @@ class JobTaskHealthRuleArgs:
                  op: pulumi.Input[str],
                  value: pulumi.Input[int]):
         """
-        :param pulumi.Input[str] metric: string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+        :param pulumi.Input[str] metric: string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
         :param pulumi.Input[str] op: string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
         :param pulumi.Input[int] value: integer value used to compare to the given metric.
         """
@@ -18698,7 +18731,7 @@ class JobTaskHealthRuleArgs:
     @pulumi.getter
     def metric(self) -> pulumi.Input[str]:
         """
-        string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+        string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
         """
         return pulumi.get(self, "metric")
 
@@ -24037,6 +24070,7 @@ class MlflowWebhookJobSpecArgs:
 
 if not MYPY:
     class ModelServingAiGatewayArgsDict(TypedDict):
+        fallback_config: NotRequired[pulumi.Input['ModelServingAiGatewayFallbackConfigArgsDict']]
         guardrails: NotRequired[pulumi.Input['ModelServingAiGatewayGuardrailsArgsDict']]
         """
         Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
@@ -24059,6 +24093,7 @@ elif False:
 @pulumi.input_type
 class ModelServingAiGatewayArgs:
     def __init__(__self__, *,
+                 fallback_config: Optional[pulumi.Input['ModelServingAiGatewayFallbackConfigArgs']] = None,
                  guardrails: Optional[pulumi.Input['ModelServingAiGatewayGuardrailsArgs']] = None,
                  inference_table_config: Optional[pulumi.Input['ModelServingAiGatewayInferenceTableConfigArgs']] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingAiGatewayRateLimitArgs']]]] = None,
@@ -24069,6 +24104,8 @@ class ModelServingAiGatewayArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingAiGatewayRateLimitArgs']]] rate_limits: Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
         :param pulumi.Input['ModelServingAiGatewayUsageTrackingConfigArgs'] usage_tracking_config: Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
         """
+        if fallback_config is not None:
+            pulumi.set(__self__, "fallback_config", fallback_config)
         if guardrails is not None:
             pulumi.set(__self__, "guardrails", guardrails)
         if inference_table_config is not None:
@@ -24077,6 +24114,15 @@ class ModelServingAiGatewayArgs:
             pulumi.set(__self__, "rate_limits", rate_limits)
         if usage_tracking_config is not None:
             pulumi.set(__self__, "usage_tracking_config", usage_tracking_config)
+
+    @property
+    @pulumi.getter(name="fallbackConfig")
+    def fallback_config(self) -> Optional[pulumi.Input['ModelServingAiGatewayFallbackConfigArgs']]:
+        return pulumi.get(self, "fallback_config")
+
+    @fallback_config.setter
+    def fallback_config(self, value: Optional[pulumi.Input['ModelServingAiGatewayFallbackConfigArgs']]):
+        pulumi.set(self, "fallback_config", value)
 
     @property
     @pulumi.getter
@@ -24125,6 +24171,28 @@ class ModelServingAiGatewayArgs:
     @usage_tracking_config.setter
     def usage_tracking_config(self, value: Optional[pulumi.Input['ModelServingAiGatewayUsageTrackingConfigArgs']]):
         pulumi.set(self, "usage_tracking_config", value)
+
+
+if not MYPY:
+    class ModelServingAiGatewayFallbackConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+elif False:
+    ModelServingAiGatewayFallbackConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingAiGatewayFallbackConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:
@@ -25062,6 +25130,7 @@ if not MYPY:
         """
         Cohere Config
         """
+        custom_provider_config: NotRequired[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigArgsDict']]
         databricks_model_serving_config: NotRequired[pulumi.Input['ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgsDict']]
         """
         Databricks Model Serving Config
@@ -25091,6 +25160,7 @@ class ModelServingConfigServedEntityExternalModelArgs:
                  amazon_bedrock_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs']] = None,
                  anthropic_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelAnthropicConfigArgs']] = None,
                  cohere_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCohereConfigArgs']] = None,
+                 custom_provider_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs']] = None,
                  databricks_model_serving_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs']] = None,
                  google_cloud_vertex_ai_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs']] = None,
                  openai_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelOpenaiConfigArgs']] = None,
@@ -25119,6 +25189,8 @@ class ModelServingConfigServedEntityExternalModelArgs:
             pulumi.set(__self__, "anthropic_config", anthropic_config)
         if cohere_config is not None:
             pulumi.set(__self__, "cohere_config", cohere_config)
+        if custom_provider_config is not None:
+            pulumi.set(__self__, "custom_provider_config", custom_provider_config)
         if databricks_model_serving_config is not None:
             pulumi.set(__self__, "databricks_model_serving_config", databricks_model_serving_config)
         if google_cloud_vertex_ai_config is not None:
@@ -25211,6 +25283,15 @@ class ModelServingConfigServedEntityExternalModelArgs:
     @cohere_config.setter
     def cohere_config(self, value: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCohereConfigArgs']]):
         pulumi.set(self, "cohere_config", value)
+
+    @property
+    @pulumi.getter(name="customProviderConfig")
+    def custom_provider_config(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs']]:
+        return pulumi.get(self, "custom_provider_config")
+
+    @custom_provider_config.setter
+    def custom_provider_config(self, value: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs']]):
+        pulumi.set(self, "custom_provider_config", value)
 
     @property
     @pulumi.getter(name="databricksModelServingConfig")
@@ -25571,6 +25652,147 @@ class ModelServingConfigServedEntityExternalModelCohereConfigArgs:
     @cohere_api_key_plaintext.setter
     def cohere_api_key_plaintext(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cohere_api_key_plaintext", value)
+
+
+if not MYPY:
+    class ModelServingConfigServedEntityExternalModelCustomProviderConfigArgsDict(TypedDict):
+        custom_provider_url: pulumi.Input[str]
+        api_key_auth: NotRequired[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgsDict']]
+        bearer_token_auth: NotRequired[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgsDict']]
+elif False:
+    ModelServingConfigServedEntityExternalModelCustomProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs:
+    def __init__(__self__, *,
+                 custom_provider_url: pulumi.Input[str],
+                 api_key_auth: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs']] = None,
+                 bearer_token_auth: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs']] = None):
+        pulumi.set(__self__, "custom_provider_url", custom_provider_url)
+        if api_key_auth is not None:
+            pulumi.set(__self__, "api_key_auth", api_key_auth)
+        if bearer_token_auth is not None:
+            pulumi.set(__self__, "bearer_token_auth", bearer_token_auth)
+
+    @property
+    @pulumi.getter(name="customProviderUrl")
+    def custom_provider_url(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "custom_provider_url")
+
+    @custom_provider_url.setter
+    def custom_provider_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "custom_provider_url", value)
+
+    @property
+    @pulumi.getter(name="apiKeyAuth")
+    def api_key_auth(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs']]:
+        return pulumi.get(self, "api_key_auth")
+
+    @api_key_auth.setter
+    def api_key_auth(self, value: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs']]):
+        pulumi.set(self, "api_key_auth", value)
+
+    @property
+    @pulumi.getter(name="bearerTokenAuth")
+    def bearer_token_auth(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs']]:
+        return pulumi.get(self, "bearer_token_auth")
+
+    @bearer_token_auth.setter
+    def bearer_token_auth(self, value: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs']]):
+        pulumi.set(self, "bearer_token_auth", value)
+
+
+if not MYPY:
+    class ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The value field for a tag.
+        """
+        value_plaintext: NotRequired[pulumi.Input[str]]
+elif False:
+    ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: Optional[pulumi.Input[str]] = None,
+                 value_plaintext: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] value: The value field for a tag.
+        """
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_plaintext is not None:
+            pulumi.set(__self__, "value_plaintext", value_plaintext)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value field for a tag.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valuePlaintext")
+    def value_plaintext(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value_plaintext")
+
+    @value_plaintext.setter
+    def value_plaintext(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_plaintext", value)
+
+
+if not MYPY:
+    class ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgsDict(TypedDict):
+        token: NotRequired[pulumi.Input[str]]
+        token_plaintext: NotRequired[pulumi.Input[str]]
+elif False:
+    ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs:
+    def __init__(__self__, *,
+                 token: Optional[pulumi.Input[str]] = None,
+                 token_plaintext: Optional[pulumi.Input[str]] = None):
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if token_plaintext is not None:
+            pulumi.set(__self__, "token_plaintext", token_plaintext)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token", value)
+
+    @property
+    @pulumi.getter(name="tokenPlaintext")
+    def token_plaintext(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "token_plaintext")
+
+    @token_plaintext.setter
+    def token_plaintext(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_plaintext", value)
 
 
 if not MYPY:
@@ -27320,14 +27542,6 @@ if not MYPY:
         """
         The Google Cloud project ID of the VPC network.
         """
-        pod_ip_range_name: pulumi.Input[str]
-        """
-        The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-        """
-        service_ip_range_name: pulumi.Input[str]
-        """
-        The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-        """
         subnet_id: pulumi.Input[str]
         """
         The ID of the subnet associated with this network.
@@ -27340,6 +27554,14 @@ if not MYPY:
         """
         The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
         """
+        pod_ip_range_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
+        """
+        service_ip_range_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
+        """
 elif False:
     MwsNetworksGcpNetworkInfoArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -27347,25 +27569,33 @@ elif False:
 class MwsNetworksGcpNetworkInfoArgs:
     def __init__(__self__, *,
                  network_project_id: pulumi.Input[str],
-                 pod_ip_range_name: pulumi.Input[str],
-                 service_ip_range_name: pulumi.Input[str],
                  subnet_id: pulumi.Input[str],
                  subnet_region: pulumi.Input[str],
-                 vpc_id: pulumi.Input[str]):
+                 vpc_id: pulumi.Input[str],
+                 pod_ip_range_name: Optional[pulumi.Input[str]] = None,
+                 service_ip_range_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] network_project_id: The Google Cloud project ID of the VPC network.
-        :param pulumi.Input[str] pod_ip_range_name: The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-        :param pulumi.Input[str] service_ip_range_name: The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
         :param pulumi.Input[str] subnet_id: The ID of the subnet associated with this network.
         :param pulumi.Input[str] subnet_region: The Google Cloud region of the workspace data plane. For example, `us-east4`.
         :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        :param pulumi.Input[str] pod_ip_range_name: The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
+        :param pulumi.Input[str] service_ip_range_name: The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
         """
         pulumi.set(__self__, "network_project_id", network_project_id)
-        pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
-        pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
         pulumi.set(__self__, "subnet_id", subnet_id)
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
+        if pod_ip_range_name is not None:
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc""")
+        if pod_ip_range_name is not None:
+            pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
+        if service_ip_range_name is not None:
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc""")
+        if service_ip_range_name is not None:
+            pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
     @property
     @pulumi.getter(name="networkProjectId")
@@ -27378,30 +27608,6 @@ class MwsNetworksGcpNetworkInfoArgs:
     @network_project_id.setter
     def network_project_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "network_project_id", value)
-
-    @property
-    @pulumi.getter(name="podIpRangeName")
-    def pod_ip_range_name(self) -> pulumi.Input[str]:
-        """
-        The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-        """
-        return pulumi.get(self, "pod_ip_range_name")
-
-    @pod_ip_range_name.setter
-    def pod_ip_range_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "pod_ip_range_name", value)
-
-    @property
-    @pulumi.getter(name="serviceIpRangeName")
-    def service_ip_range_name(self) -> pulumi.Input[str]:
-        """
-        The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-        """
-        return pulumi.get(self, "service_ip_range_name")
-
-    @service_ip_range_name.setter
-    def service_ip_range_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "service_ip_range_name", value)
 
     @property
     @pulumi.getter(name="subnetId")
@@ -27438,6 +27644,32 @@ class MwsNetworksGcpNetworkInfoArgs:
     @vpc_id.setter
     def vpc_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="podIpRangeName")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    def pod_ip_range_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
+        """
+        return pulumi.get(self, "pod_ip_range_name")
+
+    @pod_ip_range_name.setter
+    def pod_ip_range_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pod_ip_range_name", value)
+
+    @property
+    @pulumi.getter(name="serviceIpRangeName")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    def service_ip_range_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
+        """
+        return pulumi.get(self, "service_ip_range_name")
+
+    @service_ip_range_name.setter
+    def service_ip_range_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_ip_range_name", value)
 
 
 if not MYPY:
@@ -27693,39 +27925,29 @@ class MwsWorkspacesExternalCustomerInfoArgs:
 
 if not MYPY:
     class MwsWorkspacesGcpManagedNetworkConfigArgsDict(TypedDict):
-        gke_cluster_pod_ip_range: pulumi.Input[str]
-        gke_cluster_service_ip_range: pulumi.Input[str]
         subnet_cidr: pulumi.Input[str]
+        gke_cluster_pod_ip_range: NotRequired[pulumi.Input[str]]
+        gke_cluster_service_ip_range: NotRequired[pulumi.Input[str]]
 elif False:
     MwsWorkspacesGcpManagedNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MwsWorkspacesGcpManagedNetworkConfigArgs:
     def __init__(__self__, *,
-                 gke_cluster_pod_ip_range: pulumi.Input[str],
-                 gke_cluster_service_ip_range: pulumi.Input[str],
-                 subnet_cidr: pulumi.Input[str]):
-        pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
-        pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
+                 subnet_cidr: pulumi.Input[str],
+                 gke_cluster_pod_ip_range: Optional[pulumi.Input[str]] = None,
+                 gke_cluster_service_ip_range: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
-
-    @property
-    @pulumi.getter(name="gkeClusterPodIpRange")
-    def gke_cluster_pod_ip_range(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "gke_cluster_pod_ip_range")
-
-    @gke_cluster_pod_ip_range.setter
-    def gke_cluster_pod_ip_range(self, value: pulumi.Input[str]):
-        pulumi.set(self, "gke_cluster_pod_ip_range", value)
-
-    @property
-    @pulumi.getter(name="gkeClusterServiceIpRange")
-    def gke_cluster_service_ip_range(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "gke_cluster_service_ip_range")
-
-    @gke_cluster_service_ip_range.setter
-    def gke_cluster_service_ip_range(self, value: pulumi.Input[str]):
-        pulumi.set(self, "gke_cluster_service_ip_range", value)
+        if gke_cluster_pod_ip_range is not None:
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+        if gke_cluster_pod_ip_range is not None:
+            pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
+        if gke_cluster_service_ip_range is not None:
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+        if gke_cluster_service_ip_range is not None:
+            pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
     @property
     @pulumi.getter(name="subnetCidr")
@@ -27736,14 +27958,34 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
     def subnet_cidr(self, value: pulumi.Input[str]):
         pulumi.set(self, "subnet_cidr", value)
 
+    @property
+    @pulumi.getter(name="gkeClusterPodIpRange")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    def gke_cluster_pod_ip_range(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "gke_cluster_pod_ip_range")
+
+    @gke_cluster_pod_ip_range.setter
+    def gke_cluster_pod_ip_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gke_cluster_pod_ip_range", value)
+
+    @property
+    @pulumi.getter(name="gkeClusterServiceIpRange")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    def gke_cluster_service_ip_range(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "gke_cluster_service_ip_range")
+
+    @gke_cluster_service_ip_range.setter
+    def gke_cluster_service_ip_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gke_cluster_service_ip_range", value)
+
 
 if not MYPY:
     class MwsWorkspacesGkeConfigArgsDict(TypedDict):
-        connectivity_type: pulumi.Input[str]
+        connectivity_type: NotRequired[pulumi.Input[str]]
         """
         Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
         """
-        master_ip_range: pulumi.Input[str]
+        master_ip_range: NotRequired[pulumi.Input[str]]
         """
         The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
         """
@@ -27753,37 +27995,39 @@ elif False:
 @pulumi.input_type
 class MwsWorkspacesGkeConfigArgs:
     def __init__(__self__, *,
-                 connectivity_type: pulumi.Input[str],
-                 master_ip_range: pulumi.Input[str]):
+                 connectivity_type: Optional[pulumi.Input[str]] = None,
+                 master_ip_range: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] connectivity_type: Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
         :param pulumi.Input[str] master_ip_range: The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
         """
-        pulumi.set(__self__, "connectivity_type", connectivity_type)
-        pulumi.set(__self__, "master_ip_range", master_ip_range)
+        if connectivity_type is not None:
+            pulumi.set(__self__, "connectivity_type", connectivity_type)
+        if master_ip_range is not None:
+            pulumi.set(__self__, "master_ip_range", master_ip_range)
 
     @property
     @pulumi.getter(name="connectivityType")
-    def connectivity_type(self) -> pulumi.Input[str]:
+    def connectivity_type(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
         """
         return pulumi.get(self, "connectivity_type")
 
     @connectivity_type.setter
-    def connectivity_type(self, value: pulumi.Input[str]):
+    def connectivity_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "connectivity_type", value)
 
     @property
     @pulumi.getter(name="masterIpRange")
-    def master_ip_range(self) -> pulumi.Input[str]:
+    def master_ip_range(self) -> Optional[pulumi.Input[str]]:
         """
         The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
         """
         return pulumi.get(self, "master_ip_range")
 
     @master_ip_range.setter
-    def master_ip_range(self, value: pulumi.Input[str]):
+    def master_ip_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "master_ip_range", value)
 
 
@@ -30205,6 +30449,78 @@ class PipelineDeploymentArgs:
     @metadata_file_path.setter
     def metadata_file_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "metadata_file_path", value)
+
+
+if not MYPY:
+    class PipelineEventLogArgsDict(TypedDict):
+        catalog: NotRequired[pulumi.Input[str]]
+        """
+        The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+        """
+        schema: NotRequired[pulumi.Input[str]]
+        """
+        The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
+elif False:
+    PipelineEventLogArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineEventLogArgs:
+    def __init__(__self__, *,
+                 catalog: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+        :param pulumi.Input[str] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
+        if catalog is not None:
+            pulumi.set(__self__, "catalog", catalog)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+
+    @property
+    @pulumi.getter
+    def catalog(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        """
+        return pulumi.get(self, "catalog")
+
+    @catalog.setter
+    def catalog(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "catalog", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema", value)
 
 
 if not MYPY:
@@ -57677,6 +57993,7 @@ if not MYPY:
         """
         A block with AI Gateway configuration for the serving endpoint.
         """
+        budget_policy_id: NotRequired[str]
         configs: NotRequired[Sequence['GetServingEndpointsEndpointConfigArgsDict']]
         """
         The model serving endpoint configuration.
@@ -57702,6 +58019,7 @@ elif False:
 class GetServingEndpointsEndpointArgs:
     def __init__(__self__, *,
                  ai_gateways: Optional[Sequence['GetServingEndpointsEndpointAiGatewayArgs']] = None,
+                 budget_policy_id: Optional[str] = None,
                  configs: Optional[Sequence['GetServingEndpointsEndpointConfigArgs']] = None,
                  creation_timestamp: Optional[int] = None,
                  creator: Optional[str] = None,
@@ -57719,6 +58037,8 @@ class GetServingEndpointsEndpointArgs:
         """
         if ai_gateways is not None:
             pulumi.set(__self__, "ai_gateways", ai_gateways)
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if configs is not None:
             pulumi.set(__self__, "configs", configs)
         if creation_timestamp is not None:
@@ -57749,6 +58069,15 @@ class GetServingEndpointsEndpointArgs:
     @ai_gateways.setter
     def ai_gateways(self, value: Optional[Sequence['GetServingEndpointsEndpointAiGatewayArgs']]):
         pulumi.set(self, "ai_gateways", value)
+
+    @property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[str]:
+        return pulumi.get(self, "budget_policy_id")
+
+    @budget_policy_id.setter
+    def budget_policy_id(self, value: Optional[str]):
+        pulumi.set(self, "budget_policy_id", value)
 
     @property
     @pulumi.getter
@@ -57843,6 +58172,7 @@ class GetServingEndpointsEndpointArgs:
 
 if not MYPY:
     class GetServingEndpointsEndpointAiGatewayArgsDict(TypedDict):
+        fallback_configs: NotRequired[Sequence['GetServingEndpointsEndpointAiGatewayFallbackConfigArgsDict']]
         guardrails: NotRequired[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailArgsDict']]
         inference_table_configs: NotRequired[Sequence['GetServingEndpointsEndpointAiGatewayInferenceTableConfigArgsDict']]
         rate_limits: NotRequired[Sequence['GetServingEndpointsEndpointAiGatewayRateLimitArgsDict']]
@@ -57856,6 +58186,7 @@ elif False:
 @pulumi.input_type
 class GetServingEndpointsEndpointAiGatewayArgs:
     def __init__(__self__, *,
+                 fallback_configs: Optional[Sequence['GetServingEndpointsEndpointAiGatewayFallbackConfigArgs']] = None,
                  guardrails: Optional[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailArgs']] = None,
                  inference_table_configs: Optional[Sequence['GetServingEndpointsEndpointAiGatewayInferenceTableConfigArgs']] = None,
                  rate_limits: Optional[Sequence['GetServingEndpointsEndpointAiGatewayRateLimitArgs']] = None,
@@ -57863,6 +58194,8 @@ class GetServingEndpointsEndpointAiGatewayArgs:
         """
         :param Sequence['GetServingEndpointsEndpointAiGatewayRateLimitArgs'] rate_limits: A list of rate limit blocks to be applied to the serving endpoint.
         """
+        if fallback_configs is not None:
+            pulumi.set(__self__, "fallback_configs", fallback_configs)
         if guardrails is not None:
             pulumi.set(__self__, "guardrails", guardrails)
         if inference_table_configs is not None:
@@ -57871,6 +58204,15 @@ class GetServingEndpointsEndpointAiGatewayArgs:
             pulumi.set(__self__, "rate_limits", rate_limits)
         if usage_tracking_configs is not None:
             pulumi.set(__self__, "usage_tracking_configs", usage_tracking_configs)
+
+    @property
+    @pulumi.getter(name="fallbackConfigs")
+    def fallback_configs(self) -> Optional[Sequence['GetServingEndpointsEndpointAiGatewayFallbackConfigArgs']]:
+        return pulumi.get(self, "fallback_configs")
+
+    @fallback_configs.setter
+    def fallback_configs(self, value: Optional[Sequence['GetServingEndpointsEndpointAiGatewayFallbackConfigArgs']]):
+        pulumi.set(self, "fallback_configs", value)
 
     @property
     @pulumi.getter
@@ -57910,6 +58252,28 @@ class GetServingEndpointsEndpointAiGatewayArgs:
     @usage_tracking_configs.setter
     def usage_tracking_configs(self, value: Optional[Sequence['GetServingEndpointsEndpointAiGatewayUsageTrackingConfigArgs']]):
         pulumi.set(self, "usage_tracking_configs", value)
+
+
+if not MYPY:
+    class GetServingEndpointsEndpointAiGatewayFallbackConfigArgsDict(TypedDict):
+        enabled: bool
+elif False:
+    GetServingEndpointsEndpointAiGatewayFallbackConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetServingEndpointsEndpointAiGatewayFallbackConfigArgs:
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: bool):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:
@@ -58382,6 +58746,7 @@ if not MYPY:
         amazon_bedrock_configs: NotRequired[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgsDict']]
         anthropic_configs: NotRequired[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigArgsDict']]
         cohere_configs: NotRequired[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigArgsDict']]
+        custom_provider_configs: NotRequired[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigArgsDict']]
         databricks_model_serving_configs: NotRequired[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigArgsDict']]
         google_cloud_vertex_ai_configs: NotRequired[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgsDict']]
         openai_configs: NotRequired[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigArgsDict']]
@@ -58399,6 +58764,7 @@ class GetServingEndpointsEndpointConfigServedEntityExternalModelArgs:
                  amazon_bedrock_configs: Optional[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs']] = None,
                  anthropic_configs: Optional[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigArgs']] = None,
                  cohere_configs: Optional[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigArgs']] = None,
+                 custom_provider_configs: Optional[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigArgs']] = None,
                  databricks_model_serving_configs: Optional[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigArgs']] = None,
                  google_cloud_vertex_ai_configs: Optional[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs']] = None,
                  openai_configs: Optional[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigArgs']] = None,
@@ -58417,6 +58783,8 @@ class GetServingEndpointsEndpointConfigServedEntityExternalModelArgs:
             pulumi.set(__self__, "anthropic_configs", anthropic_configs)
         if cohere_configs is not None:
             pulumi.set(__self__, "cohere_configs", cohere_configs)
+        if custom_provider_configs is not None:
+            pulumi.set(__self__, "custom_provider_configs", custom_provider_configs)
         if databricks_model_serving_configs is not None:
             pulumi.set(__self__, "databricks_model_serving_configs", databricks_model_serving_configs)
         if google_cloud_vertex_ai_configs is not None:
@@ -58491,6 +58859,15 @@ class GetServingEndpointsEndpointConfigServedEntityExternalModelArgs:
     @cohere_configs.setter
     def cohere_configs(self, value: Optional[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigArgs']]):
         pulumi.set(self, "cohere_configs", value)
+
+    @property
+    @pulumi.getter(name="customProviderConfigs")
+    def custom_provider_configs(self) -> Optional[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigArgs']]:
+        return pulumi.get(self, "custom_provider_configs")
+
+    @custom_provider_configs.setter
+    def custom_provider_configs(self, value: Optional[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigArgs']]):
+        pulumi.set(self, "custom_provider_configs", value)
 
     @property
     @pulumi.getter(name="databricksModelServingConfigs")
@@ -58747,6 +59124,138 @@ class GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigArgs
     @cohere_api_key_plaintext.setter
     def cohere_api_key_plaintext(self, value: Optional[str]):
         pulumi.set(self, "cohere_api_key_plaintext", value)
+
+
+if not MYPY:
+    class GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigArgsDict(TypedDict):
+        custom_provider_url: str
+        api_key_auths: NotRequired[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgsDict']]
+        bearer_token_auths: NotRequired[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgsDict']]
+elif False:
+    GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigArgs:
+    def __init__(__self__, *,
+                 custom_provider_url: str,
+                 api_key_auths: Optional[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs']] = None,
+                 bearer_token_auths: Optional[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs']] = None):
+        pulumi.set(__self__, "custom_provider_url", custom_provider_url)
+        if api_key_auths is not None:
+            pulumi.set(__self__, "api_key_auths", api_key_auths)
+        if bearer_token_auths is not None:
+            pulumi.set(__self__, "bearer_token_auths", bearer_token_auths)
+
+    @property
+    @pulumi.getter(name="customProviderUrl")
+    def custom_provider_url(self) -> str:
+        return pulumi.get(self, "custom_provider_url")
+
+    @custom_provider_url.setter
+    def custom_provider_url(self, value: str):
+        pulumi.set(self, "custom_provider_url", value)
+
+    @property
+    @pulumi.getter(name="apiKeyAuths")
+    def api_key_auths(self) -> Optional[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs']]:
+        return pulumi.get(self, "api_key_auths")
+
+    @api_key_auths.setter
+    def api_key_auths(self, value: Optional[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs']]):
+        pulumi.set(self, "api_key_auths", value)
+
+    @property
+    @pulumi.getter(name="bearerTokenAuths")
+    def bearer_token_auths(self) -> Optional[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs']]:
+        return pulumi.get(self, "bearer_token_auths")
+
+    @bearer_token_auths.setter
+    def bearer_token_auths(self, value: Optional[Sequence['GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs']]):
+        pulumi.set(self, "bearer_token_auths", value)
+
+
+if not MYPY:
+    class GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgsDict(TypedDict):
+        key: str
+        value: NotRequired[str]
+        value_plaintext: NotRequired[str]
+elif False:
+    GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs:
+    def __init__(__self__, *,
+                 key: str,
+                 value: Optional[str] = None,
+                 value_plaintext: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_plaintext is not None:
+            pulumi.set(__self__, "value_plaintext", value_plaintext)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: str):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valuePlaintext")
+    def value_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "value_plaintext")
+
+    @value_plaintext.setter
+    def value_plaintext(self, value: Optional[str]):
+        pulumi.set(self, "value_plaintext", value)
+
+
+if not MYPY:
+    class GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgsDict(TypedDict):
+        token: NotRequired[str]
+        token_plaintext: NotRequired[str]
+elif False:
+    GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs:
+    def __init__(__self__, *,
+                 token: Optional[str] = None,
+                 token_plaintext: Optional[str] = None):
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if token_plaintext is not None:
+            pulumi.set(__self__, "token_plaintext", token_plaintext)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[str]:
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[str]):
+        pulumi.set(self, "token", value)
+
+    @property
+    @pulumi.getter(name="tokenPlaintext")
+    def token_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "token_plaintext")
+
+    @token_plaintext.setter
+    def token_plaintext(self, value: Optional[str]):
+        pulumi.set(self, "token_plaintext", value)
 
 
 if not MYPY:

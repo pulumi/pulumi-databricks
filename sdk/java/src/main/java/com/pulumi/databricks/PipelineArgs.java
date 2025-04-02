@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PipelineClusterArgs;
 import com.pulumi.databricks.inputs.PipelineDeploymentArgs;
+import com.pulumi.databricks.inputs.PipelineEventLogArgs;
 import com.pulumi.databricks.inputs.PipelineFiltersArgs;
 import com.pulumi.databricks.inputs.PipelineGatewayDefinitionArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionArgs;
@@ -199,6 +200,13 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> edition() {
         return Optional.ofNullable(this.edition);
+    }
+
+    @Import(name="eventLog")
+    private @Nullable Output<PipelineEventLogArgs> eventLog;
+
+    public Optional<Output<PipelineEventLogArgs>> eventLog() {
+        return Optional.ofNullable(this.eventLog);
     }
 
     @Import(name="expectedLastModified")
@@ -437,6 +445,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         this.deployment = $.deployment;
         this.development = $.development;
         this.edition = $.edition;
+        this.eventLog = $.eventLog;
         this.expectedLastModified = $.expectedLastModified;
         this.filters = $.filters;
         this.gatewayDefinition = $.gatewayDefinition;
@@ -722,6 +731,15 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder edition(String edition) {
             return edition(Output.of(edition));
+        }
+
+        public Builder eventLog(@Nullable Output<PipelineEventLogArgs> eventLog) {
+            $.eventLog = eventLog;
+            return this;
+        }
+
+        public Builder eventLog(PipelineEventLogArgs eventLog) {
+            return eventLog(Output.of(eventLog));
         }
 
         public Builder expectedLastModified(@Nullable Output<Integer> expectedLastModified) {

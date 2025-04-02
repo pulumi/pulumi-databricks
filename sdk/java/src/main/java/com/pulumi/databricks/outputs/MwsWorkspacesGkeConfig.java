@@ -4,9 +4,10 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class MwsWorkspacesGkeConfig {
@@ -14,27 +15,27 @@ public final class MwsWorkspacesGkeConfig {
      * @return Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
      * 
      */
-    private String connectivityType;
+    private @Nullable String connectivityType;
     /**
      * @return The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
      * 
      */
-    private String masterIpRange;
+    private @Nullable String masterIpRange;
 
     private MwsWorkspacesGkeConfig() {}
     /**
      * @return Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
      * 
      */
-    public String connectivityType() {
-        return this.connectivityType;
+    public Optional<String> connectivityType() {
+        return Optional.ofNullable(this.connectivityType);
     }
     /**
      * @return The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
      * 
      */
-    public String masterIpRange() {
-        return this.masterIpRange;
+    public Optional<String> masterIpRange() {
+        return Optional.ofNullable(this.masterIpRange);
     }
 
     public static Builder builder() {
@@ -46,8 +47,8 @@ public final class MwsWorkspacesGkeConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String connectivityType;
-        private String masterIpRange;
+        private @Nullable String connectivityType;
+        private @Nullable String masterIpRange;
         public Builder() {}
         public Builder(MwsWorkspacesGkeConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -56,18 +57,14 @@ public final class MwsWorkspacesGkeConfig {
         }
 
         @CustomType.Setter
-        public Builder connectivityType(String connectivityType) {
-            if (connectivityType == null) {
-              throw new MissingRequiredPropertyException("MwsWorkspacesGkeConfig", "connectivityType");
-            }
+        public Builder connectivityType(@Nullable String connectivityType) {
+
             this.connectivityType = connectivityType;
             return this;
         }
         @CustomType.Setter
-        public Builder masterIpRange(String masterIpRange) {
-            if (masterIpRange == null) {
-              throw new MissingRequiredPropertyException("MwsWorkspacesGkeConfig", "masterIpRange");
-            }
+        public Builder masterIpRange(@Nullable String masterIpRange) {
+
             this.masterIpRange = masterIpRange;
             return this;
         }

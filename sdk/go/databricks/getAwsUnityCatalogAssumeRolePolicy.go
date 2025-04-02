@@ -85,13 +85,13 @@ func GetAwsUnityCatalogAssumeRolePolicy(ctx *pulumi.Context, args *GetAwsUnityCa
 type GetAwsUnityCatalogAssumeRolePolicyArgs struct {
 	// The Account ID of the current AWS account (not your Databricks account).
 	AwsAccountId string `pulumi:"awsAccountId"`
-	// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+	// AWS partition. The options are `aws`,`aws-us-gov` or `aws-us-gov-dod`. Defaults to `aws`
 	AwsPartition *string `pulumi:"awsPartition"`
 	// The storage credential external id.
 	ExternalId string `pulumi:"externalId"`
 	// The name of the AWS IAM role to be created for Unity Catalog.
 	RoleName string `pulumi:"roleName"`
-	// The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection and `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection
+	// The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection, `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection, and `arn:aws-us-gov:iam::170661010020:role/unity-catalog-prod-UCMasterRole-1DI6DL6ZP26AS` on GovCloud DoD partition selection
 	UnityCatalogIamArn *string `pulumi:"unityCatalogIamArn"`
 }
 
@@ -120,13 +120,13 @@ func GetAwsUnityCatalogAssumeRolePolicyOutput(ctx *pulumi.Context, args GetAwsUn
 type GetAwsUnityCatalogAssumeRolePolicyOutputArgs struct {
 	// The Account ID of the current AWS account (not your Databricks account).
 	AwsAccountId pulumi.StringInput `pulumi:"awsAccountId"`
-	// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+	// AWS partition. The options are `aws`,`aws-us-gov` or `aws-us-gov-dod`. Defaults to `aws`
 	AwsPartition pulumi.StringPtrInput `pulumi:"awsPartition"`
 	// The storage credential external id.
 	ExternalId pulumi.StringInput `pulumi:"externalId"`
 	// The name of the AWS IAM role to be created for Unity Catalog.
 	RoleName pulumi.StringInput `pulumi:"roleName"`
-	// The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection and `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection
+	// The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection, `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection, and `arn:aws-us-gov:iam::170661010020:role/unity-catalog-prod-UCMasterRole-1DI6DL6ZP26AS` on GovCloud DoD partition selection
 	UnityCatalogIamArn pulumi.StringPtrInput `pulumi:"unityCatalogIamArn"`
 }
 

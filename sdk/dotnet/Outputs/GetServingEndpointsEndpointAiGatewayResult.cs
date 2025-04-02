@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetServingEndpointsEndpointAiGatewayResult
     {
+        public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayFallbackConfigResult> FallbackConfigs;
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayGuardrailResult> Guardrails;
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayInferenceTableConfigResult> InferenceTableConfigs;
         /// <summary>
@@ -23,6 +24,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetServingEndpointsEndpointAiGatewayResult(
+            ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayFallbackConfigResult> fallbackConfigs,
+
             ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayGuardrailResult> guardrails,
 
             ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayInferenceTableConfigResult> inferenceTableConfigs,
@@ -31,6 +34,7 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayUsageTrackingConfigResult> usageTrackingConfigs)
         {
+            FallbackConfigs = fallbackConfigs;
             Guardrails = guardrails;
             InferenceTableConfigs = inferenceTableConfigs;
             RateLimits = rateLimits;

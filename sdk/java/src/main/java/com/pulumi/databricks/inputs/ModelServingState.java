@@ -36,6 +36,13 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.aiGateway);
     }
 
+    @Import(name="budgetPolicyId")
+    private @Nullable Output<String> budgetPolicyId;
+
+    public Optional<Output<String>> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
+    }
+
     /**
      * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
      * 
@@ -130,6 +137,7 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
 
     private ModelServingState(ModelServingState $) {
         this.aiGateway = $.aiGateway;
+        this.budgetPolicyId = $.budgetPolicyId;
         this.config = $.config;
         this.name = $.name;
         this.rateLimits = $.rateLimits;
@@ -175,6 +183,15 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder aiGateway(ModelServingAiGatewayArgs aiGateway) {
             return aiGateway(Output.of(aiGateway));
+        }
+
+        public Builder budgetPolicyId(@Nullable Output<String> budgetPolicyId) {
+            $.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+
+        public Builder budgetPolicyId(String budgetPolicyId) {
+            return budgetPolicyId(Output.of(budgetPolicyId));
         }
 
         /**

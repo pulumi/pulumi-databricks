@@ -7,19 +7,45 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class MwsWorkspacesGcpManagedNetworkConfig {
-    private String gkeClusterPodIpRange;
-    private String gkeClusterServiceIpRange;
+    /**
+     * @deprecated
+     * gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * 
+     */
+    @Deprecated /* gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    private @Nullable String gkeClusterPodIpRange;
+    /**
+     * @deprecated
+     * gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * 
+     */
+    @Deprecated /* gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    private @Nullable String gkeClusterServiceIpRange;
     private String subnetCidr;
 
     private MwsWorkspacesGcpManagedNetworkConfig() {}
-    public String gkeClusterPodIpRange() {
-        return this.gkeClusterPodIpRange;
+    /**
+     * @deprecated
+     * gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * 
+     */
+    @Deprecated /* gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    public Optional<String> gkeClusterPodIpRange() {
+        return Optional.ofNullable(this.gkeClusterPodIpRange);
     }
-    public String gkeClusterServiceIpRange() {
-        return this.gkeClusterServiceIpRange;
+    /**
+     * @deprecated
+     * gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * 
+     */
+    @Deprecated /* gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    public Optional<String> gkeClusterServiceIpRange() {
+        return Optional.ofNullable(this.gkeClusterServiceIpRange);
     }
     public String subnetCidr() {
         return this.subnetCidr;
@@ -34,8 +60,8 @@ public final class MwsWorkspacesGcpManagedNetworkConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String gkeClusterPodIpRange;
-        private String gkeClusterServiceIpRange;
+        private @Nullable String gkeClusterPodIpRange;
+        private @Nullable String gkeClusterServiceIpRange;
         private String subnetCidr;
         public Builder() {}
         public Builder(MwsWorkspacesGcpManagedNetworkConfig defaults) {
@@ -46,18 +72,14 @@ public final class MwsWorkspacesGcpManagedNetworkConfig {
         }
 
         @CustomType.Setter
-        public Builder gkeClusterPodIpRange(String gkeClusterPodIpRange) {
-            if (gkeClusterPodIpRange == null) {
-              throw new MissingRequiredPropertyException("MwsWorkspacesGcpManagedNetworkConfig", "gkeClusterPodIpRange");
-            }
+        public Builder gkeClusterPodIpRange(@Nullable String gkeClusterPodIpRange) {
+
             this.gkeClusterPodIpRange = gkeClusterPodIpRange;
             return this;
         }
         @CustomType.Setter
-        public Builder gkeClusterServiceIpRange(String gkeClusterServiceIpRange) {
-            if (gkeClusterServiceIpRange == null) {
-              throw new MissingRequiredPropertyException("MwsWorkspacesGcpManagedNetworkConfig", "gkeClusterServiceIpRange");
-            }
+        public Builder gkeClusterServiceIpRange(@Nullable String gkeClusterServiceIpRange) {
+
             this.gkeClusterServiceIpRange = gkeClusterServiceIpRange;
             return this;
         }

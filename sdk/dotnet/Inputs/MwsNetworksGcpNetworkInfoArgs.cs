@@ -21,14 +21,14 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
         /// </summary>
-        [Input("podIpRangeName", required: true)]
-        public Input<string> PodIpRangeName { get; set; } = null!;
+        [Input("podIpRangeName")]
+        public Input<string>? PodIpRangeName { get; set; }
 
         /// <summary>
         /// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
         /// </summary>
-        [Input("serviceIpRangeName", required: true)]
-        public Input<string> ServiceIpRangeName { get; set; } = null!;
+        [Input("serviceIpRangeName")]
+        public Input<string>? ServiceIpRangeName { get; set; }
 
         /// <summary>
         /// The ID of the subnet associated with this network.

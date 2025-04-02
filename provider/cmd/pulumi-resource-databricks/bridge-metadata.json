@@ -79,7 +79,13 @@
                 "current": "databricks:index/app:App",
                 "majorVersion": 1,
                 "fields": {
+                    "effective_user_api_scopes": {
+                        "maxItemsOne": false
+                    },
                     "resources": {
+                        "maxItemsOne": false
+                    },
+                    "user_api_scopes": {
                         "maxItemsOne": false
                     }
                 }
@@ -1921,6 +1927,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "fallback_config": {
+                                    "maxItemsOne": true
+                                },
                                 "guardrails": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -1998,6 +2007,19 @@
                                                         },
                                                         "cohere_config": {
                                                             "maxItemsOne": true
+                                                        },
+                                                        "custom_provider_config": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "api_key_auth": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "bearer_token_auth": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
                                                         },
                                                         "databricks_model_serving_config": {
                                                             "maxItemsOne": true
@@ -2442,6 +2464,9 @@
                         }
                     },
                     "deployment": {
+                        "maxItemsOne": true
+                    },
+                    "event_log": {
                         "maxItemsOne": true
                     },
                     "filters": {
@@ -3196,7 +3221,13 @@
                 "fields": {
                     "app": {
                         "fields": {
+                            "effective_user_api_scopes": {
+                                "maxItemsOne": false
+                            },
                             "resources": {
+                                "maxItemsOne": false
+                            },
+                            "user_api_scopes": {
                                 "maxItemsOne": false
                             }
                         }
@@ -3211,7 +3242,13 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "effective_user_api_scopes": {
+                                    "maxItemsOne": false
+                                },
                                 "resources": {
+                                    "maxItemsOne": false
+                                },
+                                "user_api_scopes": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -5043,6 +5080,9 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "fallback_config": {
+                                                "maxItemsOne": false
+                                            },
                                             "guardrails": {
                                                 "maxItemsOne": false,
                                                 "elem": {
@@ -5117,6 +5157,19 @@
                                                                     },
                                                                     "cohere_config": {
                                                                         "maxItemsOne": false
+                                                                    },
+                                                                    "custom_provider_config": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "api_key_auth": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "bearer_token_auth": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     },
                                                                     "databricks_model_serving_config": {
                                                                         "maxItemsOne": false

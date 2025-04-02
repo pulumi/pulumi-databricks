@@ -12,11 +12,11 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class MwsWorkspacesGcpManagedNetworkConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("gkeClusterPodIpRange", required: true)]
-        public Input<string> GkeClusterPodIpRange { get; set; } = null!;
+        [Input("gkeClusterPodIpRange")]
+        public Input<string>? GkeClusterPodIpRange { get; set; }
 
-        [Input("gkeClusterServiceIpRange", required: true)]
-        public Input<string> GkeClusterServiceIpRange { get; set; } = null!;
+        [Input("gkeClusterServiceIpRange")]
+        public Input<string>? GkeClusterServiceIpRange { get; set; }
 
         [Input("subnetCidr", required: true)]
         public Input<string> SubnetCidr { get; set; } = null!;

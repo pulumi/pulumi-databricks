@@ -16,14 +16,14 @@ public final class JobTaskForEachTaskTaskHealthRuleArgs extends com.pulumi.resou
     public static final JobTaskForEachTaskTaskHealthRuleArgs Empty = new JobTaskForEachTaskTaskHealthRuleArgs();
 
     /**
-     * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
      * 
      */
     @Import(name="metric", required=true)
     private Output<String> metric;
 
     /**
-     * @return string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * @return string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
      * 
      */
     public Output<String> metric() {
@@ -87,7 +87,7 @@ public final class JobTaskForEachTaskTaskHealthRuleArgs extends com.pulumi.resou
         }
 
         /**
-         * @param metric string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+         * @param metric string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class JobTaskForEachTaskTaskHealthRuleArgs extends com.pulumi.resou
         }
 
         /**
-         * @param metric string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+         * @param metric string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
          * 
          * @return builder
          * 

@@ -8,6 +8,7 @@ import com.pulumi.databricks.inputs.GetServingEndpointsEndpointConfigServedEntit
 import com.pulumi.databricks.inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig;
 import com.pulumi.databricks.inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig;
 import com.pulumi.databricks.inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig;
+import com.pulumi.databricks.inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfig;
 import com.pulumi.databricks.inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig;
 import com.pulumi.databricks.inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig;
 import com.pulumi.databricks.inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig;
@@ -50,6 +51,13 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModel ex
 
     public Optional<List<GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig>> cohereConfigs() {
         return Optional.ofNullable(this.cohereConfigs);
+    }
+
+    @Import(name="customProviderConfigs")
+    private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfig> customProviderConfigs;
+
+    public Optional<List<GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfig>> customProviderConfigs() {
+        return Optional.ofNullable(this.customProviderConfigs);
     }
 
     @Import(name="databricksModelServingConfigs")
@@ -116,6 +124,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModel ex
         this.amazonBedrockConfigs = $.amazonBedrockConfigs;
         this.anthropicConfigs = $.anthropicConfigs;
         this.cohereConfigs = $.cohereConfigs;
+        this.customProviderConfigs = $.customProviderConfigs;
         this.databricksModelServingConfigs = $.databricksModelServingConfigs;
         this.googleCloudVertexAiConfigs = $.googleCloudVertexAiConfigs;
         this.name = $.name;
@@ -177,6 +186,15 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModel ex
 
         public Builder cohereConfigs(GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig... cohereConfigs) {
             return cohereConfigs(List.of(cohereConfigs));
+        }
+
+        public Builder customProviderConfigs(@Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfig> customProviderConfigs) {
+            $.customProviderConfigs = customProviderConfigs;
+            return this;
+        }
+
+        public Builder customProviderConfigs(GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfig... customProviderConfigs) {
+            return customProviderConfigs(List.of(customProviderConfigs));
         }
 
         public Builder databricksModelServingConfigs(@Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig> databricksModelServingConfigs) {

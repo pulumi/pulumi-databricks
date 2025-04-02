@@ -85,6 +85,13 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.resources);
     }
 
+    @Import(name="userApiScopes")
+    private @Nullable Output<List<String>> userApiScopes;
+
+    public Optional<Output<List<String>>> userApiScopes() {
+        return Optional.ofNullable(this.userApiScopes);
+    }
+
     private AppArgs() {}
 
     private AppArgs(AppArgs $) {
@@ -93,6 +100,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.noCompute = $.noCompute;
         this.resources = $.resources;
+        this.userApiScopes = $.userApiScopes;
     }
 
     public static Builder builder() {
@@ -214,6 +222,19 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resources(AppResourceArgs... resources) {
             return resources(List.of(resources));
+        }
+
+        public Builder userApiScopes(@Nullable Output<List<String>> userApiScopes) {
+            $.userApiScopes = userApiScopes;
+            return this;
+        }
+
+        public Builder userApiScopes(List<String> userApiScopes) {
+            return userApiScopes(Output.of(userApiScopes));
+        }
+
+        public Builder userApiScopes(String... userApiScopes) {
+            return userApiScopes(List.of(userApiScopes));
         }
 
         public AppArgs build() {

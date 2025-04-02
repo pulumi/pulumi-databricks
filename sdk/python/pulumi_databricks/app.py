@@ -25,7 +25,8 @@ class AppArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  no_compute: Optional[pulumi.Input[bool]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]]] = None):
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]]] = None,
+                 user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a App resource.
         :param pulumi.Input[str] budget_policy_id: The optional Budget Policy ID set for this resource.
@@ -43,6 +44,8 @@ class AppArgs:
             pulumi.set(__self__, "no_compute", no_compute)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if user_api_scopes is not None:
+            pulumi.set(__self__, "user_api_scopes", user_api_scopes)
 
     @property
     @pulumi.getter(name="budgetPolicyId")
@@ -101,6 +104,15 @@ class AppArgs:
     def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]]]):
         pulumi.set(self, "resources", value)
 
+    @property
+    @pulumi.getter(name="userApiScopes")
+    def user_api_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "user_api_scopes")
+
+    @user_api_scopes.setter
+    def user_api_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "user_api_scopes", value)
+
 
 @pulumi.input_type
 class _AppState:
@@ -114,8 +126,11 @@ class _AppState:
                  default_source_code_path: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_budget_policy_id: Optional[pulumi.Input[str]] = None,
+                 effective_user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  no_compute: Optional[pulumi.Input[bool]] = None,
+                 oauth2_app_client_id: Optional[pulumi.Input[str]] = None,
+                 oauth2_app_integration_id: Optional[pulumi.Input[str]] = None,
                  pending_deployment: Optional[pulumi.Input['AppPendingDeploymentArgs']] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]]] = None,
                  service_principal_client_id: Optional[pulumi.Input[str]] = None,
@@ -123,7 +138,8 @@ class _AppState:
                  service_principal_name: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  updater: Optional[pulumi.Input[str]] = None,
-                 url: Optional[pulumi.Input[str]] = None):
+                 url: Optional[pulumi.Input[str]] = None,
+                 user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering App resources.
         :param pulumi.Input['AppAppStatusArgs'] app_status: attribute
@@ -160,10 +176,16 @@ class _AppState:
             pulumi.set(__self__, "description", description)
         if effective_budget_policy_id is not None:
             pulumi.set(__self__, "effective_budget_policy_id", effective_budget_policy_id)
+        if effective_user_api_scopes is not None:
+            pulumi.set(__self__, "effective_user_api_scopes", effective_user_api_scopes)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if no_compute is not None:
             pulumi.set(__self__, "no_compute", no_compute)
+        if oauth2_app_client_id is not None:
+            pulumi.set(__self__, "oauth2_app_client_id", oauth2_app_client_id)
+        if oauth2_app_integration_id is not None:
+            pulumi.set(__self__, "oauth2_app_integration_id", oauth2_app_integration_id)
         if pending_deployment is not None:
             pulumi.set(__self__, "pending_deployment", pending_deployment)
         if resources is not None:
@@ -180,6 +202,8 @@ class _AppState:
             pulumi.set(__self__, "updater", updater)
         if url is not None:
             pulumi.set(__self__, "url", url)
+        if user_api_scopes is not None:
+            pulumi.set(__self__, "user_api_scopes", user_api_scopes)
 
     @property
     @pulumi.getter(name="activeDeployment")
@@ -287,6 +311,15 @@ class _AppState:
         pulumi.set(self, "effective_budget_policy_id", value)
 
     @property
+    @pulumi.getter(name="effectiveUserApiScopes")
+    def effective_user_api_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "effective_user_api_scopes")
+
+    @effective_user_api_scopes.setter
+    def effective_user_api_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_user_api_scopes", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -306,6 +339,24 @@ class _AppState:
     @no_compute.setter
     def no_compute(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "no_compute", value)
+
+    @property
+    @pulumi.getter(name="oauth2AppClientId")
+    def oauth2_app_client_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "oauth2_app_client_id")
+
+    @oauth2_app_client_id.setter
+    def oauth2_app_client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oauth2_app_client_id", value)
+
+    @property
+    @pulumi.getter(name="oauth2AppIntegrationId")
+    def oauth2_app_integration_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "oauth2_app_integration_id")
+
+    @oauth2_app_integration_id.setter
+    def oauth2_app_integration_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oauth2_app_integration_id", value)
 
     @property
     @pulumi.getter(name="pendingDeployment")
@@ -397,6 +448,15 @@ class _AppState:
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
 
+    @property
+    @pulumi.getter(name="userApiScopes")
+    def user_api_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "user_api_scopes")
+
+    @user_api_scopes.setter
+    def user_api_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "user_api_scopes", value)
+
 
 class App(pulumi.CustomResource):
     @overload
@@ -408,6 +468,7 @@ class App(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  no_compute: Optional[pulumi.Input[bool]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
+                 user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
@@ -496,6 +557,7 @@ class App(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  no_compute: Optional[pulumi.Input[bool]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
+                 user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -510,6 +572,7 @@ class App(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["no_compute"] = no_compute
             __props__.__dict__["resources"] = resources
+            __props__.__dict__["user_api_scopes"] = user_api_scopes
             __props__.__dict__["active_deployment"] = None
             __props__.__dict__["app_status"] = None
             __props__.__dict__["compute_status"] = None
@@ -517,6 +580,9 @@ class App(pulumi.CustomResource):
             __props__.__dict__["creator"] = None
             __props__.__dict__["default_source_code_path"] = None
             __props__.__dict__["effective_budget_policy_id"] = None
+            __props__.__dict__["effective_user_api_scopes"] = None
+            __props__.__dict__["oauth2_app_client_id"] = None
+            __props__.__dict__["oauth2_app_integration_id"] = None
             __props__.__dict__["pending_deployment"] = None
             __props__.__dict__["service_principal_client_id"] = None
             __props__.__dict__["service_principal_id"] = None
@@ -543,8 +609,11 @@ class App(pulumi.CustomResource):
             default_source_code_path: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_budget_policy_id: Optional[pulumi.Input[str]] = None,
+            effective_user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             no_compute: Optional[pulumi.Input[bool]] = None,
+            oauth2_app_client_id: Optional[pulumi.Input[str]] = None,
+            oauth2_app_integration_id: Optional[pulumi.Input[str]] = None,
             pending_deployment: Optional[pulumi.Input[Union['AppPendingDeploymentArgs', 'AppPendingDeploymentArgsDict']]] = None,
             resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
             service_principal_client_id: Optional[pulumi.Input[str]] = None,
@@ -552,7 +621,8 @@ class App(pulumi.CustomResource):
             service_principal_name: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             updater: Optional[pulumi.Input[str]] = None,
-            url: Optional[pulumi.Input[str]] = None) -> 'App':
+            url: Optional[pulumi.Input[str]] = None,
+            user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'App':
         """
         Get an existing App resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -589,8 +659,11 @@ class App(pulumi.CustomResource):
         __props__.__dict__["default_source_code_path"] = default_source_code_path
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_budget_policy_id"] = effective_budget_policy_id
+        __props__.__dict__["effective_user_api_scopes"] = effective_user_api_scopes
         __props__.__dict__["name"] = name
         __props__.__dict__["no_compute"] = no_compute
+        __props__.__dict__["oauth2_app_client_id"] = oauth2_app_client_id
+        __props__.__dict__["oauth2_app_integration_id"] = oauth2_app_integration_id
         __props__.__dict__["pending_deployment"] = pending_deployment
         __props__.__dict__["resources"] = resources
         __props__.__dict__["service_principal_client_id"] = service_principal_client_id
@@ -599,6 +672,7 @@ class App(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["updater"] = updater
         __props__.__dict__["url"] = url
+        __props__.__dict__["user_api_scopes"] = user_api_scopes
         return App(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -671,6 +745,11 @@ class App(pulumi.CustomResource):
         return pulumi.get(self, "effective_budget_policy_id")
 
     @property
+    @pulumi.getter(name="effectiveUserApiScopes")
+    def effective_user_api_scopes(self) -> pulumi.Output[Sequence[str]]:
+        return pulumi.get(self, "effective_user_api_scopes")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -682,6 +761,16 @@ class App(pulumi.CustomResource):
     @pulumi.getter(name="noCompute")
     def no_compute(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "no_compute")
+
+    @property
+    @pulumi.getter(name="oauth2AppClientId")
+    def oauth2_app_client_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "oauth2_app_client_id")
+
+    @property
+    @pulumi.getter(name="oauth2AppIntegrationId")
+    def oauth2_app_integration_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "oauth2_app_integration_id")
 
     @property
     @pulumi.getter(name="pendingDeployment")
@@ -740,4 +829,9 @@ class App(pulumi.CustomResource):
         The URL of the app once it is deployed.
         """
         return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="userApiScopes")
+    def user_api_scopes(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "user_api_scopes")
 

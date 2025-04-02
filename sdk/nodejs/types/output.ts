@@ -14,11 +14,16 @@ export interface AccessControlRuleSetGrantRule {
      */
     principals?: string[];
     /**
-     * Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions).
+     * Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions), depending on the `name` defined:
+     * * `accounts/{account_id}/ruleSets/default`
+     * * `roles/marketplace.admin` - Databricks Marketplace administrator.
+     * * `roles/billing.admin` - Billing administrator.
+     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
      * * `roles/servicePrincipal.manager` - Manager of a service principal.
      * * `roles/servicePrincipal.user` - User of a service principal.
+     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
      * * `roles/group.manager` - Manager of a group.
-     * * `roles/marketplace.admin` - Admin of marketplace.
+     * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
      * * `roles/budgetPolicy.manager` - Manager of a budget policy.
      * * `roles/budgetPolicy.user` - User of a budget policy.
      */
@@ -461,7 +466,7 @@ export interface ClusterAwsAttributes {
      */
     ebsVolumeType?: string;
     /**
-     * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
+     * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. If unspecified, the default value is 0.
      */
     firstOnDemand?: number;
     /**
@@ -956,6 +961,7 @@ export interface GetAppApp {
      * The effective budget policy ID.
      */
     effectiveBudgetPolicyId: string;
+    effectiveUserApiScopes: string[];
     /**
      * Id of the job to grant permission on.
      */
@@ -964,6 +970,8 @@ export interface GetAppApp {
      * The name of the app.
      */
     name: string;
+    oauth2AppClientId: string;
+    oauth2AppIntegrationId: string;
     pendingDeployment: outputs.GetAppAppPendingDeployment;
     /**
      * A list of resources that the app have access to.
@@ -990,6 +998,7 @@ export interface GetAppApp {
      * The URL of the app once it is deployed.
      */
     url: string;
+    userApiScopes?: string[];
 }
 
 export interface GetAppAppActiveDeployment {
@@ -1193,6 +1202,7 @@ export interface GetAppsApp {
      * The effective budget policy ID.
      */
     effectiveBudgetPolicyId: string;
+    effectiveUserApiScopes: string[];
     /**
      * Id of the job to grant permission on.
      */
@@ -1201,6 +1211,8 @@ export interface GetAppsApp {
      * Name of the serving endpoint to grant permission on.
      */
     name: string;
+    oauth2AppClientId: string;
+    oauth2AppIntegrationId: string;
     pendingDeployment: outputs.GetAppsAppPendingDeployment;
     /**
      * A list of resources that the app have access to.
@@ -1227,6 +1239,7 @@ export interface GetAppsApp {
      * The URL of the app once it is deployed.
      */
     url: string;
+    userApiScopes?: string[];
 }
 
 export interface GetAppsAppActiveDeployment {
@@ -4437,6 +4450,7 @@ export interface GetServingEndpointsEndpoint {
      * A block with AI Gateway configuration for the serving endpoint.
      */
     aiGateways?: outputs.GetServingEndpointsEndpointAiGateway[];
+    budgetPolicyId?: string;
     /**
      * The model serving endpoint configuration.
      */
@@ -4458,6 +4472,7 @@ export interface GetServingEndpointsEndpoint {
 }
 
 export interface GetServingEndpointsEndpointAiGateway {
+    fallbackConfigs?: outputs.GetServingEndpointsEndpointAiGatewayFallbackConfig[];
     guardrails?: outputs.GetServingEndpointsEndpointAiGatewayGuardrail[];
     inferenceTableConfigs?: outputs.GetServingEndpointsEndpointAiGatewayInferenceTableConfig[];
     /**
@@ -4465,6 +4480,10 @@ export interface GetServingEndpointsEndpointAiGateway {
      */
     rateLimits?: outputs.GetServingEndpointsEndpointAiGatewayRateLimit[];
     usageTrackingConfigs?: outputs.GetServingEndpointsEndpointAiGatewayUsageTrackingConfig[];
+}
+
+export interface GetServingEndpointsEndpointAiGatewayFallbackConfig {
+    enabled: boolean;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrail {
@@ -4532,6 +4551,7 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModel {
     amazonBedrockConfigs?: outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig[];
     anthropicConfigs?: outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig[];
     cohereConfigs?: outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig[];
+    customProviderConfigs?: outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfig[];
     databricksModelServingConfigs?: outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig[];
     googleCloudVertexAiConfigs?: outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig[];
     /**
@@ -4568,6 +4588,23 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCoher
     cohereApiBase?: string;
     cohereApiKey?: string;
     cohereApiKeyPlaintext?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfig {
+    apiKeyAuths?: outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth[];
+    bearerTokenAuths?: outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth[];
+    customProviderUrl: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
+    key: string;
+    value?: string;
+    valuePlaintext?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
+    token?: string;
+    tokenPlaintext?: string;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig {
@@ -5323,7 +5360,7 @@ export interface JobHealth {
 
 export interface JobHealthRule {
     /**
-     * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
      */
     metric: string;
     /**
@@ -6409,7 +6446,7 @@ export interface JobTaskForEachTaskTaskHealth {
 
 export interface JobTaskForEachTaskTaskHealthRule {
     /**
-     * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
      */
     metric: string;
     /**
@@ -7016,7 +7053,7 @@ export interface JobTaskHealth {
 
 export interface JobTaskHealthRule {
     /**
-     * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * string specifying the metric to check, like `RUN_DURATION_SECONDS`, `STREAMING_BACKLOG_FILES`, etc. - check the [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create#health-rules-metric) for the full list of supported metrics.
      */
     metric: string;
     /**
@@ -7922,6 +7959,7 @@ export interface MlflowWebhookJobSpec {
 }
 
 export interface ModelServingAiGateway {
+    fallbackConfig?: outputs.ModelServingAiGatewayFallbackConfig;
     /**
      * Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
      */
@@ -7938,6 +7976,10 @@ export interface ModelServingAiGateway {
      * Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
      */
     usageTrackingConfig?: outputs.ModelServingAiGatewayUsageTrackingConfig;
+}
+
+export interface ModelServingAiGatewayFallbackConfig {
+    enabled: boolean;
 }
 
 export interface ModelServingAiGatewayGuardrails {
@@ -8145,6 +8187,7 @@ export interface ModelServingConfigServedEntityExternalModel {
      * Cohere Config
      */
     cohereConfig?: outputs.ModelServingConfigServedEntityExternalModelCohereConfig;
+    customProviderConfig?: outputs.ModelServingConfigServedEntityExternalModelCustomProviderConfig;
     /**
      * Databricks Model Serving Config
      */
@@ -8235,6 +8278,26 @@ export interface ModelServingConfigServedEntityExternalModelCohereConfig {
      * The Cohere API key provided as a plaintext string.
      */
     cohereApiKeyPlaintext?: string;
+}
+
+export interface ModelServingConfigServedEntityExternalModelCustomProviderConfig {
+    apiKeyAuth?: outputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth;
+    bearerTokenAuth?: outputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth;
+    customProviderUrl: string;
+}
+
+export interface ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
+    key: string;
+    /**
+     * The value field for a tag.
+     */
+    value?: string;
+    valuePlaintext?: string;
+}
+
+export interface ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
+    token?: string;
+    tokenPlaintext?: string;
 }
 
 export interface ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
@@ -8554,12 +8617,16 @@ export interface MwsNetworksGcpNetworkInfo {
     networkProjectId: string;
     /**
      * The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
+     *
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
      */
-    podIpRangeName: string;
+    podIpRangeName?: string;
     /**
      * The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
+     *
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
      */
-    serviceIpRangeName: string;
+    serviceIpRangeName?: string;
     /**
      * The ID of the subnet associated with this network.
      */
@@ -8623,8 +8690,14 @@ export interface MwsWorkspacesExternalCustomerInfo {
 }
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
-    gkeClusterPodIpRange: string;
-    gkeClusterServiceIpRange: string;
+    /**
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     */
+    gkeClusterPodIpRange?: string;
+    /**
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     */
+    gkeClusterServiceIpRange?: string;
     subnetCidr: string;
 }
 
@@ -8632,11 +8705,11 @@ export interface MwsWorkspacesGkeConfig {
     /**
      * Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
      */
-    connectivityType: string;
+    connectivityType?: string;
     /**
      * The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
      */
-    masterIpRange: string;
+    masterIpRange?: string;
 }
 
 export interface MwsWorkspacesToken {
@@ -8984,6 +9057,21 @@ export interface PipelineDeployment {
      * The path to the file containing metadata about the deployment.
      */
     metadataFilePath?: string;
+}
+
+export interface PipelineEventLog {
+    /**
+     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     */
+    catalog?: string;
+    /**
+     * A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+     */
+    name?: string;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
+    schema?: string;
 }
 
 export interface PipelineFilters {

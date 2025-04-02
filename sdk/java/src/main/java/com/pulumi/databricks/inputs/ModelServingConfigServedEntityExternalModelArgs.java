@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.ModelServingConfigServedEntityExternalModelA
 import com.pulumi.databricks.inputs.ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingConfigServedEntityExternalModelAnthropicConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingConfigServedEntityExternalModelCohereConfigArgs;
+import com.pulumi.databricks.inputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingConfigServedEntityExternalModelOpenaiConfigArgs;
@@ -82,6 +83,13 @@ public final class ModelServingConfigServedEntityExternalModelArgs extends com.p
      */
     public Optional<Output<ModelServingConfigServedEntityExternalModelCohereConfigArgs>> cohereConfig() {
         return Optional.ofNullable(this.cohereConfig);
+    }
+
+    @Import(name="customProviderConfig")
+    private @Nullable Output<ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs> customProviderConfig;
+
+    public Optional<Output<ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs>> customProviderConfig() {
+        return Optional.ofNullable(this.customProviderConfig);
     }
 
     /**
@@ -196,6 +204,7 @@ public final class ModelServingConfigServedEntityExternalModelArgs extends com.p
         this.amazonBedrockConfig = $.amazonBedrockConfig;
         this.anthropicConfig = $.anthropicConfig;
         this.cohereConfig = $.cohereConfig;
+        this.customProviderConfig = $.customProviderConfig;
         this.databricksModelServingConfig = $.databricksModelServingConfig;
         this.googleCloudVertexAiConfig = $.googleCloudVertexAiConfig;
         this.name = $.name;
@@ -305,6 +314,15 @@ public final class ModelServingConfigServedEntityExternalModelArgs extends com.p
          */
         public Builder cohereConfig(ModelServingConfigServedEntityExternalModelCohereConfigArgs cohereConfig) {
             return cohereConfig(Output.of(cohereConfig));
+        }
+
+        public Builder customProviderConfig(@Nullable Output<ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs> customProviderConfig) {
+            $.customProviderConfig = customProviderConfig;
+            return this;
+        }
+
+        public Builder customProviderConfig(ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs customProviderConfig) {
+            return customProviderConfig(Output.of(customProviderConfig));
         }
 
         /**
