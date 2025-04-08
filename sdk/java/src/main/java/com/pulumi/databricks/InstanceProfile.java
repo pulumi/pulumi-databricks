@@ -36,10 +36,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.aws.iam.PolicyArgs;
  * import com.pulumi.aws.iam.RolePolicyAttachment;
  * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
- * import com.pulumi.aws.iam.InstanceProfile;
- * import com.pulumi.aws.iam.InstanceProfileArgs;
- * import com.pulumi.databricks.InstanceProfile;
- * import com.pulumi.databricks.InstanceProfileArgs;
  * import com.pulumi.databricks.DatabricksFunctions;
  * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
  * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
@@ -76,7 +72,7 @@ import javax.annotation.Nullable;
  *         var roleForS3Access = new Role("roleForS3Access", RoleArgs.builder()
  *             .name("shared-ec2-role-for-s3")
  *             .description("Role for shared access")
- *             .assumeRolePolicy(assumeRoleForEc2.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
+ *             .assumeRolePolicy(assumeRoleForEc2.json())
  *             .build());
  * 
  *         final var passRoleForS3Access = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
@@ -90,7 +86,7 @@ import javax.annotation.Nullable;
  *         var passRoleForS3AccessPolicy = new Policy("passRoleForS3AccessPolicy", PolicyArgs.builder()
  *             .name("shared-pass-role-for-s3-access")
  *             .path("/")
- *             .policy(passRoleForS3Access.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult).applyValue(passRoleForS3Access -> passRoleForS3Access.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json())))
+ *             .policy(passRoleForS3Access.applyValue(_passRoleForS3Access -> _passRoleForS3Access.json()))
  *             .build());
  * 
  *         var crossAccount = new RolePolicyAttachment("crossAccount", RolePolicyAttachmentArgs.builder()
@@ -98,16 +94,17 @@ import javax.annotation.Nullable;
  *             .role(crossaccountRoleName)
  *             .build());
  * 
- *         var shared = new InstanceProfile("shared", InstanceProfileArgs.builder()
+ *         var shared = new com.pulumi.aws.iam.InstanceProfile("shared", com.pulumi.aws.iam.InstanceProfileArgs.builder()
  *             .name("shared-instance-profile")
  *             .role(roleForS3Access.name())
  *             .build());
  * 
- *         var sharedInstanceProfile = new InstanceProfile("sharedInstanceProfile", InstanceProfileArgs.builder()
+ *         var sharedInstanceProfile = new com.pulumi.databricks.InstanceProfile("sharedInstanceProfile", com.pulumi.databricks.InstanceProfileArgs.builder()
  *             .instanceProfileArn(shared.arn())
  *             .build());
  * 
- *         final var latest = DatabricksFunctions.getSparkVersion();
+ *         final var latest = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+ *             .build());
  * 
  *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
  *             .localDisk(true)
@@ -115,8 +112,8 @@ import javax.annotation.Nullable;
  * 
  *         var this_ = new Cluster("this", ClusterArgs.builder()
  *             .clusterName("Shared Autoscaling")
- *             .sparkVersion(latest.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
- *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+ *             .sparkVersion(latest.id())
+ *             .nodeTypeId(smallest.id())
  *             .autoterminationMinutes(20)
  *             .autoscale(ClusterAutoscaleArgs.builder()
  *                 .minWorkers(1)
@@ -222,7 +219,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var all = new GroupInstanceProfile("all", GroupInstanceProfileArgs.builder()
- *             .groupId(users.applyValue(getGroupResult -> getGroupResult.id()))
+ *             .groupId(users.id())
  *             .instanceProfileId(this_.id())
  *             .build());
  * 
@@ -248,10 +245,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
  * import com.pulumi.aws.iam.Role;
  * import com.pulumi.aws.iam.RoleArgs;
- * import com.pulumi.aws.iam.InstanceProfile;
- * import com.pulumi.aws.iam.InstanceProfileArgs;
- * import com.pulumi.databricks.InstanceProfile;
- * import com.pulumi.databricks.InstanceProfileArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -284,15 +277,15 @@ import javax.annotation.Nullable;
  * 
  *         var this_ = new Role("this", RoleArgs.builder()
  *             .name("my-databricks-sql-serverless-role")
- *             .assumeRolePolicy(sqlServerlessAssumeRole.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
+ *             .assumeRolePolicy(sqlServerlessAssumeRole.json())
  *             .build());
  * 
- *         var thisInstanceProfile = new InstanceProfile("thisInstanceProfile", InstanceProfileArgs.builder()
+ *         var thisInstanceProfile = new com.pulumi.aws.iam.InstanceProfile("thisInstanceProfile", com.pulumi.aws.iam.InstanceProfileArgs.builder()
  *             .name("my-databricks-sql-serverless-instance-profile")
  *             .role(this_.name())
  *             .build());
  * 
- *         var thisInstanceProfile2 = new InstanceProfile("thisInstanceProfile2", InstanceProfileArgs.builder()
+ *         var thisInstanceProfile2 = new com.pulumi.databricks.InstanceProfile("thisInstanceProfile2", com.pulumi.databricks.InstanceProfileArgs.builder()
  *             .instanceProfileArn(thisInstanceProfile.arn())
  *             .iamRoleArn(this_.arn())
  *             .build());

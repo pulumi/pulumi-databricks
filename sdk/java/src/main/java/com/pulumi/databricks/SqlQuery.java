@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *                         AND p2 in ({{ p2 }})
  *                         AND event_date > date '{{ p3 }}'
  *             """)
- *             .parent(sharedDir.objectId().applyValue(objectId -> String.format("folders/%s", objectId)))
+ *             .parent(sharedDir.objectId().applyValue(_objectId -> String.format("folders/%s", _objectId)))
  *             .runAsRole("viewer")
  *             .parameters(            
  *                 SqlQueryParameterArgs.builder()

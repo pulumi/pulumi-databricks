@@ -65,8 +65,8 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
      * 
      *         var singleNode = new Cluster("singleNode", ClusterArgs.builder()
      *             .clusterName("Single Node")
-     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .sparkVersion(latestLts.id())
+     *             .nodeTypeId(smallest.id())
      *             .autoterminationMinutes(20)
      *             .sparkConf(Map.ofEntries(
      *                 Map.entry("spark.databricks.cluster.profile", "singleNode"),
@@ -135,8 +135,8 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
      * 
      *         var singleNode = new Cluster("singleNode", ClusterArgs.builder()
      *             .clusterName("Single Node")
-     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .sparkVersion(latestLts.id())
+     *             .nodeTypeId(smallest.id())
      *             .autoterminationMinutes(20)
      *             .sparkConf(Map.ofEntries(
      *                 Map.entry("spark.databricks.cluster.profile", "singleNode"),
@@ -246,8 +246,8 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
          * 
          *         var singleNode = new Cluster("singleNode", ClusterArgs.builder()
          *             .clusterName("Single Node")
-         *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-         *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+         *             .sparkVersion(latestLts.id())
+         *             .nodeTypeId(smallest.id())
          *             .autoterminationMinutes(20)
          *             .sparkConf(Map.ofEntries(
          *                 Map.entry("spark.databricks.cluster.profile", "singleNode"),
@@ -320,8 +320,8 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
          * 
          *         var singleNode = new Cluster("singleNode", ClusterArgs.builder()
          *             .clusterName("Single Node")
-         *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-         *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+         *             .sparkVersion(latestLts.id())
+         *             .nodeTypeId(smallest.id())
          *             .autoterminationMinutes(20)
          *             .sparkConf(Map.ofEntries(
          *                 Map.entry("spark.databricks.cluster.profile", "singleNode"),

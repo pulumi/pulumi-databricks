@@ -30,55 +30,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.App;
- * import com.pulumi.databricks.AppArgs;
- * import com.pulumi.databricks.inputs.AppResourceArgs;
- * import com.pulumi.databricks.inputs.AppResourceJobArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var this_ = new App("this", AppArgs.builder()
- *             .name("my-custom-app")
- *             .description("My app")
- *             .resources(            
- *                 AppResourceArgs.builder()
- *                     .name("sql-warehouse")
- *                     .sql_warehouse(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .build(),
- *                 AppResourceArgs.builder()
- *                     .name("serving-endpoint")
- *                     .serving_endpoint(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .build(),
- *                 AppResourceArgs.builder()
- *                     .name("job")
- *                     .job(AppResourceJobArgs.builder()
- *                         .id("1234")
- *                         .permission("CAN_MANAGE")
- *                         .build())
- *                     .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources

@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const config = new pulumi.Config();
  * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
- * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const databricksAccountId = config.requireObject<any>("databricksAccountId");
  * const dbxPrivateVpc = new google.index.ComputeNetwork("dbx_private_vpc", {
  *     project: googleProject,
  *     name: `tf-network-${suffix.result}`,

@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.password;
- * import com.pulumi.random.PasswordArgs;
+ * import com.pulumi.random.passwordArgs;
  * import com.pulumi.databricks.DatabricksFunctions;
  * import com.pulumi.databricks.Recipient;
  * import com.pulumi.databricks.RecipientArgs;
@@ -68,10 +68,10 @@ import javax.annotation.Nullable;
  *             .special(true)
  *             .build());
  * 
- *         final var current = DatabricksFunctions.getCurrentUser();
+ *         final var current = DatabricksFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var db2open = new Recipient("db2open", RecipientArgs.builder()
- *             .name(String.format("%s-recipient", current.applyValue(getCurrentUserResult -> getCurrentUserResult.alphanumeric())))
+ *             .name(String.format("%s-recipient", current.alphanumeric()))
  *             .comment("Made by Pulumi")
  *             .authenticationType("TOKEN")
  *             .sharingCode(db2opensharecode.result())

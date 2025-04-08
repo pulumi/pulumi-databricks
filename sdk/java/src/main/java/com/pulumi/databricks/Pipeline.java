@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 PipelineLibraryArgs.builder()
  *                     .file(PipelineLibraryFileArgs.builder()
- *                         .path(dltDemoRepo.path().applyValue(path -> String.format("%s/pipeline.sql", path)))
+ *                         .path(dltDemoRepo.path().applyValue(_path -> String.format("%s/pipeline.sql", _path)))
  *                         .build())
  *                     .build())
  *             .continuous(false)

@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  *         var dashboard = new Dashboard("dashboard", DashboardArgs.builder()
  *             .displayName("New Dashboard")
- *             .warehouseId(starter.applyValue(getSqlWarehouseResult -> getSqlWarehouseResult.id()))
+ *             .warehouseId(starter.id())
  *             .serializedDashboard("{\"pages\":[{\"name\":\"new_name\",\"displayName\":\"New Page\"}]}")
  *             .embedCredentials(false)
  *             .parentPath("/Shared/provider-test")

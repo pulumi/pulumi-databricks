@@ -27,7 +27,7 @@ public final class ClusterDockerImage {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.docker.registryImage;
-     * import com.pulumi.docker.RegistryImageArgs;
+     * import com.pulumi.docker.registryImageArgs;
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterDockerImageArgs;
@@ -46,7 +46,8 @@ public final class ClusterDockerImage {
      * 
      *     public static void stack(Context ctx) {
      *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
-     *             .build()
+     *             .build(List.of(Map.ofEntries(
+     *             )))
      *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
      *             .build());
      * 
@@ -89,7 +90,7 @@ public final class ClusterDockerImage {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.docker.registryImage;
-     * import com.pulumi.docker.RegistryImageArgs;
+     * import com.pulumi.docker.registryImageArgs;
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterDockerImageArgs;
@@ -108,7 +109,8 @@ public final class ClusterDockerImage {
      * 
      *     public static void stack(Context ctx) {
      *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
-     *             .build()
+     *             .build(List.of(Map.ofEntries(
+     *             )))
      *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
      *             .build());
      * 
