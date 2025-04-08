@@ -57,11 +57,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var all = DatabricksFunctions.getClusters();
+ *         final var all = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+ *             .build());
  * 
  *         final var cli = all.applyValue(getClustersResult -> {
  *             final var resources = new ArrayList<Library>();
- *             for (var range : KeyedValue.of(getClustersResult.ids()) {
+ *             for (var range : KeyedValue.of(getClustersResult.ids())) {
  *                 var resource = new Library("cli-" + range.key(), LibraryArgs.builder()
  *                     .clusterId(range.key())
  *                     .pypi(LibraryPypiArgs.builder()

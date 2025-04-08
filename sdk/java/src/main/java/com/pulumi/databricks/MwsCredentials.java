@@ -61,12 +61,13 @@ import javax.annotation.Nullable;
  *             .tags(tags)
  *             .build());
  * 
- *         final var thisGetAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy();
+ *         final var thisGetAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
+ *             .build());
  * 
  *         var thisRolePolicy = new RolePolicy("thisRolePolicy", RolePolicyArgs.builder()
  *             .name(String.format("%s-policy", prefix))
  *             .role(crossAccountRole.id())
- *             .policy(thisGetAwsCrossAccountPolicy.applyValue(getAwsCrossAccountPolicyResult -> getAwsCrossAccountPolicyResult.json()))
+ *             .policy(thisGetAwsCrossAccountPolicy.json())
  *             .build());
  * 
  *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()

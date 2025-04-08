@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * const config = new pulumi.Config();
  * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
- * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const databricksAccountId = config.requireObject<any>("databricksAccountId");
  * const current = aws.getCallerIdentity({});
  * const databricksManagedServicesCmk = current.then(current => aws.iam.getPolicyDocument({
  *     version: "2012-10-17",
@@ -77,9 +77,9 @@ import * as utilities from "./utilities";
  *
  * const config = new pulumi.Config();
  * // Account Id that could be found in the top right corner of https://accounts.gcp.databricks.com/
- * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const databricksAccountId = config.requireObject<any>("databricksAccountId");
  * // Id of a google_kms_crypto_key
- * const cmekResourceId = config.requireObject("cmekResourceId");
+ * const cmekResourceId = config.requireObject<any>("cmekResourceId");
  * const managedServices = new databricks.MwsCustomerManagedKeys("managed_services", {
  *     accountId: databricksAccountId,
  *     gcpKeyInfo: {
@@ -100,9 +100,9 @@ import * as utilities from "./utilities";
  *
  * const config = new pulumi.Config();
  * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
- * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const databricksAccountId = config.requireObject<any>("databricksAccountId");
  * // AWS ARN for the Databricks cross account role
- * const databricksCrossAccountRole = config.requireObject("databricksCrossAccountRole");
+ * const databricksCrossAccountRole = config.requireObject<any>("databricksCrossAccountRole");
  * const current = aws.getCallerIdentity({});
  * const databricksStorageCmk = current.then(current => aws.iam.getPolicyDocument({
  *     version: "2012-10-17",
@@ -197,9 +197,9 @@ import * as utilities from "./utilities";
  *
  * const config = new pulumi.Config();
  * // Account Id that could be found in the top right corner of https://accounts.gcp.databricks.com/
- * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const databricksAccountId = config.requireObject<any>("databricksAccountId");
  * // Id of a google_kms_crypto_key
- * const cmekResourceId = config.requireObject("cmekResourceId");
+ * const cmekResourceId = config.requireObject<any>("cmekResourceId");
  * const storage = new databricks.MwsCustomerManagedKeys("storage", {
  *     accountId: databricksAccountId,
  *     gcpKeyInfo: {

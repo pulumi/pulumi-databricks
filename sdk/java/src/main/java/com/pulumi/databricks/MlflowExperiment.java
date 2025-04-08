@@ -44,10 +44,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var me = DatabricksFunctions.getCurrentUser();
+ *         final var me = DatabricksFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var this_ = new MlflowExperiment("this", MlflowExperimentArgs.builder()
- *             .name(String.format("%s/Sample", me.applyValue(getCurrentUserResult -> getCurrentUserResult.home())))
+ *             .name(String.format("%s/Sample", me.home()))
  *             .artifactLocation("dbfs:/tmp/my-experiment")
  *             .description("My MLflow experiment description")
  *             .build());

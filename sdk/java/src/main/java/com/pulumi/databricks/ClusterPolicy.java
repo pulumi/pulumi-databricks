@@ -67,7 +67,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var personalVmOverride = %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ *         final var personalVmOverride = Map.ofEntries(
+ *             Map.entry("autotermination_minutes", Map.ofEntries(
+ *                 Map.entry("type", "fixed"),
+ *                 Map.entry("value", 220),
+ *                 Map.entry("hidden", true)
+ *             )),
+ *             Map.entry("custom_tags.Team", Map.ofEntries(
+ *                 Map.entry("type", "fixed"),
+ *                 Map.entry("value", team)
+ *             ))
+ *         );
  * 
  *         var personalVm = new ClusterPolicy("personalVm", ClusterPolicyArgs.builder()
  *             .policyFamilyId("personal-vm")

@@ -303,7 +303,7 @@ import javax.annotation.Nullable;
  * 
  *         final var thingsGrants = things.applyValue(getTablesResult -> {
  *             final var resources = new ArrayList<Grants>();
- *             for (var range : KeyedValue.of(getTablesResult.ids()) {
+ *             for (var range : KeyedValue.of(getTablesResult.ids())) {
  *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
  *                     .table(range.value())
  *                     .grants(GrantsGrantArgs.builder()
@@ -404,7 +404,7 @@ import javax.annotation.Nullable;
  * 
  *         final var customersGrants = customers.applyValue(getViewsResult -> {
  *             final var resources = new ArrayList<Grants>();
- *             for (var range : KeyedValue.of(getViewsResult.ids()) {
+ *             for (var range : KeyedValue.of(getViewsResult.ids())) {
  *                 var resource = new Grants("customersGrants-" + range.key(), GrantsArgs.builder()
  *                     .table(range.value())
  *                     .grants(GrantsGrantArgs.builder()

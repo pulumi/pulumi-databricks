@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *                 var myTestTableName = values.t3;
  *                 return String.format("%s.%s.%s", sandboxName,thingsName,myTestTableName);
  *             }))
- *             .assetsDir(myTestTable.name().applyValue(name -> String.format("/Shared/provider-test/databricks_quality_monitoring/%s", name)))
+ *             .assetsDir(myTestTable.name().applyValue(_name -> String.format("/Shared/provider-test/databricks_quality_monitoring/%s", _name)))
  *             .outputSchemaName(Output.tuple(sandbox.name(), things.name()).applyValue(values -> {
  *                 var sandboxName = values.t1;
  *                 var thingsName = values.t2;
@@ -188,7 +188,8 @@ import javax.annotation.Nullable;
  *             .tableName(String.format("%s.%s.%s", sandbox.name(),things.name(),myTestTable.name()))
  *             .assetsDir(String.format("/Shared/provider-test/databricks_quality_monitoring/%s", myTestTable.name()))
  *             .outputSchemaName(String.format("%s.%s", sandbox.name(),things.name()))
- *             .snapshot()
+ *             .snapshot(QualityMonitorSnapshotArgs.builder()
+ *                 .build())
  *             .build());
  * 
  *     }

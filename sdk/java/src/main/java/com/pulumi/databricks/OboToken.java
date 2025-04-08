@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * 
  *         var thisOboToken = new OboToken("thisOboToken", OboTokenArgs.builder()
  *             .applicationId(this_.applicationId())
- *             .comment(this_.displayName().applyValue(displayName -> String.format("PAT on behalf of %s", displayName)))
+ *             .comment(this_.displayName().applyValue(_displayName -> String.format("PAT on behalf of %s", _displayName)))
  *             .lifetimeSeconds(3600)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(tokenUsage)
@@ -126,13 +126,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var thisGroupMember = new GroupMember("thisGroupMember", GroupMemberArgs.builder()
- *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+ *             .groupId(admins.id())
  *             .memberId(this_.id())
  *             .build());
  * 
  *         var thisOboToken = new OboToken("thisOboToken", OboTokenArgs.builder()
  *             .applicationId(this_.applicationId())
- *             .comment(this_.displayName().applyValue(displayName -> String.format("PAT on behalf of %s", displayName)))
+ *             .comment(this_.displayName().applyValue(_displayName -> String.format("PAT on behalf of %s", _displayName)))
  *             .lifetimeSeconds(3600)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(thisGroupMember)

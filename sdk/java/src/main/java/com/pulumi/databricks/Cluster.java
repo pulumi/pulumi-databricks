@@ -446,15 +446,15 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
      *             .clusterName("Shared Autoscaling")
-     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .sparkVersion(latestLts.id())
+     *             .nodeTypeId(smallest.id())
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
      *                 .maxWorkers(50)
      *                 .build())
      *             .sparkConf(Map.ofEntries(
-     *                 Map.entry("spark.databricks.io.cache.enabled", true),
+     *                 Map.entry("spark.databricks.io.cache.enabled", "true"),
      *                 Map.entry("spark.databricks.io.cache.maxDiskUsage", "50g"),
      *                 Map.entry("spark.databricks.io.cache.maxMetaDataCache", "1g")
      *             ))
@@ -512,15 +512,15 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
      *             .clusterName("Shared Autoscaling")
-     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .sparkVersion(latestLts.id())
+     *             .nodeTypeId(smallest.id())
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
      *                 .maxWorkers(50)
      *                 .build())
      *             .sparkConf(Map.ofEntries(
-     *                 Map.entry("spark.databricks.io.cache.enabled", true),
+     *                 Map.entry("spark.databricks.io.cache.enabled", "true"),
      *                 Map.entry("spark.databricks.io.cache.maxDiskUsage", "50g"),
      *                 Map.entry("spark.databricks.io.cache.maxMetaDataCache", "1g")
      *             ))

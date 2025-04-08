@@ -18,8 +18,8 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const config = new pulumi.Config();
- * const region = config.requireObject("region");
- * const prefix = config.requireObject("prefix");
+ * const region = config.requireObject<any>("region");
+ * const prefix = config.requireObject<any>("prefix");
  * const ncc = new databricks.MwsNetworkConnectivityConfig("ncc", {
  *     name: `ncc-for-${prefix}`,
  *     region: region,

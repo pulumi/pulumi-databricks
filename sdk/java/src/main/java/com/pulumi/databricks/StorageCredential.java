@@ -166,7 +166,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var external = new StorageCredential("external", StorageCredentialArgs.builder()
  *             .name("the-creds")
- *             .databricksGcpServiceAccount()
+ *             .databricksGcpServiceAccount(StorageCredentialDatabricksGcpServiceAccountArgs.builder()
+ *                 .build())
  *             .build());
  * 
  *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()

@@ -167,7 +167,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var externalGcpSa = new Credential("externalGcpSa", CredentialArgs.builder()
  *             .name("gcp_sa_credential")
- *             .databricksGcpServiceAccount()
+ *             .databricksGcpServiceAccount(CredentialDatabricksGcpServiceAccountArgs.builder()
+ *                 .build())
  *             .purpose("SERVICE")
  *             .comment("GCP SA credential managed by TF")
  *             .build());

@@ -33,13 +33,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.google.computeNetwork;
- * import com.pulumi.google.ComputeNetworkArgs;
+ * import com.pulumi.google.computeNetworkArgs;
  * import com.pulumi.google.computeSubnetwork;
- * import com.pulumi.google.ComputeSubnetworkArgs;
+ * import com.pulumi.google.computeSubnetworkArgs;
  * import com.pulumi.google.computeRouter;
- * import com.pulumi.google.ComputeRouterArgs;
+ * import com.pulumi.google.computeRouterArgs;
  * import com.pulumi.google.computeRouterNat;
- * import com.pulumi.google.ComputeRouterNatArgs;
+ * import com.pulumi.google.computeRouterNatArgs;
  * import com.pulumi.databricks.MwsNetworks;
  * import com.pulumi.databricks.MwsNetworksArgs;
  * import com.pulumi.databricks.inputs.MwsNetworksGcpNetworkInfoArgs;
@@ -69,9 +69,15 @@ import javax.annotation.Nullable;
  *             .ipCidrRange("10.0.0.0/16")
  *             .region("us-central1")
  *             .network(dbxPrivateVpc.id())
- *             .secondaryIpRange(            
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .secondaryIpRange(List.of(            
+ *                 Map.ofEntries(
+ *                     Map.entry("rangeName", "pods"),
+ *                     Map.entry("ipCidrRange", "10.1.0.0/16")
+ *                 ),
+ *                 Map.ofEntries(
+ *                     Map.entry("rangeName", "svc"),
+ *                     Map.entry("ipCidrRange", "10.2.0.0/20")
+ *                 )))
  *             .privateIpGoogleAccess(true)
  *             .build());
  * 

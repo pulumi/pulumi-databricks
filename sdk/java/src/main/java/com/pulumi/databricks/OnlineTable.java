@@ -54,7 +54,8 @@ import javax.annotation.Nullable;
  *             .spec(OnlineTableSpecArgs.builder()
  *                 .sourceTableFullName("main.default.source_table")
  *                 .primaryKeyColumns("id")
- *                 .runTriggered()
+ *                 .runTriggered(OnlineTableSpecRunTriggeredArgs.builder()
+ *                     .build())
  *                 .build())
  *             .build());
  * 
