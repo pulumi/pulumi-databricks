@@ -28,7 +28,19 @@ namespace Pulumi.Databricks
     ///     {
     ///         Name = $"{me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Home)}/Sample",
     ///         ArtifactLocation = "dbfs:/tmp/my-experiment",
-    ///         Description = "My MLflow experiment description",
+    ///         Tags = new[]
+    ///         {
+    ///             new Databricks.Inputs.MlflowExperimentTagArgs
+    ///             {
+    ///                 Key = "key1",
+    ///                 Value = "value1",
+    ///             },
+    ///             new Databricks.Inputs.MlflowExperimentTagArgs
+    ///             {
+    ///                 Key = "key2",
+    ///                 Value = "value2",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -72,9 +84,6 @@ namespace Pulumi.Databricks
         [Output("creationTime")]
         public Output<int> CreationTime { get; private set; } = null!;
 
-        /// <summary>
-        /// The description of the MLflow experiment.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
@@ -92,6 +101,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Tags for the MLflow experiment.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.MlflowExperimentTag>> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -148,9 +163,6 @@ namespace Pulumi.Databricks
         [Input("creationTime")]
         public Input<int>? CreationTime { get; set; }
 
-        /// <summary>
-        /// The description of the MLflow experiment.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -168,6 +180,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("tags")]
+        private InputList<Inputs.MlflowExperimentTagArgs>? _tags;
+
+        /// <summary>
+        /// Tags for the MLflow experiment.
+        /// </summary>
+        public InputList<Inputs.MlflowExperimentTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.MlflowExperimentTagArgs>());
+            set => _tags = value;
+        }
 
         public MlflowExperimentArgs()
         {
@@ -186,9 +210,6 @@ namespace Pulumi.Databricks
         [Input("creationTime")]
         public Input<int>? CreationTime { get; set; }
 
-        /// <summary>
-        /// The description of the MLflow experiment.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -206,6 +227,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("tags")]
+        private InputList<Inputs.MlflowExperimentTagGetArgs>? _tags;
+
+        /// <summary>
+        /// Tags for the MLflow experiment.
+        /// </summary>
+        public InputList<Inputs.MlflowExperimentTagGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.MlflowExperimentTagGetArgs>());
+            set => _tags = value;
+        }
 
         public MlflowExperimentState()
         {

@@ -159,6 +159,9 @@ export class Pipeline extends pulumi.CustomResource {
      * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      */
     public readonly edition!: pulumi.Output<string | undefined>;
+    /**
+     * an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+     */
     public readonly eventLog!: pulumi.Output<outputs.PipelineEventLog | undefined>;
     public readonly expectedLastModified!: pulumi.Output<number | undefined>;
     /**
@@ -188,7 +191,7 @@ export class Pipeline extends pulumi.CustomResource {
     public readonly photon!: pulumi.Output<boolean | undefined>;
     public readonly restartWindow!: pulumi.Output<outputs.PipelineRestartWindow | undefined>;
     public readonly runAs!: pulumi.Output<outputs.PipelineRunAs>;
-    public /*out*/ readonly runAsUserName!: pulumi.Output<string>;
+    public readonly runAsUserName!: pulumi.Output<string>;
     /**
      * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
      */
@@ -289,6 +292,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["photon"] = args ? args.photon : undefined;
             resourceInputs["restartWindow"] = args ? args.restartWindow : undefined;
             resourceInputs["runAs"] = args ? args.runAs : undefined;
+            resourceInputs["runAsUserName"] = args ? args.runAsUserName : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
             resourceInputs["serverless"] = args ? args.serverless : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
@@ -296,7 +300,6 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["target"] = args ? args.target : undefined;
             resourceInputs["trigger"] = args ? args.trigger : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
-            resourceInputs["runAsUserName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Pipeline.__pulumiType, name, resourceInputs, opts);
@@ -350,6 +353,9 @@ export interface PipelineState {
      * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      */
     edition?: pulumi.Input<string>;
+    /**
+     * an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+     */
     eventLog?: pulumi.Input<inputs.PipelineEventLog>;
     expectedLastModified?: pulumi.Input<number>;
     /**
@@ -451,6 +457,9 @@ export interface PipelineArgs {
      * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      */
     edition?: pulumi.Input<string>;
+    /**
+     * an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+     */
     eventLog?: pulumi.Input<inputs.PipelineEventLog>;
     expectedLastModified?: pulumi.Input<number>;
     /**
@@ -480,6 +489,7 @@ export interface PipelineArgs {
     photon?: pulumi.Input<boolean>;
     restartWindow?: pulumi.Input<inputs.PipelineRestartWindow>;
     runAs?: pulumi.Input<inputs.PipelineRunAs>;
+    runAsUserName?: pulumi.Input<string>;
     /**
      * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
      */

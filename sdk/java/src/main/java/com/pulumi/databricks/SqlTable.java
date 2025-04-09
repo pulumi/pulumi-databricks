@@ -52,14 +52,14 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
-     * a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+     * a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
      * 
      */
     @Export(name="clusterKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> clusterKeys;
 
     /**
-     * @return a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+     * @return a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
      * 
      */
     public Output<Optional<List<String>>> clusterKeys() {

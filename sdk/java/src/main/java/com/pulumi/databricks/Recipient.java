@@ -86,6 +86,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * The recipient resource can be imported using the name of the recipient.
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/recipient:Recipient this &lt;recipient_name&gt;
+ * ```
+ * 
  */
 @ResourceType(type="databricks:index/recipient:Recipient")
 public class Recipient extends com.pulumi.resources.CustomResource {

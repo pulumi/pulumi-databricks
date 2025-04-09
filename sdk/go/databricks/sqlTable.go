@@ -27,7 +27,7 @@ type SqlTable struct {
 	// Name of parent catalog. Change forces the creation of a new resource.
 	CatalogName pulumi.StringOutput `pulumi:"catalogName"`
 	ClusterId   pulumi.StringOutput `pulumi:"clusterId"`
-	// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+	// a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
 	ClusterKeys pulumi.StringArrayOutput  `pulumi:"clusterKeys"`
 	Columns     SqlTableColumnArrayOutput `pulumi:"columns"`
 	// User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
@@ -101,7 +101,7 @@ type sqlTableState struct {
 	// Name of parent catalog. Change forces the creation of a new resource.
 	CatalogName *string `pulumi:"catalogName"`
 	ClusterId   *string `pulumi:"clusterId"`
-	// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+	// a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
 	ClusterKeys []string         `pulumi:"clusterKeys"`
 	Columns     []SqlTableColumn `pulumi:"columns"`
 	// User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
@@ -137,7 +137,7 @@ type SqlTableState struct {
 	// Name of parent catalog. Change forces the creation of a new resource.
 	CatalogName pulumi.StringPtrInput
 	ClusterId   pulumi.StringPtrInput
-	// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+	// a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
 	ClusterKeys pulumi.StringArrayInput
 	Columns     SqlTableColumnArrayInput
 	// User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
@@ -177,7 +177,7 @@ type sqlTableArgs struct {
 	// Name of parent catalog. Change forces the creation of a new resource.
 	CatalogName string  `pulumi:"catalogName"`
 	ClusterId   *string `pulumi:"clusterId"`
-	// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+	// a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
 	ClusterKeys []string         `pulumi:"clusterKeys"`
 	Columns     []SqlTableColumn `pulumi:"columns"`
 	// User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
@@ -213,7 +213,7 @@ type SqlTableArgs struct {
 	// Name of parent catalog. Change forces the creation of a new resource.
 	CatalogName pulumi.StringInput
 	ClusterId   pulumi.StringPtrInput
-	// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+	// a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
 	ClusterKeys pulumi.StringArrayInput
 	Columns     SqlTableColumnArrayInput
 	// User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
@@ -340,7 +340,7 @@ func (o SqlTableOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+// a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
 func (o SqlTableOutput) ClusterKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringArrayOutput { return v.ClusterKeys }).(pulumi.StringArrayOutput)
 }

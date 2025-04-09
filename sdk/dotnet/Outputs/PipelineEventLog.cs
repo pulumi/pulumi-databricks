@@ -14,15 +14,15 @@ namespace Pulumi.Databricks.Outputs
     public sealed class PipelineEventLog
     {
         /// <summary>
-        /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        /// The UC catalog the event log is published under.
         /// </summary>
         public readonly string? Catalog;
         /// <summary>
-        /// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+        /// The table name the event log is published to in UC.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
-        /// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        /// The UC schema the event log is published under.
         /// </summary>
         public readonly string? Schema;
 
@@ -30,7 +30,7 @@ namespace Pulumi.Databricks.Outputs
         private PipelineEventLog(
             string? catalog,
 
-            string? name,
+            string name,
 
             string? schema)
         {

@@ -13,6 +13,317 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type SqlQuerySchedule struct {
+	Continuous *SqlQueryScheduleContinuous `pulumi:"continuous"`
+	Daily      *SqlQueryScheduleDaily      `pulumi:"daily"`
+	Weekly     *SqlQueryScheduleWeekly     `pulumi:"weekly"`
+}
+
+// SqlQueryScheduleInput is an input type that accepts SqlQueryScheduleArgs and SqlQueryScheduleOutput values.
+// You can construct a concrete instance of `SqlQueryScheduleInput` via:
+//
+//	SqlQueryScheduleArgs{...}
+type SqlQueryScheduleInput interface {
+	pulumi.Input
+
+	ToSqlQueryScheduleOutput() SqlQueryScheduleOutput
+	ToSqlQueryScheduleOutputWithContext(context.Context) SqlQueryScheduleOutput
+}
+
+type SqlQueryScheduleArgs struct {
+	Continuous SqlQueryScheduleContinuousPtrInput `pulumi:"continuous"`
+	Daily      SqlQueryScheduleDailyPtrInput      `pulumi:"daily"`
+	Weekly     SqlQueryScheduleWeeklyPtrInput     `pulumi:"weekly"`
+}
+
+func (SqlQueryScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlQuerySchedule)(nil)).Elem()
+}
+
+func (i SqlQueryScheduleArgs) ToSqlQueryScheduleOutput() SqlQueryScheduleOutput {
+	return i.ToSqlQueryScheduleOutputWithContext(context.Background())
+}
+
+func (i SqlQueryScheduleArgs) ToSqlQueryScheduleOutputWithContext(ctx context.Context) SqlQueryScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryScheduleOutput)
+}
+
+func (i SqlQueryScheduleArgs) ToSqlQuerySchedulePtrOutput() SqlQuerySchedulePtrOutput {
+	return i.ToSqlQuerySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i SqlQueryScheduleArgs) ToSqlQuerySchedulePtrOutputWithContext(ctx context.Context) SqlQuerySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryScheduleOutput).ToSqlQuerySchedulePtrOutputWithContext(ctx)
+}
+
+// SqlQuerySchedulePtrInput is an input type that accepts SqlQueryScheduleArgs, SqlQuerySchedulePtr and SqlQuerySchedulePtrOutput values.
+// You can construct a concrete instance of `SqlQuerySchedulePtrInput` via:
+//
+//	        SqlQueryScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlQuerySchedulePtrInput interface {
+	pulumi.Input
+
+	ToSqlQuerySchedulePtrOutput() SqlQuerySchedulePtrOutput
+	ToSqlQuerySchedulePtrOutputWithContext(context.Context) SqlQuerySchedulePtrOutput
+}
+
+type sqlQuerySchedulePtrType SqlQueryScheduleArgs
+
+func SqlQuerySchedulePtr(v *SqlQueryScheduleArgs) SqlQuerySchedulePtrInput {
+	return (*sqlQuerySchedulePtrType)(v)
+}
+
+func (*sqlQuerySchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlQuerySchedule)(nil)).Elem()
+}
+
+func (i *sqlQuerySchedulePtrType) ToSqlQuerySchedulePtrOutput() SqlQuerySchedulePtrOutput {
+	return i.ToSqlQuerySchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *sqlQuerySchedulePtrType) ToSqlQuerySchedulePtrOutputWithContext(ctx context.Context) SqlQuerySchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlQuerySchedulePtrOutput)
+}
+
+type SqlQueryScheduleOutput struct{ *pulumi.OutputState }
+
+func (SqlQueryScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlQuerySchedule)(nil)).Elem()
+}
+
+func (o SqlQueryScheduleOutput) ToSqlQueryScheduleOutput() SqlQueryScheduleOutput {
+	return o
+}
+
+func (o SqlQueryScheduleOutput) ToSqlQueryScheduleOutputWithContext(ctx context.Context) SqlQueryScheduleOutput {
+	return o
+}
+
+func (o SqlQueryScheduleOutput) ToSqlQuerySchedulePtrOutput() SqlQuerySchedulePtrOutput {
+	return o.ToSqlQuerySchedulePtrOutputWithContext(context.Background())
+}
+
+func (o SqlQueryScheduleOutput) ToSqlQuerySchedulePtrOutputWithContext(ctx context.Context) SqlQuerySchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQuerySchedule) *SqlQuerySchedule {
+		return &v
+	}).(SqlQuerySchedulePtrOutput)
+}
+
+func (o SqlQueryScheduleOutput) Continuous() SqlQueryScheduleContinuousPtrOutput {
+	return o.ApplyT(func(v SqlQuerySchedule) *SqlQueryScheduleContinuous { return v.Continuous }).(SqlQueryScheduleContinuousPtrOutput)
+}
+
+func (o SqlQueryScheduleOutput) Daily() SqlQueryScheduleDailyPtrOutput {
+	return o.ApplyT(func(v SqlQuerySchedule) *SqlQueryScheduleDaily { return v.Daily }).(SqlQueryScheduleDailyPtrOutput)
+}
+
+func (o SqlQueryScheduleOutput) Weekly() SqlQueryScheduleWeeklyPtrOutput {
+	return o.ApplyT(func(v SqlQuerySchedule) *SqlQueryScheduleWeekly { return v.Weekly }).(SqlQueryScheduleWeeklyPtrOutput)
+}
+
+type SqlQuerySchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlQuerySchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlQuerySchedule)(nil)).Elem()
+}
+
+func (o SqlQuerySchedulePtrOutput) ToSqlQuerySchedulePtrOutput() SqlQuerySchedulePtrOutput {
+	return o
+}
+
+func (o SqlQuerySchedulePtrOutput) ToSqlQuerySchedulePtrOutputWithContext(ctx context.Context) SqlQuerySchedulePtrOutput {
+	return o
+}
+
+func (o SqlQuerySchedulePtrOutput) Elem() SqlQueryScheduleOutput {
+	return o.ApplyT(func(v *SqlQuerySchedule) SqlQuerySchedule {
+		if v != nil {
+			return *v
+		}
+		var ret SqlQuerySchedule
+		return ret
+	}).(SqlQueryScheduleOutput)
+}
+
+func (o SqlQuerySchedulePtrOutput) Continuous() SqlQueryScheduleContinuousPtrOutput {
+	return o.ApplyT(func(v *SqlQuerySchedule) *SqlQueryScheduleContinuous {
+		if v == nil {
+			return nil
+		}
+		return v.Continuous
+	}).(SqlQueryScheduleContinuousPtrOutput)
+}
+
+func (o SqlQuerySchedulePtrOutput) Daily() SqlQueryScheduleDailyPtrOutput {
+	return o.ApplyT(func(v *SqlQuerySchedule) *SqlQueryScheduleDaily {
+		if v == nil {
+			return nil
+		}
+		return v.Daily
+	}).(SqlQueryScheduleDailyPtrOutput)
+}
+
+func (o SqlQuerySchedulePtrOutput) Weekly() SqlQueryScheduleWeeklyPtrOutput {
+	return o.ApplyT(func(v *SqlQuerySchedule) *SqlQueryScheduleWeekly {
+		if v == nil {
+			return nil
+		}
+		return v.Weekly
+	}).(SqlQueryScheduleWeeklyPtrOutput)
+}
+
+type SqlQueryScheduleContinuous struct {
+	IntervalSeconds int     `pulumi:"intervalSeconds"`
+	UntilDate       *string `pulumi:"untilDate"`
+}
+
+// SqlQueryScheduleContinuousInput is an input type that accepts SqlQueryScheduleContinuousArgs and SqlQueryScheduleContinuousOutput values.
+// You can construct a concrete instance of `SqlQueryScheduleContinuousInput` via:
+//
+//	SqlQueryScheduleContinuousArgs{...}
+type SqlQueryScheduleContinuousInput interface {
+	pulumi.Input
+
+	ToSqlQueryScheduleContinuousOutput() SqlQueryScheduleContinuousOutput
+	ToSqlQueryScheduleContinuousOutputWithContext(context.Context) SqlQueryScheduleContinuousOutput
+}
+
+type SqlQueryScheduleContinuousArgs struct {
+	IntervalSeconds pulumi.IntInput       `pulumi:"intervalSeconds"`
+	UntilDate       pulumi.StringPtrInput `pulumi:"untilDate"`
+}
+
+func (SqlQueryScheduleContinuousArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlQueryScheduleContinuous)(nil)).Elem()
+}
+
+func (i SqlQueryScheduleContinuousArgs) ToSqlQueryScheduleContinuousOutput() SqlQueryScheduleContinuousOutput {
+	return i.ToSqlQueryScheduleContinuousOutputWithContext(context.Background())
+}
+
+func (i SqlQueryScheduleContinuousArgs) ToSqlQueryScheduleContinuousOutputWithContext(ctx context.Context) SqlQueryScheduleContinuousOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryScheduleContinuousOutput)
+}
+
+func (i SqlQueryScheduleContinuousArgs) ToSqlQueryScheduleContinuousPtrOutput() SqlQueryScheduleContinuousPtrOutput {
+	return i.ToSqlQueryScheduleContinuousPtrOutputWithContext(context.Background())
+}
+
+func (i SqlQueryScheduleContinuousArgs) ToSqlQueryScheduleContinuousPtrOutputWithContext(ctx context.Context) SqlQueryScheduleContinuousPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryScheduleContinuousOutput).ToSqlQueryScheduleContinuousPtrOutputWithContext(ctx)
+}
+
+// SqlQueryScheduleContinuousPtrInput is an input type that accepts SqlQueryScheduleContinuousArgs, SqlQueryScheduleContinuousPtr and SqlQueryScheduleContinuousPtrOutput values.
+// You can construct a concrete instance of `SqlQueryScheduleContinuousPtrInput` via:
+//
+//	        SqlQueryScheduleContinuousArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlQueryScheduleContinuousPtrInput interface {
+	pulumi.Input
+
+	ToSqlQueryScheduleContinuousPtrOutput() SqlQueryScheduleContinuousPtrOutput
+	ToSqlQueryScheduleContinuousPtrOutputWithContext(context.Context) SqlQueryScheduleContinuousPtrOutput
+}
+
+type sqlQueryScheduleContinuousPtrType SqlQueryScheduleContinuousArgs
+
+func SqlQueryScheduleContinuousPtr(v *SqlQueryScheduleContinuousArgs) SqlQueryScheduleContinuousPtrInput {
+	return (*sqlQueryScheduleContinuousPtrType)(v)
+}
+
+func (*sqlQueryScheduleContinuousPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlQueryScheduleContinuous)(nil)).Elem()
+}
+
+func (i *sqlQueryScheduleContinuousPtrType) ToSqlQueryScheduleContinuousPtrOutput() SqlQueryScheduleContinuousPtrOutput {
+	return i.ToSqlQueryScheduleContinuousPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlQueryScheduleContinuousPtrType) ToSqlQueryScheduleContinuousPtrOutputWithContext(ctx context.Context) SqlQueryScheduleContinuousPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryScheduleContinuousPtrOutput)
+}
+
+type SqlQueryScheduleContinuousOutput struct{ *pulumi.OutputState }
+
+func (SqlQueryScheduleContinuousOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlQueryScheduleContinuous)(nil)).Elem()
+}
+
+func (o SqlQueryScheduleContinuousOutput) ToSqlQueryScheduleContinuousOutput() SqlQueryScheduleContinuousOutput {
+	return o
+}
+
+func (o SqlQueryScheduleContinuousOutput) ToSqlQueryScheduleContinuousOutputWithContext(ctx context.Context) SqlQueryScheduleContinuousOutput {
+	return o
+}
+
+func (o SqlQueryScheduleContinuousOutput) ToSqlQueryScheduleContinuousPtrOutput() SqlQueryScheduleContinuousPtrOutput {
+	return o.ToSqlQueryScheduleContinuousPtrOutputWithContext(context.Background())
+}
+
+func (o SqlQueryScheduleContinuousOutput) ToSqlQueryScheduleContinuousPtrOutputWithContext(ctx context.Context) SqlQueryScheduleContinuousPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryScheduleContinuous) *SqlQueryScheduleContinuous {
+		return &v
+	}).(SqlQueryScheduleContinuousPtrOutput)
+}
+
+func (o SqlQueryScheduleContinuousOutput) IntervalSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v SqlQueryScheduleContinuous) int { return v.IntervalSeconds }).(pulumi.IntOutput)
+}
+
+func (o SqlQueryScheduleContinuousOutput) UntilDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlQueryScheduleContinuous) *string { return v.UntilDate }).(pulumi.StringPtrOutput)
+}
+
+type SqlQueryScheduleContinuousPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlQueryScheduleContinuousPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlQueryScheduleContinuous)(nil)).Elem()
+}
+
+func (o SqlQueryScheduleContinuousPtrOutput) ToSqlQueryScheduleContinuousPtrOutput() SqlQueryScheduleContinuousPtrOutput {
+	return o
+}
+
+func (o SqlQueryScheduleContinuousPtrOutput) ToSqlQueryScheduleContinuousPtrOutputWithContext(ctx context.Context) SqlQueryScheduleContinuousPtrOutput {
+	return o
+}
+
+func (o SqlQueryScheduleContinuousPtrOutput) Elem() SqlQueryScheduleContinuousOutput {
+	return o.ApplyT(func(v *SqlQueryScheduleContinuous) SqlQueryScheduleContinuous {
+		if v != nil {
+			return *v
+		}
+		var ret SqlQueryScheduleContinuous
+		return ret
+	}).(SqlQueryScheduleContinuousOutput)
+}
+
+func (o SqlQueryScheduleContinuousPtrOutput) IntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlQueryScheduleContinuous) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.IntervalSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o SqlQueryScheduleContinuousPtrOutput) UntilDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlQueryScheduleContinuous) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UntilDate
+	}).(pulumi.StringPtrOutput)
+}
+
 type SqlQueryScheduleDaily struct {
 	IntervalDays int     `pulumi:"intervalDays"`
 	TimeOfDay    string  `pulumi:"timeOfDay"`
@@ -67071,6 +67382,10 @@ func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) AwsKm
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryScheduleInput)(nil)).Elem(), SqlQueryScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlQuerySchedulePtrInput)(nil)).Elem(), SqlQueryScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryScheduleContinuousInput)(nil)).Elem(), SqlQueryScheduleContinuousArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryScheduleContinuousPtrInput)(nil)).Elem(), SqlQueryScheduleContinuousArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryScheduleDailyInput)(nil)).Elem(), SqlQueryScheduleDailyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryScheduleDailyPtrInput)(nil)).Elem(), SqlQueryScheduleDailyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryScheduleWeeklyInput)(nil)).Elem(), SqlQueryScheduleWeeklyArgs{})
@@ -67884,6 +68199,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
+	pulumi.RegisterOutputType(SqlQueryScheduleOutput{})
+	pulumi.RegisterOutputType(SqlQuerySchedulePtrOutput{})
+	pulumi.RegisterOutputType(SqlQueryScheduleContinuousOutput{})
+	pulumi.RegisterOutputType(SqlQueryScheduleContinuousPtrOutput{})
 	pulumi.RegisterOutputType(SqlQueryScheduleDailyOutput{})
 	pulumi.RegisterOutputType(SqlQueryScheduleDailyPtrOutput{})
 	pulumi.RegisterOutputType(SqlQueryScheduleWeeklyOutput{})

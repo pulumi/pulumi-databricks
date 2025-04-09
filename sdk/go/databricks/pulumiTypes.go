@@ -12010,6 +12010,139 @@ func (o DefaultNamespaceSettingNamespacePtrOutput) Value() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+type DisableLegacyAccessSettingDisableLegacyAccess struct {
+	Value bool `pulumi:"value"`
+}
+
+// DisableLegacyAccessSettingDisableLegacyAccessInput is an input type that accepts DisableLegacyAccessSettingDisableLegacyAccessArgs and DisableLegacyAccessSettingDisableLegacyAccessOutput values.
+// You can construct a concrete instance of `DisableLegacyAccessSettingDisableLegacyAccessInput` via:
+//
+//	DisableLegacyAccessSettingDisableLegacyAccessArgs{...}
+type DisableLegacyAccessSettingDisableLegacyAccessInput interface {
+	pulumi.Input
+
+	ToDisableLegacyAccessSettingDisableLegacyAccessOutput() DisableLegacyAccessSettingDisableLegacyAccessOutput
+	ToDisableLegacyAccessSettingDisableLegacyAccessOutputWithContext(context.Context) DisableLegacyAccessSettingDisableLegacyAccessOutput
+}
+
+type DisableLegacyAccessSettingDisableLegacyAccessArgs struct {
+	Value pulumi.BoolInput `pulumi:"value"`
+}
+
+func (DisableLegacyAccessSettingDisableLegacyAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableLegacyAccessSettingDisableLegacyAccess)(nil)).Elem()
+}
+
+func (i DisableLegacyAccessSettingDisableLegacyAccessArgs) ToDisableLegacyAccessSettingDisableLegacyAccessOutput() DisableLegacyAccessSettingDisableLegacyAccessOutput {
+	return i.ToDisableLegacyAccessSettingDisableLegacyAccessOutputWithContext(context.Background())
+}
+
+func (i DisableLegacyAccessSettingDisableLegacyAccessArgs) ToDisableLegacyAccessSettingDisableLegacyAccessOutputWithContext(ctx context.Context) DisableLegacyAccessSettingDisableLegacyAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyAccessSettingDisableLegacyAccessOutput)
+}
+
+func (i DisableLegacyAccessSettingDisableLegacyAccessArgs) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutput() DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
+	return i.ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(context.Background())
+}
+
+func (i DisableLegacyAccessSettingDisableLegacyAccessArgs) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyAccessSettingDisableLegacyAccessOutput).ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(ctx)
+}
+
+// DisableLegacyAccessSettingDisableLegacyAccessPtrInput is an input type that accepts DisableLegacyAccessSettingDisableLegacyAccessArgs, DisableLegacyAccessSettingDisableLegacyAccessPtr and DisableLegacyAccessSettingDisableLegacyAccessPtrOutput values.
+// You can construct a concrete instance of `DisableLegacyAccessSettingDisableLegacyAccessPtrInput` via:
+//
+//	        DisableLegacyAccessSettingDisableLegacyAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type DisableLegacyAccessSettingDisableLegacyAccessPtrInput interface {
+	pulumi.Input
+
+	ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutput() DisableLegacyAccessSettingDisableLegacyAccessPtrOutput
+	ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(context.Context) DisableLegacyAccessSettingDisableLegacyAccessPtrOutput
+}
+
+type disableLegacyAccessSettingDisableLegacyAccessPtrType DisableLegacyAccessSettingDisableLegacyAccessArgs
+
+func DisableLegacyAccessSettingDisableLegacyAccessPtr(v *DisableLegacyAccessSettingDisableLegacyAccessArgs) DisableLegacyAccessSettingDisableLegacyAccessPtrInput {
+	return (*disableLegacyAccessSettingDisableLegacyAccessPtrType)(v)
+}
+
+func (*disableLegacyAccessSettingDisableLegacyAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableLegacyAccessSettingDisableLegacyAccess)(nil)).Elem()
+}
+
+func (i *disableLegacyAccessSettingDisableLegacyAccessPtrType) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutput() DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
+	return i.ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *disableLegacyAccessSettingDisableLegacyAccessPtrType) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyAccessSettingDisableLegacyAccessPtrOutput)
+}
+
+type DisableLegacyAccessSettingDisableLegacyAccessOutput struct{ *pulumi.OutputState }
+
+func (DisableLegacyAccessSettingDisableLegacyAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableLegacyAccessSettingDisableLegacyAccess)(nil)).Elem()
+}
+
+func (o DisableLegacyAccessSettingDisableLegacyAccessOutput) ToDisableLegacyAccessSettingDisableLegacyAccessOutput() DisableLegacyAccessSettingDisableLegacyAccessOutput {
+	return o
+}
+
+func (o DisableLegacyAccessSettingDisableLegacyAccessOutput) ToDisableLegacyAccessSettingDisableLegacyAccessOutputWithContext(ctx context.Context) DisableLegacyAccessSettingDisableLegacyAccessOutput {
+	return o
+}
+
+func (o DisableLegacyAccessSettingDisableLegacyAccessOutput) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutput() DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
+	return o.ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(context.Background())
+}
+
+func (o DisableLegacyAccessSettingDisableLegacyAccessOutput) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisableLegacyAccessSettingDisableLegacyAccess) *DisableLegacyAccessSettingDisableLegacyAccess {
+		return &v
+	}).(DisableLegacyAccessSettingDisableLegacyAccessPtrOutput)
+}
+
+func (o DisableLegacyAccessSettingDisableLegacyAccessOutput) Value() pulumi.BoolOutput {
+	return o.ApplyT(func(v DisableLegacyAccessSettingDisableLegacyAccess) bool { return v.Value }).(pulumi.BoolOutput)
+}
+
+type DisableLegacyAccessSettingDisableLegacyAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (DisableLegacyAccessSettingDisableLegacyAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableLegacyAccessSettingDisableLegacyAccess)(nil)).Elem()
+}
+
+func (o DisableLegacyAccessSettingDisableLegacyAccessPtrOutput) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutput() DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
+	return o
+}
+
+func (o DisableLegacyAccessSettingDisableLegacyAccessPtrOutput) ToDisableLegacyAccessSettingDisableLegacyAccessPtrOutputWithContext(ctx context.Context) DisableLegacyAccessSettingDisableLegacyAccessPtrOutput {
+	return o
+}
+
+func (o DisableLegacyAccessSettingDisableLegacyAccessPtrOutput) Elem() DisableLegacyAccessSettingDisableLegacyAccessOutput {
+	return o.ApplyT(func(v *DisableLegacyAccessSettingDisableLegacyAccess) DisableLegacyAccessSettingDisableLegacyAccess {
+		if v != nil {
+			return *v
+		}
+		var ret DisableLegacyAccessSettingDisableLegacyAccess
+		return ret
+	}).(DisableLegacyAccessSettingDisableLegacyAccessOutput)
+}
+
+func (o DisableLegacyAccessSettingDisableLegacyAccessPtrOutput) Value() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DisableLegacyAccessSettingDisableLegacyAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.BoolPtrOutput)
+}
+
 type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace struct {
 	IsEnabled bool `pulumi:"isEnabled"`
 }
@@ -54971,6 +55104,106 @@ func (o MetastoreDataAccessGcpServiceAccountKeyPtrOutput) PrivateKeyId() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+type MlflowExperimentTag struct {
+	Key   *string `pulumi:"key"`
+	Value *string `pulumi:"value"`
+}
+
+// MlflowExperimentTagInput is an input type that accepts MlflowExperimentTagArgs and MlflowExperimentTagOutput values.
+// You can construct a concrete instance of `MlflowExperimentTagInput` via:
+//
+//	MlflowExperimentTagArgs{...}
+type MlflowExperimentTagInput interface {
+	pulumi.Input
+
+	ToMlflowExperimentTagOutput() MlflowExperimentTagOutput
+	ToMlflowExperimentTagOutputWithContext(context.Context) MlflowExperimentTagOutput
+}
+
+type MlflowExperimentTagArgs struct {
+	Key   pulumi.StringPtrInput `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (MlflowExperimentTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MlflowExperimentTag)(nil)).Elem()
+}
+
+func (i MlflowExperimentTagArgs) ToMlflowExperimentTagOutput() MlflowExperimentTagOutput {
+	return i.ToMlflowExperimentTagOutputWithContext(context.Background())
+}
+
+func (i MlflowExperimentTagArgs) ToMlflowExperimentTagOutputWithContext(ctx context.Context) MlflowExperimentTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MlflowExperimentTagOutput)
+}
+
+// MlflowExperimentTagArrayInput is an input type that accepts MlflowExperimentTagArray and MlflowExperimentTagArrayOutput values.
+// You can construct a concrete instance of `MlflowExperimentTagArrayInput` via:
+//
+//	MlflowExperimentTagArray{ MlflowExperimentTagArgs{...} }
+type MlflowExperimentTagArrayInput interface {
+	pulumi.Input
+
+	ToMlflowExperimentTagArrayOutput() MlflowExperimentTagArrayOutput
+	ToMlflowExperimentTagArrayOutputWithContext(context.Context) MlflowExperimentTagArrayOutput
+}
+
+type MlflowExperimentTagArray []MlflowExperimentTagInput
+
+func (MlflowExperimentTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MlflowExperimentTag)(nil)).Elem()
+}
+
+func (i MlflowExperimentTagArray) ToMlflowExperimentTagArrayOutput() MlflowExperimentTagArrayOutput {
+	return i.ToMlflowExperimentTagArrayOutputWithContext(context.Background())
+}
+
+func (i MlflowExperimentTagArray) ToMlflowExperimentTagArrayOutputWithContext(ctx context.Context) MlflowExperimentTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MlflowExperimentTagArrayOutput)
+}
+
+type MlflowExperimentTagOutput struct{ *pulumi.OutputState }
+
+func (MlflowExperimentTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MlflowExperimentTag)(nil)).Elem()
+}
+
+func (o MlflowExperimentTagOutput) ToMlflowExperimentTagOutput() MlflowExperimentTagOutput {
+	return o
+}
+
+func (o MlflowExperimentTagOutput) ToMlflowExperimentTagOutputWithContext(ctx context.Context) MlflowExperimentTagOutput {
+	return o
+}
+
+func (o MlflowExperimentTagOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MlflowExperimentTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o MlflowExperimentTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MlflowExperimentTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type MlflowExperimentTagArrayOutput struct{ *pulumi.OutputState }
+
+func (MlflowExperimentTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MlflowExperimentTag)(nil)).Elem()
+}
+
+func (o MlflowExperimentTagArrayOutput) ToMlflowExperimentTagArrayOutput() MlflowExperimentTagArrayOutput {
+	return o
+}
+
+func (o MlflowExperimentTagArrayOutput) ToMlflowExperimentTagArrayOutputWithContext(ctx context.Context) MlflowExperimentTagArrayOutput {
+	return o
+}
+
+func (o MlflowExperimentTagArrayOutput) Index(i pulumi.IntInput) MlflowExperimentTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MlflowExperimentTag {
+		return vs[0].([]MlflowExperimentTag)[vs[1].(int)]
+	}).(MlflowExperimentTagOutput)
+}
+
 type MlflowModelTag struct {
 	Key   *string `pulumi:"key"`
 	Value *string `pulumi:"value"`
@@ -63078,11 +63311,11 @@ type MwsNetworksGcpNetworkInfo struct {
 	NetworkProjectId string `pulumi:"networkProjectId"`
 	// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName *string `pulumi:"podIpRangeName"`
 	// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName *string `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId string `pulumi:"subnetId"`
@@ -63108,11 +63341,11 @@ type MwsNetworksGcpNetworkInfoArgs struct {
 	NetworkProjectId pulumi.StringInput `pulumi:"networkProjectId"`
 	// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName pulumi.StringPtrInput `pulumi:"podIpRangeName"`
 	// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName pulumi.StringPtrInput `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
@@ -63206,14 +63439,14 @@ func (o MwsNetworksGcpNetworkInfoOutput) NetworkProjectId() pulumi.StringOutput 
 
 // The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.PodIpRangeName }).(pulumi.StringPtrOutput)
 }
 
 // The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.ServiceIpRangeName }).(pulumi.StringPtrOutput)
 }
@@ -63269,7 +63502,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) NetworkProjectId() pulumi.StringPtrO
 
 // The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -63281,7 +63514,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOut
 
 // The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -64120,9 +64353,9 @@ func (o MwsWorkspacesExternalCustomerInfoPtrOutput) CustomerName() pulumi.String
 }
 
 type MwsWorkspacesGcpManagedNetworkConfig struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange *string `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange *string `pulumi:"gkeClusterServiceIpRange"`
 	SubnetCidr               string  `pulumi:"subnetCidr"`
 }
@@ -64139,9 +64372,9 @@ type MwsWorkspacesGcpManagedNetworkConfigInput interface {
 }
 
 type MwsWorkspacesGcpManagedNetworkConfigArgs struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange pulumi.StringPtrInput `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange pulumi.StringPtrInput `pulumi:"gkeClusterServiceIpRange"`
 	SubnetCidr               pulumi.StringInput    `pulumi:"subnetCidr"`
 }
@@ -64223,12 +64456,12 @@ func (o MwsWorkspacesGcpManagedNetworkConfigOutput) ToMwsWorkspacesGcpManagedNet
 	}).(MwsWorkspacesGcpManagedNetworkConfigPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterPodIpRange }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterServiceIpRange }).(pulumi.StringPtrOutput)
 }
@@ -64261,7 +64494,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) Elem() MwsWorkspacesGcpMa
 	}).(MwsWorkspacesGcpManagedNetworkConfigOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -64271,7 +64504,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -70733,11 +70966,11 @@ func (o PipelineDeploymentPtrOutput) MetadataFilePath() pulumi.StringPtrOutput {
 }
 
 type PipelineEventLog struct {
-	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	// The UC catalog the event log is published under.
 	Catalog *string `pulumi:"catalog"`
-	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
-	Name *string `pulumi:"name"`
-	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+	// The table name the event log is published to in UC.
+	Name string `pulumi:"name"`
+	// The UC schema the event log is published under.
 	Schema *string `pulumi:"schema"`
 }
 
@@ -70753,11 +70986,11 @@ type PipelineEventLogInput interface {
 }
 
 type PipelineEventLogArgs struct {
-	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	// The UC catalog the event log is published under.
 	Catalog pulumi.StringPtrInput `pulumi:"catalog"`
-	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+	// The table name the event log is published to in UC.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The UC schema the event log is published under.
 	Schema pulumi.StringPtrInput `pulumi:"schema"`
 }
 
@@ -70838,17 +71071,17 @@ func (o PipelineEventLogOutput) ToPipelineEventLogPtrOutputWithContext(ctx conte
 	}).(PipelineEventLogPtrOutput)
 }
 
-// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+// The UC catalog the event log is published under.
 func (o PipelineEventLogOutput) Catalog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineEventLog) *string { return v.Catalog }).(pulumi.StringPtrOutput)
 }
 
-// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
-func (o PipelineEventLogOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineEventLog) *string { return v.Name }).(pulumi.StringPtrOutput)
+// The table name the event log is published to in UC.
+func (o PipelineEventLogOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineEventLog) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+// The UC schema the event log is published under.
 func (o PipelineEventLogOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineEventLog) *string { return v.Schema }).(pulumi.StringPtrOutput)
 }
@@ -70877,7 +71110,7 @@ func (o PipelineEventLogPtrOutput) Elem() PipelineEventLogOutput {
 	}).(PipelineEventLogOutput)
 }
 
-// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+// The UC catalog the event log is published under.
 func (o PipelineEventLogPtrOutput) Catalog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PipelineEventLog) *string {
 		if v == nil {
@@ -70887,17 +71120,17 @@ func (o PipelineEventLogPtrOutput) Catalog() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+// The table name the event log is published to in UC.
 func (o PipelineEventLogPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PipelineEventLog) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Name
+		return &v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
-// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+// The UC schema the event log is published under.
 func (o PipelineEventLogPtrOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PipelineEventLog) *string {
 		if v == nil {
@@ -82367,317 +82600,6 @@ func (o SqlQueryParameterTextPtrOutput) Value() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type SqlQuerySchedule struct {
-	Continuous *SqlQueryScheduleContinuous `pulumi:"continuous"`
-	Daily      *SqlQueryScheduleDaily      `pulumi:"daily"`
-	Weekly     *SqlQueryScheduleWeekly     `pulumi:"weekly"`
-}
-
-// SqlQueryScheduleInput is an input type that accepts SqlQueryScheduleArgs and SqlQueryScheduleOutput values.
-// You can construct a concrete instance of `SqlQueryScheduleInput` via:
-//
-//	SqlQueryScheduleArgs{...}
-type SqlQueryScheduleInput interface {
-	pulumi.Input
-
-	ToSqlQueryScheduleOutput() SqlQueryScheduleOutput
-	ToSqlQueryScheduleOutputWithContext(context.Context) SqlQueryScheduleOutput
-}
-
-type SqlQueryScheduleArgs struct {
-	Continuous SqlQueryScheduleContinuousPtrInput `pulumi:"continuous"`
-	Daily      SqlQueryScheduleDailyPtrInput      `pulumi:"daily"`
-	Weekly     SqlQueryScheduleWeeklyPtrInput     `pulumi:"weekly"`
-}
-
-func (SqlQueryScheduleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQuerySchedule)(nil)).Elem()
-}
-
-func (i SqlQueryScheduleArgs) ToSqlQueryScheduleOutput() SqlQueryScheduleOutput {
-	return i.ToSqlQueryScheduleOutputWithContext(context.Background())
-}
-
-func (i SqlQueryScheduleArgs) ToSqlQueryScheduleOutputWithContext(ctx context.Context) SqlQueryScheduleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryScheduleOutput)
-}
-
-func (i SqlQueryScheduleArgs) ToSqlQuerySchedulePtrOutput() SqlQuerySchedulePtrOutput {
-	return i.ToSqlQuerySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryScheduleArgs) ToSqlQuerySchedulePtrOutputWithContext(ctx context.Context) SqlQuerySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryScheduleOutput).ToSqlQuerySchedulePtrOutputWithContext(ctx)
-}
-
-// SqlQuerySchedulePtrInput is an input type that accepts SqlQueryScheduleArgs, SqlQuerySchedulePtr and SqlQuerySchedulePtrOutput values.
-// You can construct a concrete instance of `SqlQuerySchedulePtrInput` via:
-//
-//	        SqlQueryScheduleArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQuerySchedulePtrInput interface {
-	pulumi.Input
-
-	ToSqlQuerySchedulePtrOutput() SqlQuerySchedulePtrOutput
-	ToSqlQuerySchedulePtrOutputWithContext(context.Context) SqlQuerySchedulePtrOutput
-}
-
-type sqlQuerySchedulePtrType SqlQueryScheduleArgs
-
-func SqlQuerySchedulePtr(v *SqlQueryScheduleArgs) SqlQuerySchedulePtrInput {
-	return (*sqlQuerySchedulePtrType)(v)
-}
-
-func (*sqlQuerySchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQuerySchedule)(nil)).Elem()
-}
-
-func (i *sqlQuerySchedulePtrType) ToSqlQuerySchedulePtrOutput() SqlQuerySchedulePtrOutput {
-	return i.ToSqlQuerySchedulePtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQuerySchedulePtrType) ToSqlQuerySchedulePtrOutputWithContext(ctx context.Context) SqlQuerySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQuerySchedulePtrOutput)
-}
-
-type SqlQueryScheduleOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQuerySchedule)(nil)).Elem()
-}
-
-func (o SqlQueryScheduleOutput) ToSqlQueryScheduleOutput() SqlQueryScheduleOutput {
-	return o
-}
-
-func (o SqlQueryScheduleOutput) ToSqlQueryScheduleOutputWithContext(ctx context.Context) SqlQueryScheduleOutput {
-	return o
-}
-
-func (o SqlQueryScheduleOutput) ToSqlQuerySchedulePtrOutput() SqlQuerySchedulePtrOutput {
-	return o.ToSqlQuerySchedulePtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryScheduleOutput) ToSqlQuerySchedulePtrOutputWithContext(ctx context.Context) SqlQuerySchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQuerySchedule) *SqlQuerySchedule {
-		return &v
-	}).(SqlQuerySchedulePtrOutput)
-}
-
-func (o SqlQueryScheduleOutput) Continuous() SqlQueryScheduleContinuousPtrOutput {
-	return o.ApplyT(func(v SqlQuerySchedule) *SqlQueryScheduleContinuous { return v.Continuous }).(SqlQueryScheduleContinuousPtrOutput)
-}
-
-func (o SqlQueryScheduleOutput) Daily() SqlQueryScheduleDailyPtrOutput {
-	return o.ApplyT(func(v SqlQuerySchedule) *SqlQueryScheduleDaily { return v.Daily }).(SqlQueryScheduleDailyPtrOutput)
-}
-
-func (o SqlQueryScheduleOutput) Weekly() SqlQueryScheduleWeeklyPtrOutput {
-	return o.ApplyT(func(v SqlQuerySchedule) *SqlQueryScheduleWeekly { return v.Weekly }).(SqlQueryScheduleWeeklyPtrOutput)
-}
-
-type SqlQuerySchedulePtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQuerySchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQuerySchedule)(nil)).Elem()
-}
-
-func (o SqlQuerySchedulePtrOutput) ToSqlQuerySchedulePtrOutput() SqlQuerySchedulePtrOutput {
-	return o
-}
-
-func (o SqlQuerySchedulePtrOutput) ToSqlQuerySchedulePtrOutputWithContext(ctx context.Context) SqlQuerySchedulePtrOutput {
-	return o
-}
-
-func (o SqlQuerySchedulePtrOutput) Elem() SqlQueryScheduleOutput {
-	return o.ApplyT(func(v *SqlQuerySchedule) SqlQuerySchedule {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQuerySchedule
-		return ret
-	}).(SqlQueryScheduleOutput)
-}
-
-func (o SqlQuerySchedulePtrOutput) Continuous() SqlQueryScheduleContinuousPtrOutput {
-	return o.ApplyT(func(v *SqlQuerySchedule) *SqlQueryScheduleContinuous {
-		if v == nil {
-			return nil
-		}
-		return v.Continuous
-	}).(SqlQueryScheduleContinuousPtrOutput)
-}
-
-func (o SqlQuerySchedulePtrOutput) Daily() SqlQueryScheduleDailyPtrOutput {
-	return o.ApplyT(func(v *SqlQuerySchedule) *SqlQueryScheduleDaily {
-		if v == nil {
-			return nil
-		}
-		return v.Daily
-	}).(SqlQueryScheduleDailyPtrOutput)
-}
-
-func (o SqlQuerySchedulePtrOutput) Weekly() SqlQueryScheduleWeeklyPtrOutput {
-	return o.ApplyT(func(v *SqlQuerySchedule) *SqlQueryScheduleWeekly {
-		if v == nil {
-			return nil
-		}
-		return v.Weekly
-	}).(SqlQueryScheduleWeeklyPtrOutput)
-}
-
-type SqlQueryScheduleContinuous struct {
-	IntervalSeconds int     `pulumi:"intervalSeconds"`
-	UntilDate       *string `pulumi:"untilDate"`
-}
-
-// SqlQueryScheduleContinuousInput is an input type that accepts SqlQueryScheduleContinuousArgs and SqlQueryScheduleContinuousOutput values.
-// You can construct a concrete instance of `SqlQueryScheduleContinuousInput` via:
-//
-//	SqlQueryScheduleContinuousArgs{...}
-type SqlQueryScheduleContinuousInput interface {
-	pulumi.Input
-
-	ToSqlQueryScheduleContinuousOutput() SqlQueryScheduleContinuousOutput
-	ToSqlQueryScheduleContinuousOutputWithContext(context.Context) SqlQueryScheduleContinuousOutput
-}
-
-type SqlQueryScheduleContinuousArgs struct {
-	IntervalSeconds pulumi.IntInput       `pulumi:"intervalSeconds"`
-	UntilDate       pulumi.StringPtrInput `pulumi:"untilDate"`
-}
-
-func (SqlQueryScheduleContinuousArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryScheduleContinuous)(nil)).Elem()
-}
-
-func (i SqlQueryScheduleContinuousArgs) ToSqlQueryScheduleContinuousOutput() SqlQueryScheduleContinuousOutput {
-	return i.ToSqlQueryScheduleContinuousOutputWithContext(context.Background())
-}
-
-func (i SqlQueryScheduleContinuousArgs) ToSqlQueryScheduleContinuousOutputWithContext(ctx context.Context) SqlQueryScheduleContinuousOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryScheduleContinuousOutput)
-}
-
-func (i SqlQueryScheduleContinuousArgs) ToSqlQueryScheduleContinuousPtrOutput() SqlQueryScheduleContinuousPtrOutput {
-	return i.ToSqlQueryScheduleContinuousPtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryScheduleContinuousArgs) ToSqlQueryScheduleContinuousPtrOutputWithContext(ctx context.Context) SqlQueryScheduleContinuousPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryScheduleContinuousOutput).ToSqlQueryScheduleContinuousPtrOutputWithContext(ctx)
-}
-
-// SqlQueryScheduleContinuousPtrInput is an input type that accepts SqlQueryScheduleContinuousArgs, SqlQueryScheduleContinuousPtr and SqlQueryScheduleContinuousPtrOutput values.
-// You can construct a concrete instance of `SqlQueryScheduleContinuousPtrInput` via:
-//
-//	        SqlQueryScheduleContinuousArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryScheduleContinuousPtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryScheduleContinuousPtrOutput() SqlQueryScheduleContinuousPtrOutput
-	ToSqlQueryScheduleContinuousPtrOutputWithContext(context.Context) SqlQueryScheduleContinuousPtrOutput
-}
-
-type sqlQueryScheduleContinuousPtrType SqlQueryScheduleContinuousArgs
-
-func SqlQueryScheduleContinuousPtr(v *SqlQueryScheduleContinuousArgs) SqlQueryScheduleContinuousPtrInput {
-	return (*sqlQueryScheduleContinuousPtrType)(v)
-}
-
-func (*sqlQueryScheduleContinuousPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryScheduleContinuous)(nil)).Elem()
-}
-
-func (i *sqlQueryScheduleContinuousPtrType) ToSqlQueryScheduleContinuousPtrOutput() SqlQueryScheduleContinuousPtrOutput {
-	return i.ToSqlQueryScheduleContinuousPtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryScheduleContinuousPtrType) ToSqlQueryScheduleContinuousPtrOutputWithContext(ctx context.Context) SqlQueryScheduleContinuousPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryScheduleContinuousPtrOutput)
-}
-
-type SqlQueryScheduleContinuousOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryScheduleContinuousOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryScheduleContinuous)(nil)).Elem()
-}
-
-func (o SqlQueryScheduleContinuousOutput) ToSqlQueryScheduleContinuousOutput() SqlQueryScheduleContinuousOutput {
-	return o
-}
-
-func (o SqlQueryScheduleContinuousOutput) ToSqlQueryScheduleContinuousOutputWithContext(ctx context.Context) SqlQueryScheduleContinuousOutput {
-	return o
-}
-
-func (o SqlQueryScheduleContinuousOutput) ToSqlQueryScheduleContinuousPtrOutput() SqlQueryScheduleContinuousPtrOutput {
-	return o.ToSqlQueryScheduleContinuousPtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryScheduleContinuousOutput) ToSqlQueryScheduleContinuousPtrOutputWithContext(ctx context.Context) SqlQueryScheduleContinuousPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryScheduleContinuous) *SqlQueryScheduleContinuous {
-		return &v
-	}).(SqlQueryScheduleContinuousPtrOutput)
-}
-
-func (o SqlQueryScheduleContinuousOutput) IntervalSeconds() pulumi.IntOutput {
-	return o.ApplyT(func(v SqlQueryScheduleContinuous) int { return v.IntervalSeconds }).(pulumi.IntOutput)
-}
-
-func (o SqlQueryScheduleContinuousOutput) UntilDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlQueryScheduleContinuous) *string { return v.UntilDate }).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryScheduleContinuousPtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryScheduleContinuousPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryScheduleContinuous)(nil)).Elem()
-}
-
-func (o SqlQueryScheduleContinuousPtrOutput) ToSqlQueryScheduleContinuousPtrOutput() SqlQueryScheduleContinuousPtrOutput {
-	return o
-}
-
-func (o SqlQueryScheduleContinuousPtrOutput) ToSqlQueryScheduleContinuousPtrOutputWithContext(ctx context.Context) SqlQueryScheduleContinuousPtrOutput {
-	return o
-}
-
-func (o SqlQueryScheduleContinuousPtrOutput) Elem() SqlQueryScheduleContinuousOutput {
-	return o.ApplyT(func(v *SqlQueryScheduleContinuous) SqlQueryScheduleContinuous {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryScheduleContinuous
-		return ret
-	}).(SqlQueryScheduleContinuousOutput)
-}
-
-func (o SqlQueryScheduleContinuousPtrOutput) IntervalSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SqlQueryScheduleContinuous) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.IntervalSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o SqlQueryScheduleContinuousPtrOutput) UntilDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryScheduleContinuous) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UntilDate
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
@@ -82824,6 +82746,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomAppIntegrationTokenAccessPolicyPtrInput)(nil)).Elem(), CustomAppIntegrationTokenAccessPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultNamespaceSettingNamespaceInput)(nil)).Elem(), DefaultNamespaceSettingNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultNamespaceSettingNamespacePtrInput)(nil)).Elem(), DefaultNamespaceSettingNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyAccessSettingDisableLegacyAccessInput)(nil)).Elem(), DisableLegacyAccessSettingDisableLegacyAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyAccessSettingDisableLegacyAccessPtrInput)(nil)).Elem(), DisableLegacyAccessSettingDisableLegacyAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceInput)(nil)).Elem(), EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrInput)(nil)).Elem(), EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsInput)(nil)).Elem(), ExternalLocationEncryptionDetailsArgs{})
@@ -83333,6 +83257,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDataAccessDatabricksGcpServiceAccountPtrInput)(nil)).Elem(), MetastoreDataAccessDatabricksGcpServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDataAccessGcpServiceAccountKeyInput)(nil)).Elem(), MetastoreDataAccessGcpServiceAccountKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreDataAccessGcpServiceAccountKeyPtrInput)(nil)).Elem(), MetastoreDataAccessGcpServiceAccountKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MlflowExperimentTagInput)(nil)).Elem(), MlflowExperimentTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MlflowExperimentTagArrayInput)(nil)).Elem(), MlflowExperimentTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MlflowModelTagInput)(nil)).Elem(), MlflowModelTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MlflowModelTagArrayInput)(nil)).Elem(), MlflowModelTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MlflowWebhookHttpUrlSpecInput)(nil)).Elem(), MlflowWebhookHttpUrlSpecArgs{})
@@ -83669,10 +83595,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterQueryMultiplePtrInput)(nil)).Elem(), SqlQueryParameterQueryMultipleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterTextInput)(nil)).Elem(), SqlQueryParameterTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterTextPtrInput)(nil)).Elem(), SqlQueryParameterTextArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryScheduleInput)(nil)).Elem(), SqlQueryScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQuerySchedulePtrInput)(nil)).Elem(), SqlQueryScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryScheduleContinuousInput)(nil)).Elem(), SqlQueryScheduleContinuousArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryScheduleContinuousPtrInput)(nil)).Elem(), SqlQueryScheduleContinuousArgs{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
 	pulumi.RegisterOutputType(AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput{})
@@ -83818,6 +83740,8 @@ func init() {
 	pulumi.RegisterOutputType(CustomAppIntegrationTokenAccessPolicyPtrOutput{})
 	pulumi.RegisterOutputType(DefaultNamespaceSettingNamespaceOutput{})
 	pulumi.RegisterOutputType(DefaultNamespaceSettingNamespacePtrOutput{})
+	pulumi.RegisterOutputType(DisableLegacyAccessSettingDisableLegacyAccessOutput{})
+	pulumi.RegisterOutputType(DisableLegacyAccessSettingDisableLegacyAccessPtrOutput{})
 	pulumi.RegisterOutputType(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput{})
 	pulumi.RegisterOutputType(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsOutput{})
@@ -84327,6 +84251,8 @@ func init() {
 	pulumi.RegisterOutputType(MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreDataAccessGcpServiceAccountKeyOutput{})
 	pulumi.RegisterOutputType(MetastoreDataAccessGcpServiceAccountKeyPtrOutput{})
+	pulumi.RegisterOutputType(MlflowExperimentTagOutput{})
+	pulumi.RegisterOutputType(MlflowExperimentTagArrayOutput{})
 	pulumi.RegisterOutputType(MlflowModelTagOutput{})
 	pulumi.RegisterOutputType(MlflowModelTagArrayOutput{})
 	pulumi.RegisterOutputType(MlflowWebhookHttpUrlSpecOutput{})
@@ -84663,8 +84589,4 @@ func init() {
 	pulumi.RegisterOutputType(SqlQueryParameterQueryMultiplePtrOutput{})
 	pulumi.RegisterOutputType(SqlQueryParameterTextOutput{})
 	pulumi.RegisterOutputType(SqlQueryParameterTextPtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryScheduleOutput{})
-	pulumi.RegisterOutputType(SqlQuerySchedulePtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryScheduleContinuousOutput{})
-	pulumi.RegisterOutputType(SqlQueryScheduleContinuousPtrOutput{})
 }

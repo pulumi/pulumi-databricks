@@ -545,6 +545,16 @@ class Recipient(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        The recipient resource can be imported using the name of the recipient.
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/recipient:Recipient this <recipient_name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
@@ -597,6 +607,16 @@ class Recipient(pulumi.CustomResource):
             ip_access_list={
                 "allowed_ip_addresses": [],
             })
+        ```
+
+        ## Import
+
+        The recipient resource can be imported using the name of the recipient.
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/recipient:Recipient this <recipient_name>
         ```
 
         :param str resource_name: The name of the resource.

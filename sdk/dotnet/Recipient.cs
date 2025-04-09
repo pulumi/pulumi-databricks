@@ -56,6 +56,16 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The recipient resource can be imported using the name of the recipient.
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/recipient:Recipient this &lt;recipient_name&gt;
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/recipient:Recipient")]
     public partial class Recipient : global::Pulumi.CustomResource

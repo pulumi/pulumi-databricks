@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -17,7 +19,16 @@ import * as utilities from "./utilities";
  * const _this = new databricks.MlflowExperiment("this", {
  *     name: me.then(me => `${me.home}/Sample`),
  *     artifactLocation: "dbfs:/tmp/my-experiment",
- *     description: "My MLflow experiment description",
+ *     tags: [
+ *         {
+ *             key: "key1",
+ *             value: "value1",
+ *         },
+ *         {
+ *             key: "key2",
+ *             value: "value2",
+ *         },
+ *     ],
  * });
  * ```
  *
@@ -81,7 +92,7 @@ export class MlflowExperiment extends pulumi.CustomResource {
     public readonly artifactLocation!: pulumi.Output<string | undefined>;
     public readonly creationTime!: pulumi.Output<number>;
     /**
-     * The description of the MLflow experiment.
+     * @deprecated Remove the description attribute as it no longer is used and will be removed in a future version.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly experimentId!: pulumi.Output<string>;
@@ -91,6 +102,10 @@ export class MlflowExperiment extends pulumi.CustomResource {
      * Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Tags for the MLflow experiment.
+     */
+    public readonly tags!: pulumi.Output<outputs.MlflowExperimentTag[]>;
 
     /**
      * Create a MlflowExperiment resource with the given unique name, arguments, and options.
@@ -112,6 +127,7 @@ export class MlflowExperiment extends pulumi.CustomResource {
             resourceInputs["lastUpdateTime"] = state ? state.lastUpdateTime : undefined;
             resourceInputs["lifecycleStage"] = state ? state.lifecycleStage : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as MlflowExperimentArgs | undefined;
             resourceInputs["artifactLocation"] = args ? args.artifactLocation : undefined;
@@ -121,6 +137,7 @@ export class MlflowExperiment extends pulumi.CustomResource {
             resourceInputs["lastUpdateTime"] = args ? args.lastUpdateTime : undefined;
             resourceInputs["lifecycleStage"] = args ? args.lifecycleStage : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MlflowExperiment.__pulumiType, name, resourceInputs, opts);
@@ -137,7 +154,7 @@ export interface MlflowExperimentState {
     artifactLocation?: pulumi.Input<string>;
     creationTime?: pulumi.Input<number>;
     /**
-     * The description of the MLflow experiment.
+     * @deprecated Remove the description attribute as it no longer is used and will be removed in a future version.
      */
     description?: pulumi.Input<string>;
     experimentId?: pulumi.Input<string>;
@@ -147,6 +164,10 @@ export interface MlflowExperimentState {
      * Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
      */
     name?: pulumi.Input<string>;
+    /**
+     * Tags for the MLflow experiment.
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.MlflowExperimentTag>[]>;
 }
 
 /**
@@ -159,7 +180,7 @@ export interface MlflowExperimentArgs {
     artifactLocation?: pulumi.Input<string>;
     creationTime?: pulumi.Input<number>;
     /**
-     * The description of the MLflow experiment.
+     * @deprecated Remove the description attribute as it no longer is used and will be removed in a future version.
      */
     description?: pulumi.Input<string>;
     experimentId?: pulumi.Input<string>;
@@ -169,4 +190,8 @@ export interface MlflowExperimentArgs {
      * Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
      */
     name?: pulumi.Input<string>;
+    /**
+     * Tags for the MLflow experiment.
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.MlflowExperimentTag>[]>;
 }

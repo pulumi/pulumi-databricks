@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['MlflowExperimentArgs', 'MlflowExperiment']
 
@@ -26,17 +28,21 @@ class MlflowExperimentArgs:
                  experiment_id: Optional[pulumi.Input[builtins.str]] = None,
                  last_update_time: Optional[pulumi.Input[builtins.int]] = None,
                  lifecycle_stage: Optional[pulumi.Input[builtins.str]] = None,
-                 name: Optional[pulumi.Input[builtins.str]] = None):
+                 name: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]] = None):
         """
         The set of arguments for constructing a MlflowExperiment resource.
         :param pulumi.Input[builtins.str] artifact_location: Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
-        :param pulumi.Input[builtins.str] description: The description of the MLflow experiment.
         :param pulumi.Input[builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
+        :param pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]] tags: Tags for the MLflow experiment.
         """
         if artifact_location is not None:
             pulumi.set(__self__, "artifact_location", artifact_location)
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
+        if description is not None:
+            warnings.warn("""Remove the description attribute as it no longer is used and will be removed in a future version.""", DeprecationWarning)
+            pulumi.log.warn("""description is deprecated: Remove the description attribute as it no longer is used and will be removed in a future version.""")
         if description is not None:
             pulumi.set(__self__, "description", description)
         if experiment_id is not None:
@@ -47,6 +53,8 @@ class MlflowExperimentArgs:
             pulumi.set(__self__, "lifecycle_stage", lifecycle_stage)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="artifactLocation")
@@ -71,10 +79,8 @@ class MlflowExperimentArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Remove the description attribute as it no longer is used and will be removed in a future version.""")
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The description of the MLflow experiment.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -119,6 +125,18 @@ class MlflowExperimentArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]]:
+        """
+        Tags for the MLflow experiment.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -130,17 +148,21 @@ class _MlflowExperimentState:
                  experiment_id: Optional[pulumi.Input[builtins.str]] = None,
                  last_update_time: Optional[pulumi.Input[builtins.int]] = None,
                  lifecycle_stage: Optional[pulumi.Input[builtins.str]] = None,
-                 name: Optional[pulumi.Input[builtins.str]] = None):
+                 name: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering MlflowExperiment resources.
         :param pulumi.Input[builtins.str] artifact_location: Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
-        :param pulumi.Input[builtins.str] description: The description of the MLflow experiment.
         :param pulumi.Input[builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
+        :param pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]] tags: Tags for the MLflow experiment.
         """
         if artifact_location is not None:
             pulumi.set(__self__, "artifact_location", artifact_location)
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
+        if description is not None:
+            warnings.warn("""Remove the description attribute as it no longer is used and will be removed in a future version.""", DeprecationWarning)
+            pulumi.log.warn("""description is deprecated: Remove the description attribute as it no longer is used and will be removed in a future version.""")
         if description is not None:
             pulumi.set(__self__, "description", description)
         if experiment_id is not None:
@@ -151,6 +173,8 @@ class _MlflowExperimentState:
             pulumi.set(__self__, "lifecycle_stage", lifecycle_stage)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="artifactLocation")
@@ -175,10 +199,8 @@ class _MlflowExperimentState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Remove the description attribute as it no longer is used and will be removed in a future version.""")
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The description of the MLflow experiment.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -223,6 +245,18 @@ class _MlflowExperimentState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]]:
+        """
+        Tags for the MLflow experiment.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]]):
+        pulumi.set(self, "tags", value)
 
 
 class MlflowExperiment(pulumi.CustomResource):
@@ -237,6 +271,7 @@ class MlflowExperiment(pulumi.CustomResource):
                  last_update_time: Optional[pulumi.Input[builtins.int]] = None,
                  lifecycle_stage: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource allows you to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
@@ -251,7 +286,16 @@ class MlflowExperiment(pulumi.CustomResource):
         this = databricks.MlflowExperiment("this",
             name=f"{me.home}/Sample",
             artifact_location="dbfs:/tmp/my-experiment",
-            description="My MLflow experiment description")
+            tags=[
+                {
+                    "key": "key1",
+                    "value": "value1",
+                },
+                {
+                    "key": "key2",
+                    "value": "value2",
+                },
+            ])
         ```
 
         ## Access Control
@@ -283,8 +327,8 @@ class MlflowExperiment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] artifact_location: Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
-        :param pulumi.Input[builtins.str] description: The description of the MLflow experiment.
         :param pulumi.Input[builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]] tags: Tags for the MLflow experiment.
         """
         ...
     @overload
@@ -305,7 +349,16 @@ class MlflowExperiment(pulumi.CustomResource):
         this = databricks.MlflowExperiment("this",
             name=f"{me.home}/Sample",
             artifact_location="dbfs:/tmp/my-experiment",
-            description="My MLflow experiment description")
+            tags=[
+                {
+                    "key": "key1",
+                    "value": "value1",
+                },
+                {
+                    "key": "key2",
+                    "value": "value2",
+                },
+            ])
         ```
 
         ## Access Control
@@ -356,6 +409,7 @@ class MlflowExperiment(pulumi.CustomResource):
                  last_update_time: Optional[pulumi.Input[builtins.int]] = None,
                  lifecycle_stage: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -372,6 +426,7 @@ class MlflowExperiment(pulumi.CustomResource):
             __props__.__dict__["last_update_time"] = last_update_time
             __props__.__dict__["lifecycle_stage"] = lifecycle_stage
             __props__.__dict__["name"] = name
+            __props__.__dict__["tags"] = tags
         super(MlflowExperiment, __self__).__init__(
             'databricks:index/mlflowExperiment:MlflowExperiment',
             resource_name,
@@ -388,7 +443,8 @@ class MlflowExperiment(pulumi.CustomResource):
             experiment_id: Optional[pulumi.Input[builtins.str]] = None,
             last_update_time: Optional[pulumi.Input[builtins.int]] = None,
             lifecycle_stage: Optional[pulumi.Input[builtins.str]] = None,
-            name: Optional[pulumi.Input[builtins.str]] = None) -> 'MlflowExperiment':
+            name: Optional[pulumi.Input[builtins.str]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None) -> 'MlflowExperiment':
         """
         Get an existing MlflowExperiment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -397,8 +453,8 @@ class MlflowExperiment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] artifact_location: Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
-        :param pulumi.Input[builtins.str] description: The description of the MLflow experiment.
         :param pulumi.Input[builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]] tags: Tags for the MLflow experiment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -411,6 +467,7 @@ class MlflowExperiment(pulumi.CustomResource):
         __props__.__dict__["last_update_time"] = last_update_time
         __props__.__dict__["lifecycle_stage"] = lifecycle_stage
         __props__.__dict__["name"] = name
+        __props__.__dict__["tags"] = tags
         return MlflowExperiment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -428,10 +485,8 @@ class MlflowExperiment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Remove the description attribute as it no longer is used and will be removed in a future version.""")
     def description(self) -> pulumi.Output[Optional[builtins.str]]:
-        """
-        The description of the MLflow experiment.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -456,4 +511,12 @@ class MlflowExperiment(pulumi.CustomResource):
         Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Sequence['outputs.MlflowExperimentTag']]:
+        """
+        Tags for the MLflow experiment.
+        """
+        return pulumi.get(self, "tags")
 

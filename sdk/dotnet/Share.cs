@@ -139,6 +139,16 @@ namespace Pulumi.Databricks
     /// * databricks.Recipient to create Delta Sharing recipients.
     /// * databricks.Grants to manage Delta Sharing permissions.
     /// * databricks.getShares to read existing Delta Sharing shares.
+    /// 
+    /// ## Import
+    /// 
+    /// The share resource can be imported using the name of the share.
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/share:Share this &lt;share_name&gt;
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/share:Share")]
     public partial class Share : global::Pulumi.CustomResource

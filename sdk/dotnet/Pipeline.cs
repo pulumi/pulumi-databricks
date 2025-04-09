@@ -189,6 +189,9 @@ namespace Pulumi.Databricks
         [Output("edition")]
         public Output<string?> Edition { get; private set; } = null!;
 
+        /// <summary>
+        /// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+        /// </summary>
         [Output("eventLog")]
         public Output<Outputs.PipelineEventLog?> EventLog { get; private set; } = null!;
 
@@ -412,6 +415,9 @@ namespace Pulumi.Databricks
         [Input("edition")]
         public Input<string>? Edition { get; set; }
 
+        /// <summary>
+        /// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+        /// </summary>
         [Input("eventLog")]
         public Input<Inputs.PipelineEventLogArgs>? EventLog { get; set; }
 
@@ -484,6 +490,9 @@ namespace Pulumi.Databricks
 
         [Input("runAs")]
         public Input<Inputs.PipelineRunAsArgs>? RunAs { get; set; }
+
+        [Input("runAsUserName")]
+        public Input<string>? RunAsUserName { get; set; }
 
         /// <summary>
         /// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
@@ -610,6 +619,9 @@ namespace Pulumi.Databricks
         [Input("edition")]
         public Input<string>? Edition { get; set; }
 
+        /// <summary>
+        /// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+        /// </summary>
         [Input("eventLog")]
         public Input<Inputs.PipelineEventLogGetArgs>? EventLog { get; set; }
 

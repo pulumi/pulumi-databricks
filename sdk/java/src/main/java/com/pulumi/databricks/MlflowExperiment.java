@@ -10,8 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.MlflowExperimentArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MlflowExperimentState;
+import com.pulumi.databricks.outputs.MlflowExperimentTag;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -31,6 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.DatabricksFunctions;
  * import com.pulumi.databricks.MlflowExperiment;
  * import com.pulumi.databricks.MlflowExperimentArgs;
+ * import com.pulumi.databricks.inputs.MlflowExperimentTagArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,7 +52,15 @@ import javax.annotation.Nullable;
  *         var this_ = new MlflowExperiment("this", MlflowExperimentArgs.builder()
  *             .name(String.format("%s/Sample", me.home()))
  *             .artifactLocation("dbfs:/tmp/my-experiment")
- *             .description("My MLflow experiment description")
+ *             .tags(            
+ *                 MlflowExperimentTagArgs.builder()
+ *                     .key("key1")
+ *                     .value("value1")
+ *                     .build(),
+ *                 MlflowExperimentTagArgs.builder()
+ *                     .key("key2")
+ *                     .value("value2")
+ *                     .build())
  *             .build());
  * 
  *     }
@@ -108,16 +119,14 @@ public class MlflowExperiment extends com.pulumi.resources.CustomResource {
         return this.creationTime;
     }
     /**
-     * The description of the MLflow experiment.
+     * @deprecated
+     * Remove the description attribute as it no longer is used and will be removed in a future version.
      * 
      */
+    @Deprecated /* Remove the description attribute as it no longer is used and will be removed in a future version. */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
-    /**
-     * @return The description of the MLflow experiment.
-     * 
-     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
@@ -152,6 +161,20 @@ public class MlflowExperiment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Tags for the MLflow experiment.
+     * 
+     */
+    @Export(name="tags", refs={List.class,MlflowExperimentTag.class}, tree="[0,1]")
+    private Output<List<MlflowExperimentTag>> tags;
+
+    /**
+     * @return Tags for the MLflow experiment.
+     * 
+     */
+    public Output<List<MlflowExperimentTag>> tags() {
+        return this.tags;
     }
 
     /**

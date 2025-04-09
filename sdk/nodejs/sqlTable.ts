@@ -51,7 +51,7 @@ export class SqlTable extends pulumi.CustomResource {
     public readonly catalogName!: pulumi.Output<string>;
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+     * a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
      */
     public readonly clusterKeys!: pulumi.Output<string[] | undefined>;
     public readonly columns!: pulumi.Output<outputs.SqlTableColumn[]>;
@@ -185,7 +185,7 @@ export interface SqlTableState {
     catalogName?: pulumi.Input<string>;
     clusterId?: pulumi.Input<string>;
     /**
-     * a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+     * a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
      */
     clusterKeys?: pulumi.Input<pulumi.Input<string>[]>;
     columns?: pulumi.Input<pulumi.Input<inputs.SqlTableColumn>[]>;
@@ -254,7 +254,7 @@ export interface SqlTableArgs {
     catalogName: pulumi.Input<string>;
     clusterId?: pulumi.Input<string>;
     /**
-     * a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+     * a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
      */
     clusterKeys?: pulumi.Input<pulumi.Input<string>[]>;
     columns?: pulumi.Input<pulumi.Input<inputs.SqlTableColumn>[]>;
