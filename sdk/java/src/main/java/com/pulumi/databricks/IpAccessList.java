@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new WorkspaceConf("this", WorkspaceConfArgs.builder()
- *             .customConfig(Map.of("enableIpAccessLists", true))
+ *             .customConfig(Map.of("enableIpAccessLists", "true"))
  *             .build());
  * 
  *         var allowed_list = new IpAccessList("allowed-list", IpAccessListArgs.builder()

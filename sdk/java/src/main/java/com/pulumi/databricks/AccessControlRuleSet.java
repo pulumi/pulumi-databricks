@@ -70,9 +70,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var automationSpRuleSet = new AccessControlRuleSet("automationSpRuleSet", AccessControlRuleSetArgs.builder()
- *             .name(automationSp.applicationId().applyValue(applicationId -> String.format("accounts/%s/servicePrincipals/%s/ruleSets/default", accountId,applicationId)))
+ *             .name(automationSp.applicationId().applyValue(_applicationId -> String.format("accounts/%s/servicePrincipals/%s/ruleSets/default", accountId,_applicationId)))
  *             .grantRules(AccessControlRuleSetGrantRuleArgs.builder()
- *                 .principals(ds.applyValue(getGroupResult -> getGroupResult.aclPrincipalId()))
+ *                 .principals(ds.aclPrincipalId())
  *                 .role("roles/servicePrincipal.user")
  *                 .build())
  *             .build());
@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var automationSpRuleSet = new AccessControlRuleSet("automationSpRuleSet", AccessControlRuleSetArgs.builder()
- *             .name(automationSp.applicationId().applyValue(applicationId -> String.format("accounts/%s/servicePrincipals/%s/ruleSets/default", accountId,applicationId)))
+ *             .name(automationSp.applicationId().applyValue(_applicationId -> String.format("accounts/%s/servicePrincipals/%s/ruleSets/default", accountId,_applicationId)))
  *             .grantRules(AccessControlRuleSetGrantRuleArgs.builder()
  *                 .principals(ds.aclPrincipalId())
  *                 .role("roles/servicePrincipal.user")
@@ -181,7 +181,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var automationSpRuleSet = new AccessControlRuleSet("automationSpRuleSet", AccessControlRuleSetArgs.builder()
- *             .name(automationSp.applicationId().applyValue(applicationId -> String.format("accounts/%s/servicePrincipals/%s/ruleSets/default", accountId,applicationId)))
+ *             .name(automationSp.applicationId().applyValue(_applicationId -> String.format("accounts/%s/servicePrincipals/%s/ruleSets/default", accountId,_applicationId)))
  *             .grantRules(AccessControlRuleSetGrantRuleArgs.builder()
  *                 .principals(ds.aclPrincipalId())
  *                 .role("roles/servicePrincipal.user")
@@ -236,7 +236,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var automationSpRuleSet = new AccessControlRuleSet("automationSpRuleSet", AccessControlRuleSetArgs.builder()
- *             .name(automationSp.applicationId().applyValue(applicationId -> String.format("accounts/%s/servicePrincipals/%s/ruleSets/default", accountId,applicationId)))
+ *             .name(automationSp.applicationId().applyValue(_applicationId -> String.format("accounts/%s/servicePrincipals/%s/ruleSets/default", accountId,_applicationId)))
  *             .grantRules(AccessControlRuleSetGrantRuleArgs.builder()
  *                 .principals(ds.aclPrincipalId())
  *                 .role("roles/servicePrincipal.user")
@@ -294,7 +294,7 @@ import javax.annotation.Nullable;
  *         var dsGroupRuleSet = new AccessControlRuleSet("dsGroupRuleSet", AccessControlRuleSetArgs.builder()
  *             .name(String.format("accounts/%s/groups/%s/ruleSets/default", accountId,dsDatabricksGroup.id()))
  *             .grantRules(AccessControlRuleSetGrantRuleArgs.builder()
- *                 .principals(john.applyValue(getUserResult -> getUserResult.aclPrincipalId()))
+ *                 .principals(john.aclPrincipalId())
  *                 .role("roles/group.manager")
  *                 .build())
  *             .build());
@@ -356,15 +356,15 @@ import javax.annotation.Nullable;
  *             .name(String.format("accounts/%s/ruleSets/default", accountId))
  *             .grantRules(            
  *                 AccessControlRuleSetGrantRuleArgs.builder()
- *                     .principals(john.applyValue(getUserResult -> getUserResult.aclPrincipalId()))
+ *                     .principals(john.aclPrincipalId())
  *                     .role("roles/group.manager")
  *                     .build(),
  *                 AccessControlRuleSetGrantRuleArgs.builder()
- *                     .principals(ds.applyValue(getGroupResult -> getGroupResult.aclPrincipalId()))
+ *                     .principals(ds.aclPrincipalId())
  *                     .role("roles/servicePrincipal.manager")
  *                     .build(),
  *                 AccessControlRuleSetGrantRuleArgs.builder()
- *                     .principals(marketplaceAdmins.applyValue(getGroupResult -> getGroupResult.aclPrincipalId()))
+ *                     .principals(marketplaceAdmins.aclPrincipalId())
  *                     .role("roles/marketplace.admin")
  *                     .build())
  *             .build());
@@ -429,14 +429,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var budgetPolicyUsage = new AccessControlRuleSet("budgetPolicyUsage", AccessControlRuleSetArgs.builder()
- *             .name(this_.policyId().applyValue(policyId -> String.format("accounts/%s/budgetPolicies/%s/ruleSets/default", accountId,policyId)))
+ *             .name(this_.policyId().applyValue(_policyId -> String.format("accounts/%s/budgetPolicies/%s/ruleSets/default", accountId,_policyId)))
  *             .grantRules(            
  *                 AccessControlRuleSetGrantRuleArgs.builder()
- *                     .principals(john.applyValue(getUserResult -> getUserResult.aclPrincipalId()))
+ *                     .principals(john.aclPrincipalId())
  *                     .role("roles/budgetPolicy.manager")
  *                     .build(),
  *                 AccessControlRuleSetGrantRuleArgs.builder()
- *                     .principals(ds.applyValue(getGroupResult -> getGroupResult.aclPrincipalId()))
+ *                     .principals(ds.aclPrincipalId())
  *                     .role("roles/budgetPolicy.user")
  *                     .build())
  *             .build());

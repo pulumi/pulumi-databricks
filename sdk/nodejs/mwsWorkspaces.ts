@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *
  * const config = new pulumi.Config();
  * // Account ID that can be found in the dropdown under the email address in the upper-right corner of https://accounts.cloud.databricks.com/
- * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const databricksAccountId = config.requireObject<any>("databricksAccountId");
  * // register cross-account ARN
  * const _this = new databricks.MwsCredentials("this", {
  *     accountId: databricksAccountId,
@@ -74,7 +74,7 @@ import * as utilities from "./utilities";
  *
  * const config = new pulumi.Config();
  * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
- * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const databricksAccountId = config.requireObject<any>("databricksAccountId");
  * const naming = new random.index.String("naming", {
  *     special: false,
  *     upper: false,
@@ -171,9 +171,9 @@ import * as utilities from "./utilities";
  *
  * const config = new pulumi.Config();
  * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
- * const databricksAccountId = config.requireObject("databricksAccountId");
- * const databricksGoogleServiceAccount = config.requireObject("databricksGoogleServiceAccount");
- * const googleProject = config.requireObject("googleProject");
+ * const databricksAccountId = config.requireObject<any>("databricksAccountId");
+ * const databricksGoogleServiceAccount = config.requireObject<any>("databricksGoogleServiceAccount");
+ * const googleProject = config.requireObject<any>("googleProject");
  * // register VPC
  * const _this = new databricks.MwsNetworks("this", {
  *     accountId: databricksAccountId,

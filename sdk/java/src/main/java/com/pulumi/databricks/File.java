@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  * 
  *         var thisFile = new File("thisFile", FileArgs.builder()
  *             .source("/full/path/on/local/system")
- *             .path(this_.volumePath().applyValue(volumePath -> String.format("%s/fileName", volumePath)))
+ *             .path(this_.volumePath().applyValue(_volumePath -> String.format("%s/fileName", _volumePath)))
  *             .build());
  * 
  *     }
@@ -102,6 +102,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.File;
  * import com.pulumi.databricks.FileArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;

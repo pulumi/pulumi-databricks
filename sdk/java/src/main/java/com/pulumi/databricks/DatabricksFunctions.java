@@ -508,7 +508,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var allApps = DatabricksFunctions.getApps();
+     *         final var allApps = DatabricksFunctions.getApps(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -561,7 +561,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var allApps = DatabricksFunctions.getApps();
+     *         final var allApps = DatabricksFunctions.getApps(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -614,7 +614,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var allApps = DatabricksFunctions.getApps();
+     *         final var allApps = DatabricksFunctions.getApps(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -667,7 +667,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var allApps = DatabricksFunctions.getApps();
+     *         final var allApps = DatabricksFunctions.getApps(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -720,7 +720,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var allApps = DatabricksFunctions.getApps();
+     *         final var allApps = DatabricksFunctions.getApps(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -773,7 +773,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var allApps = DatabricksFunctions.getApps();
+     *         final var allApps = DatabricksFunctions.getApps(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -826,7 +826,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var allApps = DatabricksFunctions.getApps();
+     *         final var allApps = DatabricksFunctions.getApps(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -889,7 +889,8 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var databricksAccountId = config.get("databricksAccountId");
-     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
+     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
+     *             .build());
      * 
      *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-policy", prefix))
@@ -902,7 +903,7 @@ public final class DatabricksFunctions {
      * 
      *         var crossAccount = new Role("crossAccount", RoleArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-role", prefix))
-     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -> getAwsAssumeRolePolicyResult.json()))
+     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.json())
      *             .description("Grants Databricks full access to VPC resources")
      *             .build());
      * 
@@ -977,7 +978,8 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var databricksAccountId = config.get("databricksAccountId");
-     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
+     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
+     *             .build());
      * 
      *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-policy", prefix))
@@ -990,7 +992,7 @@ public final class DatabricksFunctions {
      * 
      *         var crossAccount = new Role("crossAccount", RoleArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-role", prefix))
-     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -> getAwsAssumeRolePolicyResult.json()))
+     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.json())
      *             .description("Grants Databricks full access to VPC resources")
      *             .build());
      * 
@@ -1065,7 +1067,8 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var databricksAccountId = config.get("databricksAccountId");
-     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
+     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
+     *             .build());
      * 
      *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-policy", prefix))
@@ -1078,7 +1081,7 @@ public final class DatabricksFunctions {
      * 
      *         var crossAccount = new Role("crossAccount", RoleArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-role", prefix))
-     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -> getAwsAssumeRolePolicyResult.json()))
+     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.json())
      *             .description("Grants Databricks full access to VPC resources")
      *             .build());
      * 
@@ -1153,7 +1156,8 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var databricksAccountId = config.get("databricksAccountId");
-     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
+     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
+     *             .build());
      * 
      *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-policy", prefix))
@@ -1166,7 +1170,7 @@ public final class DatabricksFunctions {
      * 
      *         var crossAccount = new Role("crossAccount", RoleArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-role", prefix))
-     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -> getAwsAssumeRolePolicyResult.json()))
+     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.json())
      *             .description("Grants Databricks full access to VPC resources")
      *             .build());
      * 
@@ -1241,7 +1245,8 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var databricksAccountId = config.get("databricksAccountId");
-     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
+     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
+     *             .build());
      * 
      *         var crossAccountPolicy = new Policy("crossAccountPolicy", PolicyArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-policy", prefix))
@@ -1254,7 +1259,7 @@ public final class DatabricksFunctions {
      * 
      *         var crossAccount = new Role("crossAccount", RoleArgs.builder()
      *             .name(String.format("%s-crossaccount-iam-role", prefix))
-     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -> getAwsAssumeRolePolicyResult.json()))
+     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.json())
      *             .description("Grants Databricks full access to VPC resources")
      *             .build());
      * 
@@ -1331,7 +1336,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
      *             .bucket(thisBucketV2.id())
-     *             .policy(this_.applyValue(this_ -> this_.json()))
+     *             .policy(this_.applyValue(_this_ -> _this_.json()))
      *             .build());
      * 
      *     }
@@ -1389,7 +1394,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
      *             .bucket(thisBucketV2.id())
-     *             .policy(this_.applyValue(this_ -> this_.json()))
+     *             .policy(this_.applyValue(_this_ -> _this_.json()))
      *             .build());
      * 
      *     }
@@ -1447,7 +1452,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
      *             .bucket(thisBucketV2.id())
-     *             .policy(this_.applyValue(this_ -> this_.json()))
+     *             .policy(this_.applyValue(_this_ -> _this_.json()))
      *             .build());
      * 
      *     }
@@ -1505,7 +1510,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
      *             .bucket(thisBucketV2.id())
-     *             .policy(this_.applyValue(this_ -> this_.json()))
+     *             .policy(this_.applyValue(_this_ -> _this_.json()))
      *             .build());
      * 
      *     }
@@ -1563,7 +1568,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
      *             .bucket(thisBucketV2.id())
-     *             .policy(this_.applyValue(this_ -> this_.json()))
+     *             .policy(this_.applyValue(_this_ -> _this_.json()))
      *             .build());
      * 
      *     }
@@ -1610,7 +1615,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
+     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1663,7 +1669,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
+     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1716,7 +1723,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
+     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1769,7 +1777,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
+     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1822,7 +1831,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
+     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1875,7 +1885,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
+     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1928,7 +1939,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
+     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2004,7 +2016,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.applyValue(getAwsUnityCatalogAssumeRolePolicyResult -> getAwsUnityCatalogAssumeRolePolicyResult.json()))
+     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -2073,7 +2085,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.applyValue(getAwsUnityCatalogAssumeRolePolicyResult -> getAwsUnityCatalogAssumeRolePolicyResult.json()))
+     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -2142,7 +2154,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.applyValue(getAwsUnityCatalogAssumeRolePolicyResult -> getAwsUnityCatalogAssumeRolePolicyResult.json()))
+     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -2211,7 +2223,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.applyValue(getAwsUnityCatalogAssumeRolePolicyResult -> getAwsUnityCatalogAssumeRolePolicyResult.json()))
+     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -2280,7 +2292,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.applyValue(getAwsUnityCatalogAssumeRolePolicyResult -> getAwsUnityCatalogAssumeRolePolicyResult.json()))
+     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -2349,7 +2361,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.applyValue(getAwsUnityCatalogAssumeRolePolicyResult -> getAwsUnityCatalogAssumeRolePolicyResult.json()))
+     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -2418,7 +2430,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.applyValue(getAwsUnityCatalogAssumeRolePolicyResult -> getAwsUnityCatalogAssumeRolePolicyResult.json()))
+     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -2487,7 +2499,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.applyValue(getAwsUnityCatalogAssumeRolePolicyResult -> getAwsUnityCatalogAssumeRolePolicyResult.json()))
+     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -2556,7 +2568,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.applyValue(getAwsUnityCatalogAssumeRolePolicyResult -> getAwsUnityCatalogAssumeRolePolicyResult.json()))
+     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -2625,7 +2637,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.applyValue(getAwsUnityCatalogAssumeRolePolicyResult -> getAwsUnityCatalogAssumeRolePolicyResult.json()))
+     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -2670,7 +2682,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getBudgetPolicies();
+     *         final var all = DatabricksFunctions.getBudgetPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -2713,7 +2725,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getBudgetPolicies();
+     *         final var all = DatabricksFunctions.getBudgetPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -2756,7 +2768,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getBudgetPolicies();
+     *         final var all = DatabricksFunctions.getBudgetPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -2799,7 +2811,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getBudgetPolicies();
+     *         final var all = DatabricksFunctions.getBudgetPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -2842,7 +2854,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getBudgetPolicies();
+     *         final var all = DatabricksFunctions.getBudgetPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -2885,7 +2897,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getBudgetPolicies();
+     *         final var all = DatabricksFunctions.getBudgetPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -2928,7 +2940,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getBudgetPolicies();
+     *         final var all = DatabricksFunctions.getBudgetPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -2950,36 +2962,6 @@ public final class DatabricksFunctions {
      * Referring to a budget policy by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getBudgetPolicy(GetBudgetPolicyArgs.builder()
-     *             .policyId("test")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2996,36 +2978,6 @@ public final class DatabricksFunctions {
      * Referring to a budget policy by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getBudgetPolicy(GetBudgetPolicyArgs.builder()
-     *             .policyId("test")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3042,36 +2994,6 @@ public final class DatabricksFunctions {
      * Referring to a budget policy by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getBudgetPolicy(GetBudgetPolicyArgs.builder()
-     *             .policyId("test")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3088,36 +3010,6 @@ public final class DatabricksFunctions {
      * Referring to a budget policy by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getBudgetPolicy(GetBudgetPolicyArgs.builder()
-     *             .policyId("test")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3134,36 +3026,6 @@ public final class DatabricksFunctions {
      * Referring to a budget policy by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getBudgetPolicy(GetBudgetPolicyArgs.builder()
-     *             .policyId("test")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3180,36 +3042,6 @@ public final class DatabricksFunctions {
      * Referring to a budget policy by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getBudgetPolicy(GetBudgetPolicyArgs.builder()
-     *             .policyId("test")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3226,36 +3058,6 @@ public final class DatabricksFunctions {
      * Referring to a budget policy by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getBudgetPolicy(GetBudgetPolicyArgs.builder()
-     *             .policyId("test")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3304,7 +3106,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var things = new Grants("things", GrantsArgs.builder()
-     *             .catalog(test.applyValue(getCatalogResult -> getCatalogResult.name()))
+     *             .catalog(test.name())
      *             .grants(GrantsGrantArgs.builder()
      *                 .principal("sensitive")
      *                 .privileges("USE_CATALOG")
@@ -3370,7 +3172,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var things = new Grants("things", GrantsArgs.builder()
-     *             .catalog(test.applyValue(getCatalogResult -> getCatalogResult.name()))
+     *             .catalog(test.name())
      *             .grants(GrantsGrantArgs.builder()
      *                 .principal("sensitive")
      *                 .privileges("USE_CATALOG")
@@ -3436,7 +3238,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var things = new Grants("things", GrantsArgs.builder()
-     *             .catalog(test.applyValue(getCatalogResult -> getCatalogResult.name()))
+     *             .catalog(test.name())
      *             .grants(GrantsGrantArgs.builder()
      *                 .principal("sensitive")
      *                 .privileges("USE_CATALOG")
@@ -3502,7 +3304,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var things = new Grants("things", GrantsArgs.builder()
-     *             .catalog(test.applyValue(getCatalogResult -> getCatalogResult.name()))
+     *             .catalog(test.name())
      *             .grants(GrantsGrantArgs.builder()
      *                 .principal("sensitive")
      *                 .privileges("USE_CATALOG")
@@ -3568,7 +3370,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var things = new Grants("things", GrantsArgs.builder()
-     *             .catalog(test.applyValue(getCatalogResult -> getCatalogResult.name()))
+     *             .catalog(test.name())
      *             .grants(GrantsGrantArgs.builder()
      *                 .principal("sensitive")
      *                 .privileges("USE_CATALOG")
@@ -3626,9 +3428,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getCatalogs();
+     *         final var all = DatabricksFunctions.getCatalogs(GetCatalogsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allCatalogs", all.applyValue(getCatalogsResult -> getCatalogsResult));
+     *         ctx.export("allCatalogs", all);
      *     }
      * }
      * }
@@ -3680,9 +3483,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getCatalogs();
+     *         final var all = DatabricksFunctions.getCatalogs(GetCatalogsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allCatalogs", all.applyValue(getCatalogsResult -> getCatalogsResult));
+     *         ctx.export("allCatalogs", all);
      *     }
      * }
      * }
@@ -3734,9 +3538,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getCatalogs();
+     *         final var all = DatabricksFunctions.getCatalogs(GetCatalogsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allCatalogs", all.applyValue(getCatalogsResult -> getCatalogsResult));
+     *         ctx.export("allCatalogs", all);
      *     }
      * }
      * }
@@ -3788,9 +3593,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getCatalogs();
+     *         final var all = DatabricksFunctions.getCatalogs(GetCatalogsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allCatalogs", all.applyValue(getCatalogsResult -> getCatalogsResult));
+     *         ctx.export("allCatalogs", all);
      *     }
      * }
      * }
@@ -3842,9 +3648,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getCatalogs();
+     *         final var all = DatabricksFunctions.getCatalogs(GetCatalogsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allCatalogs", all.applyValue(getCatalogsResult -> getCatalogsResult));
+     *         ctx.export("allCatalogs", all);
      *     }
      * }
      * }
@@ -3896,9 +3703,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getCatalogs();
+     *         final var all = DatabricksFunctions.getCatalogs(GetCatalogsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allCatalogs", all.applyValue(getCatalogsResult -> getCatalogsResult));
+     *         ctx.export("allCatalogs", all);
      *     }
      * }
      * }
@@ -3950,9 +3758,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getCatalogs();
+     *         final var all = DatabricksFunctions.getCatalogs(GetCatalogsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allCatalogs", all.applyValue(getCatalogsResult -> getCatalogsResult));
+     *         ctx.export("allCatalogs", all);
      *     }
      * }
      * }
@@ -4121,7 +3930,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
-     *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
+     *             .policyId(personal.id())
      *             .build());
      * 
      *     }
@@ -4173,7 +3982,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
-     *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
+     *             .policyId(personal.id())
      *             .build());
      * 
      *     }
@@ -4225,7 +4034,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
-     *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
+     *             .policyId(personal.id())
      *             .build());
      * 
      *     }
@@ -4277,7 +4086,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
-     *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
+     *             .policyId(personal.id())
      *             .build());
      * 
      *     }
@@ -4329,7 +4138,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
-     *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
+     *             .policyId(personal.id())
      *             .build());
      * 
      *     }
@@ -4381,7 +4190,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
-     *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
+     *             .policyId(personal.id())
      *             .build());
      * 
      *     }
@@ -4433,7 +4242,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
-     *             .policyId(personal.applyValue(getClusterPolicyResult -> getClusterPolicyResult.id()))
+     *             .policyId(personal.id())
      *             .build());
      * 
      *     }
@@ -4478,7 +4287,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getClusters();
+     *         final var all = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -4627,7 +4437,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getClusters();
+     *         final var all = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -4776,7 +4587,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getClusters();
+     *         final var all = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -4925,7 +4737,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getClusters();
+     *         final var all = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -5074,7 +4887,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getClusters();
+     *         final var all = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -5223,7 +5037,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getClusters();
+     *         final var all = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -5372,7 +5187,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getClusters();
+     *         final var all = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -5754,7 +5570,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getCurrentMetastore();
+     *         final var this = DatabricksFunctions.getCurrentMetastore(GetCurrentMetastoreArgs.builder()
+     *             .build());
      * 
      *         ctx.export("someMetastore", this_.metastoreInfo());
      *     }
@@ -5810,7 +5627,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getCurrentMetastore();
+     *         final var this = DatabricksFunctions.getCurrentMetastore(GetCurrentMetastoreArgs.builder()
+     *             .build());
      * 
      *         ctx.export("someMetastore", this_.metastoreInfo());
      *     }
@@ -5866,7 +5684,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getCurrentMetastore();
+     *         final var this = DatabricksFunctions.getCurrentMetastore(GetCurrentMetastoreArgs.builder()
+     *             .build());
      * 
      *         ctx.export("someMetastore", this_.metastoreInfo());
      *     }
@@ -5922,7 +5741,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getCurrentMetastore();
+     *         final var this = DatabricksFunctions.getCurrentMetastore(GetCurrentMetastoreArgs.builder()
+     *             .build());
      * 
      *         ctx.export("someMetastore", this_.metastoreInfo());
      *     }
@@ -5978,7 +5798,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getCurrentMetastore();
+     *         final var this = DatabricksFunctions.getCurrentMetastore(GetCurrentMetastoreArgs.builder()
+     *             .build());
      * 
      *         ctx.export("someMetastore", this_.metastoreInfo());
      *     }
@@ -6034,7 +5855,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getCurrentMetastore();
+     *         final var this = DatabricksFunctions.getCurrentMetastore(GetCurrentMetastoreArgs.builder()
+     *             .build());
      * 
      *         ctx.export("someMetastore", this_.metastoreInfo());
      *     }
@@ -6090,7 +5912,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getCurrentMetastore();
+     *         final var this = DatabricksFunctions.getCurrentMetastore(GetCurrentMetastoreArgs.builder()
+     *             .build());
      * 
      *         ctx.export("someMetastore", this_.metastoreInfo());
      *     }
@@ -6291,7 +6114,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()
      *             .path("dbfs:/reports/some.csv")
-     *             .limitFileSize("true")
+     *             .limitFileSize(true)
      *             .build());
      * 
      *     }
@@ -6345,7 +6168,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()
      *             .path("dbfs:/reports/some.csv")
-     *             .limitFileSize("true")
+     *             .limitFileSize(true)
      *             .build());
      * 
      *     }
@@ -6399,7 +6222,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()
      *             .path("dbfs:/reports/some.csv")
-     *             .limitFileSize("true")
+     *             .limitFileSize(true)
      *             .build());
      * 
      *     }
@@ -6453,7 +6276,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()
      *             .path("dbfs:/reports/some.csv")
-     *             .limitFileSize("true")
+     *             .limitFileSize(true)
      *             .build());
      * 
      *     }
@@ -6507,7 +6330,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()
      *             .path("dbfs:/reports/some.csv")
-     *             .limitFileSize("true")
+     *             .limitFileSize(true)
      *             .build());
      * 
      *     }
@@ -7331,9 +7154,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getExternalLocations();
+     *         final var all = DatabricksFunctions.getExternalLocations(GetExternalLocationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allExternalLocations", all.applyValue(getExternalLocationsResult -> getExternalLocationsResult.names()));
+     *         ctx.export("allExternalLocations", all.names());
      *     }
      * }
      * }
@@ -7383,9 +7207,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getExternalLocations();
+     *         final var all = DatabricksFunctions.getExternalLocations(GetExternalLocationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allExternalLocations", all.applyValue(getExternalLocationsResult -> getExternalLocationsResult.names()));
+     *         ctx.export("allExternalLocations", all.names());
      *     }
      * }
      * }
@@ -7435,9 +7260,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getExternalLocations();
+     *         final var all = DatabricksFunctions.getExternalLocations(GetExternalLocationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allExternalLocations", all.applyValue(getExternalLocationsResult -> getExternalLocationsResult.names()));
+     *         ctx.export("allExternalLocations", all.names());
      *     }
      * }
      * }
@@ -7487,9 +7313,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getExternalLocations();
+     *         final var all = DatabricksFunctions.getExternalLocations(GetExternalLocationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allExternalLocations", all.applyValue(getExternalLocationsResult -> getExternalLocationsResult.names()));
+     *         ctx.export("allExternalLocations", all.names());
      *     }
      * }
      * }
@@ -7539,9 +7366,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getExternalLocations();
+     *         final var all = DatabricksFunctions.getExternalLocations(GetExternalLocationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allExternalLocations", all.applyValue(getExternalLocationsResult -> getExternalLocationsResult.names()));
+     *         ctx.export("allExternalLocations", all.names());
      *     }
      * }
      * }
@@ -7591,9 +7419,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getExternalLocations();
+     *         final var all = DatabricksFunctions.getExternalLocations(GetExternalLocationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allExternalLocations", all.applyValue(getExternalLocationsResult -> getExternalLocationsResult.names()));
+     *         ctx.export("allExternalLocations", all.names());
      *     }
      * }
      * }
@@ -7643,9 +7472,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getExternalLocations();
+     *         final var all = DatabricksFunctions.getExternalLocations(GetExternalLocationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allExternalLocations", all.applyValue(getExternalLocationsResult -> getExternalLocationsResult.names()));
+     *         ctx.export("allExternalLocations", all.names());
      *     }
      * }
      * }
@@ -7700,7 +7530,7 @@ public final class DatabricksFunctions {
      *             .schemaName("default")
      *             .build());
      * 
-     *         ctx.export("allExternalLocations", all.applyValue(getFunctionsResult -> getFunctionsResult.functions()));
+     *         ctx.export("allExternalLocations", all.functions());
      *     }
      * }
      * }
@@ -7754,7 +7584,7 @@ public final class DatabricksFunctions {
      *             .schemaName("default")
      *             .build());
      * 
-     *         ctx.export("allExternalLocations", all.applyValue(getFunctionsResult -> getFunctionsResult.functions()));
+     *         ctx.export("allExternalLocations", all.functions());
      *     }
      * }
      * }
@@ -7808,7 +7638,7 @@ public final class DatabricksFunctions {
      *             .schemaName("default")
      *             .build());
      * 
-     *         ctx.export("allExternalLocations", all.applyValue(getFunctionsResult -> getFunctionsResult.functions()));
+     *         ctx.export("allExternalLocations", all.functions());
      *     }
      * }
      * }
@@ -7862,7 +7692,7 @@ public final class DatabricksFunctions {
      *             .schemaName("default")
      *             .build());
      * 
-     *         ctx.export("allExternalLocations", all.applyValue(getFunctionsResult -> getFunctionsResult.functions()));
+     *         ctx.export("allExternalLocations", all.functions());
      *     }
      * }
      * }
@@ -7916,7 +7746,7 @@ public final class DatabricksFunctions {
      *             .schemaName("default")
      *             .build());
      * 
-     *         ctx.export("allExternalLocations", all.applyValue(getFunctionsResult -> getFunctionsResult.functions()));
+     *         ctx.export("allExternalLocations", all.functions());
      *     }
      * }
      * }
@@ -7978,7 +7808,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .groupId(admins.id())
      *             .memberId(me.id())
      *             .build());
      * 
@@ -8048,7 +7878,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .groupId(admins.id())
      *             .memberId(me.id())
      *             .build());
      * 
@@ -8118,7 +7948,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .groupId(admins.id())
      *             .memberId(me.id())
      *             .build());
      * 
@@ -8188,7 +8018,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .groupId(admins.id())
      *             .memberId(me.id())
      *             .build());
      * 
@@ -8258,7 +8088,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+     *             .groupId(admins.id())
      *             .memberId(me.id())
      *             .build());
      * 
@@ -8322,7 +8152,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
-     *             .instancePoolId(pool.applyValue(getInstancePoolResult -> getInstancePoolResult.id()))
+     *             .instancePoolId(pool.id())
      *             .build());
      * 
      *     }
@@ -8374,7 +8204,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
-     *             .instancePoolId(pool.applyValue(getInstancePoolResult -> getInstancePoolResult.id()))
+     *             .instancePoolId(pool.id())
      *             .build());
      * 
      *     }
@@ -8426,7 +8256,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
-     *             .instancePoolId(pool.applyValue(getInstancePoolResult -> getInstancePoolResult.id()))
+     *             .instancePoolId(pool.id())
      *             .build());
      * 
      *     }
@@ -8478,7 +8308,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
-     *             .instancePoolId(pool.applyValue(getInstancePoolResult -> getInstancePoolResult.id()))
+     *             .instancePoolId(pool.id())
      *             .build());
      * 
      *     }
@@ -8530,7 +8360,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
-     *             .instancePoolId(pool.applyValue(getInstancePoolResult -> getInstancePoolResult.id()))
+     *             .instancePoolId(pool.id())
      *             .build());
      * 
      *     }
@@ -8573,9 +8403,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getInstanceProfiles();
+     *         final var all = DatabricksFunctions.getInstanceProfiles(GetInstanceProfilesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allInstanceProfiles", all.applyValue(getInstanceProfilesResult -> getInstanceProfilesResult.instanceProfiles()));
+     *         ctx.export("allInstanceProfiles", all.instanceProfiles());
      *     }
      * }
      * }
@@ -8616,9 +8447,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getInstanceProfiles();
+     *         final var all = DatabricksFunctions.getInstanceProfiles(GetInstanceProfilesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allInstanceProfiles", all.applyValue(getInstanceProfilesResult -> getInstanceProfilesResult.instanceProfiles()));
+     *         ctx.export("allInstanceProfiles", all.instanceProfiles());
      *     }
      * }
      * }
@@ -8659,9 +8491,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getInstanceProfiles();
+     *         final var all = DatabricksFunctions.getInstanceProfiles(GetInstanceProfilesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allInstanceProfiles", all.applyValue(getInstanceProfilesResult -> getInstanceProfilesResult.instanceProfiles()));
+     *         ctx.export("allInstanceProfiles", all.instanceProfiles());
      *     }
      * }
      * }
@@ -8702,9 +8535,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getInstanceProfiles();
+     *         final var all = DatabricksFunctions.getInstanceProfiles(GetInstanceProfilesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allInstanceProfiles", all.applyValue(getInstanceProfilesResult -> getInstanceProfilesResult.instanceProfiles()));
+     *         ctx.export("allInstanceProfiles", all.instanceProfiles());
      *     }
      * }
      * }
@@ -8745,9 +8579,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getInstanceProfiles();
+     *         final var all = DatabricksFunctions.getInstanceProfiles(GetInstanceProfilesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allInstanceProfiles", all.applyValue(getInstanceProfilesResult -> getInstanceProfilesResult.instanceProfiles()));
+     *         ctx.export("allInstanceProfiles", all.instanceProfiles());
      *     }
      * }
      * }
@@ -8788,9 +8623,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getInstanceProfiles();
+     *         final var all = DatabricksFunctions.getInstanceProfiles(GetInstanceProfilesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allInstanceProfiles", all.applyValue(getInstanceProfilesResult -> getInstanceProfilesResult.instanceProfiles()));
+     *         ctx.export("allInstanceProfiles", all.instanceProfiles());
      *     }
      * }
      * }
@@ -8831,9 +8667,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getInstanceProfiles();
+     *         final var all = DatabricksFunctions.getInstanceProfiles(GetInstanceProfilesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allInstanceProfiles", all.applyValue(getInstanceProfilesResult -> getInstanceProfilesResult.instanceProfiles()));
+     *         ctx.export("allInstanceProfiles", all.instanceProfiles());
      *     }
      * }
      * }
@@ -9260,7 +9097,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getJobs();
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .build());
      * 
      *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
      *             .jobNameContains("test")
@@ -9268,7 +9106,7 @@ public final class DatabricksFunctions {
      * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
-     *             for (var range : KeyedValue.of(getJobsResult.ids()) {
+     *             for (var range : KeyedValue.of(getJobsResult.ids())) {
      *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
@@ -9314,7 +9152,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getJobs();
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
      *     }
@@ -9371,7 +9210,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getJobs();
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .build());
      * 
      *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
      *             .jobNameContains("test")
@@ -9379,7 +9219,7 @@ public final class DatabricksFunctions {
      * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
-     *             for (var range : KeyedValue.of(getJobsResult.ids()) {
+     *             for (var range : KeyedValue.of(getJobsResult.ids())) {
      *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
@@ -9425,7 +9265,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getJobs();
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
      *     }
@@ -9482,7 +9323,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getJobs();
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .build());
      * 
      *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
      *             .jobNameContains("test")
@@ -9490,7 +9332,7 @@ public final class DatabricksFunctions {
      * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
-     *             for (var range : KeyedValue.of(getJobsResult.ids()) {
+     *             for (var range : KeyedValue.of(getJobsResult.ids())) {
      *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
@@ -9536,7 +9378,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getJobs();
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
      *     }
@@ -9593,7 +9436,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getJobs();
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .build());
      * 
      *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
      *             .jobNameContains("test")
@@ -9601,7 +9445,7 @@ public final class DatabricksFunctions {
      * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
-     *             for (var range : KeyedValue.of(getJobsResult.ids()) {
+     *             for (var range : KeyedValue.of(getJobsResult.ids())) {
      *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
@@ -9647,7 +9491,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getJobs();
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
      *     }
@@ -9704,7 +9549,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getJobs();
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .build());
      * 
      *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
      *             .jobNameContains("test")
@@ -9712,7 +9558,7 @@ public final class DatabricksFunctions {
      * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
-     *             for (var range : KeyedValue.of(getJobsResult.ids()) {
+     *             for (var range : KeyedValue.of(getJobsResult.ids())) {
      *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
@@ -9758,7 +9604,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getJobs();
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
      *     }
@@ -9815,7 +9662,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getJobs();
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .build());
      * 
      *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
      *             .jobNameContains("test")
@@ -9823,7 +9671,7 @@ public final class DatabricksFunctions {
      * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
-     *             for (var range : KeyedValue.of(getJobsResult.ids()) {
+     *             for (var range : KeyedValue.of(getJobsResult.ids())) {
      *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
@@ -9869,7 +9717,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getJobs();
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
      *     }
@@ -9926,7 +9775,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getJobs();
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .build());
      * 
      *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
      *             .jobNameContains("test")
@@ -9934,7 +9784,7 @@ public final class DatabricksFunctions {
      * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
-     *             for (var range : KeyedValue.of(getJobsResult.ids()) {
+     *             for (var range : KeyedValue.of(getJobsResult.ids())) {
      *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
      *                     .jobId(range.value())
      *                     .accessControls(PermissionsAccessControlArgs.builder()
@@ -9980,7 +9830,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getJobs();
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
      *     }
@@ -10044,7 +9895,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(metastore.id().applyValue(id -> String.format("s3://%s/metastore", id)))
+     *             .storageRoot(metastore.id().applyValue(_id -> String.format("s3://%s/metastore", _id)))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -10053,7 +9904,7 @@ public final class DatabricksFunctions {
      *             .metastoreId(thisMetastore.id())
      *             .build());
      * 
-     *         ctx.export("someMetastore", this_.applyValue(this_ -> this_.metastoreInfo()));
+     *         ctx.export("someMetastore", this_.applyValue(_this_ -> _this_.metastoreInfo()));
      *     }
      * }
      * }
@@ -10117,7 +9968,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(metastore.id().applyValue(id -> String.format("s3://%s/metastore", id)))
+     *             .storageRoot(metastore.id().applyValue(_id -> String.format("s3://%s/metastore", _id)))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -10126,7 +9977,7 @@ public final class DatabricksFunctions {
      *             .metastoreId(thisMetastore.id())
      *             .build());
      * 
-     *         ctx.export("someMetastore", this_.applyValue(this_ -> this_.metastoreInfo()));
+     *         ctx.export("someMetastore", this_.applyValue(_this_ -> _this_.metastoreInfo()));
      *     }
      * }
      * }
@@ -10190,7 +10041,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(metastore.id().applyValue(id -> String.format("s3://%s/metastore", id)))
+     *             .storageRoot(metastore.id().applyValue(_id -> String.format("s3://%s/metastore", _id)))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -10199,7 +10050,7 @@ public final class DatabricksFunctions {
      *             .metastoreId(thisMetastore.id())
      *             .build());
      * 
-     *         ctx.export("someMetastore", this_.applyValue(this_ -> this_.metastoreInfo()));
+     *         ctx.export("someMetastore", this_.applyValue(_this_ -> _this_.metastoreInfo()));
      *     }
      * }
      * }
@@ -10263,7 +10114,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(metastore.id().applyValue(id -> String.format("s3://%s/metastore", id)))
+     *             .storageRoot(metastore.id().applyValue(_id -> String.format("s3://%s/metastore", _id)))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -10272,7 +10123,7 @@ public final class DatabricksFunctions {
      *             .metastoreId(thisMetastore.id())
      *             .build());
      * 
-     *         ctx.export("someMetastore", this_.applyValue(this_ -> this_.metastoreInfo()));
+     *         ctx.export("someMetastore", this_.applyValue(_this_ -> _this_.metastoreInfo()));
      *     }
      * }
      * }
@@ -10336,7 +10187,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(metastore.id().applyValue(id -> String.format("s3://%s/metastore", id)))
+     *             .storageRoot(metastore.id().applyValue(_id -> String.format("s3://%s/metastore", _id)))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -10345,7 +10196,7 @@ public final class DatabricksFunctions {
      *             .metastoreId(thisMetastore.id())
      *             .build());
      * 
-     *         ctx.export("someMetastore", this_.applyValue(this_ -> this_.metastoreInfo()));
+     *         ctx.export("someMetastore", this_.applyValue(_this_ -> _this_.metastoreInfo()));
      *     }
      * }
      * }
@@ -10409,7 +10260,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(metastore.id().applyValue(id -> String.format("s3://%s/metastore", id)))
+     *             .storageRoot(metastore.id().applyValue(_id -> String.format("s3://%s/metastore", _id)))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -10418,7 +10269,7 @@ public final class DatabricksFunctions {
      *             .metastoreId(thisMetastore.id())
      *             .build());
      * 
-     *         ctx.export("someMetastore", this_.applyValue(this_ -> this_.metastoreInfo()));
+     *         ctx.export("someMetastore", this_.applyValue(_this_ -> _this_.metastoreInfo()));
      *     }
      * }
      * }
@@ -10482,7 +10333,7 @@ public final class DatabricksFunctions {
      * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(metastore.id().applyValue(id -> String.format("s3://%s/metastore", id)))
+     *             .storageRoot(metastore.id().applyValue(_id -> String.format("s3://%s/metastore", _id)))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -10491,7 +10342,7 @@ public final class DatabricksFunctions {
      *             .metastoreId(thisMetastore.id())
      *             .build());
      * 
-     *         ctx.export("someMetastore", this_.applyValue(this_ -> this_.metastoreInfo()));
+     *         ctx.export("someMetastore", this_.applyValue(_this_ -> _this_.metastoreInfo()));
      *     }
      * }
      * }
@@ -10544,9 +10395,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMetastores();
+     *         final var all = DatabricksFunctions.getMetastores(GetMetastoresArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allMetastores", all.applyValue(getMetastoresResult -> getMetastoresResult.ids()));
+     *         ctx.export("allMetastores", all.ids());
      *     }
      * }
      * }
@@ -10599,9 +10451,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMetastores();
+     *         final var all = DatabricksFunctions.getMetastores(GetMetastoresArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allMetastores", all.applyValue(getMetastoresResult -> getMetastoresResult.ids()));
+     *         ctx.export("allMetastores", all.ids());
      *     }
      * }
      * }
@@ -10654,9 +10507,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMetastores();
+     *         final var all = DatabricksFunctions.getMetastores(GetMetastoresArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allMetastores", all.applyValue(getMetastoresResult -> getMetastoresResult.ids()));
+     *         ctx.export("allMetastores", all.ids());
      *     }
      * }
      * }
@@ -10709,9 +10563,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMetastores();
+     *         final var all = DatabricksFunctions.getMetastores(GetMetastoresArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allMetastores", all.applyValue(getMetastoresResult -> getMetastoresResult.ids()));
+     *         ctx.export("allMetastores", all.ids());
      *     }
      * }
      * }
@@ -10764,9 +10619,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMetastores();
+     *         final var all = DatabricksFunctions.getMetastores(GetMetastoresArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allMetastores", all.applyValue(getMetastoresResult -> getMetastoresResult.ids()));
+     *         ctx.export("allMetastores", all.ids());
      *     }
      * }
      * }
@@ -10819,9 +10675,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMetastores();
+     *         final var all = DatabricksFunctions.getMetastores(GetMetastoresArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allMetastores", all.applyValue(getMetastoresResult -> getMetastoresResult.ids()));
+     *         ctx.export("allMetastores", all.ids());
      *     }
      * }
      * }
@@ -10874,9 +10731,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMetastores();
+     *         final var all = DatabricksFunctions.getMetastores(GetMetastoresArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allMetastores", all.applyValue(getMetastoresResult -> getMetastoresResult.ids()));
+     *         ctx.export("allMetastores", all.ids());
      *     }
      * }
      * }
@@ -11543,7 +11401,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getMlflowModels();
+     *         final var this = DatabricksFunctions.getMlflowModels(GetMlflowModelsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("model", this_);
      *     }
@@ -11586,7 +11445,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getMlflowModels();
+     *         final var this = DatabricksFunctions.getMlflowModels(GetMlflowModelsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("model", this_);
      *     }
@@ -11629,7 +11489,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getMlflowModels();
+     *         final var this = DatabricksFunctions.getMlflowModels(GetMlflowModelsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("model", this_);
      *     }
@@ -11672,7 +11533,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getMlflowModels();
+     *         final var this = DatabricksFunctions.getMlflowModels(GetMlflowModelsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("model", this_);
      *     }
@@ -11715,7 +11577,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getMlflowModels();
+     *         final var this = DatabricksFunctions.getMlflowModels(GetMlflowModelsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("model", this_);
      *     }
@@ -11758,7 +11621,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getMlflowModels();
+     *         final var this = DatabricksFunctions.getMlflowModels(GetMlflowModelsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("model", this_);
      *     }
@@ -11801,7 +11665,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getMlflowModels();
+     *         final var this = DatabricksFunctions.getMlflowModels(GetMlflowModelsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("model", this_);
      *     }
@@ -11848,9 +11713,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsCredentials();
+     *         final var all = DatabricksFunctions.getMwsCredentials(GetMwsCredentialsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allMwsCredentials", all.applyValue(getMwsCredentialsResult -> getMwsCredentialsResult.ids()));
+     *         ctx.export("allMwsCredentials", all.ids());
      *     }
      * }
      * }
@@ -11906,9 +11772,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsCredentials();
+     *         final var all = DatabricksFunctions.getMwsCredentials(GetMwsCredentialsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allMwsCredentials", all.applyValue(getMwsCredentialsResult -> getMwsCredentialsResult.ids()));
+     *         ctx.export("allMwsCredentials", all.ids());
      *     }
      * }
      * }
@@ -11964,9 +11831,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsCredentials();
+     *         final var all = DatabricksFunctions.getMwsCredentials(GetMwsCredentialsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allMwsCredentials", all.applyValue(getMwsCredentialsResult -> getMwsCredentialsResult.ids()));
+     *         ctx.export("allMwsCredentials", all.ids());
      *     }
      * }
      * }
@@ -12022,9 +11890,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsCredentials();
+     *         final var all = DatabricksFunctions.getMwsCredentials(GetMwsCredentialsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allMwsCredentials", all.applyValue(getMwsCredentialsResult -> getMwsCredentialsResult.ids()));
+     *         ctx.export("allMwsCredentials", all.ids());
      *     }
      * }
      * }
@@ -12080,9 +11949,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsCredentials();
+     *         final var all = DatabricksFunctions.getMwsCredentials(GetMwsCredentialsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allMwsCredentials", all.applyValue(getMwsCredentialsResult -> getMwsCredentialsResult.ids()));
+     *         ctx.export("allMwsCredentials", all.ids());
      *     }
      * }
      * }
@@ -12138,9 +12008,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsCredentials();
+     *         final var all = DatabricksFunctions.getMwsCredentials(GetMwsCredentialsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allMwsCredentials", all.applyValue(getMwsCredentialsResult -> getMwsCredentialsResult.ids()));
+     *         ctx.export("allMwsCredentials", all.ids());
      *     }
      * }
      * }
@@ -12196,9 +12067,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsCredentials();
+     *         final var all = DatabricksFunctions.getMwsCredentials(GetMwsCredentialsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allMwsCredentials", all.applyValue(getMwsCredentialsResult -> getMwsCredentialsResult.ids()));
+     *         ctx.export("allMwsCredentials", all.ids());
      *     }
      * }
      * }
@@ -12522,7 +12394,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs();
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs(GetMwsNetworkConnectivityConfigsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("all", this_);
      *     }
@@ -12610,7 +12483,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs();
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs(GetMwsNetworkConnectivityConfigsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("all", this_);
      *     }
@@ -12698,7 +12572,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs();
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs(GetMwsNetworkConnectivityConfigsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("all", this_);
      *     }
@@ -12786,7 +12661,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs();
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs(GetMwsNetworkConnectivityConfigsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("all", this_);
      *     }
@@ -12874,7 +12750,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs();
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs(GetMwsNetworkConnectivityConfigsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("all", this_);
      *     }
@@ -12962,7 +12839,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs();
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs(GetMwsNetworkConnectivityConfigsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("all", this_);
      *     }
@@ -13050,7 +12928,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs();
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs(GetMwsNetworkConnectivityConfigsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("all", this_);
      *     }
@@ -13139,9 +13018,9 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsWorkspaces();
+     *         final var all = DatabricksFunctions.getMwsWorkspaces(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("allMwsWorkspaces", all.applyValue(getMwsWorkspacesResult -> getMwsWorkspacesResult.ids()));
+     *         ctx.export("allMwsWorkspaces", all.ids());
      *     }
      * }
      * }
@@ -13192,9 +13071,9 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsWorkspaces();
+     *         final var all = DatabricksFunctions.getMwsWorkspaces(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("allMwsWorkspaces", all.applyValue(getMwsWorkspacesResult -> getMwsWorkspacesResult.ids()));
+     *         ctx.export("allMwsWorkspaces", all.ids());
      *     }
      * }
      * }
@@ -13245,9 +13124,9 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsWorkspaces();
+     *         final var all = DatabricksFunctions.getMwsWorkspaces(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("allMwsWorkspaces", all.applyValue(getMwsWorkspacesResult -> getMwsWorkspacesResult.ids()));
+     *         ctx.export("allMwsWorkspaces", all.ids());
      *     }
      * }
      * }
@@ -13298,9 +13177,9 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsWorkspaces();
+     *         final var all = DatabricksFunctions.getMwsWorkspaces(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("allMwsWorkspaces", all.applyValue(getMwsWorkspacesResult -> getMwsWorkspacesResult.ids()));
+     *         ctx.export("allMwsWorkspaces", all.ids());
      *     }
      * }
      * }
@@ -13351,9 +13230,9 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsWorkspaces();
+     *         final var all = DatabricksFunctions.getMwsWorkspaces(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("allMwsWorkspaces", all.applyValue(getMwsWorkspacesResult -> getMwsWorkspacesResult.ids()));
+     *         ctx.export("allMwsWorkspaces", all.ids());
      *     }
      * }
      * }
@@ -13404,9 +13283,9 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsWorkspaces();
+     *         final var all = DatabricksFunctions.getMwsWorkspaces(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("allMwsWorkspaces", all.applyValue(getMwsWorkspacesResult -> getMwsWorkspacesResult.ids()));
+     *         ctx.export("allMwsWorkspaces", all.ids());
      *     }
      * }
      * }
@@ -13457,9 +13336,9 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getMwsWorkspaces();
+     *         final var all = DatabricksFunctions.getMwsWorkspaces(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("allMwsWorkspaces", all.applyValue(getMwsWorkspacesResult -> getMwsWorkspacesResult.ids()));
+     *         ctx.export("allMwsWorkspaces", all.ids());
      *     }
      * }
      * }
@@ -13527,8 +13406,8 @@ public final class DatabricksFunctions {
      * 
      *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .sparkVersion(gpuMl.id())
+     *             .nodeTypeId(withGpu.id())
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -13606,8 +13485,8 @@ public final class DatabricksFunctions {
      * 
      *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .sparkVersion(gpuMl.id())
+     *             .nodeTypeId(withGpu.id())
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -13685,8 +13564,8 @@ public final class DatabricksFunctions {
      * 
      *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .sparkVersion(gpuMl.id())
+     *             .nodeTypeId(withGpu.id())
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -13764,8 +13643,8 @@ public final class DatabricksFunctions {
      * 
      *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .sparkVersion(gpuMl.id())
+     *             .nodeTypeId(withGpu.id())
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -13843,8 +13722,8 @@ public final class DatabricksFunctions {
      * 
      *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .sparkVersion(gpuMl.id())
+     *             .nodeTypeId(withGpu.id())
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -13922,8 +13801,8 @@ public final class DatabricksFunctions {
      * 
      *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .sparkVersion(gpuMl.id())
+     *             .nodeTypeId(withGpu.id())
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -14001,8 +13880,8 @@ public final class DatabricksFunctions {
      * 
      *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .sparkVersion(gpuMl.id())
+     *             .nodeTypeId(withGpu.id())
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -14532,7 +14411,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         // Lists all notification desitnations
-     *         final var this = DatabricksFunctions.getNotificationDestinations();
+     *         final var this = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
+     *             .build());
      * 
      *         // List destinations of specific type and name
      *         final var filteredNotification = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
@@ -14602,7 +14482,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         // Lists all notification desitnations
-     *         final var this = DatabricksFunctions.getNotificationDestinations();
+     *         final var this = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
+     *             .build());
      * 
      *         // List destinations of specific type and name
      *         final var filteredNotification = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
@@ -14672,7 +14553,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         // Lists all notification desitnations
-     *         final var this = DatabricksFunctions.getNotificationDestinations();
+     *         final var this = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
+     *             .build());
      * 
      *         // List destinations of specific type and name
      *         final var filteredNotification = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
@@ -14742,7 +14624,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         // Lists all notification desitnations
-     *         final var this = DatabricksFunctions.getNotificationDestinations();
+     *         final var this = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
+     *             .build());
      * 
      *         // List destinations of specific type and name
      *         final var filteredNotification = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
@@ -14812,7 +14695,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         // Lists all notification desitnations
-     *         final var this = DatabricksFunctions.getNotificationDestinations();
+     *         final var this = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
+     *             .build());
      * 
      *         // List destinations of specific type and name
      *         final var filteredNotification = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
@@ -14882,7 +14766,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         // Lists all notification desitnations
-     *         final var this = DatabricksFunctions.getNotificationDestinations();
+     *         final var this = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
+     *             .build());
      * 
      *         // List destinations of specific type and name
      *         final var filteredNotification = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
@@ -14952,7 +14837,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         // Lists all notification desitnations
-     *         final var this = DatabricksFunctions.getNotificationDestinations();
+     *         final var this = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
+     *             .build());
      * 
      *         // List destinations of specific type and name
      *         final var filteredNotification = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
@@ -15002,9 +14888,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getPipelines();
+     *         final var all = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allPipelines", all.applyValue(getPipelinesResult -> getPipelinesResult.ids()));
+     *         ctx.export("allPipelines", all.ids());
      *     }
      * }
      * }
@@ -15129,9 +15016,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getPipelines();
+     *         final var all = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allPipelines", all.applyValue(getPipelinesResult -> getPipelinesResult.ids()));
+     *         ctx.export("allPipelines", all.ids());
      *     }
      * }
      * }
@@ -15256,9 +15144,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getPipelines();
+     *         final var all = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allPipelines", all.applyValue(getPipelinesResult -> getPipelinesResult.ids()));
+     *         ctx.export("allPipelines", all.ids());
      *     }
      * }
      * }
@@ -15383,9 +15272,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getPipelines();
+     *         final var all = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allPipelines", all.applyValue(getPipelinesResult -> getPipelinesResult.ids()));
+     *         ctx.export("allPipelines", all.ids());
      *     }
      * }
      * }
@@ -15510,9 +15400,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getPipelines();
+     *         final var all = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allPipelines", all.applyValue(getPipelinesResult -> getPipelinesResult.ids()));
+     *         ctx.export("allPipelines", all.ids());
      *     }
      * }
      * }
@@ -15637,9 +15528,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getPipelines();
+     *         final var all = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allPipelines", all.applyValue(getPipelinesResult -> getPipelinesResult.ids()));
+     *         ctx.export("allPipelines", all.ids());
      *     }
      * }
      * }
@@ -15764,9 +15656,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getPipelines();
+     *         final var all = DatabricksFunctions.getPipelines(GetPipelinesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allPipelines", all.applyValue(getPipelinesResult -> getPipelinesResult.ids()));
+     *         ctx.export("allPipelines", all.ids());
      *     }
      * }
      * }
@@ -16707,7 +16600,7 @@ public final class DatabricksFunctions {
      *             .catalogName("sandbox")
      *             .build());
      * 
-     *         ctx.export("allSandboxSchemas", sandbox.applyValue(getSchemasResult -> getSchemasResult));
+     *         ctx.export("allSandboxSchemas", sandbox);
      *     }
      * }
      * }
@@ -16763,7 +16656,7 @@ public final class DatabricksFunctions {
      *             .catalogName("sandbox")
      *             .build());
      * 
-     *         ctx.export("allSandboxSchemas", sandbox.applyValue(getSchemasResult -> getSchemasResult));
+     *         ctx.export("allSandboxSchemas", sandbox);
      *     }
      * }
      * }
@@ -16819,7 +16712,7 @@ public final class DatabricksFunctions {
      *             .catalogName("sandbox")
      *             .build());
      * 
-     *         ctx.export("allSandboxSchemas", sandbox.applyValue(getSchemasResult -> getSchemasResult));
+     *         ctx.export("allSandboxSchemas", sandbox);
      *     }
      * }
      * }
@@ -16875,7 +16768,7 @@ public final class DatabricksFunctions {
      *             .catalogName("sandbox")
      *             .build());
      * 
-     *         ctx.export("allSandboxSchemas", sandbox.applyValue(getSchemasResult -> getSchemasResult));
+     *         ctx.export("allSandboxSchemas", sandbox);
      *     }
      * }
      * }
@@ -16931,7 +16824,7 @@ public final class DatabricksFunctions {
      *             .catalogName("sandbox")
      *             .build());
      * 
-     *         ctx.export("allSandboxSchemas", sandbox.applyValue(getSchemasResult -> getSchemasResult));
+     *         ctx.export("allSandboxSchemas", sandbox);
      *     }
      * }
      * }
@@ -16993,8 +16886,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
+     *             .groupId(admins.id())
+     *             .memberId(spn.id())
      *             .build());
      * 
      *     }
@@ -17064,8 +16957,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
+     *             .groupId(admins.id())
+     *             .memberId(spn.id())
      *             .build());
      * 
      *     }
@@ -17135,8 +17028,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
+     *             .groupId(admins.id())
+     *             .memberId(spn.id())
      *             .build());
      * 
      *     }
@@ -17206,8 +17099,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
+     *             .groupId(admins.id())
+     *             .memberId(spn.id())
      *             .build());
      * 
      *     }
@@ -17277,8 +17170,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
+     *             .groupId(admins.id())
+     *             .memberId(spn.id())
      *             .build());
      * 
      *     }
@@ -17348,8 +17241,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
+     *             .groupId(admins.id())
+     *             .memberId(spn.id())
      *             .build());
      * 
      *     }
@@ -17419,8 +17312,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .memberId(spn.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
+     *             .groupId(admins.id())
+     *             .memberId(spn.id())
      *             .build());
      * 
      *     }
@@ -17543,7 +17436,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getServingEndpoints();
+     *         final var all = DatabricksFunctions.getServingEndpoints(GetServingEndpointsArgs.builder()
+     *             .build());
      * 
      *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
      *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
@@ -17615,7 +17509,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getServingEndpoints();
+     *         final var all = DatabricksFunctions.getServingEndpoints(GetServingEndpointsArgs.builder()
+     *             .build());
      * 
      *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
      *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
@@ -17687,7 +17582,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getServingEndpoints();
+     *         final var all = DatabricksFunctions.getServingEndpoints(GetServingEndpointsArgs.builder()
+     *             .build());
      * 
      *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
      *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
@@ -17759,7 +17655,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getServingEndpoints();
+     *         final var all = DatabricksFunctions.getServingEndpoints(GetServingEndpointsArgs.builder()
+     *             .build());
      * 
      *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
      *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
@@ -17831,7 +17728,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getServingEndpoints();
+     *         final var all = DatabricksFunctions.getServingEndpoints(GetServingEndpointsArgs.builder()
+     *             .build());
      * 
      *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
      *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
@@ -17903,7 +17801,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getServingEndpoints();
+     *         final var all = DatabricksFunctions.getServingEndpoints(GetServingEndpointsArgs.builder()
+     *             .build());
      * 
      *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
      *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
@@ -17975,7 +17874,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getServingEndpoints();
+     *         final var all = DatabricksFunctions.getServingEndpoints(GetServingEndpointsArgs.builder()
+     *             .build());
      * 
      *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
      *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
@@ -18414,7 +18314,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getShares();
+     *         final var this = DatabricksFunctions.getShares(GetSharesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("shareName", this_.shares());
      *     }
@@ -18465,7 +18366,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getShares();
+     *         final var this = DatabricksFunctions.getShares(GetSharesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("shareName", this_.shares());
      *     }
@@ -18516,7 +18418,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getShares();
+     *         final var this = DatabricksFunctions.getShares(GetSharesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("shareName", this_.shares());
      *     }
@@ -18567,7 +18470,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getShares();
+     *         final var this = DatabricksFunctions.getShares(GetSharesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("shareName", this_.shares());
      *     }
@@ -18618,7 +18522,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getShares();
+     *         final var this = DatabricksFunctions.getShares(GetSharesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("shareName", this_.shares());
      *     }
@@ -18669,7 +18574,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getShares();
+     *         final var this = DatabricksFunctions.getShares(GetSharesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("shareName", this_.shares());
      *     }
@@ -18720,7 +18626,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getShares();
+     *         final var this = DatabricksFunctions.getShares(GetSharesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("shareName", this_.shares());
      *     }
@@ -18791,8 +18698,8 @@ public final class DatabricksFunctions {
      * 
      *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .sparkVersion(gpuMl.id())
+     *             .nodeTypeId(withGpu.id())
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -18870,8 +18777,8 @@ public final class DatabricksFunctions {
      * 
      *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .sparkVersion(gpuMl.id())
+     *             .nodeTypeId(withGpu.id())
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -18949,8 +18856,8 @@ public final class DatabricksFunctions {
      * 
      *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .sparkVersion(gpuMl.id())
+     *             .nodeTypeId(withGpu.id())
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -19028,8 +18935,8 @@ public final class DatabricksFunctions {
      * 
      *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .sparkVersion(gpuMl.id())
+     *             .nodeTypeId(withGpu.id())
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -19107,8 +19014,8 @@ public final class DatabricksFunctions {
      * 
      *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .sparkVersion(gpuMl.id())
+     *             .nodeTypeId(withGpu.id())
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -19186,8 +19093,8 @@ public final class DatabricksFunctions {
      * 
      *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .sparkVersion(gpuMl.id())
+     *             .nodeTypeId(withGpu.id())
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -19265,8 +19172,8 @@ public final class DatabricksFunctions {
      * 
      *         var research = new Cluster("research", ClusterArgs.builder()
      *             .clusterName("Research Cluster")
-     *             .sparkVersion(gpuMl.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
-     *             .nodeTypeId(withGpu.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .sparkVersion(gpuMl.id())
+     *             .nodeTypeId(withGpu.id())
      *             .autoterminationMinutes(20)
      *             .autoscale(ClusterAutoscaleArgs.builder()
      *                 .minWorkers(1)
@@ -19753,7 +19660,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getSqlWarehouses();
+     *         final var all = DatabricksFunctions.getSqlWarehouses(GetSqlWarehousesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -19842,7 +19750,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getSqlWarehouses();
+     *         final var all = DatabricksFunctions.getSqlWarehouses(GetSqlWarehousesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -19931,7 +19840,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getSqlWarehouses();
+     *         final var all = DatabricksFunctions.getSqlWarehouses(GetSqlWarehousesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -20020,7 +19930,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getSqlWarehouses();
+     *         final var all = DatabricksFunctions.getSqlWarehouses(GetSqlWarehousesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -20109,7 +20020,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getSqlWarehouses();
+     *         final var all = DatabricksFunctions.getSqlWarehouses(GetSqlWarehousesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -20198,7 +20110,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getSqlWarehouses();
+     *         final var all = DatabricksFunctions.getSqlWarehouses(GetSqlWarehousesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -20287,7 +20200,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getSqlWarehouses();
+     *         final var all = DatabricksFunctions.getSqlWarehouses(GetSqlWarehousesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -20646,9 +20560,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getStorageCredentials();
+     *         final var all = DatabricksFunctions.getStorageCredentials(GetStorageCredentialsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allStorageCredentials", all.applyValue(getStorageCredentialsResult -> getStorageCredentialsResult.names()));
+     *         ctx.export("allStorageCredentials", all.names());
      *     }
      * }
      * }
@@ -20698,9 +20613,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getStorageCredentials();
+     *         final var all = DatabricksFunctions.getStorageCredentials(GetStorageCredentialsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allStorageCredentials", all.applyValue(getStorageCredentialsResult -> getStorageCredentialsResult.names()));
+     *         ctx.export("allStorageCredentials", all.names());
      *     }
      * }
      * }
@@ -20750,9 +20666,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getStorageCredentials();
+     *         final var all = DatabricksFunctions.getStorageCredentials(GetStorageCredentialsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allStorageCredentials", all.applyValue(getStorageCredentialsResult -> getStorageCredentialsResult.names()));
+     *         ctx.export("allStorageCredentials", all.names());
      *     }
      * }
      * }
@@ -20802,9 +20719,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getStorageCredentials();
+     *         final var all = DatabricksFunctions.getStorageCredentials(GetStorageCredentialsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allStorageCredentials", all.applyValue(getStorageCredentialsResult -> getStorageCredentialsResult.names()));
+     *         ctx.export("allStorageCredentials", all.names());
      *     }
      * }
      * }
@@ -20854,9 +20772,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getStorageCredentials();
+     *         final var all = DatabricksFunctions.getStorageCredentials(GetStorageCredentialsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allStorageCredentials", all.applyValue(getStorageCredentialsResult -> getStorageCredentialsResult.names()));
+     *         ctx.export("allStorageCredentials", all.names());
      *     }
      * }
      * }
@@ -20906,9 +20825,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getStorageCredentials();
+     *         final var all = DatabricksFunctions.getStorageCredentials(GetStorageCredentialsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allStorageCredentials", all.applyValue(getStorageCredentialsResult -> getStorageCredentialsResult.names()));
+     *         ctx.export("allStorageCredentials", all.names());
      *     }
      * }
      * }
@@ -20958,9 +20878,10 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getStorageCredentials();
+     *         final var all = DatabricksFunctions.getStorageCredentials(GetStorageCredentialsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("allStorageCredentials", all.applyValue(getStorageCredentialsResult -> getStorageCredentialsResult.names()));
+     *         ctx.export("allStorageCredentials", all.names());
      *     }
      * }
      * }
@@ -21020,7 +20941,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var things = new Grants("things", GrantsArgs.builder()
-     *             .table(fctTransactions.applyValue(getTableResult -> getTableResult.name()))
+     *             .table(fctTransactions.name())
      *             .grants(GrantsGrantArgs.builder()
      *                 .principal("sensitive")
      *                 .privileges(                
@@ -21088,7 +21009,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var things = new Grants("things", GrantsArgs.builder()
-     *             .table(fctTransactions.applyValue(getTableResult -> getTableResult.name()))
+     *             .table(fctTransactions.name())
      *             .grants(GrantsGrantArgs.builder()
      *                 .principal("sensitive")
      *                 .privileges(                
@@ -21156,7 +21077,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var things = new Grants("things", GrantsArgs.builder()
-     *             .table(fctTransactions.applyValue(getTableResult -> getTableResult.name()))
+     *             .table(fctTransactions.name())
      *             .grants(GrantsGrantArgs.builder()
      *                 .principal("sensitive")
      *                 .privileges(                
@@ -21224,7 +21145,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var things = new Grants("things", GrantsArgs.builder()
-     *             .table(fctTransactions.applyValue(getTableResult -> getTableResult.name()))
+     *             .table(fctTransactions.name())
      *             .grants(GrantsGrantArgs.builder()
      *                 .principal("sensitive")
      *                 .privileges(                
@@ -21292,7 +21213,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var things = new Grants("things", GrantsArgs.builder()
-     *             .table(fctTransactions.applyValue(getTableResult -> getTableResult.name()))
+     *             .table(fctTransactions.name())
      *             .grants(GrantsGrantArgs.builder()
      *                 .principal("sensitive")
      *                 .privileges(                
@@ -21363,7 +21284,7 @@ public final class DatabricksFunctions {
      * 
      *         final var thingsGrants = things.applyValue(getTablesResult -> {
      *             final var resources = new ArrayList<Grants>();
-     *             for (var range : KeyedValue.of(getTablesResult.ids()) {
+     *             for (var range : KeyedValue.of(getTablesResult.ids())) {
      *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
      *                     .table(range.value())
      *                     .grants(GrantsGrantArgs.builder()
@@ -21442,7 +21363,7 @@ public final class DatabricksFunctions {
      * 
      *         final var thingsGrants = things.applyValue(getTablesResult -> {
      *             final var resources = new ArrayList<Grants>();
-     *             for (var range : KeyedValue.of(getTablesResult.ids()) {
+     *             for (var range : KeyedValue.of(getTablesResult.ids())) {
      *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
      *                     .table(range.value())
      *                     .grants(GrantsGrantArgs.builder()
@@ -21521,7 +21442,7 @@ public final class DatabricksFunctions {
      * 
      *         final var thingsGrants = things.applyValue(getTablesResult -> {
      *             final var resources = new ArrayList<Grants>();
-     *             for (var range : KeyedValue.of(getTablesResult.ids()) {
+     *             for (var range : KeyedValue.of(getTablesResult.ids())) {
      *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
      *                     .table(range.value())
      *                     .grants(GrantsGrantArgs.builder()
@@ -21600,7 +21521,7 @@ public final class DatabricksFunctions {
      * 
      *         final var thingsGrants = things.applyValue(getTablesResult -> {
      *             final var resources = new ArrayList<Grants>();
-     *             for (var range : KeyedValue.of(getTablesResult.ids()) {
+     *             for (var range : KeyedValue.of(getTablesResult.ids())) {
      *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
      *                     .table(range.value())
      *                     .grants(GrantsGrantArgs.builder()
@@ -21679,7 +21600,7 @@ public final class DatabricksFunctions {
      * 
      *         final var thingsGrants = things.applyValue(getTablesResult -> {
      *             final var resources = new ArrayList<Grants>();
-     *             for (var range : KeyedValue.of(getTablesResult.ids()) {
+     *             for (var range : KeyedValue.of(getTablesResult.ids())) {
      *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
      *                     .table(range.value())
      *                     .grants(GrantsGrantArgs.builder()
@@ -21757,8 +21678,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
+     *             .groupId(admins.id())
+     *             .memberId(me.id())
      *             .build());
      * 
      *     }}{@code
@@ -21829,8 +21750,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
+     *             .groupId(admins.id())
+     *             .memberId(me.id())
      *             .build());
      * 
      *     }}{@code
@@ -21901,8 +21822,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
+     *             .groupId(admins.id())
+     *             .memberId(me.id())
      *             .build());
      * 
      *     }}{@code
@@ -21973,8 +21894,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
+     *             .groupId(admins.id())
+     *             .memberId(me.id())
      *             .build());
      * 
      *     }}{@code
@@ -22045,8 +21966,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
+     *             .groupId(admins.id())
+     *             .memberId(me.id())
      *             .build());
      * 
      *     }}{@code
@@ -22117,8 +22038,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
+     *             .groupId(admins.id())
+     *             .memberId(me.id())
      *             .build());
      * 
      *     }}{@code
@@ -22189,8 +22110,8 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myMemberA = new GroupMember("myMemberA", GroupMemberArgs.builder()
-     *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
-     *             .memberId(me.applyValue(getUserResult -> getUserResult.id()))
+     *             .groupId(admins.id())
+     *             .memberId(me.id())
      *             .build());
      * 
      *     }}{@code
@@ -22260,7 +22181,7 @@ public final class DatabricksFunctions {
      * 
      *         final var thingsGrants = things.applyValue(getViewsResult -> {
      *             final var resources = new ArrayList<Grants>();
-     *             for (var range : KeyedValue.of(getViewsResult.ids()) {
+     *             for (var range : KeyedValue.of(getViewsResult.ids())) {
      *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
      *                     .table(range.value())
      *                     .grants(GrantsGrantArgs.builder()
@@ -22337,7 +22258,7 @@ public final class DatabricksFunctions {
      * 
      *         final var thingsGrants = things.applyValue(getViewsResult -> {
      *             final var resources = new ArrayList<Grants>();
-     *             for (var range : KeyedValue.of(getViewsResult.ids()) {
+     *             for (var range : KeyedValue.of(getViewsResult.ids())) {
      *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
      *                     .table(range.value())
      *                     .grants(GrantsGrantArgs.builder()
@@ -22414,7 +22335,7 @@ public final class DatabricksFunctions {
      * 
      *         final var thingsGrants = things.applyValue(getViewsResult -> {
      *             final var resources = new ArrayList<Grants>();
-     *             for (var range : KeyedValue.of(getViewsResult.ids()) {
+     *             for (var range : KeyedValue.of(getViewsResult.ids())) {
      *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
      *                     .table(range.value())
      *                     .grants(GrantsGrantArgs.builder()
@@ -22491,7 +22412,7 @@ public final class DatabricksFunctions {
      * 
      *         final var thingsGrants = things.applyValue(getViewsResult -> {
      *             final var resources = new ArrayList<Grants>();
-     *             for (var range : KeyedValue.of(getViewsResult.ids()) {
+     *             for (var range : KeyedValue.of(getViewsResult.ids())) {
      *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
      *                     .table(range.value())
      *                     .grants(GrantsGrantArgs.builder()
@@ -22568,7 +22489,7 @@ public final class DatabricksFunctions {
      * 
      *         final var thingsGrants = things.applyValue(getViewsResult -> {
      *             final var resources = new ArrayList<Grants>();
-     *             for (var range : KeyedValue.of(getViewsResult.ids()) {
+     *             for (var range : KeyedValue.of(getViewsResult.ids())) {
      *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
      *                     .table(range.value())
      *                     .grants(GrantsGrantArgs.builder()
@@ -23222,7 +23143,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = DatabricksFunctions.getZones();
+     *         final var zones = DatabricksFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -23264,7 +23186,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = DatabricksFunctions.getZones();
+     *         final var zones = DatabricksFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -23306,7 +23229,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = DatabricksFunctions.getZones();
+     *         final var zones = DatabricksFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -23348,7 +23272,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = DatabricksFunctions.getZones();
+     *         final var zones = DatabricksFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -23390,7 +23315,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = DatabricksFunctions.getZones();
+     *         final var zones = DatabricksFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -23432,7 +23358,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = DatabricksFunctions.getZones();
+     *         final var zones = DatabricksFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -23474,7 +23401,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = DatabricksFunctions.getZones();
+     *         final var zones = DatabricksFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }

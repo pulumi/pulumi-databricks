@@ -59,13 +59,13 @@ import javax.annotation.Nullable;
  *             .dataSourceId(example.dataSourceId())
  *             .name("My Query Name")
  *             .query("SELECT 1 AS p1, 2 as p2")
- *             .parent(sharedDir.objectId().applyValue(objectId -> String.format("folders/%s", objectId)))
+ *             .parent(sharedDir.objectId().applyValue(_objectId -> String.format("folders/%s", _objectId)))
  *             .build());
  * 
  *         var alert = new SqlAlert("alert", SqlAlertArgs.builder()
  *             .queryId(this_.id())
  *             .name("My Alert")
- *             .parent(sharedDir.objectId().applyValue(objectId -> String.format("folders/%s", objectId)))
+ *             .parent(sharedDir.objectId().applyValue(_objectId -> String.format("folders/%s", _objectId)))
  *             .rearm(1)
  *             .options(SqlAlertOptionsArgs.builder()
  *                 .column("p1")

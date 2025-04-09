@@ -100,10 +100,11 @@ import javax.annotation.Nullable;
  *             .credentialsId(this_.credentialsId())
  *             .storageConfigurationId(thisMwsStorageConfigurations.storageConfigurationId())
  *             .networkId(thisMwsNetworks.networkId())
- *             .token()
+ *             .token(MwsWorkspacesTokenArgs.builder()
+ *                 .build())
  *             .build());
  * 
- *         ctx.export("databricksToken", thisMwsWorkspaces.token().applyValue(token -> token.tokenValue()));
+ *         ctx.export("databricksToken", thisMwsWorkspaces.token().applyValue(_token -> _token.tokenValue()));
  *     }
  * }
  * }
@@ -125,7 +126,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.string;
- * import com.pulumi.random.StringArgs;
+ * import com.pulumi.random.stringArgs;
  * import com.pulumi.databricks.DatabricksFunctions;
  * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
  * import com.pulumi.aws.iam.Role;
@@ -188,12 +189,13 @@ import javax.annotation.Nullable;
  *             .tags(tags)
  *             .build());
  * 
- *         final var thisGetAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy();
+ *         final var thisGetAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
+ *             .build());
  * 
  *         var thisRolePolicy = new RolePolicy("thisRolePolicy", RolePolicyArgs.builder()
  *             .name(String.format("%s-policy", prefix))
  *             .role(crossAccountRole.id())
- *             .policy(thisGetAwsCrossAccountPolicy.applyValue(getAwsCrossAccountPolicyResult -> getAwsCrossAccountPolicyResult.json()))
+ *             .policy(thisGetAwsCrossAccountPolicy.json())
  *             .build());
  * 
  *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()
@@ -241,7 +243,7 @@ import javax.annotation.Nullable;
  * 
  *         var rootBucketPolicy = new BucketPolicy("rootBucketPolicy", BucketPolicyArgs.builder()
  *             .bucket(rootStorageBucket.id())
- *             .policy(thisGetAwsBucketPolicy.applyValue(getAwsBucketPolicyResult -> getAwsBucketPolicyResult).applyValue(thisGetAwsBucketPolicy -> thisGetAwsBucketPolicy.applyValue(getAwsBucketPolicyResult -> getAwsBucketPolicyResult.json())))
+ *             .policy(thisGetAwsBucketPolicy.applyValue(_thisGetAwsBucketPolicy -> _thisGetAwsBucketPolicy.json()))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(rootStorageBucketBucketPublicAccessBlock)
  *                 .build());
@@ -258,11 +260,12 @@ import javax.annotation.Nullable;
  *             .awsRegion("us-east-1")
  *             .credentialsId(thisMwsCredentials.credentialsId())
  *             .storageConfigurationId(thisMwsStorageConfigurations.storageConfigurationId())
- *             .token()
+ *             .token(MwsWorkspacesTokenArgs.builder()
+ *                 .build())
  *             .customTags(Map.of("SoldToCode", "1234"))
  *             .build());
  * 
- *         ctx.export("databricksToken", thisMwsWorkspaces.token().applyValue(token -> token.tokenValue()));
+ *         ctx.export("databricksToken", thisMwsWorkspaces.token().applyValue(_token -> _token.tokenValue()));
  *     }
  * }
  * }
@@ -340,10 +343,11 @@ import javax.annotation.Nullable;
  *                 .connectivityType("PRIVATE_NODE_PUBLIC_MASTER")
  *                 .masterIpRange("10.3.0.0/28")
  *                 .build())
- *             .token()
+ *             .token(MwsWorkspacesTokenArgs.builder()
+ *                 .build())
  *             .build());
  * 
- *         ctx.export("databricksToken", thisMwsWorkspaces.token().applyValue(token -> token.tokenValue()));
+ *         ctx.export("databricksToken", thisMwsWorkspaces.token().applyValue(_token -> _token.tokenValue()));
  *     }
  * }
  * }

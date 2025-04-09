@@ -136,10 +136,10 @@ import * as utilities from "./utilities";
  *
  * const config = new pulumi.Config();
  * // Account Id that could be found in https://accounts.gcp.databricks.com/
- * const databricksAccountId = config.requireObject("databricksAccountId");
- * const databricksGoogleServiceAccount = config.requireObject("databricksGoogleServiceAccount");
- * const googleProject = config.requireObject("googleProject");
- * const subnetRegion = config.requireObject("subnetRegion");
+ * const databricksAccountId = config.requireObject<any>("databricksAccountId");
+ * const databricksGoogleServiceAccount = config.requireObject<any>("databricksGoogleServiceAccount");
+ * const googleProject = config.requireObject<any>("googleProject");
+ * const subnetRegion = config.requireObject<any>("subnetRegion");
  * const workspace = new databricks.MwsVpcEndpoint("workspace", {
  *     accountId: databricksAccountId,
  *     vpcEndpointName: "PSC Rest API endpoint",

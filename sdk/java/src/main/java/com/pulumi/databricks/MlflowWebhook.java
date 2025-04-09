@@ -37,6 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
  * import com.pulumi.databricks.Notebook;
  * import com.pulumi.databricks.NotebookArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
  * import com.pulumi.databricks.Job;
  * import com.pulumi.databricks.JobArgs;
  * import com.pulumi.databricks.inputs.JobTaskArgs;
@@ -60,16 +62,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var me = DatabricksFunctions.getCurrentUser();
+ *         final var me = DatabricksFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
- *         final var latest = DatabricksFunctions.getSparkVersion();
+ *         final var latest = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+ *             .build());
  * 
  *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
  *             .localDisk(true)
  *             .build());
  * 
  *         var this_ = new Notebook("this", NotebookArgs.builder()
- *             .path(String.format("%s/MLFlowWebhook", me.applyValue(getCurrentUserResult -> getCurrentUserResult.home())))
+ *             .path(String.format("%s/MLFlowWebhook", me.home()))
  *             .language("PYTHON")
  *             .contentBase64(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                 .input("""
@@ -83,13 +86,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var thisJob = new Job("thisJob", JobArgs.builder()
- *             .name(String.format("Pulumi MLflowWebhook Demo (%s)", me.applyValue(getCurrentUserResult -> getCurrentUserResult.alphanumeric())))
+ *             .name(String.format("Pulumi MLflowWebhook Demo (%s)", me.alphanumeric()))
  *             .tasks(JobTaskArgs.builder()
  *                 .taskKey("task1")
  *                 .newCluster(JobTaskNewClusterArgs.builder()
  *                     .numWorkers(1)
- *                     .sparkVersion(latest.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
- *                     .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+ *                     .sparkVersion(latest.id())
+ *                     .nodeTypeId(smallest.id())
  *                     .build())
  *                 .notebookTask(JobTaskNotebookTaskArgs.builder()
  *                     .notebookPath(this_.path())
@@ -108,7 +111,7 @@ import javax.annotation.Nullable;
  *             .status("ACTIVE")
  *             .jobSpec(MlflowWebhookJobSpecArgs.builder()
  *                 .jobId(thisJob.id())
- *                 .workspaceUrl(me.applyValue(getCurrentUserResult -> getCurrentUserResult.workspaceUrl()))
+ *                 .workspaceUrl(me.workspaceUrl())
  *                 .accessToken(patForWebhook.tokenValue())
  *                 .build())
  *             .build());

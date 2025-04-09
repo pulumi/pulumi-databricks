@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  * 
  *         var d1 = new SqlDashboard("d1", SqlDashboardArgs.builder()
  *             .name("My Dashboard Name")
- *             .parent(sharedDir.objectId().applyValue(objectId -> String.format("folders/%s", objectId)))
+ *             .parent(sharedDir.objectId().applyValue(_objectId -> String.format("folders/%s", _objectId)))
  *             .tags(            
  *                 "some-tag",
  *                 "another-tag")

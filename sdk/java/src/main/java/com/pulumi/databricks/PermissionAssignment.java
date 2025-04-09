@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var addUser = new PermissionAssignment("addUser", PermissionAssignmentArgs.builder()
- *             .principalId(me.applyValue(getUserResult -> getUserResult.id()))
+ *             .principalId(me.id())
  *             .permissions("USER")
  *             .build());
  * 
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var addAdminSpn = new PermissionAssignment("addAdminSpn", PermissionAssignmentArgs.builder()
- *             .principalId(sp.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
+ *             .principalId(sp.id())
  *             .permissions("ADMIN")
  *             .build());
  * 
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  * 
  *         // Use the workspace provider
  *         var this_ = new PermissionAssignment("this", PermissionAssignmentArgs.builder()
- *             .principalId(accountLevel.applyValue(getGroupResult -> getGroupResult.id()))
+ *             .principalId(accountLevel.id())
  *             .permissions("USER")
  *             .build());
  * 
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  *             .displayName("example-group")
  *             .build());
  * 
- *         ctx.export("databricksGroupId", workspaceLevel.applyValue(getGroupResult -> getGroupResult.id()));
+ *         ctx.export("databricksGroupId", workspaceLevel.id());
  *     }
  * }
  * }
