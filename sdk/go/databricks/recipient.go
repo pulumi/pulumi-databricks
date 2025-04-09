@@ -70,6 +70,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// The recipient resource can be imported using the name of the recipient.
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/recipient:Recipient this <recipient_name>
+// ```
 type Recipient struct {
 	pulumi.CustomResourceState
 

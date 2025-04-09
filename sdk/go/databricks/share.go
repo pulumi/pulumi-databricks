@@ -16,6 +16,16 @@ import (
 // In Delta Sharing, a share is a read-only collection of tables and table partitions that a provider wants to share with one or more recipients. If your recipient uses a Unity Catalog-enabled Databricks workspace, you can also include notebook files, views (including dynamic views that restrict access at the row and column level), Unity Catalog volumes, and Unity Catalog models in a share.
 //
 // In a Unity Catalog-enabled Databricks workspace, a share is a securable object registered in Unity Catalog. A `Share` is contained within a databricks_metastore. If you remove a share from your Unity Catalog metastore, all recipients of that share lose the ability to access it.
+//
+// ## Import
+//
+// The share resource can be imported using the name of the share.
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/share:Share this <share_name>
+// ```
 type Share struct {
 	pulumi.CustomResourceState
 

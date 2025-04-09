@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PipelineEventLog {
     /**
-     * @return The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * @return The UC catalog the event log is published under.
      * 
      */
     private @Nullable String catalog;
     /**
-     * @return A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+     * @return The table name the event log is published to in UC.
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
-     * @return The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     * @return The UC schema the event log is published under.
      * 
      */
     private @Nullable String schema;
 
     private PipelineEventLog() {}
     /**
-     * @return The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * @return The UC catalog the event log is published under.
      * 
      */
     public Optional<String> catalog() {
         return Optional.ofNullable(this.catalog);
     }
     /**
-     * @return A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+     * @return The table name the event log is published to in UC.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
-     * @return The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     * @return The UC schema the event log is published under.
      * 
      */
     public Optional<String> schema() {
@@ -60,7 +61,7 @@ public final class PipelineEventLog {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String catalog;
-        private @Nullable String name;
+        private String name;
         private @Nullable String schema;
         public Builder() {}
         public Builder(PipelineEventLog defaults) {
@@ -77,8 +78,10 @@ public final class PipelineEventLog {
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("PipelineEventLog", "name");
+            }
             this.name = name;
             return this;
         }

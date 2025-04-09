@@ -298,9 +298,17 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> edition() {
         return Codegen.optional(this.edition);
     }
+    /**
+     * an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+     * 
+     */
     @Export(name="eventLog", refs={PipelineEventLog.class}, tree="[0]")
     private Output</* @Nullable */ PipelineEventLog> eventLog;
 
+    /**
+     * @return an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+     * 
+     */
     public Output<Optional<PipelineEventLog>> eventLog() {
         return Codegen.optional(this.eventLog);
     }

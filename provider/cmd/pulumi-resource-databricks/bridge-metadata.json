@@ -435,6 +435,15 @@
                 "current": "databricks:index/directory:Directory",
                 "majorVersion": 1
             },
+            "databricks_disable_legacy_access_setting": {
+                "current": "databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting",
+                "majorVersion": 1,
+                "fields": {
+                    "disable_legacy_access": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "databricks_enhanced_security_monitoring_workspace_setting": {
                 "current": "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting",
                 "majorVersion": 1,
@@ -1893,7 +1902,12 @@
             },
             "databricks_mlflow_experiment": {
                 "current": "databricks:index/mlflowExperiment:MlflowExperiment",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "databricks_mlflow_model": {
                 "current": "databricks:index/mlflowModel:MlflowModel",
@@ -5555,6 +5569,7 @@
             "databricks:index/dbfsFile:DbfsFile": 0,
             "databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting": 0,
             "databricks:index/directory:Directory": 0,
+            "databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting": 0,
             "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting": 0,
             "databricks:index/entitlements:Entitlements": 0,
             "databricks:index/externalLocation:ExternalLocation": 0,

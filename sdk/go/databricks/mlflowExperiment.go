@@ -36,7 +36,16 @@ import (
 //			_, err = databricks.NewMlflowExperiment(ctx, "this", &databricks.MlflowExperimentArgs{
 //				Name:             pulumi.Sprintf("%v/Sample", me.Home),
 //				ArtifactLocation: pulumi.String("dbfs:/tmp/my-experiment"),
-//				Description:      pulumi.String("My MLflow experiment description"),
+//				Tags: databricks.MlflowExperimentTagArray{
+//					&databricks.MlflowExperimentTagArgs{
+//						Key:   pulumi.String("key1"),
+//						Value: pulumi.String("value1"),
+//					},
+//					&databricks.MlflowExperimentTagArgs{
+//						Key:   pulumi.String("key2"),
+//						Value: pulumi.String("value2"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -78,13 +87,15 @@ type MlflowExperiment struct {
 	// Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
 	ArtifactLocation pulumi.StringPtrOutput `pulumi:"artifactLocation"`
 	CreationTime     pulumi.IntOutput       `pulumi:"creationTime"`
-	// The description of the MLflow experiment.
+	// Deprecated: Remove the description attribute as it no longer is used and will be removed in a future version.
 	Description    pulumi.StringPtrOutput `pulumi:"description"`
 	ExperimentId   pulumi.StringOutput    `pulumi:"experimentId"`
 	LastUpdateTime pulumi.IntOutput       `pulumi:"lastUpdateTime"`
 	LifecycleStage pulumi.StringOutput    `pulumi:"lifecycleStage"`
 	// Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Tags for the MLflow experiment.
+	Tags MlflowExperimentTagArrayOutput `pulumi:"tags"`
 }
 
 // NewMlflowExperiment registers a new resource with the given unique name, arguments, and options.
@@ -120,26 +131,30 @@ type mlflowExperimentState struct {
 	// Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
 	ArtifactLocation *string `pulumi:"artifactLocation"`
 	CreationTime     *int    `pulumi:"creationTime"`
-	// The description of the MLflow experiment.
+	// Deprecated: Remove the description attribute as it no longer is used and will be removed in a future version.
 	Description    *string `pulumi:"description"`
 	ExperimentId   *string `pulumi:"experimentId"`
 	LastUpdateTime *int    `pulumi:"lastUpdateTime"`
 	LifecycleStage *string `pulumi:"lifecycleStage"`
 	// Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
 	Name *string `pulumi:"name"`
+	// Tags for the MLflow experiment.
+	Tags []MlflowExperimentTag `pulumi:"tags"`
 }
 
 type MlflowExperimentState struct {
 	// Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
 	ArtifactLocation pulumi.StringPtrInput
 	CreationTime     pulumi.IntPtrInput
-	// The description of the MLflow experiment.
+	// Deprecated: Remove the description attribute as it no longer is used and will be removed in a future version.
 	Description    pulumi.StringPtrInput
 	ExperimentId   pulumi.StringPtrInput
 	LastUpdateTime pulumi.IntPtrInput
 	LifecycleStage pulumi.StringPtrInput
 	// Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
 	Name pulumi.StringPtrInput
+	// Tags for the MLflow experiment.
+	Tags MlflowExperimentTagArrayInput
 }
 
 func (MlflowExperimentState) ElementType() reflect.Type {
@@ -150,13 +165,15 @@ type mlflowExperimentArgs struct {
 	// Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
 	ArtifactLocation *string `pulumi:"artifactLocation"`
 	CreationTime     *int    `pulumi:"creationTime"`
-	// The description of the MLflow experiment.
+	// Deprecated: Remove the description attribute as it no longer is used and will be removed in a future version.
 	Description    *string `pulumi:"description"`
 	ExperimentId   *string `pulumi:"experimentId"`
 	LastUpdateTime *int    `pulumi:"lastUpdateTime"`
 	LifecycleStage *string `pulumi:"lifecycleStage"`
 	// Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
 	Name *string `pulumi:"name"`
+	// Tags for the MLflow experiment.
+	Tags []MlflowExperimentTag `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a MlflowExperiment resource.
@@ -164,13 +181,15 @@ type MlflowExperimentArgs struct {
 	// Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
 	ArtifactLocation pulumi.StringPtrInput
 	CreationTime     pulumi.IntPtrInput
-	// The description of the MLflow experiment.
+	// Deprecated: Remove the description attribute as it no longer is used and will be removed in a future version.
 	Description    pulumi.StringPtrInput
 	ExperimentId   pulumi.StringPtrInput
 	LastUpdateTime pulumi.IntPtrInput
 	LifecycleStage pulumi.StringPtrInput
 	// Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
 	Name pulumi.StringPtrInput
+	// Tags for the MLflow experiment.
+	Tags MlflowExperimentTagArrayInput
 }
 
 func (MlflowExperimentArgs) ElementType() reflect.Type {
@@ -269,7 +288,7 @@ func (o MlflowExperimentOutput) CreationTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *MlflowExperiment) pulumi.IntOutput { return v.CreationTime }).(pulumi.IntOutput)
 }
 
-// The description of the MLflow experiment.
+// Deprecated: Remove the description attribute as it no longer is used and will be removed in a future version.
 func (o MlflowExperimentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MlflowExperiment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -289,6 +308,11 @@ func (o MlflowExperimentOutput) LifecycleStage() pulumi.StringOutput {
 // Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
 func (o MlflowExperimentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MlflowExperiment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Tags for the MLflow experiment.
+func (o MlflowExperimentOutput) Tags() MlflowExperimentTagArrayOutput {
+	return o.ApplyT(func(v *MlflowExperiment) MlflowExperimentTagArrayOutput { return v.Tags }).(MlflowExperimentTagArrayOutput)
 }
 
 type MlflowExperimentArrayOutput struct{ *pulumi.OutputState }

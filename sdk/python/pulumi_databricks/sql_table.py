@@ -44,7 +44,7 @@ class SqlTableArgs:
         :param pulumi.Input[builtins.str] catalog_name: Name of parent catalog. Change forces the creation of a new resource.
         :param pulumi.Input[builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         :param pulumi.Input[builtins.str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cluster_keys: a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cluster_keys: a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
         :param pulumi.Input[builtins.str] comment: User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
         :param pulumi.Input[builtins.str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         :param pulumi.Input[builtins.str] name: Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
@@ -138,7 +138,7 @@ class SqlTableArgs:
     @pulumi.getter(name="clusterKeys")
     def cluster_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
         """
         return pulumi.get(self, "cluster_keys")
 
@@ -312,7 +312,7 @@ class _SqlTableState:
         """
         Input properties used for looking up and filtering SqlTable resources.
         :param pulumi.Input[builtins.str] catalog_name: Name of parent catalog. Change forces the creation of a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cluster_keys: a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cluster_keys: a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
         :param pulumi.Input[builtins.str] comment: User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
         :param pulumi.Input[builtins.str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         :param pulumi.Input[builtins.str] name: Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
@@ -389,7 +389,7 @@ class _SqlTableState:
     @pulumi.getter(name="clusterKeys")
     def cluster_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
         """
         return pulumi.get(self, "cluster_keys")
 
@@ -609,7 +609,7 @@ class SqlTable(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] catalog_name: Name of parent catalog. Change forces the creation of a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cluster_keys: a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cluster_keys: a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
         :param pulumi.Input[builtins.str] comment: User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
         :param pulumi.Input[builtins.str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         :param pulumi.Input[builtins.str] name: Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
@@ -742,7 +742,7 @@ class SqlTable(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] catalog_name: Name of parent catalog. Change forces the creation of a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cluster_keys: a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cluster_keys: a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
         :param pulumi.Input[builtins.str] comment: User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
         :param pulumi.Input[builtins.str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         :param pulumi.Input[builtins.str] name: Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
@@ -798,7 +798,7 @@ class SqlTable(pulumi.CustomResource):
     @pulumi.getter(name="clusterKeys")
     def cluster_keys(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
         """
-        a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
         """
         return pulumi.get(self, "cluster_keys")
 

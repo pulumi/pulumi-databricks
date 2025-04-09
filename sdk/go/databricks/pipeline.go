@@ -143,7 +143,8 @@ type Pipeline struct {
 	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
 	Development pulumi.BoolPtrOutput `pulumi:"development"`
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-	Edition              pulumi.StringPtrOutput    `pulumi:"edition"`
+	Edition pulumi.StringPtrOutput `pulumi:"edition"`
+	// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
 	EventLog             PipelineEventLogPtrOutput `pulumi:"eventLog"`
 	ExpectedLastModified pulumi.IntPtrOutput       `pulumi:"expectedLastModified"`
 	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
@@ -230,7 +231,8 @@ type pipelineState struct {
 	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
 	Development *bool `pulumi:"development"`
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-	Edition              *string           `pulumi:"edition"`
+	Edition *string `pulumi:"edition"`
+	// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
 	EventLog             *PipelineEventLog `pulumi:"eventLog"`
 	ExpectedLastModified *int              `pulumi:"expectedLastModified"`
 	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
@@ -288,7 +290,8 @@ type PipelineState struct {
 	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
 	Development pulumi.BoolPtrInput
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-	Edition              pulumi.StringPtrInput
+	Edition pulumi.StringPtrInput
+	// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
 	EventLog             PipelineEventLogPtrInput
 	ExpectedLastModified pulumi.IntPtrInput
 	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
@@ -350,7 +353,8 @@ type pipelineArgs struct {
 	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
 	Development *bool `pulumi:"development"`
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-	Edition              *string           `pulumi:"edition"`
+	Edition *string `pulumi:"edition"`
+	// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
 	EventLog             *PipelineEventLog `pulumi:"eventLog"`
 	ExpectedLastModified *int              `pulumi:"expectedLastModified"`
 	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
@@ -370,6 +374,7 @@ type pipelineArgs struct {
 	Photon        *bool                  `pulumi:"photon"`
 	RestartWindow *PipelineRestartWindow `pulumi:"restartWindow"`
 	RunAs         *PipelineRunAs         `pulumi:"runAs"`
+	RunAsUserName *string                `pulumi:"runAsUserName"`
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema *string `pulumi:"schema"`
 	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
@@ -408,7 +413,8 @@ type PipelineArgs struct {
 	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
 	Development pulumi.BoolPtrInput
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-	Edition              pulumi.StringPtrInput
+	Edition pulumi.StringPtrInput
+	// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
 	EventLog             PipelineEventLogPtrInput
 	ExpectedLastModified pulumi.IntPtrInput
 	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
@@ -428,6 +434,7 @@ type PipelineArgs struct {
 	Photon        pulumi.BoolPtrInput
 	RestartWindow PipelineRestartWindowPtrInput
 	RunAs         PipelineRunAsPtrInput
+	RunAsUserName pulumi.StringPtrInput
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema pulumi.StringPtrInput
 	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
@@ -591,6 +598,7 @@ func (o PipelineOutput) Edition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Edition }).(pulumi.StringPtrOutput)
 }
 
+// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
 func (o PipelineOutput) EventLog() PipelineEventLogPtrOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineEventLogPtrOutput { return v.EventLog }).(PipelineEventLogPtrOutput)
 }

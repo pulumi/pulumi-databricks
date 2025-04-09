@@ -27,6 +27,7 @@ from .dashboard import *
 from .dbfs_file import *
 from .default_namespace_setting import *
 from .directory import *
+from .disable_legacy_access_setting import *
 from .enhanced_security_monitoring_workspace_setting import *
 from .entitlements import *
 from .external_location import *
@@ -353,6 +354,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/directory:Directory": "Directory"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/disableLegacyAccessSetting",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting": "DisableLegacyAccessSetting"
   }
  },
  {

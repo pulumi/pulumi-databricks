@@ -41,14 +41,14 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+     * a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
      * 
      */
     @Import(name="clusterKeys")
     private @Nullable Output<List<String>> clusterKeys;
 
     /**
-     * @return a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+     * @return a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
      * 
      */
     public Optional<Output<List<String>>> clusterKeys() {
@@ -336,7 +336,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterKeys a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+         * @param clusterKeys a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterKeys a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+         * @param clusterKeys a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterKeys a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+         * @param clusterKeys a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
          * 
          * @return builder
          * 

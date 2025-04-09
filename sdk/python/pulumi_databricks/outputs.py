@@ -90,6 +90,7 @@ __all__ = [
     'CredentialDatabricksGcpServiceAccount',
     'CustomAppIntegrationTokenAccessPolicy',
     'DefaultNamespaceSettingNamespace',
+    'DisableLegacyAccessSettingDisableLegacyAccess',
     'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace',
     'ExternalLocationEncryptionDetails',
     'ExternalLocationEncryptionDetailsSseEncryptionDetails',
@@ -347,6 +348,7 @@ __all__ = [
     'MetastoreDataAccessCloudflareApiToken',
     'MetastoreDataAccessDatabricksGcpServiceAccount',
     'MetastoreDataAccessGcpServiceAccountKey',
+    'MlflowExperimentTag',
     'MlflowModelTag',
     'MlflowWebhookHttpUrlSpec',
     'MlflowWebhookJobSpec',
@@ -4360,6 +4362,18 @@ class DefaultNamespaceSettingNamespace(dict):
         """
         The value for the setting.
         """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DisableLegacyAccessSettingDisableLegacyAccess(dict):
+    def __init__(__self__, *,
+                 value: builtins.bool):
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> builtins.bool:
         return pulumi.get(self, "value")
 
 
@@ -17904,6 +17918,27 @@ class MetastoreDataAccessGcpServiceAccountKey(dict):
 
 
 @pulumi.output_type
+class MlflowExperimentTag(dict):
+    def __init__(__self__, *,
+                 key: Optional[builtins.str] = None,
+                 value: Optional[builtins.str] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class MlflowModelTag(dict):
     def __init__(__self__, *,
                  key: Optional[builtins.str] = None,
@@ -21024,7 +21059,7 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[builtins.str]:
         """
         The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
@@ -21033,7 +21068,7 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[builtins.str]:
         """
         The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
@@ -21308,13 +21343,13 @@ class MwsWorkspacesGcpManagedNetworkConfig(dict):
 
     @property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[builtins.str]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
     @property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.71.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[builtins.str]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -23374,42 +23409,41 @@ class PipelineDeployment(dict):
 @pulumi.output_type
 class PipelineEventLog(dict):
     def __init__(__self__, *,
+                 name: builtins.str,
                  catalog: Optional[builtins.str] = None,
-                 name: Optional[builtins.str] = None,
                  schema: Optional[builtins.str] = None):
         """
-        :param builtins.str catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
-        :param builtins.str name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
-        :param builtins.str schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        :param builtins.str name: The table name the event log is published to in UC.
+        :param builtins.str catalog: The UC catalog the event log is published under.
+        :param builtins.str schema: The UC schema the event log is published under.
         """
+        pulumi.set(__self__, "name", name)
         if catalog is not None:
             pulumi.set(__self__, "catalog", catalog)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
 
     @property
     @pulumi.getter
-    def catalog(self) -> Optional[builtins.str]:
+    def name(self) -> builtins.str:
         """
-        The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
-        """
-        return pulumi.get(self, "catalog")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[builtins.str]:
-        """
-        A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+        The table name the event log is published to in UC.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
+    def catalog(self) -> Optional[builtins.str]:
+        """
+        The UC catalog the event log is published under.
+        """
+        return pulumi.get(self, "catalog")
+
+    @property
+    @pulumi.getter
     def schema(self) -> Optional[builtins.str]:
         """
-        The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        The UC schema the event log is published under.
         """
         return pulumi.get(self, "schema")
 

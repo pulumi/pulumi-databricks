@@ -202,9 +202,17 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.edition);
     }
 
+    /**
+     * an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+     * 
+     */
     @Import(name="eventLog")
     private @Nullable Output<PipelineEventLogArgs> eventLog;
 
+    /**
+     * @return an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+     * 
+     */
     public Optional<Output<PipelineEventLogArgs>> eventLog() {
         return Optional.ofNullable(this.eventLog);
     }
@@ -741,11 +749,23 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
             return edition(Output.of(edition));
         }
 
+        /**
+         * @param eventLog an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder eventLog(@Nullable Output<PipelineEventLogArgs> eventLog) {
             $.eventLog = eventLog;
             return this;
         }
 
+        /**
+         * @param eventLog an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder eventLog(PipelineEventLogArgs eventLog) {
             return eventLog(Output.of(eventLog));
         }

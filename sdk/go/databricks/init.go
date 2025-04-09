@@ -63,6 +63,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DefaultNamespaceSetting{}
 	case "databricks:index/directory:Directory":
 		r = &Directory{}
+	case "databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting":
+		r = &DisableLegacyAccessSetting{}
 	case "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting":
 		r = &EnhancedSecurityMonitoringWorkspaceSetting{}
 	case "databricks:index/entitlements:Entitlements":
@@ -361,6 +363,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/directory",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/disableLegacyAccessSetting",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

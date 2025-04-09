@@ -411,6 +411,16 @@ class Share(pulumi.CustomResource):
         * Grants to manage Delta Sharing permissions.
         * get_shares to read existing Delta Sharing shares.
 
+        ## Import
+
+        The share resource can be imported using the name of the share.
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/share:Share this <share_name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.int] created_at: Time when the share was created.
@@ -511,6 +521,16 @@ class Share(pulumi.CustomResource):
         * Recipient to create Delta Sharing recipients.
         * Grants to manage Delta Sharing permissions.
         * get_shares to read existing Delta Sharing shares.
+
+        ## Import
+
+        The share resource can be imported using the name of the share.
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/share:Share this <share_name>
+        ```
 
         :param str resource_name: The name of the resource.
         :param ShareArgs args: The arguments to use to populate this resource's properties.

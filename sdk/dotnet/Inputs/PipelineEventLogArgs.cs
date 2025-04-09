@@ -13,19 +13,19 @@ namespace Pulumi.Databricks.Inputs
     public sealed class PipelineEventLogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        /// The UC catalog the event log is published under.
         /// </summary>
         [Input("catalog")]
         public Input<string>? Catalog { get; set; }
 
         /// <summary>
-        /// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+        /// The table name the event log is published to in UC.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        /// The UC schema the event log is published under.
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }

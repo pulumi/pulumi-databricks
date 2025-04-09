@@ -36,6 +36,7 @@
         "dbfsFile.ts",
         "defaultNamespaceSetting.ts",
         "directory.ts",
+        "disableLegacyAccessSetting.ts",
         "enhancedSecurityMonitoringWorkspaceSetting.ts",
         "entitlements.ts",
         "externalLocation.ts",

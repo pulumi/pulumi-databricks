@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +17,14 @@ public final class PipelineEventLogArgs extends com.pulumi.resources.ResourceArg
     public static final PipelineEventLogArgs Empty = new PipelineEventLogArgs();
 
     /**
-     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * The UC catalog the event log is published under.
      * 
      */
     @Import(name="catalog")
     private @Nullable Output<String> catalog;
 
     /**
-     * @return The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * @return The UC catalog the event log is published under.
      * 
      */
     public Optional<Output<String>> catalog() {
@@ -31,29 +32,29 @@ public final class PipelineEventLogArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+     * The table name the event log is published to in UC.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
-     * @return A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+     * @return The table name the event log is published to in UC.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
-     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     * The UC schema the event log is published under.
      * 
      */
     @Import(name="schema")
     private @Nullable Output<String> schema;
 
     /**
-     * @return The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     * @return The UC schema the event log is published under.
      * 
      */
     public Optional<Output<String>> schema() {
@@ -87,7 +88,7 @@ public final class PipelineEventLogArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param catalog The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+         * @param catalog The UC catalog the event log is published under.
          * 
          * @return builder
          * 
@@ -98,7 +99,7 @@ public final class PipelineEventLogArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param catalog The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+         * @param catalog The UC catalog the event log is published under.
          * 
          * @return builder
          * 
@@ -108,18 +109,18 @@ public final class PipelineEventLogArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+         * @param name The table name the event log is published to in UC.
          * 
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+         * @param name The table name the event log is published to in UC.
          * 
          * @return builder
          * 
@@ -129,7 +130,7 @@ public final class PipelineEventLogArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param schema The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+         * @param schema The UC schema the event log is published under.
          * 
          * @return builder
          * 
@@ -140,7 +141,7 @@ public final class PipelineEventLogArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param schema The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+         * @param schema The UC schema the event log is published under.
          * 
          * @return builder
          * 
@@ -150,6 +151,9 @@ public final class PipelineEventLogArgs extends com.pulumi.resources.ResourceArg
         }
 
         public PipelineEventLogArgs build() {
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("PipelineEventLogArgs", "name");
+            }
             return $;
         }
     }

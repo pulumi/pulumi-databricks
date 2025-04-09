@@ -33,7 +33,7 @@ namespace Pulumi.Databricks
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        /// a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
         /// </summary>
         [Output("clusterKeys")]
         public Output<ImmutableArray<string>> ClusterKeys { get; private set; } = null!;
@@ -181,7 +181,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _clusterKeys;
 
         /// <summary>
-        /// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        /// a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
         /// </summary>
         public InputList<string> ClusterKeys
         {
@@ -314,7 +314,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _clusterKeys;
 
         /// <summary>
-        /// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        /// a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
         /// </summary>
         public InputList<string> ClusterKeys
         {

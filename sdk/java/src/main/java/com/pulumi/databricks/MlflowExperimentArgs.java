@@ -5,8 +5,10 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.MlflowExperimentTagArgs;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -39,16 +41,20 @@ public final class MlflowExperimentArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The description of the MLflow experiment.
+     * @deprecated
+     * Remove the description attribute as it no longer is used and will be removed in a future version.
      * 
      */
+    @Deprecated /* Remove the description attribute as it no longer is used and will be removed in a future version. */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the MLflow experiment.
+     * @deprecated
+     * Remove the description attribute as it no longer is used and will be removed in a future version.
      * 
      */
+    @Deprecated /* Remove the description attribute as it no longer is used and will be removed in a future version. */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -89,6 +95,21 @@ public final class MlflowExperimentArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Tags for the MLflow experiment.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<List<MlflowExperimentTagArgs>> tags;
+
+    /**
+     * @return Tags for the MLflow experiment.
+     * 
+     */
+    public Optional<Output<List<MlflowExperimentTagArgs>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private MlflowExperimentArgs() {}
 
     private MlflowExperimentArgs(MlflowExperimentArgs $) {
@@ -99,6 +120,7 @@ public final class MlflowExperimentArgs extends com.pulumi.resources.ResourceArg
         this.lastUpdateTime = $.lastUpdateTime;
         this.lifecycleStage = $.lifecycleStage;
         this.name = $.name;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -150,22 +172,26 @@ public final class MlflowExperimentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description The description of the MLflow experiment.
-         * 
          * @return builder
          * 
+         * @deprecated
+         * Remove the description attribute as it no longer is used and will be removed in a future version.
+         * 
          */
+        @Deprecated /* Remove the description attribute as it no longer is used and will be removed in a future version. */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
         /**
-         * @param description The description of the MLflow experiment.
-         * 
          * @return builder
          * 
+         * @deprecated
+         * Remove the description attribute as it no longer is used and will be removed in a future version.
+         * 
          */
+        @Deprecated /* Remove the description attribute as it no longer is used and will be removed in a future version. */
         public Builder description(String description) {
             return description(Output.of(description));
         }
@@ -216,6 +242,37 @@ public final class MlflowExperimentArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param tags Tags for the MLflow experiment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<List<MlflowExperimentTagArgs>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Tags for the MLflow experiment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(List<MlflowExperimentTagArgs> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tags Tags for the MLflow experiment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(MlflowExperimentTagArgs... tags) {
+            return tags(List.of(tags));
         }
 
         public MlflowExperimentArgs build() {

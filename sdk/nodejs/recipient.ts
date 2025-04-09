@@ -42,6 +42,16 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * The recipient resource can be imported using the name of the recipient.
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/recipient:Recipient this <recipient_name>
+ * ```
  */
 export class Recipient extends pulumi.CustomResource {
     /**
