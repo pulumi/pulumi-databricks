@@ -69,8 +69,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.time.Rotating;
- * import com.pulumi.time.RotatingArgs;
+ * import com.pulumiverse.time.Rotating;
+ * import com.pulumiverse.time.RotatingArgs;
  * import com.pulumi.databricks.Token;
  * import com.pulumi.databricks.TokenArgs;
  * import java.util.List;
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var pat = new Token("pat", TokenArgs.builder()
- *             .comment(this_.rfc3339().applyValue(rfc3339 -> String.format("Pulumi (created: %s)", rfc3339)))
+ *             .comment(this_.rfc3339().applyValue(_rfc3339 -> String.format("Pulumi (created: %s)", _rfc3339)))
  *             .lifetimeSeconds(60 * 24 * 60 * 60)
  *             .build());
  * 

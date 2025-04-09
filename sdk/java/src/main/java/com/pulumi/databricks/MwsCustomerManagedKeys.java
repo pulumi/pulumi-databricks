@@ -63,7 +63,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var databricksAccountId = config.get("databricksAccountId");
- *         final var current = AwsFunctions.getCallerIdentity();
+ *         final var current = AwsFunctions.getCallerIdentity(GetCallerIdentityArgs.builder()
+ *             .build());
  * 
  *         final var databricksManagedServicesCmk = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
  *             .version("2012-10-17")
@@ -73,7 +74,7 @@ import javax.annotation.Nullable;
  *                     .effect("Allow")
  *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
  *                         .type("AWS")
- *                         .identifiers(current.applyValue(getCallerIdentityResult -> getCallerIdentityResult.accountId()))
+ *                         .identifiers(current.accountId())
  *                         .build())
  *                     .actions("kms:*")
  *                     .resources("*")
@@ -93,7 +94,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var managedServicesCustomerManagedKey = new Key("managedServicesCustomerManagedKey", KeyArgs.builder()
- *             .policy(databricksManagedServicesCmk.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
+ *             .policy(databricksManagedServicesCmk.json())
  *             .build());
  * 
  *         var managedServicesCustomerManagedKeyAlias = new Alias("managedServicesCustomerManagedKeyAlias", AliasArgs.builder()
@@ -198,7 +199,8 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var databricksAccountId = config.get("databricksAccountId");
  *         final var databricksCrossAccountRole = config.get("databricksCrossAccountRole");
- *         final var current = AwsFunctions.getCallerIdentity();
+ *         final var current = AwsFunctions.getCallerIdentity(GetCallerIdentityArgs.builder()
+ *             .build());
  * 
  *         final var databricksStorageCmk = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
  *             .version("2012-10-17")
@@ -208,7 +210,7 @@ import javax.annotation.Nullable;
  *                     .effect("Allow")
  *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
  *                         .type("AWS")
- *                         .identifiers(current.applyValue(getCallerIdentityResult -> getCallerIdentityResult.accountId()))
+ *                         .identifiers(current.accountId())
  *                         .build())
  *                     .actions("kms:*")
  *                     .resources("*")
@@ -268,7 +270,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var storageCustomerManagedKey = new Key("storageCustomerManagedKey", KeyArgs.builder()
- *             .policy(databricksStorageCmk.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.json()))
+ *             .policy(databricksStorageCmk.json())
  *             .build());
  * 
  *         var storageCustomerManagedKeyAlias = new Alias("storageCustomerManagedKeyAlias", AliasArgs.builder()

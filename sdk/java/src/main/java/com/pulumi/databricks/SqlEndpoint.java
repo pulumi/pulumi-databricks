@@ -51,10 +51,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var me = DatabricksFunctions.getCurrentUser();
+ *         final var me = DatabricksFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var this_ = new SqlEndpoint("this", SqlEndpointArgs.builder()
- *             .name(String.format("Endpoint of %s", me.applyValue(getCurrentUserResult -> getCurrentUserResult.alphanumeric())))
+ *             .name(String.format("Endpoint of %s", me.alphanumeric()))
  *             .clusterSize("Small")
  *             .maxNumClusters(1)
  *             .tags(SqlEndpointTagsArgs.builder()

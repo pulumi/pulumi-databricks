@@ -14,9 +14,9 @@ import * as utilities from "./utilities";
  *
  * const config = new pulumi.Config();
  * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
- * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const databricksAccountId = config.requireObject<any>("databricksAccountId");
  * // Names of created resources will be prefixed with this value
- * const prefix = config.requireObject("prefix");
+ * const prefix = config.requireObject<any>("prefix");
  * const _this = databricks.getAwsAssumeRolePolicy({
  *     externalId: databricksAccountId,
  * });

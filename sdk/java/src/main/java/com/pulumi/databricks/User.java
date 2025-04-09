@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var i_am_admin = new GroupMember("i-am-admin", GroupMemberArgs.builder()
- *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
+ *             .groupId(admins.id())
  *             .memberId(me.id())
  *             .build());
  * 

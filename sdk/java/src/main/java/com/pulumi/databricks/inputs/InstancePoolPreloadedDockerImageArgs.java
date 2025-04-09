@@ -31,7 +31,7 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.docker.registryImage;
-     * import com.pulumi.docker.RegistryImageArgs;
+     * import com.pulumi.docker.registryImageArgs;
      * import com.pulumi.databricks.InstancePool;
      * import com.pulumi.databricks.InstancePoolArgs;
      * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
@@ -50,7 +50,8 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
      * 
      *     public static void stack(Context ctx) {
      *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
-     *             .build()
+     *             .build(List.of(Map.ofEntries(
+     *             )))
      *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
      *             .build());
      * 
@@ -88,7 +89,7 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.docker.registryImage;
-     * import com.pulumi.docker.RegistryImageArgs;
+     * import com.pulumi.docker.registryImageArgs;
      * import com.pulumi.databricks.InstancePool;
      * import com.pulumi.databricks.InstancePoolArgs;
      * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
@@ -107,7 +108,8 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
      * 
      *     public static void stack(Context ctx) {
      *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
-     *             .build()
+     *             .build(List.of(Map.ofEntries(
+     *             )))
      *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
      *             .build());
      * 
@@ -186,7 +188,7 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
          * import com.pulumi.Pulumi;
          * import com.pulumi.core.Output;
          * import com.pulumi.docker.registryImage;
-         * import com.pulumi.docker.RegistryImageArgs;
+         * import com.pulumi.docker.registryImageArgs;
          * import com.pulumi.databricks.InstancePool;
          * import com.pulumi.databricks.InstancePoolArgs;
          * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
@@ -205,7 +207,8 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
          * 
          *     public static void stack(Context ctx) {
          *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
-         *             .build()
+         *             .build(List.of(Map.ofEntries(
+         *             )))
          *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
          *             .build());
          * 
@@ -247,7 +250,7 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
          * import com.pulumi.Pulumi;
          * import com.pulumi.core.Output;
          * import com.pulumi.docker.registryImage;
-         * import com.pulumi.docker.RegistryImageArgs;
+         * import com.pulumi.docker.registryImageArgs;
          * import com.pulumi.databricks.InstancePool;
          * import com.pulumi.databricks.InstancePoolArgs;
          * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
@@ -266,7 +269,8 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
          * 
          *     public static void stack(Context ctx) {
          *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
-         *             .build()
+         *             .build(List.of(Map.ofEntries(
+         *             )))
          *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
          *             .build());
          * 

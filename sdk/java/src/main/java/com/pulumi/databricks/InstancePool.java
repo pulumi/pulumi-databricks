@@ -59,17 +59,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var smallest = DatabricksFunctions.getNodeType();
+ *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+ *             .build());
  * 
  *         var smallestNodes = new InstancePool("smallestNodes", InstancePoolArgs.builder()
  *             .instancePoolName("Smallest Nodes")
  *             .minIdleInstances(0)
  *             .maxCapacity(300)
- *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+ *             .nodeTypeId(smallest.id())
  *             .awsAttributes(InstancePoolAwsAttributesArgs.builder()
  *                 .availability("ON_DEMAND")
  *                 .zoneId("us-east-1a")
- *                 .spotBidPricePercent("100")
+ *                 .spotBidPricePercent(100)
  *                 .build())
  *             .idleInstanceAutoterminationMinutes(10)
  *             .diskSpec(InstancePoolDiskSpecArgs.builder()

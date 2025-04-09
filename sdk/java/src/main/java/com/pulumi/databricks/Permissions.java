@@ -75,7 +75,8 @@ import javax.annotation.Nullable;
  *             .displayName("Data Science")
  *             .build());
  * 
- *         final var latest = DatabricksFunctions.getSparkVersion();
+ *         final var latest = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+ *             .build());
  * 
  *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
  *             .localDisk(true)
@@ -83,8 +84,8 @@ import javax.annotation.Nullable;
  * 
  *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
  *             .clusterName("Shared Autoscaling")
- *             .sparkVersion(latest.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
- *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+ *             .sparkVersion(latest.id())
+ *             .nodeTypeId(smallest.id())
  *             .autoterminationMinutes(60)
  *             .autoscale(ClusterAutoscaleArgs.builder()
  *                 .minWorkers(1)
@@ -237,7 +238,7 @@ import javax.annotation.Nullable;
  *         var this_ = new InstancePool("this", InstancePoolArgs.builder()
  *             .instancePoolName("Reserved Instances")
  *             .idleInstanceAutoterminationMinutes(60)
- *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+ *             .nodeTypeId(smallest.id())
  *             .minIdleInstances(0)
  *             .maxCapacity(10)
  *             .build());
@@ -319,7 +320,8 @@ import javax.annotation.Nullable;
  *             .displayName("main")
  *             .build());
  * 
- *         final var latest = DatabricksFunctions.getSparkVersion();
+ *         final var latest = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+ *             .build());
  * 
  *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
  *             .localDisk(true)
@@ -332,8 +334,8 @@ import javax.annotation.Nullable;
  *                 .taskKey("task1")
  *                 .newCluster(JobTaskNewClusterArgs.builder()
  *                     .numWorkers(300)
- *                     .sparkVersion(latest.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
- *                     .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+ *                     .sparkVersion(latest.id())
+ *                     .nodeTypeId(smallest.id())
  *                     .build())
  *                 .notebookTask(JobTaskNotebookTaskArgs.builder()
  *                     .notebookPath("/Production/MakeFeatures")
@@ -391,6 +393,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.GroupArgs;
  * import com.pulumi.databricks.Notebook;
  * import com.pulumi.databricks.NotebookArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
  * import com.pulumi.databricks.Pipeline;
  * import com.pulumi.databricks.PipelineArgs;
  * import com.pulumi.databricks.inputs.PipelineLibraryArgs;
@@ -412,7 +416,7 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var me = DatabricksFunctions.getCurrentUser();
+ *         final var me = DatabricksFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var eng = new Group("eng", GroupArgs.builder()
  *             .displayName("Engineering")
@@ -431,11 +435,11 @@ import javax.annotation.Nullable;
  *                 """)
  *                 .build()).result())
  *             .language("PYTHON")
- *             .path(String.format("%s/DLT_Demo", me.applyValue(getCurrentUserResult -> getCurrentUserResult.home())))
+ *             .path(String.format("%s/DLT_Demo", me.home()))
  *             .build());
  * 
  *         var this_ = new Pipeline("this", PipelineArgs.builder()
- *             .name(String.format("DLT Demo Pipeline (%s)", me.applyValue(getCurrentUserResult -> getCurrentUserResult.alphanumeric())))
+ *             .name(String.format("DLT Demo Pipeline (%s)", me.alphanumeric()))
  *             .storage("/test/tf-pipeline")
  *             .configuration(Map.ofEntries(
  *                 Map.entry("key1", "value1"),
@@ -490,6 +494,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.GroupArgs;
  * import com.pulumi.databricks.Notebook;
  * import com.pulumi.databricks.NotebookArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
  * import com.pulumi.databricks.Permissions;
  * import com.pulumi.databricks.PermissionsArgs;
  * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
@@ -582,6 +588,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.GroupArgs;
  * import com.pulumi.databricks.WorkspaceFile;
  * import com.pulumi.databricks.WorkspaceFileArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
  * import com.pulumi.databricks.Permissions;
  * import com.pulumi.databricks.PermissionsArgs;
  * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
@@ -848,10 +856,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var me = DatabricksFunctions.getCurrentUser();
+ *         final var me = DatabricksFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var this_ = new MlflowExperiment("this", MlflowExperimentArgs.builder()
- *             .name(String.format("%s/Sample", me.applyValue(getCurrentUserResult -> getCurrentUserResult.home())))
+ *             .name(String.format("%s/Sample", me.home()))
  *             .artifactLocation("dbfs:/tmp/my-experiment")
  *             .description("My MLflow experiment description")
  *             .build());
@@ -1240,7 +1248,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var me = DatabricksFunctions.getCurrentUser();
+ *         final var me = DatabricksFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var auto = new Group("auto", GroupArgs.builder()
  *             .displayName("Automation")
@@ -1251,7 +1259,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var this_ = new SqlEndpoint("this", SqlEndpointArgs.builder()
- *             .name(String.format("Endpoint of %s", me.applyValue(getCurrentUserResult -> getCurrentUserResult.alphanumeric())))
+ *             .name(String.format("Endpoint of %s", me.alphanumeric()))
  *             .clusterSize("Small")
  *             .maxNumClusters(1)
  *             .tags(SqlEndpointTagsArgs.builder()

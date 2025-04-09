@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var meEntitlements = new Entitlements("meEntitlements", EntitlementsArgs.builder()
- *             .userId(me.applyValue(getUserResult -> getUserResult.id()))
+ *             .userId(me.id())
  *             .allowClusterCreate(true)
  *             .allowInstancePoolCreate(true)
  *             .build());
@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var workspace_users = new Entitlements("workspace-users", EntitlementsArgs.builder()
- *             .groupId(users.applyValue(getGroupResult -> getGroupResult.id()))
+ *             .groupId(users.id())
  *             .allowClusterCreate(true)
  *             .allowInstancePoolCreate(true)
  *             .build());
