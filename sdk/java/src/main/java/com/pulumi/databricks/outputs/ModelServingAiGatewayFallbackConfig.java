@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ModelServingAiGatewayFallbackConfig {
+    /**
+     * @return Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
+     * 
+     */
     private Boolean enabled;
 
     private ModelServingAiGatewayFallbackConfig() {}
+    /**
+     * @return Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

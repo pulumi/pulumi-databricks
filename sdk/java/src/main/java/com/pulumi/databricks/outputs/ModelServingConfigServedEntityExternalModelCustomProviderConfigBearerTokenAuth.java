@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
+    /**
+     * @return The Databricks secret key reference for a token.
+     * 
+     */
     private @Nullable String token;
+    /**
+     * @return The token provided as a plaintext string.
+     * 
+     */
     private @Nullable String tokenPlaintext;
 
     private ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth() {}
+    /**
+     * @return The Databricks secret key reference for a token.
+     * 
+     */
     public Optional<String> token() {
         return Optional.ofNullable(this.token);
     }
+    /**
+     * @return The token provided as a plaintext string.
+     * 
+     */
     public Optional<String> tokenPlaintext() {
         return Optional.ofNullable(this.tokenPlaintext);
     }

@@ -110,6 +110,9 @@ export class ModelServing extends pulumi.CustomResource {
      * A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
      */
     public readonly aiGateway!: pulumi.Output<outputs.ModelServingAiGateway | undefined>;
+    /**
+     * The Budget Policy ID set for this serving endpoint.
+     */
     public readonly budgetPolicyId!: pulumi.Output<string | undefined>;
     /**
      * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
@@ -181,6 +184,9 @@ export interface ModelServingState {
      * A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
      */
     aiGateway?: pulumi.Input<inputs.ModelServingAiGateway>;
+    /**
+     * The Budget Policy ID set for this serving endpoint.
+     */
     budgetPolicyId?: pulumi.Input<string>;
     /**
      * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
@@ -216,6 +222,9 @@ export interface ModelServingArgs {
      * A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
      */
     aiGateway?: pulumi.Input<inputs.ModelServingAiGateway>;
+    /**
+     * The Budget Policy ID set for this serving endpoint.
+     */
     budgetPolicyId?: pulumi.Input<string>;
     /**
      * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.

@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskConditionTask;
+import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskDashboardTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskDbtTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskDependsOn;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskEmailNotifications;
@@ -16,6 +17,7 @@ import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskNewCluster;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskNotebookTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskNotificationSettings;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskPipelineTask;
+import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskPowerBiTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskPythonWheelTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskRunJobTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskSparkJarTask;
@@ -36,6 +38,7 @@ import javax.annotation.Nullable;
 public final class JobTaskForEachTaskTask {
     private @Nullable JobTaskForEachTaskTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
     private @Nullable JobTaskForEachTaskTaskConditionTask conditionTask;
+    private @Nullable JobTaskForEachTaskTaskDashboardTask dashboardTask;
     private @Nullable JobTaskForEachTaskTaskDbtTask dbtTask;
     /**
      * @return block specifying dependency(-ies) for a given task.
@@ -105,6 +108,7 @@ public final class JobTaskForEachTaskTask {
      */
     private @Nullable JobTaskForEachTaskTaskNotificationSettings notificationSettings;
     private @Nullable JobTaskForEachTaskTaskPipelineTask pipelineTask;
+    private @Nullable JobTaskForEachTaskTaskPowerBiTask powerBiTask;
     private @Nullable JobTaskForEachTaskTaskPythonWheelTask pythonWheelTask;
     /**
      * @return (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
@@ -146,6 +150,9 @@ public final class JobTaskForEachTaskTask {
     }
     public Optional<JobTaskForEachTaskTaskConditionTask> conditionTask() {
         return Optional.ofNullable(this.conditionTask);
+    }
+    public Optional<JobTaskForEachTaskTaskDashboardTask> dashboardTask() {
+        return Optional.ofNullable(this.dashboardTask);
     }
     public Optional<JobTaskForEachTaskTaskDbtTask> dbtTask() {
         return Optional.ofNullable(this.dbtTask);
@@ -250,6 +257,9 @@ public final class JobTaskForEachTaskTask {
     public Optional<JobTaskForEachTaskTaskPipelineTask> pipelineTask() {
         return Optional.ofNullable(this.pipelineTask);
     }
+    public Optional<JobTaskForEachTaskTaskPowerBiTask> powerBiTask() {
+        return Optional.ofNullable(this.powerBiTask);
+    }
     public Optional<JobTaskForEachTaskTaskPythonWheelTask> pythonWheelTask() {
         return Optional.ofNullable(this.pythonWheelTask);
     }
@@ -318,6 +328,7 @@ public final class JobTaskForEachTaskTask {
     public static final class Builder {
         private @Nullable JobTaskForEachTaskTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
         private @Nullable JobTaskForEachTaskTaskConditionTask conditionTask;
+        private @Nullable JobTaskForEachTaskTaskDashboardTask dashboardTask;
         private @Nullable JobTaskForEachTaskTaskDbtTask dbtTask;
         private @Nullable List<JobTaskForEachTaskTaskDependsOn> dependsOns;
         private @Nullable String description;
@@ -335,6 +346,7 @@ public final class JobTaskForEachTaskTask {
         private @Nullable JobTaskForEachTaskTaskNotebookTask notebookTask;
         private @Nullable JobTaskForEachTaskTaskNotificationSettings notificationSettings;
         private @Nullable JobTaskForEachTaskTaskPipelineTask pipelineTask;
+        private @Nullable JobTaskForEachTaskTaskPowerBiTask powerBiTask;
         private @Nullable JobTaskForEachTaskTaskPythonWheelTask pythonWheelTask;
         private @Nullable Boolean retryOnTimeout;
         private @Nullable String runIf;
@@ -351,6 +363,7 @@ public final class JobTaskForEachTaskTask {
     	      Objects.requireNonNull(defaults);
     	      this.cleanRoomsNotebookTask = defaults.cleanRoomsNotebookTask;
     	      this.conditionTask = defaults.conditionTask;
+    	      this.dashboardTask = defaults.dashboardTask;
     	      this.dbtTask = defaults.dbtTask;
     	      this.dependsOns = defaults.dependsOns;
     	      this.description = defaults.description;
@@ -368,6 +381,7 @@ public final class JobTaskForEachTaskTask {
     	      this.notebookTask = defaults.notebookTask;
     	      this.notificationSettings = defaults.notificationSettings;
     	      this.pipelineTask = defaults.pipelineTask;
+    	      this.powerBiTask = defaults.powerBiTask;
     	      this.pythonWheelTask = defaults.pythonWheelTask;
     	      this.retryOnTimeout = defaults.retryOnTimeout;
     	      this.runIf = defaults.runIf;
@@ -391,6 +405,12 @@ public final class JobTaskForEachTaskTask {
         public Builder conditionTask(@Nullable JobTaskForEachTaskTaskConditionTask conditionTask) {
 
             this.conditionTask = conditionTask;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dashboardTask(@Nullable JobTaskForEachTaskTaskDashboardTask dashboardTask) {
+
+            this.dashboardTask = dashboardTask;
             return this;
         }
         @CustomType.Setter
@@ -502,6 +522,12 @@ public final class JobTaskForEachTaskTask {
             return this;
         }
         @CustomType.Setter
+        public Builder powerBiTask(@Nullable JobTaskForEachTaskTaskPowerBiTask powerBiTask) {
+
+            this.powerBiTask = powerBiTask;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pythonWheelTask(@Nullable JobTaskForEachTaskTaskPythonWheelTask pythonWheelTask) {
 
             this.pythonWheelTask = pythonWheelTask;
@@ -573,6 +599,7 @@ public final class JobTaskForEachTaskTask {
             final var _resultValue = new JobTaskForEachTaskTask();
             _resultValue.cleanRoomsNotebookTask = cleanRoomsNotebookTask;
             _resultValue.conditionTask = conditionTask;
+            _resultValue.dashboardTask = dashboardTask;
             _resultValue.dbtTask = dbtTask;
             _resultValue.dependsOns = dependsOns;
             _resultValue.description = description;
@@ -590,6 +617,7 @@ public final class JobTaskForEachTaskTask {
             _resultValue.notebookTask = notebookTask;
             _resultValue.notificationSettings = notificationSettings;
             _resultValue.pipelineTask = pipelineTask;
+            _resultValue.powerBiTask = powerBiTask;
             _resultValue.pythonWheelTask = pythonWheelTask;
             _resultValue.retryOnTimeout = retryOnTimeout;
             _resultValue.runIf = runIf;

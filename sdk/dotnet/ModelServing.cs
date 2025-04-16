@@ -105,6 +105,9 @@ namespace Pulumi.Databricks
         [Output("aiGateway")]
         public Output<Outputs.ModelServingAiGateway?> AiGateway { get; private set; } = null!;
 
+        /// <summary>
+        /// The Budget Policy ID set for this serving endpoint.
+        /// </summary>
         [Output("budgetPolicyId")]
         public Output<string?> BudgetPolicyId { get; private set; } = null!;
 
@@ -196,6 +199,9 @@ namespace Pulumi.Databricks
         [Input("aiGateway")]
         public Input<Inputs.ModelServingAiGatewayArgs>? AiGateway { get; set; }
 
+        /// <summary>
+        /// The Budget Policy ID set for this serving endpoint.
+        /// </summary>
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
 
@@ -255,6 +261,9 @@ namespace Pulumi.Databricks
         [Input("aiGateway")]
         public Input<Inputs.ModelServingAiGatewayGetArgs>? AiGateway { get; set; }
 
+        /// <summary>
+        /// The Budget Policy ID set for this serving endpoint.
+        /// </summary>
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
 

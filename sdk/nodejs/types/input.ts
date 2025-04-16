@@ -918,6 +918,13 @@ export interface DisableLegacyAccessSettingDisableLegacyAccess {
     value: pulumi.Input<boolean>;
 }
 
+export interface DisableLegacyDbfsSettingDisableLegacyDbfs {
+    /**
+     * The boolean value for the setting.
+     */
+    value: pulumi.Input<boolean>;
+}
+
 export interface EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace {
     isEnabled: pulumi.Input<boolean>;
 }
@@ -3410,11 +3417,13 @@ export interface GetJobJobSettingsSettingsEnvironmentArgs {
 export interface GetJobJobSettingsSettingsEnvironmentSpec {
     client: string;
     dependencies?: string[];
+    jarDependencies?: string[];
 }
 
 export interface GetJobJobSettingsSettingsEnvironmentSpecArgs {
     client: pulumi.Input<string>;
     dependencies?: pulumi.Input<pulumi.Input<string>[]>;
+    jarDependencies?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetJobJobSettingsSettingsGitSource {
@@ -8394,6 +8403,7 @@ export interface JobEnvironmentSpec {
      * List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
      */
     dependencies?: pulumi.Input<pulumi.Input<string>[]>;
+    jarDependencies?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobGitSource {
@@ -9087,6 +9097,7 @@ export interface JobSparkSubmitTask {
 export interface JobTask {
     cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskCleanRoomsNotebookTask>;
     conditionTask?: pulumi.Input<inputs.JobTaskConditionTask>;
+    dashboardTask?: pulumi.Input<inputs.JobTaskDashboardTask>;
     dbtTask?: pulumi.Input<inputs.JobTaskDbtTask>;
     /**
      * block specifying dependency(-ies) for a given task.
@@ -9144,6 +9155,7 @@ export interface JobTask {
      */
     notificationSettings?: pulumi.Input<inputs.JobTaskNotificationSettings>;
     pipelineTask?: pulumi.Input<inputs.JobTaskPipelineTask>;
+    powerBiTask?: pulumi.Input<inputs.JobTaskPowerBiTask>;
     pythonWheelTask?: pulumi.Input<inputs.JobTaskPythonWheelTask>;
     /**
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
@@ -9209,6 +9221,32 @@ export interface JobTaskConditionTask {
      * The right operand of the condition task. It could be a string value, job state, or parameter reference.
      */
     right: pulumi.Input<string>;
+}
+
+export interface JobTaskDashboardTask {
+    /**
+     * (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     */
+    dashboardId?: pulumi.Input<string>;
+    subscription?: pulumi.Input<inputs.JobTaskDashboardTaskSubscription>;
+    warehouseId?: pulumi.Input<string>;
+}
+
+export interface JobTaskDashboardTaskSubscription {
+    /**
+     * string specifying a custom subject of email sent.
+     */
+    customSubject?: pulumi.Input<string>;
+    paused?: pulumi.Input<boolean>;
+    subscribers?: pulumi.Input<pulumi.Input<inputs.JobTaskDashboardTaskSubscriptionSubscriber>[]>;
+}
+
+export interface JobTaskDashboardTaskSubscriptionSubscriber {
+    destinationId?: pulumi.Input<string>;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
+    userName?: pulumi.Input<string>;
 }
 
 export interface JobTaskDbtTask {
@@ -9303,6 +9341,7 @@ export interface JobTaskForEachTask {
 export interface JobTaskForEachTaskTask {
     cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask>;
     conditionTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskConditionTask>;
+    dashboardTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDashboardTask>;
     dbtTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDbtTask>;
     /**
      * block specifying dependency(-ies) for a given task.
@@ -9359,6 +9398,7 @@ export interface JobTaskForEachTaskTask {
      */
     notificationSettings?: pulumi.Input<inputs.JobTaskForEachTaskTaskNotificationSettings>;
     pipelineTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskPipelineTask>;
+    powerBiTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskPowerBiTask>;
     pythonWheelTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskPythonWheelTask>;
     /**
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
@@ -9424,6 +9464,32 @@ export interface JobTaskForEachTaskTaskConditionTask {
      * The right operand of the condition task. It could be a string value, job state, or parameter reference.
      */
     right: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskDashboardTask {
+    /**
+     * (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     */
+    dashboardId?: pulumi.Input<string>;
+    subscription?: pulumi.Input<inputs.JobTaskForEachTaskTaskDashboardTaskSubscription>;
+    warehouseId?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskDashboardTaskSubscription {
+    /**
+     * string specifying a custom subject of email sent.
+     */
+    customSubject?: pulumi.Input<string>;
+    paused?: pulumi.Input<boolean>;
+    subscribers?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber>[]>;
+}
+
+export interface JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber {
+    destinationId?: pulumi.Input<string>;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
+    userName?: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskDbtTask {
@@ -9826,6 +9892,38 @@ export interface JobTaskForEachTaskTaskPipelineTask {
      * The pipeline's unique ID.
      */
     pipelineId: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskPowerBiTask {
+    connectionResourceName?: pulumi.Input<string>;
+    powerBiModel?: pulumi.Input<inputs.JobTaskForEachTaskTaskPowerBiTaskPowerBiModel>;
+    refreshAfterUpdate?: pulumi.Input<boolean>;
+    tables?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskPowerBiTaskTable>[]>;
+    warehouseId?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskPowerBiTaskPowerBiModel {
+    authenticationMethod?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string>;
+    overwriteExisting?: pulumi.Input<boolean>;
+    storageMode?: pulumi.Input<string>;
+    workspaceName?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskPowerBiTaskTable {
+    /**
+     * The name of the catalog to use inside Unity Catalog.
+     */
+    catalog?: pulumi.Input<string>;
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The name of the schema dbt should run in. Defaults to `default`.
+     */
+    schema?: pulumi.Input<string>;
+    storageMode?: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskPythonWheelTask {
@@ -10433,6 +10531,38 @@ export interface JobTaskPipelineTask {
      * The pipeline's unique ID.
      */
     pipelineId: pulumi.Input<string>;
+}
+
+export interface JobTaskPowerBiTask {
+    connectionResourceName?: pulumi.Input<string>;
+    powerBiModel?: pulumi.Input<inputs.JobTaskPowerBiTaskPowerBiModel>;
+    refreshAfterUpdate?: pulumi.Input<boolean>;
+    tables?: pulumi.Input<pulumi.Input<inputs.JobTaskPowerBiTaskTable>[]>;
+    warehouseId?: pulumi.Input<string>;
+}
+
+export interface JobTaskPowerBiTaskPowerBiModel {
+    authenticationMethod?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string>;
+    overwriteExisting?: pulumi.Input<boolean>;
+    storageMode?: pulumi.Input<string>;
+    workspaceName?: pulumi.Input<string>;
+}
+
+export interface JobTaskPowerBiTaskTable {
+    /**
+     * The name of the catalog to use inside Unity Catalog.
+     */
+    catalog?: pulumi.Input<string>;
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The name of the schema dbt should run in. Defaults to `default`.
+     */
+    schema?: pulumi.Input<string>;
+    storageMode?: pulumi.Input<string>;
 }
 
 export interface JobTaskPythonWheelTask {
@@ -11044,6 +11174,9 @@ export interface MlflowWebhookJobSpec {
 }
 
 export interface ModelServingAiGateway {
+    /**
+     * block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
+     */
     fallbackConfig?: pulumi.Input<inputs.ModelServingAiGatewayFallbackConfig>;
     /**
      * Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
@@ -11064,6 +11197,9 @@ export interface ModelServingAiGateway {
 }
 
 export interface ModelServingAiGatewayFallbackConfig {
+    /**
+     * Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
+     */
     enabled: pulumi.Input<boolean>;
 }
 
@@ -11272,6 +11408,9 @@ export interface ModelServingConfigServedEntityExternalModel {
      * Cohere Config
      */
     cohereConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCohereConfig>;
+    /**
+     * Custom Provider Config. Only required if the provider is 'custom'.
+     */
     customProviderConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCustomProviderConfig>;
     /**
      * Databricks Model Serving Config
@@ -11366,22 +11505,37 @@ export interface ModelServingConfigServedEntityExternalModelCohereConfig {
 }
 
 export interface ModelServingConfigServedEntityExternalModelCustomProviderConfig {
+    /**
+     * API key authentication for the custom provider API. Conflicts with `bearerTokenAuth`.
+     */
     apiKeyAuth?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth>;
+    /**
+     * bearer token authentication for the custom provider API.  Conflicts with `apiKeyAuth`.
+     */
     bearerTokenAuth?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth>;
+    /**
+     * URL of the custom provider API.
+     */
     customProviderUrl: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
     key: pulumi.Input<string>;
-    /**
-     * The value field for a tag.
-     */
     value?: pulumi.Input<string>;
+    /**
+     * The API Key provided as a plaintext string.
+     */
     valuePlaintext?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
+    /**
+     * The Databricks secret key reference for a token.
+     */
     token?: pulumi.Input<string>;
+    /**
+     * The token provided as a plaintext string.
+     */
     tokenPlaintext?: pulumi.Input<string>;
 }
 
@@ -11703,13 +11857,13 @@ export interface MwsNetworksGcpNetworkInfo {
     /**
      * The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
      *
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
      * The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
      *
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -11754,6 +11908,11 @@ export interface MwsVpcEndpointGcpVpcEndpointInfo {
     serviceAttachmentId?: pulumi.Input<string>;
 }
 
+export interface MwsWorkspacesAzureWorkspaceInfo {
+    resourceGroup?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string>;
+}
+
 export interface MwsWorkspacesCloudResourceContainer {
     /**
      * A block that consists of the following field:
@@ -11776,13 +11935,16 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
+    /**
+     * The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
+     */
     subnetCidr: pulumi.Input<string>;
 }
 

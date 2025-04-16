@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingAiGatewayGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
+        /// </summary>
         [Input("fallbackConfig")]
         public Input<Inputs.ModelServingAiGatewayFallbackConfigGetArgs>? FallbackConfig { get; set; }
 

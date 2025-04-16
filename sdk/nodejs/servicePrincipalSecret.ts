@@ -59,14 +59,37 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
     }
 
     /**
-     * Generated secret for the service principal
+     * UTC time when the secret was created.
+     */
+    public readonly createTime!: pulumi.Output<string>;
+    /**
+     * UTC time when the secret will expire. If the field is not present, the secret does not expire.
+     */
+    public readonly expireTime!: pulumi.Output<string>;
+    /**
+     * The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+     */
+    public readonly lifetime!: pulumi.Output<string>;
+    /**
+     * Generated secret for the service principal.
      */
     public readonly secret!: pulumi.Output<string>;
     /**
-     * ID of the databricks.ServicePrincipal (not application ID).
+     * Secret Hash.
+     */
+    public readonly secretHash!: pulumi.Output<string>;
+    /**
+     * SCIM ID of the databricks.ServicePrincipal (not application ID).
      */
     public readonly servicePrincipalId!: pulumi.Output<string>;
+    /**
+     * Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+     */
     public readonly status!: pulumi.Output<string>;
+    /**
+     * UTC time when the secret was updated.
+     */
+    public readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a ServicePrincipalSecret resource with the given unique name, arguments, and options.
@@ -81,17 +104,27 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePrincipalSecretState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
+            resourceInputs["lifetime"] = state ? state.lifetime : undefined;
             resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["secretHash"] = state ? state.secretHash : undefined;
             resourceInputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as ServicePrincipalSecretArgs | undefined;
             if ((!args || args.servicePrincipalId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'servicePrincipalId'");
             }
+            resourceInputs["createTime"] = args ? args.createTime : undefined;
+            resourceInputs["expireTime"] = args ? args.expireTime : undefined;
+            resourceInputs["lifetime"] = args ? args.lifetime : undefined;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
+            resourceInputs["secretHash"] = args ? args.secretHash : undefined;
             resourceInputs["servicePrincipalId"] = args ? args.servicePrincipalId : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["updateTime"] = args ? args.updateTime : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["secret"] };
@@ -105,14 +138,37 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
  */
 export interface ServicePrincipalSecretState {
     /**
-     * Generated secret for the service principal
+     * UTC time when the secret was created.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * UTC time when the secret will expire. If the field is not present, the secret does not expire.
+     */
+    expireTime?: pulumi.Input<string>;
+    /**
+     * The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+     */
+    lifetime?: pulumi.Input<string>;
+    /**
+     * Generated secret for the service principal.
      */
     secret?: pulumi.Input<string>;
     /**
-     * ID of the databricks.ServicePrincipal (not application ID).
+     * Secret Hash.
+     */
+    secretHash?: pulumi.Input<string>;
+    /**
+     * SCIM ID of the databricks.ServicePrincipal (not application ID).
      */
     servicePrincipalId?: pulumi.Input<string>;
+    /**
+     * Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+     */
     status?: pulumi.Input<string>;
+    /**
+     * UTC time when the secret was updated.
+     */
+    updateTime?: pulumi.Input<string>;
 }
 
 /**
@@ -120,12 +176,35 @@ export interface ServicePrincipalSecretState {
  */
 export interface ServicePrincipalSecretArgs {
     /**
-     * Generated secret for the service principal
+     * UTC time when the secret was created.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * UTC time when the secret will expire. If the field is not present, the secret does not expire.
+     */
+    expireTime?: pulumi.Input<string>;
+    /**
+     * The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+     */
+    lifetime?: pulumi.Input<string>;
+    /**
+     * Generated secret for the service principal.
      */
     secret?: pulumi.Input<string>;
     /**
-     * ID of the databricks.ServicePrincipal (not application ID).
+     * Secret Hash.
+     */
+    secretHash?: pulumi.Input<string>;
+    /**
+     * SCIM ID of the databricks.ServicePrincipal (not application ID).
      */
     servicePrincipalId: pulumi.Input<string>;
+    /**
+     * Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+     */
     status?: pulumi.Input<string>;
+    /**
+     * UTC time when the secret was updated.
+     */
+    updateTime?: pulumi.Input<string>;
 }

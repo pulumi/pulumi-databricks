@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.BudgetPolicyCustomTagArgs;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 public final class BudgetPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BudgetPolicyArgs Empty = new BudgetPolicyArgs();
+
+    @Import(name="bindingWorkspaceIds")
+    private @Nullable Output<List<Integer>> bindingWorkspaceIds;
+
+    public Optional<Output<List<Integer>>> bindingWorkspaceIds() {
+        return Optional.ofNullable(this.bindingWorkspaceIds);
+    }
 
     /**
      * A list of tags defined by the customer. At most 20 entries are allowed per policy.
@@ -50,6 +58,7 @@ public final class BudgetPolicyArgs extends com.pulumi.resources.ResourceArgs {
     private BudgetPolicyArgs() {}
 
     private BudgetPolicyArgs(BudgetPolicyArgs $) {
+        this.bindingWorkspaceIds = $.bindingWorkspaceIds;
         this.customTags = $.customTags;
         this.policyName = $.policyName;
     }
@@ -70,6 +79,19 @@ public final class BudgetPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(BudgetPolicyArgs defaults) {
             $ = new BudgetPolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder bindingWorkspaceIds(@Nullable Output<List<Integer>> bindingWorkspaceIds) {
+            $.bindingWorkspaceIds = bindingWorkspaceIds;
+            return this;
+        }
+
+        public Builder bindingWorkspaceIds(List<Integer> bindingWorkspaceIds) {
+            return bindingWorkspaceIds(Output.of(bindingWorkspaceIds));
+        }
+
+        public Builder bindingWorkspaceIds(Integer... bindingWorkspaceIds) {
+            return bindingWorkspaceIds(List.of(bindingWorkspaceIds));
         }
 
         /**

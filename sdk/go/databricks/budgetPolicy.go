@@ -61,6 +61,7 @@ import (
 type BudgetPolicy struct {
 	pulumi.CustomResourceState
 
+	BindingWorkspaceIds pulumi.IntArrayOutput `pulumi:"bindingWorkspaceIds"`
 	// A list of tags defined by the customer. At most 20 entries are allowed per policy.
 	CustomTags BudgetPolicyCustomTagArrayOutput `pulumi:"customTags"`
 	// ID of the budget policy
@@ -99,6 +100,7 @@ func GetBudgetPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BudgetPolicy resources.
 type budgetPolicyState struct {
+	BindingWorkspaceIds []int `pulumi:"bindingWorkspaceIds"`
 	// A list of tags defined by the customer. At most 20 entries are allowed per policy.
 	CustomTags []BudgetPolicyCustomTag `pulumi:"customTags"`
 	// ID of the budget policy
@@ -108,6 +110,7 @@ type budgetPolicyState struct {
 }
 
 type BudgetPolicyState struct {
+	BindingWorkspaceIds pulumi.IntArrayInput
 	// A list of tags defined by the customer. At most 20 entries are allowed per policy.
 	CustomTags BudgetPolicyCustomTagArrayInput
 	// ID of the budget policy
@@ -121,6 +124,7 @@ func (BudgetPolicyState) ElementType() reflect.Type {
 }
 
 type budgetPolicyArgs struct {
+	BindingWorkspaceIds []int `pulumi:"bindingWorkspaceIds"`
 	// A list of tags defined by the customer. At most 20 entries are allowed per policy.
 	CustomTags []BudgetPolicyCustomTag `pulumi:"customTags"`
 	// The name of the policy. Must be unique among active policies. Can contain only characters from the ISO 8859-1 (latin1) set.
@@ -129,6 +133,7 @@ type budgetPolicyArgs struct {
 
 // The set of arguments for constructing a BudgetPolicy resource.
 type BudgetPolicyArgs struct {
+	BindingWorkspaceIds pulumi.IntArrayInput
 	// A list of tags defined by the customer. At most 20 entries are allowed per policy.
 	CustomTags BudgetPolicyCustomTagArrayInput
 	// The name of the policy. Must be unique among active policies. Can contain only characters from the ISO 8859-1 (latin1) set.
@@ -220,6 +225,10 @@ func (o BudgetPolicyOutput) ToBudgetPolicyOutput() BudgetPolicyOutput {
 
 func (o BudgetPolicyOutput) ToBudgetPolicyOutputWithContext(ctx context.Context) BudgetPolicyOutput {
 	return o
+}
+
+func (o BudgetPolicyOutput) BindingWorkspaceIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *BudgetPolicy) pulumi.IntArrayOutput { return v.BindingWorkspaceIds }).(pulumi.IntArrayOutput)
 }
 
 // A list of tags defined by the customer. At most 20 entries are allowed per policy.

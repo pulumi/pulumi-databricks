@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingAiGateway
     {
+        /// <summary>
+        /// block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
+        /// </summary>
         public readonly Outputs.ModelServingAiGatewayFallbackConfig? FallbackConfig;
         /// <summary>
         /// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:

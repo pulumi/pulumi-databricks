@@ -26,14 +26,16 @@ func LookupBudgetPolicy(ctx *pulumi.Context, args *LookupBudgetPolicyArgs, opts 
 
 // A collection of arguments for invoking getBudgetPolicy.
 type LookupBudgetPolicyArgs struct {
-	CustomTags []GetBudgetPolicyCustomTag `pulumi:"customTags"`
+	BindingWorkspaceIds []int                      `pulumi:"bindingWorkspaceIds"`
+	CustomTags          []GetBudgetPolicyCustomTag `pulumi:"customTags"`
 	// The name of the budget policy.
 	PolicyName *string `pulumi:"policyName"`
 }
 
 // A collection of values returned by getBudgetPolicy.
 type LookupBudgetPolicyResult struct {
-	CustomTags []GetBudgetPolicyCustomTag `pulumi:"customTags"`
+	BindingWorkspaceIds []int                      `pulumi:"bindingWorkspaceIds"`
+	CustomTags          []GetBudgetPolicyCustomTag `pulumi:"customTags"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The id of the budget policy.
@@ -53,7 +55,8 @@ func LookupBudgetPolicyOutput(ctx *pulumi.Context, args LookupBudgetPolicyOutput
 
 // A collection of arguments for invoking getBudgetPolicy.
 type LookupBudgetPolicyOutputArgs struct {
-	CustomTags GetBudgetPolicyCustomTagArrayInput `pulumi:"customTags"`
+	BindingWorkspaceIds pulumi.IntArrayInput               `pulumi:"bindingWorkspaceIds"`
+	CustomTags          GetBudgetPolicyCustomTagArrayInput `pulumi:"customTags"`
 	// The name of the budget policy.
 	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
 }
@@ -75,6 +78,10 @@ func (o LookupBudgetPolicyResultOutput) ToLookupBudgetPolicyResultOutput() Looku
 
 func (o LookupBudgetPolicyResultOutput) ToLookupBudgetPolicyResultOutputWithContext(ctx context.Context) LookupBudgetPolicyResultOutput {
 	return o
+}
+
+func (o LookupBudgetPolicyResultOutput) BindingWorkspaceIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v LookupBudgetPolicyResult) []int { return v.BindingWorkspaceIds }).(pulumi.IntArrayOutput)
 }
 
 func (o LookupBudgetPolicyResultOutput) CustomTags() GetBudgetPolicyCustomTagArrayOutput {

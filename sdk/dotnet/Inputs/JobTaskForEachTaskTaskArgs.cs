@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("conditionTask")]
         public Input<Inputs.JobTaskForEachTaskTaskConditionTaskArgs>? ConditionTask { get; set; }
 
+        [Input("dashboardTask")]
+        public Input<Inputs.JobTaskForEachTaskTaskDashboardTaskArgs>? DashboardTask { get; set; }
+
         [Input("dbtTask")]
         public Input<Inputs.JobTaskForEachTaskTaskDbtTaskArgs>? DbtTask { get; set; }
 
@@ -119,6 +122,9 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("pipelineTask")]
         public Input<Inputs.JobTaskForEachTaskTaskPipelineTaskArgs>? PipelineTask { get; set; }
+
+        [Input("powerBiTask")]
+        public Input<Inputs.JobTaskForEachTaskTaskPowerBiTaskArgs>? PowerBiTask { get; set; }
 
         [Input("pythonWheelTask")]
         public Input<Inputs.JobTaskForEachTaskTaskPythonWheelTaskArgs>? PythonWheelTask { get; set; }

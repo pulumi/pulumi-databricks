@@ -21,19 +21,19 @@ public final class MwsNetworksGcpNetworkInfo {
      * @return The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
      * 
      * @deprecated
-     * gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
+     * gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
      * 
      */
-    @Deprecated /* gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc */
+    @Deprecated /* gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc */
     private @Nullable String podIpRangeName;
     /**
      * @return The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
      * 
      * @deprecated
-     * gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
+     * gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
      * 
      */
-    @Deprecated /* gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc */
+    @Deprecated /* gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc */
     private @Nullable String serviceIpRangeName;
     /**
      * @return The ID of the subnet associated with this network.
@@ -63,10 +63,10 @@ public final class MwsNetworksGcpNetworkInfo {
      * @return The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
      * 
      * @deprecated
-     * gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
+     * gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
      * 
      */
-    @Deprecated /* gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc */
+    @Deprecated /* gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc */
     public Optional<String> podIpRangeName() {
         return Optional.ofNullable(this.podIpRangeName);
     }
@@ -74,10 +74,10 @@ public final class MwsNetworksGcpNetworkInfo {
      * @return The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
      * 
      * @deprecated
-     * gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
+     * gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
      * 
      */
-    @Deprecated /* gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc */
+    @Deprecated /* gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc */
     public Optional<String> serviceIpRangeName() {
         return Optional.ofNullable(this.serviceIpRangeName);
     }

@@ -12143,6 +12143,143 @@ func (o DisableLegacyAccessSettingDisableLegacyAccessPtrOutput) Value() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
+type DisableLegacyDbfsSettingDisableLegacyDbfs struct {
+	// The boolean value for the setting.
+	Value bool `pulumi:"value"`
+}
+
+// DisableLegacyDbfsSettingDisableLegacyDbfsInput is an input type that accepts DisableLegacyDbfsSettingDisableLegacyDbfsArgs and DisableLegacyDbfsSettingDisableLegacyDbfsOutput values.
+// You can construct a concrete instance of `DisableLegacyDbfsSettingDisableLegacyDbfsInput` via:
+//
+//	DisableLegacyDbfsSettingDisableLegacyDbfsArgs{...}
+type DisableLegacyDbfsSettingDisableLegacyDbfsInput interface {
+	pulumi.Input
+
+	ToDisableLegacyDbfsSettingDisableLegacyDbfsOutput() DisableLegacyDbfsSettingDisableLegacyDbfsOutput
+	ToDisableLegacyDbfsSettingDisableLegacyDbfsOutputWithContext(context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsOutput
+}
+
+type DisableLegacyDbfsSettingDisableLegacyDbfsArgs struct {
+	// The boolean value for the setting.
+	Value pulumi.BoolInput `pulumi:"value"`
+}
+
+func (DisableLegacyDbfsSettingDisableLegacyDbfsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableLegacyDbfsSettingDisableLegacyDbfs)(nil)).Elem()
+}
+
+func (i DisableLegacyDbfsSettingDisableLegacyDbfsArgs) ToDisableLegacyDbfsSettingDisableLegacyDbfsOutput() DisableLegacyDbfsSettingDisableLegacyDbfsOutput {
+	return i.ToDisableLegacyDbfsSettingDisableLegacyDbfsOutputWithContext(context.Background())
+}
+
+func (i DisableLegacyDbfsSettingDisableLegacyDbfsArgs) ToDisableLegacyDbfsSettingDisableLegacyDbfsOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyDbfsSettingDisableLegacyDbfsOutput)
+}
+
+func (i DisableLegacyDbfsSettingDisableLegacyDbfsArgs) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput() DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
+	return i.ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(context.Background())
+}
+
+func (i DisableLegacyDbfsSettingDisableLegacyDbfsArgs) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyDbfsSettingDisableLegacyDbfsOutput).ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(ctx)
+}
+
+// DisableLegacyDbfsSettingDisableLegacyDbfsPtrInput is an input type that accepts DisableLegacyDbfsSettingDisableLegacyDbfsArgs, DisableLegacyDbfsSettingDisableLegacyDbfsPtr and DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput values.
+// You can construct a concrete instance of `DisableLegacyDbfsSettingDisableLegacyDbfsPtrInput` via:
+//
+//	        DisableLegacyDbfsSettingDisableLegacyDbfsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DisableLegacyDbfsSettingDisableLegacyDbfsPtrInput interface {
+	pulumi.Input
+
+	ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput() DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput
+	ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput
+}
+
+type disableLegacyDbfsSettingDisableLegacyDbfsPtrType DisableLegacyDbfsSettingDisableLegacyDbfsArgs
+
+func DisableLegacyDbfsSettingDisableLegacyDbfsPtr(v *DisableLegacyDbfsSettingDisableLegacyDbfsArgs) DisableLegacyDbfsSettingDisableLegacyDbfsPtrInput {
+	return (*disableLegacyDbfsSettingDisableLegacyDbfsPtrType)(v)
+}
+
+func (*disableLegacyDbfsSettingDisableLegacyDbfsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableLegacyDbfsSettingDisableLegacyDbfs)(nil)).Elem()
+}
+
+func (i *disableLegacyDbfsSettingDisableLegacyDbfsPtrType) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput() DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
+	return i.ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(context.Background())
+}
+
+func (i *disableLegacyDbfsSettingDisableLegacyDbfsPtrType) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput)
+}
+
+type DisableLegacyDbfsSettingDisableLegacyDbfsOutput struct{ *pulumi.OutputState }
+
+func (DisableLegacyDbfsSettingDisableLegacyDbfsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableLegacyDbfsSettingDisableLegacyDbfs)(nil)).Elem()
+}
+
+func (o DisableLegacyDbfsSettingDisableLegacyDbfsOutput) ToDisableLegacyDbfsSettingDisableLegacyDbfsOutput() DisableLegacyDbfsSettingDisableLegacyDbfsOutput {
+	return o
+}
+
+func (o DisableLegacyDbfsSettingDisableLegacyDbfsOutput) ToDisableLegacyDbfsSettingDisableLegacyDbfsOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsOutput {
+	return o
+}
+
+func (o DisableLegacyDbfsSettingDisableLegacyDbfsOutput) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput() DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
+	return o.ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(context.Background())
+}
+
+func (o DisableLegacyDbfsSettingDisableLegacyDbfsOutput) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisableLegacyDbfsSettingDisableLegacyDbfs) *DisableLegacyDbfsSettingDisableLegacyDbfs {
+		return &v
+	}).(DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput)
+}
+
+// The boolean value for the setting.
+func (o DisableLegacyDbfsSettingDisableLegacyDbfsOutput) Value() pulumi.BoolOutput {
+	return o.ApplyT(func(v DisableLegacyDbfsSettingDisableLegacyDbfs) bool { return v.Value }).(pulumi.BoolOutput)
+}
+
+type DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput struct{ *pulumi.OutputState }
+
+func (DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableLegacyDbfsSettingDisableLegacyDbfs)(nil)).Elem()
+}
+
+func (o DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput() DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
+	return o
+}
+
+func (o DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput) ToDisableLegacyDbfsSettingDisableLegacyDbfsPtrOutputWithContext(ctx context.Context) DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput {
+	return o
+}
+
+func (o DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput) Elem() DisableLegacyDbfsSettingDisableLegacyDbfsOutput {
+	return o.ApplyT(func(v *DisableLegacyDbfsSettingDisableLegacyDbfs) DisableLegacyDbfsSettingDisableLegacyDbfs {
+		if v != nil {
+			return *v
+		}
+		var ret DisableLegacyDbfsSettingDisableLegacyDbfs
+		return ret
+	}).(DisableLegacyDbfsSettingDisableLegacyDbfsOutput)
+}
+
+// The boolean value for the setting.
+func (o DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput) Value() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DisableLegacyDbfsSettingDisableLegacyDbfs) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.BoolPtrOutput)
+}
+
 type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace struct {
 	IsEnabled bool `pulumi:"isEnabled"`
 }
@@ -15341,7 +15478,8 @@ type JobEnvironmentSpec struct {
 	// client version used by the environment.
 	Client string `pulumi:"client"`
 	// List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
-	Dependencies []string `pulumi:"dependencies"`
+	Dependencies    []string `pulumi:"dependencies"`
+	JarDependencies []string `pulumi:"jarDependencies"`
 }
 
 // JobEnvironmentSpecInput is an input type that accepts JobEnvironmentSpecArgs and JobEnvironmentSpecOutput values.
@@ -15359,7 +15497,8 @@ type JobEnvironmentSpecArgs struct {
 	// client version used by the environment.
 	Client pulumi.StringInput `pulumi:"client"`
 	// List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
-	Dependencies pulumi.StringArrayInput `pulumi:"dependencies"`
+	Dependencies    pulumi.StringArrayInput `pulumi:"dependencies"`
+	JarDependencies pulumi.StringArrayInput `pulumi:"jarDependencies"`
 }
 
 func (JobEnvironmentSpecArgs) ElementType() reflect.Type {
@@ -15449,6 +15588,10 @@ func (o JobEnvironmentSpecOutput) Dependencies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobEnvironmentSpec) []string { return v.Dependencies }).(pulumi.StringArrayOutput)
 }
 
+func (o JobEnvironmentSpecOutput) JarDependencies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobEnvironmentSpec) []string { return v.JarDependencies }).(pulumi.StringArrayOutput)
+}
+
 type JobEnvironmentSpecPtrOutput struct{ *pulumi.OutputState }
 
 func (JobEnvironmentSpecPtrOutput) ElementType() reflect.Type {
@@ -15490,6 +15633,15 @@ func (o JobEnvironmentSpecPtrOutput) Dependencies() pulumi.StringArrayOutput {
 			return nil
 		}
 		return v.Dependencies
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobEnvironmentSpecPtrOutput) JarDependencies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobEnvironmentSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarDependencies
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -28093,6 +28245,7 @@ func (o JobSparkSubmitTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 type JobTask struct {
 	CleanRoomsNotebookTask *JobTaskCleanRoomsNotebookTask `pulumi:"cleanRoomsNotebookTask"`
 	ConditionTask          *JobTaskConditionTask          `pulumi:"conditionTask"`
+	DashboardTask          *JobTaskDashboardTask          `pulumi:"dashboardTask"`
 	DbtTask                *JobTaskDbtTask                `pulumi:"dbtTask"`
 	// block specifying dependency(-ies) for a given task.
 	DependsOns []JobTaskDependsOn `pulumi:"dependsOns"`
@@ -28124,6 +28277,7 @@ type JobTask struct {
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings *JobTaskNotificationSettings `pulumi:"notificationSettings"`
 	PipelineTask         *JobTaskPipelineTask         `pulumi:"pipelineTask"`
+	PowerBiTask          *JobTaskPowerBiTask          `pulumi:"powerBiTask"`
 	PythonWheelTask      *JobTaskPythonWheelTask      `pulumi:"pythonWheelTask"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
@@ -28159,6 +28313,7 @@ type JobTaskInput interface {
 type JobTaskArgs struct {
 	CleanRoomsNotebookTask JobTaskCleanRoomsNotebookTaskPtrInput `pulumi:"cleanRoomsNotebookTask"`
 	ConditionTask          JobTaskConditionTaskPtrInput          `pulumi:"conditionTask"`
+	DashboardTask          JobTaskDashboardTaskPtrInput          `pulumi:"dashboardTask"`
 	DbtTask                JobTaskDbtTaskPtrInput                `pulumi:"dbtTask"`
 	// block specifying dependency(-ies) for a given task.
 	DependsOns JobTaskDependsOnArrayInput `pulumi:"dependsOns"`
@@ -28190,6 +28345,7 @@ type JobTaskArgs struct {
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings JobTaskNotificationSettingsPtrInput `pulumi:"notificationSettings"`
 	PipelineTask         JobTaskPipelineTaskPtrInput         `pulumi:"pipelineTask"`
+	PowerBiTask          JobTaskPowerBiTaskPtrInput          `pulumi:"powerBiTask"`
 	PythonWheelTask      JobTaskPythonWheelTaskPtrInput      `pulumi:"pythonWheelTask"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout pulumi.BoolPtrInput `pulumi:"retryOnTimeout"`
@@ -28268,6 +28424,10 @@ func (o JobTaskOutput) CleanRoomsNotebookTask() JobTaskCleanRoomsNotebookTaskPtr
 
 func (o JobTaskOutput) ConditionTask() JobTaskConditionTaskPtrOutput {
 	return o.ApplyT(func(v JobTask) *JobTaskConditionTask { return v.ConditionTask }).(JobTaskConditionTaskPtrOutput)
+}
+
+func (o JobTaskOutput) DashboardTask() JobTaskDashboardTaskPtrOutput {
+	return o.ApplyT(func(v JobTask) *JobTaskDashboardTask { return v.DashboardTask }).(JobTaskDashboardTaskPtrOutput)
 }
 
 func (o JobTaskOutput) DbtTask() JobTaskDbtTaskPtrOutput {
@@ -28353,6 +28513,10 @@ func (o JobTaskOutput) NotificationSettings() JobTaskNotificationSettingsPtrOutp
 
 func (o JobTaskOutput) PipelineTask() JobTaskPipelineTaskPtrOutput {
 	return o.ApplyT(func(v JobTask) *JobTaskPipelineTask { return v.PipelineTask }).(JobTaskPipelineTaskPtrOutput)
+}
+
+func (o JobTaskOutput) PowerBiTask() JobTaskPowerBiTaskPtrOutput {
+	return o.ApplyT(func(v JobTask) *JobTaskPowerBiTask { return v.PowerBiTask }).(JobTaskPowerBiTaskPtrOutput)
 }
 
 func (o JobTaskOutput) PythonWheelTask() JobTaskPythonWheelTaskPtrOutput {
@@ -28802,6 +28966,445 @@ func (o JobTaskConditionTaskPtrOutput) Right() pulumi.StringPtrOutput {
 		}
 		return &v.Right
 	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskDashboardTask struct {
+	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+	DashboardId  *string                           `pulumi:"dashboardId"`
+	Subscription *JobTaskDashboardTaskSubscription `pulumi:"subscription"`
+	WarehouseId  *string                           `pulumi:"warehouseId"`
+}
+
+// JobTaskDashboardTaskInput is an input type that accepts JobTaskDashboardTaskArgs and JobTaskDashboardTaskOutput values.
+// You can construct a concrete instance of `JobTaskDashboardTaskInput` via:
+//
+//	JobTaskDashboardTaskArgs{...}
+type JobTaskDashboardTaskInput interface {
+	pulumi.Input
+
+	ToJobTaskDashboardTaskOutput() JobTaskDashboardTaskOutput
+	ToJobTaskDashboardTaskOutputWithContext(context.Context) JobTaskDashboardTaskOutput
+}
+
+type JobTaskDashboardTaskArgs struct {
+	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+	DashboardId  pulumi.StringPtrInput                    `pulumi:"dashboardId"`
+	Subscription JobTaskDashboardTaskSubscriptionPtrInput `pulumi:"subscription"`
+	WarehouseId  pulumi.StringPtrInput                    `pulumi:"warehouseId"`
+}
+
+func (JobTaskDashboardTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskDashboardTask)(nil)).Elem()
+}
+
+func (i JobTaskDashboardTaskArgs) ToJobTaskDashboardTaskOutput() JobTaskDashboardTaskOutput {
+	return i.ToJobTaskDashboardTaskOutputWithContext(context.Background())
+}
+
+func (i JobTaskDashboardTaskArgs) ToJobTaskDashboardTaskOutputWithContext(ctx context.Context) JobTaskDashboardTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskOutput)
+}
+
+func (i JobTaskDashboardTaskArgs) ToJobTaskDashboardTaskPtrOutput() JobTaskDashboardTaskPtrOutput {
+	return i.ToJobTaskDashboardTaskPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskDashboardTaskArgs) ToJobTaskDashboardTaskPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskOutput).ToJobTaskDashboardTaskPtrOutputWithContext(ctx)
+}
+
+// JobTaskDashboardTaskPtrInput is an input type that accepts JobTaskDashboardTaskArgs, JobTaskDashboardTaskPtr and JobTaskDashboardTaskPtrOutput values.
+// You can construct a concrete instance of `JobTaskDashboardTaskPtrInput` via:
+//
+//	        JobTaskDashboardTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskDashboardTaskPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskDashboardTaskPtrOutput() JobTaskDashboardTaskPtrOutput
+	ToJobTaskDashboardTaskPtrOutputWithContext(context.Context) JobTaskDashboardTaskPtrOutput
+}
+
+type jobTaskDashboardTaskPtrType JobTaskDashboardTaskArgs
+
+func JobTaskDashboardTaskPtr(v *JobTaskDashboardTaskArgs) JobTaskDashboardTaskPtrInput {
+	return (*jobTaskDashboardTaskPtrType)(v)
+}
+
+func (*jobTaskDashboardTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskDashboardTask)(nil)).Elem()
+}
+
+func (i *jobTaskDashboardTaskPtrType) ToJobTaskDashboardTaskPtrOutput() JobTaskDashboardTaskPtrOutput {
+	return i.ToJobTaskDashboardTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskDashboardTaskPtrType) ToJobTaskDashboardTaskPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskPtrOutput)
+}
+
+type JobTaskDashboardTaskOutput struct{ *pulumi.OutputState }
+
+func (JobTaskDashboardTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskDashboardTask)(nil)).Elem()
+}
+
+func (o JobTaskDashboardTaskOutput) ToJobTaskDashboardTaskOutput() JobTaskDashboardTaskOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskOutput) ToJobTaskDashboardTaskOutputWithContext(ctx context.Context) JobTaskDashboardTaskOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskOutput) ToJobTaskDashboardTaskPtrOutput() JobTaskDashboardTaskPtrOutput {
+	return o.ToJobTaskDashboardTaskPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskDashboardTaskOutput) ToJobTaskDashboardTaskPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskDashboardTask) *JobTaskDashboardTask {
+		return &v
+	}).(JobTaskDashboardTaskPtrOutput)
+}
+
+// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+func (o JobTaskDashboardTaskOutput) DashboardId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskDashboardTask) *string { return v.DashboardId }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskDashboardTaskOutput) Subscription() JobTaskDashboardTaskSubscriptionPtrOutput {
+	return o.ApplyT(func(v JobTaskDashboardTask) *JobTaskDashboardTaskSubscription { return v.Subscription }).(JobTaskDashboardTaskSubscriptionPtrOutput)
+}
+
+func (o JobTaskDashboardTaskOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskDashboardTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskDashboardTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskDashboardTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskDashboardTask)(nil)).Elem()
+}
+
+func (o JobTaskDashboardTaskPtrOutput) ToJobTaskDashboardTaskPtrOutput() JobTaskDashboardTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskPtrOutput) ToJobTaskDashboardTaskPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskPtrOutput) Elem() JobTaskDashboardTaskOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTask) JobTaskDashboardTask {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskDashboardTask
+		return ret
+	}).(JobTaskDashboardTaskOutput)
+}
+
+// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+func (o JobTaskDashboardTaskPtrOutput) DashboardId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DashboardId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskDashboardTaskPtrOutput) Subscription() JobTaskDashboardTaskSubscriptionPtrOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTask) *JobTaskDashboardTaskSubscription {
+		if v == nil {
+			return nil
+		}
+		return v.Subscription
+	}).(JobTaskDashboardTaskSubscriptionPtrOutput)
+}
+
+func (o JobTaskDashboardTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WarehouseId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskDashboardTaskSubscription struct {
+	// string specifying a custom subject of email sent.
+	CustomSubject *string                                      `pulumi:"customSubject"`
+	Paused        *bool                                        `pulumi:"paused"`
+	Subscribers   []JobTaskDashboardTaskSubscriptionSubscriber `pulumi:"subscribers"`
+}
+
+// JobTaskDashboardTaskSubscriptionInput is an input type that accepts JobTaskDashboardTaskSubscriptionArgs and JobTaskDashboardTaskSubscriptionOutput values.
+// You can construct a concrete instance of `JobTaskDashboardTaskSubscriptionInput` via:
+//
+//	JobTaskDashboardTaskSubscriptionArgs{...}
+type JobTaskDashboardTaskSubscriptionInput interface {
+	pulumi.Input
+
+	ToJobTaskDashboardTaskSubscriptionOutput() JobTaskDashboardTaskSubscriptionOutput
+	ToJobTaskDashboardTaskSubscriptionOutputWithContext(context.Context) JobTaskDashboardTaskSubscriptionOutput
+}
+
+type JobTaskDashboardTaskSubscriptionArgs struct {
+	// string specifying a custom subject of email sent.
+	CustomSubject pulumi.StringPtrInput                                `pulumi:"customSubject"`
+	Paused        pulumi.BoolPtrInput                                  `pulumi:"paused"`
+	Subscribers   JobTaskDashboardTaskSubscriptionSubscriberArrayInput `pulumi:"subscribers"`
+}
+
+func (JobTaskDashboardTaskSubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskDashboardTaskSubscription)(nil)).Elem()
+}
+
+func (i JobTaskDashboardTaskSubscriptionArgs) ToJobTaskDashboardTaskSubscriptionOutput() JobTaskDashboardTaskSubscriptionOutput {
+	return i.ToJobTaskDashboardTaskSubscriptionOutputWithContext(context.Background())
+}
+
+func (i JobTaskDashboardTaskSubscriptionArgs) ToJobTaskDashboardTaskSubscriptionOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskSubscriptionOutput)
+}
+
+func (i JobTaskDashboardTaskSubscriptionArgs) ToJobTaskDashboardTaskSubscriptionPtrOutput() JobTaskDashboardTaskSubscriptionPtrOutput {
+	return i.ToJobTaskDashboardTaskSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskDashboardTaskSubscriptionArgs) ToJobTaskDashboardTaskSubscriptionPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskSubscriptionOutput).ToJobTaskDashboardTaskSubscriptionPtrOutputWithContext(ctx)
+}
+
+// JobTaskDashboardTaskSubscriptionPtrInput is an input type that accepts JobTaskDashboardTaskSubscriptionArgs, JobTaskDashboardTaskSubscriptionPtr and JobTaskDashboardTaskSubscriptionPtrOutput values.
+// You can construct a concrete instance of `JobTaskDashboardTaskSubscriptionPtrInput` via:
+//
+//	        JobTaskDashboardTaskSubscriptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskDashboardTaskSubscriptionPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskDashboardTaskSubscriptionPtrOutput() JobTaskDashboardTaskSubscriptionPtrOutput
+	ToJobTaskDashboardTaskSubscriptionPtrOutputWithContext(context.Context) JobTaskDashboardTaskSubscriptionPtrOutput
+}
+
+type jobTaskDashboardTaskSubscriptionPtrType JobTaskDashboardTaskSubscriptionArgs
+
+func JobTaskDashboardTaskSubscriptionPtr(v *JobTaskDashboardTaskSubscriptionArgs) JobTaskDashboardTaskSubscriptionPtrInput {
+	return (*jobTaskDashboardTaskSubscriptionPtrType)(v)
+}
+
+func (*jobTaskDashboardTaskSubscriptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskDashboardTaskSubscription)(nil)).Elem()
+}
+
+func (i *jobTaskDashboardTaskSubscriptionPtrType) ToJobTaskDashboardTaskSubscriptionPtrOutput() JobTaskDashboardTaskSubscriptionPtrOutput {
+	return i.ToJobTaskDashboardTaskSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskDashboardTaskSubscriptionPtrType) ToJobTaskDashboardTaskSubscriptionPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskSubscriptionPtrOutput)
+}
+
+type JobTaskDashboardTaskSubscriptionOutput struct{ *pulumi.OutputState }
+
+func (JobTaskDashboardTaskSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskDashboardTaskSubscription)(nil)).Elem()
+}
+
+func (o JobTaskDashboardTaskSubscriptionOutput) ToJobTaskDashboardTaskSubscriptionOutput() JobTaskDashboardTaskSubscriptionOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionOutput) ToJobTaskDashboardTaskSubscriptionOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionOutput) ToJobTaskDashboardTaskSubscriptionPtrOutput() JobTaskDashboardTaskSubscriptionPtrOutput {
+	return o.ToJobTaskDashboardTaskSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskDashboardTaskSubscriptionOutput) ToJobTaskDashboardTaskSubscriptionPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskDashboardTaskSubscription) *JobTaskDashboardTaskSubscription {
+		return &v
+	}).(JobTaskDashboardTaskSubscriptionPtrOutput)
+}
+
+// string specifying a custom subject of email sent.
+func (o JobTaskDashboardTaskSubscriptionOutput) CustomSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskDashboardTaskSubscription) *string { return v.CustomSubject }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionOutput) Paused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskDashboardTaskSubscription) *bool { return v.Paused }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionOutput) Subscribers() JobTaskDashboardTaskSubscriptionSubscriberArrayOutput {
+	return o.ApplyT(func(v JobTaskDashboardTaskSubscription) []JobTaskDashboardTaskSubscriptionSubscriber {
+		return v.Subscribers
+	}).(JobTaskDashboardTaskSubscriptionSubscriberArrayOutput)
+}
+
+type JobTaskDashboardTaskSubscriptionPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskDashboardTaskSubscriptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskDashboardTaskSubscription)(nil)).Elem()
+}
+
+func (o JobTaskDashboardTaskSubscriptionPtrOutput) ToJobTaskDashboardTaskSubscriptionPtrOutput() JobTaskDashboardTaskSubscriptionPtrOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionPtrOutput) ToJobTaskDashboardTaskSubscriptionPtrOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionPtrOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionPtrOutput) Elem() JobTaskDashboardTaskSubscriptionOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTaskSubscription) JobTaskDashboardTaskSubscription {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskDashboardTaskSubscription
+		return ret
+	}).(JobTaskDashboardTaskSubscriptionOutput)
+}
+
+// string specifying a custom subject of email sent.
+func (o JobTaskDashboardTaskSubscriptionPtrOutput) CustomSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTaskSubscription) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomSubject
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionPtrOutput) Paused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTaskSubscription) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Paused
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskDashboardTaskSubscriptionPtrOutput) Subscribers() JobTaskDashboardTaskSubscriptionSubscriberArrayOutput {
+	return o.ApplyT(func(v *JobTaskDashboardTaskSubscription) []JobTaskDashboardTaskSubscriptionSubscriber {
+		if v == nil {
+			return nil
+		}
+		return v.Subscribers
+	}).(JobTaskDashboardTaskSubscriptionSubscriberArrayOutput)
+}
+
+type JobTaskDashboardTaskSubscriptionSubscriber struct {
+	DestinationId *string `pulumi:"destinationId"`
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
+	UserName *string `pulumi:"userName"`
+}
+
+// JobTaskDashboardTaskSubscriptionSubscriberInput is an input type that accepts JobTaskDashboardTaskSubscriptionSubscriberArgs and JobTaskDashboardTaskSubscriptionSubscriberOutput values.
+// You can construct a concrete instance of `JobTaskDashboardTaskSubscriptionSubscriberInput` via:
+//
+//	JobTaskDashboardTaskSubscriptionSubscriberArgs{...}
+type JobTaskDashboardTaskSubscriptionSubscriberInput interface {
+	pulumi.Input
+
+	ToJobTaskDashboardTaskSubscriptionSubscriberOutput() JobTaskDashboardTaskSubscriptionSubscriberOutput
+	ToJobTaskDashboardTaskSubscriptionSubscriberOutputWithContext(context.Context) JobTaskDashboardTaskSubscriptionSubscriberOutput
+}
+
+type JobTaskDashboardTaskSubscriptionSubscriberArgs struct {
+	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (JobTaskDashboardTaskSubscriptionSubscriberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskDashboardTaskSubscriptionSubscriber)(nil)).Elem()
+}
+
+func (i JobTaskDashboardTaskSubscriptionSubscriberArgs) ToJobTaskDashboardTaskSubscriptionSubscriberOutput() JobTaskDashboardTaskSubscriptionSubscriberOutput {
+	return i.ToJobTaskDashboardTaskSubscriptionSubscriberOutputWithContext(context.Background())
+}
+
+func (i JobTaskDashboardTaskSubscriptionSubscriberArgs) ToJobTaskDashboardTaskSubscriptionSubscriberOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionSubscriberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskSubscriptionSubscriberOutput)
+}
+
+// JobTaskDashboardTaskSubscriptionSubscriberArrayInput is an input type that accepts JobTaskDashboardTaskSubscriptionSubscriberArray and JobTaskDashboardTaskSubscriptionSubscriberArrayOutput values.
+// You can construct a concrete instance of `JobTaskDashboardTaskSubscriptionSubscriberArrayInput` via:
+//
+//	JobTaskDashboardTaskSubscriptionSubscriberArray{ JobTaskDashboardTaskSubscriptionSubscriberArgs{...} }
+type JobTaskDashboardTaskSubscriptionSubscriberArrayInput interface {
+	pulumi.Input
+
+	ToJobTaskDashboardTaskSubscriptionSubscriberArrayOutput() JobTaskDashboardTaskSubscriptionSubscriberArrayOutput
+	ToJobTaskDashboardTaskSubscriptionSubscriberArrayOutputWithContext(context.Context) JobTaskDashboardTaskSubscriptionSubscriberArrayOutput
+}
+
+type JobTaskDashboardTaskSubscriptionSubscriberArray []JobTaskDashboardTaskSubscriptionSubscriberInput
+
+func (JobTaskDashboardTaskSubscriptionSubscriberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskDashboardTaskSubscriptionSubscriber)(nil)).Elem()
+}
+
+func (i JobTaskDashboardTaskSubscriptionSubscriberArray) ToJobTaskDashboardTaskSubscriptionSubscriberArrayOutput() JobTaskDashboardTaskSubscriptionSubscriberArrayOutput {
+	return i.ToJobTaskDashboardTaskSubscriptionSubscriberArrayOutputWithContext(context.Background())
+}
+
+func (i JobTaskDashboardTaskSubscriptionSubscriberArray) ToJobTaskDashboardTaskSubscriptionSubscriberArrayOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionSubscriberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskDashboardTaskSubscriptionSubscriberArrayOutput)
+}
+
+type JobTaskDashboardTaskSubscriptionSubscriberOutput struct{ *pulumi.OutputState }
+
+func (JobTaskDashboardTaskSubscriptionSubscriberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskDashboardTaskSubscriptionSubscriber)(nil)).Elem()
+}
+
+func (o JobTaskDashboardTaskSubscriptionSubscriberOutput) ToJobTaskDashboardTaskSubscriptionSubscriberOutput() JobTaskDashboardTaskSubscriptionSubscriberOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionSubscriberOutput) ToJobTaskDashboardTaskSubscriptionSubscriberOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionSubscriberOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionSubscriberOutput) DestinationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskDashboardTaskSubscriptionSubscriber) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
+}
+
+// The email of an active workspace user. Non-admin users can only set this field to their own email.
+func (o JobTaskDashboardTaskSubscriptionSubscriberOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskDashboardTaskSubscriptionSubscriber) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskDashboardTaskSubscriptionSubscriberArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTaskDashboardTaskSubscriptionSubscriberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskDashboardTaskSubscriptionSubscriber)(nil)).Elem()
+}
+
+func (o JobTaskDashboardTaskSubscriptionSubscriberArrayOutput) ToJobTaskDashboardTaskSubscriptionSubscriberArrayOutput() JobTaskDashboardTaskSubscriptionSubscriberArrayOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionSubscriberArrayOutput) ToJobTaskDashboardTaskSubscriptionSubscriberArrayOutputWithContext(ctx context.Context) JobTaskDashboardTaskSubscriptionSubscriberArrayOutput {
+	return o
+}
+
+func (o JobTaskDashboardTaskSubscriptionSubscriberArrayOutput) Index(i pulumi.IntInput) JobTaskDashboardTaskSubscriptionSubscriberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskDashboardTaskSubscriptionSubscriber {
+		return vs[0].([]JobTaskDashboardTaskSubscriptionSubscriber)[vs[1].(int)]
+	}).(JobTaskDashboardTaskSubscriptionSubscriberOutput)
 }
 
 type JobTaskDbtTask struct {
@@ -29597,6 +30200,7 @@ func (o JobTaskForEachTaskPtrOutput) Task() JobTaskForEachTaskTaskPtrOutput {
 type JobTaskForEachTaskTask struct {
 	CleanRoomsNotebookTask *JobTaskForEachTaskTaskCleanRoomsNotebookTask `pulumi:"cleanRoomsNotebookTask"`
 	ConditionTask          *JobTaskForEachTaskTaskConditionTask          `pulumi:"conditionTask"`
+	DashboardTask          *JobTaskForEachTaskTaskDashboardTask          `pulumi:"dashboardTask"`
 	DbtTask                *JobTaskForEachTaskTaskDbtTask                `pulumi:"dbtTask"`
 	// block specifying dependency(-ies) for a given task.
 	DependsOns []JobTaskForEachTaskTaskDependsOn `pulumi:"dependsOns"`
@@ -29627,6 +30231,7 @@ type JobTaskForEachTaskTask struct {
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings *JobTaskForEachTaskTaskNotificationSettings `pulumi:"notificationSettings"`
 	PipelineTask         *JobTaskForEachTaskTaskPipelineTask         `pulumi:"pipelineTask"`
+	PowerBiTask          *JobTaskForEachTaskTaskPowerBiTask          `pulumi:"powerBiTask"`
 	PythonWheelTask      *JobTaskForEachTaskTaskPythonWheelTask      `pulumi:"pythonWheelTask"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
@@ -29662,6 +30267,7 @@ type JobTaskForEachTaskTaskInput interface {
 type JobTaskForEachTaskTaskArgs struct {
 	CleanRoomsNotebookTask JobTaskForEachTaskTaskCleanRoomsNotebookTaskPtrInput `pulumi:"cleanRoomsNotebookTask"`
 	ConditionTask          JobTaskForEachTaskTaskConditionTaskPtrInput          `pulumi:"conditionTask"`
+	DashboardTask          JobTaskForEachTaskTaskDashboardTaskPtrInput          `pulumi:"dashboardTask"`
 	DbtTask                JobTaskForEachTaskTaskDbtTaskPtrInput                `pulumi:"dbtTask"`
 	// block specifying dependency(-ies) for a given task.
 	DependsOns JobTaskForEachTaskTaskDependsOnArrayInput `pulumi:"dependsOns"`
@@ -29692,6 +30298,7 @@ type JobTaskForEachTaskTaskArgs struct {
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings JobTaskForEachTaskTaskNotificationSettingsPtrInput `pulumi:"notificationSettings"`
 	PipelineTask         JobTaskForEachTaskTaskPipelineTaskPtrInput         `pulumi:"pipelineTask"`
+	PowerBiTask          JobTaskForEachTaskTaskPowerBiTaskPtrInput          `pulumi:"powerBiTask"`
 	PythonWheelTask      JobTaskForEachTaskTaskPythonWheelTaskPtrInput      `pulumi:"pythonWheelTask"`
 	// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
 	RetryOnTimeout pulumi.BoolPtrInput `pulumi:"retryOnTimeout"`
@@ -29800,6 +30407,10 @@ func (o JobTaskForEachTaskTaskOutput) ConditionTask() JobTaskForEachTaskTaskCond
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *JobTaskForEachTaskTaskConditionTask { return v.ConditionTask }).(JobTaskForEachTaskTaskConditionTaskPtrOutput)
 }
 
+func (o JobTaskForEachTaskTaskOutput) DashboardTask() JobTaskForEachTaskTaskDashboardTaskPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTask) *JobTaskForEachTaskTaskDashboardTask { return v.DashboardTask }).(JobTaskForEachTaskTaskDashboardTaskPtrOutput)
+}
+
 func (o JobTaskForEachTaskTaskOutput) DbtTask() JobTaskForEachTaskTaskDbtTaskPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *JobTaskForEachTaskTaskDbtTask { return v.DbtTask }).(JobTaskForEachTaskTaskDbtTaskPtrOutput)
 }
@@ -29881,6 +30492,10 @@ func (o JobTaskForEachTaskTaskOutput) NotificationSettings() JobTaskForEachTaskT
 
 func (o JobTaskForEachTaskTaskOutput) PipelineTask() JobTaskForEachTaskTaskPipelineTaskPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTask) *JobTaskForEachTaskTaskPipelineTask { return v.PipelineTask }).(JobTaskForEachTaskTaskPipelineTaskPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskOutput) PowerBiTask() JobTaskForEachTaskTaskPowerBiTaskPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTask) *JobTaskForEachTaskTaskPowerBiTask { return v.PowerBiTask }).(JobTaskForEachTaskTaskPowerBiTaskPtrOutput)
 }
 
 func (o JobTaskForEachTaskTaskOutput) PythonWheelTask() JobTaskForEachTaskTaskPythonWheelTaskPtrOutput {
@@ -29977,6 +30592,15 @@ func (o JobTaskForEachTaskTaskPtrOutput) ConditionTask() JobTaskForEachTaskTaskC
 		}
 		return v.ConditionTask
 	}).(JobTaskForEachTaskTaskConditionTaskPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPtrOutput) DashboardTask() JobTaskForEachTaskTaskDashboardTaskPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTask) *JobTaskForEachTaskTaskDashboardTask {
+		if v == nil {
+			return nil
+		}
+		return v.DashboardTask
+	}).(JobTaskForEachTaskTaskDashboardTaskPtrOutput)
 }
 
 func (o JobTaskForEachTaskTaskPtrOutput) DbtTask() JobTaskForEachTaskTaskDbtTaskPtrOutput {
@@ -30143,6 +30767,15 @@ func (o JobTaskForEachTaskTaskPtrOutput) PipelineTask() JobTaskForEachTaskTaskPi
 		}
 		return v.PipelineTask
 	}).(JobTaskForEachTaskTaskPipelineTaskPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPtrOutput) PowerBiTask() JobTaskForEachTaskTaskPowerBiTaskPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTask) *JobTaskForEachTaskTaskPowerBiTask {
+		if v == nil {
+			return nil
+		}
+		return v.PowerBiTask
+	}).(JobTaskForEachTaskTaskPowerBiTaskPtrOutput)
 }
 
 func (o JobTaskForEachTaskTaskPtrOutput) PythonWheelTask() JobTaskForEachTaskTaskPythonWheelTaskPtrOutput {
@@ -30629,6 +31262,447 @@ func (o JobTaskForEachTaskTaskConditionTaskPtrOutput) Right() pulumi.StringPtrOu
 		}
 		return &v.Right
 	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTask struct {
+	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+	DashboardId  *string                                          `pulumi:"dashboardId"`
+	Subscription *JobTaskForEachTaskTaskDashboardTaskSubscription `pulumi:"subscription"`
+	WarehouseId  *string                                          `pulumi:"warehouseId"`
+}
+
+// JobTaskForEachTaskTaskDashboardTaskInput is an input type that accepts JobTaskForEachTaskTaskDashboardTaskArgs and JobTaskForEachTaskTaskDashboardTaskOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskDashboardTaskInput` via:
+//
+//	JobTaskForEachTaskTaskDashboardTaskArgs{...}
+type JobTaskForEachTaskTaskDashboardTaskInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskDashboardTaskOutput() JobTaskForEachTaskTaskDashboardTaskOutput
+	ToJobTaskForEachTaskTaskDashboardTaskOutputWithContext(context.Context) JobTaskForEachTaskTaskDashboardTaskOutput
+}
+
+type JobTaskForEachTaskTaskDashboardTaskArgs struct {
+	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+	DashboardId  pulumi.StringPtrInput                                   `pulumi:"dashboardId"`
+	Subscription JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrInput `pulumi:"subscription"`
+	WarehouseId  pulumi.StringPtrInput                                   `pulumi:"warehouseId"`
+}
+
+func (JobTaskForEachTaskTaskDashboardTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTask)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskArgs) ToJobTaskForEachTaskTaskDashboardTaskOutput() JobTaskForEachTaskTaskDashboardTaskOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskArgs) ToJobTaskForEachTaskTaskDashboardTaskOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskOutput)
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskArgs) ToJobTaskForEachTaskTaskDashboardTaskPtrOutput() JobTaskForEachTaskTaskDashboardTaskPtrOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskArgs) ToJobTaskForEachTaskTaskDashboardTaskPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskOutput).ToJobTaskForEachTaskTaskDashboardTaskPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskDashboardTaskPtrInput is an input type that accepts JobTaskForEachTaskTaskDashboardTaskArgs, JobTaskForEachTaskTaskDashboardTaskPtr and JobTaskForEachTaskTaskDashboardTaskPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskDashboardTaskPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskDashboardTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskDashboardTaskPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskDashboardTaskPtrOutput() JobTaskForEachTaskTaskDashboardTaskPtrOutput
+	ToJobTaskForEachTaskTaskDashboardTaskPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskDashboardTaskPtrOutput
+}
+
+type jobTaskForEachTaskTaskDashboardTaskPtrType JobTaskForEachTaskTaskDashboardTaskArgs
+
+func JobTaskForEachTaskTaskDashboardTaskPtr(v *JobTaskForEachTaskTaskDashboardTaskArgs) JobTaskForEachTaskTaskDashboardTaskPtrInput {
+	return (*jobTaskForEachTaskTaskDashboardTaskPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskDashboardTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskDashboardTask)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskDashboardTaskPtrType) ToJobTaskForEachTaskTaskDashboardTaskPtrOutput() JobTaskForEachTaskTaskDashboardTaskPtrOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskDashboardTaskPtrType) ToJobTaskForEachTaskTaskDashboardTaskPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskPtrOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskDashboardTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTask)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskOutput) ToJobTaskForEachTaskTaskDashboardTaskOutput() JobTaskForEachTaskTaskDashboardTaskOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskOutput) ToJobTaskForEachTaskTaskDashboardTaskOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskOutput) ToJobTaskForEachTaskTaskDashboardTaskPtrOutput() JobTaskForEachTaskTaskDashboardTaskPtrOutput {
+	return o.ToJobTaskForEachTaskTaskDashboardTaskPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskOutput) ToJobTaskForEachTaskTaskDashboardTaskPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskDashboardTask) *JobTaskForEachTaskTaskDashboardTask {
+		return &v
+	}).(JobTaskForEachTaskTaskDashboardTaskPtrOutput)
+}
+
+// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+func (o JobTaskForEachTaskTaskDashboardTaskOutput) DashboardId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTask) *string { return v.DashboardId }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskOutput) Subscription() JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTask) *JobTaskForEachTaskTaskDashboardTaskSubscription {
+		return v.Subscription
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskDashboardTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskDashboardTask)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskPtrOutput) ToJobTaskForEachTaskTaskDashboardTaskPtrOutput() JobTaskForEachTaskTaskDashboardTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskPtrOutput) ToJobTaskForEachTaskTaskDashboardTaskPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskPtrOutput) Elem() JobTaskForEachTaskTaskDashboardTaskOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTask) JobTaskForEachTaskTaskDashboardTask {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskDashboardTask
+		return ret
+	}).(JobTaskForEachTaskTaskDashboardTaskOutput)
+}
+
+// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+func (o JobTaskForEachTaskTaskDashboardTaskPtrOutput) DashboardId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DashboardId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskPtrOutput) Subscription() JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTask) *JobTaskForEachTaskTaskDashboardTaskSubscription {
+		if v == nil {
+			return nil
+		}
+		return v.Subscription
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WarehouseId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscription struct {
+	// string specifying a custom subject of email sent.
+	CustomSubject *string                                                     `pulumi:"customSubject"`
+	Paused        *bool                                                       `pulumi:"paused"`
+	Subscribers   []JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber `pulumi:"subscribers"`
+}
+
+// JobTaskForEachTaskTaskDashboardTaskSubscriptionInput is an input type that accepts JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs and JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskDashboardTaskSubscriptionInput` via:
+//
+//	JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs{...}
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionOutputWithContext(context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs struct {
+	// string specifying a custom subject of email sent.
+	CustomSubject pulumi.StringPtrInput                                               `pulumi:"customSubject"`
+	Paused        pulumi.BoolPtrInput                                                 `pulumi:"paused"`
+	Subscribers   JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayInput `pulumi:"subscribers"`
+}
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscription)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput)
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput).ToJobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrInput is an input type that accepts JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs, JobTaskForEachTaskTaskDashboardTaskSubscriptionPtr and JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput
+}
+
+type jobTaskForEachTaskTaskDashboardTaskSubscriptionPtrType JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs
+
+func JobTaskForEachTaskTaskDashboardTaskSubscriptionPtr(v *JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs) JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrInput {
+	return (*jobTaskForEachTaskTaskDashboardTaskSubscriptionPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskDashboardTaskSubscriptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskDashboardTaskSubscription)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskDashboardTaskSubscriptionPtrType) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskDashboardTaskSubscriptionPtrType) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscription)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput {
+	return o.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskDashboardTaskSubscription) *JobTaskForEachTaskTaskDashboardTaskSubscription {
+		return &v
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput)
+}
+
+// string specifying a custom subject of email sent.
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput) CustomSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscription) *string { return v.CustomSubject }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput) Paused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscription) *bool { return v.Paused }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput) Subscribers() JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscription) []JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber {
+		return v.Subscribers
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskDashboardTaskSubscription)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput) Elem() JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscription) JobTaskForEachTaskTaskDashboardTaskSubscription {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskDashboardTaskSubscription
+		return ret
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput)
+}
+
+// string specifying a custom subject of email sent.
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput) CustomSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscription) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomSubject
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput) Paused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscription) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Paused
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput) Subscribers() JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscription) []JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber {
+		if v == nil {
+			return nil
+		}
+		return v.Subscribers
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber struct {
+	DestinationId *string `pulumi:"destinationId"`
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
+	UserName *string `pulumi:"userName"`
+}
+
+// JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberInput is an input type that accepts JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs and JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberInput` via:
+//
+//	JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs{...}
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutputWithContext(context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs struct {
+	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
+	// The email of an active workspace user. Non-admin users can only set this field to their own email.
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput)
+}
+
+// JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayInput is an input type that accepts JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArray and JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayInput` via:
+//
+//	JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArray{ JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs{...} }
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput
+	ToJobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutputWithContext(context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArray []JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberInput
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArray) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput {
+	return i.ToJobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArray) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput) DestinationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
+}
+
+// The email of an active workspace user. Non-admin users can only set this field to their own email.
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput() JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput) ToJobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput) Index(i pulumi.IntInput) JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber {
+		return vs[0].([]JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber)[vs[1].(int)]
+	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput)
 }
 
 type JobTaskForEachTaskTaskDbtTask struct {
@@ -37802,6 +38876,515 @@ func (o JobTaskForEachTaskTaskPipelineTaskPtrOutput) PipelineId() pulumi.StringP
 		}
 		return &v.PipelineId
 	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskPowerBiTask struct {
+	ConnectionResourceName *string                                        `pulumi:"connectionResourceName"`
+	PowerBiModel           *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel `pulumi:"powerBiModel"`
+	RefreshAfterUpdate     *bool                                          `pulumi:"refreshAfterUpdate"`
+	Tables                 []JobTaskForEachTaskTaskPowerBiTaskTable       `pulumi:"tables"`
+	WarehouseId            *string                                        `pulumi:"warehouseId"`
+}
+
+// JobTaskForEachTaskTaskPowerBiTaskInput is an input type that accepts JobTaskForEachTaskTaskPowerBiTaskArgs and JobTaskForEachTaskTaskPowerBiTaskOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskPowerBiTaskInput` via:
+//
+//	JobTaskForEachTaskTaskPowerBiTaskArgs{...}
+type JobTaskForEachTaskTaskPowerBiTaskInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskPowerBiTaskOutput() JobTaskForEachTaskTaskPowerBiTaskOutput
+	ToJobTaskForEachTaskTaskPowerBiTaskOutputWithContext(context.Context) JobTaskForEachTaskTaskPowerBiTaskOutput
+}
+
+type JobTaskForEachTaskTaskPowerBiTaskArgs struct {
+	ConnectionResourceName pulumi.StringPtrInput                                 `pulumi:"connectionResourceName"`
+	PowerBiModel           JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrInput `pulumi:"powerBiModel"`
+	RefreshAfterUpdate     pulumi.BoolPtrInput                                   `pulumi:"refreshAfterUpdate"`
+	Tables                 JobTaskForEachTaskTaskPowerBiTaskTableArrayInput      `pulumi:"tables"`
+	WarehouseId            pulumi.StringPtrInput                                 `pulumi:"warehouseId"`
+}
+
+func (JobTaskForEachTaskTaskPowerBiTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskPowerBiTask)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskPowerBiTaskArgs) ToJobTaskForEachTaskTaskPowerBiTaskOutput() JobTaskForEachTaskTaskPowerBiTaskOutput {
+	return i.ToJobTaskForEachTaskTaskPowerBiTaskOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskPowerBiTaskArgs) ToJobTaskForEachTaskTaskPowerBiTaskOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskPowerBiTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskPowerBiTaskOutput)
+}
+
+func (i JobTaskForEachTaskTaskPowerBiTaskArgs) ToJobTaskForEachTaskTaskPowerBiTaskPtrOutput() JobTaskForEachTaskTaskPowerBiTaskPtrOutput {
+	return i.ToJobTaskForEachTaskTaskPowerBiTaskPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskPowerBiTaskArgs) ToJobTaskForEachTaskTaskPowerBiTaskPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskPowerBiTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskPowerBiTaskOutput).ToJobTaskForEachTaskTaskPowerBiTaskPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskPowerBiTaskPtrInput is an input type that accepts JobTaskForEachTaskTaskPowerBiTaskArgs, JobTaskForEachTaskTaskPowerBiTaskPtr and JobTaskForEachTaskTaskPowerBiTaskPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskPowerBiTaskPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskPowerBiTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskPowerBiTaskPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskPowerBiTaskPtrOutput() JobTaskForEachTaskTaskPowerBiTaskPtrOutput
+	ToJobTaskForEachTaskTaskPowerBiTaskPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskPowerBiTaskPtrOutput
+}
+
+type jobTaskForEachTaskTaskPowerBiTaskPtrType JobTaskForEachTaskTaskPowerBiTaskArgs
+
+func JobTaskForEachTaskTaskPowerBiTaskPtr(v *JobTaskForEachTaskTaskPowerBiTaskArgs) JobTaskForEachTaskTaskPowerBiTaskPtrInput {
+	return (*jobTaskForEachTaskTaskPowerBiTaskPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskPowerBiTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskPowerBiTask)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskPowerBiTaskPtrType) ToJobTaskForEachTaskTaskPowerBiTaskPtrOutput() JobTaskForEachTaskTaskPowerBiTaskPtrOutput {
+	return i.ToJobTaskForEachTaskTaskPowerBiTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskPowerBiTaskPtrType) ToJobTaskForEachTaskTaskPowerBiTaskPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskPowerBiTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskPowerBiTaskPtrOutput)
+}
+
+type JobTaskForEachTaskTaskPowerBiTaskOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskPowerBiTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskPowerBiTask)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskOutput) ToJobTaskForEachTaskTaskPowerBiTaskOutput() JobTaskForEachTaskTaskPowerBiTaskOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskOutput) ToJobTaskForEachTaskTaskPowerBiTaskOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskPowerBiTaskOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskOutput) ToJobTaskForEachTaskTaskPowerBiTaskPtrOutput() JobTaskForEachTaskTaskPowerBiTaskPtrOutput {
+	return o.ToJobTaskForEachTaskTaskPowerBiTaskPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskOutput) ToJobTaskForEachTaskTaskPowerBiTaskPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskPowerBiTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskPowerBiTask) *JobTaskForEachTaskTaskPowerBiTask {
+		return &v
+	}).(JobTaskForEachTaskTaskPowerBiTaskPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskOutput) ConnectionResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTask) *string { return v.ConnectionResourceName }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskOutput) PowerBiModel() JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTask) *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel {
+		return v.PowerBiModel
+	}).(JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskOutput) RefreshAfterUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTask) *bool { return v.RefreshAfterUpdate }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskOutput) Tables() JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTask) []JobTaskForEachTaskTaskPowerBiTaskTable { return v.Tables }).(JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskPowerBiTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskPowerBiTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskPowerBiTask)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) ToJobTaskForEachTaskTaskPowerBiTaskPtrOutput() JobTaskForEachTaskTaskPowerBiTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) ToJobTaskForEachTaskTaskPowerBiTaskPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskPowerBiTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) Elem() JobTaskForEachTaskTaskPowerBiTaskOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTask) JobTaskForEachTaskTaskPowerBiTask {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskPowerBiTask
+		return ret
+	}).(JobTaskForEachTaskTaskPowerBiTaskOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) ConnectionResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) PowerBiModel() JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTask) *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel {
+		if v == nil {
+			return nil
+		}
+		return v.PowerBiModel
+	}).(JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) RefreshAfterUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTask) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshAfterUpdate
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) Tables() JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTask) []JobTaskForEachTaskTaskPowerBiTaskTable {
+		if v == nil {
+			return nil
+		}
+		return v.Tables
+	}).(JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WarehouseId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskPowerBiTaskPowerBiModel struct {
+	AuthenticationMethod *string `pulumi:"authenticationMethod"`
+	ModelName            *string `pulumi:"modelName"`
+	OverwriteExisting    *bool   `pulumi:"overwriteExisting"`
+	StorageMode          *string `pulumi:"storageMode"`
+	WorkspaceName        *string `pulumi:"workspaceName"`
+}
+
+// JobTaskForEachTaskTaskPowerBiTaskPowerBiModelInput is an input type that accepts JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs and JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskPowerBiTaskPowerBiModelInput` via:
+//
+//	JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs{...}
+type JobTaskForEachTaskTaskPowerBiTaskPowerBiModelInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput() JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput
+	ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutputWithContext(context.Context) JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput
+}
+
+type JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs struct {
+	AuthenticationMethod pulumi.StringPtrInput `pulumi:"authenticationMethod"`
+	ModelName            pulumi.StringPtrInput `pulumi:"modelName"`
+	OverwriteExisting    pulumi.BoolPtrInput   `pulumi:"overwriteExisting"`
+	StorageMode          pulumi.StringPtrInput `pulumi:"storageMode"`
+	WorkspaceName        pulumi.StringPtrInput `pulumi:"workspaceName"`
+}
+
+func (JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskPowerBiTaskPowerBiModel)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs) ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput() JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput {
+	return i.ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs) ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput)
+}
+
+func (i JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs) ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput() JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput {
+	return i.ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs) ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput).ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx)
+}
+
+// JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrInput is an input type that accepts JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs, JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtr and JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrInput` via:
+//
+//	        JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput() JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput
+	ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutputWithContext(context.Context) JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput
+}
+
+type jobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrType JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs
+
+func JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtr(v *JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs) JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrInput {
+	return (*jobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrType)(v)
+}
+
+func (*jobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskPowerBiTaskPowerBiModel)(nil)).Elem()
+}
+
+func (i *jobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrType) ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput() JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput {
+	return i.ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrType) ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput)
+}
+
+type JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskPowerBiTaskPowerBiModel)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput) ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput() JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput) ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput) ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput() JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o.ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput) ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel {
+		return &v
+	}).(JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput) AuthenticationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *string { return v.AuthenticationMethod }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *string { return v.ModelName }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput) OverwriteExisting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *bool { return v.OverwriteExisting }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput) StorageMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *string { return v.StorageMode }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskForEachTaskTaskPowerBiTaskPowerBiModel)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput() JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) ToJobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) Elem() JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) JobTaskForEachTaskTaskPowerBiTaskPowerBiModel {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskForEachTaskTaskPowerBiTaskPowerBiModel
+		return ret
+	}).(JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) AuthenticationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModelName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) OverwriteExisting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverwriteExisting
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) StorageMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageMode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskPowerBiTaskTable struct {
+	// The name of the catalog to use inside Unity Catalog.
+	Catalog *string `pulumi:"catalog"`
+	// An optional name for the job. The default value is Untitled.
+	Name *string `pulumi:"name"`
+	// The name of the schema dbt should run in. Defaults to `default`.
+	Schema      *string `pulumi:"schema"`
+	StorageMode *string `pulumi:"storageMode"`
+}
+
+// JobTaskForEachTaskTaskPowerBiTaskTableInput is an input type that accepts JobTaskForEachTaskTaskPowerBiTaskTableArgs and JobTaskForEachTaskTaskPowerBiTaskTableOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskPowerBiTaskTableInput` via:
+//
+//	JobTaskForEachTaskTaskPowerBiTaskTableArgs{...}
+type JobTaskForEachTaskTaskPowerBiTaskTableInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskPowerBiTaskTableOutput() JobTaskForEachTaskTaskPowerBiTaskTableOutput
+	ToJobTaskForEachTaskTaskPowerBiTaskTableOutputWithContext(context.Context) JobTaskForEachTaskTaskPowerBiTaskTableOutput
+}
+
+type JobTaskForEachTaskTaskPowerBiTaskTableArgs struct {
+	// The name of the catalog to use inside Unity Catalog.
+	Catalog pulumi.StringPtrInput `pulumi:"catalog"`
+	// An optional name for the job. The default value is Untitled.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The name of the schema dbt should run in. Defaults to `default`.
+	Schema      pulumi.StringPtrInput `pulumi:"schema"`
+	StorageMode pulumi.StringPtrInput `pulumi:"storageMode"`
+}
+
+func (JobTaskForEachTaskTaskPowerBiTaskTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskPowerBiTaskTable)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskPowerBiTaskTableArgs) ToJobTaskForEachTaskTaskPowerBiTaskTableOutput() JobTaskForEachTaskTaskPowerBiTaskTableOutput {
+	return i.ToJobTaskForEachTaskTaskPowerBiTaskTableOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskPowerBiTaskTableArgs) ToJobTaskForEachTaskTaskPowerBiTaskTableOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskPowerBiTaskTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskPowerBiTaskTableOutput)
+}
+
+// JobTaskForEachTaskTaskPowerBiTaskTableArrayInput is an input type that accepts JobTaskForEachTaskTaskPowerBiTaskTableArray and JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput values.
+// You can construct a concrete instance of `JobTaskForEachTaskTaskPowerBiTaskTableArrayInput` via:
+//
+//	JobTaskForEachTaskTaskPowerBiTaskTableArray{ JobTaskForEachTaskTaskPowerBiTaskTableArgs{...} }
+type JobTaskForEachTaskTaskPowerBiTaskTableArrayInput interface {
+	pulumi.Input
+
+	ToJobTaskForEachTaskTaskPowerBiTaskTableArrayOutput() JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput
+	ToJobTaskForEachTaskTaskPowerBiTaskTableArrayOutputWithContext(context.Context) JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput
+}
+
+type JobTaskForEachTaskTaskPowerBiTaskTableArray []JobTaskForEachTaskTaskPowerBiTaskTableInput
+
+func (JobTaskForEachTaskTaskPowerBiTaskTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskForEachTaskTaskPowerBiTaskTable)(nil)).Elem()
+}
+
+func (i JobTaskForEachTaskTaskPowerBiTaskTableArray) ToJobTaskForEachTaskTaskPowerBiTaskTableArrayOutput() JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput {
+	return i.ToJobTaskForEachTaskTaskPowerBiTaskTableArrayOutputWithContext(context.Background())
+}
+
+func (i JobTaskForEachTaskTaskPowerBiTaskTableArray) ToJobTaskForEachTaskTaskPowerBiTaskTableArrayOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput)
+}
+
+type JobTaskForEachTaskTaskPowerBiTaskTableOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskPowerBiTaskTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskForEachTaskTaskPowerBiTaskTable)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskTableOutput) ToJobTaskForEachTaskTaskPowerBiTaskTableOutput() JobTaskForEachTaskTaskPowerBiTaskTableOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskTableOutput) ToJobTaskForEachTaskTaskPowerBiTaskTableOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskPowerBiTaskTableOutput {
+	return o
+}
+
+// The name of the catalog to use inside Unity Catalog.
+func (o JobTaskForEachTaskTaskPowerBiTaskTableOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTaskTable) *string { return v.Catalog }).(pulumi.StringPtrOutput)
+}
+
+// An optional name for the job. The default value is Untitled.
+func (o JobTaskForEachTaskTaskPowerBiTaskTableOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTaskTable) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The name of the schema dbt should run in. Defaults to `default`.
+func (o JobTaskForEachTaskTaskPowerBiTaskTableOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTaskTable) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskTableOutput) StorageMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTaskTable) *string { return v.StorageMode }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskForEachTaskTaskPowerBiTaskTable)(nil)).Elem()
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput) ToJobTaskForEachTaskTaskPowerBiTaskTableArrayOutput() JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput) ToJobTaskForEachTaskTaskPowerBiTaskTableArrayOutputWithContext(ctx context.Context) JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput {
+	return o
+}
+
+func (o JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput) Index(i pulumi.IntInput) JobTaskForEachTaskTaskPowerBiTaskTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskForEachTaskTaskPowerBiTaskTable {
+		return vs[0].([]JobTaskForEachTaskTaskPowerBiTaskTable)[vs[1].(int)]
+	}).(JobTaskForEachTaskTaskPowerBiTaskTableOutput)
 }
 
 type JobTaskForEachTaskTaskPythonWheelTask struct {
@@ -47493,6 +49076,513 @@ func (o JobTaskPipelineTaskPtrOutput) PipelineId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type JobTaskPowerBiTask struct {
+	ConnectionResourceName *string                         `pulumi:"connectionResourceName"`
+	PowerBiModel           *JobTaskPowerBiTaskPowerBiModel `pulumi:"powerBiModel"`
+	RefreshAfterUpdate     *bool                           `pulumi:"refreshAfterUpdate"`
+	Tables                 []JobTaskPowerBiTaskTable       `pulumi:"tables"`
+	WarehouseId            *string                         `pulumi:"warehouseId"`
+}
+
+// JobTaskPowerBiTaskInput is an input type that accepts JobTaskPowerBiTaskArgs and JobTaskPowerBiTaskOutput values.
+// You can construct a concrete instance of `JobTaskPowerBiTaskInput` via:
+//
+//	JobTaskPowerBiTaskArgs{...}
+type JobTaskPowerBiTaskInput interface {
+	pulumi.Input
+
+	ToJobTaskPowerBiTaskOutput() JobTaskPowerBiTaskOutput
+	ToJobTaskPowerBiTaskOutputWithContext(context.Context) JobTaskPowerBiTaskOutput
+}
+
+type JobTaskPowerBiTaskArgs struct {
+	ConnectionResourceName pulumi.StringPtrInput                  `pulumi:"connectionResourceName"`
+	PowerBiModel           JobTaskPowerBiTaskPowerBiModelPtrInput `pulumi:"powerBiModel"`
+	RefreshAfterUpdate     pulumi.BoolPtrInput                    `pulumi:"refreshAfterUpdate"`
+	Tables                 JobTaskPowerBiTaskTableArrayInput      `pulumi:"tables"`
+	WarehouseId            pulumi.StringPtrInput                  `pulumi:"warehouseId"`
+}
+
+func (JobTaskPowerBiTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskPowerBiTask)(nil)).Elem()
+}
+
+func (i JobTaskPowerBiTaskArgs) ToJobTaskPowerBiTaskOutput() JobTaskPowerBiTaskOutput {
+	return i.ToJobTaskPowerBiTaskOutputWithContext(context.Background())
+}
+
+func (i JobTaskPowerBiTaskArgs) ToJobTaskPowerBiTaskOutputWithContext(ctx context.Context) JobTaskPowerBiTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskPowerBiTaskOutput)
+}
+
+func (i JobTaskPowerBiTaskArgs) ToJobTaskPowerBiTaskPtrOutput() JobTaskPowerBiTaskPtrOutput {
+	return i.ToJobTaskPowerBiTaskPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskPowerBiTaskArgs) ToJobTaskPowerBiTaskPtrOutputWithContext(ctx context.Context) JobTaskPowerBiTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskPowerBiTaskOutput).ToJobTaskPowerBiTaskPtrOutputWithContext(ctx)
+}
+
+// JobTaskPowerBiTaskPtrInput is an input type that accepts JobTaskPowerBiTaskArgs, JobTaskPowerBiTaskPtr and JobTaskPowerBiTaskPtrOutput values.
+// You can construct a concrete instance of `JobTaskPowerBiTaskPtrInput` via:
+//
+//	        JobTaskPowerBiTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskPowerBiTaskPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskPowerBiTaskPtrOutput() JobTaskPowerBiTaskPtrOutput
+	ToJobTaskPowerBiTaskPtrOutputWithContext(context.Context) JobTaskPowerBiTaskPtrOutput
+}
+
+type jobTaskPowerBiTaskPtrType JobTaskPowerBiTaskArgs
+
+func JobTaskPowerBiTaskPtr(v *JobTaskPowerBiTaskArgs) JobTaskPowerBiTaskPtrInput {
+	return (*jobTaskPowerBiTaskPtrType)(v)
+}
+
+func (*jobTaskPowerBiTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskPowerBiTask)(nil)).Elem()
+}
+
+func (i *jobTaskPowerBiTaskPtrType) ToJobTaskPowerBiTaskPtrOutput() JobTaskPowerBiTaskPtrOutput {
+	return i.ToJobTaskPowerBiTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskPowerBiTaskPtrType) ToJobTaskPowerBiTaskPtrOutputWithContext(ctx context.Context) JobTaskPowerBiTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskPowerBiTaskPtrOutput)
+}
+
+type JobTaskPowerBiTaskOutput struct{ *pulumi.OutputState }
+
+func (JobTaskPowerBiTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskPowerBiTask)(nil)).Elem()
+}
+
+func (o JobTaskPowerBiTaskOutput) ToJobTaskPowerBiTaskOutput() JobTaskPowerBiTaskOutput {
+	return o
+}
+
+func (o JobTaskPowerBiTaskOutput) ToJobTaskPowerBiTaskOutputWithContext(ctx context.Context) JobTaskPowerBiTaskOutput {
+	return o
+}
+
+func (o JobTaskPowerBiTaskOutput) ToJobTaskPowerBiTaskPtrOutput() JobTaskPowerBiTaskPtrOutput {
+	return o.ToJobTaskPowerBiTaskPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskPowerBiTaskOutput) ToJobTaskPowerBiTaskPtrOutputWithContext(ctx context.Context) JobTaskPowerBiTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskPowerBiTask) *JobTaskPowerBiTask {
+		return &v
+	}).(JobTaskPowerBiTaskPtrOutput)
+}
+
+func (o JobTaskPowerBiTaskOutput) ConnectionResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTask) *string { return v.ConnectionResourceName }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskPowerBiTaskOutput) PowerBiModel() JobTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTask) *JobTaskPowerBiTaskPowerBiModel { return v.PowerBiModel }).(JobTaskPowerBiTaskPowerBiModelPtrOutput)
+}
+
+func (o JobTaskPowerBiTaskOutput) RefreshAfterUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTask) *bool { return v.RefreshAfterUpdate }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskPowerBiTaskOutput) Tables() JobTaskPowerBiTaskTableArrayOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTask) []JobTaskPowerBiTaskTable { return v.Tables }).(JobTaskPowerBiTaskTableArrayOutput)
+}
+
+func (o JobTaskPowerBiTaskOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskPowerBiTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskPowerBiTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskPowerBiTask)(nil)).Elem()
+}
+
+func (o JobTaskPowerBiTaskPtrOutput) ToJobTaskPowerBiTaskPtrOutput() JobTaskPowerBiTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskPowerBiTaskPtrOutput) ToJobTaskPowerBiTaskPtrOutputWithContext(ctx context.Context) JobTaskPowerBiTaskPtrOutput {
+	return o
+}
+
+func (o JobTaskPowerBiTaskPtrOutput) Elem() JobTaskPowerBiTaskOutput {
+	return o.ApplyT(func(v *JobTaskPowerBiTask) JobTaskPowerBiTask {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskPowerBiTask
+		return ret
+	}).(JobTaskPowerBiTaskOutput)
+}
+
+func (o JobTaskPowerBiTaskPtrOutput) ConnectionResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskPowerBiTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskPowerBiTaskPtrOutput) PowerBiModel() JobTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o.ApplyT(func(v *JobTaskPowerBiTask) *JobTaskPowerBiTaskPowerBiModel {
+		if v == nil {
+			return nil
+		}
+		return v.PowerBiModel
+	}).(JobTaskPowerBiTaskPowerBiModelPtrOutput)
+}
+
+func (o JobTaskPowerBiTaskPtrOutput) RefreshAfterUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskPowerBiTask) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshAfterUpdate
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskPowerBiTaskPtrOutput) Tables() JobTaskPowerBiTaskTableArrayOutput {
+	return o.ApplyT(func(v *JobTaskPowerBiTask) []JobTaskPowerBiTaskTable {
+		if v == nil {
+			return nil
+		}
+		return v.Tables
+	}).(JobTaskPowerBiTaskTableArrayOutput)
+}
+
+func (o JobTaskPowerBiTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskPowerBiTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WarehouseId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskPowerBiTaskPowerBiModel struct {
+	AuthenticationMethod *string `pulumi:"authenticationMethod"`
+	ModelName            *string `pulumi:"modelName"`
+	OverwriteExisting    *bool   `pulumi:"overwriteExisting"`
+	StorageMode          *string `pulumi:"storageMode"`
+	WorkspaceName        *string `pulumi:"workspaceName"`
+}
+
+// JobTaskPowerBiTaskPowerBiModelInput is an input type that accepts JobTaskPowerBiTaskPowerBiModelArgs and JobTaskPowerBiTaskPowerBiModelOutput values.
+// You can construct a concrete instance of `JobTaskPowerBiTaskPowerBiModelInput` via:
+//
+//	JobTaskPowerBiTaskPowerBiModelArgs{...}
+type JobTaskPowerBiTaskPowerBiModelInput interface {
+	pulumi.Input
+
+	ToJobTaskPowerBiTaskPowerBiModelOutput() JobTaskPowerBiTaskPowerBiModelOutput
+	ToJobTaskPowerBiTaskPowerBiModelOutputWithContext(context.Context) JobTaskPowerBiTaskPowerBiModelOutput
+}
+
+type JobTaskPowerBiTaskPowerBiModelArgs struct {
+	AuthenticationMethod pulumi.StringPtrInput `pulumi:"authenticationMethod"`
+	ModelName            pulumi.StringPtrInput `pulumi:"modelName"`
+	OverwriteExisting    pulumi.BoolPtrInput   `pulumi:"overwriteExisting"`
+	StorageMode          pulumi.StringPtrInput `pulumi:"storageMode"`
+	WorkspaceName        pulumi.StringPtrInput `pulumi:"workspaceName"`
+}
+
+func (JobTaskPowerBiTaskPowerBiModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskPowerBiTaskPowerBiModel)(nil)).Elem()
+}
+
+func (i JobTaskPowerBiTaskPowerBiModelArgs) ToJobTaskPowerBiTaskPowerBiModelOutput() JobTaskPowerBiTaskPowerBiModelOutput {
+	return i.ToJobTaskPowerBiTaskPowerBiModelOutputWithContext(context.Background())
+}
+
+func (i JobTaskPowerBiTaskPowerBiModelArgs) ToJobTaskPowerBiTaskPowerBiModelOutputWithContext(ctx context.Context) JobTaskPowerBiTaskPowerBiModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskPowerBiTaskPowerBiModelOutput)
+}
+
+func (i JobTaskPowerBiTaskPowerBiModelArgs) ToJobTaskPowerBiTaskPowerBiModelPtrOutput() JobTaskPowerBiTaskPowerBiModelPtrOutput {
+	return i.ToJobTaskPowerBiTaskPowerBiModelPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskPowerBiTaskPowerBiModelArgs) ToJobTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx context.Context) JobTaskPowerBiTaskPowerBiModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskPowerBiTaskPowerBiModelOutput).ToJobTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx)
+}
+
+// JobTaskPowerBiTaskPowerBiModelPtrInput is an input type that accepts JobTaskPowerBiTaskPowerBiModelArgs, JobTaskPowerBiTaskPowerBiModelPtr and JobTaskPowerBiTaskPowerBiModelPtrOutput values.
+// You can construct a concrete instance of `JobTaskPowerBiTaskPowerBiModelPtrInput` via:
+//
+//	        JobTaskPowerBiTaskPowerBiModelArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskPowerBiTaskPowerBiModelPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskPowerBiTaskPowerBiModelPtrOutput() JobTaskPowerBiTaskPowerBiModelPtrOutput
+	ToJobTaskPowerBiTaskPowerBiModelPtrOutputWithContext(context.Context) JobTaskPowerBiTaskPowerBiModelPtrOutput
+}
+
+type jobTaskPowerBiTaskPowerBiModelPtrType JobTaskPowerBiTaskPowerBiModelArgs
+
+func JobTaskPowerBiTaskPowerBiModelPtr(v *JobTaskPowerBiTaskPowerBiModelArgs) JobTaskPowerBiTaskPowerBiModelPtrInput {
+	return (*jobTaskPowerBiTaskPowerBiModelPtrType)(v)
+}
+
+func (*jobTaskPowerBiTaskPowerBiModelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskPowerBiTaskPowerBiModel)(nil)).Elem()
+}
+
+func (i *jobTaskPowerBiTaskPowerBiModelPtrType) ToJobTaskPowerBiTaskPowerBiModelPtrOutput() JobTaskPowerBiTaskPowerBiModelPtrOutput {
+	return i.ToJobTaskPowerBiTaskPowerBiModelPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskPowerBiTaskPowerBiModelPtrType) ToJobTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx context.Context) JobTaskPowerBiTaskPowerBiModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskPowerBiTaskPowerBiModelPtrOutput)
+}
+
+type JobTaskPowerBiTaskPowerBiModelOutput struct{ *pulumi.OutputState }
+
+func (JobTaskPowerBiTaskPowerBiModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskPowerBiTaskPowerBiModel)(nil)).Elem()
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelOutput) ToJobTaskPowerBiTaskPowerBiModelOutput() JobTaskPowerBiTaskPowerBiModelOutput {
+	return o
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelOutput) ToJobTaskPowerBiTaskPowerBiModelOutputWithContext(ctx context.Context) JobTaskPowerBiTaskPowerBiModelOutput {
+	return o
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelOutput) ToJobTaskPowerBiTaskPowerBiModelPtrOutput() JobTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o.ToJobTaskPowerBiTaskPowerBiModelPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelOutput) ToJobTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx context.Context) JobTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskPowerBiTaskPowerBiModel) *JobTaskPowerBiTaskPowerBiModel {
+		return &v
+	}).(JobTaskPowerBiTaskPowerBiModelPtrOutput)
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelOutput) AuthenticationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTaskPowerBiModel) *string { return v.AuthenticationMethod }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTaskPowerBiModel) *string { return v.ModelName }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelOutput) OverwriteExisting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTaskPowerBiModel) *bool { return v.OverwriteExisting }).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelOutput) StorageMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTaskPowerBiModel) *string { return v.StorageMode }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTaskPowerBiModel) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskPowerBiTaskPowerBiModelPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskPowerBiTaskPowerBiModelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskPowerBiTaskPowerBiModel)(nil)).Elem()
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) ToJobTaskPowerBiTaskPowerBiModelPtrOutput() JobTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) ToJobTaskPowerBiTaskPowerBiModelPtrOutputWithContext(ctx context.Context) JobTaskPowerBiTaskPowerBiModelPtrOutput {
+	return o
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) Elem() JobTaskPowerBiTaskPowerBiModelOutput {
+	return o.ApplyT(func(v *JobTaskPowerBiTaskPowerBiModel) JobTaskPowerBiTaskPowerBiModel {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskPowerBiTaskPowerBiModel
+		return ret
+	}).(JobTaskPowerBiTaskPowerBiModelOutput)
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) AuthenticationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskPowerBiTaskPowerBiModel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskPowerBiTaskPowerBiModel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModelName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) OverwriteExisting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskPowerBiTaskPowerBiModel) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverwriteExisting
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) StorageMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskPowerBiTaskPowerBiModel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageMode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTaskPowerBiTaskPowerBiModel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobTaskPowerBiTaskTable struct {
+	// The name of the catalog to use inside Unity Catalog.
+	Catalog *string `pulumi:"catalog"`
+	// An optional name for the job. The default value is Untitled.
+	Name *string `pulumi:"name"`
+	// The name of the schema dbt should run in. Defaults to `default`.
+	Schema      *string `pulumi:"schema"`
+	StorageMode *string `pulumi:"storageMode"`
+}
+
+// JobTaskPowerBiTaskTableInput is an input type that accepts JobTaskPowerBiTaskTableArgs and JobTaskPowerBiTaskTableOutput values.
+// You can construct a concrete instance of `JobTaskPowerBiTaskTableInput` via:
+//
+//	JobTaskPowerBiTaskTableArgs{...}
+type JobTaskPowerBiTaskTableInput interface {
+	pulumi.Input
+
+	ToJobTaskPowerBiTaskTableOutput() JobTaskPowerBiTaskTableOutput
+	ToJobTaskPowerBiTaskTableOutputWithContext(context.Context) JobTaskPowerBiTaskTableOutput
+}
+
+type JobTaskPowerBiTaskTableArgs struct {
+	// The name of the catalog to use inside Unity Catalog.
+	Catalog pulumi.StringPtrInput `pulumi:"catalog"`
+	// An optional name for the job. The default value is Untitled.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The name of the schema dbt should run in. Defaults to `default`.
+	Schema      pulumi.StringPtrInput `pulumi:"schema"`
+	StorageMode pulumi.StringPtrInput `pulumi:"storageMode"`
+}
+
+func (JobTaskPowerBiTaskTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskPowerBiTaskTable)(nil)).Elem()
+}
+
+func (i JobTaskPowerBiTaskTableArgs) ToJobTaskPowerBiTaskTableOutput() JobTaskPowerBiTaskTableOutput {
+	return i.ToJobTaskPowerBiTaskTableOutputWithContext(context.Background())
+}
+
+func (i JobTaskPowerBiTaskTableArgs) ToJobTaskPowerBiTaskTableOutputWithContext(ctx context.Context) JobTaskPowerBiTaskTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskPowerBiTaskTableOutput)
+}
+
+// JobTaskPowerBiTaskTableArrayInput is an input type that accepts JobTaskPowerBiTaskTableArray and JobTaskPowerBiTaskTableArrayOutput values.
+// You can construct a concrete instance of `JobTaskPowerBiTaskTableArrayInput` via:
+//
+//	JobTaskPowerBiTaskTableArray{ JobTaskPowerBiTaskTableArgs{...} }
+type JobTaskPowerBiTaskTableArrayInput interface {
+	pulumi.Input
+
+	ToJobTaskPowerBiTaskTableArrayOutput() JobTaskPowerBiTaskTableArrayOutput
+	ToJobTaskPowerBiTaskTableArrayOutputWithContext(context.Context) JobTaskPowerBiTaskTableArrayOutput
+}
+
+type JobTaskPowerBiTaskTableArray []JobTaskPowerBiTaskTableInput
+
+func (JobTaskPowerBiTaskTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskPowerBiTaskTable)(nil)).Elem()
+}
+
+func (i JobTaskPowerBiTaskTableArray) ToJobTaskPowerBiTaskTableArrayOutput() JobTaskPowerBiTaskTableArrayOutput {
+	return i.ToJobTaskPowerBiTaskTableArrayOutputWithContext(context.Background())
+}
+
+func (i JobTaskPowerBiTaskTableArray) ToJobTaskPowerBiTaskTableArrayOutputWithContext(ctx context.Context) JobTaskPowerBiTaskTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskPowerBiTaskTableArrayOutput)
+}
+
+type JobTaskPowerBiTaskTableOutput struct{ *pulumi.OutputState }
+
+func (JobTaskPowerBiTaskTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskPowerBiTaskTable)(nil)).Elem()
+}
+
+func (o JobTaskPowerBiTaskTableOutput) ToJobTaskPowerBiTaskTableOutput() JobTaskPowerBiTaskTableOutput {
+	return o
+}
+
+func (o JobTaskPowerBiTaskTableOutput) ToJobTaskPowerBiTaskTableOutputWithContext(ctx context.Context) JobTaskPowerBiTaskTableOutput {
+	return o
+}
+
+// The name of the catalog to use inside Unity Catalog.
+func (o JobTaskPowerBiTaskTableOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTaskTable) *string { return v.Catalog }).(pulumi.StringPtrOutput)
+}
+
+// An optional name for the job. The default value is Untitled.
+func (o JobTaskPowerBiTaskTableOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTaskTable) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The name of the schema dbt should run in. Defaults to `default`.
+func (o JobTaskPowerBiTaskTableOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTaskTable) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+func (o JobTaskPowerBiTaskTableOutput) StorageMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskPowerBiTaskTable) *string { return v.StorageMode }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskPowerBiTaskTableArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTaskPowerBiTaskTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskPowerBiTaskTable)(nil)).Elem()
+}
+
+func (o JobTaskPowerBiTaskTableArrayOutput) ToJobTaskPowerBiTaskTableArrayOutput() JobTaskPowerBiTaskTableArrayOutput {
+	return o
+}
+
+func (o JobTaskPowerBiTaskTableArrayOutput) ToJobTaskPowerBiTaskTableArrayOutputWithContext(ctx context.Context) JobTaskPowerBiTaskTableArrayOutput {
+	return o
+}
+
+func (o JobTaskPowerBiTaskTableArrayOutput) Index(i pulumi.IntInput) JobTaskPowerBiTaskTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskPowerBiTaskTable {
+		return vs[0].([]JobTaskPowerBiTaskTable)[vs[1].(int)]
+	}).(JobTaskPowerBiTaskTableOutput)
+}
+
 type JobTaskPythonWheelTask struct {
 	// Python function as entry point for the task
 	EntryPoint *string `pulumi:"entryPoint"`
@@ -55674,6 +57764,7 @@ func (o MlflowWebhookJobSpecPtrOutput) WorkspaceUrl() pulumi.StringPtrOutput {
 }
 
 type ModelServingAiGateway struct {
+	// block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
 	FallbackConfig *ModelServingAiGatewayFallbackConfig `pulumi:"fallbackConfig"`
 	// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
 	Guardrails *ModelServingAiGatewayGuardrails `pulumi:"guardrails"`
@@ -55697,6 +57788,7 @@ type ModelServingAiGatewayInput interface {
 }
 
 type ModelServingAiGatewayArgs struct {
+	// block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
 	FallbackConfig ModelServingAiGatewayFallbackConfigPtrInput `pulumi:"fallbackConfig"`
 	// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
 	Guardrails ModelServingAiGatewayGuardrailsPtrInput `pulumi:"guardrails"`
@@ -55785,6 +57877,7 @@ func (o ModelServingAiGatewayOutput) ToModelServingAiGatewayPtrOutputWithContext
 	}).(ModelServingAiGatewayPtrOutput)
 }
 
+// block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
 func (o ModelServingAiGatewayOutput) FallbackConfig() ModelServingAiGatewayFallbackConfigPtrOutput {
 	return o.ApplyT(func(v ModelServingAiGateway) *ModelServingAiGatewayFallbackConfig { return v.FallbackConfig }).(ModelServingAiGatewayFallbackConfigPtrOutput)
 }
@@ -55835,6 +57928,7 @@ func (o ModelServingAiGatewayPtrOutput) Elem() ModelServingAiGatewayOutput {
 	}).(ModelServingAiGatewayOutput)
 }
 
+// block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
 func (o ModelServingAiGatewayPtrOutput) FallbackConfig() ModelServingAiGatewayFallbackConfigPtrOutput {
 	return o.ApplyT(func(v *ModelServingAiGateway) *ModelServingAiGatewayFallbackConfig {
 		if v == nil {
@@ -55885,6 +57979,7 @@ func (o ModelServingAiGatewayPtrOutput) UsageTrackingConfig() ModelServingAiGate
 }
 
 type ModelServingAiGatewayFallbackConfig struct {
+	// Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -55900,6 +57995,7 @@ type ModelServingAiGatewayFallbackConfigInput interface {
 }
 
 type ModelServingAiGatewayFallbackConfigArgs struct {
+	// Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -55980,6 +58076,7 @@ func (o ModelServingAiGatewayFallbackConfigOutput) ToModelServingAiGatewayFallba
 	}).(ModelServingAiGatewayFallbackConfigPtrOutput)
 }
 
+// Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
 func (o ModelServingAiGatewayFallbackConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ModelServingAiGatewayFallbackConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -56008,6 +58105,7 @@ func (o ModelServingAiGatewayFallbackConfigPtrOutput) Elem() ModelServingAiGatew
 	}).(ModelServingAiGatewayFallbackConfigOutput)
 }
 
+// Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
 func (o ModelServingAiGatewayFallbackConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ModelServingAiGatewayFallbackConfig) *bool {
 		if v == nil {
@@ -57874,7 +59972,8 @@ type ModelServingConfigServedEntityExternalModel struct {
 	// Anthropic Config
 	AnthropicConfig *ModelServingConfigServedEntityExternalModelAnthropicConfig `pulumi:"anthropicConfig"`
 	// Cohere Config
-	CohereConfig         *ModelServingConfigServedEntityExternalModelCohereConfig         `pulumi:"cohereConfig"`
+	CohereConfig *ModelServingConfigServedEntityExternalModelCohereConfig `pulumi:"cohereConfig"`
+	// Custom Provider Config. Only required if the provider is 'custom'.
 	CustomProviderConfig *ModelServingConfigServedEntityExternalModelCustomProviderConfig `pulumi:"customProviderConfig"`
 	// Databricks Model Serving Config
 	DatabricksModelServingConfig *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig `pulumi:"databricksModelServingConfig"`
@@ -57911,7 +60010,8 @@ type ModelServingConfigServedEntityExternalModelArgs struct {
 	// Anthropic Config
 	AnthropicConfig ModelServingConfigServedEntityExternalModelAnthropicConfigPtrInput `pulumi:"anthropicConfig"`
 	// Cohere Config
-	CohereConfig         ModelServingConfigServedEntityExternalModelCohereConfigPtrInput         `pulumi:"cohereConfig"`
+	CohereConfig ModelServingConfigServedEntityExternalModelCohereConfigPtrInput `pulumi:"cohereConfig"`
+	// Custom Provider Config. Only required if the provider is 'custom'.
 	CustomProviderConfig ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrInput `pulumi:"customProviderConfig"`
 	// Databricks Model Serving Config
 	DatabricksModelServingConfig ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrInput `pulumi:"databricksModelServingConfig"`
@@ -58034,6 +60134,7 @@ func (o ModelServingConfigServedEntityExternalModelOutput) CohereConfig() ModelS
 	}).(ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput)
 }
 
+// Custom Provider Config. Only required if the provider is 'custom'.
 func (o ModelServingConfigServedEntityExternalModelOutput) CustomProviderConfig() ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelCustomProviderConfig {
 		return v.CustomProviderConfig
@@ -58147,6 +60248,7 @@ func (o ModelServingConfigServedEntityExternalModelPtrOutput) CohereConfig() Mod
 	}).(ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput)
 }
 
+// Custom Provider Config. Only required if the provider is 'custom'.
 func (o ModelServingConfigServedEntityExternalModelPtrOutput) CustomProviderConfig() ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelCustomProviderConfig {
 		if v == nil {
@@ -58975,9 +61077,12 @@ func (o ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput) Cohere
 }
 
 type ModelServingConfigServedEntityExternalModelCustomProviderConfig struct {
-	ApiKeyAuth        *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth      `pulumi:"apiKeyAuth"`
-	BearerTokenAuth   *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth `pulumi:"bearerTokenAuth"`
-	CustomProviderUrl string                                                                          `pulumi:"customProviderUrl"`
+	// API key authentication for the custom provider API. Conflicts with `bearerTokenAuth`.
+	ApiKeyAuth *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth `pulumi:"apiKeyAuth"`
+	// bearer token authentication for the custom provider API.  Conflicts with `apiKeyAuth`.
+	BearerTokenAuth *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth `pulumi:"bearerTokenAuth"`
+	// URL of the custom provider API.
+	CustomProviderUrl string `pulumi:"customProviderUrl"`
 }
 
 // ModelServingConfigServedEntityExternalModelCustomProviderConfigInput is an input type that accepts ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs and ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput values.
@@ -58992,9 +61097,12 @@ type ModelServingConfigServedEntityExternalModelCustomProviderConfigInput interf
 }
 
 type ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs struct {
-	ApiKeyAuth        ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrInput      `pulumi:"apiKeyAuth"`
-	BearerTokenAuth   ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrInput `pulumi:"bearerTokenAuth"`
-	CustomProviderUrl pulumi.StringInput                                                                     `pulumi:"customProviderUrl"`
+	// API key authentication for the custom provider API. Conflicts with `bearerTokenAuth`.
+	ApiKeyAuth ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrInput `pulumi:"apiKeyAuth"`
+	// bearer token authentication for the custom provider API.  Conflicts with `apiKeyAuth`.
+	BearerTokenAuth ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrInput `pulumi:"bearerTokenAuth"`
+	// URL of the custom provider API.
+	CustomProviderUrl pulumi.StringInput `pulumi:"customProviderUrl"`
 }
 
 func (ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs) ElementType() reflect.Type {
@@ -59074,18 +61182,21 @@ func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) T
 	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput)
 }
 
+// API key authentication for the custom provider API. Conflicts with `bearerTokenAuth`.
 func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) ApiKeyAuth() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfig) *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
 		return v.ApiKeyAuth
 	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput)
 }
 
+// bearer token authentication for the custom provider API.  Conflicts with `apiKeyAuth`.
 func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) BearerTokenAuth() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfig) *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
 		return v.BearerTokenAuth
 	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput)
 }
 
+// URL of the custom provider API.
 func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput) CustomProviderUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfig) string {
 		return v.CustomProviderUrl
@@ -59116,6 +61227,7 @@ func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput
 	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigOutput)
 }
 
+// API key authentication for the custom provider API. Conflicts with `bearerTokenAuth`.
 func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput) ApiKeyAuth() ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfig) *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
 		if v == nil {
@@ -59125,6 +61237,7 @@ func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput
 	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput)
 }
 
+// bearer token authentication for the custom provider API.  Conflicts with `apiKeyAuth`.
 func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput) BearerTokenAuth() ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfig) *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
 		if v == nil {
@@ -59134,6 +61247,7 @@ func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput
 	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput)
 }
 
+// URL of the custom provider API.
 func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput) CustomProviderUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfig) *string {
 		if v == nil {
@@ -59144,9 +61258,9 @@ func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigPtrOutput
 }
 
 type ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth struct {
-	Key string `pulumi:"key"`
-	// The value field for a tag.
-	Value          *string `pulumi:"value"`
+	Key   string  `pulumi:"key"`
+	Value *string `pulumi:"value"`
+	// The API Key provided as a plaintext string.
 	ValuePlaintext *string `pulumi:"valuePlaintext"`
 }
 
@@ -59162,9 +61276,9 @@ type ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthIn
 }
 
 type ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs struct {
-	Key pulumi.StringInput `pulumi:"key"`
-	// The value field for a tag.
-	Value          pulumi.StringPtrInput `pulumi:"value"`
+	Key   pulumi.StringInput    `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// The API Key provided as a plaintext string.
 	ValuePlaintext pulumi.StringPtrInput `pulumi:"valuePlaintext"`
 }
 
@@ -59249,13 +61363,13 @@ func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAut
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The value field for a tag.
 func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) *string {
 		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
+// The API Key provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthOutput) ValuePlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) *string {
 		return v.ValuePlaintext
@@ -59295,7 +61409,6 @@ func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The value field for a tag.
 func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) *string {
 		if v == nil {
@@ -59305,6 +61418,7 @@ func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAut
 	}).(pulumi.StringPtrOutput)
 }
 
+// The API Key provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthPtrOutput) ValuePlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth) *string {
 		if v == nil {
@@ -59315,7 +61429,9 @@ func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAut
 }
 
 type ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth struct {
-	Token          *string `pulumi:"token"`
+	// The Databricks secret key reference for a token.
+	Token *string `pulumi:"token"`
+	// The token provided as a plaintext string.
 	TokenPlaintext *string `pulumi:"tokenPlaintext"`
 }
 
@@ -59331,7 +61447,9 @@ type ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenA
 }
 
 type ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs struct {
-	Token          pulumi.StringPtrInput `pulumi:"token"`
+	// The Databricks secret key reference for a token.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+	// The token provided as a plaintext string.
 	TokenPlaintext pulumi.StringPtrInput `pulumi:"tokenPlaintext"`
 }
 
@@ -59412,12 +61530,14 @@ func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTok
 	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput)
 }
 
+// The Databricks secret key reference for a token.
 func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth) *string {
 		return v.Token
 	}).(pulumi.StringPtrOutput)
 }
 
+// The token provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput) TokenPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth) *string {
 		return v.TokenPlaintext
@@ -59448,6 +61568,7 @@ func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTok
 	}).(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthOutput)
 }
 
+// The Databricks secret key reference for a token.
 func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth) *string {
 		if v == nil {
@@ -59457,6 +61578,7 @@ func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTok
 	}).(pulumi.StringPtrOutput)
 }
 
+// The token provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthPtrOutput) TokenPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth) *string {
 		if v == nil {
@@ -63311,11 +65433,11 @@ type MwsNetworksGcpNetworkInfo struct {
 	NetworkProjectId string `pulumi:"networkProjectId"`
 	// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName *string `pulumi:"podIpRangeName"`
 	// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName *string `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId string `pulumi:"subnetId"`
@@ -63341,11 +65463,11 @@ type MwsNetworksGcpNetworkInfoArgs struct {
 	NetworkProjectId pulumi.StringInput `pulumi:"networkProjectId"`
 	// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName pulumi.StringPtrInput `pulumi:"podIpRangeName"`
 	// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName pulumi.StringPtrInput `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
@@ -63439,14 +65561,14 @@ func (o MwsNetworksGcpNetworkInfoOutput) NetworkProjectId() pulumi.StringOutput 
 
 // The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.PodIpRangeName }).(pulumi.StringPtrOutput)
 }
 
 // The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.ServiceIpRangeName }).(pulumi.StringPtrOutput)
 }
@@ -63502,7 +65624,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) NetworkProjectId() pulumi.StringPtrO
 
 // The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -63514,7 +65636,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOut
 
 // The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -63912,6 +66034,154 @@ func (o MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) ServiceAttachmentId() pulumi.
 			return nil
 		}
 		return v.ServiceAttachmentId
+	}).(pulumi.StringPtrOutput)
+}
+
+type MwsWorkspacesAzureWorkspaceInfo struct {
+	ResourceGroup  *string `pulumi:"resourceGroup"`
+	SubscriptionId *string `pulumi:"subscriptionId"`
+}
+
+// MwsWorkspacesAzureWorkspaceInfoInput is an input type that accepts MwsWorkspacesAzureWorkspaceInfoArgs and MwsWorkspacesAzureWorkspaceInfoOutput values.
+// You can construct a concrete instance of `MwsWorkspacesAzureWorkspaceInfoInput` via:
+//
+//	MwsWorkspacesAzureWorkspaceInfoArgs{...}
+type MwsWorkspacesAzureWorkspaceInfoInput interface {
+	pulumi.Input
+
+	ToMwsWorkspacesAzureWorkspaceInfoOutput() MwsWorkspacesAzureWorkspaceInfoOutput
+	ToMwsWorkspacesAzureWorkspaceInfoOutputWithContext(context.Context) MwsWorkspacesAzureWorkspaceInfoOutput
+}
+
+type MwsWorkspacesAzureWorkspaceInfoArgs struct {
+	ResourceGroup  pulumi.StringPtrInput `pulumi:"resourceGroup"`
+	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
+}
+
+func (MwsWorkspacesAzureWorkspaceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsWorkspacesAzureWorkspaceInfo)(nil)).Elem()
+}
+
+func (i MwsWorkspacesAzureWorkspaceInfoArgs) ToMwsWorkspacesAzureWorkspaceInfoOutput() MwsWorkspacesAzureWorkspaceInfoOutput {
+	return i.ToMwsWorkspacesAzureWorkspaceInfoOutputWithContext(context.Background())
+}
+
+func (i MwsWorkspacesAzureWorkspaceInfoArgs) ToMwsWorkspacesAzureWorkspaceInfoOutputWithContext(ctx context.Context) MwsWorkspacesAzureWorkspaceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesAzureWorkspaceInfoOutput)
+}
+
+func (i MwsWorkspacesAzureWorkspaceInfoArgs) ToMwsWorkspacesAzureWorkspaceInfoPtrOutput() MwsWorkspacesAzureWorkspaceInfoPtrOutput {
+	return i.ToMwsWorkspacesAzureWorkspaceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i MwsWorkspacesAzureWorkspaceInfoArgs) ToMwsWorkspacesAzureWorkspaceInfoPtrOutputWithContext(ctx context.Context) MwsWorkspacesAzureWorkspaceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesAzureWorkspaceInfoOutput).ToMwsWorkspacesAzureWorkspaceInfoPtrOutputWithContext(ctx)
+}
+
+// MwsWorkspacesAzureWorkspaceInfoPtrInput is an input type that accepts MwsWorkspacesAzureWorkspaceInfoArgs, MwsWorkspacesAzureWorkspaceInfoPtr and MwsWorkspacesAzureWorkspaceInfoPtrOutput values.
+// You can construct a concrete instance of `MwsWorkspacesAzureWorkspaceInfoPtrInput` via:
+//
+//	        MwsWorkspacesAzureWorkspaceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type MwsWorkspacesAzureWorkspaceInfoPtrInput interface {
+	pulumi.Input
+
+	ToMwsWorkspacesAzureWorkspaceInfoPtrOutput() MwsWorkspacesAzureWorkspaceInfoPtrOutput
+	ToMwsWorkspacesAzureWorkspaceInfoPtrOutputWithContext(context.Context) MwsWorkspacesAzureWorkspaceInfoPtrOutput
+}
+
+type mwsWorkspacesAzureWorkspaceInfoPtrType MwsWorkspacesAzureWorkspaceInfoArgs
+
+func MwsWorkspacesAzureWorkspaceInfoPtr(v *MwsWorkspacesAzureWorkspaceInfoArgs) MwsWorkspacesAzureWorkspaceInfoPtrInput {
+	return (*mwsWorkspacesAzureWorkspaceInfoPtrType)(v)
+}
+
+func (*mwsWorkspacesAzureWorkspaceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsWorkspacesAzureWorkspaceInfo)(nil)).Elem()
+}
+
+func (i *mwsWorkspacesAzureWorkspaceInfoPtrType) ToMwsWorkspacesAzureWorkspaceInfoPtrOutput() MwsWorkspacesAzureWorkspaceInfoPtrOutput {
+	return i.ToMwsWorkspacesAzureWorkspaceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *mwsWorkspacesAzureWorkspaceInfoPtrType) ToMwsWorkspacesAzureWorkspaceInfoPtrOutputWithContext(ctx context.Context) MwsWorkspacesAzureWorkspaceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesAzureWorkspaceInfoPtrOutput)
+}
+
+type MwsWorkspacesAzureWorkspaceInfoOutput struct{ *pulumi.OutputState }
+
+func (MwsWorkspacesAzureWorkspaceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MwsWorkspacesAzureWorkspaceInfo)(nil)).Elem()
+}
+
+func (o MwsWorkspacesAzureWorkspaceInfoOutput) ToMwsWorkspacesAzureWorkspaceInfoOutput() MwsWorkspacesAzureWorkspaceInfoOutput {
+	return o
+}
+
+func (o MwsWorkspacesAzureWorkspaceInfoOutput) ToMwsWorkspacesAzureWorkspaceInfoOutputWithContext(ctx context.Context) MwsWorkspacesAzureWorkspaceInfoOutput {
+	return o
+}
+
+func (o MwsWorkspacesAzureWorkspaceInfoOutput) ToMwsWorkspacesAzureWorkspaceInfoPtrOutput() MwsWorkspacesAzureWorkspaceInfoPtrOutput {
+	return o.ToMwsWorkspacesAzureWorkspaceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o MwsWorkspacesAzureWorkspaceInfoOutput) ToMwsWorkspacesAzureWorkspaceInfoPtrOutputWithContext(ctx context.Context) MwsWorkspacesAzureWorkspaceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsWorkspacesAzureWorkspaceInfo) *MwsWorkspacesAzureWorkspaceInfo {
+		return &v
+	}).(MwsWorkspacesAzureWorkspaceInfoPtrOutput)
+}
+
+func (o MwsWorkspacesAzureWorkspaceInfoOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsWorkspacesAzureWorkspaceInfo) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+func (o MwsWorkspacesAzureWorkspaceInfoOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsWorkspacesAzureWorkspaceInfo) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+type MwsWorkspacesAzureWorkspaceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (MwsWorkspacesAzureWorkspaceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MwsWorkspacesAzureWorkspaceInfo)(nil)).Elem()
+}
+
+func (o MwsWorkspacesAzureWorkspaceInfoPtrOutput) ToMwsWorkspacesAzureWorkspaceInfoPtrOutput() MwsWorkspacesAzureWorkspaceInfoPtrOutput {
+	return o
+}
+
+func (o MwsWorkspacesAzureWorkspaceInfoPtrOutput) ToMwsWorkspacesAzureWorkspaceInfoPtrOutputWithContext(ctx context.Context) MwsWorkspacesAzureWorkspaceInfoPtrOutput {
+	return o
+}
+
+func (o MwsWorkspacesAzureWorkspaceInfoPtrOutput) Elem() MwsWorkspacesAzureWorkspaceInfoOutput {
+	return o.ApplyT(func(v *MwsWorkspacesAzureWorkspaceInfo) MwsWorkspacesAzureWorkspaceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret MwsWorkspacesAzureWorkspaceInfo
+		return ret
+	}).(MwsWorkspacesAzureWorkspaceInfoOutput)
+}
+
+func (o MwsWorkspacesAzureWorkspaceInfoPtrOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsWorkspacesAzureWorkspaceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MwsWorkspacesAzureWorkspaceInfoPtrOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsWorkspacesAzureWorkspaceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubscriptionId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -64353,11 +66623,12 @@ func (o MwsWorkspacesExternalCustomerInfoPtrOutput) CustomerName() pulumi.String
 }
 
 type MwsWorkspacesGcpManagedNetworkConfig struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange *string `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange *string `pulumi:"gkeClusterServiceIpRange"`
-	SubnetCidr               string  `pulumi:"subnetCidr"`
+	// The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
+	SubnetCidr string `pulumi:"subnetCidr"`
 }
 
 // MwsWorkspacesGcpManagedNetworkConfigInput is an input type that accepts MwsWorkspacesGcpManagedNetworkConfigArgs and MwsWorkspacesGcpManagedNetworkConfigOutput values.
@@ -64372,11 +66643,12 @@ type MwsWorkspacesGcpManagedNetworkConfigInput interface {
 }
 
 type MwsWorkspacesGcpManagedNetworkConfigArgs struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange pulumi.StringPtrInput `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange pulumi.StringPtrInput `pulumi:"gkeClusterServiceIpRange"`
-	SubnetCidr               pulumi.StringInput    `pulumi:"subnetCidr"`
+	// The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
+	SubnetCidr pulumi.StringInput `pulumi:"subnetCidr"`
 }
 
 func (MwsWorkspacesGcpManagedNetworkConfigArgs) ElementType() reflect.Type {
@@ -64456,16 +66728,17 @@ func (o MwsWorkspacesGcpManagedNetworkConfigOutput) ToMwsWorkspacesGcpManagedNet
 	}).(MwsWorkspacesGcpManagedNetworkConfigPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterPodIpRange }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterServiceIpRange }).(pulumi.StringPtrOutput)
 }
 
+// The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) SubnetCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) string { return v.SubnetCidr }).(pulumi.StringOutput)
 }
@@ -64494,7 +66767,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) Elem() MwsWorkspacesGcpMa
 	}).(MwsWorkspacesGcpManagedNetworkConfigOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -64504,7 +66777,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -64514,6 +66787,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterServiceIpRange(
 	}).(pulumi.StringPtrOutput)
 }
 
+// The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) SubnetCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -80462,2144 +82736,6 @@ func (o SqlQueryParameterDatePtrOutput) Value() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type SqlQueryParameterDateRange struct {
-	Range *SqlQueryParameterDateRangeRange `pulumi:"range"`
-	// The default value for this parameter.
-	Value *string `pulumi:"value"`
-}
-
-// SqlQueryParameterDateRangeInput is an input type that accepts SqlQueryParameterDateRangeArgs and SqlQueryParameterDateRangeOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDateRangeInput` via:
-//
-//	SqlQueryParameterDateRangeArgs{...}
-type SqlQueryParameterDateRangeInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDateRangeOutput() SqlQueryParameterDateRangeOutput
-	ToSqlQueryParameterDateRangeOutputWithContext(context.Context) SqlQueryParameterDateRangeOutput
-}
-
-type SqlQueryParameterDateRangeArgs struct {
-	Range SqlQueryParameterDateRangeRangePtrInput `pulumi:"range"`
-	// The default value for this parameter.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (SqlQueryParameterDateRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDateRange)(nil)).Elem()
-}
-
-func (i SqlQueryParameterDateRangeArgs) ToSqlQueryParameterDateRangeOutput() SqlQueryParameterDateRangeOutput {
-	return i.ToSqlQueryParameterDateRangeOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDateRangeArgs) ToSqlQueryParameterDateRangeOutputWithContext(ctx context.Context) SqlQueryParameterDateRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDateRangeOutput)
-}
-
-func (i SqlQueryParameterDateRangeArgs) ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput {
-	return i.ToSqlQueryParameterDateRangePtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDateRangeArgs) ToSqlQueryParameterDateRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDateRangeOutput).ToSqlQueryParameterDateRangePtrOutputWithContext(ctx)
-}
-
-// SqlQueryParameterDateRangePtrInput is an input type that accepts SqlQueryParameterDateRangeArgs, SqlQueryParameterDateRangePtr and SqlQueryParameterDateRangePtrOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDateRangePtrInput` via:
-//
-//	        SqlQueryParameterDateRangeArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryParameterDateRangePtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput
-	ToSqlQueryParameterDateRangePtrOutputWithContext(context.Context) SqlQueryParameterDateRangePtrOutput
-}
-
-type sqlQueryParameterDateRangePtrType SqlQueryParameterDateRangeArgs
-
-func SqlQueryParameterDateRangePtr(v *SqlQueryParameterDateRangeArgs) SqlQueryParameterDateRangePtrInput {
-	return (*sqlQueryParameterDateRangePtrType)(v)
-}
-
-func (*sqlQueryParameterDateRangePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDateRange)(nil)).Elem()
-}
-
-func (i *sqlQueryParameterDateRangePtrType) ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput {
-	return i.ToSqlQueryParameterDateRangePtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryParameterDateRangePtrType) ToSqlQueryParameterDateRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDateRangePtrOutput)
-}
-
-type SqlQueryParameterDateRangeOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDateRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDateRange)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDateRangeOutput) ToSqlQueryParameterDateRangeOutput() SqlQueryParameterDateRangeOutput {
-	return o
-}
-
-func (o SqlQueryParameterDateRangeOutput) ToSqlQueryParameterDateRangeOutputWithContext(ctx context.Context) SqlQueryParameterDateRangeOutput {
-	return o
-}
-
-func (o SqlQueryParameterDateRangeOutput) ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput {
-	return o.ToSqlQueryParameterDateRangePtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryParameterDateRangeOutput) ToSqlQueryParameterDateRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryParameterDateRange) *SqlQueryParameterDateRange {
-		return &v
-	}).(SqlQueryParameterDateRangePtrOutput)
-}
-
-func (o SqlQueryParameterDateRangeOutput) Range() SqlQueryParameterDateRangeRangePtrOutput {
-	return o.ApplyT(func(v SqlQueryParameterDateRange) *SqlQueryParameterDateRangeRange { return v.Range }).(SqlQueryParameterDateRangeRangePtrOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterDateRangeOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlQueryParameterDateRange) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterDateRangePtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDateRangePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDateRange)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDateRangePtrOutput) ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDateRangePtrOutput) ToSqlQueryParameterDateRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDateRangePtrOutput) Elem() SqlQueryParameterDateRangeOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDateRange) SqlQueryParameterDateRange {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryParameterDateRange
-		return ret
-	}).(SqlQueryParameterDateRangeOutput)
-}
-
-func (o SqlQueryParameterDateRangePtrOutput) Range() SqlQueryParameterDateRangeRangePtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDateRange) *SqlQueryParameterDateRangeRange {
-		if v == nil {
-			return nil
-		}
-		return v.Range
-	}).(SqlQueryParameterDateRangeRangePtrOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterDateRangePtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDateRange) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterDateRangeRange struct {
-	End   string `pulumi:"end"`
-	Start string `pulumi:"start"`
-}
-
-// SqlQueryParameterDateRangeRangeInput is an input type that accepts SqlQueryParameterDateRangeRangeArgs and SqlQueryParameterDateRangeRangeOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDateRangeRangeInput` via:
-//
-//	SqlQueryParameterDateRangeRangeArgs{...}
-type SqlQueryParameterDateRangeRangeInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDateRangeRangeOutput() SqlQueryParameterDateRangeRangeOutput
-	ToSqlQueryParameterDateRangeRangeOutputWithContext(context.Context) SqlQueryParameterDateRangeRangeOutput
-}
-
-type SqlQueryParameterDateRangeRangeArgs struct {
-	End   pulumi.StringInput `pulumi:"end"`
-	Start pulumi.StringInput `pulumi:"start"`
-}
-
-func (SqlQueryParameterDateRangeRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDateRangeRange)(nil)).Elem()
-}
-
-func (i SqlQueryParameterDateRangeRangeArgs) ToSqlQueryParameterDateRangeRangeOutput() SqlQueryParameterDateRangeRangeOutput {
-	return i.ToSqlQueryParameterDateRangeRangeOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDateRangeRangeArgs) ToSqlQueryParameterDateRangeRangeOutputWithContext(ctx context.Context) SqlQueryParameterDateRangeRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDateRangeRangeOutput)
-}
-
-func (i SqlQueryParameterDateRangeRangeArgs) ToSqlQueryParameterDateRangeRangePtrOutput() SqlQueryParameterDateRangeRangePtrOutput {
-	return i.ToSqlQueryParameterDateRangeRangePtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDateRangeRangeArgs) ToSqlQueryParameterDateRangeRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangeRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDateRangeRangeOutput).ToSqlQueryParameterDateRangeRangePtrOutputWithContext(ctx)
-}
-
-// SqlQueryParameterDateRangeRangePtrInput is an input type that accepts SqlQueryParameterDateRangeRangeArgs, SqlQueryParameterDateRangeRangePtr and SqlQueryParameterDateRangeRangePtrOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDateRangeRangePtrInput` via:
-//
-//	        SqlQueryParameterDateRangeRangeArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryParameterDateRangeRangePtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDateRangeRangePtrOutput() SqlQueryParameterDateRangeRangePtrOutput
-	ToSqlQueryParameterDateRangeRangePtrOutputWithContext(context.Context) SqlQueryParameterDateRangeRangePtrOutput
-}
-
-type sqlQueryParameterDateRangeRangePtrType SqlQueryParameterDateRangeRangeArgs
-
-func SqlQueryParameterDateRangeRangePtr(v *SqlQueryParameterDateRangeRangeArgs) SqlQueryParameterDateRangeRangePtrInput {
-	return (*sqlQueryParameterDateRangeRangePtrType)(v)
-}
-
-func (*sqlQueryParameterDateRangeRangePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDateRangeRange)(nil)).Elem()
-}
-
-func (i *sqlQueryParameterDateRangeRangePtrType) ToSqlQueryParameterDateRangeRangePtrOutput() SqlQueryParameterDateRangeRangePtrOutput {
-	return i.ToSqlQueryParameterDateRangeRangePtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryParameterDateRangeRangePtrType) ToSqlQueryParameterDateRangeRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangeRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDateRangeRangePtrOutput)
-}
-
-type SqlQueryParameterDateRangeRangeOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDateRangeRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDateRangeRange)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDateRangeRangeOutput) ToSqlQueryParameterDateRangeRangeOutput() SqlQueryParameterDateRangeRangeOutput {
-	return o
-}
-
-func (o SqlQueryParameterDateRangeRangeOutput) ToSqlQueryParameterDateRangeRangeOutputWithContext(ctx context.Context) SqlQueryParameterDateRangeRangeOutput {
-	return o
-}
-
-func (o SqlQueryParameterDateRangeRangeOutput) ToSqlQueryParameterDateRangeRangePtrOutput() SqlQueryParameterDateRangeRangePtrOutput {
-	return o.ToSqlQueryParameterDateRangeRangePtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryParameterDateRangeRangeOutput) ToSqlQueryParameterDateRangeRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangeRangePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryParameterDateRangeRange) *SqlQueryParameterDateRangeRange {
-		return &v
-	}).(SqlQueryParameterDateRangeRangePtrOutput)
-}
-
-func (o SqlQueryParameterDateRangeRangeOutput) End() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryParameterDateRangeRange) string { return v.End }).(pulumi.StringOutput)
-}
-
-func (o SqlQueryParameterDateRangeRangeOutput) Start() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryParameterDateRangeRange) string { return v.Start }).(pulumi.StringOutput)
-}
-
-type SqlQueryParameterDateRangeRangePtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDateRangeRangePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDateRangeRange)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDateRangeRangePtrOutput) ToSqlQueryParameterDateRangeRangePtrOutput() SqlQueryParameterDateRangeRangePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDateRangeRangePtrOutput) ToSqlQueryParameterDateRangeRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangeRangePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDateRangeRangePtrOutput) Elem() SqlQueryParameterDateRangeRangeOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDateRangeRange) SqlQueryParameterDateRangeRange {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryParameterDateRangeRange
-		return ret
-	}).(SqlQueryParameterDateRangeRangeOutput)
-}
-
-func (o SqlQueryParameterDateRangeRangePtrOutput) End() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDateRangeRange) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.End
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o SqlQueryParameterDateRangeRangePtrOutput) Start() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDateRangeRange) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Start
-	}).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterDatetime struct {
-	// The default value for this parameter.
-	Value string `pulumi:"value"`
-}
-
-// SqlQueryParameterDatetimeInput is an input type that accepts SqlQueryParameterDatetimeArgs and SqlQueryParameterDatetimeOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDatetimeInput` via:
-//
-//	SqlQueryParameterDatetimeArgs{...}
-type SqlQueryParameterDatetimeInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDatetimeOutput() SqlQueryParameterDatetimeOutput
-	ToSqlQueryParameterDatetimeOutputWithContext(context.Context) SqlQueryParameterDatetimeOutput
-}
-
-type SqlQueryParameterDatetimeArgs struct {
-	// The default value for this parameter.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (SqlQueryParameterDatetimeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDatetime)(nil)).Elem()
-}
-
-func (i SqlQueryParameterDatetimeArgs) ToSqlQueryParameterDatetimeOutput() SqlQueryParameterDatetimeOutput {
-	return i.ToSqlQueryParameterDatetimeOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDatetimeArgs) ToSqlQueryParameterDatetimeOutputWithContext(ctx context.Context) SqlQueryParameterDatetimeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatetimeOutput)
-}
-
-func (i SqlQueryParameterDatetimeArgs) ToSqlQueryParameterDatetimePtrOutput() SqlQueryParameterDatetimePtrOutput {
-	return i.ToSqlQueryParameterDatetimePtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDatetimeArgs) ToSqlQueryParameterDatetimePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatetimeOutput).ToSqlQueryParameterDatetimePtrOutputWithContext(ctx)
-}
-
-// SqlQueryParameterDatetimePtrInput is an input type that accepts SqlQueryParameterDatetimeArgs, SqlQueryParameterDatetimePtr and SqlQueryParameterDatetimePtrOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDatetimePtrInput` via:
-//
-//	        SqlQueryParameterDatetimeArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryParameterDatetimePtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDatetimePtrOutput() SqlQueryParameterDatetimePtrOutput
-	ToSqlQueryParameterDatetimePtrOutputWithContext(context.Context) SqlQueryParameterDatetimePtrOutput
-}
-
-type sqlQueryParameterDatetimePtrType SqlQueryParameterDatetimeArgs
-
-func SqlQueryParameterDatetimePtr(v *SqlQueryParameterDatetimeArgs) SqlQueryParameterDatetimePtrInput {
-	return (*sqlQueryParameterDatetimePtrType)(v)
-}
-
-func (*sqlQueryParameterDatetimePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDatetime)(nil)).Elem()
-}
-
-func (i *sqlQueryParameterDatetimePtrType) ToSqlQueryParameterDatetimePtrOutput() SqlQueryParameterDatetimePtrOutput {
-	return i.ToSqlQueryParameterDatetimePtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryParameterDatetimePtrType) ToSqlQueryParameterDatetimePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatetimePtrOutput)
-}
-
-type SqlQueryParameterDatetimeOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDatetimeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDatetime)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDatetimeOutput) ToSqlQueryParameterDatetimeOutput() SqlQueryParameterDatetimeOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimeOutput) ToSqlQueryParameterDatetimeOutputWithContext(ctx context.Context) SqlQueryParameterDatetimeOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimeOutput) ToSqlQueryParameterDatetimePtrOutput() SqlQueryParameterDatetimePtrOutput {
-	return o.ToSqlQueryParameterDatetimePtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryParameterDatetimeOutput) ToSqlQueryParameterDatetimePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryParameterDatetime) *SqlQueryParameterDatetime {
-		return &v
-	}).(SqlQueryParameterDatetimePtrOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterDatetimeOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryParameterDatetime) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type SqlQueryParameterDatetimePtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDatetimePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDatetime)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDatetimePtrOutput) ToSqlQueryParameterDatetimePtrOutput() SqlQueryParameterDatetimePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimePtrOutput) ToSqlQueryParameterDatetimePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimePtrOutput) Elem() SqlQueryParameterDatetimeOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDatetime) SqlQueryParameterDatetime {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryParameterDatetime
-		return ret
-	}).(SqlQueryParameterDatetimeOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterDatetimePtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDatetime) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterDatetimeRange struct {
-	Range *SqlQueryParameterDatetimeRangeRange `pulumi:"range"`
-	// The default value for this parameter.
-	Value *string `pulumi:"value"`
-}
-
-// SqlQueryParameterDatetimeRangeInput is an input type that accepts SqlQueryParameterDatetimeRangeArgs and SqlQueryParameterDatetimeRangeOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDatetimeRangeInput` via:
-//
-//	SqlQueryParameterDatetimeRangeArgs{...}
-type SqlQueryParameterDatetimeRangeInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDatetimeRangeOutput() SqlQueryParameterDatetimeRangeOutput
-	ToSqlQueryParameterDatetimeRangeOutputWithContext(context.Context) SqlQueryParameterDatetimeRangeOutput
-}
-
-type SqlQueryParameterDatetimeRangeArgs struct {
-	Range SqlQueryParameterDatetimeRangeRangePtrInput `pulumi:"range"`
-	// The default value for this parameter.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (SqlQueryParameterDatetimeRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDatetimeRange)(nil)).Elem()
-}
-
-func (i SqlQueryParameterDatetimeRangeArgs) ToSqlQueryParameterDatetimeRangeOutput() SqlQueryParameterDatetimeRangeOutput {
-	return i.ToSqlQueryParameterDatetimeRangeOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDatetimeRangeArgs) ToSqlQueryParameterDatetimeRangeOutputWithContext(ctx context.Context) SqlQueryParameterDatetimeRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatetimeRangeOutput)
-}
-
-func (i SqlQueryParameterDatetimeRangeArgs) ToSqlQueryParameterDatetimeRangePtrOutput() SqlQueryParameterDatetimeRangePtrOutput {
-	return i.ToSqlQueryParameterDatetimeRangePtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDatetimeRangeArgs) ToSqlQueryParameterDatetimeRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimeRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatetimeRangeOutput).ToSqlQueryParameterDatetimeRangePtrOutputWithContext(ctx)
-}
-
-// SqlQueryParameterDatetimeRangePtrInput is an input type that accepts SqlQueryParameterDatetimeRangeArgs, SqlQueryParameterDatetimeRangePtr and SqlQueryParameterDatetimeRangePtrOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDatetimeRangePtrInput` via:
-//
-//	        SqlQueryParameterDatetimeRangeArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryParameterDatetimeRangePtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDatetimeRangePtrOutput() SqlQueryParameterDatetimeRangePtrOutput
-	ToSqlQueryParameterDatetimeRangePtrOutputWithContext(context.Context) SqlQueryParameterDatetimeRangePtrOutput
-}
-
-type sqlQueryParameterDatetimeRangePtrType SqlQueryParameterDatetimeRangeArgs
-
-func SqlQueryParameterDatetimeRangePtr(v *SqlQueryParameterDatetimeRangeArgs) SqlQueryParameterDatetimeRangePtrInput {
-	return (*sqlQueryParameterDatetimeRangePtrType)(v)
-}
-
-func (*sqlQueryParameterDatetimeRangePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDatetimeRange)(nil)).Elem()
-}
-
-func (i *sqlQueryParameterDatetimeRangePtrType) ToSqlQueryParameterDatetimeRangePtrOutput() SqlQueryParameterDatetimeRangePtrOutput {
-	return i.ToSqlQueryParameterDatetimeRangePtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryParameterDatetimeRangePtrType) ToSqlQueryParameterDatetimeRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimeRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatetimeRangePtrOutput)
-}
-
-type SqlQueryParameterDatetimeRangeOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDatetimeRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDatetimeRange)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDatetimeRangeOutput) ToSqlQueryParameterDatetimeRangeOutput() SqlQueryParameterDatetimeRangeOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimeRangeOutput) ToSqlQueryParameterDatetimeRangeOutputWithContext(ctx context.Context) SqlQueryParameterDatetimeRangeOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimeRangeOutput) ToSqlQueryParameterDatetimeRangePtrOutput() SqlQueryParameterDatetimeRangePtrOutput {
-	return o.ToSqlQueryParameterDatetimeRangePtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryParameterDatetimeRangeOutput) ToSqlQueryParameterDatetimeRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimeRangePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryParameterDatetimeRange) *SqlQueryParameterDatetimeRange {
-		return &v
-	}).(SqlQueryParameterDatetimeRangePtrOutput)
-}
-
-func (o SqlQueryParameterDatetimeRangeOutput) Range() SqlQueryParameterDatetimeRangeRangePtrOutput {
-	return o.ApplyT(func(v SqlQueryParameterDatetimeRange) *SqlQueryParameterDatetimeRangeRange { return v.Range }).(SqlQueryParameterDatetimeRangeRangePtrOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterDatetimeRangeOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlQueryParameterDatetimeRange) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterDatetimeRangePtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDatetimeRangePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDatetimeRange)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDatetimeRangePtrOutput) ToSqlQueryParameterDatetimeRangePtrOutput() SqlQueryParameterDatetimeRangePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimeRangePtrOutput) ToSqlQueryParameterDatetimeRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimeRangePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimeRangePtrOutput) Elem() SqlQueryParameterDatetimeRangeOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDatetimeRange) SqlQueryParameterDatetimeRange {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryParameterDatetimeRange
-		return ret
-	}).(SqlQueryParameterDatetimeRangeOutput)
-}
-
-func (o SqlQueryParameterDatetimeRangePtrOutput) Range() SqlQueryParameterDatetimeRangeRangePtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDatetimeRange) *SqlQueryParameterDatetimeRangeRange {
-		if v == nil {
-			return nil
-		}
-		return v.Range
-	}).(SqlQueryParameterDatetimeRangeRangePtrOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterDatetimeRangePtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDatetimeRange) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterDatetimeRangeRange struct {
-	End   string `pulumi:"end"`
-	Start string `pulumi:"start"`
-}
-
-// SqlQueryParameterDatetimeRangeRangeInput is an input type that accepts SqlQueryParameterDatetimeRangeRangeArgs and SqlQueryParameterDatetimeRangeRangeOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDatetimeRangeRangeInput` via:
-//
-//	SqlQueryParameterDatetimeRangeRangeArgs{...}
-type SqlQueryParameterDatetimeRangeRangeInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDatetimeRangeRangeOutput() SqlQueryParameterDatetimeRangeRangeOutput
-	ToSqlQueryParameterDatetimeRangeRangeOutputWithContext(context.Context) SqlQueryParameterDatetimeRangeRangeOutput
-}
-
-type SqlQueryParameterDatetimeRangeRangeArgs struct {
-	End   pulumi.StringInput `pulumi:"end"`
-	Start pulumi.StringInput `pulumi:"start"`
-}
-
-func (SqlQueryParameterDatetimeRangeRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDatetimeRangeRange)(nil)).Elem()
-}
-
-func (i SqlQueryParameterDatetimeRangeRangeArgs) ToSqlQueryParameterDatetimeRangeRangeOutput() SqlQueryParameterDatetimeRangeRangeOutput {
-	return i.ToSqlQueryParameterDatetimeRangeRangeOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDatetimeRangeRangeArgs) ToSqlQueryParameterDatetimeRangeRangeOutputWithContext(ctx context.Context) SqlQueryParameterDatetimeRangeRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatetimeRangeRangeOutput)
-}
-
-func (i SqlQueryParameterDatetimeRangeRangeArgs) ToSqlQueryParameterDatetimeRangeRangePtrOutput() SqlQueryParameterDatetimeRangeRangePtrOutput {
-	return i.ToSqlQueryParameterDatetimeRangeRangePtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDatetimeRangeRangeArgs) ToSqlQueryParameterDatetimeRangeRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimeRangeRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatetimeRangeRangeOutput).ToSqlQueryParameterDatetimeRangeRangePtrOutputWithContext(ctx)
-}
-
-// SqlQueryParameterDatetimeRangeRangePtrInput is an input type that accepts SqlQueryParameterDatetimeRangeRangeArgs, SqlQueryParameterDatetimeRangeRangePtr and SqlQueryParameterDatetimeRangeRangePtrOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDatetimeRangeRangePtrInput` via:
-//
-//	        SqlQueryParameterDatetimeRangeRangeArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryParameterDatetimeRangeRangePtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDatetimeRangeRangePtrOutput() SqlQueryParameterDatetimeRangeRangePtrOutput
-	ToSqlQueryParameterDatetimeRangeRangePtrOutputWithContext(context.Context) SqlQueryParameterDatetimeRangeRangePtrOutput
-}
-
-type sqlQueryParameterDatetimeRangeRangePtrType SqlQueryParameterDatetimeRangeRangeArgs
-
-func SqlQueryParameterDatetimeRangeRangePtr(v *SqlQueryParameterDatetimeRangeRangeArgs) SqlQueryParameterDatetimeRangeRangePtrInput {
-	return (*sqlQueryParameterDatetimeRangeRangePtrType)(v)
-}
-
-func (*sqlQueryParameterDatetimeRangeRangePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDatetimeRangeRange)(nil)).Elem()
-}
-
-func (i *sqlQueryParameterDatetimeRangeRangePtrType) ToSqlQueryParameterDatetimeRangeRangePtrOutput() SqlQueryParameterDatetimeRangeRangePtrOutput {
-	return i.ToSqlQueryParameterDatetimeRangeRangePtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryParameterDatetimeRangeRangePtrType) ToSqlQueryParameterDatetimeRangeRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimeRangeRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatetimeRangeRangePtrOutput)
-}
-
-type SqlQueryParameterDatetimeRangeRangeOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDatetimeRangeRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDatetimeRangeRange)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDatetimeRangeRangeOutput) ToSqlQueryParameterDatetimeRangeRangeOutput() SqlQueryParameterDatetimeRangeRangeOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimeRangeRangeOutput) ToSqlQueryParameterDatetimeRangeRangeOutputWithContext(ctx context.Context) SqlQueryParameterDatetimeRangeRangeOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimeRangeRangeOutput) ToSqlQueryParameterDatetimeRangeRangePtrOutput() SqlQueryParameterDatetimeRangeRangePtrOutput {
-	return o.ToSqlQueryParameterDatetimeRangeRangePtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryParameterDatetimeRangeRangeOutput) ToSqlQueryParameterDatetimeRangeRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimeRangeRangePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryParameterDatetimeRangeRange) *SqlQueryParameterDatetimeRangeRange {
-		return &v
-	}).(SqlQueryParameterDatetimeRangeRangePtrOutput)
-}
-
-func (o SqlQueryParameterDatetimeRangeRangeOutput) End() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryParameterDatetimeRangeRange) string { return v.End }).(pulumi.StringOutput)
-}
-
-func (o SqlQueryParameterDatetimeRangeRangeOutput) Start() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryParameterDatetimeRangeRange) string { return v.Start }).(pulumi.StringOutput)
-}
-
-type SqlQueryParameterDatetimeRangeRangePtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDatetimeRangeRangePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDatetimeRangeRange)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDatetimeRangeRangePtrOutput) ToSqlQueryParameterDatetimeRangeRangePtrOutput() SqlQueryParameterDatetimeRangeRangePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimeRangeRangePtrOutput) ToSqlQueryParameterDatetimeRangeRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimeRangeRangePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimeRangeRangePtrOutput) Elem() SqlQueryParameterDatetimeRangeRangeOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDatetimeRangeRange) SqlQueryParameterDatetimeRangeRange {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryParameterDatetimeRangeRange
-		return ret
-	}).(SqlQueryParameterDatetimeRangeRangeOutput)
-}
-
-func (o SqlQueryParameterDatetimeRangeRangePtrOutput) End() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDatetimeRangeRange) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.End
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o SqlQueryParameterDatetimeRangeRangePtrOutput) Start() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDatetimeRangeRange) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Start
-	}).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterDatetimesec struct {
-	// The default value for this parameter.
-	Value string `pulumi:"value"`
-}
-
-// SqlQueryParameterDatetimesecInput is an input type that accepts SqlQueryParameterDatetimesecArgs and SqlQueryParameterDatetimesecOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDatetimesecInput` via:
-//
-//	SqlQueryParameterDatetimesecArgs{...}
-type SqlQueryParameterDatetimesecInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDatetimesecOutput() SqlQueryParameterDatetimesecOutput
-	ToSqlQueryParameterDatetimesecOutputWithContext(context.Context) SqlQueryParameterDatetimesecOutput
-}
-
-type SqlQueryParameterDatetimesecArgs struct {
-	// The default value for this parameter.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (SqlQueryParameterDatetimesecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDatetimesec)(nil)).Elem()
-}
-
-func (i SqlQueryParameterDatetimesecArgs) ToSqlQueryParameterDatetimesecOutput() SqlQueryParameterDatetimesecOutput {
-	return i.ToSqlQueryParameterDatetimesecOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDatetimesecArgs) ToSqlQueryParameterDatetimesecOutputWithContext(ctx context.Context) SqlQueryParameterDatetimesecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatetimesecOutput)
-}
-
-func (i SqlQueryParameterDatetimesecArgs) ToSqlQueryParameterDatetimesecPtrOutput() SqlQueryParameterDatetimesecPtrOutput {
-	return i.ToSqlQueryParameterDatetimesecPtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDatetimesecArgs) ToSqlQueryParameterDatetimesecPtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimesecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatetimesecOutput).ToSqlQueryParameterDatetimesecPtrOutputWithContext(ctx)
-}
-
-// SqlQueryParameterDatetimesecPtrInput is an input type that accepts SqlQueryParameterDatetimesecArgs, SqlQueryParameterDatetimesecPtr and SqlQueryParameterDatetimesecPtrOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDatetimesecPtrInput` via:
-//
-//	        SqlQueryParameterDatetimesecArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryParameterDatetimesecPtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDatetimesecPtrOutput() SqlQueryParameterDatetimesecPtrOutput
-	ToSqlQueryParameterDatetimesecPtrOutputWithContext(context.Context) SqlQueryParameterDatetimesecPtrOutput
-}
-
-type sqlQueryParameterDatetimesecPtrType SqlQueryParameterDatetimesecArgs
-
-func SqlQueryParameterDatetimesecPtr(v *SqlQueryParameterDatetimesecArgs) SqlQueryParameterDatetimesecPtrInput {
-	return (*sqlQueryParameterDatetimesecPtrType)(v)
-}
-
-func (*sqlQueryParameterDatetimesecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDatetimesec)(nil)).Elem()
-}
-
-func (i *sqlQueryParameterDatetimesecPtrType) ToSqlQueryParameterDatetimesecPtrOutput() SqlQueryParameterDatetimesecPtrOutput {
-	return i.ToSqlQueryParameterDatetimesecPtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryParameterDatetimesecPtrType) ToSqlQueryParameterDatetimesecPtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimesecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatetimesecPtrOutput)
-}
-
-type SqlQueryParameterDatetimesecOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDatetimesecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDatetimesec)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDatetimesecOutput) ToSqlQueryParameterDatetimesecOutput() SqlQueryParameterDatetimesecOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimesecOutput) ToSqlQueryParameterDatetimesecOutputWithContext(ctx context.Context) SqlQueryParameterDatetimesecOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimesecOutput) ToSqlQueryParameterDatetimesecPtrOutput() SqlQueryParameterDatetimesecPtrOutput {
-	return o.ToSqlQueryParameterDatetimesecPtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryParameterDatetimesecOutput) ToSqlQueryParameterDatetimesecPtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimesecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryParameterDatetimesec) *SqlQueryParameterDatetimesec {
-		return &v
-	}).(SqlQueryParameterDatetimesecPtrOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterDatetimesecOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryParameterDatetimesec) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type SqlQueryParameterDatetimesecPtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDatetimesecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDatetimesec)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDatetimesecPtrOutput) ToSqlQueryParameterDatetimesecPtrOutput() SqlQueryParameterDatetimesecPtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimesecPtrOutput) ToSqlQueryParameterDatetimesecPtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimesecPtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimesecPtrOutput) Elem() SqlQueryParameterDatetimesecOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDatetimesec) SqlQueryParameterDatetimesec {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryParameterDatetimesec
-		return ret
-	}).(SqlQueryParameterDatetimesecOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterDatetimesecPtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDatetimesec) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterDatetimesecRange struct {
-	Range *SqlQueryParameterDatetimesecRangeRange `pulumi:"range"`
-	// The default value for this parameter.
-	Value *string `pulumi:"value"`
-}
-
-// SqlQueryParameterDatetimesecRangeInput is an input type that accepts SqlQueryParameterDatetimesecRangeArgs and SqlQueryParameterDatetimesecRangeOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDatetimesecRangeInput` via:
-//
-//	SqlQueryParameterDatetimesecRangeArgs{...}
-type SqlQueryParameterDatetimesecRangeInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDatetimesecRangeOutput() SqlQueryParameterDatetimesecRangeOutput
-	ToSqlQueryParameterDatetimesecRangeOutputWithContext(context.Context) SqlQueryParameterDatetimesecRangeOutput
-}
-
-type SqlQueryParameterDatetimesecRangeArgs struct {
-	Range SqlQueryParameterDatetimesecRangeRangePtrInput `pulumi:"range"`
-	// The default value for this parameter.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (SqlQueryParameterDatetimesecRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDatetimesecRange)(nil)).Elem()
-}
-
-func (i SqlQueryParameterDatetimesecRangeArgs) ToSqlQueryParameterDatetimesecRangeOutput() SqlQueryParameterDatetimesecRangeOutput {
-	return i.ToSqlQueryParameterDatetimesecRangeOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDatetimesecRangeArgs) ToSqlQueryParameterDatetimesecRangeOutputWithContext(ctx context.Context) SqlQueryParameterDatetimesecRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatetimesecRangeOutput)
-}
-
-func (i SqlQueryParameterDatetimesecRangeArgs) ToSqlQueryParameterDatetimesecRangePtrOutput() SqlQueryParameterDatetimesecRangePtrOutput {
-	return i.ToSqlQueryParameterDatetimesecRangePtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDatetimesecRangeArgs) ToSqlQueryParameterDatetimesecRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimesecRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatetimesecRangeOutput).ToSqlQueryParameterDatetimesecRangePtrOutputWithContext(ctx)
-}
-
-// SqlQueryParameterDatetimesecRangePtrInput is an input type that accepts SqlQueryParameterDatetimesecRangeArgs, SqlQueryParameterDatetimesecRangePtr and SqlQueryParameterDatetimesecRangePtrOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDatetimesecRangePtrInput` via:
-//
-//	        SqlQueryParameterDatetimesecRangeArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryParameterDatetimesecRangePtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDatetimesecRangePtrOutput() SqlQueryParameterDatetimesecRangePtrOutput
-	ToSqlQueryParameterDatetimesecRangePtrOutputWithContext(context.Context) SqlQueryParameterDatetimesecRangePtrOutput
-}
-
-type sqlQueryParameterDatetimesecRangePtrType SqlQueryParameterDatetimesecRangeArgs
-
-func SqlQueryParameterDatetimesecRangePtr(v *SqlQueryParameterDatetimesecRangeArgs) SqlQueryParameterDatetimesecRangePtrInput {
-	return (*sqlQueryParameterDatetimesecRangePtrType)(v)
-}
-
-func (*sqlQueryParameterDatetimesecRangePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDatetimesecRange)(nil)).Elem()
-}
-
-func (i *sqlQueryParameterDatetimesecRangePtrType) ToSqlQueryParameterDatetimesecRangePtrOutput() SqlQueryParameterDatetimesecRangePtrOutput {
-	return i.ToSqlQueryParameterDatetimesecRangePtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryParameterDatetimesecRangePtrType) ToSqlQueryParameterDatetimesecRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimesecRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatetimesecRangePtrOutput)
-}
-
-type SqlQueryParameterDatetimesecRangeOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDatetimesecRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDatetimesecRange)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDatetimesecRangeOutput) ToSqlQueryParameterDatetimesecRangeOutput() SqlQueryParameterDatetimesecRangeOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimesecRangeOutput) ToSqlQueryParameterDatetimesecRangeOutputWithContext(ctx context.Context) SqlQueryParameterDatetimesecRangeOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimesecRangeOutput) ToSqlQueryParameterDatetimesecRangePtrOutput() SqlQueryParameterDatetimesecRangePtrOutput {
-	return o.ToSqlQueryParameterDatetimesecRangePtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryParameterDatetimesecRangeOutput) ToSqlQueryParameterDatetimesecRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimesecRangePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryParameterDatetimesecRange) *SqlQueryParameterDatetimesecRange {
-		return &v
-	}).(SqlQueryParameterDatetimesecRangePtrOutput)
-}
-
-func (o SqlQueryParameterDatetimesecRangeOutput) Range() SqlQueryParameterDatetimesecRangeRangePtrOutput {
-	return o.ApplyT(func(v SqlQueryParameterDatetimesecRange) *SqlQueryParameterDatetimesecRangeRange { return v.Range }).(SqlQueryParameterDatetimesecRangeRangePtrOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterDatetimesecRangeOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlQueryParameterDatetimesecRange) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterDatetimesecRangePtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDatetimesecRangePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDatetimesecRange)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDatetimesecRangePtrOutput) ToSqlQueryParameterDatetimesecRangePtrOutput() SqlQueryParameterDatetimesecRangePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimesecRangePtrOutput) ToSqlQueryParameterDatetimesecRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimesecRangePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimesecRangePtrOutput) Elem() SqlQueryParameterDatetimesecRangeOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDatetimesecRange) SqlQueryParameterDatetimesecRange {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryParameterDatetimesecRange
-		return ret
-	}).(SqlQueryParameterDatetimesecRangeOutput)
-}
-
-func (o SqlQueryParameterDatetimesecRangePtrOutput) Range() SqlQueryParameterDatetimesecRangeRangePtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDatetimesecRange) *SqlQueryParameterDatetimesecRangeRange {
-		if v == nil {
-			return nil
-		}
-		return v.Range
-	}).(SqlQueryParameterDatetimesecRangeRangePtrOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterDatetimesecRangePtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDatetimesecRange) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterDatetimesecRangeRange struct {
-	End   string `pulumi:"end"`
-	Start string `pulumi:"start"`
-}
-
-// SqlQueryParameterDatetimesecRangeRangeInput is an input type that accepts SqlQueryParameterDatetimesecRangeRangeArgs and SqlQueryParameterDatetimesecRangeRangeOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDatetimesecRangeRangeInput` via:
-//
-//	SqlQueryParameterDatetimesecRangeRangeArgs{...}
-type SqlQueryParameterDatetimesecRangeRangeInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDatetimesecRangeRangeOutput() SqlQueryParameterDatetimesecRangeRangeOutput
-	ToSqlQueryParameterDatetimesecRangeRangeOutputWithContext(context.Context) SqlQueryParameterDatetimesecRangeRangeOutput
-}
-
-type SqlQueryParameterDatetimesecRangeRangeArgs struct {
-	End   pulumi.StringInput `pulumi:"end"`
-	Start pulumi.StringInput `pulumi:"start"`
-}
-
-func (SqlQueryParameterDatetimesecRangeRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDatetimesecRangeRange)(nil)).Elem()
-}
-
-func (i SqlQueryParameterDatetimesecRangeRangeArgs) ToSqlQueryParameterDatetimesecRangeRangeOutput() SqlQueryParameterDatetimesecRangeRangeOutput {
-	return i.ToSqlQueryParameterDatetimesecRangeRangeOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDatetimesecRangeRangeArgs) ToSqlQueryParameterDatetimesecRangeRangeOutputWithContext(ctx context.Context) SqlQueryParameterDatetimesecRangeRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatetimesecRangeRangeOutput)
-}
-
-func (i SqlQueryParameterDatetimesecRangeRangeArgs) ToSqlQueryParameterDatetimesecRangeRangePtrOutput() SqlQueryParameterDatetimesecRangeRangePtrOutput {
-	return i.ToSqlQueryParameterDatetimesecRangeRangePtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDatetimesecRangeRangeArgs) ToSqlQueryParameterDatetimesecRangeRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimesecRangeRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatetimesecRangeRangeOutput).ToSqlQueryParameterDatetimesecRangeRangePtrOutputWithContext(ctx)
-}
-
-// SqlQueryParameterDatetimesecRangeRangePtrInput is an input type that accepts SqlQueryParameterDatetimesecRangeRangeArgs, SqlQueryParameterDatetimesecRangeRangePtr and SqlQueryParameterDatetimesecRangeRangePtrOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDatetimesecRangeRangePtrInput` via:
-//
-//	        SqlQueryParameterDatetimesecRangeRangeArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryParameterDatetimesecRangeRangePtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDatetimesecRangeRangePtrOutput() SqlQueryParameterDatetimesecRangeRangePtrOutput
-	ToSqlQueryParameterDatetimesecRangeRangePtrOutputWithContext(context.Context) SqlQueryParameterDatetimesecRangeRangePtrOutput
-}
-
-type sqlQueryParameterDatetimesecRangeRangePtrType SqlQueryParameterDatetimesecRangeRangeArgs
-
-func SqlQueryParameterDatetimesecRangeRangePtr(v *SqlQueryParameterDatetimesecRangeRangeArgs) SqlQueryParameterDatetimesecRangeRangePtrInput {
-	return (*sqlQueryParameterDatetimesecRangeRangePtrType)(v)
-}
-
-func (*sqlQueryParameterDatetimesecRangeRangePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDatetimesecRangeRange)(nil)).Elem()
-}
-
-func (i *sqlQueryParameterDatetimesecRangeRangePtrType) ToSqlQueryParameterDatetimesecRangeRangePtrOutput() SqlQueryParameterDatetimesecRangeRangePtrOutput {
-	return i.ToSqlQueryParameterDatetimesecRangeRangePtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryParameterDatetimesecRangeRangePtrType) ToSqlQueryParameterDatetimesecRangeRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimesecRangeRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatetimesecRangeRangePtrOutput)
-}
-
-type SqlQueryParameterDatetimesecRangeRangeOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDatetimesecRangeRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDatetimesecRangeRange)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDatetimesecRangeRangeOutput) ToSqlQueryParameterDatetimesecRangeRangeOutput() SqlQueryParameterDatetimesecRangeRangeOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimesecRangeRangeOutput) ToSqlQueryParameterDatetimesecRangeRangeOutputWithContext(ctx context.Context) SqlQueryParameterDatetimesecRangeRangeOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimesecRangeRangeOutput) ToSqlQueryParameterDatetimesecRangeRangePtrOutput() SqlQueryParameterDatetimesecRangeRangePtrOutput {
-	return o.ToSqlQueryParameterDatetimesecRangeRangePtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryParameterDatetimesecRangeRangeOutput) ToSqlQueryParameterDatetimesecRangeRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimesecRangeRangePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryParameterDatetimesecRangeRange) *SqlQueryParameterDatetimesecRangeRange {
-		return &v
-	}).(SqlQueryParameterDatetimesecRangeRangePtrOutput)
-}
-
-func (o SqlQueryParameterDatetimesecRangeRangeOutput) End() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryParameterDatetimesecRangeRange) string { return v.End }).(pulumi.StringOutput)
-}
-
-func (o SqlQueryParameterDatetimesecRangeRangeOutput) Start() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryParameterDatetimesecRangeRange) string { return v.Start }).(pulumi.StringOutput)
-}
-
-type SqlQueryParameterDatetimesecRangeRangePtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDatetimesecRangeRangePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDatetimesecRangeRange)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDatetimesecRangeRangePtrOutput) ToSqlQueryParameterDatetimesecRangeRangePtrOutput() SqlQueryParameterDatetimesecRangeRangePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimesecRangeRangePtrOutput) ToSqlQueryParameterDatetimesecRangeRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatetimesecRangeRangePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatetimesecRangeRangePtrOutput) Elem() SqlQueryParameterDatetimesecRangeRangeOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDatetimesecRangeRange) SqlQueryParameterDatetimesecRangeRange {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryParameterDatetimesecRangeRange
-		return ret
-	}).(SqlQueryParameterDatetimesecRangeRangeOutput)
-}
-
-func (o SqlQueryParameterDatetimesecRangeRangePtrOutput) End() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDatetimesecRangeRange) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.End
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o SqlQueryParameterDatetimesecRangeRangePtrOutput) Start() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDatetimesecRangeRange) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Start
-	}).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterEnum struct {
-	Multiple *SqlQueryParameterEnumMultiple `pulumi:"multiple"`
-	Options  []string                       `pulumi:"options"`
-	// The default value for this parameter.
-	Value  *string  `pulumi:"value"`
-	Values []string `pulumi:"values"`
-}
-
-// SqlQueryParameterEnumInput is an input type that accepts SqlQueryParameterEnumArgs and SqlQueryParameterEnumOutput values.
-// You can construct a concrete instance of `SqlQueryParameterEnumInput` via:
-//
-//	SqlQueryParameterEnumArgs{...}
-type SqlQueryParameterEnumInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterEnumOutput() SqlQueryParameterEnumOutput
-	ToSqlQueryParameterEnumOutputWithContext(context.Context) SqlQueryParameterEnumOutput
-}
-
-type SqlQueryParameterEnumArgs struct {
-	Multiple SqlQueryParameterEnumMultiplePtrInput `pulumi:"multiple"`
-	Options  pulumi.StringArrayInput               `pulumi:"options"`
-	// The default value for this parameter.
-	Value  pulumi.StringPtrInput   `pulumi:"value"`
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (SqlQueryParameterEnumArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterEnum)(nil)).Elem()
-}
-
-func (i SqlQueryParameterEnumArgs) ToSqlQueryParameterEnumOutput() SqlQueryParameterEnumOutput {
-	return i.ToSqlQueryParameterEnumOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterEnumArgs) ToSqlQueryParameterEnumOutputWithContext(ctx context.Context) SqlQueryParameterEnumOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterEnumOutput)
-}
-
-func (i SqlQueryParameterEnumArgs) ToSqlQueryParameterEnumPtrOutput() SqlQueryParameterEnumPtrOutput {
-	return i.ToSqlQueryParameterEnumPtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterEnumArgs) ToSqlQueryParameterEnumPtrOutputWithContext(ctx context.Context) SqlQueryParameterEnumPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterEnumOutput).ToSqlQueryParameterEnumPtrOutputWithContext(ctx)
-}
-
-// SqlQueryParameterEnumPtrInput is an input type that accepts SqlQueryParameterEnumArgs, SqlQueryParameterEnumPtr and SqlQueryParameterEnumPtrOutput values.
-// You can construct a concrete instance of `SqlQueryParameterEnumPtrInput` via:
-//
-//	        SqlQueryParameterEnumArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryParameterEnumPtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterEnumPtrOutput() SqlQueryParameterEnumPtrOutput
-	ToSqlQueryParameterEnumPtrOutputWithContext(context.Context) SqlQueryParameterEnumPtrOutput
-}
-
-type sqlQueryParameterEnumPtrType SqlQueryParameterEnumArgs
-
-func SqlQueryParameterEnumPtr(v *SqlQueryParameterEnumArgs) SqlQueryParameterEnumPtrInput {
-	return (*sqlQueryParameterEnumPtrType)(v)
-}
-
-func (*sqlQueryParameterEnumPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterEnum)(nil)).Elem()
-}
-
-func (i *sqlQueryParameterEnumPtrType) ToSqlQueryParameterEnumPtrOutput() SqlQueryParameterEnumPtrOutput {
-	return i.ToSqlQueryParameterEnumPtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryParameterEnumPtrType) ToSqlQueryParameterEnumPtrOutputWithContext(ctx context.Context) SqlQueryParameterEnumPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterEnumPtrOutput)
-}
-
-type SqlQueryParameterEnumOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterEnumOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterEnum)(nil)).Elem()
-}
-
-func (o SqlQueryParameterEnumOutput) ToSqlQueryParameterEnumOutput() SqlQueryParameterEnumOutput {
-	return o
-}
-
-func (o SqlQueryParameterEnumOutput) ToSqlQueryParameterEnumOutputWithContext(ctx context.Context) SqlQueryParameterEnumOutput {
-	return o
-}
-
-func (o SqlQueryParameterEnumOutput) ToSqlQueryParameterEnumPtrOutput() SqlQueryParameterEnumPtrOutput {
-	return o.ToSqlQueryParameterEnumPtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryParameterEnumOutput) ToSqlQueryParameterEnumPtrOutputWithContext(ctx context.Context) SqlQueryParameterEnumPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryParameterEnum) *SqlQueryParameterEnum {
-		return &v
-	}).(SqlQueryParameterEnumPtrOutput)
-}
-
-func (o SqlQueryParameterEnumOutput) Multiple() SqlQueryParameterEnumMultiplePtrOutput {
-	return o.ApplyT(func(v SqlQueryParameterEnum) *SqlQueryParameterEnumMultiple { return v.Multiple }).(SqlQueryParameterEnumMultiplePtrOutput)
-}
-
-func (o SqlQueryParameterEnumOutput) Options() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SqlQueryParameterEnum) []string { return v.Options }).(pulumi.StringArrayOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterEnumOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlQueryParameterEnum) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-func (o SqlQueryParameterEnumOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SqlQueryParameterEnum) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type SqlQueryParameterEnumPtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterEnumPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterEnum)(nil)).Elem()
-}
-
-func (o SqlQueryParameterEnumPtrOutput) ToSqlQueryParameterEnumPtrOutput() SqlQueryParameterEnumPtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterEnumPtrOutput) ToSqlQueryParameterEnumPtrOutputWithContext(ctx context.Context) SqlQueryParameterEnumPtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterEnumPtrOutput) Elem() SqlQueryParameterEnumOutput {
-	return o.ApplyT(func(v *SqlQueryParameterEnum) SqlQueryParameterEnum {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryParameterEnum
-		return ret
-	}).(SqlQueryParameterEnumOutput)
-}
-
-func (o SqlQueryParameterEnumPtrOutput) Multiple() SqlQueryParameterEnumMultiplePtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterEnum) *SqlQueryParameterEnumMultiple {
-		if v == nil {
-			return nil
-		}
-		return v.Multiple
-	}).(SqlQueryParameterEnumMultiplePtrOutput)
-}
-
-func (o SqlQueryParameterEnumPtrOutput) Options() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SqlQueryParameterEnum) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Options
-	}).(pulumi.StringArrayOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterEnumPtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterEnum) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o SqlQueryParameterEnumPtrOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SqlQueryParameterEnum) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Values
-	}).(pulumi.StringArrayOutput)
-}
-
-type SqlQueryParameterEnumMultiple struct {
-	Prefix    *string `pulumi:"prefix"`
-	Separator string  `pulumi:"separator"`
-	Suffix    *string `pulumi:"suffix"`
-}
-
-// SqlQueryParameterEnumMultipleInput is an input type that accepts SqlQueryParameterEnumMultipleArgs and SqlQueryParameterEnumMultipleOutput values.
-// You can construct a concrete instance of `SqlQueryParameterEnumMultipleInput` via:
-//
-//	SqlQueryParameterEnumMultipleArgs{...}
-type SqlQueryParameterEnumMultipleInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterEnumMultipleOutput() SqlQueryParameterEnumMultipleOutput
-	ToSqlQueryParameterEnumMultipleOutputWithContext(context.Context) SqlQueryParameterEnumMultipleOutput
-}
-
-type SqlQueryParameterEnumMultipleArgs struct {
-	Prefix    pulumi.StringPtrInput `pulumi:"prefix"`
-	Separator pulumi.StringInput    `pulumi:"separator"`
-	Suffix    pulumi.StringPtrInput `pulumi:"suffix"`
-}
-
-func (SqlQueryParameterEnumMultipleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterEnumMultiple)(nil)).Elem()
-}
-
-func (i SqlQueryParameterEnumMultipleArgs) ToSqlQueryParameterEnumMultipleOutput() SqlQueryParameterEnumMultipleOutput {
-	return i.ToSqlQueryParameterEnumMultipleOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterEnumMultipleArgs) ToSqlQueryParameterEnumMultipleOutputWithContext(ctx context.Context) SqlQueryParameterEnumMultipleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterEnumMultipleOutput)
-}
-
-func (i SqlQueryParameterEnumMultipleArgs) ToSqlQueryParameterEnumMultiplePtrOutput() SqlQueryParameterEnumMultiplePtrOutput {
-	return i.ToSqlQueryParameterEnumMultiplePtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterEnumMultipleArgs) ToSqlQueryParameterEnumMultiplePtrOutputWithContext(ctx context.Context) SqlQueryParameterEnumMultiplePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterEnumMultipleOutput).ToSqlQueryParameterEnumMultiplePtrOutputWithContext(ctx)
-}
-
-// SqlQueryParameterEnumMultiplePtrInput is an input type that accepts SqlQueryParameterEnumMultipleArgs, SqlQueryParameterEnumMultiplePtr and SqlQueryParameterEnumMultiplePtrOutput values.
-// You can construct a concrete instance of `SqlQueryParameterEnumMultiplePtrInput` via:
-//
-//	        SqlQueryParameterEnumMultipleArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryParameterEnumMultiplePtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterEnumMultiplePtrOutput() SqlQueryParameterEnumMultiplePtrOutput
-	ToSqlQueryParameterEnumMultiplePtrOutputWithContext(context.Context) SqlQueryParameterEnumMultiplePtrOutput
-}
-
-type sqlQueryParameterEnumMultiplePtrType SqlQueryParameterEnumMultipleArgs
-
-func SqlQueryParameterEnumMultiplePtr(v *SqlQueryParameterEnumMultipleArgs) SqlQueryParameterEnumMultiplePtrInput {
-	return (*sqlQueryParameterEnumMultiplePtrType)(v)
-}
-
-func (*sqlQueryParameterEnumMultiplePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterEnumMultiple)(nil)).Elem()
-}
-
-func (i *sqlQueryParameterEnumMultiplePtrType) ToSqlQueryParameterEnumMultiplePtrOutput() SqlQueryParameterEnumMultiplePtrOutput {
-	return i.ToSqlQueryParameterEnumMultiplePtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryParameterEnumMultiplePtrType) ToSqlQueryParameterEnumMultiplePtrOutputWithContext(ctx context.Context) SqlQueryParameterEnumMultiplePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterEnumMultiplePtrOutput)
-}
-
-type SqlQueryParameterEnumMultipleOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterEnumMultipleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterEnumMultiple)(nil)).Elem()
-}
-
-func (o SqlQueryParameterEnumMultipleOutput) ToSqlQueryParameterEnumMultipleOutput() SqlQueryParameterEnumMultipleOutput {
-	return o
-}
-
-func (o SqlQueryParameterEnumMultipleOutput) ToSqlQueryParameterEnumMultipleOutputWithContext(ctx context.Context) SqlQueryParameterEnumMultipleOutput {
-	return o
-}
-
-func (o SqlQueryParameterEnumMultipleOutput) ToSqlQueryParameterEnumMultiplePtrOutput() SqlQueryParameterEnumMultiplePtrOutput {
-	return o.ToSqlQueryParameterEnumMultiplePtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryParameterEnumMultipleOutput) ToSqlQueryParameterEnumMultiplePtrOutputWithContext(ctx context.Context) SqlQueryParameterEnumMultiplePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryParameterEnumMultiple) *SqlQueryParameterEnumMultiple {
-		return &v
-	}).(SqlQueryParameterEnumMultiplePtrOutput)
-}
-
-func (o SqlQueryParameterEnumMultipleOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlQueryParameterEnumMultiple) *string { return v.Prefix }).(pulumi.StringPtrOutput)
-}
-
-func (o SqlQueryParameterEnumMultipleOutput) Separator() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryParameterEnumMultiple) string { return v.Separator }).(pulumi.StringOutput)
-}
-
-func (o SqlQueryParameterEnumMultipleOutput) Suffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlQueryParameterEnumMultiple) *string { return v.Suffix }).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterEnumMultiplePtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterEnumMultiplePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterEnumMultiple)(nil)).Elem()
-}
-
-func (o SqlQueryParameterEnumMultiplePtrOutput) ToSqlQueryParameterEnumMultiplePtrOutput() SqlQueryParameterEnumMultiplePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterEnumMultiplePtrOutput) ToSqlQueryParameterEnumMultiplePtrOutputWithContext(ctx context.Context) SqlQueryParameterEnumMultiplePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterEnumMultiplePtrOutput) Elem() SqlQueryParameterEnumMultipleOutput {
-	return o.ApplyT(func(v *SqlQueryParameterEnumMultiple) SqlQueryParameterEnumMultiple {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryParameterEnumMultiple
-		return ret
-	}).(SqlQueryParameterEnumMultipleOutput)
-}
-
-func (o SqlQueryParameterEnumMultiplePtrOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterEnumMultiple) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Prefix
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o SqlQueryParameterEnumMultiplePtrOutput) Separator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterEnumMultiple) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Separator
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o SqlQueryParameterEnumMultiplePtrOutput) Suffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterEnumMultiple) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Suffix
-	}).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterNumber struct {
-	// The default value for this parameter.
-	Value float64 `pulumi:"value"`
-}
-
-// SqlQueryParameterNumberInput is an input type that accepts SqlQueryParameterNumberArgs and SqlQueryParameterNumberOutput values.
-// You can construct a concrete instance of `SqlQueryParameterNumberInput` via:
-//
-//	SqlQueryParameterNumberArgs{...}
-type SqlQueryParameterNumberInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterNumberOutput() SqlQueryParameterNumberOutput
-	ToSqlQueryParameterNumberOutputWithContext(context.Context) SqlQueryParameterNumberOutput
-}
-
-type SqlQueryParameterNumberArgs struct {
-	// The default value for this parameter.
-	Value pulumi.Float64Input `pulumi:"value"`
-}
-
-func (SqlQueryParameterNumberArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterNumber)(nil)).Elem()
-}
-
-func (i SqlQueryParameterNumberArgs) ToSqlQueryParameterNumberOutput() SqlQueryParameterNumberOutput {
-	return i.ToSqlQueryParameterNumberOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterNumberArgs) ToSqlQueryParameterNumberOutputWithContext(ctx context.Context) SqlQueryParameterNumberOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterNumberOutput)
-}
-
-func (i SqlQueryParameterNumberArgs) ToSqlQueryParameterNumberPtrOutput() SqlQueryParameterNumberPtrOutput {
-	return i.ToSqlQueryParameterNumberPtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterNumberArgs) ToSqlQueryParameterNumberPtrOutputWithContext(ctx context.Context) SqlQueryParameterNumberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterNumberOutput).ToSqlQueryParameterNumberPtrOutputWithContext(ctx)
-}
-
-// SqlQueryParameterNumberPtrInput is an input type that accepts SqlQueryParameterNumberArgs, SqlQueryParameterNumberPtr and SqlQueryParameterNumberPtrOutput values.
-// You can construct a concrete instance of `SqlQueryParameterNumberPtrInput` via:
-//
-//	        SqlQueryParameterNumberArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryParameterNumberPtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterNumberPtrOutput() SqlQueryParameterNumberPtrOutput
-	ToSqlQueryParameterNumberPtrOutputWithContext(context.Context) SqlQueryParameterNumberPtrOutput
-}
-
-type sqlQueryParameterNumberPtrType SqlQueryParameterNumberArgs
-
-func SqlQueryParameterNumberPtr(v *SqlQueryParameterNumberArgs) SqlQueryParameterNumberPtrInput {
-	return (*sqlQueryParameterNumberPtrType)(v)
-}
-
-func (*sqlQueryParameterNumberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterNumber)(nil)).Elem()
-}
-
-func (i *sqlQueryParameterNumberPtrType) ToSqlQueryParameterNumberPtrOutput() SqlQueryParameterNumberPtrOutput {
-	return i.ToSqlQueryParameterNumberPtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryParameterNumberPtrType) ToSqlQueryParameterNumberPtrOutputWithContext(ctx context.Context) SqlQueryParameterNumberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterNumberPtrOutput)
-}
-
-type SqlQueryParameterNumberOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterNumberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterNumber)(nil)).Elem()
-}
-
-func (o SqlQueryParameterNumberOutput) ToSqlQueryParameterNumberOutput() SqlQueryParameterNumberOutput {
-	return o
-}
-
-func (o SqlQueryParameterNumberOutput) ToSqlQueryParameterNumberOutputWithContext(ctx context.Context) SqlQueryParameterNumberOutput {
-	return o
-}
-
-func (o SqlQueryParameterNumberOutput) ToSqlQueryParameterNumberPtrOutput() SqlQueryParameterNumberPtrOutput {
-	return o.ToSqlQueryParameterNumberPtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryParameterNumberOutput) ToSqlQueryParameterNumberPtrOutputWithContext(ctx context.Context) SqlQueryParameterNumberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryParameterNumber) *SqlQueryParameterNumber {
-		return &v
-	}).(SqlQueryParameterNumberPtrOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterNumberOutput) Value() pulumi.Float64Output {
-	return o.ApplyT(func(v SqlQueryParameterNumber) float64 { return v.Value }).(pulumi.Float64Output)
-}
-
-type SqlQueryParameterNumberPtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterNumberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterNumber)(nil)).Elem()
-}
-
-func (o SqlQueryParameterNumberPtrOutput) ToSqlQueryParameterNumberPtrOutput() SqlQueryParameterNumberPtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterNumberPtrOutput) ToSqlQueryParameterNumberPtrOutputWithContext(ctx context.Context) SqlQueryParameterNumberPtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterNumberPtrOutput) Elem() SqlQueryParameterNumberOutput {
-	return o.ApplyT(func(v *SqlQueryParameterNumber) SqlQueryParameterNumber {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryParameterNumber
-		return ret
-	}).(SqlQueryParameterNumberOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterNumberPtrOutput) Value() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterNumber) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.Value
-	}).(pulumi.Float64PtrOutput)
-}
-
-type SqlQueryParameterQuery struct {
-	Multiple *SqlQueryParameterQueryMultiple `pulumi:"multiple"`
-	QueryId  string                          `pulumi:"queryId"`
-	// The default value for this parameter.
-	Value  *string  `pulumi:"value"`
-	Values []string `pulumi:"values"`
-}
-
-// SqlQueryParameterQueryInput is an input type that accepts SqlQueryParameterQueryArgs and SqlQueryParameterQueryOutput values.
-// You can construct a concrete instance of `SqlQueryParameterQueryInput` via:
-//
-//	SqlQueryParameterQueryArgs{...}
-type SqlQueryParameterQueryInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterQueryOutput() SqlQueryParameterQueryOutput
-	ToSqlQueryParameterQueryOutputWithContext(context.Context) SqlQueryParameterQueryOutput
-}
-
-type SqlQueryParameterQueryArgs struct {
-	Multiple SqlQueryParameterQueryMultiplePtrInput `pulumi:"multiple"`
-	QueryId  pulumi.StringInput                     `pulumi:"queryId"`
-	// The default value for this parameter.
-	Value  pulumi.StringPtrInput   `pulumi:"value"`
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (SqlQueryParameterQueryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterQuery)(nil)).Elem()
-}
-
-func (i SqlQueryParameterQueryArgs) ToSqlQueryParameterQueryOutput() SqlQueryParameterQueryOutput {
-	return i.ToSqlQueryParameterQueryOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterQueryArgs) ToSqlQueryParameterQueryOutputWithContext(ctx context.Context) SqlQueryParameterQueryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterQueryOutput)
-}
-
-func (i SqlQueryParameterQueryArgs) ToSqlQueryParameterQueryPtrOutput() SqlQueryParameterQueryPtrOutput {
-	return i.ToSqlQueryParameterQueryPtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterQueryArgs) ToSqlQueryParameterQueryPtrOutputWithContext(ctx context.Context) SqlQueryParameterQueryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterQueryOutput).ToSqlQueryParameterQueryPtrOutputWithContext(ctx)
-}
-
-// SqlQueryParameterQueryPtrInput is an input type that accepts SqlQueryParameterQueryArgs, SqlQueryParameterQueryPtr and SqlQueryParameterQueryPtrOutput values.
-// You can construct a concrete instance of `SqlQueryParameterQueryPtrInput` via:
-//
-//	        SqlQueryParameterQueryArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryParameterQueryPtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterQueryPtrOutput() SqlQueryParameterQueryPtrOutput
-	ToSqlQueryParameterQueryPtrOutputWithContext(context.Context) SqlQueryParameterQueryPtrOutput
-}
-
-type sqlQueryParameterQueryPtrType SqlQueryParameterQueryArgs
-
-func SqlQueryParameterQueryPtr(v *SqlQueryParameterQueryArgs) SqlQueryParameterQueryPtrInput {
-	return (*sqlQueryParameterQueryPtrType)(v)
-}
-
-func (*sqlQueryParameterQueryPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterQuery)(nil)).Elem()
-}
-
-func (i *sqlQueryParameterQueryPtrType) ToSqlQueryParameterQueryPtrOutput() SqlQueryParameterQueryPtrOutput {
-	return i.ToSqlQueryParameterQueryPtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryParameterQueryPtrType) ToSqlQueryParameterQueryPtrOutputWithContext(ctx context.Context) SqlQueryParameterQueryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterQueryPtrOutput)
-}
-
-type SqlQueryParameterQueryOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterQueryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterQuery)(nil)).Elem()
-}
-
-func (o SqlQueryParameterQueryOutput) ToSqlQueryParameterQueryOutput() SqlQueryParameterQueryOutput {
-	return o
-}
-
-func (o SqlQueryParameterQueryOutput) ToSqlQueryParameterQueryOutputWithContext(ctx context.Context) SqlQueryParameterQueryOutput {
-	return o
-}
-
-func (o SqlQueryParameterQueryOutput) ToSqlQueryParameterQueryPtrOutput() SqlQueryParameterQueryPtrOutput {
-	return o.ToSqlQueryParameterQueryPtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryParameterQueryOutput) ToSqlQueryParameterQueryPtrOutputWithContext(ctx context.Context) SqlQueryParameterQueryPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryParameterQuery) *SqlQueryParameterQuery {
-		return &v
-	}).(SqlQueryParameterQueryPtrOutput)
-}
-
-func (o SqlQueryParameterQueryOutput) Multiple() SqlQueryParameterQueryMultiplePtrOutput {
-	return o.ApplyT(func(v SqlQueryParameterQuery) *SqlQueryParameterQueryMultiple { return v.Multiple }).(SqlQueryParameterQueryMultiplePtrOutput)
-}
-
-func (o SqlQueryParameterQueryOutput) QueryId() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryParameterQuery) string { return v.QueryId }).(pulumi.StringOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterQueryOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlQueryParameterQuery) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-func (o SqlQueryParameterQueryOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SqlQueryParameterQuery) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type SqlQueryParameterQueryPtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterQueryPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterQuery)(nil)).Elem()
-}
-
-func (o SqlQueryParameterQueryPtrOutput) ToSqlQueryParameterQueryPtrOutput() SqlQueryParameterQueryPtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterQueryPtrOutput) ToSqlQueryParameterQueryPtrOutputWithContext(ctx context.Context) SqlQueryParameterQueryPtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterQueryPtrOutput) Elem() SqlQueryParameterQueryOutput {
-	return o.ApplyT(func(v *SqlQueryParameterQuery) SqlQueryParameterQuery {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryParameterQuery
-		return ret
-	}).(SqlQueryParameterQueryOutput)
-}
-
-func (o SqlQueryParameterQueryPtrOutput) Multiple() SqlQueryParameterQueryMultiplePtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterQuery) *SqlQueryParameterQueryMultiple {
-		if v == nil {
-			return nil
-		}
-		return v.Multiple
-	}).(SqlQueryParameterQueryMultiplePtrOutput)
-}
-
-func (o SqlQueryParameterQueryPtrOutput) QueryId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterQuery) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.QueryId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterQueryPtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterQuery) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o SqlQueryParameterQueryPtrOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SqlQueryParameterQuery) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Values
-	}).(pulumi.StringArrayOutput)
-}
-
-type SqlQueryParameterQueryMultiple struct {
-	Prefix    *string `pulumi:"prefix"`
-	Separator string  `pulumi:"separator"`
-	Suffix    *string `pulumi:"suffix"`
-}
-
-// SqlQueryParameterQueryMultipleInput is an input type that accepts SqlQueryParameterQueryMultipleArgs and SqlQueryParameterQueryMultipleOutput values.
-// You can construct a concrete instance of `SqlQueryParameterQueryMultipleInput` via:
-//
-//	SqlQueryParameterQueryMultipleArgs{...}
-type SqlQueryParameterQueryMultipleInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterQueryMultipleOutput() SqlQueryParameterQueryMultipleOutput
-	ToSqlQueryParameterQueryMultipleOutputWithContext(context.Context) SqlQueryParameterQueryMultipleOutput
-}
-
-type SqlQueryParameterQueryMultipleArgs struct {
-	Prefix    pulumi.StringPtrInput `pulumi:"prefix"`
-	Separator pulumi.StringInput    `pulumi:"separator"`
-	Suffix    pulumi.StringPtrInput `pulumi:"suffix"`
-}
-
-func (SqlQueryParameterQueryMultipleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterQueryMultiple)(nil)).Elem()
-}
-
-func (i SqlQueryParameterQueryMultipleArgs) ToSqlQueryParameterQueryMultipleOutput() SqlQueryParameterQueryMultipleOutput {
-	return i.ToSqlQueryParameterQueryMultipleOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterQueryMultipleArgs) ToSqlQueryParameterQueryMultipleOutputWithContext(ctx context.Context) SqlQueryParameterQueryMultipleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterQueryMultipleOutput)
-}
-
-func (i SqlQueryParameterQueryMultipleArgs) ToSqlQueryParameterQueryMultiplePtrOutput() SqlQueryParameterQueryMultiplePtrOutput {
-	return i.ToSqlQueryParameterQueryMultiplePtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterQueryMultipleArgs) ToSqlQueryParameterQueryMultiplePtrOutputWithContext(ctx context.Context) SqlQueryParameterQueryMultiplePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterQueryMultipleOutput).ToSqlQueryParameterQueryMultiplePtrOutputWithContext(ctx)
-}
-
-// SqlQueryParameterQueryMultiplePtrInput is an input type that accepts SqlQueryParameterQueryMultipleArgs, SqlQueryParameterQueryMultiplePtr and SqlQueryParameterQueryMultiplePtrOutput values.
-// You can construct a concrete instance of `SqlQueryParameterQueryMultiplePtrInput` via:
-//
-//	        SqlQueryParameterQueryMultipleArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryParameterQueryMultiplePtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterQueryMultiplePtrOutput() SqlQueryParameterQueryMultiplePtrOutput
-	ToSqlQueryParameterQueryMultiplePtrOutputWithContext(context.Context) SqlQueryParameterQueryMultiplePtrOutput
-}
-
-type sqlQueryParameterQueryMultiplePtrType SqlQueryParameterQueryMultipleArgs
-
-func SqlQueryParameterQueryMultiplePtr(v *SqlQueryParameterQueryMultipleArgs) SqlQueryParameterQueryMultiplePtrInput {
-	return (*sqlQueryParameterQueryMultiplePtrType)(v)
-}
-
-func (*sqlQueryParameterQueryMultiplePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterQueryMultiple)(nil)).Elem()
-}
-
-func (i *sqlQueryParameterQueryMultiplePtrType) ToSqlQueryParameterQueryMultiplePtrOutput() SqlQueryParameterQueryMultiplePtrOutput {
-	return i.ToSqlQueryParameterQueryMultiplePtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryParameterQueryMultiplePtrType) ToSqlQueryParameterQueryMultiplePtrOutputWithContext(ctx context.Context) SqlQueryParameterQueryMultiplePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterQueryMultiplePtrOutput)
-}
-
-type SqlQueryParameterQueryMultipleOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterQueryMultipleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterQueryMultiple)(nil)).Elem()
-}
-
-func (o SqlQueryParameterQueryMultipleOutput) ToSqlQueryParameterQueryMultipleOutput() SqlQueryParameterQueryMultipleOutput {
-	return o
-}
-
-func (o SqlQueryParameterQueryMultipleOutput) ToSqlQueryParameterQueryMultipleOutputWithContext(ctx context.Context) SqlQueryParameterQueryMultipleOutput {
-	return o
-}
-
-func (o SqlQueryParameterQueryMultipleOutput) ToSqlQueryParameterQueryMultiplePtrOutput() SqlQueryParameterQueryMultiplePtrOutput {
-	return o.ToSqlQueryParameterQueryMultiplePtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryParameterQueryMultipleOutput) ToSqlQueryParameterQueryMultiplePtrOutputWithContext(ctx context.Context) SqlQueryParameterQueryMultiplePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryParameterQueryMultiple) *SqlQueryParameterQueryMultiple {
-		return &v
-	}).(SqlQueryParameterQueryMultiplePtrOutput)
-}
-
-func (o SqlQueryParameterQueryMultipleOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlQueryParameterQueryMultiple) *string { return v.Prefix }).(pulumi.StringPtrOutput)
-}
-
-func (o SqlQueryParameterQueryMultipleOutput) Separator() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryParameterQueryMultiple) string { return v.Separator }).(pulumi.StringOutput)
-}
-
-func (o SqlQueryParameterQueryMultipleOutput) Suffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlQueryParameterQueryMultiple) *string { return v.Suffix }).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterQueryMultiplePtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterQueryMultiplePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterQueryMultiple)(nil)).Elem()
-}
-
-func (o SqlQueryParameterQueryMultiplePtrOutput) ToSqlQueryParameterQueryMultiplePtrOutput() SqlQueryParameterQueryMultiplePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterQueryMultiplePtrOutput) ToSqlQueryParameterQueryMultiplePtrOutputWithContext(ctx context.Context) SqlQueryParameterQueryMultiplePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterQueryMultiplePtrOutput) Elem() SqlQueryParameterQueryMultipleOutput {
-	return o.ApplyT(func(v *SqlQueryParameterQueryMultiple) SqlQueryParameterQueryMultiple {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryParameterQueryMultiple
-		return ret
-	}).(SqlQueryParameterQueryMultipleOutput)
-}
-
-func (o SqlQueryParameterQueryMultiplePtrOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterQueryMultiple) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Prefix
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o SqlQueryParameterQueryMultiplePtrOutput) Separator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterQueryMultiple) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Separator
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o SqlQueryParameterQueryMultiplePtrOutput) Suffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterQueryMultiple) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Suffix
-	}).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterText struct {
-	// The default value for this parameter.
-	Value string `pulumi:"value"`
-}
-
-// SqlQueryParameterTextInput is an input type that accepts SqlQueryParameterTextArgs and SqlQueryParameterTextOutput values.
-// You can construct a concrete instance of `SqlQueryParameterTextInput` via:
-//
-//	SqlQueryParameterTextArgs{...}
-type SqlQueryParameterTextInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterTextOutput() SqlQueryParameterTextOutput
-	ToSqlQueryParameterTextOutputWithContext(context.Context) SqlQueryParameterTextOutput
-}
-
-type SqlQueryParameterTextArgs struct {
-	// The default value for this parameter.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (SqlQueryParameterTextArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterText)(nil)).Elem()
-}
-
-func (i SqlQueryParameterTextArgs) ToSqlQueryParameterTextOutput() SqlQueryParameterTextOutput {
-	return i.ToSqlQueryParameterTextOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterTextArgs) ToSqlQueryParameterTextOutputWithContext(ctx context.Context) SqlQueryParameterTextOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterTextOutput)
-}
-
-func (i SqlQueryParameterTextArgs) ToSqlQueryParameterTextPtrOutput() SqlQueryParameterTextPtrOutput {
-	return i.ToSqlQueryParameterTextPtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterTextArgs) ToSqlQueryParameterTextPtrOutputWithContext(ctx context.Context) SqlQueryParameterTextPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterTextOutput).ToSqlQueryParameterTextPtrOutputWithContext(ctx)
-}
-
-// SqlQueryParameterTextPtrInput is an input type that accepts SqlQueryParameterTextArgs, SqlQueryParameterTextPtr and SqlQueryParameterTextPtrOutput values.
-// You can construct a concrete instance of `SqlQueryParameterTextPtrInput` via:
-//
-//	        SqlQueryParameterTextArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryParameterTextPtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterTextPtrOutput() SqlQueryParameterTextPtrOutput
-	ToSqlQueryParameterTextPtrOutputWithContext(context.Context) SqlQueryParameterTextPtrOutput
-}
-
-type sqlQueryParameterTextPtrType SqlQueryParameterTextArgs
-
-func SqlQueryParameterTextPtr(v *SqlQueryParameterTextArgs) SqlQueryParameterTextPtrInput {
-	return (*sqlQueryParameterTextPtrType)(v)
-}
-
-func (*sqlQueryParameterTextPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterText)(nil)).Elem()
-}
-
-func (i *sqlQueryParameterTextPtrType) ToSqlQueryParameterTextPtrOutput() SqlQueryParameterTextPtrOutput {
-	return i.ToSqlQueryParameterTextPtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryParameterTextPtrType) ToSqlQueryParameterTextPtrOutputWithContext(ctx context.Context) SqlQueryParameterTextPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterTextPtrOutput)
-}
-
-type SqlQueryParameterTextOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterTextOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterText)(nil)).Elem()
-}
-
-func (o SqlQueryParameterTextOutput) ToSqlQueryParameterTextOutput() SqlQueryParameterTextOutput {
-	return o
-}
-
-func (o SqlQueryParameterTextOutput) ToSqlQueryParameterTextOutputWithContext(ctx context.Context) SqlQueryParameterTextOutput {
-	return o
-}
-
-func (o SqlQueryParameterTextOutput) ToSqlQueryParameterTextPtrOutput() SqlQueryParameterTextPtrOutput {
-	return o.ToSqlQueryParameterTextPtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryParameterTextOutput) ToSqlQueryParameterTextPtrOutputWithContext(ctx context.Context) SqlQueryParameterTextPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryParameterText) *SqlQueryParameterText {
-		return &v
-	}).(SqlQueryParameterTextPtrOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterTextOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryParameterText) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type SqlQueryParameterTextPtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterTextPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterText)(nil)).Elem()
-}
-
-func (o SqlQueryParameterTextPtrOutput) ToSqlQueryParameterTextPtrOutput() SqlQueryParameterTextPtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterTextPtrOutput) ToSqlQueryParameterTextPtrOutputWithContext(ctx context.Context) SqlQueryParameterTextPtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterTextPtrOutput) Elem() SqlQueryParameterTextOutput {
-	return o.ApplyT(func(v *SqlQueryParameterText) SqlQueryParameterText {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryParameterText
-		return ret
-	}).(SqlQueryParameterTextOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterTextPtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterText) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
@@ -82748,6 +82884,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultNamespaceSettingNamespacePtrInput)(nil)).Elem(), DefaultNamespaceSettingNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyAccessSettingDisableLegacyAccessInput)(nil)).Elem(), DisableLegacyAccessSettingDisableLegacyAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyAccessSettingDisableLegacyAccessPtrInput)(nil)).Elem(), DisableLegacyAccessSettingDisableLegacyAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyDbfsSettingDisableLegacyDbfsInput)(nil)).Elem(), DisableLegacyDbfsSettingDisableLegacyDbfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyDbfsSettingDisableLegacyDbfsPtrInput)(nil)).Elem(), DisableLegacyDbfsSettingDisableLegacyDbfsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceInput)(nil)).Elem(), EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrInput)(nil)).Elem(), EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsInput)(nil)).Elem(), ExternalLocationEncryptionDetailsArgs{})
@@ -82949,6 +83087,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskCleanRoomsNotebookTaskPtrInput)(nil)).Elem(), JobTaskCleanRoomsNotebookTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskConditionTaskInput)(nil)).Elem(), JobTaskConditionTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskConditionTaskPtrInput)(nil)).Elem(), JobTaskConditionTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskInput)(nil)).Elem(), JobTaskDashboardTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskPtrInput)(nil)).Elem(), JobTaskDashboardTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskSubscriptionInput)(nil)).Elem(), JobTaskDashboardTaskSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskSubscriptionPtrInput)(nil)).Elem(), JobTaskDashboardTaskSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskSubscriptionSubscriberInput)(nil)).Elem(), JobTaskDashboardTaskSubscriptionSubscriberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDashboardTaskSubscriptionSubscriberArrayInput)(nil)).Elem(), JobTaskDashboardTaskSubscriptionSubscriberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDbtTaskInput)(nil)).Elem(), JobTaskDbtTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDbtTaskPtrInput)(nil)).Elem(), JobTaskDbtTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskDependsOnInput)(nil)).Elem(), JobTaskDependsOnArgs{})
@@ -82963,6 +83107,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskCleanRoomsNotebookTaskPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskConditionTaskInput)(nil)).Elem(), JobTaskForEachTaskTaskConditionTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskConditionTaskPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskConditionTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayInput)(nil)).Elem(), JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDbtTaskInput)(nil)).Elem(), JobTaskForEachTaskTaskDbtTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDbtTaskPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskDbtTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskDependsOnInput)(nil)).Elem(), JobTaskForEachTaskTaskDependsOnArgs{})
@@ -83046,6 +83196,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskNotificationSettingsPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskNotificationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskPipelineTaskInput)(nil)).Elem(), JobTaskForEachTaskTaskPipelineTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskPipelineTaskPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskPipelineTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskPowerBiTaskInput)(nil)).Elem(), JobTaskForEachTaskTaskPowerBiTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskPowerBiTaskPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskPowerBiTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskPowerBiTaskPowerBiModelInput)(nil)).Elem(), JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskPowerBiTaskTableInput)(nil)).Elem(), JobTaskForEachTaskTaskPowerBiTaskTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskPowerBiTaskTableArrayInput)(nil)).Elem(), JobTaskForEachTaskTaskPowerBiTaskTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskPythonWheelTaskInput)(nil)).Elem(), JobTaskForEachTaskTaskPythonWheelTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskPythonWheelTaskPtrInput)(nil)).Elem(), JobTaskForEachTaskTaskPythonWheelTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskForEachTaskTaskRunJobTaskInput)(nil)).Elem(), JobTaskForEachTaskTaskRunJobTaskArgs{})
@@ -83161,6 +83317,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskNotificationSettingsPtrInput)(nil)).Elem(), JobTaskNotificationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPipelineTaskInput)(nil)).Elem(), JobTaskPipelineTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPipelineTaskPtrInput)(nil)).Elem(), JobTaskPipelineTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPowerBiTaskInput)(nil)).Elem(), JobTaskPowerBiTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPowerBiTaskPtrInput)(nil)).Elem(), JobTaskPowerBiTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPowerBiTaskPowerBiModelInput)(nil)).Elem(), JobTaskPowerBiTaskPowerBiModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPowerBiTaskPowerBiModelPtrInput)(nil)).Elem(), JobTaskPowerBiTaskPowerBiModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPowerBiTaskTableInput)(nil)).Elem(), JobTaskPowerBiTaskTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPowerBiTaskTableArrayInput)(nil)).Elem(), JobTaskPowerBiTaskTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPythonWheelTaskInput)(nil)).Elem(), JobTaskPythonWheelTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskPythonWheelTaskPtrInput)(nil)).Elem(), JobTaskPythonWheelTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskRunJobTaskInput)(nil)).Elem(), JobTaskRunJobTaskArgs{})
@@ -83359,6 +83521,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksVpcEndpointsPtrInput)(nil)).Elem(), MwsNetworksVpcEndpointsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsVpcEndpointGcpVpcEndpointInfoInput)(nil)).Elem(), MwsVpcEndpointGcpVpcEndpointInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsVpcEndpointGcpVpcEndpointInfoPtrInput)(nil)).Elem(), MwsVpcEndpointGcpVpcEndpointInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesAzureWorkspaceInfoInput)(nil)).Elem(), MwsWorkspacesAzureWorkspaceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesAzureWorkspaceInfoPtrInput)(nil)).Elem(), MwsWorkspacesAzureWorkspaceInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesCloudResourceContainerInput)(nil)).Elem(), MwsWorkspacesCloudResourceContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesCloudResourceContainerPtrInput)(nil)).Elem(), MwsWorkspacesCloudResourceContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesCloudResourceContainerGcpInput)(nil)).Elem(), MwsWorkspacesCloudResourceContainerGcpArgs{})
@@ -83567,34 +83731,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterArrayInput)(nil)).Elem(), SqlQueryParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDateInput)(nil)).Elem(), SqlQueryParameterDateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDatePtrInput)(nil)).Elem(), SqlQueryParameterDateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDateRangeInput)(nil)).Elem(), SqlQueryParameterDateRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDateRangePtrInput)(nil)).Elem(), SqlQueryParameterDateRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDateRangeRangeInput)(nil)).Elem(), SqlQueryParameterDateRangeRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDateRangeRangePtrInput)(nil)).Elem(), SqlQueryParameterDateRangeRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDatetimeInput)(nil)).Elem(), SqlQueryParameterDatetimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDatetimePtrInput)(nil)).Elem(), SqlQueryParameterDatetimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDatetimeRangeInput)(nil)).Elem(), SqlQueryParameterDatetimeRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDatetimeRangePtrInput)(nil)).Elem(), SqlQueryParameterDatetimeRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDatetimeRangeRangeInput)(nil)).Elem(), SqlQueryParameterDatetimeRangeRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDatetimeRangeRangePtrInput)(nil)).Elem(), SqlQueryParameterDatetimeRangeRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDatetimesecInput)(nil)).Elem(), SqlQueryParameterDatetimesecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDatetimesecPtrInput)(nil)).Elem(), SqlQueryParameterDatetimesecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDatetimesecRangeInput)(nil)).Elem(), SqlQueryParameterDatetimesecRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDatetimesecRangePtrInput)(nil)).Elem(), SqlQueryParameterDatetimesecRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDatetimesecRangeRangeInput)(nil)).Elem(), SqlQueryParameterDatetimesecRangeRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDatetimesecRangeRangePtrInput)(nil)).Elem(), SqlQueryParameterDatetimesecRangeRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterEnumInput)(nil)).Elem(), SqlQueryParameterEnumArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterEnumPtrInput)(nil)).Elem(), SqlQueryParameterEnumArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterEnumMultipleInput)(nil)).Elem(), SqlQueryParameterEnumMultipleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterEnumMultiplePtrInput)(nil)).Elem(), SqlQueryParameterEnumMultipleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterNumberInput)(nil)).Elem(), SqlQueryParameterNumberArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterNumberPtrInput)(nil)).Elem(), SqlQueryParameterNumberArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterQueryInput)(nil)).Elem(), SqlQueryParameterQueryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterQueryPtrInput)(nil)).Elem(), SqlQueryParameterQueryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterQueryMultipleInput)(nil)).Elem(), SqlQueryParameterQueryMultipleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterQueryMultiplePtrInput)(nil)).Elem(), SqlQueryParameterQueryMultipleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterTextInput)(nil)).Elem(), SqlQueryParameterTextArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterTextPtrInput)(nil)).Elem(), SqlQueryParameterTextArgs{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
 	pulumi.RegisterOutputType(AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput{})
@@ -83742,6 +83878,8 @@ func init() {
 	pulumi.RegisterOutputType(DefaultNamespaceSettingNamespacePtrOutput{})
 	pulumi.RegisterOutputType(DisableLegacyAccessSettingDisableLegacyAccessOutput{})
 	pulumi.RegisterOutputType(DisableLegacyAccessSettingDisableLegacyAccessPtrOutput{})
+	pulumi.RegisterOutputType(DisableLegacyDbfsSettingDisableLegacyDbfsOutput{})
+	pulumi.RegisterOutputType(DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput{})
 	pulumi.RegisterOutputType(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput{})
 	pulumi.RegisterOutputType(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsOutput{})
@@ -83943,6 +84081,12 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskCleanRoomsNotebookTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskConditionTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskConditionTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskDashboardTaskOutput{})
+	pulumi.RegisterOutputType(JobTaskDashboardTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskDashboardTaskSubscriptionOutput{})
+	pulumi.RegisterOutputType(JobTaskDashboardTaskSubscriptionPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskDashboardTaskSubscriptionSubscriberOutput{})
+	pulumi.RegisterOutputType(JobTaskDashboardTaskSubscriptionSubscriberArrayOutput{})
 	pulumi.RegisterOutputType(JobTaskDbtTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskDbtTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskDependsOnOutput{})
@@ -83957,6 +84101,12 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskCleanRoomsNotebookTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskConditionTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskConditionTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDbtTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDbtTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskDependsOnOutput{})
@@ -84040,6 +84190,12 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskNotificationSettingsPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskPipelineTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskPipelineTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskPowerBiTaskOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskPowerBiTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskPowerBiTaskTableOutput{})
+	pulumi.RegisterOutputType(JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskPythonWheelTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskPythonWheelTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskForEachTaskTaskRunJobTaskOutput{})
@@ -84155,6 +84311,12 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskNotificationSettingsPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskPipelineTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskPipelineTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskPowerBiTaskOutput{})
+	pulumi.RegisterOutputType(JobTaskPowerBiTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskPowerBiTaskPowerBiModelOutput{})
+	pulumi.RegisterOutputType(JobTaskPowerBiTaskPowerBiModelPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskPowerBiTaskTableOutput{})
+	pulumi.RegisterOutputType(JobTaskPowerBiTaskTableArrayOutput{})
 	pulumi.RegisterOutputType(JobTaskPythonWheelTaskOutput{})
 	pulumi.RegisterOutputType(JobTaskPythonWheelTaskPtrOutput{})
 	pulumi.RegisterOutputType(JobTaskRunJobTaskOutput{})
@@ -84353,6 +84515,8 @@ func init() {
 	pulumi.RegisterOutputType(MwsNetworksVpcEndpointsPtrOutput{})
 	pulumi.RegisterOutputType(MwsVpcEndpointGcpVpcEndpointInfoOutput{})
 	pulumi.RegisterOutputType(MwsVpcEndpointGcpVpcEndpointInfoPtrOutput{})
+	pulumi.RegisterOutputType(MwsWorkspacesAzureWorkspaceInfoOutput{})
+	pulumi.RegisterOutputType(MwsWorkspacesAzureWorkspaceInfoPtrOutput{})
 	pulumi.RegisterOutputType(MwsWorkspacesCloudResourceContainerOutput{})
 	pulumi.RegisterOutputType(MwsWorkspacesCloudResourceContainerPtrOutput{})
 	pulumi.RegisterOutputType(MwsWorkspacesCloudResourceContainerGcpOutput{})
@@ -84561,32 +84725,4 @@ func init() {
 	pulumi.RegisterOutputType(SqlQueryParameterArrayOutput{})
 	pulumi.RegisterOutputType(SqlQueryParameterDateOutput{})
 	pulumi.RegisterOutputType(SqlQueryParameterDatePtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDateRangeOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDateRangePtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDateRangeRangeOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDateRangeRangePtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDatetimeOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDatetimePtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDatetimeRangeOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDatetimeRangePtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDatetimeRangeRangeOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDatetimeRangeRangePtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDatetimesecOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDatetimesecPtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDatetimesecRangeOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDatetimesecRangePtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDatetimesecRangeRangeOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDatetimesecRangeRangePtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterEnumOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterEnumPtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterEnumMultipleOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterEnumMultiplePtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterNumberOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterNumberPtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterQueryOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterQueryPtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterQueryMultipleOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterQueryMultiplePtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterTextOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterTextPtrOutput{})
 }

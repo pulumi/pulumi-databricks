@@ -18,6 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * !&gt; This resource is deprecated! Please switch to databricks_query.
+ * 
  * To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
  * 
  * &gt; documentation for this resource is a work in progress.

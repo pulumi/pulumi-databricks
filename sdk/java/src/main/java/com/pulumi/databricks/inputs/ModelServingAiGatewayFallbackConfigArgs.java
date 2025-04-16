@@ -14,9 +14,17 @@ public final class ModelServingAiGatewayFallbackConfigArgs extends com.pulumi.re
 
     public static final ModelServingAiGatewayFallbackConfigArgs Empty = new ModelServingAiGatewayFallbackConfigArgs();
 
+    /**
+     * Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
+     * 
+     */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
+    /**
+     * @return Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
+     * 
+     */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
@@ -45,11 +53,23 @@ public final class ModelServingAiGatewayFallbackConfigArgs extends com.pulumi.re
             $ = new ModelServingAiGatewayFallbackConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

@@ -13,24 +13,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
     private String key;
+    private @Nullable String value;
     /**
-     * @return The value field for a tag.
+     * @return The API Key provided as a plaintext string.
      * 
      */
-    private @Nullable String value;
     private @Nullable String valuePlaintext;
 
     private ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth() {}
     public String key() {
         return this.key;
     }
-    /**
-     * @return The value field for a tag.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }
+    /**
+     * @return The API Key provided as a plaintext string.
+     * 
+     */
     public Optional<String> valuePlaintext() {
         return Optional.ofNullable(this.valuePlaintext);
     }

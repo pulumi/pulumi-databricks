@@ -15,6 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly Outputs.JobTaskCleanRoomsNotebookTask? CleanRoomsNotebookTask;
         public readonly Outputs.JobTaskConditionTask? ConditionTask;
+        public readonly Outputs.JobTaskDashboardTask? DashboardTask;
         public readonly Outputs.JobTaskDbtTask? DbtTask;
         /// <summary>
         /// block specifying dependency(-ies) for a given task.
@@ -72,6 +73,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.JobTaskNotificationSettings? NotificationSettings;
         public readonly Outputs.JobTaskPipelineTask? PipelineTask;
+        public readonly Outputs.JobTaskPowerBiTask? PowerBiTask;
         public readonly Outputs.JobTaskPythonWheelTask? PythonWheelTask;
         /// <summary>
         /// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
@@ -107,6 +109,8 @@ namespace Pulumi.Databricks.Outputs
             Outputs.JobTaskCleanRoomsNotebookTask? cleanRoomsNotebookTask,
 
             Outputs.JobTaskConditionTask? conditionTask,
+
+            Outputs.JobTaskDashboardTask? dashboardTask,
 
             Outputs.JobTaskDbtTask? dbtTask,
 
@@ -144,6 +148,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskPipelineTask? pipelineTask,
 
+            Outputs.JobTaskPowerBiTask? powerBiTask,
+
             Outputs.JobTaskPythonWheelTask? pythonWheelTask,
 
             bool? retryOnTimeout,
@@ -168,6 +174,7 @@ namespace Pulumi.Databricks.Outputs
         {
             CleanRoomsNotebookTask = cleanRoomsNotebookTask;
             ConditionTask = conditionTask;
+            DashboardTask = dashboardTask;
             DbtTask = dbtTask;
             DependsOns = dependsOns;
             Description = description;
@@ -186,6 +193,7 @@ namespace Pulumi.Databricks.Outputs
             NotebookTask = notebookTask;
             NotificationSettings = notificationSettings;
             PipelineTask = pipelineTask;
+            PowerBiTask = powerBiTask;
             PythonWheelTask = pythonWheelTask;
             RetryOnTimeout = retryOnTimeout;
             RunIf = runIf;

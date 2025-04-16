@@ -918,6 +918,13 @@ export interface DisableLegacyAccessSettingDisableLegacyAccess {
     value: boolean;
 }
 
+export interface DisableLegacyDbfsSettingDisableLegacyDbfs {
+    /**
+     * The boolean value for the setting.
+     */
+    value: boolean;
+}
+
 export interface EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace {
     isEnabled: boolean;
 }
@@ -965,6 +972,9 @@ export interface GetAppApp {
      * The effective budget policy ID.
      */
     effectiveBudgetPolicyId: string;
+    /**
+     * A list of effective api scopes granted to the user access token.
+     */
     effectiveUserApiScopes: string[];
     /**
      * Id of the job to grant permission on.
@@ -1206,6 +1216,9 @@ export interface GetAppsApp {
      * The effective budget policy ID.
      */
     effectiveBudgetPolicyId: string;
+    /**
+     * A list of effective api scopes granted to the user access token.
+     */
     effectiveUserApiScopes: string[];
     /**
      * Id of the job to grant permission on.
@@ -1414,6 +1427,7 @@ export interface GetAppsAppResourceSqlWarehouse {
 }
 
 export interface GetBudgetPoliciesBudgetPolicy {
+    bindingWorkspaceIds?: number[];
     customTags?: outputs.GetBudgetPoliciesBudgetPolicyCustomTag[];
     policyId: string;
     /**
@@ -2698,6 +2712,7 @@ export interface GetJobJobSettingsSettingsEnvironment {
 export interface GetJobJobSettingsSettingsEnvironmentSpec {
     client: string;
     dependencies?: string[];
+    jarDependencies?: string[];
 }
 
 export interface GetJobJobSettingsSettingsGitSource {
@@ -5318,6 +5333,7 @@ export interface JobEnvironmentSpec {
      * List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
      */
     dependencies?: string[];
+    jarDependencies?: string[];
 }
 
 export interface JobGitSource {
@@ -6011,6 +6027,7 @@ export interface JobSparkSubmitTask {
 export interface JobTask {
     cleanRoomsNotebookTask?: outputs.JobTaskCleanRoomsNotebookTask;
     conditionTask?: outputs.JobTaskConditionTask;
+    dashboardTask?: outputs.JobTaskDashboardTask;
     dbtTask?: outputs.JobTaskDbtTask;
     /**
      * block specifying dependency(-ies) for a given task.
@@ -6068,6 +6085,7 @@ export interface JobTask {
      */
     notificationSettings?: outputs.JobTaskNotificationSettings;
     pipelineTask?: outputs.JobTaskPipelineTask;
+    powerBiTask?: outputs.JobTaskPowerBiTask;
     pythonWheelTask?: outputs.JobTaskPythonWheelTask;
     /**
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
@@ -6133,6 +6151,32 @@ export interface JobTaskConditionTask {
      * The right operand of the condition task. It could be a string value, job state, or parameter reference.
      */
     right: string;
+}
+
+export interface JobTaskDashboardTask {
+    /**
+     * (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     */
+    dashboardId?: string;
+    subscription?: outputs.JobTaskDashboardTaskSubscription;
+    warehouseId?: string;
+}
+
+export interface JobTaskDashboardTaskSubscription {
+    /**
+     * string specifying a custom subject of email sent.
+     */
+    customSubject?: string;
+    paused?: boolean;
+    subscribers?: outputs.JobTaskDashboardTaskSubscriptionSubscriber[];
+}
+
+export interface JobTaskDashboardTaskSubscriptionSubscriber {
+    destinationId?: string;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
+    userName?: string;
 }
 
 export interface JobTaskDbtTask {
@@ -6227,6 +6271,7 @@ export interface JobTaskForEachTask {
 export interface JobTaskForEachTaskTask {
     cleanRoomsNotebookTask?: outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask;
     conditionTask?: outputs.JobTaskForEachTaskTaskConditionTask;
+    dashboardTask?: outputs.JobTaskForEachTaskTaskDashboardTask;
     dbtTask?: outputs.JobTaskForEachTaskTaskDbtTask;
     /**
      * block specifying dependency(-ies) for a given task.
@@ -6283,6 +6328,7 @@ export interface JobTaskForEachTaskTask {
      */
     notificationSettings?: outputs.JobTaskForEachTaskTaskNotificationSettings;
     pipelineTask?: outputs.JobTaskForEachTaskTaskPipelineTask;
+    powerBiTask?: outputs.JobTaskForEachTaskTaskPowerBiTask;
     pythonWheelTask?: outputs.JobTaskForEachTaskTaskPythonWheelTask;
     /**
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
@@ -6348,6 +6394,32 @@ export interface JobTaskForEachTaskTaskConditionTask {
      * The right operand of the condition task. It could be a string value, job state, or parameter reference.
      */
     right: string;
+}
+
+export interface JobTaskForEachTaskTaskDashboardTask {
+    /**
+     * (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     */
+    dashboardId?: string;
+    subscription?: outputs.JobTaskForEachTaskTaskDashboardTaskSubscription;
+    warehouseId?: string;
+}
+
+export interface JobTaskForEachTaskTaskDashboardTaskSubscription {
+    /**
+     * string specifying a custom subject of email sent.
+     */
+    customSubject?: string;
+    paused?: boolean;
+    subscribers?: outputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber[];
+}
+
+export interface JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber {
+    destinationId?: string;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
+    userName?: string;
 }
 
 export interface JobTaskForEachTaskTaskDbtTask {
@@ -6750,6 +6822,38 @@ export interface JobTaskForEachTaskTaskPipelineTask {
      * The pipeline's unique ID.
      */
     pipelineId: string;
+}
+
+export interface JobTaskForEachTaskTaskPowerBiTask {
+    connectionResourceName?: string;
+    powerBiModel?: outputs.JobTaskForEachTaskTaskPowerBiTaskPowerBiModel;
+    refreshAfterUpdate?: boolean;
+    tables?: outputs.JobTaskForEachTaskTaskPowerBiTaskTable[];
+    warehouseId?: string;
+}
+
+export interface JobTaskForEachTaskTaskPowerBiTaskPowerBiModel {
+    authenticationMethod?: string;
+    modelName?: string;
+    overwriteExisting?: boolean;
+    storageMode?: string;
+    workspaceName?: string;
+}
+
+export interface JobTaskForEachTaskTaskPowerBiTaskTable {
+    /**
+     * The name of the catalog to use inside Unity Catalog.
+     */
+    catalog?: string;
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
+    name?: string;
+    /**
+     * The name of the schema dbt should run in. Defaults to `default`.
+     */
+    schema?: string;
+    storageMode?: string;
 }
 
 export interface JobTaskForEachTaskTaskPythonWheelTask {
@@ -7357,6 +7461,38 @@ export interface JobTaskPipelineTask {
      * The pipeline's unique ID.
      */
     pipelineId: string;
+}
+
+export interface JobTaskPowerBiTask {
+    connectionResourceName?: string;
+    powerBiModel?: outputs.JobTaskPowerBiTaskPowerBiModel;
+    refreshAfterUpdate?: boolean;
+    tables?: outputs.JobTaskPowerBiTaskTable[];
+    warehouseId?: string;
+}
+
+export interface JobTaskPowerBiTaskPowerBiModel {
+    authenticationMethod?: string;
+    modelName?: string;
+    overwriteExisting?: boolean;
+    storageMode?: string;
+    workspaceName?: string;
+}
+
+export interface JobTaskPowerBiTaskTable {
+    /**
+     * The name of the catalog to use inside Unity Catalog.
+     */
+    catalog?: string;
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
+    name?: string;
+    /**
+     * The name of the schema dbt should run in. Defaults to `default`.
+     */
+    schema?: string;
+    storageMode?: string;
 }
 
 export interface JobTaskPythonWheelTask {
@@ -7968,6 +8104,9 @@ export interface MlflowWebhookJobSpec {
 }
 
 export interface ModelServingAiGateway {
+    /**
+     * block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
+     */
     fallbackConfig?: outputs.ModelServingAiGatewayFallbackConfig;
     /**
      * Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
@@ -7988,6 +8127,9 @@ export interface ModelServingAiGateway {
 }
 
 export interface ModelServingAiGatewayFallbackConfig {
+    /**
+     * Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
+     */
     enabled: boolean;
 }
 
@@ -8196,6 +8338,9 @@ export interface ModelServingConfigServedEntityExternalModel {
      * Cohere Config
      */
     cohereConfig?: outputs.ModelServingConfigServedEntityExternalModelCohereConfig;
+    /**
+     * Custom Provider Config. Only required if the provider is 'custom'.
+     */
     customProviderConfig?: outputs.ModelServingConfigServedEntityExternalModelCustomProviderConfig;
     /**
      * Databricks Model Serving Config
@@ -8290,22 +8435,37 @@ export interface ModelServingConfigServedEntityExternalModelCohereConfig {
 }
 
 export interface ModelServingConfigServedEntityExternalModelCustomProviderConfig {
+    /**
+     * API key authentication for the custom provider API. Conflicts with `bearerTokenAuth`.
+     */
     apiKeyAuth?: outputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth;
+    /**
+     * bearer token authentication for the custom provider API.  Conflicts with `apiKeyAuth`.
+     */
     bearerTokenAuth?: outputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth;
+    /**
+     * URL of the custom provider API.
+     */
     customProviderUrl: string;
 }
 
 export interface ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
     key: string;
-    /**
-     * The value field for a tag.
-     */
     value?: string;
+    /**
+     * The API Key provided as a plaintext string.
+     */
     valuePlaintext?: string;
 }
 
 export interface ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
+    /**
+     * The Databricks secret key reference for a token.
+     */
     token?: string;
+    /**
+     * The token provided as a plaintext string.
+     */
     tokenPlaintext?: string;
 }
 
@@ -8627,13 +8787,13 @@ export interface MwsNetworksGcpNetworkInfo {
     /**
      * The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
      *
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
      * The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
      *
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -8678,6 +8838,11 @@ export interface MwsVpcEndpointGcpVpcEndpointInfo {
     serviceAttachmentId: string;
 }
 
+export interface MwsWorkspacesAzureWorkspaceInfo {
+    resourceGroup?: string;
+    subscriptionId?: string;
+}
+
 export interface MwsWorkspacesCloudResourceContainer {
     /**
      * A block that consists of the following field:
@@ -8700,13 +8865,16 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
+    /**
+     * The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
+     */
     subnetCidr: string;
 }
 

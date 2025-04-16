@@ -36,6 +36,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("cohereConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelCohereConfigGetArgs>? CohereConfig { get; set; }
 
+        /// <summary>
+        /// Custom Provider Config. Only required if the provider is 'custom'.
+        /// </summary>
         [Input("customProviderConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigGetArgs>? CustomProviderConfig { get; set; }
 

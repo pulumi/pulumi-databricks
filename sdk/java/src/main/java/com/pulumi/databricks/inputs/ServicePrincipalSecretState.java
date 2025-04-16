@@ -16,14 +16,59 @@ public final class ServicePrincipalSecretState extends com.pulumi.resources.Reso
     public static final ServicePrincipalSecretState Empty = new ServicePrincipalSecretState();
 
     /**
-     * Generated secret for the service principal
+     * UTC time when the secret was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return UTC time when the secret was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * UTC time when the secret will expire. If the field is not present, the secret does not expire.
+     * 
+     */
+    @Import(name="expireTime")
+    private @Nullable Output<String> expireTime;
+
+    /**
+     * @return UTC time when the secret will expire. If the field is not present, the secret does not expire.
+     * 
+     */
+    public Optional<Output<String>> expireTime() {
+        return Optional.ofNullable(this.expireTime);
+    }
+
+    /**
+     * The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+     * 
+     */
+    @Import(name="lifetime")
+    private @Nullable Output<String> lifetime;
+
+    /**
+     * @return The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+     * 
+     */
+    public Optional<Output<String>> lifetime() {
+        return Optional.ofNullable(this.lifetime);
+    }
+
+    /**
+     * Generated secret for the service principal.
      * 
      */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
     /**
-     * @return Generated secret for the service principal
+     * @return Generated secret for the service principal.
      * 
      */
     public Optional<Output<String>> secret() {
@@ -31,33 +76,76 @@ public final class ServicePrincipalSecretState extends com.pulumi.resources.Reso
     }
 
     /**
-     * ID of the databricks.ServicePrincipal (not application ID).
+     * Secret Hash.
+     * 
+     */
+    @Import(name="secretHash")
+    private @Nullable Output<String> secretHash;
+
+    /**
+     * @return Secret Hash.
+     * 
+     */
+    public Optional<Output<String>> secretHash() {
+        return Optional.ofNullable(this.secretHash);
+    }
+
+    /**
+     * SCIM ID of the databricks.ServicePrincipal (not application ID).
      * 
      */
     @Import(name="servicePrincipalId")
     private @Nullable Output<String> servicePrincipalId;
 
     /**
-     * @return ID of the databricks.ServicePrincipal (not application ID).
+     * @return SCIM ID of the databricks.ServicePrincipal (not application ID).
      * 
      */
     public Optional<Output<String>> servicePrincipalId() {
         return Optional.ofNullable(this.servicePrincipalId);
     }
 
+    /**
+     * Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * UTC time when the secret was updated.
+     * 
+     */
+    @Import(name="updateTime")
+    private @Nullable Output<String> updateTime;
+
+    /**
+     * @return UTC time when the secret was updated.
+     * 
+     */
+    public Optional<Output<String>> updateTime() {
+        return Optional.ofNullable(this.updateTime);
     }
 
     private ServicePrincipalSecretState() {}
 
     private ServicePrincipalSecretState(ServicePrincipalSecretState $) {
+        this.createTime = $.createTime;
+        this.expireTime = $.expireTime;
+        this.lifetime = $.lifetime;
         this.secret = $.secret;
+        this.secretHash = $.secretHash;
         this.servicePrincipalId = $.servicePrincipalId;
         this.status = $.status;
+        this.updateTime = $.updateTime;
     }
 
     public static Builder builder() {
@@ -79,7 +167,70 @@ public final class ServicePrincipalSecretState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param secret Generated secret for the service principal
+         * @param createTime UTC time when the secret was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime UTC time when the secret was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param expireTime UTC time when the secret will expire. If the field is not present, the secret does not expire.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expireTime(@Nullable Output<String> expireTime) {
+            $.expireTime = expireTime;
+            return this;
+        }
+
+        /**
+         * @param expireTime UTC time when the secret will expire. If the field is not present, the secret does not expire.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expireTime(String expireTime) {
+            return expireTime(Output.of(expireTime));
+        }
+
+        /**
+         * @param lifetime The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lifetime(@Nullable Output<String> lifetime) {
+            $.lifetime = lifetime;
+            return this;
+        }
+
+        /**
+         * @param lifetime The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lifetime(String lifetime) {
+            return lifetime(Output.of(lifetime));
+        }
+
+        /**
+         * @param secret Generated secret for the service principal.
          * 
          * @return builder
          * 
@@ -90,7 +241,7 @@ public final class ServicePrincipalSecretState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param secret Generated secret for the service principal
+         * @param secret Generated secret for the service principal.
          * 
          * @return builder
          * 
@@ -100,7 +251,28 @@ public final class ServicePrincipalSecretState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param servicePrincipalId ID of the databricks.ServicePrincipal (not application ID).
+         * @param secretHash Secret Hash.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretHash(@Nullable Output<String> secretHash) {
+            $.secretHash = secretHash;
+            return this;
+        }
+
+        /**
+         * @param secretHash Secret Hash.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretHash(String secretHash) {
+            return secretHash(Output.of(secretHash));
+        }
+
+        /**
+         * @param servicePrincipalId SCIM ID of the databricks.ServicePrincipal (not application ID).
          * 
          * @return builder
          * 
@@ -111,7 +283,7 @@ public final class ServicePrincipalSecretState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param servicePrincipalId ID of the databricks.ServicePrincipal (not application ID).
+         * @param servicePrincipalId SCIM ID of the databricks.ServicePrincipal (not application ID).
          * 
          * @return builder
          * 
@@ -120,13 +292,46 @@ public final class ServicePrincipalSecretState extends com.pulumi.resources.Reso
             return servicePrincipalId(Output.of(servicePrincipalId));
         }
 
+        /**
+         * @param status Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param updateTime UTC time when the secret was updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(@Nullable Output<String> updateTime) {
+            $.updateTime = updateTime;
+            return this;
+        }
+
+        /**
+         * @param updateTime UTC time when the secret was updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(String updateTime) {
+            return updateTime(Output.of(updateTime));
         }
 
         public ServicePrincipalSecretState build() {

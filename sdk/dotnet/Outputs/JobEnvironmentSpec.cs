@@ -21,15 +21,19 @@ namespace Pulumi.Databricks.Outputs
         /// List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
         /// </summary>
         public readonly ImmutableArray<string> Dependencies;
+        public readonly ImmutableArray<string> JarDependencies;
 
         [OutputConstructor]
         private JobEnvironmentSpec(
             string client,
 
-            ImmutableArray<string> dependencies)
+            ImmutableArray<string> dependencies,
+
+            ImmutableArray<string> jarDependencies)
         {
             Client = client;
             Dependencies = dependencies;
+            JarDependencies = jarDependencies;
         }
     }
 }

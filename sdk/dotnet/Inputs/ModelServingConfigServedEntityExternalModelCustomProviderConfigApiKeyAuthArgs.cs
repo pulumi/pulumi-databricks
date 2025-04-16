@@ -15,12 +15,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
-        /// <summary>
-        /// The value field for a tag.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 
+        /// <summary>
+        /// The API Key provided as a plaintext string.
+        /// </summary>
         [Input("valuePlaintext")]
         public Input<string>? ValuePlaintext { get; set; }
 

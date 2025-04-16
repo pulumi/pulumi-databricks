@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * !> This resource is deprecated! Please switch to databricks_query.
+ *
  * To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your databricks.Group or databricks_user.
  *
  * > documentation for this resource is a work in progress.

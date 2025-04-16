@@ -42,7 +42,7 @@ type App struct {
 	ActiveDeployment AppActiveDeploymentOutput `pulumi:"activeDeployment"`
 	// attribute
 	AppStatus AppAppStatusOutput `pulumi:"appStatus"`
-	// The optional Budget Policy ID set for this resource.
+	// The Budget Policy ID set for this resource.
 	BudgetPolicyId pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
 	// attribute
 	ComputeStatus AppComputeStatusOutput `pulumi:"computeStatus"`
@@ -55,8 +55,9 @@ type App struct {
 	// The description of the app.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The effective budget policy ID.
-	EffectiveBudgetPolicyId pulumi.StringOutput      `pulumi:"effectiveBudgetPolicyId"`
-	EffectiveUserApiScopes  pulumi.StringArrayOutput `pulumi:"effectiveUserApiScopes"`
+	EffectiveBudgetPolicyId pulumi.StringOutput `pulumi:"effectiveBudgetPolicyId"`
+	// A list of effective api scopes granted to the user access token.
+	EffectiveUserApiScopes pulumi.StringArrayOutput `pulumi:"effectiveUserApiScopes"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name                   pulumi.StringOutput        `pulumi:"name"`
 	NoCompute              pulumi.BoolPtrOutput       `pulumi:"noCompute"`
@@ -75,7 +76,8 @@ type App struct {
 	// The email of the user that last updated the app.
 	Updater pulumi.StringOutput `pulumi:"updater"`
 	// The URL of the app once it is deployed.
-	Url           pulumi.StringOutput      `pulumi:"url"`
+	Url pulumi.StringOutput `pulumi:"url"`
+	// A list of api scopes granted to the user access token.
 	UserApiScopes pulumi.StringArrayOutput `pulumi:"userApiScopes"`
 }
 
@@ -112,7 +114,7 @@ type appState struct {
 	ActiveDeployment *AppActiveDeployment `pulumi:"activeDeployment"`
 	// attribute
 	AppStatus *AppAppStatus `pulumi:"appStatus"`
-	// The optional Budget Policy ID set for this resource.
+	// The Budget Policy ID set for this resource.
 	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
 	// attribute
 	ComputeStatus *AppComputeStatus `pulumi:"computeStatus"`
@@ -125,8 +127,9 @@ type appState struct {
 	// The description of the app.
 	Description *string `pulumi:"description"`
 	// The effective budget policy ID.
-	EffectiveBudgetPolicyId *string  `pulumi:"effectiveBudgetPolicyId"`
-	EffectiveUserApiScopes  []string `pulumi:"effectiveUserApiScopes"`
+	EffectiveBudgetPolicyId *string `pulumi:"effectiveBudgetPolicyId"`
+	// A list of effective api scopes granted to the user access token.
+	EffectiveUserApiScopes []string `pulumi:"effectiveUserApiScopes"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name                   *string               `pulumi:"name"`
 	NoCompute              *bool                 `pulumi:"noCompute"`
@@ -145,7 +148,8 @@ type appState struct {
 	// The email of the user that last updated the app.
 	Updater *string `pulumi:"updater"`
 	// The URL of the app once it is deployed.
-	Url           *string  `pulumi:"url"`
+	Url *string `pulumi:"url"`
+	// A list of api scopes granted to the user access token.
 	UserApiScopes []string `pulumi:"userApiScopes"`
 }
 
@@ -153,7 +157,7 @@ type AppState struct {
 	ActiveDeployment AppActiveDeploymentPtrInput
 	// attribute
 	AppStatus AppAppStatusPtrInput
-	// The optional Budget Policy ID set for this resource.
+	// The Budget Policy ID set for this resource.
 	BudgetPolicyId pulumi.StringPtrInput
 	// attribute
 	ComputeStatus AppComputeStatusPtrInput
@@ -167,7 +171,8 @@ type AppState struct {
 	Description pulumi.StringPtrInput
 	// The effective budget policy ID.
 	EffectiveBudgetPolicyId pulumi.StringPtrInput
-	EffectiveUserApiScopes  pulumi.StringArrayInput
+	// A list of effective api scopes granted to the user access token.
+	EffectiveUserApiScopes pulumi.StringArrayInput
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name                   pulumi.StringPtrInput
 	NoCompute              pulumi.BoolPtrInput
@@ -186,7 +191,8 @@ type AppState struct {
 	// The email of the user that last updated the app.
 	Updater pulumi.StringPtrInput
 	// The URL of the app once it is deployed.
-	Url           pulumi.StringPtrInput
+	Url pulumi.StringPtrInput
+	// A list of api scopes granted to the user access token.
 	UserApiScopes pulumi.StringArrayInput
 }
 
@@ -195,7 +201,7 @@ func (AppState) ElementType() reflect.Type {
 }
 
 type appArgs struct {
-	// The optional Budget Policy ID set for this resource.
+	// The Budget Policy ID set for this resource.
 	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
 	// The description of the app.
 	Description *string `pulumi:"description"`
@@ -203,13 +209,14 @@ type appArgs struct {
 	Name      *string `pulumi:"name"`
 	NoCompute *bool   `pulumi:"noCompute"`
 	// A list of resources that the app have access to.
-	Resources     []AppResource `pulumi:"resources"`
-	UserApiScopes []string      `pulumi:"userApiScopes"`
+	Resources []AppResource `pulumi:"resources"`
+	// A list of api scopes granted to the user access token.
+	UserApiScopes []string `pulumi:"userApiScopes"`
 }
 
 // The set of arguments for constructing a App resource.
 type AppArgs struct {
-	// The optional Budget Policy ID set for this resource.
+	// The Budget Policy ID set for this resource.
 	BudgetPolicyId pulumi.StringPtrInput
 	// The description of the app.
 	Description pulumi.StringPtrInput
@@ -217,7 +224,8 @@ type AppArgs struct {
 	Name      pulumi.StringPtrInput
 	NoCompute pulumi.BoolPtrInput
 	// A list of resources that the app have access to.
-	Resources     AppResourceArrayInput
+	Resources AppResourceArrayInput
+	// A list of api scopes granted to the user access token.
 	UserApiScopes pulumi.StringArrayInput
 }
 
@@ -317,7 +325,7 @@ func (o AppOutput) AppStatus() AppAppStatusOutput {
 	return o.ApplyT(func(v *App) AppAppStatusOutput { return v.AppStatus }).(AppAppStatusOutput)
 }
 
-// The optional Budget Policy ID set for this resource.
+// The Budget Policy ID set for this resource.
 func (o AppOutput) BudgetPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
 }
@@ -352,6 +360,7 @@ func (o AppOutput) EffectiveBudgetPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.EffectiveBudgetPolicyId }).(pulumi.StringOutput)
 }
 
+// A list of effective api scopes granted to the user access token.
 func (o AppOutput) EffectiveUserApiScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *App) pulumi.StringArrayOutput { return v.EffectiveUserApiScopes }).(pulumi.StringArrayOutput)
 }
@@ -411,6 +420,7 @@ func (o AppOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
+// A list of api scopes granted to the user access token.
 func (o AppOutput) UserApiScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *App) pulumi.StringArrayOutput { return v.UserApiScopes }).(pulumi.StringArrayOutput)
 }

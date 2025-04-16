@@ -15,6 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly Outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask? CleanRoomsNotebookTask;
         public readonly Outputs.JobTaskForEachTaskTaskConditionTask? ConditionTask;
+        public readonly Outputs.JobTaskForEachTaskTaskDashboardTask? DashboardTask;
         public readonly Outputs.JobTaskForEachTaskTaskDbtTask? DbtTask;
         /// <summary>
         /// block specifying dependency(-ies) for a given task.
@@ -71,6 +72,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.JobTaskForEachTaskTaskNotificationSettings? NotificationSettings;
         public readonly Outputs.JobTaskForEachTaskTaskPipelineTask? PipelineTask;
+        public readonly Outputs.JobTaskForEachTaskTaskPowerBiTask? PowerBiTask;
         public readonly Outputs.JobTaskForEachTaskTaskPythonWheelTask? PythonWheelTask;
         /// <summary>
         /// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
@@ -107,6 +109,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskForEachTaskTaskConditionTask? conditionTask,
 
+            Outputs.JobTaskForEachTaskTaskDashboardTask? dashboardTask,
+
             Outputs.JobTaskForEachTaskTaskDbtTask? dbtTask,
 
             ImmutableArray<Outputs.JobTaskForEachTaskTaskDependsOn> dependsOns,
@@ -141,6 +145,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskForEachTaskTaskPipelineTask? pipelineTask,
 
+            Outputs.JobTaskForEachTaskTaskPowerBiTask? powerBiTask,
+
             Outputs.JobTaskForEachTaskTaskPythonWheelTask? pythonWheelTask,
 
             bool? retryOnTimeout,
@@ -165,6 +171,7 @@ namespace Pulumi.Databricks.Outputs
         {
             CleanRoomsNotebookTask = cleanRoomsNotebookTask;
             ConditionTask = conditionTask;
+            DashboardTask = dashboardTask;
             DbtTask = dbtTask;
             DependsOns = dependsOns;
             Description = description;
@@ -182,6 +189,7 @@ namespace Pulumi.Databricks.Outputs
             NotebookTask = notebookTask;
             NotificationSettings = notificationSettings;
             PipelineTask = pipelineTask;
+            PowerBiTask = powerBiTask;
             PythonWheelTask = pythonWheelTask;
             RetryOnTimeout = retryOnTimeout;
             RunIf = runIf;

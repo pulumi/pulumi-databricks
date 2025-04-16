@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.MwsWorkspacesArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MwsWorkspacesState;
+import com.pulumi.databricks.outputs.MwsWorkspacesAzureWorkspaceInfo;
 import com.pulumi.databricks.outputs.MwsWorkspacesCloudResourceContainer;
 import com.pulumi.databricks.outputs.MwsWorkspacesExternalCustomerInfo;
 import com.pulumi.databricks.outputs.MwsWorkspacesGcpManagedNetworkConfig;
@@ -407,11 +408,17 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> awsRegion() {
         return Codegen.optional(this.awsRegion);
     }
-    @Export(name="cloud", refs={String.class}, tree="[0]")
-    private Output<String> cloud;
+    @Export(name="azureWorkspaceInfo", refs={MwsWorkspacesAzureWorkspaceInfo.class}, tree="[0]")
+    private Output<MwsWorkspacesAzureWorkspaceInfo> azureWorkspaceInfo;
 
-    public Output<String> cloud() {
-        return this.cloud;
+    public Output<MwsWorkspacesAzureWorkspaceInfo> azureWorkspaceInfo() {
+        return this.azureWorkspaceInfo;
+    }
+    @Export(name="cloud", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> cloud;
+
+    public Output<Optional<String>> cloud() {
+        return Codegen.optional(this.cloud);
     }
     /**
      * A block that specifies GCP workspace configurations, consisting of following blocks:
@@ -441,9 +448,17 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Integer> creationTime() {
         return this.creationTime;
     }
+    /**
+     * ID of the workspace&#39;s credential configuration object.
+     * 
+     */
     @Export(name="credentialsId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> credentialsId;
 
+    /**
+     * @return ID of the workspace&#39;s credential configuration object.
+     * 
+     */
     public Output<Optional<String>> credentialsId() {
         return Codegen.optional(this.credentialsId);
     }
@@ -493,9 +508,17 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Optional<MwsWorkspacesExternalCustomerInfo>> externalCustomerInfo() {
         return Codegen.optional(this.externalCustomerInfo);
     }
+    /**
+     * A block that describes the network configuration for workspaces with Databricks-managed networks.
+     * 
+     */
     @Export(name="gcpManagedNetworkConfig", refs={MwsWorkspacesGcpManagedNetworkConfig.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesGcpManagedNetworkConfig> gcpManagedNetworkConfig;
 
+    /**
+     * @return A block that describes the network configuration for workspaces with Databricks-managed networks.
+     * 
+     */
     public Output<Optional<MwsWorkspacesGcpManagedNetworkConfig>> gcpManagedNetworkConfig() {
         return Codegen.optional(this.gcpManagedNetworkConfig);
     }
@@ -517,19 +540,19 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * A block that specifies GKE configuration for the Databricks workspace:
      * 
      * @deprecated
-     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
     @Export(name="gkeConfig", refs={MwsWorkspacesGkeConfig.class}, tree="[0]")
-    private Output</* @Nullable */ MwsWorkspacesGkeConfig> gkeConfig;
+    private Output<MwsWorkspacesGkeConfig> gkeConfig;
 
     /**
      * @return A block that specifies GKE configuration for the Databricks workspace:
      * 
      */
-    public Output<Optional<MwsWorkspacesGkeConfig>> gkeConfig() {
-        return Codegen.optional(this.gkeConfig);
+    public Output<MwsWorkspacesGkeConfig> gkeConfig() {
+        return this.gkeConfig;
     }
     @Export(name="isNoPublicIpEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isNoPublicIpEnabled;

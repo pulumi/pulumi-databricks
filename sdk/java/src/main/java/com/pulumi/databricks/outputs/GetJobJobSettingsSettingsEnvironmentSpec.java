@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsEnvironmentSpec {
     private String client;
     private @Nullable List<String> dependencies;
+    private @Nullable List<String> jarDependencies;
 
     private GetJobJobSettingsSettingsEnvironmentSpec() {}
     public String client() {
@@ -21,6 +22,9 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
     }
     public List<String> dependencies() {
         return this.dependencies == null ? List.of() : this.dependencies;
+    }
+    public List<String> jarDependencies() {
+        return this.jarDependencies == null ? List.of() : this.jarDependencies;
     }
 
     public static Builder builder() {
@@ -34,11 +38,13 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
     public static final class Builder {
         private String client;
         private @Nullable List<String> dependencies;
+        private @Nullable List<String> jarDependencies;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsEnvironmentSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.client = defaults.client;
     	      this.dependencies = defaults.dependencies;
+    	      this.jarDependencies = defaults.jarDependencies;
         }
 
         @CustomType.Setter
@@ -58,10 +64,20 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
         public Builder dependencies(String... dependencies) {
             return dependencies(List.of(dependencies));
         }
+        @CustomType.Setter
+        public Builder jarDependencies(@Nullable List<String> jarDependencies) {
+
+            this.jarDependencies = jarDependencies;
+            return this;
+        }
+        public Builder jarDependencies(String... jarDependencies) {
+            return jarDependencies(List.of(jarDependencies));
+        }
         public GetJobJobSettingsSettingsEnvironmentSpec build() {
             final var _resultValue = new GetJobJobSettingsSettingsEnvironmentSpec();
             _resultValue.client = client;
             _resultValue.dependencies = dependencies;
+            _resultValue.jarDependencies = jarDependencies;
             return _resultValue;
         }
     }
