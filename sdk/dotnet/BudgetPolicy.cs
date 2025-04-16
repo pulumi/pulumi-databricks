@@ -55,6 +55,9 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/budgetPolicy:BudgetPolicy")]
     public partial class BudgetPolicy : global::Pulumi.CustomResource
     {
+        [Output("bindingWorkspaceIds")]
+        public Output<ImmutableArray<int>> BindingWorkspaceIds { get; private set; } = null!;
+
         /// <summary>
         /// A list of tags defined by the customer. At most 20 entries are allowed per policy.
         /// </summary>
@@ -119,6 +122,14 @@ namespace Pulumi.Databricks
 
     public sealed class BudgetPolicyArgs : global::Pulumi.ResourceArgs
     {
+        [Input("bindingWorkspaceIds")]
+        private InputList<int>? _bindingWorkspaceIds;
+        public InputList<int> BindingWorkspaceIds
+        {
+            get => _bindingWorkspaceIds ?? (_bindingWorkspaceIds = new InputList<int>());
+            set => _bindingWorkspaceIds = value;
+        }
+
         [Input("customTags")]
         private InputList<Inputs.BudgetPolicyCustomTagArgs>? _customTags;
 
@@ -145,6 +156,14 @@ namespace Pulumi.Databricks
 
     public sealed class BudgetPolicyState : global::Pulumi.ResourceArgs
     {
+        [Input("bindingWorkspaceIds")]
+        private InputList<int>? _bindingWorkspaceIds;
+        public InputList<int> BindingWorkspaceIds
+        {
+            get => _bindingWorkspaceIds ?? (_bindingWorkspaceIds = new InputList<int>());
+            set => _bindingWorkspaceIds = value;
+        }
+
         [Input("customTags")]
         private InputList<Inputs.BudgetPolicyCustomTagGetArgs>? _customTags;
 

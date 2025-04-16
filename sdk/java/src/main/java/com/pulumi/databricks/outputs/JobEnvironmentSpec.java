@@ -22,6 +22,7 @@ public final class JobEnvironmentSpec {
      * 
      */
     private @Nullable List<String> dependencies;
+    private @Nullable List<String> jarDependencies;
 
     private JobEnvironmentSpec() {}
     /**
@@ -38,6 +39,9 @@ public final class JobEnvironmentSpec {
     public List<String> dependencies() {
         return this.dependencies == null ? List.of() : this.dependencies;
     }
+    public List<String> jarDependencies() {
+        return this.jarDependencies == null ? List.of() : this.jarDependencies;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,11 +54,13 @@ public final class JobEnvironmentSpec {
     public static final class Builder {
         private String client;
         private @Nullable List<String> dependencies;
+        private @Nullable List<String> jarDependencies;
         public Builder() {}
         public Builder(JobEnvironmentSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.client = defaults.client;
     	      this.dependencies = defaults.dependencies;
+    	      this.jarDependencies = defaults.jarDependencies;
         }
 
         @CustomType.Setter
@@ -74,10 +80,20 @@ public final class JobEnvironmentSpec {
         public Builder dependencies(String... dependencies) {
             return dependencies(List.of(dependencies));
         }
+        @CustomType.Setter
+        public Builder jarDependencies(@Nullable List<String> jarDependencies) {
+
+            this.jarDependencies = jarDependencies;
+            return this;
+        }
+        public Builder jarDependencies(String... jarDependencies) {
+            return jarDependencies(List.of(jarDependencies));
+        }
         public JobEnvironmentSpec build() {
             final var _resultValue = new JobEnvironmentSpec();
             _resultValue.client = client;
             _resultValue.dependencies = dependencies;
+            _resultValue.jarDependencies = jarDependencies;
             return _resultValue;
         }
     }

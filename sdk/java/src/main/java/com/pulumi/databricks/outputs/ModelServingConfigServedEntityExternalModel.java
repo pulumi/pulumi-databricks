@@ -41,6 +41,10 @@ public final class ModelServingConfigServedEntityExternalModel {
      * 
      */
     private @Nullable ModelServingConfigServedEntityExternalModelCohereConfig cohereConfig;
+    /**
+     * @return Custom Provider Config. Only required if the provider is &#39;custom&#39;.
+     * 
+     */
     private @Nullable ModelServingConfigServedEntityExternalModelCustomProviderConfig customProviderConfig;
     /**
      * @return Databricks Model Serving Config
@@ -107,6 +111,10 @@ public final class ModelServingConfigServedEntityExternalModel {
     public Optional<ModelServingConfigServedEntityExternalModelCohereConfig> cohereConfig() {
         return Optional.ofNullable(this.cohereConfig);
     }
+    /**
+     * @return Custom Provider Config. Only required if the provider is &#39;custom&#39;.
+     * 
+     */
     public Optional<ModelServingConfigServedEntityExternalModelCustomProviderConfig> customProviderConfig() {
         return Optional.ofNullable(this.customProviderConfig);
     }

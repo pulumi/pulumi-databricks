@@ -19,14 +19,14 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
     public static final AppArgs Empty = new AppArgs();
 
     /**
-     * The optional Budget Policy ID set for this resource.
+     * The Budget Policy ID set for this resource.
      * 
      */
     @Import(name="budgetPolicyId")
     private @Nullable Output<String> budgetPolicyId;
 
     /**
-     * @return The optional Budget Policy ID set for this resource.
+     * @return The Budget Policy ID set for this resource.
      * 
      */
     public Optional<Output<String>> budgetPolicyId() {
@@ -85,9 +85,17 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.resources);
     }
 
+    /**
+     * A list of api scopes granted to the user access token.
+     * 
+     */
     @Import(name="userApiScopes")
     private @Nullable Output<List<String>> userApiScopes;
 
+    /**
+     * @return A list of api scopes granted to the user access token.
+     * 
+     */
     public Optional<Output<List<String>>> userApiScopes() {
         return Optional.ofNullable(this.userApiScopes);
     }
@@ -122,7 +130,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param budgetPolicyId The optional Budget Policy ID set for this resource.
+         * @param budgetPolicyId The Budget Policy ID set for this resource.
          * 
          * @return builder
          * 
@@ -133,7 +141,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param budgetPolicyId The optional Budget Policy ID set for this resource.
+         * @param budgetPolicyId The Budget Policy ID set for this resource.
          * 
          * @return builder
          * 
@@ -224,15 +232,33 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
             return resources(List.of(resources));
         }
 
+        /**
+         * @param userApiScopes A list of api scopes granted to the user access token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userApiScopes(@Nullable Output<List<String>> userApiScopes) {
             $.userApiScopes = userApiScopes;
             return this;
         }
 
+        /**
+         * @param userApiScopes A list of api scopes granted to the user access token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userApiScopes(List<String> userApiScopes) {
             return userApiScopes(Output.of(userApiScopes));
         }
 
+        /**
+         * @param userApiScopes A list of api scopes granted to the user access token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userApiScopes(String... userApiScopes) {
             return userApiScopes(List.of(userApiScopes));
         }

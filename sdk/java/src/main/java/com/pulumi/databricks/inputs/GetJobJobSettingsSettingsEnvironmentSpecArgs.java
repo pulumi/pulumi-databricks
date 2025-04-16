@@ -31,11 +31,19 @@ public final class GetJobJobSettingsSettingsEnvironmentSpecArgs extends com.pulu
         return Optional.ofNullable(this.dependencies);
     }
 
+    @Import(name="jarDependencies")
+    private @Nullable Output<List<String>> jarDependencies;
+
+    public Optional<Output<List<String>>> jarDependencies() {
+        return Optional.ofNullable(this.jarDependencies);
+    }
+
     private GetJobJobSettingsSettingsEnvironmentSpecArgs() {}
 
     private GetJobJobSettingsSettingsEnvironmentSpecArgs(GetJobJobSettingsSettingsEnvironmentSpecArgs $) {
         this.client = $.client;
         this.dependencies = $.dependencies;
+        this.jarDependencies = $.jarDependencies;
     }
 
     public static Builder builder() {
@@ -76,6 +84,19 @@ public final class GetJobJobSettingsSettingsEnvironmentSpecArgs extends com.pulu
 
         public Builder dependencies(String... dependencies) {
             return dependencies(List.of(dependencies));
+        }
+
+        public Builder jarDependencies(@Nullable Output<List<String>> jarDependencies) {
+            $.jarDependencies = jarDependencies;
+            return this;
+        }
+
+        public Builder jarDependencies(List<String> jarDependencies) {
+            return jarDependencies(Output.of(jarDependencies));
+        }
+
+        public Builder jarDependencies(String... jarDependencies) {
+            return jarDependencies(List.of(jarDependencies));
         }
 
         public GetJobJobSettingsSettingsEnvironmentSpecArgs build() {

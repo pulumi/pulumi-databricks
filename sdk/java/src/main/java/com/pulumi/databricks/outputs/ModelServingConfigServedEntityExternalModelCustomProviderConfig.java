@@ -14,17 +14,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelCustomProviderConfig {
+    /**
+     * @return API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+     * 
+     */
     private @Nullable ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth apiKeyAuth;
+    /**
+     * @return bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+     * 
+     */
     private @Nullable ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth bearerTokenAuth;
+    /**
+     * @return URL of the custom provider API.
+     * 
+     */
     private String customProviderUrl;
 
     private ModelServingConfigServedEntityExternalModelCustomProviderConfig() {}
+    /**
+     * @return API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+     * 
+     */
     public Optional<ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth> apiKeyAuth() {
         return Optional.ofNullable(this.apiKeyAuth);
     }
+    /**
+     * @return bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+     * 
+     */
     public Optional<ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth> bearerTokenAuth() {
         return Optional.ofNullable(this.bearerTokenAuth);
     }
+    /**
+     * @return URL of the custom provider API.
+     * 
+     */
     public String customProviderUrl() {
         return this.customProviderUrl;
     }

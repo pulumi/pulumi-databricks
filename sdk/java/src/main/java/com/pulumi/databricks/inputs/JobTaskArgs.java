@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTaskCleanRoomsNotebookTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskConditionTaskArgs;
+import com.pulumi.databricks.inputs.JobTaskDashboardTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskDbtTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskDependsOnArgs;
 import com.pulumi.databricks.inputs.JobTaskEmailNotificationsArgs;
@@ -18,6 +19,7 @@ import com.pulumi.databricks.inputs.JobTaskNewClusterArgs;
 import com.pulumi.databricks.inputs.JobTaskNotebookTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskNotificationSettingsArgs;
 import com.pulumi.databricks.inputs.JobTaskPipelineTaskArgs;
+import com.pulumi.databricks.inputs.JobTaskPowerBiTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskPythonWheelTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskRunJobTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskSparkJarTaskArgs;
@@ -51,6 +53,13 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<JobTaskConditionTaskArgs>> conditionTask() {
         return Optional.ofNullable(this.conditionTask);
+    }
+
+    @Import(name="dashboardTask")
+    private @Nullable Output<JobTaskDashboardTaskArgs> dashboardTask;
+
+    public Optional<Output<JobTaskDashboardTaskArgs>> dashboardTask() {
+        return Optional.ofNullable(this.dashboardTask);
     }
 
     @Import(name="dbtTask")
@@ -283,6 +292,13 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pipelineTask);
     }
 
+    @Import(name="powerBiTask")
+    private @Nullable Output<JobTaskPowerBiTaskArgs> powerBiTask;
+
+    public Optional<Output<JobTaskPowerBiTaskArgs>> powerBiTask() {
+        return Optional.ofNullable(this.powerBiTask);
+    }
+
     @Import(name="pythonWheelTask")
     private @Nullable Output<JobTaskPythonWheelTaskArgs> pythonWheelTask;
 
@@ -411,6 +427,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
     private JobTaskArgs(JobTaskArgs $) {
         this.cleanRoomsNotebookTask = $.cleanRoomsNotebookTask;
         this.conditionTask = $.conditionTask;
+        this.dashboardTask = $.dashboardTask;
         this.dbtTask = $.dbtTask;
         this.dependsOns = $.dependsOns;
         this.description = $.description;
@@ -429,6 +446,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         this.notebookTask = $.notebookTask;
         this.notificationSettings = $.notificationSettings;
         this.pipelineTask = $.pipelineTask;
+        this.powerBiTask = $.powerBiTask;
         this.pythonWheelTask = $.pythonWheelTask;
         this.retryOnTimeout = $.retryOnTimeout;
         this.runIf = $.runIf;
@@ -476,6 +494,15 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder conditionTask(JobTaskConditionTaskArgs conditionTask) {
             return conditionTask(Output.of(conditionTask));
+        }
+
+        public Builder dashboardTask(@Nullable Output<JobTaskDashboardTaskArgs> dashboardTask) {
+            $.dashboardTask = dashboardTask;
+            return this;
+        }
+
+        public Builder dashboardTask(JobTaskDashboardTaskArgs dashboardTask) {
+            return dashboardTask(Output.of(dashboardTask));
         }
 
         public Builder dbtTask(@Nullable Output<JobTaskDbtTaskArgs> dbtTask) {
@@ -814,6 +841,15 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder pipelineTask(JobTaskPipelineTaskArgs pipelineTask) {
             return pipelineTask(Output.of(pipelineTask));
+        }
+
+        public Builder powerBiTask(@Nullable Output<JobTaskPowerBiTaskArgs> powerBiTask) {
+            $.powerBiTask = powerBiTask;
+            return this;
+        }
+
+        public Builder powerBiTask(JobTaskPowerBiTaskArgs powerBiTask) {
+            return powerBiTask(Output.of(powerBiTask));
         }
 
         public Builder pythonWheelTask(@Nullable Output<JobTaskPythonWheelTaskArgs> pythonWheelTask) {

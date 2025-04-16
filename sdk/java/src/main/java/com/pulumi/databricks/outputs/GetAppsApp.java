@@ -60,6 +60,10 @@ public final class GetAppsApp {
      * 
      */
     private String effectiveBudgetPolicyId;
+    /**
+     * @return A list of effective api scopes granted to the user access token.
+     * 
+     */
     private List<String> effectiveUserApiScopes;
     /**
      * @return Id of the job to grant permission on.
@@ -167,6 +171,10 @@ public final class GetAppsApp {
     public String effectiveBudgetPolicyId() {
         return this.effectiveBudgetPolicyId;
     }
+    /**
+     * @return A list of effective api scopes granted to the user access token.
+     * 
+     */
     public List<String> effectiveUserApiScopes() {
         return this.effectiveUserApiScopes;
     }

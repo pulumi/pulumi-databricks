@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth
     {
+        /// <summary>
+        /// The Databricks secret key reference for a token.
+        /// </summary>
         public readonly string? Token;
+        /// <summary>
+        /// The token provided as a plaintext string.
+        /// </summary>
         public readonly string? TokenPlaintext;
 
         [OutputConstructor]

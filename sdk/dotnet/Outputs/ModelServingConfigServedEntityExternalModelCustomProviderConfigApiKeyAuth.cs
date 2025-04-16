@@ -14,10 +14,10 @@ namespace Pulumi.Databricks.Outputs
     public sealed class ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth
     {
         public readonly string Key;
-        /// <summary>
-        /// The value field for a tag.
-        /// </summary>
         public readonly string? Value;
+        /// <summary>
+        /// The API Key provided as a plaintext string.
+        /// </summary>
         public readonly string? ValuePlaintext;
 
         [OutputConstructor]

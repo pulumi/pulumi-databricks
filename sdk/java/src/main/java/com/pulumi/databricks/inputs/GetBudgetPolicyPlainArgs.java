@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetBudgetPolicyCustomTag;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,13 @@ import javax.annotation.Nullable;
 public final class GetBudgetPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetBudgetPolicyPlainArgs Empty = new GetBudgetPolicyPlainArgs();
+
+    @Import(name="bindingWorkspaceIds")
+    private @Nullable List<Integer> bindingWorkspaceIds;
+
+    public Optional<List<Integer>> bindingWorkspaceIds() {
+        return Optional.ofNullable(this.bindingWorkspaceIds);
+    }
 
     @Import(name="customTags")
     private @Nullable List<GetBudgetPolicyCustomTag> customTags;
@@ -41,6 +49,7 @@ public final class GetBudgetPolicyPlainArgs extends com.pulumi.resources.InvokeA
     private GetBudgetPolicyPlainArgs() {}
 
     private GetBudgetPolicyPlainArgs(GetBudgetPolicyPlainArgs $) {
+        this.bindingWorkspaceIds = $.bindingWorkspaceIds;
         this.customTags = $.customTags;
         this.policyName = $.policyName;
     }
@@ -61,6 +70,15 @@ public final class GetBudgetPolicyPlainArgs extends com.pulumi.resources.InvokeA
 
         public Builder(GetBudgetPolicyPlainArgs defaults) {
             $ = new GetBudgetPolicyPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder bindingWorkspaceIds(@Nullable List<Integer> bindingWorkspaceIds) {
+            $.bindingWorkspaceIds = bindingWorkspaceIds;
+            return this;
+        }
+
+        public Builder bindingWorkspaceIds(Integer... bindingWorkspaceIds) {
+            return bindingWorkspaceIds(List.of(bindingWorkspaceIds));
         }
 
         public Builder customTags(@Nullable List<GetBudgetPolicyCustomTag> customTags) {

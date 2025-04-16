@@ -46,6 +46,9 @@ namespace Pulumi.Databricks.Outputs
         /// The effective budget policy ID.
         /// </summary>
         public readonly string EffectiveBudgetPolicyId;
+        /// <summary>
+        /// A list of effective api scopes granted to the user access token.
+        /// </summary>
         public readonly ImmutableArray<string> EffectiveUserApiScopes;
         /// <summary>
         /// Id of the job to grant permission on.

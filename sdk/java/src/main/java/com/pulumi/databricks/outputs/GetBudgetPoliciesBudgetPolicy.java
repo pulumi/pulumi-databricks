@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetBudgetPoliciesBudgetPolicyCustomTag;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBudgetPoliciesBudgetPolicy {
+    private @Nullable List<Integer> bindingWorkspaceIds;
     private @Nullable List<GetBudgetPoliciesBudgetPolicyCustomTag> customTags;
     private String policyId;
     /**
@@ -23,6 +25,9 @@ public final class GetBudgetPoliciesBudgetPolicy {
     private @Nullable String policyName;
 
     private GetBudgetPoliciesBudgetPolicy() {}
+    public List<Integer> bindingWorkspaceIds() {
+        return this.bindingWorkspaceIds == null ? List.of() : this.bindingWorkspaceIds;
+    }
     public List<GetBudgetPoliciesBudgetPolicyCustomTag> customTags() {
         return this.customTags == null ? List.of() : this.customTags;
     }
@@ -46,17 +51,28 @@ public final class GetBudgetPoliciesBudgetPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<Integer> bindingWorkspaceIds;
         private @Nullable List<GetBudgetPoliciesBudgetPolicyCustomTag> customTags;
         private String policyId;
         private @Nullable String policyName;
         public Builder() {}
         public Builder(GetBudgetPoliciesBudgetPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bindingWorkspaceIds = defaults.bindingWorkspaceIds;
     	      this.customTags = defaults.customTags;
     	      this.policyId = defaults.policyId;
     	      this.policyName = defaults.policyName;
         }
 
+        @CustomType.Setter
+        public Builder bindingWorkspaceIds(@Nullable List<Integer> bindingWorkspaceIds) {
+
+            this.bindingWorkspaceIds = bindingWorkspaceIds;
+            return this;
+        }
+        public Builder bindingWorkspaceIds(Integer... bindingWorkspaceIds) {
+            return bindingWorkspaceIds(List.of(bindingWorkspaceIds));
+        }
         @CustomType.Setter
         public Builder customTags(@Nullable List<GetBudgetPoliciesBudgetPolicyCustomTag> customTags) {
 
@@ -82,6 +98,7 @@ public final class GetBudgetPoliciesBudgetPolicy {
         }
         public GetBudgetPoliciesBudgetPolicy build() {
             final var _resultValue = new GetBudgetPoliciesBudgetPolicy();
+            _resultValue.bindingWorkspaceIds = bindingWorkspaceIds;
             _resultValue.customTags = customTags;
             _resultValue.policyId = policyId;
             _resultValue.policyName = policyName;

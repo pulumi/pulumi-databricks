@@ -39,6 +39,14 @@ namespace Pulumi.Databricks
 
     public sealed class GetBudgetPolicyArgs : global::Pulumi.InvokeArgs
     {
+        [Input("bindingWorkspaceIds")]
+        private List<int>? _bindingWorkspaceIds;
+        public List<int> BindingWorkspaceIds
+        {
+            get => _bindingWorkspaceIds ?? (_bindingWorkspaceIds = new List<int>());
+            set => _bindingWorkspaceIds = value;
+        }
+
         [Input("customTags")]
         private List<Inputs.GetBudgetPolicyCustomTagArgs>? _customTags;
         public List<Inputs.GetBudgetPolicyCustomTagArgs> CustomTags
@@ -61,6 +69,14 @@ namespace Pulumi.Databricks
 
     public sealed class GetBudgetPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("bindingWorkspaceIds")]
+        private InputList<int>? _bindingWorkspaceIds;
+        public InputList<int> BindingWorkspaceIds
+        {
+            get => _bindingWorkspaceIds ?? (_bindingWorkspaceIds = new InputList<int>());
+            set => _bindingWorkspaceIds = value;
+        }
+
         [Input("customTags")]
         private InputList<Inputs.GetBudgetPolicyCustomTagInputArgs>? _customTags;
         public InputList<Inputs.GetBudgetPolicyCustomTagInputArgs> CustomTags
@@ -85,6 +101,7 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetBudgetPolicyResult
     {
+        public readonly ImmutableArray<int> BindingWorkspaceIds;
         public readonly ImmutableArray<Outputs.GetBudgetPolicyCustomTagResult> CustomTags;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -101,6 +118,8 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetBudgetPolicyResult(
+            ImmutableArray<int> bindingWorkspaceIds,
+
             ImmutableArray<Outputs.GetBudgetPolicyCustomTagResult> customTags,
 
             string id,
@@ -109,6 +128,7 @@ namespace Pulumi.Databricks
 
             string? policyName)
         {
+            BindingWorkspaceIds = bindingWorkspaceIds;
             CustomTags = customTags;
             Id = id;
             PolicyId = policyId;

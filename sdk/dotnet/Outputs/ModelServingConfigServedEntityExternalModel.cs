@@ -29,6 +29,9 @@ namespace Pulumi.Databricks.Outputs
         /// Cohere Config
         /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelCohereConfig? CohereConfig;
+        /// <summary>
+        /// Custom Provider Config. Only required if the provider is 'custom'.
+        /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelCustomProviderConfig? CustomProviderConfig;
         /// <summary>
         /// Databricks Model Serving Config

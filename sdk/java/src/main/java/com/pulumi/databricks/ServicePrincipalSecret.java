@@ -70,38 +70,116 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/servicePrincipalSecret:ServicePrincipalSecret")
 public class ServicePrincipalSecret extends com.pulumi.resources.CustomResource {
     /**
-     * Generated secret for the service principal
+     * UTC time when the secret was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return UTC time when the secret was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * UTC time when the secret will expire. If the field is not present, the secret does not expire.
+     * 
+     */
+    @Export(name="expireTime", refs={String.class}, tree="[0]")
+    private Output<String> expireTime;
+
+    /**
+     * @return UTC time when the secret will expire. If the field is not present, the secret does not expire.
+     * 
+     */
+    public Output<String> expireTime() {
+        return this.expireTime;
+    }
+    /**
+     * The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+     * 
+     */
+    @Export(name="lifetime", refs={String.class}, tree="[0]")
+    private Output<String> lifetime;
+
+    /**
+     * @return The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+     * 
+     */
+    public Output<String> lifetime() {
+        return this.lifetime;
+    }
+    /**
+     * Generated secret for the service principal.
      * 
      */
     @Export(name="secret", refs={String.class}, tree="[0]")
     private Output<String> secret;
 
     /**
-     * @return Generated secret for the service principal
+     * @return Generated secret for the service principal.
      * 
      */
     public Output<String> secret() {
         return this.secret;
     }
     /**
-     * ID of the databricks.ServicePrincipal (not application ID).
+     * Secret Hash.
+     * 
+     */
+    @Export(name="secretHash", refs={String.class}, tree="[0]")
+    private Output<String> secretHash;
+
+    /**
+     * @return Secret Hash.
+     * 
+     */
+    public Output<String> secretHash() {
+        return this.secretHash;
+    }
+    /**
+     * SCIM ID of the databricks.ServicePrincipal (not application ID).
      * 
      */
     @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipalId;
 
     /**
-     * @return ID of the databricks.ServicePrincipal (not application ID).
+     * @return SCIM ID of the databricks.ServicePrincipal (not application ID).
      * 
      */
     public Output<String> servicePrincipalId() {
         return this.servicePrincipalId;
     }
+    /**
+     * Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+     * 
+     */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
+    /**
+     * @return Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+     * 
+     */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * UTC time when the secret was updated.
+     * 
+     */
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    private Output<String> updateTime;
+
+    /**
+     * @return UTC time when the secret was updated.
+     * 
+     */
+    public Output<String> updateTime() {
+        return this.updateTime;
     }
 
     /**

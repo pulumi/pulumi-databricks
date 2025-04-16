@@ -12,12 +12,21 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+        /// </summary>
         [Input("apiKeyAuth")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs>? ApiKeyAuth { get; set; }
 
+        /// <summary>
+        /// bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+        /// </summary>
         [Input("bearerTokenAuth")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs>? BearerTokenAuth { get; set; }
 
+        /// <summary>
+        /// URL of the custom provider API.
+        /// </summary>
         [Input("customProviderUrl", required: true)]
         public Input<string> CustomProviderUrl { get; set; } = null!;
 

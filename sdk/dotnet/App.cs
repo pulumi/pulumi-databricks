@@ -49,7 +49,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.AppAppStatus> AppStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The optional Budget Policy ID set for this resource.
+        /// The Budget Policy ID set for this resource.
         /// </summary>
         [Output("budgetPolicyId")]
         public Output<string?> BudgetPolicyId { get; private set; } = null!;
@@ -90,6 +90,9 @@ namespace Pulumi.Databricks
         [Output("effectiveBudgetPolicyId")]
         public Output<string> EffectiveBudgetPolicyId { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of effective api scopes granted to the user access token.
+        /// </summary>
         [Output("effectiveUserApiScopes")]
         public Output<ImmutableArray<string>> EffectiveUserApiScopes { get; private set; } = null!;
 
@@ -150,6 +153,9 @@ namespace Pulumi.Databricks
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of api scopes granted to the user access token.
+        /// </summary>
         [Output("userApiScopes")]
         public Output<ImmutableArray<string>> UserApiScopes { get; private set; } = null!;
 
@@ -200,7 +206,7 @@ namespace Pulumi.Databricks
     public sealed class AppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The optional Budget Policy ID set for this resource.
+        /// The Budget Policy ID set for this resource.
         /// </summary>
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
@@ -234,6 +240,10 @@ namespace Pulumi.Databricks
 
         [Input("userApiScopes")]
         private InputList<string>? _userApiScopes;
+
+        /// <summary>
+        /// A list of api scopes granted to the user access token.
+        /// </summary>
         public InputList<string> UserApiScopes
         {
             get => _userApiScopes ?? (_userApiScopes = new InputList<string>());
@@ -258,7 +268,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.AppAppStatusGetArgs>? AppStatus { get; set; }
 
         /// <summary>
-        /// The optional Budget Policy ID set for this resource.
+        /// The Budget Policy ID set for this resource.
         /// </summary>
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
@@ -301,6 +311,10 @@ namespace Pulumi.Databricks
 
         [Input("effectiveUserApiScopes")]
         private InputList<string>? _effectiveUserApiScopes;
+
+        /// <summary>
+        /// A list of effective api scopes granted to the user access token.
+        /// </summary>
         public InputList<string> EffectiveUserApiScopes
         {
             get => _effectiveUserApiScopes ?? (_effectiveUserApiScopes = new InputList<string>());
@@ -372,6 +386,10 @@ namespace Pulumi.Databricks
 
         [Input("userApiScopes")]
         private InputList<string>? _userApiScopes;
+
+        /// <summary>
+        /// A list of api scopes granted to the user access token.
+        /// </summary>
         public InputList<string> UserApiScopes
         {
             get => _userApiScopes ?? (_userApiScopes = new InputList<string>());

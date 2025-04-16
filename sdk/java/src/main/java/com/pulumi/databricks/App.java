@@ -87,14 +87,14 @@ public class App extends com.pulumi.resources.CustomResource {
         return this.appStatus;
     }
     /**
-     * The optional Budget Policy ID set for this resource.
+     * The Budget Policy ID set for this resource.
      * 
      */
     @Export(name="budgetPolicyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> budgetPolicyId;
 
     /**
-     * @return The optional Budget Policy ID set for this resource.
+     * @return The Budget Policy ID set for this resource.
      * 
      */
     public Output<Optional<String>> budgetPolicyId() {
@@ -184,9 +184,17 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<String> effectiveBudgetPolicyId() {
         return this.effectiveBudgetPolicyId;
     }
+    /**
+     * A list of effective api scopes granted to the user access token.
+     * 
+     */
     @Export(name="effectiveUserApiScopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> effectiveUserApiScopes;
 
+    /**
+     * @return A list of effective api scopes granted to the user access token.
+     * 
+     */
     public Output<List<String>> effectiveUserApiScopes() {
         return this.effectiveUserApiScopes;
     }
@@ -318,9 +326,17 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<String> url() {
         return this.url;
     }
+    /**
+     * A list of api scopes granted to the user access token.
+     * 
+     */
     @Export(name="userApiScopes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> userApiScopes;
 
+    /**
+     * @return A list of api scopes granted to the user access token.
+     * 
+     */
     public Output<Optional<List<String>>> userApiScopes() {
         return Codegen.optional(this.userApiScopes);
     }

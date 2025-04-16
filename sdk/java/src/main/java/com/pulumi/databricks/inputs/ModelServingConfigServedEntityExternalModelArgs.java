@@ -85,9 +85,17 @@ public final class ModelServingConfigServedEntityExternalModelArgs extends com.p
         return Optional.ofNullable(this.cohereConfig);
     }
 
+    /**
+     * Custom Provider Config. Only required if the provider is &#39;custom&#39;.
+     * 
+     */
     @Import(name="customProviderConfig")
     private @Nullable Output<ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs> customProviderConfig;
 
+    /**
+     * @return Custom Provider Config. Only required if the provider is &#39;custom&#39;.
+     * 
+     */
     public Optional<Output<ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs>> customProviderConfig() {
         return Optional.ofNullable(this.customProviderConfig);
     }
@@ -316,11 +324,23 @@ public final class ModelServingConfigServedEntityExternalModelArgs extends com.p
             return cohereConfig(Output.of(cohereConfig));
         }
 
+        /**
+         * @param customProviderConfig Custom Provider Config. Only required if the provider is &#39;custom&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customProviderConfig(@Nullable Output<ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs> customProviderConfig) {
             $.customProviderConfig = customProviderConfig;
             return this;
         }
 
+        /**
+         * @param customProviderConfig Custom Provider Config. Only required if the provider is &#39;custom&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customProviderConfig(ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs customProviderConfig) {
             return customProviderConfig(Output.of(customProviderConfig));
         }

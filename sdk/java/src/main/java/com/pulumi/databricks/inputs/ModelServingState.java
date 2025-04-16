@@ -36,9 +36,17 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.aiGateway);
     }
 
+    /**
+     * The Budget Policy ID set for this serving endpoint.
+     * 
+     */
     @Import(name="budgetPolicyId")
     private @Nullable Output<String> budgetPolicyId;
 
+    /**
+     * @return The Budget Policy ID set for this serving endpoint.
+     * 
+     */
     public Optional<Output<String>> budgetPolicyId() {
         return Optional.ofNullable(this.budgetPolicyId);
     }
@@ -185,11 +193,23 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
             return aiGateway(Output.of(aiGateway));
         }
 
+        /**
+         * @param budgetPolicyId The Budget Policy ID set for this serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder budgetPolicyId(@Nullable Output<String> budgetPolicyId) {
             $.budgetPolicyId = budgetPolicyId;
             return this;
         }
 
+        /**
+         * @param budgetPolicyId The Budget Policy ID set for this serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder budgetPolicyId(String budgetPolicyId) {
             return budgetPolicyId(Output.of(budgetPolicyId));
         }

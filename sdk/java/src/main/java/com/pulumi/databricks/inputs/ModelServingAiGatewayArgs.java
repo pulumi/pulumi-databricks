@@ -20,9 +20,17 @@ public final class ModelServingAiGatewayArgs extends com.pulumi.resources.Resour
 
     public static final ModelServingAiGatewayArgs Empty = new ModelServingAiGatewayArgs();
 
+    /**
+     * block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
+     * 
+     */
     @Import(name="fallbackConfig")
     private @Nullable Output<ModelServingAiGatewayFallbackConfigArgs> fallbackConfig;
 
+    /**
+     * @return block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
+     * 
+     */
     public Optional<Output<ModelServingAiGatewayFallbackConfigArgs>> fallbackConfig() {
         return Optional.ofNullable(this.fallbackConfig);
     }
@@ -115,11 +123,23 @@ public final class ModelServingAiGatewayArgs extends com.pulumi.resources.Resour
             $ = new ModelServingAiGatewayArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param fallbackConfig block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fallbackConfig(@Nullable Output<ModelServingAiGatewayFallbackConfigArgs> fallbackConfig) {
             $.fallbackConfig = fallbackConfig;
             return this;
         }
 
+        /**
+         * @param fallbackConfig block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fallbackConfig(ModelServingAiGatewayFallbackConfigArgs fallbackConfig) {
             return fallbackConfig(Output.of(fallbackConfig));
         }

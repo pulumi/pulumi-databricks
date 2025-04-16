@@ -48,19 +48,52 @@ namespace Pulumi.Databricks
     public partial class ServicePrincipalSecret : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Generated secret for the service principal
+        /// UTC time when the secret was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// UTC time when the secret will expire. If the field is not present, the secret does not expire.
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+        /// </summary>
+        [Output("lifetime")]
+        public Output<string> Lifetime { get; private set; } = null!;
+
+        /// <summary>
+        /// Generated secret for the service principal.
         /// </summary>
         [Output("secret")]
         public Output<string> Secret { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the databricks.ServicePrincipal (not application ID).
+        /// Secret Hash.
+        /// </summary>
+        [Output("secretHash")]
+        public Output<string> SecretHash { get; private set; } = null!;
+
+        /// <summary>
+        /// SCIM ID of the databricks.ServicePrincipal (not application ID).
         /// </summary>
         [Output("servicePrincipalId")]
         public Output<string> ServicePrincipalId { get; private set; } = null!;
 
+        /// <summary>
+        /// Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// UTC time when the secret was updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
 
 
         /// <summary>
@@ -112,11 +145,29 @@ namespace Pulumi.Databricks
 
     public sealed class ServicePrincipalSecretArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// UTC time when the secret was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// UTC time when the secret will expire. If the field is not present, the secret does not expire.
+        /// </summary>
+        [Input("expireTime")]
+        public Input<string>? ExpireTime { get; set; }
+
+        /// <summary>
+        /// The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+        /// </summary>
+        [Input("lifetime")]
+        public Input<string>? Lifetime { get; set; }
+
         [Input("secret")]
         private Input<string>? _secret;
 
         /// <summary>
-        /// Generated secret for the service principal
+        /// Generated secret for the service principal.
         /// </summary>
         public Input<string>? Secret
         {
@@ -129,13 +180,28 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// ID of the databricks.ServicePrincipal (not application ID).
+        /// Secret Hash.
+        /// </summary>
+        [Input("secretHash")]
+        public Input<string>? SecretHash { get; set; }
+
+        /// <summary>
+        /// SCIM ID of the databricks.ServicePrincipal (not application ID).
         /// </summary>
         [Input("servicePrincipalId", required: true)]
         public Input<string> ServicePrincipalId { get; set; } = null!;
 
+        /// <summary>
+        /// Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// UTC time when the secret was updated.
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
 
         public ServicePrincipalSecretArgs()
         {
@@ -145,11 +211,29 @@ namespace Pulumi.Databricks
 
     public sealed class ServicePrincipalSecretState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// UTC time when the secret was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// UTC time when the secret will expire. If the field is not present, the secret does not expire.
+        /// </summary>
+        [Input("expireTime")]
+        public Input<string>? ExpireTime { get; set; }
+
+        /// <summary>
+        /// The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+        /// </summary>
+        [Input("lifetime")]
+        public Input<string>? Lifetime { get; set; }
+
         [Input("secret")]
         private Input<string>? _secret;
 
         /// <summary>
-        /// Generated secret for the service principal
+        /// Generated secret for the service principal.
         /// </summary>
         public Input<string>? Secret
         {
@@ -162,13 +246,28 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// ID of the databricks.ServicePrincipal (not application ID).
+        /// Secret Hash.
+        /// </summary>
+        [Input("secretHash")]
+        public Input<string>? SecretHash { get; set; }
+
+        /// <summary>
+        /// SCIM ID of the databricks.ServicePrincipal (not application ID).
         /// </summary>
         [Input("servicePrincipalId")]
         public Input<string>? ServicePrincipalId { get; set; }
 
+        /// <summary>
+        /// Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// UTC time when the secret was updated.
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
 
         public ServicePrincipalSecretState()
         {

@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetBudgetPolicyCustomTagArgs;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 public final class GetBudgetPolicyArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetBudgetPolicyArgs Empty = new GetBudgetPolicyArgs();
+
+    @Import(name="bindingWorkspaceIds")
+    private @Nullable Output<List<Integer>> bindingWorkspaceIds;
+
+    public Optional<Output<List<Integer>>> bindingWorkspaceIds() {
+        return Optional.ofNullable(this.bindingWorkspaceIds);
+    }
 
     @Import(name="customTags")
     private @Nullable Output<List<GetBudgetPolicyCustomTagArgs>> customTags;
@@ -42,6 +50,7 @@ public final class GetBudgetPolicyArgs extends com.pulumi.resources.InvokeArgs {
     private GetBudgetPolicyArgs() {}
 
     private GetBudgetPolicyArgs(GetBudgetPolicyArgs $) {
+        this.bindingWorkspaceIds = $.bindingWorkspaceIds;
         this.customTags = $.customTags;
         this.policyName = $.policyName;
     }
@@ -62,6 +71,19 @@ public final class GetBudgetPolicyArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetBudgetPolicyArgs defaults) {
             $ = new GetBudgetPolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder bindingWorkspaceIds(@Nullable Output<List<Integer>> bindingWorkspaceIds) {
+            $.bindingWorkspaceIds = bindingWorkspaceIds;
+            return this;
+        }
+
+        public Builder bindingWorkspaceIds(List<Integer> bindingWorkspaceIds) {
+            return bindingWorkspaceIds(Output.of(bindingWorkspaceIds));
+        }
+
+        public Builder bindingWorkspaceIds(Integer... bindingWorkspaceIds) {
+            return bindingWorkspaceIds(List.of(bindingWorkspaceIds));
         }
 
         public Builder customTags(@Nullable Output<List<GetBudgetPolicyCustomTagArgs>> customTags) {

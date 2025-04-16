@@ -164,6 +164,8 @@ __all__ = [
     'DefaultNamespaceSettingNamespaceArgsDict',
     'DisableLegacyAccessSettingDisableLegacyAccessArgs',
     'DisableLegacyAccessSettingDisableLegacyAccessArgsDict',
+    'DisableLegacyDbfsSettingDisableLegacyDbfsArgs',
+    'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict',
     'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs',
     'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict',
     'ExternalLocationEncryptionDetailsArgs',
@@ -368,6 +370,12 @@ __all__ = [
     'JobTaskCleanRoomsNotebookTaskArgsDict',
     'JobTaskConditionTaskArgs',
     'JobTaskConditionTaskArgsDict',
+    'JobTaskDashboardTaskArgs',
+    'JobTaskDashboardTaskArgsDict',
+    'JobTaskDashboardTaskSubscriptionArgs',
+    'JobTaskDashboardTaskSubscriptionArgsDict',
+    'JobTaskDashboardTaskSubscriptionSubscriberArgs',
+    'JobTaskDashboardTaskSubscriptionSubscriberArgsDict',
     'JobTaskDbtTaskArgs',
     'JobTaskDbtTaskArgsDict',
     'JobTaskDependsOnArgs',
@@ -382,6 +390,12 @@ __all__ = [
     'JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgsDict',
     'JobTaskForEachTaskTaskConditionTaskArgs',
     'JobTaskForEachTaskTaskConditionTaskArgsDict',
+    'JobTaskForEachTaskTaskDashboardTaskArgs',
+    'JobTaskForEachTaskTaskDashboardTaskArgsDict',
+    'JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs',
+    'JobTaskForEachTaskTaskDashboardTaskSubscriptionArgsDict',
+    'JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs',
+    'JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgsDict',
     'JobTaskForEachTaskTaskDbtTaskArgs',
     'JobTaskForEachTaskTaskDbtTaskArgsDict',
     'JobTaskForEachTaskTaskDependsOnArgs',
@@ -466,6 +480,12 @@ __all__ = [
     'JobTaskForEachTaskTaskNotificationSettingsArgsDict',
     'JobTaskForEachTaskTaskPipelineTaskArgs',
     'JobTaskForEachTaskTaskPipelineTaskArgsDict',
+    'JobTaskForEachTaskTaskPowerBiTaskArgs',
+    'JobTaskForEachTaskTaskPowerBiTaskArgsDict',
+    'JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs',
+    'JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgsDict',
+    'JobTaskForEachTaskTaskPowerBiTaskTableArgs',
+    'JobTaskForEachTaskTaskPowerBiTaskTableArgsDict',
     'JobTaskForEachTaskTaskPythonWheelTaskArgs',
     'JobTaskForEachTaskTaskPythonWheelTaskArgsDict',
     'JobTaskForEachTaskTaskRunJobTaskArgs',
@@ -582,6 +602,12 @@ __all__ = [
     'JobTaskNotificationSettingsArgsDict',
     'JobTaskPipelineTaskArgs',
     'JobTaskPipelineTaskArgsDict',
+    'JobTaskPowerBiTaskArgs',
+    'JobTaskPowerBiTaskArgsDict',
+    'JobTaskPowerBiTaskPowerBiModelArgs',
+    'JobTaskPowerBiTaskPowerBiModelArgsDict',
+    'JobTaskPowerBiTaskTableArgs',
+    'JobTaskPowerBiTaskTableArgsDict',
     'JobTaskPythonWheelTaskArgs',
     'JobTaskPythonWheelTaskArgsDict',
     'JobTaskRunJobTaskArgs',
@@ -780,6 +806,8 @@ __all__ = [
     'MwsNetworksVpcEndpointsArgsDict',
     'MwsVpcEndpointGcpVpcEndpointInfoArgs',
     'MwsVpcEndpointGcpVpcEndpointInfoArgsDict',
+    'MwsWorkspacesAzureWorkspaceInfoArgs',
+    'MwsWorkspacesAzureWorkspaceInfoArgsDict',
     'MwsWorkspacesCloudResourceContainerArgs',
     'MwsWorkspacesCloudResourceContainerArgsDict',
     'MwsWorkspacesCloudResourceContainerGcpArgs',
@@ -6431,6 +6459,37 @@ class DisableLegacyAccessSettingDisableLegacyAccessArgs:
 
 
 if not MYPY:
+    class DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict(TypedDict):
+        value: pulumi.Input[builtins.bool]
+        """
+        The boolean value for the setting.
+        """
+elif False:
+    DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DisableLegacyDbfsSettingDisableLegacyDbfsArgs:
+    def __init__(__self__, *,
+                 value: pulumi.Input[builtins.bool]):
+        """
+        :param pulumi.Input[builtins.bool] value: The boolean value for the setting.
+        """
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[builtins.bool]:
+        """
+        The boolean value for the setting.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[builtins.bool]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
     class EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict(TypedDict):
         is_enabled: pulumi.Input[builtins.bool]
 elif False:
@@ -7558,6 +7617,7 @@ if not MYPY:
         """
         List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
         """
+        jar_dependencies: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
 elif False:
     JobEnvironmentSpecArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -7565,7 +7625,8 @@ elif False:
 class JobEnvironmentSpecArgs:
     def __init__(__self__, *,
                  client: pulumi.Input[builtins.str],
-                 dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+                 dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 jar_dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         :param pulumi.Input[builtins.str] client: client version used by the environment.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dependencies: List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
@@ -7573,6 +7634,8 @@ class JobEnvironmentSpecArgs:
         pulumi.set(__self__, "client", client)
         if dependencies is not None:
             pulumi.set(__self__, "dependencies", dependencies)
+        if jar_dependencies is not None:
+            pulumi.set(__self__, "jar_dependencies", jar_dependencies)
 
     @property
     @pulumi.getter
@@ -7597,6 +7660,15 @@ class JobEnvironmentSpecArgs:
     @dependencies.setter
     def dependencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "dependencies", value)
+
+    @property
+    @pulumi.getter(name="jarDependencies")
+    def jar_dependencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "jar_dependencies")
+
+    @jar_dependencies.setter
+    def jar_dependencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "jar_dependencies", value)
 
 
 if not MYPY:
@@ -12527,6 +12599,7 @@ if not MYPY:
         """
         clean_rooms_notebook_task: NotRequired[pulumi.Input['JobTaskCleanRoomsNotebookTaskArgsDict']]
         condition_task: NotRequired[pulumi.Input['JobTaskConditionTaskArgsDict']]
+        dashboard_task: NotRequired[pulumi.Input['JobTaskDashboardTaskArgsDict']]
         dbt_task: NotRequired[pulumi.Input['JobTaskDbtTaskArgsDict']]
         depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskDependsOnArgsDict']]]]
         """
@@ -12584,6 +12657,7 @@ if not MYPY:
         An optional block controlling the notification settings on the job level documented below.
         """
         pipeline_task: NotRequired[pulumi.Input['JobTaskPipelineTaskArgsDict']]
+        power_bi_task: NotRequired[pulumi.Input['JobTaskPowerBiTaskArgsDict']]
         python_wheel_task: NotRequired[pulumi.Input['JobTaskPythonWheelTaskArgsDict']]
         retry_on_timeout: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -12617,6 +12691,7 @@ class JobTaskArgs:
                  task_key: pulumi.Input[builtins.str],
                  clean_rooms_notebook_task: Optional[pulumi.Input['JobTaskCleanRoomsNotebookTaskArgs']] = None,
                  condition_task: Optional[pulumi.Input['JobTaskConditionTaskArgs']] = None,
+                 dashboard_task: Optional[pulumi.Input['JobTaskDashboardTaskArgs']] = None,
                  dbt_task: Optional[pulumi.Input['JobTaskDbtTaskArgs']] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskDependsOnArgs']]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
@@ -12635,6 +12710,7 @@ class JobTaskArgs:
                  notebook_task: Optional[pulumi.Input['JobTaskNotebookTaskArgs']] = None,
                  notification_settings: Optional[pulumi.Input['JobTaskNotificationSettingsArgs']] = None,
                  pipeline_task: Optional[pulumi.Input['JobTaskPipelineTaskArgs']] = None,
+                 power_bi_task: Optional[pulumi.Input['JobTaskPowerBiTaskArgs']] = None,
                  python_wheel_task: Optional[pulumi.Input['JobTaskPythonWheelTaskArgs']] = None,
                  retry_on_timeout: Optional[pulumi.Input[builtins.bool]] = None,
                  run_if: Optional[pulumi.Input[builtins.str]] = None,
@@ -12673,6 +12749,8 @@ class JobTaskArgs:
             pulumi.set(__self__, "clean_rooms_notebook_task", clean_rooms_notebook_task)
         if condition_task is not None:
             pulumi.set(__self__, "condition_task", condition_task)
+        if dashboard_task is not None:
+            pulumi.set(__self__, "dashboard_task", dashboard_task)
         if dbt_task is not None:
             pulumi.set(__self__, "dbt_task", dbt_task)
         if depends_ons is not None:
@@ -12709,6 +12787,8 @@ class JobTaskArgs:
             pulumi.set(__self__, "notification_settings", notification_settings)
         if pipeline_task is not None:
             pulumi.set(__self__, "pipeline_task", pipeline_task)
+        if power_bi_task is not None:
+            pulumi.set(__self__, "power_bi_task", power_bi_task)
         if python_wheel_task is not None:
             pulumi.set(__self__, "python_wheel_task", python_wheel_task)
         if retry_on_timeout is not None:
@@ -12760,6 +12840,15 @@ class JobTaskArgs:
     @condition_task.setter
     def condition_task(self, value: Optional[pulumi.Input['JobTaskConditionTaskArgs']]):
         pulumi.set(self, "condition_task", value)
+
+    @property
+    @pulumi.getter(name="dashboardTask")
+    def dashboard_task(self) -> Optional[pulumi.Input['JobTaskDashboardTaskArgs']]:
+        return pulumi.get(self, "dashboard_task")
+
+    @dashboard_task.setter
+    def dashboard_task(self, value: Optional[pulumi.Input['JobTaskDashboardTaskArgs']]):
+        pulumi.set(self, "dashboard_task", value)
 
     @property
     @pulumi.getter(name="dbtTask")
@@ -12961,6 +13050,15 @@ class JobTaskArgs:
     @pipeline_task.setter
     def pipeline_task(self, value: Optional[pulumi.Input['JobTaskPipelineTaskArgs']]):
         pulumi.set(self, "pipeline_task", value)
+
+    @property
+    @pulumi.getter(name="powerBiTask")
+    def power_bi_task(self) -> Optional[pulumi.Input['JobTaskPowerBiTaskArgs']]:
+        return pulumi.get(self, "power_bi_task")
+
+    @power_bi_task.setter
+    def power_bi_task(self, value: Optional[pulumi.Input['JobTaskPowerBiTaskArgs']]):
+        pulumi.set(self, "power_bi_task", value)
 
     @property
     @pulumi.getter(name="pythonWheelTask")
@@ -13230,6 +13328,167 @@ class JobTaskConditionTaskArgs:
     @right.setter
     def right(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "right", value)
+
+
+if not MYPY:
+    class JobTaskDashboardTaskArgsDict(TypedDict):
+        dashboard_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        """
+        subscription: NotRequired[pulumi.Input['JobTaskDashboardTaskSubscriptionArgsDict']]
+        warehouse_id: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    JobTaskDashboardTaskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskDashboardTaskArgs:
+    def __init__(__self__, *,
+                 dashboard_id: Optional[pulumi.Input[builtins.str]] = None,
+                 subscription: Optional[pulumi.Input['JobTaskDashboardTaskSubscriptionArgs']] = None,
+                 warehouse_id: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] dashboard_id: (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        """
+        if dashboard_id is not None:
+            pulumi.set(__self__, "dashboard_id", dashboard_id)
+        if subscription is not None:
+            pulumi.set(__self__, "subscription", subscription)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter(name="dashboardId")
+    def dashboard_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        """
+        return pulumi.get(self, "dashboard_id")
+
+    @dashboard_id.setter
+    def dashboard_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "dashboard_id", value)
+
+    @property
+    @pulumi.getter
+    def subscription(self) -> Optional[pulumi.Input['JobTaskDashboardTaskSubscriptionArgs']]:
+        return pulumi.get(self, "subscription")
+
+    @subscription.setter
+    def subscription(self, value: Optional[pulumi.Input['JobTaskDashboardTaskSubscriptionArgs']]):
+        pulumi.set(self, "subscription", value)
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "warehouse_id")
+
+    @warehouse_id.setter
+    def warehouse_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "warehouse_id", value)
+
+
+if not MYPY:
+    class JobTaskDashboardTaskSubscriptionArgsDict(TypedDict):
+        custom_subject: NotRequired[pulumi.Input[builtins.str]]
+        """
+        string specifying a custom subject of email sent.
+        """
+        paused: NotRequired[pulumi.Input[builtins.bool]]
+        subscribers: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskDashboardTaskSubscriptionSubscriberArgsDict']]]]
+elif False:
+    JobTaskDashboardTaskSubscriptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskDashboardTaskSubscriptionArgs:
+    def __init__(__self__, *,
+                 custom_subject: Optional[pulumi.Input[builtins.str]] = None,
+                 paused: Optional[pulumi.Input[builtins.bool]] = None,
+                 subscribers: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskDashboardTaskSubscriptionSubscriberArgs']]]] = None):
+        """
+        :param pulumi.Input[builtins.str] custom_subject: string specifying a custom subject of email sent.
+        """
+        if custom_subject is not None:
+            pulumi.set(__self__, "custom_subject", custom_subject)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if subscribers is not None:
+            pulumi.set(__self__, "subscribers", subscribers)
+
+    @property
+    @pulumi.getter(name="customSubject")
+    def custom_subject(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        string specifying a custom subject of email sent.
+        """
+        return pulumi.get(self, "custom_subject")
+
+    @custom_subject.setter
+    def custom_subject(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "custom_subject", value)
+
+    @property
+    @pulumi.getter
+    def paused(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "paused")
+
+    @paused.setter
+    def paused(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "paused", value)
+
+    @property
+    @pulumi.getter
+    def subscribers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskDashboardTaskSubscriptionSubscriberArgs']]]]:
+        return pulumi.get(self, "subscribers")
+
+    @subscribers.setter
+    def subscribers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskDashboardTaskSubscriptionSubscriberArgs']]]]):
+        pulumi.set(self, "subscribers", value)
+
+
+if not MYPY:
+    class JobTaskDashboardTaskSubscriptionSubscriberArgsDict(TypedDict):
+        destination_id: NotRequired[pulumi.Input[builtins.str]]
+        user_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+elif False:
+    JobTaskDashboardTaskSubscriptionSubscriberArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskDashboardTaskSubscriptionSubscriberArgs:
+    def __init__(__self__, *,
+                 destination_id: Optional[pulumi.Input[builtins.str]] = None,
+                 user_name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+        if destination_id is not None:
+            pulumi.set(__self__, "destination_id", destination_id)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="destinationId")
+    def destination_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "destination_id")
+
+    @destination_id.setter
+    def destination_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "destination_id", value)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "user_name", value)
 
 
 if not MYPY:
@@ -13662,6 +13921,7 @@ if not MYPY:
         """
         clean_rooms_notebook_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgsDict']]
         condition_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskConditionTaskArgsDict']]
+        dashboard_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskArgsDict']]
         dbt_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskDbtTaskArgsDict']]
         depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskDependsOnArgsDict']]]]
         """
@@ -13718,6 +13978,7 @@ if not MYPY:
         An optional block controlling the notification settings on the job level documented below.
         """
         pipeline_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskPipelineTaskArgsDict']]
+        power_bi_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskPowerBiTaskArgsDict']]
         python_wheel_task: NotRequired[pulumi.Input['JobTaskForEachTaskTaskPythonWheelTaskArgsDict']]
         retry_on_timeout: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -13751,6 +14012,7 @@ class JobTaskForEachTaskTaskArgs:
                  task_key: pulumi.Input[builtins.str],
                  clean_rooms_notebook_task: Optional[pulumi.Input['JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs']] = None,
                  condition_task: Optional[pulumi.Input['JobTaskForEachTaskTaskConditionTaskArgs']] = None,
+                 dashboard_task: Optional[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskArgs']] = None,
                  dbt_task: Optional[pulumi.Input['JobTaskForEachTaskTaskDbtTaskArgs']] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskDependsOnArgs']]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
@@ -13768,6 +14030,7 @@ class JobTaskForEachTaskTaskArgs:
                  notebook_task: Optional[pulumi.Input['JobTaskForEachTaskTaskNotebookTaskArgs']] = None,
                  notification_settings: Optional[pulumi.Input['JobTaskForEachTaskTaskNotificationSettingsArgs']] = None,
                  pipeline_task: Optional[pulumi.Input['JobTaskForEachTaskTaskPipelineTaskArgs']] = None,
+                 power_bi_task: Optional[pulumi.Input['JobTaskForEachTaskTaskPowerBiTaskArgs']] = None,
                  python_wheel_task: Optional[pulumi.Input['JobTaskForEachTaskTaskPythonWheelTaskArgs']] = None,
                  retry_on_timeout: Optional[pulumi.Input[builtins.bool]] = None,
                  run_if: Optional[pulumi.Input[builtins.str]] = None,
@@ -13806,6 +14069,8 @@ class JobTaskForEachTaskTaskArgs:
             pulumi.set(__self__, "clean_rooms_notebook_task", clean_rooms_notebook_task)
         if condition_task is not None:
             pulumi.set(__self__, "condition_task", condition_task)
+        if dashboard_task is not None:
+            pulumi.set(__self__, "dashboard_task", dashboard_task)
         if dbt_task is not None:
             pulumi.set(__self__, "dbt_task", dbt_task)
         if depends_ons is not None:
@@ -13840,6 +14105,8 @@ class JobTaskForEachTaskTaskArgs:
             pulumi.set(__self__, "notification_settings", notification_settings)
         if pipeline_task is not None:
             pulumi.set(__self__, "pipeline_task", pipeline_task)
+        if power_bi_task is not None:
+            pulumi.set(__self__, "power_bi_task", power_bi_task)
         if python_wheel_task is not None:
             pulumi.set(__self__, "python_wheel_task", python_wheel_task)
         if retry_on_timeout is not None:
@@ -13891,6 +14158,15 @@ class JobTaskForEachTaskTaskArgs:
     @condition_task.setter
     def condition_task(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskConditionTaskArgs']]):
         pulumi.set(self, "condition_task", value)
+
+    @property
+    @pulumi.getter(name="dashboardTask")
+    def dashboard_task(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskArgs']]:
+        return pulumi.get(self, "dashboard_task")
+
+    @dashboard_task.setter
+    def dashboard_task(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskArgs']]):
+        pulumi.set(self, "dashboard_task", value)
 
     @property
     @pulumi.getter(name="dbtTask")
@@ -14083,6 +14359,15 @@ class JobTaskForEachTaskTaskArgs:
     @pipeline_task.setter
     def pipeline_task(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskPipelineTaskArgs']]):
         pulumi.set(self, "pipeline_task", value)
+
+    @property
+    @pulumi.getter(name="powerBiTask")
+    def power_bi_task(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskPowerBiTaskArgs']]:
+        return pulumi.get(self, "power_bi_task")
+
+    @power_bi_task.setter
+    def power_bi_task(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskPowerBiTaskArgs']]):
+        pulumi.set(self, "power_bi_task", value)
 
     @property
     @pulumi.getter(name="pythonWheelTask")
@@ -14352,6 +14637,167 @@ class JobTaskForEachTaskTaskConditionTaskArgs:
     @right.setter
     def right(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "right", value)
+
+
+if not MYPY:
+    class JobTaskForEachTaskTaskDashboardTaskArgsDict(TypedDict):
+        dashboard_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        """
+        subscription: NotRequired[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskSubscriptionArgsDict']]
+        warehouse_id: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    JobTaskForEachTaskTaskDashboardTaskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskDashboardTaskArgs:
+    def __init__(__self__, *,
+                 dashboard_id: Optional[pulumi.Input[builtins.str]] = None,
+                 subscription: Optional[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs']] = None,
+                 warehouse_id: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] dashboard_id: (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        """
+        if dashboard_id is not None:
+            pulumi.set(__self__, "dashboard_id", dashboard_id)
+        if subscription is not None:
+            pulumi.set(__self__, "subscription", subscription)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter(name="dashboardId")
+    def dashboard_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        """
+        return pulumi.get(self, "dashboard_id")
+
+    @dashboard_id.setter
+    def dashboard_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "dashboard_id", value)
+
+    @property
+    @pulumi.getter
+    def subscription(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs']]:
+        return pulumi.get(self, "subscription")
+
+    @subscription.setter
+    def subscription(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs']]):
+        pulumi.set(self, "subscription", value)
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "warehouse_id")
+
+    @warehouse_id.setter
+    def warehouse_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "warehouse_id", value)
+
+
+if not MYPY:
+    class JobTaskForEachTaskTaskDashboardTaskSubscriptionArgsDict(TypedDict):
+        custom_subject: NotRequired[pulumi.Input[builtins.str]]
+        """
+        string specifying a custom subject of email sent.
+        """
+        paused: NotRequired[pulumi.Input[builtins.bool]]
+        subscribers: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgsDict']]]]
+elif False:
+    JobTaskForEachTaskTaskDashboardTaskSubscriptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs:
+    def __init__(__self__, *,
+                 custom_subject: Optional[pulumi.Input[builtins.str]] = None,
+                 paused: Optional[pulumi.Input[builtins.bool]] = None,
+                 subscribers: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs']]]] = None):
+        """
+        :param pulumi.Input[builtins.str] custom_subject: string specifying a custom subject of email sent.
+        """
+        if custom_subject is not None:
+            pulumi.set(__self__, "custom_subject", custom_subject)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if subscribers is not None:
+            pulumi.set(__self__, "subscribers", subscribers)
+
+    @property
+    @pulumi.getter(name="customSubject")
+    def custom_subject(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        string specifying a custom subject of email sent.
+        """
+        return pulumi.get(self, "custom_subject")
+
+    @custom_subject.setter
+    def custom_subject(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "custom_subject", value)
+
+    @property
+    @pulumi.getter
+    def paused(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "paused")
+
+    @paused.setter
+    def paused(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "paused", value)
+
+    @property
+    @pulumi.getter
+    def subscribers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs']]]]:
+        return pulumi.get(self, "subscribers")
+
+    @subscribers.setter
+    def subscribers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs']]]]):
+        pulumi.set(self, "subscribers", value)
+
+
+if not MYPY:
+    class JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgsDict(TypedDict):
+        destination_id: NotRequired[pulumi.Input[builtins.str]]
+        user_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+elif False:
+    JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs:
+    def __init__(__self__, *,
+                 destination_id: Optional[pulumi.Input[builtins.str]] = None,
+                 user_name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+        if destination_id is not None:
+            pulumi.set(__self__, "destination_id", destination_id)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="destinationId")
+    def destination_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "destination_id")
+
+    @destination_id.setter
+    def destination_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "destination_id", value)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "user_name", value)
 
 
 if not MYPY:
@@ -17200,6 +17646,241 @@ class JobTaskForEachTaskTaskPipelineTaskArgs:
     @full_refresh.setter
     def full_refresh(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "full_refresh", value)
+
+
+if not MYPY:
+    class JobTaskForEachTaskTaskPowerBiTaskArgsDict(TypedDict):
+        connection_resource_name: NotRequired[pulumi.Input[builtins.str]]
+        power_bi_model: NotRequired[pulumi.Input['JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgsDict']]
+        refresh_after_update: NotRequired[pulumi.Input[builtins.bool]]
+        tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskPowerBiTaskTableArgsDict']]]]
+        warehouse_id: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    JobTaskForEachTaskTaskPowerBiTaskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskPowerBiTaskArgs:
+    def __init__(__self__, *,
+                 connection_resource_name: Optional[pulumi.Input[builtins.str]] = None,
+                 power_bi_model: Optional[pulumi.Input['JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs']] = None,
+                 refresh_after_update: Optional[pulumi.Input[builtins.bool]] = None,
+                 tables: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskPowerBiTaskTableArgs']]]] = None,
+                 warehouse_id: Optional[pulumi.Input[builtins.str]] = None):
+        if connection_resource_name is not None:
+            pulumi.set(__self__, "connection_resource_name", connection_resource_name)
+        if power_bi_model is not None:
+            pulumi.set(__self__, "power_bi_model", power_bi_model)
+        if refresh_after_update is not None:
+            pulumi.set(__self__, "refresh_after_update", refresh_after_update)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter(name="connectionResourceName")
+    def connection_resource_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "connection_resource_name")
+
+    @connection_resource_name.setter
+    def connection_resource_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "connection_resource_name", value)
+
+    @property
+    @pulumi.getter(name="powerBiModel")
+    def power_bi_model(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs']]:
+        return pulumi.get(self, "power_bi_model")
+
+    @power_bi_model.setter
+    def power_bi_model(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs']]):
+        pulumi.set(self, "power_bi_model", value)
+
+    @property
+    @pulumi.getter(name="refreshAfterUpdate")
+    def refresh_after_update(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "refresh_after_update")
+
+    @refresh_after_update.setter
+    def refresh_after_update(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "refresh_after_update", value)
+
+    @property
+    @pulumi.getter
+    def tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskPowerBiTaskTableArgs']]]]:
+        return pulumi.get(self, "tables")
+
+    @tables.setter
+    def tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskPowerBiTaskTableArgs']]]]):
+        pulumi.set(self, "tables", value)
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "warehouse_id")
+
+    @warehouse_id.setter
+    def warehouse_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "warehouse_id", value)
+
+
+if not MYPY:
+    class JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgsDict(TypedDict):
+        authentication_method: NotRequired[pulumi.Input[builtins.str]]
+        model_name: NotRequired[pulumi.Input[builtins.str]]
+        overwrite_existing: NotRequired[pulumi.Input[builtins.bool]]
+        storage_mode: NotRequired[pulumi.Input[builtins.str]]
+        workspace_name: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs:
+    def __init__(__self__, *,
+                 authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 model_name: Optional[pulumi.Input[builtins.str]] = None,
+                 overwrite_existing: Optional[pulumi.Input[builtins.bool]] = None,
+                 storage_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 workspace_name: Optional[pulumi.Input[builtins.str]] = None):
+        if authentication_method is not None:
+            pulumi.set(__self__, "authentication_method", authentication_method)
+        if model_name is not None:
+            pulumi.set(__self__, "model_name", model_name)
+        if overwrite_existing is not None:
+            pulumi.set(__self__, "overwrite_existing", overwrite_existing)
+        if storage_mode is not None:
+            pulumi.set(__self__, "storage_mode", storage_mode)
+        if workspace_name is not None:
+            pulumi.set(__self__, "workspace_name", workspace_name)
+
+    @property
+    @pulumi.getter(name="authenticationMethod")
+    def authentication_method(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "authentication_method")
+
+    @authentication_method.setter
+    def authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "authentication_method", value)
+
+    @property
+    @pulumi.getter(name="modelName")
+    def model_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "model_name")
+
+    @model_name.setter
+    def model_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "model_name", value)
+
+    @property
+    @pulumi.getter(name="overwriteExisting")
+    def overwrite_existing(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "overwrite_existing")
+
+    @overwrite_existing.setter
+    def overwrite_existing(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "overwrite_existing", value)
+
+    @property
+    @pulumi.getter(name="storageMode")
+    def storage_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "storage_mode")
+
+    @storage_mode.setter
+    def storage_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "storage_mode", value)
+
+    @property
+    @pulumi.getter(name="workspaceName")
+    def workspace_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "workspace_name")
+
+    @workspace_name.setter
+    def workspace_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "workspace_name", value)
+
+
+if not MYPY:
+    class JobTaskForEachTaskTaskPowerBiTaskTableArgsDict(TypedDict):
+        catalog: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the catalog to use inside Unity Catalog.
+        """
+        name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        An optional name for the job. The default value is Untitled.
+        """
+        schema: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the schema dbt should run in. Defaults to `default`.
+        """
+        storage_mode: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    JobTaskForEachTaskTaskPowerBiTaskTableArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskPowerBiTaskTableArgs:
+    def __init__(__self__, *,
+                 catalog: Optional[pulumi.Input[builtins.str]] = None,
+                 name: Optional[pulumi.Input[builtins.str]] = None,
+                 schema: Optional[pulumi.Input[builtins.str]] = None,
+                 storage_mode: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] catalog: The name of the catalog to use inside Unity Catalog.
+        :param pulumi.Input[builtins.str] name: An optional name for the job. The default value is Untitled.
+        :param pulumi.Input[builtins.str] schema: The name of the schema dbt should run in. Defaults to `default`.
+        """
+        if catalog is not None:
+            pulumi.set(__self__, "catalog", catalog)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if storage_mode is not None:
+            pulumi.set(__self__, "storage_mode", storage_mode)
+
+    @property
+    @pulumi.getter
+    def catalog(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the catalog to use inside Unity Catalog.
+        """
+        return pulumi.get(self, "catalog")
+
+    @catalog.setter
+    def catalog(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "catalog", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        An optional name for the job. The default value is Untitled.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the schema dbt should run in. Defaults to `default`.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter(name="storageMode")
+    def storage_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "storage_mode")
+
+    @storage_mode.setter
+    def storage_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "storage_mode", value)
 
 
 if not MYPY:
@@ -21029,6 +21710,241 @@ class JobTaskPipelineTaskArgs:
 
 
 if not MYPY:
+    class JobTaskPowerBiTaskArgsDict(TypedDict):
+        connection_resource_name: NotRequired[pulumi.Input[builtins.str]]
+        power_bi_model: NotRequired[pulumi.Input['JobTaskPowerBiTaskPowerBiModelArgsDict']]
+        refresh_after_update: NotRequired[pulumi.Input[builtins.bool]]
+        tables: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTaskPowerBiTaskTableArgsDict']]]]
+        warehouse_id: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    JobTaskPowerBiTaskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskPowerBiTaskArgs:
+    def __init__(__self__, *,
+                 connection_resource_name: Optional[pulumi.Input[builtins.str]] = None,
+                 power_bi_model: Optional[pulumi.Input['JobTaskPowerBiTaskPowerBiModelArgs']] = None,
+                 refresh_after_update: Optional[pulumi.Input[builtins.bool]] = None,
+                 tables: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskPowerBiTaskTableArgs']]]] = None,
+                 warehouse_id: Optional[pulumi.Input[builtins.str]] = None):
+        if connection_resource_name is not None:
+            pulumi.set(__self__, "connection_resource_name", connection_resource_name)
+        if power_bi_model is not None:
+            pulumi.set(__self__, "power_bi_model", power_bi_model)
+        if refresh_after_update is not None:
+            pulumi.set(__self__, "refresh_after_update", refresh_after_update)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter(name="connectionResourceName")
+    def connection_resource_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "connection_resource_name")
+
+    @connection_resource_name.setter
+    def connection_resource_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "connection_resource_name", value)
+
+    @property
+    @pulumi.getter(name="powerBiModel")
+    def power_bi_model(self) -> Optional[pulumi.Input['JobTaskPowerBiTaskPowerBiModelArgs']]:
+        return pulumi.get(self, "power_bi_model")
+
+    @power_bi_model.setter
+    def power_bi_model(self, value: Optional[pulumi.Input['JobTaskPowerBiTaskPowerBiModelArgs']]):
+        pulumi.set(self, "power_bi_model", value)
+
+    @property
+    @pulumi.getter(name="refreshAfterUpdate")
+    def refresh_after_update(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "refresh_after_update")
+
+    @refresh_after_update.setter
+    def refresh_after_update(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "refresh_after_update", value)
+
+    @property
+    @pulumi.getter
+    def tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskPowerBiTaskTableArgs']]]]:
+        return pulumi.get(self, "tables")
+
+    @tables.setter
+    def tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskPowerBiTaskTableArgs']]]]):
+        pulumi.set(self, "tables", value)
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "warehouse_id")
+
+    @warehouse_id.setter
+    def warehouse_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "warehouse_id", value)
+
+
+if not MYPY:
+    class JobTaskPowerBiTaskPowerBiModelArgsDict(TypedDict):
+        authentication_method: NotRequired[pulumi.Input[builtins.str]]
+        model_name: NotRequired[pulumi.Input[builtins.str]]
+        overwrite_existing: NotRequired[pulumi.Input[builtins.bool]]
+        storage_mode: NotRequired[pulumi.Input[builtins.str]]
+        workspace_name: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    JobTaskPowerBiTaskPowerBiModelArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskPowerBiTaskPowerBiModelArgs:
+    def __init__(__self__, *,
+                 authentication_method: Optional[pulumi.Input[builtins.str]] = None,
+                 model_name: Optional[pulumi.Input[builtins.str]] = None,
+                 overwrite_existing: Optional[pulumi.Input[builtins.bool]] = None,
+                 storage_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 workspace_name: Optional[pulumi.Input[builtins.str]] = None):
+        if authentication_method is not None:
+            pulumi.set(__self__, "authentication_method", authentication_method)
+        if model_name is not None:
+            pulumi.set(__self__, "model_name", model_name)
+        if overwrite_existing is not None:
+            pulumi.set(__self__, "overwrite_existing", overwrite_existing)
+        if storage_mode is not None:
+            pulumi.set(__self__, "storage_mode", storage_mode)
+        if workspace_name is not None:
+            pulumi.set(__self__, "workspace_name", workspace_name)
+
+    @property
+    @pulumi.getter(name="authenticationMethod")
+    def authentication_method(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "authentication_method")
+
+    @authentication_method.setter
+    def authentication_method(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "authentication_method", value)
+
+    @property
+    @pulumi.getter(name="modelName")
+    def model_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "model_name")
+
+    @model_name.setter
+    def model_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "model_name", value)
+
+    @property
+    @pulumi.getter(name="overwriteExisting")
+    def overwrite_existing(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "overwrite_existing")
+
+    @overwrite_existing.setter
+    def overwrite_existing(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "overwrite_existing", value)
+
+    @property
+    @pulumi.getter(name="storageMode")
+    def storage_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "storage_mode")
+
+    @storage_mode.setter
+    def storage_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "storage_mode", value)
+
+    @property
+    @pulumi.getter(name="workspaceName")
+    def workspace_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "workspace_name")
+
+    @workspace_name.setter
+    def workspace_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "workspace_name", value)
+
+
+if not MYPY:
+    class JobTaskPowerBiTaskTableArgsDict(TypedDict):
+        catalog: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the catalog to use inside Unity Catalog.
+        """
+        name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        An optional name for the job. The default value is Untitled.
+        """
+        schema: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the schema dbt should run in. Defaults to `default`.
+        """
+        storage_mode: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    JobTaskPowerBiTaskTableArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskPowerBiTaskTableArgs:
+    def __init__(__self__, *,
+                 catalog: Optional[pulumi.Input[builtins.str]] = None,
+                 name: Optional[pulumi.Input[builtins.str]] = None,
+                 schema: Optional[pulumi.Input[builtins.str]] = None,
+                 storage_mode: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] catalog: The name of the catalog to use inside Unity Catalog.
+        :param pulumi.Input[builtins.str] name: An optional name for the job. The default value is Untitled.
+        :param pulumi.Input[builtins.str] schema: The name of the schema dbt should run in. Defaults to `default`.
+        """
+        if catalog is not None:
+            pulumi.set(__self__, "catalog", catalog)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if storage_mode is not None:
+            pulumi.set(__self__, "storage_mode", storage_mode)
+
+    @property
+    @pulumi.getter
+    def catalog(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the catalog to use inside Unity Catalog.
+        """
+        return pulumi.get(self, "catalog")
+
+    @catalog.setter
+    def catalog(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "catalog", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        An optional name for the job. The default value is Untitled.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the schema dbt should run in. Defaults to `default`.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter(name="storageMode")
+    def storage_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "storage_mode")
+
+    @storage_mode.setter
+    def storage_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "storage_mode", value)
+
+
+if not MYPY:
     class JobTaskPythonWheelTaskArgsDict(TypedDict):
         entry_point: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -24134,6 +25050,9 @@ class MlflowWebhookJobSpecArgs:
 if not MYPY:
     class ModelServingAiGatewayArgsDict(TypedDict):
         fallback_config: NotRequired[pulumi.Input['ModelServingAiGatewayFallbackConfigArgsDict']]
+        """
+        block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
+        """
         guardrails: NotRequired[pulumi.Input['ModelServingAiGatewayGuardrailsArgsDict']]
         """
         Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
@@ -24162,6 +25081,7 @@ class ModelServingAiGatewayArgs:
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingAiGatewayRateLimitArgs']]]] = None,
                  usage_tracking_config: Optional[pulumi.Input['ModelServingAiGatewayUsageTrackingConfigArgs']] = None):
         """
+        :param pulumi.Input['ModelServingAiGatewayFallbackConfigArgs'] fallback_config: block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
         :param pulumi.Input['ModelServingAiGatewayGuardrailsArgs'] guardrails: Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
         :param pulumi.Input['ModelServingAiGatewayInferenceTableConfigArgs'] inference_table_config: Block describing the configuration of usage tracking. Consists of the following attributes:
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingAiGatewayRateLimitArgs']]] rate_limits: Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
@@ -24181,6 +25101,9 @@ class ModelServingAiGatewayArgs:
     @property
     @pulumi.getter(name="fallbackConfig")
     def fallback_config(self) -> Optional[pulumi.Input['ModelServingAiGatewayFallbackConfigArgs']]:
+        """
+        block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
+        """
         return pulumi.get(self, "fallback_config")
 
     @fallback_config.setter
@@ -24239,6 +25162,9 @@ class ModelServingAiGatewayArgs:
 if not MYPY:
     class ModelServingAiGatewayFallbackConfigArgsDict(TypedDict):
         enabled: pulumi.Input[builtins.bool]
+        """
+        Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
+        """
 elif False:
     ModelServingAiGatewayFallbackConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -24246,11 +25172,17 @@ elif False:
 class ModelServingAiGatewayFallbackConfigArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[builtins.bool]):
+        """
+        :param pulumi.Input[builtins.bool] enabled: Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
+        """
         pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[builtins.bool]:
+        """
+        Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -25194,6 +26126,9 @@ if not MYPY:
         Cohere Config
         """
         custom_provider_config: NotRequired[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigArgsDict']]
+        """
+        Custom Provider Config. Only required if the provider is 'custom'.
+        """
         databricks_model_serving_config: NotRequired[pulumi.Input['ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgsDict']]
         """
         Databricks Model Serving Config
@@ -25236,6 +26171,7 @@ class ModelServingConfigServedEntityExternalModelArgs:
         :param pulumi.Input['ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs'] amazon_bedrock_config: Amazon Bedrock Config
         :param pulumi.Input['ModelServingConfigServedEntityExternalModelAnthropicConfigArgs'] anthropic_config: Anthropic Config
         :param pulumi.Input['ModelServingConfigServedEntityExternalModelCohereConfigArgs'] cohere_config: Cohere Config
+        :param pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs'] custom_provider_config: Custom Provider Config. Only required if the provider is 'custom'.
         :param pulumi.Input['ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs'] databricks_model_serving_config: Databricks Model Serving Config
         :param pulumi.Input['ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs'] google_cloud_vertex_ai_config: Google Cloud Vertex AI Config.
         :param pulumi.Input['ModelServingConfigServedEntityExternalModelOpenaiConfigArgs'] openai_config: OpenAI Config
@@ -25350,6 +26286,9 @@ class ModelServingConfigServedEntityExternalModelArgs:
     @property
     @pulumi.getter(name="customProviderConfig")
     def custom_provider_config(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs']]:
+        """
+        Custom Provider Config. Only required if the provider is 'custom'.
+        """
         return pulumi.get(self, "custom_provider_config")
 
     @custom_provider_config.setter
@@ -25720,8 +26659,17 @@ class ModelServingConfigServedEntityExternalModelCohereConfigArgs:
 if not MYPY:
     class ModelServingConfigServedEntityExternalModelCustomProviderConfigArgsDict(TypedDict):
         custom_provider_url: pulumi.Input[builtins.str]
+        """
+        URL of the custom provider API.
+        """
         api_key_auth: NotRequired[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgsDict']]
+        """
+        API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+        """
         bearer_token_auth: NotRequired[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgsDict']]
+        """
+        bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+        """
 elif False:
     ModelServingConfigServedEntityExternalModelCustomProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -25731,6 +26679,11 @@ class ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs:
                  custom_provider_url: pulumi.Input[builtins.str],
                  api_key_auth: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs']] = None,
                  bearer_token_auth: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs']] = None):
+        """
+        :param pulumi.Input[builtins.str] custom_provider_url: URL of the custom provider API.
+        :param pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs'] api_key_auth: API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+        :param pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs'] bearer_token_auth: bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+        """
         pulumi.set(__self__, "custom_provider_url", custom_provider_url)
         if api_key_auth is not None:
             pulumi.set(__self__, "api_key_auth", api_key_auth)
@@ -25740,6 +26693,9 @@ class ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs:
     @property
     @pulumi.getter(name="customProviderUrl")
     def custom_provider_url(self) -> pulumi.Input[builtins.str]:
+        """
+        URL of the custom provider API.
+        """
         return pulumi.get(self, "custom_provider_url")
 
     @custom_provider_url.setter
@@ -25749,6 +26705,9 @@ class ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs:
     @property
     @pulumi.getter(name="apiKeyAuth")
     def api_key_auth(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs']]:
+        """
+        API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+        """
         return pulumi.get(self, "api_key_auth")
 
     @api_key_auth.setter
@@ -25758,6 +26717,9 @@ class ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs:
     @property
     @pulumi.getter(name="bearerTokenAuth")
     def bearer_token_auth(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs']]:
+        """
+        bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+        """
         return pulumi.get(self, "bearer_token_auth")
 
     @bearer_token_auth.setter
@@ -25769,10 +26731,10 @@ if not MYPY:
     class ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgsDict(TypedDict):
         key: pulumi.Input[builtins.str]
         value: NotRequired[pulumi.Input[builtins.str]]
-        """
-        The value field for a tag.
-        """
         value_plaintext: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The API Key provided as a plaintext string.
+        """
 elif False:
     ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -25783,7 +26745,7 @@ class ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthA
                  value: Optional[pulumi.Input[builtins.str]] = None,
                  value_plaintext: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] value: The value field for a tag.
+        :param pulumi.Input[builtins.str] value_plaintext: The API Key provided as a plaintext string.
         """
         pulumi.set(__self__, "key", key)
         if value is not None:
@@ -25803,9 +26765,6 @@ class ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthA
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The value field for a tag.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -25815,6 +26774,9 @@ class ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthA
     @property
     @pulumi.getter(name="valuePlaintext")
     def value_plaintext(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The API Key provided as a plaintext string.
+        """
         return pulumi.get(self, "value_plaintext")
 
     @value_plaintext.setter
@@ -25825,7 +26787,13 @@ class ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthA
 if not MYPY:
     class ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgsDict(TypedDict):
         token: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The Databricks secret key reference for a token.
+        """
         token_plaintext: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The token provided as a plaintext string.
+        """
 elif False:
     ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -25834,6 +26802,10 @@ class ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerToken
     def __init__(__self__, *,
                  token: Optional[pulumi.Input[builtins.str]] = None,
                  token_plaintext: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] token: The Databricks secret key reference for a token.
+        :param pulumi.Input[builtins.str] token_plaintext: The token provided as a plaintext string.
+        """
         if token is not None:
             pulumi.set(__self__, "token", token)
         if token_plaintext is not None:
@@ -25842,6 +26814,9 @@ class ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerToken
     @property
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The Databricks secret key reference for a token.
+        """
         return pulumi.get(self, "token")
 
     @token.setter
@@ -25851,6 +26826,9 @@ class ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerToken
     @property
     @pulumi.getter(name="tokenPlaintext")
     def token_plaintext(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The token provided as a plaintext string.
+        """
         return pulumi.get(self, "token_plaintext")
 
     @token_plaintext.setter
@@ -27650,13 +28628,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -27710,7 +28688,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
@@ -27723,7 +28701,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
@@ -27879,6 +28857,42 @@ class MwsVpcEndpointGcpVpcEndpointInfoArgs:
 
 
 if not MYPY:
+    class MwsWorkspacesAzureWorkspaceInfoArgsDict(TypedDict):
+        resource_group: NotRequired[pulumi.Input[builtins.str]]
+        subscription_id: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    MwsWorkspacesAzureWorkspaceInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MwsWorkspacesAzureWorkspaceInfoArgs:
+    def __init__(__self__, *,
+                 resource_group: Optional[pulumi.Input[builtins.str]] = None,
+                 subscription_id: Optional[pulumi.Input[builtins.str]] = None):
+        if resource_group is not None:
+            pulumi.set(__self__, "resource_group", resource_group)
+        if subscription_id is not None:
+            pulumi.set(__self__, "subscription_id", subscription_id)
+
+    @property
+    @pulumi.getter(name="resourceGroup")
+    def resource_group(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "resource_group")
+
+    @resource_group.setter
+    def resource_group(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "resource_group", value)
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "subscription_id")
+
+    @subscription_id.setter
+    def subscription_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "subscription_id", value)
+
+
+if not MYPY:
     class MwsWorkspacesCloudResourceContainerArgsDict(TypedDict):
         gcp: pulumi.Input['MwsWorkspacesCloudResourceContainerGcpArgsDict']
         """
@@ -27989,6 +29003,9 @@ class MwsWorkspacesExternalCustomerInfoArgs:
 if not MYPY:
     class MwsWorkspacesGcpManagedNetworkConfigArgsDict(TypedDict):
         subnet_cidr: pulumi.Input[builtins.str]
+        """
+        The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
+        """
         gke_cluster_pod_ip_range: NotRequired[pulumi.Input[builtins.str]]
         gke_cluster_service_ip_range: NotRequired[pulumi.Input[builtins.str]]
 elif False:
@@ -28000,21 +29017,27 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  subnet_cidr: pulumi.Input[builtins.str],
                  gke_cluster_pod_ip_range: Optional[pulumi.Input[builtins.str]] = None,
                  gke_cluster_service_ip_range: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] subnet_cidr: The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
+        """
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
     @property
     @pulumi.getter(name="subnetCidr")
     def subnet_cidr(self) -> pulumi.Input[builtins.str]:
+        """
+        The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
+        """
         return pulumi.get(self, "subnet_cidr")
 
     @subnet_cidr.setter
@@ -28023,7 +29046,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -28033,7 +29056,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -44970,6 +45993,7 @@ if not MYPY:
     class GetJobJobSettingsSettingsEnvironmentSpecArgsDict(TypedDict):
         client: builtins.str
         dependencies: NotRequired[Sequence[builtins.str]]
+        jar_dependencies: NotRequired[Sequence[builtins.str]]
 elif False:
     GetJobJobSettingsSettingsEnvironmentSpecArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -44977,10 +46001,13 @@ elif False:
 class GetJobJobSettingsSettingsEnvironmentSpecArgs:
     def __init__(__self__, *,
                  client: builtins.str,
-                 dependencies: Optional[Sequence[builtins.str]] = None):
+                 dependencies: Optional[Sequence[builtins.str]] = None,
+                 jar_dependencies: Optional[Sequence[builtins.str]] = None):
         pulumi.set(__self__, "client", client)
         if dependencies is not None:
             pulumi.set(__self__, "dependencies", dependencies)
+        if jar_dependencies is not None:
+            pulumi.set(__self__, "jar_dependencies", jar_dependencies)
 
     @property
     @pulumi.getter
@@ -44999,6 +46026,15 @@ class GetJobJobSettingsSettingsEnvironmentSpecArgs:
     @dependencies.setter
     def dependencies(self, value: Optional[Sequence[builtins.str]]):
         pulumi.set(self, "dependencies", value)
+
+    @property
+    @pulumi.getter(name="jarDependencies")
+    def jar_dependencies(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "jar_dependencies")
+
+    @jar_dependencies.setter
+    def jar_dependencies(self, value: Optional[Sequence[builtins.str]]):
+        pulumi.set(self, "jar_dependencies", value)
 
 
 if not MYPY:

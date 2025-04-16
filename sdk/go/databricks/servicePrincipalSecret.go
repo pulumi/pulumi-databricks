@@ -56,11 +56,22 @@ import (
 type ServicePrincipalSecret struct {
 	pulumi.CustomResourceState
 
-	// Generated secret for the service principal
+	// UTC time when the secret was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// UTC time when the secret will expire. If the field is not present, the secret does not expire.
+	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
+	// The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+	Lifetime pulumi.StringOutput `pulumi:"lifetime"`
+	// Generated secret for the service principal.
 	Secret pulumi.StringOutput `pulumi:"secret"`
-	// ID of the ServicePrincipal (not application ID).
+	// Secret Hash.
+	SecretHash pulumi.StringOutput `pulumi:"secretHash"`
+	// SCIM ID of the ServicePrincipal (not application ID).
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
-	Status             pulumi.StringOutput `pulumi:"status"`
+	// Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+	Status pulumi.StringOutput `pulumi:"status"`
+	// UTC time when the secret was updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewServicePrincipalSecret registers a new resource with the given unique name, arguments, and options.
@@ -103,19 +114,41 @@ func GetServicePrincipalSecret(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePrincipalSecret resources.
 type servicePrincipalSecretState struct {
-	// Generated secret for the service principal
+	// UTC time when the secret was created.
+	CreateTime *string `pulumi:"createTime"`
+	// UTC time when the secret will expire. If the field is not present, the secret does not expire.
+	ExpireTime *string `pulumi:"expireTime"`
+	// The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+	Lifetime *string `pulumi:"lifetime"`
+	// Generated secret for the service principal.
 	Secret *string `pulumi:"secret"`
-	// ID of the ServicePrincipal (not application ID).
+	// Secret Hash.
+	SecretHash *string `pulumi:"secretHash"`
+	// SCIM ID of the ServicePrincipal (not application ID).
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
-	Status             *string `pulumi:"status"`
+	// Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+	Status *string `pulumi:"status"`
+	// UTC time when the secret was updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ServicePrincipalSecretState struct {
-	// Generated secret for the service principal
+	// UTC time when the secret was created.
+	CreateTime pulumi.StringPtrInput
+	// UTC time when the secret will expire. If the field is not present, the secret does not expire.
+	ExpireTime pulumi.StringPtrInput
+	// The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+	Lifetime pulumi.StringPtrInput
+	// Generated secret for the service principal.
 	Secret pulumi.StringPtrInput
-	// ID of the ServicePrincipal (not application ID).
+	// Secret Hash.
+	SecretHash pulumi.StringPtrInput
+	// SCIM ID of the ServicePrincipal (not application ID).
 	ServicePrincipalId pulumi.StringPtrInput
-	Status             pulumi.StringPtrInput
+	// Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+	Status pulumi.StringPtrInput
+	// UTC time when the secret was updated.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (ServicePrincipalSecretState) ElementType() reflect.Type {
@@ -123,20 +156,42 @@ func (ServicePrincipalSecretState) ElementType() reflect.Type {
 }
 
 type servicePrincipalSecretArgs struct {
-	// Generated secret for the service principal
+	// UTC time when the secret was created.
+	CreateTime *string `pulumi:"createTime"`
+	// UTC time when the secret will expire. If the field is not present, the secret does not expire.
+	ExpireTime *string `pulumi:"expireTime"`
+	// The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+	Lifetime *string `pulumi:"lifetime"`
+	// Generated secret for the service principal.
 	Secret *string `pulumi:"secret"`
-	// ID of the ServicePrincipal (not application ID).
-	ServicePrincipalId string  `pulumi:"servicePrincipalId"`
-	Status             *string `pulumi:"status"`
+	// Secret Hash.
+	SecretHash *string `pulumi:"secretHash"`
+	// SCIM ID of the ServicePrincipal (not application ID).
+	ServicePrincipalId string `pulumi:"servicePrincipalId"`
+	// Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+	Status *string `pulumi:"status"`
+	// UTC time when the secret was updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a ServicePrincipalSecret resource.
 type ServicePrincipalSecretArgs struct {
-	// Generated secret for the service principal
+	// UTC time when the secret was created.
+	CreateTime pulumi.StringPtrInput
+	// UTC time when the secret will expire. If the field is not present, the secret does not expire.
+	ExpireTime pulumi.StringPtrInput
+	// The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+	Lifetime pulumi.StringPtrInput
+	// Generated secret for the service principal.
 	Secret pulumi.StringPtrInput
-	// ID of the ServicePrincipal (not application ID).
+	// Secret Hash.
+	SecretHash pulumi.StringPtrInput
+	// SCIM ID of the ServicePrincipal (not application ID).
 	ServicePrincipalId pulumi.StringInput
-	Status             pulumi.StringPtrInput
+	// Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+	Status pulumi.StringPtrInput
+	// UTC time when the secret was updated.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (ServicePrincipalSecretArgs) ElementType() reflect.Type {
@@ -226,18 +281,44 @@ func (o ServicePrincipalSecretOutput) ToServicePrincipalSecretOutputWithContext(
 	return o
 }
 
-// Generated secret for the service principal
+// UTC time when the secret was created.
+func (o ServicePrincipalSecretOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecret) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// UTC time when the secret will expire. If the field is not present, the secret does not expire.
+func (o ServicePrincipalSecretOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecret) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
+func (o ServicePrincipalSecretOutput) Lifetime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecret) pulumi.StringOutput { return v.Lifetime }).(pulumi.StringOutput)
+}
+
+// Generated secret for the service principal.
 func (o ServicePrincipalSecretOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalSecret) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
 }
 
-// ID of the ServicePrincipal (not application ID).
+// Secret Hash.
+func (o ServicePrincipalSecretOutput) SecretHash() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecret) pulumi.StringOutput { return v.SecretHash }).(pulumi.StringOutput)
+}
+
+// SCIM ID of the ServicePrincipal (not application ID).
 func (o ServicePrincipalSecretOutput) ServicePrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalSecret) pulumi.StringOutput { return v.ServicePrincipalId }).(pulumi.StringOutput)
 }
 
+// Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
 func (o ServicePrincipalSecretOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalSecret) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// UTC time when the secret was updated.
+func (o ServicePrincipalSecretOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecret) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 type ServicePrincipalSecretArrayOutput struct{ *pulumi.OutputState }

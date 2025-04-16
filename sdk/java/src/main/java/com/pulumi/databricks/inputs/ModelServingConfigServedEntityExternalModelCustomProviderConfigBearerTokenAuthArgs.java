@@ -15,16 +15,32 @@ public final class ModelServingConfigServedEntityExternalModelCustomProviderConf
 
     public static final ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs Empty = new ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs();
 
+    /**
+     * The Databricks secret key reference for a token.
+     * 
+     */
     @Import(name="token")
     private @Nullable Output<String> token;
 
+    /**
+     * @return The Databricks secret key reference for a token.
+     * 
+     */
     public Optional<Output<String>> token() {
         return Optional.ofNullable(this.token);
     }
 
+    /**
+     * The token provided as a plaintext string.
+     * 
+     */
     @Import(name="tokenPlaintext")
     private @Nullable Output<String> tokenPlaintext;
 
+    /**
+     * @return The token provided as a plaintext string.
+     * 
+     */
     public Optional<Output<String>> tokenPlaintext() {
         return Optional.ofNullable(this.tokenPlaintext);
     }
@@ -54,20 +70,44 @@ public final class ModelServingConfigServedEntityExternalModelCustomProviderConf
             $ = new ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param token The Databricks secret key reference for a token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder token(@Nullable Output<String> token) {
             $.token = token;
             return this;
         }
 
+        /**
+         * @param token The Databricks secret key reference for a token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder token(String token) {
             return token(Output.of(token));
         }
 
+        /**
+         * @param tokenPlaintext The token provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokenPlaintext(@Nullable Output<String> tokenPlaintext) {
             $.tokenPlaintext = tokenPlaintext;
             return this;
         }
 
+        /**
+         * @param tokenPlaintext The token provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokenPlaintext(String tokenPlaintext) {
             return tokenPlaintext(Output.of(tokenPlaintext));
         }

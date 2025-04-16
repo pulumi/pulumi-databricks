@@ -133,9 +133,17 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
     public Output<Optional<ModelServingAiGateway>> aiGateway() {
         return Codegen.optional(this.aiGateway);
     }
+    /**
+     * The Budget Policy ID set for this serving endpoint.
+     * 
+     */
     @Export(name="budgetPolicyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> budgetPolicyId;
 
+    /**
+     * @return The Budget Policy ID set for this serving endpoint.
+     * 
+     */
     public Output<Optional<String>> budgetPolicyId() {
         return Codegen.optional(this.budgetPolicyId);
     }

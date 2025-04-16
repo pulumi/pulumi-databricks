@@ -22,6 +22,7 @@ __all__ = ['BudgetPolicyArgs', 'BudgetPolicy']
 @pulumi.input_type
 class BudgetPolicyArgs:
     def __init__(__self__, *,
+                 binding_workspace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None,
                  custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetPolicyCustomTagArgs']]]] = None,
                  policy_name: Optional[pulumi.Input[builtins.str]] = None):
         """
@@ -29,10 +30,21 @@ class BudgetPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['BudgetPolicyCustomTagArgs']]] custom_tags: A list of tags defined by the customer. At most 20 entries are allowed per policy.
         :param pulumi.Input[builtins.str] policy_name: The name of the policy. Must be unique among active policies. Can contain only characters from the ISO 8859-1 (latin1) set.
         """
+        if binding_workspace_ids is not None:
+            pulumi.set(__self__, "binding_workspace_ids", binding_workspace_ids)
         if custom_tags is not None:
             pulumi.set(__self__, "custom_tags", custom_tags)
         if policy_name is not None:
             pulumi.set(__self__, "policy_name", policy_name)
+
+    @property
+    @pulumi.getter(name="bindingWorkspaceIds")
+    def binding_workspace_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]:
+        return pulumi.get(self, "binding_workspace_ids")
+
+    @binding_workspace_ids.setter
+    def binding_workspace_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]):
+        pulumi.set(self, "binding_workspace_ids", value)
 
     @property
     @pulumi.getter(name="customTags")
@@ -62,6 +74,7 @@ class BudgetPolicyArgs:
 @pulumi.input_type
 class _BudgetPolicyState:
     def __init__(__self__, *,
+                 binding_workspace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None,
                  custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetPolicyCustomTagArgs']]]] = None,
                  policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  policy_name: Optional[pulumi.Input[builtins.str]] = None):
@@ -71,12 +84,23 @@ class _BudgetPolicyState:
         :param pulumi.Input[builtins.str] policy_id: ID of the budget policy
         :param pulumi.Input[builtins.str] policy_name: The name of the policy. Must be unique among active policies. Can contain only characters from the ISO 8859-1 (latin1) set.
         """
+        if binding_workspace_ids is not None:
+            pulumi.set(__self__, "binding_workspace_ids", binding_workspace_ids)
         if custom_tags is not None:
             pulumi.set(__self__, "custom_tags", custom_tags)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
         if policy_name is not None:
             pulumi.set(__self__, "policy_name", policy_name)
+
+    @property
+    @pulumi.getter(name="bindingWorkspaceIds")
+    def binding_workspace_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]:
+        return pulumi.get(self, "binding_workspace_ids")
+
+    @binding_workspace_ids.setter
+    def binding_workspace_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]):
+        pulumi.set(self, "binding_workspace_ids", value)
 
     @property
     @pulumi.getter(name="customTags")
@@ -120,6 +144,7 @@ class BudgetPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 binding_workspace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None,
                  custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BudgetPolicyCustomTagArgs', 'BudgetPolicyCustomTagArgsDict']]]]] = None,
                  policy_name: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -211,6 +236,7 @@ class BudgetPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 binding_workspace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None,
                  custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BudgetPolicyCustomTagArgs', 'BudgetPolicyCustomTagArgsDict']]]]] = None,
                  policy_name: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -222,6 +248,7 @@ class BudgetPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BudgetPolicyArgs.__new__(BudgetPolicyArgs)
 
+            __props__.__dict__["binding_workspace_ids"] = binding_workspace_ids
             __props__.__dict__["custom_tags"] = custom_tags
             __props__.__dict__["policy_name"] = policy_name
             __props__.__dict__["policy_id"] = None
@@ -235,6 +262,7 @@ class BudgetPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            binding_workspace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]] = None,
             custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BudgetPolicyCustomTagArgs', 'BudgetPolicyCustomTagArgsDict']]]]] = None,
             policy_id: Optional[pulumi.Input[builtins.str]] = None,
             policy_name: Optional[pulumi.Input[builtins.str]] = None) -> 'BudgetPolicy':
@@ -253,10 +281,16 @@ class BudgetPolicy(pulumi.CustomResource):
 
         __props__ = _BudgetPolicyState.__new__(_BudgetPolicyState)
 
+        __props__.__dict__["binding_workspace_ids"] = binding_workspace_ids
         __props__.__dict__["custom_tags"] = custom_tags
         __props__.__dict__["policy_id"] = policy_id
         __props__.__dict__["policy_name"] = policy_name
         return BudgetPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="bindingWorkspaceIds")
+    def binding_workspace_ids(self) -> pulumi.Output[Optional[Sequence[builtins.int]]]:
+        return pulumi.get(self, "binding_workspace_ids")
 
     @property
     @pulumi.getter(name="customTags")

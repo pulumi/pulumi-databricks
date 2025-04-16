@@ -91,6 +91,7 @@ __all__ = [
     'CustomAppIntegrationTokenAccessPolicy',
     'DefaultNamespaceSettingNamespace',
     'DisableLegacyAccessSettingDisableLegacyAccess',
+    'DisableLegacyDbfsSettingDisableLegacyDbfs',
     'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace',
     'ExternalLocationEncryptionDetails',
     'ExternalLocationEncryptionDetailsSseEncryptionDetails',
@@ -193,6 +194,9 @@ __all__ = [
     'JobTask',
     'JobTaskCleanRoomsNotebookTask',
     'JobTaskConditionTask',
+    'JobTaskDashboardTask',
+    'JobTaskDashboardTaskSubscription',
+    'JobTaskDashboardTaskSubscriptionSubscriber',
     'JobTaskDbtTask',
     'JobTaskDependsOn',
     'JobTaskEmailNotifications',
@@ -200,6 +204,9 @@ __all__ = [
     'JobTaskForEachTaskTask',
     'JobTaskForEachTaskTaskCleanRoomsNotebookTask',
     'JobTaskForEachTaskTaskConditionTask',
+    'JobTaskForEachTaskTaskDashboardTask',
+    'JobTaskForEachTaskTaskDashboardTaskSubscription',
+    'JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber',
     'JobTaskForEachTaskTaskDbtTask',
     'JobTaskForEachTaskTaskDependsOn',
     'JobTaskForEachTaskTaskEmailNotifications',
@@ -242,6 +249,9 @@ __all__ = [
     'JobTaskForEachTaskTaskNotebookTask',
     'JobTaskForEachTaskTaskNotificationSettings',
     'JobTaskForEachTaskTaskPipelineTask',
+    'JobTaskForEachTaskTaskPowerBiTask',
+    'JobTaskForEachTaskTaskPowerBiTaskPowerBiModel',
+    'JobTaskForEachTaskTaskPowerBiTaskTable',
     'JobTaskForEachTaskTaskPythonWheelTask',
     'JobTaskForEachTaskTaskRunJobTask',
     'JobTaskForEachTaskTaskRunJobTaskPipelineParams',
@@ -300,6 +310,9 @@ __all__ = [
     'JobTaskNotebookTask',
     'JobTaskNotificationSettings',
     'JobTaskPipelineTask',
+    'JobTaskPowerBiTask',
+    'JobTaskPowerBiTaskPowerBiModel',
+    'JobTaskPowerBiTaskTable',
     'JobTaskPythonWheelTask',
     'JobTaskRunJobTask',
     'JobTaskRunJobTaskPipelineParams',
@@ -399,6 +412,7 @@ __all__ = [
     'MwsNetworksGcpNetworkInfo',
     'MwsNetworksVpcEndpoints',
     'MwsVpcEndpointGcpVpcEndpointInfo',
+    'MwsWorkspacesAzureWorkspaceInfo',
     'MwsWorkspacesCloudResourceContainer',
     'MwsWorkspacesCloudResourceContainerGcp',
     'MwsWorkspacesExternalCustomerInfo',
@@ -4378,6 +4392,24 @@ class DisableLegacyAccessSettingDisableLegacyAccess(dict):
 
 
 @pulumi.output_type
+class DisableLegacyDbfsSettingDisableLegacyDbfs(dict):
+    def __init__(__self__, *,
+                 value: builtins.bool):
+        """
+        :param builtins.bool value: The boolean value for the setting.
+        """
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> builtins.bool:
+        """
+        The boolean value for the setting.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5383,9 +5415,27 @@ class JobEnvironment(dict):
 
 @pulumi.output_type
 class JobEnvironmentSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jarDependencies":
+            suggest = "jar_dependencies"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobEnvironmentSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobEnvironmentSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobEnvironmentSpec.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client: builtins.str,
-                 dependencies: Optional[Sequence[builtins.str]] = None):
+                 dependencies: Optional[Sequence[builtins.str]] = None,
+                 jar_dependencies: Optional[Sequence[builtins.str]] = None):
         """
         :param builtins.str client: client version used by the environment.
         :param Sequence[builtins.str] dependencies: List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
@@ -5393,6 +5443,8 @@ class JobEnvironmentSpec(dict):
         pulumi.set(__self__, "client", client)
         if dependencies is not None:
             pulumi.set(__self__, "dependencies", dependencies)
+        if jar_dependencies is not None:
+            pulumi.set(__self__, "jar_dependencies", jar_dependencies)
 
     @property
     @pulumi.getter
@@ -5409,6 +5461,11 @@ class JobEnvironmentSpec(dict):
         List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
         """
         return pulumi.get(self, "dependencies")
+
+    @property
+    @pulumi.getter(name="jarDependencies")
+    def jar_dependencies(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "jar_dependencies")
 
 
 @pulumi.output_type
@@ -9178,6 +9235,8 @@ class JobTask(dict):
             suggest = "clean_rooms_notebook_task"
         elif key == "conditionTask":
             suggest = "condition_task"
+        elif key == "dashboardTask":
+            suggest = "dashboard_task"
         elif key == "dbtTask":
             suggest = "dbt_task"
         elif key == "dependsOns":
@@ -9208,6 +9267,8 @@ class JobTask(dict):
             suggest = "notification_settings"
         elif key == "pipelineTask":
             suggest = "pipeline_task"
+        elif key == "powerBiTask":
+            suggest = "power_bi_task"
         elif key == "pythonWheelTask":
             suggest = "python_wheel_task"
         elif key == "retryOnTimeout":
@@ -9244,6 +9305,7 @@ class JobTask(dict):
                  task_key: builtins.str,
                  clean_rooms_notebook_task: Optional['outputs.JobTaskCleanRoomsNotebookTask'] = None,
                  condition_task: Optional['outputs.JobTaskConditionTask'] = None,
+                 dashboard_task: Optional['outputs.JobTaskDashboardTask'] = None,
                  dbt_task: Optional['outputs.JobTaskDbtTask'] = None,
                  depends_ons: Optional[Sequence['outputs.JobTaskDependsOn']] = None,
                  description: Optional[builtins.str] = None,
@@ -9262,6 +9324,7 @@ class JobTask(dict):
                  notebook_task: Optional['outputs.JobTaskNotebookTask'] = None,
                  notification_settings: Optional['outputs.JobTaskNotificationSettings'] = None,
                  pipeline_task: Optional['outputs.JobTaskPipelineTask'] = None,
+                 power_bi_task: Optional['outputs.JobTaskPowerBiTask'] = None,
                  python_wheel_task: Optional['outputs.JobTaskPythonWheelTask'] = None,
                  retry_on_timeout: Optional[builtins.bool] = None,
                  run_if: Optional[builtins.str] = None,
@@ -9300,6 +9363,8 @@ class JobTask(dict):
             pulumi.set(__self__, "clean_rooms_notebook_task", clean_rooms_notebook_task)
         if condition_task is not None:
             pulumi.set(__self__, "condition_task", condition_task)
+        if dashboard_task is not None:
+            pulumi.set(__self__, "dashboard_task", dashboard_task)
         if dbt_task is not None:
             pulumi.set(__self__, "dbt_task", dbt_task)
         if depends_ons is not None:
@@ -9336,6 +9401,8 @@ class JobTask(dict):
             pulumi.set(__self__, "notification_settings", notification_settings)
         if pipeline_task is not None:
             pulumi.set(__self__, "pipeline_task", pipeline_task)
+        if power_bi_task is not None:
+            pulumi.set(__self__, "power_bi_task", power_bi_task)
         if python_wheel_task is not None:
             pulumi.set(__self__, "python_wheel_task", python_wheel_task)
         if retry_on_timeout is not None:
@@ -9375,6 +9442,11 @@ class JobTask(dict):
     @pulumi.getter(name="conditionTask")
     def condition_task(self) -> Optional['outputs.JobTaskConditionTask']:
         return pulumi.get(self, "condition_task")
+
+    @property
+    @pulumi.getter(name="dashboardTask")
+    def dashboard_task(self) -> Optional['outputs.JobTaskDashboardTask']:
+        return pulumi.get(self, "dashboard_task")
 
     @property
     @pulumi.getter(name="dbtTask")
@@ -9504,6 +9576,11 @@ class JobTask(dict):
     @pulumi.getter(name="pipelineTask")
     def pipeline_task(self) -> Optional['outputs.JobTaskPipelineTask']:
         return pulumi.get(self, "pipeline_task")
+
+    @property
+    @pulumi.getter(name="powerBiTask")
+    def power_bi_task(self) -> Optional['outputs.JobTaskPowerBiTask']:
+        return pulumi.get(self, "power_bi_task")
 
     @property
     @pulumi.getter(name="pythonWheelTask")
@@ -9686,6 +9763,158 @@ class JobTaskConditionTask(dict):
         The right operand of the condition task. It could be a string value, job state, or parameter reference.
         """
         return pulumi.get(self, "right")
+
+
+@pulumi.output_type
+class JobTaskDashboardTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dashboardId":
+            suggest = "dashboard_id"
+        elif key == "warehouseId":
+            suggest = "warehouse_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskDashboardTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskDashboardTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskDashboardTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dashboard_id: Optional[builtins.str] = None,
+                 subscription: Optional['outputs.JobTaskDashboardTaskSubscription'] = None,
+                 warehouse_id: Optional[builtins.str] = None):
+        """
+        :param builtins.str dashboard_id: (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        """
+        if dashboard_id is not None:
+            pulumi.set(__self__, "dashboard_id", dashboard_id)
+        if subscription is not None:
+            pulumi.set(__self__, "subscription", subscription)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter(name="dashboardId")
+    def dashboard_id(self) -> Optional[builtins.str]:
+        """
+        (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        """
+        return pulumi.get(self, "dashboard_id")
+
+    @property
+    @pulumi.getter
+    def subscription(self) -> Optional['outputs.JobTaskDashboardTaskSubscription']:
+        return pulumi.get(self, "subscription")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "warehouse_id")
+
+
+@pulumi.output_type
+class JobTaskDashboardTaskSubscription(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customSubject":
+            suggest = "custom_subject"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskDashboardTaskSubscription. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskDashboardTaskSubscription.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskDashboardTaskSubscription.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_subject: Optional[builtins.str] = None,
+                 paused: Optional[builtins.bool] = None,
+                 subscribers: Optional[Sequence['outputs.JobTaskDashboardTaskSubscriptionSubscriber']] = None):
+        """
+        :param builtins.str custom_subject: string specifying a custom subject of email sent.
+        """
+        if custom_subject is not None:
+            pulumi.set(__self__, "custom_subject", custom_subject)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if subscribers is not None:
+            pulumi.set(__self__, "subscribers", subscribers)
+
+    @property
+    @pulumi.getter(name="customSubject")
+    def custom_subject(self) -> Optional[builtins.str]:
+        """
+        string specifying a custom subject of email sent.
+        """
+        return pulumi.get(self, "custom_subject")
+
+    @property
+    @pulumi.getter
+    def paused(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "paused")
+
+    @property
+    @pulumi.getter
+    def subscribers(self) -> Optional[Sequence['outputs.JobTaskDashboardTaskSubscriptionSubscriber']]:
+        return pulumi.get(self, "subscribers")
+
+
+@pulumi.output_type
+class JobTaskDashboardTaskSubscriptionSubscriber(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationId":
+            suggest = "destination_id"
+        elif key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskDashboardTaskSubscriptionSubscriber. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskDashboardTaskSubscriptionSubscriber.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskDashboardTaskSubscriptionSubscriber.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination_id: Optional[builtins.str] = None,
+                 user_name: Optional[builtins.str] = None):
+        """
+        :param builtins.str user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+        if destination_id is not None:
+            pulumi.set(__self__, "destination_id", destination_id)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="destinationId")
+    def destination_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "destination_id")
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[builtins.str]:
+        """
+        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+        return pulumi.get(self, "user_name")
 
 
 @pulumi.output_type
@@ -10016,6 +10245,8 @@ class JobTaskForEachTaskTask(dict):
             suggest = "clean_rooms_notebook_task"
         elif key == "conditionTask":
             suggest = "condition_task"
+        elif key == "dashboardTask":
+            suggest = "dashboard_task"
         elif key == "dbtTask":
             suggest = "dbt_task"
         elif key == "dependsOns":
@@ -10044,6 +10275,8 @@ class JobTaskForEachTaskTask(dict):
             suggest = "notification_settings"
         elif key == "pipelineTask":
             suggest = "pipeline_task"
+        elif key == "powerBiTask":
+            suggest = "power_bi_task"
         elif key == "pythonWheelTask":
             suggest = "python_wheel_task"
         elif key == "retryOnTimeout":
@@ -10080,6 +10313,7 @@ class JobTaskForEachTaskTask(dict):
                  task_key: builtins.str,
                  clean_rooms_notebook_task: Optional['outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask'] = None,
                  condition_task: Optional['outputs.JobTaskForEachTaskTaskConditionTask'] = None,
+                 dashboard_task: Optional['outputs.JobTaskForEachTaskTaskDashboardTask'] = None,
                  dbt_task: Optional['outputs.JobTaskForEachTaskTaskDbtTask'] = None,
                  depends_ons: Optional[Sequence['outputs.JobTaskForEachTaskTaskDependsOn']] = None,
                  description: Optional[builtins.str] = None,
@@ -10097,6 +10331,7 @@ class JobTaskForEachTaskTask(dict):
                  notebook_task: Optional['outputs.JobTaskForEachTaskTaskNotebookTask'] = None,
                  notification_settings: Optional['outputs.JobTaskForEachTaskTaskNotificationSettings'] = None,
                  pipeline_task: Optional['outputs.JobTaskForEachTaskTaskPipelineTask'] = None,
+                 power_bi_task: Optional['outputs.JobTaskForEachTaskTaskPowerBiTask'] = None,
                  python_wheel_task: Optional['outputs.JobTaskForEachTaskTaskPythonWheelTask'] = None,
                  retry_on_timeout: Optional[builtins.bool] = None,
                  run_if: Optional[builtins.str] = None,
@@ -10135,6 +10370,8 @@ class JobTaskForEachTaskTask(dict):
             pulumi.set(__self__, "clean_rooms_notebook_task", clean_rooms_notebook_task)
         if condition_task is not None:
             pulumi.set(__self__, "condition_task", condition_task)
+        if dashboard_task is not None:
+            pulumi.set(__self__, "dashboard_task", dashboard_task)
         if dbt_task is not None:
             pulumi.set(__self__, "dbt_task", dbt_task)
         if depends_ons is not None:
@@ -10169,6 +10406,8 @@ class JobTaskForEachTaskTask(dict):
             pulumi.set(__self__, "notification_settings", notification_settings)
         if pipeline_task is not None:
             pulumi.set(__self__, "pipeline_task", pipeline_task)
+        if power_bi_task is not None:
+            pulumi.set(__self__, "power_bi_task", power_bi_task)
         if python_wheel_task is not None:
             pulumi.set(__self__, "python_wheel_task", python_wheel_task)
         if retry_on_timeout is not None:
@@ -10208,6 +10447,11 @@ class JobTaskForEachTaskTask(dict):
     @pulumi.getter(name="conditionTask")
     def condition_task(self) -> Optional['outputs.JobTaskForEachTaskTaskConditionTask']:
         return pulumi.get(self, "condition_task")
+
+    @property
+    @pulumi.getter(name="dashboardTask")
+    def dashboard_task(self) -> Optional['outputs.JobTaskForEachTaskTaskDashboardTask']:
+        return pulumi.get(self, "dashboard_task")
 
     @property
     @pulumi.getter(name="dbtTask")
@@ -10332,6 +10576,11 @@ class JobTaskForEachTaskTask(dict):
     @pulumi.getter(name="pipelineTask")
     def pipeline_task(self) -> Optional['outputs.JobTaskForEachTaskTaskPipelineTask']:
         return pulumi.get(self, "pipeline_task")
+
+    @property
+    @pulumi.getter(name="powerBiTask")
+    def power_bi_task(self) -> Optional['outputs.JobTaskForEachTaskTaskPowerBiTask']:
+        return pulumi.get(self, "power_bi_task")
 
     @property
     @pulumi.getter(name="pythonWheelTask")
@@ -10514,6 +10763,158 @@ class JobTaskForEachTaskTaskConditionTask(dict):
         The right operand of the condition task. It could be a string value, job state, or parameter reference.
         """
         return pulumi.get(self, "right")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskDashboardTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dashboardId":
+            suggest = "dashboard_id"
+        elif key == "warehouseId":
+            suggest = "warehouse_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskDashboardTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskDashboardTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskDashboardTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dashboard_id: Optional[builtins.str] = None,
+                 subscription: Optional['outputs.JobTaskForEachTaskTaskDashboardTaskSubscription'] = None,
+                 warehouse_id: Optional[builtins.str] = None):
+        """
+        :param builtins.str dashboard_id: (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        """
+        if dashboard_id is not None:
+            pulumi.set(__self__, "dashboard_id", dashboard_id)
+        if subscription is not None:
+            pulumi.set(__self__, "subscription", subscription)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter(name="dashboardId")
+    def dashboard_id(self) -> Optional[builtins.str]:
+        """
+        (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        """
+        return pulumi.get(self, "dashboard_id")
+
+    @property
+    @pulumi.getter
+    def subscription(self) -> Optional['outputs.JobTaskForEachTaskTaskDashboardTaskSubscription']:
+        return pulumi.get(self, "subscription")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "warehouse_id")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskDashboardTaskSubscription(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customSubject":
+            suggest = "custom_subject"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskDashboardTaskSubscription. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskDashboardTaskSubscription.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskDashboardTaskSubscription.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_subject: Optional[builtins.str] = None,
+                 paused: Optional[builtins.bool] = None,
+                 subscribers: Optional[Sequence['outputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber']] = None):
+        """
+        :param builtins.str custom_subject: string specifying a custom subject of email sent.
+        """
+        if custom_subject is not None:
+            pulumi.set(__self__, "custom_subject", custom_subject)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if subscribers is not None:
+            pulumi.set(__self__, "subscribers", subscribers)
+
+    @property
+    @pulumi.getter(name="customSubject")
+    def custom_subject(self) -> Optional[builtins.str]:
+        """
+        string specifying a custom subject of email sent.
+        """
+        return pulumi.get(self, "custom_subject")
+
+    @property
+    @pulumi.getter
+    def paused(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "paused")
+
+    @property
+    @pulumi.getter
+    def subscribers(self) -> Optional[Sequence['outputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber']]:
+        return pulumi.get(self, "subscribers")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationId":
+            suggest = "destination_id"
+        elif key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination_id: Optional[builtins.str] = None,
+                 user_name: Optional[builtins.str] = None):
+        """
+        :param builtins.str user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+        if destination_id is not None:
+            pulumi.set(__self__, "destination_id", destination_id)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="destinationId")
+    def destination_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "destination_id")
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[builtins.str]:
+        """
+        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        """
+        return pulumi.get(self, "user_name")
 
 
 @pulumi.output_type
@@ -12671,6 +13072,212 @@ class JobTaskForEachTaskTaskPipelineTask(dict):
         > The following configuration blocks are only supported inside a `task` block
         """
         return pulumi.get(self, "full_refresh")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskPowerBiTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionResourceName":
+            suggest = "connection_resource_name"
+        elif key == "powerBiModel":
+            suggest = "power_bi_model"
+        elif key == "refreshAfterUpdate":
+            suggest = "refresh_after_update"
+        elif key == "warehouseId":
+            suggest = "warehouse_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskPowerBiTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskPowerBiTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskPowerBiTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_resource_name: Optional[builtins.str] = None,
+                 power_bi_model: Optional['outputs.JobTaskForEachTaskTaskPowerBiTaskPowerBiModel'] = None,
+                 refresh_after_update: Optional[builtins.bool] = None,
+                 tables: Optional[Sequence['outputs.JobTaskForEachTaskTaskPowerBiTaskTable']] = None,
+                 warehouse_id: Optional[builtins.str] = None):
+        if connection_resource_name is not None:
+            pulumi.set(__self__, "connection_resource_name", connection_resource_name)
+        if power_bi_model is not None:
+            pulumi.set(__self__, "power_bi_model", power_bi_model)
+        if refresh_after_update is not None:
+            pulumi.set(__self__, "refresh_after_update", refresh_after_update)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter(name="connectionResourceName")
+    def connection_resource_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "connection_resource_name")
+
+    @property
+    @pulumi.getter(name="powerBiModel")
+    def power_bi_model(self) -> Optional['outputs.JobTaskForEachTaskTaskPowerBiTaskPowerBiModel']:
+        return pulumi.get(self, "power_bi_model")
+
+    @property
+    @pulumi.getter(name="refreshAfterUpdate")
+    def refresh_after_update(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "refresh_after_update")
+
+    @property
+    @pulumi.getter
+    def tables(self) -> Optional[Sequence['outputs.JobTaskForEachTaskTaskPowerBiTaskTable']]:
+        return pulumi.get(self, "tables")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "warehouse_id")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskPowerBiTaskPowerBiModel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationMethod":
+            suggest = "authentication_method"
+        elif key == "modelName":
+            suggest = "model_name"
+        elif key == "overwriteExisting":
+            suggest = "overwrite_existing"
+        elif key == "storageMode":
+            suggest = "storage_mode"
+        elif key == "workspaceName":
+            suggest = "workspace_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskPowerBiTaskPowerBiModel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskPowerBiTaskPowerBiModel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskPowerBiTaskPowerBiModel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authentication_method: Optional[builtins.str] = None,
+                 model_name: Optional[builtins.str] = None,
+                 overwrite_existing: Optional[builtins.bool] = None,
+                 storage_mode: Optional[builtins.str] = None,
+                 workspace_name: Optional[builtins.str] = None):
+        if authentication_method is not None:
+            pulumi.set(__self__, "authentication_method", authentication_method)
+        if model_name is not None:
+            pulumi.set(__self__, "model_name", model_name)
+        if overwrite_existing is not None:
+            pulumi.set(__self__, "overwrite_existing", overwrite_existing)
+        if storage_mode is not None:
+            pulumi.set(__self__, "storage_mode", storage_mode)
+        if workspace_name is not None:
+            pulumi.set(__self__, "workspace_name", workspace_name)
+
+    @property
+    @pulumi.getter(name="authenticationMethod")
+    def authentication_method(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "authentication_method")
+
+    @property
+    @pulumi.getter(name="modelName")
+    def model_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "model_name")
+
+    @property
+    @pulumi.getter(name="overwriteExisting")
+    def overwrite_existing(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "overwrite_existing")
+
+    @property
+    @pulumi.getter(name="storageMode")
+    def storage_mode(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "storage_mode")
+
+    @property
+    @pulumi.getter(name="workspaceName")
+    def workspace_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "workspace_name")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskPowerBiTaskTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storageMode":
+            suggest = "storage_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskPowerBiTaskTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskPowerBiTaskTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskPowerBiTaskTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 catalog: Optional[builtins.str] = None,
+                 name: Optional[builtins.str] = None,
+                 schema: Optional[builtins.str] = None,
+                 storage_mode: Optional[builtins.str] = None):
+        """
+        :param builtins.str catalog: The name of the catalog to use inside Unity Catalog.
+        :param builtins.str name: An optional name for the job. The default value is Untitled.
+        :param builtins.str schema: The name of the schema dbt should run in. Defaults to `default`.
+        """
+        if catalog is not None:
+            pulumi.set(__self__, "catalog", catalog)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if storage_mode is not None:
+            pulumi.set(__self__, "storage_mode", storage_mode)
+
+    @property
+    @pulumi.getter
+    def catalog(self) -> Optional[builtins.str]:
+        """
+        The name of the catalog to use inside Unity Catalog.
+        """
+        return pulumi.get(self, "catalog")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        An optional name for the job. The default value is Untitled.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[builtins.str]:
+        """
+        The name of the schema dbt should run in. Defaults to `default`.
+        """
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="storageMode")
+    def storage_mode(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "storage_mode")
 
 
 @pulumi.output_type
@@ -15604,6 +16211,212 @@ class JobTaskPipelineTask(dict):
 
 
 @pulumi.output_type
+class JobTaskPowerBiTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionResourceName":
+            suggest = "connection_resource_name"
+        elif key == "powerBiModel":
+            suggest = "power_bi_model"
+        elif key == "refreshAfterUpdate":
+            suggest = "refresh_after_update"
+        elif key == "warehouseId":
+            suggest = "warehouse_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskPowerBiTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskPowerBiTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskPowerBiTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_resource_name: Optional[builtins.str] = None,
+                 power_bi_model: Optional['outputs.JobTaskPowerBiTaskPowerBiModel'] = None,
+                 refresh_after_update: Optional[builtins.bool] = None,
+                 tables: Optional[Sequence['outputs.JobTaskPowerBiTaskTable']] = None,
+                 warehouse_id: Optional[builtins.str] = None):
+        if connection_resource_name is not None:
+            pulumi.set(__self__, "connection_resource_name", connection_resource_name)
+        if power_bi_model is not None:
+            pulumi.set(__self__, "power_bi_model", power_bi_model)
+        if refresh_after_update is not None:
+            pulumi.set(__self__, "refresh_after_update", refresh_after_update)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter(name="connectionResourceName")
+    def connection_resource_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "connection_resource_name")
+
+    @property
+    @pulumi.getter(name="powerBiModel")
+    def power_bi_model(self) -> Optional['outputs.JobTaskPowerBiTaskPowerBiModel']:
+        return pulumi.get(self, "power_bi_model")
+
+    @property
+    @pulumi.getter(name="refreshAfterUpdate")
+    def refresh_after_update(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "refresh_after_update")
+
+    @property
+    @pulumi.getter
+    def tables(self) -> Optional[Sequence['outputs.JobTaskPowerBiTaskTable']]:
+        return pulumi.get(self, "tables")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "warehouse_id")
+
+
+@pulumi.output_type
+class JobTaskPowerBiTaskPowerBiModel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationMethod":
+            suggest = "authentication_method"
+        elif key == "modelName":
+            suggest = "model_name"
+        elif key == "overwriteExisting":
+            suggest = "overwrite_existing"
+        elif key == "storageMode":
+            suggest = "storage_mode"
+        elif key == "workspaceName":
+            suggest = "workspace_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskPowerBiTaskPowerBiModel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskPowerBiTaskPowerBiModel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskPowerBiTaskPowerBiModel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authentication_method: Optional[builtins.str] = None,
+                 model_name: Optional[builtins.str] = None,
+                 overwrite_existing: Optional[builtins.bool] = None,
+                 storage_mode: Optional[builtins.str] = None,
+                 workspace_name: Optional[builtins.str] = None):
+        if authentication_method is not None:
+            pulumi.set(__self__, "authentication_method", authentication_method)
+        if model_name is not None:
+            pulumi.set(__self__, "model_name", model_name)
+        if overwrite_existing is not None:
+            pulumi.set(__self__, "overwrite_existing", overwrite_existing)
+        if storage_mode is not None:
+            pulumi.set(__self__, "storage_mode", storage_mode)
+        if workspace_name is not None:
+            pulumi.set(__self__, "workspace_name", workspace_name)
+
+    @property
+    @pulumi.getter(name="authenticationMethod")
+    def authentication_method(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "authentication_method")
+
+    @property
+    @pulumi.getter(name="modelName")
+    def model_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "model_name")
+
+    @property
+    @pulumi.getter(name="overwriteExisting")
+    def overwrite_existing(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "overwrite_existing")
+
+    @property
+    @pulumi.getter(name="storageMode")
+    def storage_mode(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "storage_mode")
+
+    @property
+    @pulumi.getter(name="workspaceName")
+    def workspace_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "workspace_name")
+
+
+@pulumi.output_type
+class JobTaskPowerBiTaskTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storageMode":
+            suggest = "storage_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskPowerBiTaskTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskPowerBiTaskTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskPowerBiTaskTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 catalog: Optional[builtins.str] = None,
+                 name: Optional[builtins.str] = None,
+                 schema: Optional[builtins.str] = None,
+                 storage_mode: Optional[builtins.str] = None):
+        """
+        :param builtins.str catalog: The name of the catalog to use inside Unity Catalog.
+        :param builtins.str name: An optional name for the job. The default value is Untitled.
+        :param builtins.str schema: The name of the schema dbt should run in. Defaults to `default`.
+        """
+        if catalog is not None:
+            pulumi.set(__self__, "catalog", catalog)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if storage_mode is not None:
+            pulumi.set(__self__, "storage_mode", storage_mode)
+
+    @property
+    @pulumi.getter
+    def catalog(self) -> Optional[builtins.str]:
+        """
+        The name of the catalog to use inside Unity Catalog.
+        """
+        return pulumi.get(self, "catalog")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        An optional name for the job. The default value is Untitled.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[builtins.str]:
+        """
+        The name of the schema dbt should run in. Defaults to `default`.
+        """
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="storageMode")
+    def storage_mode(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "storage_mode")
+
+
+@pulumi.output_type
 class JobTaskPythonWheelTask(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -18124,6 +18937,7 @@ class ModelServingAiGateway(dict):
                  rate_limits: Optional[Sequence['outputs.ModelServingAiGatewayRateLimit']] = None,
                  usage_tracking_config: Optional['outputs.ModelServingAiGatewayUsageTrackingConfig'] = None):
         """
+        :param 'ModelServingAiGatewayFallbackConfigArgs' fallback_config: block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
         :param 'ModelServingAiGatewayGuardrailsArgs' guardrails: Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
         :param 'ModelServingAiGatewayInferenceTableConfigArgs' inference_table_config: Block describing the configuration of usage tracking. Consists of the following attributes:
         :param Sequence['ModelServingAiGatewayRateLimitArgs'] rate_limits: Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
@@ -18143,6 +18957,9 @@ class ModelServingAiGateway(dict):
     @property
     @pulumi.getter(name="fallbackConfig")
     def fallback_config(self) -> Optional['outputs.ModelServingAiGatewayFallbackConfig']:
+        """
+        block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
+        """
         return pulumi.get(self, "fallback_config")
 
     @property
@@ -18182,11 +18999,17 @@ class ModelServingAiGateway(dict):
 class ModelServingAiGatewayFallbackConfig(dict):
     def __init__(__self__, *,
                  enabled: builtins.bool):
+        """
+        :param builtins.bool enabled: Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
+        """
         pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> builtins.bool:
+        """
+        Whether to enable traffic fallback. When a served entity in the serving endpoint returns specific error codes (e.g. 500), the request will automatically be round-robin attempted with other served entities in the same endpoint, following the order of served entity list, until a successful response is returned.
+        """
         return pulumi.get(self, "enabled")
 
 
@@ -18939,6 +19762,7 @@ class ModelServingConfigServedEntityExternalModel(dict):
         :param 'ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs' amazon_bedrock_config: Amazon Bedrock Config
         :param 'ModelServingConfigServedEntityExternalModelAnthropicConfigArgs' anthropic_config: Anthropic Config
         :param 'ModelServingConfigServedEntityExternalModelCohereConfigArgs' cohere_config: Cohere Config
+        :param 'ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs' custom_provider_config: Custom Provider Config. Only required if the provider is 'custom'.
         :param 'ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs' databricks_model_serving_config: Databricks Model Serving Config
         :param 'ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs' google_cloud_vertex_ai_config: Google Cloud Vertex AI Config.
         :param 'ModelServingConfigServedEntityExternalModelOpenaiConfigArgs' openai_config: OpenAI Config
@@ -19025,6 +19849,9 @@ class ModelServingConfigServedEntityExternalModel(dict):
     @property
     @pulumi.getter(name="customProviderConfig")
     def custom_provider_config(self) -> Optional['outputs.ModelServingConfigServedEntityExternalModelCustomProviderConfig']:
+        """
+        Custom Provider Config. Only required if the provider is 'custom'.
+        """
         return pulumi.get(self, "custom_provider_config")
 
     @property
@@ -19361,6 +20188,11 @@ class ModelServingConfigServedEntityExternalModelCustomProviderConfig(dict):
                  custom_provider_url: builtins.str,
                  api_key_auth: Optional['outputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth'] = None,
                  bearer_token_auth: Optional['outputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth'] = None):
+        """
+        :param builtins.str custom_provider_url: URL of the custom provider API.
+        :param 'ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs' api_key_auth: API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+        :param 'ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs' bearer_token_auth: bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+        """
         pulumi.set(__self__, "custom_provider_url", custom_provider_url)
         if api_key_auth is not None:
             pulumi.set(__self__, "api_key_auth", api_key_auth)
@@ -19370,16 +20202,25 @@ class ModelServingConfigServedEntityExternalModelCustomProviderConfig(dict):
     @property
     @pulumi.getter(name="customProviderUrl")
     def custom_provider_url(self) -> builtins.str:
+        """
+        URL of the custom provider API.
+        """
         return pulumi.get(self, "custom_provider_url")
 
     @property
     @pulumi.getter(name="apiKeyAuth")
     def api_key_auth(self) -> Optional['outputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth']:
+        """
+        API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+        """
         return pulumi.get(self, "api_key_auth")
 
     @property
     @pulumi.getter(name="bearerTokenAuth")
     def bearer_token_auth(self) -> Optional['outputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth']:
+        """
+        bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+        """
         return pulumi.get(self, "bearer_token_auth")
 
 
@@ -19407,7 +20248,7 @@ class ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth(
                  value: Optional[builtins.str] = None,
                  value_plaintext: Optional[builtins.str] = None):
         """
-        :param builtins.str value: The value field for a tag.
+        :param builtins.str value_plaintext: The API Key provided as a plaintext string.
         """
         pulumi.set(__self__, "key", key)
         if value is not None:
@@ -19423,14 +20264,14 @@ class ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth(
     @property
     @pulumi.getter
     def value(self) -> Optional[builtins.str]:
-        """
-        The value field for a tag.
-        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter(name="valuePlaintext")
     def value_plaintext(self) -> Optional[builtins.str]:
+        """
+        The API Key provided as a plaintext string.
+        """
         return pulumi.get(self, "value_plaintext")
 
 
@@ -19456,6 +20297,10 @@ class ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerToken
     def __init__(__self__, *,
                  token: Optional[builtins.str] = None,
                  token_plaintext: Optional[builtins.str] = None):
+        """
+        :param builtins.str token: The Databricks secret key reference for a token.
+        :param builtins.str token_plaintext: The token provided as a plaintext string.
+        """
         if token is not None:
             pulumi.set(__self__, "token", token)
         if token_plaintext is not None:
@@ -19464,11 +20309,17 @@ class ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerToken
     @property
     @pulumi.getter
     def token(self) -> Optional[builtins.str]:
+        """
+        The Databricks secret key reference for a token.
+        """
         return pulumi.get(self, "token")
 
     @property
     @pulumi.getter(name="tokenPlaintext")
     def token_plaintext(self) -> Optional[builtins.str]:
+        """
+        The token provided as a plaintext string.
+        """
         return pulumi.get(self, "token_plaintext")
 
 
@@ -21059,7 +21910,7 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[builtins.str]:
         """
         The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
@@ -21068,7 +21919,7 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[builtins.str]:
         """
         The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
@@ -21204,6 +22055,46 @@ class MwsVpcEndpointGcpVpcEndpointInfo(dict):
 
 
 @pulumi.output_type
+class MwsWorkspacesAzureWorkspaceInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceGroup":
+            suggest = "resource_group"
+        elif key == "subscriptionId":
+            suggest = "subscription_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MwsWorkspacesAzureWorkspaceInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MwsWorkspacesAzureWorkspaceInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MwsWorkspacesAzureWorkspaceInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_group: Optional[builtins.str] = None,
+                 subscription_id: Optional[builtins.str] = None):
+        if resource_group is not None:
+            pulumi.set(__self__, "resource_group", resource_group)
+        if subscription_id is not None:
+            pulumi.set(__self__, "subscription_id", subscription_id)
+
+    @property
+    @pulumi.getter(name="resourceGroup")
+    def resource_group(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "resource_group")
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "subscription_id")
+
+
+@pulumi.output_type
 class MwsWorkspacesCloudResourceContainer(dict):
     def __init__(__self__, *,
                  gcp: 'outputs.MwsWorkspacesCloudResourceContainerGcp'):
@@ -21330,6 +22221,9 @@ class MwsWorkspacesGcpManagedNetworkConfig(dict):
                  subnet_cidr: builtins.str,
                  gke_cluster_pod_ip_range: Optional[builtins.str] = None,
                  gke_cluster_service_ip_range: Optional[builtins.str] = None):
+        """
+        :param builtins.str subnet_cidr: The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
+        """
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
@@ -21339,17 +22233,20 @@ class MwsWorkspacesGcpManagedNetworkConfig(dict):
     @property
     @pulumi.getter(name="subnetCidr")
     def subnet_cidr(self) -> builtins.str:
+        """
+        The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
+        """
         return pulumi.get(self, "subnet_cidr")
 
     @property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[builtins.str]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
     @property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.72.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[builtins.str]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -28227,6 +29124,7 @@ class GetAppAppResult(dict):
         :param builtins.str creator: The email of the user that created the app.
         :param builtins.str default_source_code_path: The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
         :param builtins.str effective_budget_policy_id: The effective budget policy ID.
+        :param Sequence[builtins.str] effective_user_api_scopes: A list of effective api scopes granted to the user access token.
         :param builtins.str id: Id of the job to grant permission on.
         :param builtins.str name: The name of the app.
         :param builtins.int service_principal_id: id of the app service principal
@@ -28322,6 +29220,9 @@ class GetAppAppResult(dict):
     @property
     @pulumi.getter(name="effectiveUserApiScopes")
     def effective_user_api_scopes(self) -> Sequence[builtins.str]:
+        """
+        A list of effective api scopes granted to the user access token.
+        """
         return pulumi.get(self, "effective_user_api_scopes")
 
     @property
@@ -28966,6 +29867,7 @@ class GetAppsAppResult(dict):
         :param builtins.str creator: The email of the user that created the app.
         :param builtins.str default_source_code_path: The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
         :param builtins.str effective_budget_policy_id: The effective budget policy ID.
+        :param Sequence[builtins.str] effective_user_api_scopes: A list of effective api scopes granted to the user access token.
         :param builtins.str id: Id of the job to grant permission on.
         :param builtins.str name: Name of the serving endpoint to grant permission on.
         :param builtins.int service_principal_id: id of the app service principal
@@ -29061,6 +29963,9 @@ class GetAppsAppResult(dict):
     @property
     @pulumi.getter(name="effectiveUserApiScopes")
     def effective_user_api_scopes(self) -> Sequence[builtins.str]:
+        """
+        A list of effective api scopes granted to the user access token.
+        """
         return pulumi.get(self, "effective_user_api_scopes")
 
     @property
@@ -29676,12 +30581,15 @@ class GetAppsAppResourceSqlWarehouseResult(dict):
 class GetBudgetPoliciesBudgetPolicyResult(dict):
     def __init__(__self__, *,
                  policy_id: builtins.str,
+                 binding_workspace_ids: Optional[Sequence[builtins.int]] = None,
                  custom_tags: Optional[Sequence['outputs.GetBudgetPoliciesBudgetPolicyCustomTagResult']] = None,
                  policy_name: Optional[builtins.str] = None):
         """
         :param builtins.str policy_name: The partial name of policies to be filtered on. If unspecified, all policies will be returned.
         """
         pulumi.set(__self__, "policy_id", policy_id)
+        if binding_workspace_ids is not None:
+            pulumi.set(__self__, "binding_workspace_ids", binding_workspace_ids)
         if custom_tags is not None:
             pulumi.set(__self__, "custom_tags", custom_tags)
         if policy_name is not None:
@@ -29691,6 +30599,11 @@ class GetBudgetPoliciesBudgetPolicyResult(dict):
     @pulumi.getter(name="policyId")
     def policy_id(self) -> builtins.str:
         return pulumi.get(self, "policy_id")
+
+    @property
+    @pulumi.getter(name="bindingWorkspaceIds")
+    def binding_workspace_ids(self) -> Optional[Sequence[builtins.int]]:
+        return pulumi.get(self, "binding_workspace_ids")
 
     @property
     @pulumi.getter(name="customTags")
@@ -34816,10 +35729,13 @@ class GetJobJobSettingsSettingsEnvironmentResult(dict):
 class GetJobJobSettingsSettingsEnvironmentSpecResult(dict):
     def __init__(__self__, *,
                  client: builtins.str,
-                 dependencies: Optional[Sequence[builtins.str]] = None):
+                 dependencies: Optional[Sequence[builtins.str]] = None,
+                 jar_dependencies: Optional[Sequence[builtins.str]] = None):
         pulumi.set(__self__, "client", client)
         if dependencies is not None:
             pulumi.set(__self__, "dependencies", dependencies)
+        if jar_dependencies is not None:
+            pulumi.set(__self__, "jar_dependencies", jar_dependencies)
 
     @property
     @pulumi.getter
@@ -34830,6 +35746,11 @@ class GetJobJobSettingsSettingsEnvironmentSpecResult(dict):
     @pulumi.getter
     def dependencies(self) -> Optional[Sequence[builtins.str]]:
         return pulumi.get(self, "dependencies")
+
+    @property
+    @pulumi.getter(name="jarDependencies")
+    def jar_dependencies(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "jar_dependencies")
 
 
 @pulumi.output_type

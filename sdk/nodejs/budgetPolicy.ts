@@ -66,6 +66,7 @@ export class BudgetPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === BudgetPolicy.__pulumiType;
     }
 
+    public readonly bindingWorkspaceIds!: pulumi.Output<number[] | undefined>;
     /**
      * A list of tags defined by the customer. At most 20 entries are allowed per policy.
      */
@@ -92,11 +93,13 @@ export class BudgetPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BudgetPolicyState | undefined;
+            resourceInputs["bindingWorkspaceIds"] = state ? state.bindingWorkspaceIds : undefined;
             resourceInputs["customTags"] = state ? state.customTags : undefined;
             resourceInputs["policyId"] = state ? state.policyId : undefined;
             resourceInputs["policyName"] = state ? state.policyName : undefined;
         } else {
             const args = argsOrState as BudgetPolicyArgs | undefined;
+            resourceInputs["bindingWorkspaceIds"] = args ? args.bindingWorkspaceIds : undefined;
             resourceInputs["customTags"] = args ? args.customTags : undefined;
             resourceInputs["policyName"] = args ? args.policyName : undefined;
             resourceInputs["policyId"] = undefined /*out*/;
@@ -110,6 +113,7 @@ export class BudgetPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BudgetPolicy resources.
  */
 export interface BudgetPolicyState {
+    bindingWorkspaceIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * A list of tags defined by the customer. At most 20 entries are allowed per policy.
      */
@@ -128,6 +132,7 @@ export interface BudgetPolicyState {
  * The set of arguments for constructing a BudgetPolicy resource.
  */
 export interface BudgetPolicyArgs {
+    bindingWorkspaceIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * A list of tags defined by the customer. At most 20 entries are allowed per policy.
      */

@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetBudgetPoliciesBudgetPolicyResult
     {
+        public readonly ImmutableArray<int> BindingWorkspaceIds;
         public readonly ImmutableArray<Outputs.GetBudgetPoliciesBudgetPolicyCustomTagResult> CustomTags;
         public readonly string PolicyId;
         /// <summary>
@@ -22,12 +23,15 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetBudgetPoliciesBudgetPolicyResult(
+            ImmutableArray<int> bindingWorkspaceIds,
+
             ImmutableArray<Outputs.GetBudgetPoliciesBudgetPolicyCustomTagResult> customTags,
 
             string policyId,
 
             string? policyName)
         {
+            BindingWorkspaceIds = bindingWorkspaceIds;
             CustomTags = customTags;
             PolicyId = policyId;
             PolicyName = policyName;

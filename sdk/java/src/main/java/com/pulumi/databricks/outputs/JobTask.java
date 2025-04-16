@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTaskCleanRoomsNotebookTask;
 import com.pulumi.databricks.outputs.JobTaskConditionTask;
+import com.pulumi.databricks.outputs.JobTaskDashboardTask;
 import com.pulumi.databricks.outputs.JobTaskDbtTask;
 import com.pulumi.databricks.outputs.JobTaskDependsOn;
 import com.pulumi.databricks.outputs.JobTaskEmailNotifications;
@@ -17,6 +18,7 @@ import com.pulumi.databricks.outputs.JobTaskNewCluster;
 import com.pulumi.databricks.outputs.JobTaskNotebookTask;
 import com.pulumi.databricks.outputs.JobTaskNotificationSettings;
 import com.pulumi.databricks.outputs.JobTaskPipelineTask;
+import com.pulumi.databricks.outputs.JobTaskPowerBiTask;
 import com.pulumi.databricks.outputs.JobTaskPythonWheelTask;
 import com.pulumi.databricks.outputs.JobTaskRunJobTask;
 import com.pulumi.databricks.outputs.JobTaskSparkJarTask;
@@ -37,6 +39,7 @@ import javax.annotation.Nullable;
 public final class JobTask {
     private @Nullable JobTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
     private @Nullable JobTaskConditionTask conditionTask;
+    private @Nullable JobTaskDashboardTask dashboardTask;
     private @Nullable JobTaskDbtTask dbtTask;
     /**
      * @return block specifying dependency(-ies) for a given task.
@@ -107,6 +110,7 @@ public final class JobTask {
      */
     private @Nullable JobTaskNotificationSettings notificationSettings;
     private @Nullable JobTaskPipelineTask pipelineTask;
+    private @Nullable JobTaskPowerBiTask powerBiTask;
     private @Nullable JobTaskPythonWheelTask pythonWheelTask;
     /**
      * @return (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
@@ -148,6 +152,9 @@ public final class JobTask {
     }
     public Optional<JobTaskConditionTask> conditionTask() {
         return Optional.ofNullable(this.conditionTask);
+    }
+    public Optional<JobTaskDashboardTask> dashboardTask() {
+        return Optional.ofNullable(this.dashboardTask);
     }
     public Optional<JobTaskDbtTask> dbtTask() {
         return Optional.ofNullable(this.dbtTask);
@@ -255,6 +262,9 @@ public final class JobTask {
     public Optional<JobTaskPipelineTask> pipelineTask() {
         return Optional.ofNullable(this.pipelineTask);
     }
+    public Optional<JobTaskPowerBiTask> powerBiTask() {
+        return Optional.ofNullable(this.powerBiTask);
+    }
     public Optional<JobTaskPythonWheelTask> pythonWheelTask() {
         return Optional.ofNullable(this.pythonWheelTask);
     }
@@ -323,6 +333,7 @@ public final class JobTask {
     public static final class Builder {
         private @Nullable JobTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
         private @Nullable JobTaskConditionTask conditionTask;
+        private @Nullable JobTaskDashboardTask dashboardTask;
         private @Nullable JobTaskDbtTask dbtTask;
         private @Nullable List<JobTaskDependsOn> dependsOns;
         private @Nullable String description;
@@ -341,6 +352,7 @@ public final class JobTask {
         private @Nullable JobTaskNotebookTask notebookTask;
         private @Nullable JobTaskNotificationSettings notificationSettings;
         private @Nullable JobTaskPipelineTask pipelineTask;
+        private @Nullable JobTaskPowerBiTask powerBiTask;
         private @Nullable JobTaskPythonWheelTask pythonWheelTask;
         private @Nullable Boolean retryOnTimeout;
         private @Nullable String runIf;
@@ -357,6 +369,7 @@ public final class JobTask {
     	      Objects.requireNonNull(defaults);
     	      this.cleanRoomsNotebookTask = defaults.cleanRoomsNotebookTask;
     	      this.conditionTask = defaults.conditionTask;
+    	      this.dashboardTask = defaults.dashboardTask;
     	      this.dbtTask = defaults.dbtTask;
     	      this.dependsOns = defaults.dependsOns;
     	      this.description = defaults.description;
@@ -375,6 +388,7 @@ public final class JobTask {
     	      this.notebookTask = defaults.notebookTask;
     	      this.notificationSettings = defaults.notificationSettings;
     	      this.pipelineTask = defaults.pipelineTask;
+    	      this.powerBiTask = defaults.powerBiTask;
     	      this.pythonWheelTask = defaults.pythonWheelTask;
     	      this.retryOnTimeout = defaults.retryOnTimeout;
     	      this.runIf = defaults.runIf;
@@ -398,6 +412,12 @@ public final class JobTask {
         public Builder conditionTask(@Nullable JobTaskConditionTask conditionTask) {
 
             this.conditionTask = conditionTask;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dashboardTask(@Nullable JobTaskDashboardTask dashboardTask) {
+
+            this.dashboardTask = dashboardTask;
             return this;
         }
         @CustomType.Setter
@@ -515,6 +535,12 @@ public final class JobTask {
             return this;
         }
         @CustomType.Setter
+        public Builder powerBiTask(@Nullable JobTaskPowerBiTask powerBiTask) {
+
+            this.powerBiTask = powerBiTask;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pythonWheelTask(@Nullable JobTaskPythonWheelTask pythonWheelTask) {
 
             this.pythonWheelTask = pythonWheelTask;
@@ -586,6 +612,7 @@ public final class JobTask {
             final var _resultValue = new JobTask();
             _resultValue.cleanRoomsNotebookTask = cleanRoomsNotebookTask;
             _resultValue.conditionTask = conditionTask;
+            _resultValue.dashboardTask = dashboardTask;
             _resultValue.dbtTask = dbtTask;
             _resultValue.dependsOns = dependsOns;
             _resultValue.description = description;
@@ -604,6 +631,7 @@ public final class JobTask {
             _resultValue.notebookTask = notebookTask;
             _resultValue.notificationSettings = notificationSettings;
             _resultValue.pipelineTask = pipelineTask;
+            _resultValue.powerBiTask = powerBiTask;
             _resultValue.pythonWheelTask = pythonWheelTask;
             _resultValue.retryOnTimeout = retryOnTimeout;
             _resultValue.runIf = runIf;

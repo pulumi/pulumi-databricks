@@ -11,6 +11,7 @@ import com.pulumi.databricks.BudgetPolicyArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.BudgetPolicyState;
 import com.pulumi.databricks.outputs.BudgetPolicyCustomTag;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -76,6 +77,12 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/budgetPolicy:BudgetPolicy")
 public class BudgetPolicy extends com.pulumi.resources.CustomResource {
+    @Export(name="bindingWorkspaceIds", refs={List.class,Integer.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<Integer>> bindingWorkspaceIds;
+
+    public Output<Optional<List<Integer>>> bindingWorkspaceIds() {
+        return Codegen.optional(this.bindingWorkspaceIds);
+    }
     /**
      * A list of tags defined by the customer. At most 20 entries are allowed per policy.
      * 

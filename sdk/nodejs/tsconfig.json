@@ -37,6 +37,7 @@
         "defaultNamespaceSetting.ts",
         "directory.ts",
         "disableLegacyAccessSetting.ts",
+        "disableLegacyDbfsSetting.ts",
         "enhancedSecurityMonitoringWorkspaceSetting.ts",
         "entitlements.ts",
         "externalLocation.ts",

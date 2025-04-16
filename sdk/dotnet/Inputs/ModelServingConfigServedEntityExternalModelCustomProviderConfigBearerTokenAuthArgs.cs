@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Databricks secret key reference for a token.
+        /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }
 
+        /// <summary>
+        /// The token provided as a plaintext string.
+        /// </summary>
         [Input("tokenPlaintext")]
         public Input<string>? TokenPlaintext { get; set; }
 

@@ -18,23 +18,47 @@ public final class ModelServingConfigServedEntityExternalModelCustomProviderConf
 
     public static final ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs Empty = new ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs();
 
+    /**
+     * API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+     * 
+     */
     @Import(name="apiKeyAuth")
     private @Nullable Output<ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs> apiKeyAuth;
 
+    /**
+     * @return API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+     * 
+     */
     public Optional<Output<ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs>> apiKeyAuth() {
         return Optional.ofNullable(this.apiKeyAuth);
     }
 
+    /**
+     * bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+     * 
+     */
     @Import(name="bearerTokenAuth")
     private @Nullable Output<ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs> bearerTokenAuth;
 
+    /**
+     * @return bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+     * 
+     */
     public Optional<Output<ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs>> bearerTokenAuth() {
         return Optional.ofNullable(this.bearerTokenAuth);
     }
 
+    /**
+     * URL of the custom provider API.
+     * 
+     */
     @Import(name="customProviderUrl", required=true)
     private Output<String> customProviderUrl;
 
+    /**
+     * @return URL of the custom provider API.
+     * 
+     */
     public Output<String> customProviderUrl() {
         return this.customProviderUrl;
     }
@@ -65,29 +89,65 @@ public final class ModelServingConfigServedEntityExternalModelCustomProviderConf
             $ = new ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param apiKeyAuth API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiKeyAuth(@Nullable Output<ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs> apiKeyAuth) {
             $.apiKeyAuth = apiKeyAuth;
             return this;
         }
 
+        /**
+         * @param apiKeyAuth API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiKeyAuth(ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs apiKeyAuth) {
             return apiKeyAuth(Output.of(apiKeyAuth));
         }
 
+        /**
+         * @param bearerTokenAuth bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bearerTokenAuth(@Nullable Output<ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs> bearerTokenAuth) {
             $.bearerTokenAuth = bearerTokenAuth;
             return this;
         }
 
+        /**
+         * @param bearerTokenAuth bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bearerTokenAuth(ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs bearerTokenAuth) {
             return bearerTokenAuth(Output.of(bearerTokenAuth));
         }
 
+        /**
+         * @param customProviderUrl URL of the custom provider API.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customProviderUrl(Output<String> customProviderUrl) {
             $.customProviderUrl = customProviderUrl;
             return this;
         }
 
+        /**
+         * @param customProviderUrl URL of the custom provider API.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customProviderUrl(String customProviderUrl) {
             return customProviderUrl(Output.of(customProviderUrl));
         }

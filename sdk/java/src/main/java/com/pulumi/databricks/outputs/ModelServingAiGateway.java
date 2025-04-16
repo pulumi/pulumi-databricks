@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingAiGateway {
+    /**
+     * @return block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
+     * 
+     */
     private @Nullable ModelServingAiGatewayFallbackConfig fallbackConfig;
     /**
      * @return Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
@@ -39,6 +43,10 @@ public final class ModelServingAiGateway {
     private @Nullable ModelServingAiGatewayUsageTrackingConfig usageTrackingConfig;
 
     private ModelServingAiGateway() {}
+    /**
+     * @return block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
+     * 
+     */
     public Optional<ModelServingAiGatewayFallbackConfig> fallbackConfig() {
         return Optional.ofNullable(this.fallbackConfig);
     }

@@ -30,6 +30,14 @@ namespace Pulumi.Databricks.Inputs
             set => _dependencies = value;
         }
 
+        [Input("jarDependencies")]
+        private InputList<string>? _jarDependencies;
+        public InputList<string> JarDependencies
+        {
+            get => _jarDependencies ?? (_jarDependencies = new InputList<string>());
+            set => _jarDependencies = value;
+        }
+
         public JobEnvironmentSpecArgs()
         {
         }

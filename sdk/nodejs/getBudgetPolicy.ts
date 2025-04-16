@@ -15,6 +15,7 @@ export function getBudgetPolicy(args?: GetBudgetPolicyArgs, opts?: pulumi.Invoke
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getBudgetPolicy:getBudgetPolicy", {
+        "bindingWorkspaceIds": args.bindingWorkspaceIds,
         "customTags": args.customTags,
         "policyName": args.policyName,
     }, opts);
@@ -24,6 +25,7 @@ export function getBudgetPolicy(args?: GetBudgetPolicyArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getBudgetPolicy.
  */
 export interface GetBudgetPolicyArgs {
+    bindingWorkspaceIds?: number[];
     customTags?: inputs.GetBudgetPolicyCustomTag[];
     /**
      * The name of the budget policy.
@@ -35,6 +37,7 @@ export interface GetBudgetPolicyArgs {
  * A collection of values returned by getBudgetPolicy.
  */
 export interface GetBudgetPolicyResult {
+    readonly bindingWorkspaceIds?: number[];
     readonly customTags?: outputs.GetBudgetPolicyCustomTag[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -58,6 +61,7 @@ export function getBudgetPolicyOutput(args?: GetBudgetPolicyOutputArgs, opts?: p
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getBudgetPolicy:getBudgetPolicy", {
+        "bindingWorkspaceIds": args.bindingWorkspaceIds,
         "customTags": args.customTags,
         "policyName": args.policyName,
     }, opts);
@@ -67,6 +71,7 @@ export function getBudgetPolicyOutput(args?: GetBudgetPolicyOutputArgs, opts?: p
  * A collection of arguments for invoking getBudgetPolicy.
  */
 export interface GetBudgetPolicyOutputArgs {
+    bindingWorkspaceIds?: pulumi.Input<pulumi.Input<number>[]>;
     customTags?: pulumi.Input<pulumi.Input<inputs.GetBudgetPolicyCustomTagArgs>[]>;
     /**
      * The name of the budget policy.

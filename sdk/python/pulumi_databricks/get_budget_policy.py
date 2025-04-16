@@ -29,7 +29,10 @@ class GetBudgetPolicyResult:
     """
     A collection of values returned by getBudgetPolicy.
     """
-    def __init__(__self__, custom_tags=None, id=None, policy_id=None, policy_name=None):
+    def __init__(__self__, binding_workspace_ids=None, custom_tags=None, id=None, policy_id=None, policy_name=None):
+        if binding_workspace_ids and not isinstance(binding_workspace_ids, list):
+            raise TypeError("Expected argument 'binding_workspace_ids' to be a list")
+        pulumi.set(__self__, "binding_workspace_ids", binding_workspace_ids)
         if custom_tags and not isinstance(custom_tags, list):
             raise TypeError("Expected argument 'custom_tags' to be a list")
         pulumi.set(__self__, "custom_tags", custom_tags)
@@ -42,6 +45,11 @@ class GetBudgetPolicyResult:
         if policy_name and not isinstance(policy_name, str):
             raise TypeError("Expected argument 'policy_name' to be a str")
         pulumi.set(__self__, "policy_name", policy_name)
+
+    @property
+    @pulumi.getter(name="bindingWorkspaceIds")
+    def binding_workspace_ids(self) -> Optional[Sequence[builtins.int]]:
+        return pulumi.get(self, "binding_workspace_ids")
 
     @property
     @pulumi.getter(name="customTags")
@@ -79,13 +87,15 @@ class AwaitableGetBudgetPolicyResult(GetBudgetPolicyResult):
         if False:
             yield self
         return GetBudgetPolicyResult(
+            binding_workspace_ids=self.binding_workspace_ids,
             custom_tags=self.custom_tags,
             id=self.id,
             policy_id=self.policy_id,
             policy_name=self.policy_name)
 
 
-def get_budget_policy(custom_tags: Optional[Sequence[Union['GetBudgetPolicyCustomTagArgs', 'GetBudgetPolicyCustomTagArgsDict']]] = None,
+def get_budget_policy(binding_workspace_ids: Optional[Sequence[builtins.int]] = None,
+                      custom_tags: Optional[Sequence[Union['GetBudgetPolicyCustomTagArgs', 'GetBudgetPolicyCustomTagArgsDict']]] = None,
                       policy_name: Optional[builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBudgetPolicyResult:
     """
@@ -97,17 +107,20 @@ def get_budget_policy(custom_tags: Optional[Sequence[Union['GetBudgetPolicyCusto
     :param builtins.str policy_name: The name of the budget policy.
     """
     __args__ = dict()
+    __args__['bindingWorkspaceIds'] = binding_workspace_ids
     __args__['customTags'] = custom_tags
     __args__['policyName'] = policy_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getBudgetPolicy:getBudgetPolicy', __args__, opts=opts, typ=GetBudgetPolicyResult).value
 
     return AwaitableGetBudgetPolicyResult(
+        binding_workspace_ids=pulumi.get(__ret__, 'binding_workspace_ids'),
         custom_tags=pulumi.get(__ret__, 'custom_tags'),
         id=pulumi.get(__ret__, 'id'),
         policy_id=pulumi.get(__ret__, 'policy_id'),
         policy_name=pulumi.get(__ret__, 'policy_name'))
-def get_budget_policy_output(custom_tags: Optional[pulumi.Input[Optional[Sequence[Union['GetBudgetPolicyCustomTagArgs', 'GetBudgetPolicyCustomTagArgsDict']]]]] = None,
+def get_budget_policy_output(binding_workspace_ids: Optional[pulumi.Input[Optional[Sequence[builtins.int]]]] = None,
+                             custom_tags: Optional[pulumi.Input[Optional[Sequence[Union['GetBudgetPolicyCustomTagArgs', 'GetBudgetPolicyCustomTagArgsDict']]]]] = None,
                              policy_name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBudgetPolicyResult]:
     """
@@ -119,11 +132,13 @@ def get_budget_policy_output(custom_tags: Optional[pulumi.Input[Optional[Sequenc
     :param builtins.str policy_name: The name of the budget policy.
     """
     __args__ = dict()
+    __args__['bindingWorkspaceIds'] = binding_workspace_ids
     __args__['customTags'] = custom_tags
     __args__['policyName'] = policy_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getBudgetPolicy:getBudgetPolicy', __args__, opts=opts, typ=GetBudgetPolicyResult)
     return __ret__.apply(lambda __response__: GetBudgetPolicyResult(
+        binding_workspace_ids=pulumi.get(__response__, 'binding_workspace_ids'),
         custom_tags=pulumi.get(__response__, 'custom_tags'),
         id=pulumi.get(__response__, 'id'),
         policy_id=pulumi.get(__response__, 'policy_id'),

@@ -67,7 +67,7 @@ export class App extends pulumi.CustomResource {
      */
     public /*out*/ readonly appStatus!: pulumi.Output<outputs.AppAppStatus>;
     /**
-     * The optional Budget Policy ID set for this resource.
+     * The Budget Policy ID set for this resource.
      */
     public readonly budgetPolicyId!: pulumi.Output<string | undefined>;
     /**
@@ -94,6 +94,9 @@ export class App extends pulumi.CustomResource {
      * The effective budget policy ID.
      */
     public /*out*/ readonly effectiveBudgetPolicyId!: pulumi.Output<string>;
+    /**
+     * A list of effective api scopes granted to the user access token.
+     */
     public /*out*/ readonly effectiveUserApiScopes!: pulumi.Output<string[]>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -128,6 +131,9 @@ export class App extends pulumi.CustomResource {
      * The URL of the app once it is deployed.
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
+    /**
+     * A list of api scopes granted to the user access token.
+     */
     public readonly userApiScopes!: pulumi.Output<string[] | undefined>;
 
     /**
@@ -207,7 +213,7 @@ export interface AppState {
      */
     appStatus?: pulumi.Input<inputs.AppAppStatus>;
     /**
-     * The optional Budget Policy ID set for this resource.
+     * The Budget Policy ID set for this resource.
      */
     budgetPolicyId?: pulumi.Input<string>;
     /**
@@ -234,6 +240,9 @@ export interface AppState {
      * The effective budget policy ID.
      */
     effectiveBudgetPolicyId?: pulumi.Input<string>;
+    /**
+     * A list of effective api scopes granted to the user access token.
+     */
     effectiveUserApiScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -268,6 +277,9 @@ export interface AppState {
      * The URL of the app once it is deployed.
      */
     url?: pulumi.Input<string>;
+    /**
+     * A list of api scopes granted to the user access token.
+     */
     userApiScopes?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -276,7 +288,7 @@ export interface AppState {
  */
 export interface AppArgs {
     /**
-     * The optional Budget Policy ID set for this resource.
+     * The Budget Policy ID set for this resource.
      */
     budgetPolicyId?: pulumi.Input<string>;
     /**
@@ -292,5 +304,8 @@ export interface AppArgs {
      * A list of resources that the app have access to.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.AppResource>[]>;
+    /**
+     * A list of api scopes granted to the user access token.
+     */
     userApiScopes?: pulumi.Input<pulumi.Input<string>[]>;
 }
