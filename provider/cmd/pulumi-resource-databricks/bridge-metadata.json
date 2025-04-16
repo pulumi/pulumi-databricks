@@ -186,6 +186,9 @@
                 "current": "databricks:index/budgetPolicy:BudgetPolicy",
                 "majorVersion": 1,
                 "fields": {
+                    "binding_workspace_ids": {
+                        "maxItemsOne": false
+                    },
                     "custom_tags": {
                         "maxItemsOne": false
                     }
@@ -444,6 +447,15 @@
                     }
                 }
             },
+            "databricks_disable_legacy_dbfs_setting": {
+                "current": "databricks:index/disableLegacyDbfsSetting:DisableLegacyDbfsSetting",
+                "majorVersion": 1,
+                "fields": {
+                    "disable_legacy_dbfs": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "databricks_enhanced_security_monitoring_workspace_setting": {
                 "current": "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting",
                 "majorVersion": 1,
@@ -644,6 +656,9 @@
                                     "elem": {
                                         "fields": {
                                             "dependencies": {
+                                                "maxItemsOne": false
+                                            },
+                                            "jar_dependencies": {
                                                 "maxItemsOne": false
                                             }
                                         }
@@ -1031,6 +1046,23 @@
                                 "condition_task": {
                                     "maxItemsOne": true
                                 },
+                                "dashboard_task": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "subscription": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "subscribers": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "dbt_task": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -1079,6 +1111,23 @@
                                                         },
                                                         "condition_task": {
                                                             "maxItemsOne": true
+                                                        },
+                                                        "dashboard_task": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "subscription": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "subscribers": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
                                                         },
                                                         "dbt_task": {
                                                             "maxItemsOne": true,
@@ -1292,6 +1341,19 @@
                                                         },
                                                         "pipeline_task": {
                                                             "maxItemsOne": true
+                                                        },
+                                                        "power_bi_task": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "power_bi_model": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "tables": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
                                                         },
                                                         "python_wheel_task": {
                                                             "maxItemsOne": true,
@@ -1593,6 +1655,19 @@
                                 },
                                 "pipeline_task": {
                                     "maxItemsOne": true
+                                },
+                                "power_bi_task": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "power_bi_model": {
+                                                "maxItemsOne": true
+                                            },
+                                            "tables": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "python_wheel_task": {
                                     "maxItemsOne": true,
@@ -2253,6 +2328,9 @@
                 "current": "databricks:index/mwsWorkspaces:MwsWorkspaces",
                 "majorVersion": 1,
                 "fields": {
+                    "azure_workspace_info": {
+                        "maxItemsOne": true
+                    },
                     "cloud_resource_container": {
                         "maxItemsOne": true,
                         "elem": {
@@ -3303,6 +3381,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "binding_workspace_ids": {
+                                    "maxItemsOne": false
+                                },
                                 "custom_tags": {
                                     "maxItemsOne": false
                                 }
@@ -3315,6 +3396,9 @@
                 "current": "databricks:index/getBudgetPolicy:getBudgetPolicy",
                 "majorVersion": 1,
                 "fields": {
+                    "binding_workspace_ids": {
+                        "maxItemsOne": false
+                    },
                     "custom_tags": {
                         "maxItemsOne": false
                     }
@@ -3909,6 +3993,9 @@
                                                             "elem": {
                                                                 "fields": {
                                                                     "dependencies": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "jar_dependencies": {
                                                                         "maxItemsOne": false
                                                                     }
                                                                 }
@@ -5570,6 +5657,7 @@
             "databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting": 0,
             "databricks:index/directory:Directory": 0,
             "databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting": 0,
+            "databricks:index/disableLegacyDbfsSetting:DisableLegacyDbfsSetting": 0,
             "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting": 0,
             "databricks:index/entitlements:Entitlements": 0,
             "databricks:index/externalLocation:ExternalLocation": 0,
