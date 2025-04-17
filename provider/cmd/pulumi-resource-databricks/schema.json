@@ -8461,12 +8461,12 @@
                 "podIpRangeName": {
                     "type": "string",
                     "description": "The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.\n",
-                    "deprecationMessage": "gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc"
+                    "deprecationMessage": "gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc"
                 },
                 "serviceIpRangeName": {
                     "type": "string",
                     "description": "The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.\n",
-                    "deprecationMessage": "gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc"
+                    "deprecationMessage": "gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc"
                 },
                 "subnetId": {
                     "type": "string",
@@ -8557,17 +8557,6 @@
                 }
             }
         },
-        "databricks:index/MwsWorkspacesAzureWorkspaceInfo:MwsWorkspacesAzureWorkspaceInfo": {
-            "properties": {
-                "resourceGroup": {
-                    "type": "string"
-                },
-                "subscriptionId": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "databricks:index/MwsWorkspacesCloudResourceContainer:MwsWorkspacesCloudResourceContainer": {
             "properties": {
                 "gcp": {
@@ -8615,15 +8604,15 @@
             "properties": {
                 "gkeClusterPodIpRange": {
                     "type": "string",
-                    "deprecationMessage": "gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
+                    "deprecationMessage": "gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
                 },
                 "gkeClusterServiceIpRange": {
                     "type": "string",
-                    "deprecationMessage": "gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
+                    "deprecationMessage": "gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
                 },
                 "subnetCidr": {
                     "type": "string",
-                    "description": "The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.\n"
+                    "willReplaceOnChanges": true
                 }
             },
             "type": "object",
@@ -28899,9 +28888,6 @@
                     "type": "string",
                     "description": "region of VPC.\n"
                 },
-                "azureWorkspaceInfo": {
-                    "$ref": "#/types/databricks:index/MwsWorkspacesAzureWorkspaceInfo:MwsWorkspacesAzureWorkspaceInfo"
-                },
                 "cloud": {
                     "type": "string"
                 },
@@ -28914,8 +28900,7 @@
                     "description": "(Integer) time when workspace was created\n"
                 },
                 "credentialsId": {
-                    "type": "string",
-                    "description": "ID of the workspace's credential configuration object.\n"
+                    "type": "string"
                 },
                 "customTags": {
                     "type": "object",
@@ -28936,8 +28921,7 @@
                     "$ref": "#/types/databricks:index/MwsWorkspacesExternalCustomerInfo:MwsWorkspacesExternalCustomerInfo"
                 },
                 "gcpManagedNetworkConfig": {
-                    "$ref": "#/types/databricks:index/MwsWorkspacesGcpManagedNetworkConfig:MwsWorkspacesGcpManagedNetworkConfig",
-                    "description": "A block that describes the network configuration for workspaces with Databricks-managed networks.\n"
+                    "$ref": "#/types/databricks:index/MwsWorkspacesGcpManagedNetworkConfig:MwsWorkspacesGcpManagedNetworkConfig"
                 },
                 "gcpWorkspaceSa": {
                     "type": "string",
@@ -28946,7 +28930,7 @@
                 "gkeConfig": {
                     "$ref": "#/types/databricks:index/MwsWorkspacesGkeConfig:MwsWorkspacesGkeConfig",
                     "description": "A block that specifies GKE configuration for the Databricks workspace:\n",
-                    "deprecationMessage": "gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
+                    "deprecationMessage": "gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
                 },
                 "isNoPublicIpEnabled": {
                     "type": "boolean"
@@ -29005,10 +28989,9 @@
             },
             "required": [
                 "accountId",
-                "azureWorkspaceInfo",
+                "cloud",
                 "creationTime",
                 "gcpWorkspaceSa",
-                "gkeConfig",
                 "pricingTier",
                 "workspaceId",
                 "workspaceName",
@@ -29028,12 +29011,8 @@
                     "description": "region of VPC.\n",
                     "willReplaceOnChanges": true
                 },
-                "azureWorkspaceInfo": {
-                    "$ref": "#/types/databricks:index/MwsWorkspacesAzureWorkspaceInfo:MwsWorkspacesAzureWorkspaceInfo"
-                },
                 "cloud": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
+                    "type": "string"
                 },
                 "cloudResourceContainer": {
                     "$ref": "#/types/databricks:index/MwsWorkspacesCloudResourceContainer:MwsWorkspacesCloudResourceContainer",
@@ -29045,8 +29024,7 @@
                     "description": "(Integer) time when workspace was created\n"
                 },
                 "credentialsId": {
-                    "type": "string",
-                    "description": "ID of the workspace's credential configuration object.\n"
+                    "type": "string"
                 },
                 "customTags": {
                     "type": "object",
@@ -29071,13 +29049,13 @@
                 },
                 "gcpManagedNetworkConfig": {
                     "$ref": "#/types/databricks:index/MwsWorkspacesGcpManagedNetworkConfig:MwsWorkspacesGcpManagedNetworkConfig",
-                    "description": "A block that describes the network configuration for workspaces with Databricks-managed networks.\n",
                     "willReplaceOnChanges": true
                 },
                 "gkeConfig": {
                     "$ref": "#/types/databricks:index/MwsWorkspacesGkeConfig:MwsWorkspacesGkeConfig",
                     "description": "A block that specifies GKE configuration for the Databricks workspace:\n",
-                    "deprecationMessage": "gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
+                    "deprecationMessage": "gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace",
+                    "willReplaceOnChanges": true
                 },
                 "isNoPublicIpEnabled": {
                     "type": "boolean",
@@ -29156,12 +29134,8 @@
                         "description": "region of VPC.\n",
                         "willReplaceOnChanges": true
                     },
-                    "azureWorkspaceInfo": {
-                        "$ref": "#/types/databricks:index/MwsWorkspacesAzureWorkspaceInfo:MwsWorkspacesAzureWorkspaceInfo"
-                    },
                     "cloud": {
-                        "type": "string",
-                        "willReplaceOnChanges": true
+                        "type": "string"
                     },
                     "cloudResourceContainer": {
                         "$ref": "#/types/databricks:index/MwsWorkspacesCloudResourceContainer:MwsWorkspacesCloudResourceContainer",
@@ -29173,8 +29147,7 @@
                         "description": "(Integer) time when workspace was created\n"
                     },
                     "credentialsId": {
-                        "type": "string",
-                        "description": "ID of the workspace's credential configuration object.\n"
+                        "type": "string"
                     },
                     "customTags": {
                         "type": "object",
@@ -29199,18 +29172,17 @@
                     },
                     "gcpManagedNetworkConfig": {
                         "$ref": "#/types/databricks:index/MwsWorkspacesGcpManagedNetworkConfig:MwsWorkspacesGcpManagedNetworkConfig",
-                        "description": "A block that describes the network configuration for workspaces with Databricks-managed networks.\n",
                         "willReplaceOnChanges": true
                     },
                     "gcpWorkspaceSa": {
                         "type": "string",
-                        "description": "(String, GCP only) identifier of a service account created for the workspace in form of `db-\u003cworkspace-id\u003e@prod-gcp-\u003cregion\u003e.iam.gserviceaccount.com`\n",
-                        "willReplaceOnChanges": true
+                        "description": "(String, GCP only) identifier of a service account created for the workspace in form of `db-\u003cworkspace-id\u003e@prod-gcp-\u003cregion\u003e.iam.gserviceaccount.com`\n"
                     },
                     "gkeConfig": {
                         "$ref": "#/types/databricks:index/MwsWorkspacesGkeConfig:MwsWorkspacesGkeConfig",
                         "description": "A block that specifies GKE configuration for the Databricks workspace:\n",
-                        "deprecationMessage": "gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
+                        "deprecationMessage": "gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace",
+                        "willReplaceOnChanges": true
                     },
                     "isNoPublicIpEnabled": {
                         "type": "boolean",

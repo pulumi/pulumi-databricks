@@ -2328,9 +2328,6 @@
                 "current": "databricks:index/mwsWorkspaces:MwsWorkspaces",
                 "majorVersion": 1,
                 "fields": {
-                    "azure_workspace_info": {
-                        "maxItemsOne": true
-                    },
                     "cloud_resource_container": {
                         "maxItemsOne": true,
                         "elem": {
