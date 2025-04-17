@@ -65433,11 +65433,11 @@ type MwsNetworksGcpNetworkInfo struct {
 	NetworkProjectId string `pulumi:"networkProjectId"`
 	// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName *string `pulumi:"podIpRangeName"`
 	// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName *string `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId string `pulumi:"subnetId"`
@@ -65463,11 +65463,11 @@ type MwsNetworksGcpNetworkInfoArgs struct {
 	NetworkProjectId pulumi.StringInput `pulumi:"networkProjectId"`
 	// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName pulumi.StringPtrInput `pulumi:"podIpRangeName"`
 	// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName pulumi.StringPtrInput `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
@@ -65561,14 +65561,14 @@ func (o MwsNetworksGcpNetworkInfoOutput) NetworkProjectId() pulumi.StringOutput 
 
 // The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.PodIpRangeName }).(pulumi.StringPtrOutput)
 }
 
 // The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.ServiceIpRangeName }).(pulumi.StringPtrOutput)
 }
@@ -65624,7 +65624,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) NetworkProjectId() pulumi.StringPtrO
 
 // The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -65636,7 +65636,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOut
 
 // The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -66034,154 +66034,6 @@ func (o MwsVpcEndpointGcpVpcEndpointInfoPtrOutput) ServiceAttachmentId() pulumi.
 			return nil
 		}
 		return v.ServiceAttachmentId
-	}).(pulumi.StringPtrOutput)
-}
-
-type MwsWorkspacesAzureWorkspaceInfo struct {
-	ResourceGroup  *string `pulumi:"resourceGroup"`
-	SubscriptionId *string `pulumi:"subscriptionId"`
-}
-
-// MwsWorkspacesAzureWorkspaceInfoInput is an input type that accepts MwsWorkspacesAzureWorkspaceInfoArgs and MwsWorkspacesAzureWorkspaceInfoOutput values.
-// You can construct a concrete instance of `MwsWorkspacesAzureWorkspaceInfoInput` via:
-//
-//	MwsWorkspacesAzureWorkspaceInfoArgs{...}
-type MwsWorkspacesAzureWorkspaceInfoInput interface {
-	pulumi.Input
-
-	ToMwsWorkspacesAzureWorkspaceInfoOutput() MwsWorkspacesAzureWorkspaceInfoOutput
-	ToMwsWorkspacesAzureWorkspaceInfoOutputWithContext(context.Context) MwsWorkspacesAzureWorkspaceInfoOutput
-}
-
-type MwsWorkspacesAzureWorkspaceInfoArgs struct {
-	ResourceGroup  pulumi.StringPtrInput `pulumi:"resourceGroup"`
-	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
-}
-
-func (MwsWorkspacesAzureWorkspaceInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsWorkspacesAzureWorkspaceInfo)(nil)).Elem()
-}
-
-func (i MwsWorkspacesAzureWorkspaceInfoArgs) ToMwsWorkspacesAzureWorkspaceInfoOutput() MwsWorkspacesAzureWorkspaceInfoOutput {
-	return i.ToMwsWorkspacesAzureWorkspaceInfoOutputWithContext(context.Background())
-}
-
-func (i MwsWorkspacesAzureWorkspaceInfoArgs) ToMwsWorkspacesAzureWorkspaceInfoOutputWithContext(ctx context.Context) MwsWorkspacesAzureWorkspaceInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesAzureWorkspaceInfoOutput)
-}
-
-func (i MwsWorkspacesAzureWorkspaceInfoArgs) ToMwsWorkspacesAzureWorkspaceInfoPtrOutput() MwsWorkspacesAzureWorkspaceInfoPtrOutput {
-	return i.ToMwsWorkspacesAzureWorkspaceInfoPtrOutputWithContext(context.Background())
-}
-
-func (i MwsWorkspacesAzureWorkspaceInfoArgs) ToMwsWorkspacesAzureWorkspaceInfoPtrOutputWithContext(ctx context.Context) MwsWorkspacesAzureWorkspaceInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesAzureWorkspaceInfoOutput).ToMwsWorkspacesAzureWorkspaceInfoPtrOutputWithContext(ctx)
-}
-
-// MwsWorkspacesAzureWorkspaceInfoPtrInput is an input type that accepts MwsWorkspacesAzureWorkspaceInfoArgs, MwsWorkspacesAzureWorkspaceInfoPtr and MwsWorkspacesAzureWorkspaceInfoPtrOutput values.
-// You can construct a concrete instance of `MwsWorkspacesAzureWorkspaceInfoPtrInput` via:
-//
-//	        MwsWorkspacesAzureWorkspaceInfoArgs{...}
-//
-//	or:
-//
-//	        nil
-type MwsWorkspacesAzureWorkspaceInfoPtrInput interface {
-	pulumi.Input
-
-	ToMwsWorkspacesAzureWorkspaceInfoPtrOutput() MwsWorkspacesAzureWorkspaceInfoPtrOutput
-	ToMwsWorkspacesAzureWorkspaceInfoPtrOutputWithContext(context.Context) MwsWorkspacesAzureWorkspaceInfoPtrOutput
-}
-
-type mwsWorkspacesAzureWorkspaceInfoPtrType MwsWorkspacesAzureWorkspaceInfoArgs
-
-func MwsWorkspacesAzureWorkspaceInfoPtr(v *MwsWorkspacesAzureWorkspaceInfoArgs) MwsWorkspacesAzureWorkspaceInfoPtrInput {
-	return (*mwsWorkspacesAzureWorkspaceInfoPtrType)(v)
-}
-
-func (*mwsWorkspacesAzureWorkspaceInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsWorkspacesAzureWorkspaceInfo)(nil)).Elem()
-}
-
-func (i *mwsWorkspacesAzureWorkspaceInfoPtrType) ToMwsWorkspacesAzureWorkspaceInfoPtrOutput() MwsWorkspacesAzureWorkspaceInfoPtrOutput {
-	return i.ToMwsWorkspacesAzureWorkspaceInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *mwsWorkspacesAzureWorkspaceInfoPtrType) ToMwsWorkspacesAzureWorkspaceInfoPtrOutputWithContext(ctx context.Context) MwsWorkspacesAzureWorkspaceInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesAzureWorkspaceInfoPtrOutput)
-}
-
-type MwsWorkspacesAzureWorkspaceInfoOutput struct{ *pulumi.OutputState }
-
-func (MwsWorkspacesAzureWorkspaceInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MwsWorkspacesAzureWorkspaceInfo)(nil)).Elem()
-}
-
-func (o MwsWorkspacesAzureWorkspaceInfoOutput) ToMwsWorkspacesAzureWorkspaceInfoOutput() MwsWorkspacesAzureWorkspaceInfoOutput {
-	return o
-}
-
-func (o MwsWorkspacesAzureWorkspaceInfoOutput) ToMwsWorkspacesAzureWorkspaceInfoOutputWithContext(ctx context.Context) MwsWorkspacesAzureWorkspaceInfoOutput {
-	return o
-}
-
-func (o MwsWorkspacesAzureWorkspaceInfoOutput) ToMwsWorkspacesAzureWorkspaceInfoPtrOutput() MwsWorkspacesAzureWorkspaceInfoPtrOutput {
-	return o.ToMwsWorkspacesAzureWorkspaceInfoPtrOutputWithContext(context.Background())
-}
-
-func (o MwsWorkspacesAzureWorkspaceInfoOutput) ToMwsWorkspacesAzureWorkspaceInfoPtrOutputWithContext(ctx context.Context) MwsWorkspacesAzureWorkspaceInfoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MwsWorkspacesAzureWorkspaceInfo) *MwsWorkspacesAzureWorkspaceInfo {
-		return &v
-	}).(MwsWorkspacesAzureWorkspaceInfoPtrOutput)
-}
-
-func (o MwsWorkspacesAzureWorkspaceInfoOutput) ResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsWorkspacesAzureWorkspaceInfo) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
-}
-
-func (o MwsWorkspacesAzureWorkspaceInfoOutput) SubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MwsWorkspacesAzureWorkspaceInfo) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
-}
-
-type MwsWorkspacesAzureWorkspaceInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (MwsWorkspacesAzureWorkspaceInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MwsWorkspacesAzureWorkspaceInfo)(nil)).Elem()
-}
-
-func (o MwsWorkspacesAzureWorkspaceInfoPtrOutput) ToMwsWorkspacesAzureWorkspaceInfoPtrOutput() MwsWorkspacesAzureWorkspaceInfoPtrOutput {
-	return o
-}
-
-func (o MwsWorkspacesAzureWorkspaceInfoPtrOutput) ToMwsWorkspacesAzureWorkspaceInfoPtrOutputWithContext(ctx context.Context) MwsWorkspacesAzureWorkspaceInfoPtrOutput {
-	return o
-}
-
-func (o MwsWorkspacesAzureWorkspaceInfoPtrOutput) Elem() MwsWorkspacesAzureWorkspaceInfoOutput {
-	return o.ApplyT(func(v *MwsWorkspacesAzureWorkspaceInfo) MwsWorkspacesAzureWorkspaceInfo {
-		if v != nil {
-			return *v
-		}
-		var ret MwsWorkspacesAzureWorkspaceInfo
-		return ret
-	}).(MwsWorkspacesAzureWorkspaceInfoOutput)
-}
-
-func (o MwsWorkspacesAzureWorkspaceInfoPtrOutput) ResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspacesAzureWorkspaceInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceGroup
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MwsWorkspacesAzureWorkspaceInfoPtrOutput) SubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspacesAzureWorkspaceInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubscriptionId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -66623,12 +66475,11 @@ func (o MwsWorkspacesExternalCustomerInfoPtrOutput) CustomerName() pulumi.String
 }
 
 type MwsWorkspacesGcpManagedNetworkConfig struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange *string `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange *string `pulumi:"gkeClusterServiceIpRange"`
-	// The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
-	SubnetCidr string `pulumi:"subnetCidr"`
+	SubnetCidr               string  `pulumi:"subnetCidr"`
 }
 
 // MwsWorkspacesGcpManagedNetworkConfigInput is an input type that accepts MwsWorkspacesGcpManagedNetworkConfigArgs and MwsWorkspacesGcpManagedNetworkConfigOutput values.
@@ -66643,12 +66494,11 @@ type MwsWorkspacesGcpManagedNetworkConfigInput interface {
 }
 
 type MwsWorkspacesGcpManagedNetworkConfigArgs struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange pulumi.StringPtrInput `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange pulumi.StringPtrInput `pulumi:"gkeClusterServiceIpRange"`
-	// The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
-	SubnetCidr pulumi.StringInput `pulumi:"subnetCidr"`
+	SubnetCidr               pulumi.StringInput    `pulumi:"subnetCidr"`
 }
 
 func (MwsWorkspacesGcpManagedNetworkConfigArgs) ElementType() reflect.Type {
@@ -66728,17 +66578,16 @@ func (o MwsWorkspacesGcpManagedNetworkConfigOutput) ToMwsWorkspacesGcpManagedNet
 	}).(MwsWorkspacesGcpManagedNetworkConfigPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterPodIpRange }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterServiceIpRange }).(pulumi.StringPtrOutput)
 }
 
-// The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) SubnetCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) string { return v.SubnetCidr }).(pulumi.StringOutput)
 }
@@ -66767,7 +66616,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) Elem() MwsWorkspacesGcpMa
 	}).(MwsWorkspacesGcpManagedNetworkConfigOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -66777,7 +66626,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -66787,7 +66636,6 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterServiceIpRange(
 	}).(pulumi.StringPtrOutput)
 }
 
-// The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) SubnetCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -82736,6 +82584,158 @@ func (o SqlQueryParameterDatePtrOutput) Value() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SqlQueryParameterDateRange struct {
+	Range *SqlQueryParameterDateRangeRange `pulumi:"range"`
+	// The default value for this parameter.
+	Value *string `pulumi:"value"`
+}
+
+// SqlQueryParameterDateRangeInput is an input type that accepts SqlQueryParameterDateRangeArgs and SqlQueryParameterDateRangeOutput values.
+// You can construct a concrete instance of `SqlQueryParameterDateRangeInput` via:
+//
+//	SqlQueryParameterDateRangeArgs{...}
+type SqlQueryParameterDateRangeInput interface {
+	pulumi.Input
+
+	ToSqlQueryParameterDateRangeOutput() SqlQueryParameterDateRangeOutput
+	ToSqlQueryParameterDateRangeOutputWithContext(context.Context) SqlQueryParameterDateRangeOutput
+}
+
+type SqlQueryParameterDateRangeArgs struct {
+	Range SqlQueryParameterDateRangeRangePtrInput `pulumi:"range"`
+	// The default value for this parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (SqlQueryParameterDateRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlQueryParameterDateRange)(nil)).Elem()
+}
+
+func (i SqlQueryParameterDateRangeArgs) ToSqlQueryParameterDateRangeOutput() SqlQueryParameterDateRangeOutput {
+	return i.ToSqlQueryParameterDateRangeOutputWithContext(context.Background())
+}
+
+func (i SqlQueryParameterDateRangeArgs) ToSqlQueryParameterDateRangeOutputWithContext(ctx context.Context) SqlQueryParameterDateRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDateRangeOutput)
+}
+
+func (i SqlQueryParameterDateRangeArgs) ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput {
+	return i.ToSqlQueryParameterDateRangePtrOutputWithContext(context.Background())
+}
+
+func (i SqlQueryParameterDateRangeArgs) ToSqlQueryParameterDateRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDateRangeOutput).ToSqlQueryParameterDateRangePtrOutputWithContext(ctx)
+}
+
+// SqlQueryParameterDateRangePtrInput is an input type that accepts SqlQueryParameterDateRangeArgs, SqlQueryParameterDateRangePtr and SqlQueryParameterDateRangePtrOutput values.
+// You can construct a concrete instance of `SqlQueryParameterDateRangePtrInput` via:
+//
+//	        SqlQueryParameterDateRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlQueryParameterDateRangePtrInput interface {
+	pulumi.Input
+
+	ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput
+	ToSqlQueryParameterDateRangePtrOutputWithContext(context.Context) SqlQueryParameterDateRangePtrOutput
+}
+
+type sqlQueryParameterDateRangePtrType SqlQueryParameterDateRangeArgs
+
+func SqlQueryParameterDateRangePtr(v *SqlQueryParameterDateRangeArgs) SqlQueryParameterDateRangePtrInput {
+	return (*sqlQueryParameterDateRangePtrType)(v)
+}
+
+func (*sqlQueryParameterDateRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlQueryParameterDateRange)(nil)).Elem()
+}
+
+func (i *sqlQueryParameterDateRangePtrType) ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput {
+	return i.ToSqlQueryParameterDateRangePtrOutputWithContext(context.Background())
+}
+
+func (i *sqlQueryParameterDateRangePtrType) ToSqlQueryParameterDateRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDateRangePtrOutput)
+}
+
+type SqlQueryParameterDateRangeOutput struct{ *pulumi.OutputState }
+
+func (SqlQueryParameterDateRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlQueryParameterDateRange)(nil)).Elem()
+}
+
+func (o SqlQueryParameterDateRangeOutput) ToSqlQueryParameterDateRangeOutput() SqlQueryParameterDateRangeOutput {
+	return o
+}
+
+func (o SqlQueryParameterDateRangeOutput) ToSqlQueryParameterDateRangeOutputWithContext(ctx context.Context) SqlQueryParameterDateRangeOutput {
+	return o
+}
+
+func (o SqlQueryParameterDateRangeOutput) ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput {
+	return o.ToSqlQueryParameterDateRangePtrOutputWithContext(context.Background())
+}
+
+func (o SqlQueryParameterDateRangeOutput) ToSqlQueryParameterDateRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryParameterDateRange) *SqlQueryParameterDateRange {
+		return &v
+	}).(SqlQueryParameterDateRangePtrOutput)
+}
+
+func (o SqlQueryParameterDateRangeOutput) Range() SqlQueryParameterDateRangeRangePtrOutput {
+	return o.ApplyT(func(v SqlQueryParameterDateRange) *SqlQueryParameterDateRangeRange { return v.Range }).(SqlQueryParameterDateRangeRangePtrOutput)
+}
+
+// The default value for this parameter.
+func (o SqlQueryParameterDateRangeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlQueryParameterDateRange) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type SqlQueryParameterDateRangePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlQueryParameterDateRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlQueryParameterDateRange)(nil)).Elem()
+}
+
+func (o SqlQueryParameterDateRangePtrOutput) ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput {
+	return o
+}
+
+func (o SqlQueryParameterDateRangePtrOutput) ToSqlQueryParameterDateRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangePtrOutput {
+	return o
+}
+
+func (o SqlQueryParameterDateRangePtrOutput) Elem() SqlQueryParameterDateRangeOutput {
+	return o.ApplyT(func(v *SqlQueryParameterDateRange) SqlQueryParameterDateRange {
+		if v != nil {
+			return *v
+		}
+		var ret SqlQueryParameterDateRange
+		return ret
+	}).(SqlQueryParameterDateRangeOutput)
+}
+
+func (o SqlQueryParameterDateRangePtrOutput) Range() SqlQueryParameterDateRangeRangePtrOutput {
+	return o.ApplyT(func(v *SqlQueryParameterDateRange) *SqlQueryParameterDateRangeRange {
+		if v == nil {
+			return nil
+		}
+		return v.Range
+	}).(SqlQueryParameterDateRangeRangePtrOutput)
+}
+
+// The default value for this parameter.
+func (o SqlQueryParameterDateRangePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlQueryParameterDateRange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
@@ -83521,8 +83521,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsNetworksVpcEndpointsPtrInput)(nil)).Elem(), MwsNetworksVpcEndpointsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsVpcEndpointGcpVpcEndpointInfoInput)(nil)).Elem(), MwsVpcEndpointGcpVpcEndpointInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsVpcEndpointGcpVpcEndpointInfoPtrInput)(nil)).Elem(), MwsVpcEndpointGcpVpcEndpointInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesAzureWorkspaceInfoInput)(nil)).Elem(), MwsWorkspacesAzureWorkspaceInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesAzureWorkspaceInfoPtrInput)(nil)).Elem(), MwsWorkspacesAzureWorkspaceInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesCloudResourceContainerInput)(nil)).Elem(), MwsWorkspacesCloudResourceContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesCloudResourceContainerPtrInput)(nil)).Elem(), MwsWorkspacesCloudResourceContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MwsWorkspacesCloudResourceContainerGcpInput)(nil)).Elem(), MwsWorkspacesCloudResourceContainerGcpArgs{})
@@ -83731,6 +83729,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterArrayInput)(nil)).Elem(), SqlQueryParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDateInput)(nil)).Elem(), SqlQueryParameterDateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDatePtrInput)(nil)).Elem(), SqlQueryParameterDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDateRangeInput)(nil)).Elem(), SqlQueryParameterDateRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDateRangePtrInput)(nil)).Elem(), SqlQueryParameterDateRangeArgs{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
 	pulumi.RegisterOutputType(AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput{})
@@ -84515,8 +84515,6 @@ func init() {
 	pulumi.RegisterOutputType(MwsNetworksVpcEndpointsPtrOutput{})
 	pulumi.RegisterOutputType(MwsVpcEndpointGcpVpcEndpointInfoOutput{})
 	pulumi.RegisterOutputType(MwsVpcEndpointGcpVpcEndpointInfoPtrOutput{})
-	pulumi.RegisterOutputType(MwsWorkspacesAzureWorkspaceInfoOutput{})
-	pulumi.RegisterOutputType(MwsWorkspacesAzureWorkspaceInfoPtrOutput{})
 	pulumi.RegisterOutputType(MwsWorkspacesCloudResourceContainerOutput{})
 	pulumi.RegisterOutputType(MwsWorkspacesCloudResourceContainerPtrOutput{})
 	pulumi.RegisterOutputType(MwsWorkspacesCloudResourceContainerGcpOutput{})
@@ -84725,4 +84723,6 @@ func init() {
 	pulumi.RegisterOutputType(SqlQueryParameterArrayOutput{})
 	pulumi.RegisterOutputType(SqlQueryParameterDateOutput{})
 	pulumi.RegisterOutputType(SqlQueryParameterDatePtrOutput{})
+	pulumi.RegisterOutputType(SqlQueryParameterDateRangeOutput{})
+	pulumi.RegisterOutputType(SqlQueryParameterDateRangePtrOutput{})
 }

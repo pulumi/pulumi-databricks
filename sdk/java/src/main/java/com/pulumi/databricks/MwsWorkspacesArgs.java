@@ -5,7 +5,6 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.MwsWorkspacesAzureWorkspaceInfoArgs;
 import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerArgs;
 import com.pulumi.databricks.inputs.MwsWorkspacesExternalCustomerInfoArgs;
 import com.pulumi.databricks.inputs.MwsWorkspacesGcpManagedNetworkConfigArgs;
@@ -55,13 +54,6 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.awsRegion);
     }
 
-    @Import(name="azureWorkspaceInfo")
-    private @Nullable Output<MwsWorkspacesAzureWorkspaceInfoArgs> azureWorkspaceInfo;
-
-    public Optional<Output<MwsWorkspacesAzureWorkspaceInfoArgs>> azureWorkspaceInfo() {
-        return Optional.ofNullable(this.azureWorkspaceInfo);
-    }
-
     @Import(name="cloud")
     private @Nullable Output<String> cloud;
 
@@ -99,17 +91,9 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.creationTime);
     }
 
-    /**
-     * ID of the workspace&#39;s credential configuration object.
-     * 
-     */
     @Import(name="credentialsId")
     private @Nullable Output<String> credentialsId;
 
-    /**
-     * @return ID of the workspace&#39;s credential configuration object.
-     * 
-     */
     public Optional<Output<String>> credentialsId() {
         return Optional.ofNullable(this.credentialsId);
     }
@@ -170,17 +154,9 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.externalCustomerInfo);
     }
 
-    /**
-     * A block that describes the network configuration for workspaces with Databricks-managed networks.
-     * 
-     */
     @Import(name="gcpManagedNetworkConfig")
     private @Nullable Output<MwsWorkspacesGcpManagedNetworkConfigArgs> gcpManagedNetworkConfig;
 
-    /**
-     * @return A block that describes the network configuration for workspaces with Databricks-managed networks.
-     * 
-     */
     public Optional<Output<MwsWorkspacesGcpManagedNetworkConfigArgs>> gcpManagedNetworkConfig() {
         return Optional.ofNullable(this.gcpManagedNetworkConfig);
     }
@@ -189,10 +165,10 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
      * A block that specifies GKE configuration for the Databricks workspace:
      * 
      * @deprecated
-     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
     @Import(name="gkeConfig")
     private @Nullable Output<MwsWorkspacesGkeConfigArgs> gkeConfig;
 
@@ -200,10 +176,10 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
      * @return A block that specifies GKE configuration for the Databricks workspace:
      * 
      * @deprecated
-     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
     public Optional<Output<MwsWorkspacesGkeConfigArgs>> gkeConfig() {
         return Optional.ofNullable(this.gkeConfig);
     }
@@ -407,7 +383,6 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
     private MwsWorkspacesArgs(MwsWorkspacesArgs $) {
         this.accountId = $.accountId;
         this.awsRegion = $.awsRegion;
-        this.azureWorkspaceInfo = $.azureWorkspaceInfo;
         this.cloud = $.cloud;
         this.cloudResourceContainer = $.cloudResourceContainer;
         this.creationTime = $.creationTime;
@@ -494,15 +469,6 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
             return awsRegion(Output.of(awsRegion));
         }
 
-        public Builder azureWorkspaceInfo(@Nullable Output<MwsWorkspacesAzureWorkspaceInfoArgs> azureWorkspaceInfo) {
-            $.azureWorkspaceInfo = azureWorkspaceInfo;
-            return this;
-        }
-
-        public Builder azureWorkspaceInfo(MwsWorkspacesAzureWorkspaceInfoArgs azureWorkspaceInfo) {
-            return azureWorkspaceInfo(Output.of(azureWorkspaceInfo));
-        }
-
         public Builder cloud(@Nullable Output<String> cloud) {
             $.cloud = cloud;
             return this;
@@ -554,23 +520,11 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
             return creationTime(Output.of(creationTime));
         }
 
-        /**
-         * @param credentialsId ID of the workspace&#39;s credential configuration object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder credentialsId(@Nullable Output<String> credentialsId) {
             $.credentialsId = credentialsId;
             return this;
         }
 
-        /**
-         * @param credentialsId ID of the workspace&#39;s credential configuration object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder credentialsId(String credentialsId) {
             return credentialsId(Output.of(credentialsId));
         }
@@ -651,23 +605,11 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
             return externalCustomerInfo(Output.of(externalCustomerInfo));
         }
 
-        /**
-         * @param gcpManagedNetworkConfig A block that describes the network configuration for workspaces with Databricks-managed networks.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gcpManagedNetworkConfig(@Nullable Output<MwsWorkspacesGcpManagedNetworkConfigArgs> gcpManagedNetworkConfig) {
             $.gcpManagedNetworkConfig = gcpManagedNetworkConfig;
             return this;
         }
 
-        /**
-         * @param gcpManagedNetworkConfig A block that describes the network configuration for workspaces with Databricks-managed networks.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gcpManagedNetworkConfig(MwsWorkspacesGcpManagedNetworkConfigArgs gcpManagedNetworkConfig) {
             return gcpManagedNetworkConfig(Output.of(gcpManagedNetworkConfig));
         }
@@ -678,10 +620,10 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+         * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
          * 
          */
-        @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+        @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
         public Builder gkeConfig(@Nullable Output<MwsWorkspacesGkeConfigArgs> gkeConfig) {
             $.gkeConfig = gkeConfig;
             return this;
@@ -693,10 +635,10 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+         * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
          * 
          */
-        @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+        @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
         public Builder gkeConfig(MwsWorkspacesGkeConfigArgs gkeConfig) {
             return gkeConfig(Output.of(gkeConfig));
         }

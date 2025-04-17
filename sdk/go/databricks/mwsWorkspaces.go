@@ -354,31 +354,28 @@ type MwsWorkspaces struct {
 	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// region of VPC.
-	AwsRegion          pulumi.StringPtrOutput                `pulumi:"awsRegion"`
-	AzureWorkspaceInfo MwsWorkspacesAzureWorkspaceInfoOutput `pulumi:"azureWorkspaceInfo"`
-	Cloud              pulumi.StringPtrOutput                `pulumi:"cloud"`
+	AwsRegion pulumi.StringPtrOutput `pulumi:"awsRegion"`
+	Cloud     pulumi.StringOutput    `pulumi:"cloud"`
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer MwsWorkspacesCloudResourceContainerPtrOutput `pulumi:"cloudResourceContainer"`
 	// (Integer) time when workspace was created
-	CreationTime pulumi.IntOutput `pulumi:"creationTime"`
-	// ID of the workspace's credential configuration object.
+	CreationTime  pulumi.IntOutput       `pulumi:"creationTime"`
 	CredentialsId pulumi.StringPtrOutput `pulumi:"credentialsId"`
 	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
 	CustomTags pulumi.StringMapOutput `pulumi:"customTags"`
 	// Deprecated: Use managedServicesCustomerManagedKeyId instead
 	CustomerManagedKeyId pulumi.StringPtrOutput `pulumi:"customerManagedKeyId"`
 	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-	DeploymentName       pulumi.StringPtrOutput                     `pulumi:"deploymentName"`
-	ExternalCustomerInfo MwsWorkspacesExternalCustomerInfoPtrOutput `pulumi:"externalCustomerInfo"`
-	// A block that describes the network configuration for workspaces with Databricks-managed networks.
+	DeploymentName          pulumi.StringPtrOutput                        `pulumi:"deploymentName"`
+	ExternalCustomerInfo    MwsWorkspacesExternalCustomerInfoPtrOutput    `pulumi:"externalCustomerInfo"`
 	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrOutput `pulumi:"gcpManagedNetworkConfig"`
 	// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
 	GcpWorkspaceSa pulumi.StringOutput `pulumi:"gcpWorkspaceSa"`
 	// A block that specifies GKE configuration for the Databricks workspace:
 	//
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
-	GkeConfig           MwsWorkspacesGkeConfigOutput `pulumi:"gkeConfig"`
-	IsNoPublicIpEnabled pulumi.BoolPtrOutput         `pulumi:"isNoPublicIpEnabled"`
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	GkeConfig           MwsWorkspacesGkeConfigPtrOutput `pulumi:"gkeConfig"`
+	IsNoPublicIpEnabled pulumi.BoolPtrOutput            `pulumi:"isNoPublicIpEnabled"`
 	// region of the subnet.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
@@ -452,29 +449,26 @@ type mwsWorkspacesState struct {
 	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId *string `pulumi:"accountId"`
 	// region of VPC.
-	AwsRegion          *string                          `pulumi:"awsRegion"`
-	AzureWorkspaceInfo *MwsWorkspacesAzureWorkspaceInfo `pulumi:"azureWorkspaceInfo"`
-	Cloud              *string                          `pulumi:"cloud"`
+	AwsRegion *string `pulumi:"awsRegion"`
+	Cloud     *string `pulumi:"cloud"`
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer *MwsWorkspacesCloudResourceContainer `pulumi:"cloudResourceContainer"`
 	// (Integer) time when workspace was created
-	CreationTime *int `pulumi:"creationTime"`
-	// ID of the workspace's credential configuration object.
+	CreationTime  *int    `pulumi:"creationTime"`
 	CredentialsId *string `pulumi:"credentialsId"`
 	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
 	CustomTags map[string]string `pulumi:"customTags"`
 	// Deprecated: Use managedServicesCustomerManagedKeyId instead
 	CustomerManagedKeyId *string `pulumi:"customerManagedKeyId"`
 	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-	DeploymentName       *string                            `pulumi:"deploymentName"`
-	ExternalCustomerInfo *MwsWorkspacesExternalCustomerInfo `pulumi:"externalCustomerInfo"`
-	// A block that describes the network configuration for workspaces with Databricks-managed networks.
+	DeploymentName          *string                               `pulumi:"deploymentName"`
+	ExternalCustomerInfo    *MwsWorkspacesExternalCustomerInfo    `pulumi:"externalCustomerInfo"`
 	GcpManagedNetworkConfig *MwsWorkspacesGcpManagedNetworkConfig `pulumi:"gcpManagedNetworkConfig"`
 	// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
 	GcpWorkspaceSa *string `pulumi:"gcpWorkspaceSa"`
 	// A block that specifies GKE configuration for the Databricks workspace:
 	//
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           *MwsWorkspacesGkeConfig `pulumi:"gkeConfig"`
 	IsNoPublicIpEnabled *bool                   `pulumi:"isNoPublicIpEnabled"`
 	// region of the subnet.
@@ -508,29 +502,26 @@ type MwsWorkspacesState struct {
 	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId pulumi.StringPtrInput
 	// region of VPC.
-	AwsRegion          pulumi.StringPtrInput
-	AzureWorkspaceInfo MwsWorkspacesAzureWorkspaceInfoPtrInput
-	Cloud              pulumi.StringPtrInput
+	AwsRegion pulumi.StringPtrInput
+	Cloud     pulumi.StringPtrInput
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer MwsWorkspacesCloudResourceContainerPtrInput
 	// (Integer) time when workspace was created
-	CreationTime pulumi.IntPtrInput
-	// ID of the workspace's credential configuration object.
+	CreationTime  pulumi.IntPtrInput
 	CredentialsId pulumi.StringPtrInput
 	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
 	CustomTags pulumi.StringMapInput
 	// Deprecated: Use managedServicesCustomerManagedKeyId instead
 	CustomerManagedKeyId pulumi.StringPtrInput
 	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-	DeploymentName       pulumi.StringPtrInput
-	ExternalCustomerInfo MwsWorkspacesExternalCustomerInfoPtrInput
-	// A block that describes the network configuration for workspaces with Databricks-managed networks.
+	DeploymentName          pulumi.StringPtrInput
+	ExternalCustomerInfo    MwsWorkspacesExternalCustomerInfoPtrInput
 	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrInput
 	// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
 	GcpWorkspaceSa pulumi.StringPtrInput
 	// A block that specifies GKE configuration for the Databricks workspace:
 	//
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           MwsWorkspacesGkeConfigPtrInput
 	IsNoPublicIpEnabled pulumi.BoolPtrInput
 	// region of the subnet.
@@ -568,27 +559,24 @@ type mwsWorkspacesArgs struct {
 	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId string `pulumi:"accountId"`
 	// region of VPC.
-	AwsRegion          *string                          `pulumi:"awsRegion"`
-	AzureWorkspaceInfo *MwsWorkspacesAzureWorkspaceInfo `pulumi:"azureWorkspaceInfo"`
-	Cloud              *string                          `pulumi:"cloud"`
+	AwsRegion *string `pulumi:"awsRegion"`
+	Cloud     *string `pulumi:"cloud"`
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer *MwsWorkspacesCloudResourceContainer `pulumi:"cloudResourceContainer"`
 	// (Integer) time when workspace was created
-	CreationTime *int `pulumi:"creationTime"`
-	// ID of the workspace's credential configuration object.
+	CreationTime  *int    `pulumi:"creationTime"`
 	CredentialsId *string `pulumi:"credentialsId"`
 	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
 	CustomTags map[string]string `pulumi:"customTags"`
 	// Deprecated: Use managedServicesCustomerManagedKeyId instead
 	CustomerManagedKeyId *string `pulumi:"customerManagedKeyId"`
 	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-	DeploymentName       *string                            `pulumi:"deploymentName"`
-	ExternalCustomerInfo *MwsWorkspacesExternalCustomerInfo `pulumi:"externalCustomerInfo"`
-	// A block that describes the network configuration for workspaces with Databricks-managed networks.
+	DeploymentName          *string                               `pulumi:"deploymentName"`
+	ExternalCustomerInfo    *MwsWorkspacesExternalCustomerInfo    `pulumi:"externalCustomerInfo"`
 	GcpManagedNetworkConfig *MwsWorkspacesGcpManagedNetworkConfig `pulumi:"gcpManagedNetworkConfig"`
 	// A block that specifies GKE configuration for the Databricks workspace:
 	//
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           *MwsWorkspacesGkeConfig `pulumi:"gkeConfig"`
 	IsNoPublicIpEnabled *bool                   `pulumi:"isNoPublicIpEnabled"`
 	// region of the subnet.
@@ -623,27 +611,24 @@ type MwsWorkspacesArgs struct {
 	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId pulumi.StringInput
 	// region of VPC.
-	AwsRegion          pulumi.StringPtrInput
-	AzureWorkspaceInfo MwsWorkspacesAzureWorkspaceInfoPtrInput
-	Cloud              pulumi.StringPtrInput
+	AwsRegion pulumi.StringPtrInput
+	Cloud     pulumi.StringPtrInput
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer MwsWorkspacesCloudResourceContainerPtrInput
 	// (Integer) time when workspace was created
-	CreationTime pulumi.IntPtrInput
-	// ID of the workspace's credential configuration object.
+	CreationTime  pulumi.IntPtrInput
 	CredentialsId pulumi.StringPtrInput
 	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
 	CustomTags pulumi.StringMapInput
 	// Deprecated: Use managedServicesCustomerManagedKeyId instead
 	CustomerManagedKeyId pulumi.StringPtrInput
 	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-	DeploymentName       pulumi.StringPtrInput
-	ExternalCustomerInfo MwsWorkspacesExternalCustomerInfoPtrInput
-	// A block that describes the network configuration for workspaces with Databricks-managed networks.
+	DeploymentName          pulumi.StringPtrInput
+	ExternalCustomerInfo    MwsWorkspacesExternalCustomerInfoPtrInput
 	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrInput
 	// A block that specifies GKE configuration for the Databricks workspace:
 	//
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           MwsWorkspacesGkeConfigPtrInput
 	IsNoPublicIpEnabled pulumi.BoolPtrInput
 	// region of the subnet.
@@ -770,12 +755,8 @@ func (o MwsWorkspacesOutput) AwsRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.AwsRegion }).(pulumi.StringPtrOutput)
 }
 
-func (o MwsWorkspacesOutput) AzureWorkspaceInfo() MwsWorkspacesAzureWorkspaceInfoOutput {
-	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesAzureWorkspaceInfoOutput { return v.AzureWorkspaceInfo }).(MwsWorkspacesAzureWorkspaceInfoOutput)
-}
-
-func (o MwsWorkspacesOutput) Cloud() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.Cloud }).(pulumi.StringPtrOutput)
+func (o MwsWorkspacesOutput) Cloud() pulumi.StringOutput {
+	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.Cloud }).(pulumi.StringOutput)
 }
 
 // A block that specifies GCP workspace configurations, consisting of following blocks:
@@ -788,7 +769,6 @@ func (o MwsWorkspacesOutput) CreationTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.IntOutput { return v.CreationTime }).(pulumi.IntOutput)
 }
 
-// ID of the workspace's credential configuration object.
 func (o MwsWorkspacesOutput) CredentialsId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.CredentialsId }).(pulumi.StringPtrOutput)
 }
@@ -812,7 +792,6 @@ func (o MwsWorkspacesOutput) ExternalCustomerInfo() MwsWorkspacesExternalCustome
 	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesExternalCustomerInfoPtrOutput { return v.ExternalCustomerInfo }).(MwsWorkspacesExternalCustomerInfoPtrOutput)
 }
 
-// A block that describes the network configuration for workspaces with Databricks-managed networks.
 func (o MwsWorkspacesOutput) GcpManagedNetworkConfig() MwsWorkspacesGcpManagedNetworkConfigPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesGcpManagedNetworkConfigPtrOutput { return v.GcpManagedNetworkConfig }).(MwsWorkspacesGcpManagedNetworkConfigPtrOutput)
 }
@@ -824,9 +803,9 @@ func (o MwsWorkspacesOutput) GcpWorkspaceSa() pulumi.StringOutput {
 
 // A block that specifies GKE configuration for the Databricks workspace:
 //
-// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
-func (o MwsWorkspacesOutput) GkeConfig() MwsWorkspacesGkeConfigOutput {
-	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesGkeConfigOutput { return v.GkeConfig }).(MwsWorkspacesGkeConfigOutput)
+// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+func (o MwsWorkspacesOutput) GkeConfig() MwsWorkspacesGkeConfigPtrOutput {
+	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesGkeConfigPtrOutput { return v.GkeConfig }).(MwsWorkspacesGkeConfigPtrOutput)
 }
 
 func (o MwsWorkspacesOutput) IsNoPublicIpEnabled() pulumi.BoolPtrOutput {
