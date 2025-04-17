@@ -13,158 +13,6 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type SqlQueryParameterDateRange struct {
-	Range *SqlQueryParameterDateRangeRange `pulumi:"range"`
-	// The default value for this parameter.
-	Value *string `pulumi:"value"`
-}
-
-// SqlQueryParameterDateRangeInput is an input type that accepts SqlQueryParameterDateRangeArgs and SqlQueryParameterDateRangeOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDateRangeInput` via:
-//
-//	SqlQueryParameterDateRangeArgs{...}
-type SqlQueryParameterDateRangeInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDateRangeOutput() SqlQueryParameterDateRangeOutput
-	ToSqlQueryParameterDateRangeOutputWithContext(context.Context) SqlQueryParameterDateRangeOutput
-}
-
-type SqlQueryParameterDateRangeArgs struct {
-	Range SqlQueryParameterDateRangeRangePtrInput `pulumi:"range"`
-	// The default value for this parameter.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (SqlQueryParameterDateRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDateRange)(nil)).Elem()
-}
-
-func (i SqlQueryParameterDateRangeArgs) ToSqlQueryParameterDateRangeOutput() SqlQueryParameterDateRangeOutput {
-	return i.ToSqlQueryParameterDateRangeOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDateRangeArgs) ToSqlQueryParameterDateRangeOutputWithContext(ctx context.Context) SqlQueryParameterDateRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDateRangeOutput)
-}
-
-func (i SqlQueryParameterDateRangeArgs) ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput {
-	return i.ToSqlQueryParameterDateRangePtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDateRangeArgs) ToSqlQueryParameterDateRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDateRangeOutput).ToSqlQueryParameterDateRangePtrOutputWithContext(ctx)
-}
-
-// SqlQueryParameterDateRangePtrInput is an input type that accepts SqlQueryParameterDateRangeArgs, SqlQueryParameterDateRangePtr and SqlQueryParameterDateRangePtrOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDateRangePtrInput` via:
-//
-//	        SqlQueryParameterDateRangeArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryParameterDateRangePtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput
-	ToSqlQueryParameterDateRangePtrOutputWithContext(context.Context) SqlQueryParameterDateRangePtrOutput
-}
-
-type sqlQueryParameterDateRangePtrType SqlQueryParameterDateRangeArgs
-
-func SqlQueryParameterDateRangePtr(v *SqlQueryParameterDateRangeArgs) SqlQueryParameterDateRangePtrInput {
-	return (*sqlQueryParameterDateRangePtrType)(v)
-}
-
-func (*sqlQueryParameterDateRangePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDateRange)(nil)).Elem()
-}
-
-func (i *sqlQueryParameterDateRangePtrType) ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput {
-	return i.ToSqlQueryParameterDateRangePtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryParameterDateRangePtrType) ToSqlQueryParameterDateRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDateRangePtrOutput)
-}
-
-type SqlQueryParameterDateRangeOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDateRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDateRange)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDateRangeOutput) ToSqlQueryParameterDateRangeOutput() SqlQueryParameterDateRangeOutput {
-	return o
-}
-
-func (o SqlQueryParameterDateRangeOutput) ToSqlQueryParameterDateRangeOutputWithContext(ctx context.Context) SqlQueryParameterDateRangeOutput {
-	return o
-}
-
-func (o SqlQueryParameterDateRangeOutput) ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput {
-	return o.ToSqlQueryParameterDateRangePtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryParameterDateRangeOutput) ToSqlQueryParameterDateRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryParameterDateRange) *SqlQueryParameterDateRange {
-		return &v
-	}).(SqlQueryParameterDateRangePtrOutput)
-}
-
-func (o SqlQueryParameterDateRangeOutput) Range() SqlQueryParameterDateRangeRangePtrOutput {
-	return o.ApplyT(func(v SqlQueryParameterDateRange) *SqlQueryParameterDateRangeRange { return v.Range }).(SqlQueryParameterDateRangeRangePtrOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterDateRangeOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlQueryParameterDateRange) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterDateRangePtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDateRangePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDateRange)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDateRangePtrOutput) ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDateRangePtrOutput) ToSqlQueryParameterDateRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDateRangePtrOutput) Elem() SqlQueryParameterDateRangeOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDateRange) SqlQueryParameterDateRange {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryParameterDateRange
-		return ret
-	}).(SqlQueryParameterDateRangeOutput)
-}
-
-func (o SqlQueryParameterDateRangePtrOutput) Range() SqlQueryParameterDateRangeRangePtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDateRange) *SqlQueryParameterDateRangeRange {
-		if v == nil {
-			return nil
-		}
-		return v.Range
-	}).(SqlQueryParameterDateRangeRangePtrOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterDateRangePtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDateRange) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
 type SqlQueryParameterDateRangeRange struct {
 	End   string `pulumi:"end"`
 	Start string `pulumi:"start"`
@@ -69547,8 +69395,6 @@ func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) AwsKm
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDateRangeInput)(nil)).Elem(), SqlQueryParameterDateRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDateRangePtrInput)(nil)).Elem(), SqlQueryParameterDateRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDateRangeRangeInput)(nil)).Elem(), SqlQueryParameterDateRangeRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDateRangeRangePtrInput)(nil)).Elem(), SqlQueryParameterDateRangeRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDatetimeInput)(nil)).Elem(), SqlQueryParameterDatetimeArgs{})
@@ -70392,8 +70238,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
-	pulumi.RegisterOutputType(SqlQueryParameterDateRangeOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDateRangePtrOutput{})
 	pulumi.RegisterOutputType(SqlQueryParameterDateRangeRangeOutput{})
 	pulumi.RegisterOutputType(SqlQueryParameterDateRangeRangePtrOutput{})
 	pulumi.RegisterOutputType(SqlQueryParameterDatetimeOutput{})

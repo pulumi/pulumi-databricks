@@ -15,9 +15,6 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly string? GkeClusterPodIpRange;
         public readonly string? GkeClusterServiceIpRange;
-        /// <summary>
-        /// The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
-        /// </summary>
         public readonly string SubnetCidr;
 
         [OutputConstructor]

@@ -333,11 +333,8 @@ namespace Pulumi.Databricks
         [Output("awsRegion")]
         public Output<string?> AwsRegion { get; private set; } = null!;
 
-        [Output("azureWorkspaceInfo")]
-        public Output<Outputs.MwsWorkspacesAzureWorkspaceInfo> AzureWorkspaceInfo { get; private set; } = null!;
-
         [Output("cloud")]
-        public Output<string?> Cloud { get; private set; } = null!;
+        public Output<string> Cloud { get; private set; } = null!;
 
         /// <summary>
         /// A block that specifies GCP workspace configurations, consisting of following blocks:
@@ -351,9 +348,6 @@ namespace Pulumi.Databricks
         [Output("creationTime")]
         public Output<int> CreationTime { get; private set; } = null!;
 
-        /// <summary>
-        /// ID of the workspace's credential configuration object.
-        /// </summary>
         [Output("credentialsId")]
         public Output<string?> CredentialsId { get; private set; } = null!;
 
@@ -375,9 +369,6 @@ namespace Pulumi.Databricks
         [Output("externalCustomerInfo")]
         public Output<Outputs.MwsWorkspacesExternalCustomerInfo?> ExternalCustomerInfo { get; private set; } = null!;
 
-        /// <summary>
-        /// A block that describes the network configuration for workspaces with Databricks-managed networks.
-        /// </summary>
         [Output("gcpManagedNetworkConfig")]
         public Output<Outputs.MwsWorkspacesGcpManagedNetworkConfig?> GcpManagedNetworkConfig { get; private set; } = null!;
 
@@ -391,7 +382,7 @@ namespace Pulumi.Databricks
         /// A block that specifies GKE configuration for the Databricks workspace:
         /// </summary>
         [Output("gkeConfig")]
-        public Output<Outputs.MwsWorkspacesGkeConfig> GkeConfig { get; private set; } = null!;
+        public Output<Outputs.MwsWorkspacesGkeConfig?> GkeConfig { get; private set; } = null!;
 
         [Output("isNoPublicIpEnabled")]
         public Output<bool?> IsNoPublicIpEnabled { get; private set; } = null!;
@@ -543,9 +534,6 @@ namespace Pulumi.Databricks
         [Input("awsRegion")]
         public Input<string>? AwsRegion { get; set; }
 
-        [Input("azureWorkspaceInfo")]
-        public Input<Inputs.MwsWorkspacesAzureWorkspaceInfoArgs>? AzureWorkspaceInfo { get; set; }
-
         [Input("cloud")]
         public Input<string>? Cloud { get; set; }
 
@@ -561,9 +549,6 @@ namespace Pulumi.Databricks
         [Input("creationTime")]
         public Input<int>? CreationTime { get; set; }
 
-        /// <summary>
-        /// ID of the workspace's credential configuration object.
-        /// </summary>
         [Input("credentialsId")]
         public Input<string>? CredentialsId { get; set; }
 
@@ -591,9 +576,6 @@ namespace Pulumi.Databricks
         [Input("externalCustomerInfo")]
         public Input<Inputs.MwsWorkspacesExternalCustomerInfoArgs>? ExternalCustomerInfo { get; set; }
 
-        /// <summary>
-        /// A block that describes the network configuration for workspaces with Databricks-managed networks.
-        /// </summary>
         [Input("gcpManagedNetworkConfig")]
         public Input<Inputs.MwsWorkspacesGcpManagedNetworkConfigArgs>? GcpManagedNetworkConfig { get; set; }
 
@@ -711,9 +693,6 @@ namespace Pulumi.Databricks
         [Input("awsRegion")]
         public Input<string>? AwsRegion { get; set; }
 
-        [Input("azureWorkspaceInfo")]
-        public Input<Inputs.MwsWorkspacesAzureWorkspaceInfoGetArgs>? AzureWorkspaceInfo { get; set; }
-
         [Input("cloud")]
         public Input<string>? Cloud { get; set; }
 
@@ -729,9 +708,6 @@ namespace Pulumi.Databricks
         [Input("creationTime")]
         public Input<int>? CreationTime { get; set; }
 
-        /// <summary>
-        /// ID of the workspace's credential configuration object.
-        /// </summary>
         [Input("credentialsId")]
         public Input<string>? CredentialsId { get; set; }
 
@@ -759,9 +735,6 @@ namespace Pulumi.Databricks
         [Input("externalCustomerInfo")]
         public Input<Inputs.MwsWorkspacesExternalCustomerInfoGetArgs>? ExternalCustomerInfo { get; set; }
 
-        /// <summary>
-        /// A block that describes the network configuration for workspaces with Databricks-managed networks.
-        /// </summary>
         [Input("gcpManagedNetworkConfig")]
         public Input<Inputs.MwsWorkspacesGcpManagedNetworkConfigGetArgs>? GcpManagedNetworkConfig { get; set; }
 

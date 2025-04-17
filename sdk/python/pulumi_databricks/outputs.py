@@ -412,7 +412,6 @@ __all__ = [
     'MwsNetworksGcpNetworkInfo',
     'MwsNetworksVpcEndpoints',
     'MwsVpcEndpointGcpVpcEndpointInfo',
-    'MwsWorkspacesAzureWorkspaceInfo',
     'MwsWorkspacesCloudResourceContainer',
     'MwsWorkspacesCloudResourceContainerGcp',
     'MwsWorkspacesExternalCustomerInfo',
@@ -21910,7 +21909,7 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[builtins.str]:
         """
         The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
@@ -21919,7 +21918,7 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[builtins.str]:
         """
         The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
@@ -22055,46 +22054,6 @@ class MwsVpcEndpointGcpVpcEndpointInfo(dict):
 
 
 @pulumi.output_type
-class MwsWorkspacesAzureWorkspaceInfo(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceGroup":
-            suggest = "resource_group"
-        elif key == "subscriptionId":
-            suggest = "subscription_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MwsWorkspacesAzureWorkspaceInfo. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MwsWorkspacesAzureWorkspaceInfo.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MwsWorkspacesAzureWorkspaceInfo.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 resource_group: Optional[builtins.str] = None,
-                 subscription_id: Optional[builtins.str] = None):
-        if resource_group is not None:
-            pulumi.set(__self__, "resource_group", resource_group)
-        if subscription_id is not None:
-            pulumi.set(__self__, "subscription_id", subscription_id)
-
-    @property
-    @pulumi.getter(name="resourceGroup")
-    def resource_group(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "resource_group")
-
-    @property
-    @pulumi.getter(name="subscriptionId")
-    def subscription_id(self) -> Optional[builtins.str]:
-        return pulumi.get(self, "subscription_id")
-
-
-@pulumi.output_type
 class MwsWorkspacesCloudResourceContainer(dict):
     def __init__(__self__, *,
                  gcp: 'outputs.MwsWorkspacesCloudResourceContainerGcp'):
@@ -22221,9 +22180,6 @@ class MwsWorkspacesGcpManagedNetworkConfig(dict):
                  subnet_cidr: builtins.str,
                  gke_cluster_pod_ip_range: Optional[builtins.str] = None,
                  gke_cluster_service_ip_range: Optional[builtins.str] = None):
-        """
-        :param builtins.str subnet_cidr: The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
-        """
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
@@ -22233,20 +22189,17 @@ class MwsWorkspacesGcpManagedNetworkConfig(dict):
     @property
     @pulumi.getter(name="subnetCidr")
     def subnet_cidr(self) -> builtins.str:
-        """
-        The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
-        """
         return pulumi.get(self, "subnet_cidr")
 
     @property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[builtins.str]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
     @property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.73.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[builtins.str]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 

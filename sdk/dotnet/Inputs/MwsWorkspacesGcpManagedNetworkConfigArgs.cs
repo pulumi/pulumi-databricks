@@ -18,9 +18,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("gkeClusterServiceIpRange")]
         public Input<string>? GkeClusterServiceIpRange { get; set; }
 
-        /// <summary>
-        /// The IP range from which to allocate GKE cluster nodes. No bigger than `/9` and no smaller than `/29`.
-        /// </summary>
         [Input("subnetCidr", required: true)]
         public Input<string> SubnetCidr { get; set; } = null!;
 
