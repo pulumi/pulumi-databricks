@@ -107,6 +107,9 @@ class _DisableLegacyAccessSettingState:
 
 
 class DisableLegacyAccessSetting(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -115,6 +115,9 @@ class _AibiDashboardEmbeddingApprovedDomainsSettingState:
 
 
 class AibiDashboardEmbeddingApprovedDomainsSetting(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

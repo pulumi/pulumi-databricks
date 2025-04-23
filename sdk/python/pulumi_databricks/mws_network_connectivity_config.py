@@ -227,6 +227,9 @@ class _MwsNetworkConnectivityConfigState:
 
 
 class MwsNetworkConnectivityConfig(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

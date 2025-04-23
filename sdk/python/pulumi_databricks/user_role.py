@@ -96,6 +96,9 @@ class _UserRoleState:
 
 
 class UserRole(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/userRole:UserRole"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

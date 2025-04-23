@@ -276,6 +276,9 @@ class _ModelServingState:
 
 
 class ModelServing(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/modelServing:ModelServing"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

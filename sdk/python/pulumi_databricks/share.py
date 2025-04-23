@@ -308,6 +308,9 @@ class _ShareState:
 
 
 class Share(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/share:Share"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -343,10 +346,10 @@ class Share(pulumi.CustomResource):
         things = databricks.get_tables(catalog_name="sandbox",
             schema_name="things")
         some = databricks.Share("some",
-            objects=[{
+            objects=[{"key": k, "value": v} for k, v in things.ids].apply(lambda entries: [{
                 "name": entry["value"],
-                "data_object_type": "TABLE",
-            } for entry in [{"key": k, "value": v} for k, v in things.ids]],
+                "dataObjectType": "TABLE",
+            } for entry in entries]),
             name="my_share")
         ```
 
@@ -454,10 +457,10 @@ class Share(pulumi.CustomResource):
         things = databricks.get_tables(catalog_name="sandbox",
             schema_name="things")
         some = databricks.Share("some",
-            objects=[{
+            objects=[{"key": k, "value": v} for k, v in things.ids].apply(lambda entries: [{
                 "name": entry["value"],
-                "data_object_type": "TABLE",
-            } for entry in [{"key": k, "value": v} for k, v in things.ids]],
+                "dataObjectType": "TABLE",
+            } for entry in entries]),
             name="my_share")
         ```
 

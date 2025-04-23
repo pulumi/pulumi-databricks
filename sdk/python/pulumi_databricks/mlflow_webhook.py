@@ -219,6 +219,9 @@ class _MlflowWebhookState:
 
 
 class MlflowWebhook(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/mlflowWebhook:MlflowWebhook"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

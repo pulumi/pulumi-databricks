@@ -256,6 +256,9 @@ class _MwsPrivateAccessSettingsState:
 
 
 class MwsPrivateAccessSettings(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

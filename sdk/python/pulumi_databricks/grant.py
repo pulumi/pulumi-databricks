@@ -416,6 +416,9 @@ class _GrantState:
 
 
 class Grant(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/grant:Grant"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

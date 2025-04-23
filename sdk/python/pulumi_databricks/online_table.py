@@ -148,6 +148,9 @@ class _OnlineTableState:
 
 
 class OnlineTable(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/onlineTable:OnlineTable"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

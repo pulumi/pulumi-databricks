@@ -199,6 +199,9 @@ class _SqlVisualizationState:
 
 
 class SqlVisualization(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/sqlVisualization:SqlVisualization"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
