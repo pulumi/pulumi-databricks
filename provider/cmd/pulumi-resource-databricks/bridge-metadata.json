@@ -4308,6 +4308,23 @@
                                                         "condition_task": {
                                                             "maxItemsOne": true
                                                         },
+                                                        "dashboard_task": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "subscription": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "subscribers": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "dbt_task": {
                                                             "maxItemsOne": true,
                                                             "elem": {
@@ -4353,6 +4370,23 @@
                                                                             "fields": {
                                                                                 "condition_task": {
                                                                                     "maxItemsOne": true
+                                                                                },
+                                                                                "dashboard_task": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "subscription": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "subscribers": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
                                                                                 },
                                                                                 "dbt_task": {
                                                                                     "maxItemsOne": true,
@@ -4523,6 +4557,19 @@
                                                                                 },
                                                                                 "pipeline_task": {
                                                                                     "maxItemsOne": true
+                                                                                },
+                                                                                "power_bi_task": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "power_bi_model": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "tables": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
                                                                                 },
                                                                                 "python_wheel_task": {
                                                                                     "maxItemsOne": true,
@@ -4762,6 +4809,19 @@
                                                         },
                                                         "pipeline_task": {
                                                             "maxItemsOne": true
+                                                        },
+                                                        "power_bi_task": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "power_bi_model": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "tables": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
                                                         },
                                                         "python_wheel_task": {
                                                             "maxItemsOne": true,
