@@ -123,7 +123,7 @@ public final class GetClusterClusterInfoSpec {
      * @return [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      * 
      */
-    private String sparkVersion;
+    private @Nullable String sparkVersion;
     /**
      * @return SSH public key contents that will be added to each Spark node in this cluster.
      * 
@@ -288,8 +288,8 @@ public final class GetClusterClusterInfoSpec {
      * @return [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      * 
      */
-    public String sparkVersion() {
-        return this.sparkVersion;
+    public Optional<String> sparkVersion() {
+        return Optional.ofNullable(this.sparkVersion);
     }
     /**
      * @return SSH public key contents that will be added to each Spark node in this cluster.
@@ -343,7 +343,7 @@ public final class GetClusterClusterInfoSpec {
         private @Nullable String singleUserName;
         private @Nullable Map<String,String> sparkConf;
         private @Nullable Map<String,String> sparkEnvVars;
-        private String sparkVersion;
+        private @Nullable String sparkVersion;
         private @Nullable List<String> sshPublicKeys;
         private @Nullable Boolean useMlRuntime;
         private @Nullable GetClusterClusterInfoSpecWorkloadType workloadType;
@@ -581,10 +581,8 @@ public final class GetClusterClusterInfoSpec {
             return this;
         }
         @CustomType.Setter
-        public Builder sparkVersion(String sparkVersion) {
-            if (sparkVersion == null) {
-              throw new MissingRequiredPropertyException("GetClusterClusterInfoSpec", "sparkVersion");
-            }
+        public Builder sparkVersion(@Nullable String sparkVersion) {
+
             this.sparkVersion = sparkVersion;
             return this;
         }

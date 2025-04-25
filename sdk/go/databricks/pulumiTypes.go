@@ -15136,13 +15136,14 @@ type JobEmailNotifications struct {
 	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
 	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-	//
-	// The following parameter is only available for the job level configuration.
 	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of emails to notify when the run fails.
 	OnFailures []string `pulumi:"onFailures"`
 	// (List) list of emails to notify when the run starts.
-	OnStarts                    []string `pulumi:"onStarts"`
+	OnStarts []string `pulumi:"onStarts"`
+	// (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+	//
+	// The following parameter is only available for the job level configuration.
 	OnStreamingBacklogExceededs []string `pulumi:"onStreamingBacklogExceededs"`
 	// (List) list of emails to notify when the run completes successfully.
 	OnSuccesses []string `pulumi:"onSuccesses"`
@@ -15163,13 +15164,14 @@ type JobEmailNotificationsArgs struct {
 	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
 	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-	//
-	// The following parameter is only available for the job level configuration.
 	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of emails to notify when the run fails.
 	OnFailures pulumi.StringArrayInput `pulumi:"onFailures"`
 	// (List) list of emails to notify when the run starts.
-	OnStarts                    pulumi.StringArrayInput `pulumi:"onStarts"`
+	OnStarts pulumi.StringArrayInput `pulumi:"onStarts"`
+	// (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+	//
+	// The following parameter is only available for the job level configuration.
 	OnStreamingBacklogExceededs pulumi.StringArrayInput `pulumi:"onStreamingBacklogExceededs"`
 	// (List) list of emails to notify when the run completes successfully.
 	OnSuccesses pulumi.StringArrayInput `pulumi:"onSuccesses"`
@@ -15258,8 +15260,6 @@ func (o JobEmailNotificationsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutpu
 }
 
 // (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-//
-// The following parameter is only available for the job level configuration.
 func (o JobEmailNotificationsOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobEmailNotifications) []string { return v.OnDurationWarningThresholdExceededs }).(pulumi.StringArrayOutput)
 }
@@ -15274,6 +15274,9 @@ func (o JobEmailNotificationsOutput) OnStarts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobEmailNotifications) []string { return v.OnStarts }).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+//
+// The following parameter is only available for the job level configuration.
 func (o JobEmailNotificationsOutput) OnStreamingBacklogExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobEmailNotifications) []string { return v.OnStreamingBacklogExceededs }).(pulumi.StringArrayOutput)
 }
@@ -15318,8 +15321,6 @@ func (o JobEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOu
 }
 
 // (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-//
-// The following parameter is only available for the job level configuration.
 func (o JobEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobEmailNotifications) []string {
 		if v == nil {
@@ -15349,6 +15350,9 @@ func (o JobEmailNotificationsPtrOutput) OnStarts() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+//
+// The following parameter is only available for the job level configuration.
 func (o JobEmailNotificationsPtrOutput) OnStreamingBacklogExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobEmailNotifications) []string {
 		if v == nil {
@@ -16573,7 +16577,7 @@ type JobJobClusterNewCluster struct {
 	SingleUserName *string                          `pulumi:"singleUserName"`
 	SparkConf      map[string]string                `pulumi:"sparkConf"`
 	SparkEnvVars   map[string]string                `pulumi:"sparkEnvVars"`
-	SparkVersion   string                           `pulumi:"sparkVersion"`
+	SparkVersion   *string                          `pulumi:"sparkVersion"`
 	SshPublicKeys  []string                         `pulumi:"sshPublicKeys"`
 	UseMlRuntime   *bool                            `pulumi:"useMlRuntime"`
 	// isn't supported
@@ -16622,7 +16626,7 @@ type JobJobClusterNewClusterArgs struct {
 	SingleUserName pulumi.StringPtrInput                    `pulumi:"singleUserName"`
 	SparkConf      pulumi.StringMapInput                    `pulumi:"sparkConf"`
 	SparkEnvVars   pulumi.StringMapInput                    `pulumi:"sparkEnvVars"`
-	SparkVersion   pulumi.StringInput                       `pulumi:"sparkVersion"`
+	SparkVersion   pulumi.StringPtrInput                    `pulumi:"sparkVersion"`
 	SshPublicKeys  pulumi.StringArrayInput                  `pulumi:"sshPublicKeys"`
 	UseMlRuntime   pulumi.BoolPtrInput                      `pulumi:"useMlRuntime"`
 	// isn't supported
@@ -16772,8 +16776,8 @@ func (o JobJobClusterNewClusterOutput) SparkEnvVars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobJobClusterNewCluster) map[string]string { return v.SparkEnvVars }).(pulumi.StringMapOutput)
 }
 
-func (o JobJobClusterNewClusterOutput) SparkVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v JobJobClusterNewCluster) string { return v.SparkVersion }).(pulumi.StringOutput)
+func (o JobJobClusterNewClusterOutput) SparkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobJobClusterNewCluster) *string { return v.SparkVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o JobJobClusterNewClusterOutput) SshPublicKeys() pulumi.StringArrayOutput {
@@ -21517,7 +21521,7 @@ type JobNewCluster struct {
 	SingleUserName *string                `pulumi:"singleUserName"`
 	SparkConf      map[string]string      `pulumi:"sparkConf"`
 	SparkEnvVars   map[string]string      `pulumi:"sparkEnvVars"`
-	SparkVersion   string                 `pulumi:"sparkVersion"`
+	SparkVersion   *string                `pulumi:"sparkVersion"`
 	SshPublicKeys  []string               `pulumi:"sshPublicKeys"`
 	UseMlRuntime   *bool                  `pulumi:"useMlRuntime"`
 	// isn't supported
@@ -21566,7 +21570,7 @@ type JobNewClusterArgs struct {
 	SingleUserName pulumi.StringPtrInput          `pulumi:"singleUserName"`
 	SparkConf      pulumi.StringMapInput          `pulumi:"sparkConf"`
 	SparkEnvVars   pulumi.StringMapInput          `pulumi:"sparkEnvVars"`
-	SparkVersion   pulumi.StringInput             `pulumi:"sparkVersion"`
+	SparkVersion   pulumi.StringPtrInput          `pulumi:"sparkVersion"`
 	SshPublicKeys  pulumi.StringArrayInput        `pulumi:"sshPublicKeys"`
 	UseMlRuntime   pulumi.BoolPtrInput            `pulumi:"useMlRuntime"`
 	// isn't supported
@@ -21767,8 +21771,8 @@ func (o JobNewClusterOutput) SparkEnvVars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobNewCluster) map[string]string { return v.SparkEnvVars }).(pulumi.StringMapOutput)
 }
 
-func (o JobNewClusterOutput) SparkVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v JobNewCluster) string { return v.SparkVersion }).(pulumi.StringOutput)
+func (o JobNewClusterOutput) SparkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobNewCluster) *string { return v.SparkVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o JobNewClusterOutput) SshPublicKeys() pulumi.StringArrayOutput {
@@ -22075,7 +22079,7 @@ func (o JobNewClusterPtrOutput) SparkVersion() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.SparkVersion
+		return v.SparkVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27933,9 +27937,11 @@ func (o JobSparkJarTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 type JobSparkPythonTask struct {
 	// (List) Command line parameters passed to the Python file.
 	Parameters []string `pulumi:"parameters"`
-	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
 	PythonFile string `pulumi:"pythonFile"`
-	// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+	// Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the pythonFile has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+	// * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+	// * `GIT`: The Python file is located in a remote Git repository.
 	Source *string `pulumi:"source"`
 }
 
@@ -27953,9 +27959,11 @@ type JobSparkPythonTaskInput interface {
 type JobSparkPythonTaskArgs struct {
 	// (List) Command line parameters passed to the Python file.
 	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
-	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
 	PythonFile pulumi.StringInput `pulumi:"pythonFile"`
-	// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+	// Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the pythonFile has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+	// * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+	// * `GIT`: The Python file is located in a remote Git repository.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
@@ -28041,12 +28049,14 @@ func (o JobSparkPythonTaskOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobSparkPythonTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
 }
 
-// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
 func (o JobSparkPythonTaskOutput) PythonFile() pulumi.StringOutput {
 	return o.ApplyT(func(v JobSparkPythonTask) string { return v.PythonFile }).(pulumi.StringOutput)
 }
 
-// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+// Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the pythonFile has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+// * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+// * `GIT`: The Python file is located in a remote Git repository.
 func (o JobSparkPythonTaskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobSparkPythonTask) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -28085,7 +28095,7 @@ func (o JobSparkPythonTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
 func (o JobSparkPythonTaskPtrOutput) PythonFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSparkPythonTask) *string {
 		if v == nil {
@@ -28095,7 +28105,9 @@ func (o JobSparkPythonTaskPtrOutput) PythonFile() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+// Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the pythonFile has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+// * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+// * `GIT`: The Python file is located in a remote Git repository.
 func (o JobSparkPythonTaskPtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSparkPythonTask) *string {
 		if v == nil {
@@ -28969,10 +28981,12 @@ func (o JobTaskConditionTaskPtrOutput) Right() pulumi.StringPtrOutput {
 }
 
 type JobTaskDashboardTask struct {
-	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
-	DashboardId  *string                           `pulumi:"dashboardId"`
+	// The identifier of the dashboard to refresh
+	DashboardId *string `pulumi:"dashboardId"`
+	// Represents a subscription configuration for scheduled dashboard snapshots.
 	Subscription *JobTaskDashboardTaskSubscription `pulumi:"subscription"`
-	WarehouseId  *string                           `pulumi:"warehouseId"`
+	// The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
+	WarehouseId *string `pulumi:"warehouseId"`
 }
 
 // JobTaskDashboardTaskInput is an input type that accepts JobTaskDashboardTaskArgs and JobTaskDashboardTaskOutput values.
@@ -28987,10 +29001,12 @@ type JobTaskDashboardTaskInput interface {
 }
 
 type JobTaskDashboardTaskArgs struct {
-	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
-	DashboardId  pulumi.StringPtrInput                    `pulumi:"dashboardId"`
+	// The identifier of the dashboard to refresh
+	DashboardId pulumi.StringPtrInput `pulumi:"dashboardId"`
+	// Represents a subscription configuration for scheduled dashboard snapshots.
 	Subscription JobTaskDashboardTaskSubscriptionPtrInput `pulumi:"subscription"`
-	WarehouseId  pulumi.StringPtrInput                    `pulumi:"warehouseId"`
+	// The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
+	WarehouseId pulumi.StringPtrInput `pulumi:"warehouseId"`
 }
 
 func (JobTaskDashboardTaskArgs) ElementType() reflect.Type {
@@ -29070,15 +29086,17 @@ func (o JobTaskDashboardTaskOutput) ToJobTaskDashboardTaskPtrOutputWithContext(c
 	}).(JobTaskDashboardTaskPtrOutput)
 }
 
-// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+// The identifier of the dashboard to refresh
 func (o JobTaskDashboardTaskOutput) DashboardId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskDashboardTask) *string { return v.DashboardId }).(pulumi.StringPtrOutput)
 }
 
+// Represents a subscription configuration for scheduled dashboard snapshots.
 func (o JobTaskDashboardTaskOutput) Subscription() JobTaskDashboardTaskSubscriptionPtrOutput {
 	return o.ApplyT(func(v JobTaskDashboardTask) *JobTaskDashboardTaskSubscription { return v.Subscription }).(JobTaskDashboardTaskSubscriptionPtrOutput)
 }
 
+// The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
 func (o JobTaskDashboardTaskOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskDashboardTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
 }
@@ -29107,7 +29125,7 @@ func (o JobTaskDashboardTaskPtrOutput) Elem() JobTaskDashboardTaskOutput {
 	}).(JobTaskDashboardTaskOutput)
 }
 
-// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+// The identifier of the dashboard to refresh
 func (o JobTaskDashboardTaskPtrOutput) DashboardId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskDashboardTask) *string {
 		if v == nil {
@@ -29117,6 +29135,7 @@ func (o JobTaskDashboardTaskPtrOutput) DashboardId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents a subscription configuration for scheduled dashboard snapshots.
 func (o JobTaskDashboardTaskPtrOutput) Subscription() JobTaskDashboardTaskSubscriptionPtrOutput {
 	return o.ApplyT(func(v *JobTaskDashboardTask) *JobTaskDashboardTaskSubscription {
 		if v == nil {
@@ -29126,6 +29145,7 @@ func (o JobTaskDashboardTaskPtrOutput) Subscription() JobTaskDashboardTaskSubscr
 	}).(JobTaskDashboardTaskSubscriptionPtrOutput)
 }
 
+// The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
 func (o JobTaskDashboardTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskDashboardTask) *string {
 		if v == nil {
@@ -29136,10 +29156,12 @@ func (o JobTaskDashboardTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 }
 
 type JobTaskDashboardTaskSubscription struct {
-	// string specifying a custom subject of email sent.
-	CustomSubject *string                                      `pulumi:"customSubject"`
-	Paused        *bool                                        `pulumi:"paused"`
-	Subscribers   []JobTaskDashboardTaskSubscriptionSubscriber `pulumi:"subscribers"`
+	// Allows users to specify a custom subject line on the email sent to subscribers.
+	CustomSubject *string `pulumi:"customSubject"`
+	// When true, the subscription will not send emails.
+	Paused *bool `pulumi:"paused"`
+	// The list of subscribers to send the snapshot of the dashboard to.
+	Subscribers []JobTaskDashboardTaskSubscriptionSubscriber `pulumi:"subscribers"`
 }
 
 // JobTaskDashboardTaskSubscriptionInput is an input type that accepts JobTaskDashboardTaskSubscriptionArgs and JobTaskDashboardTaskSubscriptionOutput values.
@@ -29154,10 +29176,12 @@ type JobTaskDashboardTaskSubscriptionInput interface {
 }
 
 type JobTaskDashboardTaskSubscriptionArgs struct {
-	// string specifying a custom subject of email sent.
-	CustomSubject pulumi.StringPtrInput                                `pulumi:"customSubject"`
-	Paused        pulumi.BoolPtrInput                                  `pulumi:"paused"`
-	Subscribers   JobTaskDashboardTaskSubscriptionSubscriberArrayInput `pulumi:"subscribers"`
+	// Allows users to specify a custom subject line on the email sent to subscribers.
+	CustomSubject pulumi.StringPtrInput `pulumi:"customSubject"`
+	// When true, the subscription will not send emails.
+	Paused pulumi.BoolPtrInput `pulumi:"paused"`
+	// The list of subscribers to send the snapshot of the dashboard to.
+	Subscribers JobTaskDashboardTaskSubscriptionSubscriberArrayInput `pulumi:"subscribers"`
 }
 
 func (JobTaskDashboardTaskSubscriptionArgs) ElementType() reflect.Type {
@@ -29237,15 +29261,17 @@ func (o JobTaskDashboardTaskSubscriptionOutput) ToJobTaskDashboardTaskSubscripti
 	}).(JobTaskDashboardTaskSubscriptionPtrOutput)
 }
 
-// string specifying a custom subject of email sent.
+// Allows users to specify a custom subject line on the email sent to subscribers.
 func (o JobTaskDashboardTaskSubscriptionOutput) CustomSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskDashboardTaskSubscription) *string { return v.CustomSubject }).(pulumi.StringPtrOutput)
 }
 
+// When true, the subscription will not send emails.
 func (o JobTaskDashboardTaskSubscriptionOutput) Paused() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTaskDashboardTaskSubscription) *bool { return v.Paused }).(pulumi.BoolPtrOutput)
 }
 
+// The list of subscribers to send the snapshot of the dashboard to.
 func (o JobTaskDashboardTaskSubscriptionOutput) Subscribers() JobTaskDashboardTaskSubscriptionSubscriberArrayOutput {
 	return o.ApplyT(func(v JobTaskDashboardTaskSubscription) []JobTaskDashboardTaskSubscriptionSubscriber {
 		return v.Subscribers
@@ -29276,7 +29302,7 @@ func (o JobTaskDashboardTaskSubscriptionPtrOutput) Elem() JobTaskDashboardTaskSu
 	}).(JobTaskDashboardTaskSubscriptionOutput)
 }
 
-// string specifying a custom subject of email sent.
+// Allows users to specify a custom subject line on the email sent to subscribers.
 func (o JobTaskDashboardTaskSubscriptionPtrOutput) CustomSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskDashboardTaskSubscription) *string {
 		if v == nil {
@@ -29286,6 +29312,7 @@ func (o JobTaskDashboardTaskSubscriptionPtrOutput) CustomSubject() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// When true, the subscription will not send emails.
 func (o JobTaskDashboardTaskSubscriptionPtrOutput) Paused() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobTaskDashboardTaskSubscription) *bool {
 		if v == nil {
@@ -29295,6 +29322,7 @@ func (o JobTaskDashboardTaskSubscriptionPtrOutput) Paused() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The list of subscribers to send the snapshot of the dashboard to.
 func (o JobTaskDashboardTaskSubscriptionPtrOutput) Subscribers() JobTaskDashboardTaskSubscriptionSubscriberArrayOutput {
 	return o.ApplyT(func(v *JobTaskDashboardTaskSubscription) []JobTaskDashboardTaskSubscriptionSubscriber {
 		if v == nil {
@@ -29305,8 +29333,9 @@ func (o JobTaskDashboardTaskSubscriptionPtrOutput) Subscribers() JobTaskDashboar
 }
 
 type JobTaskDashboardTaskSubscriptionSubscriber struct {
+	// A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
 	DestinationId *string `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
+	// A snapshot of the dashboard will be sent to the user's email when the `userName` field is present.
 	UserName *string `pulumi:"userName"`
 }
 
@@ -29322,8 +29351,9 @@ type JobTaskDashboardTaskSubscriptionSubscriberInput interface {
 }
 
 type JobTaskDashboardTaskSubscriptionSubscriberArgs struct {
+	// A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
 	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
+	// A snapshot of the dashboard will be sent to the user's email when the `userName` field is present.
 	UserName pulumi.StringPtrInput `pulumi:"userName"`
 }
 
@@ -29378,11 +29408,12 @@ func (o JobTaskDashboardTaskSubscriptionSubscriberOutput) ToJobTaskDashboardTask
 	return o
 }
 
+// A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
 func (o JobTaskDashboardTaskSubscriptionSubscriberOutput) DestinationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskDashboardTaskSubscriptionSubscriber) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
 }
 
-// The email of an active workspace user. Non-admin users can only set this field to their own email.
+// A snapshot of the dashboard will be sent to the user's email when the `userName` field is present.
 func (o JobTaskDashboardTaskSubscriptionSubscriberOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskDashboardTaskSubscriptionSubscriber) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
@@ -29790,13 +29821,14 @@ type JobTaskEmailNotifications struct {
 	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
 	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-	//
-	// The following parameter is only available for the job level configuration.
 	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of emails to notify when the run fails.
 	OnFailures []string `pulumi:"onFailures"`
 	// (List) list of emails to notify when the run starts.
-	OnStarts                    []string `pulumi:"onStarts"`
+	OnStarts []string `pulumi:"onStarts"`
+	// (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+	//
+	// The following parameter is only available for the job level configuration.
 	OnStreamingBacklogExceededs []string `pulumi:"onStreamingBacklogExceededs"`
 	// (List) list of emails to notify when the run completes successfully.
 	OnSuccesses []string `pulumi:"onSuccesses"`
@@ -29817,13 +29849,14 @@ type JobTaskEmailNotificationsArgs struct {
 	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
 	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-	//
-	// The following parameter is only available for the job level configuration.
 	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of emails to notify when the run fails.
 	OnFailures pulumi.StringArrayInput `pulumi:"onFailures"`
 	// (List) list of emails to notify when the run starts.
-	OnStarts                    pulumi.StringArrayInput `pulumi:"onStarts"`
+	OnStarts pulumi.StringArrayInput `pulumi:"onStarts"`
+	// (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+	//
+	// The following parameter is only available for the job level configuration.
 	OnStreamingBacklogExceededs pulumi.StringArrayInput `pulumi:"onStreamingBacklogExceededs"`
 	// (List) list of emails to notify when the run completes successfully.
 	OnSuccesses pulumi.StringArrayInput `pulumi:"onSuccesses"`
@@ -29912,8 +29945,6 @@ func (o JobTaskEmailNotificationsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrO
 }
 
 // (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-//
-// The following parameter is only available for the job level configuration.
 func (o JobTaskEmailNotificationsOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskEmailNotifications) []string { return v.OnDurationWarningThresholdExceededs }).(pulumi.StringArrayOutput)
 }
@@ -29928,6 +29959,9 @@ func (o JobTaskEmailNotificationsOutput) OnStarts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskEmailNotifications) []string { return v.OnStarts }).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+//
+// The following parameter is only available for the job level configuration.
 func (o JobTaskEmailNotificationsOutput) OnStreamingBacklogExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskEmailNotifications) []string { return v.OnStreamingBacklogExceededs }).(pulumi.StringArrayOutput)
 }
@@ -29972,8 +30006,6 @@ func (o JobTaskEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolP
 }
 
 // (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-//
-// The following parameter is only available for the job level configuration.
 func (o JobTaskEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskEmailNotifications) []string {
 		if v == nil {
@@ -30003,6 +30035,9 @@ func (o JobTaskEmailNotificationsPtrOutput) OnStarts() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+//
+// The following parameter is only available for the job level configuration.
 func (o JobTaskEmailNotificationsPtrOutput) OnStreamingBacklogExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskEmailNotifications) []string {
 		if v == nil {
@@ -31265,10 +31300,12 @@ func (o JobTaskForEachTaskTaskConditionTaskPtrOutput) Right() pulumi.StringPtrOu
 }
 
 type JobTaskForEachTaskTaskDashboardTask struct {
-	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
-	DashboardId  *string                                          `pulumi:"dashboardId"`
+	// The identifier of the dashboard to refresh
+	DashboardId *string `pulumi:"dashboardId"`
+	// Represents a subscription configuration for scheduled dashboard snapshots.
 	Subscription *JobTaskForEachTaskTaskDashboardTaskSubscription `pulumi:"subscription"`
-	WarehouseId  *string                                          `pulumi:"warehouseId"`
+	// The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
+	WarehouseId *string `pulumi:"warehouseId"`
 }
 
 // JobTaskForEachTaskTaskDashboardTaskInput is an input type that accepts JobTaskForEachTaskTaskDashboardTaskArgs and JobTaskForEachTaskTaskDashboardTaskOutput values.
@@ -31283,10 +31320,12 @@ type JobTaskForEachTaskTaskDashboardTaskInput interface {
 }
 
 type JobTaskForEachTaskTaskDashboardTaskArgs struct {
-	// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
-	DashboardId  pulumi.StringPtrInput                                   `pulumi:"dashboardId"`
+	// The identifier of the dashboard to refresh
+	DashboardId pulumi.StringPtrInput `pulumi:"dashboardId"`
+	// Represents a subscription configuration for scheduled dashboard snapshots.
 	Subscription JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrInput `pulumi:"subscription"`
-	WarehouseId  pulumi.StringPtrInput                                   `pulumi:"warehouseId"`
+	// The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
+	WarehouseId pulumi.StringPtrInput `pulumi:"warehouseId"`
 }
 
 func (JobTaskForEachTaskTaskDashboardTaskArgs) ElementType() reflect.Type {
@@ -31366,17 +31405,19 @@ func (o JobTaskForEachTaskTaskDashboardTaskOutput) ToJobTaskForEachTaskTaskDashb
 	}).(JobTaskForEachTaskTaskDashboardTaskPtrOutput)
 }
 
-// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+// The identifier of the dashboard to refresh
 func (o JobTaskForEachTaskTaskDashboardTaskOutput) DashboardId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTask) *string { return v.DashboardId }).(pulumi.StringPtrOutput)
 }
 
+// Represents a subscription configuration for scheduled dashboard snapshots.
 func (o JobTaskForEachTaskTaskDashboardTaskOutput) Subscription() JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTask) *JobTaskForEachTaskTaskDashboardTaskSubscription {
 		return v.Subscription
 	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput)
 }
 
+// The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
 func (o JobTaskForEachTaskTaskDashboardTaskOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
 }
@@ -31405,7 +31446,7 @@ func (o JobTaskForEachTaskTaskDashboardTaskPtrOutput) Elem() JobTaskForEachTaskT
 	}).(JobTaskForEachTaskTaskDashboardTaskOutput)
 }
 
-// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+// The identifier of the dashboard to refresh
 func (o JobTaskForEachTaskTaskDashboardTaskPtrOutput) DashboardId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTask) *string {
 		if v == nil {
@@ -31415,6 +31456,7 @@ func (o JobTaskForEachTaskTaskDashboardTaskPtrOutput) DashboardId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents a subscription configuration for scheduled dashboard snapshots.
 func (o JobTaskForEachTaskTaskDashboardTaskPtrOutput) Subscription() JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTask) *JobTaskForEachTaskTaskDashboardTaskSubscription {
 		if v == nil {
@@ -31424,6 +31466,7 @@ func (o JobTaskForEachTaskTaskDashboardTaskPtrOutput) Subscription() JobTaskForE
 	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput)
 }
 
+// The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
 func (o JobTaskForEachTaskTaskDashboardTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTask) *string {
 		if v == nil {
@@ -31434,10 +31477,12 @@ func (o JobTaskForEachTaskTaskDashboardTaskPtrOutput) WarehouseId() pulumi.Strin
 }
 
 type JobTaskForEachTaskTaskDashboardTaskSubscription struct {
-	// string specifying a custom subject of email sent.
-	CustomSubject *string                                                     `pulumi:"customSubject"`
-	Paused        *bool                                                       `pulumi:"paused"`
-	Subscribers   []JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber `pulumi:"subscribers"`
+	// Allows users to specify a custom subject line on the email sent to subscribers.
+	CustomSubject *string `pulumi:"customSubject"`
+	// When true, the subscription will not send emails.
+	Paused *bool `pulumi:"paused"`
+	// The list of subscribers to send the snapshot of the dashboard to.
+	Subscribers []JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber `pulumi:"subscribers"`
 }
 
 // JobTaskForEachTaskTaskDashboardTaskSubscriptionInput is an input type that accepts JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs and JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput values.
@@ -31452,10 +31497,12 @@ type JobTaskForEachTaskTaskDashboardTaskSubscriptionInput interface {
 }
 
 type JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs struct {
-	// string specifying a custom subject of email sent.
-	CustomSubject pulumi.StringPtrInput                                               `pulumi:"customSubject"`
-	Paused        pulumi.BoolPtrInput                                                 `pulumi:"paused"`
-	Subscribers   JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayInput `pulumi:"subscribers"`
+	// Allows users to specify a custom subject line on the email sent to subscribers.
+	CustomSubject pulumi.StringPtrInput `pulumi:"customSubject"`
+	// When true, the subscription will not send emails.
+	Paused pulumi.BoolPtrInput `pulumi:"paused"`
+	// The list of subscribers to send the snapshot of the dashboard to.
+	Subscribers JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayInput `pulumi:"subscribers"`
 }
 
 func (JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs) ElementType() reflect.Type {
@@ -31535,15 +31582,17 @@ func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput) ToJobTaskForEachT
 	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput)
 }
 
-// string specifying a custom subject of email sent.
+// Allows users to specify a custom subject line on the email sent to subscribers.
 func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput) CustomSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscription) *string { return v.CustomSubject }).(pulumi.StringPtrOutput)
 }
 
+// When true, the subscription will not send emails.
 func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput) Paused() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscription) *bool { return v.Paused }).(pulumi.BoolPtrOutput)
 }
 
+// The list of subscribers to send the snapshot of the dashboard to.
 func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput) Subscribers() JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscription) []JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber {
 		return v.Subscribers
@@ -31574,7 +31623,7 @@ func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput) Elem() JobTask
 	}).(JobTaskForEachTaskTaskDashboardTaskSubscriptionOutput)
 }
 
-// string specifying a custom subject of email sent.
+// Allows users to specify a custom subject line on the email sent to subscribers.
 func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput) CustomSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscription) *string {
 		if v == nil {
@@ -31584,6 +31633,7 @@ func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput) CustomSubject(
 	}).(pulumi.StringPtrOutput)
 }
 
+// When true, the subscription will not send emails.
 func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput) Paused() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscription) *bool {
 		if v == nil {
@@ -31593,6 +31643,7 @@ func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput) Paused() pulum
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The list of subscribers to send the snapshot of the dashboard to.
 func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput) Subscribers() JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArrayOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskDashboardTaskSubscription) []JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber {
 		if v == nil {
@@ -31603,8 +31654,9 @@ func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionPtrOutput) Subscribers() 
 }
 
 type JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber struct {
+	// A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
 	DestinationId *string `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
+	// A snapshot of the dashboard will be sent to the user's email when the `userName` field is present.
 	UserName *string `pulumi:"userName"`
 }
 
@@ -31620,8 +31672,9 @@ type JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberInput interface {
 }
 
 type JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs struct {
+	// A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
 	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
+	// A snapshot of the dashboard will be sent to the user's email when the `userName` field is present.
 	UserName pulumi.StringPtrInput `pulumi:"userName"`
 }
 
@@ -31676,11 +31729,12 @@ func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput) ToJobTa
 	return o
 }
 
+// A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
 func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput) DestinationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
 }
 
-// The email of an active workspace user. Non-admin users can only set this field to their own email.
+// A snapshot of the dashboard will be sent to the user's email when the `userName` field is present.
 func (o JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
@@ -32088,13 +32142,14 @@ type JobTaskForEachTaskTaskEmailNotifications struct {
 	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
 	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-	//
-	// The following parameter is only available for the job level configuration.
 	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of emails to notify when the run fails.
 	OnFailures []string `pulumi:"onFailures"`
 	// (List) list of emails to notify when the run starts.
-	OnStarts                    []string `pulumi:"onStarts"`
+	OnStarts []string `pulumi:"onStarts"`
+	// (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+	//
+	// The following parameter is only available for the job level configuration.
 	OnStreamingBacklogExceededs []string `pulumi:"onStreamingBacklogExceededs"`
 	// (List) list of emails to notify when the run completes successfully.
 	OnSuccesses []string `pulumi:"onSuccesses"`
@@ -32115,13 +32170,14 @@ type JobTaskForEachTaskTaskEmailNotificationsArgs struct {
 	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
 	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-	//
-	// The following parameter is only available for the job level configuration.
 	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of emails to notify when the run fails.
 	OnFailures pulumi.StringArrayInput `pulumi:"onFailures"`
 	// (List) list of emails to notify when the run starts.
-	OnStarts                    pulumi.StringArrayInput `pulumi:"onStarts"`
+	OnStarts pulumi.StringArrayInput `pulumi:"onStarts"`
+	// (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+	//
+	// The following parameter is only available for the job level configuration.
 	OnStreamingBacklogExceededs pulumi.StringArrayInput `pulumi:"onStreamingBacklogExceededs"`
 	// (List) list of emails to notify when the run completes successfully.
 	OnSuccesses pulumi.StringArrayInput `pulumi:"onSuccesses"`
@@ -32210,8 +32266,6 @@ func (o JobTaskForEachTaskTaskEmailNotificationsOutput) NoAlertForSkippedRuns() 
 }
 
 // (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-//
-// The following parameter is only available for the job level configuration.
 func (o JobTaskForEachTaskTaskEmailNotificationsOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskEmailNotifications) []string {
 		return v.OnDurationWarningThresholdExceededs
@@ -32228,6 +32282,9 @@ func (o JobTaskForEachTaskTaskEmailNotificationsOutput) OnStarts() pulumi.String
 	return o.ApplyT(func(v JobTaskForEachTaskTaskEmailNotifications) []string { return v.OnStarts }).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+//
+// The following parameter is only available for the job level configuration.
 func (o JobTaskForEachTaskTaskEmailNotificationsOutput) OnStreamingBacklogExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskEmailNotifications) []string { return v.OnStreamingBacklogExceededs }).(pulumi.StringArrayOutput)
 }
@@ -32272,8 +32329,6 @@ func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) NoAlertForSkippedRuns
 }
 
 // (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-//
-// The following parameter is only available for the job level configuration.
 func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskEmailNotifications) []string {
 		if v == nil {
@@ -32303,6 +32358,9 @@ func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) OnStarts() pulumi.Str
 	}).(pulumi.StringArrayOutput)
 }
 
+// (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+//
+// The following parameter is only available for the job level configuration.
 func (o JobTaskForEachTaskTaskEmailNotificationsPtrOutput) OnStreamingBacklogExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskEmailNotifications) []string {
 		if v == nil {
@@ -33597,7 +33655,7 @@ type JobTaskForEachTaskTaskNewCluster struct {
 	SingleUserName *string                                   `pulumi:"singleUserName"`
 	SparkConf      map[string]string                         `pulumi:"sparkConf"`
 	SparkEnvVars   map[string]string                         `pulumi:"sparkEnvVars"`
-	SparkVersion   string                                    `pulumi:"sparkVersion"`
+	SparkVersion   *string                                   `pulumi:"sparkVersion"`
 	SshPublicKeys  []string                                  `pulumi:"sshPublicKeys"`
 	UseMlRuntime   *bool                                     `pulumi:"useMlRuntime"`
 	// isn't supported
@@ -33646,7 +33704,7 @@ type JobTaskForEachTaskTaskNewClusterArgs struct {
 	SingleUserName pulumi.StringPtrInput                             `pulumi:"singleUserName"`
 	SparkConf      pulumi.StringMapInput                             `pulumi:"sparkConf"`
 	SparkEnvVars   pulumi.StringMapInput                             `pulumi:"sparkEnvVars"`
-	SparkVersion   pulumi.StringInput                                `pulumi:"sparkVersion"`
+	SparkVersion   pulumi.StringPtrInput                             `pulumi:"sparkVersion"`
 	SshPublicKeys  pulumi.StringArrayInput                           `pulumi:"sshPublicKeys"`
 	UseMlRuntime   pulumi.BoolPtrInput                               `pulumi:"useMlRuntime"`
 	// isn't supported
@@ -33863,8 +33921,8 @@ func (o JobTaskForEachTaskTaskNewClusterOutput) SparkEnvVars() pulumi.StringMapO
 	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) map[string]string { return v.SparkEnvVars }).(pulumi.StringMapOutput)
 }
 
-func (o JobTaskForEachTaskTaskNewClusterOutput) SparkVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) string { return v.SparkVersion }).(pulumi.StringOutput)
+func (o JobTaskForEachTaskTaskNewClusterOutput) SparkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskNewCluster) *string { return v.SparkVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o JobTaskForEachTaskTaskNewClusterOutput) SshPublicKeys() pulumi.StringArrayOutput {
@@ -34173,7 +34231,7 @@ func (o JobTaskForEachTaskTaskNewClusterPtrOutput) SparkVersion() pulumi.StringP
 		if v == nil {
 			return nil
 		}
-		return &v.SparkVersion
+		return v.SparkVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -38879,11 +38937,16 @@ func (o JobTaskForEachTaskTaskPipelineTaskPtrOutput) PipelineId() pulumi.StringP
 }
 
 type JobTaskForEachTaskTaskPowerBiTask struct {
-	ConnectionResourceName *string                                        `pulumi:"connectionResourceName"`
-	PowerBiModel           *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel `pulumi:"powerBiModel"`
-	RefreshAfterUpdate     *bool                                          `pulumi:"refreshAfterUpdate"`
-	Tables                 []JobTaskForEachTaskTaskPowerBiTaskTable       `pulumi:"tables"`
-	WarehouseId            *string                                        `pulumi:"warehouseId"`
+	// The resource name of the UC connection to authenticate from Databricks to Power BI
+	ConnectionResourceName *string `pulumi:"connectionResourceName"`
+	// The semantic model to update. Block consists of following fields:
+	PowerBiModel *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel `pulumi:"powerBiModel"`
+	// Whether the model should be refreshed after the update. Default is false
+	RefreshAfterUpdate *bool `pulumi:"refreshAfterUpdate"`
+	// The tables to be exported to Power BI. Block consists of following fields:
+	Tables []JobTaskForEachTaskTaskPowerBiTaskTable `pulumi:"tables"`
+	// The SQL warehouse ID to use as the Power BI data source
+	WarehouseId *string `pulumi:"warehouseId"`
 }
 
 // JobTaskForEachTaskTaskPowerBiTaskInput is an input type that accepts JobTaskForEachTaskTaskPowerBiTaskArgs and JobTaskForEachTaskTaskPowerBiTaskOutput values.
@@ -38898,11 +38961,16 @@ type JobTaskForEachTaskTaskPowerBiTaskInput interface {
 }
 
 type JobTaskForEachTaskTaskPowerBiTaskArgs struct {
-	ConnectionResourceName pulumi.StringPtrInput                                 `pulumi:"connectionResourceName"`
-	PowerBiModel           JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrInput `pulumi:"powerBiModel"`
-	RefreshAfterUpdate     pulumi.BoolPtrInput                                   `pulumi:"refreshAfterUpdate"`
-	Tables                 JobTaskForEachTaskTaskPowerBiTaskTableArrayInput      `pulumi:"tables"`
-	WarehouseId            pulumi.StringPtrInput                                 `pulumi:"warehouseId"`
+	// The resource name of the UC connection to authenticate from Databricks to Power BI
+	ConnectionResourceName pulumi.StringPtrInput `pulumi:"connectionResourceName"`
+	// The semantic model to update. Block consists of following fields:
+	PowerBiModel JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrInput `pulumi:"powerBiModel"`
+	// Whether the model should be refreshed after the update. Default is false
+	RefreshAfterUpdate pulumi.BoolPtrInput `pulumi:"refreshAfterUpdate"`
+	// The tables to be exported to Power BI. Block consists of following fields:
+	Tables JobTaskForEachTaskTaskPowerBiTaskTableArrayInput `pulumi:"tables"`
+	// The SQL warehouse ID to use as the Power BI data source
+	WarehouseId pulumi.StringPtrInput `pulumi:"warehouseId"`
 }
 
 func (JobTaskForEachTaskTaskPowerBiTaskArgs) ElementType() reflect.Type {
@@ -38982,24 +39050,29 @@ func (o JobTaskForEachTaskTaskPowerBiTaskOutput) ToJobTaskForEachTaskTaskPowerBi
 	}).(JobTaskForEachTaskTaskPowerBiTaskPtrOutput)
 }
 
+// The resource name of the UC connection to authenticate from Databricks to Power BI
 func (o JobTaskForEachTaskTaskPowerBiTaskOutput) ConnectionResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTask) *string { return v.ConnectionResourceName }).(pulumi.StringPtrOutput)
 }
 
+// The semantic model to update. Block consists of following fields:
 func (o JobTaskForEachTaskTaskPowerBiTaskOutput) PowerBiModel() JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTask) *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel {
 		return v.PowerBiModel
 	}).(JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput)
 }
 
+// Whether the model should be refreshed after the update. Default is false
 func (o JobTaskForEachTaskTaskPowerBiTaskOutput) RefreshAfterUpdate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTask) *bool { return v.RefreshAfterUpdate }).(pulumi.BoolPtrOutput)
 }
 
+// The tables to be exported to Power BI. Block consists of following fields:
 func (o JobTaskForEachTaskTaskPowerBiTaskOutput) Tables() JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTask) []JobTaskForEachTaskTaskPowerBiTaskTable { return v.Tables }).(JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput)
 }
 
+// The SQL warehouse ID to use as the Power BI data source
 func (o JobTaskForEachTaskTaskPowerBiTaskOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
 }
@@ -39028,6 +39101,7 @@ func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) Elem() JobTaskForEachTaskTas
 	}).(JobTaskForEachTaskTaskPowerBiTaskOutput)
 }
 
+// The resource name of the UC connection to authenticate from Databricks to Power BI
 func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) ConnectionResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTask) *string {
 		if v == nil {
@@ -39037,6 +39111,7 @@ func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) ConnectionResourceName() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// The semantic model to update. Block consists of following fields:
 func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) PowerBiModel() JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTask) *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel {
 		if v == nil {
@@ -39046,6 +39121,7 @@ func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) PowerBiModel() JobTaskForEac
 	}).(JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput)
 }
 
+// Whether the model should be refreshed after the update. Default is false
 func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) RefreshAfterUpdate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTask) *bool {
 		if v == nil {
@@ -39055,6 +39131,7 @@ func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) RefreshAfterUpdate() pulumi.
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The tables to be exported to Power BI. Block consists of following fields:
 func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) Tables() JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTask) []JobTaskForEachTaskTaskPowerBiTaskTable {
 		if v == nil {
@@ -39064,6 +39141,7 @@ func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) Tables() JobTaskForEachTaskT
 	}).(JobTaskForEachTaskTaskPowerBiTaskTableArrayOutput)
 }
 
+// The SQL warehouse ID to use as the Power BI data source
 func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTask) *string {
 		if v == nil {
@@ -39074,11 +39152,16 @@ func (o JobTaskForEachTaskTaskPowerBiTaskPtrOutput) WarehouseId() pulumi.StringP
 }
 
 type JobTaskForEachTaskTaskPowerBiTaskPowerBiModel struct {
+	// How the published Power BI model authenticates to Databricks
 	AuthenticationMethod *string `pulumi:"authenticationMethod"`
-	ModelName            *string `pulumi:"modelName"`
-	OverwriteExisting    *bool   `pulumi:"overwriteExisting"`
-	StorageMode          *string `pulumi:"storageMode"`
-	WorkspaceName        *string `pulumi:"workspaceName"`
+	// The name of the Power BI model
+	ModelName *string `pulumi:"modelName"`
+	// Whether to overwrite existing Power BI models. Default is false
+	OverwriteExisting *bool `pulumi:"overwriteExisting"`
+	// The default storage mode of the Power BI model
+	StorageMode *string `pulumi:"storageMode"`
+	// The name of the Power BI workspace of the model
+	WorkspaceName *string `pulumi:"workspaceName"`
 }
 
 // JobTaskForEachTaskTaskPowerBiTaskPowerBiModelInput is an input type that accepts JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs and JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput values.
@@ -39093,11 +39176,16 @@ type JobTaskForEachTaskTaskPowerBiTaskPowerBiModelInput interface {
 }
 
 type JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs struct {
+	// How the published Power BI model authenticates to Databricks
 	AuthenticationMethod pulumi.StringPtrInput `pulumi:"authenticationMethod"`
-	ModelName            pulumi.StringPtrInput `pulumi:"modelName"`
-	OverwriteExisting    pulumi.BoolPtrInput   `pulumi:"overwriteExisting"`
-	StorageMode          pulumi.StringPtrInput `pulumi:"storageMode"`
-	WorkspaceName        pulumi.StringPtrInput `pulumi:"workspaceName"`
+	// The name of the Power BI model
+	ModelName pulumi.StringPtrInput `pulumi:"modelName"`
+	// Whether to overwrite existing Power BI models. Default is false
+	OverwriteExisting pulumi.BoolPtrInput `pulumi:"overwriteExisting"`
+	// The default storage mode of the Power BI model
+	StorageMode pulumi.StringPtrInput `pulumi:"storageMode"`
+	// The name of the Power BI workspace of the model
+	WorkspaceName pulumi.StringPtrInput `pulumi:"workspaceName"`
 }
 
 func (JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs) ElementType() reflect.Type {
@@ -39177,22 +39265,27 @@ func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput) ToJobTaskForEachTas
 	}).(JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput)
 }
 
+// How the published Power BI model authenticates to Databricks
 func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput) AuthenticationMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *string { return v.AuthenticationMethod }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Power BI model
 func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput) ModelName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *string { return v.ModelName }).(pulumi.StringPtrOutput)
 }
 
+// Whether to overwrite existing Power BI models. Default is false
 func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput) OverwriteExisting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *bool { return v.OverwriteExisting }).(pulumi.BoolPtrOutput)
 }
 
+// The default storage mode of the Power BI model
 func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput) StorageMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *string { return v.StorageMode }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Power BI workspace of the model
 func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput) WorkspaceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
 }
@@ -39221,6 +39314,7 @@ func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) Elem() JobTaskFo
 	}).(JobTaskForEachTaskTaskPowerBiTaskPowerBiModelOutput)
 }
 
+// How the published Power BI model authenticates to Databricks
 func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) AuthenticationMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *string {
 		if v == nil {
@@ -39230,6 +39324,7 @@ func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) AuthenticationMe
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the Power BI model
 func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) ModelName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *string {
 		if v == nil {
@@ -39239,6 +39334,7 @@ func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) ModelName() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to overwrite existing Power BI models. Default is false
 func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) OverwriteExisting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *bool {
 		if v == nil {
@@ -39248,6 +39344,7 @@ func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) OverwriteExistin
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The default storage mode of the Power BI model
 func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) StorageMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *string {
 		if v == nil {
@@ -39257,6 +39354,7 @@ func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) StorageMode() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the Power BI workspace of the model
 func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskPowerBiTaskPowerBiModel) *string {
 		if v == nil {
@@ -39267,12 +39365,13 @@ func (o JobTaskForEachTaskTaskPowerBiTaskPowerBiModelPtrOutput) WorkspaceName() 
 }
 
 type JobTaskForEachTaskTaskPowerBiTaskTable struct {
-	// The name of the catalog to use inside Unity Catalog.
+	// The catalog name in Databricks
 	Catalog *string `pulumi:"catalog"`
-	// An optional name for the job. The default value is Untitled.
+	// The table name in Databricks. If empty, all tables under the schema are selected.
 	Name *string `pulumi:"name"`
-	// The name of the schema dbt should run in. Defaults to `default`.
-	Schema      *string `pulumi:"schema"`
+	// The schema name in Databricks
+	Schema *string `pulumi:"schema"`
+	// The Power BI storage mode of the table
 	StorageMode *string `pulumi:"storageMode"`
 }
 
@@ -39288,12 +39387,13 @@ type JobTaskForEachTaskTaskPowerBiTaskTableInput interface {
 }
 
 type JobTaskForEachTaskTaskPowerBiTaskTableArgs struct {
-	// The name of the catalog to use inside Unity Catalog.
+	// The catalog name in Databricks
 	Catalog pulumi.StringPtrInput `pulumi:"catalog"`
-	// An optional name for the job. The default value is Untitled.
+	// The table name in Databricks. If empty, all tables under the schema are selected.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The name of the schema dbt should run in. Defaults to `default`.
-	Schema      pulumi.StringPtrInput `pulumi:"schema"`
+	// The schema name in Databricks
+	Schema pulumi.StringPtrInput `pulumi:"schema"`
+	// The Power BI storage mode of the table
 	StorageMode pulumi.StringPtrInput `pulumi:"storageMode"`
 }
 
@@ -39348,21 +39448,22 @@ func (o JobTaskForEachTaskTaskPowerBiTaskTableOutput) ToJobTaskForEachTaskTaskPo
 	return o
 }
 
-// The name of the catalog to use inside Unity Catalog.
+// The catalog name in Databricks
 func (o JobTaskForEachTaskTaskPowerBiTaskTableOutput) Catalog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTaskTable) *string { return v.Catalog }).(pulumi.StringPtrOutput)
 }
 
-// An optional name for the job. The default value is Untitled.
+// The table name in Databricks. If empty, all tables under the schema are selected.
 func (o JobTaskForEachTaskTaskPowerBiTaskTableOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTaskTable) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The name of the schema dbt should run in. Defaults to `default`.
+// The schema name in Databricks
 func (o JobTaskForEachTaskTaskPowerBiTaskTableOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTaskTable) *string { return v.Schema }).(pulumi.StringPtrOutput)
 }
 
+// The Power BI storage mode of the table
 func (o JobTaskForEachTaskTaskPowerBiTaskTableOutput) StorageMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskPowerBiTaskTable) *string { return v.StorageMode }).(pulumi.StringPtrOutput)
 }
@@ -40193,9 +40294,11 @@ func (o JobTaskForEachTaskTaskSparkJarTaskPtrOutput) RunAsRepl() pulumi.BoolPtrO
 type JobTaskForEachTaskTaskSparkPythonTask struct {
 	// (List) Command line parameters passed to the Python file.
 	Parameters []string `pulumi:"parameters"`
-	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
 	PythonFile string `pulumi:"pythonFile"`
-	// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+	// Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the pythonFile has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+	// * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+	// * `GIT`: The Python file is located in a remote Git repository.
 	Source *string `pulumi:"source"`
 }
 
@@ -40213,9 +40316,11 @@ type JobTaskForEachTaskTaskSparkPythonTaskInput interface {
 type JobTaskForEachTaskTaskSparkPythonTaskArgs struct {
 	// (List) Command line parameters passed to the Python file.
 	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
-	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
 	PythonFile pulumi.StringInput `pulumi:"pythonFile"`
-	// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+	// Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the pythonFile has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+	// * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+	// * `GIT`: The Python file is located in a remote Git repository.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
@@ -40301,12 +40406,14 @@ func (o JobTaskForEachTaskTaskSparkPythonTaskOutput) Parameters() pulumi.StringA
 	return o.ApplyT(func(v JobTaskForEachTaskTaskSparkPythonTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
 }
 
-// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
 func (o JobTaskForEachTaskTaskSparkPythonTaskOutput) PythonFile() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskSparkPythonTask) string { return v.PythonFile }).(pulumi.StringOutput)
 }
 
-// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+// Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the pythonFile has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+// * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+// * `GIT`: The Python file is located in a remote Git repository.
 func (o JobTaskForEachTaskTaskSparkPythonTaskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskSparkPythonTask) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -40345,7 +40452,7 @@ func (o JobTaskForEachTaskTaskSparkPythonTaskPtrOutput) Parameters() pulumi.Stri
 	}).(pulumi.StringArrayOutput)
 }
 
-// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
 func (o JobTaskForEachTaskTaskSparkPythonTaskPtrOutput) PythonFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskSparkPythonTask) *string {
 		if v == nil {
@@ -40355,7 +40462,9 @@ func (o JobTaskForEachTaskTaskSparkPythonTaskPtrOutput) PythonFile() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+// Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the pythonFile has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+// * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+// * `GIT`: The Python file is located in a remote Git repository.
 func (o JobTaskForEachTaskTaskSparkPythonTaskPtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskSparkPythonTask) *string {
 		if v == nil {
@@ -40912,9 +41021,9 @@ func (o JobTaskForEachTaskTaskSqlTaskAlertPtrOutput) Subscriptions() JobTaskForE
 }
 
 type JobTaskForEachTaskTaskSqlTaskAlertSubscription struct {
+	// A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
 	DestinationId *string `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
-	UserName *string `pulumi:"userName"`
+	UserName      *string `pulumi:"userName"`
 }
 
 // JobTaskForEachTaskTaskSqlTaskAlertSubscriptionInput is an input type that accepts JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs and JobTaskForEachTaskTaskSqlTaskAlertSubscriptionOutput values.
@@ -40929,9 +41038,9 @@ type JobTaskForEachTaskTaskSqlTaskAlertSubscriptionInput interface {
 }
 
 type JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs struct {
+	// A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
 	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
-	UserName pulumi.StringPtrInput `pulumi:"userName"`
+	UserName      pulumi.StringPtrInput `pulumi:"userName"`
 }
 
 func (JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs) ElementType() reflect.Type {
@@ -40985,11 +41094,11 @@ func (o JobTaskForEachTaskTaskSqlTaskAlertSubscriptionOutput) ToJobTaskForEachTa
 	return o
 }
 
+// A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
 func (o JobTaskForEachTaskTaskSqlTaskAlertSubscriptionOutput) DestinationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskSqlTaskAlertSubscription) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
 }
 
-// The email of an active workspace user. Non-admin users can only set this field to their own email.
 func (o JobTaskForEachTaskTaskSqlTaskAlertSubscriptionOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskSqlTaskAlertSubscription) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
@@ -41211,9 +41320,9 @@ func (o JobTaskForEachTaskTaskSqlTaskDashboardPtrOutput) Subscriptions() JobTask
 }
 
 type JobTaskForEachTaskTaskSqlTaskDashboardSubscription struct {
+	// A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
 	DestinationId *string `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
-	UserName *string `pulumi:"userName"`
+	UserName      *string `pulumi:"userName"`
 }
 
 // JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionInput is an input type that accepts JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs and JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput values.
@@ -41228,9 +41337,9 @@ type JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionInput interface {
 }
 
 type JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs struct {
+	// A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
 	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
-	UserName pulumi.StringPtrInput `pulumi:"userName"`
+	UserName      pulumi.StringPtrInput `pulumi:"userName"`
 }
 
 func (JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs) ElementType() reflect.Type {
@@ -41284,11 +41393,11 @@ func (o JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput) ToJobTaskForEa
 	return o
 }
 
+// A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
 func (o JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput) DestinationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskSqlTaskDashboardSubscription) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
 }
 
-// The email of an active workspace user. Non-admin users can only set this field to their own email.
 func (o JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskSqlTaskDashboardSubscription) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
@@ -41858,15 +41967,16 @@ func (o JobTaskForEachTaskTaskSqlTaskQueryPtrOutput) QueryId() pulumi.StringPtrO
 
 type JobTaskForEachTaskTaskWebhookNotifications struct {
 	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-	//
-	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-	//
-	// Example
 	OnDurationWarningThresholdExceededs []JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailures []JobTaskForEachTaskTaskWebhookNotificationsOnFailure `pulumi:"onFailures"`
 	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
-	OnStarts                    []JobTaskForEachTaskTaskWebhookNotificationsOnStart                    `pulumi:"onStarts"`
+	OnStarts []JobTaskForEachTaskTaskWebhookNotificationsOnStart `pulumi:"onStarts"`
+	// (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+	//
+	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+	//
+	// Example
 	OnStreamingBacklogExceededs []JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded `pulumi:"onStreamingBacklogExceededs"`
 	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	OnSuccesses []JobTaskForEachTaskTaskWebhookNotificationsOnSuccess `pulumi:"onSuccesses"`
@@ -41885,15 +41995,16 @@ type JobTaskForEachTaskTaskWebhookNotificationsInput interface {
 
 type JobTaskForEachTaskTaskWebhookNotificationsArgs struct {
 	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-	//
-	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-	//
-	// Example
 	OnDurationWarningThresholdExceededs JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailures JobTaskForEachTaskTaskWebhookNotificationsOnFailureArrayInput `pulumi:"onFailures"`
 	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
-	OnStarts                    JobTaskForEachTaskTaskWebhookNotificationsOnStartArrayInput                    `pulumi:"onStarts"`
+	OnStarts JobTaskForEachTaskTaskWebhookNotificationsOnStartArrayInput `pulumi:"onStarts"`
+	// (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+	//
+	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+	//
+	// Example
 	OnStreamingBacklogExceededs JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayInput `pulumi:"onStreamingBacklogExceededs"`
 	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	OnSuccesses JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArrayInput `pulumi:"onSuccesses"`
@@ -41977,10 +42088,6 @@ func (o JobTaskForEachTaskTaskWebhookNotificationsOutput) ToJobTaskForEachTaskTa
 }
 
 // (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-//
-// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-//
-// Example
 func (o JobTaskForEachTaskTaskWebhookNotificationsOutput) OnDurationWarningThresholdExceededs() JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskWebhookNotifications) []JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
 		return v.OnDurationWarningThresholdExceededs
@@ -42001,6 +42108,11 @@ func (o JobTaskForEachTaskTaskWebhookNotificationsOutput) OnStarts() JobTaskForE
 	}).(JobTaskForEachTaskTaskWebhookNotificationsOnStartArrayOutput)
 }
 
+// (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+//
+// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+//
+// Example
 func (o JobTaskForEachTaskTaskWebhookNotificationsOutput) OnStreamingBacklogExceededs() JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskWebhookNotifications) []JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded {
 		return v.OnStreamingBacklogExceededs
@@ -42039,10 +42151,6 @@ func (o JobTaskForEachTaskTaskWebhookNotificationsPtrOutput) Elem() JobTaskForEa
 }
 
 // (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-//
-// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-//
-// Example
 func (o JobTaskForEachTaskTaskWebhookNotificationsPtrOutput) OnDurationWarningThresholdExceededs() JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskWebhookNotifications) []JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
 		if v == nil {
@@ -42072,6 +42180,11 @@ func (o JobTaskForEachTaskTaskWebhookNotificationsPtrOutput) OnStarts() JobTaskF
 	}).(JobTaskForEachTaskTaskWebhookNotificationsOnStartArrayOutput)
 }
 
+// (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+//
+// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+//
+// Example
 func (o JobTaskForEachTaskTaskWebhookNotificationsPtrOutput) OnStreamingBacklogExceededs() JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskWebhookNotifications) []JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded {
 		if v == nil {
@@ -43851,7 +43964,7 @@ type JobTaskNewCluster struct {
 	SingleUserName *string                    `pulumi:"singleUserName"`
 	SparkConf      map[string]string          `pulumi:"sparkConf"`
 	SparkEnvVars   map[string]string          `pulumi:"sparkEnvVars"`
-	SparkVersion   string                     `pulumi:"sparkVersion"`
+	SparkVersion   *string                    `pulumi:"sparkVersion"`
 	SshPublicKeys  []string                   `pulumi:"sshPublicKeys"`
 	UseMlRuntime   *bool                      `pulumi:"useMlRuntime"`
 	// isn't supported
@@ -43900,7 +44013,7 @@ type JobTaskNewClusterArgs struct {
 	SingleUserName pulumi.StringPtrInput              `pulumi:"singleUserName"`
 	SparkConf      pulumi.StringMapInput              `pulumi:"sparkConf"`
 	SparkEnvVars   pulumi.StringMapInput              `pulumi:"sparkEnvVars"`
-	SparkVersion   pulumi.StringInput                 `pulumi:"sparkVersion"`
+	SparkVersion   pulumi.StringPtrInput              `pulumi:"sparkVersion"`
 	SshPublicKeys  pulumi.StringArrayInput            `pulumi:"sshPublicKeys"`
 	UseMlRuntime   pulumi.BoolPtrInput                `pulumi:"useMlRuntime"`
 	// isn't supported
@@ -44101,8 +44214,8 @@ func (o JobTaskNewClusterOutput) SparkEnvVars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobTaskNewCluster) map[string]string { return v.SparkEnvVars }).(pulumi.StringMapOutput)
 }
 
-func (o JobTaskNewClusterOutput) SparkVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v JobTaskNewCluster) string { return v.SparkVersion }).(pulumi.StringOutput)
+func (o JobTaskNewClusterOutput) SparkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskNewCluster) *string { return v.SparkVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o JobTaskNewClusterOutput) SshPublicKeys() pulumi.StringArrayOutput {
@@ -44409,7 +44522,7 @@ func (o JobTaskNewClusterPtrOutput) SparkVersion() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.SparkVersion
+		return v.SparkVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -49077,11 +49190,16 @@ func (o JobTaskPipelineTaskPtrOutput) PipelineId() pulumi.StringPtrOutput {
 }
 
 type JobTaskPowerBiTask struct {
-	ConnectionResourceName *string                         `pulumi:"connectionResourceName"`
-	PowerBiModel           *JobTaskPowerBiTaskPowerBiModel `pulumi:"powerBiModel"`
-	RefreshAfterUpdate     *bool                           `pulumi:"refreshAfterUpdate"`
-	Tables                 []JobTaskPowerBiTaskTable       `pulumi:"tables"`
-	WarehouseId            *string                         `pulumi:"warehouseId"`
+	// The resource name of the UC connection to authenticate from Databricks to Power BI
+	ConnectionResourceName *string `pulumi:"connectionResourceName"`
+	// The semantic model to update. Block consists of following fields:
+	PowerBiModel *JobTaskPowerBiTaskPowerBiModel `pulumi:"powerBiModel"`
+	// Whether the model should be refreshed after the update. Default is false
+	RefreshAfterUpdate *bool `pulumi:"refreshAfterUpdate"`
+	// The tables to be exported to Power BI. Block consists of following fields:
+	Tables []JobTaskPowerBiTaskTable `pulumi:"tables"`
+	// The SQL warehouse ID to use as the Power BI data source
+	WarehouseId *string `pulumi:"warehouseId"`
 }
 
 // JobTaskPowerBiTaskInput is an input type that accepts JobTaskPowerBiTaskArgs and JobTaskPowerBiTaskOutput values.
@@ -49096,11 +49214,16 @@ type JobTaskPowerBiTaskInput interface {
 }
 
 type JobTaskPowerBiTaskArgs struct {
-	ConnectionResourceName pulumi.StringPtrInput                  `pulumi:"connectionResourceName"`
-	PowerBiModel           JobTaskPowerBiTaskPowerBiModelPtrInput `pulumi:"powerBiModel"`
-	RefreshAfterUpdate     pulumi.BoolPtrInput                    `pulumi:"refreshAfterUpdate"`
-	Tables                 JobTaskPowerBiTaskTableArrayInput      `pulumi:"tables"`
-	WarehouseId            pulumi.StringPtrInput                  `pulumi:"warehouseId"`
+	// The resource name of the UC connection to authenticate from Databricks to Power BI
+	ConnectionResourceName pulumi.StringPtrInput `pulumi:"connectionResourceName"`
+	// The semantic model to update. Block consists of following fields:
+	PowerBiModel JobTaskPowerBiTaskPowerBiModelPtrInput `pulumi:"powerBiModel"`
+	// Whether the model should be refreshed after the update. Default is false
+	RefreshAfterUpdate pulumi.BoolPtrInput `pulumi:"refreshAfterUpdate"`
+	// The tables to be exported to Power BI. Block consists of following fields:
+	Tables JobTaskPowerBiTaskTableArrayInput `pulumi:"tables"`
+	// The SQL warehouse ID to use as the Power BI data source
+	WarehouseId pulumi.StringPtrInput `pulumi:"warehouseId"`
 }
 
 func (JobTaskPowerBiTaskArgs) ElementType() reflect.Type {
@@ -49180,22 +49303,27 @@ func (o JobTaskPowerBiTaskOutput) ToJobTaskPowerBiTaskPtrOutputWithContext(ctx c
 	}).(JobTaskPowerBiTaskPtrOutput)
 }
 
+// The resource name of the UC connection to authenticate from Databricks to Power BI
 func (o JobTaskPowerBiTaskOutput) ConnectionResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskPowerBiTask) *string { return v.ConnectionResourceName }).(pulumi.StringPtrOutput)
 }
 
+// The semantic model to update. Block consists of following fields:
 func (o JobTaskPowerBiTaskOutput) PowerBiModel() JobTaskPowerBiTaskPowerBiModelPtrOutput {
 	return o.ApplyT(func(v JobTaskPowerBiTask) *JobTaskPowerBiTaskPowerBiModel { return v.PowerBiModel }).(JobTaskPowerBiTaskPowerBiModelPtrOutput)
 }
 
+// Whether the model should be refreshed after the update. Default is false
 func (o JobTaskPowerBiTaskOutput) RefreshAfterUpdate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTaskPowerBiTask) *bool { return v.RefreshAfterUpdate }).(pulumi.BoolPtrOutput)
 }
 
+// The tables to be exported to Power BI. Block consists of following fields:
 func (o JobTaskPowerBiTaskOutput) Tables() JobTaskPowerBiTaskTableArrayOutput {
 	return o.ApplyT(func(v JobTaskPowerBiTask) []JobTaskPowerBiTaskTable { return v.Tables }).(JobTaskPowerBiTaskTableArrayOutput)
 }
 
+// The SQL warehouse ID to use as the Power BI data source
 func (o JobTaskPowerBiTaskOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskPowerBiTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
 }
@@ -49224,6 +49352,7 @@ func (o JobTaskPowerBiTaskPtrOutput) Elem() JobTaskPowerBiTaskOutput {
 	}).(JobTaskPowerBiTaskOutput)
 }
 
+// The resource name of the UC connection to authenticate from Databricks to Power BI
 func (o JobTaskPowerBiTaskPtrOutput) ConnectionResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskPowerBiTask) *string {
 		if v == nil {
@@ -49233,6 +49362,7 @@ func (o JobTaskPowerBiTaskPtrOutput) ConnectionResourceName() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The semantic model to update. Block consists of following fields:
 func (o JobTaskPowerBiTaskPtrOutput) PowerBiModel() JobTaskPowerBiTaskPowerBiModelPtrOutput {
 	return o.ApplyT(func(v *JobTaskPowerBiTask) *JobTaskPowerBiTaskPowerBiModel {
 		if v == nil {
@@ -49242,6 +49372,7 @@ func (o JobTaskPowerBiTaskPtrOutput) PowerBiModel() JobTaskPowerBiTaskPowerBiMod
 	}).(JobTaskPowerBiTaskPowerBiModelPtrOutput)
 }
 
+// Whether the model should be refreshed after the update. Default is false
 func (o JobTaskPowerBiTaskPtrOutput) RefreshAfterUpdate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobTaskPowerBiTask) *bool {
 		if v == nil {
@@ -49251,6 +49382,7 @@ func (o JobTaskPowerBiTaskPtrOutput) RefreshAfterUpdate() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The tables to be exported to Power BI. Block consists of following fields:
 func (o JobTaskPowerBiTaskPtrOutput) Tables() JobTaskPowerBiTaskTableArrayOutput {
 	return o.ApplyT(func(v *JobTaskPowerBiTask) []JobTaskPowerBiTaskTable {
 		if v == nil {
@@ -49260,6 +49392,7 @@ func (o JobTaskPowerBiTaskPtrOutput) Tables() JobTaskPowerBiTaskTableArrayOutput
 	}).(JobTaskPowerBiTaskTableArrayOutput)
 }
 
+// The SQL warehouse ID to use as the Power BI data source
 func (o JobTaskPowerBiTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskPowerBiTask) *string {
 		if v == nil {
@@ -49270,11 +49403,16 @@ func (o JobTaskPowerBiTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 }
 
 type JobTaskPowerBiTaskPowerBiModel struct {
+	// How the published Power BI model authenticates to Databricks
 	AuthenticationMethod *string `pulumi:"authenticationMethod"`
-	ModelName            *string `pulumi:"modelName"`
-	OverwriteExisting    *bool   `pulumi:"overwriteExisting"`
-	StorageMode          *string `pulumi:"storageMode"`
-	WorkspaceName        *string `pulumi:"workspaceName"`
+	// The name of the Power BI model
+	ModelName *string `pulumi:"modelName"`
+	// Whether to overwrite existing Power BI models. Default is false
+	OverwriteExisting *bool `pulumi:"overwriteExisting"`
+	// The default storage mode of the Power BI model
+	StorageMode *string `pulumi:"storageMode"`
+	// The name of the Power BI workspace of the model
+	WorkspaceName *string `pulumi:"workspaceName"`
 }
 
 // JobTaskPowerBiTaskPowerBiModelInput is an input type that accepts JobTaskPowerBiTaskPowerBiModelArgs and JobTaskPowerBiTaskPowerBiModelOutput values.
@@ -49289,11 +49427,16 @@ type JobTaskPowerBiTaskPowerBiModelInput interface {
 }
 
 type JobTaskPowerBiTaskPowerBiModelArgs struct {
+	// How the published Power BI model authenticates to Databricks
 	AuthenticationMethod pulumi.StringPtrInput `pulumi:"authenticationMethod"`
-	ModelName            pulumi.StringPtrInput `pulumi:"modelName"`
-	OverwriteExisting    pulumi.BoolPtrInput   `pulumi:"overwriteExisting"`
-	StorageMode          pulumi.StringPtrInput `pulumi:"storageMode"`
-	WorkspaceName        pulumi.StringPtrInput `pulumi:"workspaceName"`
+	// The name of the Power BI model
+	ModelName pulumi.StringPtrInput `pulumi:"modelName"`
+	// Whether to overwrite existing Power BI models. Default is false
+	OverwriteExisting pulumi.BoolPtrInput `pulumi:"overwriteExisting"`
+	// The default storage mode of the Power BI model
+	StorageMode pulumi.StringPtrInput `pulumi:"storageMode"`
+	// The name of the Power BI workspace of the model
+	WorkspaceName pulumi.StringPtrInput `pulumi:"workspaceName"`
 }
 
 func (JobTaskPowerBiTaskPowerBiModelArgs) ElementType() reflect.Type {
@@ -49373,22 +49516,27 @@ func (o JobTaskPowerBiTaskPowerBiModelOutput) ToJobTaskPowerBiTaskPowerBiModelPt
 	}).(JobTaskPowerBiTaskPowerBiModelPtrOutput)
 }
 
+// How the published Power BI model authenticates to Databricks
 func (o JobTaskPowerBiTaskPowerBiModelOutput) AuthenticationMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskPowerBiTaskPowerBiModel) *string { return v.AuthenticationMethod }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Power BI model
 func (o JobTaskPowerBiTaskPowerBiModelOutput) ModelName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskPowerBiTaskPowerBiModel) *string { return v.ModelName }).(pulumi.StringPtrOutput)
 }
 
+// Whether to overwrite existing Power BI models. Default is false
 func (o JobTaskPowerBiTaskPowerBiModelOutput) OverwriteExisting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTaskPowerBiTaskPowerBiModel) *bool { return v.OverwriteExisting }).(pulumi.BoolPtrOutput)
 }
 
+// The default storage mode of the Power BI model
 func (o JobTaskPowerBiTaskPowerBiModelOutput) StorageMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskPowerBiTaskPowerBiModel) *string { return v.StorageMode }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Power BI workspace of the model
 func (o JobTaskPowerBiTaskPowerBiModelOutput) WorkspaceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskPowerBiTaskPowerBiModel) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
 }
@@ -49417,6 +49565,7 @@ func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) Elem() JobTaskPowerBiTaskPowerB
 	}).(JobTaskPowerBiTaskPowerBiModelOutput)
 }
 
+// How the published Power BI model authenticates to Databricks
 func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) AuthenticationMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskPowerBiTaskPowerBiModel) *string {
 		if v == nil {
@@ -49426,6 +49575,7 @@ func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) AuthenticationMethod() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the Power BI model
 func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) ModelName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskPowerBiTaskPowerBiModel) *string {
 		if v == nil {
@@ -49435,6 +49585,7 @@ func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) ModelName() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to overwrite existing Power BI models. Default is false
 func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) OverwriteExisting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobTaskPowerBiTaskPowerBiModel) *bool {
 		if v == nil {
@@ -49444,6 +49595,7 @@ func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) OverwriteExisting() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The default storage mode of the Power BI model
 func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) StorageMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskPowerBiTaskPowerBiModel) *string {
 		if v == nil {
@@ -49453,6 +49605,7 @@ func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) StorageMode() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the Power BI workspace of the model
 func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskPowerBiTaskPowerBiModel) *string {
 		if v == nil {
@@ -49463,12 +49616,13 @@ func (o JobTaskPowerBiTaskPowerBiModelPtrOutput) WorkspaceName() pulumi.StringPt
 }
 
 type JobTaskPowerBiTaskTable struct {
-	// The name of the catalog to use inside Unity Catalog.
+	// The catalog name in Databricks
 	Catalog *string `pulumi:"catalog"`
-	// An optional name for the job. The default value is Untitled.
+	// The table name in Databricks. If empty, all tables under the schema are selected.
 	Name *string `pulumi:"name"`
-	// The name of the schema dbt should run in. Defaults to `default`.
-	Schema      *string `pulumi:"schema"`
+	// The schema name in Databricks
+	Schema *string `pulumi:"schema"`
+	// The Power BI storage mode of the table
 	StorageMode *string `pulumi:"storageMode"`
 }
 
@@ -49484,12 +49638,13 @@ type JobTaskPowerBiTaskTableInput interface {
 }
 
 type JobTaskPowerBiTaskTableArgs struct {
-	// The name of the catalog to use inside Unity Catalog.
+	// The catalog name in Databricks
 	Catalog pulumi.StringPtrInput `pulumi:"catalog"`
-	// An optional name for the job. The default value is Untitled.
+	// The table name in Databricks. If empty, all tables under the schema are selected.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The name of the schema dbt should run in. Defaults to `default`.
-	Schema      pulumi.StringPtrInput `pulumi:"schema"`
+	// The schema name in Databricks
+	Schema pulumi.StringPtrInput `pulumi:"schema"`
+	// The Power BI storage mode of the table
 	StorageMode pulumi.StringPtrInput `pulumi:"storageMode"`
 }
 
@@ -49544,21 +49699,22 @@ func (o JobTaskPowerBiTaskTableOutput) ToJobTaskPowerBiTaskTableOutputWithContex
 	return o
 }
 
-// The name of the catalog to use inside Unity Catalog.
+// The catalog name in Databricks
 func (o JobTaskPowerBiTaskTableOutput) Catalog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskPowerBiTaskTable) *string { return v.Catalog }).(pulumi.StringPtrOutput)
 }
 
-// An optional name for the job. The default value is Untitled.
+// The table name in Databricks. If empty, all tables under the schema are selected.
 func (o JobTaskPowerBiTaskTableOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskPowerBiTaskTable) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The name of the schema dbt should run in. Defaults to `default`.
+// The schema name in Databricks
 func (o JobTaskPowerBiTaskTableOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskPowerBiTaskTable) *string { return v.Schema }).(pulumi.StringPtrOutput)
 }
 
+// The Power BI storage mode of the table
 func (o JobTaskPowerBiTaskTableOutput) StorageMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskPowerBiTaskTable) *string { return v.StorageMode }).(pulumi.StringPtrOutput)
 }
@@ -50387,9 +50543,11 @@ func (o JobTaskSparkJarTaskPtrOutput) RunAsRepl() pulumi.BoolPtrOutput {
 type JobTaskSparkPythonTask struct {
 	// (List) Command line parameters passed to the Python file.
 	Parameters []string `pulumi:"parameters"`
-	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
 	PythonFile string `pulumi:"pythonFile"`
-	// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+	// Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the pythonFile has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+	// * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+	// * `GIT`: The Python file is located in a remote Git repository.
 	Source *string `pulumi:"source"`
 }
 
@@ -50407,9 +50565,11 @@ type JobTaskSparkPythonTaskInput interface {
 type JobTaskSparkPythonTaskArgs struct {
 	// (List) Command line parameters passed to the Python file.
 	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
-	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+	// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
 	PythonFile pulumi.StringInput `pulumi:"pythonFile"`
-	// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+	// Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the pythonFile has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+	// * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+	// * `GIT`: The Python file is located in a remote Git repository.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
@@ -50495,12 +50655,14 @@ func (o JobTaskSparkPythonTaskOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskSparkPythonTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
 }
 
-// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
 func (o JobTaskSparkPythonTaskOutput) PythonFile() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskSparkPythonTask) string { return v.PythonFile }).(pulumi.StringOutput)
 }
 
-// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+// Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the pythonFile has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+// * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+// * `GIT`: The Python file is located in a remote Git repository.
 func (o JobTaskSparkPythonTaskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskSparkPythonTask) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -50539,7 +50701,7 @@ func (o JobTaskSparkPythonTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+// The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
 func (o JobTaskSparkPythonTaskPtrOutput) PythonFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskSparkPythonTask) *string {
 		if v == nil {
@@ -50549,7 +50711,9 @@ func (o JobTaskSparkPythonTaskPtrOutput) PythonFile() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+// Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the pythonFile has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+// * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+// * `GIT`: The Python file is located in a remote Git repository.
 func (o JobTaskSparkPythonTaskPtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskSparkPythonTask) *string {
 		if v == nil {
@@ -51104,9 +51268,9 @@ func (o JobTaskSqlTaskAlertPtrOutput) Subscriptions() JobTaskSqlTaskAlertSubscri
 }
 
 type JobTaskSqlTaskAlertSubscription struct {
+	// A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
 	DestinationId *string `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
-	UserName *string `pulumi:"userName"`
+	UserName      *string `pulumi:"userName"`
 }
 
 // JobTaskSqlTaskAlertSubscriptionInput is an input type that accepts JobTaskSqlTaskAlertSubscriptionArgs and JobTaskSqlTaskAlertSubscriptionOutput values.
@@ -51121,9 +51285,9 @@ type JobTaskSqlTaskAlertSubscriptionInput interface {
 }
 
 type JobTaskSqlTaskAlertSubscriptionArgs struct {
+	// A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
 	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
-	UserName pulumi.StringPtrInput `pulumi:"userName"`
+	UserName      pulumi.StringPtrInput `pulumi:"userName"`
 }
 
 func (JobTaskSqlTaskAlertSubscriptionArgs) ElementType() reflect.Type {
@@ -51177,11 +51341,11 @@ func (o JobTaskSqlTaskAlertSubscriptionOutput) ToJobTaskSqlTaskAlertSubscription
 	return o
 }
 
+// A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
 func (o JobTaskSqlTaskAlertSubscriptionOutput) DestinationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskSqlTaskAlertSubscription) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
 }
 
-// The email of an active workspace user. Non-admin users can only set this field to their own email.
 func (o JobTaskSqlTaskAlertSubscriptionOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskSqlTaskAlertSubscription) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
@@ -51401,9 +51565,9 @@ func (o JobTaskSqlTaskDashboardPtrOutput) Subscriptions() JobTaskSqlTaskDashboar
 }
 
 type JobTaskSqlTaskDashboardSubscription struct {
+	// A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
 	DestinationId *string `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
-	UserName *string `pulumi:"userName"`
+	UserName      *string `pulumi:"userName"`
 }
 
 // JobTaskSqlTaskDashboardSubscriptionInput is an input type that accepts JobTaskSqlTaskDashboardSubscriptionArgs and JobTaskSqlTaskDashboardSubscriptionOutput values.
@@ -51418,9 +51582,9 @@ type JobTaskSqlTaskDashboardSubscriptionInput interface {
 }
 
 type JobTaskSqlTaskDashboardSubscriptionArgs struct {
+	// A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
 	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
-	// The email of an active workspace user. Non-admin users can only set this field to their own email.
-	UserName pulumi.StringPtrInput `pulumi:"userName"`
+	UserName      pulumi.StringPtrInput `pulumi:"userName"`
 }
 
 func (JobTaskSqlTaskDashboardSubscriptionArgs) ElementType() reflect.Type {
@@ -51474,11 +51638,11 @@ func (o JobTaskSqlTaskDashboardSubscriptionOutput) ToJobTaskSqlTaskDashboardSubs
 	return o
 }
 
+// A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
 func (o JobTaskSqlTaskDashboardSubscriptionOutput) DestinationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskSqlTaskDashboardSubscription) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
 }
 
-// The email of an active workspace user. Non-admin users can only set this field to their own email.
 func (o JobTaskSqlTaskDashboardSubscriptionOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskSqlTaskDashboardSubscription) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
@@ -52048,15 +52212,16 @@ func (o JobTaskSqlTaskQueryPtrOutput) QueryId() pulumi.StringPtrOutput {
 
 type JobTaskWebhookNotifications struct {
 	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-	//
-	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-	//
-	// Example
 	OnDurationWarningThresholdExceededs []JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailures []JobTaskWebhookNotificationsOnFailure `pulumi:"onFailures"`
 	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
-	OnStarts                    []JobTaskWebhookNotificationsOnStart                    `pulumi:"onStarts"`
+	OnStarts []JobTaskWebhookNotificationsOnStart `pulumi:"onStarts"`
+	// (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+	//
+	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+	//
+	// Example
 	OnStreamingBacklogExceededs []JobTaskWebhookNotificationsOnStreamingBacklogExceeded `pulumi:"onStreamingBacklogExceededs"`
 	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	OnSuccesses []JobTaskWebhookNotificationsOnSuccess `pulumi:"onSuccesses"`
@@ -52075,15 +52240,16 @@ type JobTaskWebhookNotificationsInput interface {
 
 type JobTaskWebhookNotificationsArgs struct {
 	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-	//
-	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-	//
-	// Example
 	OnDurationWarningThresholdExceededs JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailures JobTaskWebhookNotificationsOnFailureArrayInput `pulumi:"onFailures"`
 	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
-	OnStarts                    JobTaskWebhookNotificationsOnStartArrayInput                    `pulumi:"onStarts"`
+	OnStarts JobTaskWebhookNotificationsOnStartArrayInput `pulumi:"onStarts"`
+	// (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+	//
+	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+	//
+	// Example
 	OnStreamingBacklogExceededs JobTaskWebhookNotificationsOnStreamingBacklogExceededArrayInput `pulumi:"onStreamingBacklogExceededs"`
 	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	OnSuccesses JobTaskWebhookNotificationsOnSuccessArrayInput `pulumi:"onSuccesses"`
@@ -52167,10 +52333,6 @@ func (o JobTaskWebhookNotificationsOutput) ToJobTaskWebhookNotificationsPtrOutpu
 }
 
 // (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-//
-// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-//
-// Example
 func (o JobTaskWebhookNotificationsOutput) OnDurationWarningThresholdExceededs() JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
 	return o.ApplyT(func(v JobTaskWebhookNotifications) []JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
 		return v.OnDurationWarningThresholdExceededs
@@ -52187,6 +52349,11 @@ func (o JobTaskWebhookNotificationsOutput) OnStarts() JobTaskWebhookNotification
 	return o.ApplyT(func(v JobTaskWebhookNotifications) []JobTaskWebhookNotificationsOnStart { return v.OnStarts }).(JobTaskWebhookNotificationsOnStartArrayOutput)
 }
 
+// (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+//
+// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+//
+// Example
 func (o JobTaskWebhookNotificationsOutput) OnStreamingBacklogExceededs() JobTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
 	return o.ApplyT(func(v JobTaskWebhookNotifications) []JobTaskWebhookNotificationsOnStreamingBacklogExceeded {
 		return v.OnStreamingBacklogExceededs
@@ -52223,10 +52390,6 @@ func (o JobTaskWebhookNotificationsPtrOutput) Elem() JobTaskWebhookNotifications
 }
 
 // (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-//
-// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-//
-// Example
 func (o JobTaskWebhookNotificationsPtrOutput) OnDurationWarningThresholdExceededs() JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
 	return o.ApplyT(func(v *JobTaskWebhookNotifications) []JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
 		if v == nil {
@@ -52256,6 +52419,11 @@ func (o JobTaskWebhookNotificationsPtrOutput) OnStarts() JobTaskWebhookNotificat
 	}).(JobTaskWebhookNotificationsOnStartArrayOutput)
 }
 
+// (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+//
+// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+//
+// Example
 func (o JobTaskWebhookNotificationsPtrOutput) OnStreamingBacklogExceededs() JobTaskWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
 	return o.ApplyT(func(v *JobTaskWebhookNotifications) []JobTaskWebhookNotificationsOnStreamingBacklogExceeded {
 		if v == nil {
@@ -53670,15 +53838,16 @@ func (o JobTriggerTableUpdatePtrOutput) WaitAfterLastChangeSeconds() pulumi.IntP
 
 type JobWebhookNotifications struct {
 	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-	//
-	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-	//
-	// Example
 	OnDurationWarningThresholdExceededs []JobWebhookNotificationsOnDurationWarningThresholdExceeded `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailures []JobWebhookNotificationsOnFailure `pulumi:"onFailures"`
 	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
-	OnStarts                    []JobWebhookNotificationsOnStart                    `pulumi:"onStarts"`
+	OnStarts []JobWebhookNotificationsOnStart `pulumi:"onStarts"`
+	// (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+	//
+	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+	//
+	// Example
 	OnStreamingBacklogExceededs []JobWebhookNotificationsOnStreamingBacklogExceeded `pulumi:"onStreamingBacklogExceededs"`
 	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	OnSuccesses []JobWebhookNotificationsOnSuccess `pulumi:"onSuccesses"`
@@ -53697,15 +53866,16 @@ type JobWebhookNotificationsInput interface {
 
 type JobWebhookNotificationsArgs struct {
 	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-	//
-	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-	//
-	// Example
 	OnDurationWarningThresholdExceededs JobWebhookNotificationsOnDurationWarningThresholdExceededArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailures JobWebhookNotificationsOnFailureArrayInput `pulumi:"onFailures"`
 	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
-	OnStarts                    JobWebhookNotificationsOnStartArrayInput                    `pulumi:"onStarts"`
+	OnStarts JobWebhookNotificationsOnStartArrayInput `pulumi:"onStarts"`
+	// (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+	//
+	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+	//
+	// Example
 	OnStreamingBacklogExceededs JobWebhookNotificationsOnStreamingBacklogExceededArrayInput `pulumi:"onStreamingBacklogExceededs"`
 	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
 	OnSuccesses JobWebhookNotificationsOnSuccessArrayInput `pulumi:"onSuccesses"`
@@ -53789,10 +53959,6 @@ func (o JobWebhookNotificationsOutput) ToJobWebhookNotificationsPtrOutputWithCon
 }
 
 // (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-//
-// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-//
-// Example
 func (o JobWebhookNotificationsOutput) OnDurationWarningThresholdExceededs() JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
 	return o.ApplyT(func(v JobWebhookNotifications) []JobWebhookNotificationsOnDurationWarningThresholdExceeded {
 		return v.OnDurationWarningThresholdExceededs
@@ -53809,6 +53975,11 @@ func (o JobWebhookNotificationsOutput) OnStarts() JobWebhookNotificationsOnStart
 	return o.ApplyT(func(v JobWebhookNotifications) []JobWebhookNotificationsOnStart { return v.OnStarts }).(JobWebhookNotificationsOnStartArrayOutput)
 }
 
+// (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+//
+// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+//
+// Example
 func (o JobWebhookNotificationsOutput) OnStreamingBacklogExceededs() JobWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
 	return o.ApplyT(func(v JobWebhookNotifications) []JobWebhookNotificationsOnStreamingBacklogExceeded {
 		return v.OnStreamingBacklogExceededs
@@ -53845,10 +54016,6 @@ func (o JobWebhookNotificationsPtrOutput) Elem() JobWebhookNotificationsOutput {
 }
 
 // (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-//
-// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-//
-// Example
 func (o JobWebhookNotificationsPtrOutput) OnDurationWarningThresholdExceededs() JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
 	return o.ApplyT(func(v *JobWebhookNotifications) []JobWebhookNotificationsOnDurationWarningThresholdExceeded {
 		if v == nil {
@@ -53878,6 +54045,11 @@ func (o JobWebhookNotificationsPtrOutput) OnStarts() JobWebhookNotificationsOnSt
 	}).(JobWebhookNotificationsOnStartArrayOutput)
 }
 
+// (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+//
+// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+//
+// Example
 func (o JobWebhookNotificationsPtrOutput) OnStreamingBacklogExceededs() JobWebhookNotificationsOnStreamingBacklogExceededArrayOutput {
 	return o.ApplyT(func(v *JobWebhookNotifications) []JobWebhookNotificationsOnStreamingBacklogExceeded {
 		if v == nil {
@@ -61978,7 +62150,7 @@ type ModelServingConfigServedEntityExternalModelOpenaiConfig struct {
 	MicrosoftEntraClientSecretPlaintext *string `pulumi:"microsoftEntraClientSecretPlaintext"`
 	// This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
 	MicrosoftEntraTenantId *string `pulumi:"microsoftEntraTenantId"`
-	// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
+	// This is the base URL for the OpenAI API (default: "<https://api.openai.com/v1>"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
 	OpenaiApiBase *string `pulumi:"openaiApiBase"`
 	// The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
 	OpenaiApiKey *string `pulumi:"openaiApiKey"`
@@ -62014,7 +62186,7 @@ type ModelServingConfigServedEntityExternalModelOpenaiConfigArgs struct {
 	MicrosoftEntraClientSecretPlaintext pulumi.StringPtrInput `pulumi:"microsoftEntraClientSecretPlaintext"`
 	// This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
 	MicrosoftEntraTenantId pulumi.StringPtrInput `pulumi:"microsoftEntraTenantId"`
-	// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
+	// This is the base URL for the OpenAI API (default: "<https://api.openai.com/v1>"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
 	OpenaiApiBase pulumi.StringPtrInput `pulumi:"openaiApiBase"`
 	// The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
 	OpenaiApiKey pulumi.StringPtrInput `pulumi:"openaiApiKey"`
@@ -62135,7 +62307,7 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) Microsoft
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
+// This is the base URL for the OpenAI API (default: "<https://api.openai.com/v1>"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiApiBase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string { return v.OpenaiApiBase }).(pulumi.StringPtrOutput)
 }
@@ -62236,7 +62408,7 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) Micros
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
+// This is the base URL for the OpenAI API (default: "<https://api.openai.com/v1>"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) OpenaiApiBase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		if v == nil {
@@ -65433,11 +65605,11 @@ type MwsNetworksGcpNetworkInfo struct {
 	NetworkProjectId string `pulumi:"networkProjectId"`
 	// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName *string `pulumi:"podIpRangeName"`
 	// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName *string `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId string `pulumi:"subnetId"`
@@ -65463,11 +65635,11 @@ type MwsNetworksGcpNetworkInfoArgs struct {
 	NetworkProjectId pulumi.StringInput `pulumi:"networkProjectId"`
 	// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName pulumi.StringPtrInput `pulumi:"podIpRangeName"`
 	// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName pulumi.StringPtrInput `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
@@ -65561,14 +65733,14 @@ func (o MwsNetworksGcpNetworkInfoOutput) NetworkProjectId() pulumi.StringOutput 
 
 // The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.PodIpRangeName }).(pulumi.StringPtrOutput)
 }
 
 // The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.ServiceIpRangeName }).(pulumi.StringPtrOutput)
 }
@@ -65624,7 +65796,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) NetworkProjectId() pulumi.StringPtrO
 
 // The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -65636,7 +65808,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOut
 
 // The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -66475,9 +66647,9 @@ func (o MwsWorkspacesExternalCustomerInfoPtrOutput) CustomerName() pulumi.String
 }
 
 type MwsWorkspacesGcpManagedNetworkConfig struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange *string `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange *string `pulumi:"gkeClusterServiceIpRange"`
 	SubnetCidr               string  `pulumi:"subnetCidr"`
 }
@@ -66494,9 +66666,9 @@ type MwsWorkspacesGcpManagedNetworkConfigInput interface {
 }
 
 type MwsWorkspacesGcpManagedNetworkConfigArgs struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange pulumi.StringPtrInput `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange pulumi.StringPtrInput `pulumi:"gkeClusterServiceIpRange"`
 	SubnetCidr               pulumi.StringInput    `pulumi:"subnetCidr"`
 }
@@ -66578,12 +66750,12 @@ func (o MwsWorkspacesGcpManagedNetworkConfigOutput) ToMwsWorkspacesGcpManagedNet
 	}).(MwsWorkspacesGcpManagedNetworkConfigPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterPodIpRange }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterServiceIpRange }).(pulumi.StringPtrOutput)
 }
@@ -66616,7 +66788,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) Elem() MwsWorkspacesGcpMa
 	}).(MwsWorkspacesGcpManagedNetworkConfigOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -66626,7 +66798,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {

@@ -12,7 +12,32 @@ namespace Pulumi.Databricks
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ### Creating a Databricks on AWS workspace
+    /// ### Creating a serverless workspace in AWS
+    /// 
+    /// Creating a serverless workspace does not require any prerequisite resources. Simply specify `compute_mode = "SERVERLESS"` when creating the workspace. Serverless workspaces must not include `credentials_id` or `storage_configuration_id`.
+    /// 
+    /// To use serverless workspaces, you must enroll in the [Default Storage preview](https://docs.databricks.com/aws/en/storage/express-storage).
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var serverlessWorkspace = new Databricks.MwsWorkspaces("serverless_workspace", new()
+    ///     {
+    ///         AccountId = "",
+    ///         WorkspaceName = "serverless-workspace",
+    ///         AwsRegion = "us-east-1",
+    ///         ComputeMode = "SERVERLESS",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Creating a workspace on AWS
     /// 
     /// !Simplest multiworkspace
     /// 
@@ -82,11 +107,11 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// ### Creating a Databricks on AWS workspace with Databricks-Managed VPC
+    /// ### Creating a workspace on AWS with Databricks-Managed VPC
     /// 
     /// ![VPCs](https://docs.databricks.com/_images/customer-managed-vpc.png)
     /// 
-    /// By default, Databricks creates a VPC in your AWS account for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with databricks.MwsNetworks so that you can configure it according to your organization’s enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC. Please see the difference described through IAM policy actions [on this page](https://docs.databricks.com/administration-guide/account-api/iam-role.html).
+    /// By default, Databricks creates a VPC in your AWS account for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with databricks.MwsNetworks so that you can configure it according to your organization's enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC. Please see the difference described through IAM policy actions [on this page](https://docs.databricks.com/administration-guide/account-api/iam-role.html).
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -232,7 +257,7 @@ namespace Pulumi.Databricks
     /// 
     /// In order to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) please ensure that you have read and understood the [Enable Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mws_private_access_settings and mws_networks.
     /// 
-    /// ### Creating a Databricks on GCP workspace
+    /// ### Creating a workspace on GCP
     /// 
     /// To get workspace running, you have to configure a network object:
     /// 
@@ -343,11 +368,20 @@ namespace Pulumi.Databricks
         public Output<Outputs.MwsWorkspacesCloudResourceContainer?> CloudResourceContainer { get; private set; } = null!;
 
         /// <summary>
+        /// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+        /// </summary>
+        [Output("computeMode")]
+        public Output<string?> ComputeMode { get; private set; } = null!;
+
+        /// <summary>
         /// (Integer) time when workspace was created
         /// </summary>
         [Output("creationTime")]
         public Output<int> CreationTime { get; private set; } = null!;
 
+        /// <summary>
+        /// `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+        /// </summary>
         [Output("credentialsId")]
         public Output<string?> CredentialsId { get; private set; } = null!;
 
@@ -365,6 +399,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("deploymentName")]
         public Output<string?> DeploymentName { get; private set; } = null!;
+
+        /// <summary>
+        /// (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
+        /// </summary>
+        [Output("effectiveComputeMode")]
+        public Output<string> EffectiveComputeMode { get; private set; } = null!;
 
         [Output("externalCustomerInfo")]
         public Output<Outputs.MwsWorkspacesExternalCustomerInfo?> ExternalCustomerInfo { get; private set; } = null!;
@@ -418,7 +458,7 @@ namespace Pulumi.Databricks
         public Output<string?> PrivateAccessSettingsId { get; private set; } = null!;
 
         /// <summary>
-        /// `storage_configuration_id` from storage configuration.
+        /// `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         /// </summary>
         [Output("storageConfigurationId")]
         public Output<string?> StorageConfigurationId { get; private set; } = null!;
@@ -544,11 +584,20 @@ namespace Pulumi.Databricks
         public Input<Inputs.MwsWorkspacesCloudResourceContainerArgs>? CloudResourceContainer { get; set; }
 
         /// <summary>
+        /// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+        /// </summary>
+        [Input("computeMode")]
+        public Input<string>? ComputeMode { get; set; }
+
+        /// <summary>
         /// (Integer) time when workspace was created
         /// </summary>
         [Input("creationTime")]
         public Input<int>? CreationTime { get; set; }
 
+        /// <summary>
+        /// `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+        /// </summary>
         [Input("credentialsId")]
         public Input<string>? CredentialsId { get; set; }
 
@@ -619,7 +668,7 @@ namespace Pulumi.Databricks
         public Input<string>? PrivateAccessSettingsId { get; set; }
 
         /// <summary>
-        /// `storage_configuration_id` from storage configuration.
+        /// `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         /// </summary>
         [Input("storageConfigurationId")]
         public Input<string>? StorageConfigurationId { get; set; }
@@ -703,11 +752,20 @@ namespace Pulumi.Databricks
         public Input<Inputs.MwsWorkspacesCloudResourceContainerGetArgs>? CloudResourceContainer { get; set; }
 
         /// <summary>
+        /// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+        /// </summary>
+        [Input("computeMode")]
+        public Input<string>? ComputeMode { get; set; }
+
+        /// <summary>
         /// (Integer) time when workspace was created
         /// </summary>
         [Input("creationTime")]
         public Input<int>? CreationTime { get; set; }
 
+        /// <summary>
+        /// `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+        /// </summary>
         [Input("credentialsId")]
         public Input<string>? CredentialsId { get; set; }
 
@@ -731,6 +789,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("deploymentName")]
         public Input<string>? DeploymentName { get; set; }
+
+        /// <summary>
+        /// (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
+        /// </summary>
+        [Input("effectiveComputeMode")]
+        public Input<string>? EffectiveComputeMode { get; set; }
 
         [Input("externalCustomerInfo")]
         public Input<Inputs.MwsWorkspacesExternalCustomerInfoGetArgs>? ExternalCustomerInfo { get; set; }
@@ -784,7 +848,7 @@ namespace Pulumi.Databricks
         public Input<string>? PrivateAccessSettingsId { get; set; }
 
         /// <summary>
-        /// `storage_configuration_id` from storage configuration.
+        /// `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         /// </summary>
         [Input("storageConfigurationId")]
         public Input<string>? StorageConfigurationId { get; set; }

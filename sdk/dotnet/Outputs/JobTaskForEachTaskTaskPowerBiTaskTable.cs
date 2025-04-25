@@ -14,17 +14,20 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobTaskForEachTaskTaskPowerBiTaskTable
     {
         /// <summary>
-        /// The name of the catalog to use inside Unity Catalog.
+        /// The catalog name in Databricks
         /// </summary>
         public readonly string? Catalog;
         /// <summary>
-        /// An optional name for the job. The default value is Untitled.
+        /// The table name in Databricks. If empty, all tables under the schema are selected.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The name of the schema dbt should run in. Defaults to `default`.
+        /// The schema name in Databricks
         /// </summary>
         public readonly string? Schema;
+        /// <summary>
+        /// The Power BI storage mode of the table
+        /// </summary>
         public readonly string? StorageMode;
 
         [OutputConstructor]

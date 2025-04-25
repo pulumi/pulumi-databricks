@@ -14,10 +14,16 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobTaskForEachTaskTaskDashboardTask
     {
         /// <summary>
-        /// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        /// The identifier of the dashboard to refresh
         /// </summary>
         public readonly string? DashboardId;
+        /// <summary>
+        /// Represents a subscription configuration for scheduled dashboard snapshots.
+        /// </summary>
         public readonly Outputs.JobTaskForEachTaskTaskDashboardTaskSubscription? Subscription;
+        /// <summary>
+        /// The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
+        /// </summary>
         public readonly string? WarehouseId;
 
         [OutputConstructor]

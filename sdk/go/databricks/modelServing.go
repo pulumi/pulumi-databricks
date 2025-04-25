@@ -17,6 +17,8 @@ import (
 //
 // ## Example Usage
 //
+// # Creating a CPU serving endpoint
+//
 // ```go
 // package main
 //
@@ -57,6 +59,122 @@ import (
 //							&databricks.ModelServingConfigTrafficConfigRouteArgs{
 //								ServedModelName:   pulumi.String("candidate_model"),
 //								TrafficPercentage: pulumi.Int(10),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Creating a Foundation Model endpoint
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewModelServing(ctx, "llama", &databricks.ModelServingArgs{
+//				Name: pulumi.String("llama_3_2_3b_instruct"),
+//				AiGateway: &databricks.ModelServingAiGatewayArgs{
+//					UsageTrackingConfig: &databricks.ModelServingAiGatewayUsageTrackingConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//				Config: &databricks.ModelServingConfigArgs{
+//					ServedEntities: databricks.ModelServingConfigServedEntityArray{
+//						&databricks.ModelServingConfigServedEntityArgs{
+//							Name:                     pulumi.String("meta_llama_v3_2_3b_instruct-3"),
+//							EntityName:               pulumi.String("system.ai.llama_v3_2_3b_instruct"),
+//							EntityVersion:            pulumi.String("2"),
+//							ScaleToZeroEnabled:       pulumi.Bool(true),
+//							MaxProvisionedThroughput: pulumi.Int(44000),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Creating an External Model endpoint
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewModelServing(ctx, "gpt_4o", &databricks.ModelServingArgs{
+//				Name: pulumi.String("gpt-4o-mini"),
+//				AiGateway: &databricks.ModelServingAiGatewayArgs{
+//					UsageTrackingConfig: &databricks.ModelServingAiGatewayUsageTrackingConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//					RateLimits: databricks.ModelServingAiGatewayRateLimitArray{
+//						&databricks.ModelServingAiGatewayRateLimitArgs{
+//							Calls:         pulumi.Int(10),
+//							Key:           pulumi.String("endpoint"),
+//							RenewalPeriod: pulumi.String("minute"),
+//						},
+//					},
+//					InferenceTableConfig: &databricks.ModelServingAiGatewayInferenceTableConfigArgs{
+//						Enabled:         pulumi.Bool(true),
+//						TableNamePrefix: pulumi.String("gpt-4o-mini"),
+//						CatalogName:     pulumi.String("ml"),
+//						SchemaName:      pulumi.String("ai_gateway"),
+//					},
+//					Guardrails: &databricks.ModelServingAiGatewayGuardrailsArgs{
+//						Input: &databricks.ModelServingAiGatewayGuardrailsInputTypeArgs{
+//							InvalidKeywords: pulumi.StringArray{
+//								pulumi.String("SuperSecretProject"),
+//							},
+//							Pii: &databricks.ModelServingAiGatewayGuardrailsInputPiiArgs{
+//								Behavior: pulumi.String("BLOCK"),
+//							},
+//						},
+//						Output: &databricks.ModelServingAiGatewayGuardrailsOutputTypeArgs{
+//							Pii: &databricks.ModelServingAiGatewayGuardrailsOutputPiiArgs{
+//								Behavior: pulumi.String("BLOCK"),
+//							},
+//						},
+//					},
+//				},
+//				Config: &databricks.ModelServingConfigArgs{
+//					ServedEntities: databricks.ModelServingConfigServedEntityArray{
+//						&databricks.ModelServingConfigServedEntityArgs{
+//							Name: pulumi.String("gpt-4o-mini"),
+//							ExternalModel: &databricks.ModelServingConfigServedEntityExternalModelArgs{
+//								Name:     pulumi.String("gpt-4o-mini"),
+//								Provider: pulumi.String("openai"),
+//								Task:     pulumi.String("llm/v1/chat"),
+//								OpenaiConfig: &databricks.ModelServingConfigServedEntityExternalModelOpenaiConfigArgs{
+//									OpenaiApiKey: pulumi.String("{{secrets/llm_scope/openai_api_key}}"),
+//								},
 //							},
 //						},
 //					},

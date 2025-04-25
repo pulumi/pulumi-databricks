@@ -23,8 +23,6 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-        /// 
-        /// The following parameter is only available for the job level configuration.
         /// </summary>
         public InputList<string> OnDurationWarningThresholdExceededs
         {
@@ -58,6 +56,12 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("onStreamingBacklogExceededs")]
         private InputList<string>? _onStreamingBacklogExceededs;
+
+        /// <summary>
+        /// (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+        /// 
+        /// The following parameter is only available for the job level configuration.
+        /// </summary>
         public InputList<string> OnStreamingBacklogExceededs
         {
             get => _onStreamingBacklogExceededs ?? (_onStreamingBacklogExceededs = new InputList<string>());

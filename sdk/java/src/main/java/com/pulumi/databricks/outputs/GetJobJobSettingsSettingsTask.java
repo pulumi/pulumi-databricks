@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskConditionTask;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskDashboardTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskDbtTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskDependsOn;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskEmailNotifications;
@@ -15,6 +16,7 @@ import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskNewCluster;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskNotebookTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskNotificationSettings;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskPipelineTask;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskPowerBiTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskPythonWheelTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskRunJobTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskSparkJarTask;
@@ -34,6 +36,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetJobJobSettingsSettingsTask {
     private @Nullable GetJobJobSettingsSettingsTaskConditionTask conditionTask;
+    private @Nullable GetJobJobSettingsSettingsTaskDashboardTask dashboardTask;
     private @Nullable GetJobJobSettingsSettingsTaskDbtTask dbtTask;
     private @Nullable List<GetJobJobSettingsSettingsTaskDependsOn> dependsOns;
     private @Nullable String description;
@@ -50,6 +53,7 @@ public final class GetJobJobSettingsSettingsTask {
     private @Nullable GetJobJobSettingsSettingsTaskNotebookTask notebookTask;
     private @Nullable GetJobJobSettingsSettingsTaskNotificationSettings notificationSettings;
     private @Nullable GetJobJobSettingsSettingsTaskPipelineTask pipelineTask;
+    private @Nullable GetJobJobSettingsSettingsTaskPowerBiTask powerBiTask;
     private @Nullable GetJobJobSettingsSettingsTaskPythonWheelTask pythonWheelTask;
     private Boolean retryOnTimeout;
     private @Nullable String runIf;
@@ -65,6 +69,9 @@ public final class GetJobJobSettingsSettingsTask {
     private GetJobJobSettingsSettingsTask() {}
     public Optional<GetJobJobSettingsSettingsTaskConditionTask> conditionTask() {
         return Optional.ofNullable(this.conditionTask);
+    }
+    public Optional<GetJobJobSettingsSettingsTaskDashboardTask> dashboardTask() {
+        return Optional.ofNullable(this.dashboardTask);
     }
     public Optional<GetJobJobSettingsSettingsTaskDbtTask> dbtTask() {
         return Optional.ofNullable(this.dbtTask);
@@ -114,6 +121,9 @@ public final class GetJobJobSettingsSettingsTask {
     public Optional<GetJobJobSettingsSettingsTaskPipelineTask> pipelineTask() {
         return Optional.ofNullable(this.pipelineTask);
     }
+    public Optional<GetJobJobSettingsSettingsTaskPowerBiTask> powerBiTask() {
+        return Optional.ofNullable(this.powerBiTask);
+    }
     public Optional<GetJobJobSettingsSettingsTaskPythonWheelTask> pythonWheelTask() {
         return Optional.ofNullable(this.pythonWheelTask);
     }
@@ -158,6 +168,7 @@ public final class GetJobJobSettingsSettingsTask {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetJobJobSettingsSettingsTaskConditionTask conditionTask;
+        private @Nullable GetJobJobSettingsSettingsTaskDashboardTask dashboardTask;
         private @Nullable GetJobJobSettingsSettingsTaskDbtTask dbtTask;
         private @Nullable List<GetJobJobSettingsSettingsTaskDependsOn> dependsOns;
         private @Nullable String description;
@@ -174,6 +185,7 @@ public final class GetJobJobSettingsSettingsTask {
         private @Nullable GetJobJobSettingsSettingsTaskNotebookTask notebookTask;
         private @Nullable GetJobJobSettingsSettingsTaskNotificationSettings notificationSettings;
         private @Nullable GetJobJobSettingsSettingsTaskPipelineTask pipelineTask;
+        private @Nullable GetJobJobSettingsSettingsTaskPowerBiTask powerBiTask;
         private @Nullable GetJobJobSettingsSettingsTaskPythonWheelTask pythonWheelTask;
         private Boolean retryOnTimeout;
         private @Nullable String runIf;
@@ -189,6 +201,7 @@ public final class GetJobJobSettingsSettingsTask {
         public Builder(GetJobJobSettingsSettingsTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.conditionTask = defaults.conditionTask;
+    	      this.dashboardTask = defaults.dashboardTask;
     	      this.dbtTask = defaults.dbtTask;
     	      this.dependsOns = defaults.dependsOns;
     	      this.description = defaults.description;
@@ -205,6 +218,7 @@ public final class GetJobJobSettingsSettingsTask {
     	      this.notebookTask = defaults.notebookTask;
     	      this.notificationSettings = defaults.notificationSettings;
     	      this.pipelineTask = defaults.pipelineTask;
+    	      this.powerBiTask = defaults.powerBiTask;
     	      this.pythonWheelTask = defaults.pythonWheelTask;
     	      this.retryOnTimeout = defaults.retryOnTimeout;
     	      this.runIf = defaults.runIf;
@@ -222,6 +236,12 @@ public final class GetJobJobSettingsSettingsTask {
         public Builder conditionTask(@Nullable GetJobJobSettingsSettingsTaskConditionTask conditionTask) {
 
             this.conditionTask = conditionTask;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dashboardTask(@Nullable GetJobJobSettingsSettingsTaskDashboardTask dashboardTask) {
+
+            this.dashboardTask = dashboardTask;
             return this;
         }
         @CustomType.Setter
@@ -327,6 +347,12 @@ public final class GetJobJobSettingsSettingsTask {
             return this;
         }
         @CustomType.Setter
+        public Builder powerBiTask(@Nullable GetJobJobSettingsSettingsTaskPowerBiTask powerBiTask) {
+
+            this.powerBiTask = powerBiTask;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pythonWheelTask(@Nullable GetJobJobSettingsSettingsTaskPythonWheelTask pythonWheelTask) {
 
             this.pythonWheelTask = pythonWheelTask;
@@ -399,6 +425,7 @@ public final class GetJobJobSettingsSettingsTask {
         public GetJobJobSettingsSettingsTask build() {
             final var _resultValue = new GetJobJobSettingsSettingsTask();
             _resultValue.conditionTask = conditionTask;
+            _resultValue.dashboardTask = dashboardTask;
             _resultValue.dbtTask = dbtTask;
             _resultValue.dependsOns = dependsOns;
             _resultValue.description = description;
@@ -415,6 +442,7 @@ public final class GetJobJobSettingsSettingsTask {
             _resultValue.notebookTask = notebookTask;
             _resultValue.notificationSettings = notificationSettings;
             _resultValue.pipelineTask = pipelineTask;
+            _resultValue.powerBiTask = powerBiTask;
             _resultValue.pythonWheelTask = pythonWheelTask;
             _resultValue.retryOnTimeout = retryOnTimeout;
             _resultValue.runIf = runIf;

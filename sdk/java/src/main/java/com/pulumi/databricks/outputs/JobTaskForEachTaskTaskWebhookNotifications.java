@@ -18,10 +18,6 @@ public final class JobTaskForEachTaskTaskWebhookNotifications {
     /**
      * @return (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      * 
-     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
-     * 
-     * Example
-     * 
      */
     private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded> onDurationWarningThresholdExceededs;
     /**
@@ -34,6 +30,14 @@ public final class JobTaskForEachTaskTaskWebhookNotifications {
      * 
      */
     private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnStart> onStarts;
+    /**
+     * @return (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+     * 
+     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
+     * 
+     * Example
+     * 
+     */
     private @Nullable List<JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded> onStreamingBacklogExceededs;
     /**
      * @return (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
@@ -44,10 +48,6 @@ public final class JobTaskForEachTaskTaskWebhookNotifications {
     private JobTaskForEachTaskTaskWebhookNotifications() {}
     /**
      * @return (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     * 
-     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
-     * 
-     * Example
      * 
      */
     public List<JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded> onDurationWarningThresholdExceededs() {
@@ -67,6 +67,14 @@ public final class JobTaskForEachTaskTaskWebhookNotifications {
     public List<JobTaskForEachTaskTaskWebhookNotificationsOnStart> onStarts() {
         return this.onStarts == null ? List.of() : this.onStarts;
     }
+    /**
+     * @return (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+     * 
+     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
+     * 
+     * Example
+     * 
+     */
     public List<JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded> onStreamingBacklogExceededs() {
         return this.onStreamingBacklogExceededs == null ? List.of() : this.onStreamingBacklogExceededs;
     }

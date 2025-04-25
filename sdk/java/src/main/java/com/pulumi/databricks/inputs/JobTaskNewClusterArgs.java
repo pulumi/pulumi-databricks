@@ -15,7 +15,6 @@ import com.pulumi.databricks.inputs.JobTaskNewClusterGcpAttributesArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterInitScriptArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterLibraryArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterWorkloadTypeArgs;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -241,11 +240,11 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.sparkEnvVars);
     }
 
-    @Import(name="sparkVersion", required=true)
-    private Output<String> sparkVersion;
+    @Import(name="sparkVersion")
+    private @Nullable Output<String> sparkVersion;
 
-    public Output<String> sparkVersion() {
-        return this.sparkVersion;
+    public Optional<Output<String>> sparkVersion() {
+        return Optional.ofNullable(this.sparkVersion);
     }
 
     @Import(name="sshPublicKeys")
@@ -624,7 +623,7 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
             return sparkEnvVars(Output.of(sparkEnvVars));
         }
 
-        public Builder sparkVersion(Output<String> sparkVersion) {
+        public Builder sparkVersion(@Nullable Output<String> sparkVersion) {
             $.sparkVersion = sparkVersion;
             return this;
         }
@@ -677,9 +676,6 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
         }
 
         public JobTaskNewClusterArgs build() {
-            if ($.sparkVersion == null) {
-                throw new MissingRequiredPropertyException("JobTaskNewClusterArgs", "sparkVersion");
-            }
             return $;
         }
     }

@@ -93,7 +93,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
         /// </summary>
-        public readonly string SparkVersion;
+        public readonly string? SparkVersion;
         /// <summary>
         /// SSH public key contents that will be added to each Spark node in this cluster.
         /// </summary>
@@ -161,7 +161,7 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableDictionary<string, string>? sparkEnvVars,
 
-            string sparkVersion,
+            string? sparkVersion,
 
             ImmutableArray<string> sshPublicKeys,
 

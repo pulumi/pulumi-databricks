@@ -396,9 +396,21 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.parameters);
     }
 
+    /**
+     * The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
+     * * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
+     * * `STANDARD`: Enables cost-efficient execution of serverless workloads.
+     * 
+     */
     @Import(name="performanceTarget")
     private @Nullable Output<String> performanceTarget;
 
+    /**
+     * @return The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
+     * * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
+     * * `STANDARD`: Enables cost-efficient execution of serverless workloads.
+     * 
+     */
     public Optional<Output<String>> performanceTarget() {
         return Optional.ofNullable(this.performanceTarget);
     }
@@ -1229,11 +1241,27 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
             return parameters(List.of(parameters));
         }
 
+        /**
+         * @param performanceTarget The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
+         * * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
+         * * `STANDARD`: Enables cost-efficient execution of serverless workloads.
+         * 
+         * @return builder
+         * 
+         */
         public Builder performanceTarget(@Nullable Output<String> performanceTarget) {
             $.performanceTarget = performanceTarget;
             return this;
         }
 
+        /**
+         * @param performanceTarget The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
+         * * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
+         * * `STANDARD`: Enables cost-efficient execution of serverless workloads.
+         * 
+         * @return builder
+         * 
+         */
         public Builder performanceTarget(String performanceTarget) {
             return performanceTarget(Output.of(performanceTarget));
         }

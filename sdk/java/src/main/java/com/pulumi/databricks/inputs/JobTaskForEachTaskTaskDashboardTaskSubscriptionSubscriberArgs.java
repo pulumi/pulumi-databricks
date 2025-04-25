@@ -15,22 +15,30 @@ public final class JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs
 
     public static final JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs Empty = new JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs();
 
+    /**
+     * A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+     * 
+     */
     @Import(name="destinationId")
     private @Nullable Output<String> destinationId;
 
+    /**
+     * @return A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+     * 
+     */
     public Optional<Output<String>> destinationId() {
         return Optional.ofNullable(this.destinationId);
     }
 
     /**
-     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     * A snapshot of the dashboard will be sent to the user&#39;s email when the `user_name` field is present.
      * 
      */
     @Import(name="userName")
     private @Nullable Output<String> userName;
 
     /**
-     * @return The email of an active workspace user. Non-admin users can only set this field to their own email.
+     * @return A snapshot of the dashboard will be sent to the user&#39;s email when the `user_name` field is present.
      * 
      */
     public Optional<Output<String>> userName() {
@@ -62,17 +70,29 @@ public final class JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs
             $ = new JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param destinationId A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destinationId(@Nullable Output<String> destinationId) {
             $.destinationId = destinationId;
             return this;
         }
 
+        /**
+         * @param destinationId A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destinationId(String destinationId) {
             return destinationId(Output.of(destinationId));
         }
 
         /**
-         * @param userName The email of an active workspace user. Non-admin users can only set this field to their own email.
+         * @param userName A snapshot of the dashboard will be sent to the user&#39;s email when the `user_name` field is present.
          * 
          * @return builder
          * 
@@ -83,7 +103,7 @@ public final class JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs
         }
 
         /**
-         * @param userName The email of an active workspace user. Non-admin users can only set this field to their own email.
+         * @param userName A snapshot of the dashboard will be sent to the user&#39;s email when the `user_name` field is present.
          * 
          * @return builder
          * 

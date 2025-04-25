@@ -17,10 +17,6 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-        /// 
-        /// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
-        /// 
-        /// Example
         /// </summary>
         public InputList<Inputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededGetArgs> OnDurationWarningThresholdExceededs
         {
@@ -54,6 +50,14 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("onStreamingBacklogExceededs")]
         private InputList<Inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededGetArgs>? _onStreamingBacklogExceededs;
+
+        /// <summary>
+        /// (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+        /// 
+        /// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
+        /// 
+        /// Example
+        /// </summary>
         public InputList<Inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededGetArgs> OnStreamingBacklogExceededs
         {
             get => _onStreamingBacklogExceededs ?? (_onStreamingBacklogExceededs = new InputList<Inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededGetArgs>());

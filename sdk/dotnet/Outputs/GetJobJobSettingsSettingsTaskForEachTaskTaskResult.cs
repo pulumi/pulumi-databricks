@@ -14,6 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetJobJobSettingsSettingsTaskForEachTaskTaskResult
     {
         public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskResult? ConditionTask;
+        public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskResult? DashboardTask;
         public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskResult? DbtTask;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnResult> DependsOns;
         public readonly string? Description;
@@ -29,6 +30,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskResult? NotebookTask;
         public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettingsResult? NotificationSettings;
         public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskResult? PipelineTask;
+        public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskResult? PowerBiTask;
         public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskResult? PythonWheelTask;
         public readonly bool RetryOnTimeout;
         public readonly string? RunIf;
@@ -44,6 +46,8 @@ namespace Pulumi.Databricks.Outputs
         [OutputConstructor]
         private GetJobJobSettingsSettingsTaskForEachTaskTaskResult(
             Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskResult? conditionTask,
+
+            Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskResult? dashboardTask,
 
             Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskResult? dbtTask,
 
@@ -75,6 +79,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskResult? pipelineTask,
 
+            Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskResult? powerBiTask,
+
             Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskResult? pythonWheelTask,
 
             bool retryOnTimeout,
@@ -98,6 +104,7 @@ namespace Pulumi.Databricks.Outputs
             Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsResult? webhookNotifications)
         {
             ConditionTask = conditionTask;
+            DashboardTask = dashboardTask;
             DbtTask = dbtTask;
             DependsOns = dependsOns;
             Description = description;
@@ -113,6 +120,7 @@ namespace Pulumi.Databricks.Outputs
             NotebookTask = notebookTask;
             NotificationSettings = notificationSettings;
             PipelineTask = pipelineTask;
+            PowerBiTask = powerBiTask;
             PythonWheelTask = pythonWheelTask;
             RetryOnTimeout = retryOnTimeout;
             RunIf = runIf;

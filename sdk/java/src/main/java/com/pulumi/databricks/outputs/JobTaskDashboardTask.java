@@ -13,24 +13,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskDashboardTask {
     /**
-     * @return (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     * @return The identifier of the dashboard to refresh
      * 
      */
     private @Nullable String dashboardId;
+    /**
+     * @return Represents a subscription configuration for scheduled dashboard snapshots.
+     * 
+     */
     private @Nullable JobTaskDashboardTaskSubscription subscription;
+    /**
+     * @return The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
+     * 
+     */
     private @Nullable String warehouseId;
 
     private JobTaskDashboardTask() {}
     /**
-     * @return (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     * @return The identifier of the dashboard to refresh
      * 
      */
     public Optional<String> dashboardId() {
         return Optional.ofNullable(this.dashboardId);
     }
+    /**
+     * @return Represents a subscription configuration for scheduled dashboard snapshots.
+     * 
+     */
     public Optional<JobTaskDashboardTaskSubscription> subscription() {
         return Optional.ofNullable(this.subscription);
     }
+    /**
+     * @return The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
+     * 
+     */
     public Optional<String> warehouseId() {
         return Optional.ofNullable(this.warehouseId);
     }

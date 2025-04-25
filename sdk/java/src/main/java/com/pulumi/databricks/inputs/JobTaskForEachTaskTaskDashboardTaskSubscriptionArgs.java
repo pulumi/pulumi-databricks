@@ -19,30 +19,46 @@ public final class JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs extends c
     public static final JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs Empty = new JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs();
 
     /**
-     * string specifying a custom subject of email sent.
+     * Allows users to specify a custom subject line on the email sent to subscribers.
      * 
      */
     @Import(name="customSubject")
     private @Nullable Output<String> customSubject;
 
     /**
-     * @return string specifying a custom subject of email sent.
+     * @return Allows users to specify a custom subject line on the email sent to subscribers.
      * 
      */
     public Optional<Output<String>> customSubject() {
         return Optional.ofNullable(this.customSubject);
     }
 
+    /**
+     * When true, the subscription will not send emails.
+     * 
+     */
     @Import(name="paused")
     private @Nullable Output<Boolean> paused;
 
+    /**
+     * @return When true, the subscription will not send emails.
+     * 
+     */
     public Optional<Output<Boolean>> paused() {
         return Optional.ofNullable(this.paused);
     }
 
+    /**
+     * The list of subscribers to send the snapshot of the dashboard to.
+     * 
+     */
     @Import(name="subscribers")
     private @Nullable Output<List<JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs>> subscribers;
 
+    /**
+     * @return The list of subscribers to send the snapshot of the dashboard to.
+     * 
+     */
     public Optional<Output<List<JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs>>> subscribers() {
         return Optional.ofNullable(this.subscribers);
     }
@@ -74,7 +90,7 @@ public final class JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs extends c
         }
 
         /**
-         * @param customSubject string specifying a custom subject of email sent.
+         * @param customSubject Allows users to specify a custom subject line on the email sent to subscribers.
          * 
          * @return builder
          * 
@@ -85,7 +101,7 @@ public final class JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs extends c
         }
 
         /**
-         * @param customSubject string specifying a custom subject of email sent.
+         * @param customSubject Allows users to specify a custom subject line on the email sent to subscribers.
          * 
          * @return builder
          * 
@@ -94,24 +110,54 @@ public final class JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs extends c
             return customSubject(Output.of(customSubject));
         }
 
+        /**
+         * @param paused When true, the subscription will not send emails.
+         * 
+         * @return builder
+         * 
+         */
         public Builder paused(@Nullable Output<Boolean> paused) {
             $.paused = paused;
             return this;
         }
 
+        /**
+         * @param paused When true, the subscription will not send emails.
+         * 
+         * @return builder
+         * 
+         */
         public Builder paused(Boolean paused) {
             return paused(Output.of(paused));
         }
 
+        /**
+         * @param subscribers The list of subscribers to send the snapshot of the dashboard to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscribers(@Nullable Output<List<JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs>> subscribers) {
             $.subscribers = subscribers;
             return this;
         }
 
+        /**
+         * @param subscribers The list of subscribers to send the snapshot of the dashboard to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscribers(List<JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs> subscribers) {
             return subscribers(Output.of(subscribers));
         }
 
+        /**
+         * @param subscribers The list of subscribers to send the snapshot of the dashboard to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscribers(JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs... subscribers) {
             return subscribers(List.of(subscribers));
         }

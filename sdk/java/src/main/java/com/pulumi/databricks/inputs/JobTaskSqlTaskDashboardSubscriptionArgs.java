@@ -15,24 +15,24 @@ public final class JobTaskSqlTaskDashboardSubscriptionArgs extends com.pulumi.re
 
     public static final JobTaskSqlTaskDashboardSubscriptionArgs Empty = new JobTaskSqlTaskDashboardSubscriptionArgs();
 
+    /**
+     * A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+     * 
+     */
     @Import(name="destinationId")
     private @Nullable Output<String> destinationId;
 
+    /**
+     * @return A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+     * 
+     */
     public Optional<Output<String>> destinationId() {
         return Optional.ofNullable(this.destinationId);
     }
 
-    /**
-     * The email of an active workspace user. Non-admin users can only set this field to their own email.
-     * 
-     */
     @Import(name="userName")
     private @Nullable Output<String> userName;
 
-    /**
-     * @return The email of an active workspace user. Non-admin users can only set this field to their own email.
-     * 
-     */
     public Optional<Output<String>> userName() {
         return Optional.ofNullable(this.userName);
     }
@@ -62,32 +62,32 @@ public final class JobTaskSqlTaskDashboardSubscriptionArgs extends com.pulumi.re
             $ = new JobTaskSqlTaskDashboardSubscriptionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param destinationId A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destinationId(@Nullable Output<String> destinationId) {
             $.destinationId = destinationId;
             return this;
         }
 
-        public Builder destinationId(String destinationId) {
-            return destinationId(Output.of(destinationId));
-        }
-
         /**
-         * @param userName The email of an active workspace user. Non-admin users can only set this field to their own email.
+         * @param destinationId A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
          * 
          * @return builder
          * 
          */
+        public Builder destinationId(String destinationId) {
+            return destinationId(Output.of(destinationId));
+        }
+
         public Builder userName(@Nullable Output<String> userName) {
             $.userName = userName;
             return this;
         }
 
-        /**
-         * @param userName The email of an active workspace user. Non-admin users can only set this field to their own email.
-         * 
-         * @return builder
-         * 
-         */
         public Builder userName(String userName) {
             return userName(Output.of(userName));
         }

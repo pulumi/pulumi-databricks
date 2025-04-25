@@ -76,6 +76,21 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+     * 
+     */
+    @Import(name="computeMode")
+    private @Nullable Output<String> computeMode;
+
+    /**
+     * @return The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+     * 
+     */
+    public Optional<Output<String>> computeMode() {
+        return Optional.ofNullable(this.computeMode);
+    }
+
+    /**
      * (Integer) time when workspace was created
      * 
      */
@@ -90,9 +105,17 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.creationTime);
     }
 
+    /**
+     * `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+     * 
+     */
     @Import(name="credentialsId")
     private @Nullable Output<String> credentialsId;
 
+    /**
+     * @return `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+     * 
+     */
     public Optional<Output<String>> credentialsId() {
         return Optional.ofNullable(this.credentialsId);
     }
@@ -146,6 +169,21 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.deploymentName);
     }
 
+    /**
+     * (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
+     * 
+     */
+    @Import(name="effectiveComputeMode")
+    private @Nullable Output<String> effectiveComputeMode;
+
+    /**
+     * @return (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
+     * 
+     */
+    public Optional<Output<String>> effectiveComputeMode() {
+        return Optional.ofNullable(this.effectiveComputeMode);
+    }
+
     @Import(name="externalCustomerInfo")
     private @Nullable Output<MwsWorkspacesExternalCustomerInfoArgs> externalCustomerInfo;
 
@@ -179,10 +217,10 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
      * A block that specifies GKE configuration for the Databricks workspace:
      * 
      * @deprecated
-     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
     @Import(name="gkeConfig")
     private @Nullable Output<MwsWorkspacesGkeConfigArgs> gkeConfig;
 
@@ -190,10 +228,10 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
      * @return A block that specifies GKE configuration for the Databricks workspace:
      * 
      * @deprecated
-     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
     public Optional<Output<MwsWorkspacesGkeConfigArgs>> gkeConfig() {
         return Optional.ofNullable(this.gkeConfig);
     }
@@ -281,14 +319,14 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * `storage_configuration_id` from storage configuration.
+     * `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
      * 
      */
     @Import(name="storageConfigurationId")
     private @Nullable Output<String> storageConfigurationId;
 
     /**
-     * @return `storage_configuration_id` from storage configuration.
+     * @return `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
      * 
      */
     public Optional<Output<String>> storageConfigurationId() {
@@ -399,11 +437,13 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         this.awsRegion = $.awsRegion;
         this.cloud = $.cloud;
         this.cloudResourceContainer = $.cloudResourceContainer;
+        this.computeMode = $.computeMode;
         this.creationTime = $.creationTime;
         this.credentialsId = $.credentialsId;
         this.customTags = $.customTags;
         this.customerManagedKeyId = $.customerManagedKeyId;
         this.deploymentName = $.deploymentName;
+        this.effectiveComputeMode = $.effectiveComputeMode;
         this.externalCustomerInfo = $.externalCustomerInfo;
         this.gcpManagedNetworkConfig = $.gcpManagedNetworkConfig;
         this.gcpWorkspaceSa = $.gcpWorkspaceSa;
@@ -515,6 +555,27 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param computeMode The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder computeMode(@Nullable Output<String> computeMode) {
+            $.computeMode = computeMode;
+            return this;
+        }
+
+        /**
+         * @param computeMode The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder computeMode(String computeMode) {
+            return computeMode(Output.of(computeMode));
+        }
+
+        /**
          * @param creationTime (Integer) time when workspace was created
          * 
          * @return builder
@@ -535,11 +596,23 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
             return creationTime(Output.of(creationTime));
         }
 
+        /**
+         * @param credentialsId `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialsId(@Nullable Output<String> credentialsId) {
             $.credentialsId = credentialsId;
             return this;
         }
 
+        /**
+         * @param credentialsId `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialsId(String credentialsId) {
             return credentialsId(Output.of(credentialsId));
         }
@@ -611,6 +684,27 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
             return deploymentName(Output.of(deploymentName));
         }
 
+        /**
+         * @param effectiveComputeMode (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveComputeMode(@Nullable Output<String> effectiveComputeMode) {
+            $.effectiveComputeMode = effectiveComputeMode;
+            return this;
+        }
+
+        /**
+         * @param effectiveComputeMode (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveComputeMode(String effectiveComputeMode) {
+            return effectiveComputeMode(Output.of(effectiveComputeMode));
+        }
+
         public Builder externalCustomerInfo(@Nullable Output<MwsWorkspacesExternalCustomerInfoArgs> externalCustomerInfo) {
             $.externalCustomerInfo = externalCustomerInfo;
             return this;
@@ -656,10 +750,10 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          * @deprecated
-         * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+         * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
          * 
          */
-        @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+        @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
         public Builder gkeConfig(@Nullable Output<MwsWorkspacesGkeConfigArgs> gkeConfig) {
             $.gkeConfig = gkeConfig;
             return this;
@@ -671,10 +765,10 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          * @deprecated
-         * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+         * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
          * 
          */
-        @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+        @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
         public Builder gkeConfig(MwsWorkspacesGkeConfigArgs gkeConfig) {
             return gkeConfig(Output.of(gkeConfig));
         }
@@ -794,7 +888,7 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param storageConfigurationId `storage_configuration_id` from storage configuration.
+         * @param storageConfigurationId `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
          * 
          * @return builder
          * 
@@ -805,7 +899,7 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param storageConfigurationId `storage_configuration_id` from storage configuration.
+         * @param storageConfigurationId `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
          * 
          * @return builder
          * 

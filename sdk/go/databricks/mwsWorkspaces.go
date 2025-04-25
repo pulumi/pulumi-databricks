@@ -14,7 +14,40 @@ import (
 
 // ## Example Usage
 //
-// ### Creating a Databricks on AWS workspace
+// ### Creating a serverless workspace in AWS
+//
+// Creating a serverless workspace does not require any prerequisite resources. Simply specify `computeMode = "SERVERLESS"` when creating the workspace. Serverless workspaces must not include `credentialsId` or `storageConfigurationId`.
+//
+// To use serverless workspaces, you must enroll in the [Default Storage preview](https://docs.databricks.com/aws/en/storage/express-storage).
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewMwsWorkspaces(ctx, "serverless_workspace", &databricks.MwsWorkspacesArgs{
+//				AccountId:     pulumi.String(""),
+//				WorkspaceName: pulumi.String("serverless-workspace"),
+//				AwsRegion:     pulumi.String("us-east-1"),
+//				ComputeMode:   pulumi.String("SERVERLESS"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Creating a workspace on AWS
 //
 // !Simplest multiworkspace
 //
@@ -96,11 +129,11 @@ import (
 //
 // ```
 //
-// ### Creating a Databricks on AWS workspace with Databricks-Managed VPC
+// ### Creating a workspace on AWS with Databricks-Managed VPC
 //
 // ![VPCs](https://docs.databricks.com/_images/customer-managed-vpc.png)
 //
-// By default, Databricks creates a VPC in your AWS account for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with MwsNetworks so that you can configure it according to your organization’s enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC. Please see the difference described through IAM policy actions [on this page](https://docs.databricks.com/administration-guide/account-api/iam-role.html).
+// By default, Databricks creates a VPC in your AWS account for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with MwsNetworks so that you can configure it according to your organization's enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC. Please see the difference described through IAM policy actions [on this page](https://docs.databricks.com/administration-guide/account-api/iam-role.html).
 //
 // ```go
 // package main
@@ -256,7 +289,7 @@ import (
 //
 // In order to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) please ensure that you have read and understood the [Enable Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mwsPrivateAccessSettings and mws_networks.
 //
-// ### Creating a Databricks on GCP workspace
+// ### Creating a workspace on GCP
 //
 // To get workspace running, you have to configure a network object:
 //
@@ -358,22 +391,27 @@ type MwsWorkspaces struct {
 	Cloud     pulumi.StringOutput    `pulumi:"cloud"`
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer MwsWorkspacesCloudResourceContainerPtrOutput `pulumi:"cloudResourceContainer"`
+	// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+	ComputeMode pulumi.StringPtrOutput `pulumi:"computeMode"`
 	// (Integer) time when workspace was created
-	CreationTime  pulumi.IntOutput       `pulumi:"creationTime"`
+	CreationTime pulumi.IntOutput `pulumi:"creationTime"`
+	// `credentialsId` from credentials. This must not be specified when `computeMode` is set to `SERVERLESS`.
 	CredentialsId pulumi.StringPtrOutput `pulumi:"credentialsId"`
 	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
 	CustomTags pulumi.StringMapOutput `pulumi:"customTags"`
 	// Deprecated: Use managedServicesCustomerManagedKeyId instead
 	CustomerManagedKeyId pulumi.StringPtrOutput `pulumi:"customerManagedKeyId"`
 	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-	DeploymentName          pulumi.StringPtrOutput                        `pulumi:"deploymentName"`
+	DeploymentName pulumi.StringPtrOutput `pulumi:"deploymentName"`
+	// (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
+	EffectiveComputeMode    pulumi.StringOutput                           `pulumi:"effectiveComputeMode"`
 	ExternalCustomerInfo    MwsWorkspacesExternalCustomerInfoPtrOutput    `pulumi:"externalCustomerInfo"`
 	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrOutput `pulumi:"gcpManagedNetworkConfig"`
 	// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
 	GcpWorkspaceSa pulumi.StringOutput `pulumi:"gcpWorkspaceSa"`
 	// A block that specifies GKE configuration for the Databricks workspace:
 	//
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           MwsWorkspacesGkeConfigPtrOutput `pulumi:"gkeConfig"`
 	IsNoPublicIpEnabled pulumi.BoolPtrOutput            `pulumi:"isNoPublicIpEnabled"`
 	// region of the subnet.
@@ -386,7 +424,7 @@ type MwsWorkspaces struct {
 	PricingTier pulumi.StringOutput `pulumi:"pricingTier"`
 	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId pulumi.StringPtrOutput `pulumi:"privateAccessSettingsId"`
-	// `storageConfigurationId` from storage configuration.
+	// `storageConfigurationId` from storage configuration. This must not be specified when `computeMode` is set to `SERVERLESS`.
 	StorageConfigurationId pulumi.StringPtrOutput `pulumi:"storageConfigurationId"`
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
 	StorageCustomerManagedKeyId pulumi.StringPtrOutput      `pulumi:"storageCustomerManagedKeyId"`
@@ -453,22 +491,27 @@ type mwsWorkspacesState struct {
 	Cloud     *string `pulumi:"cloud"`
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer *MwsWorkspacesCloudResourceContainer `pulumi:"cloudResourceContainer"`
+	// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+	ComputeMode *string `pulumi:"computeMode"`
 	// (Integer) time when workspace was created
-	CreationTime  *int    `pulumi:"creationTime"`
+	CreationTime *int `pulumi:"creationTime"`
+	// `credentialsId` from credentials. This must not be specified when `computeMode` is set to `SERVERLESS`.
 	CredentialsId *string `pulumi:"credentialsId"`
 	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
 	CustomTags map[string]string `pulumi:"customTags"`
 	// Deprecated: Use managedServicesCustomerManagedKeyId instead
 	CustomerManagedKeyId *string `pulumi:"customerManagedKeyId"`
 	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-	DeploymentName          *string                               `pulumi:"deploymentName"`
+	DeploymentName *string `pulumi:"deploymentName"`
+	// (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
+	EffectiveComputeMode    *string                               `pulumi:"effectiveComputeMode"`
 	ExternalCustomerInfo    *MwsWorkspacesExternalCustomerInfo    `pulumi:"externalCustomerInfo"`
 	GcpManagedNetworkConfig *MwsWorkspacesGcpManagedNetworkConfig `pulumi:"gcpManagedNetworkConfig"`
 	// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
 	GcpWorkspaceSa *string `pulumi:"gcpWorkspaceSa"`
 	// A block that specifies GKE configuration for the Databricks workspace:
 	//
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           *MwsWorkspacesGkeConfig `pulumi:"gkeConfig"`
 	IsNoPublicIpEnabled *bool                   `pulumi:"isNoPublicIpEnabled"`
 	// region of the subnet.
@@ -481,7 +524,7 @@ type mwsWorkspacesState struct {
 	PricingTier *string `pulumi:"pricingTier"`
 	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId *string `pulumi:"privateAccessSettingsId"`
-	// `storageConfigurationId` from storage configuration.
+	// `storageConfigurationId` from storage configuration. This must not be specified when `computeMode` is set to `SERVERLESS`.
 	StorageConfigurationId *string `pulumi:"storageConfigurationId"`
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
 	StorageCustomerManagedKeyId *string             `pulumi:"storageCustomerManagedKeyId"`
@@ -506,22 +549,27 @@ type MwsWorkspacesState struct {
 	Cloud     pulumi.StringPtrInput
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer MwsWorkspacesCloudResourceContainerPtrInput
+	// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+	ComputeMode pulumi.StringPtrInput
 	// (Integer) time when workspace was created
-	CreationTime  pulumi.IntPtrInput
+	CreationTime pulumi.IntPtrInput
+	// `credentialsId` from credentials. This must not be specified when `computeMode` is set to `SERVERLESS`.
 	CredentialsId pulumi.StringPtrInput
 	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
 	CustomTags pulumi.StringMapInput
 	// Deprecated: Use managedServicesCustomerManagedKeyId instead
 	CustomerManagedKeyId pulumi.StringPtrInput
 	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-	DeploymentName          pulumi.StringPtrInput
+	DeploymentName pulumi.StringPtrInput
+	// (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
+	EffectiveComputeMode    pulumi.StringPtrInput
 	ExternalCustomerInfo    MwsWorkspacesExternalCustomerInfoPtrInput
 	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrInput
 	// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
 	GcpWorkspaceSa pulumi.StringPtrInput
 	// A block that specifies GKE configuration for the Databricks workspace:
 	//
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           MwsWorkspacesGkeConfigPtrInput
 	IsNoPublicIpEnabled pulumi.BoolPtrInput
 	// region of the subnet.
@@ -534,7 +582,7 @@ type MwsWorkspacesState struct {
 	PricingTier pulumi.StringPtrInput
 	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId pulumi.StringPtrInput
-	// `storageConfigurationId` from storage configuration.
+	// `storageConfigurationId` from storage configuration. This must not be specified when `computeMode` is set to `SERVERLESS`.
 	StorageConfigurationId pulumi.StringPtrInput
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
 	StorageCustomerManagedKeyId pulumi.StringPtrInput
@@ -563,8 +611,11 @@ type mwsWorkspacesArgs struct {
 	Cloud     *string `pulumi:"cloud"`
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer *MwsWorkspacesCloudResourceContainer `pulumi:"cloudResourceContainer"`
+	// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+	ComputeMode *string `pulumi:"computeMode"`
 	// (Integer) time when workspace was created
-	CreationTime  *int    `pulumi:"creationTime"`
+	CreationTime *int `pulumi:"creationTime"`
+	// `credentialsId` from credentials. This must not be specified when `computeMode` is set to `SERVERLESS`.
 	CredentialsId *string `pulumi:"credentialsId"`
 	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
 	CustomTags map[string]string `pulumi:"customTags"`
@@ -576,7 +627,7 @@ type mwsWorkspacesArgs struct {
 	GcpManagedNetworkConfig *MwsWorkspacesGcpManagedNetworkConfig `pulumi:"gcpManagedNetworkConfig"`
 	// A block that specifies GKE configuration for the Databricks workspace:
 	//
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           *MwsWorkspacesGkeConfig `pulumi:"gkeConfig"`
 	IsNoPublicIpEnabled *bool                   `pulumi:"isNoPublicIpEnabled"`
 	// region of the subnet.
@@ -589,7 +640,7 @@ type mwsWorkspacesArgs struct {
 	PricingTier *string `pulumi:"pricingTier"`
 	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId *string `pulumi:"privateAccessSettingsId"`
-	// `storageConfigurationId` from storage configuration.
+	// `storageConfigurationId` from storage configuration. This must not be specified when `computeMode` is set to `SERVERLESS`.
 	StorageConfigurationId *string `pulumi:"storageConfigurationId"`
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
 	StorageCustomerManagedKeyId *string             `pulumi:"storageCustomerManagedKeyId"`
@@ -615,8 +666,11 @@ type MwsWorkspacesArgs struct {
 	Cloud     pulumi.StringPtrInput
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer MwsWorkspacesCloudResourceContainerPtrInput
+	// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+	ComputeMode pulumi.StringPtrInput
 	// (Integer) time when workspace was created
-	CreationTime  pulumi.IntPtrInput
+	CreationTime pulumi.IntPtrInput
+	// `credentialsId` from credentials. This must not be specified when `computeMode` is set to `SERVERLESS`.
 	CredentialsId pulumi.StringPtrInput
 	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
 	CustomTags pulumi.StringMapInput
@@ -628,7 +682,7 @@ type MwsWorkspacesArgs struct {
 	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrInput
 	// A block that specifies GKE configuration for the Databricks workspace:
 	//
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           MwsWorkspacesGkeConfigPtrInput
 	IsNoPublicIpEnabled pulumi.BoolPtrInput
 	// region of the subnet.
@@ -641,7 +695,7 @@ type MwsWorkspacesArgs struct {
 	PricingTier pulumi.StringPtrInput
 	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId pulumi.StringPtrInput
-	// `storageConfigurationId` from storage configuration.
+	// `storageConfigurationId` from storage configuration. This must not be specified when `computeMode` is set to `SERVERLESS`.
 	StorageConfigurationId pulumi.StringPtrInput
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
 	StorageCustomerManagedKeyId pulumi.StringPtrInput
@@ -764,11 +818,17 @@ func (o MwsWorkspacesOutput) CloudResourceContainer() MwsWorkspacesCloudResource
 	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesCloudResourceContainerPtrOutput { return v.CloudResourceContainer }).(MwsWorkspacesCloudResourceContainerPtrOutput)
 }
 
+// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+func (o MwsWorkspacesOutput) ComputeMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.ComputeMode }).(pulumi.StringPtrOutput)
+}
+
 // (Integer) time when workspace was created
 func (o MwsWorkspacesOutput) CreationTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.IntOutput { return v.CreationTime }).(pulumi.IntOutput)
 }
 
+// `credentialsId` from credentials. This must not be specified when `computeMode` is set to `SERVERLESS`.
 func (o MwsWorkspacesOutput) CredentialsId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.CredentialsId }).(pulumi.StringPtrOutput)
 }
@@ -788,6 +848,11 @@ func (o MwsWorkspacesOutput) DeploymentName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.DeploymentName }).(pulumi.StringPtrOutput)
 }
 
+// (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
+func (o MwsWorkspacesOutput) EffectiveComputeMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.EffectiveComputeMode }).(pulumi.StringOutput)
+}
+
 func (o MwsWorkspacesOutput) ExternalCustomerInfo() MwsWorkspacesExternalCustomerInfoPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesExternalCustomerInfoPtrOutput { return v.ExternalCustomerInfo }).(MwsWorkspacesExternalCustomerInfoPtrOutput)
 }
@@ -803,7 +868,7 @@ func (o MwsWorkspacesOutput) GcpWorkspaceSa() pulumi.StringOutput {
 
 // A block that specifies GKE configuration for the Databricks workspace:
 //
-// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesOutput) GkeConfig() MwsWorkspacesGkeConfigPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesGkeConfigPtrOutput { return v.GkeConfig }).(MwsWorkspacesGkeConfigPtrOutput)
 }
@@ -837,7 +902,7 @@ func (o MwsWorkspacesOutput) PrivateAccessSettingsId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.PrivateAccessSettingsId }).(pulumi.StringPtrOutput)
 }
 
-// `storageConfigurationId` from storage configuration.
+// `storageConfigurationId` from storage configuration. This must not be specified when `computeMode` is set to `SERVERLESS`.
 func (o MwsWorkspacesOutput) StorageConfigurationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.StorageConfigurationId }).(pulumi.StringPtrOutput)
 }

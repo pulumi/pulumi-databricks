@@ -201,6 +201,11 @@ export class Job extends pulumi.CustomResource {
      * Specifices job parameter for the job. See parameter Configuration Block
      */
     public readonly parameters!: pulumi.Output<outputs.JobParameter[] | undefined>;
+    /**
+     * The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
+     * * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
+     * * `STANDARD`: Enables cost-efficient execution of serverless workloads.
+     */
     public readonly performanceTarget!: pulumi.Output<string | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -461,6 +466,11 @@ export interface JobState {
      * Specifices job parameter for the job. See parameter Configuration Block
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.JobParameter>[]>;
+    /**
+     * The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
+     * * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
+     * * `STANDARD`: Enables cost-efficient execution of serverless workloads.
+     */
     performanceTarget?: pulumi.Input<string>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -619,6 +629,11 @@ export interface JobArgs {
      * Specifices job parameter for the job. See parameter Configuration Block
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.JobParameter>[]>;
+    /**
+     * The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
+     * * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
+     * * `STANDARD`: Enables cost-efficient execution of serverless workloads.
+     */
     performanceTarget?: pulumi.Input<string>;
     /**
      * @deprecated should be used inside a task block and not inside a job block

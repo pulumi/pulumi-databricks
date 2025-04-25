@@ -13,16 +13,23 @@ namespace Pulumi.Databricks.Inputs
     public sealed class JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// string specifying a custom subject of email sent.
+        /// Allows users to specify a custom subject line on the email sent to subscribers.
         /// </summary>
         [Input("customSubject")]
         public Input<string>? CustomSubject { get; set; }
 
+        /// <summary>
+        /// When true, the subscription will not send emails.
+        /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
         [Input("subscribers")]
         private InputList<Inputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs>? _subscribers;
+
+        /// <summary>
+        /// The list of subscribers to send the snapshot of the dashboard to.
+        /// </summary>
         public InputList<Inputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs> Subscribers
         {
             get => _subscribers ?? (_subscribers = new InputList<Inputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs>());

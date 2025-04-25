@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications;
@@ -14,6 +15,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTask
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettings;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTask;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTask;
@@ -40,6 +42,13 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTask extends com.pulu
 
     public Optional<GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask> conditionTask() {
         return Optional.ofNullable(this.conditionTask);
+    }
+
+    @Import(name="dashboardTask")
+    private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTask dashboardTask;
+
+    public Optional<GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTask> dashboardTask() {
+        return Optional.ofNullable(this.dashboardTask);
     }
 
     @Import(name="dbtTask")
@@ -147,6 +156,13 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTask extends com.pulu
         return Optional.ofNullable(this.pipelineTask);
     }
 
+    @Import(name="powerBiTask")
+    private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTask powerBiTask;
+
+    public Optional<GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTask> powerBiTask() {
+        return Optional.ofNullable(this.powerBiTask);
+    }
+
     @Import(name="pythonWheelTask")
     private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask pythonWheelTask;
 
@@ -228,6 +244,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTask extends com.pulu
 
     private GetJobJobSettingsSettingsTaskForEachTaskTask(GetJobJobSettingsSettingsTaskForEachTaskTask $) {
         this.conditionTask = $.conditionTask;
+        this.dashboardTask = $.dashboardTask;
         this.dbtTask = $.dbtTask;
         this.dependsOns = $.dependsOns;
         this.description = $.description;
@@ -243,6 +260,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTask extends com.pulu
         this.notebookTask = $.notebookTask;
         this.notificationSettings = $.notificationSettings;
         this.pipelineTask = $.pipelineTask;
+        this.powerBiTask = $.powerBiTask;
         this.pythonWheelTask = $.pythonWheelTask;
         this.retryOnTimeout = $.retryOnTimeout;
         this.runIf = $.runIf;
@@ -276,6 +294,11 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTask extends com.pulu
 
         public Builder conditionTask(@Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask conditionTask) {
             $.conditionTask = conditionTask;
+            return this;
+        }
+
+        public Builder dashboardTask(@Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTask dashboardTask) {
+            $.dashboardTask = dashboardTask;
             return this;
         }
 
@@ -359,6 +382,11 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTask extends com.pulu
 
         public Builder pipelineTask(@Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTask pipelineTask) {
             $.pipelineTask = pipelineTask;
+            return this;
+        }
+
+        public Builder powerBiTask(@Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTask powerBiTask) {
+            $.powerBiTask = powerBiTask;
             return this;
         }
 

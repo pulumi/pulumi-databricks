@@ -45,7 +45,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? SingleUserName;
         public readonly ImmutableDictionary<string, string>? SparkConf;
         public readonly ImmutableDictionary<string, string>? SparkEnvVars;
-        public readonly string SparkVersion;
+        public readonly string? SparkVersion;
         public readonly ImmutableArray<string> SshPublicKeys;
         public readonly bool? UseMlRuntime;
         /// <summary>
@@ -113,7 +113,7 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableDictionary<string, string>? sparkEnvVars,
 
-            string sparkVersion,
+            string? sparkVersion,
 
             ImmutableArray<string> sshPublicKeys,
 

@@ -19,37 +19,77 @@ public final class JobTaskForEachTaskTaskPowerBiTaskArgs extends com.pulumi.reso
 
     public static final JobTaskForEachTaskTaskPowerBiTaskArgs Empty = new JobTaskForEachTaskTaskPowerBiTaskArgs();
 
+    /**
+     * The resource name of the UC connection to authenticate from Databricks to Power BI
+     * 
+     */
     @Import(name="connectionResourceName")
     private @Nullable Output<String> connectionResourceName;
 
+    /**
+     * @return The resource name of the UC connection to authenticate from Databricks to Power BI
+     * 
+     */
     public Optional<Output<String>> connectionResourceName() {
         return Optional.ofNullable(this.connectionResourceName);
     }
 
+    /**
+     * The semantic model to update. Block consists of following fields:
+     * 
+     */
     @Import(name="powerBiModel")
     private @Nullable Output<JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs> powerBiModel;
 
+    /**
+     * @return The semantic model to update. Block consists of following fields:
+     * 
+     */
     public Optional<Output<JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs>> powerBiModel() {
         return Optional.ofNullable(this.powerBiModel);
     }
 
+    /**
+     * Whether the model should be refreshed after the update. Default is false
+     * 
+     */
     @Import(name="refreshAfterUpdate")
     private @Nullable Output<Boolean> refreshAfterUpdate;
 
+    /**
+     * @return Whether the model should be refreshed after the update. Default is false
+     * 
+     */
     public Optional<Output<Boolean>> refreshAfterUpdate() {
         return Optional.ofNullable(this.refreshAfterUpdate);
     }
 
+    /**
+     * The tables to be exported to Power BI. Block consists of following fields:
+     * 
+     */
     @Import(name="tables")
     private @Nullable Output<List<JobTaskForEachTaskTaskPowerBiTaskTableArgs>> tables;
 
+    /**
+     * @return The tables to be exported to Power BI. Block consists of following fields:
+     * 
+     */
     public Optional<Output<List<JobTaskForEachTaskTaskPowerBiTaskTableArgs>>> tables() {
         return Optional.ofNullable(this.tables);
     }
 
+    /**
+     * The SQL warehouse ID to use as the Power BI data source
+     * 
+     */
     @Import(name="warehouseId")
     private @Nullable Output<String> warehouseId;
 
+    /**
+     * @return The SQL warehouse ID to use as the Power BI data source
+     * 
+     */
     public Optional<Output<String>> warehouseId() {
         return Optional.ofNullable(this.warehouseId);
     }
@@ -82,51 +122,117 @@ public final class JobTaskForEachTaskTaskPowerBiTaskArgs extends com.pulumi.reso
             $ = new JobTaskForEachTaskTaskPowerBiTaskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param connectionResourceName The resource name of the UC connection to authenticate from Databricks to Power BI
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectionResourceName(@Nullable Output<String> connectionResourceName) {
             $.connectionResourceName = connectionResourceName;
             return this;
         }
 
+        /**
+         * @param connectionResourceName The resource name of the UC connection to authenticate from Databricks to Power BI
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectionResourceName(String connectionResourceName) {
             return connectionResourceName(Output.of(connectionResourceName));
         }
 
+        /**
+         * @param powerBiModel The semantic model to update. Block consists of following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder powerBiModel(@Nullable Output<JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs> powerBiModel) {
             $.powerBiModel = powerBiModel;
             return this;
         }
 
+        /**
+         * @param powerBiModel The semantic model to update. Block consists of following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder powerBiModel(JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs powerBiModel) {
             return powerBiModel(Output.of(powerBiModel));
         }
 
+        /**
+         * @param refreshAfterUpdate Whether the model should be refreshed after the update. Default is false
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshAfterUpdate(@Nullable Output<Boolean> refreshAfterUpdate) {
             $.refreshAfterUpdate = refreshAfterUpdate;
             return this;
         }
 
+        /**
+         * @param refreshAfterUpdate Whether the model should be refreshed after the update. Default is false
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshAfterUpdate(Boolean refreshAfterUpdate) {
             return refreshAfterUpdate(Output.of(refreshAfterUpdate));
         }
 
+        /**
+         * @param tables The tables to be exported to Power BI. Block consists of following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder tables(@Nullable Output<List<JobTaskForEachTaskTaskPowerBiTaskTableArgs>> tables) {
             $.tables = tables;
             return this;
         }
 
+        /**
+         * @param tables The tables to be exported to Power BI. Block consists of following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder tables(List<JobTaskForEachTaskTaskPowerBiTaskTableArgs> tables) {
             return tables(Output.of(tables));
         }
 
+        /**
+         * @param tables The tables to be exported to Power BI. Block consists of following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder tables(JobTaskForEachTaskTaskPowerBiTaskTableArgs... tables) {
             return tables(List.of(tables));
         }
 
+        /**
+         * @param warehouseId The SQL warehouse ID to use as the Power BI data source
+         * 
+         * @return builder
+         * 
+         */
         public Builder warehouseId(@Nullable Output<String> warehouseId) {
             $.warehouseId = warehouseId;
             return this;
         }
 
+        /**
+         * @param warehouseId The SQL warehouse ID to use as the Power BI data source
+         * 
+         * @return builder
+         * 
+         */
         public Builder warehouseId(String warehouseId) {
             return warehouseId(Output.of(warehouseId));
         }

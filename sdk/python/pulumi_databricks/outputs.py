@@ -747,12 +747,18 @@ __all__ = [
     'GetJobJobSettingsSettingsSparkSubmitTaskResult',
     'GetJobJobSettingsSettingsTaskResult',
     'GetJobJobSettingsSettingsTaskConditionTaskResult',
+    'GetJobJobSettingsSettingsTaskDashboardTaskResult',
+    'GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionResult',
+    'GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberResult',
     'GetJobJobSettingsSettingsTaskDbtTaskResult',
     'GetJobJobSettingsSettingsTaskDependsOnResult',
     'GetJobJobSettingsSettingsTaskEmailNotificationsResult',
     'GetJobJobSettingsSettingsTaskForEachTaskResult',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskResult',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskResult',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskResult',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionResult',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberResult',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskResult',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnResult',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsResult',
@@ -787,6 +793,9 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskResult',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettingsResult',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskResult',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskResult',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskPowerBiModelResult',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskTableResult',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskResult',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskResult',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTaskResult',
@@ -836,6 +845,9 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskNotebookTaskResult',
     'GetJobJobSettingsSettingsTaskNotificationSettingsResult',
     'GetJobJobSettingsSettingsTaskPipelineTaskResult',
+    'GetJobJobSettingsSettingsTaskPowerBiTaskResult',
+    'GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelResult',
+    'GetJobJobSettingsSettingsTaskPowerBiTaskTableResult',
     'GetJobJobSettingsSettingsTaskPythonWheelTaskResult',
     'GetJobJobSettingsSettingsTaskRunJobTaskResult',
     'GetJobJobSettingsSettingsTaskSparkJarTaskResult',
@@ -5298,10 +5310,11 @@ class JobEmailNotifications(dict):
         """
         :param builtins.bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
         :param Sequence[builtins.str] on_duration_warning_threshold_exceededs: (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-               
-               The following parameter is only available for the job level configuration.
         :param Sequence[builtins.str] on_failures: (List) list of emails to notify when the run fails.
         :param Sequence[builtins.str] on_starts: (List) list of emails to notify when the run starts.
+        :param Sequence[builtins.str] on_streaming_backlog_exceededs: (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+               
+               The following parameter is only available for the job level configuration.
         :param Sequence[builtins.str] on_successes: (List) list of emails to notify when the run completes successfully.
         """
         if no_alert_for_skipped_runs is not None:
@@ -5330,8 +5343,6 @@ class JobEmailNotifications(dict):
     def on_duration_warning_threshold_exceededs(self) -> Optional[Sequence[builtins.str]]:
         """
         (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-
-        The following parameter is only available for the job level configuration.
         """
         return pulumi.get(self, "on_duration_warning_threshold_exceededs")
 
@@ -5354,6 +5365,11 @@ class JobEmailNotifications(dict):
     @property
     @pulumi.getter(name="onStreamingBacklogExceededs")
     def on_streaming_backlog_exceededs(self) -> Optional[Sequence[builtins.str]]:
+        """
+        (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+
+        The following parameter is only available for the job level configuration.
+        """
         return pulumi.get(self, "on_streaming_backlog_exceededs")
 
     @property
@@ -5757,9 +5773,7 @@ class JobJobClusterNewCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "sparkVersion":
-            suggest = "spark_version"
-        elif key == "applyPolicyDefaultValues":
+        if key == "applyPolicyDefaultValues":
             suggest = "apply_policy_default_values"
         elif key == "awsAttributes":
             suggest = "aws_attributes"
@@ -5811,6 +5825,8 @@ class JobJobClusterNewCluster(dict):
             suggest = "spark_conf"
         elif key == "sparkEnvVars":
             suggest = "spark_env_vars"
+        elif key == "sparkVersion":
+            suggest = "spark_version"
         elif key == "sshPublicKeys":
             suggest = "ssh_public_keys"
         elif key == "useMlRuntime":
@@ -5830,7 +5846,6 @@ class JobJobClusterNewCluster(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 spark_version: builtins.str,
                  apply_policy_default_values: Optional[builtins.bool] = None,
                  autoscale: Optional['outputs.JobJobClusterNewClusterAutoscale'] = None,
                  aws_attributes: Optional['outputs.JobJobClusterNewClusterAwsAttributes'] = None,
@@ -5860,6 +5875,7 @@ class JobJobClusterNewCluster(dict):
                  single_user_name: Optional[builtins.str] = None,
                  spark_conf: Optional[Mapping[str, builtins.str]] = None,
                  spark_env_vars: Optional[Mapping[str, builtins.str]] = None,
+                 spark_version: Optional[builtins.str] = None,
                  ssh_public_keys: Optional[Sequence[builtins.str]] = None,
                  use_ml_runtime: Optional[builtins.bool] = None,
                  workload_type: Optional['outputs.JobJobClusterNewClusterWorkloadType'] = None):
@@ -5867,7 +5883,6 @@ class JobJobClusterNewCluster(dict):
         :param Sequence['JobJobClusterNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         :param 'JobJobClusterNewClusterWorkloadTypeArgs' workload_type: isn't supported
         """
-        pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -5926,17 +5941,14 @@ class JobJobClusterNewCluster(dict):
             pulumi.set(__self__, "spark_conf", spark_conf)
         if spark_env_vars is not None:
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
+        if spark_version is not None:
+            pulumi.set(__self__, "spark_version", spark_version)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
-
-    @property
-    @pulumi.getter(name="sparkVersion")
-    def spark_version(self) -> builtins.str:
-        return pulumi.get(self, "spark_version")
 
     @property
     @pulumi.getter(name="applyPolicyDefaultValues")
@@ -6085,6 +6097,11 @@ class JobJobClusterNewCluster(dict):
     @pulumi.getter(name="sparkEnvVars")
     def spark_env_vars(self) -> Optional[Mapping[str, builtins.str]]:
         return pulumi.get(self, "spark_env_vars")
+
+    @property
+    @pulumi.getter(name="sparkVersion")
+    def spark_version(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "spark_version")
 
     @property
     @pulumi.getter(name="sshPublicKeys")
@@ -7243,9 +7260,7 @@ class JobNewCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "sparkVersion":
-            suggest = "spark_version"
-        elif key == "applyPolicyDefaultValues":
+        if key == "applyPolicyDefaultValues":
             suggest = "apply_policy_default_values"
         elif key == "awsAttributes":
             suggest = "aws_attributes"
@@ -7297,6 +7312,8 @@ class JobNewCluster(dict):
             suggest = "spark_conf"
         elif key == "sparkEnvVars":
             suggest = "spark_env_vars"
+        elif key == "sparkVersion":
+            suggest = "spark_version"
         elif key == "sshPublicKeys":
             suggest = "ssh_public_keys"
         elif key == "useMlRuntime":
@@ -7316,7 +7333,6 @@ class JobNewCluster(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 spark_version: builtins.str,
                  apply_policy_default_values: Optional[builtins.bool] = None,
                  autoscale: Optional['outputs.JobNewClusterAutoscale'] = None,
                  aws_attributes: Optional['outputs.JobNewClusterAwsAttributes'] = None,
@@ -7346,6 +7362,7 @@ class JobNewCluster(dict):
                  single_user_name: Optional[builtins.str] = None,
                  spark_conf: Optional[Mapping[str, builtins.str]] = None,
                  spark_env_vars: Optional[Mapping[str, builtins.str]] = None,
+                 spark_version: Optional[builtins.str] = None,
                  ssh_public_keys: Optional[Sequence[builtins.str]] = None,
                  use_ml_runtime: Optional[builtins.bool] = None,
                  workload_type: Optional['outputs.JobNewClusterWorkloadType'] = None):
@@ -7353,7 +7370,6 @@ class JobNewCluster(dict):
         :param Sequence['JobNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         :param 'JobNewClusterWorkloadTypeArgs' workload_type: isn't supported
         """
-        pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -7412,17 +7428,14 @@ class JobNewCluster(dict):
             pulumi.set(__self__, "spark_conf", spark_conf)
         if spark_env_vars is not None:
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
+        if spark_version is not None:
+            pulumi.set(__self__, "spark_version", spark_version)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
-
-    @property
-    @pulumi.getter(name="sparkVersion")
-    def spark_version(self) -> builtins.str:
-        return pulumi.get(self, "spark_version")
 
     @property
     @pulumi.getter(name="applyPolicyDefaultValues")
@@ -7571,6 +7584,11 @@ class JobNewCluster(dict):
     @pulumi.getter(name="sparkEnvVars")
     def spark_env_vars(self) -> Optional[Mapping[str, builtins.str]]:
         return pulumi.get(self, "spark_env_vars")
+
+    @property
+    @pulumi.getter(name="sparkVersion")
+    def spark_version(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "spark_version")
 
     @property
     @pulumi.getter(name="sshPublicKeys")
@@ -9169,9 +9187,11 @@ class JobSparkPythonTask(dict):
                  parameters: Optional[Sequence[builtins.str]] = None,
                  source: Optional[builtins.str] = None):
         """
-        :param builtins.str python_file: The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+        :param builtins.str python_file: The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
         :param Sequence[builtins.str] parameters: (List) Command line parameters passed to the Python file.
-        :param builtins.str source: Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+        :param builtins.str source: Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the python_file has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+               * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+               * `GIT`: The Python file is located in a remote Git repository.
         """
         pulumi.set(__self__, "python_file", python_file)
         if parameters is not None:
@@ -9183,7 +9203,7 @@ class JobSparkPythonTask(dict):
     @pulumi.getter(name="pythonFile")
     def python_file(self) -> builtins.str:
         """
-        The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+        The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
         """
         return pulumi.get(self, "python_file")
 
@@ -9199,7 +9219,9 @@ class JobSparkPythonTask(dict):
     @pulumi.getter
     def source(self) -> Optional[builtins.str]:
         """
-        Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+        Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the python_file has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+        * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+        * `GIT`: The Python file is located in a remote Git repository.
         """
         return pulumi.get(self, "source")
 
@@ -9790,7 +9812,9 @@ class JobTaskDashboardTask(dict):
                  subscription: Optional['outputs.JobTaskDashboardTaskSubscription'] = None,
                  warehouse_id: Optional[builtins.str] = None):
         """
-        :param builtins.str dashboard_id: (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        :param builtins.str dashboard_id: The identifier of the dashboard to refresh
+        :param 'JobTaskDashboardTaskSubscriptionArgs' subscription: Represents a subscription configuration for scheduled dashboard snapshots.
+        :param builtins.str warehouse_id: The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
         """
         if dashboard_id is not None:
             pulumi.set(__self__, "dashboard_id", dashboard_id)
@@ -9803,18 +9827,24 @@ class JobTaskDashboardTask(dict):
     @pulumi.getter(name="dashboardId")
     def dashboard_id(self) -> Optional[builtins.str]:
         """
-        (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        The identifier of the dashboard to refresh
         """
         return pulumi.get(self, "dashboard_id")
 
     @property
     @pulumi.getter
     def subscription(self) -> Optional['outputs.JobTaskDashboardTaskSubscription']:
+        """
+        Represents a subscription configuration for scheduled dashboard snapshots.
+        """
         return pulumi.get(self, "subscription")
 
     @property
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> Optional[builtins.str]:
+        """
+        The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
+        """
         return pulumi.get(self, "warehouse_id")
 
 
@@ -9842,7 +9872,9 @@ class JobTaskDashboardTaskSubscription(dict):
                  paused: Optional[builtins.bool] = None,
                  subscribers: Optional[Sequence['outputs.JobTaskDashboardTaskSubscriptionSubscriber']] = None):
         """
-        :param builtins.str custom_subject: string specifying a custom subject of email sent.
+        :param builtins.str custom_subject: Allows users to specify a custom subject line on the email sent to subscribers.
+        :param builtins.bool paused: When true, the subscription will not send emails.
+        :param Sequence['JobTaskDashboardTaskSubscriptionSubscriberArgs'] subscribers: The list of subscribers to send the snapshot of the dashboard to.
         """
         if custom_subject is not None:
             pulumi.set(__self__, "custom_subject", custom_subject)
@@ -9855,18 +9887,24 @@ class JobTaskDashboardTaskSubscription(dict):
     @pulumi.getter(name="customSubject")
     def custom_subject(self) -> Optional[builtins.str]:
         """
-        string specifying a custom subject of email sent.
+        Allows users to specify a custom subject line on the email sent to subscribers.
         """
         return pulumi.get(self, "custom_subject")
 
     @property
     @pulumi.getter
     def paused(self) -> Optional[builtins.bool]:
+        """
+        When true, the subscription will not send emails.
+        """
         return pulumi.get(self, "paused")
 
     @property
     @pulumi.getter
     def subscribers(self) -> Optional[Sequence['outputs.JobTaskDashboardTaskSubscriptionSubscriber']]:
+        """
+        The list of subscribers to send the snapshot of the dashboard to.
+        """
         return pulumi.get(self, "subscribers")
 
 
@@ -9895,7 +9933,8 @@ class JobTaskDashboardTaskSubscriptionSubscriber(dict):
                  destination_id: Optional[builtins.str] = None,
                  user_name: Optional[builtins.str] = None):
         """
-        :param builtins.str user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
+        :param builtins.str destination_id: A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+        :param builtins.str user_name: A snapshot of the dashboard will be sent to the user's email when the `user_name` field is present.
         """
         if destination_id is not None:
             pulumi.set(__self__, "destination_id", destination_id)
@@ -9905,13 +9944,16 @@ class JobTaskDashboardTaskSubscriptionSubscriber(dict):
     @property
     @pulumi.getter(name="destinationId")
     def destination_id(self) -> Optional[builtins.str]:
+        """
+        A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+        """
         return pulumi.get(self, "destination_id")
 
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[builtins.str]:
         """
-        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        A snapshot of the dashboard will be sent to the user's email when the `user_name` field is present.
         """
         return pulumi.get(self, "user_name")
 
@@ -10125,10 +10167,11 @@ class JobTaskEmailNotifications(dict):
         """
         :param builtins.bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
         :param Sequence[builtins.str] on_duration_warning_threshold_exceededs: (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-               
-               The following parameter is only available for the job level configuration.
         :param Sequence[builtins.str] on_failures: (List) list of emails to notify when the run fails.
         :param Sequence[builtins.str] on_starts: (List) list of emails to notify when the run starts.
+        :param Sequence[builtins.str] on_streaming_backlog_exceededs: (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+               
+               The following parameter is only available for the job level configuration.
         :param Sequence[builtins.str] on_successes: (List) list of emails to notify when the run completes successfully.
         """
         if no_alert_for_skipped_runs is not None:
@@ -10157,8 +10200,6 @@ class JobTaskEmailNotifications(dict):
     def on_duration_warning_threshold_exceededs(self) -> Optional[Sequence[builtins.str]]:
         """
         (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-
-        The following parameter is only available for the job level configuration.
         """
         return pulumi.get(self, "on_duration_warning_threshold_exceededs")
 
@@ -10181,6 +10222,11 @@ class JobTaskEmailNotifications(dict):
     @property
     @pulumi.getter(name="onStreamingBacklogExceededs")
     def on_streaming_backlog_exceededs(self) -> Optional[Sequence[builtins.str]]:
+        """
+        (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+
+        The following parameter is only available for the job level configuration.
+        """
         return pulumi.get(self, "on_streaming_backlog_exceededs")
 
     @property
@@ -10790,7 +10836,9 @@ class JobTaskForEachTaskTaskDashboardTask(dict):
                  subscription: Optional['outputs.JobTaskForEachTaskTaskDashboardTaskSubscription'] = None,
                  warehouse_id: Optional[builtins.str] = None):
         """
-        :param builtins.str dashboard_id: (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        :param builtins.str dashboard_id: The identifier of the dashboard to refresh
+        :param 'JobTaskForEachTaskTaskDashboardTaskSubscriptionArgs' subscription: Represents a subscription configuration for scheduled dashboard snapshots.
+        :param builtins.str warehouse_id: The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
         """
         if dashboard_id is not None:
             pulumi.set(__self__, "dashboard_id", dashboard_id)
@@ -10803,18 +10851,24 @@ class JobTaskForEachTaskTaskDashboardTask(dict):
     @pulumi.getter(name="dashboardId")
     def dashboard_id(self) -> Optional[builtins.str]:
         """
-        (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+        The identifier of the dashboard to refresh
         """
         return pulumi.get(self, "dashboard_id")
 
     @property
     @pulumi.getter
     def subscription(self) -> Optional['outputs.JobTaskForEachTaskTaskDashboardTaskSubscription']:
+        """
+        Represents a subscription configuration for scheduled dashboard snapshots.
+        """
         return pulumi.get(self, "subscription")
 
     @property
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> Optional[builtins.str]:
+        """
+        The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
+        """
         return pulumi.get(self, "warehouse_id")
 
 
@@ -10842,7 +10896,9 @@ class JobTaskForEachTaskTaskDashboardTaskSubscription(dict):
                  paused: Optional[builtins.bool] = None,
                  subscribers: Optional[Sequence['outputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber']] = None):
         """
-        :param builtins.str custom_subject: string specifying a custom subject of email sent.
+        :param builtins.str custom_subject: Allows users to specify a custom subject line on the email sent to subscribers.
+        :param builtins.bool paused: When true, the subscription will not send emails.
+        :param Sequence['JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs'] subscribers: The list of subscribers to send the snapshot of the dashboard to.
         """
         if custom_subject is not None:
             pulumi.set(__self__, "custom_subject", custom_subject)
@@ -10855,18 +10911,24 @@ class JobTaskForEachTaskTaskDashboardTaskSubscription(dict):
     @pulumi.getter(name="customSubject")
     def custom_subject(self) -> Optional[builtins.str]:
         """
-        string specifying a custom subject of email sent.
+        Allows users to specify a custom subject line on the email sent to subscribers.
         """
         return pulumi.get(self, "custom_subject")
 
     @property
     @pulumi.getter
     def paused(self) -> Optional[builtins.bool]:
+        """
+        When true, the subscription will not send emails.
+        """
         return pulumi.get(self, "paused")
 
     @property
     @pulumi.getter
     def subscribers(self) -> Optional[Sequence['outputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber']]:
+        """
+        The list of subscribers to send the snapshot of the dashboard to.
+        """
         return pulumi.get(self, "subscribers")
 
 
@@ -10895,7 +10957,8 @@ class JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber(dict):
                  destination_id: Optional[builtins.str] = None,
                  user_name: Optional[builtins.str] = None):
         """
-        :param builtins.str user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
+        :param builtins.str destination_id: A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+        :param builtins.str user_name: A snapshot of the dashboard will be sent to the user's email when the `user_name` field is present.
         """
         if destination_id is not None:
             pulumi.set(__self__, "destination_id", destination_id)
@@ -10905,13 +10968,16 @@ class JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber(dict):
     @property
     @pulumi.getter(name="destinationId")
     def destination_id(self) -> Optional[builtins.str]:
+        """
+        A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+        """
         return pulumi.get(self, "destination_id")
 
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[builtins.str]:
         """
-        The email of an active workspace user. Non-admin users can only set this field to their own email.
+        A snapshot of the dashboard will be sent to the user's email when the `user_name` field is present.
         """
         return pulumi.get(self, "user_name")
 
@@ -11125,10 +11191,11 @@ class JobTaskForEachTaskTaskEmailNotifications(dict):
         """
         :param builtins.bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
         :param Sequence[builtins.str] on_duration_warning_threshold_exceededs: (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-               
-               The following parameter is only available for the job level configuration.
         :param Sequence[builtins.str] on_failures: (List) list of emails to notify when the run fails.
         :param Sequence[builtins.str] on_starts: (List) list of emails to notify when the run starts.
+        :param Sequence[builtins.str] on_streaming_backlog_exceededs: (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+               
+               The following parameter is only available for the job level configuration.
         :param Sequence[builtins.str] on_successes: (List) list of emails to notify when the run completes successfully.
         """
         if no_alert_for_skipped_runs is not None:
@@ -11157,8 +11224,6 @@ class JobTaskForEachTaskTaskEmailNotifications(dict):
     def on_duration_warning_threshold_exceededs(self) -> Optional[Sequence[builtins.str]]:
         """
         (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-
-        The following parameter is only available for the job level configuration.
         """
         return pulumi.get(self, "on_duration_warning_threshold_exceededs")
 
@@ -11181,6 +11246,11 @@ class JobTaskForEachTaskTaskEmailNotifications(dict):
     @property
     @pulumi.getter(name="onStreamingBacklogExceededs")
     def on_streaming_backlog_exceededs(self) -> Optional[Sequence[builtins.str]]:
+        """
+        (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+
+        The following parameter is only available for the job level configuration.
+        """
         return pulumi.get(self, "on_streaming_backlog_exceededs")
 
     @property
@@ -11525,9 +11595,7 @@ class JobTaskForEachTaskTaskNewCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "sparkVersion":
-            suggest = "spark_version"
-        elif key == "applyPolicyDefaultValues":
+        if key == "applyPolicyDefaultValues":
             suggest = "apply_policy_default_values"
         elif key == "awsAttributes":
             suggest = "aws_attributes"
@@ -11579,6 +11647,8 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             suggest = "spark_conf"
         elif key == "sparkEnvVars":
             suggest = "spark_env_vars"
+        elif key == "sparkVersion":
+            suggest = "spark_version"
         elif key == "sshPublicKeys":
             suggest = "ssh_public_keys"
         elif key == "useMlRuntime":
@@ -11598,7 +11668,6 @@ class JobTaskForEachTaskTaskNewCluster(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 spark_version: builtins.str,
                  apply_policy_default_values: Optional[builtins.bool] = None,
                  autoscale: Optional['outputs.JobTaskForEachTaskTaskNewClusterAutoscale'] = None,
                  aws_attributes: Optional['outputs.JobTaskForEachTaskTaskNewClusterAwsAttributes'] = None,
@@ -11628,6 +11697,7 @@ class JobTaskForEachTaskTaskNewCluster(dict):
                  single_user_name: Optional[builtins.str] = None,
                  spark_conf: Optional[Mapping[str, builtins.str]] = None,
                  spark_env_vars: Optional[Mapping[str, builtins.str]] = None,
+                 spark_version: Optional[builtins.str] = None,
                  ssh_public_keys: Optional[Sequence[builtins.str]] = None,
                  use_ml_runtime: Optional[builtins.bool] = None,
                  workload_type: Optional['outputs.JobTaskForEachTaskTaskNewClusterWorkloadType'] = None):
@@ -11635,7 +11705,6 @@ class JobTaskForEachTaskTaskNewCluster(dict):
         :param Sequence['JobTaskForEachTaskTaskNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         :param 'JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs' workload_type: isn't supported
         """
-        pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -11694,17 +11763,14 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             pulumi.set(__self__, "spark_conf", spark_conf)
         if spark_env_vars is not None:
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
+        if spark_version is not None:
+            pulumi.set(__self__, "spark_version", spark_version)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
-
-    @property
-    @pulumi.getter(name="sparkVersion")
-    def spark_version(self) -> builtins.str:
-        return pulumi.get(self, "spark_version")
 
     @property
     @pulumi.getter(name="applyPolicyDefaultValues")
@@ -11853,6 +11919,11 @@ class JobTaskForEachTaskTaskNewCluster(dict):
     @pulumi.getter(name="sparkEnvVars")
     def spark_env_vars(self) -> Optional[Mapping[str, builtins.str]]:
         return pulumi.get(self, "spark_env_vars")
+
+    @property
+    @pulumi.getter(name="sparkVersion")
+    def spark_version(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "spark_version")
 
     @property
     @pulumi.getter(name="sshPublicKeys")
@@ -13104,6 +13175,13 @@ class JobTaskForEachTaskTaskPowerBiTask(dict):
                  refresh_after_update: Optional[builtins.bool] = None,
                  tables: Optional[Sequence['outputs.JobTaskForEachTaskTaskPowerBiTaskTable']] = None,
                  warehouse_id: Optional[builtins.str] = None):
+        """
+        :param builtins.str connection_resource_name: The resource name of the UC connection to authenticate from Databricks to Power BI
+        :param 'JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs' power_bi_model: The semantic model to update. Block consists of following fields:
+        :param builtins.bool refresh_after_update: Whether the model should be refreshed after the update. Default is false
+        :param Sequence['JobTaskForEachTaskTaskPowerBiTaskTableArgs'] tables: The tables to be exported to Power BI. Block consists of following fields:
+        :param builtins.str warehouse_id: The SQL warehouse ID to use as the Power BI data source
+        """
         if connection_resource_name is not None:
             pulumi.set(__self__, "connection_resource_name", connection_resource_name)
         if power_bi_model is not None:
@@ -13118,26 +13196,41 @@ class JobTaskForEachTaskTaskPowerBiTask(dict):
     @property
     @pulumi.getter(name="connectionResourceName")
     def connection_resource_name(self) -> Optional[builtins.str]:
+        """
+        The resource name of the UC connection to authenticate from Databricks to Power BI
+        """
         return pulumi.get(self, "connection_resource_name")
 
     @property
     @pulumi.getter(name="powerBiModel")
     def power_bi_model(self) -> Optional['outputs.JobTaskForEachTaskTaskPowerBiTaskPowerBiModel']:
+        """
+        The semantic model to update. Block consists of following fields:
+        """
         return pulumi.get(self, "power_bi_model")
 
     @property
     @pulumi.getter(name="refreshAfterUpdate")
     def refresh_after_update(self) -> Optional[builtins.bool]:
+        """
+        Whether the model should be refreshed after the update. Default is false
+        """
         return pulumi.get(self, "refresh_after_update")
 
     @property
     @pulumi.getter
     def tables(self) -> Optional[Sequence['outputs.JobTaskForEachTaskTaskPowerBiTaskTable']]:
+        """
+        The tables to be exported to Power BI. Block consists of following fields:
+        """
         return pulumi.get(self, "tables")
 
     @property
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> Optional[builtins.str]:
+        """
+        The SQL warehouse ID to use as the Power BI data source
+        """
         return pulumi.get(self, "warehouse_id")
 
 
@@ -13174,6 +13267,13 @@ class JobTaskForEachTaskTaskPowerBiTaskPowerBiModel(dict):
                  overwrite_existing: Optional[builtins.bool] = None,
                  storage_mode: Optional[builtins.str] = None,
                  workspace_name: Optional[builtins.str] = None):
+        """
+        :param builtins.str authentication_method: How the published Power BI model authenticates to Databricks
+        :param builtins.str model_name: The name of the Power BI model
+        :param builtins.bool overwrite_existing: Whether to overwrite existing Power BI models. Default is false
+        :param builtins.str storage_mode: The default storage mode of the Power BI model
+        :param builtins.str workspace_name: The name of the Power BI workspace of the model
+        """
         if authentication_method is not None:
             pulumi.set(__self__, "authentication_method", authentication_method)
         if model_name is not None:
@@ -13188,26 +13288,41 @@ class JobTaskForEachTaskTaskPowerBiTaskPowerBiModel(dict):
     @property
     @pulumi.getter(name="authenticationMethod")
     def authentication_method(self) -> Optional[builtins.str]:
+        """
+        How the published Power BI model authenticates to Databricks
+        """
         return pulumi.get(self, "authentication_method")
 
     @property
     @pulumi.getter(name="modelName")
     def model_name(self) -> Optional[builtins.str]:
+        """
+        The name of the Power BI model
+        """
         return pulumi.get(self, "model_name")
 
     @property
     @pulumi.getter(name="overwriteExisting")
     def overwrite_existing(self) -> Optional[builtins.bool]:
+        """
+        Whether to overwrite existing Power BI models. Default is false
+        """
         return pulumi.get(self, "overwrite_existing")
 
     @property
     @pulumi.getter(name="storageMode")
     def storage_mode(self) -> Optional[builtins.str]:
+        """
+        The default storage mode of the Power BI model
+        """
         return pulumi.get(self, "storage_mode")
 
     @property
     @pulumi.getter(name="workspaceName")
     def workspace_name(self) -> Optional[builtins.str]:
+        """
+        The name of the Power BI workspace of the model
+        """
         return pulumi.get(self, "workspace_name")
 
 
@@ -13236,9 +13351,10 @@ class JobTaskForEachTaskTaskPowerBiTaskTable(dict):
                  schema: Optional[builtins.str] = None,
                  storage_mode: Optional[builtins.str] = None):
         """
-        :param builtins.str catalog: The name of the catalog to use inside Unity Catalog.
-        :param builtins.str name: An optional name for the job. The default value is Untitled.
-        :param builtins.str schema: The name of the schema dbt should run in. Defaults to `default`.
+        :param builtins.str catalog: The catalog name in Databricks
+        :param builtins.str name: The table name in Databricks. If empty, all tables under the schema are selected.
+        :param builtins.str schema: The schema name in Databricks
+        :param builtins.str storage_mode: The Power BI storage mode of the table
         """
         if catalog is not None:
             pulumi.set(__self__, "catalog", catalog)
@@ -13253,7 +13369,7 @@ class JobTaskForEachTaskTaskPowerBiTaskTable(dict):
     @pulumi.getter
     def catalog(self) -> Optional[builtins.str]:
         """
-        The name of the catalog to use inside Unity Catalog.
+        The catalog name in Databricks
         """
         return pulumi.get(self, "catalog")
 
@@ -13261,7 +13377,7 @@ class JobTaskForEachTaskTaskPowerBiTaskTable(dict):
     @pulumi.getter
     def name(self) -> Optional[builtins.str]:
         """
-        An optional name for the job. The default value is Untitled.
+        The table name in Databricks. If empty, all tables under the schema are selected.
         """
         return pulumi.get(self, "name")
 
@@ -13269,13 +13385,16 @@ class JobTaskForEachTaskTaskPowerBiTaskTable(dict):
     @pulumi.getter
     def schema(self) -> Optional[builtins.str]:
         """
-        The name of the schema dbt should run in. Defaults to `default`.
+        The schema name in Databricks
         """
         return pulumi.get(self, "schema")
 
     @property
     @pulumi.getter(name="storageMode")
     def storage_mode(self) -> Optional[builtins.str]:
+        """
+        The Power BI storage mode of the table
+        """
         return pulumi.get(self, "storage_mode")
 
 
@@ -13616,9 +13735,11 @@ class JobTaskForEachTaskTaskSparkPythonTask(dict):
                  parameters: Optional[Sequence[builtins.str]] = None,
                  source: Optional[builtins.str] = None):
         """
-        :param builtins.str python_file: The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+        :param builtins.str python_file: The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
         :param Sequence[builtins.str] parameters: (List) Command line parameters passed to the Python file.
-        :param builtins.str source: Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+        :param builtins.str source: Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the python_file has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+               * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+               * `GIT`: The Python file is located in a remote Git repository.
         """
         pulumi.set(__self__, "python_file", python_file)
         if parameters is not None:
@@ -13630,7 +13751,7 @@ class JobTaskForEachTaskTaskSparkPythonTask(dict):
     @pulumi.getter(name="pythonFile")
     def python_file(self) -> builtins.str:
         """
-        The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+        The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
         """
         return pulumi.get(self, "python_file")
 
@@ -13646,7 +13767,9 @@ class JobTaskForEachTaskTaskSparkPythonTask(dict):
     @pulumi.getter
     def source(self) -> Optional[builtins.str]:
         """
-        Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+        Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the python_file has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+        * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+        * `GIT`: The Python file is located in a remote Git repository.
         """
         return pulumi.get(self, "source")
 
@@ -13851,7 +13974,7 @@ class JobTaskForEachTaskTaskSqlTaskAlertSubscription(dict):
                  destination_id: Optional[builtins.str] = None,
                  user_name: Optional[builtins.str] = None):
         """
-        :param builtins.str user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
+        :param builtins.str destination_id: A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
         """
         if destination_id is not None:
             pulumi.set(__self__, "destination_id", destination_id)
@@ -13861,14 +13984,14 @@ class JobTaskForEachTaskTaskSqlTaskAlertSubscription(dict):
     @property
     @pulumi.getter(name="destinationId")
     def destination_id(self) -> Optional[builtins.str]:
+        """
+        A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+        """
         return pulumi.get(self, "destination_id")
 
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[builtins.str]:
-        """
-        The email of an active workspace user. Non-admin users can only set this field to their own email.
-        """
         return pulumi.get(self, "user_name")
 
 
@@ -13972,7 +14095,7 @@ class JobTaskForEachTaskTaskSqlTaskDashboardSubscription(dict):
                  destination_id: Optional[builtins.str] = None,
                  user_name: Optional[builtins.str] = None):
         """
-        :param builtins.str user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
+        :param builtins.str destination_id: A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
         """
         if destination_id is not None:
             pulumi.set(__self__, "destination_id", destination_id)
@@ -13982,14 +14105,14 @@ class JobTaskForEachTaskTaskSqlTaskDashboardSubscription(dict):
     @property
     @pulumi.getter(name="destinationId")
     def destination_id(self) -> Optional[builtins.str]:
+        """
+        A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+        """
         return pulumi.get(self, "destination_id")
 
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[builtins.str]:
-        """
-        The email of an active workspace user. Non-admin users can only set this field to their own email.
-        """
         return pulumi.get(self, "user_name")
 
 
@@ -14177,12 +14300,13 @@ class JobTaskForEachTaskTaskWebhookNotifications(dict):
                  on_successes: Optional[Sequence['outputs.JobTaskForEachTaskTaskWebhookNotificationsOnSuccess']] = None):
         """
         :param Sequence['JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs'] on_duration_warning_threshold_exceededs: (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+        :param Sequence['JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs'] on_failures: (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+        :param Sequence['JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs'] on_starts: (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+        :param Sequence['JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs'] on_streaming_backlog_exceededs: (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
                
                Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
                
                Example
-        :param Sequence['JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs'] on_failures: (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
-        :param Sequence['JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs'] on_starts: (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
         :param Sequence['JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs'] on_successes: (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
         """
         if on_duration_warning_threshold_exceededs is not None:
@@ -14201,10 +14325,6 @@ class JobTaskForEachTaskTaskWebhookNotifications(dict):
     def on_duration_warning_threshold_exceededs(self) -> Optional[Sequence['outputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded']]:
         """
         (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-
-        Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-
-        Example
         """
         return pulumi.get(self, "on_duration_warning_threshold_exceededs")
 
@@ -14227,6 +14347,13 @@ class JobTaskForEachTaskTaskWebhookNotifications(dict):
     @property
     @pulumi.getter(name="onStreamingBacklogExceededs")
     def on_streaming_backlog_exceededs(self) -> Optional[Sequence['outputs.JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded']]:
+        """
+        (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+
+        Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+
+        Example
+        """
         return pulumi.get(self, "on_streaming_backlog_exceededs")
 
     @property
@@ -14661,9 +14788,7 @@ class JobTaskNewCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "sparkVersion":
-            suggest = "spark_version"
-        elif key == "applyPolicyDefaultValues":
+        if key == "applyPolicyDefaultValues":
             suggest = "apply_policy_default_values"
         elif key == "awsAttributes":
             suggest = "aws_attributes"
@@ -14715,6 +14840,8 @@ class JobTaskNewCluster(dict):
             suggest = "spark_conf"
         elif key == "sparkEnvVars":
             suggest = "spark_env_vars"
+        elif key == "sparkVersion":
+            suggest = "spark_version"
         elif key == "sshPublicKeys":
             suggest = "ssh_public_keys"
         elif key == "useMlRuntime":
@@ -14734,7 +14861,6 @@ class JobTaskNewCluster(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 spark_version: builtins.str,
                  apply_policy_default_values: Optional[builtins.bool] = None,
                  autoscale: Optional['outputs.JobTaskNewClusterAutoscale'] = None,
                  aws_attributes: Optional['outputs.JobTaskNewClusterAwsAttributes'] = None,
@@ -14764,6 +14890,7 @@ class JobTaskNewCluster(dict):
                  single_user_name: Optional[builtins.str] = None,
                  spark_conf: Optional[Mapping[str, builtins.str]] = None,
                  spark_env_vars: Optional[Mapping[str, builtins.str]] = None,
+                 spark_version: Optional[builtins.str] = None,
                  ssh_public_keys: Optional[Sequence[builtins.str]] = None,
                  use_ml_runtime: Optional[builtins.bool] = None,
                  workload_type: Optional['outputs.JobTaskNewClusterWorkloadType'] = None):
@@ -14771,7 +14898,6 @@ class JobTaskNewCluster(dict):
         :param Sequence['JobTaskNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         :param 'JobTaskNewClusterWorkloadTypeArgs' workload_type: isn't supported
         """
-        pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -14830,17 +14956,14 @@ class JobTaskNewCluster(dict):
             pulumi.set(__self__, "spark_conf", spark_conf)
         if spark_env_vars is not None:
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
+        if spark_version is not None:
+            pulumi.set(__self__, "spark_version", spark_version)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
-
-    @property
-    @pulumi.getter(name="sparkVersion")
-    def spark_version(self) -> builtins.str:
-        return pulumi.get(self, "spark_version")
 
     @property
     @pulumi.getter(name="applyPolicyDefaultValues")
@@ -14989,6 +15112,11 @@ class JobTaskNewCluster(dict):
     @pulumi.getter(name="sparkEnvVars")
     def spark_env_vars(self) -> Optional[Mapping[str, builtins.str]]:
         return pulumi.get(self, "spark_env_vars")
+
+    @property
+    @pulumi.getter(name="sparkVersion")
+    def spark_version(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "spark_version")
 
     @property
     @pulumi.getter(name="sshPublicKeys")
@@ -16240,6 +16368,13 @@ class JobTaskPowerBiTask(dict):
                  refresh_after_update: Optional[builtins.bool] = None,
                  tables: Optional[Sequence['outputs.JobTaskPowerBiTaskTable']] = None,
                  warehouse_id: Optional[builtins.str] = None):
+        """
+        :param builtins.str connection_resource_name: The resource name of the UC connection to authenticate from Databricks to Power BI
+        :param 'JobTaskPowerBiTaskPowerBiModelArgs' power_bi_model: The semantic model to update. Block consists of following fields:
+        :param builtins.bool refresh_after_update: Whether the model should be refreshed after the update. Default is false
+        :param Sequence['JobTaskPowerBiTaskTableArgs'] tables: The tables to be exported to Power BI. Block consists of following fields:
+        :param builtins.str warehouse_id: The SQL warehouse ID to use as the Power BI data source
+        """
         if connection_resource_name is not None:
             pulumi.set(__self__, "connection_resource_name", connection_resource_name)
         if power_bi_model is not None:
@@ -16254,26 +16389,41 @@ class JobTaskPowerBiTask(dict):
     @property
     @pulumi.getter(name="connectionResourceName")
     def connection_resource_name(self) -> Optional[builtins.str]:
+        """
+        The resource name of the UC connection to authenticate from Databricks to Power BI
+        """
         return pulumi.get(self, "connection_resource_name")
 
     @property
     @pulumi.getter(name="powerBiModel")
     def power_bi_model(self) -> Optional['outputs.JobTaskPowerBiTaskPowerBiModel']:
+        """
+        The semantic model to update. Block consists of following fields:
+        """
         return pulumi.get(self, "power_bi_model")
 
     @property
     @pulumi.getter(name="refreshAfterUpdate")
     def refresh_after_update(self) -> Optional[builtins.bool]:
+        """
+        Whether the model should be refreshed after the update. Default is false
+        """
         return pulumi.get(self, "refresh_after_update")
 
     @property
     @pulumi.getter
     def tables(self) -> Optional[Sequence['outputs.JobTaskPowerBiTaskTable']]:
+        """
+        The tables to be exported to Power BI. Block consists of following fields:
+        """
         return pulumi.get(self, "tables")
 
     @property
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> Optional[builtins.str]:
+        """
+        The SQL warehouse ID to use as the Power BI data source
+        """
         return pulumi.get(self, "warehouse_id")
 
 
@@ -16310,6 +16460,13 @@ class JobTaskPowerBiTaskPowerBiModel(dict):
                  overwrite_existing: Optional[builtins.bool] = None,
                  storage_mode: Optional[builtins.str] = None,
                  workspace_name: Optional[builtins.str] = None):
+        """
+        :param builtins.str authentication_method: How the published Power BI model authenticates to Databricks
+        :param builtins.str model_name: The name of the Power BI model
+        :param builtins.bool overwrite_existing: Whether to overwrite existing Power BI models. Default is false
+        :param builtins.str storage_mode: The default storage mode of the Power BI model
+        :param builtins.str workspace_name: The name of the Power BI workspace of the model
+        """
         if authentication_method is not None:
             pulumi.set(__self__, "authentication_method", authentication_method)
         if model_name is not None:
@@ -16324,26 +16481,41 @@ class JobTaskPowerBiTaskPowerBiModel(dict):
     @property
     @pulumi.getter(name="authenticationMethod")
     def authentication_method(self) -> Optional[builtins.str]:
+        """
+        How the published Power BI model authenticates to Databricks
+        """
         return pulumi.get(self, "authentication_method")
 
     @property
     @pulumi.getter(name="modelName")
     def model_name(self) -> Optional[builtins.str]:
+        """
+        The name of the Power BI model
+        """
         return pulumi.get(self, "model_name")
 
     @property
     @pulumi.getter(name="overwriteExisting")
     def overwrite_existing(self) -> Optional[builtins.bool]:
+        """
+        Whether to overwrite existing Power BI models. Default is false
+        """
         return pulumi.get(self, "overwrite_existing")
 
     @property
     @pulumi.getter(name="storageMode")
     def storage_mode(self) -> Optional[builtins.str]:
+        """
+        The default storage mode of the Power BI model
+        """
         return pulumi.get(self, "storage_mode")
 
     @property
     @pulumi.getter(name="workspaceName")
     def workspace_name(self) -> Optional[builtins.str]:
+        """
+        The name of the Power BI workspace of the model
+        """
         return pulumi.get(self, "workspace_name")
 
 
@@ -16372,9 +16544,10 @@ class JobTaskPowerBiTaskTable(dict):
                  schema: Optional[builtins.str] = None,
                  storage_mode: Optional[builtins.str] = None):
         """
-        :param builtins.str catalog: The name of the catalog to use inside Unity Catalog.
-        :param builtins.str name: An optional name for the job. The default value is Untitled.
-        :param builtins.str schema: The name of the schema dbt should run in. Defaults to `default`.
+        :param builtins.str catalog: The catalog name in Databricks
+        :param builtins.str name: The table name in Databricks. If empty, all tables under the schema are selected.
+        :param builtins.str schema: The schema name in Databricks
+        :param builtins.str storage_mode: The Power BI storage mode of the table
         """
         if catalog is not None:
             pulumi.set(__self__, "catalog", catalog)
@@ -16389,7 +16562,7 @@ class JobTaskPowerBiTaskTable(dict):
     @pulumi.getter
     def catalog(self) -> Optional[builtins.str]:
         """
-        The name of the catalog to use inside Unity Catalog.
+        The catalog name in Databricks
         """
         return pulumi.get(self, "catalog")
 
@@ -16397,7 +16570,7 @@ class JobTaskPowerBiTaskTable(dict):
     @pulumi.getter
     def name(self) -> Optional[builtins.str]:
         """
-        An optional name for the job. The default value is Untitled.
+        The table name in Databricks. If empty, all tables under the schema are selected.
         """
         return pulumi.get(self, "name")
 
@@ -16405,13 +16578,16 @@ class JobTaskPowerBiTaskTable(dict):
     @pulumi.getter
     def schema(self) -> Optional[builtins.str]:
         """
-        The name of the schema dbt should run in. Defaults to `default`.
+        The schema name in Databricks
         """
         return pulumi.get(self, "schema")
 
     @property
     @pulumi.getter(name="storageMode")
     def storage_mode(self) -> Optional[builtins.str]:
+        """
+        The Power BI storage mode of the table
+        """
         return pulumi.get(self, "storage_mode")
 
 
@@ -16752,9 +16928,11 @@ class JobTaskSparkPythonTask(dict):
                  parameters: Optional[Sequence[builtins.str]] = None,
                  source: Optional[builtins.str] = None):
         """
-        :param builtins.str python_file: The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+        :param builtins.str python_file: The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
         :param Sequence[builtins.str] parameters: (List) Command line parameters passed to the Python file.
-        :param builtins.str source: Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+        :param builtins.str source: Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the python_file has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+               * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+               * `GIT`: The Python file is located in a remote Git repository.
         """
         pulumi.set(__self__, "python_file", python_file)
         if parameters is not None:
@@ -16766,7 +16944,7 @@ class JobTaskSparkPythonTask(dict):
     @pulumi.getter(name="pythonFile")
     def python_file(self) -> builtins.str:
         """
-        The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+        The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
         """
         return pulumi.get(self, "python_file")
 
@@ -16782,7 +16960,9 @@ class JobTaskSparkPythonTask(dict):
     @pulumi.getter
     def source(self) -> Optional[builtins.str]:
         """
-        Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+        Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the python_file has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+        * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+        * `GIT`: The Python file is located in a remote Git repository.
         """
         return pulumi.get(self, "source")
 
@@ -16987,7 +17167,7 @@ class JobTaskSqlTaskAlertSubscription(dict):
                  destination_id: Optional[builtins.str] = None,
                  user_name: Optional[builtins.str] = None):
         """
-        :param builtins.str user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
+        :param builtins.str destination_id: A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
         """
         if destination_id is not None:
             pulumi.set(__self__, "destination_id", destination_id)
@@ -16997,14 +17177,14 @@ class JobTaskSqlTaskAlertSubscription(dict):
     @property
     @pulumi.getter(name="destinationId")
     def destination_id(self) -> Optional[builtins.str]:
+        """
+        A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+        """
         return pulumi.get(self, "destination_id")
 
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[builtins.str]:
-        """
-        The email of an active workspace user. Non-admin users can only set this field to their own email.
-        """
         return pulumi.get(self, "user_name")
 
 
@@ -17108,7 +17288,7 @@ class JobTaskSqlTaskDashboardSubscription(dict):
                  destination_id: Optional[builtins.str] = None,
                  user_name: Optional[builtins.str] = None):
         """
-        :param builtins.str user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
+        :param builtins.str destination_id: A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
         """
         if destination_id is not None:
             pulumi.set(__self__, "destination_id", destination_id)
@@ -17118,14 +17298,14 @@ class JobTaskSqlTaskDashboardSubscription(dict):
     @property
     @pulumi.getter(name="destinationId")
     def destination_id(self) -> Optional[builtins.str]:
+        """
+        A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+        """
         return pulumi.get(self, "destination_id")
 
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[builtins.str]:
-        """
-        The email of an active workspace user. Non-admin users can only set this field to their own email.
-        """
         return pulumi.get(self, "user_name")
 
 
@@ -17313,12 +17493,13 @@ class JobTaskWebhookNotifications(dict):
                  on_successes: Optional[Sequence['outputs.JobTaskWebhookNotificationsOnSuccess']] = None):
         """
         :param Sequence['JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs'] on_duration_warning_threshold_exceededs: (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+        :param Sequence['JobTaskWebhookNotificationsOnFailureArgs'] on_failures: (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+        :param Sequence['JobTaskWebhookNotificationsOnStartArgs'] on_starts: (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+        :param Sequence['JobTaskWebhookNotificationsOnStreamingBacklogExceededArgs'] on_streaming_backlog_exceededs: (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
                
                Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
                
                Example
-        :param Sequence['JobTaskWebhookNotificationsOnFailureArgs'] on_failures: (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
-        :param Sequence['JobTaskWebhookNotificationsOnStartArgs'] on_starts: (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
         :param Sequence['JobTaskWebhookNotificationsOnSuccessArgs'] on_successes: (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
         """
         if on_duration_warning_threshold_exceededs is not None:
@@ -17337,10 +17518,6 @@ class JobTaskWebhookNotifications(dict):
     def on_duration_warning_threshold_exceededs(self) -> Optional[Sequence['outputs.JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded']]:
         """
         (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-
-        Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-
-        Example
         """
         return pulumi.get(self, "on_duration_warning_threshold_exceededs")
 
@@ -17363,6 +17540,13 @@ class JobTaskWebhookNotifications(dict):
     @property
     @pulumi.getter(name="onStreamingBacklogExceededs")
     def on_streaming_backlog_exceededs(self) -> Optional[Sequence['outputs.JobTaskWebhookNotificationsOnStreamingBacklogExceeded']]:
+        """
+        (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+
+        Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+
+        Example
+        """
         return pulumi.get(self, "on_streaming_backlog_exceededs")
 
     @property
@@ -17804,12 +17988,13 @@ class JobWebhookNotifications(dict):
                  on_successes: Optional[Sequence['outputs.JobWebhookNotificationsOnSuccess']] = None):
         """
         :param Sequence['JobWebhookNotificationsOnDurationWarningThresholdExceededArgs'] on_duration_warning_threshold_exceededs: (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+        :param Sequence['JobWebhookNotificationsOnFailureArgs'] on_failures: (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+        :param Sequence['JobWebhookNotificationsOnStartArgs'] on_starts: (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+        :param Sequence['JobWebhookNotificationsOnStreamingBacklogExceededArgs'] on_streaming_backlog_exceededs: (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
                
                Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
                
                Example
-        :param Sequence['JobWebhookNotificationsOnFailureArgs'] on_failures: (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
-        :param Sequence['JobWebhookNotificationsOnStartArgs'] on_starts: (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
         :param Sequence['JobWebhookNotificationsOnSuccessArgs'] on_successes: (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
         """
         if on_duration_warning_threshold_exceededs is not None:
@@ -17828,10 +18013,6 @@ class JobWebhookNotifications(dict):
     def on_duration_warning_threshold_exceededs(self) -> Optional[Sequence['outputs.JobWebhookNotificationsOnDurationWarningThresholdExceeded']]:
         """
         (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-
-        Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-
-        Example
         """
         return pulumi.get(self, "on_duration_warning_threshold_exceededs")
 
@@ -17854,6 +18035,13 @@ class JobWebhookNotifications(dict):
     @property
     @pulumi.getter(name="onStreamingBacklogExceededs")
     def on_streaming_backlog_exceededs(self) -> Optional[Sequence['outputs.JobWebhookNotificationsOnStreamingBacklogExceeded']]:
+        """
+        (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+
+        Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+
+        Example
+        """
         return pulumi.get(self, "on_streaming_backlog_exceededs")
 
     @property
@@ -20515,7 +20703,7 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfig(dict):
         :param builtins.str microsoft_entra_client_secret: The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
         :param builtins.str microsoft_entra_client_secret_plaintext: The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
         :param builtins.str microsoft_entra_tenant_id: This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
-        :param builtins.str openai_api_base: This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
+        :param builtins.str openai_api_base: This is the base URL for the OpenAI API (default: "<https://api.openai.com/v1>"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
         :param builtins.str openai_api_key: The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
         :param builtins.str openai_api_key_plaintext: The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
         :param builtins.str openai_api_type: This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
@@ -20582,7 +20770,7 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfig(dict):
     @pulumi.getter(name="openaiApiBase")
     def openai_api_base(self) -> Optional[builtins.str]:
         """
-        This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
+        This is the base URL for the OpenAI API (default: "<https://api.openai.com/v1>"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
         """
         return pulumi.get(self, "openai_api_base")
 
@@ -21909,7 +22097,7 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[builtins.str]:
         """
         The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
@@ -21918,7 +22106,7 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[builtins.str]:
         """
         The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
@@ -22193,13 +22381,13 @@ class MwsWorkspacesGcpManagedNetworkConfig(dict):
 
     @property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[builtins.str]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
     @property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[builtins.str]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -32134,7 +32322,6 @@ class GetClusterClusterInfoSpecResult(dict):
                  enable_elastic_disk: builtins.bool,
                  enable_local_disk_encryption: builtins.bool,
                  node_type_id: builtins.str,
-                 spark_version: builtins.str,
                  apply_policy_default_values: Optional[builtins.bool] = None,
                  autoscale: Optional['outputs.GetClusterClusterInfoSpecAutoscaleResult'] = None,
                  aws_attributes: Optional['outputs.GetClusterClusterInfoSpecAwsAttributesResult'] = None,
@@ -32158,6 +32345,7 @@ class GetClusterClusterInfoSpecResult(dict):
                  single_user_name: Optional[builtins.str] = None,
                  spark_conf: Optional[Mapping[str, builtins.str]] = None,
                  spark_env_vars: Optional[Mapping[str, builtins.str]] = None,
+                 spark_version: Optional[builtins.str] = None,
                  ssh_public_keys: Optional[Sequence[builtins.str]] = None,
                  use_ml_runtime: Optional[builtins.bool] = None,
                  workload_type: Optional['outputs.GetClusterClusterInfoSpecWorkloadTypeResult'] = None):
@@ -32168,7 +32356,6 @@ class GetClusterClusterInfoSpecResult(dict):
         :param builtins.bool enable_elastic_disk: Use autoscaling local storage.
         :param builtins.bool enable_local_disk_encryption: Enable local disk encryption.
         :param builtins.str node_type_id: Any supported get_node_type id.
-        :param builtins.str spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
         :param builtins.str cluster_name: The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         :param Mapping[str, builtins.str] custom_tags: Additional tags for cluster resources.
         :param builtins.str data_security_mode: Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
@@ -32179,6 +32366,7 @@ class GetClusterClusterInfoSpecResult(dict):
         :param builtins.str single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param Mapping[str, builtins.str] spark_conf: Map with key-value pairs to fine-tune Spark clusters.
         :param Mapping[str, builtins.str] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+        :param builtins.str spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
         :param Sequence[builtins.str] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -32187,7 +32375,6 @@ class GetClusterClusterInfoSpecResult(dict):
         pulumi.set(__self__, "enable_elastic_disk", enable_elastic_disk)
         pulumi.set(__self__, "enable_local_disk_encryption", enable_local_disk_encryption)
         pulumi.set(__self__, "node_type_id", node_type_id)
-        pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -32234,6 +32421,8 @@ class GetClusterClusterInfoSpecResult(dict):
             pulumi.set(__self__, "spark_conf", spark_conf)
         if spark_env_vars is not None:
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
+        if spark_version is not None:
+            pulumi.set(__self__, "spark_version", spark_version)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         if use_ml_runtime is not None:
@@ -32288,14 +32477,6 @@ class GetClusterClusterInfoSpecResult(dict):
         Any supported get_node_type id.
         """
         return pulumi.get(self, "node_type_id")
-
-    @property
-    @pulumi.getter(name="sparkVersion")
-    def spark_version(self) -> builtins.str:
-        """
-        [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
-        """
-        return pulumi.get(self, "spark_version")
 
     @property
     @pulumi.getter(name="applyPolicyDefaultValues")
@@ -32441,6 +32622,14 @@ class GetClusterClusterInfoSpecResult(dict):
         Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         """
         return pulumi.get(self, "spark_env_vars")
+
+    @property
+    @pulumi.getter(name="sparkVersion")
+    def spark_version(self) -> Optional[builtins.str]:
+        """
+        [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+        """
+        return pulumi.get(self, "spark_version")
 
     @property
     @pulumi.getter(name="sshPublicKeys")
@@ -35851,7 +36040,6 @@ class GetJobJobSettingsSettingsJobClusterNewClusterResult(dict):
                  enable_local_disk_encryption: builtins.bool,
                  node_type_id: builtins.str,
                  num_workers: builtins.int,
-                 spark_version: builtins.str,
                  apply_policy_default_values: Optional[builtins.bool] = None,
                  autoscale: Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterAutoscaleResult'] = None,
                  autotermination_minutes: Optional[builtins.int] = None,
@@ -35873,6 +36061,7 @@ class GetJobJobSettingsSettingsJobClusterNewClusterResult(dict):
                  single_user_name: Optional[builtins.str] = None,
                  spark_conf: Optional[Mapping[str, builtins.str]] = None,
                  spark_env_vars: Optional[Mapping[str, builtins.str]] = None,
+                 spark_version: Optional[builtins.str] = None,
                  ssh_public_keys: Optional[Sequence[builtins.str]] = None,
                  workload_type: Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeResult'] = None):
         pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
@@ -35881,7 +36070,6 @@ class GetJobJobSettingsSettingsJobClusterNewClusterResult(dict):
         pulumi.set(__self__, "enable_local_disk_encryption", enable_local_disk_encryption)
         pulumi.set(__self__, "node_type_id", node_type_id)
         pulumi.set(__self__, "num_workers", num_workers)
-        pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -35924,6 +36112,8 @@ class GetJobJobSettingsSettingsJobClusterNewClusterResult(dict):
             pulumi.set(__self__, "spark_conf", spark_conf)
         if spark_env_vars is not None:
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
+        if spark_version is not None:
+            pulumi.set(__self__, "spark_version", spark_version)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         if workload_type is not None:
@@ -35958,11 +36148,6 @@ class GetJobJobSettingsSettingsJobClusterNewClusterResult(dict):
     @pulumi.getter(name="numWorkers")
     def num_workers(self) -> builtins.int:
         return pulumi.get(self, "num_workers")
-
-    @property
-    @pulumi.getter(name="sparkVersion")
-    def spark_version(self) -> builtins.str:
-        return pulumi.get(self, "spark_version")
 
     @property
     @pulumi.getter(name="applyPolicyDefaultValues")
@@ -36068,6 +36253,11 @@ class GetJobJobSettingsSettingsJobClusterNewClusterResult(dict):
     @pulumi.getter(name="sparkEnvVars")
     def spark_env_vars(self) -> Optional[Mapping[str, builtins.str]]:
         return pulumi.get(self, "spark_env_vars")
+
+    @property
+    @pulumi.getter(name="sparkVersion")
+    def spark_version(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "spark_version")
 
     @property
     @pulumi.getter(name="sshPublicKeys")
@@ -36795,7 +36985,6 @@ class GetJobJobSettingsSettingsNewClusterResult(dict):
                  enable_local_disk_encryption: builtins.bool,
                  node_type_id: builtins.str,
                  num_workers: builtins.int,
-                 spark_version: builtins.str,
                  apply_policy_default_values: Optional[builtins.bool] = None,
                  autoscale: Optional['outputs.GetJobJobSettingsSettingsNewClusterAutoscaleResult'] = None,
                  autotermination_minutes: Optional[builtins.int] = None,
@@ -36817,6 +37006,7 @@ class GetJobJobSettingsSettingsNewClusterResult(dict):
                  single_user_name: Optional[builtins.str] = None,
                  spark_conf: Optional[Mapping[str, builtins.str]] = None,
                  spark_env_vars: Optional[Mapping[str, builtins.str]] = None,
+                 spark_version: Optional[builtins.str] = None,
                  ssh_public_keys: Optional[Sequence[builtins.str]] = None,
                  workload_type: Optional['outputs.GetJobJobSettingsSettingsNewClusterWorkloadTypeResult'] = None):
         pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
@@ -36825,7 +37015,6 @@ class GetJobJobSettingsSettingsNewClusterResult(dict):
         pulumi.set(__self__, "enable_local_disk_encryption", enable_local_disk_encryption)
         pulumi.set(__self__, "node_type_id", node_type_id)
         pulumi.set(__self__, "num_workers", num_workers)
-        pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -36868,6 +37057,8 @@ class GetJobJobSettingsSettingsNewClusterResult(dict):
             pulumi.set(__self__, "spark_conf", spark_conf)
         if spark_env_vars is not None:
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
+        if spark_version is not None:
+            pulumi.set(__self__, "spark_version", spark_version)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         if workload_type is not None:
@@ -36902,11 +37093,6 @@ class GetJobJobSettingsSettingsNewClusterResult(dict):
     @pulumi.getter(name="numWorkers")
     def num_workers(self) -> builtins.int:
         return pulumi.get(self, "num_workers")
-
-    @property
-    @pulumi.getter(name="sparkVersion")
-    def spark_version(self) -> builtins.str:
-        return pulumi.get(self, "spark_version")
 
     @property
     @pulumi.getter(name="applyPolicyDefaultValues")
@@ -37012,6 +37198,11 @@ class GetJobJobSettingsSettingsNewClusterResult(dict):
     @pulumi.getter(name="sparkEnvVars")
     def spark_env_vars(self) -> Optional[Mapping[str, builtins.str]]:
         return pulumi.get(self, "spark_env_vars")
+
+    @property
+    @pulumi.getter(name="sparkVersion")
+    def spark_version(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "spark_version")
 
     @property
     @pulumi.getter(name="sshPublicKeys")
@@ -37896,6 +38087,7 @@ class GetJobJobSettingsSettingsTaskResult(dict):
                  retry_on_timeout: builtins.bool,
                  task_key: builtins.str,
                  condition_task: Optional['outputs.GetJobJobSettingsSettingsTaskConditionTaskResult'] = None,
+                 dashboard_task: Optional['outputs.GetJobJobSettingsSettingsTaskDashboardTaskResult'] = None,
                  dbt_task: Optional['outputs.GetJobJobSettingsSettingsTaskDbtTaskResult'] = None,
                  depends_ons: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskDependsOnResult']] = None,
                  description: Optional[builtins.str] = None,
@@ -37912,6 +38104,7 @@ class GetJobJobSettingsSettingsTaskResult(dict):
                  notebook_task: Optional['outputs.GetJobJobSettingsSettingsTaskNotebookTaskResult'] = None,
                  notification_settings: Optional['outputs.GetJobJobSettingsSettingsTaskNotificationSettingsResult'] = None,
                  pipeline_task: Optional['outputs.GetJobJobSettingsSettingsTaskPipelineTaskResult'] = None,
+                 power_bi_task: Optional['outputs.GetJobJobSettingsSettingsTaskPowerBiTaskResult'] = None,
                  python_wheel_task: Optional['outputs.GetJobJobSettingsSettingsTaskPythonWheelTaskResult'] = None,
                  run_if: Optional[builtins.str] = None,
                  run_job_task: Optional['outputs.GetJobJobSettingsSettingsTaskRunJobTaskResult'] = None,
@@ -37925,6 +38118,8 @@ class GetJobJobSettingsSettingsTaskResult(dict):
         pulumi.set(__self__, "task_key", task_key)
         if condition_task is not None:
             pulumi.set(__self__, "condition_task", condition_task)
+        if dashboard_task is not None:
+            pulumi.set(__self__, "dashboard_task", dashboard_task)
         if dbt_task is not None:
             pulumi.set(__self__, "dbt_task", dbt_task)
         if depends_ons is not None:
@@ -37957,6 +38152,8 @@ class GetJobJobSettingsSettingsTaskResult(dict):
             pulumi.set(__self__, "notification_settings", notification_settings)
         if pipeline_task is not None:
             pulumi.set(__self__, "pipeline_task", pipeline_task)
+        if power_bi_task is not None:
+            pulumi.set(__self__, "power_bi_task", power_bi_task)
         if python_wheel_task is not None:
             pulumi.set(__self__, "python_wheel_task", python_wheel_task)
         if run_if is not None:
@@ -37990,6 +38187,11 @@ class GetJobJobSettingsSettingsTaskResult(dict):
     @pulumi.getter(name="conditionTask")
     def condition_task(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskConditionTaskResult']:
         return pulumi.get(self, "condition_task")
+
+    @property
+    @pulumi.getter(name="dashboardTask")
+    def dashboard_task(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskDashboardTaskResult']:
+        return pulumi.get(self, "dashboard_task")
 
     @property
     @pulumi.getter(name="dbtTask")
@@ -38072,6 +38274,11 @@ class GetJobJobSettingsSettingsTaskResult(dict):
         return pulumi.get(self, "pipeline_task")
 
     @property
+    @pulumi.getter(name="powerBiTask")
+    def power_bi_task(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskPowerBiTaskResult']:
+        return pulumi.get(self, "power_bi_task")
+
+    @property
     @pulumi.getter(name="pythonWheelTask")
     def python_wheel_task(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskPythonWheelTaskResult']:
         return pulumi.get(self, "python_wheel_task")
@@ -38141,6 +38348,85 @@ class GetJobJobSettingsSettingsTaskConditionTaskResult(dict):
     @pulumi.getter
     def right(self) -> builtins.str:
         return pulumi.get(self, "right")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskDashboardTaskResult(dict):
+    def __init__(__self__, *,
+                 dashboard_id: Optional[builtins.str] = None,
+                 subscription: Optional['outputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionResult'] = None,
+                 warehouse_id: Optional[builtins.str] = None):
+        if dashboard_id is not None:
+            pulumi.set(__self__, "dashboard_id", dashboard_id)
+        if subscription is not None:
+            pulumi.set(__self__, "subscription", subscription)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter(name="dashboardId")
+    def dashboard_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "dashboard_id")
+
+    @property
+    @pulumi.getter
+    def subscription(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionResult']:
+        return pulumi.get(self, "subscription")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "warehouse_id")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionResult(dict):
+    def __init__(__self__, *,
+                 custom_subject: Optional[builtins.str] = None,
+                 paused: Optional[builtins.bool] = None,
+                 subscribers: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberResult']] = None):
+        if custom_subject is not None:
+            pulumi.set(__self__, "custom_subject", custom_subject)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if subscribers is not None:
+            pulumi.set(__self__, "subscribers", subscribers)
+
+    @property
+    @pulumi.getter(name="customSubject")
+    def custom_subject(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "custom_subject")
+
+    @property
+    @pulumi.getter
+    def paused(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "paused")
+
+    @property
+    @pulumi.getter
+    def subscribers(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberResult']]:
+        return pulumi.get(self, "subscribers")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberResult(dict):
+    def __init__(__self__, *,
+                 destination_id: Optional[builtins.str] = None,
+                 user_name: Optional[builtins.str] = None):
+        if destination_id is not None:
+            pulumi.set(__self__, "destination_id", destination_id)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="destinationId")
+    def destination_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "destination_id")
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "user_name")
 
 
 @pulumi.output_type
@@ -38309,6 +38595,7 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskResult(dict):
                  retry_on_timeout: builtins.bool,
                  task_key: builtins.str,
                  condition_task: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskResult'] = None,
+                 dashboard_task: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskResult'] = None,
                  dbt_task: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskResult'] = None,
                  depends_ons: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnResult']] = None,
                  description: Optional[builtins.str] = None,
@@ -38324,6 +38611,7 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskResult(dict):
                  notebook_task: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskResult'] = None,
                  notification_settings: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettingsResult'] = None,
                  pipeline_task: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskResult'] = None,
+                 power_bi_task: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskResult'] = None,
                  python_wheel_task: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskResult'] = None,
                  run_if: Optional[builtins.str] = None,
                  run_job_task: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskResult'] = None,
@@ -38337,6 +38625,8 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskResult(dict):
         pulumi.set(__self__, "task_key", task_key)
         if condition_task is not None:
             pulumi.set(__self__, "condition_task", condition_task)
+        if dashboard_task is not None:
+            pulumi.set(__self__, "dashboard_task", dashboard_task)
         if dbt_task is not None:
             pulumi.set(__self__, "dbt_task", dbt_task)
         if depends_ons is not None:
@@ -38367,6 +38657,8 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskResult(dict):
             pulumi.set(__self__, "notification_settings", notification_settings)
         if pipeline_task is not None:
             pulumi.set(__self__, "pipeline_task", pipeline_task)
+        if power_bi_task is not None:
+            pulumi.set(__self__, "power_bi_task", power_bi_task)
         if python_wheel_task is not None:
             pulumi.set(__self__, "python_wheel_task", python_wheel_task)
         if run_if is not None:
@@ -38400,6 +38692,11 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskResult(dict):
     @pulumi.getter(name="conditionTask")
     def condition_task(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskResult']:
         return pulumi.get(self, "condition_task")
+
+    @property
+    @pulumi.getter(name="dashboardTask")
+    def dashboard_task(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskResult']:
+        return pulumi.get(self, "dashboard_task")
 
     @property
     @pulumi.getter(name="dbtTask")
@@ -38477,6 +38774,11 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskResult(dict):
         return pulumi.get(self, "pipeline_task")
 
     @property
+    @pulumi.getter(name="powerBiTask")
+    def power_bi_task(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskResult']:
+        return pulumi.get(self, "power_bi_task")
+
+    @property
     @pulumi.getter(name="pythonWheelTask")
     def python_wheel_task(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskResult']:
         return pulumi.get(self, "python_wheel_task")
@@ -38546,6 +38848,85 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskResult(dict):
     @pulumi.getter
     def right(self) -> builtins.str:
         return pulumi.get(self, "right")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskResult(dict):
+    def __init__(__self__, *,
+                 dashboard_id: Optional[builtins.str] = None,
+                 subscription: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionResult'] = None,
+                 warehouse_id: Optional[builtins.str] = None):
+        if dashboard_id is not None:
+            pulumi.set(__self__, "dashboard_id", dashboard_id)
+        if subscription is not None:
+            pulumi.set(__self__, "subscription", subscription)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter(name="dashboardId")
+    def dashboard_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "dashboard_id")
+
+    @property
+    @pulumi.getter
+    def subscription(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionResult']:
+        return pulumi.get(self, "subscription")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "warehouse_id")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionResult(dict):
+    def __init__(__self__, *,
+                 custom_subject: Optional[builtins.str] = None,
+                 paused: Optional[builtins.bool] = None,
+                 subscribers: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberResult']] = None):
+        if custom_subject is not None:
+            pulumi.set(__self__, "custom_subject", custom_subject)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if subscribers is not None:
+            pulumi.set(__self__, "subscribers", subscribers)
+
+    @property
+    @pulumi.getter(name="customSubject")
+    def custom_subject(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "custom_subject")
+
+    @property
+    @pulumi.getter
+    def paused(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "paused")
+
+    @property
+    @pulumi.getter
+    def subscribers(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberResult']]:
+        return pulumi.get(self, "subscribers")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberResult(dict):
+    def __init__(__self__, *,
+                 destination_id: Optional[builtins.str] = None,
+                 user_name: Optional[builtins.str] = None):
+        if destination_id is not None:
+            pulumi.set(__self__, "destination_id", destination_id)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="destinationId")
+    def destination_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "destination_id")
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "user_name")
 
 
 @pulumi.output_type
@@ -38857,7 +39238,6 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterResult(dict):
                  enable_local_disk_encryption: builtins.bool,
                  node_type_id: builtins.str,
                  num_workers: builtins.int,
-                 spark_version: builtins.str,
                  apply_policy_default_values: Optional[builtins.bool] = None,
                  autoscale: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscaleResult'] = None,
                  autotermination_minutes: Optional[builtins.int] = None,
@@ -38879,6 +39259,7 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterResult(dict):
                  single_user_name: Optional[builtins.str] = None,
                  spark_conf: Optional[Mapping[str, builtins.str]] = None,
                  spark_env_vars: Optional[Mapping[str, builtins.str]] = None,
+                 spark_version: Optional[builtins.str] = None,
                  ssh_public_keys: Optional[Sequence[builtins.str]] = None,
                  workload_type: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeResult'] = None):
         pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
@@ -38887,7 +39268,6 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterResult(dict):
         pulumi.set(__self__, "enable_local_disk_encryption", enable_local_disk_encryption)
         pulumi.set(__self__, "node_type_id", node_type_id)
         pulumi.set(__self__, "num_workers", num_workers)
-        pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -38930,6 +39310,8 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterResult(dict):
             pulumi.set(__self__, "spark_conf", spark_conf)
         if spark_env_vars is not None:
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
+        if spark_version is not None:
+            pulumi.set(__self__, "spark_version", spark_version)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         if workload_type is not None:
@@ -38964,11 +39346,6 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterResult(dict):
     @pulumi.getter(name="numWorkers")
     def num_workers(self) -> builtins.int:
         return pulumi.get(self, "num_workers")
-
-    @property
-    @pulumi.getter(name="sparkVersion")
-    def spark_version(self) -> builtins.str:
-        return pulumi.get(self, "spark_version")
 
     @property
     @pulumi.getter(name="applyPolicyDefaultValues")
@@ -39074,6 +39451,11 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterResult(dict):
     @pulumi.getter(name="sparkEnvVars")
     def spark_env_vars(self) -> Optional[Mapping[str, builtins.str]]:
         return pulumi.get(self, "spark_env_vars")
+
+    @property
+    @pulumi.getter(name="sparkVersion")
+    def spark_version(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "spark_version")
 
     @property
     @pulumi.getter(name="sshPublicKeys")
@@ -39749,6 +40131,139 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskResult(dict):
 
 
 @pulumi.output_type
+class GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskResult(dict):
+    def __init__(__self__, *,
+                 connection_resource_name: Optional[builtins.str] = None,
+                 power_bi_model: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskPowerBiModelResult'] = None,
+                 refresh_after_update: Optional[builtins.bool] = None,
+                 tables: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskTableResult']] = None,
+                 warehouse_id: Optional[builtins.str] = None):
+        if connection_resource_name is not None:
+            pulumi.set(__self__, "connection_resource_name", connection_resource_name)
+        if power_bi_model is not None:
+            pulumi.set(__self__, "power_bi_model", power_bi_model)
+        if refresh_after_update is not None:
+            pulumi.set(__self__, "refresh_after_update", refresh_after_update)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter(name="connectionResourceName")
+    def connection_resource_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "connection_resource_name")
+
+    @property
+    @pulumi.getter(name="powerBiModel")
+    def power_bi_model(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskPowerBiModelResult']:
+        return pulumi.get(self, "power_bi_model")
+
+    @property
+    @pulumi.getter(name="refreshAfterUpdate")
+    def refresh_after_update(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "refresh_after_update")
+
+    @property
+    @pulumi.getter
+    def tables(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskTableResult']]:
+        return pulumi.get(self, "tables")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "warehouse_id")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskPowerBiModelResult(dict):
+    def __init__(__self__, *,
+                 authentication_method: Optional[builtins.str] = None,
+                 model_name: Optional[builtins.str] = None,
+                 overwrite_existing: Optional[builtins.bool] = None,
+                 storage_mode: Optional[builtins.str] = None,
+                 workspace_name: Optional[builtins.str] = None):
+        if authentication_method is not None:
+            pulumi.set(__self__, "authentication_method", authentication_method)
+        if model_name is not None:
+            pulumi.set(__self__, "model_name", model_name)
+        if overwrite_existing is not None:
+            pulumi.set(__self__, "overwrite_existing", overwrite_existing)
+        if storage_mode is not None:
+            pulumi.set(__self__, "storage_mode", storage_mode)
+        if workspace_name is not None:
+            pulumi.set(__self__, "workspace_name", workspace_name)
+
+    @property
+    @pulumi.getter(name="authenticationMethod")
+    def authentication_method(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "authentication_method")
+
+    @property
+    @pulumi.getter(name="modelName")
+    def model_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "model_name")
+
+    @property
+    @pulumi.getter(name="overwriteExisting")
+    def overwrite_existing(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "overwrite_existing")
+
+    @property
+    @pulumi.getter(name="storageMode")
+    def storage_mode(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "storage_mode")
+
+    @property
+    @pulumi.getter(name="workspaceName")
+    def workspace_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "workspace_name")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskTableResult(dict):
+    def __init__(__self__, *,
+                 catalog: Optional[builtins.str] = None,
+                 name: Optional[builtins.str] = None,
+                 schema: Optional[builtins.str] = None,
+                 storage_mode: Optional[builtins.str] = None):
+        """
+        :param builtins.str name: the job name of Job if the resource was matched by id.
+        """
+        if catalog is not None:
+            pulumi.set(__self__, "catalog", catalog)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if storage_mode is not None:
+            pulumi.set(__self__, "storage_mode", storage_mode)
+
+    @property
+    @pulumi.getter
+    def catalog(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "catalog")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        the job name of Job if the resource was matched by id.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="storageMode")
+    def storage_mode(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "storage_mode")
+
+
+@pulumi.output_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskResult(dict):
     def __init__(__self__, *,
                  entry_point: Optional[builtins.str] = None,
@@ -40376,7 +40891,6 @@ class GetJobJobSettingsSettingsTaskNewClusterResult(dict):
                  enable_local_disk_encryption: builtins.bool,
                  node_type_id: builtins.str,
                  num_workers: builtins.int,
-                 spark_version: builtins.str,
                  apply_policy_default_values: Optional[builtins.bool] = None,
                  autoscale: Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterAutoscaleResult'] = None,
                  autotermination_minutes: Optional[builtins.int] = None,
@@ -40398,6 +40912,7 @@ class GetJobJobSettingsSettingsTaskNewClusterResult(dict):
                  single_user_name: Optional[builtins.str] = None,
                  spark_conf: Optional[Mapping[str, builtins.str]] = None,
                  spark_env_vars: Optional[Mapping[str, builtins.str]] = None,
+                 spark_version: Optional[builtins.str] = None,
                  ssh_public_keys: Optional[Sequence[builtins.str]] = None,
                  workload_type: Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeResult'] = None):
         pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
@@ -40406,7 +40921,6 @@ class GetJobJobSettingsSettingsTaskNewClusterResult(dict):
         pulumi.set(__self__, "enable_local_disk_encryption", enable_local_disk_encryption)
         pulumi.set(__self__, "node_type_id", node_type_id)
         pulumi.set(__self__, "num_workers", num_workers)
-        pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -40449,6 +40963,8 @@ class GetJobJobSettingsSettingsTaskNewClusterResult(dict):
             pulumi.set(__self__, "spark_conf", spark_conf)
         if spark_env_vars is not None:
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
+        if spark_version is not None:
+            pulumi.set(__self__, "spark_version", spark_version)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         if workload_type is not None:
@@ -40483,11 +40999,6 @@ class GetJobJobSettingsSettingsTaskNewClusterResult(dict):
     @pulumi.getter(name="numWorkers")
     def num_workers(self) -> builtins.int:
         return pulumi.get(self, "num_workers")
-
-    @property
-    @pulumi.getter(name="sparkVersion")
-    def spark_version(self) -> builtins.str:
-        return pulumi.get(self, "spark_version")
 
     @property
     @pulumi.getter(name="applyPolicyDefaultValues")
@@ -40593,6 +41104,11 @@ class GetJobJobSettingsSettingsTaskNewClusterResult(dict):
     @pulumi.getter(name="sparkEnvVars")
     def spark_env_vars(self) -> Optional[Mapping[str, builtins.str]]:
         return pulumi.get(self, "spark_env_vars")
+
+    @property
+    @pulumi.getter(name="sparkVersion")
+    def spark_version(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "spark_version")
 
     @property
     @pulumi.getter(name="sshPublicKeys")
@@ -41265,6 +41781,139 @@ class GetJobJobSettingsSettingsTaskPipelineTaskResult(dict):
     @pulumi.getter(name="fullRefresh")
     def full_refresh(self) -> Optional[builtins.bool]:
         return pulumi.get(self, "full_refresh")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskPowerBiTaskResult(dict):
+    def __init__(__self__, *,
+                 connection_resource_name: Optional[builtins.str] = None,
+                 power_bi_model: Optional['outputs.GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelResult'] = None,
+                 refresh_after_update: Optional[builtins.bool] = None,
+                 tables: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskPowerBiTaskTableResult']] = None,
+                 warehouse_id: Optional[builtins.str] = None):
+        if connection_resource_name is not None:
+            pulumi.set(__self__, "connection_resource_name", connection_resource_name)
+        if power_bi_model is not None:
+            pulumi.set(__self__, "power_bi_model", power_bi_model)
+        if refresh_after_update is not None:
+            pulumi.set(__self__, "refresh_after_update", refresh_after_update)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter(name="connectionResourceName")
+    def connection_resource_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "connection_resource_name")
+
+    @property
+    @pulumi.getter(name="powerBiModel")
+    def power_bi_model(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelResult']:
+        return pulumi.get(self, "power_bi_model")
+
+    @property
+    @pulumi.getter(name="refreshAfterUpdate")
+    def refresh_after_update(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "refresh_after_update")
+
+    @property
+    @pulumi.getter
+    def tables(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskPowerBiTaskTableResult']]:
+        return pulumi.get(self, "tables")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "warehouse_id")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelResult(dict):
+    def __init__(__self__, *,
+                 authentication_method: Optional[builtins.str] = None,
+                 model_name: Optional[builtins.str] = None,
+                 overwrite_existing: Optional[builtins.bool] = None,
+                 storage_mode: Optional[builtins.str] = None,
+                 workspace_name: Optional[builtins.str] = None):
+        if authentication_method is not None:
+            pulumi.set(__self__, "authentication_method", authentication_method)
+        if model_name is not None:
+            pulumi.set(__self__, "model_name", model_name)
+        if overwrite_existing is not None:
+            pulumi.set(__self__, "overwrite_existing", overwrite_existing)
+        if storage_mode is not None:
+            pulumi.set(__self__, "storage_mode", storage_mode)
+        if workspace_name is not None:
+            pulumi.set(__self__, "workspace_name", workspace_name)
+
+    @property
+    @pulumi.getter(name="authenticationMethod")
+    def authentication_method(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "authentication_method")
+
+    @property
+    @pulumi.getter(name="modelName")
+    def model_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "model_name")
+
+    @property
+    @pulumi.getter(name="overwriteExisting")
+    def overwrite_existing(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "overwrite_existing")
+
+    @property
+    @pulumi.getter(name="storageMode")
+    def storage_mode(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "storage_mode")
+
+    @property
+    @pulumi.getter(name="workspaceName")
+    def workspace_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "workspace_name")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskPowerBiTaskTableResult(dict):
+    def __init__(__self__, *,
+                 catalog: Optional[builtins.str] = None,
+                 name: Optional[builtins.str] = None,
+                 schema: Optional[builtins.str] = None,
+                 storage_mode: Optional[builtins.str] = None):
+        """
+        :param builtins.str name: the job name of Job if the resource was matched by id.
+        """
+        if catalog is not None:
+            pulumi.set(__self__, "catalog", catalog)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if storage_mode is not None:
+            pulumi.set(__self__, "storage_mode", storage_mode)
+
+    @property
+    @pulumi.getter
+    def catalog(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "catalog")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        the job name of Job if the resource was matched by id.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="storageMode")
+    def storage_mode(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "storage_mode")
 
 
 @pulumi.output_type

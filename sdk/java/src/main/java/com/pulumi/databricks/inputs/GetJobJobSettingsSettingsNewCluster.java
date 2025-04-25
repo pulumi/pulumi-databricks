@@ -217,11 +217,11 @@ public final class GetJobJobSettingsSettingsNewCluster extends com.pulumi.resour
         return Optional.ofNullable(this.sparkEnvVars);
     }
 
-    @Import(name="sparkVersion", required=true)
-    private String sparkVersion;
+    @Import(name="sparkVersion")
+    private @Nullable String sparkVersion;
 
-    public String sparkVersion() {
-        return this.sparkVersion;
+    public Optional<String> sparkVersion() {
+        return Optional.ofNullable(this.sparkVersion);
     }
 
     @Import(name="sshPublicKeys")
@@ -434,7 +434,7 @@ public final class GetJobJobSettingsSettingsNewCluster extends com.pulumi.resour
             return this;
         }
 
-        public Builder sparkVersion(String sparkVersion) {
+        public Builder sparkVersion(@Nullable String sparkVersion) {
             $.sparkVersion = sparkVersion;
             return this;
         }
@@ -471,9 +471,6 @@ public final class GetJobJobSettingsSettingsNewCluster extends com.pulumi.resour
             }
             if ($.numWorkers == null) {
                 throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsNewCluster", "numWorkers");
-            }
-            if ($.sparkVersion == null) {
-                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsNewCluster", "sparkVersion");
             }
             return $;
         }

@@ -23,20 +23,12 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
     /**
      * (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      * 
-     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
-     * 
-     * Example
-     * 
      */
     @Import(name="onDurationWarningThresholdExceededs")
     private @Nullable Output<List<JobWebhookNotificationsOnDurationWarningThresholdExceededArgs>> onDurationWarningThresholdExceededs;
 
     /**
      * @return (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     * 
-     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
-     * 
-     * Example
      * 
      */
     public Optional<Output<List<JobWebhookNotificationsOnDurationWarningThresholdExceededArgs>>> onDurationWarningThresholdExceededs() {
@@ -73,9 +65,25 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.onStarts);
     }
 
+    /**
+     * (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+     * 
+     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
+     * 
+     * Example
+     * 
+     */
     @Import(name="onStreamingBacklogExceededs")
     private @Nullable Output<List<JobWebhookNotificationsOnStreamingBacklogExceededArgs>> onStreamingBacklogExceededs;
 
+    /**
+     * @return (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+     * 
+     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
+     * 
+     * Example
+     * 
+     */
     public Optional<Output<List<JobWebhookNotificationsOnStreamingBacklogExceededArgs>>> onStreamingBacklogExceededs() {
         return Optional.ofNullable(this.onStreamingBacklogExceededs);
     }
@@ -126,10 +134,6 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
         /**
          * @param onDurationWarningThresholdExceededs (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
          * 
-         * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
-         * 
-         * Example
-         * 
          * @return builder
          * 
          */
@@ -141,10 +145,6 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
         /**
          * @param onDurationWarningThresholdExceededs (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
          * 
-         * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
-         * 
-         * Example
-         * 
          * @return builder
          * 
          */
@@ -154,10 +154,6 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
 
         /**
          * @param onDurationWarningThresholdExceededs (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-         * 
-         * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
-         * 
-         * Example
          * 
          * @return builder
          * 
@@ -228,15 +224,45 @@ public final class JobWebhookNotificationsArgs extends com.pulumi.resources.Reso
             return onStarts(List.of(onStarts));
         }
 
+        /**
+         * @param onStreamingBacklogExceededs (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+         * 
+         * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
+         * 
+         * Example
+         * 
+         * @return builder
+         * 
+         */
         public Builder onStreamingBacklogExceededs(@Nullable Output<List<JobWebhookNotificationsOnStreamingBacklogExceededArgs>> onStreamingBacklogExceededs) {
             $.onStreamingBacklogExceededs = onStreamingBacklogExceededs;
             return this;
         }
 
+        /**
+         * @param onStreamingBacklogExceededs (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+         * 
+         * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
+         * 
+         * Example
+         * 
+         * @return builder
+         * 
+         */
         public Builder onStreamingBacklogExceededs(List<JobWebhookNotificationsOnStreamingBacklogExceededArgs> onStreamingBacklogExceededs) {
             return onStreamingBacklogExceededs(Output.of(onStreamingBacklogExceededs));
         }
 
+        /**
+         * @param onStreamingBacklogExceededs (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+         * 
+         * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
+         * 
+         * Example
+         * 
+         * @return builder
+         * 
+         */
         public Builder onStreamingBacklogExceededs(JobWebhookNotificationsOnStreamingBacklogExceededArgs... onStreamingBacklogExceededs) {
             return onStreamingBacklogExceededs(List.of(onStreamingBacklogExceededs));
         }

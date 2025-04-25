@@ -26,7 +26,49 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * ### Creating a Databricks on AWS workspace
+ * ### Creating a serverless workspace in AWS
+ * 
+ * Creating a serverless workspace does not require any prerequisite resources. Simply specify `compute_mode = &#34;SERVERLESS&#34;` when creating the workspace. Serverless workspaces must not include `credentials_id` or `storage_configuration_id`.
+ * 
+ * To use serverless workspaces, you must enroll in the [Default Storage preview](https://docs.databricks.com/aws/en/storage/express-storage).
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsWorkspaces;
+ * import com.pulumi.databricks.MwsWorkspacesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var serverlessWorkspace = new MwsWorkspaces("serverlessWorkspace", MwsWorkspacesArgs.builder()
+ *             .accountId("")
+ *             .workspaceName("serverless-workspace")
+ *             .awsRegion("us-east-1")
+ *             .computeMode("SERVERLESS")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Creating a workspace on AWS
  * 
  * !Simplest multiworkspace
  * 
@@ -111,11 +153,11 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Creating a Databricks on AWS workspace with Databricks-Managed VPC
+ * ### Creating a workspace on AWS with Databricks-Managed VPC
  * 
  * ![VPCs](https://docs.databricks.com/_images/customer-managed-vpc.png)
  * 
- * By default, Databricks creates a VPC in your AWS account for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with databricks.MwsNetworks so that you can configure it according to your organization’s enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC. Please see the difference described through IAM policy actions [on this page](https://docs.databricks.com/administration-guide/account-api/iam-role.html).
+ * By default, Databricks creates a VPC in your AWS account for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with databricks.MwsNetworks so that you can configure it according to your organization&#39;s enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC. Please see the difference described through IAM policy actions [on this page](https://docs.databricks.com/administration-guide/account-api/iam-role.html).
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -274,7 +316,7 @@ import javax.annotation.Nullable;
  * 
  * In order to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) please ensure that you have read and understood the [Enable Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mws_private_access_settings and mws_networks.
  * 
- * ### Creating a Databricks on GCP workspace
+ * ### Creating a workspace on GCP
  * 
  * To get workspace running, you have to configure a network object:
  * 
@@ -428,6 +470,20 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cloudResourceContainer);
     }
     /**
+     * The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+     * 
+     */
+    @Export(name="computeMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> computeMode;
+
+    /**
+     * @return The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+     * 
+     */
+    public Output<Optional<String>> computeMode() {
+        return Codegen.optional(this.computeMode);
+    }
+    /**
      * (Integer) time when workspace was created
      * 
      */
@@ -441,9 +497,17 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Integer> creationTime() {
         return this.creationTime;
     }
+    /**
+     * `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+     * 
+     */
     @Export(name="credentialsId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> credentialsId;
 
+    /**
+     * @return `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+     * 
+     */
     public Output<Optional<String>> credentialsId() {
         return Codegen.optional(this.credentialsId);
     }
@@ -487,6 +551,20 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> deploymentName() {
         return Codegen.optional(this.deploymentName);
     }
+    /**
+     * (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
+     * 
+     */
+    @Export(name="effectiveComputeMode", refs={String.class}, tree="[0]")
+    private Output<String> effectiveComputeMode;
+
+    /**
+     * @return (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
+     * 
+     */
+    public Output<String> effectiveComputeMode() {
+        return this.effectiveComputeMode;
+    }
     @Export(name="externalCustomerInfo", refs={MwsWorkspacesExternalCustomerInfo.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesExternalCustomerInfo> externalCustomerInfo;
 
@@ -517,10 +595,10 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * A block that specifies GKE configuration for the Databricks workspace:
      * 
      * @deprecated
-     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
     @Export(name="gkeConfig", refs={MwsWorkspacesGkeConfig.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesGkeConfig> gkeConfig;
 
@@ -608,14 +686,14 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.privateAccessSettingsId);
     }
     /**
-     * `storage_configuration_id` from storage configuration.
+     * `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
      * 
      */
     @Export(name="storageConfigurationId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageConfigurationId;
 
     /**
-     * @return `storage_configuration_id` from storage configuration.
+     * @return `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
      * 
      */
     public Output<Optional<String>> storageConfigurationId() {

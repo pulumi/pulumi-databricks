@@ -82,6 +82,9 @@ class JobArgs:
         :param pulumi.Input[builtins.str] name: An optional name for the job. The default value is Untitled.
         :param pulumi.Input['JobNotificationSettingsArgs'] notification_settings: An optional block controlling the notification settings on the job level documented below.
         :param pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]] parameters: Specifices job parameter for the job. See parameter Configuration Block
+        :param pulumi.Input[builtins.str] performance_target: The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
+               * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
+               * `STANDARD`: Enables cost-efficient execution of serverless workloads.
         :param pulumi.Input['JobQueueArgs'] queue: The queue status for the job. See queue Configuration Block below.
         :param pulumi.Input['JobRunAsArgs'] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
         :param pulumi.Input['JobScheduleArgs'] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
@@ -482,6 +485,11 @@ class JobArgs:
     @property
     @pulumi.getter(name="performanceTarget")
     def performance_target(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
+        * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
+        * `STANDARD`: Enables cost-efficient execution of serverless workloads.
+        """
         return pulumi.get(self, "performance_target")
 
     @performance_target.setter
@@ -719,6 +727,9 @@ class _JobState:
         :param pulumi.Input[builtins.str] name: An optional name for the job. The default value is Untitled.
         :param pulumi.Input['JobNotificationSettingsArgs'] notification_settings: An optional block controlling the notification settings on the job level documented below.
         :param pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]] parameters: Specifices job parameter for the job. See parameter Configuration Block
+        :param pulumi.Input[builtins.str] performance_target: The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
+               * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
+               * `STANDARD`: Enables cost-efficient execution of serverless workloads.
         :param pulumi.Input['JobQueueArgs'] queue: The queue status for the job. See queue Configuration Block below.
         :param pulumi.Input['JobRunAsArgs'] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
         :param pulumi.Input['JobScheduleArgs'] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
@@ -1122,6 +1133,11 @@ class _JobState:
     @property
     @pulumi.getter(name="performanceTarget")
     def performance_target(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
+        * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
+        * `STANDARD`: Enables cost-efficient execution of serverless workloads.
+        """
         return pulumi.get(self, "performance_target")
 
     @performance_target.setter
@@ -1452,6 +1468,9 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: An optional name for the job. The default value is Untitled.
         :param pulumi.Input[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict']] notification_settings: An optional block controlling the notification settings on the job level documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]] parameters: Specifices job parameter for the job. See parameter Configuration Block
+        :param pulumi.Input[builtins.str] performance_target: The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
+               * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
+               * `STANDARD`: Enables cost-efficient execution of serverless workloads.
         :param pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict']] queue: The queue status for the job. See queue Configuration Block below.
         :param pulumi.Input[Union['JobRunAsArgs', 'JobRunAsArgsDict']] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
         :param pulumi.Input[Union['JobScheduleArgs', 'JobScheduleArgsDict']] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
@@ -1727,6 +1746,9 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: An optional name for the job. The default value is Untitled.
         :param pulumi.Input[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict']] notification_settings: An optional block controlling the notification settings on the job level documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]] parameters: Specifices job parameter for the job. See parameter Configuration Block
+        :param pulumi.Input[builtins.str] performance_target: The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
+               * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
+               * `STANDARD`: Enables cost-efficient execution of serverless workloads.
         :param pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict']] queue: The queue status for the job. See queue Configuration Block below.
         :param pulumi.Input[Union['JobRunAsArgs', 'JobRunAsArgsDict']] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
         :param pulumi.Input[Union['JobScheduleArgs', 'JobScheduleArgsDict']] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
@@ -1962,6 +1984,11 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter(name="performanceTarget")
     def performance_target(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
+        * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
+        * `STANDARD`: Enables cost-efficient execution of serverless workloads.
+        """
         return pulumi.get(self, "performance_target")
 
     @property

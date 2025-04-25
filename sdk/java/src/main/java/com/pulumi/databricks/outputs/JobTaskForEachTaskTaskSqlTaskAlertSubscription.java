@@ -11,21 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskForEachTaskTaskSqlTaskAlertSubscription {
-    private @Nullable String destinationId;
     /**
-     * @return The email of an active workspace user. Non-admin users can only set this field to their own email.
+     * @return A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
      * 
      */
+    private @Nullable String destinationId;
     private @Nullable String userName;
 
     private JobTaskForEachTaskTaskSqlTaskAlertSubscription() {}
+    /**
+     * @return A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+     * 
+     */
     public Optional<String> destinationId() {
         return Optional.ofNullable(this.destinationId);
     }
-    /**
-     * @return The email of an active workspace user. Non-admin users can only set this field to their own email.
-     * 
-     */
     public Optional<String> userName() {
         return Optional.ofNullable(this.userName);
     }
