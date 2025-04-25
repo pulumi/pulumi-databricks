@@ -898,6 +898,9 @@ class _MwsWorkspacesState:
 
 
 class MwsWorkspaces(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/mwsWorkspaces:MwsWorkspaces"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

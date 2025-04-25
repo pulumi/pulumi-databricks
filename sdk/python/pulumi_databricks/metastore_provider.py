@@ -160,6 +160,9 @@ class _MetastoreProviderState:
 
 
 class MetastoreProvider(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/metastoreProvider:MetastoreProvider"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

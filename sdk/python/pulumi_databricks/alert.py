@@ -401,6 +401,9 @@ class _AlertState:
 
 
 class Alert(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/alert:Alert"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

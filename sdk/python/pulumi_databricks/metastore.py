@@ -506,6 +506,9 @@ class _MetastoreState:
 
 
 class Metastore(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/metastore:Metastore"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -161,6 +161,9 @@ class _GitCredentialState:
 
 
 class GitCredential(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/gitCredential:GitCredential"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

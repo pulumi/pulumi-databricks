@@ -268,6 +268,9 @@ class _ClusterPolicyState:
 
 
 class ClusterPolicy(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/clusterPolicy:ClusterPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

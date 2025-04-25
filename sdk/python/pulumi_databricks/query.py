@@ -481,6 +481,9 @@ class _QueryState:
 
 
 class Query(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/query:Query"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -354,6 +354,9 @@ class _SqlQueryState:
 
 
 class SqlQuery(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/sqlQuery:SqlQuery"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

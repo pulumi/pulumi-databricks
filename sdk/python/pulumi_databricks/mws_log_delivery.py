@@ -381,6 +381,9 @@ class _MwsLogDeliveryState:
 
 
 class MwsLogDelivery(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/mwsLogDelivery:MwsLogDelivery"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

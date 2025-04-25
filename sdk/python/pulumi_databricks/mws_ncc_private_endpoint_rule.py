@@ -371,6 +371,9 @@ class _MwsNccPrivateEndpointRuleState:
 
 
 class MwsNccPrivateEndpointRule(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

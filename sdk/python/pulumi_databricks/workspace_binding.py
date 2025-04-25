@@ -194,6 +194,9 @@ class _WorkspaceBindingState:
 
 
 class WorkspaceBinding(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/workspaceBinding:WorkspaceBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

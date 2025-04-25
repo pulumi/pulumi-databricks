@@ -217,6 +217,9 @@ class _WorkspaceFileState:
 
 
 class WorkspaceFile(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/workspaceFile:WorkspaceFile"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

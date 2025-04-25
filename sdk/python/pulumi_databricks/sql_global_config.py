@@ -226,6 +226,9 @@ class _SqlGlobalConfigState:
 
 
 class SqlGlobalConfig(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/sqlGlobalConfig:SqlGlobalConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

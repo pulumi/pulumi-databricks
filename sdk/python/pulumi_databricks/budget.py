@@ -228,6 +228,9 @@ class _BudgetState:
 
 
 class Budget(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/budget:Budget"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

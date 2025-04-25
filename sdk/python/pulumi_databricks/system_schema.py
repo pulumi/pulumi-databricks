@@ -138,6 +138,9 @@ class _SystemSchemaState:
 
 
 class SystemSchema(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/systemSchema:SystemSchema"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
