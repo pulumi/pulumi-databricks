@@ -183,8 +183,8 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
         /// </summary>
-        [Input("sparkVersion", required: true)]
-        public Input<string> SparkVersion { get; set; } = null!;
+        [Input("sparkVersion")]
+        public Input<string>? SparkVersion { get; set; }
 
         [Input("sshPublicKeys")]
         private InputList<string>? _sshPublicKeys;

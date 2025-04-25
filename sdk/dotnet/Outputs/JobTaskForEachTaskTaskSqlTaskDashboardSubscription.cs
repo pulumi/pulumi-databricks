@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskForEachTaskTaskSqlTaskDashboardSubscription
     {
-        public readonly string? DestinationId;
         /// <summary>
-        /// The email of an active workspace user. Non-admin users can only set this field to their own email.
+        /// A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
         /// </summary>
+        public readonly string? DestinationId;
         public readonly string? UserName;
 
         [OutputConstructor]

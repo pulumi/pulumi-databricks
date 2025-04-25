@@ -19,8 +19,6 @@ namespace Pulumi.Databricks.Outputs
         public readonly bool? NoAlertForSkippedRuns;
         /// <summary>
         /// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-        /// 
-        /// The following parameter is only available for the job level configuration.
         /// </summary>
         public readonly ImmutableArray<string> OnDurationWarningThresholdExceededs;
         /// <summary>
@@ -31,6 +29,11 @@ namespace Pulumi.Databricks.Outputs
         /// (List) list of emails to notify when the run starts.
         /// </summary>
         public readonly ImmutableArray<string> OnStarts;
+        /// <summary>
+        /// (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+        /// 
+        /// The following parameter is only available for the job level configuration.
+        /// </summary>
         public readonly ImmutableArray<string> OnStreamingBacklogExceededs;
         /// <summary>
         /// (List) list of emails to notify when the run completes successfully.

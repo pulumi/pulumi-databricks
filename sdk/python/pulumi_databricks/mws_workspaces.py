@@ -27,6 +27,7 @@ class MwsWorkspacesArgs:
                  aws_region: Optional[pulumi.Input[builtins.str]] = None,
                  cloud: Optional[pulumi.Input[builtins.str]] = None,
                  cloud_resource_container: Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']] = None,
+                 compute_mode: Optional[pulumi.Input[builtins.str]] = None,
                  creation_time: Optional[pulumi.Input[builtins.int]] = None,
                  credentials_id: Optional[pulumi.Input[builtins.str]] = None,
                  custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -54,7 +55,9 @@ class MwsWorkspacesArgs:
         :param pulumi.Input[builtins.str] workspace_name: name of the workspace, will appear on UI.
         :param pulumi.Input[builtins.str] aws_region: region of VPC.
         :param pulumi.Input['MwsWorkspacesCloudResourceContainerArgs'] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
+        :param pulumi.Input[builtins.str] compute_mode: The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
         :param pulumi.Input[builtins.int] creation_time: (Integer) time when workspace was created
+        :param pulumi.Input[builtins.str] credentials_id: `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] custom_tags: The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         :param pulumi.Input[builtins.str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
         :param pulumi.Input['MwsWorkspacesGkeConfigArgs'] gke_config: A block that specifies GKE configuration for the Databricks workspace:
@@ -63,7 +66,7 @@ class MwsWorkspacesArgs:
         :param pulumi.Input[builtins.str] network_id: `network_id` from networks.
         :param pulumi.Input[builtins.str] pricing_tier: The pricing tier of the workspace.
         :param pulumi.Input[builtins.str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
-        :param pulumi.Input[builtins.str] storage_configuration_id: `storage_configuration_id` from storage configuration.
+        :param pulumi.Input[builtins.str] storage_configuration_id: `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         :param pulumi.Input[builtins.str] storage_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
         :param pulumi.Input[builtins.str] workspace_id: (String) workspace id
         :param pulumi.Input[builtins.str] workspace_status: (String) workspace status
@@ -78,6 +81,8 @@ class MwsWorkspacesArgs:
             pulumi.set(__self__, "cloud", cloud)
         if cloud_resource_container is not None:
             pulumi.set(__self__, "cloud_resource_container", cloud_resource_container)
+        if compute_mode is not None:
+            pulumi.set(__self__, "compute_mode", compute_mode)
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
         if credentials_id is not None:
@@ -96,8 +101,8 @@ class MwsWorkspacesArgs:
         if gcp_managed_network_config is not None:
             pulumi.set(__self__, "gcp_managed_network_config", gcp_managed_network_config)
         if gke_config is not None:
-            warnings.warn("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_config is deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_config is deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_config is not None:
             pulumi.set(__self__, "gke_config", gke_config)
         if is_no_public_ip_enabled is not None:
@@ -185,6 +190,18 @@ class MwsWorkspacesArgs:
         pulumi.set(self, "cloud_resource_container", value)
 
     @property
+    @pulumi.getter(name="computeMode")
+    def compute_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+        """
+        return pulumi.get(self, "compute_mode")
+
+    @compute_mode.setter
+    def compute_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "compute_mode", value)
+
+    @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> Optional[pulumi.Input[builtins.int]]:
         """
@@ -199,6 +216,9 @@ class MwsWorkspacesArgs:
     @property
     @pulumi.getter(name="credentialsId")
     def credentials_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+        """
         return pulumi.get(self, "credentials_id")
 
     @credentials_id.setter
@@ -259,7 +279,7 @@ class MwsWorkspacesArgs:
 
     @property
     @pulumi.getter(name="gkeConfig")
-    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_config(self) -> Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']]:
         """
         A block that specifies GKE configuration for the Databricks workspace:
@@ -343,7 +363,7 @@ class MwsWorkspacesArgs:
     @pulumi.getter(name="storageConfigurationId")
     def storage_configuration_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        `storage_configuration_id` from storage configuration.
+        `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         """
         return pulumi.get(self, "storage_configuration_id")
 
@@ -428,11 +448,13 @@ class _MwsWorkspacesState:
                  aws_region: Optional[pulumi.Input[builtins.str]] = None,
                  cloud: Optional[pulumi.Input[builtins.str]] = None,
                  cloud_resource_container: Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']] = None,
+                 compute_mode: Optional[pulumi.Input[builtins.str]] = None,
                  creation_time: Optional[pulumi.Input[builtins.int]] = None,
                  credentials_id: Optional[pulumi.Input[builtins.str]] = None,
                  custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  customer_managed_key_id: Optional[pulumi.Input[builtins.str]] = None,
                  deployment_name: Optional[pulumi.Input[builtins.str]] = None,
+                 effective_compute_mode: Optional[pulumi.Input[builtins.str]] = None,
                  external_customer_info: Optional[pulumi.Input['MwsWorkspacesExternalCustomerInfoArgs']] = None,
                  gcp_managed_network_config: Optional[pulumi.Input['MwsWorkspacesGcpManagedNetworkConfigArgs']] = None,
                  gcp_workspace_sa: Optional[pulumi.Input[builtins.str]] = None,
@@ -456,9 +478,12 @@ class _MwsWorkspacesState:
         :param pulumi.Input[builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[builtins.str] aws_region: region of VPC.
         :param pulumi.Input['MwsWorkspacesCloudResourceContainerArgs'] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
+        :param pulumi.Input[builtins.str] compute_mode: The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
         :param pulumi.Input[builtins.int] creation_time: (Integer) time when workspace was created
+        :param pulumi.Input[builtins.str] credentials_id: `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] custom_tags: The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         :param pulumi.Input[builtins.str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
+        :param pulumi.Input[builtins.str] effective_compute_mode: (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
         :param pulumi.Input[builtins.str] gcp_workspace_sa: (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
         :param pulumi.Input['MwsWorkspacesGkeConfigArgs'] gke_config: A block that specifies GKE configuration for the Databricks workspace:
         :param pulumi.Input[builtins.str] location: region of the subnet.
@@ -466,7 +491,7 @@ class _MwsWorkspacesState:
         :param pulumi.Input[builtins.str] network_id: `network_id` from networks.
         :param pulumi.Input[builtins.str] pricing_tier: The pricing tier of the workspace.
         :param pulumi.Input[builtins.str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
-        :param pulumi.Input[builtins.str] storage_configuration_id: `storage_configuration_id` from storage configuration.
+        :param pulumi.Input[builtins.str] storage_configuration_id: `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         :param pulumi.Input[builtins.str] storage_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
         :param pulumi.Input[builtins.str] workspace_id: (String) workspace id
         :param pulumi.Input[builtins.str] workspace_name: name of the workspace, will appear on UI.
@@ -482,6 +507,8 @@ class _MwsWorkspacesState:
             pulumi.set(__self__, "cloud", cloud)
         if cloud_resource_container is not None:
             pulumi.set(__self__, "cloud_resource_container", cloud_resource_container)
+        if compute_mode is not None:
+            pulumi.set(__self__, "compute_mode", compute_mode)
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
         if credentials_id is not None:
@@ -495,6 +522,8 @@ class _MwsWorkspacesState:
             pulumi.set(__self__, "customer_managed_key_id", customer_managed_key_id)
         if deployment_name is not None:
             pulumi.set(__self__, "deployment_name", deployment_name)
+        if effective_compute_mode is not None:
+            pulumi.set(__self__, "effective_compute_mode", effective_compute_mode)
         if external_customer_info is not None:
             pulumi.set(__self__, "external_customer_info", external_customer_info)
         if gcp_managed_network_config is not None:
@@ -502,8 +531,8 @@ class _MwsWorkspacesState:
         if gcp_workspace_sa is not None:
             pulumi.set(__self__, "gcp_workspace_sa", gcp_workspace_sa)
         if gke_config is not None:
-            warnings.warn("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_config is deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_config is deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_config is not None:
             pulumi.set(__self__, "gke_config", gke_config)
         if is_no_public_ip_enabled is not None:
@@ -581,6 +610,18 @@ class _MwsWorkspacesState:
         pulumi.set(self, "cloud_resource_container", value)
 
     @property
+    @pulumi.getter(name="computeMode")
+    def compute_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+        """
+        return pulumi.get(self, "compute_mode")
+
+    @compute_mode.setter
+    def compute_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "compute_mode", value)
+
+    @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> Optional[pulumi.Input[builtins.int]]:
         """
@@ -595,6 +636,9 @@ class _MwsWorkspacesState:
     @property
     @pulumi.getter(name="credentialsId")
     def credentials_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+        """
         return pulumi.get(self, "credentials_id")
 
     @credentials_id.setter
@@ -636,6 +680,18 @@ class _MwsWorkspacesState:
         pulumi.set(self, "deployment_name", value)
 
     @property
+    @pulumi.getter(name="effectiveComputeMode")
+    def effective_compute_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
+        """
+        return pulumi.get(self, "effective_compute_mode")
+
+    @effective_compute_mode.setter
+    def effective_compute_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "effective_compute_mode", value)
+
+    @property
     @pulumi.getter(name="externalCustomerInfo")
     def external_customer_info(self) -> Optional[pulumi.Input['MwsWorkspacesExternalCustomerInfoArgs']]:
         return pulumi.get(self, "external_customer_info")
@@ -667,7 +723,7 @@ class _MwsWorkspacesState:
 
     @property
     @pulumi.getter(name="gkeConfig")
-    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_config(self) -> Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']]:
         """
         A block that specifies GKE configuration for the Databricks workspace:
@@ -751,7 +807,7 @@ class _MwsWorkspacesState:
     @pulumi.getter(name="storageConfigurationId")
     def storage_configuration_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        `storage_configuration_id` from storage configuration.
+        `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         """
         return pulumi.get(self, "storage_configuration_id")
 
@@ -850,6 +906,7 @@ class MwsWorkspaces(pulumi.CustomResource):
                  aws_region: Optional[pulumi.Input[builtins.str]] = None,
                  cloud: Optional[pulumi.Input[builtins.str]] = None,
                  cloud_resource_container: Optional[pulumi.Input[Union['MwsWorkspacesCloudResourceContainerArgs', 'MwsWorkspacesCloudResourceContainerArgsDict']]] = None,
+                 compute_mode: Optional[pulumi.Input[builtins.str]] = None,
                  creation_time: Optional[pulumi.Input[builtins.int]] = None,
                  credentials_id: Optional[pulumi.Input[builtins.str]] = None,
                  custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -876,7 +933,24 @@ class MwsWorkspaces(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ### Creating a Databricks on AWS workspace
+        ### Creating a serverless workspace in AWS
+
+        Creating a serverless workspace does not require any prerequisite resources. Simply specify `compute_mode = "SERVERLESS"` when creating the workspace. Serverless workspaces must not include `credentials_id` or `storage_configuration_id`.
+
+        To use serverless workspaces, you must enroll in the [Default Storage preview](https://docs.databricks.com/aws/en/storage/express-storage).
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        serverless_workspace = databricks.MwsWorkspaces("serverless_workspace",
+            account_id="",
+            workspace_name="serverless-workspace",
+            aws_region="us-east-1",
+            compute_mode="SERVERLESS")
+        ```
+
+        ### Creating a workspace on AWS
 
         !Simplest multiworkspace
 
@@ -923,11 +997,11 @@ class MwsWorkspaces(pulumi.CustomResource):
         pulumi.export("databricksToken", this_mws_workspaces.token.token_value)
         ```
 
-        ### Creating a Databricks on AWS workspace with Databricks-Managed VPC
+        ### Creating a workspace on AWS with Databricks-Managed VPC
 
         ![VPCs](https://docs.databricks.com/_images/customer-managed-vpc.png)
 
-        By default, Databricks creates a VPC in your AWS account for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with MwsNetworks so that you can configure it according to your organization’s enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC. Please see the difference described through IAM policy actions [on this page](https://docs.databricks.com/administration-guide/account-api/iam-role.html).
+        By default, Databricks creates a VPC in your AWS account for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with MwsNetworks so that you can configure it according to your organization's enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC. Please see the difference described through IAM policy actions [on this page](https://docs.databricks.com/administration-guide/account-api/iam-role.html).
 
         ```python
         import pulumi
@@ -1005,7 +1079,7 @@ class MwsWorkspaces(pulumi.CustomResource):
 
         In order to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) please ensure that you have read and understood the [Enable Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mws_private_access_settings and mws_networks.
 
-        ### Creating a Databricks on GCP workspace
+        ### Creating a workspace on GCP
 
         To get workspace running, you have to configure a network object:
 
@@ -1078,7 +1152,9 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[builtins.str] aws_region: region of VPC.
         :param pulumi.Input[Union['MwsWorkspacesCloudResourceContainerArgs', 'MwsWorkspacesCloudResourceContainerArgsDict']] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
+        :param pulumi.Input[builtins.str] compute_mode: The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
         :param pulumi.Input[builtins.int] creation_time: (Integer) time when workspace was created
+        :param pulumi.Input[builtins.str] credentials_id: `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] custom_tags: The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         :param pulumi.Input[builtins.str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
         :param pulumi.Input[Union['MwsWorkspacesGkeConfigArgs', 'MwsWorkspacesGkeConfigArgsDict']] gke_config: A block that specifies GKE configuration for the Databricks workspace:
@@ -1087,7 +1163,7 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] network_id: `network_id` from networks.
         :param pulumi.Input[builtins.str] pricing_tier: The pricing tier of the workspace.
         :param pulumi.Input[builtins.str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
-        :param pulumi.Input[builtins.str] storage_configuration_id: `storage_configuration_id` from storage configuration.
+        :param pulumi.Input[builtins.str] storage_configuration_id: `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         :param pulumi.Input[builtins.str] storage_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
         :param pulumi.Input[builtins.str] workspace_id: (String) workspace id
         :param pulumi.Input[builtins.str] workspace_name: name of the workspace, will appear on UI.
@@ -1104,7 +1180,24 @@ class MwsWorkspaces(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ### Creating a Databricks on AWS workspace
+        ### Creating a serverless workspace in AWS
+
+        Creating a serverless workspace does not require any prerequisite resources. Simply specify `compute_mode = "SERVERLESS"` when creating the workspace. Serverless workspaces must not include `credentials_id` or `storage_configuration_id`.
+
+        To use serverless workspaces, you must enroll in the [Default Storage preview](https://docs.databricks.com/aws/en/storage/express-storage).
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        serverless_workspace = databricks.MwsWorkspaces("serverless_workspace",
+            account_id="",
+            workspace_name="serverless-workspace",
+            aws_region="us-east-1",
+            compute_mode="SERVERLESS")
+        ```
+
+        ### Creating a workspace on AWS
 
         !Simplest multiworkspace
 
@@ -1151,11 +1244,11 @@ class MwsWorkspaces(pulumi.CustomResource):
         pulumi.export("databricksToken", this_mws_workspaces.token.token_value)
         ```
 
-        ### Creating a Databricks on AWS workspace with Databricks-Managed VPC
+        ### Creating a workspace on AWS with Databricks-Managed VPC
 
         ![VPCs](https://docs.databricks.com/_images/customer-managed-vpc.png)
 
-        By default, Databricks creates a VPC in your AWS account for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with MwsNetworks so that you can configure it according to your organization’s enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC. Please see the difference described through IAM policy actions [on this page](https://docs.databricks.com/administration-guide/account-api/iam-role.html).
+        By default, Databricks creates a VPC in your AWS account for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with MwsNetworks so that you can configure it according to your organization's enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC. Please see the difference described through IAM policy actions [on this page](https://docs.databricks.com/administration-guide/account-api/iam-role.html).
 
         ```python
         import pulumi
@@ -1233,7 +1326,7 @@ class MwsWorkspaces(pulumi.CustomResource):
 
         In order to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) please ensure that you have read and understood the [Enable Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mws_private_access_settings and mws_networks.
 
-        ### Creating a Databricks on GCP workspace
+        ### Creating a workspace on GCP
 
         To get workspace running, you have to configure a network object:
 
@@ -1320,6 +1413,7 @@ class MwsWorkspaces(pulumi.CustomResource):
                  aws_region: Optional[pulumi.Input[builtins.str]] = None,
                  cloud: Optional[pulumi.Input[builtins.str]] = None,
                  cloud_resource_container: Optional[pulumi.Input[Union['MwsWorkspacesCloudResourceContainerArgs', 'MwsWorkspacesCloudResourceContainerArgsDict']]] = None,
+                 compute_mode: Optional[pulumi.Input[builtins.str]] = None,
                  creation_time: Optional[pulumi.Input[builtins.int]] = None,
                  credentials_id: Optional[pulumi.Input[builtins.str]] = None,
                  custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -1357,6 +1451,7 @@ class MwsWorkspaces(pulumi.CustomResource):
             __props__.__dict__["aws_region"] = aws_region
             __props__.__dict__["cloud"] = cloud
             __props__.__dict__["cloud_resource_container"] = cloud_resource_container
+            __props__.__dict__["compute_mode"] = compute_mode
             __props__.__dict__["creation_time"] = creation_time
             __props__.__dict__["credentials_id"] = credentials_id
             __props__.__dict__["custom_tags"] = custom_tags
@@ -1381,6 +1476,7 @@ class MwsWorkspaces(pulumi.CustomResource):
             __props__.__dict__["workspace_status"] = workspace_status
             __props__.__dict__["workspace_status_message"] = workspace_status_message
             __props__.__dict__["workspace_url"] = workspace_url
+            __props__.__dict__["effective_compute_mode"] = None
             __props__.__dict__["gcp_workspace_sa"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountId"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -1398,11 +1494,13 @@ class MwsWorkspaces(pulumi.CustomResource):
             aws_region: Optional[pulumi.Input[builtins.str]] = None,
             cloud: Optional[pulumi.Input[builtins.str]] = None,
             cloud_resource_container: Optional[pulumi.Input[Union['MwsWorkspacesCloudResourceContainerArgs', 'MwsWorkspacesCloudResourceContainerArgsDict']]] = None,
+            compute_mode: Optional[pulumi.Input[builtins.str]] = None,
             creation_time: Optional[pulumi.Input[builtins.int]] = None,
             credentials_id: Optional[pulumi.Input[builtins.str]] = None,
             custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             customer_managed_key_id: Optional[pulumi.Input[builtins.str]] = None,
             deployment_name: Optional[pulumi.Input[builtins.str]] = None,
+            effective_compute_mode: Optional[pulumi.Input[builtins.str]] = None,
             external_customer_info: Optional[pulumi.Input[Union['MwsWorkspacesExternalCustomerInfoArgs', 'MwsWorkspacesExternalCustomerInfoArgsDict']]] = None,
             gcp_managed_network_config: Optional[pulumi.Input[Union['MwsWorkspacesGcpManagedNetworkConfigArgs', 'MwsWorkspacesGcpManagedNetworkConfigArgsDict']]] = None,
             gcp_workspace_sa: Optional[pulumi.Input[builtins.str]] = None,
@@ -1431,9 +1529,12 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[builtins.str] aws_region: region of VPC.
         :param pulumi.Input[Union['MwsWorkspacesCloudResourceContainerArgs', 'MwsWorkspacesCloudResourceContainerArgsDict']] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
+        :param pulumi.Input[builtins.str] compute_mode: The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
         :param pulumi.Input[builtins.int] creation_time: (Integer) time when workspace was created
+        :param pulumi.Input[builtins.str] credentials_id: `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] custom_tags: The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         :param pulumi.Input[builtins.str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
+        :param pulumi.Input[builtins.str] effective_compute_mode: (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
         :param pulumi.Input[builtins.str] gcp_workspace_sa: (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
         :param pulumi.Input[Union['MwsWorkspacesGkeConfigArgs', 'MwsWorkspacesGkeConfigArgsDict']] gke_config: A block that specifies GKE configuration for the Databricks workspace:
         :param pulumi.Input[builtins.str] location: region of the subnet.
@@ -1441,7 +1542,7 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] network_id: `network_id` from networks.
         :param pulumi.Input[builtins.str] pricing_tier: The pricing tier of the workspace.
         :param pulumi.Input[builtins.str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
-        :param pulumi.Input[builtins.str] storage_configuration_id: `storage_configuration_id` from storage configuration.
+        :param pulumi.Input[builtins.str] storage_configuration_id: `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         :param pulumi.Input[builtins.str] storage_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
         :param pulumi.Input[builtins.str] workspace_id: (String) workspace id
         :param pulumi.Input[builtins.str] workspace_name: name of the workspace, will appear on UI.
@@ -1457,11 +1558,13 @@ class MwsWorkspaces(pulumi.CustomResource):
         __props__.__dict__["aws_region"] = aws_region
         __props__.__dict__["cloud"] = cloud
         __props__.__dict__["cloud_resource_container"] = cloud_resource_container
+        __props__.__dict__["compute_mode"] = compute_mode
         __props__.__dict__["creation_time"] = creation_time
         __props__.__dict__["credentials_id"] = credentials_id
         __props__.__dict__["custom_tags"] = custom_tags
         __props__.__dict__["customer_managed_key_id"] = customer_managed_key_id
         __props__.__dict__["deployment_name"] = deployment_name
+        __props__.__dict__["effective_compute_mode"] = effective_compute_mode
         __props__.__dict__["external_customer_info"] = external_customer_info
         __props__.__dict__["gcp_managed_network_config"] = gcp_managed_network_config
         __props__.__dict__["gcp_workspace_sa"] = gcp_workspace_sa
@@ -1512,6 +1615,14 @@ class MwsWorkspaces(pulumi.CustomResource):
         return pulumi.get(self, "cloud_resource_container")
 
     @property
+    @pulumi.getter(name="computeMode")
+    def compute_mode(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+        """
+        return pulumi.get(self, "compute_mode")
+
+    @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> pulumi.Output[builtins.int]:
         """
@@ -1522,6 +1633,9 @@ class MwsWorkspaces(pulumi.CustomResource):
     @property
     @pulumi.getter(name="credentialsId")
     def credentials_id(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+        """
         return pulumi.get(self, "credentials_id")
 
     @property
@@ -1547,6 +1661,14 @@ class MwsWorkspaces(pulumi.CustomResource):
         return pulumi.get(self, "deployment_name")
 
     @property
+    @pulumi.getter(name="effectiveComputeMode")
+    def effective_compute_mode(self) -> pulumi.Output[builtins.str]:
+        """
+        (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
+        """
+        return pulumi.get(self, "effective_compute_mode")
+
+    @property
     @pulumi.getter(name="externalCustomerInfo")
     def external_customer_info(self) -> pulumi.Output[Optional['outputs.MwsWorkspacesExternalCustomerInfo']]:
         return pulumi.get(self, "external_customer_info")
@@ -1566,7 +1688,7 @@ class MwsWorkspaces(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gkeConfig")
-    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_config(self) -> pulumi.Output[Optional['outputs.MwsWorkspacesGkeConfig']]:
         """
         A block that specifies GKE configuration for the Databricks workspace:
@@ -1622,7 +1744,7 @@ class MwsWorkspaces(pulumi.CustomResource):
     @pulumi.getter(name="storageConfigurationId")
     def storage_configuration_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        `storage_configuration_id` from storage configuration.
+        `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         """
         return pulumi.get(self, "storage_configuration_id")
 

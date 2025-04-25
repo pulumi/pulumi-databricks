@@ -12,11 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+        /// </summary>
         [Input("destinationId")]
         public Input<string>? DestinationId { get; set; }
 
         /// <summary>
-        /// The email of an active workspace user. Non-admin users can only set this field to their own email.
+        /// A snapshot of the dashboard will be sent to the user's email when the `user_name` field is present.
         /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }

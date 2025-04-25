@@ -12,25 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskForEachTaskTaskPowerBiTaskPowerBiModel {
+    /**
+     * @return How the published Power BI model authenticates to Databricks
+     * 
+     */
     private @Nullable String authenticationMethod;
+    /**
+     * @return The name of the Power BI model
+     * 
+     */
     private @Nullable String modelName;
+    /**
+     * @return Whether to overwrite existing Power BI models. Default is false
+     * 
+     */
     private @Nullable Boolean overwriteExisting;
+    /**
+     * @return The default storage mode of the Power BI model
+     * 
+     */
     private @Nullable String storageMode;
+    /**
+     * @return The name of the Power BI workspace of the model
+     * 
+     */
     private @Nullable String workspaceName;
 
     private JobTaskForEachTaskTaskPowerBiTaskPowerBiModel() {}
+    /**
+     * @return How the published Power BI model authenticates to Databricks
+     * 
+     */
     public Optional<String> authenticationMethod() {
         return Optional.ofNullable(this.authenticationMethod);
     }
+    /**
+     * @return The name of the Power BI model
+     * 
+     */
     public Optional<String> modelName() {
         return Optional.ofNullable(this.modelName);
     }
+    /**
+     * @return Whether to overwrite existing Power BI models. Default is false
+     * 
+     */
     public Optional<Boolean> overwriteExisting() {
         return Optional.ofNullable(this.overwriteExisting);
     }
+    /**
+     * @return The default storage mode of the Power BI model
+     * 
+     */
     public Optional<String> storageMode() {
         return Optional.ofNullable(this.storageMode);
     }
+    /**
+     * @return The name of the Power BI workspace of the model
+     * 
+     */
     public Optional<String> workspaceName() {
         return Optional.ofNullable(this.workspaceName);
     }

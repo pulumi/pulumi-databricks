@@ -14,6 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetJobJobSettingsSettingsTaskResult
     {
         public readonly Outputs.GetJobJobSettingsSettingsTaskConditionTaskResult? ConditionTask;
+        public readonly Outputs.GetJobJobSettingsSettingsTaskDashboardTaskResult? DashboardTask;
         public readonly Outputs.GetJobJobSettingsSettingsTaskDbtTaskResult? DbtTask;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskDependsOnResult> DependsOns;
         public readonly string? Description;
@@ -30,6 +31,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetJobJobSettingsSettingsTaskNotebookTaskResult? NotebookTask;
         public readonly Outputs.GetJobJobSettingsSettingsTaskNotificationSettingsResult? NotificationSettings;
         public readonly Outputs.GetJobJobSettingsSettingsTaskPipelineTaskResult? PipelineTask;
+        public readonly Outputs.GetJobJobSettingsSettingsTaskPowerBiTaskResult? PowerBiTask;
         public readonly Outputs.GetJobJobSettingsSettingsTaskPythonWheelTaskResult? PythonWheelTask;
         public readonly bool RetryOnTimeout;
         public readonly string? RunIf;
@@ -45,6 +47,8 @@ namespace Pulumi.Databricks.Outputs
         [OutputConstructor]
         private GetJobJobSettingsSettingsTaskResult(
             Outputs.GetJobJobSettingsSettingsTaskConditionTaskResult? conditionTask,
+
+            Outputs.GetJobJobSettingsSettingsTaskDashboardTaskResult? dashboardTask,
 
             Outputs.GetJobJobSettingsSettingsTaskDbtTaskResult? dbtTask,
 
@@ -78,6 +82,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetJobJobSettingsSettingsTaskPipelineTaskResult? pipelineTask,
 
+            Outputs.GetJobJobSettingsSettingsTaskPowerBiTaskResult? powerBiTask,
+
             Outputs.GetJobJobSettingsSettingsTaskPythonWheelTaskResult? pythonWheelTask,
 
             bool retryOnTimeout,
@@ -101,6 +107,7 @@ namespace Pulumi.Databricks.Outputs
             Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsResult? webhookNotifications)
         {
             ConditionTask = conditionTask;
+            DashboardTask = dashboardTask;
             DbtTask = dbtTask;
             DependsOns = dependsOns;
             Description = description;
@@ -117,6 +124,7 @@ namespace Pulumi.Databricks.Outputs
             NotebookTask = notebookTask;
             NotificationSettings = notificationSettings;
             PipelineTask = pipelineTask;
+            PowerBiTask = powerBiTask;
             PythonWheelTask = pythonWheelTask;
             RetryOnTimeout = retryOnTimeout;
             RunIf = runIf;

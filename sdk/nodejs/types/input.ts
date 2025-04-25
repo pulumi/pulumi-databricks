@@ -1737,7 +1737,7 @@ export interface GetClusterClusterInfoSpec {
     /**
      * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      */
-    sparkVersion: string;
+    sparkVersion?: string;
     /**
      * SSH public key contents that will be added to each Spark node in this cluster.
      */
@@ -1827,7 +1827,7 @@ export interface GetClusterClusterInfoSpecArgs {
     /**
      * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      */
-    sparkVersion: pulumi.Input<string>;
+    sparkVersion?: pulumi.Input<string>;
     /**
      * SSH public key contents that will be added to each Spark node in this cluster.
      */
@@ -3514,7 +3514,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewCluster {
     singleUserName?: string;
     sparkConf?: {[key: string]: string};
     sparkEnvVars?: {[key: string]: string};
-    sparkVersion: string;
+    sparkVersion?: string;
     sshPublicKeys?: string[];
     workloadType?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType;
 }
@@ -3547,7 +3547,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterArgs {
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkVersion: pulumi.Input<string>;
+    sparkVersion?: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     workloadType?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs>;
 }
@@ -3880,7 +3880,7 @@ export interface GetJobJobSettingsSettingsNewCluster {
     singleUserName?: string;
     sparkConf?: {[key: string]: string};
     sparkEnvVars?: {[key: string]: string};
-    sparkVersion: string;
+    sparkVersion?: string;
     sshPublicKeys?: string[];
     workloadType?: inputs.GetJobJobSettingsSettingsNewClusterWorkloadType;
 }
@@ -3913,7 +3913,7 @@ export interface GetJobJobSettingsSettingsNewClusterArgs {
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkVersion: pulumi.Input<string>;
+    sparkVersion?: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     workloadType?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs>;
 }
@@ -4304,6 +4304,7 @@ export interface GetJobJobSettingsSettingsSparkSubmitTaskArgs {
 
 export interface GetJobJobSettingsSettingsTask {
     conditionTask?: inputs.GetJobJobSettingsSettingsTaskConditionTask;
+    dashboardTask?: inputs.GetJobJobSettingsSettingsTaskDashboardTask;
     dbtTask?: inputs.GetJobJobSettingsSettingsTaskDbtTask;
     dependsOns?: inputs.GetJobJobSettingsSettingsTaskDependsOn[];
     description?: string;
@@ -4320,6 +4321,7 @@ export interface GetJobJobSettingsSettingsTask {
     notebookTask?: inputs.GetJobJobSettingsSettingsTaskNotebookTask;
     notificationSettings?: inputs.GetJobJobSettingsSettingsTaskNotificationSettings;
     pipelineTask?: inputs.GetJobJobSettingsSettingsTaskPipelineTask;
+    powerBiTask?: inputs.GetJobJobSettingsSettingsTaskPowerBiTask;
     pythonWheelTask?: inputs.GetJobJobSettingsSettingsTaskPythonWheelTask;
     retryOnTimeout?: boolean;
     runIf?: string;
@@ -4335,6 +4337,7 @@ export interface GetJobJobSettingsSettingsTask {
 
 export interface GetJobJobSettingsSettingsTaskArgs {
     conditionTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskConditionTaskArgs>;
+    dashboardTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDashboardTaskArgs>;
     dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDbtTaskArgs>;
     dependsOns?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDependsOnArgs>[]>;
     description?: pulumi.Input<string>;
@@ -4351,6 +4354,7 @@ export interface GetJobJobSettingsSettingsTaskArgs {
     notebookTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNotebookTaskArgs>;
     notificationSettings?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNotificationSettingsArgs>;
     pipelineTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPipelineTaskArgs>;
+    powerBiTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPowerBiTaskArgs>;
     pythonWheelTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPythonWheelTaskArgs>;
     retryOnTimeout?: pulumi.Input<boolean>;
     runIf?: pulumi.Input<string>;
@@ -4374,6 +4378,40 @@ export interface GetJobJobSettingsSettingsTaskConditionTaskArgs {
     left: pulumi.Input<string>;
     op: pulumi.Input<string>;
     right: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskDashboardTask {
+    dashboardId?: string;
+    subscription?: inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscription;
+    warehouseId?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskDashboardTaskArgs {
+    dashboardId?: pulumi.Input<string>;
+    subscription?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionArgs>;
+    warehouseId?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscription {
+    customSubject?: string;
+    paused?: boolean;
+    subscribers?: inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriber[];
+}
+
+export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionArgs {
+    customSubject?: pulumi.Input<string>;
+    paused?: pulumi.Input<boolean>;
+    subscribers?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgs>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriber {
+    destinationId?: string;
+    userName?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgs {
+    destinationId?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskDbtTask {
@@ -4438,6 +4476,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskArgs {
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTask {
     conditionTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask;
+    dashboardTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTask;
     dbtTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask;
     dependsOns?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn[];
     description?: string;
@@ -4453,6 +4492,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTask {
     notebookTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask;
     notificationSettings?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettings;
     pipelineTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTask;
+    powerBiTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTask;
     pythonWheelTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask;
     retryOnTimeout?: boolean;
     runIf?: string;
@@ -4468,6 +4508,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTask {
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskArgs {
     conditionTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgs>;
+    dashboardTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskArgs>;
     dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs>;
     dependsOns?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs>[]>;
     description?: pulumi.Input<string>;
@@ -4483,6 +4524,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskArgs {
     notebookTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs>;
     notificationSettings?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettingsArgs>;
     pipelineTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskArgs>;
+    powerBiTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskArgs>;
     pythonWheelTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgs>;
     retryOnTimeout?: pulumi.Input<boolean>;
     runIf?: pulumi.Input<string>;
@@ -4506,6 +4548,40 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgs {
     left: pulumi.Input<string>;
     op: pulumi.Input<string>;
     right: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTask {
+    dashboardId?: string;
+    subscription?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription;
+    warehouseId?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskArgs {
+    dashboardId?: pulumi.Input<string>;
+    subscription?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionArgs>;
+    warehouseId?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription {
+    customSubject?: string;
+    paused?: boolean;
+    subscribers?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionArgs {
+    customSubject?: pulumi.Input<string>;
+    paused?: pulumi.Input<boolean>;
+    subscribers?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber {
+    destinationId?: string;
+    userName?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs {
+    destinationId?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask {
@@ -4656,7 +4732,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster {
     singleUserName?: string;
     sparkConf?: {[key: string]: string};
     sparkEnvVars?: {[key: string]: string};
-    sparkVersion: string;
+    sparkVersion?: string;
     sshPublicKeys?: string[];
     workloadType?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadType;
 }
@@ -4689,7 +4765,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgs {
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkVersion: pulumi.Input<string>;
+    sparkVersion?: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     workloadType?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeArgs>;
 }
@@ -4976,6 +5052,58 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTask {
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskArgs {
     fullRefresh?: pulumi.Input<boolean>;
     pipelineId: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTask {
+    connectionResourceName?: string;
+    powerBiModel?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskPowerBiModel;
+    refreshAfterUpdate?: boolean;
+    tables?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskTable[];
+    warehouseId?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskArgs {
+    connectionResourceName?: pulumi.Input<string>;
+    powerBiModel?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs>;
+    refreshAfterUpdate?: pulumi.Input<boolean>;
+    tables?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskTableArgs>[]>;
+    warehouseId?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskPowerBiModel {
+    authenticationMethod?: string;
+    modelName?: string;
+    overwriteExisting?: boolean;
+    storageMode?: string;
+    workspaceName?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs {
+    authenticationMethod?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string>;
+    overwriteExisting?: pulumi.Input<boolean>;
+    storageMode?: pulumi.Input<string>;
+    workspaceName?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskTable {
+    catalog?: string;
+    /**
+     * the job name of databricks.Job if the resource was matched by id.
+     */
+    name?: string;
+    schema?: string;
+    storageMode?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskTableArgs {
+    catalog?: pulumi.Input<string>;
+    /**
+     * the job name of databricks.Job if the resource was matched by id.
+     */
+    name?: pulumi.Input<string>;
+    schema?: pulumi.Input<string>;
+    storageMode?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask {
@@ -5302,7 +5430,7 @@ export interface GetJobJobSettingsSettingsTaskNewCluster {
     singleUserName?: string;
     sparkConf?: {[key: string]: string};
     sparkEnvVars?: {[key: string]: string};
-    sparkVersion: string;
+    sparkVersion?: string;
     sshPublicKeys?: string[];
     workloadType?: inputs.GetJobJobSettingsSettingsTaskNewClusterWorkloadType;
 }
@@ -5335,7 +5463,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterArgs {
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkVersion: pulumi.Input<string>;
+    sparkVersion?: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     workloadType?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeArgs>;
 }
@@ -5622,6 +5750,58 @@ export interface GetJobJobSettingsSettingsTaskPipelineTask {
 export interface GetJobJobSettingsSettingsTaskPipelineTaskArgs {
     fullRefresh?: pulumi.Input<boolean>;
     pipelineId: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskPowerBiTask {
+    connectionResourceName?: string;
+    powerBiModel?: inputs.GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel;
+    refreshAfterUpdate?: boolean;
+    tables?: inputs.GetJobJobSettingsSettingsTaskPowerBiTaskTable[];
+    warehouseId?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskPowerBiTaskArgs {
+    connectionResourceName?: pulumi.Input<string>;
+    powerBiModel?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs>;
+    refreshAfterUpdate?: pulumi.Input<boolean>;
+    tables?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPowerBiTaskTableArgs>[]>;
+    warehouseId?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel {
+    authenticationMethod?: string;
+    modelName?: string;
+    overwriteExisting?: boolean;
+    storageMode?: string;
+    workspaceName?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs {
+    authenticationMethod?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string>;
+    overwriteExisting?: pulumi.Input<boolean>;
+    storageMode?: pulumi.Input<string>;
+    workspaceName?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskPowerBiTaskTable {
+    catalog?: string;
+    /**
+     * the job name of databricks.Job if the resource was matched by id.
+     */
+    name?: string;
+    schema?: string;
+    storageMode?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskPowerBiTaskTableArgs {
+    catalog?: pulumi.Input<string>;
+    /**
+     * the job name of databricks.Job if the resource was matched by id.
+     */
+    name?: pulumi.Input<string>;
+    schema?: pulumi.Input<string>;
+    storageMode?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskPythonWheelTask {
@@ -8364,8 +8544,6 @@ export interface JobEmailNotifications {
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
     /**
      * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     *
-     * The following parameter is only available for the job level configuration.
      */
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -8376,6 +8554,11 @@ export interface JobEmailNotifications {
      * (List) list of emails to notify when the run starts.
      */
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+     *
+     * The following parameter is only available for the job level configuration.
+     */
     onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (List) list of emails to notify when the run completes successfully.
@@ -8507,7 +8690,7 @@ export interface JobJobClusterNewCluster {
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkVersion: pulumi.Input<string>;
+    sparkVersion?: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     useMlRuntime?: pulumi.Input<boolean>;
     /**
@@ -8747,7 +8930,7 @@ export interface JobNewCluster {
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkVersion: pulumi.Input<string>;
+    sparkVersion?: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     useMlRuntime?: pulumi.Input<boolean>;
     /**
@@ -9078,11 +9261,13 @@ export interface JobSparkPythonTask {
      */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
      */
     pythonFile: pulumi.Input<string>;
     /**
-     * Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+     * Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the pythonFile has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+     * * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+     * * `GIT`: The Python file is located in a remote Git repository.
      */
     source?: pulumi.Input<string>;
 }
@@ -9225,26 +9410,41 @@ export interface JobTaskConditionTask {
 
 export interface JobTaskDashboardTask {
     /**
-     * (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     * The identifier of the dashboard to refresh
      */
     dashboardId?: pulumi.Input<string>;
+    /**
+     * Represents a subscription configuration for scheduled dashboard snapshots.
+     */
     subscription?: pulumi.Input<inputs.JobTaskDashboardTaskSubscription>;
+    /**
+     * The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
+     */
     warehouseId?: pulumi.Input<string>;
 }
 
 export interface JobTaskDashboardTaskSubscription {
     /**
-     * string specifying a custom subject of email sent.
+     * Allows users to specify a custom subject line on the email sent to subscribers.
      */
     customSubject?: pulumi.Input<string>;
+    /**
+     * When true, the subscription will not send emails.
+     */
     paused?: pulumi.Input<boolean>;
+    /**
+     * The list of subscribers to send the snapshot of the dashboard to.
+     */
     subscribers?: pulumi.Input<pulumi.Input<inputs.JobTaskDashboardTaskSubscriptionSubscriber>[]>;
 }
 
 export interface JobTaskDashboardTaskSubscriptionSubscriber {
+    /**
+     * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
+     */
     destinationId?: pulumi.Input<string>;
     /**
-     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     * A snapshot of the dashboard will be sent to the user's email when the `userName` field is present.
      */
     userName?: pulumi.Input<string>;
 }
@@ -9304,8 +9504,6 @@ export interface JobTaskEmailNotifications {
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
     /**
      * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     *
-     * The following parameter is only available for the job level configuration.
      */
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -9316,6 +9514,11 @@ export interface JobTaskEmailNotifications {
      * (List) list of emails to notify when the run starts.
      */
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+     *
+     * The following parameter is only available for the job level configuration.
+     */
     onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (List) list of emails to notify when the run completes successfully.
@@ -9468,26 +9671,41 @@ export interface JobTaskForEachTaskTaskConditionTask {
 
 export interface JobTaskForEachTaskTaskDashboardTask {
     /**
-     * (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     * The identifier of the dashboard to refresh
      */
     dashboardId?: pulumi.Input<string>;
+    /**
+     * Represents a subscription configuration for scheduled dashboard snapshots.
+     */
     subscription?: pulumi.Input<inputs.JobTaskForEachTaskTaskDashboardTaskSubscription>;
+    /**
+     * The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
+     */
     warehouseId?: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskDashboardTaskSubscription {
     /**
-     * string specifying a custom subject of email sent.
+     * Allows users to specify a custom subject line on the email sent to subscribers.
      */
     customSubject?: pulumi.Input<string>;
+    /**
+     * When true, the subscription will not send emails.
+     */
     paused?: pulumi.Input<boolean>;
+    /**
+     * The list of subscribers to send the snapshot of the dashboard to.
+     */
     subscribers?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber>[]>;
 }
 
 export interface JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber {
+    /**
+     * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
+     */
     destinationId?: pulumi.Input<string>;
     /**
-     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     * A snapshot of the dashboard will be sent to the user's email when the `userName` field is present.
      */
     userName?: pulumi.Input<string>;
 }
@@ -9547,8 +9765,6 @@ export interface JobTaskForEachTaskTaskEmailNotifications {
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
     /**
      * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     *
-     * The following parameter is only available for the job level configuration.
      */
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -9559,6 +9775,11 @@ export interface JobTaskForEachTaskTaskEmailNotifications {
      * (List) list of emails to notify when the run starts.
      */
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+     *
+     * The following parameter is only available for the job level configuration.
+     */
     onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (List) list of emails to notify when the run completes successfully.
@@ -9664,7 +9885,7 @@ export interface JobTaskForEachTaskTaskNewCluster {
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkVersion: pulumi.Input<string>;
+    sparkVersion?: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     useMlRuntime?: pulumi.Input<boolean>;
     /**
@@ -9895,34 +10116,67 @@ export interface JobTaskForEachTaskTaskPipelineTask {
 }
 
 export interface JobTaskForEachTaskTaskPowerBiTask {
+    /**
+     * The resource name of the UC connection to authenticate from Databricks to Power BI
+     */
     connectionResourceName?: pulumi.Input<string>;
+    /**
+     * The semantic model to update. Block consists of following fields:
+     */
     powerBiModel?: pulumi.Input<inputs.JobTaskForEachTaskTaskPowerBiTaskPowerBiModel>;
+    /**
+     * Whether the model should be refreshed after the update. Default is false
+     */
     refreshAfterUpdate?: pulumi.Input<boolean>;
+    /**
+     * The tables to be exported to Power BI. Block consists of following fields:
+     */
     tables?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskPowerBiTaskTable>[]>;
+    /**
+     * The SQL warehouse ID to use as the Power BI data source
+     */
     warehouseId?: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskPowerBiTaskPowerBiModel {
+    /**
+     * How the published Power BI model authenticates to Databricks
+     */
     authenticationMethod?: pulumi.Input<string>;
+    /**
+     * The name of the Power BI model
+     */
     modelName?: pulumi.Input<string>;
+    /**
+     * Whether to overwrite existing Power BI models. Default is false
+     */
     overwriteExisting?: pulumi.Input<boolean>;
+    /**
+     * The default storage mode of the Power BI model
+     */
     storageMode?: pulumi.Input<string>;
+    /**
+     * The name of the Power BI workspace of the model
+     */
     workspaceName?: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskPowerBiTaskTable {
     /**
-     * The name of the catalog to use inside Unity Catalog.
+     * The catalog name in Databricks
      */
     catalog?: pulumi.Input<string>;
     /**
-     * An optional name for the job. The default value is Untitled.
+     * The table name in Databricks. If empty, all tables under the schema are selected.
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the schema dbt should run in. Defaults to `default`.
+     * The schema name in Databricks
      */
     schema?: pulumi.Input<string>;
+    /**
+     * The Power BI storage mode of the table
+     */
     storageMode?: pulumi.Input<string>;
 }
 
@@ -9992,11 +10246,13 @@ export interface JobTaskForEachTaskTaskSparkPythonTask {
      */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
      */
     pythonFile: pulumi.Input<string>;
     /**
-     * Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+     * Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the pythonFile has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+     * * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+     * * `GIT`: The Python file is located in a remote Git repository.
      */
     source?: pulumi.Input<string>;
 }
@@ -10051,10 +10307,10 @@ export interface JobTaskForEachTaskTaskSqlTaskAlert {
 }
 
 export interface JobTaskForEachTaskTaskSqlTaskAlertSubscription {
-    destinationId?: pulumi.Input<string>;
     /**
-     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      */
+    destinationId?: pulumi.Input<string>;
     userName?: pulumi.Input<string>;
 }
 
@@ -10078,10 +10334,10 @@ export interface JobTaskForEachTaskTaskSqlTaskDashboard {
 }
 
 export interface JobTaskForEachTaskTaskSqlTaskDashboardSubscription {
-    destinationId?: pulumi.Input<string>;
     /**
-     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      */
+    destinationId?: pulumi.Input<string>;
     userName?: pulumi.Input<string>;
 }
 
@@ -10149,10 +10405,6 @@ export interface JobTaskForEachTaskTaskSqlTaskQuery {
 export interface JobTaskForEachTaskTaskWebhookNotifications {
     /**
      * (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     *
-     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-     *
-     * Example
      */
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded>[]>;
     /**
@@ -10163,6 +10415,13 @@ export interface JobTaskForEachTaskTaskWebhookNotifications {
      * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
     onStarts?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStart>[]>;
+    /**
+     * (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+     *
+     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+     *
+     * Example
+     */
     onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded>[]>;
     /**
      * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
@@ -10303,7 +10562,7 @@ export interface JobTaskNewCluster {
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkVersion: pulumi.Input<string>;
+    sparkVersion?: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     useMlRuntime?: pulumi.Input<boolean>;
     /**
@@ -10534,34 +10793,67 @@ export interface JobTaskPipelineTask {
 }
 
 export interface JobTaskPowerBiTask {
+    /**
+     * The resource name of the UC connection to authenticate from Databricks to Power BI
+     */
     connectionResourceName?: pulumi.Input<string>;
+    /**
+     * The semantic model to update. Block consists of following fields:
+     */
     powerBiModel?: pulumi.Input<inputs.JobTaskPowerBiTaskPowerBiModel>;
+    /**
+     * Whether the model should be refreshed after the update. Default is false
+     */
     refreshAfterUpdate?: pulumi.Input<boolean>;
+    /**
+     * The tables to be exported to Power BI. Block consists of following fields:
+     */
     tables?: pulumi.Input<pulumi.Input<inputs.JobTaskPowerBiTaskTable>[]>;
+    /**
+     * The SQL warehouse ID to use as the Power BI data source
+     */
     warehouseId?: pulumi.Input<string>;
 }
 
 export interface JobTaskPowerBiTaskPowerBiModel {
+    /**
+     * How the published Power BI model authenticates to Databricks
+     */
     authenticationMethod?: pulumi.Input<string>;
+    /**
+     * The name of the Power BI model
+     */
     modelName?: pulumi.Input<string>;
+    /**
+     * Whether to overwrite existing Power BI models. Default is false
+     */
     overwriteExisting?: pulumi.Input<boolean>;
+    /**
+     * The default storage mode of the Power BI model
+     */
     storageMode?: pulumi.Input<string>;
+    /**
+     * The name of the Power BI workspace of the model
+     */
     workspaceName?: pulumi.Input<string>;
 }
 
 export interface JobTaskPowerBiTaskTable {
     /**
-     * The name of the catalog to use inside Unity Catalog.
+     * The catalog name in Databricks
      */
     catalog?: pulumi.Input<string>;
     /**
-     * An optional name for the job. The default value is Untitled.
+     * The table name in Databricks. If empty, all tables under the schema are selected.
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the schema dbt should run in. Defaults to `default`.
+     * The schema name in Databricks
      */
     schema?: pulumi.Input<string>;
+    /**
+     * The Power BI storage mode of the table
+     */
     storageMode?: pulumi.Input<string>;
 }
 
@@ -10631,11 +10923,13 @@ export interface JobTaskSparkPythonTask {
      */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
      */
     pythonFile: pulumi.Input<string>;
     /**
-     * Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+     * Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the pythonFile has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+     * * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
+     * * `GIT`: The Python file is located in a remote Git repository.
      */
     source?: pulumi.Input<string>;
 }
@@ -10690,10 +10984,10 @@ export interface JobTaskSqlTaskAlert {
 }
 
 export interface JobTaskSqlTaskAlertSubscription {
-    destinationId?: pulumi.Input<string>;
     /**
-     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      */
+    destinationId?: pulumi.Input<string>;
     userName?: pulumi.Input<string>;
 }
 
@@ -10717,10 +11011,10 @@ export interface JobTaskSqlTaskDashboard {
 }
 
 export interface JobTaskSqlTaskDashboardSubscription {
-    destinationId?: pulumi.Input<string>;
     /**
-     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      */
+    destinationId?: pulumi.Input<string>;
     userName?: pulumi.Input<string>;
 }
 
@@ -10788,10 +11082,6 @@ export interface JobTaskSqlTaskQuery {
 export interface JobTaskWebhookNotifications {
     /**
      * (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     *
-     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-     *
-     * Example
      */
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded>[]>;
     /**
@@ -10802,6 +11092,13 @@ export interface JobTaskWebhookNotifications {
      * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
     onStarts?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnStart>[]>;
+    /**
+     * (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+     *
+     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+     *
+     * Example
+     */
     onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnStreamingBacklogExceeded>[]>;
     /**
      * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
@@ -10916,10 +11213,6 @@ export interface JobTriggerTableUpdate {
 export interface JobWebhookNotifications {
     /**
      * (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     *
-     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-     *
-     * Example
      */
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnDurationWarningThresholdExceeded>[]>;
     /**
@@ -10930,6 +11223,13 @@ export interface JobWebhookNotifications {
      * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
     onStarts?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnStart>[]>;
+    /**
+     * (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
+     *
+     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+     *
+     * Example
+     */
     onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnStreamingBacklogExceeded>[]>;
     /**
      * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
@@ -11591,7 +11891,7 @@ export interface ModelServingConfigServedEntityExternalModelOpenaiConfig {
      */
     microsoftEntraTenantId?: pulumi.Input<string>;
     /**
-     * This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
+     * This is the base URL for the OpenAI API (default: "<https://api.openai.com/v1>"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
      */
     openaiApiBase?: pulumi.Input<string>;
     /**
@@ -11857,13 +12157,13 @@ export interface MwsNetworksGcpNetworkInfo {
     /**
      * The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
      *
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
      * The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
      *
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -11930,11 +12230,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.74.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;

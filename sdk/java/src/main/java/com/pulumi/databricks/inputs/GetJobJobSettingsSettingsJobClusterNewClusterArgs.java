@@ -218,11 +218,11 @@ public final class GetJobJobSettingsSettingsJobClusterNewClusterArgs extends com
         return Optional.ofNullable(this.sparkEnvVars);
     }
 
-    @Import(name="sparkVersion", required=true)
-    private Output<String> sparkVersion;
+    @Import(name="sparkVersion")
+    private @Nullable Output<String> sparkVersion;
 
-    public Output<String> sparkVersion() {
-        return this.sparkVersion;
+    public Optional<Output<String>> sparkVersion() {
+        return Optional.ofNullable(this.sparkVersion);
     }
 
     @Import(name="sshPublicKeys")
@@ -543,7 +543,7 @@ public final class GetJobJobSettingsSettingsJobClusterNewClusterArgs extends com
             return sparkEnvVars(Output.of(sparkEnvVars));
         }
 
-        public Builder sparkVersion(Output<String> sparkVersion) {
+        public Builder sparkVersion(@Nullable Output<String> sparkVersion) {
             $.sparkVersion = sparkVersion;
             return this;
         }
@@ -592,9 +592,6 @@ public final class GetJobJobSettingsSettingsJobClusterNewClusterArgs extends com
             }
             if ($.numWorkers == null) {
                 throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsJobClusterNewClusterArgs", "numWorkers");
-            }
-            if ($.sparkVersion == null) {
-                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsJobClusterNewClusterArgs", "sparkVersion");
             }
             return $;
         }

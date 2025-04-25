@@ -32,7 +32,7 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfig {
      */
     private @Nullable String microsoftEntraTenantId;
     /**
-     * @return This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
+     * @return This is the base URL for the OpenAI API (default: &#34;&lt;https://api.openai.com/v1&gt;&#34;). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
      * 
      */
     private @Nullable String openaiApiBase;
@@ -97,7 +97,7 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfig {
         return Optional.ofNullable(this.microsoftEntraTenantId);
     }
     /**
-     * @return This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
+     * @return This is the base URL for the OpenAI API (default: &#34;&lt;https://api.openai.com/v1&gt;&#34;). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
      * 
      */
     public Optional<String> openaiApiBase() {

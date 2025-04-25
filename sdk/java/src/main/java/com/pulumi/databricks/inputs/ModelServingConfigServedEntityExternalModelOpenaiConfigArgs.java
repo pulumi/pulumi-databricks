@@ -76,14 +76,14 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
     }
 
     /**
-     * This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
+     * This is the base URL for the OpenAI API (default: &#34;&lt;https://api.openai.com/v1&gt;&#34;). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
      * 
      */
     @Import(name="openaiApiBase")
     private @Nullable Output<String> openaiApiBase;
 
     /**
-     * @return This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
+     * @return This is the base URL for the OpenAI API (default: &#34;&lt;https://api.openai.com/v1&gt;&#34;). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
      * 
      */
     public Optional<Output<String>> openaiApiBase() {
@@ -299,7 +299,7 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
         }
 
         /**
-         * @param openaiApiBase This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
+         * @param openaiApiBase This is the base URL for the OpenAI API (default: &#34;&lt;https://api.openai.com/v1&gt;&#34;). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
         }
 
         /**
-         * @param openaiApiBase This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
+         * @param openaiApiBase This is the base URL for the OpenAI API (default: &#34;&lt;https://api.openai.com/v1&gt;&#34;). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
          * 
          * @return builder
          * 

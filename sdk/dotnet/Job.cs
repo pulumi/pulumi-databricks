@@ -240,6 +240,11 @@ namespace Pulumi.Databricks
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.JobParameter>> Parameters { get; private set; } = null!;
 
+        /// <summary>
+        /// The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
+        /// * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
+        /// * `STANDARD`: Enables cost-efficient execution of serverless workloads.
+        /// </summary>
         [Output("performanceTarget")]
         public Output<string?> PerformanceTarget { get; private set; } = null!;
 
@@ -509,6 +514,11 @@ namespace Pulumi.Databricks
             set => _parameters = value;
         }
 
+        /// <summary>
+        /// The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
+        /// * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
+        /// * `STANDARD`: Enables cost-efficient execution of serverless workloads.
+        /// </summary>
         [Input("performanceTarget")]
         public Input<string>? PerformanceTarget { get; set; }
 
@@ -746,6 +756,11 @@ namespace Pulumi.Databricks
             set => _parameters = value;
         }
 
+        /// <summary>
+        /// The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
+        /// * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
+        /// * `STANDARD`: Enables cost-efficient execution of serverless workloads.
+        /// </summary>
         [Input("performanceTarget")]
         public Input<string>? PerformanceTarget { get; set; }
 

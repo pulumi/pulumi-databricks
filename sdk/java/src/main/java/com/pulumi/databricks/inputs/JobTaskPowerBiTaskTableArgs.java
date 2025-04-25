@@ -16,14 +16,14 @@ public final class JobTaskPowerBiTaskTableArgs extends com.pulumi.resources.Reso
     public static final JobTaskPowerBiTaskTableArgs Empty = new JobTaskPowerBiTaskTableArgs();
 
     /**
-     * The name of the catalog to use inside Unity Catalog.
+     * The catalog name in Databricks
      * 
      */
     @Import(name="catalog")
     private @Nullable Output<String> catalog;
 
     /**
-     * @return The name of the catalog to use inside Unity Catalog.
+     * @return The catalog name in Databricks
      * 
      */
     public Optional<Output<String>> catalog() {
@@ -31,14 +31,14 @@ public final class JobTaskPowerBiTaskTableArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * An optional name for the job. The default value is Untitled.
+     * The table name in Databricks. If empty, all tables under the schema are selected.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return An optional name for the job. The default value is Untitled.
+     * @return The table name in Databricks. If empty, all tables under the schema are selected.
      * 
      */
     public Optional<Output<String>> name() {
@@ -46,23 +46,31 @@ public final class JobTaskPowerBiTaskTableArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The name of the schema dbt should run in. Defaults to `default`.
+     * The schema name in Databricks
      * 
      */
     @Import(name="schema")
     private @Nullable Output<String> schema;
 
     /**
-     * @return The name of the schema dbt should run in. Defaults to `default`.
+     * @return The schema name in Databricks
      * 
      */
     public Optional<Output<String>> schema() {
         return Optional.ofNullable(this.schema);
     }
 
+    /**
+     * The Power BI storage mode of the table
+     * 
+     */
     @Import(name="storageMode")
     private @Nullable Output<String> storageMode;
 
+    /**
+     * @return The Power BI storage mode of the table
+     * 
+     */
     public Optional<Output<String>> storageMode() {
         return Optional.ofNullable(this.storageMode);
     }
@@ -95,7 +103,7 @@ public final class JobTaskPowerBiTaskTableArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param catalog The name of the catalog to use inside Unity Catalog.
+         * @param catalog The catalog name in Databricks
          * 
          * @return builder
          * 
@@ -106,7 +114,7 @@ public final class JobTaskPowerBiTaskTableArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param catalog The name of the catalog to use inside Unity Catalog.
+         * @param catalog The catalog name in Databricks
          * 
          * @return builder
          * 
@@ -116,7 +124,7 @@ public final class JobTaskPowerBiTaskTableArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name An optional name for the job. The default value is Untitled.
+         * @param name The table name in Databricks. If empty, all tables under the schema are selected.
          * 
          * @return builder
          * 
@@ -127,7 +135,7 @@ public final class JobTaskPowerBiTaskTableArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name An optional name for the job. The default value is Untitled.
+         * @param name The table name in Databricks. If empty, all tables under the schema are selected.
          * 
          * @return builder
          * 
@@ -137,7 +145,7 @@ public final class JobTaskPowerBiTaskTableArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param schema The name of the schema dbt should run in. Defaults to `default`.
+         * @param schema The schema name in Databricks
          * 
          * @return builder
          * 
@@ -148,7 +156,7 @@ public final class JobTaskPowerBiTaskTableArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param schema The name of the schema dbt should run in. Defaults to `default`.
+         * @param schema The schema name in Databricks
          * 
          * @return builder
          * 
@@ -157,11 +165,23 @@ public final class JobTaskPowerBiTaskTableArgs extends com.pulumi.resources.Reso
             return schema(Output.of(schema));
         }
 
+        /**
+         * @param storageMode The Power BI storage mode of the table
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageMode(@Nullable Output<String> storageMode) {
             $.storageMode = storageMode;
             return this;
         }
 
+        /**
+         * @param storageMode The Power BI storage mode of the table
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageMode(String storageMode) {
             return storageMode(Output.of(storageMode));
         }

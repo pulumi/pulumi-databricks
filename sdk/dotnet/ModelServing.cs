@@ -16,6 +16,8 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// Creating a CPU serving endpoint
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -61,6 +63,127 @@ namespace Pulumi.Databricks
     ///                     {
     ///                         ServedModelName = "candidate_model",
     ///                         TrafficPercentage = 10,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating a Foundation Model endpoint
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var llama = new Databricks.ModelServing("llama", new()
+    ///     {
+    ///         Name = "llama_3_2_3b_instruct",
+    ///         AiGateway = new Databricks.Inputs.ModelServingAiGatewayArgs
+    ///         {
+    ///             UsageTrackingConfig = new Databricks.Inputs.ModelServingAiGatewayUsageTrackingConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///         Config = new Databricks.Inputs.ModelServingConfigArgs
+    ///         {
+    ///             ServedEntities = new[]
+    ///             {
+    ///                 new Databricks.Inputs.ModelServingConfigServedEntityArgs
+    ///                 {
+    ///                     Name = "meta_llama_v3_2_3b_instruct-3",
+    ///                     EntityName = "system.ai.llama_v3_2_3b_instruct",
+    ///                     EntityVersion = "2",
+    ///                     ScaleToZeroEnabled = true,
+    ///                     MaxProvisionedThroughput = 44000,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating an External Model endpoint
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var gpt4o = new Databricks.ModelServing("gpt_4o", new()
+    ///     {
+    ///         Name = "gpt-4o-mini",
+    ///         AiGateway = new Databricks.Inputs.ModelServingAiGatewayArgs
+    ///         {
+    ///             UsageTrackingConfig = new Databricks.Inputs.ModelServingAiGatewayUsageTrackingConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///             RateLimits = new[]
+    ///             {
+    ///                 new Databricks.Inputs.ModelServingAiGatewayRateLimitArgs
+    ///                 {
+    ///                     Calls = 10,
+    ///                     Key = "endpoint",
+    ///                     RenewalPeriod = "minute",
+    ///                 },
+    ///             },
+    ///             InferenceTableConfig = new Databricks.Inputs.ModelServingAiGatewayInferenceTableConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 TableNamePrefix = "gpt-4o-mini",
+    ///                 CatalogName = "ml",
+    ///                 SchemaName = "ai_gateway",
+    ///             },
+    ///             Guardrails = new Databricks.Inputs.ModelServingAiGatewayGuardrailsArgs
+    ///             {
+    ///                 Input = new Databricks.Inputs.ModelServingAiGatewayGuardrailsInputArgs
+    ///                 {
+    ///                     InvalidKeywords = new[]
+    ///                     {
+    ///                         "SuperSecretProject",
+    ///                     },
+    ///                     Pii = new Databricks.Inputs.ModelServingAiGatewayGuardrailsInputPiiArgs
+    ///                     {
+    ///                         Behavior = "BLOCK",
+    ///                     },
+    ///                 },
+    ///                 Output = new Databricks.Inputs.ModelServingAiGatewayGuardrailsOutputArgs
+    ///                 {
+    ///                     Pii = new Databricks.Inputs.ModelServingAiGatewayGuardrailsOutputPiiArgs
+    ///                     {
+    ///                         Behavior = "BLOCK",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Config = new Databricks.Inputs.ModelServingConfigArgs
+    ///         {
+    ///             ServedEntities = new[]
+    ///             {
+    ///                 new Databricks.Inputs.ModelServingConfigServedEntityArgs
+    ///                 {
+    ///                     Name = "gpt-4o-mini",
+    ///                     ExternalModel = new Databricks.Inputs.ModelServingConfigServedEntityExternalModelArgs
+    ///                     {
+    ///                         Name = "gpt-4o-mini",
+    ///                         Provider = "openai",
+    ///                         Task = "llm/v1/chat",
+    ///                         OpenaiConfig = new Databricks.Inputs.ModelServingConfigServedEntityExternalModelOpenaiConfigArgs
+    ///                         {
+    ///                             OpenaiApiKey = "{{secrets/llm_scope/openai_api_key}}",
+    ///                         },
     ///                     },
     ///                 },
     ///             },

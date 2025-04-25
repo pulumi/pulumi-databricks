@@ -13,10 +13,25 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskForEachTaskTaskPowerBiTask
     {
+        /// <summary>
+        /// The resource name of the UC connection to authenticate from Databricks to Power BI
+        /// </summary>
         public readonly string? ConnectionResourceName;
+        /// <summary>
+        /// The semantic model to update. Block consists of following fields:
+        /// </summary>
         public readonly Outputs.JobTaskForEachTaskTaskPowerBiTaskPowerBiModel? PowerBiModel;
+        /// <summary>
+        /// Whether the model should be refreshed after the update. Default is false
+        /// </summary>
         public readonly bool? RefreshAfterUpdate;
+        /// <summary>
+        /// The tables to be exported to Power BI. Block consists of following fields:
+        /// </summary>
         public readonly ImmutableArray<Outputs.JobTaskForEachTaskTaskPowerBiTaskTable> Tables;
+        /// <summary>
+        /// The SQL warehouse ID to use as the Power BI data source
+        /// </summary>
         public readonly string? WarehouseId;
 
         [OutputConstructor]

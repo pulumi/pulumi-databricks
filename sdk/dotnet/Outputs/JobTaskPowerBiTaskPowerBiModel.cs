@@ -13,10 +13,25 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskPowerBiTaskPowerBiModel
     {
+        /// <summary>
+        /// How the published Power BI model authenticates to Databricks
+        /// </summary>
         public readonly string? AuthenticationMethod;
+        /// <summary>
+        /// The name of the Power BI model
+        /// </summary>
         public readonly string? ModelName;
+        /// <summary>
+        /// Whether to overwrite existing Power BI models. Default is false
+        /// </summary>
         public readonly bool? OverwriteExisting;
+        /// <summary>
+        /// The default storage mode of the Power BI model
+        /// </summary>
         public readonly string? StorageMode;
+        /// <summary>
+        /// The name of the Power BI workspace of the model
+        /// </summary>
         public readonly string? WorkspaceName;
 
         [OutputConstructor]

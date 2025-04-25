@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Creating a CPU serving endpoint
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -80,6 +82,144 @@ import javax.annotation.Nullable;
  *                             .servedModelName("candidate_model")
  *                             .trafficPercentage(10)
  *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Creating a Foundation Model endpoint
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.ModelServing;
+ * import com.pulumi.databricks.ModelServingArgs;
+ * import com.pulumi.databricks.inputs.ModelServingAiGatewayArgs;
+ * import com.pulumi.databricks.inputs.ModelServingAiGatewayUsageTrackingConfigArgs;
+ * import com.pulumi.databricks.inputs.ModelServingConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var llama = new ModelServing("llama", ModelServingArgs.builder()
+ *             .name("llama_3_2_3b_instruct")
+ *             .aiGateway(ModelServingAiGatewayArgs.builder()
+ *                 .usageTrackingConfig(ModelServingAiGatewayUsageTrackingConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .config(ModelServingConfigArgs.builder()
+ *                 .servedEntities(ModelServingConfigServedEntityArgs.builder()
+ *                     .name("meta_llama_v3_2_3b_instruct-3")
+ *                     .entityName("system.ai.llama_v3_2_3b_instruct")
+ *                     .entityVersion("2")
+ *                     .scaleToZeroEnabled(true)
+ *                     .maxProvisionedThroughput(44000)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Creating an External Model endpoint
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.ModelServing;
+ * import com.pulumi.databricks.ModelServingArgs;
+ * import com.pulumi.databricks.inputs.ModelServingAiGatewayArgs;
+ * import com.pulumi.databricks.inputs.ModelServingAiGatewayUsageTrackingConfigArgs;
+ * import com.pulumi.databricks.inputs.ModelServingAiGatewayInferenceTableConfigArgs;
+ * import com.pulumi.databricks.inputs.ModelServingAiGatewayGuardrailsArgs;
+ * import com.pulumi.databricks.inputs.ModelServingAiGatewayGuardrailsInputArgs;
+ * import com.pulumi.databricks.inputs.ModelServingAiGatewayGuardrailsInputPiiArgs;
+ * import com.pulumi.databricks.inputs.ModelServingAiGatewayGuardrailsOutputArgs;
+ * import com.pulumi.databricks.inputs.ModelServingAiGatewayGuardrailsOutputPiiArgs;
+ * import com.pulumi.databricks.inputs.ModelServingConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var gpt4o = new ModelServing("gpt4o", ModelServingArgs.builder()
+ *             .name("gpt-4o-mini")
+ *             .aiGateway(ModelServingAiGatewayArgs.builder()
+ *                 .usageTrackingConfig(ModelServingAiGatewayUsageTrackingConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .rateLimits(ModelServingAiGatewayRateLimitArgs.builder()
+ *                     .calls(10)
+ *                     .key("endpoint")
+ *                     .renewalPeriod("minute")
+ *                     .build())
+ *                 .inferenceTableConfig(ModelServingAiGatewayInferenceTableConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .tableNamePrefix("gpt-4o-mini")
+ *                     .catalogName("ml")
+ *                     .schemaName("ai_gateway")
+ *                     .build())
+ *                 .guardrails(ModelServingAiGatewayGuardrailsArgs.builder()
+ *                     .input(ModelServingAiGatewayGuardrailsInputArgs.builder()
+ *                         .invalidKeywords("SuperSecretProject")
+ *                         .pii(ModelServingAiGatewayGuardrailsInputPiiArgs.builder()
+ *                             .behavior("BLOCK")
+ *                             .build())
+ *                         .build())
+ *                     .output(ModelServingAiGatewayGuardrailsOutputArgs.builder()
+ *                         .pii(ModelServingAiGatewayGuardrailsOutputPiiArgs.builder()
+ *                             .behavior("BLOCK")
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .config(ModelServingConfigArgs.builder()
+ *                 .servedEntities(ModelServingConfigServedEntityArgs.builder()
+ *                     .name("gpt-4o-mini")
+ *                     .externalModel(ModelServingConfigServedEntityExternalModelArgs.builder()
+ *                         .name("gpt-4o-mini")
+ *                         .provider("openai")
+ *                         .task("llm/v1/chat")
+ *                         .openaiConfig(ModelServingConfigServedEntityExternalModelOpenaiConfigArgs.builder()
+ *                             .openaiApiKey("{{secrets/llm_scope/openai_api_key}}")
+ *                             .build())
+ *                         .build())
  *                     .build())
  *                 .build())
  *             .build());

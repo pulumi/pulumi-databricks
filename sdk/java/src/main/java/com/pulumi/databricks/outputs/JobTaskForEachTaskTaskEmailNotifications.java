@@ -21,8 +21,6 @@ public final class JobTaskForEachTaskTaskEmailNotifications {
     /**
      * @return (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      * 
-     * The following parameter is only available for the job level configuration.
-     * 
      */
     private @Nullable List<String> onDurationWarningThresholdExceededs;
     /**
@@ -35,6 +33,12 @@ public final class JobTaskForEachTaskTaskEmailNotifications {
      * 
      */
     private @Nullable List<String> onStarts;
+    /**
+     * @return (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+     * 
+     * The following parameter is only available for the job level configuration.
+     * 
+     */
     private @Nullable List<String> onStreamingBacklogExceededs;
     /**
      * @return (List) list of emails to notify when the run completes successfully.
@@ -52,8 +56,6 @@ public final class JobTaskForEachTaskTaskEmailNotifications {
     }
     /**
      * @return (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     * 
-     * The following parameter is only available for the job level configuration.
      * 
      */
     public List<String> onDurationWarningThresholdExceededs() {
@@ -73,6 +75,12 @@ public final class JobTaskForEachTaskTaskEmailNotifications {
     public List<String> onStarts() {
         return this.onStarts == null ? List.of() : this.onStarts;
     }
+    /**
+     * @return (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
+     * 
+     * The following parameter is only available for the job level configuration.
+     * 
+     */
     public List<String> onStreamingBacklogExceededs() {
         return this.onStreamingBacklogExceededs == null ? List.of() : this.onStreamingBacklogExceededs;
     }

@@ -52,7 +52,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster {
     private @Nullable String singleUserName;
     private @Nullable Map<String,String> sparkConf;
     private @Nullable Map<String,String> sparkEnvVars;
-    private String sparkVersion;
+    private @Nullable String sparkVersion;
     private @Nullable List<String> sshPublicKeys;
     private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadType workloadType;
 
@@ -138,8 +138,8 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster {
     public Map<String,String> sparkEnvVars() {
         return this.sparkEnvVars == null ? Map.of() : this.sparkEnvVars;
     }
-    public String sparkVersion() {
-        return this.sparkVersion;
+    public Optional<String> sparkVersion() {
+        return Optional.ofNullable(this.sparkVersion);
     }
     public List<String> sshPublicKeys() {
         return this.sshPublicKeys == null ? List.of() : this.sshPublicKeys;
@@ -184,7 +184,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster {
         private @Nullable String singleUserName;
         private @Nullable Map<String,String> sparkConf;
         private @Nullable Map<String,String> sparkEnvVars;
-        private String sparkVersion;
+        private @Nullable String sparkVersion;
         private @Nullable List<String> sshPublicKeys;
         private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadType workloadType;
         public Builder() {}
@@ -403,10 +403,8 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster {
             return this;
         }
         @CustomType.Setter
-        public Builder sparkVersion(String sparkVersion) {
-            if (sparkVersion == null) {
-              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster", "sparkVersion");
-            }
+        public Builder sparkVersion(@Nullable String sparkVersion) {
+
             this.sparkVersion = sparkVersion;
             return this;
         }

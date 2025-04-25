@@ -364,15 +364,15 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
      * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      * 
      */
-    @Import(name="sparkVersion", required=true)
-    private String sparkVersion;
+    @Import(name="sparkVersion")
+    private @Nullable String sparkVersion;
 
     /**
      * @return [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      * 
      */
-    public String sparkVersion() {
-        return this.sparkVersion;
+    public Optional<String> sparkVersion() {
+        return Optional.ofNullable(this.sparkVersion);
     }
 
     /**
@@ -719,7 +719,7 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
          * @return builder
          * 
          */
-        public Builder sparkVersion(String sparkVersion) {
+        public Builder sparkVersion(@Nullable String sparkVersion) {
             $.sparkVersion = sparkVersion;
             return this;
         }
@@ -773,9 +773,6 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
             }
             if ($.nodeTypeId == null) {
                 throw new MissingRequiredPropertyException("GetClusterClusterInfoSpec", "nodeTypeId");
-            }
-            if ($.sparkVersion == null) {
-                throw new MissingRequiredPropertyException("GetClusterClusterInfoSpec", "sparkVersion");
             }
             return $;
         }

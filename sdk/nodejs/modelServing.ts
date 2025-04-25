@@ -13,6 +13,8 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * Creating a CPU serving endpoint
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -48,6 +50,84 @@ import * as utilities from "./utilities";
  *                 },
  *             ],
  *         },
+ *     },
+ * });
+ * ```
+ *
+ * Creating a Foundation Model endpoint
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const llama = new databricks.ModelServing("llama", {
+ *     name: "llama_3_2_3b_instruct",
+ *     aiGateway: {
+ *         usageTrackingConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ *     config: {
+ *         servedEntities: [{
+ *             name: "meta_llama_v3_2_3b_instruct-3",
+ *             entityName: "system.ai.llama_v3_2_3b_instruct",
+ *             entityVersion: "2",
+ *             scaleToZeroEnabled: true,
+ *             maxProvisionedThroughput: 44000,
+ *         }],
+ *     },
+ * });
+ * ```
+ *
+ * Creating an External Model endpoint
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const gpt4o = new databricks.ModelServing("gpt_4o", {
+ *     name: "gpt-4o-mini",
+ *     aiGateway: {
+ *         usageTrackingConfig: {
+ *             enabled: true,
+ *         },
+ *         rateLimits: [{
+ *             calls: 10,
+ *             key: "endpoint",
+ *             renewalPeriod: "minute",
+ *         }],
+ *         inferenceTableConfig: {
+ *             enabled: true,
+ *             tableNamePrefix: "gpt-4o-mini",
+ *             catalogName: "ml",
+ *             schemaName: "ai_gateway",
+ *         },
+ *         guardrails: {
+ *             input: {
+ *                 invalidKeywords: ["SuperSecretProject"],
+ *                 pii: {
+ *                     behavior: "BLOCK",
+ *                 },
+ *             },
+ *             output: {
+ *                 pii: {
+ *                     behavior: "BLOCK",
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     config: {
+ *         servedEntities: [{
+ *             name: "gpt-4o-mini",
+ *             externalModel: {
+ *                 name: "gpt-4o-mini",
+ *                 provider: "openai",
+ *                 task: "llm/v1/chat",
+ *                 openaiConfig: {
+ *                     openaiApiKey: "{{secrets/llm_scope/openai_api_key}}",
+ *                 },
+ *             },
+ *         }],
  *     },
  * });
  * ```

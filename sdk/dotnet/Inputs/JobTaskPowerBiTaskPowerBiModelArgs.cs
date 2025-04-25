@@ -12,18 +12,33 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskPowerBiTaskPowerBiModelArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// How the published Power BI model authenticates to Databricks
+        /// </summary>
         [Input("authenticationMethod")]
         public Input<string>? AuthenticationMethod { get; set; }
 
+        /// <summary>
+        /// The name of the Power BI model
+        /// </summary>
         [Input("modelName")]
         public Input<string>? ModelName { get; set; }
 
+        /// <summary>
+        /// Whether to overwrite existing Power BI models. Default is false
+        /// </summary>
         [Input("overwriteExisting")]
         public Input<bool>? OverwriteExisting { get; set; }
 
+        /// <summary>
+        /// The default storage mode of the Power BI model
+        /// </summary>
         [Input("storageMode")]
         public Input<string>? StorageMode { get; set; }
 
+        /// <summary>
+        /// The name of the Power BI workspace of the model
+        /// </summary>
         [Input("workspaceName")]
         public Input<string>? WorkspaceName { get; set; }
 

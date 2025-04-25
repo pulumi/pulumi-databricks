@@ -17,30 +17,46 @@ public final class JobTaskDashboardTaskArgs extends com.pulumi.resources.Resourc
     public static final JobTaskDashboardTaskArgs Empty = new JobTaskDashboardTaskArgs();
 
     /**
-     * (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     * The identifier of the dashboard to refresh
      * 
      */
     @Import(name="dashboardId")
     private @Nullable Output<String> dashboardId;
 
     /**
-     * @return (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     * @return The identifier of the dashboard to refresh
      * 
      */
     public Optional<Output<String>> dashboardId() {
         return Optional.ofNullable(this.dashboardId);
     }
 
+    /**
+     * Represents a subscription configuration for scheduled dashboard snapshots.
+     * 
+     */
     @Import(name="subscription")
     private @Nullable Output<JobTaskDashboardTaskSubscriptionArgs> subscription;
 
+    /**
+     * @return Represents a subscription configuration for scheduled dashboard snapshots.
+     * 
+     */
     public Optional<Output<JobTaskDashboardTaskSubscriptionArgs>> subscription() {
         return Optional.ofNullable(this.subscription);
     }
 
+    /**
+     * The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
+     * 
+     */
     @Import(name="warehouseId")
     private @Nullable Output<String> warehouseId;
 
+    /**
+     * @return The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
+     * 
+     */
     public Optional<Output<String>> warehouseId() {
         return Optional.ofNullable(this.warehouseId);
     }
@@ -72,7 +88,7 @@ public final class JobTaskDashboardTaskArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dashboardId (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+         * @param dashboardId The identifier of the dashboard to refresh
          * 
          * @return builder
          * 
@@ -83,7 +99,7 @@ public final class JobTaskDashboardTaskArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dashboardId (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+         * @param dashboardId The identifier of the dashboard to refresh
          * 
          * @return builder
          * 
@@ -92,20 +108,44 @@ public final class JobTaskDashboardTaskArgs extends com.pulumi.resources.Resourc
             return dashboardId(Output.of(dashboardId));
         }
 
+        /**
+         * @param subscription Represents a subscription configuration for scheduled dashboard snapshots.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscription(@Nullable Output<JobTaskDashboardTaskSubscriptionArgs> subscription) {
             $.subscription = subscription;
             return this;
         }
 
+        /**
+         * @param subscription Represents a subscription configuration for scheduled dashboard snapshots.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscription(JobTaskDashboardTaskSubscriptionArgs subscription) {
             return subscription(Output.of(subscription));
         }
 
+        /**
+         * @param warehouseId The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder warehouseId(@Nullable Output<String> warehouseId) {
             $.warehouseId = warehouseId;
             return this;
         }
 
+        /**
+         * @param warehouseId The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder warehouseId(String warehouseId) {
             return warehouseId(Output.of(warehouseId));
         }

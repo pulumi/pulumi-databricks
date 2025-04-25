@@ -12,23 +12,39 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskForEachTaskTaskPowerBiTaskArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The resource name of the UC connection to authenticate from Databricks to Power BI
+        /// </summary>
         [Input("connectionResourceName")]
         public Input<string>? ConnectionResourceName { get; set; }
 
+        /// <summary>
+        /// The semantic model to update. Block consists of following fields:
+        /// </summary>
         [Input("powerBiModel")]
         public Input<Inputs.JobTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs>? PowerBiModel { get; set; }
 
+        /// <summary>
+        /// Whether the model should be refreshed after the update. Default is false
+        /// </summary>
         [Input("refreshAfterUpdate")]
         public Input<bool>? RefreshAfterUpdate { get; set; }
 
         [Input("tables")]
         private InputList<Inputs.JobTaskForEachTaskTaskPowerBiTaskTableArgs>? _tables;
+
+        /// <summary>
+        /// The tables to be exported to Power BI. Block consists of following fields:
+        /// </summary>
         public InputList<Inputs.JobTaskForEachTaskTaskPowerBiTaskTableArgs> Tables
         {
             get => _tables ?? (_tables = new InputList<Inputs.JobTaskForEachTaskTaskPowerBiTaskTableArgs>());
             set => _tables = value;
         }
 
+        /// <summary>
+        /// The SQL warehouse ID to use as the Power BI data source
+        /// </summary>
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }
 

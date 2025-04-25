@@ -12,44 +12,52 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskPowerBiTaskTable {
     /**
-     * @return The name of the catalog to use inside Unity Catalog.
+     * @return The catalog name in Databricks
      * 
      */
     private @Nullable String catalog;
     /**
-     * @return An optional name for the job. The default value is Untitled.
+     * @return The table name in Databricks. If empty, all tables under the schema are selected.
      * 
      */
     private @Nullable String name;
     /**
-     * @return The name of the schema dbt should run in. Defaults to `default`.
+     * @return The schema name in Databricks
      * 
      */
     private @Nullable String schema;
+    /**
+     * @return The Power BI storage mode of the table
+     * 
+     */
     private @Nullable String storageMode;
 
     private JobTaskPowerBiTaskTable() {}
     /**
-     * @return The name of the catalog to use inside Unity Catalog.
+     * @return The catalog name in Databricks
      * 
      */
     public Optional<String> catalog() {
         return Optional.ofNullable(this.catalog);
     }
     /**
-     * @return An optional name for the job. The default value is Untitled.
+     * @return The table name in Databricks. If empty, all tables under the schema are selected.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The name of the schema dbt should run in. Defaults to `default`.
+     * @return The schema name in Databricks
      * 
      */
     public Optional<String> schema() {
         return Optional.ofNullable(this.schema);
     }
+    /**
+     * @return The Power BI storage mode of the table
+     * 
+     */
     public Optional<String> storageMode() {
         return Optional.ofNullable(this.storageMode);
     }

@@ -295,6 +295,8 @@ class ModelServing(pulumi.CustomResource):
 
         ## Example Usage
 
+        Creating a CPU serving endpoint
+
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -330,6 +332,82 @@ class ModelServing(pulumi.CustomResource):
                         },
                     ],
                 },
+            })
+        ```
+
+        Creating a Foundation Model endpoint
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        llama = databricks.ModelServing("llama",
+            name="llama_3_2_3b_instruct",
+            ai_gateway={
+                "usage_tracking_config": {
+                    "enabled": True,
+                },
+            },
+            config={
+                "served_entities": [{
+                    "name": "meta_llama_v3_2_3b_instruct-3",
+                    "entity_name": "system.ai.llama_v3_2_3b_instruct",
+                    "entity_version": "2",
+                    "scale_to_zero_enabled": True,
+                    "max_provisioned_throughput": 44000,
+                }],
+            })
+        ```
+
+        Creating an External Model endpoint
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        gpt4o = databricks.ModelServing("gpt_4o",
+            name="gpt-4o-mini",
+            ai_gateway={
+                "usage_tracking_config": {
+                    "enabled": True,
+                },
+                "rate_limits": [{
+                    "calls": 10,
+                    "key": "endpoint",
+                    "renewal_period": "minute",
+                }],
+                "inference_table_config": {
+                    "enabled": True,
+                    "table_name_prefix": "gpt-4o-mini",
+                    "catalog_name": "ml",
+                    "schema_name": "ai_gateway",
+                },
+                "guardrails": {
+                    "input": {
+                        "invalid_keywords": ["SuperSecretProject"],
+                        "pii": {
+                            "behavior": "BLOCK",
+                        },
+                    },
+                    "output": {
+                        "pii": {
+                            "behavior": "BLOCK",
+                        },
+                    },
+                },
+            },
+            config={
+                "served_entities": [{
+                    "name": "gpt-4o-mini",
+                    "external_model": {
+                        "name": "gpt-4o-mini",
+                        "provider": "openai",
+                        "task": "llm/v1/chat",
+                        "openai_config": {
+                            "openai_api_key": "{{secrets/llm_scope/openai_api_key}}",
+                        },
+                    },
+                }],
             })
         ```
 
@@ -382,6 +460,8 @@ class ModelServing(pulumi.CustomResource):
 
         ## Example Usage
 
+        Creating a CPU serving endpoint
+
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -417,6 +497,82 @@ class ModelServing(pulumi.CustomResource):
                         },
                     ],
                 },
+            })
+        ```
+
+        Creating a Foundation Model endpoint
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        llama = databricks.ModelServing("llama",
+            name="llama_3_2_3b_instruct",
+            ai_gateway={
+                "usage_tracking_config": {
+                    "enabled": True,
+                },
+            },
+            config={
+                "served_entities": [{
+                    "name": "meta_llama_v3_2_3b_instruct-3",
+                    "entity_name": "system.ai.llama_v3_2_3b_instruct",
+                    "entity_version": "2",
+                    "scale_to_zero_enabled": True,
+                    "max_provisioned_throughput": 44000,
+                }],
+            })
+        ```
+
+        Creating an External Model endpoint
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        gpt4o = databricks.ModelServing("gpt_4o",
+            name="gpt-4o-mini",
+            ai_gateway={
+                "usage_tracking_config": {
+                    "enabled": True,
+                },
+                "rate_limits": [{
+                    "calls": 10,
+                    "key": "endpoint",
+                    "renewal_period": "minute",
+                }],
+                "inference_table_config": {
+                    "enabled": True,
+                    "table_name_prefix": "gpt-4o-mini",
+                    "catalog_name": "ml",
+                    "schema_name": "ai_gateway",
+                },
+                "guardrails": {
+                    "input": {
+                        "invalid_keywords": ["SuperSecretProject"],
+                        "pii": {
+                            "behavior": "BLOCK",
+                        },
+                    },
+                    "output": {
+                        "pii": {
+                            "behavior": "BLOCK",
+                        },
+                    },
+                },
+            },
+            config={
+                "served_entities": [{
+                    "name": "gpt-4o-mini",
+                    "external_model": {
+                        "name": "gpt-4o-mini",
+                        "provider": "openai",
+                        "task": "llm/v1/chat",
+                        "openai_config": {
+                            "openai_api_key": "{{secrets/llm_scope/openai_api_key}}",
+                        },
+                    },
+                }],
             })
         ```
 

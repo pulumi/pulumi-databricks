@@ -37,7 +37,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? MicrosoftEntraTenantId { get; set; }
 
         /// <summary>
-        /// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
+        /// This is the base URL for the OpenAI API (default: "&lt;https://api.openai.com/v1&gt;"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
         /// </summary>
         [Input("openaiApiBase")]
         public Input<string>? OpenaiApiBase { get; set; }

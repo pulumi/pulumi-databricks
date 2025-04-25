@@ -118,8 +118,8 @@ namespace Pulumi.Databricks.Inputs
             set => _sparkEnvVars = value;
         }
 
-        [Input("sparkVersion", required: true)]
-        public Input<string> SparkVersion { get; set; } = null!;
+        [Input("sparkVersion")]
+        public Input<string>? SparkVersion { get; set; }
 
         [Input("sshPublicKeys")]
         private InputList<string>? _sshPublicKeys;

@@ -15,24 +15,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskDashboardTaskSubscription {
     /**
-     * @return string specifying a custom subject of email sent.
+     * @return Allows users to specify a custom subject line on the email sent to subscribers.
      * 
      */
     private @Nullable String customSubject;
+    /**
+     * @return When true, the subscription will not send emails.
+     * 
+     */
     private @Nullable Boolean paused;
+    /**
+     * @return The list of subscribers to send the snapshot of the dashboard to.
+     * 
+     */
     private @Nullable List<JobTaskDashboardTaskSubscriptionSubscriber> subscribers;
 
     private JobTaskDashboardTaskSubscription() {}
     /**
-     * @return string specifying a custom subject of email sent.
+     * @return Allows users to specify a custom subject line on the email sent to subscribers.
      * 
      */
     public Optional<String> customSubject() {
         return Optional.ofNullable(this.customSubject);
     }
+    /**
+     * @return When true, the subscription will not send emails.
+     * 
+     */
     public Optional<Boolean> paused() {
         return Optional.ofNullable(this.paused);
     }
+    /**
+     * @return The list of subscribers to send the snapshot of the dashboard to.
+     * 
+     */
     public List<JobTaskDashboardTaskSubscriptionSubscriber> subscribers() {
         return this.subscribers == null ? List.of() : this.subscribers;
     }

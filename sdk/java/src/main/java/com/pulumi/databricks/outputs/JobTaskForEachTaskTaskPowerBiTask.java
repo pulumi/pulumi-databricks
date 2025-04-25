@@ -15,25 +15,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskForEachTaskTaskPowerBiTask {
+    /**
+     * @return The resource name of the UC connection to authenticate from Databricks to Power BI
+     * 
+     */
     private @Nullable String connectionResourceName;
+    /**
+     * @return The semantic model to update. Block consists of following fields:
+     * 
+     */
     private @Nullable JobTaskForEachTaskTaskPowerBiTaskPowerBiModel powerBiModel;
+    /**
+     * @return Whether the model should be refreshed after the update. Default is false
+     * 
+     */
     private @Nullable Boolean refreshAfterUpdate;
+    /**
+     * @return The tables to be exported to Power BI. Block consists of following fields:
+     * 
+     */
     private @Nullable List<JobTaskForEachTaskTaskPowerBiTaskTable> tables;
+    /**
+     * @return The SQL warehouse ID to use as the Power BI data source
+     * 
+     */
     private @Nullable String warehouseId;
 
     private JobTaskForEachTaskTaskPowerBiTask() {}
+    /**
+     * @return The resource name of the UC connection to authenticate from Databricks to Power BI
+     * 
+     */
     public Optional<String> connectionResourceName() {
         return Optional.ofNullable(this.connectionResourceName);
     }
+    /**
+     * @return The semantic model to update. Block consists of following fields:
+     * 
+     */
     public Optional<JobTaskForEachTaskTaskPowerBiTaskPowerBiModel> powerBiModel() {
         return Optional.ofNullable(this.powerBiModel);
     }
+    /**
+     * @return Whether the model should be refreshed after the update. Default is false
+     * 
+     */
     public Optional<Boolean> refreshAfterUpdate() {
         return Optional.ofNullable(this.refreshAfterUpdate);
     }
+    /**
+     * @return The tables to be exported to Power BI. Block consists of following fields:
+     * 
+     */
     public List<JobTaskForEachTaskTaskPowerBiTaskTable> tables() {
         return this.tables == null ? List.of() : this.tables;
     }
+    /**
+     * @return The SQL warehouse ID to use as the Power BI data source
+     * 
+     */
     public Optional<String> warehouseId() {
         return Optional.ofNullable(this.warehouseId);
     }
