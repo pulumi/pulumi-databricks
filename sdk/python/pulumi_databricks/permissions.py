@@ -667,6 +667,9 @@ class _PermissionsState:
 
 
 class Permissions(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/permissions:Permissions"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

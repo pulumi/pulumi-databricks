@@ -242,6 +242,9 @@ class _SqlAlertState:
 
 
 class SqlAlert(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/sqlAlert:SqlAlert"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

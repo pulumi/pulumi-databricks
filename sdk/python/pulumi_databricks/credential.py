@@ -603,6 +603,9 @@ class _CredentialState:
 
 
 class Credential(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/credential:Credential"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

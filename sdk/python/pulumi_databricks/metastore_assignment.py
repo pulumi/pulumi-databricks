@@ -136,6 +136,9 @@ class _MetastoreAssignmentState:
 
 
 class MetastoreAssignment(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/metastoreAssignment:MetastoreAssignment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

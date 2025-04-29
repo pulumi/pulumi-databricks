@@ -96,6 +96,9 @@ class _GroupInstanceProfileState:
 
 
 class GroupInstanceProfile(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/groupInstanceProfile:GroupInstanceProfile"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

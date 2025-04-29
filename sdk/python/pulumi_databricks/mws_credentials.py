@@ -224,6 +224,9 @@ class _MwsCredentialsState:
 
 
 class MwsCredentials(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/mwsCredentials:MwsCredentials"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

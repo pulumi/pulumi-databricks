@@ -289,6 +289,9 @@ class _ServicePrincipalSecretState:
 
 
 class ServicePrincipalSecret(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/servicePrincipalSecret:ServicePrincipalSecret"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

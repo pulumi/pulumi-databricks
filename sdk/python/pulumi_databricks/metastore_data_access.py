@@ -428,6 +428,9 @@ class _MetastoreDataAccessState:
 
 
 class MetastoreDataAccess(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/metastoreDataAccess:MetastoreDataAccess"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
