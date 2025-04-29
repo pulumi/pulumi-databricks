@@ -186,6 +186,9 @@ class _ArtifactAllowlistState:
 
 
 class ArtifactAllowlist(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/artifactAllowlist:ArtifactAllowlist"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

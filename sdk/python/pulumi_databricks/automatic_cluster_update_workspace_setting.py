@@ -107,6 +107,9 @@ class _AutomaticClusterUpdateWorkspaceSettingState:
 
 
 class AutomaticClusterUpdateWorkspaceSetting(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

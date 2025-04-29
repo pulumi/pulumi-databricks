@@ -251,6 +251,9 @@ class _LibraryState:
 
 
 class Library(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/library:Library"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

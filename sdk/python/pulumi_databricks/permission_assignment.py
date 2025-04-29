@@ -104,6 +104,9 @@ class _PermissionAssignmentState:
 
 
 class PermissionAssignment(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/permissionAssignment:PermissionAssignment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

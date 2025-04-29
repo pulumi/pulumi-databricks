@@ -267,6 +267,9 @@ class _RepoState:
 
 
 class Repo(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/repo:Repo"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

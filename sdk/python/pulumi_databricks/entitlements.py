@@ -266,6 +266,9 @@ class _EntitlementsState:
 
 
 class Entitlements(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/entitlements:Entitlements"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

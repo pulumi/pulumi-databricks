@@ -144,6 +144,9 @@ class _MlflowModelState:
 
 
 class MlflowModel(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/mlflowModel:MlflowModel"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

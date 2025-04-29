@@ -127,6 +127,9 @@ class _SecretAclState:
 
 
 class SecretAcl(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/secretAcl:SecretAcl"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

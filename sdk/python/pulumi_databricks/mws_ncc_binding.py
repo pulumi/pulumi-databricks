@@ -96,6 +96,9 @@ class _MwsNccBindingState:
 
 
 class MwsNccBinding(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/mwsNccBinding:MwsNccBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

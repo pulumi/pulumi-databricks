@@ -120,19 +120,19 @@ def get_current_config(account_id: Optional[builtins.str] = None,
 
     this = databricks.get_current_config()
     external = databricks.StorageCredential("external",
-        aws_iam_role=single_or_none([{
-            "roleArn": cloud_credential_id,
-        } for entry in [{"key": k, "value": v} for k, v in {} if this.cloud_type == "aws" else {
+        aws_iam_role=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "aws" else {
             "aws": True,
-        }]]),
-        azure_managed_identity=single_or_none([{
-            "accessConnectorId": cloud_credential_id,
-        } for entry in [{"key": k, "value": v} for k, v in {} if this.cloud_type == "azure" else {
+        }].apply(lambda entries: [{
+            "roleArn": cloud_credential_id,
+        } for entry in entries])),
+        azure_managed_identity=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "azure" else {
             "azure": True,
-        }]]),
-        databricks_gcp_service_account=single_or_none([{} for entry in [{"key": k, "value": v} for k, v in {} if this.cloud_type == "gcp" else {
+        }].apply(lambda entries: [{
+            "accessConnectorId": cloud_credential_id,
+        } for entry in entries])),
+        databricks_gcp_service_account=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "gcp" else {
             "gcp": True,
-        }]]),
+        }].apply(lambda entries: [{} for entry in entries])),
         name="storage_cred",
         comment="Managed by TF")
     ```
@@ -197,19 +197,19 @@ def get_current_config_output(account_id: Optional[pulumi.Input[Optional[builtin
 
     this = databricks.get_current_config()
     external = databricks.StorageCredential("external",
-        aws_iam_role=single_or_none([{
-            "roleArn": cloud_credential_id,
-        } for entry in [{"key": k, "value": v} for k, v in {} if this.cloud_type == "aws" else {
+        aws_iam_role=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "aws" else {
             "aws": True,
-        }]]),
-        azure_managed_identity=single_or_none([{
-            "accessConnectorId": cloud_credential_id,
-        } for entry in [{"key": k, "value": v} for k, v in {} if this.cloud_type == "azure" else {
+        }].apply(lambda entries: [{
+            "roleArn": cloud_credential_id,
+        } for entry in entries])),
+        azure_managed_identity=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "azure" else {
             "azure": True,
-        }]]),
-        databricks_gcp_service_account=single_or_none([{} for entry in [{"key": k, "value": v} for k, v in {} if this.cloud_type == "gcp" else {
+        }].apply(lambda entries: [{
+            "accessConnectorId": cloud_credential_id,
+        } for entry in entries])),
+        databricks_gcp_service_account=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "gcp" else {
             "gcp": True,
-        }]]),
+        }].apply(lambda entries: [{} for entry in entries])),
         name="storage_cred",
         comment="Managed by TF")
     ```

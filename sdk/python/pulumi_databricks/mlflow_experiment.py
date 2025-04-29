@@ -260,6 +260,9 @@ class _MlflowExperimentState:
 
 
 class MlflowExperiment(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/mlflowExperiment:MlflowExperiment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

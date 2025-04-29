@@ -573,6 +573,9 @@ class _SqlTableState:
 
 
 class SqlTable(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/sqlTable:SqlTable"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

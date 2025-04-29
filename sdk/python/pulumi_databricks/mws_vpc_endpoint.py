@@ -339,6 +339,9 @@ class _MwsVpcEndpointState:
 
 
 class MwsVpcEndpoint(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/mwsVpcEndpoint:MwsVpcEndpoint"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

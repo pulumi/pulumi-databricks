@@ -107,6 +107,9 @@ class _EnhancedSecurityMonitoringWorkspaceSettingState:
 
 
 class EnhancedSecurityMonitoringWorkspaceSetting(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

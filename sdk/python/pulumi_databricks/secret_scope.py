@@ -156,6 +156,9 @@ class _SecretScopeState:
 
 
 class SecretScope(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/secretScope:SecretScope"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

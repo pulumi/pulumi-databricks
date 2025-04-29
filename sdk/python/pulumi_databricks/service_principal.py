@@ -514,6 +514,9 @@ class _ServicePrincipalState:
 
 
 class ServicePrincipal(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/servicePrincipal:ServicePrincipal"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

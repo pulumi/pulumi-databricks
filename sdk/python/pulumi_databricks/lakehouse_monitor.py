@@ -589,6 +589,9 @@ class _LakehouseMonitorState:
 
 
 class LakehouseMonitor(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/lakehouseMonitor:LakehouseMonitor"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

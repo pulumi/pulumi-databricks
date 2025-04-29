@@ -96,6 +96,9 @@ class _GroupRoleState:
 
 
 class GroupRole(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/groupRole:GroupRole"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -159,6 +159,9 @@ class _IpAccessListState:
 
 
 class IpAccessList(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/ipAccessList:IpAccessList"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

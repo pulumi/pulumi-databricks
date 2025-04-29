@@ -96,6 +96,9 @@ class _UserInstanceProfileState:
 
 
 class UserInstanceProfile(pulumi.CustomResource):
+
+    pulumi_type = "databricks:index/userInstanceProfile:UserInstanceProfile"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
