@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > This resource can only be used with a workspace-level provider!
-//
 // The `RestrictWorkspaceAdminsSetting` resource lets you control the capabilities of workspace admins.
+//
+// > This resource can only be used with a workspace-level provider!
 //
 // With the status set to `ALLOW_ALL`, workspace admins can:
 //

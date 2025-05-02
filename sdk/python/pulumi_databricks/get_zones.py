@@ -79,9 +79,9 @@ def get_zones(default_zone: Optional[builtins.str] = None,
               zones: Optional[Sequence[builtins.str]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
@@ -113,9 +113,9 @@ def get_zones_output(default_zone: Optional[pulumi.Input[Optional[builtins.str]]
                      zones: Optional[pulumi.Input[Optional[Sequence[builtins.str]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

@@ -285,6 +285,8 @@ class Repo(pulumi.CustomResource):
         """
         This resource allows you to manage [Databricks Git folders](https://docs.databricks.com/en/repos/index.html) (formerly known as Databricks Repos).
 
+        > This resource can only be used with a workspace-level provider!
+
         > To create a Git folder from a private repository you need to configure Git token as described in the [documentation](https://docs.databricks.com/en/repos/index.html#configure-your-git-integration-with-databricks).  To set this token you can use GitCredential resource.
 
         ## Example Usage
@@ -342,6 +344,8 @@ class Repo(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to manage [Databricks Git folders](https://docs.databricks.com/en/repos/index.html) (formerly known as Databricks Repos).
+
+        > This resource can only be used with a workspace-level provider!
 
         > To create a Git folder from a private repository you need to configure Git token as described in the [documentation](https://docs.databricks.com/en/repos/index.html#configure-your-git-integration-with-databricks).  To set this token you can use GitCredential resource.
 

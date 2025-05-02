@@ -294,6 +294,8 @@ class ModelServing(pulumi.CustomResource):
         """
         This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
 
+        > This resource can only be used with a workspace-level provider!
+
         > If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
 
         ## Example Usage
@@ -458,6 +460,8 @@ class ModelServing(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+
+        > This resource can only be used with a workspace-level provider!
 
         > If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
 

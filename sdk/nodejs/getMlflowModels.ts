@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** This data source could be only used with workspace-level provider!
- *
  * Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *
@@ -51,9 +51,9 @@ export interface GetMlflowModelsResult {
     readonly names: string[];
 }
 /**
- * > **Note** This data source could be only used with workspace-level provider!
- *
  * Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *

@@ -7,9 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** This data source can only be used with a workspace-level provider!
- *
  * Retrieves details about a databricks.ExternalLocation that were created by Pulumi or manually.
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *
@@ -74,9 +74,9 @@ export interface GetExternalLocationResult {
     readonly name: string;
 }
 /**
- * > **Note** This data source can only be used with a workspace-level provider!
- *
  * Retrieves details about a databricks.ExternalLocation that were created by Pulumi or manually.
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *

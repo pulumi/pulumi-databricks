@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; Initialize provider with `alias = "account"`, and `host` pointing to the account URL, like, `host = "https://accounts.cloud.databricks.com"`. Use `provider = databricks.account` for all account-level resources.
+    /// This resource allows you to manage [Databricks Budgets](https://docs.databricks.com/en/admin/account-settings/budgets.html).
     /// 
     /// &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
     /// 
-    /// This resource allows you to manage [Databricks Budgets](https://docs.databricks.com/en/admin/account-settings/budgets.html).
+    /// &gt; This resource can only be used with an account-level provider!
     /// 
     /// ## Example Usage
     /// 

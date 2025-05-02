@@ -109,6 +109,8 @@ class ServicePrincipalRole(pulumi.CustomResource):
         """
         This resource allows you to attach a role or InstanceProfile (AWS) to a databricks_service_principal.
 
+        > This resource can be used with an account or workspace-level provider.
+
         ## Example Usage
 
         Granting a service principal access to an instance profile
@@ -151,6 +153,8 @@ class ServicePrincipalRole(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to attach a role or InstanceProfile (AWS) to a databricks_service_principal.
+
+        > This resource can be used with an account or workspace-level provider.
 
         ## Example Usage
 

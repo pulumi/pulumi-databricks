@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > This resource has an evolving API, which may change in future versions of the provider.
- *
  * Manages workspace configuration for expert usage. Currently, more than one instance of resource can exist in Pulumi state, though there's no deterministic behavior, when they manage the same property. We strongly recommend to use a single `databricks.WorkspaceConf` per workspace.
+ *
+ * > This resource can only be used with a workspace-level provider!
+ *
+ * > This resource has an evolving API, which may change in future versions of the provider.
  *
  * > Deleting `databricks.WorkspaceConf` resources may fail depending on the configuration properties set, including but not limited to `enableIpAccessLists`, `enableGp3`, and `maxTokenLifetimeDays`. The provider will print a warning if this occurs. You can verify the workspace configuration by reviewing [the workspace settings in the UI](https://docs.databricks.com/en/admin/workspace-settings/index.html).
  *

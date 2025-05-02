@@ -14,6 +14,8 @@ import (
 
 // This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with Notebook and getNotebookPaths data sources.
 //
+// > This resource can only be used with a workspace-level provider!
+//
 // ## Import
 //
 // # The resource notebook can be imported using notebook path

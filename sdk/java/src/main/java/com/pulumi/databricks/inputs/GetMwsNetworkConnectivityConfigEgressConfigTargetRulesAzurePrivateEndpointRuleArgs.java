@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -75,6 +76,13 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
      */
     public Optional<Output<Integer>> deactivatedAt() {
         return Optional.ofNullable(this.deactivatedAt);
+    }
+
+    @Import(name="domainNames")
+    private @Nullable Output<List<String>> domainNames;
+
+    public Optional<Output<List<String>>> domainNames() {
+        return Optional.ofNullable(this.domainNames);
     }
 
     /**
@@ -174,6 +182,7 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
         this.creationTime = $.creationTime;
         this.deactivated = $.deactivated;
         this.deactivatedAt = $.deactivatedAt;
+        this.domainNames = $.domainNames;
         this.endpointName = $.endpointName;
         this.groupId = $.groupId;
         this.networkConnectivityConfigId = $.networkConnectivityConfigId;
@@ -282,6 +291,19 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
          */
         public Builder deactivatedAt(Integer deactivatedAt) {
             return deactivatedAt(Output.of(deactivatedAt));
+        }
+
+        public Builder domainNames(@Nullable Output<List<String>> domainNames) {
+            $.domainNames = domainNames;
+            return this;
+        }
+
+        public Builder domainNames(List<String> domainNames) {
+            return domainNames(Output.of(domainNames));
+        }
+
+        public Builder domainNames(String... domainNames) {
+            return domainNames(List.of(domainNames));
         }
 
         /**

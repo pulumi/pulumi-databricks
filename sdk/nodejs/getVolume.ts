@@ -10,6 +10,8 @@ import * as utilities from "./utilities";
  * Retrieves details about databricks.Volume that was created by Pulumi or manually.
  * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalogName`.`schemaName`.`volumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
  *
+ * > This data source can only be used with a workspace-level provider!
+ *
  * ## Example Usage
  *
  * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
@@ -93,6 +95,8 @@ export interface GetVolumeResult {
 /**
  * Retrieves details about databricks.Volume that was created by Pulumi or manually.
  * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalogName`.`schemaName`.`volumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *

@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > This data source can only be used with a workspace-level provider!
-//
 // Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).
+//
+// > This data source can only be used with a workspace-level provider!
 //
 // ## Example Usage
 //

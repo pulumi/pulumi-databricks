@@ -84,6 +84,8 @@ def get_volume(id: Optional[builtins.str] = None,
     Retrieves details about Volume that was created by Pulumi or manually.
     A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using get_volumes data source.
 
+    > This data source can only be used with a workspace-level provider!
+
     ## Example Usage
 
     * Retrieve details of all volumes in in a _things_ Schema of a  _sandbox_ databricks_catalog:
@@ -137,6 +139,8 @@ def get_volume_output(id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
     """
     Retrieves details about Volume that was created by Pulumi or manually.
     A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using get_volumes data source.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

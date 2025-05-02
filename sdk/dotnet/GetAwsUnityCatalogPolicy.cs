@@ -12,9 +12,11 @@ namespace Pulumi.Databricks
     public static class GetAwsUnityCatalogPolicy
     {
         /// <summary>
-        /// &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
-        /// 
         /// This data source constructs the necessary AWS Unity Catalog policy for you.
+        /// 
+        /// &gt; This data source can be used with an account or workspace-level provider.
+        /// 
+        /// &gt; This data source has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
         /// 
         /// ## Example Usage
         /// 
@@ -65,9 +67,11 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsUnityCatalogPolicyResult>("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", args ?? new GetAwsUnityCatalogPolicyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
-        /// 
         /// This data source constructs the necessary AWS Unity Catalog policy for you.
+        /// 
+        /// &gt; This data source can be used with an account or workspace-level provider.
+        /// 
+        /// &gt; This data source has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
         /// 
         /// ## Example Usage
         /// 
@@ -118,9 +122,11 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsUnityCatalogPolicyResult>("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", args ?? new GetAwsUnityCatalogPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
-        /// 
         /// This data source constructs the necessary AWS Unity Catalog policy for you.
+        /// 
+        /// &gt; This data source can be used with an account or workspace-level provider.
+        /// 
+        /// &gt; This data source has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
         /// 
         /// ## Example Usage
         /// 

@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// These resources are invoked in the workspace context.
+    /// This resource is used to assign account-level users, service principals and groups to a Databricks workspace.
+    /// 
+    /// &gt; This resource can only be used with a workspace-level provider!
     /// 
     /// ## Example Usage
     /// 

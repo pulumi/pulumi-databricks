@@ -36,6 +36,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("deactivatedAt")]
         public int? DeactivatedAt { get; set; }
 
+        [Input("domainNames")]
+        private List<string>? _domainNames;
+        public List<string> DomainNames
+        {
+            get => _domainNames ?? (_domainNames = new List<string>());
+            set => _domainNames = value;
+        }
+
         /// <summary>
         /// The name of the Azure private endpoint resource.
         /// </summary>

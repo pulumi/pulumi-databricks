@@ -8,6 +8,8 @@ import * as utilities from "./utilities";
 
 /**
  * This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
+ *
+ * > This data source can only be used with a workspace-level provider!
  */
 export function getDashboards(args?: GetDashboardsArgs, opts?: pulumi.InvokeOptions): Promise<GetDashboardsResult> {
     args = args || {};
@@ -43,6 +45,8 @@ export interface GetDashboardsResult {
 }
 /**
  * This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
+ *
+ * > This data source can only be used with a workspace-level provider!
  */
 export function getDashboardsOutput(args?: GetDashboardsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDashboardsResult> {
     args = args || {};

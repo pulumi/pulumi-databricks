@@ -13,6 +13,8 @@ import (
 
 // Retrieves details about Schema that was created by Pulumi or manually.
 // A schema can be identified by its two-level (fully qualified) name (in the form of: `catalogName`.`schemaName`) as input. This can be retrieved programmatically using getSchemas data source.
+//
+// > This data source can only be used with a workspace-level provider!
 func LookupSchema(ctx *pulumi.Context, args *LookupSchemaArgs, opts ...pulumi.InvokeOption) (*LookupSchemaResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSchemaResult

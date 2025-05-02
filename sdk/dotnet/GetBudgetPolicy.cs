@@ -14,7 +14,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// This data source can be used to get a single budget policy. 
         /// 
-        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// &gt; This data source can only be used with an account-level provider!
         /// </summary>
         public static Task<GetBudgetPolicyResult> InvokeAsync(GetBudgetPolicyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBudgetPolicyResult>("databricks:index/getBudgetPolicy:getBudgetPolicy", args ?? new GetBudgetPolicyArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// This data source can be used to get a single budget policy. 
         /// 
-        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// &gt; This data source can only be used with an account-level provider!
         /// </summary>
         public static Output<GetBudgetPolicyResult> Invoke(GetBudgetPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBudgetPolicyResult>("databricks:index/getBudgetPolicy:getBudgetPolicy", args ?? new GetBudgetPolicyInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// This data source can be used to get a single budget policy. 
         /// 
-        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// &gt; This data source can only be used with an account-level provider!
         /// </summary>
         public static Output<GetBudgetPolicyResult> Invoke(GetBudgetPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetBudgetPolicyResult>("databricks:index/getBudgetPolicy:getBudgetPolicy", args ?? new GetBudgetPolicyInvokeArgs(), options.WithDefaults());

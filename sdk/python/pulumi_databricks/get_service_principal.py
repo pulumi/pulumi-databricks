@@ -151,9 +151,9 @@ def get_service_principal(acl_principal_id: Optional[builtins.str] = None,
                           sp_id: Optional[builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Retrieves information about databricks_service_principal.
+
+    > This data source can be used with an account or workspace-level provider.
 
     ## Example Usage
 
@@ -227,9 +227,9 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
                                  sp_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePrincipalResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Retrieves information about databricks_service_principal.
+
+    > This data source can be used with an account or workspace-level provider.
 
     ## Example Usage
 

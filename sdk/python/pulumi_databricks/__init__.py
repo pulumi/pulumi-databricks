@@ -10,6 +10,7 @@ from .access_control_rule_set import *
 from .aibi_dashboard_embedding_access_policy_setting import *
 from .aibi_dashboard_embedding_approved_domains_setting import *
 from .alert import *
+from .alert_v2 import *
 from .app import *
 from .artifact_allowlist import *
 from .automatic_cluster_update_workspace_setting import *
@@ -33,6 +34,8 @@ from .enhanced_security_monitoring_workspace_setting import *
 from .entitlements import *
 from .external_location import *
 from .file import *
+from .get_alert_v2 import *
+from .get_alerts_v2 import *
 from .get_app import *
 from .get_apps import *
 from .get_aws_assume_role_policy import *
@@ -219,6 +222,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/alert:Alert": "Alert"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/alertV2",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/alertV2:AlertV2": "AlertV2"
   }
  },
  {

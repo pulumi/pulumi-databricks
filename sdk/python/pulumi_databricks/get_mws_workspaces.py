@@ -64,11 +64,9 @@ class AwaitableGetMwsWorkspacesResult(GetMwsWorkspacesResult):
 
 def get_mws_workspaces(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMwsWorkspacesResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Lists all MwsWorkspaces in Databricks Account.
 
-    > **Note** `account_id` provider configuration property is required for this resource to work.
+    > This data source can only be used with an account-level provider!
 
     ## Example Usage
 
@@ -98,11 +96,9 @@ def get_mws_workspaces(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitable
         ids=pulumi.get(__ret__, 'ids'))
 def get_mws_workspaces_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMwsWorkspacesResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Lists all MwsWorkspaces in Databricks Account.
 
-    > **Note** `account_id` provider configuration property is required for this resource to work.
+    > This data source can only be used with an account-level provider!
 
     ## Example Usage
 

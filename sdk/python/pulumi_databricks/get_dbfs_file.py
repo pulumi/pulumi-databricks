@@ -96,9 +96,9 @@ def get_dbfs_file(limit_file_size: Optional[builtins.bool] = None,
                   path: Optional[builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbfsFileResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
@@ -139,9 +139,9 @@ def get_dbfs_file_output(limit_file_size: Optional[pulumi.Input[builtins.bool]] 
                          path: Optional[pulumi.Input[builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbfsFileResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

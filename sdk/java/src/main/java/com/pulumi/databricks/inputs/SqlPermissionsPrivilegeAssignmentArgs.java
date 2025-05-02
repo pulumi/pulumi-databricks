@@ -30,9 +30,59 @@ public final class SqlPermissionsPrivilegeAssignmentArgs extends com.pulumi.reso
         return this.principal;
     }
 
+    /**
+     * set of available privilege names in upper case.
+     * 
+     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+     * 
+     * * `SELECT` - gives read access to an object.
+     * * `SELECT` - gives read access to an object.
+     * * `CREATE` - gives the ability to create an object (for example, a table in a database).
+     * * `CREATE` - gives the ability to create an object (for example, a table in a database).
+     * * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+     * * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+     * * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+     * * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+     * * `READ_METADATA` - gives the ability to view an object and its metadata.
+     * * `READ_METADATA` - gives the ability to view an object and its metadata.
+     * * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+     * * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+     * * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+     * * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+     * 
+     * &gt; Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it&#39;s not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+     * Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it&#39;s not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+     * 
+     */
     @Import(name="privileges", required=true)
     private Output<List<String>> privileges;
 
+    /**
+     * @return set of available privilege names in upper case.
+     * 
+     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+     * 
+     * * `SELECT` - gives read access to an object.
+     * * `SELECT` - gives read access to an object.
+     * * `CREATE` - gives the ability to create an object (for example, a table in a database).
+     * * `CREATE` - gives the ability to create an object (for example, a table in a database).
+     * * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+     * * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+     * * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+     * * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+     * * `READ_METADATA` - gives the ability to view an object and its metadata.
+     * * `READ_METADATA` - gives the ability to view an object and its metadata.
+     * * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+     * * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+     * * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+     * * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+     * 
+     * &gt; Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it&#39;s not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+     * Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it&#39;s not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+     * 
+     */
     public Output<List<String>> privileges() {
         return this.privileges;
     }
@@ -83,15 +133,96 @@ public final class SqlPermissionsPrivilegeAssignmentArgs extends com.pulumi.reso
             return principal(Output.of(principal));
         }
 
+        /**
+         * @param privileges set of available privilege names in upper case.
+         * 
+         * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+         * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+         * 
+         * * `SELECT` - gives read access to an object.
+         * * `SELECT` - gives read access to an object.
+         * * `CREATE` - gives the ability to create an object (for example, a table in a database).
+         * * `CREATE` - gives the ability to create an object (for example, a table in a database).
+         * * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+         * * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+         * * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+         * * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+         * * `READ_METADATA` - gives the ability to view an object and its metadata.
+         * * `READ_METADATA` - gives the ability to view an object and its metadata.
+         * * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+         * * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+         * * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+         * * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+         * 
+         * &gt; Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it&#39;s not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+         * Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it&#39;s not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privileges(Output<List<String>> privileges) {
             $.privileges = privileges;
             return this;
         }
 
+        /**
+         * @param privileges set of available privilege names in upper case.
+         * 
+         * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+         * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+         * 
+         * * `SELECT` - gives read access to an object.
+         * * `SELECT` - gives read access to an object.
+         * * `CREATE` - gives the ability to create an object (for example, a table in a database).
+         * * `CREATE` - gives the ability to create an object (for example, a table in a database).
+         * * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+         * * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+         * * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+         * * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+         * * `READ_METADATA` - gives the ability to view an object and its metadata.
+         * * `READ_METADATA` - gives the ability to view an object and its metadata.
+         * * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+         * * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+         * * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+         * * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+         * 
+         * &gt; Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it&#39;s not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+         * Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it&#39;s not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privileges(List<String> privileges) {
             return privileges(Output.of(privileges));
         }
 
+        /**
+         * @param privileges set of available privilege names in upper case.
+         * 
+         * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+         * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+         * 
+         * * `SELECT` - gives read access to an object.
+         * * `SELECT` - gives read access to an object.
+         * * `CREATE` - gives the ability to create an object (for example, a table in a database).
+         * * `CREATE` - gives the ability to create an object (for example, a table in a database).
+         * * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+         * * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+         * * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+         * * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+         * * `READ_METADATA` - gives the ability to view an object and its metadata.
+         * * `READ_METADATA` - gives the ability to view an object and its metadata.
+         * * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+         * * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+         * * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+         * * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+         * 
+         * &gt; Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it&#39;s not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+         * Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it&#39;s not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privileges(String... privileges) {
             return privileges(List.of(privileges));
         }

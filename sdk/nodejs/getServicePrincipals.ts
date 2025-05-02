@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
- *
  * Retrieves `applicationIds` of all databricks.ServicePrincipal based on their `displayName`
+ *
+ * > This data source can be used with an account or workspace-level provider.
  */
 export function getServicePrincipals(args?: GetServicePrincipalsArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalsResult> {
     args = args || {};
@@ -47,9 +47,9 @@ export interface GetServicePrincipalsResult {
     readonly id: string;
 }
 /**
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
- *
  * Retrieves `applicationIds` of all databricks.ServicePrincipal based on their `displayName`
+ *
+ * > This data source can be used with an account or workspace-level provider.
  */
 export function getServicePrincipalsOutput(args?: GetServicePrincipalsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServicePrincipalsResult> {
     args = args || {};

@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * This resource allows you to manage [Databricks Workspace Files](https://docs.databricks.com/files/workspace.html).
  *
+ * > This resource can only be used with a workspace-level provider!
+ *
  * ## Import
  *
  * The workspace file resource can be imported using workspace file path

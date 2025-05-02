@@ -115,7 +115,9 @@ class PermissionAssignment(pulumi.CustomResource):
                  principal_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        These resources are invoked in the workspace context.
+        This resource is used to assign account-level users, service principals and groups to a Databricks workspace.
+
+        > This resource can only be used with a workspace-level provider!
 
         ## Example Usage
 
@@ -194,7 +196,9 @@ class PermissionAssignment(pulumi.CustomResource):
                  args: PermissionAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        These resources are invoked in the workspace context.
+        This resource is used to assign account-level users, service principals and groups to a Databricks workspace.
+
+        > This resource can only be used with a workspace-level provider!
 
         ## Example Usage
 

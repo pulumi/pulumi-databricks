@@ -12,11 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
+// Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
+//
+// > This resource can only be used with an account-level provider!
 //
 // > This feature is only available in Azure.
-//
-// Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
 //
 // ## Example Usage
 //
@@ -88,7 +88,8 @@ type MwsNccPrivateEndpointRule struct {
 	// Whether this private endpoint is deactivated.
 	Deactivated pulumi.BoolPtrOutput `pulumi:"deactivated"`
 	// Time in epoch milliseconds when this object was deactivated.
-	DeactivatedAt pulumi.IntPtrOutput `pulumi:"deactivatedAt"`
+	DeactivatedAt pulumi.IntPtrOutput      `pulumi:"deactivatedAt"`
+	DomainNames   pulumi.StringArrayOutput `pulumi:"domainNames"`
 	// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
 	EndpointName pulumi.StringOutput `pulumi:"endpointName"`
 	// The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
@@ -154,7 +155,8 @@ type mwsNccPrivateEndpointRuleState struct {
 	// Whether this private endpoint is deactivated.
 	Deactivated *bool `pulumi:"deactivated"`
 	// Time in epoch milliseconds when this object was deactivated.
-	DeactivatedAt *int `pulumi:"deactivatedAt"`
+	DeactivatedAt *int     `pulumi:"deactivatedAt"`
+	DomainNames   []string `pulumi:"domainNames"`
 	// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
 	EndpointName *string `pulumi:"endpointName"`
 	// The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
@@ -183,6 +185,7 @@ type MwsNccPrivateEndpointRuleState struct {
 	Deactivated pulumi.BoolPtrInput
 	// Time in epoch milliseconds when this object was deactivated.
 	DeactivatedAt pulumi.IntPtrInput
+	DomainNames   pulumi.StringArrayInput
 	// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
 	EndpointName pulumi.StringPtrInput
 	// The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
@@ -214,7 +217,8 @@ type mwsNccPrivateEndpointRuleArgs struct {
 	// Whether this private endpoint is deactivated.
 	Deactivated *bool `pulumi:"deactivated"`
 	// Time in epoch milliseconds when this object was deactivated.
-	DeactivatedAt *int `pulumi:"deactivatedAt"`
+	DeactivatedAt *int     `pulumi:"deactivatedAt"`
+	DomainNames   []string `pulumi:"domainNames"`
 	// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
 	EndpointName *string `pulumi:"endpointName"`
 	// The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
@@ -244,6 +248,7 @@ type MwsNccPrivateEndpointRuleArgs struct {
 	Deactivated pulumi.BoolPtrInput
 	// Time in epoch milliseconds when this object was deactivated.
 	DeactivatedAt pulumi.IntPtrInput
+	DomainNames   pulumi.StringArrayInput
 	// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
 	EndpointName pulumi.StringPtrInput
 	// The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
@@ -368,6 +373,10 @@ func (o MwsNccPrivateEndpointRuleOutput) Deactivated() pulumi.BoolPtrOutput {
 // Time in epoch milliseconds when this object was deactivated.
 func (o MwsNccPrivateEndpointRuleOutput) DeactivatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) pulumi.IntPtrOutput { return v.DeactivatedAt }).(pulumi.IntPtrOutput)
+}
+
+func (o MwsNccPrivateEndpointRuleOutput) DomainNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) pulumi.StringArrayOutput { return v.DomainNames }).(pulumi.StringArrayOutput)
 }
 
 // The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"

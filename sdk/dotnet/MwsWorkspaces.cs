@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// This resource allows you to set up [workspaces on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1) or [workspaces on GCP](https://docs.gcp.databricks.com/administration-guide/account-settings-gcp/workspaces.html). Please follow this complete runnable example on AWS or GCP with new VPC and new workspace setup.
+    /// 
+    /// &gt; This resource can only be used with an account-level provider!
+    /// 
+    /// &gt; On Azure you need to use azurerm_databricks_workspace resource to create Azure Databricks workspaces.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Creating a serverless workspace in AWS

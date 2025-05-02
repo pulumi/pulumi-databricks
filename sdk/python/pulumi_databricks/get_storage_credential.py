@@ -78,9 +78,9 @@ def get_storage_credential(id: Optional[builtins.str] = None,
                            storage_credential_info: Optional[Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStorageCredentialResult:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
     Retrieves details about a StorageCredential that were created by Pulumi or manually.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
@@ -122,9 +122,9 @@ def get_storage_credential_output(id: Optional[pulumi.Input[Optional[builtins.st
                                   storage_credential_info: Optional[pulumi.Input[Optional[Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStorageCredentialResult]:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
     Retrieves details about a StorageCredential that were created by Pulumi or manually.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

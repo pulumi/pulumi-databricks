@@ -15,9 +15,10 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * The `databricks.DefaultNamespaceSetting` resource allows you to operate the setting configuration for the default namespace in the Databricks workspace.
+ * 
  * &gt; This resource can only be used with a workspace-level provider!
  * 
- * The `databricks.DefaultNamespaceSetting` resource allows you to operate the setting configuration for the default namespace in the Databricks workspace.
  * Setting the default catalog for the workspace determines the catalog that is used when queries do not reference
  * a fully qualified 3 level name. For example, if the default catalog is set to &#39;retail_prod&#39; then a query
  * &#39;SELECT * FROM myTable&#39; would reference the object &#39;retail_prod.default.myTable&#39;

@@ -12,11 +12,9 @@ namespace Pulumi.Databricks
     public static class GetSchemas
     {
         /// <summary>
-        /// &gt; **Note** This data source can only be used with a workspace-level provider!
-        /// 
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Retrieves a list of databricks.Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -53,11 +51,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSchemasResult>("databricks:index/getSchemas:getSchemas", args ?? new GetSchemasArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This data source can only be used with a workspace-level provider!
-        /// 
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Retrieves a list of databricks.Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -94,11 +90,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetSchemasResult>("databricks:index/getSchemas:getSchemas", args ?? new GetSchemasInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This data source can only be used with a workspace-level provider!
-        /// 
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Retrieves a list of databricks.Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 

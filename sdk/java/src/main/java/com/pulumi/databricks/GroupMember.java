@@ -16,6 +16,8 @@ import javax.annotation.Nullable;
 /**
  * This resource allows you to attach users, service_principal, and groups as group members.
  * 
+ * &gt; This resource can be used with an account or workspace-level provider.
+ * 
  * To attach members to groups in the Databricks account, the provider must be configured with `host = &#34;https://accounts.cloud.databricks.com&#34;` on AWS deployments or `host = &#34;https://accounts.azuredatabricks.net&#34;` and authenticate using AAD tokens on Azure deployments
  * 
  * ## Example Usage

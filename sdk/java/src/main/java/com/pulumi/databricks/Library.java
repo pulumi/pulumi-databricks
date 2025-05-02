@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
 /**
  * Installs a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster. Each different type of library has a slightly different syntax. It&#39;s possible to set only one type of library within one resource. Otherwise, the plan will fail with an error.
  * 
+ * &gt; This resource can only be used with a workspace-level provider!
+ * 
  * &gt; `databricks.Library` resource would always start the associated cluster if it&#39;s not running, so make sure to have auto-termination configured. It&#39;s not possible to atomically change the version of the same library without cluster restart. Libraries are fully removed from the cluster only after restart.
  * 
  * ## Plugin Framework Migration

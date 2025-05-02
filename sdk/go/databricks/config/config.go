@@ -20,6 +20,9 @@ func GetActionsIdTokenRequestToken(ctx *pulumi.Context) string {
 func GetActionsIdTokenRequestUrl(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:actionsIdTokenRequestUrl")
 }
+func GetAudience(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:audience")
+}
 func GetAuthType(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:authType")
 }

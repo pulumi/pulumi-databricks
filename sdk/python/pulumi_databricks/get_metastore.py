@@ -101,11 +101,9 @@ def get_metastore(id: Optional[builtins.str] = None,
                   region: Optional[builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMetastoreResult:
     """
-    > **Note** This data source can only be used with an account-level provider!
-
     Retrieves information about metastore for a given id of Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
 
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+    > This data source can only be used with an account-level provider!
 
     ## Example Usage
 
@@ -165,11 +163,9 @@ def get_metastore_output(id: Optional[pulumi.Input[Optional[builtins.str]]] = No
                          region: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetastoreResult]:
     """
-    > **Note** This data source can only be used with an account-level provider!
-
     Retrieves information about metastore for a given id of Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
 
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+    > This data source can only be used with an account-level provider!
 
     ## Example Usage
 

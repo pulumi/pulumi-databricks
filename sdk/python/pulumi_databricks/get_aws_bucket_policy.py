@@ -117,6 +117,8 @@ def get_aws_bucket_policy(aws_partition: Optional[builtins.str] = None,
     """
     This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
 
+    > This data source can be used with an account or workspace-level provider.
+
     ## Example Usage
 
     ```python
@@ -166,6 +168,8 @@ def get_aws_bucket_policy_output(aws_partition: Optional[pulumi.Input[Optional[b
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsBucketPolicyResult]:
     """
     This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+
+    > This data source can be used with an account or workspace-level provider.
 
     ## Example Usage
 

@@ -7,9 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > This data source can only be used with a workspace-level provider!
- *
  * Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *
@@ -87,9 +87,9 @@ export interface GetFunctionsResult {
     readonly schemaName: string;
 }
 /**
- * > This data source can only be used with a workspace-level provider!
- *
  * Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *

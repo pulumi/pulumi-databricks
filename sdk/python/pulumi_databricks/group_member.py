@@ -109,6 +109,8 @@ class GroupMember(pulumi.CustomResource):
         """
         This resource allows you to attach users, service_principal, and groups as group members.
 
+        > This resource can be used with an account or workspace-level provider.
+
         To attach members to groups in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments
 
         ## Example Usage
@@ -167,6 +169,8 @@ class GroupMember(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to attach users, service_principal, and groups as group members.
+
+        > This resource can be used with an account or workspace-level provider.
 
         To attach members to groups in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments
 

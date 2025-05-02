@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -33,6 +34,7 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
      * 
      */
     private @Nullable Integer deactivatedAt;
+    private @Nullable List<String> domainNames;
     /**
      * @return The name of the Azure private endpoint resource.
      * 
@@ -93,6 +95,9 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
     public Optional<Integer> deactivatedAt() {
         return Optional.ofNullable(this.deactivatedAt);
     }
+    public List<String> domainNames() {
+        return this.domainNames == null ? List.of() : this.domainNames;
+    }
     /**
      * @return The name of the Azure private endpoint resource.
      * 
@@ -149,6 +154,7 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
         private @Nullable Integer creationTime;
         private @Nullable Boolean deactivated;
         private @Nullable Integer deactivatedAt;
+        private @Nullable List<String> domainNames;
         private @Nullable String endpointName;
         private @Nullable String groupId;
         private @Nullable String networkConnectivityConfigId;
@@ -162,6 +168,7 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
     	      this.creationTime = defaults.creationTime;
     	      this.deactivated = defaults.deactivated;
     	      this.deactivatedAt = defaults.deactivatedAt;
+    	      this.domainNames = defaults.domainNames;
     	      this.endpointName = defaults.endpointName;
     	      this.groupId = defaults.groupId;
     	      this.networkConnectivityConfigId = defaults.networkConnectivityConfigId;
@@ -193,6 +200,15 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
 
             this.deactivatedAt = deactivatedAt;
             return this;
+        }
+        @CustomType.Setter
+        public Builder domainNames(@Nullable List<String> domainNames) {
+
+            this.domainNames = domainNames;
+            return this;
+        }
+        public Builder domainNames(String... domainNames) {
+            return domainNames(List.of(domainNames));
         }
         @CustomType.Setter
         public Builder endpointName(@Nullable String endpointName) {
@@ -236,6 +252,7 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
             _resultValue.creationTime = creationTime;
             _resultValue.deactivated = deactivated;
             _resultValue.deactivatedAt = deactivatedAt;
+            _resultValue.domainNames = domainNames;
             _resultValue.endpointName = endpointName;
             _resultValue.groupId = groupId;
             _resultValue.networkConnectivityConfigId = networkConnectivityConfigId;

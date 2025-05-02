@@ -24,6 +24,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("deactivatedAt")]
         public Input<int>? DeactivatedAt { get; set; }
 
+        [Input("domainNames")]
+        private InputList<string>? _domainNames;
+        public InputList<string> DomainNames
+        {
+            get => _domainNames ?? (_domainNames = new InputList<string>());
+            set => _domainNames = value;
+        }
+
         [Input("endpointName")]
         public Input<string>? EndpointName { get; set; }
 

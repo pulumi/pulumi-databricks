@@ -13,7 +13,7 @@ import (
 
 // This data source can be used to get a single budget policy.
 //
-// > **Note** This data source can only be used with an account-level provider!
+// > This data source can only be used with an account-level provider!
 func LookupBudgetPolicy(ctx *pulumi.Context, args *LookupBudgetPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBudgetPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBudgetPolicyResult

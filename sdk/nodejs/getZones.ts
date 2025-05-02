@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
- *
  * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *
@@ -64,9 +64,9 @@ export interface GetZonesResult {
     readonly zones: string[];
 }
 /**
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
- *
  * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *

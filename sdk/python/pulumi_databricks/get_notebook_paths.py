@@ -85,9 +85,9 @@ def get_notebook_paths(path: Optional[builtins.str] = None,
                        recursive: Optional[builtins.bool] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotebookPathsResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     This data source allows to list notebooks in the Databricks Workspace.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
@@ -118,9 +118,9 @@ def get_notebook_paths_output(path: Optional[pulumi.Input[builtins.str]] = None,
                               recursive: Optional[pulumi.Input[builtins.bool]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotebookPathsResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     This data source allows to list notebooks in the Databricks Workspace.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

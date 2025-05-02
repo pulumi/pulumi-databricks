@@ -69,6 +69,8 @@ def get_instance_profiles(instance_profiles: Optional[Sequence[Union['GetInstanc
     """
     Lists all available databricks_instance_profiles.
 
+    > This data source can only be used with a workspace-level provider!
+
     ## Example Usage
 
     Get all instance profiles:
@@ -96,6 +98,8 @@ def get_instance_profiles_output(instance_profiles: Optional[pulumi.Input[Option
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceProfilesResult]:
     """
     Lists all available databricks_instance_profiles.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

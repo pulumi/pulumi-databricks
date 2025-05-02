@@ -99,6 +99,56 @@ export interface AlertConditionThresholdValue {
     stringValue?: string;
 }
 
+export interface AlertV2Evaluation {
+    comparisonOperator?: string;
+    emptyResultState?: string;
+    lastEvaluatedAt: string;
+    notification?: outputs.AlertV2EvaluationNotification;
+    source?: outputs.AlertV2EvaluationSource;
+    state: string;
+    threshold?: outputs.AlertV2EvaluationThreshold;
+}
+
+export interface AlertV2EvaluationNotification {
+    notifyOnOk?: boolean;
+    retriggerSeconds?: number;
+    subscriptions?: outputs.AlertV2EvaluationNotificationSubscription[];
+}
+
+export interface AlertV2EvaluationNotificationSubscription {
+    destinationId?: string;
+    userEmail?: string;
+}
+
+export interface AlertV2EvaluationSource {
+    aggregation?: string;
+    display?: string;
+    name?: string;
+}
+
+export interface AlertV2EvaluationThreshold {
+    column?: outputs.AlertV2EvaluationThresholdColumn;
+    value?: outputs.AlertV2EvaluationThresholdValue;
+}
+
+export interface AlertV2EvaluationThresholdColumn {
+    aggregation?: string;
+    display?: string;
+    name?: string;
+}
+
+export interface AlertV2EvaluationThresholdValue {
+    boolValue?: boolean;
+    doubleValue?: number;
+    stringValue?: string;
+}
+
+export interface AlertV2Schedule {
+    pauseStatus?: string;
+    quartzCronSchedule?: string;
+    timezoneId?: string;
+}
+
 export interface AppActiveDeployment {
     /**
      * The creation time of the app.
@@ -938,6 +988,123 @@ export interface ExternalLocationEncryptionDetailsSseEncryptionDetails {
     awsKmsKeyArn?: string;
 }
 
+export interface GetAlertV2Evaluation {
+    comparisonOperator?: string;
+    emptyResultState?: string;
+    lastEvaluatedAt: string;
+    notification?: outputs.GetAlertV2EvaluationNotification;
+    source?: outputs.GetAlertV2EvaluationSource;
+    state: string;
+    threshold?: outputs.GetAlertV2EvaluationThreshold;
+}
+
+export interface GetAlertV2EvaluationNotification {
+    notifyOnOk?: boolean;
+    retriggerSeconds?: number;
+    subscriptions?: outputs.GetAlertV2EvaluationNotificationSubscription[];
+}
+
+export interface GetAlertV2EvaluationNotificationSubscription {
+    destinationId?: string;
+    userEmail?: string;
+}
+
+export interface GetAlertV2EvaluationSource {
+    aggregation?: string;
+    display?: string;
+    name?: string;
+}
+
+export interface GetAlertV2EvaluationThreshold {
+    column?: outputs.GetAlertV2EvaluationThresholdColumn;
+    value?: outputs.GetAlertV2EvaluationThresholdValue;
+}
+
+export interface GetAlertV2EvaluationThresholdColumn {
+    aggregation?: string;
+    display?: string;
+    name?: string;
+}
+
+export interface GetAlertV2EvaluationThresholdValue {
+    boolValue?: boolean;
+    doubleValue?: number;
+    stringValue?: string;
+}
+
+export interface GetAlertV2Schedule {
+    pauseStatus?: string;
+    quartzCronSchedule?: string;
+    timezoneId?: string;
+}
+
+export interface GetAlertsV2Result {
+    createTime: string;
+    customDescription?: string;
+    customSummary?: string;
+    displayName?: string;
+    evaluation?: outputs.GetAlertsV2ResultEvaluation;
+    id: string;
+    lifecycleState: string;
+    ownerUserName: string;
+    parentPath?: string;
+    queryText?: string;
+    runAsUserName: string;
+    schedule?: outputs.GetAlertsV2ResultSchedule;
+    updateTime: string;
+    warehouseId?: string;
+}
+
+export interface GetAlertsV2ResultEvaluation {
+    comparisonOperator?: string;
+    emptyResultState?: string;
+    lastEvaluatedAt: string;
+    notification?: outputs.GetAlertsV2ResultEvaluationNotification;
+    source?: outputs.GetAlertsV2ResultEvaluationSource;
+    state: string;
+    threshold?: outputs.GetAlertsV2ResultEvaluationThreshold;
+}
+
+export interface GetAlertsV2ResultEvaluationNotification {
+    notifyOnOk?: boolean;
+    retriggerSeconds?: number;
+    subscriptions?: outputs.GetAlertsV2ResultEvaluationNotificationSubscription[];
+}
+
+export interface GetAlertsV2ResultEvaluationNotificationSubscription {
+    destinationId?: string;
+    userEmail?: string;
+}
+
+export interface GetAlertsV2ResultEvaluationSource {
+    aggregation?: string;
+    display?: string;
+    name?: string;
+}
+
+export interface GetAlertsV2ResultEvaluationThreshold {
+    column?: outputs.GetAlertsV2ResultEvaluationThresholdColumn;
+    value?: outputs.GetAlertsV2ResultEvaluationThresholdValue;
+}
+
+export interface GetAlertsV2ResultEvaluationThresholdColumn {
+    aggregation?: string;
+    display?: string;
+    name?: string;
+}
+
+export interface GetAlertsV2ResultEvaluationThresholdValue {
+    boolValue?: boolean;
+    doubleValue?: number;
+    stringValue?: string;
+}
+
+export interface GetAlertsV2ResultSchedule {
+    pauseStatus?: string;
+    quartzCronSchedule?: string;
+    timezoneId?: string;
+}
+
 export interface GetAppApp {
     activeDeployment: outputs.GetAppAppActiveDeployment;
     /**
@@ -1426,9 +1593,9 @@ export interface GetAppsAppResourceSqlWarehouse {
     permission: string;
 }
 
-export interface GetBudgetPoliciesBudgetPolicy {
+export interface GetBudgetPoliciesPolicy {
     bindingWorkspaceIds?: number[];
-    customTags?: outputs.GetBudgetPoliciesBudgetPolicyCustomTag[];
+    customTags?: outputs.GetBudgetPoliciesPolicyCustomTag[];
     policyId: string;
     /**
      * The partial name of policies to be filtered on. If unspecified, all policies will be returned.
@@ -1436,7 +1603,7 @@ export interface GetBudgetPoliciesBudgetPolicy {
     policyName?: string;
 }
 
-export interface GetBudgetPoliciesBudgetPolicyCustomTag {
+export interface GetBudgetPoliciesPolicyCustomTag {
     key: string;
     value?: string;
 }
@@ -4241,6 +4408,7 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriv
      * Time in epoch milliseconds when this object was deactivated.
      */
     deactivatedAt?: number;
+    domainNames?: string[];
     /**
      * The name of the Azure private endpoint resource.
      */
@@ -8973,6 +9141,7 @@ export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivate
     creationTime?: number;
     deactivated?: boolean;
     deactivatedAt?: number;
+    domainNames?: string[];
     endpointName?: string;
     groupId?: string;
     /**
@@ -8997,13 +9166,13 @@ export interface MwsNetworksGcpNetworkInfo {
     /**
      * The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
      *
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
      * The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
      *
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -9070,11 +9239,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -10089,6 +10258,33 @@ export interface SqlPermissionsPrivilegeAssignment {
      * `displayName` for a databricks.Group or databricks_user, `applicationId` for a databricks_service_principal.
      */
     principal: string;
+    /**
+     * set of available privilege names in upper case.
+     *
+     *
+     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+     *
+     *
+     * * `SELECT` - gives read access to an object.
+     * * `SELECT` - gives read access to an object.
+     * * `CREATE` - gives the ability to create an object (for example, a table in a database).
+     * * `CREATE` - gives the ability to create an object (for example, a table in a database).
+     * * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+     * * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+     * * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+     * * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+     * * `READ_METADATA` - gives the ability to view an object and its metadata.
+     * * `READ_METADATA` - gives the ability to view an object and its metadata.
+     * * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+     * * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+     * * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+     * * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+     *
+     *
+     * > Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+     * > Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+     */
     privileges: string[];
 }
 
@@ -10380,6 +10576,11 @@ export interface TableColumn {
     typePrecision?: number;
     typeScale?: number;
     typeText: string;
+}
+
+export interface VectorSearchEndpointCustomTag {
+    key: string;
+    value?: string;
 }
 
 export interface VectorSearchEndpointEndpointStatus {

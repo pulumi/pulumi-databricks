@@ -200,6 +200,8 @@ class DbfsFile(pulumi.CustomResource):
         """
         This is a resource that lets you manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html). The best use cases are libraries for Cluster or databricks_job. You can also use DbfsFile and get_dbfs_file_paths data sources.
 
+        > This resource can only be used with a workspace-level provider!
+
         ## Import
 
         The resource dbfs file can be imported using the path of the file:
@@ -224,6 +226,8 @@ class DbfsFile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This is a resource that lets you manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html). The best use cases are libraries for Cluster or databricks_job. You can also use DbfsFile and get_dbfs_file_paths data sources.
+
+        > This resource can only be used with a workspace-level provider!
 
         ## Import
 

@@ -145,9 +145,9 @@ def get_mws_network_connectivity_config(account_id: Optional[builtins.str] = Non
                                         updated_time: Optional[builtins.int] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMwsNetworkConnectivityConfigResult:
     """
-    > **Note** This data source can only be used with an account-level provider!
-
     Retrieves information about MwsNetworkConnectivityConfig in Databricks Account.
+
+    > This data source can only be used with an account-level provider!
 
     ## Example Usage
 
@@ -206,9 +206,9 @@ def get_mws_network_connectivity_config_output(account_id: Optional[pulumi.Input
                                                updated_time: Optional[pulumi.Input[Optional[builtins.int]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMwsNetworkConnectivityConfigResult]:
     """
-    > **Note** This data source can only be used with an account-level provider!
-
     Retrieves information about MwsNetworkConnectivityConfig in Databricks Account.
+
+    > This data source can only be used with an account-level provider!
 
     ## Example Usage
 

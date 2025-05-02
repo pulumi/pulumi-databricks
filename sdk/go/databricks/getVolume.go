@@ -13,6 +13,8 @@ import (
 
 // Retrieves details about Volume that was created by Pulumi or manually.
 // A volume can be identified by its three-level (fully qualified) name (in the form of: `catalogName`.`schemaName`.`volumeName`) as input. This can be retrieved programmatically using getVolumes data source.
+//
+// > This data source can only be used with a workspace-level provider!
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeResult

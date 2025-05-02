@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
+ * Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
+ *
+ * > This resource can only be used with an account-level provider!
  *
  * > This feature is only available in Azure.
- *
- * Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
  *
  * ## Example Usage
  *
@@ -95,6 +95,7 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
      * Time in epoch milliseconds when this object was deactivated.
      */
     public readonly deactivatedAt!: pulumi.Output<number | undefined>;
+    public readonly domainNames!: pulumi.Output<string[] | undefined>;
     /**
      * The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
      */
@@ -137,6 +138,7 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
             resourceInputs["creationTime"] = state ? state.creationTime : undefined;
             resourceInputs["deactivated"] = state ? state.deactivated : undefined;
             resourceInputs["deactivatedAt"] = state ? state.deactivatedAt : undefined;
+            resourceInputs["domainNames"] = state ? state.domainNames : undefined;
             resourceInputs["endpointName"] = state ? state.endpointName : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
             resourceInputs["networkConnectivityConfigId"] = state ? state.networkConnectivityConfigId : undefined;
@@ -158,6 +160,7 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
             resourceInputs["creationTime"] = args ? args.creationTime : undefined;
             resourceInputs["deactivated"] = args ? args.deactivated : undefined;
             resourceInputs["deactivatedAt"] = args ? args.deactivatedAt : undefined;
+            resourceInputs["domainNames"] = args ? args.domainNames : undefined;
             resourceInputs["endpointName"] = args ? args.endpointName : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
             resourceInputs["networkConnectivityConfigId"] = args ? args.networkConnectivityConfigId : undefined;
@@ -195,6 +198,7 @@ export interface MwsNccPrivateEndpointRuleState {
      * Time in epoch milliseconds when this object was deactivated.
      */
     deactivatedAt?: pulumi.Input<number>;
+    domainNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
      */
@@ -246,6 +250,7 @@ export interface MwsNccPrivateEndpointRuleArgs {
      * Time in epoch milliseconds when this object was deactivated.
      */
     deactivatedAt?: pulumi.Input<number>;
+    domainNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
      */

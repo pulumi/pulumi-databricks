@@ -220,9 +220,9 @@ def get_group(acl_principal_id: Optional[builtins.str] = None,
               workspace_access: Optional[builtins.bool] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Retrieves information about Group members, entitlements and instance profiles.
+
+    > This data source can be used with an account or workspace-level provider.
 
     ## Example Usage
 
@@ -313,9 +313,9 @@ def get_group_output(acl_principal_id: Optional[pulumi.Input[Optional[builtins.s
                      workspace_access: Optional[pulumi.Input[Optional[builtins.bool]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Retrieves information about Group members, entitlements and instance profiles.
+
+    > This data source can be used with an account or workspace-level provider.
 
     ## Example Usage
 

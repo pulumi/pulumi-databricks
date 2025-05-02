@@ -21,6 +21,9 @@ public final class Config {
     public Optional<String> actionsIdTokenRequestUrl() {
         return Codegen.stringProp("actionsIdTokenRequestUrl").config(config).get();
     }
+    public Optional<String> audience() {
+        return Codegen.stringProp("audience").config(config).get();
+    }
     public Optional<String> authType() {
         return Codegen.stringProp("authType").config(config).get();
     }

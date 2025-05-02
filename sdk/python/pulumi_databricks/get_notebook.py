@@ -135,9 +135,9 @@ def get_notebook(format: Optional[builtins.str] = None,
                  path: Optional[builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotebookResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     This data source allows to export a notebook from Databricks Workspace.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
@@ -181,9 +181,9 @@ def get_notebook_output(format: Optional[pulumi.Input[builtins.str]] = None,
                         path: Optional[pulumi.Input[builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotebookResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     This data source allows to export a notebook from Databricks Workspace.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

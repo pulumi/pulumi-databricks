@@ -77,6 +77,8 @@ def get_dashboards(dashboard_name_contains: Optional[builtins.str] = None,
     """
     This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
 
+    > This data source can only be used with a workspace-level provider!
+
 
     :param builtins.str dashboard_name_contains: A **case-insensitive** substring to filter Dashboards by their name.
     """
@@ -93,6 +95,8 @@ def get_dashboards_output(dashboard_name_contains: Optional[pulumi.Input[Optiona
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDashboardsResult]:
     """
     This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
+
+    > This data source can only be used with a workspace-level provider!
 
 
     :param builtins.str dashboard_name_contains: A **case-insensitive** substring to filter Dashboards by their name.

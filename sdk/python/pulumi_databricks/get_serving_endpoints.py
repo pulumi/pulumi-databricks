@@ -67,9 +67,9 @@ class AwaitableGetServingEndpointsResult(GetServingEndpointsResult):
 def get_serving_endpoints(endpoints: Optional[Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict']]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServingEndpointsResult:
     """
-    > This resource can only be used with a workspace-level provider!
-
     This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
@@ -118,9 +118,9 @@ def get_serving_endpoints(endpoints: Optional[Sequence[Union['GetServingEndpoint
 def get_serving_endpoints_output(endpoints: Optional[pulumi.Input[Optional[Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict']]]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServingEndpointsResult]:
     """
-    > This resource can only be used with a workspace-level provider!
-
     This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

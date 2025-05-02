@@ -12,9 +12,9 @@ namespace Pulumi.Databricks
     public static class GetExternalLocation
     {
         /// <summary>
-        /// &gt; **Note** This data source can only be used with a workspace-level provider!
-        /// 
         /// Retrieves details about a databricks.ExternalLocation that were created by Pulumi or manually.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -51,9 +51,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExternalLocationResult>("databricks:index/getExternalLocation:getExternalLocation", args ?? new GetExternalLocationArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This data source can only be used with a workspace-level provider!
-        /// 
         /// Retrieves details about a databricks.ExternalLocation that were created by Pulumi or manually.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -90,9 +90,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalLocationResult>("databricks:index/getExternalLocation:getExternalLocation", args ?? new GetExternalLocationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This data source can only be used with a workspace-level provider!
-        /// 
         /// Retrieves details about a databricks.ExternalLocation that were created by Pulumi or manually.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 

@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AibiDashboardEmbeddingApprovedDomainsSetting{}
 	case "databricks:index/alert:Alert":
 		r = &Alert{}
+	case "databricks:index/alertV2:AlertV2":
+		r = &AlertV2{}
 	case "databricks:index/app:App":
 		r = &App{}
 	case "databricks:index/artifactAllowlist:ArtifactAllowlist":
@@ -280,6 +282,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/alert",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/alertV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

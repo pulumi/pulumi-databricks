@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; This resource can only be used with a workspace-level provider!
-    /// 
     /// This resource allows you to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+    /// 
+    /// &gt; This resource can only be used with a workspace-level provider!
     /// 
     /// ## Example Usage
     /// 

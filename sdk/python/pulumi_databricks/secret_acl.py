@@ -141,6 +141,8 @@ class SecretAcl(pulumi.CustomResource):
         """
         Create or overwrite the ACL associated with the given principal (user or group) on the specified databricks_secret_scope. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
 
+        > This resource can only be used with a workspace-level provider!
+
         ## Example Usage
 
         This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
@@ -196,6 +198,8 @@ class SecretAcl(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create or overwrite the ACL associated with the given principal (user or group) on the specified databricks_secret_scope. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
+
+        > This resource can only be used with a workspace-level provider!
 
         ## Example Usage
 

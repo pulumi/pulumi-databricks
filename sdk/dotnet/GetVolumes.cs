@@ -12,9 +12,9 @@ namespace Pulumi.Databricks
     public static class GetVolumes
     {
         /// <summary>
-        /// &gt; **Note** This data source can only be used with a workspace-level provider!
-        /// 
         /// Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Plugin Framework Migration
         /// 
@@ -57,9 +57,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVolumesResult>("databricks:index/getVolumes:getVolumes", args ?? new GetVolumesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This data source can only be used with a workspace-level provider!
-        /// 
         /// Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Plugin Framework Migration
         /// 
@@ -102,9 +102,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumesResult>("databricks:index/getVolumes:getVolumes", args ?? new GetVolumesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This data source can only be used with a workspace-level provider!
-        /// 
         /// Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Plugin Framework Migration
         /// 

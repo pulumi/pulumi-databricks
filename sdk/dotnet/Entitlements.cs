@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     /// <summary>
     /// This resource allows you to set entitlements to existing databricks_users, databricks.Group or databricks_service_principal.
     /// 
+    /// &gt; This resource can only be used with a workspace-level provider!
+    /// 
     /// &gt; You must define entitlements of a principal using either `databricks.Entitlements` or directly within one of databricks_users, databricks.Group or databricks_service_principal. Having entitlements defined in both resources will result in non-deterministic behaviour.
     /// 
     /// ## Example Usage

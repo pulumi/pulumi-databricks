@@ -107,6 +107,8 @@ def get_aws_assume_role_policy(aws_partition: Optional[builtins.str] = None,
     """
     This data source constructs necessary AWS STS assume role policy for you.
 
+    > This data source can be used with an account or workspace-level provider.
+
     ## Example Usage
 
     End-to-end example of provisioning Cross-account IAM role with MwsCredentials and aws_iam_role:
@@ -173,6 +175,8 @@ def get_aws_assume_role_policy_output(aws_partition: Optional[pulumi.Input[Optio
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsAssumeRolePolicyResult]:
     """
     This data source constructs necessary AWS STS assume role policy for you.
+
+    > This data source can be used with an account or workspace-level provider.
 
     ## Example Usage
 

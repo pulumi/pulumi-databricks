@@ -11,19 +11,23 @@ namespace Pulumi.Databricks.Outputs
 {
 
     [OutputType]
-    public sealed class GetBudgetPoliciesBudgetPolicyCustomTagResult
+    public sealed class GetAlertV2EvaluationSourceResult
     {
-        public readonly string Key;
-        public readonly string? Value;
+        public readonly string? Aggregation;
+        public readonly string? Display;
+        public readonly string? Name;
 
         [OutputConstructor]
-        private GetBudgetPoliciesBudgetPolicyCustomTagResult(
-            string key,
+        private GetAlertV2EvaluationSourceResult(
+            string? aggregation,
 
-            string? value)
+            string? display,
+
+            string? name)
         {
-            Key = key;
-            Value = value;
+            Aggregation = aggregation;
+            Display = display;
+            Name = name;
         }
     }
 }

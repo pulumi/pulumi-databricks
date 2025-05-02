@@ -11,10 +11,10 @@ namespace Pulumi.Databricks.Outputs
 {
 
     [OutputType]
-    public sealed class GetBudgetPoliciesBudgetPolicyResult
+    public sealed class GetBudgetPoliciesPolicyResult
     {
         public readonly ImmutableArray<int> BindingWorkspaceIds;
-        public readonly ImmutableArray<Outputs.GetBudgetPoliciesBudgetPolicyCustomTagResult> CustomTags;
+        public readonly ImmutableArray<Outputs.GetBudgetPoliciesPolicyCustomTagResult> CustomTags;
         public readonly string PolicyId;
         /// <summary>
         /// The partial name of policies to be filtered on. If unspecified, all policies will be returned.
@@ -22,10 +22,10 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? PolicyName;
 
         [OutputConstructor]
-        private GetBudgetPoliciesBudgetPolicyResult(
+        private GetBudgetPoliciesPolicyResult(
             ImmutableArray<int> bindingWorkspaceIds,
 
-            ImmutableArray<Outputs.GetBudgetPoliciesBudgetPolicyCustomTagResult> customTags,
+            ImmutableArray<Outputs.GetBudgetPoliciesPolicyCustomTagResult> customTags,
 
             string policyId,
 

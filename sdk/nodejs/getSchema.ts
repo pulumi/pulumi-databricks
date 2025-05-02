@@ -10,6 +10,8 @@ import * as utilities from "./utilities";
  * Retrieves details about databricks.Schema that was created by Pulumi or manually.
  * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalogName`.`schemaName`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
  *
+ * > This data source can only be used with a workspace-level provider!
+ *
  * ## Example Usage
  *
  * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
@@ -91,6 +93,8 @@ export interface GetSchemaResult {
 /**
  * Retrieves details about databricks.Schema that was created by Pulumi or manually.
  * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalogName`.`schemaName`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *

@@ -14,6 +14,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
         /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
+        /// 
         /// ## Example Usage
         /// 
         /// Getting all existing shares in the metastore
@@ -49,6 +51,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
         /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
+        /// 
         /// ## Example Usage
         /// 
         /// Getting all existing shares in the metastore
@@ -83,6 +87,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 

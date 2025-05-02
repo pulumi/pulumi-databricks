@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** This data source could be only used with workspace-level provider!
-//
 // Retrieves a list of MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
+//
+// > This data source can only be used with a workspace-level provider!
 //
 // ## Example Usage
 //

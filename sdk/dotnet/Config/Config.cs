@@ -53,6 +53,13 @@ namespace Pulumi.Databricks
             set => _actionsIdTokenRequestUrl.Set(value);
         }
 
+        private static readonly __Value<string?> _audience = new __Value<string?>(() => __config.Get("audience"));
+        public static string? Audience
+        {
+            get => _audience.Get();
+            set => _audience.Set(value);
+        }
+
         private static readonly __Value<string?> _authType = new __Value<string?>(() => __config.Get("authType"));
         public static string? AuthType
         {

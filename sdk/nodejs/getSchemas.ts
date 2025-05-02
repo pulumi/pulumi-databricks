@@ -5,11 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** This data source can only be used with a workspace-level provider!
- *
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
- *
  * Retrieves a list of databricks.Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *
@@ -69,11 +67,9 @@ export interface GetSchemasResult {
     readonly ids: string[];
 }
 /**
- * > **Note** This data source can only be used with a workspace-level provider!
- *
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
- *
  * Retrieves a list of databricks.Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *

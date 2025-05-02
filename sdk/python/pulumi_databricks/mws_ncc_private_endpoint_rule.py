@@ -27,6 +27,7 @@ class MwsNccPrivateEndpointRuleArgs:
                  creation_time: Optional[pulumi.Input[builtins.int]] = None,
                  deactivated: Optional[pulumi.Input[builtins.bool]] = None,
                  deactivated_at: Optional[pulumi.Input[builtins.int]] = None,
+                 domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  endpoint_name: Optional[pulumi.Input[builtins.str]] = None,
                  rule_id: Optional[pulumi.Input[builtins.str]] = None,
                  updated_time: Optional[pulumi.Input[builtins.int]] = None):
@@ -59,6 +60,8 @@ class MwsNccPrivateEndpointRuleArgs:
             pulumi.set(__self__, "deactivated", deactivated)
         if deactivated_at is not None:
             pulumi.set(__self__, "deactivated_at", deactivated_at)
+        if domain_names is not None:
+            pulumi.set(__self__, "domain_names", domain_names)
         if endpoint_name is not None:
             pulumi.set(__self__, "endpoint_name", endpoint_name)
         if rule_id is not None:
@@ -156,6 +159,15 @@ class MwsNccPrivateEndpointRuleArgs:
         pulumi.set(self, "deactivated_at", value)
 
     @property
+    @pulumi.getter(name="domainNames")
+    def domain_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "domain_names")
+
+    @domain_names.setter
+    def domain_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "domain_names", value)
+
+    @property
     @pulumi.getter(name="endpointName")
     def endpoint_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -199,6 +211,7 @@ class _MwsNccPrivateEndpointRuleState:
                  creation_time: Optional[pulumi.Input[builtins.int]] = None,
                  deactivated: Optional[pulumi.Input[builtins.bool]] = None,
                  deactivated_at: Optional[pulumi.Input[builtins.int]] = None,
+                 domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  endpoint_name: Optional[pulumi.Input[builtins.str]] = None,
                  group_id: Optional[pulumi.Input[builtins.str]] = None,
                  network_connectivity_config_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -231,6 +244,8 @@ class _MwsNccPrivateEndpointRuleState:
             pulumi.set(__self__, "deactivated", deactivated)
         if deactivated_at is not None:
             pulumi.set(__self__, "deactivated_at", deactivated_at)
+        if domain_names is not None:
+            pulumi.set(__self__, "domain_names", domain_names)
         if endpoint_name is not None:
             pulumi.set(__self__, "endpoint_name", endpoint_name)
         if group_id is not None:
@@ -296,6 +311,15 @@ class _MwsNccPrivateEndpointRuleState:
     @deactivated_at.setter
     def deactivated_at(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "deactivated_at", value)
+
+    @property
+    @pulumi.getter(name="domainNames")
+    def domain_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "domain_names")
+
+    @domain_names.setter
+    def domain_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "domain_names", value)
 
     @property
     @pulumi.getter(name="endpointName")
@@ -382,6 +406,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
                  creation_time: Optional[pulumi.Input[builtins.int]] = None,
                  deactivated: Optional[pulumi.Input[builtins.bool]] = None,
                  deactivated_at: Optional[pulumi.Input[builtins.int]] = None,
+                 domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  endpoint_name: Optional[pulumi.Input[builtins.str]] = None,
                  group_id: Optional[pulumi.Input[builtins.str]] = None,
                  network_connectivity_config_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -390,11 +415,11 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
                  updated_time: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
         """
-        > Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
+        Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
+
+        > This resource can only be used with an account-level provider!
 
         > This feature is only available in Azure.
-
-        Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
 
         ## Example Usage
 
@@ -454,11 +479,11 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
                  args: MwsNccPrivateEndpointRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
+        Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
+
+        > This resource can only be used with an account-level provider!
 
         > This feature is only available in Azure.
-
-        Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
 
         ## Example Usage
 
@@ -512,6 +537,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
                  creation_time: Optional[pulumi.Input[builtins.int]] = None,
                  deactivated: Optional[pulumi.Input[builtins.bool]] = None,
                  deactivated_at: Optional[pulumi.Input[builtins.int]] = None,
+                 domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  endpoint_name: Optional[pulumi.Input[builtins.str]] = None,
                  group_id: Optional[pulumi.Input[builtins.str]] = None,
                  network_connectivity_config_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -531,6 +557,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
             __props__.__dict__["creation_time"] = creation_time
             __props__.__dict__["deactivated"] = deactivated
             __props__.__dict__["deactivated_at"] = deactivated_at
+            __props__.__dict__["domain_names"] = domain_names
             __props__.__dict__["endpoint_name"] = endpoint_name
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
@@ -557,6 +584,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
             creation_time: Optional[pulumi.Input[builtins.int]] = None,
             deactivated: Optional[pulumi.Input[builtins.bool]] = None,
             deactivated_at: Optional[pulumi.Input[builtins.int]] = None,
+            domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             endpoint_name: Optional[pulumi.Input[builtins.str]] = None,
             group_id: Optional[pulumi.Input[builtins.str]] = None,
             network_connectivity_config_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -594,6 +622,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
         __props__.__dict__["creation_time"] = creation_time
         __props__.__dict__["deactivated"] = deactivated
         __props__.__dict__["deactivated_at"] = deactivated_at
+        __props__.__dict__["domain_names"] = domain_names
         __props__.__dict__["endpoint_name"] = endpoint_name
         __props__.__dict__["group_id"] = group_id
         __props__.__dict__["network_connectivity_config_id"] = network_connectivity_config_id
@@ -638,6 +667,11 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
         Time in epoch milliseconds when this object was deactivated.
         """
         return pulumi.get(self, "deactivated_at")
+
+    @property
+    @pulumi.getter(name="domainNames")
+    def domain_names(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+        return pulumi.get(self, "domain_names")
 
     @property
     @pulumi.getter(name="endpointName")

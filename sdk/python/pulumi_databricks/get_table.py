@@ -78,11 +78,9 @@ def get_table(id: Optional[builtins.str] = None,
               table_info: Optional[Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict']] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTableResult:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use get_tables to retrieve multiple tables in Unity Catalog
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
@@ -131,11 +129,9 @@ def get_table_output(id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                      table_info: Optional[pulumi.Input[Optional[Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict']]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTableResult]:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use get_tables to retrieve multiple tables in Unity Catalog
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

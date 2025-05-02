@@ -7,9 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > This resource can only be used with a workspace-level provider!
- *
  * The `databricks.AibiDashboardEmbeddingAccessPolicySetting` resource allows you to control [embedding of AI/BI Dashboards](https://learn.microsoft.com/en-us/azure/databricks/dashboards/admin/#manage-dashboard-embedding) into other sites.
+ *
+ * > This resource can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *

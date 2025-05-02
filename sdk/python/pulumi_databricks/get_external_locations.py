@@ -65,9 +65,9 @@ class AwaitableGetExternalLocationsResult(GetExternalLocationsResult):
 def get_external_locations(names: Optional[Sequence[builtins.str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalLocationsResult:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
     Retrieves a list of ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
@@ -102,9 +102,9 @@ def get_external_locations(names: Optional[Sequence[builtins.str]] = None,
 def get_external_locations_output(names: Optional[pulumi.Input[Optional[Sequence[builtins.str]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalLocationsResult]:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
     Retrieves a list of ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

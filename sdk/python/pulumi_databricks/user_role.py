@@ -109,6 +109,8 @@ class UserRole(pulumi.CustomResource):
         """
         This resource allows you to attach a role or InstanceProfile (AWS) to databricks_user.
 
+        > This resource can be used with an account or workspace-level provider.
+
         ## Example Usage
 
         Adding AWS instance profile to a user
@@ -164,6 +166,8 @@ class UserRole(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to attach a role or InstanceProfile (AWS) to databricks_user.
+
+        > This resource can be used with an account or workspace-level provider.
 
         ## Example Usage
 

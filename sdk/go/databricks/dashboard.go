@@ -14,6 +14,8 @@ import (
 
 // This resource allows you to manage Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html). To manage [Dashboards](https://docs.databricks.com/en/dashboards/index.html) you must have a warehouse access on your databricks workspace.
 //
+// > This resource can only be used with a workspace-level provider!
+//
 // ## Example Usage
 //
 // Dashboard using `serializedDashboard` attribute:

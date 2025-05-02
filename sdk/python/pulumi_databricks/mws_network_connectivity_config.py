@@ -243,11 +243,9 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
                  updated_time: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
         """
-        > Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
-
-        > **Public Preview** This feature is available for AWS & Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.
-
         Allows you to create a Network Connectivity Config that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).
+
+        > This resource can only be used with an account-level provider!
 
         ## Example Usage
 
@@ -295,11 +293,9 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
                  args: MwsNetworkConnectivityConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
-
-        > **Public Preview** This feature is available for AWS & Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.
-
         Allows you to create a Network Connectivity Config that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).
+
+        > This resource can only be used with an account-level provider!
 
         ## Example Usage
 

@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-//
 // Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use getTables for retrieving a list of tables.
+//
+// > This data source can only be used with a workspace-level provider!
 //
 // ## Example Usage
 //

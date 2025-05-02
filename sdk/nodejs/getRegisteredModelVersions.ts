@@ -7,9 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > This resource can only be used with a workspace-level provider!
- *
  * This resource allows you to get information about versions of [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html).
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *
@@ -71,9 +71,9 @@ export interface GetRegisteredModelVersionsResult {
     readonly modelVersions: outputs.GetRegisteredModelVersionsModelVersion[];
 }
 /**
- * > This resource can only be used with a workspace-level provider!
- *
  * This resource allows you to get information about versions of [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html).
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *

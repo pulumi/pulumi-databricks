@@ -13,6 +13,8 @@ import (
 
 // Use `Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
 //
+// > This resource can only be used with a workspace-level provider!
+//
 // ## Example Usage
 //
 // ```go

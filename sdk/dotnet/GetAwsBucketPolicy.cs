@@ -14,6 +14,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
         /// 
+        /// &gt; This data source can be used with an account or workspace-level provider.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -53,6 +55,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
         /// 
+        /// &gt; This data source can be used with an account or workspace-level provider.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -91,6 +95,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+        /// 
+        /// &gt; This data source can be used with an account or workspace-level provider.
         /// 
         /// ## Example Usage
         /// 

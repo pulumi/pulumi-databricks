@@ -401,9 +401,9 @@ class CustomAppIntegration(pulumi.CustomResource):
                  user_authorized_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  __props__=None):
         """
-        > Initialize provider with `alias = "account"`, and `host` pointing to the account URL, like, `host = "https://accounts.cloud.databricks.com"`. Use `provider = databricks.account` for all account-level resources.
-
         This resource allows you to enable [custom OAuth applications](https://docs.databricks.com/en/integrations/enable-disable-oauth.html#enable-custom-oauth-applications-using-the-databricks-ui).
+
+        > This resource can only be used with an account-level provider!
 
         ## Example Usage
 
@@ -452,9 +452,9 @@ class CustomAppIntegration(pulumi.CustomResource):
                  args: Optional[CustomAppIntegrationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > Initialize provider with `alias = "account"`, and `host` pointing to the account URL, like, `host = "https://accounts.cloud.databricks.com"`. Use `provider = databricks.account` for all account-level resources.
-
         This resource allows you to enable [custom OAuth applications](https://docs.databricks.com/en/integrations/enable-disable-oauth.html#enable-custom-oauth-applications-using-the-databricks-ui).
+
+        > This resource can only be used with an account-level provider!
 
         ## Example Usage
 

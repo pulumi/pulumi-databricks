@@ -12,9 +12,11 @@ namespace Pulumi.Databricks
     public static class GetAwsUnityCatalogAssumeRolePolicy
     {
         /// <summary>
-        /// &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
-        /// 
         /// This data source constructs the necessary AWS Unity Catalog assume role policy for you.
+        /// 
+        /// &gt; This data source can be used with an account or workspace-level provider.
+        /// 
+        /// &gt; This data source has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
         /// 
         /// ## Example Usage
         /// 
@@ -65,9 +67,11 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsUnityCatalogAssumeRolePolicyResult>("databricks:index/getAwsUnityCatalogAssumeRolePolicy:getAwsUnityCatalogAssumeRolePolicy", args ?? new GetAwsUnityCatalogAssumeRolePolicyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
-        /// 
         /// This data source constructs the necessary AWS Unity Catalog assume role policy for you.
+        /// 
+        /// &gt; This data source can be used with an account or workspace-level provider.
+        /// 
+        /// &gt; This data source has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
         /// 
         /// ## Example Usage
         /// 
@@ -118,9 +122,11 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsUnityCatalogAssumeRolePolicyResult>("databricks:index/getAwsUnityCatalogAssumeRolePolicy:getAwsUnityCatalogAssumeRolePolicy", args ?? new GetAwsUnityCatalogAssumeRolePolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
-        /// 
         /// This data source constructs the necessary AWS Unity Catalog assume role policy for you.
+        /// 
+        /// &gt; This data source can be used with an account or workspace-level provider.
+        /// 
+        /// &gt; This data source has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
         /// 
         /// ## Example Usage
         /// 

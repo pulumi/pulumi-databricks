@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * This resource allows you to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all databricks.Cluster and databricks_job.
  *
+ * > This resource can only be used with a workspace-level provider!
+ *
  * ## Import
  *
  * The resource global init script can be imported using script ID:

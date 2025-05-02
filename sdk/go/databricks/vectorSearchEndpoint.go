@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > This resource can only be used on a Unity Catalog-enabled workspace!
-//
 // This resource allows you to create [Mosaic AI Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Endpoint is used to create and access vector search indexes.
+//
+// > This resource can only be used with a workspace-level provider!
 //
 // ## Example Usage
 //
@@ -58,7 +58,9 @@ type VectorSearchEndpoint struct {
 	// Timestamp of endpoint creation (milliseconds).
 	CreationTimestamp pulumi.IntOutput `pulumi:"creationTimestamp"`
 	// Creator of the endpoint.
-	Creator pulumi.StringOutput `pulumi:"creator"`
+	Creator                 pulumi.StringOutput                      `pulumi:"creator"`
+	CustomTags              VectorSearchEndpointCustomTagArrayOutput `pulumi:"customTags"`
+	EffectiveBudgetPolicyId pulumi.StringPtrOutput                   `pulumi:"effectiveBudgetPolicyId"`
 	// Unique internal identifier of the endpoint (UUID).
 	EndpointId pulumi.StringOutput `pulumi:"endpointId"`
 	// Object describing the current status of the endpoint consisting of the following fields:
@@ -111,7 +113,9 @@ type vectorSearchEndpointState struct {
 	// Timestamp of endpoint creation (milliseconds).
 	CreationTimestamp *int `pulumi:"creationTimestamp"`
 	// Creator of the endpoint.
-	Creator *string `pulumi:"creator"`
+	Creator                 *string                         `pulumi:"creator"`
+	CustomTags              []VectorSearchEndpointCustomTag `pulumi:"customTags"`
+	EffectiveBudgetPolicyId *string                         `pulumi:"effectiveBudgetPolicyId"`
 	// Unique internal identifier of the endpoint (UUID).
 	EndpointId *string `pulumi:"endpointId"`
 	// Object describing the current status of the endpoint consisting of the following fields:
@@ -132,7 +136,9 @@ type VectorSearchEndpointState struct {
 	// Timestamp of endpoint creation (milliseconds).
 	CreationTimestamp pulumi.IntPtrInput
 	// Creator of the endpoint.
-	Creator pulumi.StringPtrInput
+	Creator                 pulumi.StringPtrInput
+	CustomTags              VectorSearchEndpointCustomTagArrayInput
+	EffectiveBudgetPolicyId pulumi.StringPtrInput
 	// Unique internal identifier of the endpoint (UUID).
 	EndpointId pulumi.StringPtrInput
 	// Object describing the current status of the endpoint consisting of the following fields:
@@ -154,6 +160,8 @@ func (VectorSearchEndpointState) ElementType() reflect.Type {
 }
 
 type vectorSearchEndpointArgs struct {
+	CustomTags              []VectorSearchEndpointCustomTag `pulumi:"customTags"`
+	EffectiveBudgetPolicyId *string                         `pulumi:"effectiveBudgetPolicyId"`
 	// Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
 	EndpointType string `pulumi:"endpointType"`
 	// Name of the Mosaic AI Vector Search Endpoint to create.
@@ -162,6 +170,8 @@ type vectorSearchEndpointArgs struct {
 
 // The set of arguments for constructing a VectorSearchEndpoint resource.
 type VectorSearchEndpointArgs struct {
+	CustomTags              VectorSearchEndpointCustomTagArrayInput
+	EffectiveBudgetPolicyId pulumi.StringPtrInput
 	// Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
 	EndpointType pulumi.StringInput
 	// Name of the Mosaic AI Vector Search Endpoint to create.
@@ -263,6 +273,14 @@ func (o VectorSearchEndpointOutput) CreationTimestamp() pulumi.IntOutput {
 // Creator of the endpoint.
 func (o VectorSearchEndpointOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v *VectorSearchEndpoint) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
+}
+
+func (o VectorSearchEndpointOutput) CustomTags() VectorSearchEndpointCustomTagArrayOutput {
+	return o.ApplyT(func(v *VectorSearchEndpoint) VectorSearchEndpointCustomTagArrayOutput { return v.CustomTags }).(VectorSearchEndpointCustomTagArrayOutput)
+}
+
+func (o VectorSearchEndpointOutput) EffectiveBudgetPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VectorSearchEndpoint) pulumi.StringPtrOutput { return v.EffectiveBudgetPolicyId }).(pulumi.StringPtrOutput)
 }
 
 // Unique internal identifier of the endpoint (UUID).

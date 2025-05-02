@@ -38,6 +38,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.actionsIdTokenRequestUrl);
     }
 
+    @Import(name="audience")
+    private @Nullable Output<String> audience;
+
+    public Optional<Output<String>> audience() {
+        return Optional.ofNullable(this.audience);
+    }
+
     @Import(name="authType")
     private @Nullable Output<String> authType;
 
@@ -247,6 +254,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.actionsIdTokenRequestToken = $.actionsIdTokenRequestToken;
         this.actionsIdTokenRequestUrl = $.actionsIdTokenRequestUrl;
+        this.audience = $.audience;
         this.authType = $.authType;
         this.azureClientId = $.azureClientId;
         this.azureClientSecret = $.azureClientSecret;
@@ -321,6 +329,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder actionsIdTokenRequestUrl(String actionsIdTokenRequestUrl) {
             return actionsIdTokenRequestUrl(Output.of(actionsIdTokenRequestUrl));
+        }
+
+        public Builder audience(@Nullable Output<String> audience) {
+            $.audience = audience;
+            return this;
+        }
+
+        public Builder audience(String audience) {
+            return audience(Output.of(audience));
         }
 
         public Builder authType(@Nullable Output<String> authType) {

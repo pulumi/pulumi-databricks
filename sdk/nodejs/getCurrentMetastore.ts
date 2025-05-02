@@ -9,9 +9,7 @@ import * as utilities from "./utilities";
 /**
  * Retrieves information about metastore attached to a given workspace.
  *
- * > **Note** This is the workspace-level data source.
- *
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute to prevent _authentication is not configured for provider_ errors.
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *
@@ -73,9 +71,7 @@ export interface GetCurrentMetastoreResult {
 /**
  * Retrieves information about metastore attached to a given workspace.
  *
- * > **Note** This is the workspace-level data source.
- *
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute to prevent _authentication is not configured for provider_ errors.
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *

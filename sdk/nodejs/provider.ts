@@ -28,6 +28,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly accountId!: pulumi.Output<string | undefined>;
     public readonly actionsIdTokenRequestToken!: pulumi.Output<string | undefined>;
     public readonly actionsIdTokenRequestUrl!: pulumi.Output<string | undefined>;
+    public readonly audience!: pulumi.Output<string | undefined>;
     public readonly authType!: pulumi.Output<string | undefined>;
     public readonly azureClientId!: pulumi.Output<string | undefined>;
     public readonly azureClientSecret!: pulumi.Output<string | undefined>;
@@ -65,6 +66,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["actionsIdTokenRequestToken"] = args ? args.actionsIdTokenRequestToken : undefined;
             resourceInputs["actionsIdTokenRequestUrl"] = args ? args.actionsIdTokenRequestUrl : undefined;
+            resourceInputs["audience"] = args ? args.audience : undefined;
             resourceInputs["authType"] = args ? args.authType : undefined;
             resourceInputs["azureClientId"] = args ? args.azureClientId : undefined;
             resourceInputs["azureClientSecret"] = args?.azureClientSecret ? pulumi.secret(args.azureClientSecret) : undefined;
@@ -109,6 +111,7 @@ export interface ProviderArgs {
     accountId?: pulumi.Input<string>;
     actionsIdTokenRequestToken?: pulumi.Input<string>;
     actionsIdTokenRequestUrl?: pulumi.Input<string>;
+    audience?: pulumi.Input<string>;
     authType?: pulumi.Input<string>;
     azureClientId?: pulumi.Input<string>;
     azureClientSecret?: pulumi.Input<string>;

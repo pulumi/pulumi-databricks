@@ -14,9 +14,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Retrieves information about metastore attached to a given workspace.
         /// 
-        /// &gt; **Note** This is the workspace-level data source.
-        /// 
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -54,9 +52,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Retrieves information about metastore attached to a given workspace.
         /// 
-        /// &gt; **Note** This is the workspace-level data source.
-        /// 
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -94,9 +90,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Retrieves information about metastore attached to a given workspace.
         /// 
-        /// &gt; **Note** This is the workspace-level data source.
-        /// 
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 

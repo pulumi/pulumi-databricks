@@ -19,10 +19,11 @@ import javax.annotation.Nullable;
 /**
  * This resource allows uploading and downloading files in databricks_volume.
  * 
- * Notes:
+ * &gt; This resource can only be used with a workspace-level provider!
  * 
- * * Currently the limit is 5GiB in octet-stream.
- * * Currently, only UC volumes are supported. The list of destinations may change.
+ * &gt; Currently the limit is 5GiB in octet-stream.
+ * 
+ * &gt; Currently, only UC volumes are supported. The list of destinations may change.
  * 
  * ## Example Usage
  * 

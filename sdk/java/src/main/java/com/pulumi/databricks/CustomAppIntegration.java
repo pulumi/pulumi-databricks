@@ -19,9 +19,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; Initialize provider with `alias = &#34;account&#34;`, and `host` pointing to the account URL, like, `host = &#34;https://accounts.cloud.databricks.com&#34;`. Use `provider = databricks.account` for all account-level resources.
- * 
  * This resource allows you to enable [custom OAuth applications](https://docs.databricks.com/en/integrations/enable-disable-oauth.html#enable-custom-oauth-applications-using-the-databricks-ui).
+ * 
+ * &gt; This resource can only be used with an account-level provider!
  * 
  * ## Example Usage
  * 

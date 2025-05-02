@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * This data source constructs necessary AWS STS assume role policy for you.
  *
+ * > This data source can be used with an account or workspace-level provider.
+ *
  * ## Example Usage
  *
  * End-to-end example of provisioning Cross-account IAM role with databricks.MwsCredentials and aws_iam_role:
@@ -106,6 +108,8 @@ export interface GetAwsAssumeRolePolicyResult {
 }
 /**
  * This data source constructs necessary AWS STS assume role policy for you.
+ *
+ * > This data source can be used with an account or workspace-level provider.
  *
  * ## Example Usage
  *

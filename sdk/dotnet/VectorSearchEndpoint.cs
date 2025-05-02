@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; This resource can only be used on a Unity Catalog-enabled workspace!
-    /// 
     /// This resource allows you to create [Mosaic AI Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Endpoint is used to create and access vector search indexes.
+    /// 
+    /// &gt; This resource can only be used with a workspace-level provider!
     /// 
     /// ## Example Usage
     /// 
@@ -57,6 +57,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("creator")]
         public Output<string> Creator { get; private set; } = null!;
+
+        [Output("customTags")]
+        public Output<ImmutableArray<Outputs.VectorSearchEndpointCustomTag>> CustomTags { get; private set; } = null!;
+
+        [Output("effectiveBudgetPolicyId")]
+        public Output<string?> EffectiveBudgetPolicyId { get; private set; } = null!;
 
         /// <summary>
         /// Unique internal identifier of the endpoint (UUID).
@@ -146,6 +152,17 @@ namespace Pulumi.Databricks
 
     public sealed class VectorSearchEndpointArgs : global::Pulumi.ResourceArgs
     {
+        [Input("customTags")]
+        private InputList<Inputs.VectorSearchEndpointCustomTagArgs>? _customTags;
+        public InputList<Inputs.VectorSearchEndpointCustomTagArgs> CustomTags
+        {
+            get => _customTags ?? (_customTags = new InputList<Inputs.VectorSearchEndpointCustomTagArgs>());
+            set => _customTags = value;
+        }
+
+        [Input("effectiveBudgetPolicyId")]
+        public Input<string>? EffectiveBudgetPolicyId { get; set; }
+
         /// <summary>
         /// Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
         /// </summary>
@@ -177,6 +194,17 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("creator")]
         public Input<string>? Creator { get; set; }
+
+        [Input("customTags")]
+        private InputList<Inputs.VectorSearchEndpointCustomTagGetArgs>? _customTags;
+        public InputList<Inputs.VectorSearchEndpointCustomTagGetArgs> CustomTags
+        {
+            get => _customTags ?? (_customTags = new InputList<Inputs.VectorSearchEndpointCustomTagGetArgs>());
+            set => _customTags = value;
+        }
+
+        [Input("effectiveBudgetPolicyId")]
+        public Input<string>? EffectiveBudgetPolicyId { get; set; }
 
         /// <summary>
         /// Unique internal identifier of the endpoint (UUID).

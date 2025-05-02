@@ -114,9 +114,11 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[builtins.str] = None,
                                  role_name: Optional[builtins.str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsUnityCatalogPolicyResult:
     """
-    > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
-
     This data source constructs the necessary AWS Unity Catalog policy for you.
+
+    > This data source can be used with an account or workspace-level provider.
+
+    > This data source has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
 
     ## Example Usage
 
@@ -172,9 +174,11 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[bu
                                         role_name: Optional[pulumi.Input[builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsUnityCatalogPolicyResult]:
     """
-    > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
-
     This data source constructs the necessary AWS Unity Catalog policy for you.
+
+    > This data source can be used with an account or workspace-level provider.
+
+    > This data source has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
 
     ## Example Usage
 

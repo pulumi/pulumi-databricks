@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
- *
  * Retrieves information about databricks_service_principal.
+ *
+ * > This data source can be used with an account or workspace-level provider.
  *
  * ## Example Usage
  *
@@ -133,9 +133,9 @@ export interface GetServicePrincipalResult {
     readonly spId: string;
 }
 /**
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
- *
  * Retrieves information about databricks_service_principal.
+ *
+ * > This data source can be used with an account or workspace-level provider.
  *
  * ## Example Usage
  *

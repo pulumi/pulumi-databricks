@@ -306,9 +306,9 @@ class ServicePrincipalSecret(pulumi.CustomResource):
                  update_time: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        > This resource can only be used with an account-level provider.
-
         With this resource you can create a secret for a given [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html).
+
+        > This resource can only be used with an account-level provider!
 
         This secret can be used to configure the Databricks Pulumi Provider to authenticate with the service principal. See Authenticating with service principal.
 
@@ -349,9 +349,9 @@ class ServicePrincipalSecret(pulumi.CustomResource):
                  args: ServicePrincipalSecretArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > This resource can only be used with an account-level provider.
-
         With this resource you can create a secret for a given [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html).
+
+        > This resource can only be used with an account-level provider!
 
         This secret can be used to configure the Databricks Pulumi Provider to authenticate with the service principal. See Authenticating with service principal.
 

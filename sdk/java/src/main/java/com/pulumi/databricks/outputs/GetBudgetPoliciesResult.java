@@ -4,7 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.databricks.outputs.GetBudgetPoliciesBudgetPolicy;
+import com.pulumi.databricks.outputs.GetBudgetPoliciesPolicy;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
@@ -13,30 +13,22 @@ import java.util.Objects;
 @CustomType
 public final class GetBudgetPoliciesResult {
     /**
-     * @return The list of budget policy.
-     * 
-     */
-    private List<GetBudgetPoliciesBudgetPolicy> budgetPolicies;
-    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    private List<GetBudgetPoliciesPolicy> policies;
 
     private GetBudgetPoliciesResult() {}
-    /**
-     * @return The list of budget policy.
-     * 
-     */
-    public List<GetBudgetPoliciesBudgetPolicy> budgetPolicies() {
-        return this.budgetPolicies;
-    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     public String id() {
         return this.id;
+    }
+    public List<GetBudgetPoliciesPolicy> policies() {
+        return this.policies;
     }
 
     public static Builder builder() {
@@ -48,26 +40,15 @@ public final class GetBudgetPoliciesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetBudgetPoliciesBudgetPolicy> budgetPolicies;
         private String id;
+        private List<GetBudgetPoliciesPolicy> policies;
         public Builder() {}
         public Builder(GetBudgetPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.budgetPolicies = defaults.budgetPolicies;
     	      this.id = defaults.id;
+    	      this.policies = defaults.policies;
         }
 
-        @CustomType.Setter
-        public Builder budgetPolicies(List<GetBudgetPoliciesBudgetPolicy> budgetPolicies) {
-            if (budgetPolicies == null) {
-              throw new MissingRequiredPropertyException("GetBudgetPoliciesResult", "budgetPolicies");
-            }
-            this.budgetPolicies = budgetPolicies;
-            return this;
-        }
-        public Builder budgetPolicies(GetBudgetPoliciesBudgetPolicy... budgetPolicies) {
-            return budgetPolicies(List.of(budgetPolicies));
-        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -76,10 +57,21 @@ public final class GetBudgetPoliciesResult {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
+        public Builder policies(List<GetBudgetPoliciesPolicy> policies) {
+            if (policies == null) {
+              throw new MissingRequiredPropertyException("GetBudgetPoliciesResult", "policies");
+            }
+            this.policies = policies;
+            return this;
+        }
+        public Builder policies(GetBudgetPoliciesPolicy... policies) {
+            return policies(List.of(policies));
+        }
         public GetBudgetPoliciesResult build() {
             final var _resultValue = new GetBudgetPoliciesResult();
-            _resultValue.budgetPolicies = budgetPolicies;
             _resultValue.id = id;
+            _resultValue.policies = policies;
             return _resultValue;
         }
     }

@@ -208,9 +208,9 @@ class WorkspaceBinding(pulumi.CustomResource):
                  workspace_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        > This resource can only be used with a workspace-level provider!
-
         If you use workspaces to isolate user data access, you may want to limit access to catalog, external locations or storage credentials from specific workspaces in your account, also known as workspace binding
+
+        > This resource can only be used with a workspace-level provider!
 
         By default, Databricks assigns the securable to all workspaces attached to the current metastore. By using `WorkspaceBinding`, the securable will be unassigned from all workspaces and only assigned explicitly using this resource.
 
@@ -254,9 +254,9 @@ class WorkspaceBinding(pulumi.CustomResource):
                  args: Optional[WorkspaceBindingArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > This resource can only be used with a workspace-level provider!
-
         If you use workspaces to isolate user data access, you may want to limit access to catalog, external locations or storage credentials from specific workspaces in your account, also known as workspace binding
+
+        > This resource can only be used with a workspace-level provider!
 
         By default, Databricks assigns the securable to all workspaces attached to the current metastore. By using `WorkspaceBinding`, the securable will be unassigned from all workspaces and only assigned explicitly using this resource.
 

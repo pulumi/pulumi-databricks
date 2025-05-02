@@ -12,9 +12,9 @@ namespace Pulumi.Databricks
     public static class GetServicePrincipal
     {
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Retrieves information about databricks_service_principal.
+        /// 
+        /// &gt; This data source can be used with an account or workspace-level provider.
         /// 
         /// ## Example Usage
         /// 
@@ -64,9 +64,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServicePrincipalResult>("databricks:index/getServicePrincipal:getServicePrincipal", args ?? new GetServicePrincipalArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Retrieves information about databricks_service_principal.
+        /// 
+        /// &gt; This data source can be used with an account or workspace-level provider.
         /// 
         /// ## Example Usage
         /// 
@@ -116,9 +116,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetServicePrincipalResult>("databricks:index/getServicePrincipal:getServicePrincipal", args ?? new GetServicePrincipalInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Retrieves information about databricks_service_principal.
+        /// 
+        /// &gt; This data source can be used with an account or workspace-level provider.
         /// 
         /// ## Example Usage
         /// 

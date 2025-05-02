@@ -225,10 +225,11 @@ class File(pulumi.CustomResource):
         """
         This resource allows uploading and downloading files in databricks_volume.
 
-        Notes:
+        > This resource can only be used with a workspace-level provider!
 
-        * Currently the limit is 5GiB in octet-stream.
-        * Currently, only UC volumes are supported. The list of destinations may change.
+        > Currently the limit is 5GiB in octet-stream.
+
+        > Currently, only UC volumes are supported. The list of destinations may change.
 
         ## Example Usage
 
@@ -310,10 +311,11 @@ class File(pulumi.CustomResource):
         """
         This resource allows uploading and downloading files in databricks_volume.
 
-        Notes:
+        > This resource can only be used with a workspace-level provider!
 
-        * Currently the limit is 5GiB in octet-stream.
-        * Currently, only UC volumes are supported. The list of destinations may change.
+        > Currently the limit is 5GiB in octet-stream.
+
+        > Currently, only UC volumes are supported. The list of destinations may change.
 
         ## Example Usage
 
