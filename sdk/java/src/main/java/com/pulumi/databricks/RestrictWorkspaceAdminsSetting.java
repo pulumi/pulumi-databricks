@@ -15,9 +15,9 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * &gt; This resource can only be used with a workspace-level provider!
- * 
  * The `databricks.RestrictWorkspaceAdminsSetting` resource lets you control the capabilities of workspace admins.
+ * 
+ * &gt; This resource can only be used with a workspace-level provider!
  * 
  * With the status set to `ALLOW_ALL`, workspace admins can:
  * 

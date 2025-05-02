@@ -31,6 +31,14 @@ Object.defineProperty(exports, "actionsIdTokenRequestUrl", {
     enumerable: true,
 });
 
+export declare const audience: string | undefined;
+Object.defineProperty(exports, "audience", {
+    get() {
+        return __config.get("audience");
+    },
+    enumerable: true,
+});
+
 export declare const authType: string | undefined;
 Object.defineProperty(exports, "authType", {
     get() {

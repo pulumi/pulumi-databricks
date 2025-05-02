@@ -32,12 +32,12 @@ class SqlPermissionsArgs:
                  view: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a SqlPermissions resource.
-        :param pulumi.Input[builtins.bool] anonymous_function: If this access control for using anonymous function. Defaults to `false`.
+        :param pulumi.Input[builtins.bool] anonymous_function: If this access control for using an anonymous function. Defaults to `false`.
         :param pulumi.Input[builtins.bool] any_file: If this access control for reading/writing any file. Defaults to `false`.
         :param pulumi.Input[builtins.bool] catalog: If this access control for the entire catalog. Defaults to `false`.
-        :param pulumi.Input[builtins.str] database: Name of the database. Has default value of `default`.
-        :param pulumi.Input[builtins.str] table: Name of the table. Can be combined with `database`.
-        :param pulumi.Input[builtins.str] view: Name of the view. Can be combined with `database`.
+        :param pulumi.Input[builtins.str] database: Name of the database. Has a default value of `default`.
+        :param pulumi.Input[builtins.str] table: Name of the table. Can be combined with the `database`.
+        :param pulumi.Input[builtins.str] view: Name of the view. Can be combined with the `database`.
         """
         if anonymous_function is not None:
             pulumi.set(__self__, "anonymous_function", anonymous_function)
@@ -60,7 +60,7 @@ class SqlPermissionsArgs:
     @pulumi.getter(name="anonymousFunction")
     def anonymous_function(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        If this access control for using anonymous function. Defaults to `false`.
+        If this access control for using an anonymous function. Defaults to `false`.
         """
         return pulumi.get(self, "anonymous_function")
 
@@ -105,7 +105,7 @@ class SqlPermissionsArgs:
     @pulumi.getter
     def database(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the database. Has default value of `default`.
+        Name of the database. Has a default value of `default`.
         """
         return pulumi.get(self, "database")
 
@@ -126,7 +126,7 @@ class SqlPermissionsArgs:
     @pulumi.getter
     def table(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the table. Can be combined with `database`.
+        Name of the table. Can be combined with the `database`.
         """
         return pulumi.get(self, "table")
 
@@ -138,7 +138,7 @@ class SqlPermissionsArgs:
     @pulumi.getter
     def view(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the view. Can be combined with `database`.
+        Name of the view. Can be combined with the `database`.
         """
         return pulumi.get(self, "view")
 
@@ -160,12 +160,12 @@ class _SqlPermissionsState:
                  view: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering SqlPermissions resources.
-        :param pulumi.Input[builtins.bool] anonymous_function: If this access control for using anonymous function. Defaults to `false`.
+        :param pulumi.Input[builtins.bool] anonymous_function: If this access control for using an anonymous function. Defaults to `false`.
         :param pulumi.Input[builtins.bool] any_file: If this access control for reading/writing any file. Defaults to `false`.
         :param pulumi.Input[builtins.bool] catalog: If this access control for the entire catalog. Defaults to `false`.
-        :param pulumi.Input[builtins.str] database: Name of the database. Has default value of `default`.
-        :param pulumi.Input[builtins.str] table: Name of the table. Can be combined with `database`.
-        :param pulumi.Input[builtins.str] view: Name of the view. Can be combined with `database`.
+        :param pulumi.Input[builtins.str] database: Name of the database. Has a default value of `default`.
+        :param pulumi.Input[builtins.str] table: Name of the table. Can be combined with the `database`.
+        :param pulumi.Input[builtins.str] view: Name of the view. Can be combined with the `database`.
         """
         if anonymous_function is not None:
             pulumi.set(__self__, "anonymous_function", anonymous_function)
@@ -188,7 +188,7 @@ class _SqlPermissionsState:
     @pulumi.getter(name="anonymousFunction")
     def anonymous_function(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        If this access control for using anonymous function. Defaults to `false`.
+        If this access control for using an anonymous function. Defaults to `false`.
         """
         return pulumi.get(self, "anonymous_function")
 
@@ -233,7 +233,7 @@ class _SqlPermissionsState:
     @pulumi.getter
     def database(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the database. Has default value of `default`.
+        Name of the database. Has a default value of `default`.
         """
         return pulumi.get(self, "database")
 
@@ -254,7 +254,7 @@ class _SqlPermissionsState:
     @pulumi.getter
     def table(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the table. Can be combined with `database`.
+        Name of the table. Can be combined with the `database`.
         """
         return pulumi.get(self, "table")
 
@@ -266,7 +266,7 @@ class _SqlPermissionsState:
     @pulumi.getter
     def view(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the view. Can be combined with `database`.
+        Name of the view. Can be combined with the `database`.
         """
         return pulumi.get(self, "view")
 
@@ -293,9 +293,9 @@ class SqlPermissions(pulumi.CustomResource):
                  view: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        > Please switch to Grants with Unity Catalog to manage data access, which provides a better and faster way for managing data security. `Grants` resource *doesn't require a technical cluster to perform operations*. On workspaces with Unity Catalog enabled, you may run into errors such as `Error: cannot create sql permissions: cannot read current grants: For unity catalog, please specify the catalog name explicitly. E.g. SHOW GRANT ``your.address@email.com`` ON CATALOG main`. This happens if your `default_catalog_name` was set to a UC catalog instead of `hive_metastore`. The workaround is to re-assign the metastore again with the default catalog set to be `hive_metastore`. See databricks_metastore_assignment.
+        > Please switch to Grants with Unity Catalog to manage data access, which provides a better and faster way for managing data security. `Grants` resource *doesn't require a technical cluster to perform operations*. On workspaces with Unity Catalog enabled, you may run into errors such as `Error: cannot create sql permissions: cannot read current grants: For unity catalog, please specify the catalog name explicitly. E.g. SHOW GRANT ``your.address@email.com`` ON CATALOG main`. This happens if your `default_catalog_name` was set to a UC catalog instead of `hive_metastore`. The workaround is to re-assign the metastore again with the default catalog set to `hive_metastore`. See databricks_metastore_assignment.
 
-        This resource manages data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html). In order to enable Table Access control, you have to login to the workspace as administrator, go to `Admin Console`, pick `Access Control` tab, click on `Enable` button in `Table Access Control` section, and click `Confirm`. The security guarantees of table access control **will only be effective if cluster access control is also turned on**. Please make sure that no users can create clusters in your workspace and all Cluster have approximately the following configuration:
+        This resource manages data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html). In order to enable Table Access control, you have to login to the workspace as administrator, go to `Admin Console`, pick the `Access Control` tab, click on the `Enable` button in the `Table Access Control` section, and click `Confirm`. The security guarantees of table access control **will only be effective if cluster access control is also turned on**. Please make sure that no users can create clusters in your workspace and all Cluster have approximately the following configuration:
 
         ```python
         import pulumi
@@ -306,6 +306,8 @@ class SqlPermissions(pulumi.CustomResource):
             "spark.databricks.repl.allowedLanguages": "python,sql",
         })
         ```
+
+        > This resource can only be used with a workspace-level provider!
 
         It is required to define all permissions for a securable in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
 
@@ -353,7 +355,7 @@ class SqlPermissions(pulumi.CustomResource):
 
         The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
 
-        * `table/default.foo` - table `foo` in a `default` database. Database is always mandatory.
+        * `table/default.foo` - table `foo` in a `default` database. The `database` is always mandatory.
 
         * `view/bar.foo` - view `foo` in `bar` database.
 
@@ -373,12 +375,12 @@ class SqlPermissions(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] anonymous_function: If this access control for using anonymous function. Defaults to `false`.
+        :param pulumi.Input[builtins.bool] anonymous_function: If this access control for using an anonymous function. Defaults to `false`.
         :param pulumi.Input[builtins.bool] any_file: If this access control for reading/writing any file. Defaults to `false`.
         :param pulumi.Input[builtins.bool] catalog: If this access control for the entire catalog. Defaults to `false`.
-        :param pulumi.Input[builtins.str] database: Name of the database. Has default value of `default`.
-        :param pulumi.Input[builtins.str] table: Name of the table. Can be combined with `database`.
-        :param pulumi.Input[builtins.str] view: Name of the view. Can be combined with `database`.
+        :param pulumi.Input[builtins.str] database: Name of the database. Has a default value of `default`.
+        :param pulumi.Input[builtins.str] table: Name of the table. Can be combined with the `database`.
+        :param pulumi.Input[builtins.str] view: Name of the view. Can be combined with the `database`.
         """
         ...
     @overload
@@ -387,9 +389,9 @@ class SqlPermissions(pulumi.CustomResource):
                  args: Optional[SqlPermissionsArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > Please switch to Grants with Unity Catalog to manage data access, which provides a better and faster way for managing data security. `Grants` resource *doesn't require a technical cluster to perform operations*. On workspaces with Unity Catalog enabled, you may run into errors such as `Error: cannot create sql permissions: cannot read current grants: For unity catalog, please specify the catalog name explicitly. E.g. SHOW GRANT ``your.address@email.com`` ON CATALOG main`. This happens if your `default_catalog_name` was set to a UC catalog instead of `hive_metastore`. The workaround is to re-assign the metastore again with the default catalog set to be `hive_metastore`. See databricks_metastore_assignment.
+        > Please switch to Grants with Unity Catalog to manage data access, which provides a better and faster way for managing data security. `Grants` resource *doesn't require a technical cluster to perform operations*. On workspaces with Unity Catalog enabled, you may run into errors such as `Error: cannot create sql permissions: cannot read current grants: For unity catalog, please specify the catalog name explicitly. E.g. SHOW GRANT ``your.address@email.com`` ON CATALOG main`. This happens if your `default_catalog_name` was set to a UC catalog instead of `hive_metastore`. The workaround is to re-assign the metastore again with the default catalog set to `hive_metastore`. See databricks_metastore_assignment.
 
-        This resource manages data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html). In order to enable Table Access control, you have to login to the workspace as administrator, go to `Admin Console`, pick `Access Control` tab, click on `Enable` button in `Table Access Control` section, and click `Confirm`. The security guarantees of table access control **will only be effective if cluster access control is also turned on**. Please make sure that no users can create clusters in your workspace and all Cluster have approximately the following configuration:
+        This resource manages data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html). In order to enable Table Access control, you have to login to the workspace as administrator, go to `Admin Console`, pick the `Access Control` tab, click on the `Enable` button in the `Table Access Control` section, and click `Confirm`. The security guarantees of table access control **will only be effective if cluster access control is also turned on**. Please make sure that no users can create clusters in your workspace and all Cluster have approximately the following configuration:
 
         ```python
         import pulumi
@@ -400,6 +402,8 @@ class SqlPermissions(pulumi.CustomResource):
             "spark.databricks.repl.allowedLanguages": "python,sql",
         })
         ```
+
+        > This resource can only be used with a workspace-level provider!
 
         It is required to define all permissions for a securable in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
 
@@ -447,7 +451,7 @@ class SqlPermissions(pulumi.CustomResource):
 
         The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
 
-        * `table/default.foo` - table `foo` in a `default` database. Database is always mandatory.
+        * `table/default.foo` - table `foo` in a `default` database. The `database` is always mandatory.
 
         * `view/bar.foo` - view `foo` in `bar` database.
 
@@ -530,12 +534,12 @@ class SqlPermissions(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] anonymous_function: If this access control for using anonymous function. Defaults to `false`.
+        :param pulumi.Input[builtins.bool] anonymous_function: If this access control for using an anonymous function. Defaults to `false`.
         :param pulumi.Input[builtins.bool] any_file: If this access control for reading/writing any file. Defaults to `false`.
         :param pulumi.Input[builtins.bool] catalog: If this access control for the entire catalog. Defaults to `false`.
-        :param pulumi.Input[builtins.str] database: Name of the database. Has default value of `default`.
-        :param pulumi.Input[builtins.str] table: Name of the table. Can be combined with `database`.
-        :param pulumi.Input[builtins.str] view: Name of the view. Can be combined with `database`.
+        :param pulumi.Input[builtins.str] database: Name of the database. Has a default value of `default`.
+        :param pulumi.Input[builtins.str] table: Name of the table. Can be combined with the `database`.
+        :param pulumi.Input[builtins.str] view: Name of the view. Can be combined with the `database`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -555,7 +559,7 @@ class SqlPermissions(pulumi.CustomResource):
     @pulumi.getter(name="anonymousFunction")
     def anonymous_function(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        If this access control for using anonymous function. Defaults to `false`.
+        If this access control for using an anonymous function. Defaults to `false`.
         """
         return pulumi.get(self, "anonymous_function")
 
@@ -584,7 +588,7 @@ class SqlPermissions(pulumi.CustomResource):
     @pulumi.getter
     def database(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Name of the database. Has default value of `default`.
+        Name of the database. Has a default value of `default`.
         """
         return pulumi.get(self, "database")
 
@@ -597,7 +601,7 @@ class SqlPermissions(pulumi.CustomResource):
     @pulumi.getter
     def table(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Name of the table. Can be combined with `database`.
+        Name of the table. Can be combined with the `database`.
         """
         return pulumi.get(self, "table")
 
@@ -605,7 +609,7 @@ class SqlPermissions(pulumi.CustomResource):
     @pulumi.getter
     def view(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Name of the view. Can be combined with `database`.
+        Name of the view. Can be combined with the `database`.
         """
         return pulumi.get(self, "view")
 

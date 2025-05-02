@@ -46,6 +46,8 @@ import javax.annotation.Nullable;
 /**
  * The `databricks.Job` resource allows you to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
  * 
+ * &gt; This resource can only be used with a workspace-level provider!
+ * 
  * ## Example Usage
  * 
  * &gt; In Pulumi configuration, it is recommended to define tasks in alphabetical order of their `task_key` arguments, so that you get consistent and readable diff. Whenever tasks are added or removed, or `task_key` is renamed, you&#39;ll observe a change in the majority of tasks. It&#39;s related to the fact that the current version of the provider treats `task` blocks as an ordered list. Alternatively, `task` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.

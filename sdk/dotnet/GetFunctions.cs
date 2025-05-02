@@ -12,9 +12,9 @@ namespace Pulumi.Databricks
     public static class GetFunctions
     {
         /// <summary>
-        /// &gt; This data source can only be used with a workspace-level provider!
-        /// 
         /// Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -51,9 +51,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFunctionsResult>("databricks:index/getFunctions:getFunctions", args ?? new GetFunctionsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; This data source can only be used with a workspace-level provider!
-        /// 
         /// Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -90,9 +90,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetFunctionsResult>("databricks:index/getFunctions:getFunctions", args ?? new GetFunctionsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; This data source can only be used with a workspace-level provider!
-        /// 
         /// Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 

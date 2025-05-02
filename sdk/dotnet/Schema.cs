@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; This resource can only be used with a workspace-level provider!
-    /// 
     /// Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
+    /// 
+    /// &gt; This resource can only be used with a workspace-level provider!
     /// 
     /// A `databricks.Schema` is contained within databricks.Catalog and can contain tables &amp; views.
     /// 

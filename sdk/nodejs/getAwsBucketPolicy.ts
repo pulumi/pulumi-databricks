@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
  *
+ * > This data source can be used with an account or workspace-level provider.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -89,6 +91,8 @@ export interface GetAwsBucketPolicyResult {
 }
 /**
  * This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+ *
+ * > This data source can be used with an account or workspace-level provider.
  *
  * ## Example Usage
  *

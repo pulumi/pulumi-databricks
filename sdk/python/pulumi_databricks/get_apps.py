@@ -62,6 +62,8 @@ class AwaitableGetAppsResult(GetAppsResult):
 
 def get_apps(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppsResult:
     """
+    > This data source can only be used with a workspace-level provider!
+
     > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
 
     [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
@@ -96,6 +98,8 @@ def get_apps(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppsRes
         id=pulumi.get(__ret__, 'id'))
 def get_apps_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppsResult]:
     """
+    > This data source can only be used with a workspace-level provider!
+
     > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
 
     [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.

@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-//
 // Retrieves `applicationIds` of all ServicePrincipal based on their `displayName`
+//
+// > This data source can be used with an account or workspace-level provider.
 func GetServicePrincipals(ctx *pulumi.Context, args *GetServicePrincipalsArgs, opts ...pulumi.InvokeOption) (*GetServicePrincipalsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServicePrincipalsResult

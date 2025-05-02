@@ -14,8 +14,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// This data source can be used to fetch the list of budget policies. 
         /// 
-        /// &gt; **Note** This data source can only be used with an account-level provider!
-        /// 
+        /// &gt; This data source can only be used with an account-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -40,8 +39,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// This data source can be used to fetch the list of budget policies. 
         /// 
-        /// &gt; **Note** This data source can only be used with an account-level provider!
-        /// 
+        /// &gt; This data source can only be used with an account-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -66,8 +64,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// This data source can be used to fetch the list of budget policies. 
         /// 
-        /// &gt; **Note** This data source can only be used with an account-level provider!
-        /// 
+        /// &gt; This data source can only be used with an account-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -95,22 +92,19 @@ namespace Pulumi.Databricks
     public sealed class GetBudgetPoliciesResult
     {
         /// <summary>
-        /// The list of budget policy.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetBudgetPoliciesBudgetPolicyResult> BudgetPolicies;
-        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetBudgetPoliciesPolicyResult> Policies;
 
         [OutputConstructor]
         private GetBudgetPoliciesResult(
-            ImmutableArray<Outputs.GetBudgetPoliciesBudgetPolicyResult> budgetPolicies,
+            string id,
 
-            string id)
+            ImmutableArray<Outputs.GetBudgetPoliciesPolicyResult> policies)
         {
-            BudgetPolicies = budgetPolicies;
             Id = id;
+            Policies = policies;
         }
     }
 }

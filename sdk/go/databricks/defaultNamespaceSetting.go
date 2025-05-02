@@ -12,9 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `DefaultNamespaceSetting` resource allows you to operate the setting configuration for the default namespace in the Databricks workspace.
+//
 // > This resource can only be used with a workspace-level provider!
 //
-// The `DefaultNamespaceSetting` resource allows you to operate the setting configuration for the default namespace in the Databricks workspace.
 // Setting the default catalog for the workspace determines the catalog that is used when queries do not reference
 // a fully qualified 3 level name. For example, if the default catalog is set to 'retail_prod' then a query
 // 'SELECT * FROM myTable' would reference the object 'retail_prod.default.myTable'

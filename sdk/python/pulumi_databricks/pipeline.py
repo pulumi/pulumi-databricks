@@ -1090,6 +1090,8 @@ class Pipeline(pulumi.CustomResource):
         """
         Use `Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
 
+        > This resource can only be used with a workspace-level provider!
+
         ## Example Usage
 
         ```python
@@ -1200,6 +1202,8 @@ class Pipeline(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Use `Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+
+        > This resource can only be used with a workspace-level provider!
 
         ## Example Usage
 

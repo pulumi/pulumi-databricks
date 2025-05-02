@@ -21,6 +21,7 @@ type Provider struct {
 	AccountId                  pulumi.StringPtrOutput `pulumi:"accountId"`
 	ActionsIdTokenRequestToken pulumi.StringPtrOutput `pulumi:"actionsIdTokenRequestToken"`
 	ActionsIdTokenRequestUrl   pulumi.StringPtrOutput `pulumi:"actionsIdTokenRequestUrl"`
+	Audience                   pulumi.StringPtrOutput `pulumi:"audience"`
 	AuthType                   pulumi.StringPtrOutput `pulumi:"authType"`
 	AzureClientId              pulumi.StringPtrOutput `pulumi:"azureClientId"`
 	AzureClientSecret          pulumi.StringPtrOutput `pulumi:"azureClientSecret"`
@@ -92,6 +93,7 @@ type providerArgs struct {
 	AccountId                  *string `pulumi:"accountId"`
 	ActionsIdTokenRequestToken *string `pulumi:"actionsIdTokenRequestToken"`
 	ActionsIdTokenRequestUrl   *string `pulumi:"actionsIdTokenRequestUrl"`
+	Audience                   *string `pulumi:"audience"`
 	AuthType                   *string `pulumi:"authType"`
 	AzureClientId              *string `pulumi:"azureClientId"`
 	AzureClientSecret          *string `pulumi:"azureClientSecret"`
@@ -128,6 +130,7 @@ type ProviderArgs struct {
 	AccountId                  pulumi.StringPtrInput
 	ActionsIdTokenRequestToken pulumi.StringPtrInput
 	ActionsIdTokenRequestUrl   pulumi.StringPtrInput
+	Audience                   pulumi.StringPtrInput
 	AuthType                   pulumi.StringPtrInput
 	AzureClientId              pulumi.StringPtrInput
 	AzureClientSecret          pulumi.StringPtrInput
@@ -206,6 +209,10 @@ func (o ProviderOutput) ActionsIdTokenRequestToken() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) ActionsIdTokenRequestUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ActionsIdTokenRequestUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Audience }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) AuthType() pulumi.StringPtrOutput {

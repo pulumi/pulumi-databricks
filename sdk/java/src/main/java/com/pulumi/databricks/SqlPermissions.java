@@ -18,9 +18,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; Please switch to databricks.Grants with Unity Catalog to manage data access, which provides a better and faster way for managing data security. `databricks.Grants` resource *doesn&#39;t require a technical cluster to perform operations*. On workspaces with Unity Catalog enabled, you may run into errors such as `Error: cannot create sql permissions: cannot read current grants: For unity catalog, please specify the catalog name explicitly. E.g. SHOW GRANT ``your.address{@literal @}email.com`` ON CATALOG main`. This happens if your `default_catalog_name` was set to a UC catalog instead of `hive_metastore`. The workaround is to re-assign the metastore again with the default catalog set to be `hive_metastore`. See databricks_metastore_assignment.
+ * &gt; Please switch to databricks.Grants with Unity Catalog to manage data access, which provides a better and faster way for managing data security. `databricks.Grants` resource *doesn&#39;t require a technical cluster to perform operations*. On workspaces with Unity Catalog enabled, you may run into errors such as `Error: cannot create sql permissions: cannot read current grants: For unity catalog, please specify the catalog name explicitly. E.g. SHOW GRANT ``your.address{@literal @}email.com`` ON CATALOG main`. This happens if your `default_catalog_name` was set to a UC catalog instead of `hive_metastore`. The workaround is to re-assign the metastore again with the default catalog set to `hive_metastore`. See databricks_metastore_assignment.
  * 
- * This resource manages data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html). In order to enable Table Access control, you have to login to the workspace as administrator, go to `Admin Console`, pick `Access Control` tab, click on `Enable` button in `Table Access Control` section, and click `Confirm`. The security guarantees of table access control **will only be effective if cluster access control is also turned on**. Please make sure that no users can create clusters in your workspace and all databricks.Cluster have approximately the following configuration:
+ * This resource manages data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html). In order to enable Table Access control, you have to login to the workspace as administrator, go to `Admin Console`, pick the `Access Control` tab, click on the `Enable` button in the `Table Access Control` section, and click `Confirm`. The security guarantees of table access control **will only be effective if cluster access control is also turned on**. Please make sure that no users can create clusters in your workspace and all databricks.Cluster have approximately the following configuration:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -57,6 +57,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * &gt; This resource can only be used with a workspace-level provider!
  * 
  * It is required to define all permissions for a securable in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
  * 
@@ -128,7 +130,7 @@ import javax.annotation.Nullable;
  * 
  * The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
  * 
- * * `table/default.foo` - table `foo` in a `default` database. Database is always mandatory.
+ * * `table/default.foo` - table `foo` in a `default` database. The `database` is always mandatory.
  * 
  * * `view/bar.foo` - view `foo` in `bar` database.
  * 
@@ -150,14 +152,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/sqlPermissions:SqlPermissions")
 public class SqlPermissions extends com.pulumi.resources.CustomResource {
     /**
-     * If this access control for using anonymous function. Defaults to `false`.
+     * If this access control for using an anonymous function. Defaults to `false`.
      * 
      */
     @Export(name="anonymousFunction", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> anonymousFunction;
 
     /**
-     * @return If this access control for using anonymous function. Defaults to `false`.
+     * @return If this access control for using an anonymous function. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> anonymousFunction() {
@@ -198,14 +200,14 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
-     * Name of the database. Has default value of `default`.
+     * Name of the database. Has a default value of `default`.
      * 
      */
     @Export(name="database", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> database;
 
     /**
-     * @return Name of the database. Has default value of `default`.
+     * @return Name of the database. Has a default value of `default`.
      * 
      */
     public Output<Optional<String>> database() {
@@ -218,28 +220,28 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.privilegeAssignments);
     }
     /**
-     * Name of the table. Can be combined with `database`.
+     * Name of the table. Can be combined with the `database`.
      * 
      */
     @Export(name="table", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> table;
 
     /**
-     * @return Name of the table. Can be combined with `database`.
+     * @return Name of the table. Can be combined with the `database`.
      * 
      */
     public Output<Optional<String>> table() {
         return Codegen.optional(this.table);
     }
     /**
-     * Name of the view. Can be combined with `database`.
+     * Name of the view. Can be combined with the `database`.
      * 
      */
     @Export(name="view", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> view;
 
     /**
-     * @return Name of the view. Can be combined with `database`.
+     * @return Name of the view. Can be combined with the `database`.
      * 
      */
     public Output<Optional<String>> view() {

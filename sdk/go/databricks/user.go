@@ -14,6 +14,8 @@ import (
 
 // This resource allows you to manage [users in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/users.html), [Databricks Account Console](https://accounts.cloud.databricks.com/) or [Azure Databricks Account Console](https://accounts.azuredatabricks.net). You can also associate Databricks users to databricks_group. Upon user creation the user will receive a welcome email. You can also get information about caller identity using getCurrentUser data source.
 //
+// > This resource can be used with an account or workspace-level provider.
+//
 // > To assign account level users to workspace use databricks_mws_permission_assignment.
 //
 // > Entitlements, like, `allowClusterCreate`, `allowInstancePoolCreate`, `databricksSqlAccess`, `workspaceAccess` applicable only for workspace-level users.  Use Entitlements resource to assign entitlements inside a workspace to account-level users.

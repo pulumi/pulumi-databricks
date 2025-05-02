@@ -12,9 +12,9 @@ namespace Pulumi.Databricks
     public static class GetMwsNetworkConnectivityConfig
     {
         /// <summary>
-        /// &gt; **Note** This data source can only be used with an account-level provider!
-        /// 
         /// Retrieves information about databricks.MwsNetworkConnectivityConfig in Databricks Account.
+        /// 
+        /// &gt; This data source can only be used with an account-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -51,9 +51,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMwsNetworkConnectivityConfigResult>("databricks:index/getMwsNetworkConnectivityConfig:getMwsNetworkConnectivityConfig", args ?? new GetMwsNetworkConnectivityConfigArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This data source can only be used with an account-level provider!
-        /// 
         /// Retrieves information about databricks.MwsNetworkConnectivityConfig in Databricks Account.
+        /// 
+        /// &gt; This data source can only be used with an account-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -90,9 +90,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetMwsNetworkConnectivityConfigResult>("databricks:index/getMwsNetworkConnectivityConfig:getMwsNetworkConnectivityConfig", args ?? new GetMwsNetworkConnectivityConfigInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This data source can only be used with an account-level provider!
-        /// 
         /// Retrieves information about databricks.MwsNetworkConnectivityConfig in Databricks Account.
+        /// 
+        /// &gt; This data source can only be used with an account-level provider!
         /// 
         /// ## Example Usage
         /// 

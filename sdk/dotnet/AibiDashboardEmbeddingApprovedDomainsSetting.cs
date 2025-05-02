@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; This resource can only be used with a workspace-level provider!
-    /// 
     /// The `databricks.AibiDashboardEmbeddingApprovedDomainsSetting` resource allows you to specify the list of domains allowed for  [embedding of AI/BI Dashboards](https://learn.microsoft.com/en-us/azure/databricks/dashboards/admin/#manage-dashboard-embedding) into other sites.
+    /// 
+    /// &gt; This resource can only be used with a workspace-level provider!
     /// 
     /// ## Example Usage
     /// 

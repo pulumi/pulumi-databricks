@@ -12,9 +12,9 @@ namespace Pulumi.Databricks
     public static class GetMlflowModels
     {
         /// <summary>
-        /// &gt; **Note** This data source could be only used with workspace-level provider!
-        /// 
         /// Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -39,9 +39,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMlflowModelsResult>("databricks:index/getMlflowModels:getMlflowModels", args ?? new GetMlflowModelsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This data source could be only used with workspace-level provider!
-        /// 
         /// Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -66,9 +66,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetMlflowModelsResult>("databricks:index/getMlflowModels:getMlflowModels", args ?? new GetMlflowModelsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This data source could be only used with workspace-level provider!
-        /// 
         /// Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 

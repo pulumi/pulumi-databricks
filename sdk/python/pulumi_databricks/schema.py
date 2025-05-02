@@ -331,9 +331,9 @@ class Schema(pulumi.CustomResource):
                  storage_root: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        > This resource can only be used with a workspace-level provider!
-
         Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
+
+        > This resource can only be used with a workspace-level provider!
 
         A `Schema` is contained within Catalog and can contain tables & views.
 
@@ -394,9 +394,9 @@ class Schema(pulumi.CustomResource):
                  args: SchemaArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > This resource can only be used with a workspace-level provider!
-
         Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
+
+        > This resource can only be used with a workspace-level provider!
 
         A `Schema` is contained within Catalog and can contain tables & views.
 

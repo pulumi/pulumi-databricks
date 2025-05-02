@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * This data source can be used to get a single budget policy.
  *
- * > **Note** This data source can only be used with an account-level provider!
+ * > This data source can only be used with an account-level provider!
  */
 export function getBudgetPolicy(args?: GetBudgetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetBudgetPolicyResult> {
     args = args || {};
@@ -55,7 +55,7 @@ export interface GetBudgetPolicyResult {
 /**
  * This data source can be used to get a single budget policy.
  *
- * > **Note** This data source can only be used with an account-level provider!
+ * > This data source can only be used with an account-level provider!
  */
 export function getBudgetPolicyOutput(args?: GetBudgetPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBudgetPolicyResult> {
     args = args || {};

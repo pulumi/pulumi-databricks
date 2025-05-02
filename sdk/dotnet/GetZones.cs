@@ -12,9 +12,9 @@ namespace Pulumi.Databricks
     public static class GetZones
     {
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -35,9 +35,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("databricks:index/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -58,9 +58,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("databricks:index/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 

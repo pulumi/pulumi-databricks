@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
+    /// Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
+    /// 
+    /// &gt; This resource can only be used with an account-level provider!
     /// 
     /// &gt; This feature is only available in Azure.
-    /// 
-    /// Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
     /// 
     /// ## Example Usage
     /// 
@@ -91,6 +91,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("deactivatedAt")]
         public Output<int?> DeactivatedAt { get; private set; } = null!;
+
+        [Output("domainNames")]
+        public Output<ImmutableArray<string>> DomainNames { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
@@ -203,6 +206,14 @@ namespace Pulumi.Databricks
         [Input("deactivatedAt")]
         public Input<int>? DeactivatedAt { get; set; }
 
+        [Input("domainNames")]
+        private InputList<string>? _domainNames;
+        public InputList<string> DomainNames
+        {
+            get => _domainNames ?? (_domainNames = new InputList<string>());
+            set => _domainNames = value;
+        }
+
         /// <summary>
         /// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
         /// </summary>
@@ -275,6 +286,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("deactivatedAt")]
         public Input<int>? DeactivatedAt { get; set; }
+
+        [Input("domainNames")]
+        private InputList<string>? _domainNames;
+        public InputList<string> DomainNames
+        {
+            get => _domainNames ?? (_domainNames = new InputList<string>());
+            set => _domainNames = value;
+        }
 
         /// <summary>
         /// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"

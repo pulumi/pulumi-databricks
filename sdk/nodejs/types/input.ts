@@ -99,6 +99,56 @@ export interface AlertConditionThresholdValue {
     stringValue?: pulumi.Input<string>;
 }
 
+export interface AlertV2Evaluation {
+    comparisonOperator?: pulumi.Input<string>;
+    emptyResultState?: pulumi.Input<string>;
+    lastEvaluatedAt?: pulumi.Input<string>;
+    notification?: pulumi.Input<inputs.AlertV2EvaluationNotification>;
+    source?: pulumi.Input<inputs.AlertV2EvaluationSource>;
+    state?: pulumi.Input<string>;
+    threshold?: pulumi.Input<inputs.AlertV2EvaluationThreshold>;
+}
+
+export interface AlertV2EvaluationNotification {
+    notifyOnOk?: pulumi.Input<boolean>;
+    retriggerSeconds?: pulumi.Input<number>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.AlertV2EvaluationNotificationSubscription>[]>;
+}
+
+export interface AlertV2EvaluationNotificationSubscription {
+    destinationId?: pulumi.Input<string>;
+    userEmail?: pulumi.Input<string>;
+}
+
+export interface AlertV2EvaluationSource {
+    aggregation?: pulumi.Input<string>;
+    display?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+}
+
+export interface AlertV2EvaluationThreshold {
+    column?: pulumi.Input<inputs.AlertV2EvaluationThresholdColumn>;
+    value?: pulumi.Input<inputs.AlertV2EvaluationThresholdValue>;
+}
+
+export interface AlertV2EvaluationThresholdColumn {
+    aggregation?: pulumi.Input<string>;
+    display?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+}
+
+export interface AlertV2EvaluationThresholdValue {
+    boolValue?: pulumi.Input<boolean>;
+    doubleValue?: pulumi.Input<number>;
+    stringValue?: pulumi.Input<string>;
+}
+
+export interface AlertV2Schedule {
+    pauseStatus?: pulumi.Input<string>;
+    quartzCronSchedule?: pulumi.Input<string>;
+    timezoneId?: pulumi.Input<string>;
+}
+
 export interface AppActiveDeployment {
     /**
      * The creation time of the app.
@@ -936,6 +986,106 @@ export interface ExternalLocationEncryptionDetails {
 export interface ExternalLocationEncryptionDetailsSseEncryptionDetails {
     algorithm?: pulumi.Input<string>;
     awsKmsKeyArn?: pulumi.Input<string>;
+}
+
+export interface GetAlertV2Evaluation {
+    comparisonOperator?: string;
+    emptyResultState?: string;
+    lastEvaluatedAt?: string;
+    notification?: inputs.GetAlertV2EvaluationNotification;
+    source?: inputs.GetAlertV2EvaluationSource;
+    state?: string;
+    threshold?: inputs.GetAlertV2EvaluationThreshold;
+}
+
+export interface GetAlertV2EvaluationArgs {
+    comparisonOperator?: pulumi.Input<string>;
+    emptyResultState?: pulumi.Input<string>;
+    lastEvaluatedAt?: pulumi.Input<string>;
+    notification?: pulumi.Input<inputs.GetAlertV2EvaluationNotificationArgs>;
+    source?: pulumi.Input<inputs.GetAlertV2EvaluationSourceArgs>;
+    state?: pulumi.Input<string>;
+    threshold?: pulumi.Input<inputs.GetAlertV2EvaluationThresholdArgs>;
+}
+
+export interface GetAlertV2EvaluationNotification {
+    notifyOnOk?: boolean;
+    retriggerSeconds?: number;
+    subscriptions?: inputs.GetAlertV2EvaluationNotificationSubscription[];
+}
+
+export interface GetAlertV2EvaluationNotificationArgs {
+    notifyOnOk?: pulumi.Input<boolean>;
+    retriggerSeconds?: pulumi.Input<number>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.GetAlertV2EvaluationNotificationSubscriptionArgs>[]>;
+}
+
+export interface GetAlertV2EvaluationNotificationSubscription {
+    destinationId?: string;
+    userEmail?: string;
+}
+
+export interface GetAlertV2EvaluationNotificationSubscriptionArgs {
+    destinationId?: pulumi.Input<string>;
+    userEmail?: pulumi.Input<string>;
+}
+
+export interface GetAlertV2EvaluationSource {
+    aggregation?: string;
+    display?: string;
+    name?: string;
+}
+
+export interface GetAlertV2EvaluationSourceArgs {
+    aggregation?: pulumi.Input<string>;
+    display?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+}
+
+export interface GetAlertV2EvaluationThreshold {
+    column?: inputs.GetAlertV2EvaluationThresholdColumn;
+    value?: inputs.GetAlertV2EvaluationThresholdValue;
+}
+
+export interface GetAlertV2EvaluationThresholdArgs {
+    column?: pulumi.Input<inputs.GetAlertV2EvaluationThresholdColumnArgs>;
+    value?: pulumi.Input<inputs.GetAlertV2EvaluationThresholdValueArgs>;
+}
+
+export interface GetAlertV2EvaluationThresholdColumn {
+    aggregation?: string;
+    display?: string;
+    name?: string;
+}
+
+export interface GetAlertV2EvaluationThresholdColumnArgs {
+    aggregation?: pulumi.Input<string>;
+    display?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+}
+
+export interface GetAlertV2EvaluationThresholdValue {
+    boolValue?: boolean;
+    doubleValue?: number;
+    stringValue?: string;
+}
+
+export interface GetAlertV2EvaluationThresholdValueArgs {
+    boolValue?: pulumi.Input<boolean>;
+    doubleValue?: pulumi.Input<number>;
+    stringValue?: pulumi.Input<string>;
+}
+
+export interface GetAlertV2Schedule {
+    pauseStatus?: string;
+    quartzCronSchedule?: string;
+    timezoneId?: string;
+}
+
+export interface GetAlertV2ScheduleArgs {
+    pauseStatus?: pulumi.Input<string>;
+    quartzCronSchedule?: pulumi.Input<string>;
+    timezoneId?: pulumi.Input<string>;
 }
 
 export interface GetBudgetPolicyCustomTag {
@@ -6461,6 +6611,7 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriv
      * Time in epoch milliseconds when this object was deactivated.
      */
     deactivatedAt?: number;
+    domainNames?: string[];
     /**
      * The name of the Azure private endpoint resource.
      */
@@ -6504,6 +6655,7 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriv
      * Time in epoch milliseconds when this object was deactivated.
      */
     deactivatedAt?: pulumi.Input<number>;
+    domainNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the Azure private endpoint resource.
      */
@@ -12133,6 +12285,7 @@ export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivate
     creationTime?: pulumi.Input<number>;
     deactivated?: pulumi.Input<boolean>;
     deactivatedAt?: pulumi.Input<number>;
+    domainNames?: pulumi.Input<pulumi.Input<string>[]>;
     endpointName?: pulumi.Input<string>;
     groupId?: pulumi.Input<string>;
     /**
@@ -12157,13 +12310,13 @@ export interface MwsNetworksGcpNetworkInfo {
     /**
      * The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
      *
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
      * The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
      *
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -12230,11 +12383,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;
@@ -13249,6 +13402,33 @@ export interface SqlPermissionsPrivilegeAssignment {
      * `displayName` for a databricks.Group or databricks_user, `applicationId` for a databricks_service_principal.
      */
     principal: pulumi.Input<string>;
+    /**
+     * set of available privilege names in upper case.
+     *
+     *
+     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+     *
+     *
+     * * `SELECT` - gives read access to an object.
+     * * `SELECT` - gives read access to an object.
+     * * `CREATE` - gives the ability to create an object (for example, a table in a database).
+     * * `CREATE` - gives the ability to create an object (for example, a table in a database).
+     * * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+     * * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+     * * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+     * * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+     * * `READ_METADATA` - gives the ability to view an object and its metadata.
+     * * `READ_METADATA` - gives the ability to view an object and its metadata.
+     * * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+     * * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+     * * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+     * * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+     *
+     *
+     * > Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+     * > Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+     */
     privileges: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -13540,6 +13720,11 @@ export interface TableColumn {
     typePrecision?: pulumi.Input<number>;
     typeScale?: pulumi.Input<number>;
     typeText: pulumi.Input<string>;
+}
+
+export interface VectorSearchEndpointCustomTag {
+    key: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface VectorSearchEndpointEndpointStatus {

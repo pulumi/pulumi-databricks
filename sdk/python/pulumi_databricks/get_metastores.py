@@ -65,11 +65,11 @@ class AwaitableGetMetastoresResult(GetMetastoresResult):
 def get_metastores(ids: Optional[Mapping[str, builtins.str]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMetastoresResult:
     """
-    > **Note** This data source can only be used with an account-level provider!
-
     Retrieves a mapping of name to id of Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
 
-    > **Note** `account_id` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users & service principals with account admin status
+    > This data source can only be used with an account-level provider!
+
+    > Data resource will error in case of metastores with duplicate names.
 
     ## Example Usage
 
@@ -105,11 +105,11 @@ def get_metastores(ids: Optional[Mapping[str, builtins.str]] = None,
 def get_metastores_output(ids: Optional[pulumi.Input[Optional[Mapping[str, builtins.str]]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetastoresResult]:
     """
-    > **Note** This data source can only be used with an account-level provider!
-
     Retrieves a mapping of name to id of Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
 
-    > **Note** `account_id` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users & service principals with account admin status
+    > This data source can only be used with an account-level provider!
+
+    > Data resource will error in case of metastores with duplicate names.
 
     ## Example Usage
 

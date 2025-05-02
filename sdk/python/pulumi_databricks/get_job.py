@@ -101,9 +101,9 @@ def get_job(id: Optional[builtins.str] = None,
             name: Optional[builtins.str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Retrieves the settings of Job by name or by id. Complements the feature of the get_jobs data source.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
@@ -151,9 +151,9 @@ def get_job_output(id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                    name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetJobResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Retrieves the settings of Job by name or by id. Complements the feature of the get_jobs data source.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

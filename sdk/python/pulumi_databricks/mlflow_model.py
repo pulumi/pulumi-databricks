@@ -158,6 +158,8 @@ class MlflowModel(pulumi.CustomResource):
         """
         This resource allows you to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
 
+        > This resource can only be used with a workspace-level provider!
+
         > This documentation covers the Workspace Model Registry. Databricks recommends using Models in Unity Catalog. Models in Unity Catalog provides centralized model governance, cross-workspace access, lineage, and deployment.
 
         ## Example Usage
@@ -222,6 +224,8 @@ class MlflowModel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
+
+        > This resource can only be used with a workspace-level provider!
 
         > This documentation covers the Workspace Model Registry. Databricks recommends using Models in Unity Catalog. Models in Unity Catalog provides centralized model governance, cross-workspace access, lineage, and deployment.
 

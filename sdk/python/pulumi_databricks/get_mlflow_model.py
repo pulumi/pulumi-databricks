@@ -132,9 +132,9 @@ def get_mlflow_model(description: Optional[builtins.str] = None,
                      user_id: Optional[builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMlflowModelResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Retrieves the settings of MlflowModel by name.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
@@ -211,9 +211,9 @@ def get_mlflow_model_output(description: Optional[pulumi.Input[Optional[builtins
                             user_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMlflowModelResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Retrieves the settings of MlflowModel by name.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

@@ -11,11 +11,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class GetBudgetPoliciesBudgetPolicyCustomTag {
+public final class GetBudgetPoliciesPolicyCustomTag {
     private String key;
     private @Nullable String value;
 
-    private GetBudgetPoliciesBudgetPolicyCustomTag() {}
+    private GetBudgetPoliciesPolicyCustomTag() {}
     public String key() {
         return this.key;
     }
@@ -27,7 +27,7 @@ public final class GetBudgetPoliciesBudgetPolicyCustomTag {
         return new Builder();
     }
 
-    public static Builder builder(GetBudgetPoliciesBudgetPolicyCustomTag defaults) {
+    public static Builder builder(GetBudgetPoliciesPolicyCustomTag defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -35,7 +35,7 @@ public final class GetBudgetPoliciesBudgetPolicyCustomTag {
         private String key;
         private @Nullable String value;
         public Builder() {}
-        public Builder(GetBudgetPoliciesBudgetPolicyCustomTag defaults) {
+        public Builder(GetBudgetPoliciesPolicyCustomTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
@@ -44,7 +44,7 @@ public final class GetBudgetPoliciesBudgetPolicyCustomTag {
         @CustomType.Setter
         public Builder key(String key) {
             if (key == null) {
-              throw new MissingRequiredPropertyException("GetBudgetPoliciesBudgetPolicyCustomTag", "key");
+              throw new MissingRequiredPropertyException("GetBudgetPoliciesPolicyCustomTag", "key");
             }
             this.key = key;
             return this;
@@ -55,8 +55,8 @@ public final class GetBudgetPoliciesBudgetPolicyCustomTag {
             this.value = value;
             return this;
         }
-        public GetBudgetPoliciesBudgetPolicyCustomTag build() {
-            final var _resultValue = new GetBudgetPoliciesBudgetPolicyCustomTag();
+        public GetBudgetPoliciesPolicyCustomTag build() {
+            final var _resultValue = new GetBudgetPoliciesPolicyCustomTag();
             _resultValue.key = key;
             _resultValue.value = value;
             return _resultValue;

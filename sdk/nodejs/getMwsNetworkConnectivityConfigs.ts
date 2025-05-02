@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** This data source can only be used with an account-level provider!
- *
  * Lists all databricks.MwsNetworkConnectivityConfig in Databricks Account.
+ *
+ * > This data source can only be used with an account-level provider!
  *
  * ## Example Usage
  *
@@ -78,9 +78,9 @@ export interface GetMwsNetworkConnectivityConfigsResult {
     readonly region?: string;
 }
 /**
- * > **Note** This data source can only be used with an account-level provider!
- *
  * Lists all databricks.MwsNetworkConnectivityConfig in Databricks Account.
+ *
+ * > This data source can only be used with an account-level provider!
  *
  * ## Example Usage
  *

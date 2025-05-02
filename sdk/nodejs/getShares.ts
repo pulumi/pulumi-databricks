@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
  *
+ * > This data source can only be used with a workspace-level provider!
+ *
  * ## Example Usage
  *
  * Getting all existing shares in the metastore
@@ -60,6 +62,8 @@ export interface GetSharesResult {
 }
 /**
  * Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *

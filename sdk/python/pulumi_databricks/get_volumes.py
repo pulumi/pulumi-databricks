@@ -85,9 +85,9 @@ def get_volumes(catalog_name: Optional[builtins.str] = None,
                 schema_name: Optional[builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumesResult:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
     Retrieves a list of Volume ids (full names), that were created by Pulumi or manually.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Plugin Framework Migration
 
@@ -136,9 +136,9 @@ def get_volumes_output(catalog_name: Optional[pulumi.Input[builtins.str]] = None
                        schema_name: Optional[pulumi.Input[builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumesResult]:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
     Retrieves a list of Volume ids (full names), that were created by Pulumi or manually.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Plugin Framework Migration
 

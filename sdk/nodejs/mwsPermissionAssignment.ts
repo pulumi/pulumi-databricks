@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * These resources are invoked in the account context. Permission Assignment Account API endpoints are restricted to account admins. Provider must have `accountId` attribute configured. Account Id that could be found in the top right corner of Accounts Console
+ * This resource is used to assign account-level users, service principals and groups to a Databricks workspace.
+ *
+ * > This resource can only be used with an account-level provider!
  *
  * ## Example Usage
  *

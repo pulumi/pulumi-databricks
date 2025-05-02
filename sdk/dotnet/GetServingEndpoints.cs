@@ -12,9 +12,9 @@ namespace Pulumi.Databricks
     public static class GetServingEndpoints
     {
         /// <summary>
-        /// &gt; This resource can only be used with a workspace-level provider!
-        /// 
         /// This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -68,9 +68,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServingEndpointsResult>("databricks:index/getServingEndpoints:getServingEndpoints", args ?? new GetServingEndpointsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; This resource can only be used with a workspace-level provider!
-        /// 
         /// This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -124,9 +124,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetServingEndpointsResult>("databricks:index/getServingEndpoints:getServingEndpoints", args ?? new GetServingEndpointsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; This resource can only be used with a workspace-level provider!
-        /// 
         /// This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 

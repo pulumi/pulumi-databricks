@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
 /**
  * Use `databricks.Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
  * 
+ * &gt; This resource can only be used with a workspace-level provider!
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

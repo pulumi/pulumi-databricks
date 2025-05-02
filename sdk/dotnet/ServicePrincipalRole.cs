@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     /// <summary>
     /// This resource allows you to attach a role or databricks.InstanceProfile (AWS) to a databricks_service_principal.
     /// 
+    /// &gt; This resource can be used with an account or workspace-level provider.
+    /// 
     /// ## Example Usage
     /// 
     /// Granting a service principal access to an instance profile

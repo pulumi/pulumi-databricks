@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     /// <summary>
     /// Directly manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to databricks.Group in Databricks account or workspace.
     /// 
+    /// &gt; This resource can be used with an account or workspace-level provider.
+    /// 
     /// There are different types of service principals:
     /// 
     /// * Databricks-managed - exists only inside the Databricks platform (all clouds) and couldn't be used for accessing non-Databricks services.
@@ -20,8 +22,6 @@ namespace Pulumi.Databricks
     /// &gt; To assign account level service principals to workspace use databricks_mws_permission_assignment.
     /// 
     /// &gt; Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level service principals. Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level service principals.
-    /// 
-    /// To create service principals in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using the supported authentication method for account operations.
     /// 
     /// The default behavior when deleting a `databricks.ServicePrincipal` resource depends on whether the provider is configured at the workspace-level or account-level. When the provider is configured at the workspace-level, the service principal will be deleted from the workspace. When the provider is configured at the account-level, the service principal will be deactivated but not deleted. When the provider is configured at the account level, to delete the service principal from the account when the resource is deleted, set `disable_as_user_deletion = false`. Conversely, when the provider is configured at the account-level, to deactivate the service principal when the resource is deleted, set `disable_as_user_deletion = true`.
     /// 

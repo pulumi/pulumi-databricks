@@ -12,9 +12,9 @@ namespace Pulumi.Databricks
     public static class GetClusters
     {
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Retrieves a list of databricks.Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -120,9 +120,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("databricks:index/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Retrieves a list of databricks.Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -228,9 +228,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("databricks:index/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Retrieves a list of databricks.Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 

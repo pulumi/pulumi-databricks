@@ -65,9 +65,9 @@ class AwaitableGetMlflowModelsResult(GetMlflowModelsResult):
 def get_mlflow_models(names: Optional[Sequence[builtins.str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMlflowModelsResult:
     """
-    > **Note** This data source could be only used with workspace-level provider!
-
     Retrieves a list of MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
@@ -93,9 +93,9 @@ def get_mlflow_models(names: Optional[Sequence[builtins.str]] = None,
 def get_mlflow_models_output(names: Optional[pulumi.Input[Optional[Sequence[builtins.str]]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMlflowModelsResult]:
     """
-    > **Note** This data source could be only used with workspace-level provider!
-
     Retrieves a list of MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

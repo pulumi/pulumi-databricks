@@ -65,11 +65,9 @@ class AwaitableGetMwsCredentialsResult(GetMwsCredentialsResult):
 def get_mws_credentials(ids: Optional[Mapping[str, builtins.str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMwsCredentialsResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Lists all MwsCredentials in Databricks Account.
 
-    > **Note** `account_id` provider configuration property is required for this resource to work.
+    > This data source can only be used with an account-level provider!
 
     ## Example Usage
 
@@ -108,11 +106,9 @@ def get_mws_credentials(ids: Optional[Mapping[str, builtins.str]] = None,
 def get_mws_credentials_output(ids: Optional[pulumi.Input[Optional[Mapping[str, builtins.str]]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMwsCredentialsResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Lists all MwsCredentials in Databricks Account.
 
-    > **Note** `account_id` provider configuration property is required for this resource to work.
+    > This data source can only be used with an account-level provider!
 
     ## Example Usage
 

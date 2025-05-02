@@ -86,9 +86,9 @@ def get_directory(id: Optional[builtins.str] = None,
                   workspace_path: Optional[builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDirectoryResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     This data source allows to get information about a directory in a Databricks Workspace.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
@@ -123,9 +123,9 @@ def get_directory_output(id: Optional[pulumi.Input[Optional[builtins.str]]] = No
                          workspace_path: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDirectoryResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     This data source allows to get information about a directory in a Databricks Workspace.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

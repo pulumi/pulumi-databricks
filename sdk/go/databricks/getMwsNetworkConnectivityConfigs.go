@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** This data source can only be used with an account-level provider!
-//
 // Lists all MwsNetworkConnectivityConfig in Databricks Account.
+//
+// > This data source can only be used with an account-level provider!
 //
 // ## Example Usage
 //

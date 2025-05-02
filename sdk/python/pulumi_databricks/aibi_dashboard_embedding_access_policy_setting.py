@@ -127,9 +127,9 @@ class AibiDashboardEmbeddingAccessPolicySetting(pulumi.CustomResource):
                  setting_name: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        > This resource can only be used with a workspace-level provider!
-
         The `AibiDashboardEmbeddingAccessPolicySetting` resource allows you to control [embedding of AI/BI Dashboards](https://learn.microsoft.com/en-us/azure/databricks/dashboards/admin/#manage-dashboard-embedding) into other sites.
+
+        > This resource can only be used with a workspace-level provider!
 
         ## Example Usage
 
@@ -169,9 +169,9 @@ class AibiDashboardEmbeddingAccessPolicySetting(pulumi.CustomResource):
                  args: AibiDashboardEmbeddingAccessPolicySettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > This resource can only be used with a workspace-level provider!
-
         The `AibiDashboardEmbeddingAccessPolicySetting` resource allows you to control [embedding of AI/BI Dashboards](https://learn.microsoft.com/en-us/azure/databricks/dashboards/admin/#manage-dashboard-embedding) into other sites.
+
+        > This resource can only be used with a workspace-level provider!
 
         ## Example Usage
 

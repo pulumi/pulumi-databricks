@@ -157,9 +157,9 @@ class OboToken(pulumi.CustomResource):
                  lifetime_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
         """
-        > This resource can only be used with a workspace-level provider!
-
         This resource creates [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a ServicePrincipal in Databricks workspaces on AWS and GCP.  In general it's best to use OAuth authentication using client ID and secret, and use this resource mostly for integrations that doesn't support OAuth.
+
+        > This resource can only be used with a workspace-level provider!
 
         > To create On-Behalf-Of token for Azure Service Principal, configure Pulumi provider to use Azure service principal's client ID and secret, and use `Token` resource to create a personal access token.
 
@@ -234,9 +234,9 @@ class OboToken(pulumi.CustomResource):
                  args: OboTokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > This resource can only be used with a workspace-level provider!
-
         This resource creates [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a ServicePrincipal in Databricks workspaces on AWS and GCP.  In general it's best to use OAuth authentication using client ID and secret, and use this resource mostly for integrations that doesn't support OAuth.
+
+        > This resource can only be used with a workspace-level provider!
 
         > To create On-Behalf-Of token for Azure Service Principal, configure Pulumi provider to use Azure service principal's client ID and secret, and use `Token` resource to create a personal access token.
 

@@ -12,11 +12,11 @@ namespace Pulumi.Databricks
     public static class GetJobs
     {
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
         /// 
-        /// &gt; **Note** Data resource will error in case of jobs with duplicate names.
+        /// &gt; This data source can only be used with a workspace-level provider!
+        /// 
+        /// &gt; Data resource will error in case of jobs with duplicate names.
         /// 
         /// ## Example Usage
         /// 
@@ -86,11 +86,11 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetJobsResult>("databricks:index/getJobs:getJobs", args ?? new GetJobsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
         /// 
-        /// &gt; **Note** Data resource will error in case of jobs with duplicate names.
+        /// &gt; This data source can only be used with a workspace-level provider!
+        /// 
+        /// &gt; Data resource will error in case of jobs with duplicate names.
         /// 
         /// ## Example Usage
         /// 
@@ -160,11 +160,11 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetJobsResult>("databricks:index/getJobs:getJobs", args ?? new GetJobsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
         /// 
-        /// &gt; **Note** Data resource will error in case of jobs with duplicate names.
+        /// &gt; This data source can only be used with a workspace-level provider!
+        /// 
+        /// &gt; Data resource will error in case of jobs with duplicate names.
         /// 
         /// ## Example Usage
         /// 

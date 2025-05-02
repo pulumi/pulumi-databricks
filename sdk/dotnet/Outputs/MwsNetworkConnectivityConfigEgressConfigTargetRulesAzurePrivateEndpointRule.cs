@@ -17,6 +17,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly int? CreationTime;
         public readonly bool? Deactivated;
         public readonly int? DeactivatedAt;
+        public readonly ImmutableArray<string> DomainNames;
         public readonly string? EndpointName;
         public readonly string? GroupId;
         /// <summary>
@@ -37,6 +38,8 @@ namespace Pulumi.Databricks.Outputs
 
             int? deactivatedAt,
 
+            ImmutableArray<string> domainNames,
+
             string? endpointName,
 
             string? groupId,
@@ -53,6 +56,7 @@ namespace Pulumi.Databricks.Outputs
             CreationTime = creationTime;
             Deactivated = deactivated;
             DeactivatedAt = deactivatedAt;
+            DomainNames = domainNames;
             EndpointName = endpointName;
             GroupId = groupId;
             NetworkConnectivityConfigId = networkConnectivityConfigId;

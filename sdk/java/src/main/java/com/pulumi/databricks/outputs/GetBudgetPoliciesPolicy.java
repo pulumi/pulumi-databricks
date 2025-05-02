@@ -4,7 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.databricks.outputs.GetBudgetPoliciesBudgetPolicyCustomTag;
+import com.pulumi.databricks.outputs.GetBudgetPoliciesPolicyCustomTag;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -14,9 +14,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class GetBudgetPoliciesBudgetPolicy {
+public final class GetBudgetPoliciesPolicy {
     private @Nullable List<Integer> bindingWorkspaceIds;
-    private @Nullable List<GetBudgetPoliciesBudgetPolicyCustomTag> customTags;
+    private @Nullable List<GetBudgetPoliciesPolicyCustomTag> customTags;
     private String policyId;
     /**
      * @return The partial name of policies to be filtered on. If unspecified, all policies will be returned.
@@ -24,11 +24,11 @@ public final class GetBudgetPoliciesBudgetPolicy {
      */
     private @Nullable String policyName;
 
-    private GetBudgetPoliciesBudgetPolicy() {}
+    private GetBudgetPoliciesPolicy() {}
     public List<Integer> bindingWorkspaceIds() {
         return this.bindingWorkspaceIds == null ? List.of() : this.bindingWorkspaceIds;
     }
-    public List<GetBudgetPoliciesBudgetPolicyCustomTag> customTags() {
+    public List<GetBudgetPoliciesPolicyCustomTag> customTags() {
         return this.customTags == null ? List.of() : this.customTags;
     }
     public String policyId() {
@@ -46,17 +46,17 @@ public final class GetBudgetPoliciesBudgetPolicy {
         return new Builder();
     }
 
-    public static Builder builder(GetBudgetPoliciesBudgetPolicy defaults) {
+    public static Builder builder(GetBudgetPoliciesPolicy defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<Integer> bindingWorkspaceIds;
-        private @Nullable List<GetBudgetPoliciesBudgetPolicyCustomTag> customTags;
+        private @Nullable List<GetBudgetPoliciesPolicyCustomTag> customTags;
         private String policyId;
         private @Nullable String policyName;
         public Builder() {}
-        public Builder(GetBudgetPoliciesBudgetPolicy defaults) {
+        public Builder(GetBudgetPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bindingWorkspaceIds = defaults.bindingWorkspaceIds;
     	      this.customTags = defaults.customTags;
@@ -74,18 +74,18 @@ public final class GetBudgetPoliciesBudgetPolicy {
             return bindingWorkspaceIds(List.of(bindingWorkspaceIds));
         }
         @CustomType.Setter
-        public Builder customTags(@Nullable List<GetBudgetPoliciesBudgetPolicyCustomTag> customTags) {
+        public Builder customTags(@Nullable List<GetBudgetPoliciesPolicyCustomTag> customTags) {
 
             this.customTags = customTags;
             return this;
         }
-        public Builder customTags(GetBudgetPoliciesBudgetPolicyCustomTag... customTags) {
+        public Builder customTags(GetBudgetPoliciesPolicyCustomTag... customTags) {
             return customTags(List.of(customTags));
         }
         @CustomType.Setter
         public Builder policyId(String policyId) {
             if (policyId == null) {
-              throw new MissingRequiredPropertyException("GetBudgetPoliciesBudgetPolicy", "policyId");
+              throw new MissingRequiredPropertyException("GetBudgetPoliciesPolicy", "policyId");
             }
             this.policyId = policyId;
             return this;
@@ -96,8 +96,8 @@ public final class GetBudgetPoliciesBudgetPolicy {
             this.policyName = policyName;
             return this;
         }
-        public GetBudgetPoliciesBudgetPolicy build() {
-            final var _resultValue = new GetBudgetPoliciesBudgetPolicy();
+        public GetBudgetPoliciesPolicy build() {
+            final var _resultValue = new GetBudgetPoliciesPolicy();
             _resultValue.bindingWorkspaceIds = bindingWorkspaceIds;
             _resultValue.customTags = customTags;
             _resultValue.policyId = policyId;

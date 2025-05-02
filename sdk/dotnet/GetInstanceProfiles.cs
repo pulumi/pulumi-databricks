@@ -14,6 +14,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Lists all available databricks_instance_profiles.
         /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
+        /// 
         /// ## Example Usage
         /// 
         /// Get all instance profiles:
@@ -41,6 +43,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Lists all available databricks_instance_profiles.
         /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
+        /// 
         /// ## Example Usage
         /// 
         /// Get all instance profiles:
@@ -67,6 +71,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Lists all available databricks_instance_profiles.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 

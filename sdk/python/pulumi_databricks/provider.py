@@ -23,6 +23,7 @@ class ProviderArgs:
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  actions_id_token_request_token: Optional[pulumi.Input[builtins.str]] = None,
                  actions_id_token_request_url: Optional[pulumi.Input[builtins.str]] = None,
+                 audience: Optional[pulumi.Input[builtins.str]] = None,
                  auth_type: Optional[pulumi.Input[builtins.str]] = None,
                  azure_client_id: Optional[pulumi.Input[builtins.str]] = None,
                  azure_client_secret: Optional[pulumi.Input[builtins.str]] = None,
@@ -61,6 +62,8 @@ class ProviderArgs:
             pulumi.set(__self__, "actions_id_token_request_token", actions_id_token_request_token)
         if actions_id_token_request_url is not None:
             pulumi.set(__self__, "actions_id_token_request_url", actions_id_token_request_url)
+        if audience is not None:
+            pulumi.set(__self__, "audience", audience)
         if auth_type is not None:
             pulumi.set(__self__, "auth_type", auth_type)
         if azure_client_id is not None:
@@ -146,6 +149,15 @@ class ProviderArgs:
     @actions_id_token_request_url.setter
     def actions_id_token_request_url(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "actions_id_token_request_url", value)
+
+    @property
+    @pulumi.getter
+    def audience(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "audience")
+
+    @audience.setter
+    def audience(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "audience", value)
 
     @property
     @pulumi.getter(name="authType")
@@ -420,6 +432,7 @@ class Provider(pulumi.ProviderResource):
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  actions_id_token_request_token: Optional[pulumi.Input[builtins.str]] = None,
                  actions_id_token_request_url: Optional[pulumi.Input[builtins.str]] = None,
+                 audience: Optional[pulumi.Input[builtins.str]] = None,
                  auth_type: Optional[pulumi.Input[builtins.str]] = None,
                  azure_client_id: Optional[pulumi.Input[builtins.str]] = None,
                  azure_client_secret: Optional[pulumi.Input[builtins.str]] = None,
@@ -489,6 +502,7 @@ class Provider(pulumi.ProviderResource):
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  actions_id_token_request_token: Optional[pulumi.Input[builtins.str]] = None,
                  actions_id_token_request_url: Optional[pulumi.Input[builtins.str]] = None,
+                 audience: Optional[pulumi.Input[builtins.str]] = None,
                  auth_type: Optional[pulumi.Input[builtins.str]] = None,
                  azure_client_id: Optional[pulumi.Input[builtins.str]] = None,
                  azure_client_secret: Optional[pulumi.Input[builtins.str]] = None,
@@ -530,6 +544,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["actions_id_token_request_token"] = actions_id_token_request_token
             __props__.__dict__["actions_id_token_request_url"] = actions_id_token_request_url
+            __props__.__dict__["audience"] = audience
             __props__.__dict__["auth_type"] = auth_type
             __props__.__dict__["azure_client_id"] = azure_client_id
             __props__.__dict__["azure_client_secret"] = None if azure_client_secret is None else pulumi.Output.secret(azure_client_secret)
@@ -581,6 +596,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="actionsIdTokenRequestUrl")
     def actions_id_token_request_url(self) -> pulumi.Output[Optional[builtins.str]]:
         return pulumi.get(self, "actions_id_token_request_url")
+
+    @property
+    @pulumi.getter
+    def audience(self) -> pulumi.Output[Optional[builtins.str]]:
+        return pulumi.get(self, "audience")
 
     @property
     @pulumi.getter(name="authType")

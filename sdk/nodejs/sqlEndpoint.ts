@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * This resource is used to manage [Databricks SQL warehouses](https://docs.databricks.com/sql/admin/sql-endpoints.html). To create [SQL warehouses](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your databricks.Group or databricks_user.
  *
+ * > This resource can only be used with a workspace-level provider!
+ *
  * ## Example Usage
  *
  * ```typescript

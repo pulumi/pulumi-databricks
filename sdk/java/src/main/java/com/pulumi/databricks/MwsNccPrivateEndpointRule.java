@@ -13,15 +13,16 @@ import com.pulumi.databricks.inputs.MwsNccPrivateEndpointRuleState;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; Initialize provider with `alias = &#34;account&#34;`, `host = &#34;https://accounts.azuredatabricks.net&#34;` and use `provider = databricks.account` for all `databricks_mws_*` resources.
+ * Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
+ * 
+ * &gt; This resource can only be used with an account-level provider!
  * 
  * &gt; This feature is only available in Azure.
- * 
- * Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
  * 
  * ## Example Usage
  * 
@@ -153,6 +154,12 @@ public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResour
      */
     public Output<Optional<Integer>> deactivatedAt() {
         return Codegen.optional(this.deactivatedAt);
+    }
+    @Export(name="domainNames", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> domainNames;
+
+    public Output<Optional<List<String>>> domainNames() {
+        return Codegen.optional(this.domainNames);
     }
     /**
      * The name of the Azure private endpoint resource, e.g. &#34;databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234&#34;

@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; This resource can only be used with an account-level provider.
-    /// 
     /// With this resource you can create a secret for a given [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html).
+    /// 
+    /// &gt; This resource can only be used with an account-level provider!
     /// 
     /// This secret can be used to configure the Databricks Pulumi Provider to authenticate with the service principal. See Authenticating with service principal.
     /// 

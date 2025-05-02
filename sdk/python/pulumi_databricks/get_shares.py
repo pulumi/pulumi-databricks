@@ -67,6 +67,8 @@ def get_shares(shares: Optional[Sequence[builtins.str]] = None,
     """
     Retrieves a list of Share name, that were created by Pulumi or manually.
 
+    > This data source can only be used with a workspace-level provider!
+
     ## Example Usage
 
     Getting all existing shares in the metastore
@@ -102,6 +104,8 @@ def get_shares_output(shares: Optional[pulumi.Input[Optional[Sequence[builtins.s
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSharesResult]:
     """
     Retrieves a list of Share name, that were created by Pulumi or manually.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

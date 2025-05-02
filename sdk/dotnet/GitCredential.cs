@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     /// <summary>
     /// This resource allows you to manage credentials for [Databricks Repos](https://docs.databricks.com/repos.html) using [Git Credentials API](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html).
     /// 
+    /// &gt; This resource can only be used with a workspace-level provider!
+    /// 
     /// ## Example Usage
     /// 
     /// You can declare Pulumi-managed Git credential using following code:

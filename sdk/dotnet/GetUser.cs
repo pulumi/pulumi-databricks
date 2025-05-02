@@ -12,9 +12,9 @@ namespace Pulumi.Databricks
     public static class GetUser
     {
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Retrieves information about databricks_user.
+        /// 
+        /// &gt; This data source can be used with an account or workspace-level provider.
         /// 
         /// ## Example Usage
         /// 
@@ -65,9 +65,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("databricks:index/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Retrieves information about databricks_user.
+        /// 
+        /// &gt; This data source can be used with an account or workspace-level provider.
         /// 
         /// ## Example Usage
         /// 
@@ -118,9 +118,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("databricks:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Retrieves information about databricks_user.
+        /// 
+        /// &gt; This data source can be used with an account or workspace-level provider.
         /// 
         /// ## Example Usage
         /// 

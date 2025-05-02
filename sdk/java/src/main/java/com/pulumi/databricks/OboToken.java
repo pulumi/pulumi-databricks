@@ -17,9 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; This resource can only be used with a workspace-level provider!
- * 
  * This resource creates [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a databricks.ServicePrincipal in Databricks workspaces on AWS and GCP.  In general it&#39;s best to use OAuth authentication using client ID and secret, and use this resource mostly for integrations that doesn&#39;t support OAuth.
+ * 
+ * &gt; This resource can only be used with a workspace-level provider!
  * 
  * &gt; To create On-Behalf-Of token for Azure Service Principal, configure Pulumi provider to use Azure service principal&#39;s client ID and secret, and use `databricks.Token` resource to create a personal access token.
  * 

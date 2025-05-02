@@ -32,6 +32,22 @@ __all__ = [
     'AlertConditionThresholdArgsDict',
     'AlertConditionThresholdValueArgs',
     'AlertConditionThresholdValueArgsDict',
+    'AlertV2EvaluationArgs',
+    'AlertV2EvaluationArgsDict',
+    'AlertV2EvaluationNotificationArgs',
+    'AlertV2EvaluationNotificationArgsDict',
+    'AlertV2EvaluationNotificationSubscriptionArgs',
+    'AlertV2EvaluationNotificationSubscriptionArgsDict',
+    'AlertV2EvaluationSourceArgs',
+    'AlertV2EvaluationSourceArgsDict',
+    'AlertV2EvaluationThresholdArgs',
+    'AlertV2EvaluationThresholdArgsDict',
+    'AlertV2EvaluationThresholdColumnArgs',
+    'AlertV2EvaluationThresholdColumnArgsDict',
+    'AlertV2EvaluationThresholdValueArgs',
+    'AlertV2EvaluationThresholdValueArgsDict',
+    'AlertV2ScheduleArgs',
+    'AlertV2ScheduleArgsDict',
     'AppActiveDeploymentArgs',
     'AppActiveDeploymentArgsDict',
     'AppActiveDeploymentDeploymentArtifactsArgs',
@@ -1070,6 +1086,8 @@ __all__ = [
     'StorageCredentialGcpServiceAccountKeyArgsDict',
     'TableColumnArgs',
     'TableColumnArgsDict',
+    'VectorSearchEndpointCustomTagArgs',
+    'VectorSearchEndpointCustomTagArgsDict',
     'VectorSearchEndpointEndpointStatusArgs',
     'VectorSearchEndpointEndpointStatusArgsDict',
     'VectorSearchIndexDeltaSyncIndexSpecArgs',
@@ -1086,6 +1104,22 @@ __all__ = [
     'VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgsDict',
     'VectorSearchIndexStatusArgs',
     'VectorSearchIndexStatusArgsDict',
+    'GetAlertV2EvaluationArgs',
+    'GetAlertV2EvaluationArgsDict',
+    'GetAlertV2EvaluationNotificationArgs',
+    'GetAlertV2EvaluationNotificationArgsDict',
+    'GetAlertV2EvaluationNotificationSubscriptionArgs',
+    'GetAlertV2EvaluationNotificationSubscriptionArgsDict',
+    'GetAlertV2EvaluationSourceArgs',
+    'GetAlertV2EvaluationSourceArgsDict',
+    'GetAlertV2EvaluationThresholdArgs',
+    'GetAlertV2EvaluationThresholdArgsDict',
+    'GetAlertV2EvaluationThresholdColumnArgs',
+    'GetAlertV2EvaluationThresholdColumnArgsDict',
+    'GetAlertV2EvaluationThresholdValueArgs',
+    'GetAlertV2EvaluationThresholdValueArgsDict',
+    'GetAlertV2ScheduleArgs',
+    'GetAlertV2ScheduleArgsDict',
     'GetBudgetPolicyCustomTagArgs',
     'GetBudgetPolicyCustomTagArgsDict',
     'GetCatalogCatalogInfoArgs',
@@ -2250,6 +2284,424 @@ class AlertConditionThresholdValueArgs:
     @string_value.setter
     def string_value(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "string_value", value)
+
+
+if not MYPY:
+    class AlertV2EvaluationArgsDict(TypedDict):
+        comparison_operator: NotRequired[pulumi.Input[builtins.str]]
+        empty_result_state: NotRequired[pulumi.Input[builtins.str]]
+        last_evaluated_at: NotRequired[pulumi.Input[builtins.str]]
+        notification: NotRequired[pulumi.Input['AlertV2EvaluationNotificationArgsDict']]
+        source: NotRequired[pulumi.Input['AlertV2EvaluationSourceArgsDict']]
+        state: NotRequired[pulumi.Input[builtins.str]]
+        threshold: NotRequired[pulumi.Input['AlertV2EvaluationThresholdArgsDict']]
+elif False:
+    AlertV2EvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertV2EvaluationArgs:
+    def __init__(__self__, *,
+                 comparison_operator: Optional[pulumi.Input[builtins.str]] = None,
+                 empty_result_state: Optional[pulumi.Input[builtins.str]] = None,
+                 last_evaluated_at: Optional[pulumi.Input[builtins.str]] = None,
+                 notification: Optional[pulumi.Input['AlertV2EvaluationNotificationArgs']] = None,
+                 source: Optional[pulumi.Input['AlertV2EvaluationSourceArgs']] = None,
+                 state: Optional[pulumi.Input[builtins.str]] = None,
+                 threshold: Optional[pulumi.Input['AlertV2EvaluationThresholdArgs']] = None):
+        if comparison_operator is not None:
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        if empty_result_state is not None:
+            pulumi.set(__self__, "empty_result_state", empty_result_state)
+        if last_evaluated_at is not None:
+            pulumi.set(__self__, "last_evaluated_at", last_evaluated_at)
+        if notification is not None:
+            pulumi.set(__self__, "notification", notification)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @property
+    @pulumi.getter(name="emptyResultState")
+    def empty_result_state(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "empty_result_state")
+
+    @empty_result_state.setter
+    def empty_result_state(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "empty_result_state", value)
+
+    @property
+    @pulumi.getter(name="lastEvaluatedAt")
+    def last_evaluated_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "last_evaluated_at")
+
+    @last_evaluated_at.setter
+    def last_evaluated_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "last_evaluated_at", value)
+
+    @property
+    @pulumi.getter
+    def notification(self) -> Optional[pulumi.Input['AlertV2EvaluationNotificationArgs']]:
+        return pulumi.get(self, "notification")
+
+    @notification.setter
+    def notification(self, value: Optional[pulumi.Input['AlertV2EvaluationNotificationArgs']]):
+        pulumi.set(self, "notification", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input['AlertV2EvaluationSourceArgs']]:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input['AlertV2EvaluationSourceArgs']]):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input['AlertV2EvaluationThresholdArgs']]:
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input['AlertV2EvaluationThresholdArgs']]):
+        pulumi.set(self, "threshold", value)
+
+
+if not MYPY:
+    class AlertV2EvaluationNotificationArgsDict(TypedDict):
+        notify_on_ok: NotRequired[pulumi.Input[builtins.bool]]
+        retrigger_seconds: NotRequired[pulumi.Input[builtins.int]]
+        subscriptions: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertV2EvaluationNotificationSubscriptionArgsDict']]]]
+elif False:
+    AlertV2EvaluationNotificationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertV2EvaluationNotificationArgs:
+    def __init__(__self__, *,
+                 notify_on_ok: Optional[pulumi.Input[builtins.bool]] = None,
+                 retrigger_seconds: Optional[pulumi.Input[builtins.int]] = None,
+                 subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input['AlertV2EvaluationNotificationSubscriptionArgs']]]] = None):
+        if notify_on_ok is not None:
+            pulumi.set(__self__, "notify_on_ok", notify_on_ok)
+        if retrigger_seconds is not None:
+            pulumi.set(__self__, "retrigger_seconds", retrigger_seconds)
+        if subscriptions is not None:
+            pulumi.set(__self__, "subscriptions", subscriptions)
+
+    @property
+    @pulumi.getter(name="notifyOnOk")
+    def notify_on_ok(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "notify_on_ok")
+
+    @notify_on_ok.setter
+    def notify_on_ok(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "notify_on_ok", value)
+
+    @property
+    @pulumi.getter(name="retriggerSeconds")
+    def retrigger_seconds(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "retrigger_seconds")
+
+    @retrigger_seconds.setter
+    def retrigger_seconds(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "retrigger_seconds", value)
+
+    @property
+    @pulumi.getter
+    def subscriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertV2EvaluationNotificationSubscriptionArgs']]]]:
+        return pulumi.get(self, "subscriptions")
+
+    @subscriptions.setter
+    def subscriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertV2EvaluationNotificationSubscriptionArgs']]]]):
+        pulumi.set(self, "subscriptions", value)
+
+
+if not MYPY:
+    class AlertV2EvaluationNotificationSubscriptionArgsDict(TypedDict):
+        destination_id: NotRequired[pulumi.Input[builtins.str]]
+        user_email: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    AlertV2EvaluationNotificationSubscriptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertV2EvaluationNotificationSubscriptionArgs:
+    def __init__(__self__, *,
+                 destination_id: Optional[pulumi.Input[builtins.str]] = None,
+                 user_email: Optional[pulumi.Input[builtins.str]] = None):
+        if destination_id is not None:
+            pulumi.set(__self__, "destination_id", destination_id)
+        if user_email is not None:
+            pulumi.set(__self__, "user_email", user_email)
+
+    @property
+    @pulumi.getter(name="destinationId")
+    def destination_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "destination_id")
+
+    @destination_id.setter
+    def destination_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "destination_id", value)
+
+    @property
+    @pulumi.getter(name="userEmail")
+    def user_email(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "user_email")
+
+    @user_email.setter
+    def user_email(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "user_email", value)
+
+
+if not MYPY:
+    class AlertV2EvaluationSourceArgsDict(TypedDict):
+        aggregation: NotRequired[pulumi.Input[builtins.str]]
+        display: NotRequired[pulumi.Input[builtins.str]]
+        name: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    AlertV2EvaluationSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertV2EvaluationSourceArgs:
+    def __init__(__self__, *,
+                 aggregation: Optional[pulumi.Input[builtins.str]] = None,
+                 display: Optional[pulumi.Input[builtins.str]] = None,
+                 name: Optional[pulumi.Input[builtins.str]] = None):
+        if aggregation is not None:
+            pulumi.set(__self__, "aggregation", aggregation)
+        if display is not None:
+            pulumi.set(__self__, "display", display)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def aggregation(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "aggregation")
+
+    @aggregation.setter
+    def aggregation(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "aggregation", value)
+
+    @property
+    @pulumi.getter
+    def display(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "display")
+
+    @display.setter
+    def display(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "display", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class AlertV2EvaluationThresholdArgsDict(TypedDict):
+        column: NotRequired[pulumi.Input['AlertV2EvaluationThresholdColumnArgsDict']]
+        value: NotRequired[pulumi.Input['AlertV2EvaluationThresholdValueArgsDict']]
+elif False:
+    AlertV2EvaluationThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertV2EvaluationThresholdArgs:
+    def __init__(__self__, *,
+                 column: Optional[pulumi.Input['AlertV2EvaluationThresholdColumnArgs']] = None,
+                 value: Optional[pulumi.Input['AlertV2EvaluationThresholdValueArgs']] = None):
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[pulumi.Input['AlertV2EvaluationThresholdColumnArgs']]:
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: Optional[pulumi.Input['AlertV2EvaluationThresholdColumnArgs']]):
+        pulumi.set(self, "column", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['AlertV2EvaluationThresholdValueArgs']]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['AlertV2EvaluationThresholdValueArgs']]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class AlertV2EvaluationThresholdColumnArgsDict(TypedDict):
+        aggregation: NotRequired[pulumi.Input[builtins.str]]
+        display: NotRequired[pulumi.Input[builtins.str]]
+        name: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    AlertV2EvaluationThresholdColumnArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertV2EvaluationThresholdColumnArgs:
+    def __init__(__self__, *,
+                 aggregation: Optional[pulumi.Input[builtins.str]] = None,
+                 display: Optional[pulumi.Input[builtins.str]] = None,
+                 name: Optional[pulumi.Input[builtins.str]] = None):
+        if aggregation is not None:
+            pulumi.set(__self__, "aggregation", aggregation)
+        if display is not None:
+            pulumi.set(__self__, "display", display)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def aggregation(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "aggregation")
+
+    @aggregation.setter
+    def aggregation(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "aggregation", value)
+
+    @property
+    @pulumi.getter
+    def display(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "display")
+
+    @display.setter
+    def display(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "display", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class AlertV2EvaluationThresholdValueArgsDict(TypedDict):
+        bool_value: NotRequired[pulumi.Input[builtins.bool]]
+        double_value: NotRequired[pulumi.Input[builtins.float]]
+        string_value: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    AlertV2EvaluationThresholdValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertV2EvaluationThresholdValueArgs:
+    def __init__(__self__, *,
+                 bool_value: Optional[pulumi.Input[builtins.bool]] = None,
+                 double_value: Optional[pulumi.Input[builtins.float]] = None,
+                 string_value: Optional[pulumi.Input[builtins.str]] = None):
+        if bool_value is not None:
+            pulumi.set(__self__, "bool_value", bool_value)
+        if double_value is not None:
+            pulumi.set(__self__, "double_value", double_value)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+
+    @property
+    @pulumi.getter(name="boolValue")
+    def bool_value(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "bool_value")
+
+    @bool_value.setter
+    def bool_value(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "bool_value", value)
+
+    @property
+    @pulumi.getter(name="doubleValue")
+    def double_value(self) -> Optional[pulumi.Input[builtins.float]]:
+        return pulumi.get(self, "double_value")
+
+    @double_value.setter
+    def double_value(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "double_value", value)
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "string_value")
+
+    @string_value.setter
+    def string_value(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "string_value", value)
+
+
+if not MYPY:
+    class AlertV2ScheduleArgsDict(TypedDict):
+        pause_status: NotRequired[pulumi.Input[builtins.str]]
+        quartz_cron_schedule: NotRequired[pulumi.Input[builtins.str]]
+        timezone_id: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    AlertV2ScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertV2ScheduleArgs:
+    def __init__(__self__, *,
+                 pause_status: Optional[pulumi.Input[builtins.str]] = None,
+                 quartz_cron_schedule: Optional[pulumi.Input[builtins.str]] = None,
+                 timezone_id: Optional[pulumi.Input[builtins.str]] = None):
+        if pause_status is not None:
+            pulumi.set(__self__, "pause_status", pause_status)
+        if quartz_cron_schedule is not None:
+            pulumi.set(__self__, "quartz_cron_schedule", quartz_cron_schedule)
+        if timezone_id is not None:
+            pulumi.set(__self__, "timezone_id", timezone_id)
+
+    @property
+    @pulumi.getter(name="pauseStatus")
+    def pause_status(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "pause_status")
+
+    @pause_status.setter
+    def pause_status(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pause_status", value)
+
+    @property
+    @pulumi.getter(name="quartzCronSchedule")
+    def quartz_cron_schedule(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "quartz_cron_schedule")
+
+    @quartz_cron_schedule.setter
+    def quartz_cron_schedule(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "quartz_cron_schedule", value)
+
+    @property
+    @pulumi.getter(name="timezoneId")
+    def timezone_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "timezone_id")
+
+    @timezone_id.setter
+    def timezone_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "timezone_id", value)
 
 
 if not MYPY:
@@ -28716,6 +29168,7 @@ if not MYPY:
         creation_time: NotRequired[pulumi.Input[builtins.int]]
         deactivated: NotRequired[pulumi.Input[builtins.bool]]
         deactivated_at: NotRequired[pulumi.Input[builtins.int]]
+        domain_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         endpoint_name: NotRequired[pulumi.Input[builtins.str]]
         group_id: NotRequired[pulumi.Input[builtins.str]]
         network_connectivity_config_id: NotRequired[pulumi.Input[builtins.str]]
@@ -28735,6 +29188,7 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRul
                  creation_time: Optional[pulumi.Input[builtins.int]] = None,
                  deactivated: Optional[pulumi.Input[builtins.bool]] = None,
                  deactivated_at: Optional[pulumi.Input[builtins.int]] = None,
+                 domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  endpoint_name: Optional[pulumi.Input[builtins.str]] = None,
                  group_id: Optional[pulumi.Input[builtins.str]] = None,
                  network_connectivity_config_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -28752,6 +29206,8 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRul
             pulumi.set(__self__, "deactivated", deactivated)
         if deactivated_at is not None:
             pulumi.set(__self__, "deactivated_at", deactivated_at)
+        if domain_names is not None:
+            pulumi.set(__self__, "domain_names", domain_names)
         if endpoint_name is not None:
             pulumi.set(__self__, "endpoint_name", endpoint_name)
         if group_id is not None:
@@ -28800,6 +29256,15 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRul
     @deactivated_at.setter
     def deactivated_at(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "deactivated_at", value)
+
+    @property
+    @pulumi.getter(name="domainNames")
+    def domain_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "domain_names")
+
+    @domain_names.setter
+    def domain_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "domain_names", value)
 
     @property
     @pulumi.getter(name="endpointName")
@@ -28946,13 +29411,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -29006,7 +29471,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
@@ -29019,7 +29484,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
@@ -29298,13 +29763,13 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  gke_cluster_service_ip_range: Optional[pulumi.Input[builtins.str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
@@ -29319,7 +29784,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -29329,7 +29794,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -35469,6 +35934,33 @@ if not MYPY:
         `display_name` for a Group or databricks_user, `application_id` for a databricks_service_principal.
         """
         privileges: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
+        """
+        set of available privilege names in upper case.
+
+
+        [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+        [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+
+
+        * `SELECT` - gives read access to an object.
+        * `SELECT` - gives read access to an object.
+        * `CREATE` - gives the ability to create an object (for example, a table in a database).
+        * `CREATE` - gives the ability to create an object (for example, a table in a database).
+        * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+        * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+        * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+        * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+        * `READ_METADATA` - gives the ability to view an object and its metadata.
+        * `READ_METADATA` - gives the ability to view an object and its metadata.
+        * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+        * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+        * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+        * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+
+
+        > Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+        > Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+        """
 elif False:
     SqlPermissionsPrivilegeAssignmentArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -35479,6 +35971,31 @@ class SqlPermissionsPrivilegeAssignmentArgs:
                  privileges: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
         """
         :param pulumi.Input[builtins.str] principal: `display_name` for a Group or databricks_user, `application_id` for a databricks_service_principal.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] privileges: set of available privilege names in upper case.
+               
+               
+               [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+               [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+               
+               
+               * `SELECT` - gives read access to an object.
+               * `SELECT` - gives read access to an object.
+               * `CREATE` - gives the ability to create an object (for example, a table in a database).
+               * `CREATE` - gives the ability to create an object (for example, a table in a database).
+               * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+               * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+               * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+               * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+               * `READ_METADATA` - gives the ability to view an object and its metadata.
+               * `READ_METADATA` - gives the ability to view an object and its metadata.
+               * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+               * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+               * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+               * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+               
+               
+               > Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+               > Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
         """
         pulumi.set(__self__, "principal", principal)
         pulumi.set(__self__, "privileges", privileges)
@@ -35498,6 +36015,33 @@ class SqlPermissionsPrivilegeAssignmentArgs:
     @property
     @pulumi.getter
     def privileges(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
+        """
+        set of available privilege names in upper case.
+
+
+        [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+        [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
+
+
+        * `SELECT` - gives read access to an object.
+        * `SELECT` - gives read access to an object.
+        * `CREATE` - gives the ability to create an object (for example, a table in a database).
+        * `CREATE` - gives the ability to create an object (for example, a table in a database).
+        * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+        * `MODIFY` - gives the ability to add, delete, and modify data to or from an object.
+        * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+        * `USAGE` - do not give any abilities, but is an additional requirement to perform any action on a database object.
+        * `READ_METADATA` - gives the ability to view an object and its metadata.
+        * `READ_METADATA` - gives the ability to view an object and its metadata.
+        * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+        * `CREATE_NAMED_FUNCTION` - gives the ability to create a named UDF in an existing catalog or database.
+        * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+        * `MODIFY_CLASSPATH` - gives the ability to add files to the Spark classpath.
+
+
+        > Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+        > Even though the value `ALL PRIVILEGES` is mentioned in Table ACL documentation, it's not recommended to use it from Pulumi, as it may result in unnecessary state updates.
+        """
         return pulumi.get(self, "privileges")
 
     @privileges.setter
@@ -37342,6 +37886,41 @@ class TableColumnArgs:
 
 
 if not MYPY:
+    class VectorSearchEndpointCustomTagArgsDict(TypedDict):
+        key: pulumi.Input[builtins.str]
+        value: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    VectorSearchEndpointCustomTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VectorSearchEndpointCustomTagArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[builtins.str],
+                 value: Optional[pulumi.Input[builtins.str]] = None):
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
     class VectorSearchEndpointEndpointStatusArgsDict(TypedDict):
         message: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -37901,6 +38480,422 @@ class VectorSearchIndexStatusArgs:
     @ready.setter
     def ready(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "ready", value)
+
+
+if not MYPY:
+    class GetAlertV2EvaluationArgsDict(TypedDict):
+        last_evaluated_at: builtins.str
+        state: builtins.str
+        comparison_operator: NotRequired[builtins.str]
+        empty_result_state: NotRequired[builtins.str]
+        notification: NotRequired['GetAlertV2EvaluationNotificationArgsDict']
+        source: NotRequired['GetAlertV2EvaluationSourceArgsDict']
+        threshold: NotRequired['GetAlertV2EvaluationThresholdArgsDict']
+elif False:
+    GetAlertV2EvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetAlertV2EvaluationArgs:
+    def __init__(__self__, *,
+                 last_evaluated_at: builtins.str,
+                 state: builtins.str,
+                 comparison_operator: Optional[builtins.str] = None,
+                 empty_result_state: Optional[builtins.str] = None,
+                 notification: Optional['GetAlertV2EvaluationNotificationArgs'] = None,
+                 source: Optional['GetAlertV2EvaluationSourceArgs'] = None,
+                 threshold: Optional['GetAlertV2EvaluationThresholdArgs'] = None):
+        pulumi.set(__self__, "last_evaluated_at", last_evaluated_at)
+        pulumi.set(__self__, "state", state)
+        if comparison_operator is not None:
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        if empty_result_state is not None:
+            pulumi.set(__self__, "empty_result_state", empty_result_state)
+        if notification is not None:
+            pulumi.set(__self__, "notification", notification)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter(name="lastEvaluatedAt")
+    def last_evaluated_at(self) -> builtins.str:
+        return pulumi.get(self, "last_evaluated_at")
+
+    @last_evaluated_at.setter
+    def last_evaluated_at(self, value: builtins.str):
+        pulumi.set(self, "last_evaluated_at", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> builtins.str:
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: builtins.str):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: Optional[builtins.str]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @property
+    @pulumi.getter(name="emptyResultState")
+    def empty_result_state(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "empty_result_state")
+
+    @empty_result_state.setter
+    def empty_result_state(self, value: Optional[builtins.str]):
+        pulumi.set(self, "empty_result_state", value)
+
+    @property
+    @pulumi.getter
+    def notification(self) -> Optional['GetAlertV2EvaluationNotificationArgs']:
+        return pulumi.get(self, "notification")
+
+    @notification.setter
+    def notification(self, value: Optional['GetAlertV2EvaluationNotificationArgs']):
+        pulumi.set(self, "notification", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional['GetAlertV2EvaluationSourceArgs']:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional['GetAlertV2EvaluationSourceArgs']):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional['GetAlertV2EvaluationThresholdArgs']:
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional['GetAlertV2EvaluationThresholdArgs']):
+        pulumi.set(self, "threshold", value)
+
+
+if not MYPY:
+    class GetAlertV2EvaluationNotificationArgsDict(TypedDict):
+        notify_on_ok: NotRequired[builtins.bool]
+        retrigger_seconds: NotRequired[builtins.int]
+        subscriptions: NotRequired[Sequence['GetAlertV2EvaluationNotificationSubscriptionArgsDict']]
+elif False:
+    GetAlertV2EvaluationNotificationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetAlertV2EvaluationNotificationArgs:
+    def __init__(__self__, *,
+                 notify_on_ok: Optional[builtins.bool] = None,
+                 retrigger_seconds: Optional[builtins.int] = None,
+                 subscriptions: Optional[Sequence['GetAlertV2EvaluationNotificationSubscriptionArgs']] = None):
+        if notify_on_ok is not None:
+            pulumi.set(__self__, "notify_on_ok", notify_on_ok)
+        if retrigger_seconds is not None:
+            pulumi.set(__self__, "retrigger_seconds", retrigger_seconds)
+        if subscriptions is not None:
+            pulumi.set(__self__, "subscriptions", subscriptions)
+
+    @property
+    @pulumi.getter(name="notifyOnOk")
+    def notify_on_ok(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "notify_on_ok")
+
+    @notify_on_ok.setter
+    def notify_on_ok(self, value: Optional[builtins.bool]):
+        pulumi.set(self, "notify_on_ok", value)
+
+    @property
+    @pulumi.getter(name="retriggerSeconds")
+    def retrigger_seconds(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "retrigger_seconds")
+
+    @retrigger_seconds.setter
+    def retrigger_seconds(self, value: Optional[builtins.int]):
+        pulumi.set(self, "retrigger_seconds", value)
+
+    @property
+    @pulumi.getter
+    def subscriptions(self) -> Optional[Sequence['GetAlertV2EvaluationNotificationSubscriptionArgs']]:
+        return pulumi.get(self, "subscriptions")
+
+    @subscriptions.setter
+    def subscriptions(self, value: Optional[Sequence['GetAlertV2EvaluationNotificationSubscriptionArgs']]):
+        pulumi.set(self, "subscriptions", value)
+
+
+if not MYPY:
+    class GetAlertV2EvaluationNotificationSubscriptionArgsDict(TypedDict):
+        destination_id: NotRequired[builtins.str]
+        user_email: NotRequired[builtins.str]
+elif False:
+    GetAlertV2EvaluationNotificationSubscriptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetAlertV2EvaluationNotificationSubscriptionArgs:
+    def __init__(__self__, *,
+                 destination_id: Optional[builtins.str] = None,
+                 user_email: Optional[builtins.str] = None):
+        if destination_id is not None:
+            pulumi.set(__self__, "destination_id", destination_id)
+        if user_email is not None:
+            pulumi.set(__self__, "user_email", user_email)
+
+    @property
+    @pulumi.getter(name="destinationId")
+    def destination_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "destination_id")
+
+    @destination_id.setter
+    def destination_id(self, value: Optional[builtins.str]):
+        pulumi.set(self, "destination_id", value)
+
+    @property
+    @pulumi.getter(name="userEmail")
+    def user_email(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "user_email")
+
+    @user_email.setter
+    def user_email(self, value: Optional[builtins.str]):
+        pulumi.set(self, "user_email", value)
+
+
+if not MYPY:
+    class GetAlertV2EvaluationSourceArgsDict(TypedDict):
+        aggregation: NotRequired[builtins.str]
+        display: NotRequired[builtins.str]
+        name: NotRequired[builtins.str]
+elif False:
+    GetAlertV2EvaluationSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetAlertV2EvaluationSourceArgs:
+    def __init__(__self__, *,
+                 aggregation: Optional[builtins.str] = None,
+                 display: Optional[builtins.str] = None,
+                 name: Optional[builtins.str] = None):
+        if aggregation is not None:
+            pulumi.set(__self__, "aggregation", aggregation)
+        if display is not None:
+            pulumi.set(__self__, "display", display)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def aggregation(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "aggregation")
+
+    @aggregation.setter
+    def aggregation(self, value: Optional[builtins.str]):
+        pulumi.set(self, "aggregation", value)
+
+    @property
+    @pulumi.getter
+    def display(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "display")
+
+    @display.setter
+    def display(self, value: Optional[builtins.str]):
+        pulumi.set(self, "display", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[builtins.str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class GetAlertV2EvaluationThresholdArgsDict(TypedDict):
+        column: NotRequired['GetAlertV2EvaluationThresholdColumnArgsDict']
+        value: NotRequired['GetAlertV2EvaluationThresholdValueArgsDict']
+elif False:
+    GetAlertV2EvaluationThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetAlertV2EvaluationThresholdArgs:
+    def __init__(__self__, *,
+                 column: Optional['GetAlertV2EvaluationThresholdColumnArgs'] = None,
+                 value: Optional['GetAlertV2EvaluationThresholdValueArgs'] = None):
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional['GetAlertV2EvaluationThresholdColumnArgs']:
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: Optional['GetAlertV2EvaluationThresholdColumnArgs']):
+        pulumi.set(self, "column", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional['GetAlertV2EvaluationThresholdValueArgs']:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional['GetAlertV2EvaluationThresholdValueArgs']):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class GetAlertV2EvaluationThresholdColumnArgsDict(TypedDict):
+        aggregation: NotRequired[builtins.str]
+        display: NotRequired[builtins.str]
+        name: NotRequired[builtins.str]
+elif False:
+    GetAlertV2EvaluationThresholdColumnArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetAlertV2EvaluationThresholdColumnArgs:
+    def __init__(__self__, *,
+                 aggregation: Optional[builtins.str] = None,
+                 display: Optional[builtins.str] = None,
+                 name: Optional[builtins.str] = None):
+        if aggregation is not None:
+            pulumi.set(__self__, "aggregation", aggregation)
+        if display is not None:
+            pulumi.set(__self__, "display", display)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def aggregation(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "aggregation")
+
+    @aggregation.setter
+    def aggregation(self, value: Optional[builtins.str]):
+        pulumi.set(self, "aggregation", value)
+
+    @property
+    @pulumi.getter
+    def display(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "display")
+
+    @display.setter
+    def display(self, value: Optional[builtins.str]):
+        pulumi.set(self, "display", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[builtins.str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class GetAlertV2EvaluationThresholdValueArgsDict(TypedDict):
+        bool_value: NotRequired[builtins.bool]
+        double_value: NotRequired[builtins.float]
+        string_value: NotRequired[builtins.str]
+elif False:
+    GetAlertV2EvaluationThresholdValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetAlertV2EvaluationThresholdValueArgs:
+    def __init__(__self__, *,
+                 bool_value: Optional[builtins.bool] = None,
+                 double_value: Optional[builtins.float] = None,
+                 string_value: Optional[builtins.str] = None):
+        if bool_value is not None:
+            pulumi.set(__self__, "bool_value", bool_value)
+        if double_value is not None:
+            pulumi.set(__self__, "double_value", double_value)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+
+    @property
+    @pulumi.getter(name="boolValue")
+    def bool_value(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "bool_value")
+
+    @bool_value.setter
+    def bool_value(self, value: Optional[builtins.bool]):
+        pulumi.set(self, "bool_value", value)
+
+    @property
+    @pulumi.getter(name="doubleValue")
+    def double_value(self) -> Optional[builtins.float]:
+        return pulumi.get(self, "double_value")
+
+    @double_value.setter
+    def double_value(self, value: Optional[builtins.float]):
+        pulumi.set(self, "double_value", value)
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "string_value")
+
+    @string_value.setter
+    def string_value(self, value: Optional[builtins.str]):
+        pulumi.set(self, "string_value", value)
+
+
+if not MYPY:
+    class GetAlertV2ScheduleArgsDict(TypedDict):
+        pause_status: NotRequired[builtins.str]
+        quartz_cron_schedule: NotRequired[builtins.str]
+        timezone_id: NotRequired[builtins.str]
+elif False:
+    GetAlertV2ScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetAlertV2ScheduleArgs:
+    def __init__(__self__, *,
+                 pause_status: Optional[builtins.str] = None,
+                 quartz_cron_schedule: Optional[builtins.str] = None,
+                 timezone_id: Optional[builtins.str] = None):
+        if pause_status is not None:
+            pulumi.set(__self__, "pause_status", pause_status)
+        if quartz_cron_schedule is not None:
+            pulumi.set(__self__, "quartz_cron_schedule", quartz_cron_schedule)
+        if timezone_id is not None:
+            pulumi.set(__self__, "timezone_id", timezone_id)
+
+    @property
+    @pulumi.getter(name="pauseStatus")
+    def pause_status(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "pause_status")
+
+    @pause_status.setter
+    def pause_status(self, value: Optional[builtins.str]):
+        pulumi.set(self, "pause_status", value)
+
+    @property
+    @pulumi.getter(name="quartzCronSchedule")
+    def quartz_cron_schedule(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "quartz_cron_schedule")
+
+    @quartz_cron_schedule.setter
+    def quartz_cron_schedule(self, value: Optional[builtins.str]):
+        pulumi.set(self, "quartz_cron_schedule", value)
+
+    @property
+    @pulumi.getter(name="timezoneId")
+    def timezone_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "timezone_id")
+
+    @timezone_id.setter
+    def timezone_id(self, value: Optional[builtins.str]):
+        pulumi.set(self, "timezone_id", value)
 
 
 if not MYPY:
@@ -58598,6 +59593,7 @@ if not MYPY:
         """
         Time in epoch milliseconds when this object was deactivated.
         """
+        domain_names: NotRequired[Sequence[builtins.str]]
         endpoint_name: NotRequired[builtins.str]
         """
         The name of the Azure private endpoint resource.
@@ -58632,6 +59628,7 @@ class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpoint
                  creation_time: Optional[builtins.int] = None,
                  deactivated: Optional[builtins.bool] = None,
                  deactivated_at: Optional[builtins.int] = None,
+                 domain_names: Optional[Sequence[builtins.str]] = None,
                  endpoint_name: Optional[builtins.str] = None,
                  group_id: Optional[builtins.str] = None,
                  network_connectivity_config_id: Optional[builtins.str] = None,
@@ -58658,6 +59655,8 @@ class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpoint
             pulumi.set(__self__, "deactivated", deactivated)
         if deactivated_at is not None:
             pulumi.set(__self__, "deactivated_at", deactivated_at)
+        if domain_names is not None:
+            pulumi.set(__self__, "domain_names", domain_names)
         if endpoint_name is not None:
             pulumi.set(__self__, "endpoint_name", endpoint_name)
         if group_id is not None:
@@ -58718,6 +59717,15 @@ class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpoint
     @deactivated_at.setter
     def deactivated_at(self, value: Optional[builtins.int]):
         pulumi.set(self, "deactivated_at", value)
+
+    @property
+    @pulumi.getter(name="domainNames")
+    def domain_names(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "domain_names")
+
+    @domain_names.setter
+    def domain_names(self, value: Optional[Sequence[builtins.str]]):
+        pulumi.set(self, "domain_names", value)
 
     @property
     @pulumi.getter(name="endpointName")

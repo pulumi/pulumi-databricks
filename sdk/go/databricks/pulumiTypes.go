@@ -1219,6 +1219,1294 @@ func (o AlertConditionThresholdValuePtrOutput) StringValue() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type AlertV2Evaluation struct {
+	ComparisonOperator *string                        `pulumi:"comparisonOperator"`
+	EmptyResultState   *string                        `pulumi:"emptyResultState"`
+	LastEvaluatedAt    *string                        `pulumi:"lastEvaluatedAt"`
+	Notification       *AlertV2EvaluationNotification `pulumi:"notification"`
+	Source             *AlertV2EvaluationSource       `pulumi:"source"`
+	State              *string                        `pulumi:"state"`
+	Threshold          *AlertV2EvaluationThreshold    `pulumi:"threshold"`
+}
+
+// AlertV2EvaluationInput is an input type that accepts AlertV2EvaluationArgs and AlertV2EvaluationOutput values.
+// You can construct a concrete instance of `AlertV2EvaluationInput` via:
+//
+//	AlertV2EvaluationArgs{...}
+type AlertV2EvaluationInput interface {
+	pulumi.Input
+
+	ToAlertV2EvaluationOutput() AlertV2EvaluationOutput
+	ToAlertV2EvaluationOutputWithContext(context.Context) AlertV2EvaluationOutput
+}
+
+type AlertV2EvaluationArgs struct {
+	ComparisonOperator pulumi.StringPtrInput                 `pulumi:"comparisonOperator"`
+	EmptyResultState   pulumi.StringPtrInput                 `pulumi:"emptyResultState"`
+	LastEvaluatedAt    pulumi.StringPtrInput                 `pulumi:"lastEvaluatedAt"`
+	Notification       AlertV2EvaluationNotificationPtrInput `pulumi:"notification"`
+	Source             AlertV2EvaluationSourcePtrInput       `pulumi:"source"`
+	State              pulumi.StringPtrInput                 `pulumi:"state"`
+	Threshold          AlertV2EvaluationThresholdPtrInput    `pulumi:"threshold"`
+}
+
+func (AlertV2EvaluationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertV2Evaluation)(nil)).Elem()
+}
+
+func (i AlertV2EvaluationArgs) ToAlertV2EvaluationOutput() AlertV2EvaluationOutput {
+	return i.ToAlertV2EvaluationOutputWithContext(context.Background())
+}
+
+func (i AlertV2EvaluationArgs) ToAlertV2EvaluationOutputWithContext(ctx context.Context) AlertV2EvaluationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationOutput)
+}
+
+func (i AlertV2EvaluationArgs) ToAlertV2EvaluationPtrOutput() AlertV2EvaluationPtrOutput {
+	return i.ToAlertV2EvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i AlertV2EvaluationArgs) ToAlertV2EvaluationPtrOutputWithContext(ctx context.Context) AlertV2EvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationOutput).ToAlertV2EvaluationPtrOutputWithContext(ctx)
+}
+
+// AlertV2EvaluationPtrInput is an input type that accepts AlertV2EvaluationArgs, AlertV2EvaluationPtr and AlertV2EvaluationPtrOutput values.
+// You can construct a concrete instance of `AlertV2EvaluationPtrInput` via:
+//
+//	        AlertV2EvaluationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertV2EvaluationPtrInput interface {
+	pulumi.Input
+
+	ToAlertV2EvaluationPtrOutput() AlertV2EvaluationPtrOutput
+	ToAlertV2EvaluationPtrOutputWithContext(context.Context) AlertV2EvaluationPtrOutput
+}
+
+type alertV2EvaluationPtrType AlertV2EvaluationArgs
+
+func AlertV2EvaluationPtr(v *AlertV2EvaluationArgs) AlertV2EvaluationPtrInput {
+	return (*alertV2EvaluationPtrType)(v)
+}
+
+func (*alertV2EvaluationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertV2Evaluation)(nil)).Elem()
+}
+
+func (i *alertV2EvaluationPtrType) ToAlertV2EvaluationPtrOutput() AlertV2EvaluationPtrOutput {
+	return i.ToAlertV2EvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i *alertV2EvaluationPtrType) ToAlertV2EvaluationPtrOutputWithContext(ctx context.Context) AlertV2EvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationPtrOutput)
+}
+
+type AlertV2EvaluationOutput struct{ *pulumi.OutputState }
+
+func (AlertV2EvaluationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertV2Evaluation)(nil)).Elem()
+}
+
+func (o AlertV2EvaluationOutput) ToAlertV2EvaluationOutput() AlertV2EvaluationOutput {
+	return o
+}
+
+func (o AlertV2EvaluationOutput) ToAlertV2EvaluationOutputWithContext(ctx context.Context) AlertV2EvaluationOutput {
+	return o
+}
+
+func (o AlertV2EvaluationOutput) ToAlertV2EvaluationPtrOutput() AlertV2EvaluationPtrOutput {
+	return o.ToAlertV2EvaluationPtrOutputWithContext(context.Background())
+}
+
+func (o AlertV2EvaluationOutput) ToAlertV2EvaluationPtrOutputWithContext(ctx context.Context) AlertV2EvaluationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertV2Evaluation) *AlertV2Evaluation {
+		return &v
+	}).(AlertV2EvaluationPtrOutput)
+}
+
+func (o AlertV2EvaluationOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertV2Evaluation) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2EvaluationOutput) EmptyResultState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertV2Evaluation) *string { return v.EmptyResultState }).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2EvaluationOutput) LastEvaluatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertV2Evaluation) *string { return v.LastEvaluatedAt }).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2EvaluationOutput) Notification() AlertV2EvaluationNotificationPtrOutput {
+	return o.ApplyT(func(v AlertV2Evaluation) *AlertV2EvaluationNotification { return v.Notification }).(AlertV2EvaluationNotificationPtrOutput)
+}
+
+func (o AlertV2EvaluationOutput) Source() AlertV2EvaluationSourcePtrOutput {
+	return o.ApplyT(func(v AlertV2Evaluation) *AlertV2EvaluationSource { return v.Source }).(AlertV2EvaluationSourcePtrOutput)
+}
+
+func (o AlertV2EvaluationOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertV2Evaluation) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2EvaluationOutput) Threshold() AlertV2EvaluationThresholdPtrOutput {
+	return o.ApplyT(func(v AlertV2Evaluation) *AlertV2EvaluationThreshold { return v.Threshold }).(AlertV2EvaluationThresholdPtrOutput)
+}
+
+type AlertV2EvaluationPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertV2EvaluationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertV2Evaluation)(nil)).Elem()
+}
+
+func (o AlertV2EvaluationPtrOutput) ToAlertV2EvaluationPtrOutput() AlertV2EvaluationPtrOutput {
+	return o
+}
+
+func (o AlertV2EvaluationPtrOutput) ToAlertV2EvaluationPtrOutputWithContext(ctx context.Context) AlertV2EvaluationPtrOutput {
+	return o
+}
+
+func (o AlertV2EvaluationPtrOutput) Elem() AlertV2EvaluationOutput {
+	return o.ApplyT(func(v *AlertV2Evaluation) AlertV2Evaluation {
+		if v != nil {
+			return *v
+		}
+		var ret AlertV2Evaluation
+		return ret
+	}).(AlertV2EvaluationOutput)
+}
+
+func (o AlertV2EvaluationPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertV2Evaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2EvaluationPtrOutput) EmptyResultState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertV2Evaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmptyResultState
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2EvaluationPtrOutput) LastEvaluatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertV2Evaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastEvaluatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2EvaluationPtrOutput) Notification() AlertV2EvaluationNotificationPtrOutput {
+	return o.ApplyT(func(v *AlertV2Evaluation) *AlertV2EvaluationNotification {
+		if v == nil {
+			return nil
+		}
+		return v.Notification
+	}).(AlertV2EvaluationNotificationPtrOutput)
+}
+
+func (o AlertV2EvaluationPtrOutput) Source() AlertV2EvaluationSourcePtrOutput {
+	return o.ApplyT(func(v *AlertV2Evaluation) *AlertV2EvaluationSource {
+		if v == nil {
+			return nil
+		}
+		return v.Source
+	}).(AlertV2EvaluationSourcePtrOutput)
+}
+
+func (o AlertV2EvaluationPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertV2Evaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2EvaluationPtrOutput) Threshold() AlertV2EvaluationThresholdPtrOutput {
+	return o.ApplyT(func(v *AlertV2Evaluation) *AlertV2EvaluationThreshold {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(AlertV2EvaluationThresholdPtrOutput)
+}
+
+type AlertV2EvaluationNotification struct {
+	NotifyOnOk       *bool                                       `pulumi:"notifyOnOk"`
+	RetriggerSeconds *int                                        `pulumi:"retriggerSeconds"`
+	Subscriptions    []AlertV2EvaluationNotificationSubscription `pulumi:"subscriptions"`
+}
+
+// AlertV2EvaluationNotificationInput is an input type that accepts AlertV2EvaluationNotificationArgs and AlertV2EvaluationNotificationOutput values.
+// You can construct a concrete instance of `AlertV2EvaluationNotificationInput` via:
+//
+//	AlertV2EvaluationNotificationArgs{...}
+type AlertV2EvaluationNotificationInput interface {
+	pulumi.Input
+
+	ToAlertV2EvaluationNotificationOutput() AlertV2EvaluationNotificationOutput
+	ToAlertV2EvaluationNotificationOutputWithContext(context.Context) AlertV2EvaluationNotificationOutput
+}
+
+type AlertV2EvaluationNotificationArgs struct {
+	NotifyOnOk       pulumi.BoolPtrInput                                 `pulumi:"notifyOnOk"`
+	RetriggerSeconds pulumi.IntPtrInput                                  `pulumi:"retriggerSeconds"`
+	Subscriptions    AlertV2EvaluationNotificationSubscriptionArrayInput `pulumi:"subscriptions"`
+}
+
+func (AlertV2EvaluationNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertV2EvaluationNotification)(nil)).Elem()
+}
+
+func (i AlertV2EvaluationNotificationArgs) ToAlertV2EvaluationNotificationOutput() AlertV2EvaluationNotificationOutput {
+	return i.ToAlertV2EvaluationNotificationOutputWithContext(context.Background())
+}
+
+func (i AlertV2EvaluationNotificationArgs) ToAlertV2EvaluationNotificationOutputWithContext(ctx context.Context) AlertV2EvaluationNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationNotificationOutput)
+}
+
+func (i AlertV2EvaluationNotificationArgs) ToAlertV2EvaluationNotificationPtrOutput() AlertV2EvaluationNotificationPtrOutput {
+	return i.ToAlertV2EvaluationNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i AlertV2EvaluationNotificationArgs) ToAlertV2EvaluationNotificationPtrOutputWithContext(ctx context.Context) AlertV2EvaluationNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationNotificationOutput).ToAlertV2EvaluationNotificationPtrOutputWithContext(ctx)
+}
+
+// AlertV2EvaluationNotificationPtrInput is an input type that accepts AlertV2EvaluationNotificationArgs, AlertV2EvaluationNotificationPtr and AlertV2EvaluationNotificationPtrOutput values.
+// You can construct a concrete instance of `AlertV2EvaluationNotificationPtrInput` via:
+//
+//	        AlertV2EvaluationNotificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertV2EvaluationNotificationPtrInput interface {
+	pulumi.Input
+
+	ToAlertV2EvaluationNotificationPtrOutput() AlertV2EvaluationNotificationPtrOutput
+	ToAlertV2EvaluationNotificationPtrOutputWithContext(context.Context) AlertV2EvaluationNotificationPtrOutput
+}
+
+type alertV2EvaluationNotificationPtrType AlertV2EvaluationNotificationArgs
+
+func AlertV2EvaluationNotificationPtr(v *AlertV2EvaluationNotificationArgs) AlertV2EvaluationNotificationPtrInput {
+	return (*alertV2EvaluationNotificationPtrType)(v)
+}
+
+func (*alertV2EvaluationNotificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertV2EvaluationNotification)(nil)).Elem()
+}
+
+func (i *alertV2EvaluationNotificationPtrType) ToAlertV2EvaluationNotificationPtrOutput() AlertV2EvaluationNotificationPtrOutput {
+	return i.ToAlertV2EvaluationNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i *alertV2EvaluationNotificationPtrType) ToAlertV2EvaluationNotificationPtrOutputWithContext(ctx context.Context) AlertV2EvaluationNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationNotificationPtrOutput)
+}
+
+type AlertV2EvaluationNotificationOutput struct{ *pulumi.OutputState }
+
+func (AlertV2EvaluationNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertV2EvaluationNotification)(nil)).Elem()
+}
+
+func (o AlertV2EvaluationNotificationOutput) ToAlertV2EvaluationNotificationOutput() AlertV2EvaluationNotificationOutput {
+	return o
+}
+
+func (o AlertV2EvaluationNotificationOutput) ToAlertV2EvaluationNotificationOutputWithContext(ctx context.Context) AlertV2EvaluationNotificationOutput {
+	return o
+}
+
+func (o AlertV2EvaluationNotificationOutput) ToAlertV2EvaluationNotificationPtrOutput() AlertV2EvaluationNotificationPtrOutput {
+	return o.ToAlertV2EvaluationNotificationPtrOutputWithContext(context.Background())
+}
+
+func (o AlertV2EvaluationNotificationOutput) ToAlertV2EvaluationNotificationPtrOutputWithContext(ctx context.Context) AlertV2EvaluationNotificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertV2EvaluationNotification) *AlertV2EvaluationNotification {
+		return &v
+	}).(AlertV2EvaluationNotificationPtrOutput)
+}
+
+func (o AlertV2EvaluationNotificationOutput) NotifyOnOk() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlertV2EvaluationNotification) *bool { return v.NotifyOnOk }).(pulumi.BoolPtrOutput)
+}
+
+func (o AlertV2EvaluationNotificationOutput) RetriggerSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertV2EvaluationNotification) *int { return v.RetriggerSeconds }).(pulumi.IntPtrOutput)
+}
+
+func (o AlertV2EvaluationNotificationOutput) Subscriptions() AlertV2EvaluationNotificationSubscriptionArrayOutput {
+	return o.ApplyT(func(v AlertV2EvaluationNotification) []AlertV2EvaluationNotificationSubscription {
+		return v.Subscriptions
+	}).(AlertV2EvaluationNotificationSubscriptionArrayOutput)
+}
+
+type AlertV2EvaluationNotificationPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertV2EvaluationNotificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertV2EvaluationNotification)(nil)).Elem()
+}
+
+func (o AlertV2EvaluationNotificationPtrOutput) ToAlertV2EvaluationNotificationPtrOutput() AlertV2EvaluationNotificationPtrOutput {
+	return o
+}
+
+func (o AlertV2EvaluationNotificationPtrOutput) ToAlertV2EvaluationNotificationPtrOutputWithContext(ctx context.Context) AlertV2EvaluationNotificationPtrOutput {
+	return o
+}
+
+func (o AlertV2EvaluationNotificationPtrOutput) Elem() AlertV2EvaluationNotificationOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationNotification) AlertV2EvaluationNotification {
+		if v != nil {
+			return *v
+		}
+		var ret AlertV2EvaluationNotification
+		return ret
+	}).(AlertV2EvaluationNotificationOutput)
+}
+
+func (o AlertV2EvaluationNotificationPtrOutput) NotifyOnOk() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationNotification) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NotifyOnOk
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o AlertV2EvaluationNotificationPtrOutput) RetriggerSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationNotification) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetriggerSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o AlertV2EvaluationNotificationPtrOutput) Subscriptions() AlertV2EvaluationNotificationSubscriptionArrayOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationNotification) []AlertV2EvaluationNotificationSubscription {
+		if v == nil {
+			return nil
+		}
+		return v.Subscriptions
+	}).(AlertV2EvaluationNotificationSubscriptionArrayOutput)
+}
+
+type AlertV2EvaluationNotificationSubscription struct {
+	DestinationId *string `pulumi:"destinationId"`
+	UserEmail     *string `pulumi:"userEmail"`
+}
+
+// AlertV2EvaluationNotificationSubscriptionInput is an input type that accepts AlertV2EvaluationNotificationSubscriptionArgs and AlertV2EvaluationNotificationSubscriptionOutput values.
+// You can construct a concrete instance of `AlertV2EvaluationNotificationSubscriptionInput` via:
+//
+//	AlertV2EvaluationNotificationSubscriptionArgs{...}
+type AlertV2EvaluationNotificationSubscriptionInput interface {
+	pulumi.Input
+
+	ToAlertV2EvaluationNotificationSubscriptionOutput() AlertV2EvaluationNotificationSubscriptionOutput
+	ToAlertV2EvaluationNotificationSubscriptionOutputWithContext(context.Context) AlertV2EvaluationNotificationSubscriptionOutput
+}
+
+type AlertV2EvaluationNotificationSubscriptionArgs struct {
+	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
+	UserEmail     pulumi.StringPtrInput `pulumi:"userEmail"`
+}
+
+func (AlertV2EvaluationNotificationSubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertV2EvaluationNotificationSubscription)(nil)).Elem()
+}
+
+func (i AlertV2EvaluationNotificationSubscriptionArgs) ToAlertV2EvaluationNotificationSubscriptionOutput() AlertV2EvaluationNotificationSubscriptionOutput {
+	return i.ToAlertV2EvaluationNotificationSubscriptionOutputWithContext(context.Background())
+}
+
+func (i AlertV2EvaluationNotificationSubscriptionArgs) ToAlertV2EvaluationNotificationSubscriptionOutputWithContext(ctx context.Context) AlertV2EvaluationNotificationSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationNotificationSubscriptionOutput)
+}
+
+// AlertV2EvaluationNotificationSubscriptionArrayInput is an input type that accepts AlertV2EvaluationNotificationSubscriptionArray and AlertV2EvaluationNotificationSubscriptionArrayOutput values.
+// You can construct a concrete instance of `AlertV2EvaluationNotificationSubscriptionArrayInput` via:
+//
+//	AlertV2EvaluationNotificationSubscriptionArray{ AlertV2EvaluationNotificationSubscriptionArgs{...} }
+type AlertV2EvaluationNotificationSubscriptionArrayInput interface {
+	pulumi.Input
+
+	ToAlertV2EvaluationNotificationSubscriptionArrayOutput() AlertV2EvaluationNotificationSubscriptionArrayOutput
+	ToAlertV2EvaluationNotificationSubscriptionArrayOutputWithContext(context.Context) AlertV2EvaluationNotificationSubscriptionArrayOutput
+}
+
+type AlertV2EvaluationNotificationSubscriptionArray []AlertV2EvaluationNotificationSubscriptionInput
+
+func (AlertV2EvaluationNotificationSubscriptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertV2EvaluationNotificationSubscription)(nil)).Elem()
+}
+
+func (i AlertV2EvaluationNotificationSubscriptionArray) ToAlertV2EvaluationNotificationSubscriptionArrayOutput() AlertV2EvaluationNotificationSubscriptionArrayOutput {
+	return i.ToAlertV2EvaluationNotificationSubscriptionArrayOutputWithContext(context.Background())
+}
+
+func (i AlertV2EvaluationNotificationSubscriptionArray) ToAlertV2EvaluationNotificationSubscriptionArrayOutputWithContext(ctx context.Context) AlertV2EvaluationNotificationSubscriptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationNotificationSubscriptionArrayOutput)
+}
+
+type AlertV2EvaluationNotificationSubscriptionOutput struct{ *pulumi.OutputState }
+
+func (AlertV2EvaluationNotificationSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertV2EvaluationNotificationSubscription)(nil)).Elem()
+}
+
+func (o AlertV2EvaluationNotificationSubscriptionOutput) ToAlertV2EvaluationNotificationSubscriptionOutput() AlertV2EvaluationNotificationSubscriptionOutput {
+	return o
+}
+
+func (o AlertV2EvaluationNotificationSubscriptionOutput) ToAlertV2EvaluationNotificationSubscriptionOutputWithContext(ctx context.Context) AlertV2EvaluationNotificationSubscriptionOutput {
+	return o
+}
+
+func (o AlertV2EvaluationNotificationSubscriptionOutput) DestinationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertV2EvaluationNotificationSubscription) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2EvaluationNotificationSubscriptionOutput) UserEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertV2EvaluationNotificationSubscription) *string { return v.UserEmail }).(pulumi.StringPtrOutput)
+}
+
+type AlertV2EvaluationNotificationSubscriptionArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertV2EvaluationNotificationSubscriptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertV2EvaluationNotificationSubscription)(nil)).Elem()
+}
+
+func (o AlertV2EvaluationNotificationSubscriptionArrayOutput) ToAlertV2EvaluationNotificationSubscriptionArrayOutput() AlertV2EvaluationNotificationSubscriptionArrayOutput {
+	return o
+}
+
+func (o AlertV2EvaluationNotificationSubscriptionArrayOutput) ToAlertV2EvaluationNotificationSubscriptionArrayOutputWithContext(ctx context.Context) AlertV2EvaluationNotificationSubscriptionArrayOutput {
+	return o
+}
+
+func (o AlertV2EvaluationNotificationSubscriptionArrayOutput) Index(i pulumi.IntInput) AlertV2EvaluationNotificationSubscriptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertV2EvaluationNotificationSubscription {
+		return vs[0].([]AlertV2EvaluationNotificationSubscription)[vs[1].(int)]
+	}).(AlertV2EvaluationNotificationSubscriptionOutput)
+}
+
+type AlertV2EvaluationSource struct {
+	Aggregation *string `pulumi:"aggregation"`
+	Display     *string `pulumi:"display"`
+	Name        *string `pulumi:"name"`
+}
+
+// AlertV2EvaluationSourceInput is an input type that accepts AlertV2EvaluationSourceArgs and AlertV2EvaluationSourceOutput values.
+// You can construct a concrete instance of `AlertV2EvaluationSourceInput` via:
+//
+//	AlertV2EvaluationSourceArgs{...}
+type AlertV2EvaluationSourceInput interface {
+	pulumi.Input
+
+	ToAlertV2EvaluationSourceOutput() AlertV2EvaluationSourceOutput
+	ToAlertV2EvaluationSourceOutputWithContext(context.Context) AlertV2EvaluationSourceOutput
+}
+
+type AlertV2EvaluationSourceArgs struct {
+	Aggregation pulumi.StringPtrInput `pulumi:"aggregation"`
+	Display     pulumi.StringPtrInput `pulumi:"display"`
+	Name        pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AlertV2EvaluationSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertV2EvaluationSource)(nil)).Elem()
+}
+
+func (i AlertV2EvaluationSourceArgs) ToAlertV2EvaluationSourceOutput() AlertV2EvaluationSourceOutput {
+	return i.ToAlertV2EvaluationSourceOutputWithContext(context.Background())
+}
+
+func (i AlertV2EvaluationSourceArgs) ToAlertV2EvaluationSourceOutputWithContext(ctx context.Context) AlertV2EvaluationSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationSourceOutput)
+}
+
+func (i AlertV2EvaluationSourceArgs) ToAlertV2EvaluationSourcePtrOutput() AlertV2EvaluationSourcePtrOutput {
+	return i.ToAlertV2EvaluationSourcePtrOutputWithContext(context.Background())
+}
+
+func (i AlertV2EvaluationSourceArgs) ToAlertV2EvaluationSourcePtrOutputWithContext(ctx context.Context) AlertV2EvaluationSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationSourceOutput).ToAlertV2EvaluationSourcePtrOutputWithContext(ctx)
+}
+
+// AlertV2EvaluationSourcePtrInput is an input type that accepts AlertV2EvaluationSourceArgs, AlertV2EvaluationSourcePtr and AlertV2EvaluationSourcePtrOutput values.
+// You can construct a concrete instance of `AlertV2EvaluationSourcePtrInput` via:
+//
+//	        AlertV2EvaluationSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertV2EvaluationSourcePtrInput interface {
+	pulumi.Input
+
+	ToAlertV2EvaluationSourcePtrOutput() AlertV2EvaluationSourcePtrOutput
+	ToAlertV2EvaluationSourcePtrOutputWithContext(context.Context) AlertV2EvaluationSourcePtrOutput
+}
+
+type alertV2EvaluationSourcePtrType AlertV2EvaluationSourceArgs
+
+func AlertV2EvaluationSourcePtr(v *AlertV2EvaluationSourceArgs) AlertV2EvaluationSourcePtrInput {
+	return (*alertV2EvaluationSourcePtrType)(v)
+}
+
+func (*alertV2EvaluationSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertV2EvaluationSource)(nil)).Elem()
+}
+
+func (i *alertV2EvaluationSourcePtrType) ToAlertV2EvaluationSourcePtrOutput() AlertV2EvaluationSourcePtrOutput {
+	return i.ToAlertV2EvaluationSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *alertV2EvaluationSourcePtrType) ToAlertV2EvaluationSourcePtrOutputWithContext(ctx context.Context) AlertV2EvaluationSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationSourcePtrOutput)
+}
+
+type AlertV2EvaluationSourceOutput struct{ *pulumi.OutputState }
+
+func (AlertV2EvaluationSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertV2EvaluationSource)(nil)).Elem()
+}
+
+func (o AlertV2EvaluationSourceOutput) ToAlertV2EvaluationSourceOutput() AlertV2EvaluationSourceOutput {
+	return o
+}
+
+func (o AlertV2EvaluationSourceOutput) ToAlertV2EvaluationSourceOutputWithContext(ctx context.Context) AlertV2EvaluationSourceOutput {
+	return o
+}
+
+func (o AlertV2EvaluationSourceOutput) ToAlertV2EvaluationSourcePtrOutput() AlertV2EvaluationSourcePtrOutput {
+	return o.ToAlertV2EvaluationSourcePtrOutputWithContext(context.Background())
+}
+
+func (o AlertV2EvaluationSourceOutput) ToAlertV2EvaluationSourcePtrOutputWithContext(ctx context.Context) AlertV2EvaluationSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertV2EvaluationSource) *AlertV2EvaluationSource {
+		return &v
+	}).(AlertV2EvaluationSourcePtrOutput)
+}
+
+func (o AlertV2EvaluationSourceOutput) Aggregation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertV2EvaluationSource) *string { return v.Aggregation }).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2EvaluationSourceOutput) Display() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertV2EvaluationSource) *string { return v.Display }).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2EvaluationSourceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertV2EvaluationSource) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AlertV2EvaluationSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (AlertV2EvaluationSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertV2EvaluationSource)(nil)).Elem()
+}
+
+func (o AlertV2EvaluationSourcePtrOutput) ToAlertV2EvaluationSourcePtrOutput() AlertV2EvaluationSourcePtrOutput {
+	return o
+}
+
+func (o AlertV2EvaluationSourcePtrOutput) ToAlertV2EvaluationSourcePtrOutputWithContext(ctx context.Context) AlertV2EvaluationSourcePtrOutput {
+	return o
+}
+
+func (o AlertV2EvaluationSourcePtrOutput) Elem() AlertV2EvaluationSourceOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationSource) AlertV2EvaluationSource {
+		if v != nil {
+			return *v
+		}
+		var ret AlertV2EvaluationSource
+		return ret
+	}).(AlertV2EvaluationSourceOutput)
+}
+
+func (o AlertV2EvaluationSourcePtrOutput) Aggregation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Aggregation
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2EvaluationSourcePtrOutput) Display() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Display
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2EvaluationSourcePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlertV2EvaluationThreshold struct {
+	Column *AlertV2EvaluationThresholdColumn `pulumi:"column"`
+	Value  *AlertV2EvaluationThresholdValue  `pulumi:"value"`
+}
+
+// AlertV2EvaluationThresholdInput is an input type that accepts AlertV2EvaluationThresholdArgs and AlertV2EvaluationThresholdOutput values.
+// You can construct a concrete instance of `AlertV2EvaluationThresholdInput` via:
+//
+//	AlertV2EvaluationThresholdArgs{...}
+type AlertV2EvaluationThresholdInput interface {
+	pulumi.Input
+
+	ToAlertV2EvaluationThresholdOutput() AlertV2EvaluationThresholdOutput
+	ToAlertV2EvaluationThresholdOutputWithContext(context.Context) AlertV2EvaluationThresholdOutput
+}
+
+type AlertV2EvaluationThresholdArgs struct {
+	Column AlertV2EvaluationThresholdColumnPtrInput `pulumi:"column"`
+	Value  AlertV2EvaluationThresholdValuePtrInput  `pulumi:"value"`
+}
+
+func (AlertV2EvaluationThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertV2EvaluationThreshold)(nil)).Elem()
+}
+
+func (i AlertV2EvaluationThresholdArgs) ToAlertV2EvaluationThresholdOutput() AlertV2EvaluationThresholdOutput {
+	return i.ToAlertV2EvaluationThresholdOutputWithContext(context.Background())
+}
+
+func (i AlertV2EvaluationThresholdArgs) ToAlertV2EvaluationThresholdOutputWithContext(ctx context.Context) AlertV2EvaluationThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationThresholdOutput)
+}
+
+func (i AlertV2EvaluationThresholdArgs) ToAlertV2EvaluationThresholdPtrOutput() AlertV2EvaluationThresholdPtrOutput {
+	return i.ToAlertV2EvaluationThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i AlertV2EvaluationThresholdArgs) ToAlertV2EvaluationThresholdPtrOutputWithContext(ctx context.Context) AlertV2EvaluationThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationThresholdOutput).ToAlertV2EvaluationThresholdPtrOutputWithContext(ctx)
+}
+
+// AlertV2EvaluationThresholdPtrInput is an input type that accepts AlertV2EvaluationThresholdArgs, AlertV2EvaluationThresholdPtr and AlertV2EvaluationThresholdPtrOutput values.
+// You can construct a concrete instance of `AlertV2EvaluationThresholdPtrInput` via:
+//
+//	        AlertV2EvaluationThresholdArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertV2EvaluationThresholdPtrInput interface {
+	pulumi.Input
+
+	ToAlertV2EvaluationThresholdPtrOutput() AlertV2EvaluationThresholdPtrOutput
+	ToAlertV2EvaluationThresholdPtrOutputWithContext(context.Context) AlertV2EvaluationThresholdPtrOutput
+}
+
+type alertV2EvaluationThresholdPtrType AlertV2EvaluationThresholdArgs
+
+func AlertV2EvaluationThresholdPtr(v *AlertV2EvaluationThresholdArgs) AlertV2EvaluationThresholdPtrInput {
+	return (*alertV2EvaluationThresholdPtrType)(v)
+}
+
+func (*alertV2EvaluationThresholdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertV2EvaluationThreshold)(nil)).Elem()
+}
+
+func (i *alertV2EvaluationThresholdPtrType) ToAlertV2EvaluationThresholdPtrOutput() AlertV2EvaluationThresholdPtrOutput {
+	return i.ToAlertV2EvaluationThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i *alertV2EvaluationThresholdPtrType) ToAlertV2EvaluationThresholdPtrOutputWithContext(ctx context.Context) AlertV2EvaluationThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationThresholdPtrOutput)
+}
+
+type AlertV2EvaluationThresholdOutput struct{ *pulumi.OutputState }
+
+func (AlertV2EvaluationThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertV2EvaluationThreshold)(nil)).Elem()
+}
+
+func (o AlertV2EvaluationThresholdOutput) ToAlertV2EvaluationThresholdOutput() AlertV2EvaluationThresholdOutput {
+	return o
+}
+
+func (o AlertV2EvaluationThresholdOutput) ToAlertV2EvaluationThresholdOutputWithContext(ctx context.Context) AlertV2EvaluationThresholdOutput {
+	return o
+}
+
+func (o AlertV2EvaluationThresholdOutput) ToAlertV2EvaluationThresholdPtrOutput() AlertV2EvaluationThresholdPtrOutput {
+	return o.ToAlertV2EvaluationThresholdPtrOutputWithContext(context.Background())
+}
+
+func (o AlertV2EvaluationThresholdOutput) ToAlertV2EvaluationThresholdPtrOutputWithContext(ctx context.Context) AlertV2EvaluationThresholdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertV2EvaluationThreshold) *AlertV2EvaluationThreshold {
+		return &v
+	}).(AlertV2EvaluationThresholdPtrOutput)
+}
+
+func (o AlertV2EvaluationThresholdOutput) Column() AlertV2EvaluationThresholdColumnPtrOutput {
+	return o.ApplyT(func(v AlertV2EvaluationThreshold) *AlertV2EvaluationThresholdColumn { return v.Column }).(AlertV2EvaluationThresholdColumnPtrOutput)
+}
+
+func (o AlertV2EvaluationThresholdOutput) Value() AlertV2EvaluationThresholdValuePtrOutput {
+	return o.ApplyT(func(v AlertV2EvaluationThreshold) *AlertV2EvaluationThresholdValue { return v.Value }).(AlertV2EvaluationThresholdValuePtrOutput)
+}
+
+type AlertV2EvaluationThresholdPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertV2EvaluationThresholdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertV2EvaluationThreshold)(nil)).Elem()
+}
+
+func (o AlertV2EvaluationThresholdPtrOutput) ToAlertV2EvaluationThresholdPtrOutput() AlertV2EvaluationThresholdPtrOutput {
+	return o
+}
+
+func (o AlertV2EvaluationThresholdPtrOutput) ToAlertV2EvaluationThresholdPtrOutputWithContext(ctx context.Context) AlertV2EvaluationThresholdPtrOutput {
+	return o
+}
+
+func (o AlertV2EvaluationThresholdPtrOutput) Elem() AlertV2EvaluationThresholdOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationThreshold) AlertV2EvaluationThreshold {
+		if v != nil {
+			return *v
+		}
+		var ret AlertV2EvaluationThreshold
+		return ret
+	}).(AlertV2EvaluationThresholdOutput)
+}
+
+func (o AlertV2EvaluationThresholdPtrOutput) Column() AlertV2EvaluationThresholdColumnPtrOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationThreshold) *AlertV2EvaluationThresholdColumn {
+		if v == nil {
+			return nil
+		}
+		return v.Column
+	}).(AlertV2EvaluationThresholdColumnPtrOutput)
+}
+
+func (o AlertV2EvaluationThresholdPtrOutput) Value() AlertV2EvaluationThresholdValuePtrOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationThreshold) *AlertV2EvaluationThresholdValue {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(AlertV2EvaluationThresholdValuePtrOutput)
+}
+
+type AlertV2EvaluationThresholdColumn struct {
+	Aggregation *string `pulumi:"aggregation"`
+	Display     *string `pulumi:"display"`
+	Name        *string `pulumi:"name"`
+}
+
+// AlertV2EvaluationThresholdColumnInput is an input type that accepts AlertV2EvaluationThresholdColumnArgs and AlertV2EvaluationThresholdColumnOutput values.
+// You can construct a concrete instance of `AlertV2EvaluationThresholdColumnInput` via:
+//
+//	AlertV2EvaluationThresholdColumnArgs{...}
+type AlertV2EvaluationThresholdColumnInput interface {
+	pulumi.Input
+
+	ToAlertV2EvaluationThresholdColumnOutput() AlertV2EvaluationThresholdColumnOutput
+	ToAlertV2EvaluationThresholdColumnOutputWithContext(context.Context) AlertV2EvaluationThresholdColumnOutput
+}
+
+type AlertV2EvaluationThresholdColumnArgs struct {
+	Aggregation pulumi.StringPtrInput `pulumi:"aggregation"`
+	Display     pulumi.StringPtrInput `pulumi:"display"`
+	Name        pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AlertV2EvaluationThresholdColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertV2EvaluationThresholdColumn)(nil)).Elem()
+}
+
+func (i AlertV2EvaluationThresholdColumnArgs) ToAlertV2EvaluationThresholdColumnOutput() AlertV2EvaluationThresholdColumnOutput {
+	return i.ToAlertV2EvaluationThresholdColumnOutputWithContext(context.Background())
+}
+
+func (i AlertV2EvaluationThresholdColumnArgs) ToAlertV2EvaluationThresholdColumnOutputWithContext(ctx context.Context) AlertV2EvaluationThresholdColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationThresholdColumnOutput)
+}
+
+func (i AlertV2EvaluationThresholdColumnArgs) ToAlertV2EvaluationThresholdColumnPtrOutput() AlertV2EvaluationThresholdColumnPtrOutput {
+	return i.ToAlertV2EvaluationThresholdColumnPtrOutputWithContext(context.Background())
+}
+
+func (i AlertV2EvaluationThresholdColumnArgs) ToAlertV2EvaluationThresholdColumnPtrOutputWithContext(ctx context.Context) AlertV2EvaluationThresholdColumnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationThresholdColumnOutput).ToAlertV2EvaluationThresholdColumnPtrOutputWithContext(ctx)
+}
+
+// AlertV2EvaluationThresholdColumnPtrInput is an input type that accepts AlertV2EvaluationThresholdColumnArgs, AlertV2EvaluationThresholdColumnPtr and AlertV2EvaluationThresholdColumnPtrOutput values.
+// You can construct a concrete instance of `AlertV2EvaluationThresholdColumnPtrInput` via:
+//
+//	        AlertV2EvaluationThresholdColumnArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertV2EvaluationThresholdColumnPtrInput interface {
+	pulumi.Input
+
+	ToAlertV2EvaluationThresholdColumnPtrOutput() AlertV2EvaluationThresholdColumnPtrOutput
+	ToAlertV2EvaluationThresholdColumnPtrOutputWithContext(context.Context) AlertV2EvaluationThresholdColumnPtrOutput
+}
+
+type alertV2EvaluationThresholdColumnPtrType AlertV2EvaluationThresholdColumnArgs
+
+func AlertV2EvaluationThresholdColumnPtr(v *AlertV2EvaluationThresholdColumnArgs) AlertV2EvaluationThresholdColumnPtrInput {
+	return (*alertV2EvaluationThresholdColumnPtrType)(v)
+}
+
+func (*alertV2EvaluationThresholdColumnPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertV2EvaluationThresholdColumn)(nil)).Elem()
+}
+
+func (i *alertV2EvaluationThresholdColumnPtrType) ToAlertV2EvaluationThresholdColumnPtrOutput() AlertV2EvaluationThresholdColumnPtrOutput {
+	return i.ToAlertV2EvaluationThresholdColumnPtrOutputWithContext(context.Background())
+}
+
+func (i *alertV2EvaluationThresholdColumnPtrType) ToAlertV2EvaluationThresholdColumnPtrOutputWithContext(ctx context.Context) AlertV2EvaluationThresholdColumnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationThresholdColumnPtrOutput)
+}
+
+type AlertV2EvaluationThresholdColumnOutput struct{ *pulumi.OutputState }
+
+func (AlertV2EvaluationThresholdColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertV2EvaluationThresholdColumn)(nil)).Elem()
+}
+
+func (o AlertV2EvaluationThresholdColumnOutput) ToAlertV2EvaluationThresholdColumnOutput() AlertV2EvaluationThresholdColumnOutput {
+	return o
+}
+
+func (o AlertV2EvaluationThresholdColumnOutput) ToAlertV2EvaluationThresholdColumnOutputWithContext(ctx context.Context) AlertV2EvaluationThresholdColumnOutput {
+	return o
+}
+
+func (o AlertV2EvaluationThresholdColumnOutput) ToAlertV2EvaluationThresholdColumnPtrOutput() AlertV2EvaluationThresholdColumnPtrOutput {
+	return o.ToAlertV2EvaluationThresholdColumnPtrOutputWithContext(context.Background())
+}
+
+func (o AlertV2EvaluationThresholdColumnOutput) ToAlertV2EvaluationThresholdColumnPtrOutputWithContext(ctx context.Context) AlertV2EvaluationThresholdColumnPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertV2EvaluationThresholdColumn) *AlertV2EvaluationThresholdColumn {
+		return &v
+	}).(AlertV2EvaluationThresholdColumnPtrOutput)
+}
+
+func (o AlertV2EvaluationThresholdColumnOutput) Aggregation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertV2EvaluationThresholdColumn) *string { return v.Aggregation }).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2EvaluationThresholdColumnOutput) Display() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertV2EvaluationThresholdColumn) *string { return v.Display }).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2EvaluationThresholdColumnOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertV2EvaluationThresholdColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AlertV2EvaluationThresholdColumnPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertV2EvaluationThresholdColumnPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertV2EvaluationThresholdColumn)(nil)).Elem()
+}
+
+func (o AlertV2EvaluationThresholdColumnPtrOutput) ToAlertV2EvaluationThresholdColumnPtrOutput() AlertV2EvaluationThresholdColumnPtrOutput {
+	return o
+}
+
+func (o AlertV2EvaluationThresholdColumnPtrOutput) ToAlertV2EvaluationThresholdColumnPtrOutputWithContext(ctx context.Context) AlertV2EvaluationThresholdColumnPtrOutput {
+	return o
+}
+
+func (o AlertV2EvaluationThresholdColumnPtrOutput) Elem() AlertV2EvaluationThresholdColumnOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationThresholdColumn) AlertV2EvaluationThresholdColumn {
+		if v != nil {
+			return *v
+		}
+		var ret AlertV2EvaluationThresholdColumn
+		return ret
+	}).(AlertV2EvaluationThresholdColumnOutput)
+}
+
+func (o AlertV2EvaluationThresholdColumnPtrOutput) Aggregation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationThresholdColumn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Aggregation
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2EvaluationThresholdColumnPtrOutput) Display() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationThresholdColumn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Display
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2EvaluationThresholdColumnPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationThresholdColumn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlertV2EvaluationThresholdValue struct {
+	BoolValue   *bool    `pulumi:"boolValue"`
+	DoubleValue *float64 `pulumi:"doubleValue"`
+	StringValue *string  `pulumi:"stringValue"`
+}
+
+// AlertV2EvaluationThresholdValueInput is an input type that accepts AlertV2EvaluationThresholdValueArgs and AlertV2EvaluationThresholdValueOutput values.
+// You can construct a concrete instance of `AlertV2EvaluationThresholdValueInput` via:
+//
+//	AlertV2EvaluationThresholdValueArgs{...}
+type AlertV2EvaluationThresholdValueInput interface {
+	pulumi.Input
+
+	ToAlertV2EvaluationThresholdValueOutput() AlertV2EvaluationThresholdValueOutput
+	ToAlertV2EvaluationThresholdValueOutputWithContext(context.Context) AlertV2EvaluationThresholdValueOutput
+}
+
+type AlertV2EvaluationThresholdValueArgs struct {
+	BoolValue   pulumi.BoolPtrInput    `pulumi:"boolValue"`
+	DoubleValue pulumi.Float64PtrInput `pulumi:"doubleValue"`
+	StringValue pulumi.StringPtrInput  `pulumi:"stringValue"`
+}
+
+func (AlertV2EvaluationThresholdValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertV2EvaluationThresholdValue)(nil)).Elem()
+}
+
+func (i AlertV2EvaluationThresholdValueArgs) ToAlertV2EvaluationThresholdValueOutput() AlertV2EvaluationThresholdValueOutput {
+	return i.ToAlertV2EvaluationThresholdValueOutputWithContext(context.Background())
+}
+
+func (i AlertV2EvaluationThresholdValueArgs) ToAlertV2EvaluationThresholdValueOutputWithContext(ctx context.Context) AlertV2EvaluationThresholdValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationThresholdValueOutput)
+}
+
+func (i AlertV2EvaluationThresholdValueArgs) ToAlertV2EvaluationThresholdValuePtrOutput() AlertV2EvaluationThresholdValuePtrOutput {
+	return i.ToAlertV2EvaluationThresholdValuePtrOutputWithContext(context.Background())
+}
+
+func (i AlertV2EvaluationThresholdValueArgs) ToAlertV2EvaluationThresholdValuePtrOutputWithContext(ctx context.Context) AlertV2EvaluationThresholdValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationThresholdValueOutput).ToAlertV2EvaluationThresholdValuePtrOutputWithContext(ctx)
+}
+
+// AlertV2EvaluationThresholdValuePtrInput is an input type that accepts AlertV2EvaluationThresholdValueArgs, AlertV2EvaluationThresholdValuePtr and AlertV2EvaluationThresholdValuePtrOutput values.
+// You can construct a concrete instance of `AlertV2EvaluationThresholdValuePtrInput` via:
+//
+//	        AlertV2EvaluationThresholdValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertV2EvaluationThresholdValuePtrInput interface {
+	pulumi.Input
+
+	ToAlertV2EvaluationThresholdValuePtrOutput() AlertV2EvaluationThresholdValuePtrOutput
+	ToAlertV2EvaluationThresholdValuePtrOutputWithContext(context.Context) AlertV2EvaluationThresholdValuePtrOutput
+}
+
+type alertV2EvaluationThresholdValuePtrType AlertV2EvaluationThresholdValueArgs
+
+func AlertV2EvaluationThresholdValuePtr(v *AlertV2EvaluationThresholdValueArgs) AlertV2EvaluationThresholdValuePtrInput {
+	return (*alertV2EvaluationThresholdValuePtrType)(v)
+}
+
+func (*alertV2EvaluationThresholdValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertV2EvaluationThresholdValue)(nil)).Elem()
+}
+
+func (i *alertV2EvaluationThresholdValuePtrType) ToAlertV2EvaluationThresholdValuePtrOutput() AlertV2EvaluationThresholdValuePtrOutput {
+	return i.ToAlertV2EvaluationThresholdValuePtrOutputWithContext(context.Background())
+}
+
+func (i *alertV2EvaluationThresholdValuePtrType) ToAlertV2EvaluationThresholdValuePtrOutputWithContext(ctx context.Context) AlertV2EvaluationThresholdValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2EvaluationThresholdValuePtrOutput)
+}
+
+type AlertV2EvaluationThresholdValueOutput struct{ *pulumi.OutputState }
+
+func (AlertV2EvaluationThresholdValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertV2EvaluationThresholdValue)(nil)).Elem()
+}
+
+func (o AlertV2EvaluationThresholdValueOutput) ToAlertV2EvaluationThresholdValueOutput() AlertV2EvaluationThresholdValueOutput {
+	return o
+}
+
+func (o AlertV2EvaluationThresholdValueOutput) ToAlertV2EvaluationThresholdValueOutputWithContext(ctx context.Context) AlertV2EvaluationThresholdValueOutput {
+	return o
+}
+
+func (o AlertV2EvaluationThresholdValueOutput) ToAlertV2EvaluationThresholdValuePtrOutput() AlertV2EvaluationThresholdValuePtrOutput {
+	return o.ToAlertV2EvaluationThresholdValuePtrOutputWithContext(context.Background())
+}
+
+func (o AlertV2EvaluationThresholdValueOutput) ToAlertV2EvaluationThresholdValuePtrOutputWithContext(ctx context.Context) AlertV2EvaluationThresholdValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertV2EvaluationThresholdValue) *AlertV2EvaluationThresholdValue {
+		return &v
+	}).(AlertV2EvaluationThresholdValuePtrOutput)
+}
+
+func (o AlertV2EvaluationThresholdValueOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlertV2EvaluationThresholdValue) *bool { return v.BoolValue }).(pulumi.BoolPtrOutput)
+}
+
+func (o AlertV2EvaluationThresholdValueOutput) DoubleValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AlertV2EvaluationThresholdValue) *float64 { return v.DoubleValue }).(pulumi.Float64PtrOutput)
+}
+
+func (o AlertV2EvaluationThresholdValueOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertV2EvaluationThresholdValue) *string { return v.StringValue }).(pulumi.StringPtrOutput)
+}
+
+type AlertV2EvaluationThresholdValuePtrOutput struct{ *pulumi.OutputState }
+
+func (AlertV2EvaluationThresholdValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertV2EvaluationThresholdValue)(nil)).Elem()
+}
+
+func (o AlertV2EvaluationThresholdValuePtrOutput) ToAlertV2EvaluationThresholdValuePtrOutput() AlertV2EvaluationThresholdValuePtrOutput {
+	return o
+}
+
+func (o AlertV2EvaluationThresholdValuePtrOutput) ToAlertV2EvaluationThresholdValuePtrOutputWithContext(ctx context.Context) AlertV2EvaluationThresholdValuePtrOutput {
+	return o
+}
+
+func (o AlertV2EvaluationThresholdValuePtrOutput) Elem() AlertV2EvaluationThresholdValueOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationThresholdValue) AlertV2EvaluationThresholdValue {
+		if v != nil {
+			return *v
+		}
+		var ret AlertV2EvaluationThresholdValue
+		return ret
+	}).(AlertV2EvaluationThresholdValueOutput)
+}
+
+func (o AlertV2EvaluationThresholdValuePtrOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationThresholdValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BoolValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o AlertV2EvaluationThresholdValuePtrOutput) DoubleValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationThresholdValue) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DoubleValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o AlertV2EvaluationThresholdValuePtrOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertV2EvaluationThresholdValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlertV2Schedule struct {
+	PauseStatus        *string `pulumi:"pauseStatus"`
+	QuartzCronSchedule *string `pulumi:"quartzCronSchedule"`
+	TimezoneId         *string `pulumi:"timezoneId"`
+}
+
+// AlertV2ScheduleInput is an input type that accepts AlertV2ScheduleArgs and AlertV2ScheduleOutput values.
+// You can construct a concrete instance of `AlertV2ScheduleInput` via:
+//
+//	AlertV2ScheduleArgs{...}
+type AlertV2ScheduleInput interface {
+	pulumi.Input
+
+	ToAlertV2ScheduleOutput() AlertV2ScheduleOutput
+	ToAlertV2ScheduleOutputWithContext(context.Context) AlertV2ScheduleOutput
+}
+
+type AlertV2ScheduleArgs struct {
+	PauseStatus        pulumi.StringPtrInput `pulumi:"pauseStatus"`
+	QuartzCronSchedule pulumi.StringPtrInput `pulumi:"quartzCronSchedule"`
+	TimezoneId         pulumi.StringPtrInput `pulumi:"timezoneId"`
+}
+
+func (AlertV2ScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertV2Schedule)(nil)).Elem()
+}
+
+func (i AlertV2ScheduleArgs) ToAlertV2ScheduleOutput() AlertV2ScheduleOutput {
+	return i.ToAlertV2ScheduleOutputWithContext(context.Background())
+}
+
+func (i AlertV2ScheduleArgs) ToAlertV2ScheduleOutputWithContext(ctx context.Context) AlertV2ScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2ScheduleOutput)
+}
+
+func (i AlertV2ScheduleArgs) ToAlertV2SchedulePtrOutput() AlertV2SchedulePtrOutput {
+	return i.ToAlertV2SchedulePtrOutputWithContext(context.Background())
+}
+
+func (i AlertV2ScheduleArgs) ToAlertV2SchedulePtrOutputWithContext(ctx context.Context) AlertV2SchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2ScheduleOutput).ToAlertV2SchedulePtrOutputWithContext(ctx)
+}
+
+// AlertV2SchedulePtrInput is an input type that accepts AlertV2ScheduleArgs, AlertV2SchedulePtr and AlertV2SchedulePtrOutput values.
+// You can construct a concrete instance of `AlertV2SchedulePtrInput` via:
+//
+//	        AlertV2ScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertV2SchedulePtrInput interface {
+	pulumi.Input
+
+	ToAlertV2SchedulePtrOutput() AlertV2SchedulePtrOutput
+	ToAlertV2SchedulePtrOutputWithContext(context.Context) AlertV2SchedulePtrOutput
+}
+
+type alertV2SchedulePtrType AlertV2ScheduleArgs
+
+func AlertV2SchedulePtr(v *AlertV2ScheduleArgs) AlertV2SchedulePtrInput {
+	return (*alertV2SchedulePtrType)(v)
+}
+
+func (*alertV2SchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertV2Schedule)(nil)).Elem()
+}
+
+func (i *alertV2SchedulePtrType) ToAlertV2SchedulePtrOutput() AlertV2SchedulePtrOutput {
+	return i.ToAlertV2SchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *alertV2SchedulePtrType) ToAlertV2SchedulePtrOutputWithContext(ctx context.Context) AlertV2SchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertV2SchedulePtrOutput)
+}
+
+type AlertV2ScheduleOutput struct{ *pulumi.OutputState }
+
+func (AlertV2ScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertV2Schedule)(nil)).Elem()
+}
+
+func (o AlertV2ScheduleOutput) ToAlertV2ScheduleOutput() AlertV2ScheduleOutput {
+	return o
+}
+
+func (o AlertV2ScheduleOutput) ToAlertV2ScheduleOutputWithContext(ctx context.Context) AlertV2ScheduleOutput {
+	return o
+}
+
+func (o AlertV2ScheduleOutput) ToAlertV2SchedulePtrOutput() AlertV2SchedulePtrOutput {
+	return o.ToAlertV2SchedulePtrOutputWithContext(context.Background())
+}
+
+func (o AlertV2ScheduleOutput) ToAlertV2SchedulePtrOutputWithContext(ctx context.Context) AlertV2SchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertV2Schedule) *AlertV2Schedule {
+		return &v
+	}).(AlertV2SchedulePtrOutput)
+}
+
+func (o AlertV2ScheduleOutput) PauseStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertV2Schedule) *string { return v.PauseStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2ScheduleOutput) QuartzCronSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertV2Schedule) *string { return v.QuartzCronSchedule }).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2ScheduleOutput) TimezoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertV2Schedule) *string { return v.TimezoneId }).(pulumi.StringPtrOutput)
+}
+
+type AlertV2SchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (AlertV2SchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertV2Schedule)(nil)).Elem()
+}
+
+func (o AlertV2SchedulePtrOutput) ToAlertV2SchedulePtrOutput() AlertV2SchedulePtrOutput {
+	return o
+}
+
+func (o AlertV2SchedulePtrOutput) ToAlertV2SchedulePtrOutputWithContext(ctx context.Context) AlertV2SchedulePtrOutput {
+	return o
+}
+
+func (o AlertV2SchedulePtrOutput) Elem() AlertV2ScheduleOutput {
+	return o.ApplyT(func(v *AlertV2Schedule) AlertV2Schedule {
+		if v != nil {
+			return *v
+		}
+		var ret AlertV2Schedule
+		return ret
+	}).(AlertV2ScheduleOutput)
+}
+
+func (o AlertV2SchedulePtrOutput) PauseStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertV2Schedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PauseStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2SchedulePtrOutput) QuartzCronSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertV2Schedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QuartzCronSchedule
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AlertV2SchedulePtrOutput) TimezoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertV2Schedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimezoneId
+	}).(pulumi.StringPtrOutput)
+}
+
 type AppActiveDeployment struct {
 	// The creation time of the app.
 	CreateTime *string `pulumi:"createTime"`
@@ -65330,12 +66618,13 @@ func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) AzurePriva
 }
 
 type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule struct {
-	ConnectionState *string `pulumi:"connectionState"`
-	CreationTime    *int    `pulumi:"creationTime"`
-	Deactivated     *bool   `pulumi:"deactivated"`
-	DeactivatedAt   *int    `pulumi:"deactivatedAt"`
-	EndpointName    *string `pulumi:"endpointName"`
-	GroupId         *string `pulumi:"groupId"`
+	ConnectionState *string  `pulumi:"connectionState"`
+	CreationTime    *int     `pulumi:"creationTime"`
+	Deactivated     *bool    `pulumi:"deactivated"`
+	DeactivatedAt   *int     `pulumi:"deactivatedAt"`
+	DomainNames     []string `pulumi:"domainNames"`
+	EndpointName    *string  `pulumi:"endpointName"`
+	GroupId         *string  `pulumi:"groupId"`
 	// Canonical unique identifier of Network Connectivity Config in Databricks Account
 	NetworkConnectivityConfigId *string `pulumi:"networkConnectivityConfigId"`
 	ResourceId                  *string `pulumi:"resourceId"`
@@ -65355,12 +66644,13 @@ type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule
 }
 
 type MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs struct {
-	ConnectionState pulumi.StringPtrInput `pulumi:"connectionState"`
-	CreationTime    pulumi.IntPtrInput    `pulumi:"creationTime"`
-	Deactivated     pulumi.BoolPtrInput   `pulumi:"deactivated"`
-	DeactivatedAt   pulumi.IntPtrInput    `pulumi:"deactivatedAt"`
-	EndpointName    pulumi.StringPtrInput `pulumi:"endpointName"`
-	GroupId         pulumi.StringPtrInput `pulumi:"groupId"`
+	ConnectionState pulumi.StringPtrInput   `pulumi:"connectionState"`
+	CreationTime    pulumi.IntPtrInput      `pulumi:"creationTime"`
+	Deactivated     pulumi.BoolPtrInput     `pulumi:"deactivated"`
+	DeactivatedAt   pulumi.IntPtrInput      `pulumi:"deactivatedAt"`
+	DomainNames     pulumi.StringArrayInput `pulumi:"domainNames"`
+	EndpointName    pulumi.StringPtrInput   `pulumi:"endpointName"`
+	GroupId         pulumi.StringPtrInput   `pulumi:"groupId"`
 	// Canonical unique identifier of Network Connectivity Config in Databricks Account
 	NetworkConnectivityConfigId pulumi.StringPtrInput `pulumi:"networkConnectivityConfigId"`
 	ResourceId                  pulumi.StringPtrInput `pulumi:"resourceId"`
@@ -65441,6 +66731,12 @@ func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointR
 	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *int {
 		return v.DeactivatedAt
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) DomainNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) []string {
+		return v.DomainNames
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) EndpointName() pulumi.StringPtrOutput {
@@ -65605,11 +66901,11 @@ type MwsNetworksGcpNetworkInfo struct {
 	NetworkProjectId string `pulumi:"networkProjectId"`
 	// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName *string `pulumi:"podIpRangeName"`
 	// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName *string `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId string `pulumi:"subnetId"`
@@ -65635,11 +66931,11 @@ type MwsNetworksGcpNetworkInfoArgs struct {
 	NetworkProjectId pulumi.StringInput `pulumi:"networkProjectId"`
 	// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName pulumi.StringPtrInput `pulumi:"podIpRangeName"`
 	// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName pulumi.StringPtrInput `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
@@ -65733,14 +67029,14 @@ func (o MwsNetworksGcpNetworkInfoOutput) NetworkProjectId() pulumi.StringOutput 
 
 // The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.PodIpRangeName }).(pulumi.StringPtrOutput)
 }
 
 // The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.ServiceIpRangeName }).(pulumi.StringPtrOutput)
 }
@@ -65796,7 +67092,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) NetworkProjectId() pulumi.StringPtrO
 
 // The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -65808,7 +67104,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOut
 
 // The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -66647,9 +67943,9 @@ func (o MwsWorkspacesExternalCustomerInfoPtrOutput) CustomerName() pulumi.String
 }
 
 type MwsWorkspacesGcpManagedNetworkConfig struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange *string `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange *string `pulumi:"gkeClusterServiceIpRange"`
 	SubnetCidr               string  `pulumi:"subnetCidr"`
 }
@@ -66666,9 +67962,9 @@ type MwsWorkspacesGcpManagedNetworkConfigInput interface {
 }
 
 type MwsWorkspacesGcpManagedNetworkConfigArgs struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange pulumi.StringPtrInput `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange pulumi.StringPtrInput `pulumi:"gkeClusterServiceIpRange"`
 	SubnetCidr               pulumi.StringInput    `pulumi:"subnetCidr"`
 }
@@ -66750,12 +68046,12 @@ func (o MwsWorkspacesGcpManagedNetworkConfigOutput) ToMwsWorkspacesGcpManagedNet
 	}).(MwsWorkspacesGcpManagedNetworkConfigPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterPodIpRange }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterServiceIpRange }).(pulumi.StringPtrOutput)
 }
@@ -66788,7 +68084,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) Elem() MwsWorkspacesGcpMa
 	}).(MwsWorkspacesGcpManagedNetworkConfigOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -66798,7 +68094,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.75.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -81764,1150 +83060,6 @@ func (o SqlEndpointHealthArrayOutput) Index(i pulumi.IntInput) SqlEndpointHealth
 	}).(SqlEndpointHealthOutput)
 }
 
-type SqlEndpointHealthFailureReason struct {
-	Code       *string           `pulumi:"code"`
-	Parameters map[string]string `pulumi:"parameters"`
-	Type       *string           `pulumi:"type"`
-}
-
-// SqlEndpointHealthFailureReasonInput is an input type that accepts SqlEndpointHealthFailureReasonArgs and SqlEndpointHealthFailureReasonOutput values.
-// You can construct a concrete instance of `SqlEndpointHealthFailureReasonInput` via:
-//
-//	SqlEndpointHealthFailureReasonArgs{...}
-type SqlEndpointHealthFailureReasonInput interface {
-	pulumi.Input
-
-	ToSqlEndpointHealthFailureReasonOutput() SqlEndpointHealthFailureReasonOutput
-	ToSqlEndpointHealthFailureReasonOutputWithContext(context.Context) SqlEndpointHealthFailureReasonOutput
-}
-
-type SqlEndpointHealthFailureReasonArgs struct {
-	Code       pulumi.StringPtrInput `pulumi:"code"`
-	Parameters pulumi.StringMapInput `pulumi:"parameters"`
-	Type       pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (SqlEndpointHealthFailureReasonArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlEndpointHealthFailureReason)(nil)).Elem()
-}
-
-func (i SqlEndpointHealthFailureReasonArgs) ToSqlEndpointHealthFailureReasonOutput() SqlEndpointHealthFailureReasonOutput {
-	return i.ToSqlEndpointHealthFailureReasonOutputWithContext(context.Background())
-}
-
-func (i SqlEndpointHealthFailureReasonArgs) ToSqlEndpointHealthFailureReasonOutputWithContext(ctx context.Context) SqlEndpointHealthFailureReasonOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointHealthFailureReasonOutput)
-}
-
-func (i SqlEndpointHealthFailureReasonArgs) ToSqlEndpointHealthFailureReasonPtrOutput() SqlEndpointHealthFailureReasonPtrOutput {
-	return i.ToSqlEndpointHealthFailureReasonPtrOutputWithContext(context.Background())
-}
-
-func (i SqlEndpointHealthFailureReasonArgs) ToSqlEndpointHealthFailureReasonPtrOutputWithContext(ctx context.Context) SqlEndpointHealthFailureReasonPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointHealthFailureReasonOutput).ToSqlEndpointHealthFailureReasonPtrOutputWithContext(ctx)
-}
-
-// SqlEndpointHealthFailureReasonPtrInput is an input type that accepts SqlEndpointHealthFailureReasonArgs, SqlEndpointHealthFailureReasonPtr and SqlEndpointHealthFailureReasonPtrOutput values.
-// You can construct a concrete instance of `SqlEndpointHealthFailureReasonPtrInput` via:
-//
-//	        SqlEndpointHealthFailureReasonArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlEndpointHealthFailureReasonPtrInput interface {
-	pulumi.Input
-
-	ToSqlEndpointHealthFailureReasonPtrOutput() SqlEndpointHealthFailureReasonPtrOutput
-	ToSqlEndpointHealthFailureReasonPtrOutputWithContext(context.Context) SqlEndpointHealthFailureReasonPtrOutput
-}
-
-type sqlEndpointHealthFailureReasonPtrType SqlEndpointHealthFailureReasonArgs
-
-func SqlEndpointHealthFailureReasonPtr(v *SqlEndpointHealthFailureReasonArgs) SqlEndpointHealthFailureReasonPtrInput {
-	return (*sqlEndpointHealthFailureReasonPtrType)(v)
-}
-
-func (*sqlEndpointHealthFailureReasonPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlEndpointHealthFailureReason)(nil)).Elem()
-}
-
-func (i *sqlEndpointHealthFailureReasonPtrType) ToSqlEndpointHealthFailureReasonPtrOutput() SqlEndpointHealthFailureReasonPtrOutput {
-	return i.ToSqlEndpointHealthFailureReasonPtrOutputWithContext(context.Background())
-}
-
-func (i *sqlEndpointHealthFailureReasonPtrType) ToSqlEndpointHealthFailureReasonPtrOutputWithContext(ctx context.Context) SqlEndpointHealthFailureReasonPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointHealthFailureReasonPtrOutput)
-}
-
-type SqlEndpointHealthFailureReasonOutput struct{ *pulumi.OutputState }
-
-func (SqlEndpointHealthFailureReasonOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlEndpointHealthFailureReason)(nil)).Elem()
-}
-
-func (o SqlEndpointHealthFailureReasonOutput) ToSqlEndpointHealthFailureReasonOutput() SqlEndpointHealthFailureReasonOutput {
-	return o
-}
-
-func (o SqlEndpointHealthFailureReasonOutput) ToSqlEndpointHealthFailureReasonOutputWithContext(ctx context.Context) SqlEndpointHealthFailureReasonOutput {
-	return o
-}
-
-func (o SqlEndpointHealthFailureReasonOutput) ToSqlEndpointHealthFailureReasonPtrOutput() SqlEndpointHealthFailureReasonPtrOutput {
-	return o.ToSqlEndpointHealthFailureReasonPtrOutputWithContext(context.Background())
-}
-
-func (o SqlEndpointHealthFailureReasonOutput) ToSqlEndpointHealthFailureReasonPtrOutputWithContext(ctx context.Context) SqlEndpointHealthFailureReasonPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlEndpointHealthFailureReason) *SqlEndpointHealthFailureReason {
-		return &v
-	}).(SqlEndpointHealthFailureReasonPtrOutput)
-}
-
-func (o SqlEndpointHealthFailureReasonOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlEndpointHealthFailureReason) *string { return v.Code }).(pulumi.StringPtrOutput)
-}
-
-func (o SqlEndpointHealthFailureReasonOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SqlEndpointHealthFailureReason) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
-}
-
-func (o SqlEndpointHealthFailureReasonOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlEndpointHealthFailureReason) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type SqlEndpointHealthFailureReasonPtrOutput struct{ *pulumi.OutputState }
-
-func (SqlEndpointHealthFailureReasonPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlEndpointHealthFailureReason)(nil)).Elem()
-}
-
-func (o SqlEndpointHealthFailureReasonPtrOutput) ToSqlEndpointHealthFailureReasonPtrOutput() SqlEndpointHealthFailureReasonPtrOutput {
-	return o
-}
-
-func (o SqlEndpointHealthFailureReasonPtrOutput) ToSqlEndpointHealthFailureReasonPtrOutputWithContext(ctx context.Context) SqlEndpointHealthFailureReasonPtrOutput {
-	return o
-}
-
-func (o SqlEndpointHealthFailureReasonPtrOutput) Elem() SqlEndpointHealthFailureReasonOutput {
-	return o.ApplyT(func(v *SqlEndpointHealthFailureReason) SqlEndpointHealthFailureReason {
-		if v != nil {
-			return *v
-		}
-		var ret SqlEndpointHealthFailureReason
-		return ret
-	}).(SqlEndpointHealthFailureReasonOutput)
-}
-
-func (o SqlEndpointHealthFailureReasonPtrOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlEndpointHealthFailureReason) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Code
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o SqlEndpointHealthFailureReasonPtrOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SqlEndpointHealthFailureReason) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Parameters
-	}).(pulumi.StringMapOutput)
-}
-
-func (o SqlEndpointHealthFailureReasonPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlEndpointHealthFailureReason) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-type SqlEndpointOdbcParams struct {
-	Hostname *string `pulumi:"hostname"`
-	Path     *string `pulumi:"path"`
-	Port     *int    `pulumi:"port"`
-	Protocol *string `pulumi:"protocol"`
-}
-
-// SqlEndpointOdbcParamsInput is an input type that accepts SqlEndpointOdbcParamsArgs and SqlEndpointOdbcParamsOutput values.
-// You can construct a concrete instance of `SqlEndpointOdbcParamsInput` via:
-//
-//	SqlEndpointOdbcParamsArgs{...}
-type SqlEndpointOdbcParamsInput interface {
-	pulumi.Input
-
-	ToSqlEndpointOdbcParamsOutput() SqlEndpointOdbcParamsOutput
-	ToSqlEndpointOdbcParamsOutputWithContext(context.Context) SqlEndpointOdbcParamsOutput
-}
-
-type SqlEndpointOdbcParamsArgs struct {
-	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
-	Path     pulumi.StringPtrInput `pulumi:"path"`
-	Port     pulumi.IntPtrInput    `pulumi:"port"`
-	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-}
-
-func (SqlEndpointOdbcParamsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlEndpointOdbcParams)(nil)).Elem()
-}
-
-func (i SqlEndpointOdbcParamsArgs) ToSqlEndpointOdbcParamsOutput() SqlEndpointOdbcParamsOutput {
-	return i.ToSqlEndpointOdbcParamsOutputWithContext(context.Background())
-}
-
-func (i SqlEndpointOdbcParamsArgs) ToSqlEndpointOdbcParamsOutputWithContext(ctx context.Context) SqlEndpointOdbcParamsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointOdbcParamsOutput)
-}
-
-func (i SqlEndpointOdbcParamsArgs) ToSqlEndpointOdbcParamsPtrOutput() SqlEndpointOdbcParamsPtrOutput {
-	return i.ToSqlEndpointOdbcParamsPtrOutputWithContext(context.Background())
-}
-
-func (i SqlEndpointOdbcParamsArgs) ToSqlEndpointOdbcParamsPtrOutputWithContext(ctx context.Context) SqlEndpointOdbcParamsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointOdbcParamsOutput).ToSqlEndpointOdbcParamsPtrOutputWithContext(ctx)
-}
-
-// SqlEndpointOdbcParamsPtrInput is an input type that accepts SqlEndpointOdbcParamsArgs, SqlEndpointOdbcParamsPtr and SqlEndpointOdbcParamsPtrOutput values.
-// You can construct a concrete instance of `SqlEndpointOdbcParamsPtrInput` via:
-//
-//	        SqlEndpointOdbcParamsArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlEndpointOdbcParamsPtrInput interface {
-	pulumi.Input
-
-	ToSqlEndpointOdbcParamsPtrOutput() SqlEndpointOdbcParamsPtrOutput
-	ToSqlEndpointOdbcParamsPtrOutputWithContext(context.Context) SqlEndpointOdbcParamsPtrOutput
-}
-
-type sqlEndpointOdbcParamsPtrType SqlEndpointOdbcParamsArgs
-
-func SqlEndpointOdbcParamsPtr(v *SqlEndpointOdbcParamsArgs) SqlEndpointOdbcParamsPtrInput {
-	return (*sqlEndpointOdbcParamsPtrType)(v)
-}
-
-func (*sqlEndpointOdbcParamsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlEndpointOdbcParams)(nil)).Elem()
-}
-
-func (i *sqlEndpointOdbcParamsPtrType) ToSqlEndpointOdbcParamsPtrOutput() SqlEndpointOdbcParamsPtrOutput {
-	return i.ToSqlEndpointOdbcParamsPtrOutputWithContext(context.Background())
-}
-
-func (i *sqlEndpointOdbcParamsPtrType) ToSqlEndpointOdbcParamsPtrOutputWithContext(ctx context.Context) SqlEndpointOdbcParamsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointOdbcParamsPtrOutput)
-}
-
-type SqlEndpointOdbcParamsOutput struct{ *pulumi.OutputState }
-
-func (SqlEndpointOdbcParamsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlEndpointOdbcParams)(nil)).Elem()
-}
-
-func (o SqlEndpointOdbcParamsOutput) ToSqlEndpointOdbcParamsOutput() SqlEndpointOdbcParamsOutput {
-	return o
-}
-
-func (o SqlEndpointOdbcParamsOutput) ToSqlEndpointOdbcParamsOutputWithContext(ctx context.Context) SqlEndpointOdbcParamsOutput {
-	return o
-}
-
-func (o SqlEndpointOdbcParamsOutput) ToSqlEndpointOdbcParamsPtrOutput() SqlEndpointOdbcParamsPtrOutput {
-	return o.ToSqlEndpointOdbcParamsPtrOutputWithContext(context.Background())
-}
-
-func (o SqlEndpointOdbcParamsOutput) ToSqlEndpointOdbcParamsPtrOutputWithContext(ctx context.Context) SqlEndpointOdbcParamsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlEndpointOdbcParams) *SqlEndpointOdbcParams {
-		return &v
-	}).(SqlEndpointOdbcParamsPtrOutput)
-}
-
-func (o SqlEndpointOdbcParamsOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlEndpointOdbcParams) *string { return v.Hostname }).(pulumi.StringPtrOutput)
-}
-
-func (o SqlEndpointOdbcParamsOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlEndpointOdbcParams) *string { return v.Path }).(pulumi.StringPtrOutput)
-}
-
-func (o SqlEndpointOdbcParamsOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SqlEndpointOdbcParams) *int { return v.Port }).(pulumi.IntPtrOutput)
-}
-
-func (o SqlEndpointOdbcParamsOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlEndpointOdbcParams) *string { return v.Protocol }).(pulumi.StringPtrOutput)
-}
-
-type SqlEndpointOdbcParamsPtrOutput struct{ *pulumi.OutputState }
-
-func (SqlEndpointOdbcParamsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlEndpointOdbcParams)(nil)).Elem()
-}
-
-func (o SqlEndpointOdbcParamsPtrOutput) ToSqlEndpointOdbcParamsPtrOutput() SqlEndpointOdbcParamsPtrOutput {
-	return o
-}
-
-func (o SqlEndpointOdbcParamsPtrOutput) ToSqlEndpointOdbcParamsPtrOutputWithContext(ctx context.Context) SqlEndpointOdbcParamsPtrOutput {
-	return o
-}
-
-func (o SqlEndpointOdbcParamsPtrOutput) Elem() SqlEndpointOdbcParamsOutput {
-	return o.ApplyT(func(v *SqlEndpointOdbcParams) SqlEndpointOdbcParams {
-		if v != nil {
-			return *v
-		}
-		var ret SqlEndpointOdbcParams
-		return ret
-	}).(SqlEndpointOdbcParamsOutput)
-}
-
-func (o SqlEndpointOdbcParamsPtrOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlEndpointOdbcParams) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Hostname
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o SqlEndpointOdbcParamsPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlEndpointOdbcParams) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Path
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o SqlEndpointOdbcParamsPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SqlEndpointOdbcParams) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o SqlEndpointOdbcParamsPtrOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlEndpointOdbcParams) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Protocol
-	}).(pulumi.StringPtrOutput)
-}
-
-type SqlEndpointTags struct {
-	CustomTags []SqlEndpointTagsCustomTag `pulumi:"customTags"`
-}
-
-// SqlEndpointTagsInput is an input type that accepts SqlEndpointTagsArgs and SqlEndpointTagsOutput values.
-// You can construct a concrete instance of `SqlEndpointTagsInput` via:
-//
-//	SqlEndpointTagsArgs{...}
-type SqlEndpointTagsInput interface {
-	pulumi.Input
-
-	ToSqlEndpointTagsOutput() SqlEndpointTagsOutput
-	ToSqlEndpointTagsOutputWithContext(context.Context) SqlEndpointTagsOutput
-}
-
-type SqlEndpointTagsArgs struct {
-	CustomTags SqlEndpointTagsCustomTagArrayInput `pulumi:"customTags"`
-}
-
-func (SqlEndpointTagsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlEndpointTags)(nil)).Elem()
-}
-
-func (i SqlEndpointTagsArgs) ToSqlEndpointTagsOutput() SqlEndpointTagsOutput {
-	return i.ToSqlEndpointTagsOutputWithContext(context.Background())
-}
-
-func (i SqlEndpointTagsArgs) ToSqlEndpointTagsOutputWithContext(ctx context.Context) SqlEndpointTagsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointTagsOutput)
-}
-
-func (i SqlEndpointTagsArgs) ToSqlEndpointTagsPtrOutput() SqlEndpointTagsPtrOutput {
-	return i.ToSqlEndpointTagsPtrOutputWithContext(context.Background())
-}
-
-func (i SqlEndpointTagsArgs) ToSqlEndpointTagsPtrOutputWithContext(ctx context.Context) SqlEndpointTagsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointTagsOutput).ToSqlEndpointTagsPtrOutputWithContext(ctx)
-}
-
-// SqlEndpointTagsPtrInput is an input type that accepts SqlEndpointTagsArgs, SqlEndpointTagsPtr and SqlEndpointTagsPtrOutput values.
-// You can construct a concrete instance of `SqlEndpointTagsPtrInput` via:
-//
-//	        SqlEndpointTagsArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlEndpointTagsPtrInput interface {
-	pulumi.Input
-
-	ToSqlEndpointTagsPtrOutput() SqlEndpointTagsPtrOutput
-	ToSqlEndpointTagsPtrOutputWithContext(context.Context) SqlEndpointTagsPtrOutput
-}
-
-type sqlEndpointTagsPtrType SqlEndpointTagsArgs
-
-func SqlEndpointTagsPtr(v *SqlEndpointTagsArgs) SqlEndpointTagsPtrInput {
-	return (*sqlEndpointTagsPtrType)(v)
-}
-
-func (*sqlEndpointTagsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlEndpointTags)(nil)).Elem()
-}
-
-func (i *sqlEndpointTagsPtrType) ToSqlEndpointTagsPtrOutput() SqlEndpointTagsPtrOutput {
-	return i.ToSqlEndpointTagsPtrOutputWithContext(context.Background())
-}
-
-func (i *sqlEndpointTagsPtrType) ToSqlEndpointTagsPtrOutputWithContext(ctx context.Context) SqlEndpointTagsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointTagsPtrOutput)
-}
-
-type SqlEndpointTagsOutput struct{ *pulumi.OutputState }
-
-func (SqlEndpointTagsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlEndpointTags)(nil)).Elem()
-}
-
-func (o SqlEndpointTagsOutput) ToSqlEndpointTagsOutput() SqlEndpointTagsOutput {
-	return o
-}
-
-func (o SqlEndpointTagsOutput) ToSqlEndpointTagsOutputWithContext(ctx context.Context) SqlEndpointTagsOutput {
-	return o
-}
-
-func (o SqlEndpointTagsOutput) ToSqlEndpointTagsPtrOutput() SqlEndpointTagsPtrOutput {
-	return o.ToSqlEndpointTagsPtrOutputWithContext(context.Background())
-}
-
-func (o SqlEndpointTagsOutput) ToSqlEndpointTagsPtrOutputWithContext(ctx context.Context) SqlEndpointTagsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlEndpointTags) *SqlEndpointTags {
-		return &v
-	}).(SqlEndpointTagsPtrOutput)
-}
-
-func (o SqlEndpointTagsOutput) CustomTags() SqlEndpointTagsCustomTagArrayOutput {
-	return o.ApplyT(func(v SqlEndpointTags) []SqlEndpointTagsCustomTag { return v.CustomTags }).(SqlEndpointTagsCustomTagArrayOutput)
-}
-
-type SqlEndpointTagsPtrOutput struct{ *pulumi.OutputState }
-
-func (SqlEndpointTagsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlEndpointTags)(nil)).Elem()
-}
-
-func (o SqlEndpointTagsPtrOutput) ToSqlEndpointTagsPtrOutput() SqlEndpointTagsPtrOutput {
-	return o
-}
-
-func (o SqlEndpointTagsPtrOutput) ToSqlEndpointTagsPtrOutputWithContext(ctx context.Context) SqlEndpointTagsPtrOutput {
-	return o
-}
-
-func (o SqlEndpointTagsPtrOutput) Elem() SqlEndpointTagsOutput {
-	return o.ApplyT(func(v *SqlEndpointTags) SqlEndpointTags {
-		if v != nil {
-			return *v
-		}
-		var ret SqlEndpointTags
-		return ret
-	}).(SqlEndpointTagsOutput)
-}
-
-func (o SqlEndpointTagsPtrOutput) CustomTags() SqlEndpointTagsCustomTagArrayOutput {
-	return o.ApplyT(func(v *SqlEndpointTags) []SqlEndpointTagsCustomTag {
-		if v == nil {
-			return nil
-		}
-		return v.CustomTags
-	}).(SqlEndpointTagsCustomTagArrayOutput)
-}
-
-type SqlEndpointTagsCustomTag struct {
-	Key   string `pulumi:"key"`
-	Value string `pulumi:"value"`
-}
-
-// SqlEndpointTagsCustomTagInput is an input type that accepts SqlEndpointTagsCustomTagArgs and SqlEndpointTagsCustomTagOutput values.
-// You can construct a concrete instance of `SqlEndpointTagsCustomTagInput` via:
-//
-//	SqlEndpointTagsCustomTagArgs{...}
-type SqlEndpointTagsCustomTagInput interface {
-	pulumi.Input
-
-	ToSqlEndpointTagsCustomTagOutput() SqlEndpointTagsCustomTagOutput
-	ToSqlEndpointTagsCustomTagOutputWithContext(context.Context) SqlEndpointTagsCustomTagOutput
-}
-
-type SqlEndpointTagsCustomTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (SqlEndpointTagsCustomTagArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlEndpointTagsCustomTag)(nil)).Elem()
-}
-
-func (i SqlEndpointTagsCustomTagArgs) ToSqlEndpointTagsCustomTagOutput() SqlEndpointTagsCustomTagOutput {
-	return i.ToSqlEndpointTagsCustomTagOutputWithContext(context.Background())
-}
-
-func (i SqlEndpointTagsCustomTagArgs) ToSqlEndpointTagsCustomTagOutputWithContext(ctx context.Context) SqlEndpointTagsCustomTagOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointTagsCustomTagOutput)
-}
-
-// SqlEndpointTagsCustomTagArrayInput is an input type that accepts SqlEndpointTagsCustomTagArray and SqlEndpointTagsCustomTagArrayOutput values.
-// You can construct a concrete instance of `SqlEndpointTagsCustomTagArrayInput` via:
-//
-//	SqlEndpointTagsCustomTagArray{ SqlEndpointTagsCustomTagArgs{...} }
-type SqlEndpointTagsCustomTagArrayInput interface {
-	pulumi.Input
-
-	ToSqlEndpointTagsCustomTagArrayOutput() SqlEndpointTagsCustomTagArrayOutput
-	ToSqlEndpointTagsCustomTagArrayOutputWithContext(context.Context) SqlEndpointTagsCustomTagArrayOutput
-}
-
-type SqlEndpointTagsCustomTagArray []SqlEndpointTagsCustomTagInput
-
-func (SqlEndpointTagsCustomTagArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SqlEndpointTagsCustomTag)(nil)).Elem()
-}
-
-func (i SqlEndpointTagsCustomTagArray) ToSqlEndpointTagsCustomTagArrayOutput() SqlEndpointTagsCustomTagArrayOutput {
-	return i.ToSqlEndpointTagsCustomTagArrayOutputWithContext(context.Background())
-}
-
-func (i SqlEndpointTagsCustomTagArray) ToSqlEndpointTagsCustomTagArrayOutputWithContext(ctx context.Context) SqlEndpointTagsCustomTagArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointTagsCustomTagArrayOutput)
-}
-
-type SqlEndpointTagsCustomTagOutput struct{ *pulumi.OutputState }
-
-func (SqlEndpointTagsCustomTagOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlEndpointTagsCustomTag)(nil)).Elem()
-}
-
-func (o SqlEndpointTagsCustomTagOutput) ToSqlEndpointTagsCustomTagOutput() SqlEndpointTagsCustomTagOutput {
-	return o
-}
-
-func (o SqlEndpointTagsCustomTagOutput) ToSqlEndpointTagsCustomTagOutputWithContext(ctx context.Context) SqlEndpointTagsCustomTagOutput {
-	return o
-}
-
-func (o SqlEndpointTagsCustomTagOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlEndpointTagsCustomTag) string { return v.Key }).(pulumi.StringOutput)
-}
-
-func (o SqlEndpointTagsCustomTagOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlEndpointTagsCustomTag) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type SqlEndpointTagsCustomTagArrayOutput struct{ *pulumi.OutputState }
-
-func (SqlEndpointTagsCustomTagArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SqlEndpointTagsCustomTag)(nil)).Elem()
-}
-
-func (o SqlEndpointTagsCustomTagArrayOutput) ToSqlEndpointTagsCustomTagArrayOutput() SqlEndpointTagsCustomTagArrayOutput {
-	return o
-}
-
-func (o SqlEndpointTagsCustomTagArrayOutput) ToSqlEndpointTagsCustomTagArrayOutputWithContext(ctx context.Context) SqlEndpointTagsCustomTagArrayOutput {
-	return o
-}
-
-func (o SqlEndpointTagsCustomTagArrayOutput) Index(i pulumi.IntInput) SqlEndpointTagsCustomTagOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlEndpointTagsCustomTag {
-		return vs[0].([]SqlEndpointTagsCustomTag)[vs[1].(int)]
-	}).(SqlEndpointTagsCustomTagOutput)
-}
-
-type SqlPermissionsPrivilegeAssignment struct {
-	// `displayName` for a Group or databricks_user, `applicationId` for a databricks_service_principal.
-	Principal  string   `pulumi:"principal"`
-	Privileges []string `pulumi:"privileges"`
-}
-
-// SqlPermissionsPrivilegeAssignmentInput is an input type that accepts SqlPermissionsPrivilegeAssignmentArgs and SqlPermissionsPrivilegeAssignmentOutput values.
-// You can construct a concrete instance of `SqlPermissionsPrivilegeAssignmentInput` via:
-//
-//	SqlPermissionsPrivilegeAssignmentArgs{...}
-type SqlPermissionsPrivilegeAssignmentInput interface {
-	pulumi.Input
-
-	ToSqlPermissionsPrivilegeAssignmentOutput() SqlPermissionsPrivilegeAssignmentOutput
-	ToSqlPermissionsPrivilegeAssignmentOutputWithContext(context.Context) SqlPermissionsPrivilegeAssignmentOutput
-}
-
-type SqlPermissionsPrivilegeAssignmentArgs struct {
-	// `displayName` for a Group or databricks_user, `applicationId` for a databricks_service_principal.
-	Principal  pulumi.StringInput      `pulumi:"principal"`
-	Privileges pulumi.StringArrayInput `pulumi:"privileges"`
-}
-
-func (SqlPermissionsPrivilegeAssignmentArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlPermissionsPrivilegeAssignment)(nil)).Elem()
-}
-
-func (i SqlPermissionsPrivilegeAssignmentArgs) ToSqlPermissionsPrivilegeAssignmentOutput() SqlPermissionsPrivilegeAssignmentOutput {
-	return i.ToSqlPermissionsPrivilegeAssignmentOutputWithContext(context.Background())
-}
-
-func (i SqlPermissionsPrivilegeAssignmentArgs) ToSqlPermissionsPrivilegeAssignmentOutputWithContext(ctx context.Context) SqlPermissionsPrivilegeAssignmentOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlPermissionsPrivilegeAssignmentOutput)
-}
-
-// SqlPermissionsPrivilegeAssignmentArrayInput is an input type that accepts SqlPermissionsPrivilegeAssignmentArray and SqlPermissionsPrivilegeAssignmentArrayOutput values.
-// You can construct a concrete instance of `SqlPermissionsPrivilegeAssignmentArrayInput` via:
-//
-//	SqlPermissionsPrivilegeAssignmentArray{ SqlPermissionsPrivilegeAssignmentArgs{...} }
-type SqlPermissionsPrivilegeAssignmentArrayInput interface {
-	pulumi.Input
-
-	ToSqlPermissionsPrivilegeAssignmentArrayOutput() SqlPermissionsPrivilegeAssignmentArrayOutput
-	ToSqlPermissionsPrivilegeAssignmentArrayOutputWithContext(context.Context) SqlPermissionsPrivilegeAssignmentArrayOutput
-}
-
-type SqlPermissionsPrivilegeAssignmentArray []SqlPermissionsPrivilegeAssignmentInput
-
-func (SqlPermissionsPrivilegeAssignmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SqlPermissionsPrivilegeAssignment)(nil)).Elem()
-}
-
-func (i SqlPermissionsPrivilegeAssignmentArray) ToSqlPermissionsPrivilegeAssignmentArrayOutput() SqlPermissionsPrivilegeAssignmentArrayOutput {
-	return i.ToSqlPermissionsPrivilegeAssignmentArrayOutputWithContext(context.Background())
-}
-
-func (i SqlPermissionsPrivilegeAssignmentArray) ToSqlPermissionsPrivilegeAssignmentArrayOutputWithContext(ctx context.Context) SqlPermissionsPrivilegeAssignmentArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlPermissionsPrivilegeAssignmentArrayOutput)
-}
-
-type SqlPermissionsPrivilegeAssignmentOutput struct{ *pulumi.OutputState }
-
-func (SqlPermissionsPrivilegeAssignmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlPermissionsPrivilegeAssignment)(nil)).Elem()
-}
-
-func (o SqlPermissionsPrivilegeAssignmentOutput) ToSqlPermissionsPrivilegeAssignmentOutput() SqlPermissionsPrivilegeAssignmentOutput {
-	return o
-}
-
-func (o SqlPermissionsPrivilegeAssignmentOutput) ToSqlPermissionsPrivilegeAssignmentOutputWithContext(ctx context.Context) SqlPermissionsPrivilegeAssignmentOutput {
-	return o
-}
-
-// `displayName` for a Group or databricks_user, `applicationId` for a databricks_service_principal.
-func (o SqlPermissionsPrivilegeAssignmentOutput) Principal() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlPermissionsPrivilegeAssignment) string { return v.Principal }).(pulumi.StringOutput)
-}
-
-func (o SqlPermissionsPrivilegeAssignmentOutput) Privileges() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SqlPermissionsPrivilegeAssignment) []string { return v.Privileges }).(pulumi.StringArrayOutput)
-}
-
-type SqlPermissionsPrivilegeAssignmentArrayOutput struct{ *pulumi.OutputState }
-
-func (SqlPermissionsPrivilegeAssignmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SqlPermissionsPrivilegeAssignment)(nil)).Elem()
-}
-
-func (o SqlPermissionsPrivilegeAssignmentArrayOutput) ToSqlPermissionsPrivilegeAssignmentArrayOutput() SqlPermissionsPrivilegeAssignmentArrayOutput {
-	return o
-}
-
-func (o SqlPermissionsPrivilegeAssignmentArrayOutput) ToSqlPermissionsPrivilegeAssignmentArrayOutputWithContext(ctx context.Context) SqlPermissionsPrivilegeAssignmentArrayOutput {
-	return o
-}
-
-func (o SqlPermissionsPrivilegeAssignmentArrayOutput) Index(i pulumi.IntInput) SqlPermissionsPrivilegeAssignmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlPermissionsPrivilegeAssignment {
-		return vs[0].([]SqlPermissionsPrivilegeAssignment)[vs[1].(int)]
-	}).(SqlPermissionsPrivilegeAssignmentOutput)
-}
-
-type SqlQueryParameter struct {
-	Date             *SqlQueryParameterDate             `pulumi:"date"`
-	DateRange        *SqlQueryParameterDateRange        `pulumi:"dateRange"`
-	Datetime         *SqlQueryParameterDatetime         `pulumi:"datetime"`
-	DatetimeRange    *SqlQueryParameterDatetimeRange    `pulumi:"datetimeRange"`
-	Datetimesec      *SqlQueryParameterDatetimesec      `pulumi:"datetimesec"`
-	DatetimesecRange *SqlQueryParameterDatetimesecRange `pulumi:"datetimesecRange"`
-	Enum             *SqlQueryParameterEnum             `pulumi:"enum"`
-	// The literal parameter marker that appears between double curly braces in the query text.
-	// Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `dateRange`, `datetimeRange`, `datetimesecRange`.
-	//
-	// For `text`, `number`, `date`, `datetime`, `datetimesec` block
-	Name   string                   `pulumi:"name"`
-	Number *SqlQueryParameterNumber `pulumi:"number"`
-	// The text of the query to be run.
-	Query *SqlQueryParameterQuery `pulumi:"query"`
-	Text  *SqlQueryParameterText  `pulumi:"text"`
-	// The text displayed in a parameter picking widget.
-	Title *string `pulumi:"title"`
-}
-
-// SqlQueryParameterInput is an input type that accepts SqlQueryParameterArgs and SqlQueryParameterOutput values.
-// You can construct a concrete instance of `SqlQueryParameterInput` via:
-//
-//	SqlQueryParameterArgs{...}
-type SqlQueryParameterInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterOutput() SqlQueryParameterOutput
-	ToSqlQueryParameterOutputWithContext(context.Context) SqlQueryParameterOutput
-}
-
-type SqlQueryParameterArgs struct {
-	Date             SqlQueryParameterDatePtrInput             `pulumi:"date"`
-	DateRange        SqlQueryParameterDateRangePtrInput        `pulumi:"dateRange"`
-	Datetime         SqlQueryParameterDatetimePtrInput         `pulumi:"datetime"`
-	DatetimeRange    SqlQueryParameterDatetimeRangePtrInput    `pulumi:"datetimeRange"`
-	Datetimesec      SqlQueryParameterDatetimesecPtrInput      `pulumi:"datetimesec"`
-	DatetimesecRange SqlQueryParameterDatetimesecRangePtrInput `pulumi:"datetimesecRange"`
-	Enum             SqlQueryParameterEnumPtrInput             `pulumi:"enum"`
-	// The literal parameter marker that appears between double curly braces in the query text.
-	// Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `dateRange`, `datetimeRange`, `datetimesecRange`.
-	//
-	// For `text`, `number`, `date`, `datetime`, `datetimesec` block
-	Name   pulumi.StringInput              `pulumi:"name"`
-	Number SqlQueryParameterNumberPtrInput `pulumi:"number"`
-	// The text of the query to be run.
-	Query SqlQueryParameterQueryPtrInput `pulumi:"query"`
-	Text  SqlQueryParameterTextPtrInput  `pulumi:"text"`
-	// The text displayed in a parameter picking widget.
-	Title pulumi.StringPtrInput `pulumi:"title"`
-}
-
-func (SqlQueryParameterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameter)(nil)).Elem()
-}
-
-func (i SqlQueryParameterArgs) ToSqlQueryParameterOutput() SqlQueryParameterOutput {
-	return i.ToSqlQueryParameterOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterArgs) ToSqlQueryParameterOutputWithContext(ctx context.Context) SqlQueryParameterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterOutput)
-}
-
-// SqlQueryParameterArrayInput is an input type that accepts SqlQueryParameterArray and SqlQueryParameterArrayOutput values.
-// You can construct a concrete instance of `SqlQueryParameterArrayInput` via:
-//
-//	SqlQueryParameterArray{ SqlQueryParameterArgs{...} }
-type SqlQueryParameterArrayInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterArrayOutput() SqlQueryParameterArrayOutput
-	ToSqlQueryParameterArrayOutputWithContext(context.Context) SqlQueryParameterArrayOutput
-}
-
-type SqlQueryParameterArray []SqlQueryParameterInput
-
-func (SqlQueryParameterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SqlQueryParameter)(nil)).Elem()
-}
-
-func (i SqlQueryParameterArray) ToSqlQueryParameterArrayOutput() SqlQueryParameterArrayOutput {
-	return i.ToSqlQueryParameterArrayOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterArray) ToSqlQueryParameterArrayOutputWithContext(ctx context.Context) SqlQueryParameterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterArrayOutput)
-}
-
-type SqlQueryParameterOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameter)(nil)).Elem()
-}
-
-func (o SqlQueryParameterOutput) ToSqlQueryParameterOutput() SqlQueryParameterOutput {
-	return o
-}
-
-func (o SqlQueryParameterOutput) ToSqlQueryParameterOutputWithContext(ctx context.Context) SqlQueryParameterOutput {
-	return o
-}
-
-func (o SqlQueryParameterOutput) Date() SqlQueryParameterDatePtrOutput {
-	return o.ApplyT(func(v SqlQueryParameter) *SqlQueryParameterDate { return v.Date }).(SqlQueryParameterDatePtrOutput)
-}
-
-func (o SqlQueryParameterOutput) DateRange() SqlQueryParameterDateRangePtrOutput {
-	return o.ApplyT(func(v SqlQueryParameter) *SqlQueryParameterDateRange { return v.DateRange }).(SqlQueryParameterDateRangePtrOutput)
-}
-
-func (o SqlQueryParameterOutput) Datetime() SqlQueryParameterDatetimePtrOutput {
-	return o.ApplyT(func(v SqlQueryParameter) *SqlQueryParameterDatetime { return v.Datetime }).(SqlQueryParameterDatetimePtrOutput)
-}
-
-func (o SqlQueryParameterOutput) DatetimeRange() SqlQueryParameterDatetimeRangePtrOutput {
-	return o.ApplyT(func(v SqlQueryParameter) *SqlQueryParameterDatetimeRange { return v.DatetimeRange }).(SqlQueryParameterDatetimeRangePtrOutput)
-}
-
-func (o SqlQueryParameterOutput) Datetimesec() SqlQueryParameterDatetimesecPtrOutput {
-	return o.ApplyT(func(v SqlQueryParameter) *SqlQueryParameterDatetimesec { return v.Datetimesec }).(SqlQueryParameterDatetimesecPtrOutput)
-}
-
-func (o SqlQueryParameterOutput) DatetimesecRange() SqlQueryParameterDatetimesecRangePtrOutput {
-	return o.ApplyT(func(v SqlQueryParameter) *SqlQueryParameterDatetimesecRange { return v.DatetimesecRange }).(SqlQueryParameterDatetimesecRangePtrOutput)
-}
-
-func (o SqlQueryParameterOutput) Enum() SqlQueryParameterEnumPtrOutput {
-	return o.ApplyT(func(v SqlQueryParameter) *SqlQueryParameterEnum { return v.Enum }).(SqlQueryParameterEnumPtrOutput)
-}
-
-// The literal parameter marker that appears between double curly braces in the query text.
-// Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `dateRange`, `datetimeRange`, `datetimesecRange`.
-//
-// For `text`, `number`, `date`, `datetime`, `datetimesec` block
-func (o SqlQueryParameterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryParameter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o SqlQueryParameterOutput) Number() SqlQueryParameterNumberPtrOutput {
-	return o.ApplyT(func(v SqlQueryParameter) *SqlQueryParameterNumber { return v.Number }).(SqlQueryParameterNumberPtrOutput)
-}
-
-// The text of the query to be run.
-func (o SqlQueryParameterOutput) Query() SqlQueryParameterQueryPtrOutput {
-	return o.ApplyT(func(v SqlQueryParameter) *SqlQueryParameterQuery { return v.Query }).(SqlQueryParameterQueryPtrOutput)
-}
-
-func (o SqlQueryParameterOutput) Text() SqlQueryParameterTextPtrOutput {
-	return o.ApplyT(func(v SqlQueryParameter) *SqlQueryParameterText { return v.Text }).(SqlQueryParameterTextPtrOutput)
-}
-
-// The text displayed in a parameter picking widget.
-func (o SqlQueryParameterOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlQueryParameter) *string { return v.Title }).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterArrayOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SqlQueryParameter)(nil)).Elem()
-}
-
-func (o SqlQueryParameterArrayOutput) ToSqlQueryParameterArrayOutput() SqlQueryParameterArrayOutput {
-	return o
-}
-
-func (o SqlQueryParameterArrayOutput) ToSqlQueryParameterArrayOutputWithContext(ctx context.Context) SqlQueryParameterArrayOutput {
-	return o
-}
-
-func (o SqlQueryParameterArrayOutput) Index(i pulumi.IntInput) SqlQueryParameterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlQueryParameter {
-		return vs[0].([]SqlQueryParameter)[vs[1].(int)]
-	}).(SqlQueryParameterOutput)
-}
-
-type SqlQueryParameterDate struct {
-	// The default value for this parameter.
-	Value string `pulumi:"value"`
-}
-
-// SqlQueryParameterDateInput is an input type that accepts SqlQueryParameterDateArgs and SqlQueryParameterDateOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDateInput` via:
-//
-//	SqlQueryParameterDateArgs{...}
-type SqlQueryParameterDateInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDateOutput() SqlQueryParameterDateOutput
-	ToSqlQueryParameterDateOutputWithContext(context.Context) SqlQueryParameterDateOutput
-}
-
-type SqlQueryParameterDateArgs struct {
-	// The default value for this parameter.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (SqlQueryParameterDateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDate)(nil)).Elem()
-}
-
-func (i SqlQueryParameterDateArgs) ToSqlQueryParameterDateOutput() SqlQueryParameterDateOutput {
-	return i.ToSqlQueryParameterDateOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDateArgs) ToSqlQueryParameterDateOutputWithContext(ctx context.Context) SqlQueryParameterDateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDateOutput)
-}
-
-func (i SqlQueryParameterDateArgs) ToSqlQueryParameterDatePtrOutput() SqlQueryParameterDatePtrOutput {
-	return i.ToSqlQueryParameterDatePtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDateArgs) ToSqlQueryParameterDatePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDateOutput).ToSqlQueryParameterDatePtrOutputWithContext(ctx)
-}
-
-// SqlQueryParameterDatePtrInput is an input type that accepts SqlQueryParameterDateArgs, SqlQueryParameterDatePtr and SqlQueryParameterDatePtrOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDatePtrInput` via:
-//
-//	        SqlQueryParameterDateArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryParameterDatePtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDatePtrOutput() SqlQueryParameterDatePtrOutput
-	ToSqlQueryParameterDatePtrOutputWithContext(context.Context) SqlQueryParameterDatePtrOutput
-}
-
-type sqlQueryParameterDatePtrType SqlQueryParameterDateArgs
-
-func SqlQueryParameterDatePtr(v *SqlQueryParameterDateArgs) SqlQueryParameterDatePtrInput {
-	return (*sqlQueryParameterDatePtrType)(v)
-}
-
-func (*sqlQueryParameterDatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDate)(nil)).Elem()
-}
-
-func (i *sqlQueryParameterDatePtrType) ToSqlQueryParameterDatePtrOutput() SqlQueryParameterDatePtrOutput {
-	return i.ToSqlQueryParameterDatePtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryParameterDatePtrType) ToSqlQueryParameterDatePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDatePtrOutput)
-}
-
-type SqlQueryParameterDateOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDate)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDateOutput) ToSqlQueryParameterDateOutput() SqlQueryParameterDateOutput {
-	return o
-}
-
-func (o SqlQueryParameterDateOutput) ToSqlQueryParameterDateOutputWithContext(ctx context.Context) SqlQueryParameterDateOutput {
-	return o
-}
-
-func (o SqlQueryParameterDateOutput) ToSqlQueryParameterDatePtrOutput() SqlQueryParameterDatePtrOutput {
-	return o.ToSqlQueryParameterDatePtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryParameterDateOutput) ToSqlQueryParameterDatePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryParameterDate) *SqlQueryParameterDate {
-		return &v
-	}).(SqlQueryParameterDatePtrOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterDateOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryParameterDate) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type SqlQueryParameterDatePtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDate)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDatePtrOutput) ToSqlQueryParameterDatePtrOutput() SqlQueryParameterDatePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatePtrOutput) ToSqlQueryParameterDatePtrOutputWithContext(ctx context.Context) SqlQueryParameterDatePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDatePtrOutput) Elem() SqlQueryParameterDateOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDate) SqlQueryParameterDate {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryParameterDate
-		return ret
-	}).(SqlQueryParameterDateOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterDatePtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDate) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterDateRange struct {
-	Range *SqlQueryParameterDateRangeRange `pulumi:"range"`
-	// The default value for this parameter.
-	Value *string `pulumi:"value"`
-}
-
-// SqlQueryParameterDateRangeInput is an input type that accepts SqlQueryParameterDateRangeArgs and SqlQueryParameterDateRangeOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDateRangeInput` via:
-//
-//	SqlQueryParameterDateRangeArgs{...}
-type SqlQueryParameterDateRangeInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDateRangeOutput() SqlQueryParameterDateRangeOutput
-	ToSqlQueryParameterDateRangeOutputWithContext(context.Context) SqlQueryParameterDateRangeOutput
-}
-
-type SqlQueryParameterDateRangeArgs struct {
-	Range SqlQueryParameterDateRangeRangePtrInput `pulumi:"range"`
-	// The default value for this parameter.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (SqlQueryParameterDateRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDateRange)(nil)).Elem()
-}
-
-func (i SqlQueryParameterDateRangeArgs) ToSqlQueryParameterDateRangeOutput() SqlQueryParameterDateRangeOutput {
-	return i.ToSqlQueryParameterDateRangeOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDateRangeArgs) ToSqlQueryParameterDateRangeOutputWithContext(ctx context.Context) SqlQueryParameterDateRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDateRangeOutput)
-}
-
-func (i SqlQueryParameterDateRangeArgs) ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput {
-	return i.ToSqlQueryParameterDateRangePtrOutputWithContext(context.Background())
-}
-
-func (i SqlQueryParameterDateRangeArgs) ToSqlQueryParameterDateRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDateRangeOutput).ToSqlQueryParameterDateRangePtrOutputWithContext(ctx)
-}
-
-// SqlQueryParameterDateRangePtrInput is an input type that accepts SqlQueryParameterDateRangeArgs, SqlQueryParameterDateRangePtr and SqlQueryParameterDateRangePtrOutput values.
-// You can construct a concrete instance of `SqlQueryParameterDateRangePtrInput` via:
-//
-//	        SqlQueryParameterDateRangeArgs{...}
-//
-//	or:
-//
-//	        nil
-type SqlQueryParameterDateRangePtrInput interface {
-	pulumi.Input
-
-	ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput
-	ToSqlQueryParameterDateRangePtrOutputWithContext(context.Context) SqlQueryParameterDateRangePtrOutput
-}
-
-type sqlQueryParameterDateRangePtrType SqlQueryParameterDateRangeArgs
-
-func SqlQueryParameterDateRangePtr(v *SqlQueryParameterDateRangeArgs) SqlQueryParameterDateRangePtrInput {
-	return (*sqlQueryParameterDateRangePtrType)(v)
-}
-
-func (*sqlQueryParameterDateRangePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDateRange)(nil)).Elem()
-}
-
-func (i *sqlQueryParameterDateRangePtrType) ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput {
-	return i.ToSqlQueryParameterDateRangePtrOutputWithContext(context.Background())
-}
-
-func (i *sqlQueryParameterDateRangePtrType) ToSqlQueryParameterDateRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryParameterDateRangePtrOutput)
-}
-
-type SqlQueryParameterDateRangeOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDateRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlQueryParameterDateRange)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDateRangeOutput) ToSqlQueryParameterDateRangeOutput() SqlQueryParameterDateRangeOutput {
-	return o
-}
-
-func (o SqlQueryParameterDateRangeOutput) ToSqlQueryParameterDateRangeOutputWithContext(ctx context.Context) SqlQueryParameterDateRangeOutput {
-	return o
-}
-
-func (o SqlQueryParameterDateRangeOutput) ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput {
-	return o.ToSqlQueryParameterDateRangePtrOutputWithContext(context.Background())
-}
-
-func (o SqlQueryParameterDateRangeOutput) ToSqlQueryParameterDateRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlQueryParameterDateRange) *SqlQueryParameterDateRange {
-		return &v
-	}).(SqlQueryParameterDateRangePtrOutput)
-}
-
-func (o SqlQueryParameterDateRangeOutput) Range() SqlQueryParameterDateRangeRangePtrOutput {
-	return o.ApplyT(func(v SqlQueryParameterDateRange) *SqlQueryParameterDateRangeRange { return v.Range }).(SqlQueryParameterDateRangeRangePtrOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterDateRangeOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlQueryParameterDateRange) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type SqlQueryParameterDateRangePtrOutput struct{ *pulumi.OutputState }
-
-func (SqlQueryParameterDateRangePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SqlQueryParameterDateRange)(nil)).Elem()
-}
-
-func (o SqlQueryParameterDateRangePtrOutput) ToSqlQueryParameterDateRangePtrOutput() SqlQueryParameterDateRangePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDateRangePtrOutput) ToSqlQueryParameterDateRangePtrOutputWithContext(ctx context.Context) SqlQueryParameterDateRangePtrOutput {
-	return o
-}
-
-func (o SqlQueryParameterDateRangePtrOutput) Elem() SqlQueryParameterDateRangeOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDateRange) SqlQueryParameterDateRange {
-		if v != nil {
-			return *v
-		}
-		var ret SqlQueryParameterDateRange
-		return ret
-	}).(SqlQueryParameterDateRangeOutput)
-}
-
-func (o SqlQueryParameterDateRangePtrOutput) Range() SqlQueryParameterDateRangeRangePtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDateRange) *SqlQueryParameterDateRangeRange {
-		if v == nil {
-			return nil
-		}
-		return v.Range
-	}).(SqlQueryParameterDateRangeRangePtrOutput)
-}
-
-// The default value for this parameter.
-func (o SqlQueryParameterDateRangePtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlQueryParameterDateRange) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
@@ -82925,6 +83077,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertConditionThresholdPtrInput)(nil)).Elem(), AlertConditionThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertConditionThresholdValueInput)(nil)).Elem(), AlertConditionThresholdValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertConditionThresholdValuePtrInput)(nil)).Elem(), AlertConditionThresholdValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertV2EvaluationInput)(nil)).Elem(), AlertV2EvaluationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertV2EvaluationPtrInput)(nil)).Elem(), AlertV2EvaluationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertV2EvaluationNotificationInput)(nil)).Elem(), AlertV2EvaluationNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertV2EvaluationNotificationPtrInput)(nil)).Elem(), AlertV2EvaluationNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertV2EvaluationNotificationSubscriptionInput)(nil)).Elem(), AlertV2EvaluationNotificationSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertV2EvaluationNotificationSubscriptionArrayInput)(nil)).Elem(), AlertV2EvaluationNotificationSubscriptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertV2EvaluationSourceInput)(nil)).Elem(), AlertV2EvaluationSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertV2EvaluationSourcePtrInput)(nil)).Elem(), AlertV2EvaluationSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertV2EvaluationThresholdInput)(nil)).Elem(), AlertV2EvaluationThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertV2EvaluationThresholdPtrInput)(nil)).Elem(), AlertV2EvaluationThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertV2EvaluationThresholdColumnInput)(nil)).Elem(), AlertV2EvaluationThresholdColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertV2EvaluationThresholdColumnPtrInput)(nil)).Elem(), AlertV2EvaluationThresholdColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertV2EvaluationThresholdValueInput)(nil)).Elem(), AlertV2EvaluationThresholdValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertV2EvaluationThresholdValuePtrInput)(nil)).Elem(), AlertV2EvaluationThresholdValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertV2ScheduleInput)(nil)).Elem(), AlertV2ScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertV2SchedulePtrInput)(nil)).Elem(), AlertV2ScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppActiveDeploymentInput)(nil)).Elem(), AppActiveDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppActiveDeploymentPtrInput)(nil)).Elem(), AppActiveDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppActiveDeploymentDeploymentArtifactsInput)(nil)).Elem(), AppActiveDeploymentDeploymentArtifactsArgs{})
@@ -83887,22 +84055,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointChannelPtrInput)(nil)).Elem(), SqlEndpointChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointHealthInput)(nil)).Elem(), SqlEndpointHealthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointHealthArrayInput)(nil)).Elem(), SqlEndpointHealthArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointHealthFailureReasonInput)(nil)).Elem(), SqlEndpointHealthFailureReasonArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointHealthFailureReasonPtrInput)(nil)).Elem(), SqlEndpointHealthFailureReasonArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointOdbcParamsInput)(nil)).Elem(), SqlEndpointOdbcParamsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointOdbcParamsPtrInput)(nil)).Elem(), SqlEndpointOdbcParamsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointTagsInput)(nil)).Elem(), SqlEndpointTagsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointTagsPtrInput)(nil)).Elem(), SqlEndpointTagsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointTagsCustomTagInput)(nil)).Elem(), SqlEndpointTagsCustomTagArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointTagsCustomTagArrayInput)(nil)).Elem(), SqlEndpointTagsCustomTagArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlPermissionsPrivilegeAssignmentInput)(nil)).Elem(), SqlPermissionsPrivilegeAssignmentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlPermissionsPrivilegeAssignmentArrayInput)(nil)).Elem(), SqlPermissionsPrivilegeAssignmentArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterInput)(nil)).Elem(), SqlQueryParameterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterArrayInput)(nil)).Elem(), SqlQueryParameterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDateInput)(nil)).Elem(), SqlQueryParameterDateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDatePtrInput)(nil)).Elem(), SqlQueryParameterDateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDateRangeInput)(nil)).Elem(), SqlQueryParameterDateRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlQueryParameterDateRangePtrInput)(nil)).Elem(), SqlQueryParameterDateRangeArgs{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
 	pulumi.RegisterOutputType(AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput{})
@@ -83919,6 +84071,22 @@ func init() {
 	pulumi.RegisterOutputType(AlertConditionThresholdPtrOutput{})
 	pulumi.RegisterOutputType(AlertConditionThresholdValueOutput{})
 	pulumi.RegisterOutputType(AlertConditionThresholdValuePtrOutput{})
+	pulumi.RegisterOutputType(AlertV2EvaluationOutput{})
+	pulumi.RegisterOutputType(AlertV2EvaluationPtrOutput{})
+	pulumi.RegisterOutputType(AlertV2EvaluationNotificationOutput{})
+	pulumi.RegisterOutputType(AlertV2EvaluationNotificationPtrOutput{})
+	pulumi.RegisterOutputType(AlertV2EvaluationNotificationSubscriptionOutput{})
+	pulumi.RegisterOutputType(AlertV2EvaluationNotificationSubscriptionArrayOutput{})
+	pulumi.RegisterOutputType(AlertV2EvaluationSourceOutput{})
+	pulumi.RegisterOutputType(AlertV2EvaluationSourcePtrOutput{})
+	pulumi.RegisterOutputType(AlertV2EvaluationThresholdOutput{})
+	pulumi.RegisterOutputType(AlertV2EvaluationThresholdPtrOutput{})
+	pulumi.RegisterOutputType(AlertV2EvaluationThresholdColumnOutput{})
+	pulumi.RegisterOutputType(AlertV2EvaluationThresholdColumnPtrOutput{})
+	pulumi.RegisterOutputType(AlertV2EvaluationThresholdValueOutput{})
+	pulumi.RegisterOutputType(AlertV2EvaluationThresholdValuePtrOutput{})
+	pulumi.RegisterOutputType(AlertV2ScheduleOutput{})
+	pulumi.RegisterOutputType(AlertV2SchedulePtrOutput{})
 	pulumi.RegisterOutputType(AppActiveDeploymentOutput{})
 	pulumi.RegisterOutputType(AppActiveDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(AppActiveDeploymentDeploymentArtifactsOutput{})
@@ -84881,20 +85049,4 @@ func init() {
 	pulumi.RegisterOutputType(SqlEndpointChannelPtrOutput{})
 	pulumi.RegisterOutputType(SqlEndpointHealthOutput{})
 	pulumi.RegisterOutputType(SqlEndpointHealthArrayOutput{})
-	pulumi.RegisterOutputType(SqlEndpointHealthFailureReasonOutput{})
-	pulumi.RegisterOutputType(SqlEndpointHealthFailureReasonPtrOutput{})
-	pulumi.RegisterOutputType(SqlEndpointOdbcParamsOutput{})
-	pulumi.RegisterOutputType(SqlEndpointOdbcParamsPtrOutput{})
-	pulumi.RegisterOutputType(SqlEndpointTagsOutput{})
-	pulumi.RegisterOutputType(SqlEndpointTagsPtrOutput{})
-	pulumi.RegisterOutputType(SqlEndpointTagsCustomTagOutput{})
-	pulumi.RegisterOutputType(SqlEndpointTagsCustomTagArrayOutput{})
-	pulumi.RegisterOutputType(SqlPermissionsPrivilegeAssignmentOutput{})
-	pulumi.RegisterOutputType(SqlPermissionsPrivilegeAssignmentArrayOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterArrayOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDateOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDatePtrOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDateRangeOutput{})
-	pulumi.RegisterOutputType(SqlQueryParameterDateRangePtrOutput{})
 }

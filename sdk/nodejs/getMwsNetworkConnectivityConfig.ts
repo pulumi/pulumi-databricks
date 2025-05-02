@@ -7,9 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** This data source can only be used with an account-level provider!
- *
  * Retrieves information about databricks.MwsNetworkConnectivityConfig in Databricks Account.
+ *
+ * > This data source can only be used with an account-level provider!
  *
  * ## Example Usage
  *
@@ -117,9 +117,9 @@ export interface GetMwsNetworkConnectivityConfigResult {
     readonly updatedTime: number;
 }
 /**
- * > **Note** This data source can only be used with an account-level provider!
- *
  * Retrieves information about databricks.MwsNetworkConnectivityConfig in Databricks Account.
+ *
+ * > This data source can only be used with an account-level provider!
  *
  * ## Example Usage
  *

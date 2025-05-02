@@ -15,6 +15,8 @@ namespace Pulumi.Databricks
         /// Retrieves details about databricks.Volume that was created by Pulumi or manually. 
         /// A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
         /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
+        /// 
         /// ## Example Usage
         /// 
         /// * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
@@ -71,6 +73,8 @@ namespace Pulumi.Databricks
         /// Retrieves details about databricks.Volume that was created by Pulumi or manually. 
         /// A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
         /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
+        /// 
         /// ## Example Usage
         /// 
         /// * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
@@ -126,6 +130,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Retrieves details about databricks.Volume that was created by Pulumi or manually. 
         /// A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 

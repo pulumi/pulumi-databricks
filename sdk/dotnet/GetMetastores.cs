@@ -12,11 +12,11 @@ namespace Pulumi.Databricks
     public static class GetMetastores
     {
         /// <summary>
-        /// &gt; **Note** This data source can only be used with an account-level provider!
-        /// 
         /// Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
         /// 
-        /// &gt; **Note** `account_id` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users &amp; service principals with account admin status
+        /// &gt; This data source can only be used with an account-level provider!
+        /// 
+        /// &gt; Data resource will error in case of metastores with duplicate names.
         /// 
         /// ## Example Usage
         /// 
@@ -51,11 +51,11 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetastoresResult>("databricks:index/getMetastores:getMetastores", args ?? new GetMetastoresArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This data source can only be used with an account-level provider!
-        /// 
         /// Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
         /// 
-        /// &gt; **Note** `account_id` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users &amp; service principals with account admin status
+        /// &gt; This data source can only be used with an account-level provider!
+        /// 
+        /// &gt; Data resource will error in case of metastores with duplicate names.
         /// 
         /// ## Example Usage
         /// 
@@ -90,11 +90,11 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetMetastoresResult>("databricks:index/getMetastores:getMetastores", args ?? new GetMetastoresInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This data source can only be used with an account-level provider!
-        /// 
         /// Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
         /// 
-        /// &gt; **Note** `account_id` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users &amp; service principals with account admin status
+        /// &gt; This data source can only be used with an account-level provider!
+        /// 
+        /// &gt; Data resource will error in case of metastores with duplicate names.
         /// 
         /// ## Example Usage
         /// 

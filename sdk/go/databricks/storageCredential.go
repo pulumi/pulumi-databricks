@@ -11,12 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > This resource can be used with an account or workspace-level provider.
-//
 // To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
 //
 // - `StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
 // - ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
+//
+// > This resource can be used with an account or workspace-level provider.
 //
 // On AWS, the IAM role for a storage credential requires a trust policy. See [documentation](https://docs.databricks.com/en/connect/unity-catalog/cloud-storage/storage-credentials.html#step-1-create-an-iam-role) for more details. The data source getAwsUnityCatalogAssumeRolePolicy can be used to create the necessary AWS Unity Catalog assume role policy.
 //

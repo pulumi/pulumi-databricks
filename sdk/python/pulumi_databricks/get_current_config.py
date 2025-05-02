@@ -104,6 +104,8 @@ def get_current_config(account_id: Optional[builtins.str] = None,
     """
     Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
 
+    > This data source can be used with an account or workspace-level provider.
+
     ## Example Usage
 
     Create cloud-specific databricks_storage_credential:
@@ -180,6 +182,8 @@ def get_current_config_output(account_id: Optional[pulumi.Input[Optional[builtin
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCurrentConfigResult]:
     """
     Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
+
+    > This data source can be used with an account or workspace-level provider.
 
     ## Example Usage
 

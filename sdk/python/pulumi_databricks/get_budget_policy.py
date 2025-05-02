@@ -101,7 +101,7 @@ def get_budget_policy(binding_workspace_ids: Optional[Sequence[builtins.int]] = 
     """
     This data source can be used to get a single budget policy.
 
-    > **Note** This data source can only be used with an account-level provider!
+    > This data source can only be used with an account-level provider!
 
 
     :param builtins.str policy_name: The name of the budget policy.
@@ -126,7 +126,7 @@ def get_budget_policy_output(binding_workspace_ids: Optional[pulumi.Input[Option
     """
     This data source can be used to get a single budget policy.
 
-    > **Note** This data source can only be used with an account-level provider!
+    > This data source can only be used with an account-level provider!
 
 
     :param builtins.str policy_name: The name of the budget policy.

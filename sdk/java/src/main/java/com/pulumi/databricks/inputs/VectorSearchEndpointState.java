@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.VectorSearchEndpointCustomTagArgs;
 import com.pulumi.databricks.inputs.VectorSearchEndpointEndpointStatusArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -46,6 +47,20 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> creator() {
         return Optional.ofNullable(this.creator);
+    }
+
+    @Import(name="customTags")
+    private @Nullable Output<List<VectorSearchEndpointCustomTagArgs>> customTags;
+
+    public Optional<Output<List<VectorSearchEndpointCustomTagArgs>>> customTags() {
+        return Optional.ofNullable(this.customTags);
+    }
+
+    @Import(name="effectiveBudgetPolicyId")
+    private @Nullable Output<String> effectiveBudgetPolicyId;
+
+    public Optional<Output<String>> effectiveBudgetPolicyId() {
+        return Optional.ofNullable(this.effectiveBudgetPolicyId);
     }
 
     /**
@@ -158,6 +173,8 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
     private VectorSearchEndpointState(VectorSearchEndpointState $) {
         this.creationTimestamp = $.creationTimestamp;
         this.creator = $.creator;
+        this.customTags = $.customTags;
+        this.effectiveBudgetPolicyId = $.effectiveBudgetPolicyId;
         this.endpointId = $.endpointId;
         this.endpointStatuses = $.endpointStatuses;
         this.endpointType = $.endpointType;
@@ -225,6 +242,28 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
          */
         public Builder creator(String creator) {
             return creator(Output.of(creator));
+        }
+
+        public Builder customTags(@Nullable Output<List<VectorSearchEndpointCustomTagArgs>> customTags) {
+            $.customTags = customTags;
+            return this;
+        }
+
+        public Builder customTags(List<VectorSearchEndpointCustomTagArgs> customTags) {
+            return customTags(Output.of(customTags));
+        }
+
+        public Builder customTags(VectorSearchEndpointCustomTagArgs... customTags) {
+            return customTags(List.of(customTags));
+        }
+
+        public Builder effectiveBudgetPolicyId(@Nullable Output<String> effectiveBudgetPolicyId) {
+            $.effectiveBudgetPolicyId = effectiveBudgetPolicyId;
+            return this;
+        }
+
+        public Builder effectiveBudgetPolicyId(String effectiveBudgetPolicyId) {
+            return effectiveBudgetPolicyId(Output.of(effectiveBudgetPolicyId));
         }
 
         /**

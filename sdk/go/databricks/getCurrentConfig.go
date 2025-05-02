@@ -12,6 +12,8 @@ import (
 )
 
 // Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
+//
+// > This data source can be used with an account or workspace-level provider.
 func GetCurrentConfig(ctx *pulumi.Context, args *GetCurrentConfigArgs, opts ...pulumi.InvokeOption) (*GetCurrentConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCurrentConfigResult

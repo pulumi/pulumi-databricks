@@ -10,16 +10,18 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.VectorSearchEndpointArgs;
 import com.pulumi.databricks.inputs.VectorSearchEndpointState;
+import com.pulumi.databricks.outputs.VectorSearchEndpointCustomTag;
 import com.pulumi.databricks.outputs.VectorSearchEndpointEndpointStatus;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; This resource can only be used on a Unity Catalog-enabled workspace!
- * 
  * This resource allows you to create [Mosaic AI Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Endpoint is used to create and access vector search indexes.
+ * 
+ * &gt; This resource can only be used with a workspace-level provider!
  * 
  * ## Example Usage
  * 
@@ -97,6 +99,18 @@ public class VectorSearchEndpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<String> creator() {
         return this.creator;
+    }
+    @Export(name="customTags", refs={List.class,VectorSearchEndpointCustomTag.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<VectorSearchEndpointCustomTag>> customTags;
+
+    public Output<Optional<List<VectorSearchEndpointCustomTag>>> customTags() {
+        return Codegen.optional(this.customTags);
+    }
+    @Export(name="effectiveBudgetPolicyId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> effectiveBudgetPolicyId;
+
+    public Output<Optional<String>> effectiveBudgetPolicyId() {
+        return Codegen.optional(this.effectiveBudgetPolicyId);
     }
     /**
      * Unique internal identifier of the endpoint (UUID).

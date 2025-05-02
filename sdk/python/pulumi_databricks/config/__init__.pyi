@@ -21,6 +21,8 @@ actionsIdTokenRequestToken: Optional[str]
 
 actionsIdTokenRequestUrl: Optional[str]
 
+audience: Optional[str]
+
 authType: Optional[str]
 
 azureClientId: Optional[str]

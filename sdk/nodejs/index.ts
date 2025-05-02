@@ -25,6 +25,11 @@ export type Alert = import("./alert").Alert;
 export const Alert: typeof import("./alert").Alert = null as any;
 utilities.lazyLoad(exports, ["Alert"], () => require("./alert"));
 
+export { AlertV2Args, AlertV2State } from "./alertV2";
+export type AlertV2 = import("./alertV2").AlertV2;
+export const AlertV2: typeof import("./alertV2").AlertV2 = null as any;
+utilities.lazyLoad(exports, ["AlertV2"], () => require("./alertV2"));
+
 export { AppArgs, AppState } from "./app";
 export type App = import("./app").App;
 export const App: typeof import("./app").App = null as any;
@@ -139,6 +144,16 @@ export { FileArgs, FileState } from "./file";
 export type File = import("./file").File;
 export const File: typeof import("./file").File = null as any;
 utilities.lazyLoad(exports, ["File"], () => require("./file"));
+
+export { GetAlertV2Args, GetAlertV2Result, GetAlertV2OutputArgs } from "./getAlertV2";
+export const getAlertV2: typeof import("./getAlertV2").getAlertV2 = null as any;
+export const getAlertV2Output: typeof import("./getAlertV2").getAlertV2Output = null as any;
+utilities.lazyLoad(exports, ["getAlertV2","getAlertV2Output"], () => require("./getAlertV2"));
+
+export { GetAlertsV2Result } from "./getAlertsV2";
+export const getAlertsV2: typeof import("./getAlertsV2").getAlertsV2 = null as any;
+export const getAlertsV2Output: typeof import("./getAlertsV2").getAlertsV2Output = null as any;
+utilities.lazyLoad(exports, ["getAlertsV2","getAlertsV2Output"], () => require("./getAlertsV2"));
 
 export { GetAppArgs, GetAppResult, GetAppOutputArgs } from "./getApp";
 export const getApp: typeof import("./getApp").getApp = null as any;
@@ -877,6 +892,8 @@ const _module = {
                 return new AibiDashboardEmbeddingApprovedDomainsSetting(name, <any>undefined, { urn })
             case "databricks:index/alert:Alert":
                 return new Alert(name, <any>undefined, { urn })
+            case "databricks:index/alertV2:AlertV2":
+                return new AlertV2(name, <any>undefined, { urn })
             case "databricks:index/app:App":
                 return new App(name, <any>undefined, { urn })
             case "databricks:index/artifactAllowlist:ArtifactAllowlist":
@@ -1088,6 +1105,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/accessControlRuleSet"
 pulumi.runtime.registerResourceModule("databricks", "index/aibiDashboardEmbeddingAccessPolicySetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/aibiDashboardEmbeddingApprovedDomainsSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/alert", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/alertV2", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/app", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/artifactAllowlist", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/automaticClusterUpdateWorkspaceSetting", _module)

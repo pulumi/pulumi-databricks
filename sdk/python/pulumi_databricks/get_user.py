@@ -168,9 +168,9 @@ def get_user(user_id: Optional[builtins.str] = None,
              user_name: Optional[builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Retrieves information about databricks_user.
+
+    > This data source can be used with an account or workspace-level provider.
 
     ## Example Usage
 
@@ -227,9 +227,9 @@ def get_user_output(user_id: Optional[pulumi.Input[Optional[builtins.str]]] = No
                     user_name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Retrieves information about databricks_user.
+
+    > This data source can be used with an account or workspace-level provider.
 
     ## Example Usage
 

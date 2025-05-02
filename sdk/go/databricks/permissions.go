@@ -14,6 +14,8 @@ import (
 
 // This resource allows you to generically manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspaces. It ensures that only _admins_, _authenticated principal_ and those declared within `accessControl` blocks would have specified access. It is not possible to remove management rights from _admins_ group.
 //
+// > This resource can only be used with a workspace-level provider!
+//
 // > This resource is _authoritative_ for permissions on objects. Configuring this resource for an object will **OVERWRITE** any existing permissions of the same type unless imported, and changes made outside of Pulumi will be reset.
 //
 // > It is not possible to lower permissions for `admins`, so Databricks Pulumi Provider removes those `accessControl` blocks automatically.

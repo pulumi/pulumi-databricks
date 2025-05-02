@@ -13,7 +13,7 @@ import (
 
 // This data source can be used to fetch the list of budget policies.
 //
-// > **Note** This data source can only be used with an account-level provider!
+// > This data source can only be used with an account-level provider!
 //
 // ## Example Usage
 //
@@ -52,10 +52,9 @@ func GetBudgetPolicies(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetBu
 
 // A collection of values returned by getBudgetPolicies.
 type GetBudgetPoliciesResult struct {
-	// The list of budget policy.
-	BudgetPolicies []GetBudgetPoliciesBudgetPolicy `pulumi:"budgetPolicies"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id       string                    `pulumi:"id"`
+	Policies []GetBudgetPoliciesPolicy `pulumi:"policies"`
 }
 
 func GetBudgetPoliciesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetBudgetPoliciesResultOutput {
@@ -80,14 +79,13 @@ func (o GetBudgetPoliciesResultOutput) ToGetBudgetPoliciesResultOutputWithContex
 	return o
 }
 
-// The list of budget policy.
-func (o GetBudgetPoliciesResultOutput) BudgetPolicies() GetBudgetPoliciesBudgetPolicyArrayOutput {
-	return o.ApplyT(func(v GetBudgetPoliciesResult) []GetBudgetPoliciesBudgetPolicy { return v.BudgetPolicies }).(GetBudgetPoliciesBudgetPolicyArrayOutput)
-}
-
 // The provider-assigned unique ID for this managed resource.
 func (o GetBudgetPoliciesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBudgetPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetBudgetPoliciesResultOutput) Policies() GetBudgetPoliciesPolicyArrayOutput {
+	return o.ApplyT(func(v GetBudgetPoliciesResult) []GetBudgetPoliciesPolicy { return v.Policies }).(GetBudgetPoliciesPolicyArrayOutput)
 }
 
 func init() {

@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** This data source can only be used with a workspace-level provider!
- *
  * Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Plugin Framework Migration
  *
@@ -79,9 +79,9 @@ export interface GetVolumesResult {
     readonly schemaName: string;
 }
 /**
- * > **Note** This data source can only be used with a workspace-level provider!
- *
  * Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Plugin Framework Migration
  *

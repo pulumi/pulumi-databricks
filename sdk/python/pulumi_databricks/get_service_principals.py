@@ -75,9 +75,9 @@ def get_service_principals(application_ids: Optional[Sequence[builtins.str]] = N
                            display_name_contains: Optional[builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalsResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Retrieves `application_ids` of all ServicePrincipal based on their `display_name`
+
+    > This data source can be used with an account or workspace-level provider.
 
 
     :param Sequence[builtins.str] application_ids: List of `application_ids` of service principals Individual service principal can be retrieved using ServicePrincipal data source
@@ -97,9 +97,9 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
                                   display_name_contains: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePrincipalsResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Retrieves `application_ids` of all ServicePrincipal based on their `display_name`
+
+    > This data source can be used with an account or workspace-level provider.
 
 
     :param Sequence[builtins.str] application_ids: List of `application_ids` of service principals Individual service principal can be retrieved using ServicePrincipal data source

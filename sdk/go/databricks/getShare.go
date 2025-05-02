@@ -13,6 +13,8 @@ import (
 
 // Retrieves details about a Share that were created by Pulumi or manually.
 //
+// > This data source can only be used with a workspace-level provider!
+//
 // ## Example Usage
 //
 // # Getting details of an existing share in the metastore

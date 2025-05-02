@@ -13,6 +13,8 @@ import (
 
 // Retrieves a list of Share name, that were created by Pulumi or manually.
 //
+// > This data source can only be used with a workspace-level provider!
+//
 // ## Example Usage
 //
 // # Getting all existing shares in the metastore

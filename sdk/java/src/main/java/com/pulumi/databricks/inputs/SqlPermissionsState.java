@@ -19,14 +19,14 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
     public static final SqlPermissionsState Empty = new SqlPermissionsState();
 
     /**
-     * If this access control for using anonymous function. Defaults to `false`.
+     * If this access control for using an anonymous function. Defaults to `false`.
      * 
      */
     @Import(name="anonymousFunction")
     private @Nullable Output<Boolean> anonymousFunction;
 
     /**
-     * @return If this access control for using anonymous function. Defaults to `false`.
+     * @return If this access control for using an anonymous function. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> anonymousFunction() {
@@ -71,14 +71,14 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Name of the database. Has default value of `default`.
+     * Name of the database. Has a default value of `default`.
      * 
      */
     @Import(name="database")
     private @Nullable Output<String> database;
 
     /**
-     * @return Name of the database. Has default value of `default`.
+     * @return Name of the database. Has a default value of `default`.
      * 
      */
     public Optional<Output<String>> database() {
@@ -93,14 +93,14 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Name of the table. Can be combined with `database`.
+     * Name of the table. Can be combined with the `database`.
      * 
      */
     @Import(name="table")
     private @Nullable Output<String> table;
 
     /**
-     * @return Name of the table. Can be combined with `database`.
+     * @return Name of the table. Can be combined with the `database`.
      * 
      */
     public Optional<Output<String>> table() {
@@ -108,14 +108,14 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Name of the view. Can be combined with `database`.
+     * Name of the view. Can be combined with the `database`.
      * 
      */
     @Import(name="view")
     private @Nullable Output<String> view;
 
     /**
-     * @return Name of the view. Can be combined with `database`.
+     * @return Name of the view. Can be combined with the `database`.
      * 
      */
     public Optional<Output<String>> view() {
@@ -154,7 +154,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param anonymousFunction If this access control for using anonymous function. Defaults to `false`.
+         * @param anonymousFunction If this access control for using an anonymous function. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param anonymousFunction If this access control for using anonymous function. Defaults to `false`.
+         * @param anonymousFunction If this access control for using an anonymous function. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param database Name of the database. Has default value of `default`.
+         * @param database Name of the database. Has a default value of `default`.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param database Name of the database. Has default value of `default`.
+         * @param database Name of the database. Has a default value of `default`.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param table Name of the table. Can be combined with `database`.
+         * @param table Name of the table. Can be combined with the `database`.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param table Name of the table. Can be combined with `database`.
+         * @param table Name of the table. Can be combined with the `database`.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param view Name of the view. Can be combined with `database`.
+         * @param view Name of the view. Can be combined with the `database`.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param view Name of the view. Can be combined with `database`.
+         * @param view Name of the view. Can be combined with the `database`.
          * 
          * @return builder
          * 

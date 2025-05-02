@@ -91,9 +91,9 @@ def get_cluster(cluster_id: Optional[builtins.str] = None,
                 id: Optional[builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Retrieves information about a Cluster using its id. This could be retrieved programmatically using get_clusters data source.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
@@ -132,9 +132,9 @@ def get_cluster_output(cluster_id: Optional[pulumi.Input[Optional[builtins.str]]
                        id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Retrieves information about a Cluster using its id. This could be retrieved programmatically using get_clusters data source.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

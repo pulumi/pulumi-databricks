@@ -41,6 +41,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> actionsIdTokenRequestUrl() {
         return Codegen.optional(this.actionsIdTokenRequestUrl);
     }
+    @Export(name="audience", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> audience;
+
+    public Output<Optional<String>> audience() {
+        return Codegen.optional(this.audience);
+    }
     @Export(name="authType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authType;
 

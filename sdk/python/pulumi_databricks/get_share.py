@@ -108,6 +108,8 @@ def get_share(created_at: Optional[builtins.int] = None,
     """
     Retrieves details about a Share that were created by Pulumi or manually.
 
+    > This data source can only be used with a workspace-level provider!
+
     ## Example Usage
 
     Getting details of an existing share in the metastore
@@ -155,6 +157,8 @@ def get_share_output(created_at: Optional[pulumi.Input[Optional[builtins.int]]] 
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetShareResult]:
     """
     Retrieves details about a Share that were created by Pulumi or manually.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

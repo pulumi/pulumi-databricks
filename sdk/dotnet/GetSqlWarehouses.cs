@@ -12,9 +12,9 @@ namespace Pulumi.Databricks
     public static class GetSqlWarehouses
     {
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Retrieves a list of databricks.SqlEndpoint ids, that were created by Pulumi or manually.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -65,9 +65,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSqlWarehousesResult>("databricks:index/getSqlWarehouses:getSqlWarehouses", args ?? new GetSqlWarehousesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Retrieves a list of databricks.SqlEndpoint ids, that were created by Pulumi or manually.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -118,9 +118,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetSqlWarehousesResult>("databricks:index/getSqlWarehouses:getSqlWarehouses", args ?? new GetSqlWarehousesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Retrieves a list of databricks.SqlEndpoint ids, that were created by Pulumi or manually.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 

@@ -100,9 +100,9 @@ def get_registered_model(full_name: Optional[builtins.str] = None,
                          model_infos: Optional[Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict']]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegisteredModelResult:
     """
-    > This resource can only be used with a workspace-level provider!
-
     This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
@@ -147,9 +147,9 @@ def get_registered_model_output(full_name: Optional[pulumi.Input[builtins.str]] 
                                 model_infos: Optional[pulumi.Input[Optional[Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict']]]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegisteredModelResult]:
     """
-    > This resource can only be used with a workspace-level provider!
-
     This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

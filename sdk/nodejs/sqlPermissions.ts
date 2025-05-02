@@ -7,9 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > Please switch to databricks.Grants with Unity Catalog to manage data access, which provides a better and faster way for managing data security. `databricks.Grants` resource *doesn't require a technical cluster to perform operations*. On workspaces with Unity Catalog enabled, you may run into errors such as `Error: cannot create sql permissions: cannot read current grants: For unity catalog, please specify the catalog name explicitly. E.g. SHOW GRANT ``your.address@email.com`` ON CATALOG main`. This happens if your `defaultCatalogName` was set to a UC catalog instead of `hiveMetastore`. The workaround is to re-assign the metastore again with the default catalog set to be `hiveMetastore`. See databricks_metastore_assignment.
+ * > Please switch to databricks.Grants with Unity Catalog to manage data access, which provides a better and faster way for managing data security. `databricks.Grants` resource *doesn't require a technical cluster to perform operations*. On workspaces with Unity Catalog enabled, you may run into errors such as `Error: cannot create sql permissions: cannot read current grants: For unity catalog, please specify the catalog name explicitly. E.g. SHOW GRANT ``your.address@email.com`` ON CATALOG main`. This happens if your `defaultCatalogName` was set to a UC catalog instead of `hiveMetastore`. The workaround is to re-assign the metastore again with the default catalog set to `hiveMetastore`. See databricks_metastore_assignment.
  *
- * This resource manages data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html). In order to enable Table Access control, you have to login to the workspace as administrator, go to `Admin Console`, pick `Access Control` tab, click on `Enable` button in `Table Access Control` section, and click `Confirm`. The security guarantees of table access control **will only be effective if cluster access control is also turned on**. Please make sure that no users can create clusters in your workspace and all databricks.Cluster have approximately the following configuration:
+ * This resource manages data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html). In order to enable Table Access control, you have to login to the workspace as administrator, go to `Admin Console`, pick the `Access Control` tab, click on the `Enable` button in the `Table Access Control` section, and click `Confirm`. The security guarantees of table access control **will only be effective if cluster access control is also turned on**. Please make sure that no users can create clusters in your workspace and all databricks.Cluster have approximately the following configuration:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +20,8 @@ import * as utilities from "./utilities";
  *     "spark.databricks.repl.allowedLanguages": "python,sql",
  * }});
  * ```
+ *
+ * > This resource can only be used with a workspace-level provider!
  *
  * It is required to define all permissions for a securable in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
  *
@@ -68,7 +70,7 @@ import * as utilities from "./utilities";
  *
  * The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
  *
- * * `table/default.foo` - table `foo` in a `default` database. Database is always mandatory.
+ * * `table/default.foo` - table `foo` in a `default` database. The `database` is always mandatory.
  *
  * * `view/bar.foo` - view `foo` in `bar` database.
  *
@@ -115,7 +117,7 @@ export class SqlPermissions extends pulumi.CustomResource {
     }
 
     /**
-     * If this access control for using anonymous function. Defaults to `false`.
+     * If this access control for using an anonymous function. Defaults to `false`.
      */
     public readonly anonymousFunction!: pulumi.Output<boolean | undefined>;
     /**
@@ -128,16 +130,16 @@ export class SqlPermissions extends pulumi.CustomResource {
     public readonly catalog!: pulumi.Output<boolean | undefined>;
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Name of the database. Has default value of `default`.
+     * Name of the database. Has a default value of `default`.
      */
     public readonly database!: pulumi.Output<string | undefined>;
     public readonly privilegeAssignments!: pulumi.Output<outputs.SqlPermissionsPrivilegeAssignment[] | undefined>;
     /**
-     * Name of the table. Can be combined with `database`.
+     * Name of the table. Can be combined with the `database`.
      */
     public readonly table!: pulumi.Output<string | undefined>;
     /**
-     * Name of the view. Can be combined with `database`.
+     * Name of the view. Can be combined with the `database`.
      */
     public readonly view!: pulumi.Output<string | undefined>;
 
@@ -183,7 +185,7 @@ export class SqlPermissions extends pulumi.CustomResource {
  */
 export interface SqlPermissionsState {
     /**
-     * If this access control for using anonymous function. Defaults to `false`.
+     * If this access control for using an anonymous function. Defaults to `false`.
      */
     anonymousFunction?: pulumi.Input<boolean>;
     /**
@@ -196,16 +198,16 @@ export interface SqlPermissionsState {
     catalog?: pulumi.Input<boolean>;
     clusterId?: pulumi.Input<string>;
     /**
-     * Name of the database. Has default value of `default`.
+     * Name of the database. Has a default value of `default`.
      */
     database?: pulumi.Input<string>;
     privilegeAssignments?: pulumi.Input<pulumi.Input<inputs.SqlPermissionsPrivilegeAssignment>[]>;
     /**
-     * Name of the table. Can be combined with `database`.
+     * Name of the table. Can be combined with the `database`.
      */
     table?: pulumi.Input<string>;
     /**
-     * Name of the view. Can be combined with `database`.
+     * Name of the view. Can be combined with the `database`.
      */
     view?: pulumi.Input<string>;
 }
@@ -215,7 +217,7 @@ export interface SqlPermissionsState {
  */
 export interface SqlPermissionsArgs {
     /**
-     * If this access control for using anonymous function. Defaults to `false`.
+     * If this access control for using an anonymous function. Defaults to `false`.
      */
     anonymousFunction?: pulumi.Input<boolean>;
     /**
@@ -228,16 +230,16 @@ export interface SqlPermissionsArgs {
     catalog?: pulumi.Input<boolean>;
     clusterId?: pulumi.Input<string>;
     /**
-     * Name of the database. Has default value of `default`.
+     * Name of the database. Has a default value of `default`.
      */
     database?: pulumi.Input<string>;
     privilegeAssignments?: pulumi.Input<pulumi.Input<inputs.SqlPermissionsPrivilegeAssignment>[]>;
     /**
-     * Name of the table. Can be combined with `database`.
+     * Name of the table. Can be combined with the `database`.
      */
     table?: pulumi.Input<string>;
     /**
-     * Name of the view. Can be combined with `database`.
+     * Name of the view. Can be combined with the `database`.
      */
     view?: pulumi.Input<string>;
 }

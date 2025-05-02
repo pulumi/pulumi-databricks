@@ -103,9 +103,9 @@ def get_functions(catalog_name: Optional[builtins.str] = None,
                   schema_name: Optional[builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFunctionsResult:
     """
-    > This data source can only be used with a workspace-level provider!
-
     Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
@@ -152,9 +152,9 @@ def get_functions_output(catalog_name: Optional[pulumi.Input[builtins.str]] = No
                          schema_name: Optional[pulumi.Input[builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFunctionsResult]:
     """
-    > This data source can only be used with a workspace-level provider!
-
     Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

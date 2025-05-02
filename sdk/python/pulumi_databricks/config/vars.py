@@ -34,6 +34,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('actionsIdTokenRequestUrl')
 
     @property
+    def audience(self) -> Optional[str]:
+        return __config__.get('audience')
+
+    @property
     def auth_type(self) -> Optional[str]:
         return __config__.get('authType')
 

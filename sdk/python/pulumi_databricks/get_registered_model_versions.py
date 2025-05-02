@@ -80,9 +80,9 @@ def get_registered_model_versions(full_name: Optional[builtins.str] = None,
                                   model_versions: Optional[Sequence[Union['GetRegisteredModelVersionsModelVersionArgs', 'GetRegisteredModelVersionsModelVersionArgsDict']]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegisteredModelVersionsResult:
     """
-    > This resource can only be used with a workspace-level provider!
-
     This resource allows you to get information about versions of [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html).
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
@@ -120,9 +120,9 @@ def get_registered_model_versions_output(full_name: Optional[pulumi.Input[builti
                                          model_versions: Optional[pulumi.Input[Optional[Sequence[Union['GetRegisteredModelVersionsModelVersionArgs', 'GetRegisteredModelVersionsModelVersionArgsDict']]]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegisteredModelVersionsResult]:
     """
-    > This resource can only be used with a workspace-level provider!
-
     This resource allows you to get information about versions of [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html).
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

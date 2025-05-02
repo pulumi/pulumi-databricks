@@ -84,6 +84,8 @@ def get_schema(id: Optional[builtins.str] = None,
     Retrieves details about Schema that was created by Pulumi or manually.
     A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using get_schemas data source.
 
+    > This data source can only be used with a workspace-level provider!
+
     ## Example Usage
 
     * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
@@ -135,6 +137,8 @@ def get_schema_output(id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
     """
     Retrieves details about Schema that was created by Pulumi or manually.
     A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using get_schemas data source.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

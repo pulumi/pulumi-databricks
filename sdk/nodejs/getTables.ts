@@ -5,11 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** This data source can only be used with a workspace-level provider!
- *
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
- *
  * Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getViews for retrieving a list of views.
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *
@@ -90,11 +88,9 @@ export interface GetTablesResult {
     readonly schemaName: string;
 }
 /**
- * > **Note** This data source can only be used with a workspace-level provider!
- *
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
- *
  * Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getViews for retrieving a list of views.
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *

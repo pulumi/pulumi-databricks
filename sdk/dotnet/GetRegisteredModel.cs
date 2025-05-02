@@ -12,9 +12,9 @@ namespace Pulumi.Databricks
     public static class GetRegisteredModel
     {
         /// <summary>
-        /// &gt; This resource can only be used with a workspace-level provider!
-        /// 
         /// This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -46,9 +46,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegisteredModelResult>("databricks:index/getRegisteredModel:getRegisteredModel", args ?? new GetRegisteredModelArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; This resource can only be used with a workspace-level provider!
-        /// 
         /// This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -80,9 +80,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetRegisteredModelResult>("databricks:index/getRegisteredModel:getRegisteredModel", args ?? new GetRegisteredModelInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; This resource can only be used with a workspace-level provider!
-        /// 
         /// This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+        /// 
+        /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 

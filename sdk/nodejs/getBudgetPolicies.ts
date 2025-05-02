@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * This data source can be used to fetch the list of budget policies.
  *
- * > **Note** This data source can only be used with an account-level provider!
+ * > This data source can only be used with an account-level provider!
  *
  * ## Example Usage
  *
@@ -33,18 +33,15 @@ export function getBudgetPolicies(opts?: pulumi.InvokeOptions): Promise<GetBudge
  */
 export interface GetBudgetPoliciesResult {
     /**
-     * The list of budget policy.
-     */
-    readonly budgetPolicies: outputs.GetBudgetPoliciesBudgetPolicy[];
-    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly policies: outputs.GetBudgetPoliciesPolicy[];
 }
 /**
  * This data source can be used to fetch the list of budget policies.
  *
- * > **Note** This data source can only be used with an account-level provider!
+ * > This data source can only be used with an account-level provider!
  *
  * ## Example Usage
  *

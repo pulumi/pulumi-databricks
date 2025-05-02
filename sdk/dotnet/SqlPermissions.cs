@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// &gt; Please switch to databricks.Grants with Unity Catalog to manage data access, which provides a better and faster way for managing data security. `databricks.Grants` resource *doesn't require a technical cluster to perform operations*. On workspaces with Unity Catalog enabled, you may run into errors such as `Error: cannot create sql permissions: cannot read current grants: For unity catalog, please specify the catalog name explicitly. E.g. SHOW GRANT ``your.address@email.com`` ON CATALOG main`. This happens if your `default_catalog_name` was set to a UC catalog instead of `hive_metastore`. The workaround is to re-assign the metastore again with the default catalog set to be `hive_metastore`. See databricks_metastore_assignment.
+    /// &gt; Please switch to databricks.Grants with Unity Catalog to manage data access, which provides a better and faster way for managing data security. `databricks.Grants` resource *doesn't require a technical cluster to perform operations*. On workspaces with Unity Catalog enabled, you may run into errors such as `Error: cannot create sql permissions: cannot read current grants: For unity catalog, please specify the catalog name explicitly. E.g. SHOW GRANT ``your.address@email.com`` ON CATALOG main`. This happens if your `default_catalog_name` was set to a UC catalog instead of `hive_metastore`. The workaround is to re-assign the metastore again with the default catalog set to `hive_metastore`. See databricks_metastore_assignment.
     /// 
-    /// This resource manages data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html). In order to enable Table Access control, you have to login to the workspace as administrator, go to `Admin Console`, pick `Access Control` tab, click on `Enable` button in `Table Access Control` section, and click `Confirm`. The security guarantees of table access control **will only be effective if cluster access control is also turned on**. Please make sure that no users can create clusters in your workspace and all databricks.Cluster have approximately the following configuration:
+    /// This resource manages data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html). In order to enable Table Access control, you have to login to the workspace as administrator, go to `Admin Console`, pick the `Access Control` tab, click on the `Enable` button in the `Table Access Control` section, and click `Confirm`. The security guarantees of table access control **will only be effective if cluster access control is also turned on**. Please make sure that no users can create clusters in your workspace and all databricks.Cluster have approximately the following configuration:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -33,6 +33,8 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// 
+    /// &gt; This resource can only be used with a workspace-level provider!
     /// 
     /// It is required to define all permissions for a securable in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
     /// 
@@ -95,7 +97,7 @@ namespace Pulumi.Databricks
     /// 
     /// The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
     /// 
-    /// * `table/default.foo` - table `foo` in a `default` database. Database is always mandatory.
+    /// * `table/default.foo` - table `foo` in a `default` database. The `database` is always mandatory.
     /// 
     /// * `view/bar.foo` - view `foo` in `bar` database.
     /// 
@@ -117,7 +119,7 @@ namespace Pulumi.Databricks
     public partial class SqlPermissions : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// If this access control for using anonymous function. Defaults to `false`.
+        /// If this access control for using an anonymous function. Defaults to `false`.
         /// </summary>
         [Output("anonymousFunction")]
         public Output<bool?> AnonymousFunction { get; private set; } = null!;
@@ -138,7 +140,7 @@ namespace Pulumi.Databricks
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the database. Has default value of `default`.
+        /// Name of the database. Has a default value of `default`.
         /// </summary>
         [Output("database")]
         public Output<string?> Database { get; private set; } = null!;
@@ -147,13 +149,13 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<Outputs.SqlPermissionsPrivilegeAssignment>> PrivilegeAssignments { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the table. Can be combined with `database`.
+        /// Name of the table. Can be combined with the `database`.
         /// </summary>
         [Output("table")]
         public Output<string?> Table { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the view. Can be combined with `database`.
+        /// Name of the view. Can be combined with the `database`.
         /// </summary>
         [Output("view")]
         public Output<string?> View { get; private set; } = null!;
@@ -205,7 +207,7 @@ namespace Pulumi.Databricks
     public sealed class SqlPermissionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If this access control for using anonymous function. Defaults to `false`.
+        /// If this access control for using an anonymous function. Defaults to `false`.
         /// </summary>
         [Input("anonymousFunction")]
         public Input<bool>? AnonymousFunction { get; set; }
@@ -226,7 +228,7 @@ namespace Pulumi.Databricks
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Name of the database. Has default value of `default`.
+        /// Name of the database. Has a default value of `default`.
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
@@ -240,13 +242,13 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Name of the table. Can be combined with `database`.
+        /// Name of the table. Can be combined with the `database`.
         /// </summary>
         [Input("table")]
         public Input<string>? Table { get; set; }
 
         /// <summary>
-        /// Name of the view. Can be combined with `database`.
+        /// Name of the view. Can be combined with the `database`.
         /// </summary>
         [Input("view")]
         public Input<string>? View { get; set; }
@@ -260,7 +262,7 @@ namespace Pulumi.Databricks
     public sealed class SqlPermissionsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If this access control for using anonymous function. Defaults to `false`.
+        /// If this access control for using an anonymous function. Defaults to `false`.
         /// </summary>
         [Input("anonymousFunction")]
         public Input<bool>? AnonymousFunction { get; set; }
@@ -281,7 +283,7 @@ namespace Pulumi.Databricks
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Name of the database. Has default value of `default`.
+        /// Name of the database. Has a default value of `default`.
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
@@ -295,13 +297,13 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Name of the table. Can be combined with `database`.
+        /// Name of the table. Can be combined with the `database`.
         /// </summary>
         [Input("table")]
         public Input<string>? Table { get; set; }
 
         /// <summary>
-        /// Name of the view. Can be combined with `database`.
+        /// Name of the view. Can be combined with the `database`.
         /// </summary>
         [Input("view")]
         public Input<string>? View { get; set; }

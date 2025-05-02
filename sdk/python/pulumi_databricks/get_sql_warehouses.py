@@ -75,9 +75,9 @@ def get_sql_warehouses(ids: Optional[Sequence[builtins.str]] = None,
                        warehouse_name_contains: Optional[builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSqlWarehousesResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Retrieves a list of SqlEndpoint ids, that were created by Pulumi or manually.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
@@ -127,9 +127,9 @@ def get_sql_warehouses_output(ids: Optional[pulumi.Input[Optional[Sequence[built
                               warehouse_name_contains: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSqlWarehousesResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
     Retrieves a list of SqlEndpoint ids, that were created by Pulumi or manually.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

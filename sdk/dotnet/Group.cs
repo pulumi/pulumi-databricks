@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     /// <summary>
     /// This resource allows you to manage both [account groups and workspace-local groups](https://docs.databricks.com/administration-guide/users-groups/groups.html). You can use the databricks.GroupMember resource to assign Databricks users, service principals as well as other groups as members of the group. This is useful if you are using an application to sync users &amp; groups with SCIM API.
     /// 
+    /// &gt; This resource can be used with an account or workspace-level provider.
+    /// 
     /// &gt; To assign an account level group to a workspace use databricks_mws_permission_assignment.
     /// 
     /// &gt; Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level groups.  Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level groups.

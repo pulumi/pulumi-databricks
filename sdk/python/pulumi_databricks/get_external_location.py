@@ -78,9 +78,9 @@ def get_external_location(external_location_info: Optional[Union['GetExternalLoc
                           name: Optional[builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalLocationResult:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
     Retrieves details about a ExternalLocation that were created by Pulumi or manually.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
@@ -122,9 +122,9 @@ def get_external_location_output(external_location_info: Optional[pulumi.Input[O
                                  name: Optional[pulumi.Input[builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalLocationResult]:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
     Retrieves details about a ExternalLocation that were created by Pulumi or manually.
+
+    > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 

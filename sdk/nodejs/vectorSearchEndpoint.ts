@@ -7,9 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > This resource can only be used on a Unity Catalog-enabled workspace!
- *
  * This resource allows you to create [Mosaic AI Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Endpoint is used to create and access vector search indexes.
+ *
+ * > This resource can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *
@@ -69,6 +69,8 @@ export class VectorSearchEndpoint extends pulumi.CustomResource {
      * Creator of the endpoint.
      */
     public /*out*/ readonly creator!: pulumi.Output<string>;
+    public readonly customTags!: pulumi.Output<outputs.VectorSearchEndpointCustomTag[] | undefined>;
+    public readonly effectiveBudgetPolicyId!: pulumi.Output<string | undefined>;
     /**
      * Unique internal identifier of the endpoint (UUID).
      */
@@ -113,6 +115,8 @@ export class VectorSearchEndpoint extends pulumi.CustomResource {
             const state = argsOrState as VectorSearchEndpointState | undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["creator"] = state ? state.creator : undefined;
+            resourceInputs["customTags"] = state ? state.customTags : undefined;
+            resourceInputs["effectiveBudgetPolicyId"] = state ? state.effectiveBudgetPolicyId : undefined;
             resourceInputs["endpointId"] = state ? state.endpointId : undefined;
             resourceInputs["endpointStatuses"] = state ? state.endpointStatuses : undefined;
             resourceInputs["endpointType"] = state ? state.endpointType : undefined;
@@ -125,6 +129,8 @@ export class VectorSearchEndpoint extends pulumi.CustomResource {
             if ((!args || args.endpointType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'endpointType'");
             }
+            resourceInputs["customTags"] = args ? args.customTags : undefined;
+            resourceInputs["effectiveBudgetPolicyId"] = args ? args.effectiveBudgetPolicyId : undefined;
             resourceInputs["endpointType"] = args ? args.endpointType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -152,6 +158,8 @@ export interface VectorSearchEndpointState {
      * Creator of the endpoint.
      */
     creator?: pulumi.Input<string>;
+    customTags?: pulumi.Input<pulumi.Input<inputs.VectorSearchEndpointCustomTag>[]>;
+    effectiveBudgetPolicyId?: pulumi.Input<string>;
     /**
      * Unique internal identifier of the endpoint (UUID).
      */
@@ -186,6 +194,8 @@ export interface VectorSearchEndpointState {
  * The set of arguments for constructing a VectorSearchEndpoint resource.
  */
 export interface VectorSearchEndpointArgs {
+    customTags?: pulumi.Input<pulumi.Input<inputs.VectorSearchEndpointCustomTag>[]>;
+    effectiveBudgetPolicyId?: pulumi.Input<string>;
     /**
      * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
      */

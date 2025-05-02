@@ -5,8 +5,10 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.VectorSearchEndpointCustomTagArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +17,20 @@ import javax.annotation.Nullable;
 public final class VectorSearchEndpointArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final VectorSearchEndpointArgs Empty = new VectorSearchEndpointArgs();
+
+    @Import(name="customTags")
+    private @Nullable Output<List<VectorSearchEndpointCustomTagArgs>> customTags;
+
+    public Optional<Output<List<VectorSearchEndpointCustomTagArgs>>> customTags() {
+        return Optional.ofNullable(this.customTags);
+    }
+
+    @Import(name="effectiveBudgetPolicyId")
+    private @Nullable Output<String> effectiveBudgetPolicyId;
+
+    public Optional<Output<String>> effectiveBudgetPolicyId() {
+        return Optional.ofNullable(this.effectiveBudgetPolicyId);
+    }
 
     /**
      * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
@@ -49,6 +65,8 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
     private VectorSearchEndpointArgs() {}
 
     private VectorSearchEndpointArgs(VectorSearchEndpointArgs $) {
+        this.customTags = $.customTags;
+        this.effectiveBudgetPolicyId = $.effectiveBudgetPolicyId;
         this.endpointType = $.endpointType;
         this.name = $.name;
     }
@@ -69,6 +87,28 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
 
         public Builder(VectorSearchEndpointArgs defaults) {
             $ = new VectorSearchEndpointArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder customTags(@Nullable Output<List<VectorSearchEndpointCustomTagArgs>> customTags) {
+            $.customTags = customTags;
+            return this;
+        }
+
+        public Builder customTags(List<VectorSearchEndpointCustomTagArgs> customTags) {
+            return customTags(Output.of(customTags));
+        }
+
+        public Builder customTags(VectorSearchEndpointCustomTagArgs... customTags) {
+            return customTags(List.of(customTags));
+        }
+
+        public Builder effectiveBudgetPolicyId(@Nullable Output<String> effectiveBudgetPolicyId) {
+            $.effectiveBudgetPolicyId = effectiveBudgetPolicyId;
+            return this;
+        }
+
+        public Builder effectiveBudgetPolicyId(String effectiveBudgetPolicyId) {
+            return effectiveBudgetPolicyId(Output.of(effectiveBudgetPolicyId));
         }
 
         /**

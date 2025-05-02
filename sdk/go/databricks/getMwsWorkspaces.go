@@ -11,11 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-//
 // Lists all MwsWorkspaces in Databricks Account.
 //
-// > **Note** `accountId` provider configuration property is required for this resource to work.
+// > This data source can only be used with an account-level provider!
 //
 // ## Example Usage
 //

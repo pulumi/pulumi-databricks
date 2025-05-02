@@ -29,6 +29,7 @@ namespace Pulumi.Databricks.Outputs
         /// Time in epoch milliseconds when this object was deactivated.
         /// </summary>
         public readonly int? DeactivatedAt;
+        public readonly ImmutableArray<string> DomainNames;
         /// <summary>
         /// The name of the Azure private endpoint resource.
         /// </summary>
@@ -64,6 +65,8 @@ namespace Pulumi.Databricks.Outputs
 
             int? deactivatedAt,
 
+            ImmutableArray<string> domainNames,
+
             string? endpointName,
 
             string? groupId,
@@ -80,6 +83,7 @@ namespace Pulumi.Databricks.Outputs
             CreationTime = creationTime;
             Deactivated = deactivated;
             DeactivatedAt = deactivatedAt;
+            DomainNames = domainNames;
             EndpointName = endpointName;
             GroupId = groupId;
             NetworkConnectivityConfigId = networkConnectivityConfigId;

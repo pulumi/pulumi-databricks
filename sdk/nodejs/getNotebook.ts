@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
- *
  * This data source allows to export a notebook from Databricks Workspace.
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *
@@ -90,9 +90,9 @@ export interface GetNotebookResult {
     readonly workspacePath: string;
 }
 /**
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
- *
  * This data source allows to export a notebook from Databricks Workspace.
+ *
+ * > This data source can only be used with a workspace-level provider!
  *
  * ## Example Usage
  *

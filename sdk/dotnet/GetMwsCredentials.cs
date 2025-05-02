@@ -12,11 +12,9 @@ namespace Pulumi.Databricks
     public static class GetMwsCredentials
     {
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Lists all databricks.MwsCredentials in Databricks Account.
         /// 
-        /// &gt; **Note** `account_id` provider configuration property is required for this resource to work.
+        /// &gt; This data source can only be used with an account-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -54,11 +52,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMwsCredentialsResult>("databricks:index/getMwsCredentials:getMwsCredentials", args ?? new GetMwsCredentialsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Lists all databricks.MwsCredentials in Databricks Account.
         /// 
-        /// &gt; **Note** `account_id` provider configuration property is required for this resource to work.
+        /// &gt; This data source can only be used with an account-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -96,11 +92,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetMwsCredentialsResult>("databricks:index/getMwsCredentials:getMwsCredentials", args ?? new GetMwsCredentialsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
         /// Lists all databricks.MwsCredentials in Databricks Account.
         /// 
-        /// &gt; **Note** `account_id` provider configuration property is required for this resource to work.
+        /// &gt; This data source can only be used with an account-level provider!
         /// 
         /// ## Example Usage
         /// 

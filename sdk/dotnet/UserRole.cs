@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     /// <summary>
     /// This resource allows you to attach a role or databricks.InstanceProfile (AWS) to databricks_user.
     /// 
+    /// &gt; This resource can be used with an account or workspace-level provider.
+    /// 
     /// ## Example Usage
     /// 
     /// Adding AWS instance profile to a user
