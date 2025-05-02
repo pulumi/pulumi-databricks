@@ -75,6 +75,23 @@
                     }
                 }
             },
+            "databricks_alert_v2": {
+                "current": "databricks:index/alertV2:AlertV2",
+                "majorVersion": 1,
+                "fields": {
+                    "evaluation": {
+                        "fields": {
+                            "notification": {
+                                "fields": {
+                                    "subscriptions": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_app": {
                 "current": "databricks:index/app:App",
                 "majorVersion": 1,
@@ -2207,7 +2224,12 @@
             },
             "databricks_mws_ncc_private_endpoint_rule": {
                 "current": "databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "domain_names": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "databricks_mws_network_connectivity_config": {
                 "current": "databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig",
@@ -2252,7 +2274,14 @@
                                     "elem": {
                                         "fields": {
                                             "azure_private_endpoint_rules": {
-                                                "maxItemsOne": false
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "domain_names": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -3246,6 +3275,9 @@
                 "current": "databricks:index/vectorSearchEndpoint:VectorSearchEndpoint",
                 "majorVersion": 1,
                 "fields": {
+                    "custom_tags": {
+                        "maxItemsOne": false
+                    },
                     "endpoint_status": {
                         "maxItemsOne": false
                     }
@@ -3304,6 +3336,47 @@
             }
         },
         "datasources": {
+            "databricks_alert_v2": {
+                "current": "databricks:index/getAlertV2:getAlertV2",
+                "majorVersion": 1,
+                "fields": {
+                    "evaluation": {
+                        "fields": {
+                            "notification": {
+                                "fields": {
+                                    "subscriptions": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_alerts_v2": {
+                "current": "databricks:index/getAlertsV2:getAlertsV2",
+                "majorVersion": 1,
+                "fields": {
+                    "results": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "evaluation": {
+                                    "fields": {
+                                        "notification": {
+                                            "fields": {
+                                                "subscriptions": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_app": {
                 "current": "databricks:index/getApp:getApp",
                 "majorVersion": 1,
@@ -3374,7 +3447,7 @@
                 "current": "databricks:index/getBudgetPolicies:getBudgetPolicies",
                 "majorVersion": 1,
                 "fields": {
-                    "budget_policies": {
+                    "policies": {
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
@@ -5078,7 +5151,14 @@
                                     "elem": {
                                         "fields": {
                                             "azure_private_endpoint_rules": {
-                                                "maxItemsOne": false
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "domain_names": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -5696,6 +5776,7 @@
             "databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting": 0,
             "databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting": 0,
             "databricks:index/alert:Alert": 0,
+            "databricks:index/alertV2:AlertV2": 1,
             "databricks:index/app:App": 1,
             "databricks:index/artifactAllowlist:ArtifactAllowlist": 0,
             "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting": 0,
@@ -5799,6 +5880,8 @@
             "databricks:index/workspaceFile:WorkspaceFile": 0
         },
         "functions": {
+            "databricks:index/getAlertV2:getAlertV2": 1,
+            "databricks:index/getAlertsV2:getAlertsV2": 1,
             "databricks:index/getApp:getApp": 1,
             "databricks:index/getApps:getApps": 1,
             "databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy": 0,
