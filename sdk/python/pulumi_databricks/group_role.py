@@ -95,10 +95,8 @@ class _GroupRoleState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("databricks:index/groupRole:GroupRole")
 class GroupRole(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/groupRole:GroupRole"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -193,10 +193,8 @@ class _WorkspaceBindingState:
         pulumi.set(self, "workspace_id", value)
 
 
+@pulumi.type_token("databricks:index/workspaceBinding:WorkspaceBinding")
 class WorkspaceBinding(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/workspaceBinding:WorkspaceBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

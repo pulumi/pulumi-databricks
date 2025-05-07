@@ -588,10 +588,8 @@ class _LakehouseMonitorState:
         pulumi.set(self, "warehouse_id", value)
 
 
+@pulumi.type_token("databricks:index/lakehouseMonitor:LakehouseMonitor")
 class LakehouseMonitor(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/lakehouseMonitor:LakehouseMonitor"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -241,10 +241,8 @@ class _SqlAlertState:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("databricks:index/sqlAlert:SqlAlert")
 class SqlAlert(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/sqlAlert:SqlAlert"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

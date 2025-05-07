@@ -147,10 +147,8 @@ class _OnlineTableState:
         pulumi.set(self, "unity_catalog_provisioning_state", value)
 
 
+@pulumi.type_token("databricks:index/onlineTable:OnlineTable")
 class OnlineTable(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/onlineTable:OnlineTable"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

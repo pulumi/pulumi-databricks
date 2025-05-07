@@ -114,10 +114,8 @@ class _DisableLegacyDbfsSettingState:
         pulumi.set(self, "setting_name", value)
 
 
+@pulumi.type_token("databricks:index/disableLegacyDbfsSetting:DisableLegacyDbfsSetting")
 class DisableLegacyDbfsSetting(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/disableLegacyDbfsSetting:DisableLegacyDbfsSetting"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

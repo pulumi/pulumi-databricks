@@ -288,10 +288,8 @@ class _ServicePrincipalSecretState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("databricks:index/servicePrincipalSecret:ServicePrincipalSecret")
 class ServicePrincipalSecret(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/servicePrincipalSecret:ServicePrincipalSecret"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

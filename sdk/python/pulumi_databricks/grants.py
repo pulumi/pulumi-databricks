@@ -394,10 +394,8 @@ class _GrantsState:
         pulumi.set(self, "volume", value)
 
 
+@pulumi.type_token("databricks:index/grants:Grants")
 class Grants(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/grants:Grants"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

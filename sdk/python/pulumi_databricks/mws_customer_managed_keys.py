@@ -233,10 +233,8 @@ class _MwsCustomerManagedKeysState:
         pulumi.set(self, "use_cases", value)
 
 
+@pulumi.type_token("databricks:index/mwsCustomerManagedKeys:MwsCustomerManagedKeys")
 class MwsCustomerManagedKeys(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/mwsCustomerManagedKeys:MwsCustomerManagedKeys"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

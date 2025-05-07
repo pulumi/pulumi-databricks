@@ -275,10 +275,8 @@ class _ModelServingState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("databricks:index/modelServing:ModelServing")
 class ModelServing(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/modelServing:ModelServing"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

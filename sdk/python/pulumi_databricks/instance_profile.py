@@ -160,10 +160,8 @@ class _InstanceProfileState:
         pulumi.set(self, "skip_validation", value)
 
 
+@pulumi.type_token("databricks:index/instanceProfile:InstanceProfile")
 class InstanceProfile(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/instanceProfile:InstanceProfile"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

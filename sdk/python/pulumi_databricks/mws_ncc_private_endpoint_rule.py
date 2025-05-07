@@ -394,10 +394,8 @@ class _MwsNccPrivateEndpointRuleState:
         pulumi.set(self, "updated_time", value)
 
 
+@pulumi.type_token("databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule")
 class MwsNccPrivateEndpointRule(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

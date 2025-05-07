@@ -267,10 +267,8 @@ class _ClusterPolicyState:
         pulumi.set(self, "policy_id", value)
 
 
+@pulumi.type_token("databricks:index/clusterPolicy:ClusterPolicy")
 class ClusterPolicy(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/clusterPolicy:ClusterPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

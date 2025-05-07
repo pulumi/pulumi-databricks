@@ -570,10 +570,8 @@ class _SqlEndpointState:
         pulumi.set(self, "warehouse_type", value)
 
 
+@pulumi.type_token("databricks:index/sqlEndpoint:SqlEndpoint")
 class SqlEndpoint(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/sqlEndpoint:SqlEndpoint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

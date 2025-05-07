@@ -666,10 +666,8 @@ class _PermissionsState:
         pulumi.set(self, "workspace_file_path", value)
 
 
+@pulumi.type_token("databricks:index/permissions:Permissions")
 class Permissions(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/permissions:Permissions"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

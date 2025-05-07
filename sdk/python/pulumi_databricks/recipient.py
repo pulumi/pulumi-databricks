@@ -494,10 +494,8 @@ class _RecipientState:
         pulumi.set(self, "updated_by", value)
 
 
+@pulumi.type_token("databricks:index/recipient:Recipient")
 class Recipient(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/recipient:Recipient"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

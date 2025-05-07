@@ -513,10 +513,8 @@ class _ServicePrincipalState:
         pulumi.set(self, "workspace_access", value)
 
 
+@pulumi.type_token("databricks:index/servicePrincipal:ServicePrincipal")
 class ServicePrincipal(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/servicePrincipal:ServicePrincipal"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

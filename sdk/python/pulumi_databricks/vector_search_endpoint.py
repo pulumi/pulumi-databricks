@@ -258,10 +258,8 @@ class _VectorSearchEndpointState:
         pulumi.set(self, "num_indexes", value)
 
 
+@pulumi.type_token("databricks:index/vectorSearchEndpoint:VectorSearchEndpoint")
 class VectorSearchEndpoint(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/vectorSearchEndpoint:VectorSearchEndpoint"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

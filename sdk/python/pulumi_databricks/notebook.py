@@ -304,10 +304,8 @@ class _NotebookState:
         pulumi.set(self, "workspace_path", value)
 
 
+@pulumi.type_token("databricks:index/notebook:Notebook")
 class Notebook(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/notebook:Notebook"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

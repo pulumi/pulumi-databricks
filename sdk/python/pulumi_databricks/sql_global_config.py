@@ -225,10 +225,8 @@ class _SqlGlobalConfigState:
         pulumi.set(self, "sql_config_params", value)
 
 
+@pulumi.type_token("databricks:index/sqlGlobalConfig:SqlGlobalConfig")
 class SqlGlobalConfig(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/sqlGlobalConfig:SqlGlobalConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -95,10 +95,8 @@ class _MwsNccBindingState:
         pulumi.set(self, "workspace_id", value)
 
 
+@pulumi.type_token("databricks:index/mwsNccBinding:MwsNccBinding")
 class MwsNccBinding(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/mwsNccBinding:MwsNccBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

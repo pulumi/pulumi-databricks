@@ -184,10 +184,8 @@ class _DbfsFileState:
         pulumi.set(self, "source", value)
 
 
+@pulumi.type_token("databricks:index/dbfsFile:DbfsFile")
 class DbfsFile(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/dbfsFile:DbfsFile"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

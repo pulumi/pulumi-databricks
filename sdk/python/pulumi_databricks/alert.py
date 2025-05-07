@@ -400,10 +400,8 @@ class _AlertState:
         pulumi.set(self, "update_time", value)
 
 
+@pulumi.type_token("databricks:index/alert:Alert")
 class Alert(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/alert:Alert"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

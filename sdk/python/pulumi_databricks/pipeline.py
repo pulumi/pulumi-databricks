@@ -1043,10 +1043,8 @@ class _PipelineState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("databricks:index/pipeline:Pipeline")
 class Pipeline(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/pipeline:Pipeline"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

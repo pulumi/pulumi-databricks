@@ -483,10 +483,8 @@ class _StorageCredentialState:
         pulumi.set(self, "storage_credential_id", value)
 
 
+@pulumi.type_token("databricks:index/storageCredential:StorageCredential")
 class StorageCredential(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/storageCredential:StorageCredential"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

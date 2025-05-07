@@ -185,10 +185,8 @@ class _ArtifactAllowlistState:
         pulumi.set(self, "metastore_id", value)
 
 
+@pulumi.type_token("databricks:index/artifactAllowlist:ArtifactAllowlist")
 class ArtifactAllowlist(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/artifactAllowlist:ArtifactAllowlist"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

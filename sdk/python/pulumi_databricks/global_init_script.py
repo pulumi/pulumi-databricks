@@ -217,10 +217,8 @@ class _GlobalInitScriptState:
         pulumi.set(self, "source", value)
 
 
+@pulumi.type_token("databricks:index/globalInitScript:GlobalInitScript")
 class GlobalInitScript(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/globalInitScript:GlobalInitScript"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

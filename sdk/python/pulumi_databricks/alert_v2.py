@@ -287,10 +287,8 @@ class _AlertV2State:
         pulumi.set(self, "warehouse_id", value)
 
 
+@pulumi.type_token("databricks:index/alertV2:AlertV2")
 class AlertV2(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/alertV2:AlertV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

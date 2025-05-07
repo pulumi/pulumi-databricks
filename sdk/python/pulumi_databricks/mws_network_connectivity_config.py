@@ -226,10 +226,8 @@ class _MwsNetworkConnectivityConfigState:
         pulumi.set(self, "updated_time", value)
 
 
+@pulumi.type_token("databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig")
 class MwsNetworkConnectivityConfig(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
