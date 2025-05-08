@@ -620,10 +620,8 @@ class _QualityMonitorState:
         pulumi.set(self, "warehouse_id", value)
 
 
+@pulumi.type_token("databricks:index/qualityMonitor:QualityMonitor")
 class QualityMonitor(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/qualityMonitor:QualityMonitor"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

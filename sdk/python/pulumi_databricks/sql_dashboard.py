@@ -201,10 +201,8 @@ class _SqlDashboardState:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("databricks:index/sqlDashboard:SqlDashboard")
 class SqlDashboard(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/sqlDashboard:SqlDashboard"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

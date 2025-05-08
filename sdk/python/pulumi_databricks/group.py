@@ -313,10 +313,8 @@ class _GroupState:
         pulumi.set(self, "workspace_access", value)
 
 
+@pulumi.type_token("databricks:index/group:Group")
 class Group(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/group:Group"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

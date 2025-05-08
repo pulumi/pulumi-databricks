@@ -106,10 +106,8 @@ class _ComplianceSecurityProfileWorkspaceSettingState:
         pulumi.set(self, "setting_name", value)
 
 
+@pulumi.type_token("databricks:index/complianceSecurityProfileWorkspaceSetting:ComplianceSecurityProfileWorkspaceSetting")
 class ComplianceSecurityProfileWorkspaceSetting(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/complianceSecurityProfileWorkspaceSetting:ComplianceSecurityProfileWorkspaceSetting"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

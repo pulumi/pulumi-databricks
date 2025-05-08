@@ -135,10 +135,8 @@ class _AccessControlRuleSetState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("databricks:index/accessControlRuleSet:AccessControlRuleSet")
 class AccessControlRuleSet(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/accessControlRuleSet:AccessControlRuleSet"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

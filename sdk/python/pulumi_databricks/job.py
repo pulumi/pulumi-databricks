@@ -1323,10 +1323,8 @@ class _JobState:
         pulumi.set(self, "webhook_notifications", value)
 
 
+@pulumi.type_token("databricks:index/job:Job")
 class Job(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/job:Job"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

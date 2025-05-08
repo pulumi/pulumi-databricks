@@ -95,10 +95,8 @@ class _GroupMemberState:
         pulumi.set(self, "member_id", value)
 
 
+@pulumi.type_token("databricks:index/groupMember:GroupMember")
 class GroupMember(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/groupMember:GroupMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -250,10 +250,8 @@ class _LibraryState:
         pulumi.set(self, "whl", value)
 
 
+@pulumi.type_token("databricks:index/library:Library")
 class Library(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/library:Library"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

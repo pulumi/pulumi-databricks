@@ -65,10 +65,8 @@ class _WorkspaceConfState:
         pulumi.set(self, "custom_config", value)
 
 
+@pulumi.type_token("databricks:index/workspaceConf:WorkspaceConf")
 class WorkspaceConf(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/workspaceConf:WorkspaceConf"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -379,10 +379,8 @@ class _CustomAppIntegrationState:
         pulumi.set(self, "user_authorized_scopes", value)
 
 
+@pulumi.type_token("databricks:index/customAppIntegration:CustomAppIntegration")
 class CustomAppIntegration(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/customAppIntegration:CustomAppIntegration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

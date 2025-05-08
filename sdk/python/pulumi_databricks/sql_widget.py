@@ -226,10 +226,8 @@ class _SqlWidgetState:
         pulumi.set(self, "widget_id", value)
 
 
+@pulumi.type_token("databricks:index/sqlWidget:SqlWidget")
 class SqlWidget(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/sqlWidget:SqlWidget"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -134,10 +134,8 @@ class _MwsPermissionAssignmentState:
         pulumi.set(self, "workspace_id", value)
 
 
+@pulumi.type_token("databricks:index/mwsPermissionAssignment:MwsPermissionAssignment")
 class MwsPermissionAssignment(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/mwsPermissionAssignment:MwsPermissionAssignment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

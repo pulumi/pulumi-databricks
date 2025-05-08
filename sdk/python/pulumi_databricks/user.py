@@ -504,10 +504,8 @@ class _UserState:
         pulumi.set(self, "workspace_access", value)
 
 
+@pulumi.type_token("databricks:index/user:User")
 class User(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/user:User"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

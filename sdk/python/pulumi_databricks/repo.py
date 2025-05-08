@@ -266,10 +266,8 @@ class _RepoState:
         pulumi.set(self, "workspace_path", value)
 
 
+@pulumi.type_token("databricks:index/repo:Repo")
 class Repo(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/repo:Repo"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

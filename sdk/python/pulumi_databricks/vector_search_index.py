@@ -264,10 +264,8 @@ class _VectorSearchIndexState:
         pulumi.set(self, "statuses", value)
 
 
+@pulumi.type_token("databricks:index/vectorSearchIndex:VectorSearchIndex")
 class VectorSearchIndex(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/vectorSearchIndex:VectorSearchIndex"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -457,10 +457,8 @@ class _InstancePoolState:
         pulumi.set(self, "preloaded_spark_versions", value)
 
 
+@pulumi.type_token("databricks:index/instancePool:InstancePool")
 class InstancePool(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/instancePool:InstancePool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

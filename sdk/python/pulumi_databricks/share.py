@@ -307,10 +307,8 @@ class _ShareState:
         pulumi.set(self, "updated_by", value)
 
 
+@pulumi.type_token("databricks:index/share:Share")
 class Share(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/share:Share"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

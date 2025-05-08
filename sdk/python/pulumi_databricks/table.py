@@ -318,10 +318,8 @@ class _TableState:
         pulumi.set(self, "view_definition", value)
 
 
+@pulumi.type_token("databricks:index/table:Table")
 class Table(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/table:Table"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
