@@ -135,10 +135,8 @@ class _MetastoreAssignmentState:
         pulumi.set(self, "workspace_id", value)
 
 
+@pulumi.type_token("databricks:index/metastoreAssignment:MetastoreAssignment")
 class MetastoreAssignment(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/metastoreAssignment:MetastoreAssignment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

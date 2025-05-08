@@ -154,10 +154,8 @@ class _MwsStorageConfigurationsState:
         pulumi.set(self, "storage_configuration_name", value)
 
 
+@pulumi.type_token("databricks:index/mwsStorageConfigurations:MwsStorageConfigurations")
 class MwsStorageConfigurations(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/mwsStorageConfigurations:MwsStorageConfigurations"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

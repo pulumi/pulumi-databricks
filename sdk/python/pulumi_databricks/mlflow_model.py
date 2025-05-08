@@ -143,10 +143,8 @@ class _MlflowModelState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("databricks:index/mlflowModel:MlflowModel")
 class MlflowModel(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/mlflowModel:MlflowModel"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

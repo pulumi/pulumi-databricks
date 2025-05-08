@@ -265,10 +265,8 @@ class _EntitlementsState:
         pulumi.set(self, "workspace_access", value)
 
 
+@pulumi.type_token("databricks:index/entitlements:Entitlements")
 class Entitlements(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/entitlements:Entitlements"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

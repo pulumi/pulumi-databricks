@@ -401,10 +401,8 @@ class _MwsNetworksState:
         pulumi.set(self, "workspace_id", value)
 
 
+@pulumi.type_token("databricks:index/mwsNetworks:MwsNetworks")
 class MwsNetworks(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/mwsNetworks:MwsNetworks"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

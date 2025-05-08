@@ -565,10 +565,8 @@ class _ExternalLocationState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("databricks:index/externalLocation:ExternalLocation")
 class ExternalLocation(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/externalLocation:ExternalLocation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

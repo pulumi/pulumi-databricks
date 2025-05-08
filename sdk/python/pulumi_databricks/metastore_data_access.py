@@ -427,10 +427,8 @@ class _MetastoreDataAccessState:
         pulumi.set(self, "skip_validation", value)
 
 
+@pulumi.type_token("databricks:index/metastoreDataAccess:MetastoreDataAccess")
 class MetastoreDataAccess(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/metastoreDataAccess:MetastoreDataAccess"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

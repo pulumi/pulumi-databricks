@@ -144,10 +144,8 @@ class _OboTokenState:
         pulumi.set(self, "token_value", value)
 
 
+@pulumi.type_token("databricks:index/oboToken:OboToken")
 class OboToken(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/oboToken:OboToken"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

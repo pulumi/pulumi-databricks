@@ -144,10 +144,8 @@ class _DirectoryState:
         pulumi.set(self, "workspace_path", value)
 
 
+@pulumi.type_token("databricks:index/directory:Directory")
 class Directory(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/directory:Directory"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

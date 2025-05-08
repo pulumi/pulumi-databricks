@@ -130,10 +130,8 @@ class _NotificationDestinationState:
         pulumi.set(self, "display_name", value)
 
 
+@pulumi.type_token("databricks:index/notificationDestination:NotificationDestination")
 class NotificationDestination(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/notificationDestination:NotificationDestination"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

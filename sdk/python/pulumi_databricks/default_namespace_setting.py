@@ -114,10 +114,8 @@ class _DefaultNamespaceSettingState:
         pulumi.set(self, "setting_name", value)
 
 
+@pulumi.type_token("databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting")
 class DefaultNamespaceSetting(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

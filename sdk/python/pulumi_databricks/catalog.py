@@ -449,10 +449,8 @@ class _CatalogState:
         pulumi.set(self, "storage_root", value)
 
 
+@pulumi.type_token("databricks:index/catalog:Catalog")
 class Catalog(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/catalog:Catalog"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

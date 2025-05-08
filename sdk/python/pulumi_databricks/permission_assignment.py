@@ -103,10 +103,8 @@ class _PermissionAssignmentState:
         pulumi.set(self, "principal_id", value)
 
 
+@pulumi.type_token("databricks:index/permissionAssignment:PermissionAssignment")
 class PermissionAssignment(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/permissionAssignment:PermissionAssignment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

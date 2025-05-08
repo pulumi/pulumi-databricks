@@ -1326,10 +1326,8 @@ class _ClusterState:
         pulumi.set(self, "workload_type", value)
 
 
+@pulumi.type_token("databricks:index/cluster:Cluster")
 class Cluster(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/cluster:Cluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

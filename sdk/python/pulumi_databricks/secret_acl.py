@@ -126,10 +126,8 @@ class _SecretAclState:
         pulumi.set(self, "scope", value)
 
 
+@pulumi.type_token("databricks:index/secretAcl:SecretAcl")
 class SecretAcl(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/secretAcl:SecretAcl"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

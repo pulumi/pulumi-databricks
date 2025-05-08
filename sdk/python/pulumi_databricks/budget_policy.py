@@ -139,10 +139,8 @@ class _BudgetPolicyState:
         pulumi.set(self, "policy_name", value)
 
 
+@pulumi.type_token("databricks:index/budgetPolicy:BudgetPolicy")
 class BudgetPolicy(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/budgetPolicy:BudgetPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

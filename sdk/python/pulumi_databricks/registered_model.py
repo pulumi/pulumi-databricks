@@ -223,10 +223,8 @@ class _RegisteredModelState:
         pulumi.set(self, "storage_location", value)
 
 
+@pulumi.type_token("databricks:index/registeredModel:RegisteredModel")
 class RegisteredModel(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/registeredModel:RegisteredModel"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -185,10 +185,8 @@ class _TokenState:
         pulumi.set(self, "token_value", value)
 
 
+@pulumi.type_token("databricks:index/token:Token")
 class Token(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/token:Token"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

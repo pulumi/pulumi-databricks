@@ -315,10 +315,8 @@ class _MountState:
         pulumi.set(self, "wasb", value)
 
 
+@pulumi.type_token("databricks:index/mount:Mount")
 class Mount(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/mount:Mount"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

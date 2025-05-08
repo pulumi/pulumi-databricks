@@ -380,10 +380,8 @@ class _MwsLogDeliveryState:
         pulumi.set(self, "workspace_ids_filters", value)
 
 
+@pulumi.type_token("databricks:index/mwsLogDelivery:MwsLogDelivery")
 class MwsLogDelivery(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/mwsLogDelivery:MwsLogDelivery"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

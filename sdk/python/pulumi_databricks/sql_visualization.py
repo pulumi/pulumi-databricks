@@ -198,10 +198,8 @@ class _SqlVisualizationState:
         pulumi.set(self, "visualization_id", value)
 
 
+@pulumi.type_token("databricks:index/sqlVisualization:SqlVisualization")
 class SqlVisualization(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/sqlVisualization:SqlVisualization"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

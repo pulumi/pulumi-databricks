@@ -95,10 +95,8 @@ class _ServicePrincipalRoleState:
         pulumi.set(self, "service_principal_id", value)
 
 
+@pulumi.type_token("databricks:index/servicePrincipalRole:ServicePrincipalRole")
 class ServicePrincipalRole(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/servicePrincipalRole:ServicePrincipalRole"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

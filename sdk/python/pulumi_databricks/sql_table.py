@@ -572,10 +572,8 @@ class _SqlTableState:
         pulumi.set(self, "warehouse_id", value)
 
 
+@pulumi.type_token("databricks:index/sqlTable:SqlTable")
 class SqlTable(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/sqlTable:SqlTable"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

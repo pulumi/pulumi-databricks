@@ -155,10 +155,8 @@ class _SecretScopeState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("databricks:index/secretScope:SecretScope")
 class SecretScope(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/secretScope:SecretScope"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

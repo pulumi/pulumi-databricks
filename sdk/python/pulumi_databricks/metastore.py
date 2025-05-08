@@ -505,10 +505,8 @@ class _MetastoreState:
         pulumi.set(self, "updated_by", value)
 
 
+@pulumi.type_token("databricks:index/metastore:Metastore")
 class Metastore(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/metastore:Metastore"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

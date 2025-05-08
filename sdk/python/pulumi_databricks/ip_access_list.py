@@ -158,10 +158,8 @@ class _IpAccessListState:
         pulumi.set(self, "list_type", value)
 
 
+@pulumi.type_token("databricks:index/ipAccessList:IpAccessList")
 class IpAccessList(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/ipAccessList:IpAccessList"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

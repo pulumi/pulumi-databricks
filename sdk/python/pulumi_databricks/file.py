@@ -208,10 +208,8 @@ class _FileState:
         pulumi.set(self, "source", value)
 
 
+@pulumi.type_token("databricks:index/file:File")
 class File(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/file:File"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

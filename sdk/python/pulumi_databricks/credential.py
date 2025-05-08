@@ -602,10 +602,8 @@ class _CredentialState:
         pulumi.set(self, "used_for_managed_storage", value)
 
 
+@pulumi.type_token("databricks:index/credential:Credential")
 class Credential(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/credential:Credential"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

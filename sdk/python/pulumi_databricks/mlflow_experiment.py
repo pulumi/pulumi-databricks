@@ -259,10 +259,8 @@ class _MlflowExperimentState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("databricks:index/mlflowExperiment:MlflowExperiment")
 class MlflowExperiment(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/mlflowExperiment:MlflowExperiment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

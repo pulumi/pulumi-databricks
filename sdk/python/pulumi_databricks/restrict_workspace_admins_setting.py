@@ -114,10 +114,8 @@ class _RestrictWorkspaceAdminsSettingState:
         pulumi.set(self, "setting_name", value)
 
 
+@pulumi.type_token("databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting")
 class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

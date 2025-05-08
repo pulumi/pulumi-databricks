@@ -218,10 +218,8 @@ class _MlflowWebhookState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("databricks:index/mlflowWebhook:MlflowWebhook")
 class MlflowWebhook(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/mlflowWebhook:MlflowWebhook"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

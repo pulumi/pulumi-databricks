@@ -114,10 +114,8 @@ class _AibiDashboardEmbeddingAccessPolicySettingState:
         pulumi.set(self, "setting_name", value)
 
 
+@pulumi.type_token("databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting")
 class AibiDashboardEmbeddingAccessPolicySetting(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -275,10 +275,8 @@ class _SqlPermissionsState:
         pulumi.set(self, "view", value)
 
 
+@pulumi.type_token("databricks:index/sqlPermissions:SqlPermissions")
 class SqlPermissions(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/sqlPermissions:SqlPermissions"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

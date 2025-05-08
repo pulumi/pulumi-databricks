@@ -158,10 +158,8 @@ class _SecretState:
         pulumi.set(self, "string_value", value)
 
 
+@pulumi.type_token("databricks:index/secret:Secret")
 class Secret(pulumi.CustomResource):
-
-    pulumi_type = "databricks:index/secret:Secret"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
