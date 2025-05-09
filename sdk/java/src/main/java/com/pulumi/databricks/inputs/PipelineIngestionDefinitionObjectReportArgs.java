@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectReportTableConfigurationArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,18 +17,18 @@ public final class PipelineIngestionDefinitionObjectReportArgs extends com.pulum
 
     public static final PipelineIngestionDefinitionObjectReportArgs Empty = new PipelineIngestionDefinitionObjectReportArgs();
 
-    @Import(name="destinationCatalog")
-    private @Nullable Output<String> destinationCatalog;
+    @Import(name="destinationCatalog", required=true)
+    private Output<String> destinationCatalog;
 
-    public Optional<Output<String>> destinationCatalog() {
-        return Optional.ofNullable(this.destinationCatalog);
+    public Output<String> destinationCatalog() {
+        return this.destinationCatalog;
     }
 
-    @Import(name="destinationSchema")
-    private @Nullable Output<String> destinationSchema;
+    @Import(name="destinationSchema", required=true)
+    private Output<String> destinationSchema;
 
-    public Optional<Output<String>> destinationSchema() {
-        return Optional.ofNullable(this.destinationSchema);
+    public Output<String> destinationSchema() {
+        return this.destinationSchema;
     }
 
     @Import(name="destinationTable")
@@ -37,11 +38,11 @@ public final class PipelineIngestionDefinitionObjectReportArgs extends com.pulum
         return Optional.ofNullable(this.destinationTable);
     }
 
-    @Import(name="sourceUrl")
-    private @Nullable Output<String> sourceUrl;
+    @Import(name="sourceUrl", required=true)
+    private Output<String> sourceUrl;
 
-    public Optional<Output<String>> sourceUrl() {
-        return Optional.ofNullable(this.sourceUrl);
+    public Output<String> sourceUrl() {
+        return this.sourceUrl;
     }
 
     @Import(name="tableConfiguration")
@@ -79,7 +80,7 @@ public final class PipelineIngestionDefinitionObjectReportArgs extends com.pulum
             $ = new PipelineIngestionDefinitionObjectReportArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder destinationCatalog(@Nullable Output<String> destinationCatalog) {
+        public Builder destinationCatalog(Output<String> destinationCatalog) {
             $.destinationCatalog = destinationCatalog;
             return this;
         }
@@ -88,7 +89,7 @@ public final class PipelineIngestionDefinitionObjectReportArgs extends com.pulum
             return destinationCatalog(Output.of(destinationCatalog));
         }
 
-        public Builder destinationSchema(@Nullable Output<String> destinationSchema) {
+        public Builder destinationSchema(Output<String> destinationSchema) {
             $.destinationSchema = destinationSchema;
             return this;
         }
@@ -106,7 +107,7 @@ public final class PipelineIngestionDefinitionObjectReportArgs extends com.pulum
             return destinationTable(Output.of(destinationTable));
         }
 
-        public Builder sourceUrl(@Nullable Output<String> sourceUrl) {
+        public Builder sourceUrl(Output<String> sourceUrl) {
             $.sourceUrl = sourceUrl;
             return this;
         }
@@ -125,6 +126,15 @@ public final class PipelineIngestionDefinitionObjectReportArgs extends com.pulum
         }
 
         public PipelineIngestionDefinitionObjectReportArgs build() {
+            if ($.destinationCatalog == null) {
+                throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectReportArgs", "destinationCatalog");
+            }
+            if ($.destinationSchema == null) {
+                throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectReportArgs", "destinationSchema");
+            }
+            if ($.sourceUrl == null) {
+                throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectReportArgs", "sourceUrl");
+            }
             return $;
         }
     }

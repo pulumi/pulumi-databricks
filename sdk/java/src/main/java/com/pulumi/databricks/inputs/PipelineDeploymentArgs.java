@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,15 +20,15 @@ public final class PipelineDeploymentArgs extends com.pulumi.resources.ResourceA
      * The deployment method that manages the pipeline.
      * 
      */
-    @Import(name="kind")
-    private @Nullable Output<String> kind;
+    @Import(name="kind", required=true)
+    private Output<String> kind;
 
     /**
      * @return The deployment method that manages the pipeline.
      * 
      */
-    public Optional<Output<String>> kind() {
-        return Optional.ofNullable(this.kind);
+    public Output<String> kind() {
+        return this.kind;
     }
 
     /**
@@ -76,7 +77,7 @@ public final class PipelineDeploymentArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder kind(@Nullable Output<String> kind) {
+        public Builder kind(Output<String> kind) {
             $.kind = kind;
             return this;
         }
@@ -113,6 +114,9 @@ public final class PipelineDeploymentArgs extends com.pulumi.resources.ResourceA
         }
 
         public PipelineDeploymentArgs build() {
+            if ($.kind == null) {
+                throw new MissingRequiredPropertyException("PipelineDeploymentArgs", "kind");
+            }
             return $;
         }
     }

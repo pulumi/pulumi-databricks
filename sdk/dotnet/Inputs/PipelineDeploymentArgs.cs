@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// The deployment method that manages the pipeline.
         /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
+        [Input("kind", required: true)]
+        public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
         /// The path to the file containing metadata about the deployment.

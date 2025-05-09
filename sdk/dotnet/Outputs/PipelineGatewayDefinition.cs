@@ -17,11 +17,11 @@ namespace Pulumi.Databricks.Outputs
         /// Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
         /// </summary>
         public readonly string? ConnectionId;
-        public readonly string? ConnectionName;
+        public readonly string ConnectionName;
         /// <summary>
         /// Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
         /// </summary>
-        public readonly string? GatewayStorageCatalog;
+        public readonly string GatewayStorageCatalog;
         /// <summary>
         /// Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
         /// </summary>
@@ -29,19 +29,19 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Required, Immutable. The name of the schema for the gateway pipelines's storage location.
         /// </summary>
-        public readonly string? GatewayStorageSchema;
+        public readonly string GatewayStorageSchema;
 
         [OutputConstructor]
         private PipelineGatewayDefinition(
             string? connectionId,
 
-            string? connectionName,
+            string connectionName,
 
-            string? gatewayStorageCatalog,
+            string gatewayStorageCatalog,
 
             string? gatewayStorageName,
 
-            string? gatewayStorageSchema)
+            string gatewayStorageSchema)
         {
             ConnectionId = connectionId;
             ConnectionName = connectionName;

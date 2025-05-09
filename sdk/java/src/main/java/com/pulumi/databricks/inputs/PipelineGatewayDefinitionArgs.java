@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,26 +31,26 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.connectionId);
     }
 
-    @Import(name="connectionName")
-    private @Nullable Output<String> connectionName;
+    @Import(name="connectionName", required=true)
+    private Output<String> connectionName;
 
-    public Optional<Output<String>> connectionName() {
-        return Optional.ofNullable(this.connectionName);
+    public Output<String> connectionName() {
+        return this.connectionName;
     }
 
     /**
      * Required, Immutable. The name of the catalog for the gateway pipeline&#39;s storage location.
      * 
      */
-    @Import(name="gatewayStorageCatalog")
-    private @Nullable Output<String> gatewayStorageCatalog;
+    @Import(name="gatewayStorageCatalog", required=true)
+    private Output<String> gatewayStorageCatalog;
 
     /**
      * @return Required, Immutable. The name of the catalog for the gateway pipeline&#39;s storage location.
      * 
      */
-    public Optional<Output<String>> gatewayStorageCatalog() {
-        return Optional.ofNullable(this.gatewayStorageCatalog);
+    public Output<String> gatewayStorageCatalog() {
+        return this.gatewayStorageCatalog;
     }
 
     /**
@@ -71,15 +72,15 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
      * Required, Immutable. The name of the schema for the gateway pipelines&#39;s storage location.
      * 
      */
-    @Import(name="gatewayStorageSchema")
-    private @Nullable Output<String> gatewayStorageSchema;
+    @Import(name="gatewayStorageSchema", required=true)
+    private Output<String> gatewayStorageSchema;
 
     /**
      * @return Required, Immutable. The name of the schema for the gateway pipelines&#39;s storage location.
      * 
      */
-    public Optional<Output<String>> gatewayStorageSchema() {
-        return Optional.ofNullable(this.gatewayStorageSchema);
+    public Output<String> gatewayStorageSchema() {
+        return this.gatewayStorageSchema;
     }
 
     private PipelineGatewayDefinitionArgs() {}
@@ -131,7 +132,7 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
             return connectionId(Output.of(connectionId));
         }
 
-        public Builder connectionName(@Nullable Output<String> connectionName) {
+        public Builder connectionName(Output<String> connectionName) {
             $.connectionName = connectionName;
             return this;
         }
@@ -146,7 +147,7 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder gatewayStorageCatalog(@Nullable Output<String> gatewayStorageCatalog) {
+        public Builder gatewayStorageCatalog(Output<String> gatewayStorageCatalog) {
             $.gatewayStorageCatalog = gatewayStorageCatalog;
             return this;
         }
@@ -188,7 +189,7 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder gatewayStorageSchema(@Nullable Output<String> gatewayStorageSchema) {
+        public Builder gatewayStorageSchema(Output<String> gatewayStorageSchema) {
             $.gatewayStorageSchema = gatewayStorageSchema;
             return this;
         }
@@ -204,6 +205,15 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
         }
 
         public PipelineGatewayDefinitionArgs build() {
+            if ($.connectionName == null) {
+                throw new MissingRequiredPropertyException("PipelineGatewayDefinitionArgs", "connectionName");
+            }
+            if ($.gatewayStorageCatalog == null) {
+                throw new MissingRequiredPropertyException("PipelineGatewayDefinitionArgs", "gatewayStorageCatalog");
+            }
+            if ($.gatewayStorageSchema == null) {
+                throw new MissingRequiredPropertyException("PipelineGatewayDefinitionArgs", "gatewayStorageSchema");
+            }
             return $;
         }
     }

@@ -39,6 +39,7 @@
         "directory.ts",
         "disableLegacyAccessSetting.ts",
         "disableLegacyDbfsSetting.ts",
+        "disableLegacyFeaturesSetting.ts",
         "enhancedSecurityMonitoringWorkspaceSetting.ts",
         "entitlements.ts",
         "externalLocation.ts",

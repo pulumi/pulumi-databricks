@@ -13,12 +13,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineIngestionDefinitionTableConfiguration {
+    private @Nullable List<String> excludeColumns;
+    private @Nullable List<String> includeColumns;
     private @Nullable List<String> primaryKeys;
     private @Nullable Boolean salesforceIncludeFormulaFields;
     private @Nullable String scdType;
     private @Nullable List<String> sequenceBies;
 
     private PipelineIngestionDefinitionTableConfiguration() {}
+    public List<String> excludeColumns() {
+        return this.excludeColumns == null ? List.of() : this.excludeColumns;
+    }
+    public List<String> includeColumns() {
+        return this.includeColumns == null ? List.of() : this.includeColumns;
+    }
     public List<String> primaryKeys() {
         return this.primaryKeys == null ? List.of() : this.primaryKeys;
     }
@@ -41,6 +49,8 @@ public final class PipelineIngestionDefinitionTableConfiguration {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> excludeColumns;
+        private @Nullable List<String> includeColumns;
         private @Nullable List<String> primaryKeys;
         private @Nullable Boolean salesforceIncludeFormulaFields;
         private @Nullable String scdType;
@@ -48,12 +58,32 @@ public final class PipelineIngestionDefinitionTableConfiguration {
         public Builder() {}
         public Builder(PipelineIngestionDefinitionTableConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.excludeColumns = defaults.excludeColumns;
+    	      this.includeColumns = defaults.includeColumns;
     	      this.primaryKeys = defaults.primaryKeys;
     	      this.salesforceIncludeFormulaFields = defaults.salesforceIncludeFormulaFields;
     	      this.scdType = defaults.scdType;
     	      this.sequenceBies = defaults.sequenceBies;
         }
 
+        @CustomType.Setter
+        public Builder excludeColumns(@Nullable List<String> excludeColumns) {
+
+            this.excludeColumns = excludeColumns;
+            return this;
+        }
+        public Builder excludeColumns(String... excludeColumns) {
+            return excludeColumns(List.of(excludeColumns));
+        }
+        @CustomType.Setter
+        public Builder includeColumns(@Nullable List<String> includeColumns) {
+
+            this.includeColumns = includeColumns;
+            return this;
+        }
+        public Builder includeColumns(String... includeColumns) {
+            return includeColumns(List.of(includeColumns));
+        }
         @CustomType.Setter
         public Builder primaryKeys(@Nullable List<String> primaryKeys) {
 
@@ -86,6 +116,8 @@ public final class PipelineIngestionDefinitionTableConfiguration {
         }
         public PipelineIngestionDefinitionTableConfiguration build() {
             final var _resultValue = new PipelineIngestionDefinitionTableConfiguration();
+            _resultValue.excludeColumns = excludeColumns;
+            _resultValue.includeColumns = includeColumns;
             _resultValue.primaryKeys = primaryKeys;
             _resultValue.salesforceIncludeFormulaFields = salesforceIncludeFormulaFields;
             _resultValue.scdType = scdType;

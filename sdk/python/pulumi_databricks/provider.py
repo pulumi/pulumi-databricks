@@ -37,6 +37,7 @@ class ProviderArgs:
                  cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                  config_file: Optional[pulumi.Input[builtins.str]] = None,
                  databricks_cli_path: Optional[pulumi.Input[builtins.str]] = None,
+                 databricks_id_token_filepath: Optional[pulumi.Input[builtins.str]] = None,
                  debug_headers: Optional[pulumi.Input[builtins.bool]] = None,
                  debug_truncate_bytes: Optional[pulumi.Input[builtins.int]] = None,
                  google_credentials: Optional[pulumi.Input[builtins.str]] = None,
@@ -44,6 +45,7 @@ class ProviderArgs:
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  http_timeout_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  metadata_service_url: Optional[pulumi.Input[builtins.str]] = None,
+                 oidc_token_env: Optional[pulumi.Input[builtins.str]] = None,
                  password: Optional[pulumi.Input[builtins.str]] = None,
                  profile: Optional[pulumi.Input[builtins.str]] = None,
                  rate_limit: Optional[pulumi.Input[builtins.int]] = None,
@@ -90,6 +92,8 @@ class ProviderArgs:
             pulumi.set(__self__, "config_file", config_file)
         if databricks_cli_path is not None:
             pulumi.set(__self__, "databricks_cli_path", databricks_cli_path)
+        if databricks_id_token_filepath is not None:
+            pulumi.set(__self__, "databricks_id_token_filepath", databricks_id_token_filepath)
         if debug_headers is not None:
             pulumi.set(__self__, "debug_headers", debug_headers)
         if debug_truncate_bytes is not None:
@@ -104,6 +108,8 @@ class ProviderArgs:
             pulumi.set(__self__, "http_timeout_seconds", http_timeout_seconds)
         if metadata_service_url is not None:
             pulumi.set(__self__, "metadata_service_url", metadata_service_url)
+        if oidc_token_env is not None:
+            pulumi.set(__self__, "oidc_token_env", oidc_token_env)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if profile is not None:
@@ -277,6 +283,15 @@ class ProviderArgs:
         pulumi.set(self, "databricks_cli_path", value)
 
     @property
+    @pulumi.getter(name="databricksIdTokenFilepath")
+    def databricks_id_token_filepath(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "databricks_id_token_filepath")
+
+    @databricks_id_token_filepath.setter
+    def databricks_id_token_filepath(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "databricks_id_token_filepath", value)
+
+    @property
     @pulumi.getter(name="debugHeaders")
     def debug_headers(self) -> Optional[pulumi.Input[builtins.bool]]:
         return pulumi.get(self, "debug_headers")
@@ -338,6 +353,15 @@ class ProviderArgs:
     @metadata_service_url.setter
     def metadata_service_url(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "metadata_service_url", value)
+
+    @property
+    @pulumi.getter(name="oidcTokenEnv")
+    def oidc_token_env(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "oidc_token_env")
+
+    @oidc_token_env.setter
+    def oidc_token_env(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "oidc_token_env", value)
 
     @property
     @pulumi.getter
@@ -444,6 +468,7 @@ class Provider(pulumi.ProviderResource):
                  cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                  config_file: Optional[pulumi.Input[builtins.str]] = None,
                  databricks_cli_path: Optional[pulumi.Input[builtins.str]] = None,
+                 databricks_id_token_filepath: Optional[pulumi.Input[builtins.str]] = None,
                  debug_headers: Optional[pulumi.Input[builtins.bool]] = None,
                  debug_truncate_bytes: Optional[pulumi.Input[builtins.int]] = None,
                  google_credentials: Optional[pulumi.Input[builtins.str]] = None,
@@ -451,6 +476,7 @@ class Provider(pulumi.ProviderResource):
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  http_timeout_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  metadata_service_url: Optional[pulumi.Input[builtins.str]] = None,
+                 oidc_token_env: Optional[pulumi.Input[builtins.str]] = None,
                  password: Optional[pulumi.Input[builtins.str]] = None,
                  profile: Optional[pulumi.Input[builtins.str]] = None,
                  rate_limit: Optional[pulumi.Input[builtins.int]] = None,
@@ -514,6 +540,7 @@ class Provider(pulumi.ProviderResource):
                  cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                  config_file: Optional[pulumi.Input[builtins.str]] = None,
                  databricks_cli_path: Optional[pulumi.Input[builtins.str]] = None,
+                 databricks_id_token_filepath: Optional[pulumi.Input[builtins.str]] = None,
                  debug_headers: Optional[pulumi.Input[builtins.bool]] = None,
                  debug_truncate_bytes: Optional[pulumi.Input[builtins.int]] = None,
                  google_credentials: Optional[pulumi.Input[builtins.str]] = None,
@@ -521,6 +548,7 @@ class Provider(pulumi.ProviderResource):
                  host: Optional[pulumi.Input[builtins.str]] = None,
                  http_timeout_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  metadata_service_url: Optional[pulumi.Input[builtins.str]] = None,
+                 oidc_token_env: Optional[pulumi.Input[builtins.str]] = None,
                  password: Optional[pulumi.Input[builtins.str]] = None,
                  profile: Optional[pulumi.Input[builtins.str]] = None,
                  rate_limit: Optional[pulumi.Input[builtins.int]] = None,
@@ -556,6 +584,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["config_file"] = config_file
             __props__.__dict__["databricks_cli_path"] = databricks_cli_path
+            __props__.__dict__["databricks_id_token_filepath"] = databricks_id_token_filepath
             __props__.__dict__["debug_headers"] = pulumi.Output.from_input(debug_headers).apply(pulumi.runtime.to_json) if debug_headers is not None else None
             __props__.__dict__["debug_truncate_bytes"] = pulumi.Output.from_input(debug_truncate_bytes).apply(pulumi.runtime.to_json) if debug_truncate_bytes is not None else None
             __props__.__dict__["google_credentials"] = None if google_credentials is None else pulumi.Output.secret(google_credentials)
@@ -563,6 +592,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["host"] = host
             __props__.__dict__["http_timeout_seconds"] = pulumi.Output.from_input(http_timeout_seconds).apply(pulumi.runtime.to_json) if http_timeout_seconds is not None else None
             __props__.__dict__["metadata_service_url"] = None if metadata_service_url is None else pulumi.Output.secret(metadata_service_url)
+            __props__.__dict__["oidc_token_env"] = oidc_token_env
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["profile"] = profile
             __props__.__dict__["rate_limit"] = pulumi.Output.from_input(rate_limit).apply(pulumi.runtime.to_json) if rate_limit is not None else None
@@ -661,6 +691,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "databricks_cli_path")
 
     @property
+    @pulumi.getter(name="databricksIdTokenFilepath")
+    def databricks_id_token_filepath(self) -> pulumi.Output[Optional[builtins.str]]:
+        return pulumi.get(self, "databricks_id_token_filepath")
+
+    @property
     @pulumi.getter(name="googleCredentials")
     def google_credentials(self) -> pulumi.Output[Optional[builtins.str]]:
         return pulumi.get(self, "google_credentials")
@@ -679,6 +714,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="metadataServiceUrl")
     def metadata_service_url(self) -> pulumi.Output[Optional[builtins.str]]:
         return pulumi.get(self, "metadata_service_url")
+
+    @property
+    @pulumi.getter(name="oidcTokenEnv")
+    def oidc_token_env(self) -> pulumi.Output[Optional[builtins.str]]:
+        return pulumi.get(self, "oidc_token_env")
 
     @property
     @pulumi.getter

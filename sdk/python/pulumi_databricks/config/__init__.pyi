@@ -49,6 +49,8 @@ configFile: Optional[str]
 
 databricksCliPath: Optional[str]
 
+databricksIdTokenFilepath: Optional[str]
+
 debugHeaders: Optional[bool]
 
 debugTruncateBytes: Optional[int]
@@ -62,6 +64,8 @@ host: Optional[str]
 httpTimeoutSeconds: Optional[int]
 
 metadataServiceUrl: Optional[str]
+
+oidcTokenEnv: Optional[str]
 
 password: Optional[str]
 

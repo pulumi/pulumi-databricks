@@ -182,6 +182,8 @@ __all__ = [
     'DisableLegacyAccessSettingDisableLegacyAccessArgsDict',
     'DisableLegacyDbfsSettingDisableLegacyDbfsArgs',
     'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict',
+    'DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs',
+    'DisableLegacyFeaturesSettingDisableLegacyFeaturesArgsDict',
     'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs',
     'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgsDict',
     'ExternalLocationEncryptionDetailsArgs',
@@ -6943,6 +6945,37 @@ elif False:
 
 @pulumi.input_type
 class DisableLegacyDbfsSettingDisableLegacyDbfsArgs:
+    def __init__(__self__, *,
+                 value: pulumi.Input[builtins.bool]):
+        """
+        :param pulumi.Input[builtins.bool] value: The boolean value for the setting.
+        """
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[builtins.bool]:
+        """
+        The boolean value for the setting.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[builtins.bool]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class DisableLegacyFeaturesSettingDisableLegacyFeaturesArgsDict(TypedDict):
+        value: pulumi.Input[builtins.bool]
+        """
+        The boolean value for the setting.
+        """
+elif False:
+    DisableLegacyFeaturesSettingDisableLegacyFeaturesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs:
     def __init__(__self__, *,
                  value: pulumi.Input[builtins.bool]):
         """
@@ -29411,13 +29444,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -29471,7 +29504,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
@@ -29484,7 +29517,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
@@ -29763,13 +29796,13 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  gke_cluster_service_ip_range: Optional[pulumi.Input[builtins.str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
@@ -29784,7 +29817,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -29794,7 +29827,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -32225,7 +32258,7 @@ class PipelineClusterInitScriptWorkspaceArgs:
 
 if not MYPY:
     class PipelineDeploymentArgsDict(TypedDict):
-        kind: NotRequired[pulumi.Input[builtins.str]]
+        kind: pulumi.Input[builtins.str]
         """
         The deployment method that manages the pipeline.
         """
@@ -32239,27 +32272,26 @@ elif False:
 @pulumi.input_type
 class PipelineDeploymentArgs:
     def __init__(__self__, *,
-                 kind: Optional[pulumi.Input[builtins.str]] = None,
+                 kind: pulumi.Input[builtins.str],
                  metadata_file_path: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] kind: The deployment method that manages the pipeline.
         :param pulumi.Input[builtins.str] metadata_file_path: The path to the file containing metadata about the deployment.
         """
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "kind", kind)
         if metadata_file_path is not None:
             pulumi.set(__self__, "metadata_file_path", metadata_file_path)
 
     @property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[builtins.str]]:
+    def kind(self) -> pulumi.Input[builtins.str]:
         """
         The deployment method that manages the pipeline.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[builtins.str]]):
+    def kind(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "kind", value)
 
     @property
@@ -32400,22 +32432,22 @@ class PipelineFiltersArgs:
 
 if not MYPY:
     class PipelineGatewayDefinitionArgsDict(TypedDict):
+        connection_name: pulumi.Input[builtins.str]
+        gateway_storage_catalog: pulumi.Input[builtins.str]
+        """
+        Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
+        """
+        gateway_storage_schema: pulumi.Input[builtins.str]
+        """
+        Required, Immutable. The name of the schema for the gateway pipelines's storage location.
+        """
         connection_id: NotRequired[pulumi.Input[builtins.str]]
         """
         Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
         """
-        connection_name: NotRequired[pulumi.Input[builtins.str]]
-        gateway_storage_catalog: NotRequired[pulumi.Input[builtins.str]]
-        """
-        Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
-        """
         gateway_storage_name: NotRequired[pulumi.Input[builtins.str]]
         """
         Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
-        """
-        gateway_storage_schema: NotRequired[pulumi.Input[builtins.str]]
-        """
-        Required, Immutable. The name of the schema for the gateway pipelines's storage location.
         """
 elif False:
     PipelineGatewayDefinitionArgsDict: TypeAlias = Mapping[str, Any]
@@ -32423,27 +32455,57 @@ elif False:
 @pulumi.input_type
 class PipelineGatewayDefinitionArgs:
     def __init__(__self__, *,
+                 connection_name: pulumi.Input[builtins.str],
+                 gateway_storage_catalog: pulumi.Input[builtins.str],
+                 gateway_storage_schema: pulumi.Input[builtins.str],
                  connection_id: Optional[pulumi.Input[builtins.str]] = None,
-                 connection_name: Optional[pulumi.Input[builtins.str]] = None,
-                 gateway_storage_catalog: Optional[pulumi.Input[builtins.str]] = None,
-                 gateway_storage_name: Optional[pulumi.Input[builtins.str]] = None,
-                 gateway_storage_schema: Optional[pulumi.Input[builtins.str]] = None):
+                 gateway_storage_name: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] connection_id: Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
         :param pulumi.Input[builtins.str] gateway_storage_catalog: Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
-        :param pulumi.Input[builtins.str] gateway_storage_name: Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
         :param pulumi.Input[builtins.str] gateway_storage_schema: Required, Immutable. The name of the schema for the gateway pipelines's storage location.
+        :param pulumi.Input[builtins.str] connection_id: Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+        :param pulumi.Input[builtins.str] gateway_storage_name: Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
         """
+        pulumi.set(__self__, "connection_name", connection_name)
+        pulumi.set(__self__, "gateway_storage_catalog", gateway_storage_catalog)
+        pulumi.set(__self__, "gateway_storage_schema", gateway_storage_schema)
         if connection_id is not None:
             pulumi.set(__self__, "connection_id", connection_id)
-        if connection_name is not None:
-            pulumi.set(__self__, "connection_name", connection_name)
-        if gateway_storage_catalog is not None:
-            pulumi.set(__self__, "gateway_storage_catalog", gateway_storage_catalog)
         if gateway_storage_name is not None:
             pulumi.set(__self__, "gateway_storage_name", gateway_storage_name)
-        if gateway_storage_schema is not None:
-            pulumi.set(__self__, "gateway_storage_schema", gateway_storage_schema)
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "connection_name", value)
+
+    @property
+    @pulumi.getter(name="gatewayStorageCatalog")
+    def gateway_storage_catalog(self) -> pulumi.Input[builtins.str]:
+        """
+        Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
+        """
+        return pulumi.get(self, "gateway_storage_catalog")
+
+    @gateway_storage_catalog.setter
+    def gateway_storage_catalog(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "gateway_storage_catalog", value)
+
+    @property
+    @pulumi.getter(name="gatewayStorageSchema")
+    def gateway_storage_schema(self) -> pulumi.Input[builtins.str]:
+        """
+        Required, Immutable. The name of the schema for the gateway pipelines's storage location.
+        """
+        return pulumi.get(self, "gateway_storage_schema")
+
+    @gateway_storage_schema.setter
+    def gateway_storage_schema(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "gateway_storage_schema", value)
 
     @property
     @pulumi.getter(name="connectionId")
@@ -32458,27 +32520,6 @@ class PipelineGatewayDefinitionArgs:
         pulumi.set(self, "connection_id", value)
 
     @property
-    @pulumi.getter(name="connectionName")
-    def connection_name(self) -> Optional[pulumi.Input[builtins.str]]:
-        return pulumi.get(self, "connection_name")
-
-    @connection_name.setter
-    def connection_name(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "connection_name", value)
-
-    @property
-    @pulumi.getter(name="gatewayStorageCatalog")
-    def gateway_storage_catalog(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
-        """
-        return pulumi.get(self, "gateway_storage_catalog")
-
-    @gateway_storage_catalog.setter
-    def gateway_storage_catalog(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "gateway_storage_catalog", value)
-
-    @property
     @pulumi.getter(name="gatewayStorageName")
     def gateway_storage_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -32489,18 +32530,6 @@ class PipelineGatewayDefinitionArgs:
     @gateway_storage_name.setter
     def gateway_storage_name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "gateway_storage_name", value)
-
-    @property
-    @pulumi.getter(name="gatewayStorageSchema")
-    def gateway_storage_schema(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Required, Immutable. The name of the schema for the gateway pipelines's storage location.
-        """
-        return pulumi.get(self, "gateway_storage_schema")
-
-    @gateway_storage_schema.setter
-    def gateway_storage_schema(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "gateway_storage_schema", value)
 
 
 if not MYPY:
@@ -32625,10 +32654,10 @@ class PipelineIngestionDefinitionObjectArgs:
 
 if not MYPY:
     class PipelineIngestionDefinitionObjectReportArgsDict(TypedDict):
-        destination_catalog: NotRequired[pulumi.Input[builtins.str]]
-        destination_schema: NotRequired[pulumi.Input[builtins.str]]
+        destination_catalog: pulumi.Input[builtins.str]
+        destination_schema: pulumi.Input[builtins.str]
+        source_url: pulumi.Input[builtins.str]
         destination_table: NotRequired[pulumi.Input[builtins.str]]
-        source_url: NotRequired[pulumi.Input[builtins.str]]
         table_configuration: NotRequired[pulumi.Input['PipelineIngestionDefinitionObjectReportTableConfigurationArgsDict']]
 elif False:
     PipelineIngestionDefinitionObjectReportArgsDict: TypeAlias = Mapping[str, Any]
@@ -32636,39 +32665,45 @@ elif False:
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectReportArgs:
     def __init__(__self__, *,
-                 destination_catalog: Optional[pulumi.Input[builtins.str]] = None,
-                 destination_schema: Optional[pulumi.Input[builtins.str]] = None,
+                 destination_catalog: pulumi.Input[builtins.str],
+                 destination_schema: pulumi.Input[builtins.str],
+                 source_url: pulumi.Input[builtins.str],
                  destination_table: Optional[pulumi.Input[builtins.str]] = None,
-                 source_url: Optional[pulumi.Input[builtins.str]] = None,
                  table_configuration: Optional[pulumi.Input['PipelineIngestionDefinitionObjectReportTableConfigurationArgs']] = None):
-        if destination_catalog is not None:
-            pulumi.set(__self__, "destination_catalog", destination_catalog)
-        if destination_schema is not None:
-            pulumi.set(__self__, "destination_schema", destination_schema)
+        pulumi.set(__self__, "destination_catalog", destination_catalog)
+        pulumi.set(__self__, "destination_schema", destination_schema)
+        pulumi.set(__self__, "source_url", source_url)
         if destination_table is not None:
             pulumi.set(__self__, "destination_table", destination_table)
-        if source_url is not None:
-            pulumi.set(__self__, "source_url", source_url)
         if table_configuration is not None:
             pulumi.set(__self__, "table_configuration", table_configuration)
 
     @property
     @pulumi.getter(name="destinationCatalog")
-    def destination_catalog(self) -> Optional[pulumi.Input[builtins.str]]:
+    def destination_catalog(self) -> pulumi.Input[builtins.str]:
         return pulumi.get(self, "destination_catalog")
 
     @destination_catalog.setter
-    def destination_catalog(self, value: Optional[pulumi.Input[builtins.str]]):
+    def destination_catalog(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "destination_catalog", value)
 
     @property
     @pulumi.getter(name="destinationSchema")
-    def destination_schema(self) -> Optional[pulumi.Input[builtins.str]]:
+    def destination_schema(self) -> pulumi.Input[builtins.str]:
         return pulumi.get(self, "destination_schema")
 
     @destination_schema.setter
-    def destination_schema(self, value: Optional[pulumi.Input[builtins.str]]):
+    def destination_schema(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "destination_schema", value)
+
+    @property
+    @pulumi.getter(name="sourceUrl")
+    def source_url(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "source_url")
+
+    @source_url.setter
+    def source_url(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "source_url", value)
 
     @property
     @pulumi.getter(name="destinationTable")
@@ -32678,15 +32713,6 @@ class PipelineIngestionDefinitionObjectReportArgs:
     @destination_table.setter
     def destination_table(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "destination_table", value)
-
-    @property
-    @pulumi.getter(name="sourceUrl")
-    def source_url(self) -> Optional[pulumi.Input[builtins.str]]:
-        return pulumi.get(self, "source_url")
-
-    @source_url.setter
-    def source_url(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "source_url", value)
 
     @property
     @pulumi.getter(name="tableConfiguration")
@@ -32700,6 +32726,8 @@ class PipelineIngestionDefinitionObjectReportArgs:
 
 if not MYPY:
     class PipelineIngestionDefinitionObjectReportTableConfigurationArgsDict(TypedDict):
+        exclude_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        include_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         primary_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         salesforce_include_formula_fields: NotRequired[pulumi.Input[builtins.bool]]
         scd_type: NotRequired[pulumi.Input[builtins.str]]
@@ -32710,10 +32738,16 @@ elif False:
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectReportTableConfigurationArgs:
     def __init__(__self__, *,
+                 exclude_columns: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 include_columns: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  salesforce_include_formula_fields: Optional[pulumi.Input[builtins.bool]] = None,
                  scd_type: Optional[pulumi.Input[builtins.str]] = None,
                  sequence_bies: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        if exclude_columns is not None:
+            pulumi.set(__self__, "exclude_columns", exclude_columns)
+        if include_columns is not None:
+            pulumi.set(__self__, "include_columns", include_columns)
         if primary_keys is not None:
             pulumi.set(__self__, "primary_keys", primary_keys)
         if salesforce_include_formula_fields is not None:
@@ -32722,6 +32756,24 @@ class PipelineIngestionDefinitionObjectReportTableConfigurationArgs:
             pulumi.set(__self__, "scd_type", scd_type)
         if sequence_bies is not None:
             pulumi.set(__self__, "sequence_bies", sequence_bies)
+
+    @property
+    @pulumi.getter(name="excludeColumns")
+    def exclude_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "exclude_columns")
+
+    @exclude_columns.setter
+    def exclude_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "exclude_columns", value)
+
+    @property
+    @pulumi.getter(name="includeColumns")
+    def include_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "include_columns")
+
+    @include_columns.setter
+    def include_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "include_columns", value)
 
     @property
     @pulumi.getter(name="primaryKeys")
@@ -32762,10 +32814,10 @@ class PipelineIngestionDefinitionObjectReportTableConfigurationArgs:
 
 if not MYPY:
     class PipelineIngestionDefinitionObjectSchemaArgsDict(TypedDict):
-        destination_catalog: NotRequired[pulumi.Input[builtins.str]]
-        destination_schema: NotRequired[pulumi.Input[builtins.str]]
+        destination_catalog: pulumi.Input[builtins.str]
+        destination_schema: pulumi.Input[builtins.str]
+        source_schema: pulumi.Input[builtins.str]
         source_catalog: NotRequired[pulumi.Input[builtins.str]]
-        source_schema: NotRequired[pulumi.Input[builtins.str]]
         table_configuration: NotRequired[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationArgsDict']]
 elif False:
     PipelineIngestionDefinitionObjectSchemaArgsDict: TypeAlias = Mapping[str, Any]
@@ -32773,39 +32825,45 @@ elif False:
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectSchemaArgs:
     def __init__(__self__, *,
-                 destination_catalog: Optional[pulumi.Input[builtins.str]] = None,
-                 destination_schema: Optional[pulumi.Input[builtins.str]] = None,
+                 destination_catalog: pulumi.Input[builtins.str],
+                 destination_schema: pulumi.Input[builtins.str],
+                 source_schema: pulumi.Input[builtins.str],
                  source_catalog: Optional[pulumi.Input[builtins.str]] = None,
-                 source_schema: Optional[pulumi.Input[builtins.str]] = None,
                  table_configuration: Optional[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs']] = None):
-        if destination_catalog is not None:
-            pulumi.set(__self__, "destination_catalog", destination_catalog)
-        if destination_schema is not None:
-            pulumi.set(__self__, "destination_schema", destination_schema)
+        pulumi.set(__self__, "destination_catalog", destination_catalog)
+        pulumi.set(__self__, "destination_schema", destination_schema)
+        pulumi.set(__self__, "source_schema", source_schema)
         if source_catalog is not None:
             pulumi.set(__self__, "source_catalog", source_catalog)
-        if source_schema is not None:
-            pulumi.set(__self__, "source_schema", source_schema)
         if table_configuration is not None:
             pulumi.set(__self__, "table_configuration", table_configuration)
 
     @property
     @pulumi.getter(name="destinationCatalog")
-    def destination_catalog(self) -> Optional[pulumi.Input[builtins.str]]:
+    def destination_catalog(self) -> pulumi.Input[builtins.str]:
         return pulumi.get(self, "destination_catalog")
 
     @destination_catalog.setter
-    def destination_catalog(self, value: Optional[pulumi.Input[builtins.str]]):
+    def destination_catalog(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "destination_catalog", value)
 
     @property
     @pulumi.getter(name="destinationSchema")
-    def destination_schema(self) -> Optional[pulumi.Input[builtins.str]]:
+    def destination_schema(self) -> pulumi.Input[builtins.str]:
         return pulumi.get(self, "destination_schema")
 
     @destination_schema.setter
-    def destination_schema(self, value: Optional[pulumi.Input[builtins.str]]):
+    def destination_schema(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "destination_schema", value)
+
+    @property
+    @pulumi.getter(name="sourceSchema")
+    def source_schema(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "source_schema")
+
+    @source_schema.setter
+    def source_schema(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "source_schema", value)
 
     @property
     @pulumi.getter(name="sourceCatalog")
@@ -32815,15 +32873,6 @@ class PipelineIngestionDefinitionObjectSchemaArgs:
     @source_catalog.setter
     def source_catalog(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "source_catalog", value)
-
-    @property
-    @pulumi.getter(name="sourceSchema")
-    def source_schema(self) -> Optional[pulumi.Input[builtins.str]]:
-        return pulumi.get(self, "source_schema")
-
-    @source_schema.setter
-    def source_schema(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "source_schema", value)
 
     @property
     @pulumi.getter(name="tableConfiguration")
@@ -32837,6 +32886,8 @@ class PipelineIngestionDefinitionObjectSchemaArgs:
 
 if not MYPY:
     class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgsDict(TypedDict):
+        exclude_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        include_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         primary_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         salesforce_include_formula_fields: NotRequired[pulumi.Input[builtins.bool]]
         scd_type: NotRequired[pulumi.Input[builtins.str]]
@@ -32847,10 +32898,16 @@ elif False:
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs:
     def __init__(__self__, *,
+                 exclude_columns: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 include_columns: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  salesforce_include_formula_fields: Optional[pulumi.Input[builtins.bool]] = None,
                  scd_type: Optional[pulumi.Input[builtins.str]] = None,
                  sequence_bies: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        if exclude_columns is not None:
+            pulumi.set(__self__, "exclude_columns", exclude_columns)
+        if include_columns is not None:
+            pulumi.set(__self__, "include_columns", include_columns)
         if primary_keys is not None:
             pulumi.set(__self__, "primary_keys", primary_keys)
         if salesforce_include_formula_fields is not None:
@@ -32859,6 +32916,24 @@ class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs:
             pulumi.set(__self__, "scd_type", scd_type)
         if sequence_bies is not None:
             pulumi.set(__self__, "sequence_bies", sequence_bies)
+
+    @property
+    @pulumi.getter(name="excludeColumns")
+    def exclude_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "exclude_columns")
+
+    @exclude_columns.setter
+    def exclude_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "exclude_columns", value)
+
+    @property
+    @pulumi.getter(name="includeColumns")
+    def include_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "include_columns")
+
+    @include_columns.setter
+    def include_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "include_columns", value)
 
     @property
     @pulumi.getter(name="primaryKeys")
@@ -32899,12 +32974,12 @@ class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs:
 
 if not MYPY:
     class PipelineIngestionDefinitionObjectTableArgsDict(TypedDict):
-        destination_catalog: NotRequired[pulumi.Input[builtins.str]]
-        destination_schema: NotRequired[pulumi.Input[builtins.str]]
+        destination_catalog: pulumi.Input[builtins.str]
+        destination_schema: pulumi.Input[builtins.str]
+        source_table: pulumi.Input[builtins.str]
         destination_table: NotRequired[pulumi.Input[builtins.str]]
         source_catalog: NotRequired[pulumi.Input[builtins.str]]
         source_schema: NotRequired[pulumi.Input[builtins.str]]
-        source_table: NotRequired[pulumi.Input[builtins.str]]
         table_configuration: NotRequired[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationArgsDict']]
 elif False:
     PipelineIngestionDefinitionObjectTableArgsDict: TypeAlias = Mapping[str, Any]
@@ -32912,45 +32987,51 @@ elif False:
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectTableArgs:
     def __init__(__self__, *,
-                 destination_catalog: Optional[pulumi.Input[builtins.str]] = None,
-                 destination_schema: Optional[pulumi.Input[builtins.str]] = None,
+                 destination_catalog: pulumi.Input[builtins.str],
+                 destination_schema: pulumi.Input[builtins.str],
+                 source_table: pulumi.Input[builtins.str],
                  destination_table: Optional[pulumi.Input[builtins.str]] = None,
                  source_catalog: Optional[pulumi.Input[builtins.str]] = None,
                  source_schema: Optional[pulumi.Input[builtins.str]] = None,
-                 source_table: Optional[pulumi.Input[builtins.str]] = None,
                  table_configuration: Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationArgs']] = None):
-        if destination_catalog is not None:
-            pulumi.set(__self__, "destination_catalog", destination_catalog)
-        if destination_schema is not None:
-            pulumi.set(__self__, "destination_schema", destination_schema)
+        pulumi.set(__self__, "destination_catalog", destination_catalog)
+        pulumi.set(__self__, "destination_schema", destination_schema)
+        pulumi.set(__self__, "source_table", source_table)
         if destination_table is not None:
             pulumi.set(__self__, "destination_table", destination_table)
         if source_catalog is not None:
             pulumi.set(__self__, "source_catalog", source_catalog)
         if source_schema is not None:
             pulumi.set(__self__, "source_schema", source_schema)
-        if source_table is not None:
-            pulumi.set(__self__, "source_table", source_table)
         if table_configuration is not None:
             pulumi.set(__self__, "table_configuration", table_configuration)
 
     @property
     @pulumi.getter(name="destinationCatalog")
-    def destination_catalog(self) -> Optional[pulumi.Input[builtins.str]]:
+    def destination_catalog(self) -> pulumi.Input[builtins.str]:
         return pulumi.get(self, "destination_catalog")
 
     @destination_catalog.setter
-    def destination_catalog(self, value: Optional[pulumi.Input[builtins.str]]):
+    def destination_catalog(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "destination_catalog", value)
 
     @property
     @pulumi.getter(name="destinationSchema")
-    def destination_schema(self) -> Optional[pulumi.Input[builtins.str]]:
+    def destination_schema(self) -> pulumi.Input[builtins.str]:
         return pulumi.get(self, "destination_schema")
 
     @destination_schema.setter
-    def destination_schema(self, value: Optional[pulumi.Input[builtins.str]]):
+    def destination_schema(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "destination_schema", value)
+
+    @property
+    @pulumi.getter(name="sourceTable")
+    def source_table(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "source_table")
+
+    @source_table.setter
+    def source_table(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "source_table", value)
 
     @property
     @pulumi.getter(name="destinationTable")
@@ -32980,15 +33061,6 @@ class PipelineIngestionDefinitionObjectTableArgs:
         pulumi.set(self, "source_schema", value)
 
     @property
-    @pulumi.getter(name="sourceTable")
-    def source_table(self) -> Optional[pulumi.Input[builtins.str]]:
-        return pulumi.get(self, "source_table")
-
-    @source_table.setter
-    def source_table(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "source_table", value)
-
-    @property
     @pulumi.getter(name="tableConfiguration")
     def table_configuration(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationArgs']]:
         return pulumi.get(self, "table_configuration")
@@ -33000,6 +33072,8 @@ class PipelineIngestionDefinitionObjectTableArgs:
 
 if not MYPY:
     class PipelineIngestionDefinitionObjectTableTableConfigurationArgsDict(TypedDict):
+        exclude_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        include_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         primary_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         salesforce_include_formula_fields: NotRequired[pulumi.Input[builtins.bool]]
         scd_type: NotRequired[pulumi.Input[builtins.str]]
@@ -33010,10 +33084,16 @@ elif False:
 @pulumi.input_type
 class PipelineIngestionDefinitionObjectTableTableConfigurationArgs:
     def __init__(__self__, *,
+                 exclude_columns: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 include_columns: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  salesforce_include_formula_fields: Optional[pulumi.Input[builtins.bool]] = None,
                  scd_type: Optional[pulumi.Input[builtins.str]] = None,
                  sequence_bies: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        if exclude_columns is not None:
+            pulumi.set(__self__, "exclude_columns", exclude_columns)
+        if include_columns is not None:
+            pulumi.set(__self__, "include_columns", include_columns)
         if primary_keys is not None:
             pulumi.set(__self__, "primary_keys", primary_keys)
         if salesforce_include_formula_fields is not None:
@@ -33022,6 +33102,24 @@ class PipelineIngestionDefinitionObjectTableTableConfigurationArgs:
             pulumi.set(__self__, "scd_type", scd_type)
         if sequence_bies is not None:
             pulumi.set(__self__, "sequence_bies", sequence_bies)
+
+    @property
+    @pulumi.getter(name="excludeColumns")
+    def exclude_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "exclude_columns")
+
+    @exclude_columns.setter
+    def exclude_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "exclude_columns", value)
+
+    @property
+    @pulumi.getter(name="includeColumns")
+    def include_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "include_columns")
+
+    @include_columns.setter
+    def include_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "include_columns", value)
 
     @property
     @pulumi.getter(name="primaryKeys")
@@ -33062,6 +33160,8 @@ class PipelineIngestionDefinitionObjectTableTableConfigurationArgs:
 
 if not MYPY:
     class PipelineIngestionDefinitionTableConfigurationArgsDict(TypedDict):
+        exclude_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        include_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         primary_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         salesforce_include_formula_fields: NotRequired[pulumi.Input[builtins.bool]]
         scd_type: NotRequired[pulumi.Input[builtins.str]]
@@ -33072,10 +33172,16 @@ elif False:
 @pulumi.input_type
 class PipelineIngestionDefinitionTableConfigurationArgs:
     def __init__(__self__, *,
+                 exclude_columns: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 include_columns: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  salesforce_include_formula_fields: Optional[pulumi.Input[builtins.bool]] = None,
                  scd_type: Optional[pulumi.Input[builtins.str]] = None,
                  sequence_bies: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        if exclude_columns is not None:
+            pulumi.set(__self__, "exclude_columns", exclude_columns)
+        if include_columns is not None:
+            pulumi.set(__self__, "include_columns", include_columns)
         if primary_keys is not None:
             pulumi.set(__self__, "primary_keys", primary_keys)
         if salesforce_include_formula_fields is not None:
@@ -33084,6 +33190,24 @@ class PipelineIngestionDefinitionTableConfigurationArgs:
             pulumi.set(__self__, "scd_type", scd_type)
         if sequence_bies is not None:
             pulumi.set(__self__, "sequence_bies", sequence_bies)
+
+    @property
+    @pulumi.getter(name="excludeColumns")
+    def exclude_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "exclude_columns")
+
+    @exclude_columns.setter
+    def exclude_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "exclude_columns", value)
+
+    @property
+    @pulumi.getter(name="includeColumns")
+    def include_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "include_columns")
+
+    @include_columns.setter
+    def include_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "include_columns", value)
 
     @property
     @pulumi.getter(name="primaryKeys")

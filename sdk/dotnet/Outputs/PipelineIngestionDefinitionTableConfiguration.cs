@@ -13,6 +13,8 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineIngestionDefinitionTableConfiguration
     {
+        public readonly ImmutableArray<string> ExcludeColumns;
+        public readonly ImmutableArray<string> IncludeColumns;
         public readonly ImmutableArray<string> PrimaryKeys;
         public readonly bool? SalesforceIncludeFormulaFields;
         public readonly string? ScdType;
@@ -20,6 +22,10 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private PipelineIngestionDefinitionTableConfiguration(
+            ImmutableArray<string> excludeColumns,
+
+            ImmutableArray<string> includeColumns,
+
             ImmutableArray<string> primaryKeys,
 
             bool? salesforceIncludeFormulaFields,
@@ -28,6 +34,8 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<string> sequenceBies)
         {
+            ExcludeColumns = excludeColumns;
+            IncludeColumns = includeColumns;
             PrimaryKeys = primaryKeys;
             SalesforceIncludeFormulaFields = salesforceIncludeFormulaFields;
             ScdType = scdType;

@@ -975,6 +975,13 @@ export interface DisableLegacyDbfsSettingDisableLegacyDbfs {
     value: pulumi.Input<boolean>;
 }
 
+export interface DisableLegacyFeaturesSettingDisableLegacyFeatures {
+    /**
+     * The boolean value for the setting.
+     */
+    value: pulumi.Input<boolean>;
+}
+
 export interface EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace {
     isEnabled: pulumi.Input<boolean>;
 }
@@ -12310,13 +12317,13 @@ export interface MwsNetworksGcpNetworkInfo {
     /**
      * The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
      *
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
      * The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
      *
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -12383,11 +12390,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;
@@ -12744,7 +12751,7 @@ export interface PipelineDeployment {
     /**
      * The deployment method that manages the pipeline.
      */
-    kind?: pulumi.Input<string>;
+    kind: pulumi.Input<string>;
     /**
      * The path to the file containing metadata about the deployment.
      */
@@ -12782,11 +12789,11 @@ export interface PipelineGatewayDefinition {
      * Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
      */
     connectionId?: pulumi.Input<string>;
-    connectionName?: pulumi.Input<string>;
+    connectionName: pulumi.Input<string>;
     /**
      * Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
      */
-    gatewayStorageCatalog?: pulumi.Input<string>;
+    gatewayStorageCatalog: pulumi.Input<string>;
     /**
      * Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
      */
@@ -12794,7 +12801,7 @@ export interface PipelineGatewayDefinition {
     /**
      * Required, Immutable. The name of the schema for the gateway pipelines's storage location.
      */
-    gatewayStorageSchema?: pulumi.Input<string>;
+    gatewayStorageSchema: pulumi.Input<string>;
 }
 
 export interface PipelineIngestionDefinition {
@@ -12814,14 +12821,16 @@ export interface PipelineIngestionDefinitionObject {
 }
 
 export interface PipelineIngestionDefinitionObjectReport {
-    destinationCatalog?: pulumi.Input<string>;
-    destinationSchema?: pulumi.Input<string>;
+    destinationCatalog: pulumi.Input<string>;
+    destinationSchema: pulumi.Input<string>;
     destinationTable?: pulumi.Input<string>;
-    sourceUrl?: pulumi.Input<string>;
+    sourceUrl: pulumi.Input<string>;
     tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfiguration>;
 }
 
 export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
+    excludeColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    includeColumns?: pulumi.Input<pulumi.Input<string>[]>;
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
     salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
     scdType?: pulumi.Input<string>;
@@ -12829,14 +12838,16 @@ export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
 }
 
 export interface PipelineIngestionDefinitionObjectSchema {
-    destinationCatalog?: pulumi.Input<string>;
-    destinationSchema?: pulumi.Input<string>;
+    destinationCatalog: pulumi.Input<string>;
+    destinationSchema: pulumi.Input<string>;
     sourceCatalog?: pulumi.Input<string>;
-    sourceSchema?: pulumi.Input<string>;
+    sourceSchema: pulumi.Input<string>;
     tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfiguration>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
+    excludeColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    includeColumns?: pulumi.Input<pulumi.Input<string>[]>;
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
     salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
     scdType?: pulumi.Input<string>;
@@ -12844,16 +12855,18 @@ export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
 }
 
 export interface PipelineIngestionDefinitionObjectTable {
-    destinationCatalog?: pulumi.Input<string>;
-    destinationSchema?: pulumi.Input<string>;
+    destinationCatalog: pulumi.Input<string>;
+    destinationSchema: pulumi.Input<string>;
     destinationTable?: pulumi.Input<string>;
     sourceCatalog?: pulumi.Input<string>;
     sourceSchema?: pulumi.Input<string>;
-    sourceTable?: pulumi.Input<string>;
+    sourceTable: pulumi.Input<string>;
     tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfiguration>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
+    excludeColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    includeColumns?: pulumi.Input<pulumi.Input<string>[]>;
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
     salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
     scdType?: pulumi.Input<string>;
@@ -12861,6 +12874,8 @@ export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
 }
 
 export interface PipelineIngestionDefinitionTableConfiguration {
+    excludeColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    includeColumns?: pulumi.Input<pulumi.Input<string>[]>;
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
     salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
     scdType?: pulumi.Input<string>;

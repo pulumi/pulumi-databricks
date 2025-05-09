@@ -143,6 +143,14 @@ Object.defineProperty(exports, "databricksCliPath", {
     enumerable: true,
 });
 
+export declare const databricksIdTokenFilepath: string | undefined;
+Object.defineProperty(exports, "databricksIdTokenFilepath", {
+    get() {
+        return __config.get("databricksIdTokenFilepath");
+    },
+    enumerable: true,
+});
+
 export declare const debugHeaders: boolean | undefined;
 Object.defineProperty(exports, "debugHeaders", {
     get() {
@@ -195,6 +203,14 @@ export declare const metadataServiceUrl: string | undefined;
 Object.defineProperty(exports, "metadataServiceUrl", {
     get() {
         return __config.get("metadataServiceUrl");
+    },
+    enumerable: true,
+});
+
+export declare const oidcTokenEnv: string | undefined;
+Object.defineProperty(exports, "oidcTokenEnv", {
+    get() {
+        return __config.get("oidcTokenEnv");
     },
     enumerable: true,
 });

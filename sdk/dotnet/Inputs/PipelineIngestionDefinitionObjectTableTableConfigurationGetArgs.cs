@@ -12,6 +12,22 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineIngestionDefinitionObjectTableTableConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("excludeColumns")]
+        private InputList<string>? _excludeColumns;
+        public InputList<string> ExcludeColumns
+        {
+            get => _excludeColumns ?? (_excludeColumns = new InputList<string>());
+            set => _excludeColumns = value;
+        }
+
+        [Input("includeColumns")]
+        private InputList<string>? _includeColumns;
+        public InputList<string> IncludeColumns
+        {
+            get => _includeColumns ?? (_includeColumns = new InputList<string>());
+            set => _includeColumns = value;
+        }
+
         [Input("primaryKeys")]
         private InputList<string>? _primaryKeys;
         public InputList<string> PrimaryKeys

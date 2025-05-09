@@ -34,10 +34,12 @@ type Provider struct {
 	ClusterId                  pulumi.StringPtrOutput `pulumi:"clusterId"`
 	ConfigFile                 pulumi.StringPtrOutput `pulumi:"configFile"`
 	DatabricksCliPath          pulumi.StringPtrOutput `pulumi:"databricksCliPath"`
+	DatabricksIdTokenFilepath  pulumi.StringPtrOutput `pulumi:"databricksIdTokenFilepath"`
 	GoogleCredentials          pulumi.StringPtrOutput `pulumi:"googleCredentials"`
 	GoogleServiceAccount       pulumi.StringPtrOutput `pulumi:"googleServiceAccount"`
 	Host                       pulumi.StringPtrOutput `pulumi:"host"`
 	MetadataServiceUrl         pulumi.StringPtrOutput `pulumi:"metadataServiceUrl"`
+	OidcTokenEnv               pulumi.StringPtrOutput `pulumi:"oidcTokenEnv"`
 	Password                   pulumi.StringPtrOutput `pulumi:"password"`
 	Profile                    pulumi.StringPtrOutput `pulumi:"profile"`
 	ServerlessComputeId        pulumi.StringPtrOutput `pulumi:"serverlessComputeId"`
@@ -107,6 +109,7 @@ type providerArgs struct {
 	ClusterId                  *string `pulumi:"clusterId"`
 	ConfigFile                 *string `pulumi:"configFile"`
 	DatabricksCliPath          *string `pulumi:"databricksCliPath"`
+	DatabricksIdTokenFilepath  *string `pulumi:"databricksIdTokenFilepath"`
 	DebugHeaders               *bool   `pulumi:"debugHeaders"`
 	DebugTruncateBytes         *int    `pulumi:"debugTruncateBytes"`
 	GoogleCredentials          *string `pulumi:"googleCredentials"`
@@ -114,6 +117,7 @@ type providerArgs struct {
 	Host                       *string `pulumi:"host"`
 	HttpTimeoutSeconds         *int    `pulumi:"httpTimeoutSeconds"`
 	MetadataServiceUrl         *string `pulumi:"metadataServiceUrl"`
+	OidcTokenEnv               *string `pulumi:"oidcTokenEnv"`
 	Password                   *string `pulumi:"password"`
 	Profile                    *string `pulumi:"profile"`
 	RateLimit                  *int    `pulumi:"rateLimit"`
@@ -144,6 +148,7 @@ type ProviderArgs struct {
 	ClusterId                  pulumi.StringPtrInput
 	ConfigFile                 pulumi.StringPtrInput
 	DatabricksCliPath          pulumi.StringPtrInput
+	DatabricksIdTokenFilepath  pulumi.StringPtrInput
 	DebugHeaders               pulumi.BoolPtrInput
 	DebugTruncateBytes         pulumi.IntPtrInput
 	GoogleCredentials          pulumi.StringPtrInput
@@ -151,6 +156,7 @@ type ProviderArgs struct {
 	Host                       pulumi.StringPtrInput
 	HttpTimeoutSeconds         pulumi.IntPtrInput
 	MetadataServiceUrl         pulumi.StringPtrInput
+	OidcTokenEnv               pulumi.StringPtrInput
 	Password                   pulumi.StringPtrInput
 	Profile                    pulumi.StringPtrInput
 	RateLimit                  pulumi.IntPtrInput
@@ -286,6 +292,10 @@ func (o ProviderOutput) DatabricksCliPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DatabricksCliPath }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) DatabricksIdTokenFilepath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DatabricksIdTokenFilepath }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) GoogleCredentials() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.GoogleCredentials }).(pulumi.StringPtrOutput)
 }
@@ -300,6 +310,10 @@ func (o ProviderOutput) Host() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) MetadataServiceUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MetadataServiceUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) OidcTokenEnv() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.OidcTokenEnv }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) Password() pulumi.StringPtrOutput {

@@ -119,6 +119,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> databricksCliPath() {
         return Codegen.optional(this.databricksCliPath);
     }
+    @Export(name="databricksIdTokenFilepath", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> databricksIdTokenFilepath;
+
+    public Output<Optional<String>> databricksIdTokenFilepath() {
+        return Codegen.optional(this.databricksIdTokenFilepath);
+    }
     @Export(name="googleCredentials", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> googleCredentials;
 
@@ -142,6 +148,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> metadataServiceUrl() {
         return Codegen.optional(this.metadataServiceUrl);
+    }
+    @Export(name="oidcTokenEnv", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> oidcTokenEnv;
+
+    public Output<Optional<String>> oidcTokenEnv() {
+        return Codegen.optional(this.oidcTokenEnv);
     }
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;

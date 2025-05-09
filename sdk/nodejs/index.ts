@@ -125,6 +125,11 @@ export type DisableLegacyDbfsSetting = import("./disableLegacyDbfsSetting").Disa
 export const DisableLegacyDbfsSetting: typeof import("./disableLegacyDbfsSetting").DisableLegacyDbfsSetting = null as any;
 utilities.lazyLoad(exports, ["DisableLegacyDbfsSetting"], () => require("./disableLegacyDbfsSetting"));
 
+export { DisableLegacyFeaturesSettingArgs, DisableLegacyFeaturesSettingState } from "./disableLegacyFeaturesSetting";
+export type DisableLegacyFeaturesSetting = import("./disableLegacyFeaturesSetting").DisableLegacyFeaturesSetting;
+export const DisableLegacyFeaturesSetting: typeof import("./disableLegacyFeaturesSetting").DisableLegacyFeaturesSetting = null as any;
+utilities.lazyLoad(exports, ["DisableLegacyFeaturesSetting"], () => require("./disableLegacyFeaturesSetting"));
+
 export { EnhancedSecurityMonitoringWorkspaceSettingArgs, EnhancedSecurityMonitoringWorkspaceSettingState } from "./enhancedSecurityMonitoringWorkspaceSetting";
 export type EnhancedSecurityMonitoringWorkspaceSetting = import("./enhancedSecurityMonitoringWorkspaceSetting").EnhancedSecurityMonitoringWorkspaceSetting;
 export const EnhancedSecurityMonitoringWorkspaceSetting: typeof import("./enhancedSecurityMonitoringWorkspaceSetting").EnhancedSecurityMonitoringWorkspaceSetting = null as any;
@@ -930,6 +935,8 @@ const _module = {
                 return new DisableLegacyAccessSetting(name, <any>undefined, { urn })
             case "databricks:index/disableLegacyDbfsSetting:DisableLegacyDbfsSetting":
                 return new DisableLegacyDbfsSetting(name, <any>undefined, { urn })
+            case "databricks:index/disableLegacyFeaturesSetting:DisableLegacyFeaturesSetting":
+                return new DisableLegacyFeaturesSetting(name, <any>undefined, { urn })
             case "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting":
                 return new EnhancedSecurityMonitoringWorkspaceSetting(name, <any>undefined, { urn })
             case "databricks:index/entitlements:Entitlements":
@@ -1123,6 +1130,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/defaultNamespaceSetti
 pulumi.runtime.registerResourceModule("databricks", "index/directory", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/disableLegacyAccessSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/disableLegacyDbfsSetting", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/disableLegacyFeaturesSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/enhancedSecurityMonitoringWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/entitlements", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/externalLocation", _module)
