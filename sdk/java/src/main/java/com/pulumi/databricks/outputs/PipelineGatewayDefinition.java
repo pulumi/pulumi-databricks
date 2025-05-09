@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,12 +17,12 @@ public final class PipelineGatewayDefinition {
      * 
      */
     private @Nullable String connectionId;
-    private @Nullable String connectionName;
+    private String connectionName;
     /**
      * @return Required, Immutable. The name of the catalog for the gateway pipeline&#39;s storage location.
      * 
      */
-    private @Nullable String gatewayStorageCatalog;
+    private String gatewayStorageCatalog;
     /**
      * @return Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
      * 
@@ -31,7 +32,7 @@ public final class PipelineGatewayDefinition {
      * @return Required, Immutable. The name of the schema for the gateway pipelines&#39;s storage location.
      * 
      */
-    private @Nullable String gatewayStorageSchema;
+    private String gatewayStorageSchema;
 
     private PipelineGatewayDefinition() {}
     /**
@@ -41,15 +42,15 @@ public final class PipelineGatewayDefinition {
     public Optional<String> connectionId() {
         return Optional.ofNullable(this.connectionId);
     }
-    public Optional<String> connectionName() {
-        return Optional.ofNullable(this.connectionName);
+    public String connectionName() {
+        return this.connectionName;
     }
     /**
      * @return Required, Immutable. The name of the catalog for the gateway pipeline&#39;s storage location.
      * 
      */
-    public Optional<String> gatewayStorageCatalog() {
-        return Optional.ofNullable(this.gatewayStorageCatalog);
+    public String gatewayStorageCatalog() {
+        return this.gatewayStorageCatalog;
     }
     /**
      * @return Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
@@ -62,8 +63,8 @@ public final class PipelineGatewayDefinition {
      * @return Required, Immutable. The name of the schema for the gateway pipelines&#39;s storage location.
      * 
      */
-    public Optional<String> gatewayStorageSchema() {
-        return Optional.ofNullable(this.gatewayStorageSchema);
+    public String gatewayStorageSchema() {
+        return this.gatewayStorageSchema;
     }
 
     public static Builder builder() {
@@ -76,10 +77,10 @@ public final class PipelineGatewayDefinition {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String connectionId;
-        private @Nullable String connectionName;
-        private @Nullable String gatewayStorageCatalog;
+        private String connectionName;
+        private String gatewayStorageCatalog;
         private @Nullable String gatewayStorageName;
-        private @Nullable String gatewayStorageSchema;
+        private String gatewayStorageSchema;
         public Builder() {}
         public Builder(PipelineGatewayDefinition defaults) {
     	      Objects.requireNonNull(defaults);
@@ -97,14 +98,18 @@ public final class PipelineGatewayDefinition {
             return this;
         }
         @CustomType.Setter
-        public Builder connectionName(@Nullable String connectionName) {
-
+        public Builder connectionName(String connectionName) {
+            if (connectionName == null) {
+              throw new MissingRequiredPropertyException("PipelineGatewayDefinition", "connectionName");
+            }
             this.connectionName = connectionName;
             return this;
         }
         @CustomType.Setter
-        public Builder gatewayStorageCatalog(@Nullable String gatewayStorageCatalog) {
-
+        public Builder gatewayStorageCatalog(String gatewayStorageCatalog) {
+            if (gatewayStorageCatalog == null) {
+              throw new MissingRequiredPropertyException("PipelineGatewayDefinition", "gatewayStorageCatalog");
+            }
             this.gatewayStorageCatalog = gatewayStorageCatalog;
             return this;
         }
@@ -115,8 +120,10 @@ public final class PipelineGatewayDefinition {
             return this;
         }
         @CustomType.Setter
-        public Builder gatewayStorageSchema(@Nullable String gatewayStorageSchema) {
-
+        public Builder gatewayStorageSchema(String gatewayStorageSchema) {
+            if (gatewayStorageSchema == null) {
+              throw new MissingRequiredPropertyException("PipelineGatewayDefinition", "gatewayStorageSchema");
+            }
             this.gatewayStorageSchema = gatewayStorageSchema;
             return this;
         }

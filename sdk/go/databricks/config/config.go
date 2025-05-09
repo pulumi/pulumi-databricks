@@ -62,6 +62,9 @@ func GetConfigFile(ctx *pulumi.Context) string {
 func GetDatabricksCliPath(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:databricksCliPath")
 }
+func GetDatabricksIdTokenFilepath(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:databricksIdTokenFilepath")
+}
 func GetDebugHeaders(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "databricks:debugHeaders")
 }
@@ -82,6 +85,9 @@ func GetHttpTimeoutSeconds(ctx *pulumi.Context) int {
 }
 func GetMetadataServiceUrl(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:metadataServiceUrl")
+}
+func GetOidcTokenEnv(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:oidcTokenEnv")
 }
 func GetPassword(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:password")

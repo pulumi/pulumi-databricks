@@ -13568,6 +13568,143 @@ func (o DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput) Value() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
+type DisableLegacyFeaturesSettingDisableLegacyFeatures struct {
+	// The boolean value for the setting.
+	Value bool `pulumi:"value"`
+}
+
+// DisableLegacyFeaturesSettingDisableLegacyFeaturesInput is an input type that accepts DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs and DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput values.
+// You can construct a concrete instance of `DisableLegacyFeaturesSettingDisableLegacyFeaturesInput` via:
+//
+//	DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs{...}
+type DisableLegacyFeaturesSettingDisableLegacyFeaturesInput interface {
+	pulumi.Input
+
+	ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput
+	ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutputWithContext(context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput
+}
+
+type DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs struct {
+	// The boolean value for the setting.
+	Value pulumi.BoolInput `pulumi:"value"`
+}
+
+func (DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableLegacyFeaturesSettingDisableLegacyFeatures)(nil)).Elem()
+}
+
+func (i DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput {
+	return i.ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutputWithContext(context.Background())
+}
+
+func (i DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput)
+}
+
+func (i DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
+	return i.ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput).ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(ctx)
+}
+
+// DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrInput is an input type that accepts DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs, DisableLegacyFeaturesSettingDisableLegacyFeaturesPtr and DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput values.
+// You can construct a concrete instance of `DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrInput` via:
+//
+//	        DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrInput interface {
+	pulumi.Input
+
+	ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput
+	ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput
+}
+
+type disableLegacyFeaturesSettingDisableLegacyFeaturesPtrType DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs
+
+func DisableLegacyFeaturesSettingDisableLegacyFeaturesPtr(v *DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs) DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrInput {
+	return (*disableLegacyFeaturesSettingDisableLegacyFeaturesPtrType)(v)
+}
+
+func (*disableLegacyFeaturesSettingDisableLegacyFeaturesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableLegacyFeaturesSettingDisableLegacyFeatures)(nil)).Elem()
+}
+
+func (i *disableLegacyFeaturesSettingDisableLegacyFeaturesPtrType) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
+	return i.ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i *disableLegacyFeaturesSettingDisableLegacyFeaturesPtrType) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput)
+}
+
+type DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput struct{ *pulumi.OutputState }
+
+func (DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DisableLegacyFeaturesSettingDisableLegacyFeatures)(nil)).Elem()
+}
+
+func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput {
+	return o
+}
+
+func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput {
+	return o
+}
+
+func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
+	return o.ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DisableLegacyFeaturesSettingDisableLegacyFeatures) *DisableLegacyFeaturesSettingDisableLegacyFeatures {
+		return &v
+	}).(DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput)
+}
+
+// The boolean value for the setting.
+func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput) Value() pulumi.BoolOutput {
+	return o.ApplyT(func(v DisableLegacyFeaturesSettingDisableLegacyFeatures) bool { return v.Value }).(pulumi.BoolOutput)
+}
+
+type DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput struct{ *pulumi.OutputState }
+
+func (DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DisableLegacyFeaturesSettingDisableLegacyFeatures)(nil)).Elem()
+}
+
+func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput() DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
+	return o
+}
+
+func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput) ToDisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutputWithContext(ctx context.Context) DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput {
+	return o
+}
+
+func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput) Elem() DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput {
+	return o.ApplyT(func(v *DisableLegacyFeaturesSettingDisableLegacyFeatures) DisableLegacyFeaturesSettingDisableLegacyFeatures {
+		if v != nil {
+			return *v
+		}
+		var ret DisableLegacyFeaturesSettingDisableLegacyFeatures
+		return ret
+	}).(DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput)
+}
+
+// The boolean value for the setting.
+func (o DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput) Value() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DisableLegacyFeaturesSettingDisableLegacyFeatures) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.BoolPtrOutput)
+}
+
 type EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace struct {
 	IsEnabled bool `pulumi:"isEnabled"`
 }
@@ -66901,11 +67038,11 @@ type MwsNetworksGcpNetworkInfo struct {
 	NetworkProjectId string `pulumi:"networkProjectId"`
 	// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName *string `pulumi:"podIpRangeName"`
 	// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName *string `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId string `pulumi:"subnetId"`
@@ -66931,11 +67068,11 @@ type MwsNetworksGcpNetworkInfoArgs struct {
 	NetworkProjectId pulumi.StringInput `pulumi:"networkProjectId"`
 	// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc
 	PodIpRangeName pulumi.StringPtrInput `pulumi:"podIpRangeName"`
 	// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 	//
-	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
+	// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc
 	ServiceIpRangeName pulumi.StringPtrInput `pulumi:"serviceIpRangeName"`
 	// The ID of the subnet associated with this network.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
@@ -67029,14 +67166,14 @@ func (o MwsNetworksGcpNetworkInfoOutput) NetworkProjectId() pulumi.StringOutput 
 
 // The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.PodIpRangeName }).(pulumi.StringPtrOutput)
 }
 
 // The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsNetworksGcpNetworkInfo) *string { return v.ServiceIpRangeName }).(pulumi.StringPtrOutput)
 }
@@ -67092,7 +67229,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) NetworkProjectId() pulumi.StringPtrO
 
 // The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -67104,7 +67241,7 @@ func (o MwsNetworksGcpNetworkInfoPtrOutput) PodIpRangeName() pulumi.StringPtrOut
 
 // The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
 //
-// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
+// Deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc
 func (o MwsNetworksGcpNetworkInfoPtrOutput) ServiceIpRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsNetworksGcpNetworkInfo) *string {
 		if v == nil {
@@ -67943,9 +68080,9 @@ func (o MwsWorkspacesExternalCustomerInfoPtrOutput) CustomerName() pulumi.String
 }
 
 type MwsWorkspacesGcpManagedNetworkConfig struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange *string `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange *string `pulumi:"gkeClusterServiceIpRange"`
 	SubnetCidr               string  `pulumi:"subnetCidr"`
 }
@@ -67962,9 +68099,9 @@ type MwsWorkspacesGcpManagedNetworkConfigInput interface {
 }
 
 type MwsWorkspacesGcpManagedNetworkConfigArgs struct {
-	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterPodIpRange pulumi.StringPtrInput `pulumi:"gkeClusterPodIpRange"`
-	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeClusterServiceIpRange pulumi.StringPtrInput `pulumi:"gkeClusterServiceIpRange"`
 	SubnetCidr               pulumi.StringInput    `pulumi:"subnetCidr"`
 }
@@ -68046,12 +68183,12 @@ func (o MwsWorkspacesGcpManagedNetworkConfigOutput) ToMwsWorkspacesGcpManagedNet
 	}).(MwsWorkspacesGcpManagedNetworkConfigPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterPodIpRange }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MwsWorkspacesGcpManagedNetworkConfig) *string { return v.GkeClusterServiceIpRange }).(pulumi.StringPtrOutput)
 }
@@ -68084,7 +68221,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) Elem() MwsWorkspacesGcpMa
 	}).(MwsWorkspacesGcpManagedNetworkConfigOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -68094,7 +68231,7 @@ func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterPodIpRange() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesGcpManagedNetworkConfigPtrOutput) GkeClusterServiceIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspacesGcpManagedNetworkConfig) *string {
 		if v == nil {
@@ -74401,7 +74538,7 @@ func (o PipelineClusterInitScriptWorkspacePtrOutput) Destination() pulumi.String
 
 type PipelineDeployment struct {
 	// The deployment method that manages the pipeline.
-	Kind *string `pulumi:"kind"`
+	Kind string `pulumi:"kind"`
 	// The path to the file containing metadata about the deployment.
 	MetadataFilePath *string `pulumi:"metadataFilePath"`
 }
@@ -74419,7 +74556,7 @@ type PipelineDeploymentInput interface {
 
 type PipelineDeploymentArgs struct {
 	// The deployment method that manages the pipeline.
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	Kind pulumi.StringInput `pulumi:"kind"`
 	// The path to the file containing metadata about the deployment.
 	MetadataFilePath pulumi.StringPtrInput `pulumi:"metadataFilePath"`
 }
@@ -74502,8 +74639,8 @@ func (o PipelineDeploymentOutput) ToPipelineDeploymentPtrOutputWithContext(ctx c
 }
 
 // The deployment method that manages the pipeline.
-func (o PipelineDeploymentOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineDeployment) *string { return v.Kind }).(pulumi.StringPtrOutput)
+func (o PipelineDeploymentOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineDeployment) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The path to the file containing metadata about the deployment.
@@ -74541,7 +74678,7 @@ func (o PipelineDeploymentPtrOutput) Kind() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.Kind
+		return &v.Kind
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -74889,13 +75026,13 @@ func (o PipelineFiltersPtrOutput) Includes() pulumi.StringArrayOutput {
 type PipelineGatewayDefinition struct {
 	// Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
 	ConnectionId   *string `pulumi:"connectionId"`
-	ConnectionName *string `pulumi:"connectionName"`
+	ConnectionName string  `pulumi:"connectionName"`
 	// Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
-	GatewayStorageCatalog *string `pulumi:"gatewayStorageCatalog"`
+	GatewayStorageCatalog string `pulumi:"gatewayStorageCatalog"`
 	// Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
 	GatewayStorageName *string `pulumi:"gatewayStorageName"`
 	// Required, Immutable. The name of the schema for the gateway pipelines's storage location.
-	GatewayStorageSchema *string `pulumi:"gatewayStorageSchema"`
+	GatewayStorageSchema string `pulumi:"gatewayStorageSchema"`
 }
 
 // PipelineGatewayDefinitionInput is an input type that accepts PipelineGatewayDefinitionArgs and PipelineGatewayDefinitionOutput values.
@@ -74912,13 +75049,13 @@ type PipelineGatewayDefinitionInput interface {
 type PipelineGatewayDefinitionArgs struct {
 	// Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
 	ConnectionId   pulumi.StringPtrInput `pulumi:"connectionId"`
-	ConnectionName pulumi.StringPtrInput `pulumi:"connectionName"`
+	ConnectionName pulumi.StringInput    `pulumi:"connectionName"`
 	// Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
-	GatewayStorageCatalog pulumi.StringPtrInput `pulumi:"gatewayStorageCatalog"`
+	GatewayStorageCatalog pulumi.StringInput `pulumi:"gatewayStorageCatalog"`
 	// Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
 	GatewayStorageName pulumi.StringPtrInput `pulumi:"gatewayStorageName"`
 	// Required, Immutable. The name of the schema for the gateway pipelines's storage location.
-	GatewayStorageSchema pulumi.StringPtrInput `pulumi:"gatewayStorageSchema"`
+	GatewayStorageSchema pulumi.StringInput `pulumi:"gatewayStorageSchema"`
 }
 
 func (PipelineGatewayDefinitionArgs) ElementType() reflect.Type {
@@ -75003,13 +75140,13 @@ func (o PipelineGatewayDefinitionOutput) ConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineGatewayDefinition) *string { return v.ConnectionId }).(pulumi.StringPtrOutput)
 }
 
-func (o PipelineGatewayDefinitionOutput) ConnectionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineGatewayDefinition) *string { return v.ConnectionName }).(pulumi.StringPtrOutput)
+func (o PipelineGatewayDefinitionOutput) ConnectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineGatewayDefinition) string { return v.ConnectionName }).(pulumi.StringOutput)
 }
 
 // Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
-func (o PipelineGatewayDefinitionOutput) GatewayStorageCatalog() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineGatewayDefinition) *string { return v.GatewayStorageCatalog }).(pulumi.StringPtrOutput)
+func (o PipelineGatewayDefinitionOutput) GatewayStorageCatalog() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineGatewayDefinition) string { return v.GatewayStorageCatalog }).(pulumi.StringOutput)
 }
 
 // Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
@@ -75018,8 +75155,8 @@ func (o PipelineGatewayDefinitionOutput) GatewayStorageName() pulumi.StringPtrOu
 }
 
 // Required, Immutable. The name of the schema for the gateway pipelines's storage location.
-func (o PipelineGatewayDefinitionOutput) GatewayStorageSchema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineGatewayDefinition) *string { return v.GatewayStorageSchema }).(pulumi.StringPtrOutput)
+func (o PipelineGatewayDefinitionOutput) GatewayStorageSchema() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineGatewayDefinition) string { return v.GatewayStorageSchema }).(pulumi.StringOutput)
 }
 
 type PipelineGatewayDefinitionPtrOutput struct{ *pulumi.OutputState }
@@ -75061,7 +75198,7 @@ func (o PipelineGatewayDefinitionPtrOutput) ConnectionName() pulumi.StringPtrOut
 		if v == nil {
 			return nil
 		}
-		return v.ConnectionName
+		return &v.ConnectionName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -75071,7 +75208,7 @@ func (o PipelineGatewayDefinitionPtrOutput) GatewayStorageCatalog() pulumi.Strin
 		if v == nil {
 			return nil
 		}
-		return v.GatewayStorageCatalog
+		return &v.GatewayStorageCatalog
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -75091,7 +75228,7 @@ func (o PipelineGatewayDefinitionPtrOutput) GatewayStorageSchema() pulumi.String
 		if v == nil {
 			return nil
 		}
-		return v.GatewayStorageSchema
+		return &v.GatewayStorageSchema
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -75385,10 +75522,10 @@ func (o PipelineIngestionDefinitionObjectArrayOutput) Index(i pulumi.IntInput) P
 }
 
 type PipelineIngestionDefinitionObjectReport struct {
-	DestinationCatalog *string                                                    `pulumi:"destinationCatalog"`
-	DestinationSchema  *string                                                    `pulumi:"destinationSchema"`
+	DestinationCatalog string                                                     `pulumi:"destinationCatalog"`
+	DestinationSchema  string                                                     `pulumi:"destinationSchema"`
 	DestinationTable   *string                                                    `pulumi:"destinationTable"`
-	SourceUrl          *string                                                    `pulumi:"sourceUrl"`
+	SourceUrl          string                                                     `pulumi:"sourceUrl"`
 	TableConfiguration *PipelineIngestionDefinitionObjectReportTableConfiguration `pulumi:"tableConfiguration"`
 }
 
@@ -75404,10 +75541,10 @@ type PipelineIngestionDefinitionObjectReportInput interface {
 }
 
 type PipelineIngestionDefinitionObjectReportArgs struct {
-	DestinationCatalog pulumi.StringPtrInput                                             `pulumi:"destinationCatalog"`
-	DestinationSchema  pulumi.StringPtrInput                                             `pulumi:"destinationSchema"`
+	DestinationCatalog pulumi.StringInput                                                `pulumi:"destinationCatalog"`
+	DestinationSchema  pulumi.StringInput                                                `pulumi:"destinationSchema"`
 	DestinationTable   pulumi.StringPtrInput                                             `pulumi:"destinationTable"`
-	SourceUrl          pulumi.StringPtrInput                                             `pulumi:"sourceUrl"`
+	SourceUrl          pulumi.StringInput                                                `pulumi:"sourceUrl"`
 	TableConfiguration PipelineIngestionDefinitionObjectReportTableConfigurationPtrInput `pulumi:"tableConfiguration"`
 }
 
@@ -75488,20 +75625,20 @@ func (o PipelineIngestionDefinitionObjectReportOutput) ToPipelineIngestionDefini
 	}).(PipelineIngestionDefinitionObjectReportPtrOutput)
 }
 
-func (o PipelineIngestionDefinitionObjectReportOutput) DestinationCatalog() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReport) *string { return v.DestinationCatalog }).(pulumi.StringPtrOutput)
+func (o PipelineIngestionDefinitionObjectReportOutput) DestinationCatalog() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReport) string { return v.DestinationCatalog }).(pulumi.StringOutput)
 }
 
-func (o PipelineIngestionDefinitionObjectReportOutput) DestinationSchema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReport) *string { return v.DestinationSchema }).(pulumi.StringPtrOutput)
+func (o PipelineIngestionDefinitionObjectReportOutput) DestinationSchema() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReport) string { return v.DestinationSchema }).(pulumi.StringOutput)
 }
 
 func (o PipelineIngestionDefinitionObjectReportOutput) DestinationTable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReport) *string { return v.DestinationTable }).(pulumi.StringPtrOutput)
 }
 
-func (o PipelineIngestionDefinitionObjectReportOutput) SourceUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReport) *string { return v.SourceUrl }).(pulumi.StringPtrOutput)
+func (o PipelineIngestionDefinitionObjectReportOutput) SourceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReport) string { return v.SourceUrl }).(pulumi.StringOutput)
 }
 
 func (o PipelineIngestionDefinitionObjectReportOutput) TableConfiguration() PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput {
@@ -75539,7 +75676,7 @@ func (o PipelineIngestionDefinitionObjectReportPtrOutput) DestinationCatalog() p
 		if v == nil {
 			return nil
 		}
-		return v.DestinationCatalog
+		return &v.DestinationCatalog
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -75548,7 +75685,7 @@ func (o PipelineIngestionDefinitionObjectReportPtrOutput) DestinationSchema() pu
 		if v == nil {
 			return nil
 		}
-		return v.DestinationSchema
+		return &v.DestinationSchema
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -75566,7 +75703,7 @@ func (o PipelineIngestionDefinitionObjectReportPtrOutput) SourceUrl() pulumi.Str
 		if v == nil {
 			return nil
 		}
-		return v.SourceUrl
+		return &v.SourceUrl
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -75580,6 +75717,8 @@ func (o PipelineIngestionDefinitionObjectReportPtrOutput) TableConfiguration() P
 }
 
 type PipelineIngestionDefinitionObjectReportTableConfiguration struct {
+	ExcludeColumns                 []string `pulumi:"excludeColumns"`
+	IncludeColumns                 []string `pulumi:"includeColumns"`
 	PrimaryKeys                    []string `pulumi:"primaryKeys"`
 	SalesforceIncludeFormulaFields *bool    `pulumi:"salesforceIncludeFormulaFields"`
 	ScdType                        *string  `pulumi:"scdType"`
@@ -75598,6 +75737,8 @@ type PipelineIngestionDefinitionObjectReportTableConfigurationInput interface {
 }
 
 type PipelineIngestionDefinitionObjectReportTableConfigurationArgs struct {
+	ExcludeColumns                 pulumi.StringArrayInput `pulumi:"excludeColumns"`
+	IncludeColumns                 pulumi.StringArrayInput `pulumi:"includeColumns"`
 	PrimaryKeys                    pulumi.StringArrayInput `pulumi:"primaryKeys"`
 	SalesforceIncludeFormulaFields pulumi.BoolPtrInput     `pulumi:"salesforceIncludeFormulaFields"`
 	ScdType                        pulumi.StringPtrInput   `pulumi:"scdType"`
@@ -75681,6 +75822,14 @@ func (o PipelineIngestionDefinitionObjectReportTableConfigurationOutput) ToPipel
 	}).(PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput)
 }
 
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationOutput) ExcludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReportTableConfiguration) []string { return v.ExcludeColumns }).(pulumi.StringArrayOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationOutput) IncludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReportTableConfiguration) []string { return v.IncludeColumns }).(pulumi.StringArrayOutput)
+}
+
 func (o PipelineIngestionDefinitionObjectReportTableConfigurationOutput) PrimaryKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReportTableConfiguration) []string { return v.PrimaryKeys }).(pulumi.StringArrayOutput)
 }
@@ -75723,6 +75872,24 @@ func (o PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput) Elem
 	}).(PipelineIngestionDefinitionObjectReportTableConfigurationOutput)
 }
 
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput) ExcludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectReportTableConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeColumns
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput) IncludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectReportTableConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeColumns
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput) PrimaryKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectReportTableConfiguration) []string {
 		if v == nil {
@@ -75760,10 +75927,10 @@ func (o PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput) Sequ
 }
 
 type PipelineIngestionDefinitionObjectSchema struct {
-	DestinationCatalog *string                                                    `pulumi:"destinationCatalog"`
-	DestinationSchema  *string                                                    `pulumi:"destinationSchema"`
+	DestinationCatalog string                                                     `pulumi:"destinationCatalog"`
+	DestinationSchema  string                                                     `pulumi:"destinationSchema"`
 	SourceCatalog      *string                                                    `pulumi:"sourceCatalog"`
-	SourceSchema       *string                                                    `pulumi:"sourceSchema"`
+	SourceSchema       string                                                     `pulumi:"sourceSchema"`
 	TableConfiguration *PipelineIngestionDefinitionObjectSchemaTableConfiguration `pulumi:"tableConfiguration"`
 }
 
@@ -75779,10 +75946,10 @@ type PipelineIngestionDefinitionObjectSchemaInput interface {
 }
 
 type PipelineIngestionDefinitionObjectSchemaArgs struct {
-	DestinationCatalog pulumi.StringPtrInput                                             `pulumi:"destinationCatalog"`
-	DestinationSchema  pulumi.StringPtrInput                                             `pulumi:"destinationSchema"`
+	DestinationCatalog pulumi.StringInput                                                `pulumi:"destinationCatalog"`
+	DestinationSchema  pulumi.StringInput                                                `pulumi:"destinationSchema"`
 	SourceCatalog      pulumi.StringPtrInput                                             `pulumi:"sourceCatalog"`
-	SourceSchema       pulumi.StringPtrInput                                             `pulumi:"sourceSchema"`
+	SourceSchema       pulumi.StringInput                                                `pulumi:"sourceSchema"`
 	TableConfiguration PipelineIngestionDefinitionObjectSchemaTableConfigurationPtrInput `pulumi:"tableConfiguration"`
 }
 
@@ -75863,20 +76030,20 @@ func (o PipelineIngestionDefinitionObjectSchemaOutput) ToPipelineIngestionDefini
 	}).(PipelineIngestionDefinitionObjectSchemaPtrOutput)
 }
 
-func (o PipelineIngestionDefinitionObjectSchemaOutput) DestinationCatalog() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineIngestionDefinitionObjectSchema) *string { return v.DestinationCatalog }).(pulumi.StringPtrOutput)
+func (o PipelineIngestionDefinitionObjectSchemaOutput) DestinationCatalog() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectSchema) string { return v.DestinationCatalog }).(pulumi.StringOutput)
 }
 
-func (o PipelineIngestionDefinitionObjectSchemaOutput) DestinationSchema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineIngestionDefinitionObjectSchema) *string { return v.DestinationSchema }).(pulumi.StringPtrOutput)
+func (o PipelineIngestionDefinitionObjectSchemaOutput) DestinationSchema() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectSchema) string { return v.DestinationSchema }).(pulumi.StringOutput)
 }
 
 func (o PipelineIngestionDefinitionObjectSchemaOutput) SourceCatalog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineIngestionDefinitionObjectSchema) *string { return v.SourceCatalog }).(pulumi.StringPtrOutput)
 }
 
-func (o PipelineIngestionDefinitionObjectSchemaOutput) SourceSchema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineIngestionDefinitionObjectSchema) *string { return v.SourceSchema }).(pulumi.StringPtrOutput)
+func (o PipelineIngestionDefinitionObjectSchemaOutput) SourceSchema() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectSchema) string { return v.SourceSchema }).(pulumi.StringOutput)
 }
 
 func (o PipelineIngestionDefinitionObjectSchemaOutput) TableConfiguration() PipelineIngestionDefinitionObjectSchemaTableConfigurationPtrOutput {
@@ -75914,7 +76081,7 @@ func (o PipelineIngestionDefinitionObjectSchemaPtrOutput) DestinationCatalog() p
 		if v == nil {
 			return nil
 		}
-		return v.DestinationCatalog
+		return &v.DestinationCatalog
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -75923,7 +76090,7 @@ func (o PipelineIngestionDefinitionObjectSchemaPtrOutput) DestinationSchema() pu
 		if v == nil {
 			return nil
 		}
-		return v.DestinationSchema
+		return &v.DestinationSchema
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -75941,7 +76108,7 @@ func (o PipelineIngestionDefinitionObjectSchemaPtrOutput) SourceSchema() pulumi.
 		if v == nil {
 			return nil
 		}
-		return v.SourceSchema
+		return &v.SourceSchema
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -75955,6 +76122,8 @@ func (o PipelineIngestionDefinitionObjectSchemaPtrOutput) TableConfiguration() P
 }
 
 type PipelineIngestionDefinitionObjectSchemaTableConfiguration struct {
+	ExcludeColumns                 []string `pulumi:"excludeColumns"`
+	IncludeColumns                 []string `pulumi:"includeColumns"`
 	PrimaryKeys                    []string `pulumi:"primaryKeys"`
 	SalesforceIncludeFormulaFields *bool    `pulumi:"salesforceIncludeFormulaFields"`
 	ScdType                        *string  `pulumi:"scdType"`
@@ -75973,6 +76142,8 @@ type PipelineIngestionDefinitionObjectSchemaTableConfigurationInput interface {
 }
 
 type PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs struct {
+	ExcludeColumns                 pulumi.StringArrayInput `pulumi:"excludeColumns"`
+	IncludeColumns                 pulumi.StringArrayInput `pulumi:"includeColumns"`
 	PrimaryKeys                    pulumi.StringArrayInput `pulumi:"primaryKeys"`
 	SalesforceIncludeFormulaFields pulumi.BoolPtrInput     `pulumi:"salesforceIncludeFormulaFields"`
 	ScdType                        pulumi.StringPtrInput   `pulumi:"scdType"`
@@ -76056,6 +76227,14 @@ func (o PipelineIngestionDefinitionObjectSchemaTableConfigurationOutput) ToPipel
 	}).(PipelineIngestionDefinitionObjectSchemaTableConfigurationPtrOutput)
 }
 
+func (o PipelineIngestionDefinitionObjectSchemaTableConfigurationOutput) ExcludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectSchemaTableConfiguration) []string { return v.ExcludeColumns }).(pulumi.StringArrayOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectSchemaTableConfigurationOutput) IncludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectSchemaTableConfiguration) []string { return v.IncludeColumns }).(pulumi.StringArrayOutput)
+}
+
 func (o PipelineIngestionDefinitionObjectSchemaTableConfigurationOutput) PrimaryKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PipelineIngestionDefinitionObjectSchemaTableConfiguration) []string { return v.PrimaryKeys }).(pulumi.StringArrayOutput)
 }
@@ -76098,6 +76277,24 @@ func (o PipelineIngestionDefinitionObjectSchemaTableConfigurationPtrOutput) Elem
 	}).(PipelineIngestionDefinitionObjectSchemaTableConfigurationOutput)
 }
 
+func (o PipelineIngestionDefinitionObjectSchemaTableConfigurationPtrOutput) ExcludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectSchemaTableConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeColumns
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectSchemaTableConfigurationPtrOutput) IncludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectSchemaTableConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeColumns
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o PipelineIngestionDefinitionObjectSchemaTableConfigurationPtrOutput) PrimaryKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectSchemaTableConfiguration) []string {
 		if v == nil {
@@ -76135,12 +76332,12 @@ func (o PipelineIngestionDefinitionObjectSchemaTableConfigurationPtrOutput) Sequ
 }
 
 type PipelineIngestionDefinitionObjectTable struct {
-	DestinationCatalog *string                                                   `pulumi:"destinationCatalog"`
-	DestinationSchema  *string                                                   `pulumi:"destinationSchema"`
+	DestinationCatalog string                                                    `pulumi:"destinationCatalog"`
+	DestinationSchema  string                                                    `pulumi:"destinationSchema"`
 	DestinationTable   *string                                                   `pulumi:"destinationTable"`
 	SourceCatalog      *string                                                   `pulumi:"sourceCatalog"`
 	SourceSchema       *string                                                   `pulumi:"sourceSchema"`
-	SourceTable        *string                                                   `pulumi:"sourceTable"`
+	SourceTable        string                                                    `pulumi:"sourceTable"`
 	TableConfiguration *PipelineIngestionDefinitionObjectTableTableConfiguration `pulumi:"tableConfiguration"`
 }
 
@@ -76156,12 +76353,12 @@ type PipelineIngestionDefinitionObjectTableInput interface {
 }
 
 type PipelineIngestionDefinitionObjectTableArgs struct {
-	DestinationCatalog pulumi.StringPtrInput                                            `pulumi:"destinationCatalog"`
-	DestinationSchema  pulumi.StringPtrInput                                            `pulumi:"destinationSchema"`
+	DestinationCatalog pulumi.StringInput                                               `pulumi:"destinationCatalog"`
+	DestinationSchema  pulumi.StringInput                                               `pulumi:"destinationSchema"`
 	DestinationTable   pulumi.StringPtrInput                                            `pulumi:"destinationTable"`
 	SourceCatalog      pulumi.StringPtrInput                                            `pulumi:"sourceCatalog"`
 	SourceSchema       pulumi.StringPtrInput                                            `pulumi:"sourceSchema"`
-	SourceTable        pulumi.StringPtrInput                                            `pulumi:"sourceTable"`
+	SourceTable        pulumi.StringInput                                               `pulumi:"sourceTable"`
 	TableConfiguration PipelineIngestionDefinitionObjectTableTableConfigurationPtrInput `pulumi:"tableConfiguration"`
 }
 
@@ -76242,12 +76439,12 @@ func (o PipelineIngestionDefinitionObjectTableOutput) ToPipelineIngestionDefinit
 	}).(PipelineIngestionDefinitionObjectTablePtrOutput)
 }
 
-func (o PipelineIngestionDefinitionObjectTableOutput) DestinationCatalog() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineIngestionDefinitionObjectTable) *string { return v.DestinationCatalog }).(pulumi.StringPtrOutput)
+func (o PipelineIngestionDefinitionObjectTableOutput) DestinationCatalog() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectTable) string { return v.DestinationCatalog }).(pulumi.StringOutput)
 }
 
-func (o PipelineIngestionDefinitionObjectTableOutput) DestinationSchema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineIngestionDefinitionObjectTable) *string { return v.DestinationSchema }).(pulumi.StringPtrOutput)
+func (o PipelineIngestionDefinitionObjectTableOutput) DestinationSchema() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectTable) string { return v.DestinationSchema }).(pulumi.StringOutput)
 }
 
 func (o PipelineIngestionDefinitionObjectTableOutput) DestinationTable() pulumi.StringPtrOutput {
@@ -76262,8 +76459,8 @@ func (o PipelineIngestionDefinitionObjectTableOutput) SourceSchema() pulumi.Stri
 	return o.ApplyT(func(v PipelineIngestionDefinitionObjectTable) *string { return v.SourceSchema }).(pulumi.StringPtrOutput)
 }
 
-func (o PipelineIngestionDefinitionObjectTableOutput) SourceTable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineIngestionDefinitionObjectTable) *string { return v.SourceTable }).(pulumi.StringPtrOutput)
+func (o PipelineIngestionDefinitionObjectTableOutput) SourceTable() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectTable) string { return v.SourceTable }).(pulumi.StringOutput)
 }
 
 func (o PipelineIngestionDefinitionObjectTableOutput) TableConfiguration() PipelineIngestionDefinitionObjectTableTableConfigurationPtrOutput {
@@ -76301,7 +76498,7 @@ func (o PipelineIngestionDefinitionObjectTablePtrOutput) DestinationCatalog() pu
 		if v == nil {
 			return nil
 		}
-		return v.DestinationCatalog
+		return &v.DestinationCatalog
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -76310,7 +76507,7 @@ func (o PipelineIngestionDefinitionObjectTablePtrOutput) DestinationSchema() pul
 		if v == nil {
 			return nil
 		}
-		return v.DestinationSchema
+		return &v.DestinationSchema
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -76346,7 +76543,7 @@ func (o PipelineIngestionDefinitionObjectTablePtrOutput) SourceTable() pulumi.St
 		if v == nil {
 			return nil
 		}
-		return v.SourceTable
+		return &v.SourceTable
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -76360,6 +76557,8 @@ func (o PipelineIngestionDefinitionObjectTablePtrOutput) TableConfiguration() Pi
 }
 
 type PipelineIngestionDefinitionObjectTableTableConfiguration struct {
+	ExcludeColumns                 []string `pulumi:"excludeColumns"`
+	IncludeColumns                 []string `pulumi:"includeColumns"`
 	PrimaryKeys                    []string `pulumi:"primaryKeys"`
 	SalesforceIncludeFormulaFields *bool    `pulumi:"salesforceIncludeFormulaFields"`
 	ScdType                        *string  `pulumi:"scdType"`
@@ -76378,6 +76577,8 @@ type PipelineIngestionDefinitionObjectTableTableConfigurationInput interface {
 }
 
 type PipelineIngestionDefinitionObjectTableTableConfigurationArgs struct {
+	ExcludeColumns                 pulumi.StringArrayInput `pulumi:"excludeColumns"`
+	IncludeColumns                 pulumi.StringArrayInput `pulumi:"includeColumns"`
 	PrimaryKeys                    pulumi.StringArrayInput `pulumi:"primaryKeys"`
 	SalesforceIncludeFormulaFields pulumi.BoolPtrInput     `pulumi:"salesforceIncludeFormulaFields"`
 	ScdType                        pulumi.StringPtrInput   `pulumi:"scdType"`
@@ -76461,6 +76662,14 @@ func (o PipelineIngestionDefinitionObjectTableTableConfigurationOutput) ToPipeli
 	}).(PipelineIngestionDefinitionObjectTableTableConfigurationPtrOutput)
 }
 
+func (o PipelineIngestionDefinitionObjectTableTableConfigurationOutput) ExcludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectTableTableConfiguration) []string { return v.ExcludeColumns }).(pulumi.StringArrayOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectTableTableConfigurationOutput) IncludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectTableTableConfiguration) []string { return v.IncludeColumns }).(pulumi.StringArrayOutput)
+}
+
 func (o PipelineIngestionDefinitionObjectTableTableConfigurationOutput) PrimaryKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PipelineIngestionDefinitionObjectTableTableConfiguration) []string { return v.PrimaryKeys }).(pulumi.StringArrayOutput)
 }
@@ -76503,6 +76712,24 @@ func (o PipelineIngestionDefinitionObjectTableTableConfigurationPtrOutput) Elem(
 	}).(PipelineIngestionDefinitionObjectTableTableConfigurationOutput)
 }
 
+func (o PipelineIngestionDefinitionObjectTableTableConfigurationPtrOutput) ExcludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectTableTableConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeColumns
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectTableTableConfigurationPtrOutput) IncludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectTableTableConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeColumns
+	}).(pulumi.StringArrayOutput)
+}
+
 func (o PipelineIngestionDefinitionObjectTableTableConfigurationPtrOutput) PrimaryKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectTableTableConfiguration) []string {
 		if v == nil {
@@ -76540,6 +76767,8 @@ func (o PipelineIngestionDefinitionObjectTableTableConfigurationPtrOutput) Seque
 }
 
 type PipelineIngestionDefinitionTableConfiguration struct {
+	ExcludeColumns                 []string `pulumi:"excludeColumns"`
+	IncludeColumns                 []string `pulumi:"includeColumns"`
 	PrimaryKeys                    []string `pulumi:"primaryKeys"`
 	SalesforceIncludeFormulaFields *bool    `pulumi:"salesforceIncludeFormulaFields"`
 	ScdType                        *string  `pulumi:"scdType"`
@@ -76558,6 +76787,8 @@ type PipelineIngestionDefinitionTableConfigurationInput interface {
 }
 
 type PipelineIngestionDefinitionTableConfigurationArgs struct {
+	ExcludeColumns                 pulumi.StringArrayInput `pulumi:"excludeColumns"`
+	IncludeColumns                 pulumi.StringArrayInput `pulumi:"includeColumns"`
 	PrimaryKeys                    pulumi.StringArrayInput `pulumi:"primaryKeys"`
 	SalesforceIncludeFormulaFields pulumi.BoolPtrInput     `pulumi:"salesforceIncludeFormulaFields"`
 	ScdType                        pulumi.StringPtrInput   `pulumi:"scdType"`
@@ -76641,6 +76872,14 @@ func (o PipelineIngestionDefinitionTableConfigurationOutput) ToPipelineIngestion
 	}).(PipelineIngestionDefinitionTableConfigurationPtrOutput)
 }
 
+func (o PipelineIngestionDefinitionTableConfigurationOutput) ExcludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionTableConfiguration) []string { return v.ExcludeColumns }).(pulumi.StringArrayOutput)
+}
+
+func (o PipelineIngestionDefinitionTableConfigurationOutput) IncludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionTableConfiguration) []string { return v.IncludeColumns }).(pulumi.StringArrayOutput)
+}
+
 func (o PipelineIngestionDefinitionTableConfigurationOutput) PrimaryKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PipelineIngestionDefinitionTableConfiguration) []string { return v.PrimaryKeys }).(pulumi.StringArrayOutput)
 }
@@ -76679,6 +76918,24 @@ func (o PipelineIngestionDefinitionTableConfigurationPtrOutput) Elem() PipelineI
 		var ret PipelineIngestionDefinitionTableConfiguration
 		return ret
 	}).(PipelineIngestionDefinitionTableConfigurationOutput)
+}
+
+func (o PipelineIngestionDefinitionTableConfigurationPtrOutput) ExcludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionTableConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeColumns
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o PipelineIngestionDefinitionTableConfigurationPtrOutput) IncludeColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionTableConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeColumns
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o PipelineIngestionDefinitionTableConfigurationPtrOutput) PrimaryKeys() pulumi.StringArrayOutput {
@@ -82942,124 +83199,6 @@ func (o SqlEndpointChannelPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type SqlEndpointHealth struct {
-	Details       *string                         `pulumi:"details"`
-	FailureReason *SqlEndpointHealthFailureReason `pulumi:"failureReason"`
-	Message       *string                         `pulumi:"message"`
-	Status        *string                         `pulumi:"status"`
-	Summary       *string                         `pulumi:"summary"`
-}
-
-// SqlEndpointHealthInput is an input type that accepts SqlEndpointHealthArgs and SqlEndpointHealthOutput values.
-// You can construct a concrete instance of `SqlEndpointHealthInput` via:
-//
-//	SqlEndpointHealthArgs{...}
-type SqlEndpointHealthInput interface {
-	pulumi.Input
-
-	ToSqlEndpointHealthOutput() SqlEndpointHealthOutput
-	ToSqlEndpointHealthOutputWithContext(context.Context) SqlEndpointHealthOutput
-}
-
-type SqlEndpointHealthArgs struct {
-	Details       pulumi.StringPtrInput                  `pulumi:"details"`
-	FailureReason SqlEndpointHealthFailureReasonPtrInput `pulumi:"failureReason"`
-	Message       pulumi.StringPtrInput                  `pulumi:"message"`
-	Status        pulumi.StringPtrInput                  `pulumi:"status"`
-	Summary       pulumi.StringPtrInput                  `pulumi:"summary"`
-}
-
-func (SqlEndpointHealthArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlEndpointHealth)(nil)).Elem()
-}
-
-func (i SqlEndpointHealthArgs) ToSqlEndpointHealthOutput() SqlEndpointHealthOutput {
-	return i.ToSqlEndpointHealthOutputWithContext(context.Background())
-}
-
-func (i SqlEndpointHealthArgs) ToSqlEndpointHealthOutputWithContext(ctx context.Context) SqlEndpointHealthOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointHealthOutput)
-}
-
-// SqlEndpointHealthArrayInput is an input type that accepts SqlEndpointHealthArray and SqlEndpointHealthArrayOutput values.
-// You can construct a concrete instance of `SqlEndpointHealthArrayInput` via:
-//
-//	SqlEndpointHealthArray{ SqlEndpointHealthArgs{...} }
-type SqlEndpointHealthArrayInput interface {
-	pulumi.Input
-
-	ToSqlEndpointHealthArrayOutput() SqlEndpointHealthArrayOutput
-	ToSqlEndpointHealthArrayOutputWithContext(context.Context) SqlEndpointHealthArrayOutput
-}
-
-type SqlEndpointHealthArray []SqlEndpointHealthInput
-
-func (SqlEndpointHealthArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SqlEndpointHealth)(nil)).Elem()
-}
-
-func (i SqlEndpointHealthArray) ToSqlEndpointHealthArrayOutput() SqlEndpointHealthArrayOutput {
-	return i.ToSqlEndpointHealthArrayOutputWithContext(context.Background())
-}
-
-func (i SqlEndpointHealthArray) ToSqlEndpointHealthArrayOutputWithContext(ctx context.Context) SqlEndpointHealthArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointHealthArrayOutput)
-}
-
-type SqlEndpointHealthOutput struct{ *pulumi.OutputState }
-
-func (SqlEndpointHealthOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SqlEndpointHealth)(nil)).Elem()
-}
-
-func (o SqlEndpointHealthOutput) ToSqlEndpointHealthOutput() SqlEndpointHealthOutput {
-	return o
-}
-
-func (o SqlEndpointHealthOutput) ToSqlEndpointHealthOutputWithContext(ctx context.Context) SqlEndpointHealthOutput {
-	return o
-}
-
-func (o SqlEndpointHealthOutput) Details() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlEndpointHealth) *string { return v.Details }).(pulumi.StringPtrOutput)
-}
-
-func (o SqlEndpointHealthOutput) FailureReason() SqlEndpointHealthFailureReasonPtrOutput {
-	return o.ApplyT(func(v SqlEndpointHealth) *SqlEndpointHealthFailureReason { return v.FailureReason }).(SqlEndpointHealthFailureReasonPtrOutput)
-}
-
-func (o SqlEndpointHealthOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlEndpointHealth) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-func (o SqlEndpointHealthOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlEndpointHealth) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-func (o SqlEndpointHealthOutput) Summary() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlEndpointHealth) *string { return v.Summary }).(pulumi.StringPtrOutput)
-}
-
-type SqlEndpointHealthArrayOutput struct{ *pulumi.OutputState }
-
-func (SqlEndpointHealthArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SqlEndpointHealth)(nil)).Elem()
-}
-
-func (o SqlEndpointHealthArrayOutput) ToSqlEndpointHealthArrayOutput() SqlEndpointHealthArrayOutput {
-	return o
-}
-
-func (o SqlEndpointHealthArrayOutput) ToSqlEndpointHealthArrayOutputWithContext(ctx context.Context) SqlEndpointHealthArrayOutput {
-	return o
-}
-
-func (o SqlEndpointHealthArrayOutput) Index(i pulumi.IntInput) SqlEndpointHealthOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlEndpointHealth {
-		return vs[0].([]SqlEndpointHealth)[vs[1].(int)]
-	}).(SqlEndpointHealthOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
@@ -83226,6 +83365,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyAccessSettingDisableLegacyAccessPtrInput)(nil)).Elem(), DisableLegacyAccessSettingDisableLegacyAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyDbfsSettingDisableLegacyDbfsInput)(nil)).Elem(), DisableLegacyDbfsSettingDisableLegacyDbfsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyDbfsSettingDisableLegacyDbfsPtrInput)(nil)).Elem(), DisableLegacyDbfsSettingDisableLegacyDbfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyFeaturesSettingDisableLegacyFeaturesInput)(nil)).Elem(), DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrInput)(nil)).Elem(), DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceInput)(nil)).Elem(), EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrInput)(nil)).Elem(), EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsInput)(nil)).Elem(), ExternalLocationEncryptionDetailsArgs{})
@@ -84053,8 +84194,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlAlertOptionsPtrInput)(nil)).Elem(), SqlAlertOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointChannelInput)(nil)).Elem(), SqlEndpointChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointChannelPtrInput)(nil)).Elem(), SqlEndpointChannelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointHealthInput)(nil)).Elem(), SqlEndpointHealthArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointHealthArrayInput)(nil)).Elem(), SqlEndpointHealthArray{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
 	pulumi.RegisterOutputType(AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput{})
@@ -84220,6 +84359,8 @@ func init() {
 	pulumi.RegisterOutputType(DisableLegacyAccessSettingDisableLegacyAccessPtrOutput{})
 	pulumi.RegisterOutputType(DisableLegacyDbfsSettingDisableLegacyDbfsOutput{})
 	pulumi.RegisterOutputType(DisableLegacyDbfsSettingDisableLegacyDbfsPtrOutput{})
+	pulumi.RegisterOutputType(DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput{})
+	pulumi.RegisterOutputType(DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceOutput{})
 	pulumi.RegisterOutputType(EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsOutput{})
@@ -85047,6 +85188,4 @@ func init() {
 	pulumi.RegisterOutputType(SqlAlertOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SqlEndpointChannelOutput{})
 	pulumi.RegisterOutputType(SqlEndpointChannelPtrOutput{})
-	pulumi.RegisterOutputType(SqlEndpointHealthOutput{})
-	pulumi.RegisterOutputType(SqlEndpointHealthArrayOutput{})
 }

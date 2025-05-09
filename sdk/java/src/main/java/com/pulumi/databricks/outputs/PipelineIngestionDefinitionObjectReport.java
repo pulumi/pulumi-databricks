@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectReportTableConfiguration;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,24 +13,24 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineIngestionDefinitionObjectReport {
-    private @Nullable String destinationCatalog;
-    private @Nullable String destinationSchema;
+    private String destinationCatalog;
+    private String destinationSchema;
     private @Nullable String destinationTable;
-    private @Nullable String sourceUrl;
+    private String sourceUrl;
     private @Nullable PipelineIngestionDefinitionObjectReportTableConfiguration tableConfiguration;
 
     private PipelineIngestionDefinitionObjectReport() {}
-    public Optional<String> destinationCatalog() {
-        return Optional.ofNullable(this.destinationCatalog);
+    public String destinationCatalog() {
+        return this.destinationCatalog;
     }
-    public Optional<String> destinationSchema() {
-        return Optional.ofNullable(this.destinationSchema);
+    public String destinationSchema() {
+        return this.destinationSchema;
     }
     public Optional<String> destinationTable() {
         return Optional.ofNullable(this.destinationTable);
     }
-    public Optional<String> sourceUrl() {
-        return Optional.ofNullable(this.sourceUrl);
+    public String sourceUrl() {
+        return this.sourceUrl;
     }
     public Optional<PipelineIngestionDefinitionObjectReportTableConfiguration> tableConfiguration() {
         return Optional.ofNullable(this.tableConfiguration);
@@ -44,10 +45,10 @@ public final class PipelineIngestionDefinitionObjectReport {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String destinationCatalog;
-        private @Nullable String destinationSchema;
+        private String destinationCatalog;
+        private String destinationSchema;
         private @Nullable String destinationTable;
-        private @Nullable String sourceUrl;
+        private String sourceUrl;
         private @Nullable PipelineIngestionDefinitionObjectReportTableConfiguration tableConfiguration;
         public Builder() {}
         public Builder(PipelineIngestionDefinitionObjectReport defaults) {
@@ -60,14 +61,18 @@ public final class PipelineIngestionDefinitionObjectReport {
         }
 
         @CustomType.Setter
-        public Builder destinationCatalog(@Nullable String destinationCatalog) {
-
+        public Builder destinationCatalog(String destinationCatalog) {
+            if (destinationCatalog == null) {
+              throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectReport", "destinationCatalog");
+            }
             this.destinationCatalog = destinationCatalog;
             return this;
         }
         @CustomType.Setter
-        public Builder destinationSchema(@Nullable String destinationSchema) {
-
+        public Builder destinationSchema(String destinationSchema) {
+            if (destinationSchema == null) {
+              throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectReport", "destinationSchema");
+            }
             this.destinationSchema = destinationSchema;
             return this;
         }
@@ -78,8 +83,10 @@ public final class PipelineIngestionDefinitionObjectReport {
             return this;
         }
         @CustomType.Setter
-        public Builder sourceUrl(@Nullable String sourceUrl) {
-
+        public Builder sourceUrl(String sourceUrl) {
+            if (sourceUrl == null) {
+              throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectReport", "sourceUrl");
+            }
             this.sourceUrl = sourceUrl;
             return this;
         }

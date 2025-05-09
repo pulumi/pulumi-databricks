@@ -975,6 +975,13 @@ export interface DisableLegacyDbfsSettingDisableLegacyDbfs {
     value: boolean;
 }
 
+export interface DisableLegacyFeaturesSettingDisableLegacyFeatures {
+    /**
+     * The boolean value for the setting.
+     */
+    value: boolean;
+}
+
 export interface EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace {
     isEnabled: boolean;
 }
@@ -9166,13 +9173,13 @@ export interface MwsNetworksGcpNetworkInfo {
     /**
      * The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
      *
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
      * The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
      *
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -9239,11 +9246,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -9600,7 +9607,7 @@ export interface PipelineDeployment {
     /**
      * The deployment method that manages the pipeline.
      */
-    kind?: string;
+    kind: string;
     /**
      * The path to the file containing metadata about the deployment.
      */
@@ -9638,11 +9645,11 @@ export interface PipelineGatewayDefinition {
      * Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
      */
     connectionId?: string;
-    connectionName?: string;
+    connectionName: string;
     /**
      * Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
      */
-    gatewayStorageCatalog?: string;
+    gatewayStorageCatalog: string;
     /**
      * Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
      */
@@ -9650,7 +9657,7 @@ export interface PipelineGatewayDefinition {
     /**
      * Required, Immutable. The name of the schema for the gateway pipelines's storage location.
      */
-    gatewayStorageSchema?: string;
+    gatewayStorageSchema: string;
 }
 
 export interface PipelineIngestionDefinition {
@@ -9670,14 +9677,16 @@ export interface PipelineIngestionDefinitionObject {
 }
 
 export interface PipelineIngestionDefinitionObjectReport {
-    destinationCatalog?: string;
-    destinationSchema?: string;
+    destinationCatalog: string;
+    destinationSchema: string;
     destinationTable?: string;
-    sourceUrl?: string;
+    sourceUrl: string;
     tableConfiguration?: outputs.PipelineIngestionDefinitionObjectReportTableConfiguration;
 }
 
 export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
+    excludeColumns?: string[];
+    includeColumns?: string[];
     primaryKeys?: string[];
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
@@ -9685,14 +9694,16 @@ export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
 }
 
 export interface PipelineIngestionDefinitionObjectSchema {
-    destinationCatalog?: string;
-    destinationSchema?: string;
+    destinationCatalog: string;
+    destinationSchema: string;
     sourceCatalog?: string;
-    sourceSchema?: string;
+    sourceSchema: string;
     tableConfiguration?: outputs.PipelineIngestionDefinitionObjectSchemaTableConfiguration;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
+    excludeColumns?: string[];
+    includeColumns?: string[];
     primaryKeys?: string[];
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
@@ -9700,16 +9711,18 @@ export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
 }
 
 export interface PipelineIngestionDefinitionObjectTable {
-    destinationCatalog?: string;
-    destinationSchema?: string;
+    destinationCatalog: string;
+    destinationSchema: string;
     destinationTable?: string;
     sourceCatalog?: string;
     sourceSchema?: string;
-    sourceTable?: string;
+    sourceTable: string;
     tableConfiguration?: outputs.PipelineIngestionDefinitionObjectTableTableConfiguration;
 }
 
 export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
+    excludeColumns?: string[];
+    includeColumns?: string[];
     primaryKeys?: string[];
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
@@ -9717,6 +9730,8 @@ export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
 }
 
 export interface PipelineIngestionDefinitionTableConfiguration {
+    excludeColumns?: string[];
+    includeColumns?: string[];
     primaryKeys?: string[];
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;

@@ -69,6 +69,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DisableLegacyAccessSetting{}
 	case "databricks:index/disableLegacyDbfsSetting:DisableLegacyDbfsSetting":
 		r = &DisableLegacyDbfsSetting{}
+	case "databricks:index/disableLegacyFeaturesSetting:DisableLegacyFeaturesSetting":
+		r = &DisableLegacyFeaturesSetting{}
 	case "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting":
 		r = &EnhancedSecurityMonitoringWorkspaceSetting{}
 	case "databricks:index/entitlements:Entitlements":
@@ -382,6 +384,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/disableLegacyDbfsSetting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/disableLegacyFeaturesSetting",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

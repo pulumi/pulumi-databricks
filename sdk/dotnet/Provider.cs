@@ -66,6 +66,9 @@ namespace Pulumi.Databricks
         [Output("databricksCliPath")]
         public Output<string?> DatabricksCliPath { get; private set; } = null!;
 
+        [Output("databricksIdTokenFilepath")]
+        public Output<string?> DatabricksIdTokenFilepath { get; private set; } = null!;
+
         [Output("googleCredentials")]
         public Output<string?> GoogleCredentials { get; private set; } = null!;
 
@@ -77,6 +80,9 @@ namespace Pulumi.Databricks
 
         [Output("metadataServiceUrl")]
         public Output<string?> MetadataServiceUrl { get; private set; } = null!;
+
+        [Output("oidcTokenEnv")]
+        public Output<string?> OidcTokenEnv { get; private set; } = null!;
 
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -208,6 +214,9 @@ namespace Pulumi.Databricks
         [Input("databricksCliPath")]
         public Input<string>? DatabricksCliPath { get; set; }
 
+        [Input("databricksIdTokenFilepath")]
+        public Input<string>? DatabricksIdTokenFilepath { get; set; }
+
         [Input("debugHeaders", json: true)]
         public Input<bool>? DebugHeaders { get; set; }
 
@@ -246,6 +255,9 @@ namespace Pulumi.Databricks
                 _metadataServiceUrl = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("oidcTokenEnv")]
+        public Input<string>? OidcTokenEnv { get; set; }
 
         [Input("password")]
         private Input<string>? _password;

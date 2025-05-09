@@ -151,6 +151,13 @@ namespace Pulumi.Databricks
             set => _databricksCliPath.Set(value);
         }
 
+        private static readonly __Value<string?> _databricksIdTokenFilepath = new __Value<string?>(() => __config.Get("databricksIdTokenFilepath"));
+        public static string? DatabricksIdTokenFilepath
+        {
+            get => _databricksIdTokenFilepath.Get();
+            set => _databricksIdTokenFilepath.Set(value);
+        }
+
         private static readonly __Value<bool?> _debugHeaders = new __Value<bool?>(() => __config.GetBoolean("debugHeaders"));
         public static bool? DebugHeaders
         {
@@ -198,6 +205,13 @@ namespace Pulumi.Databricks
         {
             get => _metadataServiceUrl.Get();
             set => _metadataServiceUrl.Set(value);
+        }
+
+        private static readonly __Value<string?> _oidcTokenEnv = new __Value<string?>(() => __config.Get("oidcTokenEnv"));
+        public static string? OidcTokenEnv
+        {
+            get => _oidcTokenEnv.Get();
+            set => _oidcTokenEnv.Set(value);
         }
 
         private static readonly __Value<string?> _password = new __Value<string?>(() => __config.Get("password"));

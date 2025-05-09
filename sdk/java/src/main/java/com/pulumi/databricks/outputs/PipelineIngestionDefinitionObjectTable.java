@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableTableConfiguration;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,20 +13,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineIngestionDefinitionObjectTable {
-    private @Nullable String destinationCatalog;
-    private @Nullable String destinationSchema;
+    private String destinationCatalog;
+    private String destinationSchema;
     private @Nullable String destinationTable;
     private @Nullable String sourceCatalog;
     private @Nullable String sourceSchema;
-    private @Nullable String sourceTable;
+    private String sourceTable;
     private @Nullable PipelineIngestionDefinitionObjectTableTableConfiguration tableConfiguration;
 
     private PipelineIngestionDefinitionObjectTable() {}
-    public Optional<String> destinationCatalog() {
-        return Optional.ofNullable(this.destinationCatalog);
+    public String destinationCatalog() {
+        return this.destinationCatalog;
     }
-    public Optional<String> destinationSchema() {
-        return Optional.ofNullable(this.destinationSchema);
+    public String destinationSchema() {
+        return this.destinationSchema;
     }
     public Optional<String> destinationTable() {
         return Optional.ofNullable(this.destinationTable);
@@ -36,8 +37,8 @@ public final class PipelineIngestionDefinitionObjectTable {
     public Optional<String> sourceSchema() {
         return Optional.ofNullable(this.sourceSchema);
     }
-    public Optional<String> sourceTable() {
-        return Optional.ofNullable(this.sourceTable);
+    public String sourceTable() {
+        return this.sourceTable;
     }
     public Optional<PipelineIngestionDefinitionObjectTableTableConfiguration> tableConfiguration() {
         return Optional.ofNullable(this.tableConfiguration);
@@ -52,12 +53,12 @@ public final class PipelineIngestionDefinitionObjectTable {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String destinationCatalog;
-        private @Nullable String destinationSchema;
+        private String destinationCatalog;
+        private String destinationSchema;
         private @Nullable String destinationTable;
         private @Nullable String sourceCatalog;
         private @Nullable String sourceSchema;
-        private @Nullable String sourceTable;
+        private String sourceTable;
         private @Nullable PipelineIngestionDefinitionObjectTableTableConfiguration tableConfiguration;
         public Builder() {}
         public Builder(PipelineIngestionDefinitionObjectTable defaults) {
@@ -72,14 +73,18 @@ public final class PipelineIngestionDefinitionObjectTable {
         }
 
         @CustomType.Setter
-        public Builder destinationCatalog(@Nullable String destinationCatalog) {
-
+        public Builder destinationCatalog(String destinationCatalog) {
+            if (destinationCatalog == null) {
+              throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectTable", "destinationCatalog");
+            }
             this.destinationCatalog = destinationCatalog;
             return this;
         }
         @CustomType.Setter
-        public Builder destinationSchema(@Nullable String destinationSchema) {
-
+        public Builder destinationSchema(String destinationSchema) {
+            if (destinationSchema == null) {
+              throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectTable", "destinationSchema");
+            }
             this.destinationSchema = destinationSchema;
             return this;
         }
@@ -102,8 +107,10 @@ public final class PipelineIngestionDefinitionObjectTable {
             return this;
         }
         @CustomType.Setter
-        public Builder sourceTable(@Nullable String sourceTable) {
-
+        public Builder sourceTable(String sourceTable) {
+            if (sourceTable == null) {
+              throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectTable", "sourceTable");
+            }
             this.sourceTable = sourceTable;
             return this;
         }

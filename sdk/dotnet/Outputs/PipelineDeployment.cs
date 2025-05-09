@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// The deployment method that manages the pipeline.
         /// </summary>
-        public readonly string? Kind;
+        public readonly string Kind;
         /// <summary>
         /// The path to the file containing metadata about the deployment.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private PipelineDeployment(
-            string? kind,
+            string kind,
 
             string? metadataFilePath)
         {

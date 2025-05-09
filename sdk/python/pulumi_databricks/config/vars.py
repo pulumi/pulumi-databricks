@@ -90,6 +90,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('databricksCliPath')
 
     @property
+    def databricks_id_token_filepath(self) -> Optional[str]:
+        return __config__.get('databricksIdTokenFilepath')
+
+    @property
     def debug_headers(self) -> Optional[bool]:
         return __config__.get_bool('debugHeaders')
 
@@ -116,6 +120,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def metadata_service_url(self) -> Optional[str]:
         return __config__.get('metadataServiceUrl')
+
+    @property
+    def oidc_token_env(self) -> Optional[str]:
+        return __config__.get('oidcTokenEnv')
 
     @property
     def password(self) -> Optional[str]:

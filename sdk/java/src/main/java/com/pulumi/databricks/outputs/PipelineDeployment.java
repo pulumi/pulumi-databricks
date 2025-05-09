@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,7 +16,7 @@ public final class PipelineDeployment {
      * @return The deployment method that manages the pipeline.
      * 
      */
-    private @Nullable String kind;
+    private String kind;
     /**
      * @return The path to the file containing metadata about the deployment.
      * 
@@ -27,8 +28,8 @@ public final class PipelineDeployment {
      * @return The deployment method that manages the pipeline.
      * 
      */
-    public Optional<String> kind() {
-        return Optional.ofNullable(this.kind);
+    public String kind() {
+        return this.kind;
     }
     /**
      * @return The path to the file containing metadata about the deployment.
@@ -47,7 +48,7 @@ public final class PipelineDeployment {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String kind;
+        private String kind;
         private @Nullable String metadataFilePath;
         public Builder() {}
         public Builder(PipelineDeployment defaults) {
@@ -57,8 +58,10 @@ public final class PipelineDeployment {
         }
 
         @CustomType.Setter
-        public Builder kind(@Nullable String kind) {
-
+        public Builder kind(String kind) {
+            if (kind == null) {
+              throw new MissingRequiredPropertyException("PipelineDeployment", "kind");
+            }
             this.kind = kind;
             return this;
         }

@@ -63,6 +63,9 @@ public final class Config {
     public Optional<String> databricksCliPath() {
         return Codegen.stringProp("databricksCliPath").config(config).get();
     }
+    public Optional<String> databricksIdTokenFilepath() {
+        return Codegen.stringProp("databricksIdTokenFilepath").config(config).get();
+    }
     public Optional<Boolean> debugHeaders() {
         return Codegen.booleanProp("debugHeaders").config(config).get();
     }
@@ -83,6 +86,9 @@ public final class Config {
     }
     public Optional<String> metadataServiceUrl() {
         return Codegen.stringProp("metadataServiceUrl").config(config).get();
+    }
+    public Optional<String> oidcTokenEnv() {
+        return Codegen.stringProp("oidcTokenEnv").config(config).get();
     }
     public Optional<String> password() {
         return Codegen.stringProp("password").config(config).get();

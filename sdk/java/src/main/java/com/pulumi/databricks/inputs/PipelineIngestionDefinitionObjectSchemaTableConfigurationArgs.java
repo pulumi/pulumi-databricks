@@ -17,6 +17,20 @@ public final class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs
 
     public static final PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs Empty = new PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs();
 
+    @Import(name="excludeColumns")
+    private @Nullable Output<List<String>> excludeColumns;
+
+    public Optional<Output<List<String>>> excludeColumns() {
+        return Optional.ofNullable(this.excludeColumns);
+    }
+
+    @Import(name="includeColumns")
+    private @Nullable Output<List<String>> includeColumns;
+
+    public Optional<Output<List<String>>> includeColumns() {
+        return Optional.ofNullable(this.includeColumns);
+    }
+
     @Import(name="primaryKeys")
     private @Nullable Output<List<String>> primaryKeys;
 
@@ -48,6 +62,8 @@ public final class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs
     private PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs() {}
 
     private PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs(PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs $) {
+        this.excludeColumns = $.excludeColumns;
+        this.includeColumns = $.includeColumns;
         this.primaryKeys = $.primaryKeys;
         this.salesforceIncludeFormulaFields = $.salesforceIncludeFormulaFields;
         this.scdType = $.scdType;
@@ -70,6 +86,32 @@ public final class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs
 
         public Builder(PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs defaults) {
             $ = new PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder excludeColumns(@Nullable Output<List<String>> excludeColumns) {
+            $.excludeColumns = excludeColumns;
+            return this;
+        }
+
+        public Builder excludeColumns(List<String> excludeColumns) {
+            return excludeColumns(Output.of(excludeColumns));
+        }
+
+        public Builder excludeColumns(String... excludeColumns) {
+            return excludeColumns(List.of(excludeColumns));
+        }
+
+        public Builder includeColumns(@Nullable Output<List<String>> includeColumns) {
+            $.includeColumns = includeColumns;
+            return this;
+        }
+
+        public Builder includeColumns(List<String> includeColumns) {
+            return includeColumns(Output.of(includeColumns));
+        }
+
+        public Builder includeColumns(String... includeColumns) {
+            return includeColumns(List.of(includeColumns));
         }
 
         public Builder primaryKeys(@Nullable Output<List<String>> primaryKeys) {

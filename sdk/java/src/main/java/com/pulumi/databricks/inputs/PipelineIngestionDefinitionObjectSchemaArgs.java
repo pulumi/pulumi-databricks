@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,18 +17,18 @@ public final class PipelineIngestionDefinitionObjectSchemaArgs extends com.pulum
 
     public static final PipelineIngestionDefinitionObjectSchemaArgs Empty = new PipelineIngestionDefinitionObjectSchemaArgs();
 
-    @Import(name="destinationCatalog")
-    private @Nullable Output<String> destinationCatalog;
+    @Import(name="destinationCatalog", required=true)
+    private Output<String> destinationCatalog;
 
-    public Optional<Output<String>> destinationCatalog() {
-        return Optional.ofNullable(this.destinationCatalog);
+    public Output<String> destinationCatalog() {
+        return this.destinationCatalog;
     }
 
-    @Import(name="destinationSchema")
-    private @Nullable Output<String> destinationSchema;
+    @Import(name="destinationSchema", required=true)
+    private Output<String> destinationSchema;
 
-    public Optional<Output<String>> destinationSchema() {
-        return Optional.ofNullable(this.destinationSchema);
+    public Output<String> destinationSchema() {
+        return this.destinationSchema;
     }
 
     @Import(name="sourceCatalog")
@@ -37,11 +38,11 @@ public final class PipelineIngestionDefinitionObjectSchemaArgs extends com.pulum
         return Optional.ofNullable(this.sourceCatalog);
     }
 
-    @Import(name="sourceSchema")
-    private @Nullable Output<String> sourceSchema;
+    @Import(name="sourceSchema", required=true)
+    private Output<String> sourceSchema;
 
-    public Optional<Output<String>> sourceSchema() {
-        return Optional.ofNullable(this.sourceSchema);
+    public Output<String> sourceSchema() {
+        return this.sourceSchema;
     }
 
     @Import(name="tableConfiguration")
@@ -79,7 +80,7 @@ public final class PipelineIngestionDefinitionObjectSchemaArgs extends com.pulum
             $ = new PipelineIngestionDefinitionObjectSchemaArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder destinationCatalog(@Nullable Output<String> destinationCatalog) {
+        public Builder destinationCatalog(Output<String> destinationCatalog) {
             $.destinationCatalog = destinationCatalog;
             return this;
         }
@@ -88,7 +89,7 @@ public final class PipelineIngestionDefinitionObjectSchemaArgs extends com.pulum
             return destinationCatalog(Output.of(destinationCatalog));
         }
 
-        public Builder destinationSchema(@Nullable Output<String> destinationSchema) {
+        public Builder destinationSchema(Output<String> destinationSchema) {
             $.destinationSchema = destinationSchema;
             return this;
         }
@@ -106,7 +107,7 @@ public final class PipelineIngestionDefinitionObjectSchemaArgs extends com.pulum
             return sourceCatalog(Output.of(sourceCatalog));
         }
 
-        public Builder sourceSchema(@Nullable Output<String> sourceSchema) {
+        public Builder sourceSchema(Output<String> sourceSchema) {
             $.sourceSchema = sourceSchema;
             return this;
         }
@@ -125,6 +126,15 @@ public final class PipelineIngestionDefinitionObjectSchemaArgs extends com.pulum
         }
 
         public PipelineIngestionDefinitionObjectSchemaArgs build() {
+            if ($.destinationCatalog == null) {
+                throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectSchemaArgs", "destinationCatalog");
+            }
+            if ($.destinationSchema == null) {
+                throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectSchemaArgs", "destinationSchema");
+            }
+            if ($.sourceSchema == null) {
+                throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectSchemaArgs", "sourceSchema");
+            }
             return $;
         }
     }

@@ -12,17 +12,17 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineIngestionDefinitionObjectSchemaGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("destinationCatalog")]
-        public Input<string>? DestinationCatalog { get; set; }
+        [Input("destinationCatalog", required: true)]
+        public Input<string> DestinationCatalog { get; set; } = null!;
 
-        [Input("destinationSchema")]
-        public Input<string>? DestinationSchema { get; set; }
+        [Input("destinationSchema", required: true)]
+        public Input<string> DestinationSchema { get; set; } = null!;
 
         [Input("sourceCatalog")]
         public Input<string>? SourceCatalog { get; set; }
 
-        [Input("sourceSchema")]
-        public Input<string>? SourceSchema { get; set; }
+        [Input("sourceSchema", required: true)]
+        public Input<string> SourceSchema { get; set; } = null!;
 
         [Input("tableConfiguration")]
         public Input<Inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationGetArgs>? TableConfiguration { get; set; }

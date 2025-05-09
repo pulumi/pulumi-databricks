@@ -13,21 +13,21 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineIngestionDefinitionObjectReport
     {
-        public readonly string? DestinationCatalog;
-        public readonly string? DestinationSchema;
+        public readonly string DestinationCatalog;
+        public readonly string DestinationSchema;
         public readonly string? DestinationTable;
-        public readonly string? SourceUrl;
+        public readonly string SourceUrl;
         public readonly Outputs.PipelineIngestionDefinitionObjectReportTableConfiguration? TableConfiguration;
 
         [OutputConstructor]
         private PipelineIngestionDefinitionObjectReport(
-            string? destinationCatalog,
+            string destinationCatalog,
 
-            string? destinationSchema,
+            string destinationSchema,
 
             string? destinationTable,
 
-            string? sourceUrl,
+            string sourceUrl,
 
             Outputs.PipelineIngestionDefinitionObjectReportTableConfiguration? tableConfiguration)
         {

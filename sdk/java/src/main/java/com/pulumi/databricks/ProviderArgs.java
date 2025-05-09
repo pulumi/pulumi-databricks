@@ -136,6 +136,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.databricksCliPath);
     }
 
+    @Import(name="databricksIdTokenFilepath")
+    private @Nullable Output<String> databricksIdTokenFilepath;
+
+    public Optional<Output<String>> databricksIdTokenFilepath() {
+        return Optional.ofNullable(this.databricksIdTokenFilepath);
+    }
+
     @Import(name="debugHeaders", json=true)
     private @Nullable Output<Boolean> debugHeaders;
 
@@ -183,6 +190,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> metadataServiceUrl() {
         return Optional.ofNullable(this.metadataServiceUrl);
+    }
+
+    @Import(name="oidcTokenEnv")
+    private @Nullable Output<String> oidcTokenEnv;
+
+    public Optional<Output<String>> oidcTokenEnv() {
+        return Optional.ofNullable(this.oidcTokenEnv);
     }
 
     @Import(name="password")
@@ -268,6 +282,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.clusterId = $.clusterId;
         this.configFile = $.configFile;
         this.databricksCliPath = $.databricksCliPath;
+        this.databricksIdTokenFilepath = $.databricksIdTokenFilepath;
         this.debugHeaders = $.debugHeaders;
         this.debugTruncateBytes = $.debugTruncateBytes;
         this.googleCredentials = $.googleCredentials;
@@ -275,6 +290,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.host = $.host;
         this.httpTimeoutSeconds = $.httpTimeoutSeconds;
         this.metadataServiceUrl = $.metadataServiceUrl;
+        this.oidcTokenEnv = $.oidcTokenEnv;
         this.password = $.password;
         this.profile = $.profile;
         this.rateLimit = $.rateLimit;
@@ -457,6 +473,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return databricksCliPath(Output.of(databricksCliPath));
         }
 
+        public Builder databricksIdTokenFilepath(@Nullable Output<String> databricksIdTokenFilepath) {
+            $.databricksIdTokenFilepath = databricksIdTokenFilepath;
+            return this;
+        }
+
+        public Builder databricksIdTokenFilepath(String databricksIdTokenFilepath) {
+            return databricksIdTokenFilepath(Output.of(databricksIdTokenFilepath));
+        }
+
         public Builder debugHeaders(@Nullable Output<Boolean> debugHeaders) {
             $.debugHeaders = debugHeaders;
             return this;
@@ -518,6 +543,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder metadataServiceUrl(String metadataServiceUrl) {
             return metadataServiceUrl(Output.of(metadataServiceUrl));
+        }
+
+        public Builder oidcTokenEnv(@Nullable Output<String> oidcTokenEnv) {
+            $.oidcTokenEnv = oidcTokenEnv;
+            return this;
+        }
+
+        public Builder oidcTokenEnv(String oidcTokenEnv) {
+            return oidcTokenEnv(Output.of(oidcTokenEnv));
         }
 
         public Builder password(@Nullable Output<String> password) {

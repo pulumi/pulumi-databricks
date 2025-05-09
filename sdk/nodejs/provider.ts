@@ -41,10 +41,12 @@ export class Provider extends pulumi.ProviderResource {
     public readonly clusterId!: pulumi.Output<string | undefined>;
     public readonly configFile!: pulumi.Output<string | undefined>;
     public readonly databricksCliPath!: pulumi.Output<string | undefined>;
+    public readonly databricksIdTokenFilepath!: pulumi.Output<string | undefined>;
     public readonly googleCredentials!: pulumi.Output<string | undefined>;
     public readonly googleServiceAccount!: pulumi.Output<string | undefined>;
     public readonly host!: pulumi.Output<string | undefined>;
     public readonly metadataServiceUrl!: pulumi.Output<string | undefined>;
+    public readonly oidcTokenEnv!: pulumi.Output<string | undefined>;
     public readonly password!: pulumi.Output<string | undefined>;
     public readonly profile!: pulumi.Output<string | undefined>;
     public readonly serverlessComputeId!: pulumi.Output<string | undefined>;
@@ -80,6 +82,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["configFile"] = args ? args.configFile : undefined;
             resourceInputs["databricksCliPath"] = args ? args.databricksCliPath : undefined;
+            resourceInputs["databricksIdTokenFilepath"] = args ? args.databricksIdTokenFilepath : undefined;
             resourceInputs["debugHeaders"] = pulumi.output(args ? args.debugHeaders : undefined).apply(JSON.stringify);
             resourceInputs["debugTruncateBytes"] = pulumi.output(args ? args.debugTruncateBytes : undefined).apply(JSON.stringify);
             resourceInputs["googleCredentials"] = args?.googleCredentials ? pulumi.secret(args.googleCredentials) : undefined;
@@ -87,6 +90,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["host"] = args ? args.host : undefined;
             resourceInputs["httpTimeoutSeconds"] = pulumi.output(args ? args.httpTimeoutSeconds : undefined).apply(JSON.stringify);
             resourceInputs["metadataServiceUrl"] = args?.metadataServiceUrl ? pulumi.secret(args.metadataServiceUrl) : undefined;
+            resourceInputs["oidcTokenEnv"] = args ? args.oidcTokenEnv : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["profile"] = args ? args.profile : undefined;
             resourceInputs["rateLimit"] = pulumi.output(args ? args.rateLimit : undefined).apply(JSON.stringify);
@@ -134,6 +138,7 @@ export interface ProviderArgs {
     clusterId?: pulumi.Input<string>;
     configFile?: pulumi.Input<string>;
     databricksCliPath?: pulumi.Input<string>;
+    databricksIdTokenFilepath?: pulumi.Input<string>;
     debugHeaders?: pulumi.Input<boolean>;
     debugTruncateBytes?: pulumi.Input<number>;
     googleCredentials?: pulumi.Input<string>;
@@ -141,6 +146,7 @@ export interface ProviderArgs {
     host?: pulumi.Input<string>;
     httpTimeoutSeconds?: pulumi.Input<number>;
     metadataServiceUrl?: pulumi.Input<string>;
+    oidcTokenEnv?: pulumi.Input<string>;
     password?: pulumi.Input<string>;
     profile?: pulumi.Input<string>;
     rateLimit?: pulumi.Input<number>;

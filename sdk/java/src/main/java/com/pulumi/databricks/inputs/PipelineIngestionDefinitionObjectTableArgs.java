@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableTableConfigurationArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,18 +17,18 @@ public final class PipelineIngestionDefinitionObjectTableArgs extends com.pulumi
 
     public static final PipelineIngestionDefinitionObjectTableArgs Empty = new PipelineIngestionDefinitionObjectTableArgs();
 
-    @Import(name="destinationCatalog")
-    private @Nullable Output<String> destinationCatalog;
+    @Import(name="destinationCatalog", required=true)
+    private Output<String> destinationCatalog;
 
-    public Optional<Output<String>> destinationCatalog() {
-        return Optional.ofNullable(this.destinationCatalog);
+    public Output<String> destinationCatalog() {
+        return this.destinationCatalog;
     }
 
-    @Import(name="destinationSchema")
-    private @Nullable Output<String> destinationSchema;
+    @Import(name="destinationSchema", required=true)
+    private Output<String> destinationSchema;
 
-    public Optional<Output<String>> destinationSchema() {
-        return Optional.ofNullable(this.destinationSchema);
+    public Output<String> destinationSchema() {
+        return this.destinationSchema;
     }
 
     @Import(name="destinationTable")
@@ -51,11 +52,11 @@ public final class PipelineIngestionDefinitionObjectTableArgs extends com.pulumi
         return Optional.ofNullable(this.sourceSchema);
     }
 
-    @Import(name="sourceTable")
-    private @Nullable Output<String> sourceTable;
+    @Import(name="sourceTable", required=true)
+    private Output<String> sourceTable;
 
-    public Optional<Output<String>> sourceTable() {
-        return Optional.ofNullable(this.sourceTable);
+    public Output<String> sourceTable() {
+        return this.sourceTable;
     }
 
     @Import(name="tableConfiguration")
@@ -95,7 +96,7 @@ public final class PipelineIngestionDefinitionObjectTableArgs extends com.pulumi
             $ = new PipelineIngestionDefinitionObjectTableArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder destinationCatalog(@Nullable Output<String> destinationCatalog) {
+        public Builder destinationCatalog(Output<String> destinationCatalog) {
             $.destinationCatalog = destinationCatalog;
             return this;
         }
@@ -104,7 +105,7 @@ public final class PipelineIngestionDefinitionObjectTableArgs extends com.pulumi
             return destinationCatalog(Output.of(destinationCatalog));
         }
 
-        public Builder destinationSchema(@Nullable Output<String> destinationSchema) {
+        public Builder destinationSchema(Output<String> destinationSchema) {
             $.destinationSchema = destinationSchema;
             return this;
         }
@@ -140,7 +141,7 @@ public final class PipelineIngestionDefinitionObjectTableArgs extends com.pulumi
             return sourceSchema(Output.of(sourceSchema));
         }
 
-        public Builder sourceTable(@Nullable Output<String> sourceTable) {
+        public Builder sourceTable(Output<String> sourceTable) {
             $.sourceTable = sourceTable;
             return this;
         }
@@ -159,6 +160,15 @@ public final class PipelineIngestionDefinitionObjectTableArgs extends com.pulumi
         }
 
         public PipelineIngestionDefinitionObjectTableArgs build() {
+            if ($.destinationCatalog == null) {
+                throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectTableArgs", "destinationCatalog");
+            }
+            if ($.destinationSchema == null) {
+                throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectTableArgs", "destinationSchema");
+            }
+            if ($.sourceTable == null) {
+                throw new MissingRequiredPropertyException("PipelineIngestionDefinitionObjectTableArgs", "sourceTable");
+            }
             return $;
         }
     }
