@@ -473,6 +473,15 @@
                     }
                 }
             },
+            "databricks_disable_legacy_features_setting": {
+                "current": "databricks:index/disableLegacyFeaturesSetting:DisableLegacyFeaturesSetting",
+                "majorVersion": 1,
+                "fields": {
+                    "disable_legacy_features": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "databricks_enhanced_security_monitoring_workspace_setting": {
                 "current": "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting",
                 "majorVersion": 1,
@@ -2619,6 +2628,12 @@
                                                             "maxItemsOne": true,
                                                             "elem": {
                                                                 "fields": {
+                                                                    "exclude_columns": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "include_columns": {
+                                                                        "maxItemsOne": false
+                                                                    },
                                                                     "primary_keys": {
                                                                         "maxItemsOne": false
                                                                     },
@@ -2639,6 +2654,12 @@
                                                             "maxItemsOne": true,
                                                             "elem": {
                                                                 "fields": {
+                                                                    "exclude_columns": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "include_columns": {
+                                                                        "maxItemsOne": false
+                                                                    },
                                                                     "primary_keys": {
                                                                         "maxItemsOne": false
                                                                     },
@@ -2659,6 +2680,12 @@
                                                             "maxItemsOne": true,
                                                             "elem": {
                                                                 "fields": {
+                                                                    "exclude_columns": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "include_columns": {
+                                                                        "maxItemsOne": false
+                                                                    },
                                                                     "primary_keys": {
                                                                         "maxItemsOne": false
                                                                     },
@@ -2678,6 +2705,12 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "exclude_columns": {
+                                                "maxItemsOne": false
+                                            },
+                                            "include_columns": {
+                                                "maxItemsOne": false
+                                            },
                                             "primary_keys": {
                                                 "maxItemsOne": false
                                             },
@@ -5796,6 +5829,7 @@
             "databricks:index/directory:Directory": 0,
             "databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting": 0,
             "databricks:index/disableLegacyDbfsSetting:DisableLegacyDbfsSetting": 0,
+            "databricks:index/disableLegacyFeaturesSetting:DisableLegacyFeaturesSetting": 0,
             "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting": 0,
             "databricks:index/entitlements:Entitlements": 0,
             "databricks:index/externalLocation:ExternalLocation": 0,

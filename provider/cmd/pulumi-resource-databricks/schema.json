@@ -104,6 +104,9 @@
             "databricksCliPath": {
                 "type": "string"
             },
+            "databricksIdTokenFilepath": {
+                "type": "string"
+            },
             "debugHeaders": {
                 "type": "boolean"
             },
@@ -126,6 +129,9 @@
             "metadataServiceUrl": {
                 "type": "string",
                 "secret": true
+            },
+            "oidcTokenEnv": {
+                "type": "string"
             },
             "password": {
                 "type": "string",
@@ -1669,6 +1675,18 @@
             ]
         },
         "databricks:index/DisableLegacyDbfsSettingDisableLegacyDbfs:DisableLegacyDbfsSettingDisableLegacyDbfs": {
+            "properties": {
+                "value": {
+                    "type": "boolean",
+                    "description": "The boolean value for the setting.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ]
+        },
+        "databricks:index/DisableLegacyFeaturesSettingDisableLegacyFeatures:DisableLegacyFeaturesSettingDisableLegacyFeatures": {
             "properties": {
                 "value": {
                     "type": "boolean",
@@ -8621,12 +8639,12 @@
                 "podIpRangeName": {
                     "type": "string",
                     "description": "The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.\n",
-                    "deprecationMessage": "gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc"
+                    "deprecationMessage": "gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc"
                 },
                 "serviceIpRangeName": {
                     "type": "string",
                     "description": "The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.\n",
-                    "deprecationMessage": "gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-vpc"
+                    "deprecationMessage": "gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc"
                 },
                 "subnetId": {
                     "type": "string",
@@ -8764,11 +8782,11 @@
             "properties": {
                 "gkeClusterPodIpRange": {
                     "type": "string",
-                    "deprecationMessage": "gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
+                    "deprecationMessage": "gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
                 },
                 "gkeClusterServiceIpRange": {
                     "type": "string",
-                    "deprecationMessage": "gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
+                    "deprecationMessage": "gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
                 },
                 "subnetCidr": {
                     "type": "string",
@@ -9551,7 +9569,10 @@
                     "description": "The path to the file containing metadata about the deployment.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "kind"
+            ]
         },
         "databricks:index/PipelineEventLog:PipelineEventLog": {
             "properties": {
@@ -9626,7 +9647,12 @@
                     "willReplaceOnChanges": true
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "connectionName",
+                "gatewayStorageCatalog",
+                "gatewayStorageSchema"
+            ]
         },
         "databricks:index/PipelineIngestionDefinition:PipelineIngestionDefinition": {
             "properties": {
@@ -9683,10 +9709,27 @@
                     "$ref": "#/types/databricks:index/PipelineIngestionDefinitionObjectReportTableConfiguration:PipelineIngestionDefinitionObjectReportTableConfiguration"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "destinationCatalog",
+                "destinationSchema",
+                "sourceUrl"
+            ]
         },
         "databricks:index/PipelineIngestionDefinitionObjectReportTableConfiguration:PipelineIngestionDefinitionObjectReportTableConfiguration": {
             "properties": {
+                "excludeColumns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "includeColumns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "primaryKeys": {
                     "type": "array",
                     "items": {
@@ -9726,10 +9769,27 @@
                     "$ref": "#/types/databricks:index/PipelineIngestionDefinitionObjectSchemaTableConfiguration:PipelineIngestionDefinitionObjectSchemaTableConfiguration"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "destinationCatalog",
+                "destinationSchema",
+                "sourceSchema"
+            ]
         },
         "databricks:index/PipelineIngestionDefinitionObjectSchemaTableConfiguration:PipelineIngestionDefinitionObjectSchemaTableConfiguration": {
             "properties": {
+                "excludeColumns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "includeColumns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "primaryKeys": {
                     "type": "array",
                     "items": {
@@ -9775,10 +9835,27 @@
                     "$ref": "#/types/databricks:index/PipelineIngestionDefinitionObjectTableTableConfiguration:PipelineIngestionDefinitionObjectTableTableConfiguration"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "destinationCatalog",
+                "destinationSchema",
+                "sourceTable"
+            ]
         },
         "databricks:index/PipelineIngestionDefinitionObjectTableTableConfiguration:PipelineIngestionDefinitionObjectTableTableConfiguration": {
             "properties": {
+                "excludeColumns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "includeColumns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "primaryKeys": {
                     "type": "array",
                     "items": {
@@ -9802,6 +9879,18 @@
         },
         "databricks:index/PipelineIngestionDefinitionTableConfiguration:PipelineIngestionDefinitionTableConfiguration": {
             "properties": {
+                "excludeColumns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "includeColumns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "primaryKeys": {
                     "type": "array",
                     "items": {
@@ -21369,6 +21458,9 @@
             "databricksCliPath": {
                 "type": "string"
             },
+            "databricksIdTokenFilepath": {
+                "type": "string"
+            },
             "debugHeaders": {
                 "type": "boolean"
             },
@@ -21391,6 +21483,9 @@
             "metadataServiceUrl": {
                 "type": "string",
                 "secret": true
+            },
+            "oidcTokenEnv": {
+                "type": "string"
             },
             "password": {
                 "type": "string",
@@ -21476,6 +21571,9 @@
             "databricksCliPath": {
                 "type": "string"
             },
+            "databricksIdTokenFilepath": {
+                "type": "string"
+            },
             "debugHeaders": {
                 "type": "boolean"
             },
@@ -21498,6 +21596,9 @@
             "metadataServiceUrl": {
                 "type": "string",
                 "secret": true
+            },
+            "oidcTokenEnv": {
+                "type": "string"
             },
             "password": {
                 "type": "string",
@@ -24654,6 +24755,57 @@
                 "properties": {
                     "disableLegacyDbfs": {
                         "$ref": "#/types/databricks:index/DisableLegacyDbfsSettingDisableLegacyDbfs:DisableLegacyDbfsSettingDisableLegacyDbfs",
+                        "description": "block with following attributes:\n"
+                    },
+                    "etag": {
+                        "type": "string"
+                    },
+                    "settingName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "databricks:index/disableLegacyFeaturesSetting:DisableLegacyFeaturesSetting": {
+            "description": "\u003e This resource can only be used with an account-level provider!\n\n\u003e This setting is currently in private preview, and only available for enrolled customers.\n\nThe `databricks.DisableLegacyFeaturesSetting` resource allows you to disable legacy features on newly created workspaces.\n\nWhen this setting is on, the following applies to new workspaces:\n- Disables the use of DBFS root and mounts.\n- Hive Metastore will not be provisioned.\n- Disables the use of ‘No-isolation clusters’.\n- Disables Databricks Runtime versions prior to 13.3LTS\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst _this = new databricks.DisableLegacyFeaturesSetting(\"this\", {disableLegacyFeatures: {\n    value: true,\n}});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nthis = databricks.DisableLegacyFeaturesSetting(\"this\", disable_legacy_features={\n    \"value\": True,\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = new Databricks.DisableLegacyFeaturesSetting(\"this\", new()\n    {\n        DisableLegacyFeatures = new Databricks.Inputs.DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs\n        {\n            Value = true,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewDisableLegacyFeaturesSetting(ctx, \"this\", \u0026databricks.DisableLegacyFeaturesSettingArgs{\n\t\t\tDisableLegacyFeatures: \u0026databricks.DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs{\n\t\t\t\tValue: pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DisableLegacyFeaturesSetting;\nimport com.pulumi.databricks.DisableLegacyFeaturesSettingArgs;\nimport com.pulumi.databricks.inputs.DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var this_ = new DisableLegacyFeaturesSetting(\"this\", DisableLegacyFeaturesSettingArgs.builder()\n            .disableLegacyFeatures(DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs.builder()\n                .value(true)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  this:\n    type: databricks:DisableLegacyFeaturesSetting\n    properties:\n      disableLegacyFeatures:\n        value: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by predefined name `global`:\n\nbash\n\n```sh\n$ pulumi import databricks:index/disableLegacyFeaturesSetting:DisableLegacyFeaturesSetting this global\n```\n\n",
+            "properties": {
+                "disableLegacyFeatures": {
+                    "$ref": "#/types/databricks:index/DisableLegacyFeaturesSettingDisableLegacyFeatures:DisableLegacyFeaturesSettingDisableLegacyFeatures",
+                    "description": "block with following attributes:\n"
+                },
+                "etag": {
+                    "type": "string"
+                },
+                "settingName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "disableLegacyFeatures",
+                "etag",
+                "settingName"
+            ],
+            "inputProperties": {
+                "disableLegacyFeatures": {
+                    "$ref": "#/types/databricks:index/DisableLegacyFeaturesSettingDisableLegacyFeatures:DisableLegacyFeaturesSettingDisableLegacyFeatures",
+                    "description": "block with following attributes:\n"
+                },
+                "etag": {
+                    "type": "string"
+                },
+                "settingName": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "disableLegacyFeatures"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DisableLegacyFeaturesSetting resources.\n",
+                "properties": {
+                    "disableLegacyFeatures": {
+                        "$ref": "#/types/databricks:index/DisableLegacyFeaturesSettingDisableLegacyFeatures:DisableLegacyFeaturesSettingDisableLegacyFeatures",
                         "description": "block with following attributes:\n"
                     },
                     "etag": {
@@ -29802,7 +29954,7 @@
                 "gkeConfig": {
                     "$ref": "#/types/databricks:index/MwsWorkspacesGkeConfig:MwsWorkspacesGkeConfig",
                     "description": "A block that specifies GKE configuration for the Databricks workspace:\n",
-                    "deprecationMessage": "gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
+                    "deprecationMessage": "gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace"
                 },
                 "isNoPublicIpEnabled": {
                     "type": "boolean"
@@ -29933,7 +30085,7 @@
                 "gkeConfig": {
                     "$ref": "#/types/databricks:index/MwsWorkspacesGkeConfig:MwsWorkspacesGkeConfig",
                     "description": "A block that specifies GKE configuration for the Databricks workspace:\n",
-                    "deprecationMessage": "gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace",
+                    "deprecationMessage": "gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace",
                     "willReplaceOnChanges": true
                 },
                 "isNoPublicIpEnabled": {
@@ -30070,7 +30222,7 @@
                     "gkeConfig": {
                         "$ref": "#/types/databricks:index/MwsWorkspacesGkeConfig:MwsWorkspacesGkeConfig",
                         "description": "A block that specifies GKE configuration for the Databricks workspace:\n",
-                        "deprecationMessage": "gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.76.0/docs/guides/gcp-workspace#creating-a-databricks-workspace",
+                        "deprecationMessage": "gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace",
                         "willReplaceOnChanges": true
                     },
                     "isNoPublicIpEnabled": {
