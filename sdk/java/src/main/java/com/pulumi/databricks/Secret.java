@@ -16,7 +16,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * With this resource you can insert a secret under the provided scope with the given name. If a secret already exists with the same name, this command overwrites the existing secret’s value. The server encrypts the secret using the secret scope’s encryption settings before storing it. You must have WRITE or MANAGE permission on the secret scope. The secret key must consist of alphanumeric characters, dashes, underscores, and periods, and cannot exceed 128 characters. The maximum allowed secret value size is 128 KB. The maximum number of secrets in a given scope is 1000. You can read a secret value only from within a command on a cluster (for example, through a notebook); there is no API to read a secret value outside of a cluster. The permission applied is based on who is invoking the command and you must have at least READ permission. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
+ * With this resource you can insert a secret under the provided scope with the given name. If a secret already exists with the same name, this command overwrites the existing secret&#39;s value. The server encrypts the secret using the secret scope&#39;s encryption settings before storing it. You must have WRITE or MANAGE permission on the secret scope. The secret key must consist of alphanumeric characters, dashes, underscores, and periods, and cannot exceed 128 characters. The maximum allowed secret value size is 128 KB. The maximum number of secrets in a given scope is 1000. You can read a secret value only from within a command on a cluster (for example, through a notebook); there is no API to read a secret value outside of a cluster. The permission applied is based on who is invoking the command and you must have at least READ permission. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
  * 
  * &gt; This resource can only be used with a workspace-level provider!
  * 
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * 
  * * End to end workspace management guide.
  * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
- * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
  * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
  * * databricks.SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
  * * databricks.SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
@@ -84,10 +84,22 @@ import javax.annotation.Nullable;
  * 
  * The resource secret can be imported using `scopeName|||secretKey` combination. **This may change in future versions.**
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_secret.app
+ * 
+ *   id = &#34;&lt;scopeName&gt;|||&lt;secretKey&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh
- * $ pulumi import databricks:index/secret:Secret app `scopeName|||secretKey`
+ * $ pulumi import databricks:index/secret:Secret app &#34;&lt;scopeName&gt;|||&lt;secretKey&gt;&#34;
  * ```
  * 
  */

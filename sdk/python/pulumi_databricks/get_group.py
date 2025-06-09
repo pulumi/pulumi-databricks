@@ -27,7 +27,7 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, acl_principal_id=None, allow_cluster_create=None, allow_instance_pool_create=None, child_groups=None, databricks_sql_access=None, display_name=None, external_id=None, groups=None, id=None, instance_profiles=None, members=None, recursive=None, service_principals=None, users=None, workspace_access=None):
+    def __init__(__self__, acl_principal_id=None, allow_cluster_create=None, allow_instance_pool_create=None, child_groups=None, databricks_sql_access=None, display_name=None, external_id=None, groups=None, id=None, instance_profiles=None, members=None, recursive=None, service_principals=None, users=None, workspace_access=None, workspace_consume=None):
         if acl_principal_id and not isinstance(acl_principal_id, str):
             raise TypeError("Expected argument 'acl_principal_id' to be a str")
         pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -73,6 +73,9 @@ class GetGroupResult:
         if workspace_access and not isinstance(workspace_access, bool):
             raise TypeError("Expected argument 'workspace_access' to be a bool")
         pulumi.set(__self__, "workspace_access", workspace_access)
+        if workspace_consume and not isinstance(workspace_consume, bool):
+            raise TypeError("Expected argument 'workspace_consume' to be a bool")
+        pulumi.set(__self__, "workspace_consume", workspace_consume)
 
     @property
     @pulumi.getter(name="aclPrincipalId")
@@ -180,6 +183,11 @@ class GetGroupResult:
     def workspace_access(self) -> Optional[builtins.bool]:
         return pulumi.get(self, "workspace_access")
 
+    @property
+    @pulumi.getter(name="workspaceConsume")
+    def workspace_consume(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "workspace_consume")
+
 
 class AwaitableGetGroupResult(GetGroupResult):
     # pylint: disable=using-constant-test
@@ -201,7 +209,8 @@ class AwaitableGetGroupResult(GetGroupResult):
             recursive=self.recursive,
             service_principals=self.service_principals,
             users=self.users,
-            workspace_access=self.workspace_access)
+            workspace_access=self.workspace_access,
+            workspace_consume=self.workspace_consume)
 
 
 def get_group(acl_principal_id: Optional[builtins.str] = None,
@@ -218,6 +227,7 @@ def get_group(acl_principal_id: Optional[builtins.str] = None,
               service_principals: Optional[Sequence[builtins.str]] = None,
               users: Optional[Sequence[builtins.str]] = None,
               workspace_access: Optional[builtins.bool] = None,
+              workspace_consume: Optional[builtins.bool] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
     Retrieves information about Group members, entitlements and instance profiles.
@@ -278,6 +288,7 @@ def get_group(acl_principal_id: Optional[builtins.str] = None,
     __args__['servicePrincipals'] = service_principals
     __args__['users'] = users
     __args__['workspaceAccess'] = workspace_access
+    __args__['workspaceConsume'] = workspace_consume
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult).value
 
@@ -296,7 +307,8 @@ def get_group(acl_principal_id: Optional[builtins.str] = None,
         recursive=pulumi.get(__ret__, 'recursive'),
         service_principals=pulumi.get(__ret__, 'service_principals'),
         users=pulumi.get(__ret__, 'users'),
-        workspace_access=pulumi.get(__ret__, 'workspace_access'))
+        workspace_access=pulumi.get(__ret__, 'workspace_access'),
+        workspace_consume=pulumi.get(__ret__, 'workspace_consume'))
 def get_group_output(acl_principal_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                      allow_cluster_create: Optional[pulumi.Input[Optional[builtins.bool]]] = None,
                      allow_instance_pool_create: Optional[pulumi.Input[Optional[builtins.bool]]] = None,
@@ -311,6 +323,7 @@ def get_group_output(acl_principal_id: Optional[pulumi.Input[Optional[builtins.s
                      service_principals: Optional[pulumi.Input[Optional[Sequence[builtins.str]]]] = None,
                      users: Optional[pulumi.Input[Optional[Sequence[builtins.str]]]] = None,
                      workspace_access: Optional[pulumi.Input[Optional[builtins.bool]]] = None,
+                     workspace_consume: Optional[pulumi.Input[Optional[builtins.bool]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupResult]:
     """
     Retrieves information about Group members, entitlements and instance profiles.
@@ -371,6 +384,7 @@ def get_group_output(acl_principal_id: Optional[pulumi.Input[Optional[builtins.s
     __args__['servicePrincipals'] = service_principals
     __args__['users'] = users
     __args__['workspaceAccess'] = workspace_access
+    __args__['workspaceConsume'] = workspace_consume
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult)
     return __ret__.apply(lambda __response__: GetGroupResult(
@@ -388,4 +402,5 @@ def get_group_output(acl_principal_id: Optional[pulumi.Input[Optional[builtins.s
         recursive=pulumi.get(__response__, 'recursive'),
         service_principals=pulumi.get(__response__, 'service_principals'),
         users=pulumi.get(__response__, 'users'),
-        workspace_access=pulumi.get(__response__, 'workspace_access')))
+        workspace_access=pulumi.get(__response__, 'workspace_access'),
+        workspace_consume=pulumi.get(__response__, 'workspace_consume')))

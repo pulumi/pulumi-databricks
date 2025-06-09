@@ -12,8 +12,8 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineLibraryNotebookGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("path")]
-        public Input<string>? Path { get; set; }
+        [Input("path", required: true)]
+        public Input<string> Path { get; set; } = null!;
 
         public PipelineLibraryNotebookGetArgs()
         {

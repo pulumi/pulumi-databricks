@@ -77,6 +77,18 @@ import (
 //
 // You can import a `databricks_sql_endpoint` resource with ID like the following:
 //
+// hcl
+//
+// import {
+//
+//	to = databricks_sql_endpoint.this
+//
+//	id = "<endpoint-id>"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+//
 // bash
 //
 // ```sh

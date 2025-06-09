@@ -215,6 +215,13 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.workspaceAccess);
     }
 
+    @Import(name="workspaceConsume")
+    private @Nullable Boolean workspaceConsume;
+
+    public Optional<Boolean> workspaceConsume() {
+        return Optional.ofNullable(this.workspaceConsume);
+    }
+
     private GetGroupPlainArgs() {}
 
     private GetGroupPlainArgs(GetGroupPlainArgs $) {
@@ -232,6 +239,7 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
         this.servicePrincipals = $.servicePrincipals;
         this.users = $.users;
         this.workspaceAccess = $.workspaceAccess;
+        this.workspaceConsume = $.workspaceConsume;
     }
 
     public static Builder builder() {
@@ -455,6 +463,11 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder workspaceAccess(@Nullable Boolean workspaceAccess) {
             $.workspaceAccess = workspaceAccess;
+            return this;
+        }
+
+        public Builder workspaceConsume(@Nullable Boolean workspaceConsume) {
+            $.workspaceConsume = workspaceConsume;
             return this;
         }
 

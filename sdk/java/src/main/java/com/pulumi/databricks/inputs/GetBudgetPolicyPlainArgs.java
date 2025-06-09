@@ -17,29 +17,53 @@ public final class GetBudgetPolicyPlainArgs extends com.pulumi.resources.InvokeA
 
     public static final GetBudgetPolicyPlainArgs Empty = new GetBudgetPolicyPlainArgs();
 
+    /**
+     * (list of integer) - List of workspaces that this budget policy will be exclusively bound to.
+     * An empty binding implies that this budget policy is open to any workspace in the account
+     * 
+     */
     @Import(name="bindingWorkspaceIds")
     private @Nullable List<Integer> bindingWorkspaceIds;
 
+    /**
+     * @return (list of integer) - List of workspaces that this budget policy will be exclusively bound to.
+     * An empty binding implies that this budget policy is open to any workspace in the account
+     * 
+     */
     public Optional<List<Integer>> bindingWorkspaceIds() {
         return Optional.ofNullable(this.bindingWorkspaceIds);
     }
 
+    /**
+     * (list of CustomPolicyTag) - A list of tags defined by the customer. At most 20 entries are allowed per policy
+     * 
+     */
     @Import(name="customTags")
     private @Nullable List<GetBudgetPolicyCustomTag> customTags;
 
+    /**
+     * @return (list of CustomPolicyTag) - A list of tags defined by the customer. At most 20 entries are allowed per policy
+     * 
+     */
     public Optional<List<GetBudgetPolicyCustomTag>> customTags() {
         return Optional.ofNullable(this.customTags);
     }
 
     /**
-     * The name of the budget policy.
+     * (string) - The name of the policy.
+     * - Must be unique among active policies.
+     * - Can contain only characters from the ISO 8859-1 (latin1) set.
+     * - Can&#39;t start with reserved keywords such as `databricks:default-policy`
      * 
      */
     @Import(name="policyName")
     private @Nullable String policyName;
 
     /**
-     * @return The name of the budget policy.
+     * @return (string) - The name of the policy.
+     * - Must be unique among active policies.
+     * - Can contain only characters from the ISO 8859-1 (latin1) set.
+     * - Can&#39;t start with reserved keywords such as `databricks:default-policy`
      * 
      */
     public Optional<String> policyName() {
@@ -72,26 +96,55 @@ public final class GetBudgetPolicyPlainArgs extends com.pulumi.resources.InvokeA
             $ = new GetBudgetPolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param bindingWorkspaceIds (list of integer) - List of workspaces that this budget policy will be exclusively bound to.
+         * An empty binding implies that this budget policy is open to any workspace in the account
+         * 
+         * @return builder
+         * 
+         */
         public Builder bindingWorkspaceIds(@Nullable List<Integer> bindingWorkspaceIds) {
             $.bindingWorkspaceIds = bindingWorkspaceIds;
             return this;
         }
 
+        /**
+         * @param bindingWorkspaceIds (list of integer) - List of workspaces that this budget policy will be exclusively bound to.
+         * An empty binding implies that this budget policy is open to any workspace in the account
+         * 
+         * @return builder
+         * 
+         */
         public Builder bindingWorkspaceIds(Integer... bindingWorkspaceIds) {
             return bindingWorkspaceIds(List.of(bindingWorkspaceIds));
         }
 
+        /**
+         * @param customTags (list of CustomPolicyTag) - A list of tags defined by the customer. At most 20 entries are allowed per policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder customTags(@Nullable List<GetBudgetPolicyCustomTag> customTags) {
             $.customTags = customTags;
             return this;
         }
 
+        /**
+         * @param customTags (list of CustomPolicyTag) - A list of tags defined by the customer. At most 20 entries are allowed per policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder customTags(GetBudgetPolicyCustomTag... customTags) {
             return customTags(List.of(customTags));
         }
 
         /**
-         * @param policyName The name of the budget policy.
+         * @param policyName (string) - The name of the policy.
+         * - Must be unique among active policies.
+         * - Can contain only characters from the ISO 8859-1 (latin1) set.
+         * - Can&#39;t start with reserved keywords such as `databricks:default-policy`
          * 
          * @return builder
          * 

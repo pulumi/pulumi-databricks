@@ -100,10 +100,22 @@ import javax.annotation.Nullable;
  * 
  * This resource can be imported using alert ID:
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_sql_alert.this
+ * 
+ *   id = &#34;&lt;alert-id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh
- * $ pulumi import databricks:index/sqlAlert:SqlAlert this &lt;alert-id&gt;
+ * $ pulumi import databricks:index/sqlAlert:SqlAlert this &#34;&lt;alert-id&gt;&#34;
  * ```
  * 
  */

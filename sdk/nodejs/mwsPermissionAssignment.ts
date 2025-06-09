@@ -66,6 +66,18 @@ import * as utilities from "./utilities";
  *
  * The resource `databricks_mws_permission_assignment` can be imported using the workspace id and principal id
  *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_mws_permission_assignment.this
+ *
+ *   id = "workspace_id|principal_id"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ *
  * bash
  *
  * ```sh

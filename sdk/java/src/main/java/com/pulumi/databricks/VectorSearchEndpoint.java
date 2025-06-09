@@ -10,12 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.VectorSearchEndpointArgs;
 import com.pulumi.databricks.inputs.VectorSearchEndpointState;
-import com.pulumi.databricks.outputs.VectorSearchEndpointCustomTag;
 import com.pulumi.databricks.outputs.VectorSearchEndpointEndpointStatus;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -63,6 +61,18 @@ import javax.annotation.Nullable;
  * 
  * The resource can be imported using the name of the Mosaic AI Vector Search Endpoint
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_vector_search_endpoint.this
+ * 
+ *   id = &#34;&lt;endpoint-name&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh
@@ -72,6 +82,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/vectorSearchEndpoint:VectorSearchEndpoint")
 public class VectorSearchEndpoint extends com.pulumi.resources.CustomResource {
+    /**
+     * The Budget Policy ID set for this resource.
+     * 
+     */
+    @Export(name="budgetPolicyId", refs={String.class}, tree="[0]")
+    private Output<String> budgetPolicyId;
+
+    /**
+     * @return The Budget Policy ID set for this resource.
+     * 
+     */
+    public Output<String> budgetPolicyId() {
+        return this.budgetPolicyId;
+    }
     /**
      * Timestamp of endpoint creation (milliseconds).
      * 
@@ -100,17 +124,19 @@ public class VectorSearchEndpoint extends com.pulumi.resources.CustomResource {
     public Output<String> creator() {
         return this.creator;
     }
-    @Export(name="customTags", refs={List.class,VectorSearchEndpointCustomTag.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<VectorSearchEndpointCustomTag>> customTags;
-
-    public Output<Optional<List<VectorSearchEndpointCustomTag>>> customTags() {
-        return Codegen.optional(this.customTags);
-    }
+    /**
+     * The effective budget policy ID.
+     * 
+     */
     @Export(name="effectiveBudgetPolicyId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> effectiveBudgetPolicyId;
+    private Output<String> effectiveBudgetPolicyId;
 
-    public Output<Optional<String>> effectiveBudgetPolicyId() {
-        return Codegen.optional(this.effectiveBudgetPolicyId);
+    /**
+     * @return The effective budget policy ID.
+     * 
+     */
+    public Output<String> effectiveBudgetPolicyId() {
+        return this.effectiveBudgetPolicyId;
     }
     /**
      * Unique internal identifier of the endpoint (UUID).
@@ -141,14 +167,14 @@ public class VectorSearchEndpoint extends com.pulumi.resources.CustomResource {
         return this.endpointStatuses;
     }
     /**
-     * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+     * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
      * 
      */
     @Export(name="endpointType", refs={String.class}, tree="[0]")
     private Output<String> endpointType;
 
     /**
-     * @return Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+     * @return Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
      * 
      */
     public Output<String> endpointType() {
@@ -183,14 +209,14 @@ public class VectorSearchEndpoint extends com.pulumi.resources.CustomResource {
         return this.lastUpdatedUser;
     }
     /**
-     * Name of the Mosaic AI Vector Search Endpoint to create.
+     * Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the Mosaic AI Vector Search Endpoint to create.
+     * @return Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
      * 
      */
     public Output<String> name() {

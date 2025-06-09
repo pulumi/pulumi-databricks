@@ -118,7 +118,7 @@ import * as utilities from "./utilities";
  * * databricks.GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all databricks.Cluster and databricks_job.
  * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
  * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
- * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
  * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
  *
  * ## Import

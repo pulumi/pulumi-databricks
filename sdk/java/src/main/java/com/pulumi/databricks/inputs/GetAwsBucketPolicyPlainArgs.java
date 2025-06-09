@@ -31,14 +31,14 @@ public final class GetAwsBucketPolicyPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * AWS S3 Bucket name for which to generate the policy document.
+     * AWS S3 Bucket name for which to generate the policy document. The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
      * 
      */
     @Import(name="bucket", required=true)
     private String bucket;
 
     /**
-     * @return AWS S3 Bucket name for which to generate the policy document.
+     * @return AWS S3 Bucket name for which to generate the policy document. The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
      * 
      */
     public String bucket() {
@@ -134,7 +134,7 @@ public final class GetAwsBucketPolicyPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param bucket AWS S3 Bucket name for which to generate the policy document.
+         * @param bucket AWS S3 Bucket name for which to generate the policy document. The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
          * 
          * @return builder
          * 

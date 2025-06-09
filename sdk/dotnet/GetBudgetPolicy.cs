@@ -12,25 +12,25 @@ namespace Pulumi.Databricks
     public static class GetBudgetPolicy
     {
         /// <summary>
-        /// This data source can be used to get a single budget policy. 
+        /// This data source can be used to get a single budget policy.
         /// 
-        /// &gt; This data source can only be used with an account-level provider!
+        /// &gt; **Note** This data source can only be used with an account-level provider!
         /// </summary>
         public static Task<GetBudgetPolicyResult> InvokeAsync(GetBudgetPolicyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBudgetPolicyResult>("databricks:index/getBudgetPolicy:getBudgetPolicy", args ?? new GetBudgetPolicyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source can be used to get a single budget policy. 
+        /// This data source can be used to get a single budget policy.
         /// 
-        /// &gt; This data source can only be used with an account-level provider!
+        /// &gt; **Note** This data source can only be used with an account-level provider!
         /// </summary>
         public static Output<GetBudgetPolicyResult> Invoke(GetBudgetPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBudgetPolicyResult>("databricks:index/getBudgetPolicy:getBudgetPolicy", args ?? new GetBudgetPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source can be used to get a single budget policy. 
+        /// This data source can be used to get a single budget policy.
         /// 
-        /// &gt; This data source can only be used with an account-level provider!
+        /// &gt; **Note** This data source can only be used with an account-level provider!
         /// </summary>
         public static Output<GetBudgetPolicyResult> Invoke(GetBudgetPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetBudgetPolicyResult>("databricks:index/getBudgetPolicy:getBudgetPolicy", args ?? new GetBudgetPolicyInvokeArgs(), options.WithDefaults());
@@ -41,6 +41,11 @@ namespace Pulumi.Databricks
     {
         [Input("bindingWorkspaceIds")]
         private List<int>? _bindingWorkspaceIds;
+
+        /// <summary>
+        /// (list of integer) - List of workspaces that this budget policy will be exclusively bound to.
+        /// An empty binding implies that this budget policy is open to any workspace in the account
+        /// </summary>
         public List<int> BindingWorkspaceIds
         {
             get => _bindingWorkspaceIds ?? (_bindingWorkspaceIds = new List<int>());
@@ -49,6 +54,10 @@ namespace Pulumi.Databricks
 
         [Input("customTags")]
         private List<Inputs.GetBudgetPolicyCustomTagArgs>? _customTags;
+
+        /// <summary>
+        /// (list of CustomPolicyTag) - A list of tags defined by the customer. At most 20 entries are allowed per policy
+        /// </summary>
         public List<Inputs.GetBudgetPolicyCustomTagArgs> CustomTags
         {
             get => _customTags ?? (_customTags = new List<Inputs.GetBudgetPolicyCustomTagArgs>());
@@ -56,7 +65,10 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// The name of the budget policy.
+        /// (string) - The name of the policy.
+        /// - Must be unique among active policies.
+        /// - Can contain only characters from the ISO 8859-1 (latin1) set.
+        /// - Can't start with reserved keywords such as `databricks:default-policy`
         /// </summary>
         [Input("policyName")]
         public string? PolicyName { get; set; }
@@ -71,6 +83,11 @@ namespace Pulumi.Databricks
     {
         [Input("bindingWorkspaceIds")]
         private InputList<int>? _bindingWorkspaceIds;
+
+        /// <summary>
+        /// (list of integer) - List of workspaces that this budget policy will be exclusively bound to.
+        /// An empty binding implies that this budget policy is open to any workspace in the account
+        /// </summary>
         public InputList<int> BindingWorkspaceIds
         {
             get => _bindingWorkspaceIds ?? (_bindingWorkspaceIds = new InputList<int>());
@@ -79,6 +96,10 @@ namespace Pulumi.Databricks
 
         [Input("customTags")]
         private InputList<Inputs.GetBudgetPolicyCustomTagInputArgs>? _customTags;
+
+        /// <summary>
+        /// (list of CustomPolicyTag) - A list of tags defined by the customer. At most 20 entries are allowed per policy
+        /// </summary>
         public InputList<Inputs.GetBudgetPolicyCustomTagInputArgs> CustomTags
         {
             get => _customTags ?? (_customTags = new InputList<Inputs.GetBudgetPolicyCustomTagInputArgs>());
@@ -86,7 +107,10 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// The name of the budget policy.
+        /// (string) - The name of the policy.
+        /// - Must be unique among active policies.
+        /// - Can contain only characters from the ISO 8859-1 (latin1) set.
+        /// - Can't start with reserved keywords such as `databricks:default-policy`
         /// </summary>
         [Input("policyName")]
         public Input<string>? PolicyName { get; set; }
@@ -101,18 +125,28 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetBudgetPolicyResult
     {
+        /// <summary>
+        /// (list of integer) - List of workspaces that this budget policy will be exclusively bound to.
+        /// An empty binding implies that this budget policy is open to any workspace in the account
+        /// </summary>
         public readonly ImmutableArray<int> BindingWorkspaceIds;
+        /// <summary>
+        /// (list of CustomPolicyTag) - A list of tags defined by the customer. At most 20 entries are allowed per policy
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBudgetPolicyCustomTagResult> CustomTags;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The id of the budget policy.
+        /// (string) - The Id of the policy. This field is generated by Databricks and globally unique
         /// </summary>
         public readonly string PolicyId;
         /// <summary>
-        /// The name of the budget policy.
+        /// (string) - The name of the policy.
+        /// - Must be unique among active policies.
+        /// - Can contain only characters from the ISO 8859-1 (latin1) set.
+        /// - Can't start with reserved keywords such as `databricks:default-policy`
         /// </summary>
         public readonly string? PolicyName;
 

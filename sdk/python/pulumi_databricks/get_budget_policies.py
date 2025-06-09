@@ -64,7 +64,7 @@ def get_budget_policies(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
     """
     This data source can be used to fetch the list of budget policies.
 
-    > This data source can only be used with an account-level provider!
+    > **Note** This data source can only be used with an account-level provider!
 
     ## Example Usage
 
@@ -88,7 +88,7 @@ def get_budget_policies_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi
     """
     This data source can be used to fetch the list of budget policies.
 
-    > This data source can only be used with an account-level provider!
+    > **Note** This data source can only be used with an account-level provider!
 
     ## Example Usage
 

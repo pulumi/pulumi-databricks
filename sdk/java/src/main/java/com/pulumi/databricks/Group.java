@@ -193,7 +193,19 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * You can import a `databricks_group` resource with the name `my_group` like the following:
+ * You can import a `databricks_group` resource by its SCIM ID:
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_group.my_group
+ * 
+ *   id = &#34;&lt;group_id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  * 
  * bash
  * 
@@ -309,18 +321,32 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.url;
     }
     /**
-     * This is a field to allow the group to have access to Databricks Workspace.
+     * This is a field to allow the group to have access to a Databricks Workspace.
      * 
      */
     @Export(name="workspaceAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> workspaceAccess;
 
     /**
-     * @return This is a field to allow the group to have access to Databricks Workspace.
+     * @return This is a field to allow the group to have access to a Databricks Workspace.
      * 
      */
     public Output<Optional<Boolean>> workspaceAccess() {
         return Codegen.optional(this.workspaceAccess);
+    }
+    /**
+     * This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     * 
+     */
+    @Export(name="workspaceConsume", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> workspaceConsume;
+
+    /**
+     * @return This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     * 
+     */
+    public Output<Optional<Boolean>> workspaceConsume() {
+        return Codegen.optional(this.workspaceConsume);
     }
 
     /**

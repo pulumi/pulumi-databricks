@@ -12,12 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetExternalLocationExternalLocationInfoInputArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the s3 access point to use with the external location (AWS).
-        /// </summary>
-        [Input("accessPoint")]
-        public Input<string>? AccessPoint { get; set; }
-
         [Input("browseOnly")]
         public Input<bool>? BrowseOnly { get; set; }
 
@@ -51,6 +45,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("credentialName")]
         public Input<string>? CredentialName { get; set; }
 
+        [Input("enableFileEvents")]
+        public Input<bool>? EnableFileEvents { get; set; }
+
         /// <summary>
         /// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         /// </summary>
@@ -59,6 +56,9 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("fallback")]
         public Input<bool>? Fallback { get; set; }
+
+        [Input("fileEventQueue")]
+        public Input<Inputs.GetExternalLocationExternalLocationInfoFileEventQueueInputArgs>? FileEventQueue { get; set; }
 
         [Input("isolationMode")]
         public Input<string>? IsolationMode { get; set; }

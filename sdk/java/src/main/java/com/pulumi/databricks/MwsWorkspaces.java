@@ -28,6 +28,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource can only be used with an account-level provider!
  * 
+ * &gt; The `gke_config` argument is now deprecated and no longer supported. If you have already created a workspace using these fields, it is safe to remove them from your Pulumi template.
+ * 
  * &gt; On Azure you need to use azurerm_databricks_workspace resource to create Azure Databricks workspaces.
  * 
  * ## Example Usage
@@ -343,7 +345,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.MwsWorkspacesArgs;
  * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerArgs;
  * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerGcpArgs;
- * import com.pulumi.databricks.inputs.MwsWorkspacesGkeConfigArgs;
  * import com.pulumi.databricks.inputs.MwsWorkspacesTokenArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -387,10 +388,6 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .networkId(this_.networkId())
- *             .gkeConfig(MwsWorkspacesGkeConfigArgs.builder()
- *                 .connectivityType("PRIVATE_NODE_PUBLIC_MASTER")
- *                 .masterIpRange("10.3.0.0/28")
- *                 .build())
  *             .token(MwsWorkspacesTokenArgs.builder()
  *                 .build())
  *             .build());
@@ -408,8 +405,22 @@ import javax.annotation.Nullable;
  * 
  * This resource can be imported by Databricks account ID and workspace ID.
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_mws_workspaces.this
+ * 
+ *   id = &#34;&lt;account_id&gt;/&lt;workspace_id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
+ * bash
+ * 
  * ```sh
- * $ pulumi import databricks:index/mwsWorkspaces:MwsWorkspaces this &#39;&lt;account_id&gt;/&lt;workspace_id&gt;&#39;
+ * $ pulumi import databricks:index/mwsWorkspaces:MwsWorkspaces this &#34;&lt;account_id&gt;/&lt;workspace_id&gt;&#34;
  * ```
  * 
  * ~&gt; Not all fields of `databricks_mws_workspaces` can be updated without causing the workspace to be recreated.
@@ -598,20 +609,14 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return this.gcpWorkspaceSa;
     }
     /**
-     * A block that specifies GKE configuration for the Databricks workspace:
-     * 
      * @deprecated
-     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
     @Export(name="gkeConfig", refs={MwsWorkspacesGkeConfig.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesGkeConfig> gkeConfig;
 
-    /**
-     * @return A block that specifies GKE configuration for the Databricks workspace:
-     * 
-     */
     public Output<Optional<MwsWorkspacesGkeConfig>> gkeConfig() {
         return Codegen.optional(this.gkeConfig);
     }

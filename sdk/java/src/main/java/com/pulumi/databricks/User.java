@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; To assign account level users to workspace use databricks_mws_permission_assignment.
  * 
- * &gt; Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level users.  Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level users.
+ * &gt; Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access`, `workspace_consume` applicable only for workspace-level users.  Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level users.
  * 
  * To create users in the Databricks account, the provider must be configured with `host = &#34;https://accounts.cloud.databricks.com&#34;` on AWS deployments or `host = &#34;https://accounts.azuredatabricks.net&#34;` and authenticate using AAD tokens on Azure deployments.
  * 
@@ -236,12 +236,24 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The resource scim user can be imported using id:
+ * The resource scim user can be imported using its SCIM id:
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_user.this
+ * 
+ *   id = &#34;&lt;user-id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  * 
  * bash
  * 
  * ```sh
- * $ pulumi import databricks:index/user:User me &lt;user-id&gt;
+ * $ pulumi import databricks:index/user:User this &#34;&lt;user-id&gt;&#34;
  * ```
  * 
  */
@@ -304,14 +316,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowInstancePoolCreate);
     }
     /**
-     * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      * 
      */
     @Export(name="databricksSqlAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> databricksSqlAccess;
 
     /**
-     * @return This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * @return This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      * 
      */
     public Output<Optional<Boolean>> databricksSqlAccess() {
@@ -443,11 +455,33 @@ public class User extends com.pulumi.resources.CustomResource {
     public Output<String> userName() {
         return this.userName;
     }
+    /**
+     * This is a field to allow the user to have access to a Databricks Workspace.
+     * 
+     */
     @Export(name="workspaceAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> workspaceAccess;
 
+    /**
+     * @return This is a field to allow the user to have access to a Databricks Workspace.
+     * 
+     */
     public Output<Optional<Boolean>> workspaceAccess() {
         return Codegen.optional(this.workspaceAccess);
+    }
+    /**
+     * This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     * 
+     */
+    @Export(name="workspaceConsume", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> workspaceConsume;
+
+    /**
+     * @return This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     * 
+     */
+    public Output<Optional<Boolean>> workspaceConsume() {
+        return Codegen.optional(this.workspaceConsume);
     }
 
     /**

@@ -31,10 +31,22 @@ import * as utilities from "./utilities";
  *
  * The resource can be imported using the name of the Online Table:
  *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_online_table.this
+ *
+ *   id = "<endpoint-name>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ *
  * bash
  *
  * ```sh
- * $ pulumi import databricks:index/onlineTable:OnlineTable this <endpoint-name>
+ * $ pulumi import databricks:index/onlineTable:OnlineTable this "<endpoint-name>"
  * ```
  */
 export class OnlineTable extends pulumi.CustomResource {

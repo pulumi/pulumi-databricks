@@ -70,8 +70,20 @@ import (
 //
 // This resource can be imported by Databricks account ID and Network Connectivity Config ID.
 //
+// hcl
+//
+// import {
+//
+//	to = databricks_mws_ncc_private_endpoint_rule.this
+//
+//	id = "<network_connectivity_config_id>/<rule_id>"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+//
 // ```sh
-// $ pulumi import databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule rule <network_connectivity_config_id>/<rule_id>
+// $ pulumi import databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule this "<network_connectivity_config_id>/<rule_id>"
 // ```
 type MwsNccPrivateEndpointRule struct {
 	pulumi.CustomResourceState

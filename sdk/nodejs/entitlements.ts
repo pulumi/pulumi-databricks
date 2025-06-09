@@ -83,6 +83,18 @@ import * as utilities from "./utilities";
  *
  * * `spn/spn_id` - service principal `spn_id`.
  *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_entitlements.me
+ *
+ *   id = "user/<user-id>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ *
  * bash
  *
  * ```sh
@@ -144,9 +156,13 @@ export class Entitlements extends pulumi.CustomResource {
      */
     public readonly userId!: pulumi.Output<string | undefined>;
     /**
-     * This is a field to allow the principal to have access to Databricks Workspace.
+     * This is a field to allow the principal to have access to a Databricks Workspace.
      */
     public readonly workspaceAccess!: pulumi.Output<boolean | undefined>;
+    /**
+     * This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     */
+    public readonly workspaceConsume!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Entitlements resource with the given unique name, arguments, and options.
@@ -168,6 +184,7 @@ export class Entitlements extends pulumi.CustomResource {
             resourceInputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
             resourceInputs["userId"] = state ? state.userId : undefined;
             resourceInputs["workspaceAccess"] = state ? state.workspaceAccess : undefined;
+            resourceInputs["workspaceConsume"] = state ? state.workspaceConsume : undefined;
         } else {
             const args = argsOrState as EntitlementsArgs | undefined;
             resourceInputs["allowClusterCreate"] = args ? args.allowClusterCreate : undefined;
@@ -177,6 +194,7 @@ export class Entitlements extends pulumi.CustomResource {
             resourceInputs["servicePrincipalId"] = args ? args.servicePrincipalId : undefined;
             resourceInputs["userId"] = args ? args.userId : undefined;
             resourceInputs["workspaceAccess"] = args ? args.workspaceAccess : undefined;
+            resourceInputs["workspaceConsume"] = args ? args.workspaceConsume : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Entitlements.__pulumiType, name, resourceInputs, opts);
@@ -214,9 +232,13 @@ export interface EntitlementsState {
      */
     userId?: pulumi.Input<string>;
     /**
-     * This is a field to allow the principal to have access to Databricks Workspace.
+     * This is a field to allow the principal to have access to a Databricks Workspace.
      */
     workspaceAccess?: pulumi.Input<boolean>;
+    /**
+     * This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     */
+    workspaceConsume?: pulumi.Input<boolean>;
 }
 
 /**
@@ -250,7 +272,11 @@ export interface EntitlementsArgs {
      */
     userId?: pulumi.Input<string>;
     /**
-     * This is a field to allow the principal to have access to Databricks Workspace.
+     * This is a field to allow the principal to have access to a Databricks Workspace.
      */
     workspaceAccess?: pulumi.Input<boolean>;
+    /**
+     * This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     */
+    workspaceConsume?: pulumi.Input<boolean>;
 }

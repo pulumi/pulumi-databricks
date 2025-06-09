@@ -39,6 +39,7 @@ namespace Pulumi.Databricks.Outputs
         /// attribute
         /// </summary>
         public readonly Outputs.AppResourceSqlWarehouse? SqlWarehouse;
+        public readonly Outputs.AppResourceUcSecurable? UcSecurable;
 
         [OutputConstructor]
         private AppResource(
@@ -52,7 +53,9 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.AppResourceServingEndpoint? servingEndpoint,
 
-            Outputs.AppResourceSqlWarehouse? sqlWarehouse)
+            Outputs.AppResourceSqlWarehouse? sqlWarehouse,
+
+            Outputs.AppResourceUcSecurable? ucSecurable)
         {
             Description = description;
             Job = job;
@@ -60,6 +63,7 @@ namespace Pulumi.Databricks.Outputs
             Secret = secret;
             ServingEndpoint = servingEndpoint;
             SqlWarehouse = sqlWarehouse;
+            UcSecurable = ucSecurable;
         }
     }
 }

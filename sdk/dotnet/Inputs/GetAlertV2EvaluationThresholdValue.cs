@@ -12,12 +12,21 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetAlertV2EvaluationThresholdValueArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// (boolean) -
+        /// </summary>
         [Input("boolValue")]
         public bool? BoolValue { get; set; }
 
+        /// <summary>
+        /// (number) -
+        /// </summary>
         [Input("doubleValue")]
         public double? DoubleValue { get; set; }
 
+        /// <summary>
+        /// (string) -
+        /// </summary>
         [Input("stringValue")]
         public string? StringValue { get; set; }
 

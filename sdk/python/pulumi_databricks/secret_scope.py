@@ -194,10 +194,22 @@ class SecretScope(pulumi.CustomResource):
 
         The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response.
 
+        hcl
+
+        import {
+
+          to = databricks_secret_scope.this
+
+          id = "<scopeName>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
-        $ pulumi import databricks:index/secretScope:SecretScope object <scopeName>
+        $ pulumi import databricks:index/secretScope:SecretScope this "<scopeName>"
         ```
 
         :param str resource_name: The name of the resource.
@@ -240,10 +252,22 @@ class SecretScope(pulumi.CustomResource):
 
         The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response.
 
+        hcl
+
+        import {
+
+          to = databricks_secret_scope.this
+
+          id = "<scopeName>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
-        $ pulumi import databricks:index/secretScope:SecretScope object <scopeName>
+        $ pulumi import databricks:index/secretScope:SecretScope this "<scopeName>"
         ```
 
         :param str resource_name: The name of the resource.

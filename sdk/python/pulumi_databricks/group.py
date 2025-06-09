@@ -28,7 +28,8 @@ class GroupArgs:
                  external_id: Optional[pulumi.Input[builtins.str]] = None,
                  force: Optional[pulumi.Input[builtins.bool]] = None,
                  url: Optional[pulumi.Input[builtins.str]] = None,
-                 workspace_access: Optional[pulumi.Input[builtins.bool]] = None):
+                 workspace_access: Optional[pulumi.Input[builtins.bool]] = None,
+                 workspace_consume: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
@@ -38,7 +39,8 @@ class GroupArgs:
         :param pulumi.Input[builtins.str] display_name: This is the display name for the given group.
         :param pulumi.Input[builtins.str] external_id: ID of the group in an external identity provider.
         :param pulumi.Input[builtins.bool] force: Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-        :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
+        :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the group to have access to a Databricks Workspace.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
         """
         if acl_principal_id is not None:
             pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -58,6 +60,8 @@ class GroupArgs:
             pulumi.set(__self__, "url", url)
         if workspace_access is not None:
             pulumi.set(__self__, "workspace_access", workspace_access)
+        if workspace_consume is not None:
+            pulumi.set(__self__, "workspace_consume", workspace_consume)
 
     @property
     @pulumi.getter(name="aclPrincipalId")
@@ -156,13 +160,25 @@ class GroupArgs:
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        This is a field to allow the group to have access to Databricks Workspace.
+        This is a field to allow the group to have access to a Databricks Workspace.
         """
         return pulumi.get(self, "workspace_access")
 
     @workspace_access.setter
     def workspace_access(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "workspace_access", value)
+
+    @property
+    @pulumi.getter(name="workspaceConsume")
+    def workspace_consume(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        """
+        return pulumi.get(self, "workspace_consume")
+
+    @workspace_consume.setter
+    def workspace_consume(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "workspace_consume", value)
 
 
 @pulumi.input_type
@@ -176,7 +192,8 @@ class _GroupState:
                  external_id: Optional[pulumi.Input[builtins.str]] = None,
                  force: Optional[pulumi.Input[builtins.bool]] = None,
                  url: Optional[pulumi.Input[builtins.str]] = None,
-                 workspace_access: Optional[pulumi.Input[builtins.bool]] = None):
+                 workspace_access: Optional[pulumi.Input[builtins.bool]] = None,
+                 workspace_consume: Optional[pulumi.Input[builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Group resources.
         :param pulumi.Input[builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
@@ -186,7 +203,8 @@ class _GroupState:
         :param pulumi.Input[builtins.str] display_name: This is the display name for the given group.
         :param pulumi.Input[builtins.str] external_id: ID of the group in an external identity provider.
         :param pulumi.Input[builtins.bool] force: Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-        :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
+        :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the group to have access to a Databricks Workspace.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
         """
         if acl_principal_id is not None:
             pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -206,6 +224,8 @@ class _GroupState:
             pulumi.set(__self__, "url", url)
         if workspace_access is not None:
             pulumi.set(__self__, "workspace_access", workspace_access)
+        if workspace_consume is not None:
+            pulumi.set(__self__, "workspace_consume", workspace_consume)
 
     @property
     @pulumi.getter(name="aclPrincipalId")
@@ -304,13 +324,25 @@ class _GroupState:
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        This is a field to allow the group to have access to Databricks Workspace.
+        This is a field to allow the group to have access to a Databricks Workspace.
         """
         return pulumi.get(self, "workspace_access")
 
     @workspace_access.setter
     def workspace_access(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "workspace_access", value)
+
+    @property
+    @pulumi.getter(name="workspaceConsume")
+    def workspace_consume(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        """
+        return pulumi.get(self, "workspace_consume")
+
+    @workspace_consume.setter
+    def workspace_consume(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "workspace_consume", value)
 
 
 @pulumi.type_token("databricks:index/group:Group")
@@ -328,6 +360,7 @@ class Group(pulumi.CustomResource):
                  force: Optional[pulumi.Input[builtins.bool]] = None,
                  url: Optional[pulumi.Input[builtins.str]] = None,
                  workspace_access: Optional[pulumi.Input[builtins.bool]] = None,
+                 workspace_consume: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         """
         This resource allows you to manage both [account groups and workspace-local groups](https://docs.databricks.com/administration-guide/users-groups/groups.html). You can use the GroupMember resource to assign Databricks users, service principals as well as other groups as members of the group. This is useful if you are using an application to sync users & groups with SCIM API.
@@ -396,7 +429,19 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        You can import a `databricks_group` resource with the name `my_group` like the following:
+        You can import a `databricks_group` resource by its SCIM ID:
+
+        hcl
+
+        import {
+
+          to = databricks_group.my_group
+
+          id = "<group_id>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 
@@ -413,7 +458,8 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: This is the display name for the given group.
         :param pulumi.Input[builtins.str] external_id: ID of the group in an external identity provider.
         :param pulumi.Input[builtins.bool] force: Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-        :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
+        :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the group to have access to a Databricks Workspace.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
         """
         ...
     @overload
@@ -488,7 +534,19 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        You can import a `databricks_group` resource with the name `my_group` like the following:
+        You can import a `databricks_group` resource by its SCIM ID:
+
+        hcl
+
+        import {
+
+          to = databricks_group.my_group
+
+          id = "<group_id>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 
@@ -520,6 +578,7 @@ class Group(pulumi.CustomResource):
                  force: Optional[pulumi.Input[builtins.bool]] = None,
                  url: Optional[pulumi.Input[builtins.str]] = None,
                  workspace_access: Optional[pulumi.Input[builtins.bool]] = None,
+                 workspace_consume: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -538,6 +597,7 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["force"] = force
             __props__.__dict__["url"] = url
             __props__.__dict__["workspace_access"] = workspace_access
+            __props__.__dict__["workspace_consume"] = workspace_consume
         super(Group, __self__).__init__(
             'databricks:index/group:Group',
             resource_name,
@@ -556,7 +616,8 @@ class Group(pulumi.CustomResource):
             external_id: Optional[pulumi.Input[builtins.str]] = None,
             force: Optional[pulumi.Input[builtins.bool]] = None,
             url: Optional[pulumi.Input[builtins.str]] = None,
-            workspace_access: Optional[pulumi.Input[builtins.bool]] = None) -> 'Group':
+            workspace_access: Optional[pulumi.Input[builtins.bool]] = None,
+            workspace_consume: Optional[pulumi.Input[builtins.bool]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -571,7 +632,8 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: This is the display name for the given group.
         :param pulumi.Input[builtins.str] external_id: ID of the group in an external identity provider.
         :param pulumi.Input[builtins.bool] force: Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-        :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
+        :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the group to have access to a Databricks Workspace.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -586,6 +648,7 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["force"] = force
         __props__.__dict__["url"] = url
         __props__.__dict__["workspace_access"] = workspace_access
+        __props__.__dict__["workspace_consume"] = workspace_consume
         return Group(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -653,7 +716,15 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        This is a field to allow the group to have access to Databricks Workspace.
+        This is a field to allow the group to have access to a Databricks Workspace.
         """
         return pulumi.get(self, "workspace_access")
+
+    @property
+    @pulumi.getter(name="workspaceConsume")
+    def workspace_consume(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        """
+        return pulumi.get(self, "workspace_consume")
 

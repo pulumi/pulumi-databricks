@@ -57,10 +57,22 @@ import * as utilities from "./utilities";
  *
  * This resource can be imported using alert ID:
  *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_sql_alert.this
+ *
+ *   id = "<alert-id>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ *
  * bash
  *
  * ```sh
- * $ pulumi import databricks:index/sqlAlert:SqlAlert this <alert-id>
+ * $ pulumi import databricks:index/sqlAlert:SqlAlert this "<alert-id>"
  * ```
  */
 export class SqlAlert extends pulumi.CustomResource {

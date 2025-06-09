@@ -18,22 +18,32 @@ public final class BudgetPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BudgetPolicyArgs Empty = new BudgetPolicyArgs();
 
+    /**
+     * List of workspaces that this budget policy will be exclusively bound to.
+     * An empty binding implies that this budget policy is open to any workspace in the account
+     * 
+     */
     @Import(name="bindingWorkspaceIds")
     private @Nullable Output<List<Integer>> bindingWorkspaceIds;
 
+    /**
+     * @return List of workspaces that this budget policy will be exclusively bound to.
+     * An empty binding implies that this budget policy is open to any workspace in the account
+     * 
+     */
     public Optional<Output<List<Integer>>> bindingWorkspaceIds() {
         return Optional.ofNullable(this.bindingWorkspaceIds);
     }
 
     /**
-     * A list of tags defined by the customer. At most 20 entries are allowed per policy.
+     * A list of tags defined by the customer. At most 20 entries are allowed per policy
      * 
      */
     @Import(name="customTags")
     private @Nullable Output<List<BudgetPolicyCustomTagArgs>> customTags;
 
     /**
-     * @return A list of tags defined by the customer. At most 20 entries are allowed per policy.
+     * @return A list of tags defined by the customer. At most 20 entries are allowed per policy
      * 
      */
     public Optional<Output<List<BudgetPolicyCustomTagArgs>>> customTags() {
@@ -41,14 +51,20 @@ public final class BudgetPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the policy. Must be unique among active policies. Can contain only characters from the ISO 8859-1 (latin1) set.
+     * The name of the policy.
+     * - Must be unique among active policies.
+     * - Can contain only characters from the ISO 8859-1 (latin1) set.
+     * - Can&#39;t start with reserved keywords such as `databricks:default-policy`
      * 
      */
     @Import(name="policyName")
     private @Nullable Output<String> policyName;
 
     /**
-     * @return The name of the policy. Must be unique among active policies. Can contain only characters from the ISO 8859-1 (latin1) set.
+     * @return The name of the policy.
+     * - Must be unique among active policies.
+     * - Can contain only characters from the ISO 8859-1 (latin1) set.
+     * - Can&#39;t start with reserved keywords such as `databricks:default-policy`
      * 
      */
     public Optional<Output<String>> policyName() {
@@ -81,21 +97,42 @@ public final class BudgetPolicyArgs extends com.pulumi.resources.ResourceArgs {
             $ = new BudgetPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param bindingWorkspaceIds List of workspaces that this budget policy will be exclusively bound to.
+         * An empty binding implies that this budget policy is open to any workspace in the account
+         * 
+         * @return builder
+         * 
+         */
         public Builder bindingWorkspaceIds(@Nullable Output<List<Integer>> bindingWorkspaceIds) {
             $.bindingWorkspaceIds = bindingWorkspaceIds;
             return this;
         }
 
+        /**
+         * @param bindingWorkspaceIds List of workspaces that this budget policy will be exclusively bound to.
+         * An empty binding implies that this budget policy is open to any workspace in the account
+         * 
+         * @return builder
+         * 
+         */
         public Builder bindingWorkspaceIds(List<Integer> bindingWorkspaceIds) {
             return bindingWorkspaceIds(Output.of(bindingWorkspaceIds));
         }
 
+        /**
+         * @param bindingWorkspaceIds List of workspaces that this budget policy will be exclusively bound to.
+         * An empty binding implies that this budget policy is open to any workspace in the account
+         * 
+         * @return builder
+         * 
+         */
         public Builder bindingWorkspaceIds(Integer... bindingWorkspaceIds) {
             return bindingWorkspaceIds(List.of(bindingWorkspaceIds));
         }
 
         /**
-         * @param customTags A list of tags defined by the customer. At most 20 entries are allowed per policy.
+         * @param customTags A list of tags defined by the customer. At most 20 entries are allowed per policy
          * 
          * @return builder
          * 
@@ -106,7 +143,7 @@ public final class BudgetPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customTags A list of tags defined by the customer. At most 20 entries are allowed per policy.
+         * @param customTags A list of tags defined by the customer. At most 20 entries are allowed per policy
          * 
          * @return builder
          * 
@@ -116,7 +153,7 @@ public final class BudgetPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customTags A list of tags defined by the customer. At most 20 entries are allowed per policy.
+         * @param customTags A list of tags defined by the customer. At most 20 entries are allowed per policy
          * 
          * @return builder
          * 
@@ -126,7 +163,10 @@ public final class BudgetPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyName The name of the policy. Must be unique among active policies. Can contain only characters from the ISO 8859-1 (latin1) set.
+         * @param policyName The name of the policy.
+         * - Must be unique among active policies.
+         * - Can contain only characters from the ISO 8859-1 (latin1) set.
+         * - Can&#39;t start with reserved keywords such as `databricks:default-policy`
          * 
          * @return builder
          * 
@@ -137,7 +177,10 @@ public final class BudgetPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyName The name of the policy. Must be unique among active policies. Can contain only characters from the ISO 8859-1 (latin1) set.
+         * @param policyName The name of the policy.
+         * - Must be unique among active policies.
+         * - Can contain only characters from the ISO 8859-1 (latin1) set.
+         * - Can&#39;t start with reserved keywords such as `databricks:default-policy`
          * 
          * @return builder
          * 

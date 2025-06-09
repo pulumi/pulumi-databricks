@@ -69,10 +69,22 @@ import javax.annotation.Nullable;
  * 
  * The secret resource scope can be imported using the scope name. `initial_manage_principal` state won&#39;t be imported, because the underlying API doesn&#39;t include it in the response.
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_secret_scope.this
+ * 
+ *   id = &#34;&lt;scopeName&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh
- * $ pulumi import databricks:index/secretScope:SecretScope object &lt;scopeName&gt;
+ * $ pulumi import databricks:index/secretScope:SecretScope this &#34;&lt;scopeName&gt;&#34;
  * ```
  * 
  */

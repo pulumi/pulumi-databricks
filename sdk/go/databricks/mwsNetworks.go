@@ -44,20 +44,10 @@ import (
 //				return err
 //			}
 //			network_with_private_secondary_ip_ranges, err := google.NewComputeSubnetwork(ctx, "network-with-private-secondary-ip-ranges", &google.ComputeSubnetworkArgs{
-//				Name:        fmt.Sprintf("test-dbx-%v", suffix.Result),
-//				IpCidrRange: "10.0.0.0/16",
-//				Region:      "us-central1",
-//				Network:     dbxPrivateVpc.Id,
-//				SecondaryIpRange: []map[string]interface{}{
-//					map[string]interface{}{
-//						"rangeName":   "pods",
-//						"ipCidrRange": "10.1.0.0/16",
-//					},
-//					map[string]interface{}{
-//						"rangeName":   "svc",
-//						"ipCidrRange": "10.2.0.0/20",
-//					},
-//				},
+//				Name:                  fmt.Sprintf("test-dbx-%v", suffix.Result),
+//				IpCidrRange:           "10.0.0.0/16",
+//				Region:                "us-central1",
+//				Network:               dbxPrivateVpc.Id,
 //				PrivateIpGoogleAccess: true,
 //			})
 //			if err != nil {
@@ -85,12 +75,10 @@ import (
 //				AccountId:   pulumi.Any(databricksAccountId),
 //				NetworkName: pulumi.Sprintf("test-demo-%v", suffix.Result),
 //				GcpNetworkInfo: &databricks.MwsNetworksGcpNetworkInfoArgs{
-//					NetworkProjectId:   pulumi.Any(googleProject),
-//					VpcId:              dbxPrivateVpc.Name,
-//					SubnetId:           pulumi.Any(networkWithPrivateSecondaryIpRanges.Name),
-//					SubnetRegion:       pulumi.Any(networkWithPrivateSecondaryIpRanges.Region),
-//					PodIpRangeName:     pulumi.String("pods"),
-//					ServiceIpRangeName: pulumi.String("svc"),
+//					NetworkProjectId: pulumi.Any(googleProject),
+//					VpcId:            dbxPrivateVpc.Name,
+//					SubnetId:         pulumi.Any(networkWithPrivateSecondaryIpRanges.Name),
+//					SubnetRegion:     pulumi.Any(networkWithPrivateSecondaryIpRanges.Region),
 //				},
 //			})
 //			if err != nil {
@@ -122,12 +110,10 @@ import (
 //				AccountId:   pulumi.Any(databricksAccountId),
 //				NetworkName: pulumi.Sprintf("test-demo-%v", suffix.Result),
 //				GcpNetworkInfo: &databricks.MwsNetworksGcpNetworkInfoArgs{
-//					NetworkProjectId:   pulumi.Any(googleProject),
-//					VpcId:              pulumi.Any(dbxPrivateVpc.Name),
-//					SubnetId:           pulumi.Any(networkWithPrivateSecondaryIpRanges.Name),
-//					SubnetRegion:       pulumi.Any(networkWithPrivateSecondaryIpRanges.Region),
-//					PodIpRangeName:     pulumi.String("pods"),
-//					ServiceIpRangeName: pulumi.String("svc"),
+//					NetworkProjectId: pulumi.Any(googleProject),
+//					VpcId:            pulumi.Any(dbxPrivateVpc.Name),
+//					SubnetId:         pulumi.Any(networkWithPrivateSecondaryIpRanges.Name),
+//					SubnetRegion:     pulumi.Any(networkWithPrivateSecondaryIpRanges.Region),
 //				},
 //				VpcEndpoints: &databricks.MwsNetworksVpcEndpointsArgs{
 //					DataplaneRelays: pulumi.StringArray{
@@ -171,6 +157,18 @@ import (
 // ## Import
 //
 // This resource can be imported by Databricks account ID and network ID.
+//
+// hcl
+//
+// import {
+//
+//	to = databricks_mws_networks.this
+//
+//	id = "<account_id>/<network_id>"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 //
 // ```sh
 // $ pulumi import databricks:index/mwsNetworks:MwsNetworks this '<account_id>/<network_id>'

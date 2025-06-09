@@ -50,6 +50,18 @@ import * as utilities from "./utilities";
  *
  * You can import a `databricks_group_member` resource with name `my_group_member` like the following:
  *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_group_member.my_group_member
+ *
+ *   id = "<group_id>|<member_id>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ *
  * bash
  *
  * ```sh
@@ -85,11 +97,11 @@ export class GroupMember extends pulumi.CustomResource {
     }
 
     /**
-     * This is the id of the group resource.
+     * This is the `id` attribute (SCIM ID) of the group resource.
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
-     * This is the id of the group, service principal, or user.
+     * This is the `id` attribute (SCIM ID) of the group, service principal, or user.
      */
     public readonly memberId!: pulumi.Output<string>;
 
@@ -129,11 +141,11 @@ export class GroupMember extends pulumi.CustomResource {
  */
 export interface GroupMemberState {
     /**
-     * This is the id of the group resource.
+     * This is the `id` attribute (SCIM ID) of the group resource.
      */
     groupId?: pulumi.Input<string>;
     /**
-     * This is the id of the group, service principal, or user.
+     * This is the `id` attribute (SCIM ID) of the group, service principal, or user.
      */
     memberId?: pulumi.Input<string>;
 }
@@ -143,11 +155,11 @@ export interface GroupMemberState {
  */
 export interface GroupMemberArgs {
     /**
-     * This is the id of the group resource.
+     * This is the `id` attribute (SCIM ID) of the group resource.
      */
     groupId: pulumi.Input<string>;
     /**
-     * This is the id of the group, service principal, or user.
+     * This is the `id` attribute (SCIM ID) of the group, service principal, or user.
      */
     memberId: pulumi.Input<string>;
 }

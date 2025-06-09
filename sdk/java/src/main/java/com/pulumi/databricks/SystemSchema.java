@@ -12,15 +12,14 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SystemSchemaState;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
+ * Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account&#39;s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
  * 
  * &gt; This resource can only be used with a workspace-level provider!
  * 
- * &gt; Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.
+ * &gt; Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.  Certain schemas can&#39;t also be disabled completely.
  * 
  * ## Example Usage
  * 
@@ -61,7 +60,19 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by the metastore id and schema name
+ * This resource can be imported by the metastore id and schema name:
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_system_schema.this
+ * 
+ *   id = &#34;&lt;metastore_id&gt;|&lt;schema_name&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  * 
  * bash
  * 
@@ -103,14 +114,14 @@ public class SystemSchema extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="schema", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> schema;
+    private Output<String> schema;
 
     /**
      * @return name of the system schema.
      * 
      */
-    public Output<Optional<String>> schema() {
-        return Codegen.optional(this.schema);
+    public Output<String> schema() {
+        return this.schema;
     }
     /**
      * The current state of enablement for the system schema.
@@ -139,7 +150,7 @@ public class SystemSchema extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SystemSchema(java.lang.String name, @Nullable SystemSchemaArgs args) {
+    public SystemSchema(java.lang.String name, SystemSchemaArgs args) {
         this(name, args, null);
     }
     /**
@@ -148,7 +159,7 @@ public class SystemSchema extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SystemSchema(java.lang.String name, @Nullable SystemSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public SystemSchema(java.lang.String name, SystemSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("databricks:index/systemSchema:SystemSchema", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -156,7 +167,7 @@ public class SystemSchema extends com.pulumi.resources.CustomResource {
         super("databricks:index/systemSchema:SystemSchema", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static SystemSchemaArgs makeArgs(@Nullable SystemSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static SystemSchemaArgs makeArgs(SystemSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

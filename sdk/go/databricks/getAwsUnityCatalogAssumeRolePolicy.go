@@ -58,12 +58,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iam.NewRole(ctx, "metastore_data_access", &iam.RoleArgs{
+//			metastoreDataAccess, err := iam.NewRole(ctx, "metastore_data_access", &iam.RoleArgs{
 //				Name:             pulumi.Sprintf("%v-uc-access", prefix),
 //				AssumeRolePolicy: pulumi.String(thisGetAwsUnityCatalogAssumeRolePolicy.Json),
-//				ManagedPolicyArns: pulumi.StringArray{
-//					unityMetastore.Arn,
-//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewRolePolicyAttachment(ctx, "metastore_data_access", &iam.RolePolicyAttachmentArgs{
+//				Role:      metastoreDataAccess.Name,
+//				PolicyArn: unityMetastore.Arn,
 //			})
 //			if err != nil {
 //				return err

@@ -58,12 +58,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iam.NewRole(ctx, "metastore_data_access", &iam.RoleArgs{
+//			metastoreDataAccess, err := iam.NewRole(ctx, "metastore_data_access", &iam.RoleArgs{
 //				Name:             pulumi.Sprintf("%v-uc-access", prefix),
 //				AssumeRolePolicy: pulumi.String(thisGetAwsUnityCatalogAssumeRolePolicy.Json),
-//				ManagedPolicyArns: pulumi.StringArray{
-//					unityMetastore.Arn,
-//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewRolePolicyAttachment(ctx, "metastore_data_access", &iam.RolePolicyAttachmentArgs{
+//				Role:      metastoreDataAccess.Name,
+//				PolicyArn: unityMetastore.Arn,
 //			})
 //			if err != nil {
 //				return err
@@ -89,7 +93,7 @@ type GetAwsUnityCatalogPolicyArgs struct {
 	AwsAccountId string `pulumi:"awsAccountId"`
 	// AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
 	AwsPartition *string `pulumi:"awsPartition"`
-	// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
+	// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.  The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
 	BucketName string `pulumi:"bucketName"`
 	// If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
 	KmsName *string `pulumi:"kmsName"`
@@ -125,7 +129,7 @@ type GetAwsUnityCatalogPolicyOutputArgs struct {
 	AwsAccountId pulumi.StringInput `pulumi:"awsAccountId"`
 	// AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
 	AwsPartition pulumi.StringPtrInput `pulumi:"awsPartition"`
-	// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
+	// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.  The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
 	KmsName pulumi.StringPtrInput `pulumi:"kmsName"`

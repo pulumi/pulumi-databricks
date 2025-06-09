@@ -31,7 +31,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Use `databricks.Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ * Use `databricks.Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
  * 
  * &gt; This resource can only be used with a workspace-level provider!
  * 
@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.inputs.PipelineLibraryArgs;
  * import com.pulumi.databricks.inputs.PipelineLibraryNotebookArgs;
  * import com.pulumi.databricks.inputs.PipelineLibraryFileArgs;
+ * import com.pulumi.databricks.inputs.PipelineLibraryGlobArgs;
  * import com.pulumi.databricks.inputs.PipelineNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -99,6 +100,11 @@ import javax.annotation.Nullable;
  *                     .file(PipelineLibraryFileArgs.builder()
  *                         .path(dltDemoRepo.path().applyValue(_path -> String.format("%s/pipeline.sql", _path)))
  *                         .build())
+ *                     .build(),
+ *                 PipelineLibraryArgs.builder()
+ *                     .glob(PipelineLibraryGlobArgs.builder()
+ *                         .include(dltDemoRepo.path().applyValue(_path -> String.format("%s/subfolder/**", _path)))
+ *                         .build())
  *                     .build())
  *             .continuous(false)
  *             .notifications(PipelineNotificationArgs.builder()
@@ -124,7 +130,7 @@ import javax.annotation.Nullable;
  * The following resources are often used in the same context:
  * 
  * * End to end workspace management guide.
- * * databricks.getPipelines to retrieve [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipeline data.
+ * * databricks.getPipelines to retrieve [Delta Live Tables](https://docs.databricks.com/aws/en/dlt) pipeline data.
  * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
  * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
  * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -132,6 +138,18 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * The resource job can be imported using the id of the pipeline
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_pipeline.this
+ * 
+ *   id = &#34;&lt;pipeline-id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  * 
  * bash
  * 
@@ -211,14 +229,14 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
-     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
      * 
      */
     @Export(name="clusters", refs={List.class,PipelineCluster.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PipelineCluster>> clusters;
 
     /**
-     * @return blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+     * @return blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
      * 
      */
     public Output<Optional<List<PipelineCluster>>> clusters() {
@@ -287,14 +305,14 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.development);
     }
     /**
-     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
+     * optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      * 
      */
     @Export(name="edition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> edition;
 
     /**
-     * @return optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
+     * @return optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      * 
      */
     public Output<Optional<String>> edition() {
@@ -373,14 +391,14 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return this.latestUpdates;
     }
     /**
-     * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` &amp; `file` library types that should have the `path` attribute. *Right now only the `notebook` &amp; `file` types are supported.*
+     * blocks - Specifies pipeline code.
      * 
      */
     @Export(name="libraries", refs={List.class,PipelineLibrary.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PipelineLibrary>> libraries;
 
     /**
-     * @return blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` &amp; `file` library types that should have the `path` attribute. *Right now only the `notebook` &amp; `file` types are supported.*
+     * @return blocks - Specifies pipeline code.
      * 
      */
     public Output<Optional<List<PipelineLibrary>>> libraries() {
@@ -425,6 +443,20 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<PipelineRestartWindow>> restartWindow() {
         return Codegen.optional(this.restartWindow);
+    }
+    /**
+     * An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
+     * 
+     */
+    @Export(name="rootPath", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> rootPath;
+
+    /**
+     * @return An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
+     * 
+     */
+    public Output<Optional<String>> rootPath() {
+        return Codegen.optional(this.rootPath);
     }
     @Export(name="runAs", refs={PipelineRunAs.class}, tree="[0]")
     private Output<PipelineRunAs> runAs;

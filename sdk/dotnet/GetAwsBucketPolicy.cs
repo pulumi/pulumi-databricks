@@ -145,7 +145,7 @@ namespace Pulumi.Databricks
         public string? AwsPartition { get; set; }
 
         /// <summary>
-        /// AWS S3 Bucket name for which to generate the policy document.
+        /// AWS S3 Bucket name for which to generate the policy document. The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
         /// </summary>
         [Input("bucket", required: true)]
         public string Bucket { get; set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.Databricks
         public Input<string>? AwsPartition { get; set; }
 
         /// <summary>
-        /// AWS S3 Bucket name for which to generate the policy document.
+        /// AWS S3 Bucket name for which to generate the policy document. The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
         /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;

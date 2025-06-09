@@ -13,8 +13,17 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAlertsV2ResultEvaluationNotificationResult
     {
+        /// <summary>
+        /// (boolean) - Whether to notify alert subscribers when alert returns back to normal
+        /// </summary>
         public readonly bool? NotifyOnOk;
+        /// <summary>
+        /// (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+        /// </summary>
         public readonly int? RetriggerSeconds;
+        /// <summary>
+        /// (list of AlertV2Subscription) -
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAlertsV2ResultEvaluationNotificationSubscriptionResult> Subscriptions;
 
         [OutputConstructor]

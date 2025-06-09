@@ -50,6 +50,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("sqlWarehouse")]
         public Input<Inputs.AppResourceSqlWarehouseArgs>? SqlWarehouse { get; set; }
 
+        [Input("ucSecurable")]
+        public Input<Inputs.AppResourceUcSecurableArgs>? UcSecurable { get; set; }
+
         public AppResourceArgs()
         {
         }

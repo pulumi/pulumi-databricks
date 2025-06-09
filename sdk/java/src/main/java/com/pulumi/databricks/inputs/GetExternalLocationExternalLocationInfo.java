@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetExternalLocationExternalLocationInfoEncryptionDetails;
+import com.pulumi.databricks.inputs.GetExternalLocationExternalLocationInfoFileEventQueue;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -16,21 +17,6 @@ import javax.annotation.Nullable;
 public final class GetExternalLocationExternalLocationInfo extends com.pulumi.resources.InvokeArgs {
 
     public static final GetExternalLocationExternalLocationInfo Empty = new GetExternalLocationExternalLocationInfo();
-
-    /**
-     * The ARN of the s3 access point to use with the external location (AWS).
-     * 
-     */
-    @Import(name="accessPoint")
-    private @Nullable String accessPoint;
-
-    /**
-     * @return The ARN of the s3 access point to use with the external location (AWS).
-     * 
-     */
-    public Optional<String> accessPoint() {
-        return Optional.ofNullable(this.accessPoint);
-    }
 
     @Import(name="browseOnly")
     private @Nullable Boolean browseOnly;
@@ -114,6 +100,13 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
         return Optional.ofNullable(this.credentialName);
     }
 
+    @Import(name="enableFileEvents")
+    private @Nullable Boolean enableFileEvents;
+
+    public Optional<Boolean> enableFileEvents() {
+        return Optional.ofNullable(this.enableFileEvents);
+    }
+
     /**
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      * 
@@ -134,6 +127,13 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
 
     public Optional<Boolean> fallback() {
         return Optional.ofNullable(this.fallback);
+    }
+
+    @Import(name="fileEventQueue")
+    private @Nullable GetExternalLocationExternalLocationInfoFileEventQueue fileEventQueue;
+
+    public Optional<GetExternalLocationExternalLocationInfoFileEventQueue> fileEventQueue() {
+        return Optional.ofNullable(this.fileEventQueue);
     }
 
     @Import(name="isolationMode")
@@ -251,15 +251,16 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
     private GetExternalLocationExternalLocationInfo() {}
 
     private GetExternalLocationExternalLocationInfo(GetExternalLocationExternalLocationInfo $) {
-        this.accessPoint = $.accessPoint;
         this.browseOnly = $.browseOnly;
         this.comment = $.comment;
         this.createdAt = $.createdAt;
         this.createdBy = $.createdBy;
         this.credentialId = $.credentialId;
         this.credentialName = $.credentialName;
+        this.enableFileEvents = $.enableFileEvents;
         this.encryptionDetails = $.encryptionDetails;
         this.fallback = $.fallback;
+        this.fileEventQueue = $.fileEventQueue;
         this.isolationMode = $.isolationMode;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
@@ -286,17 +287,6 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
 
         public Builder(GetExternalLocationExternalLocationInfo defaults) {
             $ = new GetExternalLocationExternalLocationInfo(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param accessPoint The ARN of the s3 access point to use with the external location (AWS).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accessPoint(@Nullable String accessPoint) {
-            $.accessPoint = accessPoint;
-            return this;
         }
 
         public Builder browseOnly(@Nullable Boolean browseOnly) {
@@ -359,6 +349,11 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
             return this;
         }
 
+        public Builder enableFileEvents(@Nullable Boolean enableFileEvents) {
+            $.enableFileEvents = enableFileEvents;
+            return this;
+        }
+
         /**
          * @param encryptionDetails The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
          * 
@@ -372,6 +367,11 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
 
         public Builder fallback(@Nullable Boolean fallback) {
             $.fallback = fallback;
+            return this;
+        }
+
+        public Builder fileEventQueue(@Nullable GetExternalLocationExternalLocationInfoFileEventQueue fileEventQueue) {
+            $.fileEventQueue = fileEventQueue;
             return this;
         }
 

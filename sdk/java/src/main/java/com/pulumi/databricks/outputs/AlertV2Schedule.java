@@ -11,17 +11,47 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertV2Schedule {
+    /**
+     * @return Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     * 
+     */
     private @Nullable String pauseStatus;
+    /**
+     * @return A cron expression using quartz syntax that specifies the schedule for this pipeline.
+     * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+     * 
+     */
     private @Nullable String quartzCronSchedule;
+    /**
+     * @return A Java timezone id. The schedule will be resolved using this timezone.
+     * This will be combined with the quartz_cron_schedule to determine the schedule.
+     * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+     * 
+     */
     private @Nullable String timezoneId;
 
     private AlertV2Schedule() {}
+    /**
+     * @return Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     * 
+     */
     public Optional<String> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
     }
+    /**
+     * @return A cron expression using quartz syntax that specifies the schedule for this pipeline.
+     * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+     * 
+     */
     public Optional<String> quartzCronSchedule() {
         return Optional.ofNullable(this.quartzCronSchedule);
     }
+    /**
+     * @return A Java timezone id. The schedule will be resolved using this timezone.
+     * This will be combined with the quartz_cron_schedule to determine the schedule.
+     * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+     * 
+     */
     public Optional<String> timezoneId() {
         return Optional.ofNullable(this.timezoneId);
     }

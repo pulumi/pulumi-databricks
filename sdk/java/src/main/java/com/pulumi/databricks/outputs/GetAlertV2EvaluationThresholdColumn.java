@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAlertV2EvaluationThresholdColumn {
+    /**
+     * @return (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * 
+     */
     private @Nullable String aggregation;
+    /**
+     * @return (string) -
+     * 
+     */
     private @Nullable String display;
+    /**
+     * @return (string) -
+     * 
+     */
     private @Nullable String name;
 
     private GetAlertV2EvaluationThresholdColumn() {}
+    /**
+     * @return (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * 
+     */
     public Optional<String> aggregation() {
         return Optional.ofNullable(this.aggregation);
     }
+    /**
+     * @return (string) -
+     * 
+     */
     public Optional<String> display() {
         return Optional.ofNullable(this.display);
     }
+    /**
+     * @return (string) -
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

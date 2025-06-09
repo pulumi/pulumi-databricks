@@ -17,11 +17,11 @@ public final class JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs extends com
 
     public static final JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs Empty = new JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs();
 
-    @Import(name="gpuNodePoolId", required=true)
-    private Output<String> gpuNodePoolId;
+    @Import(name="gpuNodePoolId")
+    private @Nullable Output<String> gpuNodePoolId;
 
-    public Output<String> gpuNodePoolId() {
-        return this.gpuNodePoolId;
+    public Optional<Output<String>> gpuNodePoolId() {
+        return Optional.ofNullable(this.gpuNodePoolId);
     }
 
     @Import(name="gpuType")
@@ -64,7 +64,7 @@ public final class JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs extends com
             $ = new JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder gpuNodePoolId(Output<String> gpuNodePoolId) {
+        public Builder gpuNodePoolId(@Nullable Output<String> gpuNodePoolId) {
             $.gpuNodePoolId = gpuNodePoolId;
             return this;
         }
@@ -92,9 +92,6 @@ public final class JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs extends com
         }
 
         public JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs build() {
-            if ($.gpuNodePoolId == null) {
-                throw new MissingRequiredPropertyException("JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs", "gpuNodePoolId");
-            }
             if ($.numGpus == null) {
                 throw new MissingRequiredPropertyException("JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs", "numGpus");
             }

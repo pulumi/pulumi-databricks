@@ -50,6 +50,7 @@ public final class ModelServingConfigServedModel {
      * 
      */
     private @Nullable String name;
+    private @Nullable Integer provisionedModelUnits;
     /**
      * @return Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
      * 
@@ -116,6 +117,9 @@ public final class ModelServingConfigServedModel {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    public Optional<Integer> provisionedModelUnits() {
+        return Optional.ofNullable(this.provisionedModelUnits);
+    }
     /**
      * @return Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
      * 
@@ -154,6 +158,7 @@ public final class ModelServingConfigServedModel {
         private String modelName;
         private String modelVersion;
         private @Nullable String name;
+        private @Nullable Integer provisionedModelUnits;
         private @Nullable Boolean scaleToZeroEnabled;
         private @Nullable String workloadSize;
         private @Nullable String workloadType;
@@ -167,6 +172,7 @@ public final class ModelServingConfigServedModel {
     	      this.modelName = defaults.modelName;
     	      this.modelVersion = defaults.modelVersion;
     	      this.name = defaults.name;
+    	      this.provisionedModelUnits = defaults.provisionedModelUnits;
     	      this.scaleToZeroEnabled = defaults.scaleToZeroEnabled;
     	      this.workloadSize = defaults.workloadSize;
     	      this.workloadType = defaults.workloadType;
@@ -219,6 +225,12 @@ public final class ModelServingConfigServedModel {
             return this;
         }
         @CustomType.Setter
+        public Builder provisionedModelUnits(@Nullable Integer provisionedModelUnits) {
+
+            this.provisionedModelUnits = provisionedModelUnits;
+            return this;
+        }
+        @CustomType.Setter
         public Builder scaleToZeroEnabled(@Nullable Boolean scaleToZeroEnabled) {
 
             this.scaleToZeroEnabled = scaleToZeroEnabled;
@@ -245,6 +257,7 @@ public final class ModelServingConfigServedModel {
             _resultValue.modelName = modelName;
             _resultValue.modelVersion = modelVersion;
             _resultValue.name = name;
+            _resultValue.provisionedModelUnits = provisionedModelUnits;
             _resultValue.scaleToZeroEnabled = scaleToZeroEnabled;
             _resultValue.workloadSize = workloadSize;
             _resultValue.workloadType = workloadType;

@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("dbfs")]
         public Input<Inputs.PipelineClusterInitScriptDbfsArgs>? Dbfs { get; set; }
 
+        /// <summary>
+        /// specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+        /// </summary>
         [Input("file")]
         public Input<Inputs.PipelineClusterInitScriptFileArgs>? File { get; set; }
 

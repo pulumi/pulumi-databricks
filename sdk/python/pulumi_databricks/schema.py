@@ -368,10 +368,22 @@ class Schema(pulumi.CustomResource):
 
         This resource can be imported by its full name:
 
+        hcl
+
+        import {
+
+          to = databricks_schema.this
+
+          id = "<catalog_name>.<name>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
-        $ pulumi import databricks:index/schema:Schema this <catalog_name>.<name>
+        $ pulumi import databricks:index/schema:Schema this "<catalog_name>.<name>"
         ```
 
         :param str resource_name: The name of the resource.
@@ -431,10 +443,22 @@ class Schema(pulumi.CustomResource):
 
         This resource can be imported by its full name:
 
+        hcl
+
+        import {
+
+          to = databricks_schema.this
+
+          id = "<catalog_name>.<name>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
-        $ pulumi import databricks:index/schema:Schema this <catalog_name>.<name>
+        $ pulumi import databricks:index/schema:Schema this "<catalog_name>.<name>"
         ```
 
         :param str resource_name: The name of the resource.

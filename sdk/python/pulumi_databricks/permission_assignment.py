@@ -172,12 +172,24 @@ class PermissionAssignment(pulumi.CustomResource):
 
         ## Import
 
-        The resource `databricks_permission_assignment` can be imported using the principal id
+        The resource `databricks_permission_assignment` can be imported using the principal id:
+
+        hcl
+
+        import {
+
+          to = databricks_permission_assignment.this
+
+          id = "<principal_id>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 
         ```sh
-        $ pulumi import databricks:index/permissionAssignment:PermissionAssignment this principal_id
+        $ pulumi import databricks:index/permissionAssignment:PermissionAssignment this "<principal_id>"
         ```
 
         :param str resource_name: The name of the resource.
@@ -253,12 +265,24 @@ class PermissionAssignment(pulumi.CustomResource):
 
         ## Import
 
-        The resource `databricks_permission_assignment` can be imported using the principal id
+        The resource `databricks_permission_assignment` can be imported using the principal id:
+
+        hcl
+
+        import {
+
+          to = databricks_permission_assignment.this
+
+          id = "<principal_id>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 
         ```sh
-        $ pulumi import databricks:index/permissionAssignment:PermissionAssignment this principal_id
+        $ pulumi import databricks:index/permissionAssignment:PermissionAssignment this "<principal_id>"
         ```
 
         :param str resource_name: The name of the resource.

@@ -77,14 +77,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      * 
      */
     @Import(name="databricksSqlAccess")
     private @Nullable Output<Boolean> databricksSqlAccess;
 
     /**
-     * @return This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * @return This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      * 
      */
     public Optional<Output<Boolean>> databricksSqlAccess() {
@@ -226,11 +226,34 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.userName);
     }
 
+    /**
+     * This is a field to allow the user to have access to a Databricks Workspace.
+     * 
+     */
     @Import(name="workspaceAccess")
     private @Nullable Output<Boolean> workspaceAccess;
 
+    /**
+     * @return This is a field to allow the user to have access to a Databricks Workspace.
+     * 
+     */
     public Optional<Output<Boolean>> workspaceAccess() {
         return Optional.ofNullable(this.workspaceAccess);
+    }
+
+    /**
+     * This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     * 
+     */
+    @Import(name="workspaceConsume")
+    private @Nullable Output<Boolean> workspaceConsume;
+
+    /**
+     * @return This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     * 
+     */
+    public Optional<Output<Boolean>> workspaceConsume() {
+        return Optional.ofNullable(this.workspaceConsume);
     }
 
     private UserState() {}
@@ -251,6 +274,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         this.repos = $.repos;
         this.userName = $.userName;
         this.workspaceAccess = $.workspaceAccess;
+        this.workspaceConsume = $.workspaceConsume;
     }
 
     public static Builder builder() {
@@ -356,7 +380,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databricksSqlAccess This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+         * @param databricksSqlAccess This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
          * 
          * @return builder
          * 
@@ -367,7 +391,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databricksSqlAccess This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+         * @param databricksSqlAccess This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
          * 
          * @return builder
          * 
@@ -565,13 +589,46 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
             return userName(Output.of(userName));
         }
 
+        /**
+         * @param workspaceAccess This is a field to allow the user to have access to a Databricks Workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceAccess(@Nullable Output<Boolean> workspaceAccess) {
             $.workspaceAccess = workspaceAccess;
             return this;
         }
 
+        /**
+         * @param workspaceAccess This is a field to allow the user to have access to a Databricks Workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceAccess(Boolean workspaceAccess) {
             return workspaceAccess(Output.of(workspaceAccess));
+        }
+
+        /**
+         * @param workspaceConsume This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceConsume(@Nullable Output<Boolean> workspaceConsume) {
+            $.workspaceConsume = workspaceConsume;
+            return this;
+        }
+
+        /**
+         * @param workspaceConsume This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceConsume(Boolean workspaceConsume) {
+            return workspaceConsume(Output.of(workspaceConsume));
         }
 
         public UserState build() {

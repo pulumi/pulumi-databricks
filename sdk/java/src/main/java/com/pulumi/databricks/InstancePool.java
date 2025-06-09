@@ -25,7 +25,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource allows you to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances. An instance pool reduces cluster start and auto-scaling times by maintaining a set of idle, ready-to-use cloud instances. When a cluster attached to a pool needs an instance, it first attempts to allocate one of the pool’s idle instances. If the pool has no idle instances, it expands by allocating a new instance from the instance provider in order to accommodate the cluster’s request. When a cluster releases an instance, it returns to the pool and is free for another cluster to use. Only clusters attached to a pool can use that pool’s idle instances.
+ * This resource allows you to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances. An instance pool reduces cluster start and auto-scaling times by maintaining a set of idle, ready-to-use cloud instances. When a cluster attached to a pool needs an instance, it first attempts to allocate one of the pool&#39;s idle instances. If the pool has no idle instances, it expands by allocating a new instance from the instance provider in order to accommodate the cluster&#39;s request. When a cluster releases an instance, it returns to the pool and is free for another cluster to use. Only clusters attached to a pool can use that pool&#39;s idle instances.
  * 
  * &gt; This resource can only be used with a workspace-level provider!
  * 
@@ -97,7 +97,19 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The resource instance pool can be imported using it&#39;s id:
+ * The resource instance pool can be imported using its id:
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_instance_pool.this
+ * 
+ *   id = &#34;&lt;instance-pool-id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  * 
  * bash
  * 
@@ -229,14 +241,14 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.minIdleInstances);
     }
     /**
-     * (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
+     * (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool&#39;s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
      * 
      */
     @Export(name="nodeTypeId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nodeTypeId;
 
     /**
-     * @return (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
+     * @return (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool&#39;s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
      * 
      */
     public Output<Optional<String>> nodeTypeId() {

@@ -20,12 +20,24 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * This resource can be imported by its full name.
+ * This resource can be imported by its full name:
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_sql_table.this
+ * 
+ *   id = &#34;&lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  * 
  * bash
  * 
  * ```sh
- * $ pulumi import databricks:index/sqlTable:SqlTable this &lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;
+ * $ pulumi import databricks:index/sqlTable:SqlTable this &#34;&lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;&#34;
  * ```
  * 
  */
@@ -152,14 +164,14 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="partitions", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> partitions;
+    private Output<List<String>> partitions;
 
     /**
      * @return a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
      * 
      */
-    public Output<Optional<List<String>>> partitions() {
-        return Codegen.optional(this.partitions);
+    public Output<List<String>> partitions() {
+        return this.partitions;
     }
     /**
      * A map of table properties.

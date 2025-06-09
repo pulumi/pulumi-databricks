@@ -123,10 +123,22 @@ import javax.annotation.Nullable;
  * 
  * You can import a `databricks_sql_dashboard` resource with ID like the following:
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_sql_dashboard.this
+ * 
+ *   id = &#34;&lt;dashboard-id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh
- * $ pulumi import databricks:index/sqlDashboard:SqlDashboard this &lt;dashboard-id&gt;
+ * $ pulumi import databricks:index/sqlDashboard:SqlDashboard this &#34;&lt;dashboard-id&gt;&#34;
  * ```
  * 
  */

@@ -6,6 +6,27 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## Import
+ *
+ * As of terraform v1.5, resources can be imported through configuration.
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   id = id
+ *
+ *   to = databricks_alert_v2.this
+ *
+ * }
+ *
+ * If you are using an older version of terraform, you can import the resource using cli as follows:
+ *
+ * ```sh
+ * $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 id
+ * ```
+ */
 export class AlertV2 extends pulumi.CustomResource {
     /**
      * Get an existing AlertV2 resource's state with the given name, ID, and optional extra
@@ -34,18 +55,51 @@ export class AlertV2 extends pulumi.CustomResource {
         return obj['__pulumiType'] === AlertV2.__pulumiType;
     }
 
+    /**
+     * (string) - The timestamp indicating when the alert was created
+     */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Custom description for the alert. support mustache template
+     */
     public readonly customDescription!: pulumi.Output<string | undefined>;
+    /**
+     * Custom summary for the alert. support mustache template
+     */
     public readonly customSummary!: pulumi.Output<string | undefined>;
+    /**
+     * The display name of the alert
+     */
     public readonly displayName!: pulumi.Output<string | undefined>;
     public readonly evaluation!: pulumi.Output<outputs.AlertV2Evaluation | undefined>;
+    /**
+     * (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     */
     public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
+    /**
+     * (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
+     */
     public /*out*/ readonly ownerUserName!: pulumi.Output<string>;
+    /**
+     * The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+     */
     public readonly parentPath!: pulumi.Output<string | undefined>;
+    /**
+     * Text of the query to be run
+     */
     public readonly queryText!: pulumi.Output<string | undefined>;
+    /**
+     * (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+     */
     public /*out*/ readonly runAsUserName!: pulumi.Output<string>;
     public readonly schedule!: pulumi.Output<outputs.AlertV2Schedule | undefined>;
+    /**
+     * (string) - The timestamp indicating when the alert was updated
+     */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * ID of the SQL warehouse attached to the alert
+     */
     public readonly warehouseId!: pulumi.Output<string | undefined>;
 
     /**
@@ -99,18 +153,51 @@ export class AlertV2 extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AlertV2 resources.
  */
 export interface AlertV2State {
+    /**
+     * (string) - The timestamp indicating when the alert was created
+     */
     createTime?: pulumi.Input<string>;
+    /**
+     * Custom description for the alert. support mustache template
+     */
     customDescription?: pulumi.Input<string>;
+    /**
+     * Custom summary for the alert. support mustache template
+     */
     customSummary?: pulumi.Input<string>;
+    /**
+     * The display name of the alert
+     */
     displayName?: pulumi.Input<string>;
     evaluation?: pulumi.Input<inputs.AlertV2Evaluation>;
+    /**
+     * (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     */
     lifecycleState?: pulumi.Input<string>;
+    /**
+     * (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
+     */
     ownerUserName?: pulumi.Input<string>;
+    /**
+     * The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+     */
     parentPath?: pulumi.Input<string>;
+    /**
+     * Text of the query to be run
+     */
     queryText?: pulumi.Input<string>;
+    /**
+     * (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+     */
     runAsUserName?: pulumi.Input<string>;
     schedule?: pulumi.Input<inputs.AlertV2Schedule>;
+    /**
+     * (string) - The timestamp indicating when the alert was updated
+     */
     updateTime?: pulumi.Input<string>;
+    /**
+     * ID of the SQL warehouse attached to the alert
+     */
     warehouseId?: pulumi.Input<string>;
 }
 
@@ -118,12 +205,30 @@ export interface AlertV2State {
  * The set of arguments for constructing a AlertV2 resource.
  */
 export interface AlertV2Args {
+    /**
+     * Custom description for the alert. support mustache template
+     */
     customDescription?: pulumi.Input<string>;
+    /**
+     * Custom summary for the alert. support mustache template
+     */
     customSummary?: pulumi.Input<string>;
+    /**
+     * The display name of the alert
+     */
     displayName?: pulumi.Input<string>;
     evaluation?: pulumi.Input<inputs.AlertV2Evaluation>;
+    /**
+     * The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+     */
     parentPath?: pulumi.Input<string>;
+    /**
+     * Text of the query to be run
+     */
     queryText?: pulumi.Input<string>;
     schedule?: pulumi.Input<inputs.AlertV2Schedule>;
+    /**
+     * ID of the SQL warehouse attached to the alert
+     */
     warehouseId?: pulumi.Input<string>;
 }

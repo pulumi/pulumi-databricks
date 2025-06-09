@@ -72,6 +72,20 @@ import javax.annotation.Nullable;
  * 
  * This resource can be imported by using combination of workspace ID, securable type and name:
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_catalog_workspace_binding.this
+ * 
+ *   id = &#34;&lt;workspace_id&gt;|&lt;securable_type&gt;|&lt;securable_name&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
+ * bash
+ * 
  * ```sh
  * $ pulumi import databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding this &#34;&lt;workspace_id&gt;|&lt;securable_type&gt;|&lt;securable_name&gt;&#34;
  * ```
@@ -138,14 +152,14 @@ public class CatalogWorkspaceBinding extends com.pulumi.resources.CustomResource
      * 
      */
     @Export(name="workspaceId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> workspaceId;
+    private Output<String> workspaceId;
 
     /**
      * @return ID of the workspace. Change forces creation of a new resource.
      * 
      */
-    public Output<Optional<String>> workspaceId() {
-        return Codegen.optional(this.workspaceId);
+    public Output<String> workspaceId() {
+        return this.workspaceId;
     }
 
     /**
@@ -160,7 +174,7 @@ public class CatalogWorkspaceBinding extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CatalogWorkspaceBinding(java.lang.String name, @Nullable CatalogWorkspaceBindingArgs args) {
+    public CatalogWorkspaceBinding(java.lang.String name, CatalogWorkspaceBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -169,7 +183,7 @@ public class CatalogWorkspaceBinding extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CatalogWorkspaceBinding(java.lang.String name, @Nullable CatalogWorkspaceBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public CatalogWorkspaceBinding(java.lang.String name, CatalogWorkspaceBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -177,7 +191,7 @@ public class CatalogWorkspaceBinding extends com.pulumi.resources.CustomResource
         super("databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static CatalogWorkspaceBindingArgs makeArgs(@Nullable CatalogWorkspaceBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static CatalogWorkspaceBindingArgs makeArgs(CatalogWorkspaceBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

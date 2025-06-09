@@ -9,45 +9,99 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// As of terraform v1.5, resources can be imported through configuration.
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   id = id
+    /// 
+    ///   to = databricks_alert_v2.this
+    /// 
+    /// }
+    /// 
+    /// If you are using an older version of terraform, you can import the resource using cli as follows:
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 id
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/alertV2:AlertV2")]
     public partial class AlertV2 : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// (string) - The timestamp indicating when the alert was created
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Custom description for the alert. support mustache template
+        /// </summary>
         [Output("customDescription")]
         public Output<string?> CustomDescription { get; private set; } = null!;
 
+        /// <summary>
+        /// Custom summary for the alert. support mustache template
+        /// </summary>
         [Output("customSummary")]
         public Output<string?> CustomSummary { get; private set; } = null!;
 
+        /// <summary>
+        /// The display name of the alert
+        /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
         [Output("evaluation")]
         public Output<Outputs.AlertV2Evaluation?> Evaluation { get; private set; } = null!;
 
+        /// <summary>
+        /// (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        /// </summary>
         [Output("lifecycleState")]
         public Output<string> LifecycleState { get; private set; } = null!;
 
+        /// <summary>
+        /// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
+        /// </summary>
         [Output("ownerUserName")]
         public Output<string> OwnerUserName { get; private set; } = null!;
 
+        /// <summary>
+        /// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        /// </summary>
         [Output("parentPath")]
         public Output<string?> ParentPath { get; private set; } = null!;
 
+        /// <summary>
+        /// Text of the query to be run
+        /// </summary>
         [Output("queryText")]
         public Output<string?> QueryText { get; private set; } = null!;
 
+        /// <summary>
+        /// (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+        /// </summary>
         [Output("runAsUserName")]
         public Output<string> RunAsUserName { get; private set; } = null!;
 
         [Output("schedule")]
         public Output<Outputs.AlertV2Schedule?> Schedule { get; private set; } = null!;
 
+        /// <summary>
+        /// (string) - The timestamp indicating when the alert was updated
+        /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// ID of the SQL warehouse attached to the alert
+        /// </summary>
         [Output("warehouseId")]
         public Output<string?> WarehouseId { get; private set; } = null!;
 
@@ -97,27 +151,45 @@ namespace Pulumi.Databricks
 
     public sealed class AlertV2Args : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Custom description for the alert. support mustache template
+        /// </summary>
         [Input("customDescription")]
         public Input<string>? CustomDescription { get; set; }
 
+        /// <summary>
+        /// Custom summary for the alert. support mustache template
+        /// </summary>
         [Input("customSummary")]
         public Input<string>? CustomSummary { get; set; }
 
+        /// <summary>
+        /// The display name of the alert
+        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         [Input("evaluation")]
         public Input<Inputs.AlertV2EvaluationArgs>? Evaluation { get; set; }
 
+        /// <summary>
+        /// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        /// </summary>
         [Input("parentPath")]
         public Input<string>? ParentPath { get; set; }
 
+        /// <summary>
+        /// Text of the query to be run
+        /// </summary>
         [Input("queryText")]
         public Input<string>? QueryText { get; set; }
 
         [Input("schedule")]
         public Input<Inputs.AlertV2ScheduleArgs>? Schedule { get; set; }
 
+        /// <summary>
+        /// ID of the SQL warehouse attached to the alert
+        /// </summary>
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }
 
@@ -129,42 +201,75 @@ namespace Pulumi.Databricks
 
     public sealed class AlertV2State : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (string) - The timestamp indicating when the alert was created
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// Custom description for the alert. support mustache template
+        /// </summary>
         [Input("customDescription")]
         public Input<string>? CustomDescription { get; set; }
 
+        /// <summary>
+        /// Custom summary for the alert. support mustache template
+        /// </summary>
         [Input("customSummary")]
         public Input<string>? CustomSummary { get; set; }
 
+        /// <summary>
+        /// The display name of the alert
+        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         [Input("evaluation")]
         public Input<Inputs.AlertV2EvaluationGetArgs>? Evaluation { get; set; }
 
+        /// <summary>
+        /// (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        /// </summary>
         [Input("lifecycleState")]
         public Input<string>? LifecycleState { get; set; }
 
+        /// <summary>
+        /// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
+        /// </summary>
         [Input("ownerUserName")]
         public Input<string>? OwnerUserName { get; set; }
 
+        /// <summary>
+        /// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        /// </summary>
         [Input("parentPath")]
         public Input<string>? ParentPath { get; set; }
 
+        /// <summary>
+        /// Text of the query to be run
+        /// </summary>
         [Input("queryText")]
         public Input<string>? QueryText { get; set; }
 
+        /// <summary>
+        /// (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+        /// </summary>
         [Input("runAsUserName")]
         public Input<string>? RunAsUserName { get; set; }
 
         [Input("schedule")]
         public Input<Inputs.AlertV2ScheduleGetArgs>? Schedule { get; set; }
 
+        /// <summary>
+        /// (string) - The timestamp indicating when the alert was updated
+        /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 
+        /// <summary>
+        /// ID of the SQL warehouse attached to the alert
+        /// </summary>
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }
 

@@ -17,23 +17,47 @@ public final class GetAlertV2EvaluationThresholdValueArgs extends com.pulumi.res
 
     public static final GetAlertV2EvaluationThresholdValueArgs Empty = new GetAlertV2EvaluationThresholdValueArgs();
 
+    /**
+     * (boolean) -
+     * 
+     */
     @Import(name="boolValue")
     private @Nullable Output<Boolean> boolValue;
 
+    /**
+     * @return (boolean) -
+     * 
+     */
     public Optional<Output<Boolean>> boolValue() {
         return Optional.ofNullable(this.boolValue);
     }
 
+    /**
+     * (number) -
+     * 
+     */
     @Import(name="doubleValue")
     private @Nullable Output<Double> doubleValue;
 
+    /**
+     * @return (number) -
+     * 
+     */
     public Optional<Output<Double>> doubleValue() {
         return Optional.ofNullable(this.doubleValue);
     }
 
+    /**
+     * (string) -
+     * 
+     */
     @Import(name="stringValue")
     private @Nullable Output<String> stringValue;
 
+    /**
+     * @return (string) -
+     * 
+     */
     public Optional<Output<String>> stringValue() {
         return Optional.ofNullable(this.stringValue);
     }
@@ -64,29 +88,65 @@ public final class GetAlertV2EvaluationThresholdValueArgs extends com.pulumi.res
             $ = new GetAlertV2EvaluationThresholdValueArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param boolValue (boolean) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder boolValue(@Nullable Output<Boolean> boolValue) {
             $.boolValue = boolValue;
             return this;
         }
 
+        /**
+         * @param boolValue (boolean) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder boolValue(Boolean boolValue) {
             return boolValue(Output.of(boolValue));
         }
 
+        /**
+         * @param doubleValue (number) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder doubleValue(@Nullable Output<Double> doubleValue) {
             $.doubleValue = doubleValue;
             return this;
         }
 
+        /**
+         * @param doubleValue (number) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder doubleValue(Double doubleValue) {
             return doubleValue(Output.of(doubleValue));
         }
 
+        /**
+         * @param stringValue (string) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder stringValue(@Nullable Output<String> stringValue) {
             $.stringValue = stringValue;
             return this;
         }
 
+        /**
+         * @param stringValue (string) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder stringValue(String stringValue) {
             return stringValue(Output.of(stringValue));
         }

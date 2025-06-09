@@ -115,6 +115,18 @@ namespace Pulumi.Databricks
     /// 
     /// * `spn/spn_id` - service principal `spn_id`.
     /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_entitlements.me
+    /// 
+    ///   id = "user/&lt;user-id&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+    /// 
     /// bash
     /// 
     /// ```sh
@@ -163,10 +175,16 @@ namespace Pulumi.Databricks
         public Output<string?> UserId { get; private set; } = null!;
 
         /// <summary>
-        /// This is a field to allow the principal to have access to Databricks Workspace.
+        /// This is a field to allow the principal to have access to a Databricks Workspace.
         /// </summary>
         [Output("workspaceAccess")]
         public Output<bool?> WorkspaceAccess { get; private set; } = null!;
+
+        /// <summary>
+        /// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        /// </summary>
+        [Output("workspaceConsume")]
+        public Output<bool?> WorkspaceConsume { get; private set; } = null!;
 
 
         /// <summary>
@@ -253,10 +271,16 @@ namespace Pulumi.Databricks
         public Input<string>? UserId { get; set; }
 
         /// <summary>
-        /// This is a field to allow the principal to have access to Databricks Workspace.
+        /// This is a field to allow the principal to have access to a Databricks Workspace.
         /// </summary>
         [Input("workspaceAccess")]
         public Input<bool>? WorkspaceAccess { get; set; }
+
+        /// <summary>
+        /// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        /// </summary>
+        [Input("workspaceConsume")]
+        public Input<bool>? WorkspaceConsume { get; set; }
 
         public EntitlementsArgs()
         {
@@ -305,10 +329,16 @@ namespace Pulumi.Databricks
         public Input<string>? UserId { get; set; }
 
         /// <summary>
-        /// This is a field to allow the principal to have access to Databricks Workspace.
+        /// This is a field to allow the principal to have access to a Databricks Workspace.
         /// </summary>
         [Input("workspaceAccess")]
         public Input<bool>? WorkspaceAccess { get; set; }
+
+        /// <summary>
+        /// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        /// </summary>
+        [Input("workspaceConsume")]
+        public Input<bool>? WorkspaceConsume { get; set; }
 
         public EntitlementsState()
         {

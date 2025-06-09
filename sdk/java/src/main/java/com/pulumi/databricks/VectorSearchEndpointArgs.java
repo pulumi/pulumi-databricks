@@ -5,10 +5,8 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.VectorSearchEndpointCustomTagArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,29 +16,30 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
 
     public static final VectorSearchEndpointArgs Empty = new VectorSearchEndpointArgs();
 
-    @Import(name="customTags")
-    private @Nullable Output<List<VectorSearchEndpointCustomTagArgs>> customTags;
+    /**
+     * The Budget Policy ID set for this resource.
+     * 
+     */
+    @Import(name="budgetPolicyId")
+    private @Nullable Output<String> budgetPolicyId;
 
-    public Optional<Output<List<VectorSearchEndpointCustomTagArgs>>> customTags() {
-        return Optional.ofNullable(this.customTags);
-    }
-
-    @Import(name="effectiveBudgetPolicyId")
-    private @Nullable Output<String> effectiveBudgetPolicyId;
-
-    public Optional<Output<String>> effectiveBudgetPolicyId() {
-        return Optional.ofNullable(this.effectiveBudgetPolicyId);
+    /**
+     * @return The Budget Policy ID set for this resource.
+     * 
+     */
+    public Optional<Output<String>> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
     }
 
     /**
-     * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+     * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
      * 
      */
     @Import(name="endpointType", required=true)
     private Output<String> endpointType;
 
     /**
-     * @return Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+     * @return Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
      * 
      */
     public Output<String> endpointType() {
@@ -48,14 +47,14 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of the Mosaic AI Vector Search Endpoint to create.
+     * Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the Mosaic AI Vector Search Endpoint to create.
+     * @return Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
      * 
      */
     public Optional<Output<String>> name() {
@@ -65,8 +64,7 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
     private VectorSearchEndpointArgs() {}
 
     private VectorSearchEndpointArgs(VectorSearchEndpointArgs $) {
-        this.customTags = $.customTags;
-        this.effectiveBudgetPolicyId = $.effectiveBudgetPolicyId;
+        this.budgetPolicyId = $.budgetPolicyId;
         this.endpointType = $.endpointType;
         this.name = $.name;
     }
@@ -89,30 +87,29 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
             $ = new VectorSearchEndpointArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder customTags(@Nullable Output<List<VectorSearchEndpointCustomTagArgs>> customTags) {
-            $.customTags = customTags;
+        /**
+         * @param budgetPolicyId The Budget Policy ID set for this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetPolicyId(@Nullable Output<String> budgetPolicyId) {
+            $.budgetPolicyId = budgetPolicyId;
             return this;
-        }
-
-        public Builder customTags(List<VectorSearchEndpointCustomTagArgs> customTags) {
-            return customTags(Output.of(customTags));
-        }
-
-        public Builder customTags(VectorSearchEndpointCustomTagArgs... customTags) {
-            return customTags(List.of(customTags));
-        }
-
-        public Builder effectiveBudgetPolicyId(@Nullable Output<String> effectiveBudgetPolicyId) {
-            $.effectiveBudgetPolicyId = effectiveBudgetPolicyId;
-            return this;
-        }
-
-        public Builder effectiveBudgetPolicyId(String effectiveBudgetPolicyId) {
-            return effectiveBudgetPolicyId(Output.of(effectiveBudgetPolicyId));
         }
 
         /**
-         * @param endpointType Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+         * @param budgetPolicyId The Budget Policy ID set for this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetPolicyId(String budgetPolicyId) {
+            return budgetPolicyId(Output.of(budgetPolicyId));
+        }
+
+        /**
+         * @param endpointType Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
          * 
          * @return builder
          * 
@@ -123,7 +120,7 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param endpointType Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+         * @param endpointType Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
          * 
          * @return builder
          * 
@@ -133,7 +130,7 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Name of the Mosaic AI Vector Search Endpoint to create.
+         * @param name Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
          * 
          * @return builder
          * 
@@ -144,7 +141,7 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Name of the Mosaic AI Vector Search Endpoint to create.
+         * @param name Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
          * 
          * @return builder
          * 

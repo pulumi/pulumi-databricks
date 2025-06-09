@@ -12,9 +12,9 @@ namespace Pulumi.Databricks
     public static class GetBudgetPolicies
     {
         /// <summary>
-        /// This data source can be used to fetch the list of budget policies. 
+        /// This data source can be used to fetch the list of budget policies.
         /// 
-        /// &gt; This data source can only be used with an account-level provider!
+        /// &gt; **Note** This data source can only be used with an account-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -37,9 +37,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBudgetPoliciesResult>("databricks:index/getBudgetPolicies:getBudgetPolicies", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// This data source can be used to fetch the list of budget policies. 
+        /// This data source can be used to fetch the list of budget policies.
         /// 
-        /// &gt; This data source can only be used with an account-level provider!
+        /// &gt; **Note** This data source can only be used with an account-level provider!
         /// 
         /// ## Example Usage
         /// 
@@ -62,9 +62,9 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetBudgetPoliciesResult>("databricks:index/getBudgetPolicies:getBudgetPolicies", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// This data source can be used to fetch the list of budget policies. 
+        /// This data source can be used to fetch the list of budget policies.
         /// 
-        /// &gt; This data source can only be used with an account-level provider!
+        /// &gt; **Note** This data source can only be used with an account-level provider!
         /// 
         /// ## Example Usage
         /// 

@@ -17,14 +17,20 @@ public final class BudgetPolicyCustomTagArgs extends com.pulumi.resources.Resour
     public static final BudgetPolicyCustomTagArgs Empty = new BudgetPolicyCustomTagArgs();
 
     /**
-     * The key of the tag. - Must be unique among all custom tags of the same policy. Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; as these tags are preserved.
+     * The key of the tag.
+     * - Must be unique among all custom tags of the same policy
+     * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
+     *   these tags are preserved.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return The key of the tag. - Must be unique among all custom tags of the same policy. Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; as these tags are preserved.
+     * @return The key of the tag.
+     * - Must be unique among all custom tags of the same policy
+     * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
+     *   these tags are preserved.
      * 
      */
     public Output<String> key() {
@@ -72,7 +78,10 @@ public final class BudgetPolicyCustomTagArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param key The key of the tag. - Must be unique among all custom tags of the same policy. Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; as these tags are preserved.
+         * @param key The key of the tag.
+         * - Must be unique among all custom tags of the same policy
+         * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
+         *   these tags are preserved.
          * 
          * @return builder
          * 
@@ -83,7 +92,10 @@ public final class BudgetPolicyCustomTagArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param key The key of the tag. - Must be unique among all custom tags of the same policy. Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; as these tags are preserved.
+         * @param key The key of the tag.
+         * - Must be unique among all custom tags of the same policy
+         * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
+         *   these tags are preserved.
          * 
          * @return builder
          * 

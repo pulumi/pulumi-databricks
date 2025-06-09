@@ -174,10 +174,22 @@ import javax.annotation.Nullable;
  * 
  * This resource can be imported by `id`:
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_connection.this
+ * 
+ *   id = &#34;&lt;metastore_id&gt;|&lt;name&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh
- * $ pulumi import databricks:index/connection:Connection this &#39;&lt;metastore_id&gt;|&lt;name&gt;&#39;
+ * $ pulumi import databricks:index/connection:Connection this &#34;&lt;metastore_id&gt;|&lt;name&gt;&#34;
  * ```
  * 
  */

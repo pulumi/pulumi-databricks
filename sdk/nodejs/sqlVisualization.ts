@@ -9,6 +9,18 @@ import * as utilities from "./utilities";
  *
  * You can import a `databricks_sql_visualization` resource with ID like the following:
  *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_sql_visualization.this
+ *
+ *   id = "<query-id>/<visualization-id>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ *
  * bash
  *
  * ```sh

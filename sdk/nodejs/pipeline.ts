@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Use `databricks.Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ * Use `databricks.Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
  *
  * > This resource can only be used with a workspace-level provider!
  *
@@ -53,6 +53,11 @@ import * as utilities from "./utilities";
  *                 path: pulumi.interpolate`${dltDemoRepo.path}/pipeline.sql`,
  *             },
  *         },
+ *         {
+ *             glob: {
+ *                 include: pulumi.interpolate`${dltDemoRepo.path}/subfolder/**`,
+ *             },
+ *         },
  *     ],
  *     continuous: false,
  *     notifications: [{
@@ -75,7 +80,7 @@ import * as utilities from "./utilities";
  * The following resources are often used in the same context:
  *
  * * End to end workspace management guide.
- * * databricks.getPipelines to retrieve [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipeline data.
+ * * databricks.getPipelines to retrieve [Delta Live Tables](https://docs.databricks.com/aws/en/dlt) pipeline data.
  * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
  * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
  * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -83,6 +88,18 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * The resource job can be imported using the id of the pipeline
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_pipeline.this
+ *
+ *   id = "<pipeline-id>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  *
  * bash
  *
@@ -137,7 +154,7 @@ export class Pipeline extends pulumi.CustomResource {
     public readonly channel!: pulumi.Output<string | undefined>;
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
      */
     public readonly clusters!: pulumi.Output<outputs.PipelineCluster[] | undefined>;
     /**
@@ -158,7 +175,7 @@ export class Pipeline extends pulumi.CustomResource {
      */
     public readonly development!: pulumi.Output<boolean | undefined>;
     /**
-     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
+     * optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      */
     public readonly edition!: pulumi.Output<string | undefined>;
     /**
@@ -179,7 +196,7 @@ export class Pipeline extends pulumi.CustomResource {
     public readonly lastModified!: pulumi.Output<number>;
     public readonly latestUpdates!: pulumi.Output<outputs.PipelineLatestUpdate[]>;
     /**
-     * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
+     * blocks - Specifies pipeline code.
      */
     public readonly libraries!: pulumi.Output<outputs.PipelineLibrary[] | undefined>;
     /**
@@ -192,6 +209,10 @@ export class Pipeline extends pulumi.CustomResource {
      */
     public readonly photon!: pulumi.Output<boolean | undefined>;
     public readonly restartWindow!: pulumi.Output<outputs.PipelineRestartWindow | undefined>;
+    /**
+     * An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
+     */
+    public readonly rootPath!: pulumi.Output<string | undefined>;
     public readonly runAs!: pulumi.Output<outputs.PipelineRunAs>;
     public readonly runAsUserName!: pulumi.Output<string>;
     /**
@@ -256,6 +277,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["notifications"] = state ? state.notifications : undefined;
             resourceInputs["photon"] = state ? state.photon : undefined;
             resourceInputs["restartWindow"] = state ? state.restartWindow : undefined;
+            resourceInputs["rootPath"] = state ? state.rootPath : undefined;
             resourceInputs["runAs"] = state ? state.runAs : undefined;
             resourceInputs["runAsUserName"] = state ? state.runAsUserName : undefined;
             resourceInputs["schema"] = state ? state.schema : undefined;
@@ -293,6 +315,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["notifications"] = args ? args.notifications : undefined;
             resourceInputs["photon"] = args ? args.photon : undefined;
             resourceInputs["restartWindow"] = args ? args.restartWindow : undefined;
+            resourceInputs["rootPath"] = args ? args.rootPath : undefined;
             resourceInputs["runAs"] = args ? args.runAs : undefined;
             resourceInputs["runAsUserName"] = args ? args.runAsUserName : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
@@ -331,7 +354,7 @@ export interface PipelineState {
     channel?: pulumi.Input<string>;
     clusterId?: pulumi.Input<string>;
     /**
-     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
      */
     clusters?: pulumi.Input<pulumi.Input<inputs.PipelineCluster>[]>;
     /**
@@ -352,7 +375,7 @@ export interface PipelineState {
      */
     development?: pulumi.Input<boolean>;
     /**
-     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
+     * optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      */
     edition?: pulumi.Input<string>;
     /**
@@ -373,7 +396,7 @@ export interface PipelineState {
     lastModified?: pulumi.Input<number>;
     latestUpdates?: pulumi.Input<pulumi.Input<inputs.PipelineLatestUpdate>[]>;
     /**
-     * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
+     * blocks - Specifies pipeline code.
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.PipelineLibrary>[]>;
     /**
@@ -386,6 +409,10 @@ export interface PipelineState {
      */
     photon?: pulumi.Input<boolean>;
     restartWindow?: pulumi.Input<inputs.PipelineRestartWindow>;
+    /**
+     * An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
+     */
+    rootPath?: pulumi.Input<string>;
     runAs?: pulumi.Input<inputs.PipelineRunAs>;
     runAsUserName?: pulumi.Input<string>;
     /**
@@ -435,7 +462,7 @@ export interface PipelineArgs {
     channel?: pulumi.Input<string>;
     clusterId?: pulumi.Input<string>;
     /**
-     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
      */
     clusters?: pulumi.Input<pulumi.Input<inputs.PipelineCluster>[]>;
     /**
@@ -456,7 +483,7 @@ export interface PipelineArgs {
      */
     development?: pulumi.Input<boolean>;
     /**
-     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
+     * optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      */
     edition?: pulumi.Input<string>;
     /**
@@ -477,7 +504,7 @@ export interface PipelineArgs {
     lastModified?: pulumi.Input<number>;
     latestUpdates?: pulumi.Input<pulumi.Input<inputs.PipelineLatestUpdate>[]>;
     /**
-     * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
+     * blocks - Specifies pipeline code.
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.PipelineLibrary>[]>;
     /**
@@ -490,6 +517,10 @@ export interface PipelineArgs {
      */
     photon?: pulumi.Input<boolean>;
     restartWindow?: pulumi.Input<inputs.PipelineRestartWindow>;
+    /**
+     * An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
+     */
+    rootPath?: pulumi.Input<string>;
     runAs?: pulumi.Input<inputs.PipelineRunAs>;
     runAsUserName?: pulumi.Input<string>;
     /**

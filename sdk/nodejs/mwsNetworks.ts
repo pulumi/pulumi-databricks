@@ -29,16 +29,6 @@ import * as utilities from "./utilities";
  *     ipCidrRange: "10.0.0.0/16",
  *     region: "us-central1",
  *     network: dbxPrivateVpc.id,
- *     secondaryIpRange: [
- *         {
- *             rangeName: "pods",
- *             ipCidrRange: "10.1.0.0/16",
- *         },
- *         {
- *             rangeName: "svc",
- *             ipCidrRange: "10.2.0.0/20",
- *         },
- *     ],
  *     privateIpGoogleAccess: true,
  * });
  * const router = new google.index.ComputeRouter("router", {
@@ -61,8 +51,6 @@ import * as utilities from "./utilities";
  *         vpcId: dbxPrivateVpc.name,
  *         subnetId: networkWithPrivateSecondaryIpRanges.name,
  *         subnetRegion: networkWithPrivateSecondaryIpRanges.region,
- *         podIpRangeName: "pods",
- *         serviceIpRangeName: "svc",
  *     },
  * });
  * ```
@@ -81,8 +69,6 @@ import * as utilities from "./utilities";
  *         vpcId: dbxPrivateVpc.name,
  *         subnetId: networkWithPrivateSecondaryIpRanges.name,
  *         subnetRegion: networkWithPrivateSecondaryIpRanges.region,
- *         podIpRangeName: "pods",
- *         serviceIpRangeName: "svc",
  *     },
  *     vpcEndpoints: {
  *         dataplaneRelays: [relay.vpcEndpointId],
@@ -115,6 +101,18 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * This resource can be imported by Databricks account ID and network ID.
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_mws_networks.this
+ *
+ *   id = "<account_id>/<network_id>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  *
  * ```sh
  * $ pulumi import databricks:index/mwsNetworks:MwsNetworks this '<account_id>/<network_id>'

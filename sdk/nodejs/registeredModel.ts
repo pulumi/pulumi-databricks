@@ -39,10 +39,22 @@ import * as utilities from "./utilities";
  *
  * The registered model resource can be imported using the full (3-level) name of the model.
  *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_registered_model.this
+ *
+ *   id = "<catalog_name>.<schema_name>.<model_name>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ *
  * bash
  *
  * ```sh
- * $ pulumi import databricks:index/registeredModel:RegisteredModel this <catalog_name.schema_name.model_name>
+ * $ pulumi import databricks:index/registeredModel:RegisteredModel this <catalog_name>.<schema_name>.<model_name>
  * ```
  */
 export class RegisteredModel extends pulumi.CustomResource {

@@ -17,23 +17,47 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
 
     public static final AlertV2Args Empty = new AlertV2Args();
 
+    /**
+     * Custom description for the alert. support mustache template
+     * 
+     */
     @Import(name="customDescription")
     private @Nullable Output<String> customDescription;
 
+    /**
+     * @return Custom description for the alert. support mustache template
+     * 
+     */
     public Optional<Output<String>> customDescription() {
         return Optional.ofNullable(this.customDescription);
     }
 
+    /**
+     * Custom summary for the alert. support mustache template
+     * 
+     */
     @Import(name="customSummary")
     private @Nullable Output<String> customSummary;
 
+    /**
+     * @return Custom summary for the alert. support mustache template
+     * 
+     */
     public Optional<Output<String>> customSummary() {
         return Optional.ofNullable(this.customSummary);
     }
 
+    /**
+     * The display name of the alert
+     * 
+     */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
+    /**
+     * @return The display name of the alert
+     * 
+     */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
     }
@@ -45,16 +69,32 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.evaluation);
     }
 
+    /**
+     * The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+     * 
+     */
     @Import(name="parentPath")
     private @Nullable Output<String> parentPath;
 
+    /**
+     * @return The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+     * 
+     */
     public Optional<Output<String>> parentPath() {
         return Optional.ofNullable(this.parentPath);
     }
 
+    /**
+     * Text of the query to be run
+     * 
+     */
     @Import(name="queryText")
     private @Nullable Output<String> queryText;
 
+    /**
+     * @return Text of the query to be run
+     * 
+     */
     public Optional<Output<String>> queryText() {
         return Optional.ofNullable(this.queryText);
     }
@@ -66,9 +106,17 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.schedule);
     }
 
+    /**
+     * ID of the SQL warehouse attached to the alert
+     * 
+     */
     @Import(name="warehouseId")
     private @Nullable Output<String> warehouseId;
 
+    /**
+     * @return ID of the SQL warehouse attached to the alert
+     * 
+     */
     public Optional<Output<String>> warehouseId() {
         return Optional.ofNullable(this.warehouseId);
     }
@@ -104,29 +152,65 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
             $ = new AlertV2Args(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param customDescription Custom description for the alert. support mustache template
+         * 
+         * @return builder
+         * 
+         */
         public Builder customDescription(@Nullable Output<String> customDescription) {
             $.customDescription = customDescription;
             return this;
         }
 
+        /**
+         * @param customDescription Custom description for the alert. support mustache template
+         * 
+         * @return builder
+         * 
+         */
         public Builder customDescription(String customDescription) {
             return customDescription(Output.of(customDescription));
         }
 
+        /**
+         * @param customSummary Custom summary for the alert. support mustache template
+         * 
+         * @return builder
+         * 
+         */
         public Builder customSummary(@Nullable Output<String> customSummary) {
             $.customSummary = customSummary;
             return this;
         }
 
+        /**
+         * @param customSummary Custom summary for the alert. support mustache template
+         * 
+         * @return builder
+         * 
+         */
         public Builder customSummary(String customSummary) {
             return customSummary(Output.of(customSummary));
         }
 
+        /**
+         * @param displayName The display name of the alert
+         * 
+         * @return builder
+         * 
+         */
         public Builder displayName(@Nullable Output<String> displayName) {
             $.displayName = displayName;
             return this;
         }
 
+        /**
+         * @param displayName The display name of the alert
+         * 
+         * @return builder
+         * 
+         */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
         }
@@ -140,20 +224,44 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
             return evaluation(Output.of(evaluation));
         }
 
+        /**
+         * @param parentPath The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+         * 
+         * @return builder
+         * 
+         */
         public Builder parentPath(@Nullable Output<String> parentPath) {
             $.parentPath = parentPath;
             return this;
         }
 
+        /**
+         * @param parentPath The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+         * 
+         * @return builder
+         * 
+         */
         public Builder parentPath(String parentPath) {
             return parentPath(Output.of(parentPath));
         }
 
+        /**
+         * @param queryText Text of the query to be run
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryText(@Nullable Output<String> queryText) {
             $.queryText = queryText;
             return this;
         }
 
+        /**
+         * @param queryText Text of the query to be run
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryText(String queryText) {
             return queryText(Output.of(queryText));
         }
@@ -167,11 +275,23 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
             return schedule(Output.of(schedule));
         }
 
+        /**
+         * @param warehouseId ID of the SQL warehouse attached to the alert
+         * 
+         * @return builder
+         * 
+         */
         public Builder warehouseId(@Nullable Output<String> warehouseId) {
             $.warehouseId = warehouseId;
             return this;
         }
 
+        /**
+         * @param warehouseId ID of the SQL warehouse attached to the alert
+         * 
+         * @return builder
+         * 
+         */
         public Builder warehouseId(String warehouseId) {
             return warehouseId(Output.of(warehouseId));
         }

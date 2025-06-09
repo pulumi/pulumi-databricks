@@ -159,14 +159,14 @@ public final class InstancePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
+     * (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool&#39;s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
      * 
      */
     @Import(name="nodeTypeId")
     private @Nullable Output<String> nodeTypeId;
 
     /**
-     * @return (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
+     * @return (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool&#39;s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
      * 
      */
     public Optional<Output<String>> nodeTypeId() {
@@ -414,7 +414,7 @@ public final class InstancePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeTypeId (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
+         * @param nodeTypeId (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool&#39;s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class InstancePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeTypeId (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
+         * @param nodeTypeId (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool&#39;s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
          * 
          * @return builder
          * 

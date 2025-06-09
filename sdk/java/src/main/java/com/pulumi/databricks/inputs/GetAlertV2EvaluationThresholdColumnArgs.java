@@ -15,23 +15,47 @@ public final class GetAlertV2EvaluationThresholdColumnArgs extends com.pulumi.re
 
     public static final GetAlertV2EvaluationThresholdColumnArgs Empty = new GetAlertV2EvaluationThresholdColumnArgs();
 
+    /**
+     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * 
+     */
     @Import(name="aggregation")
     private @Nullable Output<String> aggregation;
 
+    /**
+     * @return (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * 
+     */
     public Optional<Output<String>> aggregation() {
         return Optional.ofNullable(this.aggregation);
     }
 
+    /**
+     * (string) -
+     * 
+     */
     @Import(name="display")
     private @Nullable Output<String> display;
 
+    /**
+     * @return (string) -
+     * 
+     */
     public Optional<Output<String>> display() {
         return Optional.ofNullable(this.display);
     }
 
+    /**
+     * (string) -
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return (string) -
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -62,29 +86,65 @@ public final class GetAlertV2EvaluationThresholdColumnArgs extends com.pulumi.re
             $ = new GetAlertV2EvaluationThresholdColumnArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aggregation (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+         * 
+         * @return builder
+         * 
+         */
         public Builder aggregation(@Nullable Output<String> aggregation) {
             $.aggregation = aggregation;
             return this;
         }
 
+        /**
+         * @param aggregation (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+         * 
+         * @return builder
+         * 
+         */
         public Builder aggregation(String aggregation) {
             return aggregation(Output.of(aggregation));
         }
 
+        /**
+         * @param display (string) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder display(@Nullable Output<String> display) {
             $.display = display;
             return this;
         }
 
+        /**
+         * @param display (string) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder display(String display) {
             return display(Output.of(display));
         }
 
+        /**
+         * @param name (string) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name (string) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

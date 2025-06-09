@@ -69,10 +69,22 @@ import javax.annotation.Nullable;
  * 
  * The resource can be imported using the name of the Online Table:
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_online_table.this
+ * 
+ *   id = &#34;&lt;endpoint-name&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh
- * $ pulumi import databricks:index/onlineTable:OnlineTable this &lt;endpoint-name&gt;
+ * $ pulumi import databricks:index/onlineTable:OnlineTable this &#34;&lt;endpoint-name&gt;&#34;
  * ```
  * 
  */

@@ -76,6 +76,18 @@ namespace Pulumi.Databricks
     /// 
     /// You can import a `databricks_group_member` resource with name `my_group_member` like the following:
     /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_group_member.my_group_member
+    /// 
+    ///   id = "&lt;group_id&gt;|&lt;member_id&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+    /// 
     /// bash
     /// 
     /// ```sh
@@ -86,13 +98,13 @@ namespace Pulumi.Databricks
     public partial class GroupMember : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// This is the id of the group resource.
+        /// This is the `id` attribute (SCIM ID) of the group resource.
         /// </summary>
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// This is the id of the group, service principal, or user.
+        /// This is the `id` attribute (SCIM ID) of the group, service principal, or user.
         /// </summary>
         [Output("memberId")]
         public Output<string> MemberId { get; private set; } = null!;
@@ -144,13 +156,13 @@ namespace Pulumi.Databricks
     public sealed class GroupMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This is the id of the group resource.
+        /// This is the `id` attribute (SCIM ID) of the group resource.
         /// </summary>
         [Input("groupId", required: true)]
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// This is the id of the group, service principal, or user.
+        /// This is the `id` attribute (SCIM ID) of the group, service principal, or user.
         /// </summary>
         [Input("memberId", required: true)]
         public Input<string> MemberId { get; set; } = null!;
@@ -164,13 +176,13 @@ namespace Pulumi.Databricks
     public sealed class GroupMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This is the id of the group resource.
+        /// This is the `id` attribute (SCIM ID) of the group resource.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// This is the id of the group, service principal, or user.
+        /// This is the `id` attribute (SCIM ID) of the group, service principal, or user.
         /// </summary>
         [Input("memberId")]
         public Input<string>? MemberId { get; set; }

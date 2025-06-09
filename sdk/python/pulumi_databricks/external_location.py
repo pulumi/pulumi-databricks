@@ -24,10 +24,11 @@ class ExternalLocationArgs:
     def __init__(__self__, *,
                  credential_name: pulumi.Input[builtins.str],
                  url: pulumi.Input[builtins.str],
-                 access_point: Optional[pulumi.Input[builtins.str]] = None,
                  comment: Optional[pulumi.Input[builtins.str]] = None,
+                 enable_file_events: Optional[pulumi.Input[builtins.bool]] = None,
                  encryption_details: Optional[pulumi.Input['ExternalLocationEncryptionDetailsArgs']] = None,
                  fallback: Optional[pulumi.Input[builtins.bool]] = None,
+                 file_event_queue: Optional[pulumi.Input['ExternalLocationFileEventQueueArgs']] = None,
                  force_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  force_update: Optional[pulumi.Input[builtins.bool]] = None,
                  isolation_mode: Optional[pulumi.Input[builtins.str]] = None,
@@ -40,8 +41,8 @@ class ExternalLocationArgs:
         The set of arguments for constructing a ExternalLocation resource.
         :param pulumi.Input[builtins.str] credential_name: Name of the StorageCredential to use with this external location.
         :param pulumi.Input[builtins.str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
-        :param pulumi.Input[builtins.str] access_point: The ARN of the s3 access point to use with the external location (AWS).
         :param pulumi.Input[builtins.str] comment: User-supplied free-form text.
+        :param pulumi.Input[builtins.bool] enable_file_events: indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
         :param pulumi.Input['ExternalLocationEncryptionDetailsArgs'] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         :param pulumi.Input[builtins.bool] fallback: Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
         :param pulumi.Input[builtins.bool] force_destroy: Destroy external location regardless of its dependents.
@@ -54,14 +55,16 @@ class ExternalLocationArgs:
         """
         pulumi.set(__self__, "credential_name", credential_name)
         pulumi.set(__self__, "url", url)
-        if access_point is not None:
-            pulumi.set(__self__, "access_point", access_point)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if enable_file_events is not None:
+            pulumi.set(__self__, "enable_file_events", enable_file_events)
         if encryption_details is not None:
             pulumi.set(__self__, "encryption_details", encryption_details)
         if fallback is not None:
             pulumi.set(__self__, "fallback", fallback)
+        if file_event_queue is not None:
+            pulumi.set(__self__, "file_event_queue", file_event_queue)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if force_update is not None:
@@ -104,18 +107,6 @@ class ExternalLocationArgs:
         pulumi.set(self, "url", value)
 
     @property
-    @pulumi.getter(name="accessPoint")
-    def access_point(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The ARN of the s3 access point to use with the external location (AWS).
-        """
-        return pulumi.get(self, "access_point")
-
-    @access_point.setter
-    def access_point(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "access_point", value)
-
-    @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -126,6 +117,18 @@ class ExternalLocationArgs:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="enableFileEvents")
+    def enable_file_events(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
+        """
+        return pulumi.get(self, "enable_file_events")
+
+    @enable_file_events.setter
+    def enable_file_events(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enable_file_events", value)
 
     @property
     @pulumi.getter(name="encryptionDetails")
@@ -150,6 +153,15 @@ class ExternalLocationArgs:
     @fallback.setter
     def fallback(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "fallback", value)
+
+    @property
+    @pulumi.getter(name="fileEventQueue")
+    def file_event_queue(self) -> Optional[pulumi.Input['ExternalLocationFileEventQueueArgs']]:
+        return pulumi.get(self, "file_event_queue")
+
+    @file_event_queue.setter
+    def file_event_queue(self, value: Optional[pulumi.Input['ExternalLocationFileEventQueueArgs']]):
+        pulumi.set(self, "file_event_queue", value)
 
     @property
     @pulumi.getter(name="forceDestroy")
@@ -248,15 +260,16 @@ class ExternalLocationArgs:
 @pulumi.input_type
 class _ExternalLocationState:
     def __init__(__self__, *,
-                 access_point: Optional[pulumi.Input[builtins.str]] = None,
                  browse_only: Optional[pulumi.Input[builtins.bool]] = None,
                  comment: Optional[pulumi.Input[builtins.str]] = None,
                  created_at: Optional[pulumi.Input[builtins.int]] = None,
                  created_by: Optional[pulumi.Input[builtins.str]] = None,
                  credential_id: Optional[pulumi.Input[builtins.str]] = None,
                  credential_name: Optional[pulumi.Input[builtins.str]] = None,
+                 enable_file_events: Optional[pulumi.Input[builtins.bool]] = None,
                  encryption_details: Optional[pulumi.Input['ExternalLocationEncryptionDetailsArgs']] = None,
                  fallback: Optional[pulumi.Input[builtins.bool]] = None,
+                 file_event_queue: Optional[pulumi.Input['ExternalLocationFileEventQueueArgs']] = None,
                  force_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  force_update: Optional[pulumi.Input[builtins.bool]] = None,
                  isolation_mode: Optional[pulumi.Input[builtins.str]] = None,
@@ -270,12 +283,12 @@ class _ExternalLocationState:
                  url: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExternalLocation resources.
-        :param pulumi.Input[builtins.str] access_point: The ARN of the s3 access point to use with the external location (AWS).
         :param pulumi.Input[builtins.str] comment: User-supplied free-form text.
         :param pulumi.Input[builtins.int] created_at: Time at which this external location was created, in epoch milliseconds.
         :param pulumi.Input[builtins.str] created_by: Username of external location creator.
         :param pulumi.Input[builtins.str] credential_id: Unique ID of the location's storage credential.
         :param pulumi.Input[builtins.str] credential_name: Name of the StorageCredential to use with this external location.
+        :param pulumi.Input[builtins.bool] enable_file_events: indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
         :param pulumi.Input['ExternalLocationEncryptionDetailsArgs'] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         :param pulumi.Input[builtins.bool] fallback: Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
         :param pulumi.Input[builtins.bool] force_destroy: Destroy external location regardless of its dependents.
@@ -289,8 +302,6 @@ class _ExternalLocationState:
         :param pulumi.Input[builtins.str] updated_by: Username of user who last modified the external location.
         :param pulumi.Input[builtins.str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         """
-        if access_point is not None:
-            pulumi.set(__self__, "access_point", access_point)
         if browse_only is not None:
             pulumi.set(__self__, "browse_only", browse_only)
         if comment is not None:
@@ -303,10 +314,14 @@ class _ExternalLocationState:
             pulumi.set(__self__, "credential_id", credential_id)
         if credential_name is not None:
             pulumi.set(__self__, "credential_name", credential_name)
+        if enable_file_events is not None:
+            pulumi.set(__self__, "enable_file_events", enable_file_events)
         if encryption_details is not None:
             pulumi.set(__self__, "encryption_details", encryption_details)
         if fallback is not None:
             pulumi.set(__self__, "fallback", fallback)
+        if file_event_queue is not None:
+            pulumi.set(__self__, "file_event_queue", file_event_queue)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if force_update is not None:
@@ -329,18 +344,6 @@ class _ExternalLocationState:
             pulumi.set(__self__, "updated_by", updated_by)
         if url is not None:
             pulumi.set(__self__, "url", url)
-
-    @property
-    @pulumi.getter(name="accessPoint")
-    def access_point(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The ARN of the s3 access point to use with the external location (AWS).
-        """
-        return pulumi.get(self, "access_point")
-
-    @access_point.setter
-    def access_point(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "access_point", value)
 
     @property
     @pulumi.getter(name="browseOnly")
@@ -412,6 +415,18 @@ class _ExternalLocationState:
         pulumi.set(self, "credential_name", value)
 
     @property
+    @pulumi.getter(name="enableFileEvents")
+    def enable_file_events(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
+        """
+        return pulumi.get(self, "enable_file_events")
+
+    @enable_file_events.setter
+    def enable_file_events(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enable_file_events", value)
+
+    @property
     @pulumi.getter(name="encryptionDetails")
     def encryption_details(self) -> Optional[pulumi.Input['ExternalLocationEncryptionDetailsArgs']]:
         """
@@ -434,6 +449,15 @@ class _ExternalLocationState:
     @fallback.setter
     def fallback(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "fallback", value)
+
+    @property
+    @pulumi.getter(name="fileEventQueue")
+    def file_event_queue(self) -> Optional[pulumi.Input['ExternalLocationFileEventQueueArgs']]:
+        return pulumi.get(self, "file_event_queue")
+
+    @file_event_queue.setter
+    def file_event_queue(self, value: Optional[pulumi.Input['ExternalLocationFileEventQueueArgs']]):
+        pulumi.set(self, "file_event_queue", value)
 
     @property
     @pulumi.getter(name="forceDestroy")
@@ -571,11 +595,12 @@ class ExternalLocation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_point: Optional[pulumi.Input[builtins.str]] = None,
                  comment: Optional[pulumi.Input[builtins.str]] = None,
                  credential_name: Optional[pulumi.Input[builtins.str]] = None,
+                 enable_file_events: Optional[pulumi.Input[builtins.bool]] = None,
                  encryption_details: Optional[pulumi.Input[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict']]] = None,
                  fallback: Optional[pulumi.Input[builtins.bool]] = None,
+                 file_event_queue: Optional[pulumi.Input[Union['ExternalLocationFileEventQueueArgs', 'ExternalLocationFileEventQueueArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  force_update: Optional[pulumi.Input[builtins.bool]] = None,
                  isolation_mode: Optional[pulumi.Input[builtins.str]] = None,
@@ -630,6 +655,18 @@ class ExternalLocation(pulumi.CustomResource):
 
         This resource can be imported by `name`:
 
+        hcl
+
+        import {
+
+          to = databricks_external_location.this
+
+          id = "<name>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
@@ -638,9 +675,9 @@ class ExternalLocation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] access_point: The ARN of the s3 access point to use with the external location (AWS).
         :param pulumi.Input[builtins.str] comment: User-supplied free-form text.
         :param pulumi.Input[builtins.str] credential_name: Name of the StorageCredential to use with this external location.
+        :param pulumi.Input[builtins.bool] enable_file_events: indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
         :param pulumi.Input[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict']] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         :param pulumi.Input[builtins.bool] fallback: Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
         :param pulumi.Input[builtins.bool] force_destroy: Destroy external location regardless of its dependents.
@@ -702,6 +739,18 @@ class ExternalLocation(pulumi.CustomResource):
 
         This resource can be imported by `name`:
 
+        hcl
+
+        import {
+
+          to = databricks_external_location.this
+
+          id = "<name>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
@@ -723,11 +772,12 @@ class ExternalLocation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_point: Optional[pulumi.Input[builtins.str]] = None,
                  comment: Optional[pulumi.Input[builtins.str]] = None,
                  credential_name: Optional[pulumi.Input[builtins.str]] = None,
+                 enable_file_events: Optional[pulumi.Input[builtins.bool]] = None,
                  encryption_details: Optional[pulumi.Input[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict']]] = None,
                  fallback: Optional[pulumi.Input[builtins.bool]] = None,
+                 file_event_queue: Optional[pulumi.Input[Union['ExternalLocationFileEventQueueArgs', 'ExternalLocationFileEventQueueArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[builtins.bool]] = None,
                  force_update: Optional[pulumi.Input[builtins.bool]] = None,
                  isolation_mode: Optional[pulumi.Input[builtins.str]] = None,
@@ -746,13 +796,14 @@ class ExternalLocation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ExternalLocationArgs.__new__(ExternalLocationArgs)
 
-            __props__.__dict__["access_point"] = access_point
             __props__.__dict__["comment"] = comment
             if credential_name is None and not opts.urn:
                 raise TypeError("Missing required property 'credential_name'")
             __props__.__dict__["credential_name"] = credential_name
+            __props__.__dict__["enable_file_events"] = enable_file_events
             __props__.__dict__["encryption_details"] = encryption_details
             __props__.__dict__["fallback"] = fallback
+            __props__.__dict__["file_event_queue"] = file_event_queue
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["force_update"] = force_update
             __props__.__dict__["isolation_mode"] = isolation_mode
@@ -780,15 +831,16 @@ class ExternalLocation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_point: Optional[pulumi.Input[builtins.str]] = None,
             browse_only: Optional[pulumi.Input[builtins.bool]] = None,
             comment: Optional[pulumi.Input[builtins.str]] = None,
             created_at: Optional[pulumi.Input[builtins.int]] = None,
             created_by: Optional[pulumi.Input[builtins.str]] = None,
             credential_id: Optional[pulumi.Input[builtins.str]] = None,
             credential_name: Optional[pulumi.Input[builtins.str]] = None,
+            enable_file_events: Optional[pulumi.Input[builtins.bool]] = None,
             encryption_details: Optional[pulumi.Input[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict']]] = None,
             fallback: Optional[pulumi.Input[builtins.bool]] = None,
+            file_event_queue: Optional[pulumi.Input[Union['ExternalLocationFileEventQueueArgs', 'ExternalLocationFileEventQueueArgsDict']]] = None,
             force_destroy: Optional[pulumi.Input[builtins.bool]] = None,
             force_update: Optional[pulumi.Input[builtins.bool]] = None,
             isolation_mode: Optional[pulumi.Input[builtins.str]] = None,
@@ -807,12 +859,12 @@ class ExternalLocation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] access_point: The ARN of the s3 access point to use with the external location (AWS).
         :param pulumi.Input[builtins.str] comment: User-supplied free-form text.
         :param pulumi.Input[builtins.int] created_at: Time at which this external location was created, in epoch milliseconds.
         :param pulumi.Input[builtins.str] created_by: Username of external location creator.
         :param pulumi.Input[builtins.str] credential_id: Unique ID of the location's storage credential.
         :param pulumi.Input[builtins.str] credential_name: Name of the StorageCredential to use with this external location.
+        :param pulumi.Input[builtins.bool] enable_file_events: indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
         :param pulumi.Input[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict']] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         :param pulumi.Input[builtins.bool] fallback: Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
         :param pulumi.Input[builtins.bool] force_destroy: Destroy external location regardless of its dependents.
@@ -830,15 +882,16 @@ class ExternalLocation(pulumi.CustomResource):
 
         __props__ = _ExternalLocationState.__new__(_ExternalLocationState)
 
-        __props__.__dict__["access_point"] = access_point
         __props__.__dict__["browse_only"] = browse_only
         __props__.__dict__["comment"] = comment
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["credential_id"] = credential_id
         __props__.__dict__["credential_name"] = credential_name
+        __props__.__dict__["enable_file_events"] = enable_file_events
         __props__.__dict__["encryption_details"] = encryption_details
         __props__.__dict__["fallback"] = fallback
+        __props__.__dict__["file_event_queue"] = file_event_queue
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["force_update"] = force_update
         __props__.__dict__["isolation_mode"] = isolation_mode
@@ -851,14 +904,6 @@ class ExternalLocation(pulumi.CustomResource):
         __props__.__dict__["updated_by"] = updated_by
         __props__.__dict__["url"] = url
         return ExternalLocation(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="accessPoint")
-    def access_point(self) -> pulumi.Output[Optional[builtins.str]]:
-        """
-        The ARN of the s3 access point to use with the external location (AWS).
-        """
-        return pulumi.get(self, "access_point")
 
     @property
     @pulumi.getter(name="browseOnly")
@@ -906,6 +951,14 @@ class ExternalLocation(pulumi.CustomResource):
         return pulumi.get(self, "credential_name")
 
     @property
+    @pulumi.getter(name="enableFileEvents")
+    def enable_file_events(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
+        """
+        return pulumi.get(self, "enable_file_events")
+
+    @property
     @pulumi.getter(name="encryptionDetails")
     def encryption_details(self) -> pulumi.Output[Optional['outputs.ExternalLocationEncryptionDetails']]:
         """
@@ -920,6 +973,11 @@ class ExternalLocation(pulumi.CustomResource):
         Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
         """
         return pulumi.get(self, "fallback")
+
+    @property
+    @pulumi.getter(name="fileEventQueue")
+    def file_event_queue(self) -> pulumi.Output[Optional['outputs.ExternalLocationFileEventQueue']]:
+        return pulumi.get(self, "file_event_queue")
 
     @property
     @pulumi.getter(name="forceDestroy")

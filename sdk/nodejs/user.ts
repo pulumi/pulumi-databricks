@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * > To assign account level users to workspace use databricks_mws_permission_assignment.
  *
- * > Entitlements, like, `allowClusterCreate`, `allowInstancePoolCreate`, `databricksSqlAccess`, `workspaceAccess` applicable only for workspace-level users.  Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level users.
+ * > Entitlements, like, `allowClusterCreate`, `allowInstancePoolCreate`, `databricksSqlAccess`, `workspaceAccess`, `workspaceConsume` applicable only for workspace-level users.  Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level users.
  *
  * To create users in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments.
  *
@@ -95,12 +95,24 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * The resource scim user can be imported using id:
+ * The resource scim user can be imported using its SCIM id:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_user.this
+ *
+ *   id = "<user-id>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  *
  * bash
  *
  * ```sh
- * $ pulumi import databricks:index/user:User me <user-id>
+ * $ pulumi import databricks:index/user:User this "<user-id>"
  * ```
  */
 export class User extends pulumi.CustomResource {
@@ -148,7 +160,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly allowInstancePoolCreate!: pulumi.Output<boolean | undefined>;
     /**
-     * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      */
     public readonly databricksSqlAccess!: pulumi.Output<boolean | undefined>;
     /**
@@ -187,7 +199,14 @@ export class User extends pulumi.CustomResource {
      * This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
      */
     public readonly userName!: pulumi.Output<string>;
+    /**
+     * This is a field to allow the user to have access to a Databricks Workspace.
+     */
     public readonly workspaceAccess!: pulumi.Output<boolean | undefined>;
+    /**
+     * This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     */
+    public readonly workspaceConsume!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -217,6 +236,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["repos"] = state ? state.repos : undefined;
             resourceInputs["userName"] = state ? state.userName : undefined;
             resourceInputs["workspaceAccess"] = state ? state.workspaceAccess : undefined;
+            resourceInputs["workspaceConsume"] = state ? state.workspaceConsume : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
             if ((!args || args.userName === undefined) && !opts.urn) {
@@ -237,6 +257,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["repos"] = args ? args.repos : undefined;
             resourceInputs["userName"] = args ? args.userName : undefined;
             resourceInputs["workspaceAccess"] = args ? args.workspaceAccess : undefined;
+            resourceInputs["workspaceConsume"] = args ? args.workspaceConsume : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(User.__pulumiType, name, resourceInputs, opts);
@@ -264,7 +285,7 @@ export interface UserState {
      */
     allowInstancePoolCreate?: pulumi.Input<boolean>;
     /**
-     * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      */
     databricksSqlAccess?: pulumi.Input<boolean>;
     /**
@@ -303,7 +324,14 @@ export interface UserState {
      * This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
      */
     userName?: pulumi.Input<string>;
+    /**
+     * This is a field to allow the user to have access to a Databricks Workspace.
+     */
     workspaceAccess?: pulumi.Input<boolean>;
+    /**
+     * This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     */
+    workspaceConsume?: pulumi.Input<boolean>;
 }
 
 /**
@@ -327,7 +355,7 @@ export interface UserArgs {
      */
     allowInstancePoolCreate?: pulumi.Input<boolean>;
     /**
-     * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      */
     databricksSqlAccess?: pulumi.Input<boolean>;
     /**
@@ -366,5 +394,12 @@ export interface UserArgs {
      * This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
      */
     userName: pulumi.Input<string>;
+    /**
+     * This is a field to allow the user to have access to a Databricks Workspace.
+     */
     workspaceAccess?: pulumi.Input<boolean>;
+    /**
+     * This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     */
+    workspaceConsume?: pulumi.Input<boolean>;
 }

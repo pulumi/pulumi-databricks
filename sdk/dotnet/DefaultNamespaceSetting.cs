@@ -45,6 +45,18 @@ namespace Pulumi.Databricks
     /// 
     /// This resource can be imported by predefined name `global`:
     /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_default_namespace_setting.this
+    /// 
+    ///   id = "global"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+    /// 
     /// bash
     /// 
     /// ```sh

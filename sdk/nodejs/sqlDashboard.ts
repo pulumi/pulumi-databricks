@@ -58,10 +58,22 @@ import * as utilities from "./utilities";
  *
  * You can import a `databricks_sql_dashboard` resource with ID like the following:
  *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_sql_dashboard.this
+ *
+ *   id = "<dashboard-id>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ *
  * bash
  *
  * ```sh
- * $ pulumi import databricks:index/sqlDashboard:SqlDashboard this <dashboard-id>
+ * $ pulumi import databricks:index/sqlDashboard:SqlDashboard this "<dashboard-id>"
  * ```
  */
 export class SqlDashboard extends pulumi.CustomResource {

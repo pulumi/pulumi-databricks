@@ -5,10 +5,9 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class SystemSchemaArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,37 +18,21 @@ public final class SystemSchemaArgs extends com.pulumi.resources.ResourceArgs {
      * name of the system schema.
      * 
      */
-    @Import(name="schema")
-    private @Nullable Output<String> schema;
+    @Import(name="schema", required=true)
+    private Output<String> schema;
 
     /**
      * @return name of the system schema.
      * 
      */
-    public Optional<Output<String>> schema() {
-        return Optional.ofNullable(this.schema);
-    }
-
-    /**
-     * The current state of enablement for the system schema.
-     * 
-     */
-    @Import(name="state")
-    private @Nullable Output<String> state;
-
-    /**
-     * @return The current state of enablement for the system schema.
-     * 
-     */
-    public Optional<Output<String>> state() {
-        return Optional.ofNullable(this.state);
+    public Output<String> schema() {
+        return this.schema;
     }
 
     private SystemSchemaArgs() {}
 
     private SystemSchemaArgs(SystemSchemaArgs $) {
         this.schema = $.schema;
-        this.state = $.state;
     }
 
     public static Builder builder() {
@@ -76,7 +59,7 @@ public final class SystemSchemaArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder schema(@Nullable Output<String> schema) {
+        public Builder schema(Output<String> schema) {
             $.schema = schema;
             return this;
         }
@@ -91,28 +74,10 @@ public final class SystemSchemaArgs extends com.pulumi.resources.ResourceArgs {
             return schema(Output.of(schema));
         }
 
-        /**
-         * @param state The current state of enablement for the system schema.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder state(@Nullable Output<String> state) {
-            $.state = state;
-            return this;
-        }
-
-        /**
-         * @param state The current state of enablement for the system schema.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder state(String state) {
-            return state(Output.of(state));
-        }
-
         public SystemSchemaArgs build() {
+            if ($.schema == null) {
+                throw new MissingRequiredPropertyException("SystemSchemaArgs", "schema");
+            }
             return $;
         }
     }

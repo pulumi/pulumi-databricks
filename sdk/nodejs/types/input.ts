@@ -30,6 +30,77 @@ export interface AccessControlRuleSetGrantRule {
     role: pulumi.Input<string>;
 }
 
+export interface AccountNetworkPolicyEgress {
+    /**
+     * The access policy enforced for egress traffic to the internet
+     */
+    networkAccess?: pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccess>;
+}
+
+export interface AccountNetworkPolicyEgressNetworkAccess {
+    /**
+     * List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+     */
+    allowedInternetDestinations?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination>[]>;
+    /**
+     * List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+     */
+    allowedStorageDestinations?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination>[]>;
+    /**
+     * Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+     */
+    policyEnforcement?: pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement>;
+    /**
+     * The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+     */
+    restrictionMode: pulumi.Input<string>;
+}
+
+export interface AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination {
+    /**
+     * The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: pulumi.Input<string>;
+    /**
+     * The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+     */
+    internetDestinationType?: pulumi.Input<string>;
+}
+
+export interface AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination {
+    /**
+     * The Azure storage account name
+     */
+    azureStorageAccount?: pulumi.Input<string>;
+    /**
+     * The Azure storage service type (blob, dfs, etc.)
+     */
+    azureStorageService?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string>;
+    /**
+     * The region of the S3 bucket
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+     */
+    storageDestinationType?: pulumi.Input<string>;
+}
+
+export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
+    /**
+     * When empty, it means dry run for all products.
+     * When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
+     */
+    dryRunModeProductFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
+     * while DRY_RUN only logs violations without blocking. When not specified,
+     * defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+     */
+    enforcementMode?: pulumi.Input<string>;
+}
+
 export interface AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy {
     /**
      * Configured embedding policy. Possible values are `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`.
@@ -100,17 +171,44 @@ export interface AlertConditionThresholdValue {
 }
 
 export interface AlertV2Evaluation {
+    /**
+     * Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     */
     comparisonOperator?: pulumi.Input<string>;
+    /**
+     * Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     */
     emptyResultState?: pulumi.Input<string>;
+    /**
+     * (string) - Timestamp of the last evaluation
+     */
     lastEvaluatedAt?: pulumi.Input<string>;
+    /**
+     * User or Notification Destination to notify when alert is triggered
+     */
     notification?: pulumi.Input<inputs.AlertV2EvaluationNotification>;
+    /**
+     * Source column from result to use to evaluate alert
+     */
     source?: pulumi.Input<inputs.AlertV2EvaluationSource>;
+    /**
+     * (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     */
     state?: pulumi.Input<string>;
+    /**
+     * Threshold to user for alert evaluation, can be a column or a value
+     */
     threshold?: pulumi.Input<inputs.AlertV2EvaluationThreshold>;
 }
 
 export interface AlertV2EvaluationNotification {
+    /**
+     * Whether to notify alert subscribers when alert returns back to normal
+     */
     notifyOnOk?: pulumi.Input<boolean>;
+    /**
+     * Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     */
     retriggerSeconds?: pulumi.Input<number>;
     subscriptions?: pulumi.Input<pulumi.Input<inputs.AlertV2EvaluationNotificationSubscription>[]>;
 }
@@ -121,6 +219,9 @@ export interface AlertV2EvaluationNotificationSubscription {
 }
 
 export interface AlertV2EvaluationSource {
+    /**
+     * . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     */
     aggregation?: pulumi.Input<string>;
     display?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
@@ -132,6 +233,9 @@ export interface AlertV2EvaluationThreshold {
 }
 
 export interface AlertV2EvaluationThresholdColumn {
+    /**
+     * . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     */
     aggregation?: pulumi.Input<string>;
     display?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
@@ -144,8 +248,20 @@ export interface AlertV2EvaluationThresholdValue {
 }
 
 export interface AlertV2Schedule {
+    /**
+     * Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     */
     pauseStatus?: pulumi.Input<string>;
+    /**
+     * A cron expression using quartz syntax that specifies the schedule for this pipeline.
+     * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+     */
     quartzCronSchedule?: pulumi.Input<string>;
+    /**
+     * A Java timezone id. The schedule will be resolved using this timezone.
+     * This will be combined with the quartzCronSchedule to determine the schedule.
+     * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+     */
     timezoneId?: pulumi.Input<string>;
 }
 
@@ -268,6 +384,7 @@ export interface AppResource {
      * attribute
      */
     sqlWarehouse?: pulumi.Input<inputs.AppResourceSqlWarehouse>;
+    ucSecurable?: pulumi.Input<inputs.AppResourceUcSecurable>;
 }
 
 export interface AppResourceJob {
@@ -316,6 +433,12 @@ export interface AppResourceSqlWarehouse {
      * Permission to grant on the SQL warehouse. Supported permissions are: `CAN_MANAGE`, `CAN_USE`, `IS_OWNER`.
      */
     permission: pulumi.Input<string>;
+}
+
+export interface AppResourceUcSecurable {
+    permission: pulumi.Input<string>;
+    securableFullName: pulumi.Input<string>;
+    securableType: pulumi.Input<string>;
 }
 
 export interface ArtifactAllowlistArtifactMatcher {
@@ -440,7 +563,10 @@ export interface BudgetFilterWorkspaceId {
 
 export interface BudgetPolicyCustomTag {
     /**
-     * The key of the tag. - Must be unique among all custom tags of the same policy. Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" as these tags are preserved.
+     * The key of the tag.
+     * - Must be unique among all custom tags of the same policy
+     * - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
+     * these tags are preserved.
      */
     key: pulumi.Input<string>;
     /**
@@ -995,113 +1121,535 @@ export interface ExternalLocationEncryptionDetailsSseEncryptionDetails {
     awsKmsKeyArn?: pulumi.Input<string>;
 }
 
+export interface ExternalLocationFileEventQueue {
+    /**
+     * Configuration for managed Azure Queue Storage queue.
+     */
+    managedAqs?: pulumi.Input<inputs.ExternalLocationFileEventQueueManagedAqs>;
+    /**
+     * Configuration for managed Google Cloud Pub/Sub queue.
+     */
+    managedPubsub?: pulumi.Input<inputs.ExternalLocationFileEventQueueManagedPubsub>;
+    /**
+     * Configuration for managed Amazon SQS queue.
+     */
+    managedSqs?: pulumi.Input<inputs.ExternalLocationFileEventQueueManagedSqs>;
+    /**
+     * Configuration for provided Azure Storage Queue.
+     */
+    providedAqs?: pulumi.Input<inputs.ExternalLocationFileEventQueueProvidedAqs>;
+    /**
+     * Configuration for provided Google Cloud Pub/Sub queue.
+     */
+    providedPubsub?: pulumi.Input<inputs.ExternalLocationFileEventQueueProvidedPubsub>;
+    /**
+     * Configuration for provided Amazon SQS queue.
+     */
+    providedSqs?: pulumi.Input<inputs.ExternalLocationFileEventQueueProvidedSqs>;
+}
+
+export interface ExternalLocationFileEventQueueManagedAqs {
+    /**
+     * The ID of the managed resource.
+     */
+    managedResourceId?: pulumi.Input<string>;
+    queueUrl?: pulumi.Input<string>;
+    /**
+     * The Azure resource group.
+     */
+    resourceGroup: pulumi.Input<string>;
+    /**
+     * The Azure subscription ID.
+     */
+    subscriptionId: pulumi.Input<string>;
+}
+
+export interface ExternalLocationFileEventQueueManagedPubsub {
+    /**
+     * The ID of the managed resource.
+     */
+    managedResourceId?: pulumi.Input<string>;
+    /**
+     * The name of the subscription.
+     */
+    subscriptionName?: pulumi.Input<string>;
+}
+
+export interface ExternalLocationFileEventQueueManagedSqs {
+    /**
+     * The ID of the managed resource.
+     */
+    managedResourceId?: pulumi.Input<string>;
+    queueUrl?: pulumi.Input<string>;
+}
+
+export interface ExternalLocationFileEventQueueProvidedAqs {
+    managedResourceId?: pulumi.Input<string>;
+    /**
+     * The URL of the queue.
+     */
+    queueUrl: pulumi.Input<string>;
+    /**
+     * The Azure resource group.
+     */
+    resourceGroup?: pulumi.Input<string>;
+    /**
+     * The Azure subscription ID.
+     */
+    subscriptionId?: pulumi.Input<string>;
+}
+
+export interface ExternalLocationFileEventQueueProvidedPubsub {
+    managedResourceId?: pulumi.Input<string>;
+    /**
+     * The name of the subscription.
+     */
+    subscriptionName: pulumi.Input<string>;
+}
+
+export interface ExternalLocationFileEventQueueProvidedSqs {
+    managedResourceId?: pulumi.Input<string>;
+    /**
+     * The URL of the SQS queue.
+     */
+    queueUrl: pulumi.Input<string>;
+}
+
+export interface GetAccountNetworkPolicyEgress {
+    /**
+     * (EgressNetworkPolicyNetworkAccessPolicy) - The access policy enforced for egress traffic to the internet
+     */
+    networkAccess?: inputs.GetAccountNetworkPolicyEgressNetworkAccess;
+}
+
+export interface GetAccountNetworkPolicyEgressArgs {
+    /**
+     * (EgressNetworkPolicyNetworkAccessPolicy) - The access policy enforced for egress traffic to the internet
+     */
+    networkAccess?: pulumi.Input<inputs.GetAccountNetworkPolicyEgressNetworkAccessArgs>;
+}
+
+export interface GetAccountNetworkPolicyEgressNetworkAccess {
+    /**
+     * (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+     */
+    allowedInternetDestinations?: inputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination[];
+    /**
+     * (list of EgressNetworkPolicyNetworkAccessPolicyStorageDestination) - List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+     */
+    allowedStorageDestinations?: inputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination[];
+    /**
+     * (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+     */
+    policyEnforcement?: inputs.GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement;
+    /**
+     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+     */
+    restrictionMode: string;
+}
+
+export interface GetAccountNetworkPolicyEgressNetworkAccessArgs {
+    /**
+     * (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+     */
+    allowedInternetDestinations?: pulumi.Input<pulumi.Input<inputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs>[]>;
+    /**
+     * (list of EgressNetworkPolicyNetworkAccessPolicyStorageDestination) - List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+     */
+    allowedStorageDestinations?: pulumi.Input<pulumi.Input<inputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs>[]>;
+    /**
+     * (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+     */
+    policyEnforcement?: pulumi.Input<inputs.GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs>;
+    /**
+     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+     */
+    restrictionMode: pulumi.Input<string>;
+}
+
+export interface GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination {
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: string;
+    /**
+     * (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+     */
+    internetDestinationType?: string;
+}
+
+export interface GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs {
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: pulumi.Input<string>;
+    /**
+     * (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+     */
+    internetDestinationType?: pulumi.Input<string>;
+}
+
+export interface GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination {
+    /**
+     * (string) - The Azure storage account name
+     */
+    azureStorageAccount?: string;
+    /**
+     * (string) - The Azure storage service type (blob, dfs, etc.)
+     */
+    azureStorageService?: string;
+    /**
+     * (string) -
+     */
+    bucketName?: string;
+    /**
+     * (string) - The region of the S3 bucket
+     */
+    region?: string;
+    /**
+     * (string) - The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+     */
+    storageDestinationType?: string;
+}
+
+export interface GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs {
+    /**
+     * (string) - The Azure storage account name
+     */
+    azureStorageAccount?: pulumi.Input<string>;
+    /**
+     * (string) - The Azure storage service type (blob, dfs, etc.)
+     */
+    azureStorageService?: pulumi.Input<string>;
+    /**
+     * (string) -
+     */
+    bucketName?: pulumi.Input<string>;
+    /**
+     * (string) - The region of the S3 bucket
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * (string) - The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+     */
+    storageDestinationType?: pulumi.Input<string>;
+}
+
+export interface GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
+    /**
+     * (list of ) - When empty, it means dry run for all products.
+     * When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
+     */
+    dryRunModeProductFilters?: string[];
+    /**
+     * (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
+     * while DRY_RUN only logs violations without blocking. When not specified,
+     * defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+     */
+    enforcementMode?: string;
+}
+
+export interface GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs {
+    /**
+     * (list of ) - When empty, it means dry run for all products.
+     * When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
+     */
+    dryRunModeProductFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
+     * while DRY_RUN only logs violations without blocking. When not specified,
+     * defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+     */
+    enforcementMode?: pulumi.Input<string>;
+}
+
 export interface GetAlertV2Evaluation {
+    /**
+     * (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     */
     comparisonOperator?: string;
+    /**
+     * (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     */
     emptyResultState?: string;
+    /**
+     * (string) - Timestamp of the last evaluation
+     */
     lastEvaluatedAt?: string;
+    /**
+     * (AlertV2Notification) - User or Notification Destination to notify when alert is triggered
+     */
     notification?: inputs.GetAlertV2EvaluationNotification;
+    /**
+     * (AlertV2OperandColumn) - Source column from result to use to evaluate alert
+     */
     source?: inputs.GetAlertV2EvaluationSource;
+    /**
+     * (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     */
     state?: string;
+    /**
+     * (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
+     */
     threshold?: inputs.GetAlertV2EvaluationThreshold;
 }
 
 export interface GetAlertV2EvaluationArgs {
+    /**
+     * (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     */
     comparisonOperator?: pulumi.Input<string>;
+    /**
+     * (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     */
     emptyResultState?: pulumi.Input<string>;
+    /**
+     * (string) - Timestamp of the last evaluation
+     */
     lastEvaluatedAt?: pulumi.Input<string>;
+    /**
+     * (AlertV2Notification) - User or Notification Destination to notify when alert is triggered
+     */
     notification?: pulumi.Input<inputs.GetAlertV2EvaluationNotificationArgs>;
+    /**
+     * (AlertV2OperandColumn) - Source column from result to use to evaluate alert
+     */
     source?: pulumi.Input<inputs.GetAlertV2EvaluationSourceArgs>;
+    /**
+     * (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     */
     state?: pulumi.Input<string>;
+    /**
+     * (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
+     */
     threshold?: pulumi.Input<inputs.GetAlertV2EvaluationThresholdArgs>;
 }
 
 export interface GetAlertV2EvaluationNotification {
+    /**
+     * (boolean) - Whether to notify alert subscribers when alert returns back to normal
+     */
     notifyOnOk?: boolean;
+    /**
+     * (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     */
     retriggerSeconds?: number;
+    /**
+     * (list of AlertV2Subscription) -
+     */
     subscriptions?: inputs.GetAlertV2EvaluationNotificationSubscription[];
 }
 
 export interface GetAlertV2EvaluationNotificationArgs {
+    /**
+     * (boolean) - Whether to notify alert subscribers when alert returns back to normal
+     */
     notifyOnOk?: pulumi.Input<boolean>;
+    /**
+     * (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     */
     retriggerSeconds?: pulumi.Input<number>;
+    /**
+     * (list of AlertV2Subscription) -
+     */
     subscriptions?: pulumi.Input<pulumi.Input<inputs.GetAlertV2EvaluationNotificationSubscriptionArgs>[]>;
 }
 
 export interface GetAlertV2EvaluationNotificationSubscription {
+    /**
+     * (string) -
+     */
     destinationId?: string;
+    /**
+     * (string) -
+     */
     userEmail?: string;
 }
 
 export interface GetAlertV2EvaluationNotificationSubscriptionArgs {
+    /**
+     * (string) -
+     */
     destinationId?: pulumi.Input<string>;
+    /**
+     * (string) -
+     */
     userEmail?: pulumi.Input<string>;
 }
 
 export interface GetAlertV2EvaluationSource {
+    /**
+     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     */
     aggregation?: string;
+    /**
+     * (string) -
+     */
     display?: string;
+    /**
+     * (string) -
+     */
     name?: string;
 }
 
 export interface GetAlertV2EvaluationSourceArgs {
+    /**
+     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     */
     aggregation?: pulumi.Input<string>;
+    /**
+     * (string) -
+     */
     display?: pulumi.Input<string>;
+    /**
+     * (string) -
+     */
     name?: pulumi.Input<string>;
 }
 
 export interface GetAlertV2EvaluationThreshold {
+    /**
+     * (AlertV2OperandColumn) -
+     */
     column?: inputs.GetAlertV2EvaluationThresholdColumn;
+    /**
+     * (AlertV2OperandValue) -
+     */
     value?: inputs.GetAlertV2EvaluationThresholdValue;
 }
 
 export interface GetAlertV2EvaluationThresholdArgs {
+    /**
+     * (AlertV2OperandColumn) -
+     */
     column?: pulumi.Input<inputs.GetAlertV2EvaluationThresholdColumnArgs>;
+    /**
+     * (AlertV2OperandValue) -
+     */
     value?: pulumi.Input<inputs.GetAlertV2EvaluationThresholdValueArgs>;
 }
 
 export interface GetAlertV2EvaluationThresholdColumn {
+    /**
+     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     */
     aggregation?: string;
+    /**
+     * (string) -
+     */
     display?: string;
+    /**
+     * (string) -
+     */
     name?: string;
 }
 
 export interface GetAlertV2EvaluationThresholdColumnArgs {
+    /**
+     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     */
     aggregation?: pulumi.Input<string>;
+    /**
+     * (string) -
+     */
     display?: pulumi.Input<string>;
+    /**
+     * (string) -
+     */
     name?: pulumi.Input<string>;
 }
 
 export interface GetAlertV2EvaluationThresholdValue {
+    /**
+     * (boolean) -
+     */
     boolValue?: boolean;
+    /**
+     * (number) -
+     */
     doubleValue?: number;
+    /**
+     * (string) -
+     */
     stringValue?: string;
 }
 
 export interface GetAlertV2EvaluationThresholdValueArgs {
+    /**
+     * (boolean) -
+     */
     boolValue?: pulumi.Input<boolean>;
+    /**
+     * (number) -
+     */
     doubleValue?: pulumi.Input<number>;
+    /**
+     * (string) -
+     */
     stringValue?: pulumi.Input<string>;
 }
 
 export interface GetAlertV2Schedule {
+    /**
+     * (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     */
     pauseStatus?: string;
+    /**
+     * (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
+     * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+     */
     quartzCronSchedule?: string;
+    /**
+     * (string) - A Java timezone id. The schedule will be resolved using this timezone.
+     * This will be combined with the quartzCronSchedule to determine the schedule.
+     * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+     */
     timezoneId?: string;
 }
 
 export interface GetAlertV2ScheduleArgs {
+    /**
+     * (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     */
     pauseStatus?: pulumi.Input<string>;
+    /**
+     * (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
+     * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+     */
     quartzCronSchedule?: pulumi.Input<string>;
+    /**
+     * (string) - A Java timezone id. The schedule will be resolved using this timezone.
+     * This will be combined with the quartzCronSchedule to determine the schedule.
+     * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+     */
     timezoneId?: pulumi.Input<string>;
 }
 
 export interface GetBudgetPolicyCustomTag {
+    /**
+     * (string) - The key of the tag.
+     * - Must be unique among all custom tags of the same policy
+     * - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
+     * these tags are preserved.
+     */
     key: string;
+    /**
+     * (string) - The value of the tag.
+     */
     value?: string;
 }
 
 export interface GetBudgetPolicyCustomTagArgs {
+    /**
+     * (string) - The key of the tag.
+     * - Must be unique among all custom tags of the same policy
+     * - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
+     * these tags are preserved.
+     */
     key: pulumi.Input<string>;
+    /**
+     * (string) - The value of the tag.
+     */
     value?: pulumi.Input<string>;
 }
 
@@ -2540,10 +3088,6 @@ export interface GetCurrentMetastoreMetastoreInfoArgs {
 }
 
 export interface GetExternalLocationExternalLocationInfo {
-    /**
-     * The ARN of the s3 access point to use with the external location (AWS).
-     */
-    accessPoint?: string;
     browseOnly?: boolean;
     /**
      * User-supplied comment.
@@ -2565,11 +3109,13 @@ export interface GetExternalLocationExternalLocationInfo {
      * Name of the databricks.StorageCredential to use with this external location.
      */
     credentialName?: string;
+    enableFileEvents?: boolean;
     /**
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      */
     encryptionDetails?: inputs.GetExternalLocationExternalLocationInfoEncryptionDetails;
     fallback?: boolean;
+    fileEventQueue?: inputs.GetExternalLocationExternalLocationInfoFileEventQueue;
     isolationMode?: string;
     /**
      * Unique identifier of the parent Metastore.
@@ -2602,10 +3148,6 @@ export interface GetExternalLocationExternalLocationInfo {
 }
 
 export interface GetExternalLocationExternalLocationInfoArgs {
-    /**
-     * The ARN of the s3 access point to use with the external location (AWS).
-     */
-    accessPoint?: pulumi.Input<string>;
     browseOnly?: pulumi.Input<boolean>;
     /**
      * User-supplied comment.
@@ -2627,11 +3169,13 @@ export interface GetExternalLocationExternalLocationInfoArgs {
      * Name of the databricks.StorageCredential to use with this external location.
      */
     credentialName?: pulumi.Input<string>;
+    enableFileEvents?: pulumi.Input<boolean>;
     /**
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      */
     encryptionDetails?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsArgs>;
     fallback?: pulumi.Input<boolean>;
+    fileEventQueue?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueArgs>;
     isolationMode?: pulumi.Input<string>;
     /**
      * Unique identifier of the parent Metastore.
@@ -2679,6 +3223,92 @@ export interface GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncr
 export interface GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs {
     algorithm?: pulumi.Input<string>;
     awsKmsKeyArn?: pulumi.Input<string>;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueue {
+    managedAqs?: inputs.GetExternalLocationExternalLocationInfoFileEventQueueManagedAqs;
+    managedPubsub?: inputs.GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsub;
+    managedSqs?: inputs.GetExternalLocationExternalLocationInfoFileEventQueueManagedSqs;
+    providedAqs?: inputs.GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqs;
+    providedPubsub?: inputs.GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsub;
+    providedSqs?: inputs.GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqs;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueArgs {
+    managedAqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueManagedAqsArgs>;
+    managedPubsub?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsubArgs>;
+    managedSqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueManagedSqsArgs>;
+    providedAqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqsArgs>;
+    providedPubsub?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsubArgs>;
+    providedSqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsArgs>;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueManagedAqs {
+    managedResourceId?: string;
+    queueUrl?: string;
+    resourceGroup?: string;
+    subscriptionId?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueManagedAqsArgs {
+    managedResourceId?: pulumi.Input<string>;
+    queueUrl?: pulumi.Input<string>;
+    resourceGroup?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string>;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsub {
+    managedResourceId?: string;
+    subscriptionName?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsubArgs {
+    managedResourceId?: pulumi.Input<string>;
+    subscriptionName?: pulumi.Input<string>;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueManagedSqs {
+    managedResourceId?: string;
+    queueUrl?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueManagedSqsArgs {
+    managedResourceId?: pulumi.Input<string>;
+    queueUrl?: pulumi.Input<string>;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqs {
+    managedResourceId?: string;
+    queueUrl?: string;
+    resourceGroup?: string;
+    subscriptionId?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqsArgs {
+    managedResourceId?: pulumi.Input<string>;
+    queueUrl?: pulumi.Input<string>;
+    resourceGroup?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string>;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsub {
+    managedResourceId?: string;
+    subscriptionName?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsubArgs {
+    managedResourceId?: pulumi.Input<string>;
+    subscriptionName?: pulumi.Input<string>;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqs {
+    managedResourceId?: string;
+    queueUrl?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsArgs {
+    managedResourceId?: pulumi.Input<string>;
+    queueUrl?: pulumi.Input<string>;
 }
 
 export interface GetFunctionsFunction {
@@ -3574,12 +4204,14 @@ export interface GetJobJobSettingsSettingsEnvironmentArgs {
 export interface GetJobJobSettingsSettingsEnvironmentSpec {
     client: string;
     dependencies?: string[];
+    environmentVersion?: string;
     jarDependencies?: string[];
 }
 
 export interface GetJobJobSettingsSettingsEnvironmentSpecArgs {
     client: pulumi.Input<string>;
     dependencies?: pulumi.Input<pulumi.Input<string>[]>;
+    environmentVersion?: pulumi.Input<string>;
     jarDependencies?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -6689,6 +7321,70 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriv
     updatedTime?: pulumi.Input<number>;
 }
 
+export interface GetRecipientFederationPolicyOidcPolicy {
+    /**
+     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+     * The audience identifier is intended to represent the recipient of the token.
+     * Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
+     */
+    audiences?: string[];
+    /**
+     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+     */
+    issuer: string;
+    /**
+     * (string) - The required token subject, as specified in the subject claim of federated tokens.
+     * The subject claim identifies the identity of the user or machine accessing the resource.
+     * Examples for Entra ID (AAD):
+     * - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
+     * - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
+     * - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
+     */
+    subject: string;
+    /**
+     * (string) - The claim that contains the subject of the token.
+     * Depending on the identity provider and the use case (U2M or M2M), this can vary:
+     * - For Entra ID (AAD):
+     * * U2M flow (group access): Use `groups`.
+     * * U2M flow (user access): Use `oid`.
+     * * M2M flow (OAuth App access): Use `azp`.
+     * - For other IdPs, refer to the specific IdP documentation.
+     */
+    subjectClaim: string;
+}
+
+export interface GetRecipientFederationPolicyOidcPolicyArgs {
+    /**
+     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+     * The audience identifier is intended to represent the recipient of the token.
+     * Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
+     */
+    audiences?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+     */
+    issuer: pulumi.Input<string>;
+    /**
+     * (string) - The required token subject, as specified in the subject claim of federated tokens.
+     * The subject claim identifies the identity of the user or machine accessing the resource.
+     * Examples for Entra ID (AAD):
+     * - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
+     * - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
+     * - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
+     */
+    subject: pulumi.Input<string>;
+    /**
+     * (string) - The claim that contains the subject of the token.
+     * Depending on the identity provider and the use case (U2M or M2M), this can vary:
+     * - For Entra ID (AAD):
+     * * U2M flow (group access): Use `groups`.
+     * * U2M flow (user access): Use `oid`.
+     * * M2M flow (OAuth App access): Use `azp`.
+     * - For other IdPs, refer to the specific IdP documentation.
+     */
+    subjectClaim: pulumi.Input<string>;
+}
+
 export interface GetRegisteredModelModelInfo {
     /**
      * the list of aliases associated with this model. Each item is object consisting of following attributes:
@@ -8325,6 +9021,7 @@ export interface GetTableTableInfoTableConstraintPrimaryKeyConstraint {
      * Full name of the databricks_table: _`catalog`.`schema`.`table`_
      */
     name: string;
+    timeseriesColumns?: string[];
 }
 
 export interface GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs {
@@ -8333,6 +9030,7 @@ export interface GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs {
      * Full name of the databricks_table: _`catalog`.`schema`.`table`_
      */
     name: pulumi.Input<string>;
+    timeseriesColumns?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetTableTableInfoViewDependencies {
@@ -8540,7 +9238,7 @@ export interface InstancePoolAwsAttributes {
      */
     availability?: pulumi.Input<string>;
     /**
-     * (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
+     * (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type's on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
      */
     spotBidPricePercent?: pulumi.Input<number>;
     /**
@@ -8745,6 +9443,7 @@ export interface JobEnvironmentSpec {
      * List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
      */
     dependencies?: pulumi.Input<pulumi.Input<string>[]>;
+    environmentVersion?: pulumi.Input<string>;
     jarDependencies?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -9272,7 +9971,7 @@ export interface JobNewClusterWorkloadTypeClients {
 
 export interface JobNotebookTask {
     /**
-     * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+     * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
      */
     baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -9958,7 +10657,7 @@ export interface JobTaskForEachTaskTaskGenAiComputeTask {
 }
 
 export interface JobTaskForEachTaskTaskGenAiComputeTaskCompute {
-    gpuNodePoolId: pulumi.Input<string>;
+    gpuNodePoolId?: pulumi.Input<string>;
     gpuType?: pulumi.Input<string>;
     numGpus: pulumi.Input<number>;
 }
@@ -10227,7 +10926,7 @@ export interface JobTaskForEachTaskTaskNewClusterWorkloadTypeClients {
 
 export interface JobTaskForEachTaskTaskNotebookTask {
     /**
-     * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+     * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
      */
     baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -10635,7 +11334,7 @@ export interface JobTaskGenAiComputeTask {
 }
 
 export interface JobTaskGenAiComputeTaskCompute {
-    gpuNodePoolId: pulumi.Input<string>;
+    gpuNodePoolId?: pulumi.Input<string>;
     gpuType?: pulumi.Input<string>;
     numGpus: pulumi.Input<number>;
 }
@@ -10904,7 +11603,7 @@ export interface JobTaskNewClusterWorkloadTypeClients {
 
 export interface JobTaskNotebookTask {
     /**
-     * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+     * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
      */
     baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -11836,6 +12535,7 @@ export interface ModelServingConfigServedEntity {
      * The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with '.' and ':' replaced with '-', and if not specified for other entities, it defaults to -.
      */
     name?: pulumi.Input<string>;
+    provisionedModelUnits?: pulumi.Input<number>;
     /**
      * Whether the compute resources for the served entity should scale down to zero.
      */
@@ -12119,6 +12819,7 @@ export interface ModelServingConfigServedModel {
      * The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
      */
     name?: pulumi.Input<string>;
+    provisionedModelUnits?: pulumi.Input<number>;
     /**
      * Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
      */
@@ -12146,6 +12847,178 @@ export interface ModelServingConfigTrafficConfigRoute {
      * The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
      */
     trafficPercentage: pulumi.Input<number>;
+}
+
+export interface ModelServingProvisionedThroughputAiGateway {
+    fallbackConfig?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayFallbackConfig>;
+    /**
+     * Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
+     */
+    guardrails?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayGuardrails>;
+    /**
+     * Block describing the configuration of usage tracking. Consists of the following attributes:
+     */
+    inferenceTableConfig?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayInferenceTableConfig>;
+    /**
+     * Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
+     */
+    rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayRateLimit>[]>;
+    /**
+     * Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
+     */
+    usageTrackingConfig?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig>;
+}
+
+export interface ModelServingProvisionedThroughputAiGatewayFallbackConfig {
+    /**
+     * boolean flag specifying if usage tracking is enabled.
+     */
+    enabled: pulumi.Input<boolean>;
+}
+
+export interface ModelServingProvisionedThroughputAiGatewayGuardrails {
+    /**
+     * A block with configuration for input guardrail filters:
+     */
+    input?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayGuardrailsInput>;
+    /**
+     * A block with configuration for output guardrail filters.  Has the same structure as `input` block.
+     */
+    output?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayGuardrailsOutput>;
+}
+
+export interface ModelServingProvisionedThroughputAiGatewayGuardrailsInput {
+    /**
+     * List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+     */
+    invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Block with configuration for guardrail PII filter:
+     */
+    pii?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii>;
+    /**
+     * the boolean flag that indicates whether the safety filter is enabled.
+     */
+    safety?: pulumi.Input<boolean>;
+    /**
+     * The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+     */
+    validTopics?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii {
+    /**
+     * a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+     */
+    behavior?: pulumi.Input<string>;
+}
+
+export interface ModelServingProvisionedThroughputAiGatewayGuardrailsOutput {
+    /**
+     * List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+     */
+    invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Block with configuration for guardrail PII filter:
+     */
+    pii?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii>;
+    /**
+     * the boolean flag that indicates whether the safety filter is enabled.
+     */
+    safety?: pulumi.Input<boolean>;
+    /**
+     * The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+     */
+    validTopics?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii {
+    /**
+     * a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+     */
+    behavior?: pulumi.Input<string>;
+}
+
+export interface ModelServingProvisionedThroughputAiGatewayInferenceTableConfig {
+    catalogName?: pulumi.Input<string>;
+    /**
+     * boolean flag specifying if usage tracking is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    schemaName?: pulumi.Input<string>;
+    tableNamePrefix?: pulumi.Input<string>;
+}
+
+export interface ModelServingProvisionedThroughputAiGatewayRateLimit {
+    calls: pulumi.Input<number>;
+    /**
+     * The key field for a tag.
+     */
+    key?: pulumi.Input<string>;
+    renewalPeriod: pulumi.Input<string>;
+}
+
+export interface ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig {
+    /**
+     * boolean flag specifying if usage tracking is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface ModelServingProvisionedThroughputConfig {
+    /**
+     * A list of served entities for the endpoint to serve.
+     */
+    servedEntities?: pulumi.Input<pulumi.Input<inputs.ModelServingProvisionedThroughputConfigServedEntity>[]>;
+    /**
+     * A single block represents the traffic split configuration amongst the served models.
+     */
+    trafficConfig?: pulumi.Input<inputs.ModelServingProvisionedThroughputConfigTrafficConfig>;
+}
+
+export interface ModelServingProvisionedThroughputConfigServedEntity {
+    /**
+     * The full path of the UC model to be served, given in the form of `catalog_name.schema_name.model_name`.
+     */
+    entityName: pulumi.Input<string>;
+    /**
+     * The version of the model in UC to be served.
+     */
+    entityVersion: pulumi.Input<string>;
+    /**
+     * The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entityName` and `entityVersion`
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The number of model units to be provisioned.
+     */
+    provisionedModelUnits: pulumi.Input<number>;
+}
+
+export interface ModelServingProvisionedThroughputConfigTrafficConfig {
+    /**
+     * Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
+     */
+    routes?: pulumi.Input<pulumi.Input<inputs.ModelServingProvisionedThroughputConfigTrafficConfigRoute>[]>;
+}
+
+export interface ModelServingProvisionedThroughputConfigTrafficConfigRoute {
+    servedModelName: pulumi.Input<string>;
+    /**
+     * The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
+     */
+    trafficPercentage: pulumi.Input<number>;
+}
+
+export interface ModelServingProvisionedThroughputTag {
+    /**
+     * The key field for a tag.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value field for a tag.
+     */
+    value?: pulumi.Input<string>;
 }
 
 export interface ModelServingRateLimit {
@@ -12315,15 +13188,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-     *
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
-     * The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-     *
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -12390,24 +13259,18 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;
 }
 
 export interface MwsWorkspacesGkeConfig {
-    /**
-     * Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
-     */
     connectivityType?: pulumi.Input<string>;
-    /**
-     * The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
-     */
     masterIpRange?: pulumi.Input<string>;
 }
 
@@ -12706,6 +13569,9 @@ export interface PipelineClusterInitScript {
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
     dbfs?: pulumi.Input<inputs.PipelineClusterInitScriptDbfs>;
+    /**
+     * specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+     */
     file?: pulumi.Input<inputs.PipelineClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.PipelineClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.PipelineClusterInitScriptS3>;
@@ -12808,6 +13674,7 @@ export interface PipelineIngestionDefinition {
     connectionName?: pulumi.Input<string>;
     ingestionGatewayId?: pulumi.Input<string>;
     objects?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObject>[]>;
+    sourceType?: pulumi.Input<string>;
     tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfiguration>;
 }
 
@@ -12889,9 +13756,19 @@ export interface PipelineLatestUpdate {
 }
 
 export interface PipelineLibrary {
+    /**
+     * specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+     */
     file?: pulumi.Input<inputs.PipelineLibraryFile>;
+    /**
+     * The unified field to include source code. Each entry should have the `include` attribute that can specify a notebook path, a file path, or a folder path that ends `/**` (to include everything from that folder). This field cannot be used together with `notebook` or `file`.
+     */
+    glob?: pulumi.Input<inputs.PipelineLibraryGlob>;
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.PipelineLibraryMaven>;
+    /**
+     * specifies path to a Databricks Notebook to include as source. Actual path is specified as `path` attribute inside the block.
+     */
     notebook?: pulumi.Input<inputs.PipelineLibraryNotebook>;
     /**
      * @deprecated The 'whl' field is deprecated
@@ -12900,7 +13777,14 @@ export interface PipelineLibrary {
 }
 
 export interface PipelineLibraryFile {
-    path?: pulumi.Input<string>;
+    path: pulumi.Input<string>;
+}
+
+export interface PipelineLibraryGlob {
+    /**
+     * Paths to include.
+     */
+    include: pulumi.Input<string>;
 }
 
 export interface PipelineLibraryMaven {
@@ -12910,7 +13794,7 @@ export interface PipelineLibraryMaven {
 }
 
 export interface PipelineLibraryNotebook {
-    path?: pulumi.Input<string>;
+    path: pulumi.Input<string>;
 }
 
 export interface PipelineNotification {
@@ -13207,6 +14091,40 @@ export interface QueryParameterTextValue {
      * actual text value.
      */
     value: pulumi.Input<string>;
+}
+
+export interface RecipientFederationPolicyOidcPolicy {
+    /**
+     * The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+     * The audience identifier is intended to represent the recipient of the token.
+     * Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
+     */
+    audiences?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The required token issuer, as specified in the 'iss' claim of federated tokens
+     */
+    issuer: pulumi.Input<string>;
+    /**
+     * The required token subject, as specified in the subject claim of federated tokens.
+     * The subject claim identifies the identity of the user or machine accessing the resource.
+     * Examples for Entra ID (AAD):
+     * - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
+     * - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
+     * - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
+     */
+    subject: pulumi.Input<string>;
+    /**
+     * The claim that contains the subject of the token.
+     * Depending on the identity provider and the use case (U2M or M2M), this can vary:
+     * - For Entra ID (AAD):
+     * * U2M flow (group access): Use `groups`.
+     * * U2M flow (user access): Use `oid`.
+     * * M2M flow (OAuth App access): Use `azp`.
+     * - For other IdPs, refer to the specific IdP documentation.
+     *
+     * Supported `subjectClaim` values are:
+     */
+    subjectClaim: pulumi.Input<string>;
 }
 
 export interface RecipientIpAccessList {
@@ -13735,11 +14653,6 @@ export interface TableColumn {
     typePrecision?: pulumi.Input<number>;
     typeScale?: pulumi.Input<number>;
     typeText: pulumi.Input<string>;
-}
-
-export interface VectorSearchEndpointCustomTag {
-    key: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
 }
 
 export interface VectorSearchEndpointEndpointStatus {

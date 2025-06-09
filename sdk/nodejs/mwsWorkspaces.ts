@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  *
  * > This resource can only be used with an account-level provider!
  *
+ * > The `gkeConfig` argument is now deprecated and no longer supported. If you have already created a workspace using these fields, it is safe to remove them from your Pulumi template.
+ *
  * > On Azure you need to use azurermDatabricksWorkspace resource to create Azure Databricks workspaces.
  *
  * ## Example Usage
@@ -222,10 +224,6 @@ import * as utilities from "./utilities";
  *         },
  *     },
  *     networkId: _this.networkId,
- *     gkeConfig: {
- *         connectivityType: "PRIVATE_NODE_PUBLIC_MASTER",
- *         masterIpRange: "10.3.0.0/28",
- *     },
  *     token: {},
  * });
  * export const databricksToken = thisMwsWorkspaces.token.apply(token => token?.tokenValue);
@@ -237,8 +235,22 @@ import * as utilities from "./utilities";
  *
  * This resource can be imported by Databricks account ID and workspace ID.
  *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_mws_workspaces.this
+ *
+ *   id = "<account_id>/<workspace_id>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ *
+ * bash
+ *
  * ```sh
- * $ pulumi import databricks:index/mwsWorkspaces:MwsWorkspaces this '<account_id>/<workspace_id>'
+ * $ pulumi import databricks:index/mwsWorkspaces:MwsWorkspaces this "<account_id>/<workspace_id>"
  * ```
  *
  * ~> Not all fields of `databricks_mws_workspaces` can be updated without causing the workspace to be recreated.
@@ -329,9 +341,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
      */
     public /*out*/ readonly gcpWorkspaceSa!: pulumi.Output<string>;
     /**
-     * A block that specifies GKE configuration for the Databricks workspace:
-     *
-     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     public readonly gkeConfig!: pulumi.Output<outputs.MwsWorkspacesGkeConfig | undefined>;
     public readonly isNoPublicIpEnabled!: pulumi.Output<boolean | undefined>;
@@ -524,9 +534,7 @@ export interface MwsWorkspacesState {
      */
     gcpWorkspaceSa?: pulumi.Input<string>;
     /**
-     * A block that specifies GKE configuration for the Databricks workspace:
-     *
-     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig>;
     isNoPublicIpEnabled?: pulumi.Input<boolean>;
@@ -625,9 +633,7 @@ export interface MwsWorkspacesArgs {
     externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo>;
     gcpManagedNetworkConfig?: pulumi.Input<inputs.MwsWorkspacesGcpManagedNetworkConfig>;
     /**
-     * A block that specifies GKE configuration for the Databricks workspace:
-     *
-     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig>;
     isNoPublicIpEnabled?: pulumi.Input<boolean>;

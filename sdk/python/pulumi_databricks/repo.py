@@ -309,7 +309,7 @@ class Repo(pulumi.CustomResource):
         * End to end workspace management guide.
         * GitCredential to manage Git credentials.
         * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-        * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+        * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
         * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
@@ -318,6 +318,18 @@ class Repo(pulumi.CustomResource):
         ## Import
 
         The resource can be imported using the Git folder ID (obtained via UI or using API)
+
+        hcl
+
+        import {
+
+          to = databricks_repo.this
+
+          id = "repo_id"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 
@@ -369,7 +381,7 @@ class Repo(pulumi.CustomResource):
         * End to end workspace management guide.
         * GitCredential to manage Git credentials.
         * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-        * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+        * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
         * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
@@ -378,6 +390,18 @@ class Repo(pulumi.CustomResource):
         ## Import
 
         The resource can be imported using the Git folder ID (obtained via UI or using API)
+
+        hcl
+
+        import {
+
+          to = databricks_repo.this
+
+          id = "repo_id"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 

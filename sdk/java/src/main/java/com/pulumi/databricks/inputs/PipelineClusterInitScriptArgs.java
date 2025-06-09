@@ -47,9 +47,17 @@ public final class PipelineClusterInitScriptArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.dbfs);
     }
 
+    /**
+     * specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+     * 
+     */
     @Import(name="file")
     private @Nullable Output<PipelineClusterInitScriptFileArgs> file;
 
+    /**
+     * @return specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+     * 
+     */
     public Optional<Output<PipelineClusterInitScriptFileArgs>> file() {
         return Optional.ofNullable(this.file);
     }
@@ -146,11 +154,23 @@ public final class PipelineClusterInitScriptArgs extends com.pulumi.resources.Re
             return dbfs(Output.of(dbfs));
         }
 
+        /**
+         * @param file specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder file(@Nullable Output<PipelineClusterInitScriptFileArgs> file) {
             $.file = file;
             return this;
         }
 
+        /**
+         * @param file specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder file(PipelineClusterInitScriptFileArgs file) {
             return file(Output.of(file));
         }

@@ -51,10 +51,22 @@ namespace Pulumi.Databricks
     /// 
     /// The registered model resource can be imported using the full (3-level) name of the model.
     /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_registered_model.this
+    /// 
+    ///   id = "&lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;model_name&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+    /// 
     /// bash
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/registeredModel:RegisteredModel this &lt;catalog_name.schema_name.model_name&gt;
+    /// $ pulumi import databricks:index/registeredModel:RegisteredModel this &lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;model_name&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/registeredModel:RegisteredModel")]

@@ -22,6 +22,18 @@ import javax.annotation.Nullable;
  * 
  * This resource can be imported using query ID:
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_query.this
+ * 
+ *   id = &#34;&lt;query-id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh

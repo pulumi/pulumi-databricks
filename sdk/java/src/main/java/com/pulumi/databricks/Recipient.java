@@ -88,12 +88,24 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The recipient resource can be imported using the name of the recipient.
+ * The recipient resource can be imported using the name of the recipient:
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_recipient.this
+ * 
+ *   id = &#34;&lt;recipient_name&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  * 
  * bash
  * 
  * ```sh
- * $ pulumi import databricks:index/recipient:Recipient this &lt;recipient_name&gt;
+ * $ pulumi import databricks:index/recipient:Recipient this &#34;&lt;recipient_name&gt;&#34;
  * ```
  * 
  */

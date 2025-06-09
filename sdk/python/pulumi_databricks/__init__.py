@@ -7,6 +7,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .access_control_rule_set import *
+from .account_network_policy import *
 from .aibi_dashboard_embedding_access_policy_setting import *
 from .aibi_dashboard_embedding_approved_domains_setting import *
 from .alert import *
@@ -25,6 +26,7 @@ from .connection import *
 from .credential import *
 from .custom_app_integration import *
 from .dashboard import *
+from .database_instance import *
 from .dbfs_file import *
 from .default_namespace_setting import *
 from .directory import *
@@ -35,6 +37,8 @@ from .enhanced_security_monitoring_workspace_setting import *
 from .entitlements import *
 from .external_location import *
 from .file import *
+from .get_account_network_policies import *
+from .get_account_network_policy import *
 from .get_alert_v2 import *
 from .get_alerts_v2 import *
 from .get_app import *
@@ -55,6 +59,8 @@ from .get_current_config import *
 from .get_current_metastore import *
 from .get_current_user import *
 from .get_dashboards import *
+from .get_database_instance import *
+from .get_database_instances import *
 from .get_dbfs_file import *
 from .get_dbfs_file_paths import *
 from .get_directory import *
@@ -80,6 +86,8 @@ from .get_notebook import *
 from .get_notebook_paths import *
 from .get_notification_destinations import *
 from .get_pipelines import *
+from .get_recipient_federation_policies import *
+from .get_recipient_federation_policy import *
 from .get_registered_model import *
 from .get_registered_model_versions import *
 from .get_schema import *
@@ -100,6 +108,7 @@ from .get_user import *
 from .get_views import *
 from .get_volume import *
 from .get_volumes import *
+from .get_workspace_network_option import *
 from .get_zones import *
 from .git_credential import *
 from .global_init_script import *
@@ -123,6 +132,7 @@ from .mlflow_experiment import *
 from .mlflow_model import *
 from .mlflow_webhook import *
 from .model_serving import *
+from .model_serving_provisioned_throughput import *
 from .mount import *
 from .mws_credentials import *
 from .mws_customer_managed_keys import *
@@ -147,6 +157,7 @@ from .provider import *
 from .quality_monitor import *
 from .query import *
 from .recipient import *
+from .recipient_federation_policy import *
 from .registered_model import *
 from .repo import *
 from .restrict_workspace_admins_setting import *
@@ -180,6 +191,7 @@ from .volume import *
 from .workspace_binding import *
 from .workspace_conf import *
 from .workspace_file import *
+from .workspace_network_option import *
 from ._inputs import *
 from . import outputs
 
@@ -199,6 +211,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/accessControlRuleSet:AccessControlRuleSet": "AccessControlRuleSet"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/accountNetworkPolicy",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/accountNetworkPolicy:AccountNetworkPolicy": "AccountNetworkPolicy"
   }
  },
  {
@@ -343,6 +363,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/dashboard:Dashboard": "Dashboard"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/databaseInstance",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/databaseInstance:DatabaseInstance": "DatabaseInstance"
   }
  },
  {
@@ -603,6 +631,14 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
+  "mod": "index/modelServingProvisionedThroughput",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/modelServingProvisionedThroughput:ModelServingProvisionedThroughput": "ModelServingProvisionedThroughput"
+  }
+ },
+ {
+  "pkg": "databricks",
   "mod": "index/mount",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -783,6 +819,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/recipient:Recipient": "Recipient"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/recipientFederationPolicy",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/recipientFederationPolicy:RecipientFederationPolicy": "RecipientFederationPolicy"
   }
  },
  {
@@ -1047,6 +1091,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/workspaceFile:WorkspaceFile": "WorkspaceFile"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/workspaceNetworkOption",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/workspaceNetworkOption:WorkspaceNetworkOption": "WorkspaceNetworkOption"
   }
  }
 ]

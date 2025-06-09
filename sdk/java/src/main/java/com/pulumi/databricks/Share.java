@@ -148,6 +148,18 @@ import javax.annotation.Nullable;
  * 
  * The share resource can be imported using the name of the share.
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_share.this
+ * 
+ *   id = &#34;&lt;share_name&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh

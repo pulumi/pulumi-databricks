@@ -32,6 +32,12 @@ class AlertV2Args:
                  warehouse_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a AlertV2 resource.
+        :param pulumi.Input[builtins.str] custom_description: Custom description for the alert. support mustache template
+        :param pulumi.Input[builtins.str] custom_summary: Custom summary for the alert. support mustache template
+        :param pulumi.Input[builtins.str] display_name: The display name of the alert
+        :param pulumi.Input[builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        :param pulumi.Input[builtins.str] query_text: Text of the query to be run
+        :param pulumi.Input[builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
         """
         if custom_description is not None:
             pulumi.set(__self__, "custom_description", custom_description)
@@ -53,6 +59,9 @@ class AlertV2Args:
     @property
     @pulumi.getter(name="customDescription")
     def custom_description(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Custom description for the alert. support mustache template
+        """
         return pulumi.get(self, "custom_description")
 
     @custom_description.setter
@@ -62,6 +71,9 @@ class AlertV2Args:
     @property
     @pulumi.getter(name="customSummary")
     def custom_summary(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Custom summary for the alert. support mustache template
+        """
         return pulumi.get(self, "custom_summary")
 
     @custom_summary.setter
@@ -71,6 +83,9 @@ class AlertV2Args:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The display name of the alert
+        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -89,6 +104,9 @@ class AlertV2Args:
     @property
     @pulumi.getter(name="parentPath")
     def parent_path(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        """
         return pulumi.get(self, "parent_path")
 
     @parent_path.setter
@@ -98,6 +116,9 @@ class AlertV2Args:
     @property
     @pulumi.getter(name="queryText")
     def query_text(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Text of the query to be run
+        """
         return pulumi.get(self, "query_text")
 
     @query_text.setter
@@ -116,6 +137,9 @@ class AlertV2Args:
     @property
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        ID of the SQL warehouse attached to the alert
+        """
         return pulumi.get(self, "warehouse_id")
 
     @warehouse_id.setter
@@ -141,6 +165,17 @@ class _AlertV2State:
                  warehouse_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AlertV2 resources.
+        :param pulumi.Input[builtins.str] create_time: (string) - The timestamp indicating when the alert was created
+        :param pulumi.Input[builtins.str] custom_description: Custom description for the alert. support mustache template
+        :param pulumi.Input[builtins.str] custom_summary: Custom summary for the alert. support mustache template
+        :param pulumi.Input[builtins.str] display_name: The display name of the alert
+        :param pulumi.Input[builtins.str] lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        :param pulumi.Input[builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
+        :param pulumi.Input[builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        :param pulumi.Input[builtins.str] query_text: Text of the query to be run
+        :param pulumi.Input[builtins.str] run_as_user_name: (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+        :param pulumi.Input[builtins.str] update_time: (string) - The timestamp indicating when the alert was updated
+        :param pulumi.Input[builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -172,6 +207,9 @@ class _AlertV2State:
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (string) - The timestamp indicating when the alert was created
+        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -181,6 +219,9 @@ class _AlertV2State:
     @property
     @pulumi.getter(name="customDescription")
     def custom_description(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Custom description for the alert. support mustache template
+        """
         return pulumi.get(self, "custom_description")
 
     @custom_description.setter
@@ -190,6 +231,9 @@ class _AlertV2State:
     @property
     @pulumi.getter(name="customSummary")
     def custom_summary(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Custom summary for the alert. support mustache template
+        """
         return pulumi.get(self, "custom_summary")
 
     @custom_summary.setter
@@ -199,6 +243,9 @@ class _AlertV2State:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The display name of the alert
+        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -217,6 +264,9 @@ class _AlertV2State:
     @property
     @pulumi.getter(name="lifecycleState")
     def lifecycle_state(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        """
         return pulumi.get(self, "lifecycle_state")
 
     @lifecycle_state.setter
@@ -226,6 +276,9 @@ class _AlertV2State:
     @property
     @pulumi.getter(name="ownerUserName")
     def owner_user_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
+        """
         return pulumi.get(self, "owner_user_name")
 
     @owner_user_name.setter
@@ -235,6 +288,9 @@ class _AlertV2State:
     @property
     @pulumi.getter(name="parentPath")
     def parent_path(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        """
         return pulumi.get(self, "parent_path")
 
     @parent_path.setter
@@ -244,6 +300,9 @@ class _AlertV2State:
     @property
     @pulumi.getter(name="queryText")
     def query_text(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Text of the query to be run
+        """
         return pulumi.get(self, "query_text")
 
     @query_text.setter
@@ -253,6 +312,9 @@ class _AlertV2State:
     @property
     @pulumi.getter(name="runAsUserName")
     def run_as_user_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+        """
         return pulumi.get(self, "run_as_user_name")
 
     @run_as_user_name.setter
@@ -271,6 +333,9 @@ class _AlertV2State:
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (string) - The timestamp indicating when the alert was updated
+        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
@@ -280,6 +345,9 @@ class _AlertV2State:
     @property
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        ID of the SQL warehouse attached to the alert
+        """
         return pulumi.get(self, "warehouse_id")
 
     @warehouse_id.setter
@@ -303,9 +371,34 @@ class AlertV2(pulumi.CustomResource):
                  warehouse_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Create a AlertV2 resource with the given unique name, props, and options.
+        ## Import
+
+        As of terraform v1.5, resources can be imported through configuration.
+
+        hcl
+
+        import {
+
+          id = id
+
+          to = databricks_alert_v2.this
+
+        }
+
+        If you are using an older version of terraform, you can import the resource using cli as follows:
+
+        ```sh
+        $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] custom_description: Custom description for the alert. support mustache template
+        :param pulumi.Input[builtins.str] custom_summary: Custom summary for the alert. support mustache template
+        :param pulumi.Input[builtins.str] display_name: The display name of the alert
+        :param pulumi.Input[builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        :param pulumi.Input[builtins.str] query_text: Text of the query to be run
+        :param pulumi.Input[builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
         """
         ...
     @overload
@@ -314,7 +407,26 @@ class AlertV2(pulumi.CustomResource):
                  args: Optional[AlertV2Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AlertV2 resource with the given unique name, props, and options.
+        ## Import
+
+        As of terraform v1.5, resources can be imported through configuration.
+
+        hcl
+
+        import {
+
+          id = id
+
+          to = databricks_alert_v2.this
+
+        }
+
+        If you are using an older version of terraform, you can import the resource using cli as follows:
+
+        ```sh
+        $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 id
+        ```
+
         :param str resource_name: The name of the resource.
         :param AlertV2Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -390,6 +502,17 @@ class AlertV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] create_time: (string) - The timestamp indicating when the alert was created
+        :param pulumi.Input[builtins.str] custom_description: Custom description for the alert. support mustache template
+        :param pulumi.Input[builtins.str] custom_summary: Custom summary for the alert. support mustache template
+        :param pulumi.Input[builtins.str] display_name: The display name of the alert
+        :param pulumi.Input[builtins.str] lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        :param pulumi.Input[builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
+        :param pulumi.Input[builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        :param pulumi.Input[builtins.str] query_text: Text of the query to be run
+        :param pulumi.Input[builtins.str] run_as_user_name: (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+        :param pulumi.Input[builtins.str] update_time: (string) - The timestamp indicating when the alert was updated
+        :param pulumi.Input[builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -413,21 +536,33 @@ class AlertV2(pulumi.CustomResource):
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[builtins.str]:
+        """
+        (string) - The timestamp indicating when the alert was created
+        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="customDescription")
     def custom_description(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Custom description for the alert. support mustache template
+        """
         return pulumi.get(self, "custom_description")
 
     @property
     @pulumi.getter(name="customSummary")
     def custom_summary(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Custom summary for the alert. support mustache template
+        """
         return pulumi.get(self, "custom_summary")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The display name of the alert
+        """
         return pulumi.get(self, "display_name")
 
     @property
@@ -438,26 +573,41 @@ class AlertV2(pulumi.CustomResource):
     @property
     @pulumi.getter(name="lifecycleState")
     def lifecycle_state(self) -> pulumi.Output[builtins.str]:
+        """
+        (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        """
         return pulumi.get(self, "lifecycle_state")
 
     @property
     @pulumi.getter(name="ownerUserName")
     def owner_user_name(self) -> pulumi.Output[builtins.str]:
+        """
+        (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
+        """
         return pulumi.get(self, "owner_user_name")
 
     @property
     @pulumi.getter(name="parentPath")
     def parent_path(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        """
         return pulumi.get(self, "parent_path")
 
     @property
     @pulumi.getter(name="queryText")
     def query_text(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Text of the query to be run
+        """
         return pulumi.get(self, "query_text")
 
     @property
     @pulumi.getter(name="runAsUserName")
     def run_as_user_name(self) -> pulumi.Output[builtins.str]:
+        """
+        (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+        """
         return pulumi.get(self, "run_as_user_name")
 
     @property
@@ -468,10 +618,16 @@ class AlertV2(pulumi.CustomResource):
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[builtins.str]:
+        """
+        (string) - The timestamp indicating when the alert was updated
+        """
         return pulumi.get(self, "update_time")
 
     @property
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        ID of the SQL warehouse attached to the alert
+        """
         return pulumi.get(self, "warehouse_id")
 

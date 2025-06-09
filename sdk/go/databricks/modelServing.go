@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+// This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks, including custom models, external models, and foundation models. For newer foundation models, including Llama 4, please use the ModelServingProvisionedThroughput resource.
 //
 // > This resource can only be used with a workspace-level provider!
 //
@@ -199,6 +199,7 @@ import (
 //
 // The following resources are often used in the same context:
 //
+// * ModelServingProvisionedThroughput to create [Foundation Model provisioned throughput](https://docs.databricks.com/aws/en/machine-learning/foundation-model-apis/deploy-prov-throughput-foundation-model-apis) endpoints in Databricks.
 // * RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
 // * End to end workspace management guide.
 // * Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
@@ -210,6 +211,18 @@ import (
 // ## Import
 //
 // The model serving resource can be imported using the name of the endpoint.
+//
+// hcl
+//
+// import {
+//
+//	to = databricks_model_serving.this
+//
+//	id = "<model-serving-endpoint-name>"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 //
 // bash
 //
@@ -228,6 +241,8 @@ type ModelServing struct {
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
+	//
+	// Deprecated: Please use AI Gateway to manage rate limits.
 	RateLimits ModelServingRateLimitArrayOutput `pulumi:"rateLimits"`
 	// A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
 	RouteOptimized pulumi.BoolPtrOutput `pulumi:"routeOptimized"`
@@ -276,6 +291,8 @@ type modelServingState struct {
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name *string `pulumi:"name"`
 	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
+	//
+	// Deprecated: Please use AI Gateway to manage rate limits.
 	RateLimits []ModelServingRateLimit `pulumi:"rateLimits"`
 	// A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
 	RouteOptimized *bool `pulumi:"routeOptimized"`
@@ -295,6 +312,8 @@ type ModelServingState struct {
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name pulumi.StringPtrInput
 	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
+	//
+	// Deprecated: Please use AI Gateway to manage rate limits.
 	RateLimits ModelServingRateLimitArrayInput
 	// A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
 	RouteOptimized pulumi.BoolPtrInput
@@ -318,6 +337,8 @@ type modelServingArgs struct {
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name *string `pulumi:"name"`
 	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
+	//
+	// Deprecated: Please use AI Gateway to manage rate limits.
 	RateLimits []ModelServingRateLimit `pulumi:"rateLimits"`
 	// A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
 	RouteOptimized *bool `pulumi:"routeOptimized"`
@@ -336,6 +357,8 @@ type ModelServingArgs struct {
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name pulumi.StringPtrInput
 	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
+	//
+	// Deprecated: Please use AI Gateway to manage rate limits.
 	RateLimits ModelServingRateLimitArrayInput
 	// A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
 	RouteOptimized pulumi.BoolPtrInput
@@ -451,6 +474,8 @@ func (o ModelServingOutput) Name() pulumi.StringOutput {
 }
 
 // A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
+//
+// Deprecated: Please use AI Gateway to manage rate limits.
 func (o ModelServingOutput) RateLimits() ModelServingRateLimitArrayOutput {
 	return o.ApplyT(func(v *ModelServing) ModelServingRateLimitArrayOutput { return v.RateLimits }).(ModelServingRateLimitArrayOutput)
 }

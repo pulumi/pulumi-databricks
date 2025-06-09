@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly Outputs.PipelineClusterInitScriptAbfss? Abfss;
         public readonly Outputs.PipelineClusterInitScriptDbfs? Dbfs;
+        /// <summary>
+        /// specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+        /// </summary>
         public readonly Outputs.PipelineClusterInitScriptFile? File;
         public readonly Outputs.PipelineClusterInitScriptGcs? Gcs;
         public readonly Outputs.PipelineClusterInitScriptS3? S3;

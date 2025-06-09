@@ -548,12 +548,24 @@ class Recipient(pulumi.CustomResource):
 
         ## Import
 
-        The recipient resource can be imported using the name of the recipient.
+        The recipient resource can be imported using the name of the recipient:
+
+        hcl
+
+        import {
+
+          to = databricks_recipient.this
+
+          id = "<recipient_name>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 
         ```sh
-        $ pulumi import databricks:index/recipient:Recipient this <recipient_name>
+        $ pulumi import databricks:index/recipient:Recipient this "<recipient_name>"
         ```
 
         :param str resource_name: The name of the resource.
@@ -612,12 +624,24 @@ class Recipient(pulumi.CustomResource):
 
         ## Import
 
-        The recipient resource can be imported using the name of the recipient.
+        The recipient resource can be imported using the name of the recipient:
+
+        hcl
+
+        import {
+
+          to = databricks_recipient.this
+
+          id = "<recipient_name>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 
         ```sh
-        $ pulumi import databricks:index/recipient:Recipient this <recipient_name>
+        $ pulumi import databricks:index/recipient:Recipient this "<recipient_name>"
         ```
 
         :param str resource_name: The name of the resource.

@@ -30,6 +30,9 @@ namespace Pulumi.Databricks.Inputs
             set => _dependencies = value;
         }
 
+        [Input("environmentVersion")]
+        public Input<string>? EnvironmentVersion { get; set; }
+
         [Input("jarDependencies")]
         private InputList<string>? _jarDependencies;
         public InputList<string> JarDependencies

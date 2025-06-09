@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.AppResourceJobArgs;
 import com.pulumi.databricks.inputs.AppResourceSecretArgs;
 import com.pulumi.databricks.inputs.AppResourceServingEndpointArgs;
 import com.pulumi.databricks.inputs.AppResourceSqlWarehouseArgs;
+import com.pulumi.databricks.inputs.AppResourceUcSecurableArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -114,6 +115,13 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sqlWarehouse);
     }
 
+    @Import(name="ucSecurable")
+    private @Nullable Output<AppResourceUcSecurableArgs> ucSecurable;
+
+    public Optional<Output<AppResourceUcSecurableArgs>> ucSecurable() {
+        return Optional.ofNullable(this.ucSecurable);
+    }
+
     private AppResourceArgs() {}
 
     private AppResourceArgs(AppResourceArgs $) {
@@ -123,6 +131,7 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
         this.secret = $.secret;
         this.servingEndpoint = $.servingEndpoint;
         this.sqlWarehouse = $.sqlWarehouse;
+        this.ucSecurable = $.ucSecurable;
     }
 
     public static Builder builder() {
@@ -271,6 +280,15 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sqlWarehouse(AppResourceSqlWarehouseArgs sqlWarehouse) {
             return sqlWarehouse(Output.of(sqlWarehouse));
+        }
+
+        public Builder ucSecurable(@Nullable Output<AppResourceUcSecurableArgs> ucSecurable) {
+            $.ucSecurable = ucSecurable;
+            return this;
+        }
+
+        public Builder ucSecurable(AppResourceUcSecurableArgs ucSecurable) {
+            return ucSecurable(Output.of(ucSecurable));
         }
 
         public AppResourceArgs build() {

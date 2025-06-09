@@ -13,8 +13,20 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAlertsV2ResultScheduleResult
     {
+        /// <summary>
+        /// (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+        /// </summary>
         public readonly string? PauseStatus;
+        /// <summary>
+        /// (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
+        /// Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+        /// </summary>
         public readonly string? QuartzCronSchedule;
+        /// <summary>
+        /// (string) - A Java timezone id. The schedule will be resolved using this timezone.
+        /// This will be combined with the quartz_cron_schedule to determine the schedule.
+        /// See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+        /// </summary>
         public readonly string? TimezoneId;
 
         [OutputConstructor]

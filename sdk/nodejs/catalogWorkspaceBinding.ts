@@ -35,6 +35,20 @@ import * as utilities from "./utilities";
  *
  * This resource can be imported by using combination of workspace ID, securable type and name:
  *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_catalog_workspace_binding.this
+ *
+ *   id = "<workspace_id>|<securable_type>|<securable_name>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ *
+ * bash
+ *
  * ```sh
  * $ pulumi import databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding this "<workspace_id>|<securable_type>|<securable_name>"
  * ```
@@ -86,7 +100,7 @@ export class CatalogWorkspaceBinding extends pulumi.CustomResource {
     /**
      * ID of the workspace. Change forces creation of a new resource.
      */
-    public readonly workspaceId!: pulumi.Output<string | undefined>;
+    public readonly workspaceId!: pulumi.Output<string>;
 
     /**
      * Create a CatalogWorkspaceBinding resource with the given unique name, arguments, and options.
@@ -95,7 +109,7 @@ export class CatalogWorkspaceBinding extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: CatalogWorkspaceBindingArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: CatalogWorkspaceBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CatalogWorkspaceBindingArgs | CatalogWorkspaceBindingState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -108,6 +122,9 @@ export class CatalogWorkspaceBinding extends pulumi.CustomResource {
             resourceInputs["workspaceId"] = state ? state.workspaceId : undefined;
         } else {
             const args = argsOrState as CatalogWorkspaceBindingArgs | undefined;
+            if ((!args || args.workspaceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'workspaceId'");
+            }
             resourceInputs["bindingType"] = args ? args.bindingType : undefined;
             resourceInputs["catalogName"] = args ? args.catalogName : undefined;
             resourceInputs["securableName"] = args ? args.securableName : undefined;
@@ -168,5 +185,5 @@ export interface CatalogWorkspaceBindingArgs {
     /**
      * ID of the workspace. Change forces creation of a new resource.
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId: pulumi.Input<string>;
 }

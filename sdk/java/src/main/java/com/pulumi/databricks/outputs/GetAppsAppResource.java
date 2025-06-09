@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.GetAppsAppResourceJob;
 import com.pulumi.databricks.outputs.GetAppsAppResourceSecret;
 import com.pulumi.databricks.outputs.GetAppsAppResourceServingEndpoint;
 import com.pulumi.databricks.outputs.GetAppsAppResourceSqlWarehouse;
+import com.pulumi.databricks.outputs.GetAppsAppResourceUcSecurable;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -46,6 +47,7 @@ public final class GetAppsAppResource {
      * 
      */
     private @Nullable GetAppsAppResourceSqlWarehouse sqlWarehouse;
+    private @Nullable GetAppsAppResourceUcSecurable ucSecurable;
 
     private GetAppsAppResource() {}
     /**
@@ -90,6 +92,9 @@ public final class GetAppsAppResource {
     public Optional<GetAppsAppResourceSqlWarehouse> sqlWarehouse() {
         return Optional.ofNullable(this.sqlWarehouse);
     }
+    public Optional<GetAppsAppResourceUcSecurable> ucSecurable() {
+        return Optional.ofNullable(this.ucSecurable);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -106,6 +111,7 @@ public final class GetAppsAppResource {
         private @Nullable GetAppsAppResourceSecret secret;
         private @Nullable GetAppsAppResourceServingEndpoint servingEndpoint;
         private @Nullable GetAppsAppResourceSqlWarehouse sqlWarehouse;
+        private @Nullable GetAppsAppResourceUcSecurable ucSecurable;
         public Builder() {}
         public Builder(GetAppsAppResource defaults) {
     	      Objects.requireNonNull(defaults);
@@ -115,6 +121,7 @@ public final class GetAppsAppResource {
     	      this.secret = defaults.secret;
     	      this.servingEndpoint = defaults.servingEndpoint;
     	      this.sqlWarehouse = defaults.sqlWarehouse;
+    	      this.ucSecurable = defaults.ucSecurable;
         }
 
         @CustomType.Setter
@@ -155,6 +162,12 @@ public final class GetAppsAppResource {
             this.sqlWarehouse = sqlWarehouse;
             return this;
         }
+        @CustomType.Setter
+        public Builder ucSecurable(@Nullable GetAppsAppResourceUcSecurable ucSecurable) {
+
+            this.ucSecurable = ucSecurable;
+            return this;
+        }
         public GetAppsAppResource build() {
             final var _resultValue = new GetAppsAppResource();
             _resultValue.description = description;
@@ -163,6 +176,7 @@ public final class GetAppsAppResource {
             _resultValue.secret = secret;
             _resultValue.servingEndpoint = servingEndpoint;
             _resultValue.sqlWarehouse = sqlWarehouse;
+            _resultValue.ucSecurable = ucSecurable;
             return _resultValue;
         }
     }

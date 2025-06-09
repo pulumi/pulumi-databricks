@@ -18,16 +18,32 @@ public final class AlertV2EvaluationNotificationArgs extends com.pulumi.resource
 
     public static final AlertV2EvaluationNotificationArgs Empty = new AlertV2EvaluationNotificationArgs();
 
+    /**
+     * Whether to notify alert subscribers when alert returns back to normal
+     * 
+     */
     @Import(name="notifyOnOk")
     private @Nullable Output<Boolean> notifyOnOk;
 
+    /**
+     * @return Whether to notify alert subscribers when alert returns back to normal
+     * 
+     */
     public Optional<Output<Boolean>> notifyOnOk() {
         return Optional.ofNullable(this.notifyOnOk);
     }
 
+    /**
+     * Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     * 
+     */
     @Import(name="retriggerSeconds")
     private @Nullable Output<Integer> retriggerSeconds;
 
+    /**
+     * @return Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     * 
+     */
     public Optional<Output<Integer>> retriggerSeconds() {
         return Optional.ofNullable(this.retriggerSeconds);
     }
@@ -65,20 +81,44 @@ public final class AlertV2EvaluationNotificationArgs extends com.pulumi.resource
             $ = new AlertV2EvaluationNotificationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param notifyOnOk Whether to notify alert subscribers when alert returns back to normal
+         * 
+         * @return builder
+         * 
+         */
         public Builder notifyOnOk(@Nullable Output<Boolean> notifyOnOk) {
             $.notifyOnOk = notifyOnOk;
             return this;
         }
 
+        /**
+         * @param notifyOnOk Whether to notify alert subscribers when alert returns back to normal
+         * 
+         * @return builder
+         * 
+         */
         public Builder notifyOnOk(Boolean notifyOnOk) {
             return notifyOnOk(Output.of(notifyOnOk));
         }
 
+        /**
+         * @param retriggerSeconds Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+         * 
+         * @return builder
+         * 
+         */
         public Builder retriggerSeconds(@Nullable Output<Integer> retriggerSeconds) {
             $.retriggerSeconds = retriggerSeconds;
             return this;
         }
 
+        /**
+         * @param retriggerSeconds Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+         * 
+         * @return builder
+         * 
+         */
         public Builder retriggerSeconds(Integer retriggerSeconds) {
             return retriggerSeconds(Output.of(retriggerSeconds));
         }

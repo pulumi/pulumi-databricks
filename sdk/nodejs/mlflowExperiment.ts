@@ -52,12 +52,24 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * The experiment resource can be imported using the id of the experiment
+ * The experiment resource can be imported using the id of the experiment:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_mlflow_experiment.this
+ *
+ *   id = "<experiment-id>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  *
  * bash
  *
  * ```sh
- * $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this <experiment-id>
+ * $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this "<experiment-id>"
  * ```
  */
 export class MlflowExperiment extends pulumi.CustomResource {

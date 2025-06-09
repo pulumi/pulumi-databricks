@@ -60,6 +60,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("provisionedModelUnits")]
+        public Input<int>? ProvisionedModelUnits { get; set; }
+
         /// <summary>
         /// Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
         /// </summary>

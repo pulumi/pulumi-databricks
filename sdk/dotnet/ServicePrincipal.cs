@@ -21,7 +21,7 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; To assign account level service principals to workspace use databricks_mws_permission_assignment.
     /// 
-    /// &gt; Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level service principals. Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level service principals.
+    /// &gt; Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access`, `workspace-consume` applicable only for workspace-level service principals. Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level service principals.
     /// 
     /// The default behavior when deleting a `databricks.ServicePrincipal` resource depends on whether the provider is configured at the workspace-level or account-level. When the provider is configured at the workspace-level, the service principal will be deleted from the workspace. When the provider is configured at the account-level, the service principal will be deactivated but not deleted. When the provider is configured at the account level, to delete the service principal from the account when the resource is deleted, set `disable_as_user_deletion = false`. Conversely, when the provider is configured at the account-level, to deactivate the service principal when the resource is deleted, set `disable_as_user_deletion = true`.
     /// 
@@ -134,16 +134,28 @@ namespace Pulumi.Databricks
     /// 
     /// The following resources are often used in the same context:
     /// 
-    /// - End to end workspace management guide.
-    /// - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-    /// - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-    /// - databricks.GroupMember to attach users and groups as group members.
-    /// - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-    /// - databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and more to manage secrets for the service principal (only for AWS deployments)
+    /// * End to end workspace management guide.
+    /// * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+    /// * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+    /// * databricks.GroupMember to attach users and groups as group members.
+    /// * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+    /// * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and more to manage secrets for the service principal (only for AWS deployments)
     /// 
     /// ## Import
     /// 
-    /// The resource scim service principal can be imported using its id, for example `2345678901234567`. To get the service principal ID, call [Get service principals](https://docs.databricks.com/dev-tools/api/latest/scim/scim-sp.html#get-service-principals).
+    /// The resource scim service principal can be imported using its SCIM id, for example `2345678901234567`. To get the service principal ID, call [Get service principals](https://docs.databricks.com/dev-tools/api/latest/scim/scim-sp.html#get-service-principals).
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_service_principal.me
+    /// 
+    ///   id = "&lt;service-principal-id&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
     /// 
     /// bash
     /// 
@@ -185,7 +197,7 @@ namespace Pulumi.Databricks
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
-        /// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
+        /// This is a field to allow the service principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         /// </summary>
         [Output("databricksSqlAccess")]
         public Output<bool?> DatabricksSqlAccess { get; private set; } = null!;
@@ -239,10 +251,16 @@ namespace Pulumi.Databricks
         public Output<string> Repos { get; private set; } = null!;
 
         /// <summary>
-        /// This is a field to allow the group to have access to Databricks Workspace.
+        /// This is a field to allow the service principal to have access to a Databricks Workspace.
         /// </summary>
         [Output("workspaceAccess")]
         public Output<bool?> WorkspaceAccess { get; private set; } = null!;
+
+        /// <summary>
+        /// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        /// </summary>
+        [Output("workspaceConsume")]
+        public Output<bool?> WorkspaceConsume { get; private set; } = null!;
 
 
         /// <summary>
@@ -321,7 +339,7 @@ namespace Pulumi.Databricks
         public Input<string>? ApplicationId { get; set; }
 
         /// <summary>
-        /// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
+        /// This is a field to allow the service principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         /// </summary>
         [Input("databricksSqlAccess")]
         public Input<bool>? DatabricksSqlAccess { get; set; }
@@ -375,10 +393,16 @@ namespace Pulumi.Databricks
         public Input<string>? Repos { get; set; }
 
         /// <summary>
-        /// This is a field to allow the group to have access to Databricks Workspace.
+        /// This is a field to allow the service principal to have access to a Databricks Workspace.
         /// </summary>
         [Input("workspaceAccess")]
         public Input<bool>? WorkspaceAccess { get; set; }
+
+        /// <summary>
+        /// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        /// </summary>
+        [Input("workspaceConsume")]
+        public Input<bool>? WorkspaceConsume { get; set; }
 
         public ServicePrincipalArgs()
         {
@@ -419,7 +443,7 @@ namespace Pulumi.Databricks
         public Input<string>? ApplicationId { get; set; }
 
         /// <summary>
-        /// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
+        /// This is a field to allow the service principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         /// </summary>
         [Input("databricksSqlAccess")]
         public Input<bool>? DatabricksSqlAccess { get; set; }
@@ -473,10 +497,16 @@ namespace Pulumi.Databricks
         public Input<string>? Repos { get; set; }
 
         /// <summary>
-        /// This is a field to allow the group to have access to Databricks Workspace.
+        /// This is a field to allow the service principal to have access to a Databricks Workspace.
         /// </summary>
         [Input("workspaceAccess")]
         public Input<bool>? WorkspaceAccess { get; set; }
+
+        /// <summary>
+        /// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        /// </summary>
+        [Input("workspaceConsume")]
+        public Input<bool>? WorkspaceConsume { get; set; }
 
         public ServicePrincipalState()
         {

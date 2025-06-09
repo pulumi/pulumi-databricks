@@ -59,10 +59,24 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by its integration ID.
+// This resource can be imported by its integration ID:
+//
+// hcl
+//
+// import {
+//
+//	to = databricks_custom_app_integration.this
+//
+//	id = "<integration_id>"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+//
+// bash
 //
 // ```sh
-// $ pulumi import databricks:index/customAppIntegration:CustomAppIntegration this '<integration_id>'
+// $ pulumi import databricks:index/customAppIntegration:CustomAppIntegration this "<integration_id>"
 // ```
 type CustomAppIntegration struct {
 	pulumi.CustomResourceState

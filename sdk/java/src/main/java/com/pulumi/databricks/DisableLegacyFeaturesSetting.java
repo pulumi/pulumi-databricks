@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * When this setting is on, the following applies to new workspaces:
  * - Disables the use of DBFS root and mounts.
  * - Hive Metastore will not be provisioned.
- * - Disables the use of ‘No-isolation clusters’.
+ * - Disables the use of &#39;No-isolation clusters&#39;.
  * - Disables Databricks Runtime versions prior to 13.3LTS
  * 
  * ## Example Usage
@@ -68,6 +68,18 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * This resource can be imported by predefined name `global`:
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_disable_legacy_features_setting.this
+ * 
+ *   id = &#34;global&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  * 
  * bash
  * 

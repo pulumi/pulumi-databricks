@@ -92,6 +92,18 @@ import javax.annotation.Nullable;
  * 
  * You can import a `databricks_sql_endpoint` resource with ID like the following:
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_sql_endpoint.this
+ * 
+ *   id = &#34;&lt;endpoint-id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh

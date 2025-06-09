@@ -55,6 +55,7 @@ public final class ModelServingConfigServedEntity {
      * 
      */
     private @Nullable String name;
+    private @Nullable Integer provisionedModelUnits;
     /**
      * @return Whether the compute resources for the served entity should scale down to zero.
      * 
@@ -128,6 +129,9 @@ public final class ModelServingConfigServedEntity {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    public Optional<Integer> provisionedModelUnits() {
+        return Optional.ofNullable(this.provisionedModelUnits);
+    }
     /**
      * @return Whether the compute resources for the served entity should scale down to zero.
      * 
@@ -167,6 +171,7 @@ public final class ModelServingConfigServedEntity {
         private @Nullable Integer maxProvisionedThroughput;
         private @Nullable Integer minProvisionedThroughput;
         private @Nullable String name;
+        private @Nullable Integer provisionedModelUnits;
         private @Nullable Boolean scaleToZeroEnabled;
         private @Nullable String workloadSize;
         private @Nullable String workloadType;
@@ -181,6 +186,7 @@ public final class ModelServingConfigServedEntity {
     	      this.maxProvisionedThroughput = defaults.maxProvisionedThroughput;
     	      this.minProvisionedThroughput = defaults.minProvisionedThroughput;
     	      this.name = defaults.name;
+    	      this.provisionedModelUnits = defaults.provisionedModelUnits;
     	      this.scaleToZeroEnabled = defaults.scaleToZeroEnabled;
     	      this.workloadSize = defaults.workloadSize;
     	      this.workloadType = defaults.workloadType;
@@ -235,6 +241,12 @@ public final class ModelServingConfigServedEntity {
             return this;
         }
         @CustomType.Setter
+        public Builder provisionedModelUnits(@Nullable Integer provisionedModelUnits) {
+
+            this.provisionedModelUnits = provisionedModelUnits;
+            return this;
+        }
+        @CustomType.Setter
         public Builder scaleToZeroEnabled(@Nullable Boolean scaleToZeroEnabled) {
 
             this.scaleToZeroEnabled = scaleToZeroEnabled;
@@ -262,6 +274,7 @@ public final class ModelServingConfigServedEntity {
             _resultValue.maxProvisionedThroughput = maxProvisionedThroughput;
             _resultValue.minProvisionedThroughput = minProvisionedThroughput;
             _resultValue.name = name;
+            _resultValue.provisionedModelUnits = provisionedModelUnits;
             _resultValue.scaleToZeroEnabled = scaleToZeroEnabled;
             _resultValue.workloadSize = workloadSize;
             _resultValue.workloadType = workloadType;

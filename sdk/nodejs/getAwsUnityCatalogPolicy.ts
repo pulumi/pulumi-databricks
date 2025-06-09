@@ -36,7 +36,10 @@ import * as utilities from "./utilities";
  * const metastoreDataAccess = new aws.iam.Role("metastore_data_access", {
  *     name: `${prefix}-uc-access`,
  *     assumeRolePolicy: thisGetAwsUnityCatalogAssumeRolePolicy.then(thisGetAwsUnityCatalogAssumeRolePolicy => thisGetAwsUnityCatalogAssumeRolePolicy.json),
- *     managedPolicyArns: [unityMetastore.arn],
+ * });
+ * const metastoreDataAccessRolePolicyAttachment = new aws.iam.RolePolicyAttachment("metastore_data_access", {
+ *     role: metastoreDataAccess.name,
+ *     policyArn: unityMetastore.arn,
  * });
  * ```
  */
@@ -64,7 +67,7 @@ export interface GetAwsUnityCatalogPolicyArgs {
      */
     awsPartition?: string;
     /**
-     * The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
+     * The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.  The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
      */
     bucketName: string;
     /**
@@ -127,7 +130,10 @@ export interface GetAwsUnityCatalogPolicyResult {
  * const metastoreDataAccess = new aws.iam.Role("metastore_data_access", {
  *     name: `${prefix}-uc-access`,
  *     assumeRolePolicy: thisGetAwsUnityCatalogAssumeRolePolicy.then(thisGetAwsUnityCatalogAssumeRolePolicy => thisGetAwsUnityCatalogAssumeRolePolicy.json),
- *     managedPolicyArns: [unityMetastore.arn],
+ * });
+ * const metastoreDataAccessRolePolicyAttachment = new aws.iam.RolePolicyAttachment("metastore_data_access", {
+ *     role: metastoreDataAccess.name,
+ *     policyArn: unityMetastore.arn,
  * });
  * ```
  */
@@ -155,7 +161,7 @@ export interface GetAwsUnityCatalogPolicyOutputArgs {
      */
     awsPartition?: pulumi.Input<string>;
     /**
-     * The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
+     * The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.  The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
      */
     bucketName: pulumi.Input<string>;
     /**

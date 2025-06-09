@@ -117,7 +117,19 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// You can import a `databricks_group` resource with the name `my_group` like the following:
+    /// You can import a `databricks_group` resource by its SCIM ID:
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_group.my_group
+    /// 
+    ///   id = "&lt;group_id&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
     /// 
     /// bash
     /// 
@@ -174,10 +186,16 @@ namespace Pulumi.Databricks
         public Output<string> Url { get; private set; } = null!;
 
         /// <summary>
-        /// This is a field to allow the group to have access to Databricks Workspace.
+        /// This is a field to allow the group to have access to a Databricks Workspace.
         /// </summary>
         [Output("workspaceAccess")]
         public Output<bool?> WorkspaceAccess { get; private set; } = null!;
+
+        /// <summary>
+        /// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        /// </summary>
+        [Output("workspaceConsume")]
+        public Output<bool?> WorkspaceConsume { get; private set; } = null!;
 
 
         /// <summary>
@@ -271,10 +289,16 @@ namespace Pulumi.Databricks
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// This is a field to allow the group to have access to Databricks Workspace.
+        /// This is a field to allow the group to have access to a Databricks Workspace.
         /// </summary>
         [Input("workspaceAccess")]
         public Input<bool>? WorkspaceAccess { get; set; }
+
+        /// <summary>
+        /// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        /// </summary>
+        [Input("workspaceConsume")]
+        public Input<bool>? WorkspaceConsume { get; set; }
 
         public GroupArgs()
         {
@@ -330,10 +354,16 @@ namespace Pulumi.Databricks
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// This is a field to allow the group to have access to Databricks Workspace.
+        /// This is a field to allow the group to have access to a Databricks Workspace.
         /// </summary>
         [Input("workspaceAccess")]
         public Input<bool>? WorkspaceAccess { get; set; }
+
+        /// <summary>
+        /// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        /// </summary>
+        [Input("workspaceConsume")]
+        public Input<bool>? WorkspaceConsume { get; set; }
 
         public GroupState()
         {

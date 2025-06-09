@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.AppResourceJob;
 import com.pulumi.databricks.outputs.AppResourceSecret;
 import com.pulumi.databricks.outputs.AppResourceServingEndpoint;
 import com.pulumi.databricks.outputs.AppResourceSqlWarehouse;
+import com.pulumi.databricks.outputs.AppResourceUcSecurable;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -48,6 +49,7 @@ public final class AppResource {
      * 
      */
     private @Nullable AppResourceSqlWarehouse sqlWarehouse;
+    private @Nullable AppResourceUcSecurable ucSecurable;
 
     private AppResource() {}
     /**
@@ -94,6 +96,9 @@ public final class AppResource {
     public Optional<AppResourceSqlWarehouse> sqlWarehouse() {
         return Optional.ofNullable(this.sqlWarehouse);
     }
+    public Optional<AppResourceUcSecurable> ucSecurable() {
+        return Optional.ofNullable(this.ucSecurable);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -110,6 +115,7 @@ public final class AppResource {
         private @Nullable AppResourceSecret secret;
         private @Nullable AppResourceServingEndpoint servingEndpoint;
         private @Nullable AppResourceSqlWarehouse sqlWarehouse;
+        private @Nullable AppResourceUcSecurable ucSecurable;
         public Builder() {}
         public Builder(AppResource defaults) {
     	      Objects.requireNonNull(defaults);
@@ -119,6 +125,7 @@ public final class AppResource {
     	      this.secret = defaults.secret;
     	      this.servingEndpoint = defaults.servingEndpoint;
     	      this.sqlWarehouse = defaults.sqlWarehouse;
+    	      this.ucSecurable = defaults.ucSecurable;
         }
 
         @CustomType.Setter
@@ -159,6 +166,12 @@ public final class AppResource {
             this.sqlWarehouse = sqlWarehouse;
             return this;
         }
+        @CustomType.Setter
+        public Builder ucSecurable(@Nullable AppResourceUcSecurable ucSecurable) {
+
+            this.ucSecurable = ucSecurable;
+            return this;
+        }
         public AppResource build() {
             final var _resultValue = new AppResource();
             _resultValue.description = description;
@@ -167,6 +180,7 @@ public final class AppResource {
             _resultValue.secret = secret;
             _resultValue.servingEndpoint = servingEndpoint;
             _resultValue.sqlWarehouse = sqlWarehouse;
+            _resultValue.ucSecurable = ucSecurable;
             return _resultValue;
         }
     }

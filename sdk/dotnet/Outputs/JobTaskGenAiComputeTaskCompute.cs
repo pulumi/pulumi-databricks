@@ -13,13 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskGenAiComputeTaskCompute
     {
-        public readonly string GpuNodePoolId;
+        public readonly string? GpuNodePoolId;
         public readonly string? GpuType;
         public readonly int NumGpus;
 
         [OutputConstructor]
         private JobTaskGenAiComputeTaskCompute(
-            string gpuNodePoolId,
+            string? gpuNodePoolId,
 
             string? gpuType,
 

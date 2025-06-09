@@ -18,15 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("networkProjectId", required: true)]
         public Input<string> NetworkProjectId { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-        /// </summary>
         [Input("podIpRangeName")]
         public Input<string>? PodIpRangeName { get; set; }
 
-        /// <summary>
-        /// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-        /// </summary>
         [Input("serviceIpRangeName")]
         public Input<string>? ServiceIpRangeName { get; set; }
 

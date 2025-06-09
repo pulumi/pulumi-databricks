@@ -109,10 +109,6 @@ import (
 //						ProjectId: pulumi.Any(googleProject),
 //					},
 //				},
-//				GkeConfig: &databricks.MwsWorkspacesGkeConfigArgs{
-//					ConnectivityType: pulumi.String("PRIVATE_NODE_PUBLIC_MASTER"),
-//					MasterIpRange:    pulumi.String("10.3.0.0/28"),
-//				},
 //				NetworkId:               pulumi.Any(thisDatabricksMwsNetworks.NetworkId),
 //				PrivateAccessSettingsId: pulumi.Any(pas.PrivateAccessSettingsId),
 //				PricingTier:             pulumi.String("PREMIUM"),
@@ -143,6 +139,18 @@ import (
 // ## Import
 //
 // This resource can be imported by Databricks account ID and private access settings ID.
+//
+// hcl
+//
+// import {
+//
+//	to = databricks_mws_private_access_settings.this
+//
+//	id = "<account_id>/<private_access_settings_id>"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 //
 // ```sh
 // $ pulumi import databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings this '<account_id>/<private_access_settings_id>'

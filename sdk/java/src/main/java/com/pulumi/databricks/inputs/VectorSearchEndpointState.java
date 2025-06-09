@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.VectorSearchEndpointCustomTagArgs;
 import com.pulumi.databricks.inputs.VectorSearchEndpointEndpointStatusArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -18,6 +17,21 @@ import javax.annotation.Nullable;
 public final class VectorSearchEndpointState extends com.pulumi.resources.ResourceArgs {
 
     public static final VectorSearchEndpointState Empty = new VectorSearchEndpointState();
+
+    /**
+     * The Budget Policy ID set for this resource.
+     * 
+     */
+    @Import(name="budgetPolicyId")
+    private @Nullable Output<String> budgetPolicyId;
+
+    /**
+     * @return The Budget Policy ID set for this resource.
+     * 
+     */
+    public Optional<Output<String>> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
+    }
 
     /**
      * Timestamp of endpoint creation (milliseconds).
@@ -49,16 +63,17 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.creator);
     }
 
-    @Import(name="customTags")
-    private @Nullable Output<List<VectorSearchEndpointCustomTagArgs>> customTags;
-
-    public Optional<Output<List<VectorSearchEndpointCustomTagArgs>>> customTags() {
-        return Optional.ofNullable(this.customTags);
-    }
-
+    /**
+     * The effective budget policy ID.
+     * 
+     */
     @Import(name="effectiveBudgetPolicyId")
     private @Nullable Output<String> effectiveBudgetPolicyId;
 
+    /**
+     * @return The effective budget policy ID.
+     * 
+     */
     public Optional<Output<String>> effectiveBudgetPolicyId() {
         return Optional.ofNullable(this.effectiveBudgetPolicyId);
     }
@@ -94,14 +109,14 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+     * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
      * 
      */
     @Import(name="endpointType")
     private @Nullable Output<String> endpointType;
 
     /**
-     * @return Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+     * @return Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
      * 
      */
     public Optional<Output<String>> endpointType() {
@@ -139,14 +154,14 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Name of the Mosaic AI Vector Search Endpoint to create.
+     * Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the Mosaic AI Vector Search Endpoint to create.
+     * @return Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
      * 
      */
     public Optional<Output<String>> name() {
@@ -171,9 +186,9 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
     private VectorSearchEndpointState() {}
 
     private VectorSearchEndpointState(VectorSearchEndpointState $) {
+        this.budgetPolicyId = $.budgetPolicyId;
         this.creationTimestamp = $.creationTimestamp;
         this.creator = $.creator;
-        this.customTags = $.customTags;
         this.effectiveBudgetPolicyId = $.effectiveBudgetPolicyId;
         this.endpointId = $.endpointId;
         this.endpointStatuses = $.endpointStatuses;
@@ -200,6 +215,27 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
 
         public Builder(VectorSearchEndpointState defaults) {
             $ = new VectorSearchEndpointState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param budgetPolicyId The Budget Policy ID set for this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetPolicyId(@Nullable Output<String> budgetPolicyId) {
+            $.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+
+        /**
+         * @param budgetPolicyId The Budget Policy ID set for this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetPolicyId(String budgetPolicyId) {
+            return budgetPolicyId(Output.of(budgetPolicyId));
         }
 
         /**
@@ -244,24 +280,23 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
             return creator(Output.of(creator));
         }
 
-        public Builder customTags(@Nullable Output<List<VectorSearchEndpointCustomTagArgs>> customTags) {
-            $.customTags = customTags;
-            return this;
-        }
-
-        public Builder customTags(List<VectorSearchEndpointCustomTagArgs> customTags) {
-            return customTags(Output.of(customTags));
-        }
-
-        public Builder customTags(VectorSearchEndpointCustomTagArgs... customTags) {
-            return customTags(List.of(customTags));
-        }
-
+        /**
+         * @param effectiveBudgetPolicyId The effective budget policy ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveBudgetPolicyId(@Nullable Output<String> effectiveBudgetPolicyId) {
             $.effectiveBudgetPolicyId = effectiveBudgetPolicyId;
             return this;
         }
 
+        /**
+         * @param effectiveBudgetPolicyId The effective budget policy ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveBudgetPolicyId(String effectiveBudgetPolicyId) {
             return effectiveBudgetPolicyId(Output.of(effectiveBudgetPolicyId));
         }
@@ -319,7 +354,7 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param endpointType Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+         * @param endpointType Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
          * 
          * @return builder
          * 
@@ -330,7 +365,7 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param endpointType Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+         * @param endpointType Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
          * 
          * @return builder
          * 
@@ -382,7 +417,7 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name Name of the Mosaic AI Vector Search Endpoint to create.
+         * @param name Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
          * 
          * @return builder
          * 
@@ -393,7 +428,7 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name Name of the Mosaic AI Vector Search Endpoint to create.
+         * @param name Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
          * 
          * @return builder
          * 

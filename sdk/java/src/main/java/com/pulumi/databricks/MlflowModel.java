@@ -90,6 +90,18 @@ import javax.annotation.Nullable;
  * 
  * The model resource can be imported using the name
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_mlflow_model.this
+ * 
+ *   id = &#34;&lt;name&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh

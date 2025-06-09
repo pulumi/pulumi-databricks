@@ -845,7 +845,19 @@ class Grants(pulumi.CustomResource):
 
         ## Import
 
-        The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...) and it's name:
+        The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...) and its name:
+
+        hcl
+
+        import {
+
+          to = databricks_grants.this
+
+          id = "catalog/abc"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 
@@ -1291,7 +1303,19 @@ class Grants(pulumi.CustomResource):
 
         ## Import
 
-        The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...) and it's name:
+        The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...) and its name:
+
+        hcl
+
+        import {
+
+          to = databricks_grants.this
+
+          id = "catalog/abc"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 

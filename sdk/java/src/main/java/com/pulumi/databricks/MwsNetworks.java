@@ -69,15 +69,6 @@ import javax.annotation.Nullable;
  *             .ipCidrRange("10.0.0.0/16")
  *             .region("us-central1")
  *             .network(dbxPrivateVpc.id())
- *             .secondaryIpRange(List.of(            
- *                 Map.ofEntries(
- *                     Map.entry("rangeName", "pods"),
- *                     Map.entry("ipCidrRange", "10.1.0.0/16")
- *                 ),
- *                 Map.ofEntries(
- *                     Map.entry("rangeName", "svc"),
- *                     Map.entry("ipCidrRange", "10.2.0.0/20")
- *                 )))
  *             .privateIpGoogleAccess(true)
  *             .build());
  * 
@@ -103,8 +94,6 @@ import javax.annotation.Nullable;
  *                 .vpcId(dbxPrivateVpc.name())
  *                 .subnetId(networkWithPrivateSecondaryIpRanges.name())
  *                 .subnetRegion(networkWithPrivateSecondaryIpRanges.region())
- *                 .podIpRangeName("pods")
- *                 .serviceIpRangeName("svc")
  *                 .build())
  *             .build());
  * 
@@ -149,8 +138,6 @@ import javax.annotation.Nullable;
  *                 .vpcId(dbxPrivateVpc.name())
  *                 .subnetId(networkWithPrivateSecondaryIpRanges.name())
  *                 .subnetRegion(networkWithPrivateSecondaryIpRanges.region())
- *                 .podIpRangeName("pods")
- *                 .serviceIpRangeName("svc")
  *                 .build())
  *             .vpcEndpoints(MwsNetworksVpcEndpointsArgs.builder()
  *                 .dataplaneRelays(relay.vpcEndpointId())
@@ -188,6 +175,18 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * This resource can be imported by Databricks account ID and network ID.
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_mws_networks.this
+ * 
+ *   id = &#34;&lt;account_id&gt;/&lt;network_id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  * 
  * ```sh
  * $ pulumi import databricks:index/mwsNetworks:MwsNetworks this &#39;&lt;account_id&gt;/&lt;network_id&gt;&#39;

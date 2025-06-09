@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+    /// This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks, including custom models, external models, and foundation models. For newer foundation models, including Llama 4, please use the databricks.ModelServingProvisionedThroughput resource.
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!
     /// 
@@ -203,6 +203,7 @@ namespace Pulumi.Databricks
     /// 
     /// The following resources are often used in the same context:
     /// 
+    /// * databricks.ModelServingProvisionedThroughput to create [Foundation Model provisioned throughput](https://docs.databricks.com/aws/en/machine-learning/foundation-model-apis/deploy-prov-throughput-foundation-model-apis) endpoints in Databricks.
     /// * databricks.RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
     /// * End to end workspace management guide.
     /// * databricks.Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
@@ -214,6 +215,18 @@ namespace Pulumi.Databricks
     /// ## Import
     /// 
     /// The model serving resource can be imported using the name of the endpoint.
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_model_serving.this
+    /// 
+    ///   id = "&lt;model-serving-endpoint-name&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
     /// 
     /// bash
     /// 
@@ -348,6 +361,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         /// </summary>
+        [Obsolete(@"Please use AI Gateway to manage rate limits.")]
         public InputList<Inputs.ModelServingRateLimitArgs> RateLimits
         {
             get => _rateLimits ?? (_rateLimits = new InputList<Inputs.ModelServingRateLimitArgs>());
@@ -410,6 +424,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         /// </summary>
+        [Obsolete(@"Please use AI Gateway to manage rate limits.")]
         public InputList<Inputs.ModelServingRateLimitGetArgs> RateLimits
         {
             get => _rateLimits ?? (_rateLimits = new InputList<Inputs.ModelServingRateLimitGetArgs>());

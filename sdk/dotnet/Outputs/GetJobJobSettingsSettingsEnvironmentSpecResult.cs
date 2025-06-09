@@ -15,6 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly string Client;
         public readonly ImmutableArray<string> Dependencies;
+        public readonly string? EnvironmentVersion;
         public readonly ImmutableArray<string> JarDependencies;
 
         [OutputConstructor]
@@ -23,10 +24,13 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<string> dependencies,
 
+            string? environmentVersion,
+
             ImmutableArray<string> jarDependencies)
         {
             Client = client;
             Dependencies = dependencies;
+            EnvironmentVersion = environmentVersion;
             JarDependencies = jarDependencies;
         }
     }

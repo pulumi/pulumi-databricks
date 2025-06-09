@@ -41,6 +41,7 @@ namespace Pulumi.Databricks.Outputs
         /// The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
         /// </summary>
         public readonly string? Name;
+        public readonly int? ProvisionedModelUnits;
         /// <summary>
         /// Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
         /// </summary>
@@ -70,6 +71,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? name,
 
+            int? provisionedModelUnits,
+
             bool? scaleToZeroEnabled,
 
             string? workloadSize,
@@ -83,6 +86,7 @@ namespace Pulumi.Databricks.Outputs
             ModelName = modelName;
             ModelVersion = modelVersion;
             Name = name;
+            ProvisionedModelUnits = provisionedModelUnits;
             ScaleToZeroEnabled = scaleToZeroEnabled;
             WorkloadSize = workloadSize;
             WorkloadType = workloadType;

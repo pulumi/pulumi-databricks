@@ -12,14 +12,24 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetAlertV2EvaluationNotificationArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// (boolean) - Whether to notify alert subscribers when alert returns back to normal
+        /// </summary>
         [Input("notifyOnOk")]
         public bool? NotifyOnOk { get; set; }
 
+        /// <summary>
+        /// (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+        /// </summary>
         [Input("retriggerSeconds")]
         public int? RetriggerSeconds { get; set; }
 
         [Input("subscriptions")]
         private List<Inputs.GetAlertV2EvaluationNotificationSubscriptionArgs>? _subscriptions;
+
+        /// <summary>
+        /// (list of AlertV2Subscription) -
+        /// </summary>
         public List<Inputs.GetAlertV2EvaluationNotificationSubscriptionArgs> Subscriptions
         {
             get => _subscriptions ?? (_subscriptions = new List<Inputs.GetAlertV2EvaluationNotificationSubscriptionArgs>());

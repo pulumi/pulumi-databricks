@@ -60,7 +60,6 @@ class MwsWorkspacesArgs:
         :param pulumi.Input[builtins.str] credentials_id: `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] custom_tags: The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         :param pulumi.Input[builtins.str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-        :param pulumi.Input['MwsWorkspacesGkeConfigArgs'] gke_config: A block that specifies GKE configuration for the Databricks workspace:
         :param pulumi.Input[builtins.str] location: region of the subnet.
         :param pulumi.Input[builtins.str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
         :param pulumi.Input[builtins.str] network_id: `network_id` from networks.
@@ -101,8 +100,8 @@ class MwsWorkspacesArgs:
         if gcp_managed_network_config is not None:
             pulumi.set(__self__, "gcp_managed_network_config", gcp_managed_network_config)
         if gke_config is not None:
-            warnings.warn("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_config is deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_config is deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_config is not None:
             pulumi.set(__self__, "gke_config", gke_config)
         if is_no_public_ip_enabled is not None:
@@ -279,11 +278,8 @@ class MwsWorkspacesArgs:
 
     @property
     @pulumi.getter(name="gkeConfig")
-    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_config(self) -> Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']]:
-        """
-        A block that specifies GKE configuration for the Databricks workspace:
-        """
         return pulumi.get(self, "gke_config")
 
     @gke_config.setter
@@ -485,7 +481,6 @@ class _MwsWorkspacesState:
         :param pulumi.Input[builtins.str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
         :param pulumi.Input[builtins.str] effective_compute_mode: (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
         :param pulumi.Input[builtins.str] gcp_workspace_sa: (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
-        :param pulumi.Input['MwsWorkspacesGkeConfigArgs'] gke_config: A block that specifies GKE configuration for the Databricks workspace:
         :param pulumi.Input[builtins.str] location: region of the subnet.
         :param pulumi.Input[builtins.str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
         :param pulumi.Input[builtins.str] network_id: `network_id` from networks.
@@ -531,8 +526,8 @@ class _MwsWorkspacesState:
         if gcp_workspace_sa is not None:
             pulumi.set(__self__, "gcp_workspace_sa", gcp_workspace_sa)
         if gke_config is not None:
-            warnings.warn("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_config is deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_config is deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_config is not None:
             pulumi.set(__self__, "gke_config", gke_config)
         if is_no_public_ip_enabled is not None:
@@ -723,11 +718,8 @@ class _MwsWorkspacesState:
 
     @property
     @pulumi.getter(name="gkeConfig")
-    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_config(self) -> Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']]:
-        """
-        A block that specifies GKE configuration for the Databricks workspace:
-        """
         return pulumi.get(self, "gke_config")
 
     @gke_config.setter
@@ -936,6 +928,8 @@ class MwsWorkspaces(pulumi.CustomResource):
 
         > This resource can only be used with an account-level provider!
 
+        > The `gke_config` argument is now deprecated and no longer supported. If you have already created a workspace using these fields, it is safe to remove them from your Pulumi template.
+
         > On Azure you need to use azurerm_databricks_workspace resource to create Azure Databricks workspaces.
 
         ## Example Usage
@@ -1124,10 +1118,6 @@ class MwsWorkspaces(pulumi.CustomResource):
                 },
             },
             network_id=this.network_id,
-            gke_config={
-                "connectivity_type": "PRIVATE_NODE_PUBLIC_MASTER",
-                "master_ip_range": "10.3.0.0/28",
-            },
             token={})
         pulumi.export("databricksToken", this_mws_workspaces.token.token_value)
         ```
@@ -1138,8 +1128,22 @@ class MwsWorkspaces(pulumi.CustomResource):
 
         This resource can be imported by Databricks account ID and workspace ID.
 
+        hcl
+
+        import {
+
+          to = databricks_mws_workspaces.this
+
+          id = "<account_id>/<workspace_id>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
+        bash
+
         ```sh
-        $ pulumi import databricks:index/mwsWorkspaces:MwsWorkspaces this '<account_id>/<workspace_id>'
+        $ pulumi import databricks:index/mwsWorkspaces:MwsWorkspaces this "<account_id>/<workspace_id>"
         ```
 
         ~> Not all fields of `databricks_mws_workspaces` can be updated without causing the workspace to be recreated.
@@ -1164,7 +1168,6 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] credentials_id: `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] custom_tags: The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         :param pulumi.Input[builtins.str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-        :param pulumi.Input[Union['MwsWorkspacesGkeConfigArgs', 'MwsWorkspacesGkeConfigArgsDict']] gke_config: A block that specifies GKE configuration for the Databricks workspace:
         :param pulumi.Input[builtins.str] location: region of the subnet.
         :param pulumi.Input[builtins.str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
         :param pulumi.Input[builtins.str] network_id: `network_id` from networks.
@@ -1188,6 +1191,8 @@ class MwsWorkspaces(pulumi.CustomResource):
         This resource allows you to set up [workspaces on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1) or [workspaces on GCP](https://docs.gcp.databricks.com/administration-guide/account-settings-gcp/workspaces.html). Please follow this complete runnable example on AWS or GCP with new VPC and new workspace setup.
 
         > This resource can only be used with an account-level provider!
+
+        > The `gke_config` argument is now deprecated and no longer supported. If you have already created a workspace using these fields, it is safe to remove them from your Pulumi template.
 
         > On Azure you need to use azurerm_databricks_workspace resource to create Azure Databricks workspaces.
 
@@ -1377,10 +1382,6 @@ class MwsWorkspaces(pulumi.CustomResource):
                 },
             },
             network_id=this.network_id,
-            gke_config={
-                "connectivity_type": "PRIVATE_NODE_PUBLIC_MASTER",
-                "master_ip_range": "10.3.0.0/28",
-            },
             token={})
         pulumi.export("databricksToken", this_mws_workspaces.token.token_value)
         ```
@@ -1391,8 +1392,22 @@ class MwsWorkspaces(pulumi.CustomResource):
 
         This resource can be imported by Databricks account ID and workspace ID.
 
+        hcl
+
+        import {
+
+          to = databricks_mws_workspaces.this
+
+          id = "<account_id>/<workspace_id>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
+        bash
+
         ```sh
-        $ pulumi import databricks:index/mwsWorkspaces:MwsWorkspaces this '<account_id>/<workspace_id>'
+        $ pulumi import databricks:index/mwsWorkspaces:MwsWorkspaces this "<account_id>/<workspace_id>"
         ```
 
         ~> Not all fields of `databricks_mws_workspaces` can be updated without causing the workspace to be recreated.
@@ -1549,7 +1564,6 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
         :param pulumi.Input[builtins.str] effective_compute_mode: (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
         :param pulumi.Input[builtins.str] gcp_workspace_sa: (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
-        :param pulumi.Input[Union['MwsWorkspacesGkeConfigArgs', 'MwsWorkspacesGkeConfigArgsDict']] gke_config: A block that specifies GKE configuration for the Databricks workspace:
         :param pulumi.Input[builtins.str] location: region of the subnet.
         :param pulumi.Input[builtins.str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
         :param pulumi.Input[builtins.str] network_id: `network_id` from networks.
@@ -1701,11 +1715,8 @@ class MwsWorkspaces(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gkeConfig")
-    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_config(self) -> pulumi.Output[Optional['outputs.MwsWorkspacesGkeConfig']]:
-        """
-        A block that specifies GKE configuration for the Databricks workspace:
-        """
         return pulumi.get(self, "gke_config")
 
     @property

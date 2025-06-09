@@ -136,8 +136,10 @@ def get_aws_unity_catalog_assume_role_policy(aws_account_id: Optional[builtins.s
         policy=this.json)
     metastore_data_access = aws.iam.Role("metastore_data_access",
         name=f"{prefix}-uc-access",
-        assume_role_policy=this_get_aws_unity_catalog_assume_role_policy.json,
-        managed_policy_arns=[unity_metastore.arn])
+        assume_role_policy=this_get_aws_unity_catalog_assume_role_policy.json)
+    metastore_data_access_role_policy_attachment = aws.iam.RolePolicyAttachment("metastore_data_access",
+        role=metastore_data_access.name,
+        policy_arn=unity_metastore.arn)
     ```
 
 
@@ -196,8 +198,10 @@ def get_aws_unity_catalog_assume_role_policy_output(aws_account_id: Optional[pul
         policy=this.json)
     metastore_data_access = aws.iam.Role("metastore_data_access",
         name=f"{prefix}-uc-access",
-        assume_role_policy=this_get_aws_unity_catalog_assume_role_policy.json,
-        managed_policy_arns=[unity_metastore.arn])
+        assume_role_policy=this_get_aws_unity_catalog_assume_role_policy.json)
+    metastore_data_access_role_policy_attachment = aws.iam.RolePolicyAttachment("metastore_data_access",
+        role=metastore_data_access.name,
+        policy_arn=unity_metastore.arn)
     ```
 
 

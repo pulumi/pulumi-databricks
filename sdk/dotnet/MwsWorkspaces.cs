@@ -14,6 +14,8 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; This resource can only be used with an account-level provider!
     /// 
+    /// &gt; The `gke_config` argument is now deprecated and no longer supported. If you have already created a workspace using these fields, it is safe to remove them from your Pulumi template.
+    /// 
     /// &gt; On Azure you need to use azurerm_databricks_workspace resource to create Azure Databricks workspaces.
     /// 
     /// ## Example Usage
@@ -312,11 +314,6 @@ namespace Pulumi.Databricks
     ///             },
     ///         },
     ///         NetworkId = @this.NetworkId,
-    ///         GkeConfig = new Databricks.Inputs.MwsWorkspacesGkeConfigArgs
-    ///         {
-    ///             ConnectivityType = "PRIVATE_NODE_PUBLIC_MASTER",
-    ///             MasterIpRange = "10.3.0.0/28",
-    ///         },
     ///         Token = null,
     ///     });
     /// 
@@ -333,8 +330,22 @@ namespace Pulumi.Databricks
     /// 
     /// This resource can be imported by Databricks account ID and workspace ID.
     /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_mws_workspaces.this
+    /// 
+    ///   id = "&lt;account_id&gt;/&lt;workspace_id&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+    /// 
+    /// bash
+    /// 
     /// ```sh
-    /// $ pulumi import databricks:index/mwsWorkspaces:MwsWorkspaces this '&lt;account_id&gt;/&lt;workspace_id&gt;'
+    /// $ pulumi import databricks:index/mwsWorkspaces:MwsWorkspaces this "&lt;account_id&gt;/&lt;workspace_id&gt;"
     /// ```
     /// 
     /// ~&gt; Not all fields of `databricks_mws_workspaces` can be updated without causing the workspace to be recreated.
@@ -424,9 +435,6 @@ namespace Pulumi.Databricks
         [Output("gcpWorkspaceSa")]
         public Output<string> GcpWorkspaceSa { get; private set; } = null!;
 
-        /// <summary>
-        /// A block that specifies GKE configuration for the Databricks workspace:
-        /// </summary>
         [Output("gkeConfig")]
         public Output<Outputs.MwsWorkspacesGkeConfig?> GkeConfig { get; private set; } = null!;
 
@@ -634,9 +642,6 @@ namespace Pulumi.Databricks
         [Input("gcpManagedNetworkConfig")]
         public Input<Inputs.MwsWorkspacesGcpManagedNetworkConfigArgs>? GcpManagedNetworkConfig { get; set; }
 
-        /// <summary>
-        /// A block that specifies GKE configuration for the Databricks workspace:
-        /// </summary>
         [Input("gkeConfig")]
         public Input<Inputs.MwsWorkspacesGkeConfigArgs>? GkeConfig { get; set; }
 
@@ -814,9 +819,6 @@ namespace Pulumi.Databricks
         [Input("gcpWorkspaceSa")]
         public Input<string>? GcpWorkspaceSa { get; set; }
 
-        /// <summary>
-        /// A block that specifies GKE configuration for the Databricks workspace:
-        /// </summary>
         [Input("gkeConfig")]
         public Input<Inputs.MwsWorkspacesGkeConfigGetArgs>? GkeConfig { get; set; }
 

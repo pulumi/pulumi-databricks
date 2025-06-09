@@ -17,30 +17,62 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
 
     public static final AlertV2State Empty = new AlertV2State();
 
+    /**
+     * (string) - The timestamp indicating when the alert was created
+     * 
+     */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
+    /**
+     * @return (string) - The timestamp indicating when the alert was created
+     * 
+     */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
 
+    /**
+     * Custom description for the alert. support mustache template
+     * 
+     */
     @Import(name="customDescription")
     private @Nullable Output<String> customDescription;
 
+    /**
+     * @return Custom description for the alert. support mustache template
+     * 
+     */
     public Optional<Output<String>> customDescription() {
         return Optional.ofNullable(this.customDescription);
     }
 
+    /**
+     * Custom summary for the alert. support mustache template
+     * 
+     */
     @Import(name="customSummary")
     private @Nullable Output<String> customSummary;
 
+    /**
+     * @return Custom summary for the alert. support mustache template
+     * 
+     */
     public Optional<Output<String>> customSummary() {
         return Optional.ofNullable(this.customSummary);
     }
 
+    /**
+     * The display name of the alert
+     * 
+     */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
+    /**
+     * @return The display name of the alert
+     * 
+     */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
     }
@@ -52,37 +84,77 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.evaluation);
     }
 
+    /**
+     * (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     * 
+     */
     @Import(name="lifecycleState")
     private @Nullable Output<String> lifecycleState;
 
+    /**
+     * @return (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     * 
+     */
     public Optional<Output<String>> lifecycleState() {
         return Optional.ofNullable(this.lifecycleState);
     }
 
+    /**
+     * (string) - The owner&#39;s username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+     * 
+     */
     @Import(name="ownerUserName")
     private @Nullable Output<String> ownerUserName;
 
+    /**
+     * @return (string) - The owner&#39;s username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+     * 
+     */
     public Optional<Output<String>> ownerUserName() {
         return Optional.ofNullable(this.ownerUserName);
     }
 
+    /**
+     * The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+     * 
+     */
     @Import(name="parentPath")
     private @Nullable Output<String> parentPath;
 
+    /**
+     * @return The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+     * 
+     */
     public Optional<Output<String>> parentPath() {
         return Optional.ofNullable(this.parentPath);
     }
 
+    /**
+     * Text of the query to be run
+     * 
+     */
     @Import(name="queryText")
     private @Nullable Output<String> queryText;
 
+    /**
+     * @return Text of the query to be run
+     * 
+     */
     public Optional<Output<String>> queryText() {
         return Optional.ofNullable(this.queryText);
     }
 
+    /**
+     * (string) - The run as username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+     * 
+     */
     @Import(name="runAsUserName")
     private @Nullable Output<String> runAsUserName;
 
+    /**
+     * @return (string) - The run as username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+     * 
+     */
     public Optional<Output<String>> runAsUserName() {
         return Optional.ofNullable(this.runAsUserName);
     }
@@ -94,16 +166,32 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.schedule);
     }
 
+    /**
+     * (string) - The timestamp indicating when the alert was updated
+     * 
+     */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
+    /**
+     * @return (string) - The timestamp indicating when the alert was updated
+     * 
+     */
     public Optional<Output<String>> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }
 
+    /**
+     * ID of the SQL warehouse attached to the alert
+     * 
+     */
     @Import(name="warehouseId")
     private @Nullable Output<String> warehouseId;
 
+    /**
+     * @return ID of the SQL warehouse attached to the alert
+     * 
+     */
     public Optional<Output<String>> warehouseId() {
         return Optional.ofNullable(this.warehouseId);
     }
@@ -144,38 +232,86 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
             $ = new AlertV2State(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param createTime (string) - The timestamp indicating when the alert was created
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
         }
 
+        /**
+         * @param createTime (string) - The timestamp indicating when the alert was created
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }
 
+        /**
+         * @param customDescription Custom description for the alert. support mustache template
+         * 
+         * @return builder
+         * 
+         */
         public Builder customDescription(@Nullable Output<String> customDescription) {
             $.customDescription = customDescription;
             return this;
         }
 
+        /**
+         * @param customDescription Custom description for the alert. support mustache template
+         * 
+         * @return builder
+         * 
+         */
         public Builder customDescription(String customDescription) {
             return customDescription(Output.of(customDescription));
         }
 
+        /**
+         * @param customSummary Custom summary for the alert. support mustache template
+         * 
+         * @return builder
+         * 
+         */
         public Builder customSummary(@Nullable Output<String> customSummary) {
             $.customSummary = customSummary;
             return this;
         }
 
+        /**
+         * @param customSummary Custom summary for the alert. support mustache template
+         * 
+         * @return builder
+         * 
+         */
         public Builder customSummary(String customSummary) {
             return customSummary(Output.of(customSummary));
         }
 
+        /**
+         * @param displayName The display name of the alert
+         * 
+         * @return builder
+         * 
+         */
         public Builder displayName(@Nullable Output<String> displayName) {
             $.displayName = displayName;
             return this;
         }
 
+        /**
+         * @param displayName The display name of the alert
+         * 
+         * @return builder
+         * 
+         */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
         }
@@ -189,47 +325,107 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
             return evaluation(Output.of(evaluation));
         }
 
+        /**
+         * @param lifecycleState (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+         * 
+         * @return builder
+         * 
+         */
         public Builder lifecycleState(@Nullable Output<String> lifecycleState) {
             $.lifecycleState = lifecycleState;
             return this;
         }
 
+        /**
+         * @param lifecycleState (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+         * 
+         * @return builder
+         * 
+         */
         public Builder lifecycleState(String lifecycleState) {
             return lifecycleState(Output.of(lifecycleState));
         }
 
+        /**
+         * @param ownerUserName (string) - The owner&#39;s username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+         * 
+         * @return builder
+         * 
+         */
         public Builder ownerUserName(@Nullable Output<String> ownerUserName) {
             $.ownerUserName = ownerUserName;
             return this;
         }
 
+        /**
+         * @param ownerUserName (string) - The owner&#39;s username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+         * 
+         * @return builder
+         * 
+         */
         public Builder ownerUserName(String ownerUserName) {
             return ownerUserName(Output.of(ownerUserName));
         }
 
+        /**
+         * @param parentPath The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+         * 
+         * @return builder
+         * 
+         */
         public Builder parentPath(@Nullable Output<String> parentPath) {
             $.parentPath = parentPath;
             return this;
         }
 
+        /**
+         * @param parentPath The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+         * 
+         * @return builder
+         * 
+         */
         public Builder parentPath(String parentPath) {
             return parentPath(Output.of(parentPath));
         }
 
+        /**
+         * @param queryText Text of the query to be run
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryText(@Nullable Output<String> queryText) {
             $.queryText = queryText;
             return this;
         }
 
+        /**
+         * @param queryText Text of the query to be run
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryText(String queryText) {
             return queryText(Output.of(queryText));
         }
 
+        /**
+         * @param runAsUserName (string) - The run as username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+         * 
+         * @return builder
+         * 
+         */
         public Builder runAsUserName(@Nullable Output<String> runAsUserName) {
             $.runAsUserName = runAsUserName;
             return this;
         }
 
+        /**
+         * @param runAsUserName (string) - The run as username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+         * 
+         * @return builder
+         * 
+         */
         public Builder runAsUserName(String runAsUserName) {
             return runAsUserName(Output.of(runAsUserName));
         }
@@ -243,20 +439,44 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
             return schedule(Output.of(schedule));
         }
 
+        /**
+         * @param updateTime (string) - The timestamp indicating when the alert was updated
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateTime(@Nullable Output<String> updateTime) {
             $.updateTime = updateTime;
             return this;
         }
 
+        /**
+         * @param updateTime (string) - The timestamp indicating when the alert was updated
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
         }
 
+        /**
+         * @param warehouseId ID of the SQL warehouse attached to the alert
+         * 
+         * @return builder
+         * 
+         */
         public Builder warehouseId(@Nullable Output<String> warehouseId) {
             $.warehouseId = warehouseId;
             return this;
         }
 
+        /**
+         * @param warehouseId ID of the SQL warehouse attached to the alert
+         * 
+         * @return builder
+         * 
+         */
         public Builder warehouseId(String warehouseId) {
             return warehouseId(Output.of(warehouseId));
         }

@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AlertV2EvaluationSourceGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        /// </summary>
         [Input("aggregation")]
         public Input<string>? Aggregation { get; set; }
 

@@ -6,6 +6,8 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.databricks.Utilities;
+import com.pulumi.databricks.inputs.GetAccountNetworkPolicyArgs;
+import com.pulumi.databricks.inputs.GetAccountNetworkPolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetAlertV2Args;
 import com.pulumi.databricks.inputs.GetAlertV2PlainArgs;
 import com.pulumi.databricks.inputs.GetAppArgs;
@@ -38,6 +40,8 @@ import com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;
 import com.pulumi.databricks.inputs.GetCurrentMetastorePlainArgs;
 import com.pulumi.databricks.inputs.GetDashboardsArgs;
 import com.pulumi.databricks.inputs.GetDashboardsPlainArgs;
+import com.pulumi.databricks.inputs.GetDatabaseInstanceArgs;
+import com.pulumi.databricks.inputs.GetDatabaseInstancePlainArgs;
 import com.pulumi.databricks.inputs.GetDbfsFileArgs;
 import com.pulumi.databricks.inputs.GetDbfsFilePathsArgs;
 import com.pulumi.databricks.inputs.GetDbfsFilePathsPlainArgs;
@@ -86,6 +90,8 @@ import com.pulumi.databricks.inputs.GetNotificationDestinationsArgs;
 import com.pulumi.databricks.inputs.GetNotificationDestinationsPlainArgs;
 import com.pulumi.databricks.inputs.GetPipelinesArgs;
 import com.pulumi.databricks.inputs.GetPipelinesPlainArgs;
+import com.pulumi.databricks.inputs.GetRecipientFederationPolicyArgs;
+import com.pulumi.databricks.inputs.GetRecipientFederationPolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelPlainArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelVersionsArgs;
@@ -126,8 +132,12 @@ import com.pulumi.databricks.inputs.GetVolumeArgs;
 import com.pulumi.databricks.inputs.GetVolumePlainArgs;
 import com.pulumi.databricks.inputs.GetVolumesArgs;
 import com.pulumi.databricks.inputs.GetVolumesPlainArgs;
+import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionArgs;
+import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionPlainArgs;
 import com.pulumi.databricks.inputs.GetZonesArgs;
 import com.pulumi.databricks.inputs.GetZonesPlainArgs;
+import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesResult;
+import com.pulumi.databricks.outputs.GetAccountNetworkPolicyResult;
 import com.pulumi.databricks.outputs.GetAlertV2Result;
 import com.pulumi.databricks.outputs.GetAlertsV2InvokeResult;
 import com.pulumi.databricks.outputs.GetAppResult;
@@ -148,6 +158,8 @@ import com.pulumi.databricks.outputs.GetCurrentConfigResult;
 import com.pulumi.databricks.outputs.GetCurrentMetastoreResult;
 import com.pulumi.databricks.outputs.GetCurrentUserResult;
 import com.pulumi.databricks.outputs.GetDashboardsResult;
+import com.pulumi.databricks.outputs.GetDatabaseInstanceResult;
+import com.pulumi.databricks.outputs.GetDatabaseInstancesResult;
 import com.pulumi.databricks.outputs.GetDbfsFilePathsResult;
 import com.pulumi.databricks.outputs.GetDbfsFileResult;
 import com.pulumi.databricks.outputs.GetDirectoryResult;
@@ -173,6 +185,8 @@ import com.pulumi.databricks.outputs.GetNotebookPathsResult;
 import com.pulumi.databricks.outputs.GetNotebookResult;
 import com.pulumi.databricks.outputs.GetNotificationDestinationsResult;
 import com.pulumi.databricks.outputs.GetPipelinesResult;
+import com.pulumi.databricks.outputs.GetRecipientFederationPoliciesResult;
+import com.pulumi.databricks.outputs.GetRecipientFederationPolicyResult;
 import com.pulumi.databricks.outputs.GetRegisteredModelResult;
 import com.pulumi.databricks.outputs.GetRegisteredModelVersionsResult;
 import com.pulumi.databricks.outputs.GetSchemaResult;
@@ -193,6 +207,7 @@ import com.pulumi.databricks.outputs.GetUserResult;
 import com.pulumi.databricks.outputs.GetViewsResult;
 import com.pulumi.databricks.outputs.GetVolumeResult;
 import com.pulumi.databricks.outputs.GetVolumesResult;
+import com.pulumi.databricks.outputs.GetWorkspaceNetworkOptionResult;
 import com.pulumi.databricks.outputs.GetZonesResult;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
@@ -201,6 +216,48 @@ import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class DatabricksFunctions {
+    public static Output<GetAccountNetworkPoliciesResult> getAccountNetworkPolicies() {
+        return getAccountNetworkPolicies(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetAccountNetworkPoliciesResult> getAccountNetworkPoliciesPlain() {
+        return getAccountNetworkPoliciesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetAccountNetworkPoliciesResult> getAccountNetworkPolicies(InvokeArgs args) {
+        return getAccountNetworkPolicies(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetAccountNetworkPoliciesResult> getAccountNetworkPoliciesPlain(InvokeArgs args) {
+        return getAccountNetworkPoliciesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetAccountNetworkPoliciesResult> getAccountNetworkPolicies(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies", TypeShape.of(GetAccountNetworkPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetAccountNetworkPoliciesResult> getAccountNetworkPolicies(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies", TypeShape.of(GetAccountNetworkPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetAccountNetworkPoliciesResult> getAccountNetworkPoliciesPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies", TypeShape.of(GetAccountNetworkPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetAccountNetworkPolicyResult> getAccountNetworkPolicy() {
+        return getAccountNetworkPolicy(GetAccountNetworkPolicyArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetAccountNetworkPolicyResult> getAccountNetworkPolicyPlain() {
+        return getAccountNetworkPolicyPlain(GetAccountNetworkPolicyPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetAccountNetworkPolicyResult> getAccountNetworkPolicy(GetAccountNetworkPolicyArgs args) {
+        return getAccountNetworkPolicy(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetAccountNetworkPolicyResult> getAccountNetworkPolicyPlain(GetAccountNetworkPolicyPlainArgs args) {
+        return getAccountNetworkPolicyPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetAccountNetworkPolicyResult> getAccountNetworkPolicy(GetAccountNetworkPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", TypeShape.of(GetAccountNetworkPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetAccountNetworkPolicyResult> getAccountNetworkPolicy(GetAccountNetworkPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", TypeShape.of(GetAccountNetworkPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetAccountNetworkPolicyResult> getAccountNetworkPolicyPlain(GetAccountNetworkPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", TypeShape.of(GetAccountNetworkPolicyResult.class), args, Utilities.withVersion(options));
+    }
     public static Output<GetAlertV2Result> getAlertV2() {
         return getAlertV2(GetAlertV2Args.Empty, InvokeOptions.Empty);
     }
@@ -2075,6 +2132,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.iam.PolicyArgs;
      * import com.pulumi.aws.iam.Role;
      * import com.pulumi.aws.iam.RoleArgs;
+     * import com.pulumi.aws.iam.RolePolicyAttachment;
+     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2109,7 +2168,11 @@ public final class DatabricksFunctions {
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
-     *             .managedPolicyArns(unityMetastore.arn())
+     *             .build());
+     * 
+     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *             .role(metastoreDataAccess.name())
+     *             .policyArn(unityMetastore.arn())
      *             .build());
      * 
      *     }
@@ -2146,6 +2209,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.iam.PolicyArgs;
      * import com.pulumi.aws.iam.Role;
      * import com.pulumi.aws.iam.RoleArgs;
+     * import com.pulumi.aws.iam.RolePolicyAttachment;
+     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2180,7 +2245,11 @@ public final class DatabricksFunctions {
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
-     *             .managedPolicyArns(unityMetastore.arn())
+     *             .build());
+     * 
+     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *             .role(metastoreDataAccess.name())
+     *             .policyArn(unityMetastore.arn())
      *             .build());
      * 
      *     }
@@ -2217,6 +2286,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.iam.PolicyArgs;
      * import com.pulumi.aws.iam.Role;
      * import com.pulumi.aws.iam.RoleArgs;
+     * import com.pulumi.aws.iam.RolePolicyAttachment;
+     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2251,7 +2322,11 @@ public final class DatabricksFunctions {
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
-     *             .managedPolicyArns(unityMetastore.arn())
+     *             .build());
+     * 
+     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *             .role(metastoreDataAccess.name())
+     *             .policyArn(unityMetastore.arn())
      *             .build());
      * 
      *     }
@@ -2288,6 +2363,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.iam.PolicyArgs;
      * import com.pulumi.aws.iam.Role;
      * import com.pulumi.aws.iam.RoleArgs;
+     * import com.pulumi.aws.iam.RolePolicyAttachment;
+     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2322,7 +2399,11 @@ public final class DatabricksFunctions {
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
-     *             .managedPolicyArns(unityMetastore.arn())
+     *             .build());
+     * 
+     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *             .role(metastoreDataAccess.name())
+     *             .policyArn(unityMetastore.arn())
      *             .build());
      * 
      *     }
@@ -2359,6 +2440,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.iam.PolicyArgs;
      * import com.pulumi.aws.iam.Role;
      * import com.pulumi.aws.iam.RoleArgs;
+     * import com.pulumi.aws.iam.RolePolicyAttachment;
+     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2393,7 +2476,11 @@ public final class DatabricksFunctions {
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
-     *             .managedPolicyArns(unityMetastore.arn())
+     *             .build());
+     * 
+     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *             .role(metastoreDataAccess.name())
+     *             .policyArn(unityMetastore.arn())
      *             .build());
      * 
      *     }
@@ -2430,6 +2517,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.iam.PolicyArgs;
      * import com.pulumi.aws.iam.Role;
      * import com.pulumi.aws.iam.RoleArgs;
+     * import com.pulumi.aws.iam.RolePolicyAttachment;
+     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2464,7 +2553,11 @@ public final class DatabricksFunctions {
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
-     *             .managedPolicyArns(unityMetastore.arn())
+     *             .build());
+     * 
+     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *             .role(metastoreDataAccess.name())
+     *             .policyArn(unityMetastore.arn())
      *             .build());
      * 
      *     }
@@ -2501,6 +2594,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.iam.PolicyArgs;
      * import com.pulumi.aws.iam.Role;
      * import com.pulumi.aws.iam.RoleArgs;
+     * import com.pulumi.aws.iam.RolePolicyAttachment;
+     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2535,7 +2630,11 @@ public final class DatabricksFunctions {
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
-     *             .managedPolicyArns(unityMetastore.arn())
+     *             .build());
+     * 
+     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *             .role(metastoreDataAccess.name())
+     *             .policyArn(unityMetastore.arn())
      *             .build());
      * 
      *     }
@@ -2572,6 +2671,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.iam.PolicyArgs;
      * import com.pulumi.aws.iam.Role;
      * import com.pulumi.aws.iam.RoleArgs;
+     * import com.pulumi.aws.iam.RolePolicyAttachment;
+     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2606,7 +2707,11 @@ public final class DatabricksFunctions {
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
-     *             .managedPolicyArns(unityMetastore.arn())
+     *             .build());
+     * 
+     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *             .role(metastoreDataAccess.name())
+     *             .policyArn(unityMetastore.arn())
      *             .build());
      * 
      *     }
@@ -2643,6 +2748,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.iam.PolicyArgs;
      * import com.pulumi.aws.iam.Role;
      * import com.pulumi.aws.iam.RoleArgs;
+     * import com.pulumi.aws.iam.RolePolicyAttachment;
+     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2677,7 +2784,11 @@ public final class DatabricksFunctions {
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
-     *             .managedPolicyArns(unityMetastore.arn())
+     *             .build());
+     * 
+     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *             .role(metastoreDataAccess.name())
+     *             .policyArn(unityMetastore.arn())
      *             .build());
      * 
      *     }
@@ -2714,6 +2825,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.iam.PolicyArgs;
      * import com.pulumi.aws.iam.Role;
      * import com.pulumi.aws.iam.RoleArgs;
+     * import com.pulumi.aws.iam.RolePolicyAttachment;
+     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2748,7 +2861,11 @@ public final class DatabricksFunctions {
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
      *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.json())
-     *             .managedPolicyArns(unityMetastore.arn())
+     *             .build());
+     * 
+     *         var metastoreDataAccessRolePolicyAttachment = new RolePolicyAttachment("metastoreDataAccessRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
+     *             .role(metastoreDataAccess.name())
+     *             .policyArn(unityMetastore.arn())
      *             .build());
      * 
      *     }
@@ -2764,7 +2881,7 @@ public final class DatabricksFunctions {
     /**
      * This data source can be used to fetch the list of budget policies.
      * 
-     * &gt; This data source can only be used with an account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * ## Example Usage
      * 
@@ -2807,7 +2924,7 @@ public final class DatabricksFunctions {
     /**
      * This data source can be used to fetch the list of budget policies.
      * 
-     * &gt; This data source can only be used with an account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * ## Example Usage
      * 
@@ -2850,7 +2967,7 @@ public final class DatabricksFunctions {
     /**
      * This data source can be used to fetch the list of budget policies.
      * 
-     * &gt; This data source can only be used with an account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * ## Example Usage
      * 
@@ -2893,7 +3010,7 @@ public final class DatabricksFunctions {
     /**
      * This data source can be used to fetch the list of budget policies.
      * 
-     * &gt; This data source can only be used with an account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * ## Example Usage
      * 
@@ -2936,7 +3053,7 @@ public final class DatabricksFunctions {
     /**
      * This data source can be used to fetch the list of budget policies.
      * 
-     * &gt; This data source can only be used with an account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * ## Example Usage
      * 
@@ -2979,7 +3096,7 @@ public final class DatabricksFunctions {
     /**
      * This data source can be used to fetch the list of budget policies.
      * 
-     * &gt; This data source can only be used with an account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * ## Example Usage
      * 
@@ -3022,7 +3139,7 @@ public final class DatabricksFunctions {
     /**
      * This data source can be used to fetch the list of budget policies.
      * 
-     * &gt; This data source can only be used with an account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * ## Example Usage
      * 
@@ -3065,7 +3182,7 @@ public final class DatabricksFunctions {
     /**
      * This data source can be used to get a single budget policy.
      * 
-     * &gt; This data source can only be used with an account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * ## Example Usage
      * 
@@ -3081,7 +3198,7 @@ public final class DatabricksFunctions {
     /**
      * This data source can be used to get a single budget policy.
      * 
-     * &gt; This data source can only be used with an account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * ## Example Usage
      * 
@@ -3097,7 +3214,7 @@ public final class DatabricksFunctions {
     /**
      * This data source can be used to get a single budget policy.
      * 
-     * &gt; This data source can only be used with an account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * ## Example Usage
      * 
@@ -3113,7 +3230,7 @@ public final class DatabricksFunctions {
     /**
      * This data source can be used to get a single budget policy.
      * 
-     * &gt; This data source can only be used with an account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * ## Example Usage
      * 
@@ -3129,7 +3246,7 @@ public final class DatabricksFunctions {
     /**
      * This data source can be used to get a single budget policy.
      * 
-     * &gt; This data source can only be used with an account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * ## Example Usage
      * 
@@ -3145,7 +3262,7 @@ public final class DatabricksFunctions {
     /**
      * This data source can be used to get a single budget policy.
      * 
-     * &gt; This data source can only be used with an account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * ## Example Usage
      * 
@@ -3161,7 +3278,7 @@ public final class DatabricksFunctions {
     /**
      * This data source can be used to get a single budget policy.
      * 
-     * &gt; This data source can only be used with an account-level provider!
+     * &gt; **Note** This data source can only be used with an account-level provider!
      * 
      * ## Example Usage
      * 
@@ -6181,6 +6298,42 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetDashboardsResult> getDashboardsPlain(GetDashboardsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDashboards:getDashboards", TypeShape.of(GetDashboardsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetDatabaseInstanceResult> getDatabaseInstance(GetDatabaseInstanceArgs args) {
+        return getDatabaseInstance(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetDatabaseInstanceResult> getDatabaseInstancePlain(GetDatabaseInstancePlainArgs args) {
+        return getDatabaseInstancePlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetDatabaseInstanceResult> getDatabaseInstance(GetDatabaseInstanceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDatabaseInstance:getDatabaseInstance", TypeShape.of(GetDatabaseInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetDatabaseInstanceResult> getDatabaseInstance(GetDatabaseInstanceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDatabaseInstance:getDatabaseInstance", TypeShape.of(GetDatabaseInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetDatabaseInstanceResult> getDatabaseInstancePlain(GetDatabaseInstancePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getDatabaseInstance:getDatabaseInstance", TypeShape.of(GetDatabaseInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetDatabaseInstancesResult> getDatabaseInstances() {
+        return getDatabaseInstances(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain() {
+        return getDatabaseInstancesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetDatabaseInstancesResult> getDatabaseInstances(InvokeArgs args) {
+        return getDatabaseInstances(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain(InvokeArgs args) {
+        return getDatabaseInstancesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetDatabaseInstancesResult> getDatabaseInstances(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDatabaseInstances:getDatabaseInstances", TypeShape.of(GetDatabaseInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetDatabaseInstancesResult> getDatabaseInstances(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDatabaseInstances:getDatabaseInstances", TypeShape.of(GetDatabaseInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getDatabaseInstances:getDatabaseInstances", TypeShape.of(GetDatabaseInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
@@ -15838,6 +15991,48 @@ public final class DatabricksFunctions {
     public static CompletableFuture<GetPipelinesResult> getPipelinesPlain(GetPipelinesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPipelines:getPipelines", TypeShape.of(GetPipelinesResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetRecipientFederationPoliciesResult> getRecipientFederationPolicies() {
+        return getRecipientFederationPolicies(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetRecipientFederationPoliciesResult> getRecipientFederationPoliciesPlain() {
+        return getRecipientFederationPoliciesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetRecipientFederationPoliciesResult> getRecipientFederationPolicies(InvokeArgs args) {
+        return getRecipientFederationPolicies(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetRecipientFederationPoliciesResult> getRecipientFederationPoliciesPlain(InvokeArgs args) {
+        return getRecipientFederationPoliciesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetRecipientFederationPoliciesResult> getRecipientFederationPolicies(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", TypeShape.of(GetRecipientFederationPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetRecipientFederationPoliciesResult> getRecipientFederationPolicies(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", TypeShape.of(GetRecipientFederationPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetRecipientFederationPoliciesResult> getRecipientFederationPoliciesPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", TypeShape.of(GetRecipientFederationPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetRecipientFederationPolicyResult> getRecipientFederationPolicy() {
+        return getRecipientFederationPolicy(GetRecipientFederationPolicyArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetRecipientFederationPolicyResult> getRecipientFederationPolicyPlain() {
+        return getRecipientFederationPolicyPlain(GetRecipientFederationPolicyPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetRecipientFederationPolicyResult> getRecipientFederationPolicy(GetRecipientFederationPolicyArgs args) {
+        return getRecipientFederationPolicy(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetRecipientFederationPolicyResult> getRecipientFederationPolicyPlain(GetRecipientFederationPolicyPlainArgs args) {
+        return getRecipientFederationPolicyPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetRecipientFederationPolicyResult> getRecipientFederationPolicy(GetRecipientFederationPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getRecipientFederationPolicy:getRecipientFederationPolicy", TypeShape.of(GetRecipientFederationPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetRecipientFederationPolicyResult> getRecipientFederationPolicy(GetRecipientFederationPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getRecipientFederationPolicy:getRecipientFederationPolicy", TypeShape.of(GetRecipientFederationPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetRecipientFederationPolicyResult> getRecipientFederationPolicyPlain(GetRecipientFederationPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getRecipientFederationPolicy:getRecipientFederationPolicy", TypeShape.of(GetRecipientFederationPolicyResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
      * 
@@ -23216,6 +23411,27 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetVolumesResult> getVolumesPlain(GetVolumesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetWorkspaceNetworkOptionResult> getWorkspaceNetworkOption() {
+        return getWorkspaceNetworkOption(GetWorkspaceNetworkOptionArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetWorkspaceNetworkOptionResult> getWorkspaceNetworkOptionPlain() {
+        return getWorkspaceNetworkOptionPlain(GetWorkspaceNetworkOptionPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetWorkspaceNetworkOptionResult> getWorkspaceNetworkOption(GetWorkspaceNetworkOptionArgs args) {
+        return getWorkspaceNetworkOption(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetWorkspaceNetworkOptionResult> getWorkspaceNetworkOptionPlain(GetWorkspaceNetworkOptionPlainArgs args) {
+        return getWorkspaceNetworkOptionPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetWorkspaceNetworkOptionResult> getWorkspaceNetworkOption(GetWorkspaceNetworkOptionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", TypeShape.of(GetWorkspaceNetworkOptionResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetWorkspaceNetworkOptionResult> getWorkspaceNetworkOption(GetWorkspaceNetworkOptionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", TypeShape.of(GetWorkspaceNetworkOptionResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetWorkspaceNetworkOptionResult> getWorkspaceNetworkOptionPlain(GetWorkspaceNetworkOptionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", TypeShape.of(GetWorkspaceNetworkOptionResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.

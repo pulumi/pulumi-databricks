@@ -144,6 +144,18 @@ namespace Pulumi.Databricks
     /// 
     /// The share resource can be imported using the name of the share.
     /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_share.this
+    /// 
+    ///   id = "&lt;share_name&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+    /// 
     /// bash
     /// 
     /// ```sh

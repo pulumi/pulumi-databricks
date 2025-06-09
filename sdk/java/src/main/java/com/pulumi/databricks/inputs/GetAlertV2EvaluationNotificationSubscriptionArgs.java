@@ -15,16 +15,32 @@ public final class GetAlertV2EvaluationNotificationSubscriptionArgs extends com.
 
     public static final GetAlertV2EvaluationNotificationSubscriptionArgs Empty = new GetAlertV2EvaluationNotificationSubscriptionArgs();
 
+    /**
+     * (string) -
+     * 
+     */
     @Import(name="destinationId")
     private @Nullable Output<String> destinationId;
 
+    /**
+     * @return (string) -
+     * 
+     */
     public Optional<Output<String>> destinationId() {
         return Optional.ofNullable(this.destinationId);
     }
 
+    /**
+     * (string) -
+     * 
+     */
     @Import(name="userEmail")
     private @Nullable Output<String> userEmail;
 
+    /**
+     * @return (string) -
+     * 
+     */
     public Optional<Output<String>> userEmail() {
         return Optional.ofNullable(this.userEmail);
     }
@@ -54,20 +70,44 @@ public final class GetAlertV2EvaluationNotificationSubscriptionArgs extends com.
             $ = new GetAlertV2EvaluationNotificationSubscriptionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param destinationId (string) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder destinationId(@Nullable Output<String> destinationId) {
             $.destinationId = destinationId;
             return this;
         }
 
+        /**
+         * @param destinationId (string) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder destinationId(String destinationId) {
             return destinationId(Output.of(destinationId));
         }
 
+        /**
+         * @param userEmail (string) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder userEmail(@Nullable Output<String> userEmail) {
             $.userEmail = userEmail;
             return this;
         }
 
+        /**
+         * @param userEmail (string) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder userEmail(String userEmail) {
             return userEmail(Output.of(userEmail));
         }

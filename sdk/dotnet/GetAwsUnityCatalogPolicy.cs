@@ -54,10 +54,12 @@ namespace Pulumi.Databricks
         ///     {
         ///         Name = $"{prefix}-uc-access",
         ///         AssumeRolePolicy = thisGetAwsUnityCatalogAssumeRolePolicy.Apply(getAwsUnityCatalogAssumeRolePolicyResult =&gt; getAwsUnityCatalogAssumeRolePolicyResult.Json),
-        ///         ManagedPolicyArns = new[]
-        ///         {
-        ///             unityMetastore.Arn,
-        ///         },
+        ///     });
+        /// 
+        ///     var metastoreDataAccessRolePolicyAttachment = new Aws.Iam.RolePolicyAttachment("metastore_data_access", new()
+        ///     {
+        ///         Role = metastoreDataAccess.Name,
+        ///         PolicyArn = unityMetastore.Arn,
         ///     });
         /// 
         /// });
@@ -109,10 +111,12 @@ namespace Pulumi.Databricks
         ///     {
         ///         Name = $"{prefix}-uc-access",
         ///         AssumeRolePolicy = thisGetAwsUnityCatalogAssumeRolePolicy.Apply(getAwsUnityCatalogAssumeRolePolicyResult =&gt; getAwsUnityCatalogAssumeRolePolicyResult.Json),
-        ///         ManagedPolicyArns = new[]
-        ///         {
-        ///             unityMetastore.Arn,
-        ///         },
+        ///     });
+        /// 
+        ///     var metastoreDataAccessRolePolicyAttachment = new Aws.Iam.RolePolicyAttachment("metastore_data_access", new()
+        ///     {
+        ///         Role = metastoreDataAccess.Name,
+        ///         PolicyArn = unityMetastore.Arn,
         ///     });
         /// 
         /// });
@@ -164,10 +168,12 @@ namespace Pulumi.Databricks
         ///     {
         ///         Name = $"{prefix}-uc-access",
         ///         AssumeRolePolicy = thisGetAwsUnityCatalogAssumeRolePolicy.Apply(getAwsUnityCatalogAssumeRolePolicyResult =&gt; getAwsUnityCatalogAssumeRolePolicyResult.Json),
-        ///         ManagedPolicyArns = new[]
-        ///         {
-        ///             unityMetastore.Arn,
-        ///         },
+        ///     });
+        /// 
+        ///     var metastoreDataAccessRolePolicyAttachment = new Aws.Iam.RolePolicyAttachment("metastore_data_access", new()
+        ///     {
+        ///         Role = metastoreDataAccess.Name,
+        ///         PolicyArn = unityMetastore.Arn,
         ///     });
         /// 
         /// });
@@ -193,7 +199,7 @@ namespace Pulumi.Databricks
         public string? AwsPartition { get; set; }
 
         /// <summary>
-        /// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
+        /// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.  The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
         /// </summary>
         [Input("bucketName", required: true)]
         public string BucketName { get; set; } = null!;
@@ -231,7 +237,7 @@ namespace Pulumi.Databricks
         public Input<string>? AwsPartition { get; set; }
 
         /// <summary>
-        /// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
+        /// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.  The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
         /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;

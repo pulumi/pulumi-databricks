@@ -12,24 +12,45 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetAlertV2EvaluationArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+        /// </summary>
         [Input("comparisonOperator")]
         public string? ComparisonOperator { get; set; }
 
+        /// <summary>
+        /// (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        /// </summary>
         [Input("emptyResultState")]
         public string? EmptyResultState { get; set; }
 
+        /// <summary>
+        /// (string) - Timestamp of the last evaluation
+        /// </summary>
         [Input("lastEvaluatedAt", required: true)]
         public string LastEvaluatedAt { get; set; } = null!;
 
+        /// <summary>
+        /// (AlertV2Notification) - User or Notification Destination to notify when alert is triggered
+        /// </summary>
         [Input("notification")]
         public Inputs.GetAlertV2EvaluationNotificationArgs? Notification { get; set; }
 
+        /// <summary>
+        /// (AlertV2OperandColumn) - Source column from result to use to evaluate alert
+        /// </summary>
         [Input("source")]
         public Inputs.GetAlertV2EvaluationSourceArgs? Source { get; set; }
 
+        /// <summary>
+        /// (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        /// </summary>
         [Input("state", required: true)]
         public string State { get; set; } = null!;
 
+        /// <summary>
+        /// (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
+        /// </summary>
         [Input("threshold")]
         public Inputs.GetAlertV2EvaluationThresholdArgs? Threshold { get; set; }
 

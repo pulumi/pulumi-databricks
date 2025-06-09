@@ -83,6 +83,18 @@ import (
 //
 // This resource can be imported by `name`:
 //
+// hcl
+//
+// import {
+//
+//	to = databricks_external_location.this
+//
+//	id = "<name>"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+//
 // bash
 //
 // ```sh
@@ -91,9 +103,7 @@ import (
 type ExternalLocation struct {
 	pulumi.CustomResourceState
 
-	// The ARN of the s3 access point to use with the external location (AWS).
-	AccessPoint pulumi.StringPtrOutput `pulumi:"accessPoint"`
-	BrowseOnly  pulumi.BoolOutput      `pulumi:"browseOnly"`
+	BrowseOnly pulumi.BoolOutput `pulumi:"browseOnly"`
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// Time at which this external location was created, in epoch milliseconds.
@@ -104,10 +114,13 @@ type ExternalLocation struct {
 	CredentialId pulumi.StringOutput `pulumi:"credentialId"`
 	// Name of the StorageCredential to use with this external location.
 	CredentialName pulumi.StringOutput `pulumi:"credentialName"`
+	// indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
+	EnableFileEvents pulumi.BoolPtrOutput `pulumi:"enableFileEvents"`
 	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails ExternalLocationEncryptionDetailsPtrOutput `pulumi:"encryptionDetails"`
 	// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
-	Fallback pulumi.BoolPtrOutput `pulumi:"fallback"`
+	Fallback       pulumi.BoolPtrOutput                    `pulumi:"fallback"`
+	FileEventQueue ExternalLocationFileEventQueuePtrOutput `pulumi:"fileEventQueue"`
 	// Destroy external location regardless of its dependents.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// Update external location regardless of its dependents.
@@ -167,9 +180,7 @@ func GetExternalLocation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ExternalLocation resources.
 type externalLocationState struct {
-	// The ARN of the s3 access point to use with the external location (AWS).
-	AccessPoint *string `pulumi:"accessPoint"`
-	BrowseOnly  *bool   `pulumi:"browseOnly"`
+	BrowseOnly *bool `pulumi:"browseOnly"`
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
 	// Time at which this external location was created, in epoch milliseconds.
@@ -180,10 +191,13 @@ type externalLocationState struct {
 	CredentialId *string `pulumi:"credentialId"`
 	// Name of the StorageCredential to use with this external location.
 	CredentialName *string `pulumi:"credentialName"`
+	// indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
+	EnableFileEvents *bool `pulumi:"enableFileEvents"`
 	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails *ExternalLocationEncryptionDetails `pulumi:"encryptionDetails"`
 	// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
-	Fallback *bool `pulumi:"fallback"`
+	Fallback       *bool                           `pulumi:"fallback"`
+	FileEventQueue *ExternalLocationFileEventQueue `pulumi:"fileEventQueue"`
 	// Destroy external location regardless of its dependents.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Update external location regardless of its dependents.
@@ -208,9 +222,7 @@ type externalLocationState struct {
 }
 
 type ExternalLocationState struct {
-	// The ARN of the s3 access point to use with the external location (AWS).
-	AccessPoint pulumi.StringPtrInput
-	BrowseOnly  pulumi.BoolPtrInput
+	BrowseOnly pulumi.BoolPtrInput
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrInput
 	// Time at which this external location was created, in epoch milliseconds.
@@ -221,10 +233,13 @@ type ExternalLocationState struct {
 	CredentialId pulumi.StringPtrInput
 	// Name of the StorageCredential to use with this external location.
 	CredentialName pulumi.StringPtrInput
+	// indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
+	EnableFileEvents pulumi.BoolPtrInput
 	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails ExternalLocationEncryptionDetailsPtrInput
 	// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
-	Fallback pulumi.BoolPtrInput
+	Fallback       pulumi.BoolPtrInput
+	FileEventQueue ExternalLocationFileEventQueuePtrInput
 	// Destroy external location regardless of its dependents.
 	ForceDestroy pulumi.BoolPtrInput
 	// Update external location regardless of its dependents.
@@ -253,16 +268,17 @@ func (ExternalLocationState) ElementType() reflect.Type {
 }
 
 type externalLocationArgs struct {
-	// The ARN of the s3 access point to use with the external location (AWS).
-	AccessPoint *string `pulumi:"accessPoint"`
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
 	// Name of the StorageCredential to use with this external location.
 	CredentialName string `pulumi:"credentialName"`
+	// indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
+	EnableFileEvents *bool `pulumi:"enableFileEvents"`
 	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails *ExternalLocationEncryptionDetails `pulumi:"encryptionDetails"`
 	// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
-	Fallback *bool `pulumi:"fallback"`
+	Fallback       *bool                           `pulumi:"fallback"`
+	FileEventQueue *ExternalLocationFileEventQueue `pulumi:"fileEventQueue"`
 	// Destroy external location regardless of its dependents.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Update external location regardless of its dependents.
@@ -284,16 +300,17 @@ type externalLocationArgs struct {
 
 // The set of arguments for constructing a ExternalLocation resource.
 type ExternalLocationArgs struct {
-	// The ARN of the s3 access point to use with the external location (AWS).
-	AccessPoint pulumi.StringPtrInput
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrInput
 	// Name of the StorageCredential to use with this external location.
 	CredentialName pulumi.StringInput
+	// indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
+	EnableFileEvents pulumi.BoolPtrInput
 	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails ExternalLocationEncryptionDetailsPtrInput
 	// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
-	Fallback pulumi.BoolPtrInput
+	Fallback       pulumi.BoolPtrInput
+	FileEventQueue ExternalLocationFileEventQueuePtrInput
 	// Destroy external location regardless of its dependents.
 	ForceDestroy pulumi.BoolPtrInput
 	// Update external location regardless of its dependents.
@@ -400,11 +417,6 @@ func (o ExternalLocationOutput) ToExternalLocationOutputWithContext(ctx context.
 	return o
 }
 
-// The ARN of the s3 access point to use with the external location (AWS).
-func (o ExternalLocationOutput) AccessPoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExternalLocation) pulumi.StringPtrOutput { return v.AccessPoint }).(pulumi.StringPtrOutput)
-}
-
 func (o ExternalLocationOutput) BrowseOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolOutput { return v.BrowseOnly }).(pulumi.BoolOutput)
 }
@@ -434,6 +446,11 @@ func (o ExternalLocationOutput) CredentialName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.CredentialName }).(pulumi.StringOutput)
 }
 
+// indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
+func (o ExternalLocationOutput) EnableFileEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolPtrOutput { return v.EnableFileEvents }).(pulumi.BoolPtrOutput)
+}
+
 // The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 func (o ExternalLocationOutput) EncryptionDetails() ExternalLocationEncryptionDetailsPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) ExternalLocationEncryptionDetailsPtrOutput { return v.EncryptionDetails }).(ExternalLocationEncryptionDetailsPtrOutput)
@@ -442,6 +459,10 @@ func (o ExternalLocationOutput) EncryptionDetails() ExternalLocationEncryptionDe
 // Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
 func (o ExternalLocationOutput) Fallback() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolPtrOutput { return v.Fallback }).(pulumi.BoolPtrOutput)
+}
+
+func (o ExternalLocationOutput) FileEventQueue() ExternalLocationFileEventQueuePtrOutput {
+	return o.ApplyT(func(v *ExternalLocation) ExternalLocationFileEventQueuePtrOutput { return v.FileEventQueue }).(ExternalLocationFileEventQueuePtrOutput)
 }
 
 // Destroy external location regardless of its dependents.

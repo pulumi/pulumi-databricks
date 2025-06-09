@@ -5,21 +5,20 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class PipelineLibraryNotebookArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PipelineLibraryNotebookArgs Empty = new PipelineLibraryNotebookArgs();
 
-    @Import(name="path")
-    private @Nullable Output<String> path;
+    @Import(name="path", required=true)
+    private Output<String> path;
 
-    public Optional<Output<String>> path() {
-        return Optional.ofNullable(this.path);
+    public Output<String> path() {
+        return this.path;
     }
 
     private PipelineLibraryNotebookArgs() {}
@@ -46,7 +45,7 @@ public final class PipelineLibraryNotebookArgs extends com.pulumi.resources.Reso
             $ = new PipelineLibraryNotebookArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder path(@Nullable Output<String> path) {
+        public Builder path(Output<String> path) {
             $.path = path;
             return this;
         }
@@ -56,6 +55,9 @@ public final class PipelineLibraryNotebookArgs extends com.pulumi.resources.Reso
         }
 
         public PipelineLibraryNotebookArgs build() {
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("PipelineLibraryNotebookArgs", "path");
+            }
             return $;
         }
     }

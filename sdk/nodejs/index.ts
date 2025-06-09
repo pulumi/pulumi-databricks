@@ -10,6 +10,11 @@ export type AccessControlRuleSet = import("./accessControlRuleSet").AccessContro
 export const AccessControlRuleSet: typeof import("./accessControlRuleSet").AccessControlRuleSet = null as any;
 utilities.lazyLoad(exports, ["AccessControlRuleSet"], () => require("./accessControlRuleSet"));
 
+export { AccountNetworkPolicyArgs, AccountNetworkPolicyState } from "./accountNetworkPolicy";
+export type AccountNetworkPolicy = import("./accountNetworkPolicy").AccountNetworkPolicy;
+export const AccountNetworkPolicy: typeof import("./accountNetworkPolicy").AccountNetworkPolicy = null as any;
+utilities.lazyLoad(exports, ["AccountNetworkPolicy"], () => require("./accountNetworkPolicy"));
+
 export { AibiDashboardEmbeddingAccessPolicySettingArgs, AibiDashboardEmbeddingAccessPolicySettingState } from "./aibiDashboardEmbeddingAccessPolicySetting";
 export type AibiDashboardEmbeddingAccessPolicySetting = import("./aibiDashboardEmbeddingAccessPolicySetting").AibiDashboardEmbeddingAccessPolicySetting;
 export const AibiDashboardEmbeddingAccessPolicySetting: typeof import("./aibiDashboardEmbeddingAccessPolicySetting").AibiDashboardEmbeddingAccessPolicySetting = null as any;
@@ -100,6 +105,11 @@ export type Dashboard = import("./dashboard").Dashboard;
 export const Dashboard: typeof import("./dashboard").Dashboard = null as any;
 utilities.lazyLoad(exports, ["Dashboard"], () => require("./dashboard"));
 
+export { DatabaseInstanceArgs, DatabaseInstanceState } from "./databaseInstance";
+export type DatabaseInstance = import("./databaseInstance").DatabaseInstance;
+export const DatabaseInstance: typeof import("./databaseInstance").DatabaseInstance = null as any;
+utilities.lazyLoad(exports, ["DatabaseInstance"], () => require("./databaseInstance"));
+
 export { DbfsFileArgs, DbfsFileState } from "./dbfsFile";
 export type DbfsFile = import("./dbfsFile").DbfsFile;
 export const DbfsFile: typeof import("./dbfsFile").DbfsFile = null as any;
@@ -149,6 +159,16 @@ export { FileArgs, FileState } from "./file";
 export type File = import("./file").File;
 export const File: typeof import("./file").File = null as any;
 utilities.lazyLoad(exports, ["File"], () => require("./file"));
+
+export { GetAccountNetworkPoliciesResult } from "./getAccountNetworkPolicies";
+export const getAccountNetworkPolicies: typeof import("./getAccountNetworkPolicies").getAccountNetworkPolicies = null as any;
+export const getAccountNetworkPoliciesOutput: typeof import("./getAccountNetworkPolicies").getAccountNetworkPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getAccountNetworkPolicies","getAccountNetworkPoliciesOutput"], () => require("./getAccountNetworkPolicies"));
+
+export { GetAccountNetworkPolicyArgs, GetAccountNetworkPolicyResult, GetAccountNetworkPolicyOutputArgs } from "./getAccountNetworkPolicy";
+export const getAccountNetworkPolicy: typeof import("./getAccountNetworkPolicy").getAccountNetworkPolicy = null as any;
+export const getAccountNetworkPolicyOutput: typeof import("./getAccountNetworkPolicy").getAccountNetworkPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAccountNetworkPolicy","getAccountNetworkPolicyOutput"], () => require("./getAccountNetworkPolicy"));
 
 export { GetAlertV2Args, GetAlertV2Result, GetAlertV2OutputArgs } from "./getAlertV2";
 export const getAlertV2: typeof import("./getAlertV2").getAlertV2 = null as any;
@@ -249,6 +269,16 @@ export { GetDashboardsArgs, GetDashboardsResult, GetDashboardsOutputArgs } from 
 export const getDashboards: typeof import("./getDashboards").getDashboards = null as any;
 export const getDashboardsOutput: typeof import("./getDashboards").getDashboardsOutput = null as any;
 utilities.lazyLoad(exports, ["getDashboards","getDashboardsOutput"], () => require("./getDashboards"));
+
+export { GetDatabaseInstanceArgs, GetDatabaseInstanceResult, GetDatabaseInstanceOutputArgs } from "./getDatabaseInstance";
+export const getDatabaseInstance: typeof import("./getDatabaseInstance").getDatabaseInstance = null as any;
+export const getDatabaseInstanceOutput: typeof import("./getDatabaseInstance").getDatabaseInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabaseInstance","getDatabaseInstanceOutput"], () => require("./getDatabaseInstance"));
+
+export { GetDatabaseInstancesResult } from "./getDatabaseInstances";
+export const getDatabaseInstances: typeof import("./getDatabaseInstances").getDatabaseInstances = null as any;
+export const getDatabaseInstancesOutput: typeof import("./getDatabaseInstances").getDatabaseInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabaseInstances","getDatabaseInstancesOutput"], () => require("./getDatabaseInstances"));
 
 export { GetDbfsFileArgs, GetDbfsFileResult, GetDbfsFileOutputArgs } from "./getDbfsFile";
 export const getDbfsFile: typeof import("./getDbfsFile").getDbfsFile = null as any;
@@ -375,6 +405,16 @@ export const getPipelines: typeof import("./getPipelines").getPipelines = null a
 export const getPipelinesOutput: typeof import("./getPipelines").getPipelinesOutput = null as any;
 utilities.lazyLoad(exports, ["getPipelines","getPipelinesOutput"], () => require("./getPipelines"));
 
+export { GetRecipientFederationPoliciesResult } from "./getRecipientFederationPolicies";
+export const getRecipientFederationPolicies: typeof import("./getRecipientFederationPolicies").getRecipientFederationPolicies = null as any;
+export const getRecipientFederationPoliciesOutput: typeof import("./getRecipientFederationPolicies").getRecipientFederationPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getRecipientFederationPolicies","getRecipientFederationPoliciesOutput"], () => require("./getRecipientFederationPolicies"));
+
+export { GetRecipientFederationPolicyArgs, GetRecipientFederationPolicyResult, GetRecipientFederationPolicyOutputArgs } from "./getRecipientFederationPolicy";
+export const getRecipientFederationPolicy: typeof import("./getRecipientFederationPolicy").getRecipientFederationPolicy = null as any;
+export const getRecipientFederationPolicyOutput: typeof import("./getRecipientFederationPolicy").getRecipientFederationPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRecipientFederationPolicy","getRecipientFederationPolicyOutput"], () => require("./getRecipientFederationPolicy"));
+
 export { GetRegisteredModelArgs, GetRegisteredModelResult, GetRegisteredModelOutputArgs } from "./getRegisteredModel";
 export const getRegisteredModel: typeof import("./getRegisteredModel").getRegisteredModel = null as any;
 export const getRegisteredModelOutput: typeof import("./getRegisteredModel").getRegisteredModelOutput = null as any;
@@ -474,6 +514,11 @@ export { GetVolumesArgs, GetVolumesResult, GetVolumesOutputArgs } from "./getVol
 export const getVolumes: typeof import("./getVolumes").getVolumes = null as any;
 export const getVolumesOutput: typeof import("./getVolumes").getVolumesOutput = null as any;
 utilities.lazyLoad(exports, ["getVolumes","getVolumesOutput"], () => require("./getVolumes"));
+
+export { GetWorkspaceNetworkOptionArgs, GetWorkspaceNetworkOptionResult, GetWorkspaceNetworkOptionOutputArgs } from "./getWorkspaceNetworkOption";
+export const getWorkspaceNetworkOption: typeof import("./getWorkspaceNetworkOption").getWorkspaceNetworkOption = null as any;
+export const getWorkspaceNetworkOptionOutput: typeof import("./getWorkspaceNetworkOption").getWorkspaceNetworkOptionOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceNetworkOption","getWorkspaceNetworkOptionOutput"], () => require("./getWorkspaceNetworkOption"));
 
 export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
 export const getZones: typeof import("./getZones").getZones = null as any;
@@ -589,6 +634,11 @@ export { ModelServingArgs, ModelServingState } from "./modelServing";
 export type ModelServing = import("./modelServing").ModelServing;
 export const ModelServing: typeof import("./modelServing").ModelServing = null as any;
 utilities.lazyLoad(exports, ["ModelServing"], () => require("./modelServing"));
+
+export { ModelServingProvisionedThroughputArgs, ModelServingProvisionedThroughputState } from "./modelServingProvisionedThroughput";
+export type ModelServingProvisionedThroughput = import("./modelServingProvisionedThroughput").ModelServingProvisionedThroughput;
+export const ModelServingProvisionedThroughput: typeof import("./modelServingProvisionedThroughput").ModelServingProvisionedThroughput = null as any;
+utilities.lazyLoad(exports, ["ModelServingProvisionedThroughput"], () => require("./modelServingProvisionedThroughput"));
 
 export { MountArgs, MountState } from "./mount";
 export type Mount = import("./mount").Mount;
@@ -707,6 +757,11 @@ export { RecipientArgs, RecipientState } from "./recipient";
 export type Recipient = import("./recipient").Recipient;
 export const Recipient: typeof import("./recipient").Recipient = null as any;
 utilities.lazyLoad(exports, ["Recipient"], () => require("./recipient"));
+
+export { RecipientFederationPolicyArgs, RecipientFederationPolicyState } from "./recipientFederationPolicy";
+export type RecipientFederationPolicy = import("./recipientFederationPolicy").RecipientFederationPolicy;
+export const RecipientFederationPolicy: typeof import("./recipientFederationPolicy").RecipientFederationPolicy = null as any;
+utilities.lazyLoad(exports, ["RecipientFederationPolicy"], () => require("./recipientFederationPolicy"));
 
 export { RegisteredModelArgs, RegisteredModelState } from "./registeredModel";
 export type RegisteredModel = import("./registeredModel").RegisteredModel;
@@ -873,6 +928,11 @@ export type WorkspaceFile = import("./workspaceFile").WorkspaceFile;
 export const WorkspaceFile: typeof import("./workspaceFile").WorkspaceFile = null as any;
 utilities.lazyLoad(exports, ["WorkspaceFile"], () => require("./workspaceFile"));
 
+export { WorkspaceNetworkOptionArgs, WorkspaceNetworkOptionState } from "./workspaceNetworkOption";
+export type WorkspaceNetworkOption = import("./workspaceNetworkOption").WorkspaceNetworkOption;
+export const WorkspaceNetworkOption: typeof import("./workspaceNetworkOption").WorkspaceNetworkOption = null as any;
+utilities.lazyLoad(exports, ["WorkspaceNetworkOption"], () => require("./workspaceNetworkOption"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -889,6 +949,8 @@ const _module = {
         switch (type) {
             case "databricks:index/accessControlRuleSet:AccessControlRuleSet":
                 return new AccessControlRuleSet(name, <any>undefined, { urn })
+            case "databricks:index/accountNetworkPolicy:AccountNetworkPolicy":
+                return new AccountNetworkPolicy(name, <any>undefined, { urn })
             case "databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting":
                 return new AibiDashboardEmbeddingAccessPolicySetting(name, <any>undefined, { urn })
             case "databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting":
@@ -925,6 +987,8 @@ const _module = {
                 return new CustomAppIntegration(name, <any>undefined, { urn })
             case "databricks:index/dashboard:Dashboard":
                 return new Dashboard(name, <any>undefined, { urn })
+            case "databricks:index/databaseInstance:DatabaseInstance":
+                return new DatabaseInstance(name, <any>undefined, { urn })
             case "databricks:index/dbfsFile:DbfsFile":
                 return new DbfsFile(name, <any>undefined, { urn })
             case "databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting":
@@ -989,6 +1053,8 @@ const _module = {
                 return new MlflowWebhook(name, <any>undefined, { urn })
             case "databricks:index/modelServing:ModelServing":
                 return new ModelServing(name, <any>undefined, { urn })
+            case "databricks:index/modelServingProvisionedThroughput:ModelServingProvisionedThroughput":
+                return new ModelServingProvisionedThroughput(name, <any>undefined, { urn })
             case "databricks:index/mount:Mount":
                 return new Mount(name, <any>undefined, { urn })
             case "databricks:index/mwsCredentials:MwsCredentials":
@@ -1035,6 +1101,8 @@ const _module = {
                 return new Query(name, <any>undefined, { urn })
             case "databricks:index/recipient:Recipient":
                 return new Recipient(name, <any>undefined, { urn })
+            case "databricks:index/recipientFederationPolicy:RecipientFederationPolicy":
+                return new RecipientFederationPolicy(name, <any>undefined, { urn })
             case "databricks:index/registeredModel:RegisteredModel":
                 return new RegisteredModel(name, <any>undefined, { urn })
             case "databricks:index/repo:Repo":
@@ -1101,12 +1169,15 @@ const _module = {
                 return new WorkspaceConf(name, <any>undefined, { urn })
             case "databricks:index/workspaceFile:WorkspaceFile":
                 return new WorkspaceFile(name, <any>undefined, { urn })
+            case "databricks:index/workspaceNetworkOption:WorkspaceNetworkOption":
+                return new WorkspaceNetworkOption(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("databricks", "index/accessControlRuleSet", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/accountNetworkPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/aibiDashboardEmbeddingAccessPolicySetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/aibiDashboardEmbeddingApprovedDomainsSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/alert", _module)
@@ -1125,6 +1196,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/connection", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/credential", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/customAppIntegration", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/dashboard", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/databaseInstance", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/dbfsFile", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/defaultNamespaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/directory", _module)
@@ -1157,6 +1229,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/mlflowExperiment", _m
 pulumi.runtime.registerResourceModule("databricks", "index/mlflowModel", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mlflowWebhook", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/modelServing", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/modelServingProvisionedThroughput", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mount", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mwsCredentials", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/mwsCustomerManagedKeys", _module)
@@ -1180,6 +1253,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/pipeline", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/qualityMonitor", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/query", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/recipient", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/recipientFederationPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/registeredModel", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/repo", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/restrictWorkspaceAdminsSetting", _module)
@@ -1213,6 +1287,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/volume", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceBinding", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceConf", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceFile", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/workspaceNetworkOption", _module)
 pulumi.runtime.registerResourcePackage("databricks", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

@@ -54,10 +54,12 @@ namespace Pulumi.Databricks
         ///     {
         ///         Name = $"{prefix}-uc-access",
         ///         AssumeRolePolicy = thisGetAwsUnityCatalogAssumeRolePolicy.Apply(getAwsUnityCatalogAssumeRolePolicyResult =&gt; getAwsUnityCatalogAssumeRolePolicyResult.Json),
-        ///         ManagedPolicyArns = new[]
-        ///         {
-        ///             unityMetastore.Arn,
-        ///         },
+        ///     });
+        /// 
+        ///     var metastoreDataAccessRolePolicyAttachment = new Aws.Iam.RolePolicyAttachment("metastore_data_access", new()
+        ///     {
+        ///         Role = metastoreDataAccess.Name,
+        ///         PolicyArn = unityMetastore.Arn,
         ///     });
         /// 
         /// });
@@ -109,10 +111,12 @@ namespace Pulumi.Databricks
         ///     {
         ///         Name = $"{prefix}-uc-access",
         ///         AssumeRolePolicy = thisGetAwsUnityCatalogAssumeRolePolicy.Apply(getAwsUnityCatalogAssumeRolePolicyResult =&gt; getAwsUnityCatalogAssumeRolePolicyResult.Json),
-        ///         ManagedPolicyArns = new[]
-        ///         {
-        ///             unityMetastore.Arn,
-        ///         },
+        ///     });
+        /// 
+        ///     var metastoreDataAccessRolePolicyAttachment = new Aws.Iam.RolePolicyAttachment("metastore_data_access", new()
+        ///     {
+        ///         Role = metastoreDataAccess.Name,
+        ///         PolicyArn = unityMetastore.Arn,
         ///     });
         /// 
         /// });
@@ -164,10 +168,12 @@ namespace Pulumi.Databricks
         ///     {
         ///         Name = $"{prefix}-uc-access",
         ///         AssumeRolePolicy = thisGetAwsUnityCatalogAssumeRolePolicy.Apply(getAwsUnityCatalogAssumeRolePolicyResult =&gt; getAwsUnityCatalogAssumeRolePolicyResult.Json),
-        ///         ManagedPolicyArns = new[]
-        ///         {
-        ///             unityMetastore.Arn,
-        ///         },
+        ///     });
+        /// 
+        ///     var metastoreDataAccessRolePolicyAttachment = new Aws.Iam.RolePolicyAttachment("metastore_data_access", new()
+        ///     {
+        ///         Role = metastoreDataAccess.Name,
+        ///         PolicyArn = unityMetastore.Arn,
         ///     });
         /// 
         /// });

@@ -16,29 +16,83 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Import
+ * 
+ * As of terraform v1.5, resources can be imported through configuration.
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   id = id
+ * 
+ *   to = databricks_alert_v2.this
+ * 
+ * }
+ * 
+ * If you are using an older version of terraform, you can import the resource using cli as follows:
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 id
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/alertV2:AlertV2")
 public class AlertV2 extends com.pulumi.resources.CustomResource {
+    /**
+     * (string) - The timestamp indicating when the alert was created
+     * 
+     */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
+    /**
+     * @return (string) - The timestamp indicating when the alert was created
+     * 
+     */
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * Custom description for the alert. support mustache template
+     * 
+     */
     @Export(name="customDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customDescription;
 
+    /**
+     * @return Custom description for the alert. support mustache template
+     * 
+     */
     public Output<Optional<String>> customDescription() {
         return Codegen.optional(this.customDescription);
     }
+    /**
+     * Custom summary for the alert. support mustache template
+     * 
+     */
     @Export(name="customSummary", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customSummary;
 
+    /**
+     * @return Custom summary for the alert. support mustache template
+     * 
+     */
     public Output<Optional<String>> customSummary() {
         return Codegen.optional(this.customSummary);
     }
+    /**
+     * The display name of the alert
+     * 
+     */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
+    /**
+     * @return The display name of the alert
+     * 
+     */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
     }
@@ -48,33 +102,73 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
     public Output<Optional<AlertV2Evaluation>> evaluation() {
         return Codegen.optional(this.evaluation);
     }
+    /**
+     * (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     * 
+     */
     @Export(name="lifecycleState", refs={String.class}, tree="[0]")
     private Output<String> lifecycleState;
 
+    /**
+     * @return (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     * 
+     */
     public Output<String> lifecycleState() {
         return this.lifecycleState;
     }
+    /**
+     * (string) - The owner&#39;s username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+     * 
+     */
     @Export(name="ownerUserName", refs={String.class}, tree="[0]")
     private Output<String> ownerUserName;
 
+    /**
+     * @return (string) - The owner&#39;s username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+     * 
+     */
     public Output<String> ownerUserName() {
         return this.ownerUserName;
     }
+    /**
+     * The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+     * 
+     */
     @Export(name="parentPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentPath;
 
+    /**
+     * @return The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+     * 
+     */
     public Output<Optional<String>> parentPath() {
         return Codegen.optional(this.parentPath);
     }
+    /**
+     * Text of the query to be run
+     * 
+     */
     @Export(name="queryText", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> queryText;
 
+    /**
+     * @return Text of the query to be run
+     * 
+     */
     public Output<Optional<String>> queryText() {
         return Codegen.optional(this.queryText);
     }
+    /**
+     * (string) - The run as username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+     * 
+     */
     @Export(name="runAsUserName", refs={String.class}, tree="[0]")
     private Output<String> runAsUserName;
 
+    /**
+     * @return (string) - The run as username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+     * 
+     */
     public Output<String> runAsUserName() {
         return this.runAsUserName;
     }
@@ -84,15 +178,31 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
     public Output<Optional<AlertV2Schedule>> schedule() {
         return Codegen.optional(this.schedule);
     }
+    /**
+     * (string) - The timestamp indicating when the alert was updated
+     * 
+     */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
+    /**
+     * @return (string) - The timestamp indicating when the alert was updated
+     * 
+     */
     public Output<String> updateTime() {
         return this.updateTime;
     }
+    /**
+     * ID of the SQL warehouse attached to the alert
+     * 
+     */
     @Export(name="warehouseId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> warehouseId;
 
+    /**
+     * @return ID of the SQL warehouse attached to the alert
+     * 
+     */
     public Output<Optional<String>> warehouseId() {
         return Codegen.optional(this.warehouseId);
     }

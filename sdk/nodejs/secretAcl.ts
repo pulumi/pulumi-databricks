@@ -46,6 +46,18 @@ import * as utilities from "./utilities";
  *
  * The resource secret acl can be imported using `scopeName|||principalName` combination.
  *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_secret_acl.object
+ *
+ *   id = "scopeName|||principalName"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ *
  * bash
  *
  * ```sh

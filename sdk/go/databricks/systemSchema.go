@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
+// Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account's operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
 //
 // > This resource can only be used with a workspace-level provider!
 //
-// > Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.
+// > Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.  Certain schemas can't also be disabled completely.
 //
 // ## Example Usage
 //
@@ -47,7 +48,19 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported by the metastore id and schema name
+// This resource can be imported by the metastore id and schema name:
+//
+// hcl
+//
+// import {
+//
+//	to = databricks_system_schema.this
+//
+//	id = "<metastore_id>|<schema_name>"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 //
 // bash
 //
@@ -62,7 +75,7 @@ type SystemSchema struct {
 	FullName    pulumi.StringOutput `pulumi:"fullName"`
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
 	// name of the system schema.
-	Schema pulumi.StringPtrOutput `pulumi:"schema"`
+	Schema pulumi.StringOutput `pulumi:"schema"`
 	// The current state of enablement for the system schema.
 	State pulumi.StringOutput `pulumi:"state"`
 }
@@ -71,9 +84,12 @@ type SystemSchema struct {
 func NewSystemSchema(ctx *pulumi.Context,
 	name string, args *SystemSchemaArgs, opts ...pulumi.ResourceOption) (*SystemSchema, error) {
 	if args == nil {
-		args = &SystemSchemaArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Schema == nil {
+		return nil, errors.New("invalid value for required argument 'Schema'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SystemSchema
 	err := ctx.RegisterResource("databricks:index/systemSchema:SystemSchema", name, args, &resource, opts...)
@@ -124,17 +140,13 @@ func (SystemSchemaState) ElementType() reflect.Type {
 
 type systemSchemaArgs struct {
 	// name of the system schema.
-	Schema *string `pulumi:"schema"`
-	// The current state of enablement for the system schema.
-	State *string `pulumi:"state"`
+	Schema string `pulumi:"schema"`
 }
 
 // The set of arguments for constructing a SystemSchema resource.
 type SystemSchemaArgs struct {
 	// name of the system schema.
-	Schema pulumi.StringPtrInput
-	// The current state of enablement for the system schema.
-	State pulumi.StringPtrInput
+	Schema pulumi.StringInput
 }
 
 func (SystemSchemaArgs) ElementType() reflect.Type {
@@ -238,8 +250,8 @@ func (o SystemSchemaOutput) MetastoreId() pulumi.StringOutput {
 }
 
 // name of the system schema.
-func (o SystemSchemaOutput) Schema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemSchema) pulumi.StringPtrOutput { return v.Schema }).(pulumi.StringPtrOutput)
+func (o SystemSchemaOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v *SystemSchema) pulumi.StringOutput { return v.Schema }).(pulumi.StringOutput)
 }
 
 // The current state of enablement for the system schema.

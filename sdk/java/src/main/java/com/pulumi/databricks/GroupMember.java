@@ -97,6 +97,18 @@ import javax.annotation.Nullable;
  * 
  * You can import a `databricks_group_member` resource with name `my_group_member` like the following:
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_group_member.my_group_member
+ * 
+ *   id = &#34;&lt;group_id&gt;|&lt;member_id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh
@@ -107,28 +119,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/groupMember:GroupMember")
 public class GroupMember extends com.pulumi.resources.CustomResource {
     /**
-     * This is the id of the group resource.
+     * This is the `id` attribute (SCIM ID) of the group resource.
      * 
      */
     @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
-     * @return This is the id of the group resource.
+     * @return This is the `id` attribute (SCIM ID) of the group resource.
      * 
      */
     public Output<String> groupId() {
         return this.groupId;
     }
     /**
-     * This is the id of the group, service principal, or user.
+     * This is the `id` attribute (SCIM ID) of the group, service principal, or user.
      * 
      */
     @Export(name="memberId", refs={String.class}, tree="[0]")
     private Output<String> memberId;
 
     /**
-     * @return This is the id of the group, service principal, or user.
+     * @return This is the `id` attribute (SCIM ID) of the group, service principal, or user.
      * 
      */
     public Output<String> memberId() {

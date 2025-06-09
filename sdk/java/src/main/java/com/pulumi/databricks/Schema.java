@@ -81,10 +81,22 @@ import javax.annotation.Nullable;
  * 
  * This resource can be imported by its full name:
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_schema.this
+ * 
+ *   id = &#34;&lt;catalog_name&gt;.&lt;name&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh
- * $ pulumi import databricks:index/schema:Schema this &lt;catalog_name&gt;.&lt;name&gt;
+ * $ pulumi import databricks:index/schema:Schema this &#34;&lt;catalog_name&gt;.&lt;name&gt;&#34;
  * ```
  * 
  */

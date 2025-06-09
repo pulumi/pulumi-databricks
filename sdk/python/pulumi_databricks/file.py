@@ -288,6 +288,18 @@ class File(pulumi.CustomResource):
 
         The resource `databricks_file` can be imported using the path of the file:
 
+        hcl
+
+        import {
+
+          to = databricks_file.this
+
+          id = "<path>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
@@ -373,6 +385,18 @@ class File(pulumi.CustomResource):
         ## Import
 
         The resource `databricks_file` can be imported using the path of the file:
+
+        hcl
+
+        import {
+
+          to = databricks_file.this
+
+          id = "<path>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 

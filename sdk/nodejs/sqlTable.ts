@@ -9,12 +9,24 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * This resource can be imported by its full name.
+ * This resource can be imported by its full name:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_sql_table.this
+ *
+ *   id = "<catalog_name>.<schema_name>.<name>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  *
  * bash
  *
  * ```sh
- * $ pulumi import databricks:index/sqlTable:SqlTable this <catalog_name>.<schema_name>.<name>
+ * $ pulumi import databricks:index/sqlTable:SqlTable this "<catalog_name>.<schema_name>.<name>"
  * ```
  */
 export class SqlTable extends pulumi.CustomResource {
@@ -79,7 +91,7 @@ export class SqlTable extends pulumi.CustomResource {
     /**
      * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`.
      */
-    public readonly partitions!: pulumi.Output<string[] | undefined>;
+    public readonly partitions!: pulumi.Output<string[]>;
     /**
      * A map of table properties.
      */
