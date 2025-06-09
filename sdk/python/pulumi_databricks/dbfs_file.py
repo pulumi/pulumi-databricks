@@ -204,6 +204,18 @@ class DbfsFile(pulumi.CustomResource):
 
         The resource dbfs file can be imported using the path of the file:
 
+        hcl
+
+        import {
+
+          to = databricks_dbfs_file.this
+
+          id = "<path>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
@@ -230,6 +242,18 @@ class DbfsFile(pulumi.CustomResource):
         ## Import
 
         The resource dbfs file can be imported using the path of the file:
+
+        hcl
+
+        import {
+
+          to = databricks_dbfs_file.this
+
+          id = "<path>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 

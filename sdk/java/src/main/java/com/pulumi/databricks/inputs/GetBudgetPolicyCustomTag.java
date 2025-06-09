@@ -15,16 +15,38 @@ public final class GetBudgetPolicyCustomTag extends com.pulumi.resources.InvokeA
 
     public static final GetBudgetPolicyCustomTag Empty = new GetBudgetPolicyCustomTag();
 
+    /**
+     * (string) - The key of the tag.
+     * - Must be unique among all custom tags of the same policy
+     * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
+     *   these tags are preserved.
+     * 
+     */
     @Import(name="key", required=true)
     private String key;
 
+    /**
+     * @return (string) - The key of the tag.
+     * - Must be unique among all custom tags of the same policy
+     * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
+     *   these tags are preserved.
+     * 
+     */
     public String key() {
         return this.key;
     }
 
+    /**
+     * (string) - The value of the tag.
+     * 
+     */
     @Import(name="value")
     private @Nullable String value;
 
+    /**
+     * @return (string) - The value of the tag.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }
@@ -54,11 +76,26 @@ public final class GetBudgetPolicyCustomTag extends com.pulumi.resources.InvokeA
             $ = new GetBudgetPolicyCustomTag(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key (string) - The key of the tag.
+         * - Must be unique among all custom tags of the same policy
+         * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
+         *   these tags are preserved.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param value (string) - The value of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable String value) {
             $.value = value;
             return this;

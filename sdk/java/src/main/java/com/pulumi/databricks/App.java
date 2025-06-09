@@ -23,7 +23,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+ * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer&#39;s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
  * 
  * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
  * 
@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * or using the `terraform` CLI:
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  * 
  * bash
  * 

@@ -146,6 +146,18 @@ import javax.annotation.Nullable;
  * 
  * The resource `databricks_file` can be imported using the path of the file:
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_file.this
+ * 
+ *   id = &#34;&lt;path&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh

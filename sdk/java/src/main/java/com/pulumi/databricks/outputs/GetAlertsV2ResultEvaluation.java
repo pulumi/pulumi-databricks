@@ -15,33 +15,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAlertsV2ResultEvaluation {
+    /**
+     * @return (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     * 
+     */
     private @Nullable String comparisonOperator;
+    /**
+     * @return (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * 
+     */
     private @Nullable String emptyResultState;
+    /**
+     * @return (string) - Timestamp of the last evaluation
+     * 
+     */
     private String lastEvaluatedAt;
+    /**
+     * @return (AlertV2Notification) - User or Notification Destination to notify when alert is triggered
+     * 
+     */
     private @Nullable GetAlertsV2ResultEvaluationNotification notification;
+    /**
+     * @return (AlertV2OperandColumn) - Source column from result to use to evaluate alert
+     * 
+     */
     private @Nullable GetAlertsV2ResultEvaluationSource source;
+    /**
+     * @return (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * 
+     */
     private String state;
+    /**
+     * @return (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
+     * 
+     */
     private @Nullable GetAlertsV2ResultEvaluationThreshold threshold;
 
     private GetAlertsV2ResultEvaluation() {}
+    /**
+     * @return (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     * 
+     */
     public Optional<String> comparisonOperator() {
         return Optional.ofNullable(this.comparisonOperator);
     }
+    /**
+     * @return (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * 
+     */
     public Optional<String> emptyResultState() {
         return Optional.ofNullable(this.emptyResultState);
     }
+    /**
+     * @return (string) - Timestamp of the last evaluation
+     * 
+     */
     public String lastEvaluatedAt() {
         return this.lastEvaluatedAt;
     }
+    /**
+     * @return (AlertV2Notification) - User or Notification Destination to notify when alert is triggered
+     * 
+     */
     public Optional<GetAlertsV2ResultEvaluationNotification> notification() {
         return Optional.ofNullable(this.notification);
     }
+    /**
+     * @return (AlertV2OperandColumn) - Source column from result to use to evaluate alert
+     * 
+     */
     public Optional<GetAlertsV2ResultEvaluationSource> source() {
         return Optional.ofNullable(this.source);
     }
+    /**
+     * @return (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * 
+     */
     public String state() {
         return this.state;
     }
+    /**
+     * @return (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
+     * 
+     */
     public Optional<GetAlertsV2ResultEvaluationThreshold> threshold() {
         return Optional.ofNullable(this.threshold);
     }

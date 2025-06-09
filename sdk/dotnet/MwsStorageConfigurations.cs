@@ -65,8 +65,22 @@ namespace Pulumi.Databricks
     /// 
     /// This resource can be imported by Databricks account ID and storage configuration ID.
     /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_mws_storage_configurations.this
+    /// 
+    ///   id = "&lt;account_id&gt;/&lt;storage_configuration_id&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+    /// 
+    /// bash
+    /// 
     /// ```sh
-    /// $ pulumi import databricks:index/mwsStorageConfigurations:MwsStorageConfigurations this '&lt;account_id&gt;/&lt;storage_configuration_id&gt;'
+    /// $ pulumi import databricks:index/mwsStorageConfigurations:MwsStorageConfigurations this "&lt;account_id&gt;/&lt;storage_configuration_id&gt;"
     /// ```
     /// 
     /// ~&gt; This resource does not support updates. If your configuration does not match the existing resource,

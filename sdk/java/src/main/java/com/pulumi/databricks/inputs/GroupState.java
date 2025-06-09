@@ -129,18 +129,33 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This is a field to allow the group to have access to Databricks Workspace.
+     * This is a field to allow the group to have access to a Databricks Workspace.
      * 
      */
     @Import(name="workspaceAccess")
     private @Nullable Output<Boolean> workspaceAccess;
 
     /**
-     * @return This is a field to allow the group to have access to Databricks Workspace.
+     * @return This is a field to allow the group to have access to a Databricks Workspace.
      * 
      */
     public Optional<Output<Boolean>> workspaceAccess() {
         return Optional.ofNullable(this.workspaceAccess);
+    }
+
+    /**
+     * This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     * 
+     */
+    @Import(name="workspaceConsume")
+    private @Nullable Output<Boolean> workspaceConsume;
+
+    /**
+     * @return This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     * 
+     */
+    public Optional<Output<Boolean>> workspaceConsume() {
+        return Optional.ofNullable(this.workspaceConsume);
     }
 
     private GroupState() {}
@@ -155,6 +170,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         this.force = $.force;
         this.url = $.url;
         this.workspaceAccess = $.workspaceAccess;
+        this.workspaceConsume = $.workspaceConsume;
     }
 
     public static Builder builder() {
@@ -332,7 +348,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workspaceAccess This is a field to allow the group to have access to Databricks Workspace.
+         * @param workspaceAccess This is a field to allow the group to have access to a Databricks Workspace.
          * 
          * @return builder
          * 
@@ -343,13 +359,34 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workspaceAccess This is a field to allow the group to have access to Databricks Workspace.
+         * @param workspaceAccess This is a field to allow the group to have access to a Databricks Workspace.
          * 
          * @return builder
          * 
          */
         public Builder workspaceAccess(Boolean workspaceAccess) {
             return workspaceAccess(Output.of(workspaceAccess));
+        }
+
+        /**
+         * @param workspaceConsume This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceConsume(@Nullable Output<Boolean> workspaceConsume) {
+            $.workspaceConsume = workspaceConsume;
+            return this;
+        }
+
+        /**
+         * @param workspaceConsume This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceConsume(Boolean workspaceConsume) {
+            return workspaceConsume(Output.of(workspaceConsume));
         }
 
         public GroupState build() {

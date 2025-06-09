@@ -95,6 +95,18 @@ namespace Pulumi.Databricks
     /// 
     /// The resource cluster policy can be imported using the policy id:
     /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_cluster_policy.this
+    /// 
+    ///   id = "&lt;cluster-policy-id&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+    /// 
     /// bash
     /// 
     /// ```sh

@@ -102,10 +102,24 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by Databricks account ID and Budget.
+ * This resource can be imported by Databricks account ID and Budget:
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_budget.this
+ * 
+ *   id = &#34;&lt;account_id&gt;|&lt;budget_configuration_id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
+ * bash
  * 
  * ```sh
- * $ pulumi import databricks:index/budget:Budget this &#39;&lt;account_id&gt;|&lt;budget_configuration_id&gt;&#39;
+ * $ pulumi import databricks:index/budget:Budget this &#34;&lt;account_id&gt;|&lt;budget_configuration_id&gt;&#34;
  * ```
  * 
  */

@@ -74,7 +74,19 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * You can import a `databricks_group` resource with the name `my_group` like the following:
+ * You can import a `databricks_group` resource by its SCIM ID:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_group.my_group
+ *
+ *   id = "<group_id>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  *
  * bash
  *
@@ -140,9 +152,13 @@ export class Group extends pulumi.CustomResource {
     public readonly force!: pulumi.Output<boolean | undefined>;
     public readonly url!: pulumi.Output<string>;
     /**
-     * This is a field to allow the group to have access to Databricks Workspace.
+     * This is a field to allow the group to have access to a Databricks Workspace.
      */
     public readonly workspaceAccess!: pulumi.Output<boolean | undefined>;
+    /**
+     * This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     */
+    public readonly workspaceConsume!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -166,6 +182,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["force"] = state ? state.force : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
             resourceInputs["workspaceAccess"] = state ? state.workspaceAccess : undefined;
+            resourceInputs["workspaceConsume"] = state ? state.workspaceConsume : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
             resourceInputs["aclPrincipalId"] = args ? args.aclPrincipalId : undefined;
@@ -177,6 +194,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["force"] = args ? args.force : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
             resourceInputs["workspaceAccess"] = args ? args.workspaceAccess : undefined;
+            resourceInputs["workspaceConsume"] = args ? args.workspaceConsume : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Group.__pulumiType, name, resourceInputs, opts);
@@ -217,9 +235,13 @@ export interface GroupState {
     force?: pulumi.Input<boolean>;
     url?: pulumi.Input<string>;
     /**
-     * This is a field to allow the group to have access to Databricks Workspace.
+     * This is a field to allow the group to have access to a Databricks Workspace.
      */
     workspaceAccess?: pulumi.Input<boolean>;
+    /**
+     * This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     */
+    workspaceConsume?: pulumi.Input<boolean>;
 }
 
 /**
@@ -256,7 +278,11 @@ export interface GroupArgs {
     force?: pulumi.Input<boolean>;
     url?: pulumi.Input<string>;
     /**
-     * This is a field to allow the group to have access to Databricks Workspace.
+     * This is a field to allow the group to have access to a Databricks Workspace.
      */
     workspaceAccess?: pulumi.Input<boolean>;
+    /**
+     * This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     */
+    workspaceConsume?: pulumi.Input<boolean>;
 }

@@ -23,19 +23,17 @@ __all__ = ['VectorSearchEndpointArgs', 'VectorSearchEndpoint']
 class VectorSearchEndpointArgs:
     def __init__(__self__, *,
                  endpoint_type: pulumi.Input[builtins.str],
-                 custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchEndpointCustomTagArgs']]]] = None,
-                 effective_budget_policy_id: Optional[pulumi.Input[builtins.str]] = None,
+                 budget_policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a VectorSearchEndpoint resource.
-        :param pulumi.Input[builtins.str] endpoint_type: Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
-        :param pulumi.Input[builtins.str] name: Name of the Mosaic AI Vector Search Endpoint to create.
+        :param pulumi.Input[builtins.str] endpoint_type: Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
+        :param pulumi.Input[builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
+        :param pulumi.Input[builtins.str] name: Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
         """
         pulumi.set(__self__, "endpoint_type", endpoint_type)
-        if custom_tags is not None:
-            pulumi.set(__self__, "custom_tags", custom_tags)
-        if effective_budget_policy_id is not None:
-            pulumi.set(__self__, "effective_budget_policy_id", effective_budget_policy_id)
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -43,7 +41,7 @@ class VectorSearchEndpointArgs:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Input[builtins.str]:
         """
-        Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -52,28 +50,22 @@ class VectorSearchEndpointArgs:
         pulumi.set(self, "endpoint_type", value)
 
     @property
-    @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchEndpointCustomTagArgs']]]]:
-        return pulumi.get(self, "custom_tags")
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The Budget Policy ID set for this resource.
+        """
+        return pulumi.get(self, "budget_policy_id")
 
-    @custom_tags.setter
-    def custom_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchEndpointCustomTagArgs']]]]):
-        pulumi.set(self, "custom_tags", value)
-
-    @property
-    @pulumi.getter(name="effectiveBudgetPolicyId")
-    def effective_budget_policy_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        return pulumi.get(self, "effective_budget_policy_id")
-
-    @effective_budget_policy_id.setter
-    def effective_budget_policy_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "effective_budget_policy_id", value)
+    @budget_policy_id.setter
+    def budget_policy_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "budget_policy_id", value)
 
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the Mosaic AI Vector Search Endpoint to create.
+        Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
         """
         return pulumi.get(self, "name")
 
@@ -85,9 +77,9 @@ class VectorSearchEndpointArgs:
 @pulumi.input_type
 class _VectorSearchEndpointState:
     def __init__(__self__, *,
+                 budget_policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  creation_timestamp: Optional[pulumi.Input[builtins.int]] = None,
                  creator: Optional[pulumi.Input[builtins.str]] = None,
-                 custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchEndpointCustomTagArgs']]]] = None,
                  effective_budget_policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  endpoint_id: Optional[pulumi.Input[builtins.str]] = None,
                  endpoint_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchEndpointEndpointStatusArgs']]]] = None,
@@ -98,22 +90,24 @@ class _VectorSearchEndpointState:
                  num_indexes: Optional[pulumi.Input[builtins.int]] = None):
         """
         Input properties used for looking up and filtering VectorSearchEndpoint resources.
+        :param pulumi.Input[builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
         :param pulumi.Input[builtins.int] creation_timestamp: Timestamp of endpoint creation (milliseconds).
         :param pulumi.Input[builtins.str] creator: Creator of the endpoint.
+        :param pulumi.Input[builtins.str] effective_budget_policy_id: The effective budget policy ID.
         :param pulumi.Input[builtins.str] endpoint_id: Unique internal identifier of the endpoint (UUID).
         :param pulumi.Input[Sequence[pulumi.Input['VectorSearchEndpointEndpointStatusArgs']]] endpoint_statuses: Object describing the current status of the endpoint consisting of the following fields:
-        :param pulumi.Input[builtins.str] endpoint_type: Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        :param pulumi.Input[builtins.str] endpoint_type: Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
         :param pulumi.Input[builtins.int] last_updated_timestamp: Timestamp of the last update to the endpoint (milliseconds).
         :param pulumi.Input[builtins.str] last_updated_user: User who last updated the endpoint.
-        :param pulumi.Input[builtins.str] name: Name of the Mosaic AI Vector Search Endpoint to create.
+        :param pulumi.Input[builtins.str] name: Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
         :param pulumi.Input[builtins.int] num_indexes: Number of indexes on the endpoint.
         """
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if creator is not None:
             pulumi.set(__self__, "creator", creator)
-        if custom_tags is not None:
-            pulumi.set(__self__, "custom_tags", custom_tags)
         if effective_budget_policy_id is not None:
             pulumi.set(__self__, "effective_budget_policy_id", effective_budget_policy_id)
         if endpoint_id is not None:
@@ -130,6 +124,18 @@ class _VectorSearchEndpointState:
             pulumi.set(__self__, "name", name)
         if num_indexes is not None:
             pulumi.set(__self__, "num_indexes", num_indexes)
+
+    @property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The Budget Policy ID set for this resource.
+        """
+        return pulumi.get(self, "budget_policy_id")
+
+    @budget_policy_id.setter
+    def budget_policy_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "budget_policy_id", value)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -156,17 +162,11 @@ class _VectorSearchEndpointState:
         pulumi.set(self, "creator", value)
 
     @property
-    @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchEndpointCustomTagArgs']]]]:
-        return pulumi.get(self, "custom_tags")
-
-    @custom_tags.setter
-    def custom_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchEndpointCustomTagArgs']]]]):
-        pulumi.set(self, "custom_tags", value)
-
-    @property
     @pulumi.getter(name="effectiveBudgetPolicyId")
     def effective_budget_policy_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The effective budget policy ID.
+        """
         return pulumi.get(self, "effective_budget_policy_id")
 
     @effective_budget_policy_id.setter
@@ -201,7 +201,7 @@ class _VectorSearchEndpointState:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -237,7 +237,7 @@ class _VectorSearchEndpointState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the Mosaic AI Vector Search Endpoint to create.
+        Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
         """
         return pulumi.get(self, "name")
 
@@ -264,8 +264,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VectorSearchEndpointCustomTagArgs', 'VectorSearchEndpointCustomTagArgsDict']]]]] = None,
-                 effective_budget_policy_id: Optional[pulumi.Input[builtins.str]] = None,
+                 budget_policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  endpoint_type: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -289,6 +288,18 @@ class VectorSearchEndpoint(pulumi.CustomResource):
 
         The resource can be imported using the name of the Mosaic AI Vector Search Endpoint
 
+        hcl
+
+        import {
+
+          to = databricks_vector_search_endpoint.this
+
+          id = "<endpoint-name>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
@@ -297,8 +308,9 @@ class VectorSearchEndpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] endpoint_type: Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
-        :param pulumi.Input[builtins.str] name: Name of the Mosaic AI Vector Search Endpoint to create.
+        :param pulumi.Input[builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
+        :param pulumi.Input[builtins.str] endpoint_type: Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
+        :param pulumi.Input[builtins.str] name: Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
         """
         ...
     @overload
@@ -326,6 +338,18 @@ class VectorSearchEndpoint(pulumi.CustomResource):
 
         The resource can be imported using the name of the Mosaic AI Vector Search Endpoint
 
+        hcl
+
+        import {
+
+          to = databricks_vector_search_endpoint.this
+
+          id = "<endpoint-name>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
@@ -347,8 +371,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VectorSearchEndpointCustomTagArgs', 'VectorSearchEndpointCustomTagArgsDict']]]]] = None,
-                 effective_budget_policy_id: Optional[pulumi.Input[builtins.str]] = None,
+                 budget_policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  endpoint_type: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -360,14 +383,14 @@ class VectorSearchEndpoint(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = VectorSearchEndpointArgs.__new__(VectorSearchEndpointArgs)
 
-            __props__.__dict__["custom_tags"] = custom_tags
-            __props__.__dict__["effective_budget_policy_id"] = effective_budget_policy_id
+            __props__.__dict__["budget_policy_id"] = budget_policy_id
             if endpoint_type is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_type'")
             __props__.__dict__["endpoint_type"] = endpoint_type
             __props__.__dict__["name"] = name
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["creator"] = None
+            __props__.__dict__["effective_budget_policy_id"] = None
             __props__.__dict__["endpoint_id"] = None
             __props__.__dict__["endpoint_statuses"] = None
             __props__.__dict__["last_updated_timestamp"] = None
@@ -383,9 +406,9 @@ class VectorSearchEndpoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            budget_policy_id: Optional[pulumi.Input[builtins.str]] = None,
             creation_timestamp: Optional[pulumi.Input[builtins.int]] = None,
             creator: Optional[pulumi.Input[builtins.str]] = None,
-            custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VectorSearchEndpointCustomTagArgs', 'VectorSearchEndpointCustomTagArgsDict']]]]] = None,
             effective_budget_policy_id: Optional[pulumi.Input[builtins.str]] = None,
             endpoint_id: Optional[pulumi.Input[builtins.str]] = None,
             endpoint_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VectorSearchEndpointEndpointStatusArgs', 'VectorSearchEndpointEndpointStatusArgsDict']]]]] = None,
@@ -401,23 +424,25 @@ class VectorSearchEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
         :param pulumi.Input[builtins.int] creation_timestamp: Timestamp of endpoint creation (milliseconds).
         :param pulumi.Input[builtins.str] creator: Creator of the endpoint.
+        :param pulumi.Input[builtins.str] effective_budget_policy_id: The effective budget policy ID.
         :param pulumi.Input[builtins.str] endpoint_id: Unique internal identifier of the endpoint (UUID).
         :param pulumi.Input[Sequence[pulumi.Input[Union['VectorSearchEndpointEndpointStatusArgs', 'VectorSearchEndpointEndpointStatusArgsDict']]]] endpoint_statuses: Object describing the current status of the endpoint consisting of the following fields:
-        :param pulumi.Input[builtins.str] endpoint_type: Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        :param pulumi.Input[builtins.str] endpoint_type: Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
         :param pulumi.Input[builtins.int] last_updated_timestamp: Timestamp of the last update to the endpoint (milliseconds).
         :param pulumi.Input[builtins.str] last_updated_user: User who last updated the endpoint.
-        :param pulumi.Input[builtins.str] name: Name of the Mosaic AI Vector Search Endpoint to create.
+        :param pulumi.Input[builtins.str] name: Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
         :param pulumi.Input[builtins.int] num_indexes: Number of indexes on the endpoint.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _VectorSearchEndpointState.__new__(_VectorSearchEndpointState)
 
+        __props__.__dict__["budget_policy_id"] = budget_policy_id
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["creator"] = creator
-        __props__.__dict__["custom_tags"] = custom_tags
         __props__.__dict__["effective_budget_policy_id"] = effective_budget_policy_id
         __props__.__dict__["endpoint_id"] = endpoint_id
         __props__.__dict__["endpoint_statuses"] = endpoint_statuses
@@ -427,6 +452,14 @@ class VectorSearchEndpoint(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["num_indexes"] = num_indexes
         return VectorSearchEndpoint(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> pulumi.Output[builtins.str]:
+        """
+        The Budget Policy ID set for this resource.
+        """
+        return pulumi.get(self, "budget_policy_id")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -445,13 +478,11 @@ class VectorSearchEndpoint(pulumi.CustomResource):
         return pulumi.get(self, "creator")
 
     @property
-    @pulumi.getter(name="customTags")
-    def custom_tags(self) -> pulumi.Output[Optional[Sequence['outputs.VectorSearchEndpointCustomTag']]]:
-        return pulumi.get(self, "custom_tags")
-
-    @property
     @pulumi.getter(name="effectiveBudgetPolicyId")
-    def effective_budget_policy_id(self) -> pulumi.Output[Optional[builtins.str]]:
+    def effective_budget_policy_id(self) -> pulumi.Output[builtins.str]:
+        """
+        The effective budget policy ID.
+        """
         return pulumi.get(self, "effective_budget_policy_id")
 
     @property
@@ -474,7 +505,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Output[builtins.str]:
         """
-        Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -498,7 +529,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        Name of the Mosaic AI Vector Search Endpoint to create.
+        Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
         """
         return pulumi.get(self, "name")
 

@@ -25,13 +25,37 @@ export function getAlertV2(args?: GetAlertV2Args, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getAlertV2.
  */
 export interface GetAlertV2Args {
+    /**
+     * (string) - Custom description for the alert. support mustache template
+     */
     customDescription?: string;
+    /**
+     * (string) - Custom summary for the alert. support mustache template
+     */
     customSummary?: string;
+    /**
+     * (string) - The display name of the alert
+     */
     displayName?: string;
+    /**
+     * (AlertV2Evaluation) -
+     */
     evaluation?: inputs.GetAlertV2Evaluation;
+    /**
+     * (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+     */
     parentPath?: string;
+    /**
+     * (string) - Text of the query to be run
+     */
     queryText?: string;
+    /**
+     * (CronSchedule) -
+     */
     schedule?: inputs.GetAlertV2Schedule;
+    /**
+     * (string) - ID of the SQL warehouse attached to the alert
+     */
     warehouseId?: string;
 }
 
@@ -39,19 +63,61 @@ export interface GetAlertV2Args {
  * A collection of values returned by getAlertV2.
  */
 export interface GetAlertV2Result {
+    /**
+     * (string) - The timestamp indicating when the alert was created
+     */
     readonly createTime: string;
+    /**
+     * (string) - Custom description for the alert. support mustache template
+     */
     readonly customDescription?: string;
+    /**
+     * (string) - Custom summary for the alert. support mustache template
+     */
     readonly customSummary?: string;
+    /**
+     * (string) - The display name of the alert
+     */
     readonly displayName?: string;
+    /**
+     * (AlertV2Evaluation) -
+     */
     readonly evaluation?: outputs.GetAlertV2Evaluation;
+    /**
+     * (string) - UUID identifying the alert
+     */
     readonly id: string;
+    /**
+     * (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     */
     readonly lifecycleState: string;
+    /**
+     * (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
+     */
     readonly ownerUserName: string;
+    /**
+     * (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+     */
     readonly parentPath?: string;
+    /**
+     * (string) - Text of the query to be run
+     */
     readonly queryText?: string;
+    /**
+     * (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+     */
     readonly runAsUserName: string;
+    /**
+     * (CronSchedule) -
+     */
     readonly schedule?: outputs.GetAlertV2Schedule;
+    /**
+     * (string) - The timestamp indicating when the alert was updated
+     */
     readonly updateTime: string;
+    /**
+     * (string) - ID of the SQL warehouse attached to the alert
+     */
     readonly warehouseId?: string;
 }
 export function getAlertV2Output(args?: GetAlertV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlertV2Result> {
@@ -73,12 +139,36 @@ export function getAlertV2Output(args?: GetAlertV2OutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getAlertV2.
  */
 export interface GetAlertV2OutputArgs {
+    /**
+     * (string) - Custom description for the alert. support mustache template
+     */
     customDescription?: pulumi.Input<string>;
+    /**
+     * (string) - Custom summary for the alert. support mustache template
+     */
     customSummary?: pulumi.Input<string>;
+    /**
+     * (string) - The display name of the alert
+     */
     displayName?: pulumi.Input<string>;
+    /**
+     * (AlertV2Evaluation) -
+     */
     evaluation?: pulumi.Input<inputs.GetAlertV2EvaluationArgs>;
+    /**
+     * (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+     */
     parentPath?: pulumi.Input<string>;
+    /**
+     * (string) - Text of the query to be run
+     */
     queryText?: pulumi.Input<string>;
+    /**
+     * (CronSchedule) -
+     */
     schedule?: pulumi.Input<inputs.GetAlertV2ScheduleArgs>;
+    /**
+     * (string) - ID of the SQL warehouse attached to the alert
+     */
     warehouseId?: pulumi.Input<string>;
 }

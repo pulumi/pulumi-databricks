@@ -50,7 +50,19 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// The resource can be imported using the name of the Mosaic AI Vector Search Index
+    /// The resource can be imported using the name of the Mosaic AI Vector Search Index:
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_vector_search_index.this
+    /// 
+    ///   id = "&lt;index-name&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
     /// 
     /// bash
     /// 

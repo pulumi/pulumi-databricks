@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetAlertV2EvaluationThresholdInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (AlertV2OperandColumn) -
+        /// </summary>
         [Input("column")]
         public Input<Inputs.GetAlertV2EvaluationThresholdColumnInputArgs>? Column { get; set; }
 
+        /// <summary>
+        /// (AlertV2OperandValue) -
+        /// </summary>
         [Input("value")]
         public Input<Inputs.GetAlertV2EvaluationThresholdValueInputArgs>? Value { get; set; }
 

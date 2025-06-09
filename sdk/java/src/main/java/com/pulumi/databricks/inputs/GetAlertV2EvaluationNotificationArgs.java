@@ -18,23 +18,47 @@ public final class GetAlertV2EvaluationNotificationArgs extends com.pulumi.resou
 
     public static final GetAlertV2EvaluationNotificationArgs Empty = new GetAlertV2EvaluationNotificationArgs();
 
+    /**
+     * (boolean) - Whether to notify alert subscribers when alert returns back to normal
+     * 
+     */
     @Import(name="notifyOnOk")
     private @Nullable Output<Boolean> notifyOnOk;
 
+    /**
+     * @return (boolean) - Whether to notify alert subscribers when alert returns back to normal
+     * 
+     */
     public Optional<Output<Boolean>> notifyOnOk() {
         return Optional.ofNullable(this.notifyOnOk);
     }
 
+    /**
+     * (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     * 
+     */
     @Import(name="retriggerSeconds")
     private @Nullable Output<Integer> retriggerSeconds;
 
+    /**
+     * @return (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     * 
+     */
     public Optional<Output<Integer>> retriggerSeconds() {
         return Optional.ofNullable(this.retriggerSeconds);
     }
 
+    /**
+     * (list of AlertV2Subscription) -
+     * 
+     */
     @Import(name="subscriptions")
     private @Nullable Output<List<GetAlertV2EvaluationNotificationSubscriptionArgs>> subscriptions;
 
+    /**
+     * @return (list of AlertV2Subscription) -
+     * 
+     */
     public Optional<Output<List<GetAlertV2EvaluationNotificationSubscriptionArgs>>> subscriptions() {
         return Optional.ofNullable(this.subscriptions);
     }
@@ -65,33 +89,75 @@ public final class GetAlertV2EvaluationNotificationArgs extends com.pulumi.resou
             $ = new GetAlertV2EvaluationNotificationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param notifyOnOk (boolean) - Whether to notify alert subscribers when alert returns back to normal
+         * 
+         * @return builder
+         * 
+         */
         public Builder notifyOnOk(@Nullable Output<Boolean> notifyOnOk) {
             $.notifyOnOk = notifyOnOk;
             return this;
         }
 
+        /**
+         * @param notifyOnOk (boolean) - Whether to notify alert subscribers when alert returns back to normal
+         * 
+         * @return builder
+         * 
+         */
         public Builder notifyOnOk(Boolean notifyOnOk) {
             return notifyOnOk(Output.of(notifyOnOk));
         }
 
+        /**
+         * @param retriggerSeconds (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+         * 
+         * @return builder
+         * 
+         */
         public Builder retriggerSeconds(@Nullable Output<Integer> retriggerSeconds) {
             $.retriggerSeconds = retriggerSeconds;
             return this;
         }
 
+        /**
+         * @param retriggerSeconds (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+         * 
+         * @return builder
+         * 
+         */
         public Builder retriggerSeconds(Integer retriggerSeconds) {
             return retriggerSeconds(Output.of(retriggerSeconds));
         }
 
+        /**
+         * @param subscriptions (list of AlertV2Subscription) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscriptions(@Nullable Output<List<GetAlertV2EvaluationNotificationSubscriptionArgs>> subscriptions) {
             $.subscriptions = subscriptions;
             return this;
         }
 
+        /**
+         * @param subscriptions (list of AlertV2Subscription) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscriptions(List<GetAlertV2EvaluationNotificationSubscriptionArgs> subscriptions) {
             return subscriptions(Output.of(subscriptions));
         }
 
+        /**
+         * @param subscriptions (list of AlertV2Subscription) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscriptions(GetAlertV2EvaluationNotificationSubscriptionArgs... subscriptions) {
             return subscriptions(List.of(subscriptions));
         }

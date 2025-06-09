@@ -239,6 +239,18 @@ class GlobalInitScript(pulumi.CustomResource):
 
         The resource global init script can be imported using script ID:
 
+        hcl
+
+        import {
+
+          to = databricks_global_init_script.this
+
+          id = "script_id"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
@@ -267,6 +279,18 @@ class GlobalInitScript(pulumi.CustomResource):
         ## Import
 
         The resource global init script can be imported using script ID:
+
+        hcl
+
+        import {
+
+          to = databricks_global_init_script.this
+
+          id = "script_id"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 

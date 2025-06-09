@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs extends com.pulumi.resources.ResourceArgs {
@@ -37,11 +39,19 @@ public final class GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs exte
         return this.name;
     }
 
+    @Import(name="timeseriesColumns")
+    private @Nullable Output<List<String>> timeseriesColumns;
+
+    public Optional<Output<List<String>>> timeseriesColumns() {
+        return Optional.ofNullable(this.timeseriesColumns);
+    }
+
     private GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs() {}
 
     private GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs(GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs $) {
         this.childColumns = $.childColumns;
         this.name = $.name;
+        this.timeseriesColumns = $.timeseriesColumns;
     }
 
     public static Builder builder() {
@@ -94,6 +104,19 @@ public final class GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs exte
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder timeseriesColumns(@Nullable Output<List<String>> timeseriesColumns) {
+            $.timeseriesColumns = timeseriesColumns;
+            return this;
+        }
+
+        public Builder timeseriesColumns(List<String> timeseriesColumns) {
+            return timeseriesColumns(Output.of(timeseriesColumns));
+        }
+
+        public Builder timeseriesColumns(String... timeseriesColumns) {
+            return timeseriesColumns(List.of(timeseriesColumns));
         }
 
         public GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs build() {

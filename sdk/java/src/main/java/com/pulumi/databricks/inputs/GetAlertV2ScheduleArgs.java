@@ -15,23 +15,53 @@ public final class GetAlertV2ScheduleArgs extends com.pulumi.resources.ResourceA
 
     public static final GetAlertV2ScheduleArgs Empty = new GetAlertV2ScheduleArgs();
 
+    /**
+     * (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     * 
+     */
     @Import(name="pauseStatus")
     private @Nullable Output<String> pauseStatus;
 
+    /**
+     * @return (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     * 
+     */
     public Optional<Output<String>> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
     }
 
+    /**
+     * (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
+     * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+     * 
+     */
     @Import(name="quartzCronSchedule")
     private @Nullable Output<String> quartzCronSchedule;
 
+    /**
+     * @return (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
+     * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+     * 
+     */
     public Optional<Output<String>> quartzCronSchedule() {
         return Optional.ofNullable(this.quartzCronSchedule);
     }
 
+    /**
+     * (string) - A Java timezone id. The schedule will be resolved using this timezone.
+     * This will be combined with the quartz_cron_schedule to determine the schedule.
+     * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+     * 
+     */
     @Import(name="timezoneId")
     private @Nullable Output<String> timezoneId;
 
+    /**
+     * @return (string) - A Java timezone id. The schedule will be resolved using this timezone.
+     * This will be combined with the quartz_cron_schedule to determine the schedule.
+     * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+     * 
+     */
     public Optional<Output<String>> timezoneId() {
         return Optional.ofNullable(this.timezoneId);
     }
@@ -62,29 +92,71 @@ public final class GetAlertV2ScheduleArgs extends com.pulumi.resources.ResourceA
             $ = new GetAlertV2ScheduleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param pauseStatus (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+         * 
+         * @return builder
+         * 
+         */
         public Builder pauseStatus(@Nullable Output<String> pauseStatus) {
             $.pauseStatus = pauseStatus;
             return this;
         }
 
+        /**
+         * @param pauseStatus (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+         * 
+         * @return builder
+         * 
+         */
         public Builder pauseStatus(String pauseStatus) {
             return pauseStatus(Output.of(pauseStatus));
         }
 
+        /**
+         * @param quartzCronSchedule (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
+         * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+         * 
+         * @return builder
+         * 
+         */
         public Builder quartzCronSchedule(@Nullable Output<String> quartzCronSchedule) {
             $.quartzCronSchedule = quartzCronSchedule;
             return this;
         }
 
+        /**
+         * @param quartzCronSchedule (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
+         * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+         * 
+         * @return builder
+         * 
+         */
         public Builder quartzCronSchedule(String quartzCronSchedule) {
             return quartzCronSchedule(Output.of(quartzCronSchedule));
         }
 
+        /**
+         * @param timezoneId (string) - A Java timezone id. The schedule will be resolved using this timezone.
+         * This will be combined with the quartz_cron_schedule to determine the schedule.
+         * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+         * 
+         * @return builder
+         * 
+         */
         public Builder timezoneId(@Nullable Output<String> timezoneId) {
             $.timezoneId = timezoneId;
             return this;
         }
 
+        /**
+         * @param timezoneId (string) - A Java timezone id. The schedule will be resolved using this timezone.
+         * This will be combined with the quartz_cron_schedule to determine the schedule.
+         * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+         * 
+         * @return builder
+         * 
+         */
         public Builder timezoneId(String timezoneId) {
             return timezoneId(Output.of(timezoneId));
         }

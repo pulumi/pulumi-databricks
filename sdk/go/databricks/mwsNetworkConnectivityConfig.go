@@ -68,8 +68,22 @@ import (
 //
 // This resource can be imported by Databricks account ID and Network Connectivity Config ID.
 //
+// hcl
+//
+// import {
+//
+//	to = databricks_mws_network_connectivity_config.this
+//
+//	id = "<account_id>/<network_connectivity_config_id>"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+//
+// bash
+//
 // ```sh
-// $ pulumi import databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig ncc <account_id>/<network_connectivity_config_id>
+// $ pulumi import databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig this "<account_id>/<network_connectivity_config_id>"
 // ```
 type MwsNetworkConnectivityConfig struct {
 	pulumi.CustomResourceState

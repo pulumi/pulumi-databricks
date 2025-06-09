@@ -76,71 +76,113 @@ class GetAlertV2Result:
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> builtins.str:
+        """
+        (string) - The timestamp indicating when the alert was created
+        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="customDescription")
     def custom_description(self) -> Optional[builtins.str]:
+        """
+        (string) - Custom description for the alert. support mustache template
+        """
         return pulumi.get(self, "custom_description")
 
     @property
     @pulumi.getter(name="customSummary")
     def custom_summary(self) -> Optional[builtins.str]:
+        """
+        (string) - Custom summary for the alert. support mustache template
+        """
         return pulumi.get(self, "custom_summary")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[builtins.str]:
+        """
+        (string) - The display name of the alert
+        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter
     def evaluation(self) -> Optional['outputs.GetAlertV2EvaluationResult']:
+        """
+        (AlertV2Evaluation) -
+        """
         return pulumi.get(self, "evaluation")
 
     @property
     @pulumi.getter
     def id(self) -> builtins.str:
+        """
+        (string) - UUID identifying the alert
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="lifecycleState")
     def lifecycle_state(self) -> builtins.str:
+        """
+        (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        """
         return pulumi.get(self, "lifecycle_state")
 
     @property
     @pulumi.getter(name="ownerUserName")
     def owner_user_name(self) -> builtins.str:
+        """
+        (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
+        """
         return pulumi.get(self, "owner_user_name")
 
     @property
     @pulumi.getter(name="parentPath")
     def parent_path(self) -> Optional[builtins.str]:
+        """
+        (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        """
         return pulumi.get(self, "parent_path")
 
     @property
     @pulumi.getter(name="queryText")
     def query_text(self) -> Optional[builtins.str]:
+        """
+        (string) - Text of the query to be run
+        """
         return pulumi.get(self, "query_text")
 
     @property
     @pulumi.getter(name="runAsUserName")
     def run_as_user_name(self) -> builtins.str:
+        """
+        (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+        """
         return pulumi.get(self, "run_as_user_name")
 
     @property
     @pulumi.getter
     def schedule(self) -> Optional['outputs.GetAlertV2ScheduleResult']:
+        """
+        (CronSchedule) -
+        """
         return pulumi.get(self, "schedule")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> builtins.str:
+        """
+        (string) - The timestamp indicating when the alert was updated
+        """
         return pulumi.get(self, "update_time")
 
     @property
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> Optional[builtins.str]:
+        """
+        (string) - ID of the SQL warehouse attached to the alert
+        """
         return pulumi.get(self, "warehouse_id")
 
 
@@ -177,6 +219,15 @@ def get_alert_v2(custom_description: Optional[builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlertV2Result:
     """
     Use this data source to access information about an existing resource.
+
+    :param builtins.str custom_description: (string) - Custom description for the alert. support mustache template
+    :param builtins.str custom_summary: (string) - Custom summary for the alert. support mustache template
+    :param builtins.str display_name: (string) - The display name of the alert
+    :param Union['GetAlertV2EvaluationArgs', 'GetAlertV2EvaluationArgsDict'] evaluation: (AlertV2Evaluation) -
+    :param builtins.str parent_path: (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+    :param builtins.str query_text: (string) - Text of the query to be run
+    :param Union['GetAlertV2ScheduleArgs', 'GetAlertV2ScheduleArgsDict'] schedule: (CronSchedule) -
+    :param builtins.str warehouse_id: (string) - ID of the SQL warehouse attached to the alert
     """
     __args__ = dict()
     __args__['customDescription'] = custom_description
@@ -216,6 +267,15 @@ def get_alert_v2_output(custom_description: Optional[pulumi.Input[Optional[built
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertV2Result]:
     """
     Use this data source to access information about an existing resource.
+
+    :param builtins.str custom_description: (string) - Custom description for the alert. support mustache template
+    :param builtins.str custom_summary: (string) - Custom summary for the alert. support mustache template
+    :param builtins.str display_name: (string) - The display name of the alert
+    :param Union['GetAlertV2EvaluationArgs', 'GetAlertV2EvaluationArgsDict'] evaluation: (AlertV2Evaluation) -
+    :param builtins.str parent_path: (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+    :param builtins.str query_text: (string) - Text of the query to be run
+    :param Union['GetAlertV2ScheduleArgs', 'GetAlertV2ScheduleArgsDict'] schedule: (CronSchedule) -
+    :param builtins.str warehouse_id: (string) - ID of the SQL warehouse attached to the alert
     """
     __args__ = dict()
     __args__['customDescription'] = custom_description

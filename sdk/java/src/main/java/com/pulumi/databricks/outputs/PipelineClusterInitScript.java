@@ -25,6 +25,10 @@ public final class PipelineClusterInitScript {
      */
     @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
     private @Nullable PipelineClusterInitScriptDbfs dbfs;
+    /**
+     * @return specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+     * 
+     */
     private @Nullable PipelineClusterInitScriptFile file;
     private @Nullable PipelineClusterInitScriptGcs gcs;
     private @Nullable PipelineClusterInitScriptS3 s3;
@@ -44,6 +48,10 @@ public final class PipelineClusterInitScript {
     public Optional<PipelineClusterInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
+    /**
+     * @return specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+     * 
+     */
     public Optional<PipelineClusterInitScriptFile> file() {
         return Optional.ofNullable(this.file);
     }

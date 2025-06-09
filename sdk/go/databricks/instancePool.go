@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances. An instance pool reduces cluster start and auto-scaling times by maintaining a set of idle, ready-to-use cloud instances. When a cluster attached to a pool needs an instance, it first attempts to allocate one of the pool’s idle instances. If the pool has no idle instances, it expands by allocating a new instance from the instance provider in order to accommodate the cluster’s request. When a cluster releases an instance, it returns to the pool and is free for another cluster to use. Only clusters attached to a pool can use that pool’s idle instances.
+// This resource allows you to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances. An instance pool reduces cluster start and auto-scaling times by maintaining a set of idle, ready-to-use cloud instances. When a cluster attached to a pool needs an instance, it first attempts to allocate one of the pool's idle instances. If the pool has no idle instances, it expands by allocating a new instance from the instance provider in order to accommodate the cluster's request. When a cluster releases an instance, it returns to the pool and is free for another cluster to use. Only clusters attached to a pool can use that pool's idle instances.
 //
 // > This resource can only be used with a workspace-level provider!
 //
@@ -71,7 +71,19 @@ import (
 //
 // ## Import
 //
-// The resource instance pool can be imported using it's id:
+// The resource instance pool can be imported using its id:
+//
+// hcl
+//
+// import {
+//
+//	to = databricks_instance_pool.this
+//
+//	id = "<instance-pool-id>"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 //
 // bash
 //
@@ -99,7 +111,7 @@ type InstancePool struct {
 	MaxCapacity pulumi.IntPtrOutput `pulumi:"maxCapacity"`
 	// (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
 	MinIdleInstances pulumi.IntPtrOutput `pulumi:"minIdleInstances"`
-	// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
+	// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
 	NodeTypeId            pulumi.StringPtrOutput                      `pulumi:"nodeTypeId"`
 	PreloadedDockerImages InstancePoolPreloadedDockerImageArrayOutput `pulumi:"preloadedDockerImages"`
 	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
@@ -160,7 +172,7 @@ type instancePoolState struct {
 	MaxCapacity *int `pulumi:"maxCapacity"`
 	// (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
 	MinIdleInstances *int `pulumi:"minIdleInstances"`
-	// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
+	// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
 	NodeTypeId            *string                            `pulumi:"nodeTypeId"`
 	PreloadedDockerImages []InstancePoolPreloadedDockerImage `pulumi:"preloadedDockerImages"`
 	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
@@ -186,7 +198,7 @@ type InstancePoolState struct {
 	MaxCapacity pulumi.IntPtrInput
 	// (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
 	MinIdleInstances pulumi.IntPtrInput
-	// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
+	// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
 	NodeTypeId            pulumi.StringPtrInput
 	PreloadedDockerImages InstancePoolPreloadedDockerImageArrayInput
 	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
@@ -216,7 +228,7 @@ type instancePoolArgs struct {
 	MaxCapacity *int `pulumi:"maxCapacity"`
 	// (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
 	MinIdleInstances *int `pulumi:"minIdleInstances"`
-	// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
+	// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
 	NodeTypeId            *string                            `pulumi:"nodeTypeId"`
 	PreloadedDockerImages []InstancePoolPreloadedDockerImage `pulumi:"preloadedDockerImages"`
 	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
@@ -243,7 +255,7 @@ type InstancePoolArgs struct {
 	MaxCapacity pulumi.IntPtrInput
 	// (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
 	MinIdleInstances pulumi.IntPtrInput
-	// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
+	// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
 	NodeTypeId            pulumi.StringPtrInput
 	PreloadedDockerImages InstancePoolPreloadedDockerImageArrayInput
 	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
@@ -393,7 +405,7 @@ func (o InstancePoolOutput) MinIdleInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.IntPtrOutput { return v.MinIdleInstances }).(pulumi.IntPtrOutput)
 }
 
-// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
+// (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
 func (o InstancePoolOutput) NodeTypeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstancePool) pulumi.StringPtrOutput { return v.NodeTypeId }).(pulumi.StringPtrOutput)
 }

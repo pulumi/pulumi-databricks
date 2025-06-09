@@ -98,10 +98,24 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by Databricks account ID and Budget.
+    /// This resource can be imported by Databricks account ID and Budget:
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_budget.this
+    /// 
+    ///   id = "&lt;account_id&gt;|&lt;budget_configuration_id&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+    /// 
+    /// bash
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/budget:Budget this '&lt;account_id&gt;|&lt;budget_configuration_id&gt;'
+    /// $ pulumi import databricks:index/budget:Budget this "&lt;account_id&gt;|&lt;budget_configuration_id&gt;"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/budget:Budget")]

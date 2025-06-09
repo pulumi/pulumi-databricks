@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTableTableInfoTableConstraintPrimaryKeyConstraint {
@@ -17,6 +18,7 @@ public final class GetTableTableInfoTableConstraintPrimaryKeyConstraint {
      * 
      */
     private String name;
+    private @Nullable List<String> timeseriesColumns;
 
     private GetTableTableInfoTableConstraintPrimaryKeyConstraint() {}
     public List<String> childColumns() {
@@ -28,6 +30,9 @@ public final class GetTableTableInfoTableConstraintPrimaryKeyConstraint {
      */
     public String name() {
         return this.name;
+    }
+    public List<String> timeseriesColumns() {
+        return this.timeseriesColumns == null ? List.of() : this.timeseriesColumns;
     }
 
     public static Builder builder() {
@@ -41,11 +46,13 @@ public final class GetTableTableInfoTableConstraintPrimaryKeyConstraint {
     public static final class Builder {
         private List<String> childColumns;
         private String name;
+        private @Nullable List<String> timeseriesColumns;
         public Builder() {}
         public Builder(GetTableTableInfoTableConstraintPrimaryKeyConstraint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.childColumns = defaults.childColumns;
     	      this.name = defaults.name;
+    	      this.timeseriesColumns = defaults.timeseriesColumns;
         }
 
         @CustomType.Setter
@@ -67,10 +74,20 @@ public final class GetTableTableInfoTableConstraintPrimaryKeyConstraint {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder timeseriesColumns(@Nullable List<String> timeseriesColumns) {
+
+            this.timeseriesColumns = timeseriesColumns;
+            return this;
+        }
+        public Builder timeseriesColumns(String... timeseriesColumns) {
+            return timeseriesColumns(List.of(timeseriesColumns));
+        }
         public GetTableTableInfoTableConstraintPrimaryKeyConstraint build() {
             final var _resultValue = new GetTableTableInfoTableConstraintPrimaryKeyConstraint();
             _resultValue.childColumns = childColumns;
             _resultValue.name = name;
+            _resultValue.timeseriesColumns = timeseriesColumns;
             return _resultValue;
         }
     }

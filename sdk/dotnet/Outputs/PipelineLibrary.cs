@@ -13,15 +13,27 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineLibrary
     {
+        /// <summary>
+        /// specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+        /// </summary>
         public readonly Outputs.PipelineLibraryFile? File;
+        /// <summary>
+        /// The unified field to include source code. Each entry should have the `include` attribute that can specify a notebook path, a file path, or a folder path that ends `/**` (to include everything from that folder). This field cannot be used together with `notebook` or `file`.
+        /// </summary>
+        public readonly Outputs.PipelineLibraryGlob? Glob;
         public readonly string? Jar;
         public readonly Outputs.PipelineLibraryMaven? Maven;
+        /// <summary>
+        /// specifies path to a Databricks Notebook to include as source. Actual path is specified as `path` attribute inside the block.
+        /// </summary>
         public readonly Outputs.PipelineLibraryNotebook? Notebook;
         public readonly string? Whl;
 
         [OutputConstructor]
         private PipelineLibrary(
             Outputs.PipelineLibraryFile? file,
+
+            Outputs.PipelineLibraryGlob? glob,
 
             string? jar,
 
@@ -32,6 +44,7 @@ namespace Pulumi.Databricks.Outputs
             string? whl)
         {
             File = file;
+            Glob = glob;
             Jar = jar;
             Maven = maven;
             Notebook = notebook;

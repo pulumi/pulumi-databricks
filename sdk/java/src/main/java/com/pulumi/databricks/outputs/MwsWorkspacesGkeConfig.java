@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MwsWorkspacesGkeConfig {
-    /**
-     * @return Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
-     * 
-     */
     private @Nullable String connectivityType;
-    /**
-     * @return The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
-     * 
-     */
     private @Nullable String masterIpRange;
 
     private MwsWorkspacesGkeConfig() {}
-    /**
-     * @return Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
-     * 
-     */
     public Optional<String> connectivityType() {
         return Optional.ofNullable(this.connectivityType);
     }
-    /**
-     * @return The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
-     * 
-     */
     public Optional<String> masterIpRange() {
         return Optional.ofNullable(this.masterIpRange);
     }

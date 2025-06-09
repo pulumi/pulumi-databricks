@@ -190,6 +190,18 @@ class Directory(pulumi.CustomResource):
 
         The resource directory can be imported using directory path:
 
+        hcl
+
+        import {
+
+          to = databricks_directory.this
+
+          id = "/path/to/directory"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
@@ -243,6 +255,18 @@ class Directory(pulumi.CustomResource):
         ## Import
 
         The resource directory can be imported using directory path:
+
+        hcl
+
+        import {
+
+          to = databricks_directory.this
+
+          id = "/path/to/directory"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 

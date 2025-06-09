@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetExternalLocationExternalLocationInfoEncryptionDetails;
+import com.pulumi.databricks.outputs.GetExternalLocationExternalLocationInfoFileEventQueue;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -14,11 +15,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetExternalLocationExternalLocationInfo {
-    /**
-     * @return The ARN of the s3 access point to use with the external location (AWS).
-     * 
-     */
-    private @Nullable String accessPoint;
     private @Nullable Boolean browseOnly;
     /**
      * @return User-supplied comment.
@@ -45,12 +41,14 @@ public final class GetExternalLocationExternalLocationInfo {
      * 
      */
     private @Nullable String credentialName;
+    private @Nullable Boolean enableFileEvents;
     /**
      * @return The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      * 
      */
     private @Nullable GetExternalLocationExternalLocationInfoEncryptionDetails encryptionDetails;
     private @Nullable Boolean fallback;
+    private @Nullable GetExternalLocationExternalLocationInfoFileEventQueue fileEventQueue;
     private @Nullable String isolationMode;
     /**
      * @return Unique identifier of the parent Metastore.
@@ -89,13 +87,6 @@ public final class GetExternalLocationExternalLocationInfo {
     private @Nullable String url;
 
     private GetExternalLocationExternalLocationInfo() {}
-    /**
-     * @return The ARN of the s3 access point to use with the external location (AWS).
-     * 
-     */
-    public Optional<String> accessPoint() {
-        return Optional.ofNullable(this.accessPoint);
-    }
     public Optional<Boolean> browseOnly() {
         return Optional.ofNullable(this.browseOnly);
     }
@@ -134,6 +125,9 @@ public final class GetExternalLocationExternalLocationInfo {
     public Optional<String> credentialName() {
         return Optional.ofNullable(this.credentialName);
     }
+    public Optional<Boolean> enableFileEvents() {
+        return Optional.ofNullable(this.enableFileEvents);
+    }
     /**
      * @return The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      * 
@@ -143,6 +137,9 @@ public final class GetExternalLocationExternalLocationInfo {
     }
     public Optional<Boolean> fallback() {
         return Optional.ofNullable(this.fallback);
+    }
+    public Optional<GetExternalLocationExternalLocationInfoFileEventQueue> fileEventQueue() {
+        return Optional.ofNullable(this.fileEventQueue);
     }
     public Optional<String> isolationMode() {
         return Optional.ofNullable(this.isolationMode);
@@ -206,15 +203,16 @@ public final class GetExternalLocationExternalLocationInfo {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accessPoint;
         private @Nullable Boolean browseOnly;
         private @Nullable String comment;
         private @Nullable Integer createdAt;
         private @Nullable String createdBy;
         private @Nullable String credentialId;
         private @Nullable String credentialName;
+        private @Nullable Boolean enableFileEvents;
         private @Nullable GetExternalLocationExternalLocationInfoEncryptionDetails encryptionDetails;
         private @Nullable Boolean fallback;
+        private @Nullable GetExternalLocationExternalLocationInfoFileEventQueue fileEventQueue;
         private @Nullable String isolationMode;
         private @Nullable String metastoreId;
         private @Nullable String name;
@@ -226,15 +224,16 @@ public final class GetExternalLocationExternalLocationInfo {
         public Builder() {}
         public Builder(GetExternalLocationExternalLocationInfo defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accessPoint = defaults.accessPoint;
     	      this.browseOnly = defaults.browseOnly;
     	      this.comment = defaults.comment;
     	      this.createdAt = defaults.createdAt;
     	      this.createdBy = defaults.createdBy;
     	      this.credentialId = defaults.credentialId;
     	      this.credentialName = defaults.credentialName;
+    	      this.enableFileEvents = defaults.enableFileEvents;
     	      this.encryptionDetails = defaults.encryptionDetails;
     	      this.fallback = defaults.fallback;
+    	      this.fileEventQueue = defaults.fileEventQueue;
     	      this.isolationMode = defaults.isolationMode;
     	      this.metastoreId = defaults.metastoreId;
     	      this.name = defaults.name;
@@ -245,12 +244,6 @@ public final class GetExternalLocationExternalLocationInfo {
     	      this.url = defaults.url;
         }
 
-        @CustomType.Setter
-        public Builder accessPoint(@Nullable String accessPoint) {
-
-            this.accessPoint = accessPoint;
-            return this;
-        }
         @CustomType.Setter
         public Builder browseOnly(@Nullable Boolean browseOnly) {
 
@@ -288,6 +281,12 @@ public final class GetExternalLocationExternalLocationInfo {
             return this;
         }
         @CustomType.Setter
+        public Builder enableFileEvents(@Nullable Boolean enableFileEvents) {
+
+            this.enableFileEvents = enableFileEvents;
+            return this;
+        }
+        @CustomType.Setter
         public Builder encryptionDetails(@Nullable GetExternalLocationExternalLocationInfoEncryptionDetails encryptionDetails) {
 
             this.encryptionDetails = encryptionDetails;
@@ -297,6 +296,12 @@ public final class GetExternalLocationExternalLocationInfo {
         public Builder fallback(@Nullable Boolean fallback) {
 
             this.fallback = fallback;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fileEventQueue(@Nullable GetExternalLocationExternalLocationInfoFileEventQueue fileEventQueue) {
+
+            this.fileEventQueue = fileEventQueue;
             return this;
         }
         @CustomType.Setter
@@ -349,15 +354,16 @@ public final class GetExternalLocationExternalLocationInfo {
         }
         public GetExternalLocationExternalLocationInfo build() {
             final var _resultValue = new GetExternalLocationExternalLocationInfo();
-            _resultValue.accessPoint = accessPoint;
             _resultValue.browseOnly = browseOnly;
             _resultValue.comment = comment;
             _resultValue.createdAt = createdAt;
             _resultValue.createdBy = createdBy;
             _resultValue.credentialId = credentialId;
             _resultValue.credentialName = credentialName;
+            _resultValue.enableFileEvents = enableFileEvents;
             _resultValue.encryptionDetails = encryptionDetails;
             _resultValue.fallback = fallback;
+            _resultValue.fileEventQueue = fileEventQueue;
             _resultValue.isolationMode = isolationMode;
             _resultValue.metastoreId = metastoreId;
             _resultValue.name = name;

@@ -16,6 +16,18 @@ import (
 //
 // This resource can be imported using alert ID:
 //
+// hcl
+//
+// import {
+//
+//	to = databricks_alert.this
+//
+//	id = "<alert-id>"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+//
 // bash
 //
 // ```sh

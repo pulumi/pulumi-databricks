@@ -14,7 +14,7 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!
     /// 
-    /// A volume resides in the third layer of Unity Catalog’s three-level namespace. Volumes are siblings to tables, views, and other objects organized under a schema in Unity Catalog.
+    /// A volume resides in the third layer of Unity Catalog's three-level namespace. Volumes are siblings to tables, views, and other objects organized under a schema in Unity Catalog.
     /// 
     /// A volume can be **managed** or **external**.
     /// 
@@ -101,6 +101,18 @@ namespace Pulumi.Databricks
     /// ## Import
     /// 
     /// This resource can be imported by `full_name` which is the 3-level Volume identifier: `&lt;catalog&gt;.&lt;schema&gt;.&lt;name&gt;`
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_volume.this
+    /// 
+    ///   id = "&lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
     /// 
     /// bash
     /// 

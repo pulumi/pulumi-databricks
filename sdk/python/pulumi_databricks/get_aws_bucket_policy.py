@@ -139,7 +139,7 @@ def get_aws_bucket_policy(aws_partition: Optional[builtins.str] = None,
 
 
     :param builtins.str aws_partition: AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
-    :param builtins.str bucket: AWS S3 Bucket name for which to generate the policy document.
+    :param builtins.str bucket: AWS S3 Bucket name for which to generate the policy document. The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
     :param builtins.str databricks_e2_account_id: Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
     :param builtins.str full_access_role: Data access role that can have full access for this bucket
     """
@@ -191,7 +191,7 @@ def get_aws_bucket_policy_output(aws_partition: Optional[pulumi.Input[Optional[b
 
 
     :param builtins.str aws_partition: AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
-    :param builtins.str bucket: AWS S3 Bucket name for which to generate the policy document.
+    :param builtins.str bucket: AWS S3 Bucket name for which to generate the policy document. The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
     :param builtins.str databricks_e2_account_id: Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
     :param builtins.str full_access_role: Data access role that can have full access for this bucket
     """

@@ -75,6 +75,7 @@ public final class GetGroupResult {
      */
     private List<String> users;
     private @Nullable Boolean workspaceAccess;
+    private @Nullable Boolean workspaceConsume;
 
     private GetGroupResult() {}
     /**
@@ -168,6 +169,9 @@ public final class GetGroupResult {
     public Optional<Boolean> workspaceAccess() {
         return Optional.ofNullable(this.workspaceAccess);
     }
+    public Optional<Boolean> workspaceConsume() {
+        return Optional.ofNullable(this.workspaceConsume);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -193,6 +197,7 @@ public final class GetGroupResult {
         private List<String> servicePrincipals;
         private List<String> users;
         private @Nullable Boolean workspaceAccess;
+        private @Nullable Boolean workspaceConsume;
         public Builder() {}
         public Builder(GetGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -211,6 +216,7 @@ public final class GetGroupResult {
     	      this.servicePrincipals = defaults.servicePrincipals;
     	      this.users = defaults.users;
     	      this.workspaceAccess = defaults.workspaceAccess;
+    	      this.workspaceConsume = defaults.workspaceConsume;
         }
 
         @CustomType.Setter
@@ -341,6 +347,12 @@ public final class GetGroupResult {
             this.workspaceAccess = workspaceAccess;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspaceConsume(@Nullable Boolean workspaceConsume) {
+
+            this.workspaceConsume = workspaceConsume;
+            return this;
+        }
         public GetGroupResult build() {
             final var _resultValue = new GetGroupResult();
             _resultValue.aclPrincipalId = aclPrincipalId;
@@ -358,6 +370,7 @@ public final class GetGroupResult {
             _resultValue.servicePrincipals = servicePrincipals;
             _resultValue.users = users;
             _resultValue.workspaceAccess = workspaceAccess;
+            _resultValue.workspaceConsume = workspaceConsume;
             return _resultValue;
         }
     }

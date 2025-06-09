@@ -20,41 +20,24 @@ __all__ = ['SystemSchemaArgs', 'SystemSchema']
 @pulumi.input_type
 class SystemSchemaArgs:
     def __init__(__self__, *,
-                 schema: Optional[pulumi.Input[builtins.str]] = None,
-                 state: Optional[pulumi.Input[builtins.str]] = None):
+                 schema: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a SystemSchema resource.
         :param pulumi.Input[builtins.str] schema: name of the system schema.
-        :param pulumi.Input[builtins.str] state: The current state of enablement for the system schema.
         """
-        if schema is not None:
-            pulumi.set(__self__, "schema", schema)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "schema", schema)
 
     @property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[builtins.str]]:
+    def schema(self) -> pulumi.Input[builtins.str]:
         """
         name of the system schema.
         """
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[builtins.str]]):
+    def schema(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "schema", value)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The current state of enablement for the system schema.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "state", value)
 
 
 @pulumi.input_type
@@ -144,14 +127,13 @@ class SystemSchema(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  schema: Optional[pulumi.Input[builtins.str]] = None,
-                 state: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
+        Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account's operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
 
         > This resource can only be used with a workspace-level provider!
 
-        > Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.
+        > Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.  Certain schemas can't also be disabled completely.
 
         ## Example Usage
 
@@ -166,7 +148,19 @@ class SystemSchema(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by the metastore id and schema name
+        This resource can be imported by the metastore id and schema name:
+
+        hcl
+
+        import {
+
+          to = databricks_system_schema.this
+
+          id = "<metastore_id>|<schema_name>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 
@@ -177,20 +171,19 @@ class SystemSchema(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] schema: name of the system schema.
-        :param pulumi.Input[builtins.str] state: The current state of enablement for the system schema.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[SystemSchemaArgs] = None,
+                 args: SystemSchemaArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
+        Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account's operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
 
         > This resource can only be used with a workspace-level provider!
 
-        > Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.
+        > Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.  Certain schemas can't also be disabled completely.
 
         ## Example Usage
 
@@ -205,7 +198,19 @@ class SystemSchema(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by the metastore id and schema name
+        This resource can be imported by the metastore id and schema name:
+
+        hcl
+
+        import {
+
+          to = databricks_system_schema.this
+
+          id = "<metastore_id>|<schema_name>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 
@@ -229,7 +234,6 @@ class SystemSchema(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  schema: Optional[pulumi.Input[builtins.str]] = None,
-                 state: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -239,11 +243,13 @@ class SystemSchema(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SystemSchemaArgs.__new__(SystemSchemaArgs)
 
+            if schema is None and not opts.urn:
+                raise TypeError("Missing required property 'schema'")
             __props__.__dict__["schema"] = schema
-            __props__.__dict__["state"] = state
             __props__.__dict__["auto_enabled"] = None
             __props__.__dict__["full_name"] = None
             __props__.__dict__["metastore_id"] = None
+            __props__.__dict__["state"] = None
         super(SystemSchema, __self__).__init__(
             'databricks:index/systemSchema:SystemSchema',
             resource_name,
@@ -301,7 +307,7 @@ class SystemSchema(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schema(self) -> pulumi.Output[Optional[builtins.str]]:
+    def schema(self) -> pulumi.Output[builtins.str]:
         """
         name of the system schema.
         """

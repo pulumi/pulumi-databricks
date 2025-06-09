@@ -14,61 +14,173 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAlertV2Result {
+    /**
+     * @return (string) - The timestamp indicating when the alert was created
+     * 
+     */
     private String createTime;
+    /**
+     * @return (string) - Custom description for the alert. support mustache template
+     * 
+     */
     private @Nullable String customDescription;
+    /**
+     * @return (string) - Custom summary for the alert. support mustache template
+     * 
+     */
     private @Nullable String customSummary;
+    /**
+     * @return (string) - The display name of the alert
+     * 
+     */
     private @Nullable String displayName;
+    /**
+     * @return (AlertV2Evaluation) -
+     * 
+     */
     private @Nullable GetAlertV2Evaluation evaluation;
+    /**
+     * @return (string) - UUID identifying the alert
+     * 
+     */
     private String id;
+    /**
+     * @return (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     * 
+     */
     private String lifecycleState;
+    /**
+     * @return (string) - The owner&#39;s username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+     * 
+     */
     private String ownerUserName;
+    /**
+     * @return (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+     * 
+     */
     private @Nullable String parentPath;
+    /**
+     * @return (string) - Text of the query to be run
+     * 
+     */
     private @Nullable String queryText;
+    /**
+     * @return (string) - The run as username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+     * 
+     */
     private String runAsUserName;
+    /**
+     * @return (CronSchedule) -
+     * 
+     */
     private @Nullable GetAlertV2Schedule schedule;
+    /**
+     * @return (string) - The timestamp indicating when the alert was updated
+     * 
+     */
     private String updateTime;
+    /**
+     * @return (string) - ID of the SQL warehouse attached to the alert
+     * 
+     */
     private @Nullable String warehouseId;
 
     private GetAlertV2Result() {}
+    /**
+     * @return (string) - The timestamp indicating when the alert was created
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return (string) - Custom description for the alert. support mustache template
+     * 
+     */
     public Optional<String> customDescription() {
         return Optional.ofNullable(this.customDescription);
     }
+    /**
+     * @return (string) - Custom summary for the alert. support mustache template
+     * 
+     */
     public Optional<String> customSummary() {
         return Optional.ofNullable(this.customSummary);
     }
+    /**
+     * @return (string) - The display name of the alert
+     * 
+     */
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
     }
+    /**
+     * @return (AlertV2Evaluation) -
+     * 
+     */
     public Optional<GetAlertV2Evaluation> evaluation() {
         return Optional.ofNullable(this.evaluation);
     }
+    /**
+     * @return (string) - UUID identifying the alert
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     * 
+     */
     public String lifecycleState() {
         return this.lifecycleState;
     }
+    /**
+     * @return (string) - The owner&#39;s username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+     * 
+     */
     public String ownerUserName() {
         return this.ownerUserName;
     }
+    /**
+     * @return (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+     * 
+     */
     public Optional<String> parentPath() {
         return Optional.ofNullable(this.parentPath);
     }
+    /**
+     * @return (string) - Text of the query to be run
+     * 
+     */
     public Optional<String> queryText() {
         return Optional.ofNullable(this.queryText);
     }
+    /**
+     * @return (string) - The run as username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+     * 
+     */
     public String runAsUserName() {
         return this.runAsUserName;
     }
+    /**
+     * @return (CronSchedule) -
+     * 
+     */
     public Optional<GetAlertV2Schedule> schedule() {
         return Optional.ofNullable(this.schedule);
     }
+    /**
+     * @return (string) - The timestamp indicating when the alert was updated
+     * 
+     */
     public String updateTime() {
         return this.updateTime;
     }
+    /**
+     * @return (string) - ID of the SQL warehouse attached to the alert
+     * 
+     */
     public Optional<String> warehouseId() {
         return Optional.ofNullable(this.warehouseId);
     }

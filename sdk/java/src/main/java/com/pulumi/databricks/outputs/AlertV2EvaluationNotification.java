@@ -14,14 +14,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertV2EvaluationNotification {
+    /**
+     * @return Whether to notify alert subscribers when alert returns back to normal
+     * 
+     */
     private @Nullable Boolean notifyOnOk;
+    /**
+     * @return Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     * 
+     */
     private @Nullable Integer retriggerSeconds;
     private @Nullable List<AlertV2EvaluationNotificationSubscription> subscriptions;
 
     private AlertV2EvaluationNotification() {}
+    /**
+     * @return Whether to notify alert subscribers when alert returns back to normal
+     * 
+     */
     public Optional<Boolean> notifyOnOk() {
         return Optional.ofNullable(this.notifyOnOk);
     }
+    /**
+     * @return Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     * 
+     */
     public Optional<Integer> retriggerSeconds() {
         return Optional.ofNullable(this.retriggerSeconds);
     }

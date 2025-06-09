@@ -39,6 +39,13 @@ public final class PipelineIngestionDefinitionArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.objects);
     }
 
+    @Import(name="sourceType")
+    private @Nullable Output<String> sourceType;
+
+    public Optional<Output<String>> sourceType() {
+        return Optional.ofNullable(this.sourceType);
+    }
+
     @Import(name="tableConfiguration")
     private @Nullable Output<PipelineIngestionDefinitionTableConfigurationArgs> tableConfiguration;
 
@@ -52,6 +59,7 @@ public final class PipelineIngestionDefinitionArgs extends com.pulumi.resources.
         this.connectionName = $.connectionName;
         this.ingestionGatewayId = $.ingestionGatewayId;
         this.objects = $.objects;
+        this.sourceType = $.sourceType;
         this.tableConfiguration = $.tableConfiguration;
     }
 
@@ -102,6 +110,15 @@ public final class PipelineIngestionDefinitionArgs extends com.pulumi.resources.
 
         public Builder objects(PipelineIngestionDefinitionObjectArgs... objects) {
             return objects(List.of(objects));
+        }
+
+        public Builder sourceType(@Nullable Output<String> sourceType) {
+            $.sourceType = sourceType;
+            return this;
+        }
+
+        public Builder sourceType(String sourceType) {
+            return sourceType(Output.of(sourceType));
         }
 
         public Builder tableConfiguration(@Nullable Output<PipelineIngestionDefinitionTableConfigurationArgs> tableConfiguration) {

@@ -51,7 +51,7 @@ export interface GetAwsBucketPolicyArgs {
      */
     awsPartition?: string;
     /**
-     * AWS S3 Bucket name for which to generate the policy document.
+     * AWS S3 Bucket name for which to generate the policy document. The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
      */
     bucket: string;
     /**
@@ -136,7 +136,7 @@ export interface GetAwsBucketPolicyOutputArgs {
      */
     awsPartition?: pulumi.Input<string>;
     /**
-     * AWS S3 Bucket name for which to generate the policy document.
+     * AWS S3 Bucket name for which to generate the policy document. The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
      */
     bucket: pulumi.Input<string>;
     /**

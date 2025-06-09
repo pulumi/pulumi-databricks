@@ -139,14 +139,16 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[builtins.str] = None,
         policy=this.json)
     metastore_data_access = aws.iam.Role("metastore_data_access",
         name=f"{prefix}-uc-access",
-        assume_role_policy=this_get_aws_unity_catalog_assume_role_policy.json,
-        managed_policy_arns=[unity_metastore.arn])
+        assume_role_policy=this_get_aws_unity_catalog_assume_role_policy.json)
+    metastore_data_access_role_policy_attachment = aws.iam.RolePolicyAttachment("metastore_data_access",
+        role=metastore_data_access.name,
+        policy_arn=unity_metastore.arn)
     ```
 
 
     :param builtins.str aws_account_id: The Account ID of the current AWS account (not your Databricks account).
     :param builtins.str aws_partition: AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
-    :param builtins.str bucket_name: The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
+    :param builtins.str bucket_name: The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.  The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
     :param builtins.str kms_name: If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
     :param builtins.str role_name: The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
     """
@@ -199,14 +201,16 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[bu
         policy=this.json)
     metastore_data_access = aws.iam.Role("metastore_data_access",
         name=f"{prefix}-uc-access",
-        assume_role_policy=this_get_aws_unity_catalog_assume_role_policy.json,
-        managed_policy_arns=[unity_metastore.arn])
+        assume_role_policy=this_get_aws_unity_catalog_assume_role_policy.json)
+    metastore_data_access_role_policy_attachment = aws.iam.RolePolicyAttachment("metastore_data_access",
+        role=metastore_data_access.name,
+        policy_arn=unity_metastore.arn)
     ```
 
 
     :param builtins.str aws_account_id: The Account ID of the current AWS account (not your Databricks account).
     :param builtins.str aws_partition: AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
-    :param builtins.str bucket_name: The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
+    :param builtins.str bucket_name: The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.  The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
     :param builtins.str kms_name: If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
     :param builtins.str role_name: The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
     """

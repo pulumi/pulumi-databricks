@@ -34,7 +34,8 @@ class ServicePrincipalArgs:
                  force_delete_repos: Optional[pulumi.Input[builtins.bool]] = None,
                  home: Optional[pulumi.Input[builtins.str]] = None,
                  repos: Optional[pulumi.Input[builtins.str]] = None,
-                 workspace_access: Optional[pulumi.Input[builtins.bool]] = None):
+                 workspace_access: Optional[pulumi.Input[builtins.bool]] = None,
+                 workspace_consume: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a ServicePrincipal resource.
         :param pulumi.Input[builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
@@ -42,7 +43,7 @@ class ServicePrincipalArgs:
         :param pulumi.Input[builtins.bool] allow_cluster_create: Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
         :param pulumi.Input[builtins.bool] allow_instance_pool_create: Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         :param pulumi.Input[builtins.str] application_id: This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
-        :param pulumi.Input[builtins.bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
+        :param pulumi.Input[builtins.bool] databricks_sql_access: This is a field to allow the service principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         :param pulumi.Input[builtins.bool] disable_as_user_deletion: Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[builtins.str] display_name: This is an alias for the service principal and can be the full name of the service principal.
         :param pulumi.Input[builtins.str] external_id: ID of the service principal in an external identity provider.
@@ -51,7 +52,8 @@ class ServicePrincipalArgs:
         :param pulumi.Input[builtins.bool] force_delete_repos: This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[builtins.str] home: Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[builtins.str] repos: Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
-        :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
+        :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the service principal to have access to a Databricks Workspace.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
         """
         if acl_principal_id is not None:
             pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -83,6 +85,8 @@ class ServicePrincipalArgs:
             pulumi.set(__self__, "repos", repos)
         if workspace_access is not None:
             pulumi.set(__self__, "workspace_access", workspace_access)
+        if workspace_consume is not None:
+            pulumi.set(__self__, "workspace_consume", workspace_consume)
 
     @property
     @pulumi.getter(name="aclPrincipalId")
@@ -148,7 +152,7 @@ class ServicePrincipalArgs:
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
+        This is a field to allow the service principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         """
         return pulumi.get(self, "databricks_sql_access")
 
@@ -256,13 +260,25 @@ class ServicePrincipalArgs:
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        This is a field to allow the group to have access to Databricks Workspace.
+        This is a field to allow the service principal to have access to a Databricks Workspace.
         """
         return pulumi.get(self, "workspace_access")
 
     @workspace_access.setter
     def workspace_access(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "workspace_access", value)
+
+    @property
+    @pulumi.getter(name="workspaceConsume")
+    def workspace_consume(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        """
+        return pulumi.get(self, "workspace_consume")
+
+    @workspace_consume.setter
+    def workspace_consume(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "workspace_consume", value)
 
 
 @pulumi.input_type
@@ -282,7 +298,8 @@ class _ServicePrincipalState:
                  force_delete_repos: Optional[pulumi.Input[builtins.bool]] = None,
                  home: Optional[pulumi.Input[builtins.str]] = None,
                  repos: Optional[pulumi.Input[builtins.str]] = None,
-                 workspace_access: Optional[pulumi.Input[builtins.bool]] = None):
+                 workspace_access: Optional[pulumi.Input[builtins.bool]] = None,
+                 workspace_consume: Optional[pulumi.Input[builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipal resources.
         :param pulumi.Input[builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
@@ -290,7 +307,7 @@ class _ServicePrincipalState:
         :param pulumi.Input[builtins.bool] allow_cluster_create: Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
         :param pulumi.Input[builtins.bool] allow_instance_pool_create: Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         :param pulumi.Input[builtins.str] application_id: This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
-        :param pulumi.Input[builtins.bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
+        :param pulumi.Input[builtins.bool] databricks_sql_access: This is a field to allow the service principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         :param pulumi.Input[builtins.bool] disable_as_user_deletion: Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[builtins.str] display_name: This is an alias for the service principal and can be the full name of the service principal.
         :param pulumi.Input[builtins.str] external_id: ID of the service principal in an external identity provider.
@@ -299,7 +316,8 @@ class _ServicePrincipalState:
         :param pulumi.Input[builtins.bool] force_delete_repos: This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[builtins.str] home: Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[builtins.str] repos: Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
-        :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
+        :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the service principal to have access to a Databricks Workspace.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
         """
         if acl_principal_id is not None:
             pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -331,6 +349,8 @@ class _ServicePrincipalState:
             pulumi.set(__self__, "repos", repos)
         if workspace_access is not None:
             pulumi.set(__self__, "workspace_access", workspace_access)
+        if workspace_consume is not None:
+            pulumi.set(__self__, "workspace_consume", workspace_consume)
 
     @property
     @pulumi.getter(name="aclPrincipalId")
@@ -396,7 +416,7 @@ class _ServicePrincipalState:
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
+        This is a field to allow the service principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         """
         return pulumi.get(self, "databricks_sql_access")
 
@@ -504,13 +524,25 @@ class _ServicePrincipalState:
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        This is a field to allow the group to have access to Databricks Workspace.
+        This is a field to allow the service principal to have access to a Databricks Workspace.
         """
         return pulumi.get(self, "workspace_access")
 
     @workspace_access.setter
     def workspace_access(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "workspace_access", value)
+
+    @property
+    @pulumi.getter(name="workspaceConsume")
+    def workspace_consume(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        """
+        return pulumi.get(self, "workspace_consume")
+
+    @workspace_consume.setter
+    def workspace_consume(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "workspace_consume", value)
 
 
 @pulumi.type_token("databricks:index/servicePrincipal:ServicePrincipal")
@@ -534,6 +566,7 @@ class ServicePrincipal(pulumi.CustomResource):
                  home: Optional[pulumi.Input[builtins.str]] = None,
                  repos: Optional[pulumi.Input[builtins.str]] = None,
                  workspace_access: Optional[pulumi.Input[builtins.bool]] = None,
+                 workspace_consume: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         """
         Directly manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to Group in Databricks account or workspace.
@@ -547,7 +580,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
         > To assign account level service principals to workspace use databricks_mws_permission_assignment.
 
-        > Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level service principals. Use Entitlements resource to assign entitlements inside a workspace to account-level service principals.
+        > Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access`, `workspace-consume` applicable only for workspace-level service principals. Use Entitlements resource to assign entitlements inside a workspace to account-level service principals.
 
         The default behavior when deleting a `ServicePrincipal` resource depends on whether the provider is configured at the workspace-level or account-level. When the provider is configured at the workspace-level, the service principal will be deleted from the workspace. When the provider is configured at the account-level, the service principal will be deactivated but not deleted. When the provider is configured at the account level, to delete the service principal from the account when the resource is deleted, set `disable_as_user_deletion = false`. Conversely, when the provider is configured at the account-level, to deactivate the service principal when the resource is deleted, set `disable_as_user_deletion = true`.
 
@@ -609,16 +642,28 @@ class ServicePrincipal(pulumi.CustomResource):
 
         The following resources are often used in the same context:
 
-        - End to end workspace management guide.
-        - Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-        - Group data to retrieve information about Group members, entitlements and instance profiles.
-        - GroupMember to attach users and groups as group members.
-        - Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-        - SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and more to manage secrets for the service principal (only for AWS deployments)
+        * End to end workspace management guide.
+        * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        * Group data to retrieve information about Group members, entitlements and instance profiles.
+        * GroupMember to attach users and groups as group members.
+        * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+        * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and more to manage secrets for the service principal (only for AWS deployments)
 
         ## Import
 
-        The resource scim service principal can be imported using its id, for example `2345678901234567`. To get the service principal ID, call [Get service principals](https://docs.databricks.com/dev-tools/api/latest/scim/scim-sp.html#get-service-principals).
+        The resource scim service principal can be imported using its SCIM id, for example `2345678901234567`. To get the service principal ID, call [Get service principals](https://docs.databricks.com/dev-tools/api/latest/scim/scim-sp.html#get-service-principals).
+
+        hcl
+
+        import {
+
+          to = databricks_service_principal.me
+
+          id = "<service-principal-id>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 
@@ -633,7 +678,7 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] allow_cluster_create: Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
         :param pulumi.Input[builtins.bool] allow_instance_pool_create: Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         :param pulumi.Input[builtins.str] application_id: This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
-        :param pulumi.Input[builtins.bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
+        :param pulumi.Input[builtins.bool] databricks_sql_access: This is a field to allow the service principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         :param pulumi.Input[builtins.bool] disable_as_user_deletion: Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[builtins.str] display_name: This is an alias for the service principal and can be the full name of the service principal.
         :param pulumi.Input[builtins.str] external_id: ID of the service principal in an external identity provider.
@@ -642,7 +687,8 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] force_delete_repos: This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[builtins.str] home: Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[builtins.str] repos: Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
-        :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
+        :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the service principal to have access to a Databricks Workspace.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
         """
         ...
     @overload
@@ -662,7 +708,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
         > To assign account level service principals to workspace use databricks_mws_permission_assignment.
 
-        > Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level service principals. Use Entitlements resource to assign entitlements inside a workspace to account-level service principals.
+        > Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access`, `workspace-consume` applicable only for workspace-level service principals. Use Entitlements resource to assign entitlements inside a workspace to account-level service principals.
 
         The default behavior when deleting a `ServicePrincipal` resource depends on whether the provider is configured at the workspace-level or account-level. When the provider is configured at the workspace-level, the service principal will be deleted from the workspace. When the provider is configured at the account-level, the service principal will be deactivated but not deleted. When the provider is configured at the account level, to delete the service principal from the account when the resource is deleted, set `disable_as_user_deletion = false`. Conversely, when the provider is configured at the account-level, to deactivate the service principal when the resource is deleted, set `disable_as_user_deletion = true`.
 
@@ -724,16 +770,28 @@ class ServicePrincipal(pulumi.CustomResource):
 
         The following resources are often used in the same context:
 
-        - End to end workspace management guide.
-        - Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-        - Group data to retrieve information about Group members, entitlements and instance profiles.
-        - GroupMember to attach users and groups as group members.
-        - Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-        - SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and more to manage secrets for the service principal (only for AWS deployments)
+        * End to end workspace management guide.
+        * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        * Group data to retrieve information about Group members, entitlements and instance profiles.
+        * GroupMember to attach users and groups as group members.
+        * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+        * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and more to manage secrets for the service principal (only for AWS deployments)
 
         ## Import
 
-        The resource scim service principal can be imported using its id, for example `2345678901234567`. To get the service principal ID, call [Get service principals](https://docs.databricks.com/dev-tools/api/latest/scim/scim-sp.html#get-service-principals).
+        The resource scim service principal can be imported using its SCIM id, for example `2345678901234567`. To get the service principal ID, call [Get service principals](https://docs.databricks.com/dev-tools/api/latest/scim/scim-sp.html#get-service-principals).
+
+        hcl
+
+        import {
+
+          to = databricks_service_principal.me
+
+          id = "<service-principal-id>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 
@@ -771,6 +829,7 @@ class ServicePrincipal(pulumi.CustomResource):
                  home: Optional[pulumi.Input[builtins.str]] = None,
                  repos: Optional[pulumi.Input[builtins.str]] = None,
                  workspace_access: Optional[pulumi.Input[builtins.bool]] = None,
+                 workspace_consume: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -795,6 +854,7 @@ class ServicePrincipal(pulumi.CustomResource):
             __props__.__dict__["home"] = home
             __props__.__dict__["repos"] = repos
             __props__.__dict__["workspace_access"] = workspace_access
+            __props__.__dict__["workspace_consume"] = workspace_consume
         super(ServicePrincipal, __self__).__init__(
             'databricks:index/servicePrincipal:ServicePrincipal',
             resource_name,
@@ -819,7 +879,8 @@ class ServicePrincipal(pulumi.CustomResource):
             force_delete_repos: Optional[pulumi.Input[builtins.bool]] = None,
             home: Optional[pulumi.Input[builtins.str]] = None,
             repos: Optional[pulumi.Input[builtins.str]] = None,
-            workspace_access: Optional[pulumi.Input[builtins.bool]] = None) -> 'ServicePrincipal':
+            workspace_access: Optional[pulumi.Input[builtins.bool]] = None,
+            workspace_consume: Optional[pulumi.Input[builtins.bool]] = None) -> 'ServicePrincipal':
         """
         Get an existing ServicePrincipal resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -832,7 +893,7 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] allow_cluster_create: Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
         :param pulumi.Input[builtins.bool] allow_instance_pool_create: Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         :param pulumi.Input[builtins.str] application_id: This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
-        :param pulumi.Input[builtins.bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
+        :param pulumi.Input[builtins.bool] databricks_sql_access: This is a field to allow the service principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         :param pulumi.Input[builtins.bool] disable_as_user_deletion: Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[builtins.str] display_name: This is an alias for the service principal and can be the full name of the service principal.
         :param pulumi.Input[builtins.str] external_id: ID of the service principal in an external identity provider.
@@ -841,7 +902,8 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] force_delete_repos: This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[builtins.str] home: Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[builtins.str] repos: Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
-        :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
+        :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the service principal to have access to a Databricks Workspace.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -862,6 +924,7 @@ class ServicePrincipal(pulumi.CustomResource):
         __props__.__dict__["home"] = home
         __props__.__dict__["repos"] = repos
         __props__.__dict__["workspace_access"] = workspace_access
+        __props__.__dict__["workspace_consume"] = workspace_consume
         return ServicePrincipal(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -908,7 +971,7 @@ class ServicePrincipal(pulumi.CustomResource):
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
+        This is a field to allow the service principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
         """
         return pulumi.get(self, "databricks_sql_access")
 
@@ -980,7 +1043,15 @@ class ServicePrincipal(pulumi.CustomResource):
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        This is a field to allow the group to have access to Databricks Workspace.
+        This is a field to allow the service principal to have access to a Databricks Workspace.
         """
         return pulumi.get(self, "workspace_access")
+
+    @property
+    @pulumi.getter(name="workspaceConsume")
+    def workspace_consume(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        """
+        return pulumi.get(self, "workspace_consume")
 

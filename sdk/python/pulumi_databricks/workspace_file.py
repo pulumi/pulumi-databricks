@@ -237,6 +237,18 @@ class WorkspaceFile(pulumi.CustomResource):
 
         The workspace file resource can be imported using workspace file path
 
+        hcl
+
+        import {
+
+          to = databricks_workspace_file.this
+
+          id = "/path/to/file"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
@@ -264,6 +276,18 @@ class WorkspaceFile(pulumi.CustomResource):
         ## Import
 
         The workspace file resource can be imported using workspace file path
+
+        hcl
+
+        import {
+
+          to = databricks_workspace_file.this
+
+          id = "/path/to/file"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 

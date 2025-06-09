@@ -18,15 +18,19 @@ namespace Pulumi.Databricks.Outputs
         /// Full name of the databricks_table: _`catalog`.`schema`.`table`_
         /// </summary>
         public readonly string Name;
+        public readonly ImmutableArray<string> TimeseriesColumns;
 
         [OutputConstructor]
         private GetTableTableInfoTableConstraintPrimaryKeyConstraintResult(
             ImmutableArray<string> childColumns,
 
-            string name)
+            string name,
+
+            ImmutableArray<string> timeseriesColumns)
         {
             ChildColumns = childColumns;
             Name = name;
+            TimeseriesColumns = timeseriesColumns;
         }
     }
 }

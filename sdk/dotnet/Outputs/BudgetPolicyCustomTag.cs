@@ -14,7 +14,10 @@ namespace Pulumi.Databricks.Outputs
     public sealed class BudgetPolicyCustomTag
     {
         /// <summary>
-        /// The key of the tag. - Must be unique among all custom tags of the same policy. Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" as these tags are preserved.
+        /// The key of the tag.
+        /// - Must be unique among all custom tags of the same policy
+        /// - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
+        /// these tags are preserved.
         /// </summary>
         public readonly string Key;
         /// <summary>

@@ -18,6 +18,16 @@ from . import _utilities
 __all__ = [
     'AccessControlRuleSetGrantRuleArgs',
     'AccessControlRuleSetGrantRuleArgsDict',
+    'AccountNetworkPolicyEgressArgs',
+    'AccountNetworkPolicyEgressArgsDict',
+    'AccountNetworkPolicyEgressNetworkAccessArgs',
+    'AccountNetworkPolicyEgressNetworkAccessArgsDict',
+    'AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs',
+    'AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgsDict',
+    'AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs',
+    'AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgsDict',
+    'AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs',
+    'AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgsDict',
     'AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs',
     'AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgsDict',
     'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs',
@@ -74,6 +84,8 @@ __all__ = [
     'AppResourceServingEndpointArgsDict',
     'AppResourceSqlWarehouseArgs',
     'AppResourceSqlWarehouseArgsDict',
+    'AppResourceUcSecurableArgs',
+    'AppResourceUcSecurableArgsDict',
     'ArtifactAllowlistArtifactMatcherArgs',
     'ArtifactAllowlistArtifactMatcherArgsDict',
     'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs',
@@ -190,6 +202,20 @@ __all__ = [
     'ExternalLocationEncryptionDetailsArgsDict',
     'ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs',
     'ExternalLocationEncryptionDetailsSseEncryptionDetailsArgsDict',
+    'ExternalLocationFileEventQueueArgs',
+    'ExternalLocationFileEventQueueArgsDict',
+    'ExternalLocationFileEventQueueManagedAqsArgs',
+    'ExternalLocationFileEventQueueManagedAqsArgsDict',
+    'ExternalLocationFileEventQueueManagedPubsubArgs',
+    'ExternalLocationFileEventQueueManagedPubsubArgsDict',
+    'ExternalLocationFileEventQueueManagedSqsArgs',
+    'ExternalLocationFileEventQueueManagedSqsArgsDict',
+    'ExternalLocationFileEventQueueProvidedAqsArgs',
+    'ExternalLocationFileEventQueueProvidedAqsArgsDict',
+    'ExternalLocationFileEventQueueProvidedPubsubArgs',
+    'ExternalLocationFileEventQueueProvidedPubsubArgsDict',
+    'ExternalLocationFileEventQueueProvidedSqsArgs',
+    'ExternalLocationFileEventQueueProvidedSqsArgsDict',
     'GrantsGrantArgs',
     'GrantsGrantArgsDict',
     'InstancePoolAwsAttributesArgs',
@@ -786,6 +812,36 @@ __all__ = [
     'ModelServingConfigTrafficConfigArgsDict',
     'ModelServingConfigTrafficConfigRouteArgs',
     'ModelServingConfigTrafficConfigRouteArgsDict',
+    'ModelServingProvisionedThroughputAiGatewayArgs',
+    'ModelServingProvisionedThroughputAiGatewayArgsDict',
+    'ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs',
+    'ModelServingProvisionedThroughputAiGatewayFallbackConfigArgsDict',
+    'ModelServingProvisionedThroughputAiGatewayGuardrailsArgs',
+    'ModelServingProvisionedThroughputAiGatewayGuardrailsArgsDict',
+    'ModelServingProvisionedThroughputAiGatewayGuardrailsInputArgs',
+    'ModelServingProvisionedThroughputAiGatewayGuardrailsInputArgsDict',
+    'ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs',
+    'ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgsDict',
+    'ModelServingProvisionedThroughputAiGatewayGuardrailsOutputArgs',
+    'ModelServingProvisionedThroughputAiGatewayGuardrailsOutputArgsDict',
+    'ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs',
+    'ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgsDict',
+    'ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs',
+    'ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgsDict',
+    'ModelServingProvisionedThroughputAiGatewayRateLimitArgs',
+    'ModelServingProvisionedThroughputAiGatewayRateLimitArgsDict',
+    'ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs',
+    'ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgsDict',
+    'ModelServingProvisionedThroughputConfigArgs',
+    'ModelServingProvisionedThroughputConfigArgsDict',
+    'ModelServingProvisionedThroughputConfigServedEntityArgs',
+    'ModelServingProvisionedThroughputConfigServedEntityArgsDict',
+    'ModelServingProvisionedThroughputConfigTrafficConfigArgs',
+    'ModelServingProvisionedThroughputConfigTrafficConfigArgsDict',
+    'ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs',
+    'ModelServingProvisionedThroughputConfigTrafficConfigRouteArgsDict',
+    'ModelServingProvisionedThroughputTagArgs',
+    'ModelServingProvisionedThroughputTagArgsDict',
     'ModelServingRateLimitArgs',
     'ModelServingRateLimitArgsDict',
     'ModelServingTagArgs',
@@ -940,6 +996,8 @@ __all__ = [
     'PipelineLibraryArgsDict',
     'PipelineLibraryFileArgs',
     'PipelineLibraryFileArgsDict',
+    'PipelineLibraryGlobArgs',
+    'PipelineLibraryGlobArgsDict',
     'PipelineLibraryMavenArgs',
     'PipelineLibraryMavenArgsDict',
     'PipelineLibraryNotebookArgs',
@@ -994,6 +1052,8 @@ __all__ = [
     'QueryParameterQueryBackedValueMultiValuesOptionsArgsDict',
     'QueryParameterTextValueArgs',
     'QueryParameterTextValueArgsDict',
+    'RecipientFederationPolicyOidcPolicyArgs',
+    'RecipientFederationPolicyOidcPolicyArgsDict',
     'RecipientIpAccessListArgs',
     'RecipientIpAccessListArgsDict',
     'RecipientPropertiesKvpairsArgs',
@@ -1088,8 +1148,6 @@ __all__ = [
     'StorageCredentialGcpServiceAccountKeyArgsDict',
     'TableColumnArgs',
     'TableColumnArgsDict',
-    'VectorSearchEndpointCustomTagArgs',
-    'VectorSearchEndpointCustomTagArgsDict',
     'VectorSearchEndpointEndpointStatusArgs',
     'VectorSearchEndpointEndpointStatusArgsDict',
     'VectorSearchIndexDeltaSyncIndexSpecArgs',
@@ -1106,6 +1164,16 @@ __all__ = [
     'VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgsDict',
     'VectorSearchIndexStatusArgs',
     'VectorSearchIndexStatusArgsDict',
+    'GetAccountNetworkPolicyEgressArgs',
+    'GetAccountNetworkPolicyEgressArgsDict',
+    'GetAccountNetworkPolicyEgressNetworkAccessArgs',
+    'GetAccountNetworkPolicyEgressNetworkAccessArgsDict',
+    'GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs',
+    'GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgsDict',
+    'GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs',
+    'GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgsDict',
+    'GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs',
+    'GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgsDict',
     'GetAlertV2EvaluationArgs',
     'GetAlertV2EvaluationArgsDict',
     'GetAlertV2EvaluationNotificationArgs',
@@ -1252,6 +1320,20 @@ __all__ = [
     'GetExternalLocationExternalLocationInfoEncryptionDetailsArgsDict',
     'GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs',
     'GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgsDict',
+    'GetExternalLocationExternalLocationInfoFileEventQueueArgs',
+    'GetExternalLocationExternalLocationInfoFileEventQueueArgsDict',
+    'GetExternalLocationExternalLocationInfoFileEventQueueManagedAqsArgs',
+    'GetExternalLocationExternalLocationInfoFileEventQueueManagedAqsArgsDict',
+    'GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsubArgs',
+    'GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsubArgsDict',
+    'GetExternalLocationExternalLocationInfoFileEventQueueManagedSqsArgs',
+    'GetExternalLocationExternalLocationInfoFileEventQueueManagedSqsArgsDict',
+    'GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqsArgs',
+    'GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqsArgsDict',
+    'GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsubArgs',
+    'GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsubArgsDict',
+    'GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsArgs',
+    'GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsArgsDict',
     'GetFunctionsFunctionArgs',
     'GetFunctionsFunctionArgsDict',
     'GetFunctionsFunctionInputParamArgs',
@@ -1728,6 +1810,8 @@ __all__ = [
     'GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgsDict',
     'GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs',
     'GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgsDict',
+    'GetRecipientFederationPolicyOidcPolicyArgs',
+    'GetRecipientFederationPolicyOidcPolicyArgsDict',
     'GetRegisteredModelModelInfoArgs',
     'GetRegisteredModelModelInfoArgsDict',
     'GetRegisteredModelModelInfoAliasArgs',
@@ -1969,6 +2053,347 @@ class AccessControlRuleSetGrantRuleArgs:
     @principals.setter
     def principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "principals", value)
+
+
+if not MYPY:
+    class AccountNetworkPolicyEgressArgsDict(TypedDict):
+        network_access: NotRequired[pulumi.Input['AccountNetworkPolicyEgressNetworkAccessArgsDict']]
+        """
+        The access policy enforced for egress traffic to the internet
+        """
+elif False:
+    AccountNetworkPolicyEgressArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccountNetworkPolicyEgressArgs:
+    def __init__(__self__, *,
+                 network_access: Optional[pulumi.Input['AccountNetworkPolicyEgressNetworkAccessArgs']] = None):
+        """
+        :param pulumi.Input['AccountNetworkPolicyEgressNetworkAccessArgs'] network_access: The access policy enforced for egress traffic to the internet
+        """
+        if network_access is not None:
+            pulumi.set(__self__, "network_access", network_access)
+
+    @property
+    @pulumi.getter(name="networkAccess")
+    def network_access(self) -> Optional[pulumi.Input['AccountNetworkPolicyEgressNetworkAccessArgs']]:
+        """
+        The access policy enforced for egress traffic to the internet
+        """
+        return pulumi.get(self, "network_access")
+
+    @network_access.setter
+    def network_access(self, value: Optional[pulumi.Input['AccountNetworkPolicyEgressNetworkAccessArgs']]):
+        pulumi.set(self, "network_access", value)
+
+
+if not MYPY:
+    class AccountNetworkPolicyEgressNetworkAccessArgsDict(TypedDict):
+        restriction_mode: pulumi.Input[builtins.str]
+        """
+        The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+        """
+        allowed_internet_destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgsDict']]]]
+        """
+        List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+        """
+        allowed_storage_destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgsDict']]]]
+        """
+        List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+        """
+        policy_enforcement: NotRequired[pulumi.Input['AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgsDict']]
+        """
+        Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+        """
+elif False:
+    AccountNetworkPolicyEgressNetworkAccessArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccountNetworkPolicyEgressNetworkAccessArgs:
+    def __init__(__self__, *,
+                 restriction_mode: pulumi.Input[builtins.str],
+                 allowed_internet_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs']]]] = None,
+                 allowed_storage_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs']]]] = None,
+                 policy_enforcement: Optional[pulumi.Input['AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs']] = None):
+        """
+        :param pulumi.Input[builtins.str] restriction_mode: The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+        :param pulumi.Input[Sequence[pulumi.Input['AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs']]] allowed_internet_destinations: List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+        :param pulumi.Input[Sequence[pulumi.Input['AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs']]] allowed_storage_destinations: List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+        :param pulumi.Input['AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs'] policy_enforcement: Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+        """
+        pulumi.set(__self__, "restriction_mode", restriction_mode)
+        if allowed_internet_destinations is not None:
+            pulumi.set(__self__, "allowed_internet_destinations", allowed_internet_destinations)
+        if allowed_storage_destinations is not None:
+            pulumi.set(__self__, "allowed_storage_destinations", allowed_storage_destinations)
+        if policy_enforcement is not None:
+            pulumi.set(__self__, "policy_enforcement", policy_enforcement)
+
+    @property
+    @pulumi.getter(name="restrictionMode")
+    def restriction_mode(self) -> pulumi.Input[builtins.str]:
+        """
+        The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+        """
+        return pulumi.get(self, "restriction_mode")
+
+    @restriction_mode.setter
+    def restriction_mode(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "restriction_mode", value)
+
+    @property
+    @pulumi.getter(name="allowedInternetDestinations")
+    def allowed_internet_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs']]]]:
+        """
+        List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+        """
+        return pulumi.get(self, "allowed_internet_destinations")
+
+    @allowed_internet_destinations.setter
+    def allowed_internet_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs']]]]):
+        pulumi.set(self, "allowed_internet_destinations", value)
+
+    @property
+    @pulumi.getter(name="allowedStorageDestinations")
+    def allowed_storage_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs']]]]:
+        """
+        List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+        """
+        return pulumi.get(self, "allowed_storage_destinations")
+
+    @allowed_storage_destinations.setter
+    def allowed_storage_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs']]]]):
+        pulumi.set(self, "allowed_storage_destinations", value)
+
+    @property
+    @pulumi.getter(name="policyEnforcement")
+    def policy_enforcement(self) -> Optional[pulumi.Input['AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs']]:
+        """
+        Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+        """
+        return pulumi.get(self, "policy_enforcement")
+
+    @policy_enforcement.setter
+    def policy_enforcement(self, value: Optional[pulumi.Input['AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs']]):
+        pulumi.set(self, "policy_enforcement", value)
+
+
+if not MYPY:
+    class AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgsDict(TypedDict):
+        destination: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The internet destination to which access will be allowed. Format dependent on the destination type
+        """
+        internet_destination_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+        """
+elif False:
+    AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[builtins.str]] = None,
+                 internet_destination_type: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] destination: The internet destination to which access will be allowed. Format dependent on the destination type
+        :param pulumi.Input[builtins.str] internet_destination_type: The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if internet_destination_type is not None:
+            pulumi.set(__self__, "internet_destination_type", internet_destination_type)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The internet destination to which access will be allowed. Format dependent on the destination type
+        """
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "destination", value)
+
+    @property
+    @pulumi.getter(name="internetDestinationType")
+    def internet_destination_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+        """
+        return pulumi.get(self, "internet_destination_type")
+
+    @internet_destination_type.setter
+    def internet_destination_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "internet_destination_type", value)
+
+
+if not MYPY:
+    class AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgsDict(TypedDict):
+        azure_storage_account: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The Azure storage account name
+        """
+        azure_storage_service: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The Azure storage service type (blob, dfs, etc.)
+        """
+        bucket_name: NotRequired[pulumi.Input[builtins.str]]
+        region: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The region of the S3 bucket
+        """
+        storage_destination_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+        """
+elif False:
+    AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs:
+    def __init__(__self__, *,
+                 azure_storage_account: Optional[pulumi.Input[builtins.str]] = None,
+                 azure_storage_service: Optional[pulumi.Input[builtins.str]] = None,
+                 bucket_name: Optional[pulumi.Input[builtins.str]] = None,
+                 region: Optional[pulumi.Input[builtins.str]] = None,
+                 storage_destination_type: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] azure_storage_account: The Azure storage account name
+        :param pulumi.Input[builtins.str] azure_storage_service: The Azure storage service type (blob, dfs, etc.)
+        :param pulumi.Input[builtins.str] region: The region of the S3 bucket
+        :param pulumi.Input[builtins.str] storage_destination_type: The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+        """
+        if azure_storage_account is not None:
+            pulumi.set(__self__, "azure_storage_account", azure_storage_account)
+        if azure_storage_service is not None:
+            pulumi.set(__self__, "azure_storage_service", azure_storage_service)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if storage_destination_type is not None:
+            pulumi.set(__self__, "storage_destination_type", storage_destination_type)
+
+    @property
+    @pulumi.getter(name="azureStorageAccount")
+    def azure_storage_account(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The Azure storage account name
+        """
+        return pulumi.get(self, "azure_storage_account")
+
+    @azure_storage_account.setter
+    def azure_storage_account(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "azure_storage_account", value)
+
+    @property
+    @pulumi.getter(name="azureStorageService")
+    def azure_storage_service(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The Azure storage service type (blob, dfs, etc.)
+        """
+        return pulumi.get(self, "azure_storage_service")
+
+    @azure_storage_service.setter
+    def azure_storage_service(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "azure_storage_service", value)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "bucket_name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The region of the S3 bucket
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="storageDestinationType")
+    def storage_destination_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+        """
+        return pulumi.get(self, "storage_destination_type")
+
+    @storage_destination_type.setter
+    def storage_destination_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "storage_destination_type", value)
+
+
+if not MYPY:
+    class AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgsDict(TypedDict):
+        dry_run_mode_product_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        When empty, it means dry run for all products.
+        When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
+        """
+        enforcement_mode: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
+        while DRY_RUN only logs violations without blocking. When not specified,
+        defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+        """
+elif False:
+    AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs:
+    def __init__(__self__, *,
+                 dry_run_mode_product_filters: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 enforcement_mode: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dry_run_mode_product_filters: When empty, it means dry run for all products.
+               When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
+        :param pulumi.Input[builtins.str] enforcement_mode: The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
+               while DRY_RUN only logs violations without blocking. When not specified,
+               defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+        """
+        if dry_run_mode_product_filters is not None:
+            pulumi.set(__self__, "dry_run_mode_product_filters", dry_run_mode_product_filters)
+        if enforcement_mode is not None:
+            pulumi.set(__self__, "enforcement_mode", enforcement_mode)
+
+    @property
+    @pulumi.getter(name="dryRunModeProductFilters")
+    def dry_run_mode_product_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        When empty, it means dry run for all products.
+        When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
+        """
+        return pulumi.get(self, "dry_run_mode_product_filters")
+
+    @dry_run_mode_product_filters.setter
+    def dry_run_mode_product_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "dry_run_mode_product_filters", value)
+
+    @property
+    @pulumi.getter(name="enforcementMode")
+    def enforcement_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
+        while DRY_RUN only logs violations without blocking. When not specified,
+        defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+        """
+        return pulumi.get(self, "enforcement_mode")
+
+    @enforcement_mode.setter
+    def enforcement_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "enforcement_mode", value)
 
 
 if not MYPY:
@@ -2291,12 +2716,33 @@ class AlertConditionThresholdValueArgs:
 if not MYPY:
     class AlertV2EvaluationArgsDict(TypedDict):
         comparison_operator: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+        """
         empty_result_state: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        """
         last_evaluated_at: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (string) - Timestamp of the last evaluation
+        """
         notification: NotRequired[pulumi.Input['AlertV2EvaluationNotificationArgsDict']]
+        """
+        User or Notification Destination to notify when alert is triggered
+        """
         source: NotRequired[pulumi.Input['AlertV2EvaluationSourceArgsDict']]
+        """
+        Source column from result to use to evaluate alert
+        """
         state: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        """
         threshold: NotRequired[pulumi.Input['AlertV2EvaluationThresholdArgsDict']]
+        """
+        Threshold to user for alert evaluation, can be a column or a value
+        """
 elif False:
     AlertV2EvaluationArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2310,6 +2756,15 @@ class AlertV2EvaluationArgs:
                  source: Optional[pulumi.Input['AlertV2EvaluationSourceArgs']] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
                  threshold: Optional[pulumi.Input['AlertV2EvaluationThresholdArgs']] = None):
+        """
+        :param pulumi.Input[builtins.str] comparison_operator: Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+        :param pulumi.Input[builtins.str] empty_result_state: Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        :param pulumi.Input[builtins.str] last_evaluated_at: (string) - Timestamp of the last evaluation
+        :param pulumi.Input['AlertV2EvaluationNotificationArgs'] notification: User or Notification Destination to notify when alert is triggered
+        :param pulumi.Input['AlertV2EvaluationSourceArgs'] source: Source column from result to use to evaluate alert
+        :param pulumi.Input[builtins.str] state: (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        :param pulumi.Input['AlertV2EvaluationThresholdArgs'] threshold: Threshold to user for alert evaluation, can be a column or a value
+        """
         if comparison_operator is not None:
             pulumi.set(__self__, "comparison_operator", comparison_operator)
         if empty_result_state is not None:
@@ -2328,6 +2783,9 @@ class AlertV2EvaluationArgs:
     @property
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+        """
         return pulumi.get(self, "comparison_operator")
 
     @comparison_operator.setter
@@ -2337,6 +2795,9 @@ class AlertV2EvaluationArgs:
     @property
     @pulumi.getter(name="emptyResultState")
     def empty_result_state(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        """
         return pulumi.get(self, "empty_result_state")
 
     @empty_result_state.setter
@@ -2346,6 +2807,9 @@ class AlertV2EvaluationArgs:
     @property
     @pulumi.getter(name="lastEvaluatedAt")
     def last_evaluated_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (string) - Timestamp of the last evaluation
+        """
         return pulumi.get(self, "last_evaluated_at")
 
     @last_evaluated_at.setter
@@ -2355,6 +2819,9 @@ class AlertV2EvaluationArgs:
     @property
     @pulumi.getter
     def notification(self) -> Optional[pulumi.Input['AlertV2EvaluationNotificationArgs']]:
+        """
+        User or Notification Destination to notify when alert is triggered
+        """
         return pulumi.get(self, "notification")
 
     @notification.setter
@@ -2364,6 +2831,9 @@ class AlertV2EvaluationArgs:
     @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input['AlertV2EvaluationSourceArgs']]:
+        """
+        Source column from result to use to evaluate alert
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -2373,6 +2843,9 @@ class AlertV2EvaluationArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -2382,6 +2855,9 @@ class AlertV2EvaluationArgs:
     @property
     @pulumi.getter
     def threshold(self) -> Optional[pulumi.Input['AlertV2EvaluationThresholdArgs']]:
+        """
+        Threshold to user for alert evaluation, can be a column or a value
+        """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
@@ -2392,7 +2868,13 @@ class AlertV2EvaluationArgs:
 if not MYPY:
     class AlertV2EvaluationNotificationArgsDict(TypedDict):
         notify_on_ok: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Whether to notify alert subscribers when alert returns back to normal
+        """
         retrigger_seconds: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+        """
         subscriptions: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertV2EvaluationNotificationSubscriptionArgsDict']]]]
 elif False:
     AlertV2EvaluationNotificationArgsDict: TypeAlias = Mapping[str, Any]
@@ -2403,6 +2885,10 @@ class AlertV2EvaluationNotificationArgs:
                  notify_on_ok: Optional[pulumi.Input[builtins.bool]] = None,
                  retrigger_seconds: Optional[pulumi.Input[builtins.int]] = None,
                  subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input['AlertV2EvaluationNotificationSubscriptionArgs']]]] = None):
+        """
+        :param pulumi.Input[builtins.bool] notify_on_ok: Whether to notify alert subscribers when alert returns back to normal
+        :param pulumi.Input[builtins.int] retrigger_seconds: Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+        """
         if notify_on_ok is not None:
             pulumi.set(__self__, "notify_on_ok", notify_on_ok)
         if retrigger_seconds is not None:
@@ -2413,6 +2899,9 @@ class AlertV2EvaluationNotificationArgs:
     @property
     @pulumi.getter(name="notifyOnOk")
     def notify_on_ok(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether to notify alert subscribers when alert returns back to normal
+        """
         return pulumi.get(self, "notify_on_ok")
 
     @notify_on_ok.setter
@@ -2422,6 +2911,9 @@ class AlertV2EvaluationNotificationArgs:
     @property
     @pulumi.getter(name="retriggerSeconds")
     def retrigger_seconds(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+        """
         return pulumi.get(self, "retrigger_seconds")
 
     @retrigger_seconds.setter
@@ -2477,6 +2969,9 @@ class AlertV2EvaluationNotificationSubscriptionArgs:
 if not MYPY:
     class AlertV2EvaluationSourceArgsDict(TypedDict):
         aggregation: NotRequired[pulumi.Input[builtins.str]]
+        """
+        . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        """
         display: NotRequired[pulumi.Input[builtins.str]]
         name: NotRequired[pulumi.Input[builtins.str]]
 elif False:
@@ -2488,6 +2983,9 @@ class AlertV2EvaluationSourceArgs:
                  aggregation: Optional[pulumi.Input[builtins.str]] = None,
                  display: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] aggregation: . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        """
         if aggregation is not None:
             pulumi.set(__self__, "aggregation", aggregation)
         if display is not None:
@@ -2498,6 +2996,9 @@ class AlertV2EvaluationSourceArgs:
     @property
     @pulumi.getter
     def aggregation(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        """
         return pulumi.get(self, "aggregation")
 
     @aggregation.setter
@@ -2562,6 +3063,9 @@ class AlertV2EvaluationThresholdArgs:
 if not MYPY:
     class AlertV2EvaluationThresholdColumnArgsDict(TypedDict):
         aggregation: NotRequired[pulumi.Input[builtins.str]]
+        """
+        . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        """
         display: NotRequired[pulumi.Input[builtins.str]]
         name: NotRequired[pulumi.Input[builtins.str]]
 elif False:
@@ -2573,6 +3077,9 @@ class AlertV2EvaluationThresholdColumnArgs:
                  aggregation: Optional[pulumi.Input[builtins.str]] = None,
                  display: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] aggregation: . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        """
         if aggregation is not None:
             pulumi.set(__self__, "aggregation", aggregation)
         if display is not None:
@@ -2583,6 +3090,9 @@ class AlertV2EvaluationThresholdColumnArgs:
     @property
     @pulumi.getter
     def aggregation(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        """
         return pulumi.get(self, "aggregation")
 
     @aggregation.setter
@@ -2660,8 +3170,20 @@ class AlertV2EvaluationThresholdValueArgs:
 if not MYPY:
     class AlertV2ScheduleArgsDict(TypedDict):
         pause_status: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+        """
         quartz_cron_schedule: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A cron expression using quartz syntax that specifies the schedule for this pipeline.
+        Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+        """
         timezone_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A Java timezone id. The schedule will be resolved using this timezone.
+        This will be combined with the quartz_cron_schedule to determine the schedule.
+        See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+        """
 elif False:
     AlertV2ScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2671,6 +3193,14 @@ class AlertV2ScheduleArgs:
                  pause_status: Optional[pulumi.Input[builtins.str]] = None,
                  quartz_cron_schedule: Optional[pulumi.Input[builtins.str]] = None,
                  timezone_id: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] pause_status: Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+        :param pulumi.Input[builtins.str] quartz_cron_schedule: A cron expression using quartz syntax that specifies the schedule for this pipeline.
+               Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+        :param pulumi.Input[builtins.str] timezone_id: A Java timezone id. The schedule will be resolved using this timezone.
+               This will be combined with the quartz_cron_schedule to determine the schedule.
+               See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+        """
         if pause_status is not None:
             pulumi.set(__self__, "pause_status", pause_status)
         if quartz_cron_schedule is not None:
@@ -2681,6 +3211,9 @@ class AlertV2ScheduleArgs:
     @property
     @pulumi.getter(name="pauseStatus")
     def pause_status(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+        """
         return pulumi.get(self, "pause_status")
 
     @pause_status.setter
@@ -2690,6 +3223,10 @@ class AlertV2ScheduleArgs:
     @property
     @pulumi.getter(name="quartzCronSchedule")
     def quartz_cron_schedule(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A cron expression using quartz syntax that specifies the schedule for this pipeline.
+        Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+        """
         return pulumi.get(self, "quartz_cron_schedule")
 
     @quartz_cron_schedule.setter
@@ -2699,6 +3236,11 @@ class AlertV2ScheduleArgs:
     @property
     @pulumi.getter(name="timezoneId")
     def timezone_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A Java timezone id. The schedule will be resolved using this timezone.
+        This will be combined with the quartz_cron_schedule to determine the schedule.
+        See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+        """
         return pulumi.get(self, "timezone_id")
 
     @timezone_id.setter
@@ -3262,6 +3804,7 @@ if not MYPY:
         """
         attribute
         """
+        uc_securable: NotRequired[pulumi.Input['AppResourceUcSecurableArgsDict']]
 elif False:
     AppResourceArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3273,7 +3816,8 @@ class AppResourceArgs:
                  job: Optional[pulumi.Input['AppResourceJobArgs']] = None,
                  secret: Optional[pulumi.Input['AppResourceSecretArgs']] = None,
                  serving_endpoint: Optional[pulumi.Input['AppResourceServingEndpointArgs']] = None,
-                 sql_warehouse: Optional[pulumi.Input['AppResourceSqlWarehouseArgs']] = None):
+                 sql_warehouse: Optional[pulumi.Input['AppResourceSqlWarehouseArgs']] = None,
+                 uc_securable: Optional[pulumi.Input['AppResourceUcSecurableArgs']] = None):
         """
         :param pulumi.Input[builtins.str] name: The name of the resource.
         :param pulumi.Input[builtins.str] description: The description of the resource.
@@ -3295,6 +3839,8 @@ class AppResourceArgs:
             pulumi.set(__self__, "serving_endpoint", serving_endpoint)
         if sql_warehouse is not None:
             pulumi.set(__self__, "sql_warehouse", sql_warehouse)
+        if uc_securable is not None:
+            pulumi.set(__self__, "uc_securable", uc_securable)
 
     @property
     @pulumi.getter
@@ -3369,6 +3915,15 @@ class AppResourceArgs:
     @sql_warehouse.setter
     def sql_warehouse(self, value: Optional[pulumi.Input['AppResourceSqlWarehouseArgs']]):
         pulumi.set(self, "sql_warehouse", value)
+
+    @property
+    @pulumi.getter(name="ucSecurable")
+    def uc_securable(self) -> Optional[pulumi.Input['AppResourceUcSecurableArgs']]:
+        return pulumi.get(self, "uc_securable")
+
+    @uc_securable.setter
+    def uc_securable(self, value: Optional[pulumi.Input['AppResourceUcSecurableArgs']]):
+        pulumi.set(self, "uc_securable", value)
 
 
 if not MYPY:
@@ -3588,6 +4143,52 @@ class AppResourceSqlWarehouseArgs:
     @permission.setter
     def permission(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "permission", value)
+
+
+if not MYPY:
+    class AppResourceUcSecurableArgsDict(TypedDict):
+        permission: pulumi.Input[builtins.str]
+        securable_full_name: pulumi.Input[builtins.str]
+        securable_type: pulumi.Input[builtins.str]
+elif False:
+    AppResourceUcSecurableArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppResourceUcSecurableArgs:
+    def __init__(__self__, *,
+                 permission: pulumi.Input[builtins.str],
+                 securable_full_name: pulumi.Input[builtins.str],
+                 securable_type: pulumi.Input[builtins.str]):
+        pulumi.set(__self__, "permission", permission)
+        pulumi.set(__self__, "securable_full_name", securable_full_name)
+        pulumi.set(__self__, "securable_type", securable_type)
+
+    @property
+    @pulumi.getter
+    def permission(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "permission", value)
+
+    @property
+    @pulumi.getter(name="securableFullName")
+    def securable_full_name(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "securable_full_name")
+
+    @securable_full_name.setter
+    def securable_full_name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "securable_full_name", value)
+
+    @property
+    @pulumi.getter(name="securableType")
+    def securable_type(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "securable_type")
+
+    @securable_type.setter
+    def securable_type(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "securable_type", value)
 
 
 if not MYPY:
@@ -4269,7 +4870,10 @@ if not MYPY:
     class BudgetPolicyCustomTagArgsDict(TypedDict):
         key: pulumi.Input[builtins.str]
         """
-        The key of the tag. - Must be unique among all custom tags of the same policy. Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" as these tags are preserved.
+        The key of the tag.
+        - Must be unique among all custom tags of the same policy
+        - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
+        these tags are preserved.
         """
         value: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -4284,7 +4888,10 @@ class BudgetPolicyCustomTagArgs:
                  key: pulumi.Input[builtins.str],
                  value: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] key: The key of the tag. - Must be unique among all custom tags of the same policy. Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" as these tags are preserved.
+        :param pulumi.Input[builtins.str] key: The key of the tag.
+               - Must be unique among all custom tags of the same policy
+               - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
+               these tags are preserved.
         :param pulumi.Input[builtins.str] value: The value of the tag.
         """
         pulumi.set(__self__, "key", key)
@@ -4295,7 +4902,10 @@ class BudgetPolicyCustomTagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[builtins.str]:
         """
-        The key of the tag. - Must be unique among all custom tags of the same policy. Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" as these tags are preserved.
+        The key of the tag.
+        - Must be unique among all custom tags of the same policy
+        - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
+        these tags are preserved.
         """
         return pulumi.get(self, "key")
 
@@ -7078,6 +7688,490 @@ class ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs:
 
 
 if not MYPY:
+    class ExternalLocationFileEventQueueArgsDict(TypedDict):
+        managed_aqs: NotRequired[pulumi.Input['ExternalLocationFileEventQueueManagedAqsArgsDict']]
+        """
+        Configuration for managed Azure Queue Storage queue.
+        """
+        managed_pubsub: NotRequired[pulumi.Input['ExternalLocationFileEventQueueManagedPubsubArgsDict']]
+        """
+        Configuration for managed Google Cloud Pub/Sub queue.
+        """
+        managed_sqs: NotRequired[pulumi.Input['ExternalLocationFileEventQueueManagedSqsArgsDict']]
+        """
+        Configuration for managed Amazon SQS queue.
+        """
+        provided_aqs: NotRequired[pulumi.Input['ExternalLocationFileEventQueueProvidedAqsArgsDict']]
+        """
+        Configuration for provided Azure Storage Queue.
+        """
+        provided_pubsub: NotRequired[pulumi.Input['ExternalLocationFileEventQueueProvidedPubsubArgsDict']]
+        """
+        Configuration for provided Google Cloud Pub/Sub queue.
+        """
+        provided_sqs: NotRequired[pulumi.Input['ExternalLocationFileEventQueueProvidedSqsArgsDict']]
+        """
+        Configuration for provided Amazon SQS queue.
+        """
+elif False:
+    ExternalLocationFileEventQueueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ExternalLocationFileEventQueueArgs:
+    def __init__(__self__, *,
+                 managed_aqs: Optional[pulumi.Input['ExternalLocationFileEventQueueManagedAqsArgs']] = None,
+                 managed_pubsub: Optional[pulumi.Input['ExternalLocationFileEventQueueManagedPubsubArgs']] = None,
+                 managed_sqs: Optional[pulumi.Input['ExternalLocationFileEventQueueManagedSqsArgs']] = None,
+                 provided_aqs: Optional[pulumi.Input['ExternalLocationFileEventQueueProvidedAqsArgs']] = None,
+                 provided_pubsub: Optional[pulumi.Input['ExternalLocationFileEventQueueProvidedPubsubArgs']] = None,
+                 provided_sqs: Optional[pulumi.Input['ExternalLocationFileEventQueueProvidedSqsArgs']] = None):
+        """
+        :param pulumi.Input['ExternalLocationFileEventQueueManagedAqsArgs'] managed_aqs: Configuration for managed Azure Queue Storage queue.
+        :param pulumi.Input['ExternalLocationFileEventQueueManagedPubsubArgs'] managed_pubsub: Configuration for managed Google Cloud Pub/Sub queue.
+        :param pulumi.Input['ExternalLocationFileEventQueueManagedSqsArgs'] managed_sqs: Configuration for managed Amazon SQS queue.
+        :param pulumi.Input['ExternalLocationFileEventQueueProvidedAqsArgs'] provided_aqs: Configuration for provided Azure Storage Queue.
+        :param pulumi.Input['ExternalLocationFileEventQueueProvidedPubsubArgs'] provided_pubsub: Configuration for provided Google Cloud Pub/Sub queue.
+        :param pulumi.Input['ExternalLocationFileEventQueueProvidedSqsArgs'] provided_sqs: Configuration for provided Amazon SQS queue.
+        """
+        if managed_aqs is not None:
+            pulumi.set(__self__, "managed_aqs", managed_aqs)
+        if managed_pubsub is not None:
+            pulumi.set(__self__, "managed_pubsub", managed_pubsub)
+        if managed_sqs is not None:
+            pulumi.set(__self__, "managed_sqs", managed_sqs)
+        if provided_aqs is not None:
+            pulumi.set(__self__, "provided_aqs", provided_aqs)
+        if provided_pubsub is not None:
+            pulumi.set(__self__, "provided_pubsub", provided_pubsub)
+        if provided_sqs is not None:
+            pulumi.set(__self__, "provided_sqs", provided_sqs)
+
+    @property
+    @pulumi.getter(name="managedAqs")
+    def managed_aqs(self) -> Optional[pulumi.Input['ExternalLocationFileEventQueueManagedAqsArgs']]:
+        """
+        Configuration for managed Azure Queue Storage queue.
+        """
+        return pulumi.get(self, "managed_aqs")
+
+    @managed_aqs.setter
+    def managed_aqs(self, value: Optional[pulumi.Input['ExternalLocationFileEventQueueManagedAqsArgs']]):
+        pulumi.set(self, "managed_aqs", value)
+
+    @property
+    @pulumi.getter(name="managedPubsub")
+    def managed_pubsub(self) -> Optional[pulumi.Input['ExternalLocationFileEventQueueManagedPubsubArgs']]:
+        """
+        Configuration for managed Google Cloud Pub/Sub queue.
+        """
+        return pulumi.get(self, "managed_pubsub")
+
+    @managed_pubsub.setter
+    def managed_pubsub(self, value: Optional[pulumi.Input['ExternalLocationFileEventQueueManagedPubsubArgs']]):
+        pulumi.set(self, "managed_pubsub", value)
+
+    @property
+    @pulumi.getter(name="managedSqs")
+    def managed_sqs(self) -> Optional[pulumi.Input['ExternalLocationFileEventQueueManagedSqsArgs']]:
+        """
+        Configuration for managed Amazon SQS queue.
+        """
+        return pulumi.get(self, "managed_sqs")
+
+    @managed_sqs.setter
+    def managed_sqs(self, value: Optional[pulumi.Input['ExternalLocationFileEventQueueManagedSqsArgs']]):
+        pulumi.set(self, "managed_sqs", value)
+
+    @property
+    @pulumi.getter(name="providedAqs")
+    def provided_aqs(self) -> Optional[pulumi.Input['ExternalLocationFileEventQueueProvidedAqsArgs']]:
+        """
+        Configuration for provided Azure Storage Queue.
+        """
+        return pulumi.get(self, "provided_aqs")
+
+    @provided_aqs.setter
+    def provided_aqs(self, value: Optional[pulumi.Input['ExternalLocationFileEventQueueProvidedAqsArgs']]):
+        pulumi.set(self, "provided_aqs", value)
+
+    @property
+    @pulumi.getter(name="providedPubsub")
+    def provided_pubsub(self) -> Optional[pulumi.Input['ExternalLocationFileEventQueueProvidedPubsubArgs']]:
+        """
+        Configuration for provided Google Cloud Pub/Sub queue.
+        """
+        return pulumi.get(self, "provided_pubsub")
+
+    @provided_pubsub.setter
+    def provided_pubsub(self, value: Optional[pulumi.Input['ExternalLocationFileEventQueueProvidedPubsubArgs']]):
+        pulumi.set(self, "provided_pubsub", value)
+
+    @property
+    @pulumi.getter(name="providedSqs")
+    def provided_sqs(self) -> Optional[pulumi.Input['ExternalLocationFileEventQueueProvidedSqsArgs']]:
+        """
+        Configuration for provided Amazon SQS queue.
+        """
+        return pulumi.get(self, "provided_sqs")
+
+    @provided_sqs.setter
+    def provided_sqs(self, value: Optional[pulumi.Input['ExternalLocationFileEventQueueProvidedSqsArgs']]):
+        pulumi.set(self, "provided_sqs", value)
+
+
+if not MYPY:
+    class ExternalLocationFileEventQueueManagedAqsArgsDict(TypedDict):
+        resource_group: pulumi.Input[builtins.str]
+        """
+        The Azure resource group.
+        """
+        subscription_id: pulumi.Input[builtins.str]
+        """
+        The Azure subscription ID.
+        """
+        managed_resource_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The ID of the managed resource.
+        """
+        queue_url: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    ExternalLocationFileEventQueueManagedAqsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ExternalLocationFileEventQueueManagedAqsArgs:
+    def __init__(__self__, *,
+                 resource_group: pulumi.Input[builtins.str],
+                 subscription_id: pulumi.Input[builtins.str],
+                 managed_resource_id: Optional[pulumi.Input[builtins.str]] = None,
+                 queue_url: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] resource_group: The Azure resource group.
+        :param pulumi.Input[builtins.str] subscription_id: The Azure subscription ID.
+        :param pulumi.Input[builtins.str] managed_resource_id: The ID of the managed resource.
+        """
+        pulumi.set(__self__, "resource_group", resource_group)
+        pulumi.set(__self__, "subscription_id", subscription_id)
+        if managed_resource_id is not None:
+            pulumi.set(__self__, "managed_resource_id", managed_resource_id)
+        if queue_url is not None:
+            pulumi.set(__self__, "queue_url", queue_url)
+
+    @property
+    @pulumi.getter(name="resourceGroup")
+    def resource_group(self) -> pulumi.Input[builtins.str]:
+        """
+        The Azure resource group.
+        """
+        return pulumi.get(self, "resource_group")
+
+    @resource_group.setter
+    def resource_group(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "resource_group", value)
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> pulumi.Input[builtins.str]:
+        """
+        The Azure subscription ID.
+        """
+        return pulumi.get(self, "subscription_id")
+
+    @subscription_id.setter
+    def subscription_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "subscription_id", value)
+
+    @property
+    @pulumi.getter(name="managedResourceId")
+    def managed_resource_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the managed resource.
+        """
+        return pulumi.get(self, "managed_resource_id")
+
+    @managed_resource_id.setter
+    def managed_resource_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "managed_resource_id", value)
+
+    @property
+    @pulumi.getter(name="queueUrl")
+    def queue_url(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "queue_url")
+
+    @queue_url.setter
+    def queue_url(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "queue_url", value)
+
+
+if not MYPY:
+    class ExternalLocationFileEventQueueManagedPubsubArgsDict(TypedDict):
+        managed_resource_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The ID of the managed resource.
+        """
+        subscription_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the subscription.
+        """
+elif False:
+    ExternalLocationFileEventQueueManagedPubsubArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ExternalLocationFileEventQueueManagedPubsubArgs:
+    def __init__(__self__, *,
+                 managed_resource_id: Optional[pulumi.Input[builtins.str]] = None,
+                 subscription_name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] managed_resource_id: The ID of the managed resource.
+        :param pulumi.Input[builtins.str] subscription_name: The name of the subscription.
+        """
+        if managed_resource_id is not None:
+            pulumi.set(__self__, "managed_resource_id", managed_resource_id)
+        if subscription_name is not None:
+            pulumi.set(__self__, "subscription_name", subscription_name)
+
+    @property
+    @pulumi.getter(name="managedResourceId")
+    def managed_resource_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the managed resource.
+        """
+        return pulumi.get(self, "managed_resource_id")
+
+    @managed_resource_id.setter
+    def managed_resource_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "managed_resource_id", value)
+
+    @property
+    @pulumi.getter(name="subscriptionName")
+    def subscription_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the subscription.
+        """
+        return pulumi.get(self, "subscription_name")
+
+    @subscription_name.setter
+    def subscription_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "subscription_name", value)
+
+
+if not MYPY:
+    class ExternalLocationFileEventQueueManagedSqsArgsDict(TypedDict):
+        managed_resource_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The ID of the managed resource.
+        """
+        queue_url: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    ExternalLocationFileEventQueueManagedSqsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ExternalLocationFileEventQueueManagedSqsArgs:
+    def __init__(__self__, *,
+                 managed_resource_id: Optional[pulumi.Input[builtins.str]] = None,
+                 queue_url: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] managed_resource_id: The ID of the managed resource.
+        """
+        if managed_resource_id is not None:
+            pulumi.set(__self__, "managed_resource_id", managed_resource_id)
+        if queue_url is not None:
+            pulumi.set(__self__, "queue_url", queue_url)
+
+    @property
+    @pulumi.getter(name="managedResourceId")
+    def managed_resource_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the managed resource.
+        """
+        return pulumi.get(self, "managed_resource_id")
+
+    @managed_resource_id.setter
+    def managed_resource_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "managed_resource_id", value)
+
+    @property
+    @pulumi.getter(name="queueUrl")
+    def queue_url(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "queue_url")
+
+    @queue_url.setter
+    def queue_url(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "queue_url", value)
+
+
+if not MYPY:
+    class ExternalLocationFileEventQueueProvidedAqsArgsDict(TypedDict):
+        queue_url: pulumi.Input[builtins.str]
+        """
+        The URL of the queue.
+        """
+        managed_resource_id: NotRequired[pulumi.Input[builtins.str]]
+        resource_group: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The Azure resource group.
+        """
+        subscription_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The Azure subscription ID.
+        """
+elif False:
+    ExternalLocationFileEventQueueProvidedAqsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ExternalLocationFileEventQueueProvidedAqsArgs:
+    def __init__(__self__, *,
+                 queue_url: pulumi.Input[builtins.str],
+                 managed_resource_id: Optional[pulumi.Input[builtins.str]] = None,
+                 resource_group: Optional[pulumi.Input[builtins.str]] = None,
+                 subscription_id: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] queue_url: The URL of the queue.
+        :param pulumi.Input[builtins.str] resource_group: The Azure resource group.
+        :param pulumi.Input[builtins.str] subscription_id: The Azure subscription ID.
+        """
+        pulumi.set(__self__, "queue_url", queue_url)
+        if managed_resource_id is not None:
+            pulumi.set(__self__, "managed_resource_id", managed_resource_id)
+        if resource_group is not None:
+            pulumi.set(__self__, "resource_group", resource_group)
+        if subscription_id is not None:
+            pulumi.set(__self__, "subscription_id", subscription_id)
+
+    @property
+    @pulumi.getter(name="queueUrl")
+    def queue_url(self) -> pulumi.Input[builtins.str]:
+        """
+        The URL of the queue.
+        """
+        return pulumi.get(self, "queue_url")
+
+    @queue_url.setter
+    def queue_url(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "queue_url", value)
+
+    @property
+    @pulumi.getter(name="managedResourceId")
+    def managed_resource_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "managed_resource_id")
+
+    @managed_resource_id.setter
+    def managed_resource_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "managed_resource_id", value)
+
+    @property
+    @pulumi.getter(name="resourceGroup")
+    def resource_group(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The Azure resource group.
+        """
+        return pulumi.get(self, "resource_group")
+
+    @resource_group.setter
+    def resource_group(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "resource_group", value)
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The Azure subscription ID.
+        """
+        return pulumi.get(self, "subscription_id")
+
+    @subscription_id.setter
+    def subscription_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "subscription_id", value)
+
+
+if not MYPY:
+    class ExternalLocationFileEventQueueProvidedPubsubArgsDict(TypedDict):
+        subscription_name: pulumi.Input[builtins.str]
+        """
+        The name of the subscription.
+        """
+        managed_resource_id: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    ExternalLocationFileEventQueueProvidedPubsubArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ExternalLocationFileEventQueueProvidedPubsubArgs:
+    def __init__(__self__, *,
+                 subscription_name: pulumi.Input[builtins.str],
+                 managed_resource_id: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] subscription_name: The name of the subscription.
+        """
+        pulumi.set(__self__, "subscription_name", subscription_name)
+        if managed_resource_id is not None:
+            pulumi.set(__self__, "managed_resource_id", managed_resource_id)
+
+    @property
+    @pulumi.getter(name="subscriptionName")
+    def subscription_name(self) -> pulumi.Input[builtins.str]:
+        """
+        The name of the subscription.
+        """
+        return pulumi.get(self, "subscription_name")
+
+    @subscription_name.setter
+    def subscription_name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "subscription_name", value)
+
+    @property
+    @pulumi.getter(name="managedResourceId")
+    def managed_resource_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "managed_resource_id")
+
+    @managed_resource_id.setter
+    def managed_resource_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "managed_resource_id", value)
+
+
+if not MYPY:
+    class ExternalLocationFileEventQueueProvidedSqsArgsDict(TypedDict):
+        queue_url: pulumi.Input[builtins.str]
+        """
+        The URL of the SQS queue.
+        """
+        managed_resource_id: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    ExternalLocationFileEventQueueProvidedSqsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ExternalLocationFileEventQueueProvidedSqsArgs:
+    def __init__(__self__, *,
+                 queue_url: pulumi.Input[builtins.str],
+                 managed_resource_id: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] queue_url: The URL of the SQS queue.
+        """
+        pulumi.set(__self__, "queue_url", queue_url)
+        if managed_resource_id is not None:
+            pulumi.set(__self__, "managed_resource_id", managed_resource_id)
+
+    @property
+    @pulumi.getter(name="queueUrl")
+    def queue_url(self) -> pulumi.Input[builtins.str]:
+        """
+        The URL of the SQS queue.
+        """
+        return pulumi.get(self, "queue_url")
+
+    @queue_url.setter
+    def queue_url(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "queue_url", value)
+
+    @property
+    @pulumi.getter(name="managedResourceId")
+    def managed_resource_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "managed_resource_id")
+
+    @managed_resource_id.setter
+    def managed_resource_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "managed_resource_id", value)
+
+
+if not MYPY:
     class GrantsGrantArgsDict(TypedDict):
         principal: pulumi.Input[builtins.str]
         privileges: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
@@ -7119,7 +8213,7 @@ if not MYPY:
         """
         spot_bid_price_percent: NotRequired[pulumi.Input[builtins.int]]
         """
-        (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
+        (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type's on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
         """
         zone_id: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -7136,7 +8230,7 @@ class InstancePoolAwsAttributesArgs:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] availability: (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
-        :param pulumi.Input[builtins.int] spot_bid_price_percent: (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
+        :param pulumi.Input[builtins.int] spot_bid_price_percent: (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type's on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
         :param pulumi.Input[builtins.str] zone_id: (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
         """
         if availability is not None:
@@ -7162,7 +8256,7 @@ class InstancePoolAwsAttributesArgs:
     @pulumi.getter(name="spotBidPricePercent")
     def spot_bid_price_percent(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
+        (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type's on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
         """
         return pulumi.get(self, "spot_bid_price_percent")
 
@@ -8131,6 +9225,7 @@ if not MYPY:
         """
         List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
         """
+        environment_version: NotRequired[pulumi.Input[builtins.str]]
         jar_dependencies: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
 elif False:
     JobEnvironmentSpecArgsDict: TypeAlias = Mapping[str, Any]
@@ -8140,6 +9235,7 @@ class JobEnvironmentSpecArgs:
     def __init__(__self__, *,
                  client: pulumi.Input[builtins.str],
                  dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 environment_version: Optional[pulumi.Input[builtins.str]] = None,
                  jar_dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         :param pulumi.Input[builtins.str] client: client version used by the environment.
@@ -8148,6 +9244,8 @@ class JobEnvironmentSpecArgs:
         pulumi.set(__self__, "client", client)
         if dependencies is not None:
             pulumi.set(__self__, "dependencies", dependencies)
+        if environment_version is not None:
+            pulumi.set(__self__, "environment_version", environment_version)
         if jar_dependencies is not None:
             pulumi.set(__self__, "jar_dependencies", jar_dependencies)
 
@@ -8174,6 +9272,15 @@ class JobEnvironmentSpecArgs:
     @dependencies.setter
     def dependencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "dependencies", value)
+
+    @property
+    @pulumi.getter(name="environmentVersion")
+    def environment_version(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "environment_version")
+
+    @environment_version.setter
+    def environment_version(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "environment_version", value)
 
     @property
     @pulumi.getter(name="jarDependencies")
@@ -12355,7 +13462,7 @@ if not MYPY:
         """
         base_parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
         """
-        (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+        (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         """
         source: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -12377,7 +13484,7 @@ class JobNotebookTaskArgs:
                  warehouse_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] notebook_path: The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         :param pulumi.Input[builtins.str] source: Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
         :param pulumi.Input[builtins.str] warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
         """
@@ -12405,7 +13512,7 @@ class JobNotebookTaskArgs:
     @pulumi.getter(name="baseParameters")
     def base_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+        (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         """
         return pulumi.get(self, "base_parameters")
 
@@ -15872,8 +16979,8 @@ class JobTaskForEachTaskTaskGenAiComputeTaskArgs:
 
 if not MYPY:
     class JobTaskForEachTaskTaskGenAiComputeTaskComputeArgsDict(TypedDict):
-        gpu_node_pool_id: pulumi.Input[builtins.str]
         num_gpus: pulumi.Input[builtins.int]
+        gpu_node_pool_id: NotRequired[pulumi.Input[builtins.str]]
         gpu_type: NotRequired[pulumi.Input[builtins.str]]
 elif False:
     JobTaskForEachTaskTaskGenAiComputeTaskComputeArgsDict: TypeAlias = Mapping[str, Any]
@@ -15881,22 +16988,14 @@ elif False:
 @pulumi.input_type
 class JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs:
     def __init__(__self__, *,
-                 gpu_node_pool_id: pulumi.Input[builtins.str],
                  num_gpus: pulumi.Input[builtins.int],
+                 gpu_node_pool_id: Optional[pulumi.Input[builtins.str]] = None,
                  gpu_type: Optional[pulumi.Input[builtins.str]] = None):
-        pulumi.set(__self__, "gpu_node_pool_id", gpu_node_pool_id)
         pulumi.set(__self__, "num_gpus", num_gpus)
+        if gpu_node_pool_id is not None:
+            pulumi.set(__self__, "gpu_node_pool_id", gpu_node_pool_id)
         if gpu_type is not None:
             pulumi.set(__self__, "gpu_type", gpu_type)
-
-    @property
-    @pulumi.getter(name="gpuNodePoolId")
-    def gpu_node_pool_id(self) -> pulumi.Input[builtins.str]:
-        return pulumi.get(self, "gpu_node_pool_id")
-
-    @gpu_node_pool_id.setter
-    def gpu_node_pool_id(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "gpu_node_pool_id", value)
 
     @property
     @pulumi.getter(name="numGpus")
@@ -15906,6 +17005,15 @@ class JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs:
     @num_gpus.setter
     def num_gpus(self, value: pulumi.Input[builtins.int]):
         pulumi.set(self, "num_gpus", value)
+
+    @property
+    @pulumi.getter(name="gpuNodePoolId")
+    def gpu_node_pool_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "gpu_node_pool_id")
+
+    @gpu_node_pool_id.setter
+    def gpu_node_pool_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "gpu_node_pool_id", value)
 
     @property
     @pulumi.getter(name="gpuType")
@@ -18037,7 +19145,7 @@ if not MYPY:
         """
         base_parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
         """
-        (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+        (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         """
         source: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -18059,7 +19167,7 @@ class JobTaskForEachTaskTaskNotebookTaskArgs:
                  warehouse_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] notebook_path: The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         :param pulumi.Input[builtins.str] source: Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
         :param pulumi.Input[builtins.str] warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
         """
@@ -18087,7 +19195,7 @@ class JobTaskForEachTaskTaskNotebookTaskArgs:
     @pulumi.getter(name="baseParameters")
     def base_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+        (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         """
         return pulumi.get(self, "base_parameters")
 
@@ -20028,8 +21136,8 @@ class JobTaskGenAiComputeTaskArgs:
 
 if not MYPY:
     class JobTaskGenAiComputeTaskComputeArgsDict(TypedDict):
-        gpu_node_pool_id: pulumi.Input[builtins.str]
         num_gpus: pulumi.Input[builtins.int]
+        gpu_node_pool_id: NotRequired[pulumi.Input[builtins.str]]
         gpu_type: NotRequired[pulumi.Input[builtins.str]]
 elif False:
     JobTaskGenAiComputeTaskComputeArgsDict: TypeAlias = Mapping[str, Any]
@@ -20037,22 +21145,14 @@ elif False:
 @pulumi.input_type
 class JobTaskGenAiComputeTaskComputeArgs:
     def __init__(__self__, *,
-                 gpu_node_pool_id: pulumi.Input[builtins.str],
                  num_gpus: pulumi.Input[builtins.int],
+                 gpu_node_pool_id: Optional[pulumi.Input[builtins.str]] = None,
                  gpu_type: Optional[pulumi.Input[builtins.str]] = None):
-        pulumi.set(__self__, "gpu_node_pool_id", gpu_node_pool_id)
         pulumi.set(__self__, "num_gpus", num_gpus)
+        if gpu_node_pool_id is not None:
+            pulumi.set(__self__, "gpu_node_pool_id", gpu_node_pool_id)
         if gpu_type is not None:
             pulumi.set(__self__, "gpu_type", gpu_type)
-
-    @property
-    @pulumi.getter(name="gpuNodePoolId")
-    def gpu_node_pool_id(self) -> pulumi.Input[builtins.str]:
-        return pulumi.get(self, "gpu_node_pool_id")
-
-    @gpu_node_pool_id.setter
-    def gpu_node_pool_id(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "gpu_node_pool_id", value)
 
     @property
     @pulumi.getter(name="numGpus")
@@ -20062,6 +21162,15 @@ class JobTaskGenAiComputeTaskComputeArgs:
     @num_gpus.setter
     def num_gpus(self, value: pulumi.Input[builtins.int]):
         pulumi.set(self, "num_gpus", value)
+
+    @property
+    @pulumi.getter(name="gpuNodePoolId")
+    def gpu_node_pool_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "gpu_node_pool_id")
+
+    @gpu_node_pool_id.setter
+    def gpu_node_pool_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "gpu_node_pool_id", value)
 
     @property
     @pulumi.getter(name="gpuType")
@@ -22193,7 +23302,7 @@ if not MYPY:
         """
         base_parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
         """
-        (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+        (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         """
         source: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -22215,7 +23324,7 @@ class JobTaskNotebookTaskArgs:
                  warehouse_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] notebook_path: The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         :param pulumi.Input[builtins.str] source: Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
         :param pulumi.Input[builtins.str] warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
         """
@@ -22243,7 +23352,7 @@ class JobTaskNotebookTaskArgs:
     @pulumi.getter(name="baseParameters")
     def base_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+        (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         """
         return pulumi.get(self, "base_parameters")
 
@@ -26700,6 +27809,7 @@ if not MYPY:
         """
         The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with '.' and ':' replaced with '-', and if not specified for other entities, it defaults to -.
         """
+        provisioned_model_units: NotRequired[pulumi.Input[builtins.int]]
         scale_to_zero_enabled: NotRequired[pulumi.Input[builtins.bool]]
         """
         Whether the compute resources for the served entity should scale down to zero.
@@ -26726,6 +27836,7 @@ class ModelServingConfigServedEntityArgs:
                  max_provisioned_throughput: Optional[pulumi.Input[builtins.int]] = None,
                  min_provisioned_throughput: Optional[pulumi.Input[builtins.int]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 provisioned_model_units: Optional[pulumi.Input[builtins.int]] = None,
                  scale_to_zero_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  workload_size: Optional[pulumi.Input[builtins.str]] = None,
                  workload_type: Optional[pulumi.Input[builtins.str]] = None):
@@ -26758,6 +27869,8 @@ class ModelServingConfigServedEntityArgs:
             pulumi.set(__self__, "min_provisioned_throughput", min_provisioned_throughput)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provisioned_model_units is not None:
+            pulumi.set(__self__, "provisioned_model_units", provisioned_model_units)
         if scale_to_zero_enabled is not None:
             pulumi.set(__self__, "scale_to_zero_enabled", scale_to_zero_enabled)
         if workload_size is not None:
@@ -26860,6 +27973,15 @@ class ModelServingConfigServedEntityArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="provisionedModelUnits")
+    def provisioned_model_units(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "provisioned_model_units")
+
+    @provisioned_model_units.setter
+    def provisioned_model_units(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "provisioned_model_units", value)
 
     @property
     @pulumi.getter(name="scaleToZeroEnabled")
@@ -28114,6 +29236,7 @@ if not MYPY:
         """
         The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
         """
+        provisioned_model_units: NotRequired[pulumi.Input[builtins.int]]
         scale_to_zero_enabled: NotRequired[pulumi.Input[builtins.bool]]
         """
         Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
@@ -28139,6 +29262,7 @@ class ModelServingConfigServedModelArgs:
                  max_provisioned_throughput: Optional[pulumi.Input[builtins.int]] = None,
                  min_provisioned_throughput: Optional[pulumi.Input[builtins.int]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 provisioned_model_units: Optional[pulumi.Input[builtins.int]] = None,
                  scale_to_zero_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  workload_size: Optional[pulumi.Input[builtins.str]] = None,
                  workload_type: Optional[pulumi.Input[builtins.str]] = None):
@@ -28166,6 +29290,8 @@ class ModelServingConfigServedModelArgs:
             pulumi.set(__self__, "min_provisioned_throughput", min_provisioned_throughput)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if provisioned_model_units is not None:
+            pulumi.set(__self__, "provisioned_model_units", provisioned_model_units)
         if scale_to_zero_enabled is not None:
             pulumi.set(__self__, "scale_to_zero_enabled", scale_to_zero_enabled)
         if workload_size is not None:
@@ -28256,6 +29382,15 @@ class ModelServingConfigServedModelArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="provisionedModelUnits")
+    def provisioned_model_units(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "provisioned_model_units")
+
+    @provisioned_model_units.setter
+    def provisioned_model_units(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "provisioned_model_units", value)
 
     @property
     @pulumi.getter(name="scaleToZeroEnabled")
@@ -28367,6 +29502,868 @@ class ModelServingConfigTrafficConfigRouteArgs:
     @traffic_percentage.setter
     def traffic_percentage(self, value: pulumi.Input[builtins.int]):
         pulumi.set(self, "traffic_percentage", value)
+
+
+if not MYPY:
+    class ModelServingProvisionedThroughputAiGatewayArgsDict(TypedDict):
+        fallback_config: NotRequired[pulumi.Input['ModelServingProvisionedThroughputAiGatewayFallbackConfigArgsDict']]
+        guardrails: NotRequired[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsArgsDict']]
+        """
+        Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
+        """
+        inference_table_config: NotRequired[pulumi.Input['ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgsDict']]
+        """
+        Block describing the configuration of usage tracking. Consists of the following attributes:
+        """
+        rate_limits: NotRequired[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputAiGatewayRateLimitArgsDict']]]]
+        """
+        Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
+        """
+        usage_tracking_config: NotRequired[pulumi.Input['ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgsDict']]
+        """
+        Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
+        """
+elif False:
+    ModelServingProvisionedThroughputAiGatewayArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingProvisionedThroughputAiGatewayArgs:
+    def __init__(__self__, *,
+                 fallback_config: Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs']] = None,
+                 guardrails: Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsArgs']] = None,
+                 inference_table_config: Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs']] = None,
+                 rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputAiGatewayRateLimitArgs']]]] = None,
+                 usage_tracking_config: Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs']] = None):
+        """
+        :param pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsArgs'] guardrails: Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
+        :param pulumi.Input['ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs'] inference_table_config: Block describing the configuration of usage tracking. Consists of the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputAiGatewayRateLimitArgs']]] rate_limits: Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
+        :param pulumi.Input['ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs'] usage_tracking_config: Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
+        """
+        if fallback_config is not None:
+            pulumi.set(__self__, "fallback_config", fallback_config)
+        if guardrails is not None:
+            pulumi.set(__self__, "guardrails", guardrails)
+        if inference_table_config is not None:
+            pulumi.set(__self__, "inference_table_config", inference_table_config)
+        if rate_limits is not None:
+            pulumi.set(__self__, "rate_limits", rate_limits)
+        if usage_tracking_config is not None:
+            pulumi.set(__self__, "usage_tracking_config", usage_tracking_config)
+
+    @property
+    @pulumi.getter(name="fallbackConfig")
+    def fallback_config(self) -> Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs']]:
+        return pulumi.get(self, "fallback_config")
+
+    @fallback_config.setter
+    def fallback_config(self, value: Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs']]):
+        pulumi.set(self, "fallback_config", value)
+
+    @property
+    @pulumi.getter
+    def guardrails(self) -> Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsArgs']]:
+        """
+        Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
+        """
+        return pulumi.get(self, "guardrails")
+
+    @guardrails.setter
+    def guardrails(self, value: Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsArgs']]):
+        pulumi.set(self, "guardrails", value)
+
+    @property
+    @pulumi.getter(name="inferenceTableConfig")
+    def inference_table_config(self) -> Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs']]:
+        """
+        Block describing the configuration of usage tracking. Consists of the following attributes:
+        """
+        return pulumi.get(self, "inference_table_config")
+
+    @inference_table_config.setter
+    def inference_table_config(self, value: Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs']]):
+        pulumi.set(self, "inference_table_config", value)
+
+    @property
+    @pulumi.getter(name="rateLimits")
+    def rate_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputAiGatewayRateLimitArgs']]]]:
+        """
+        Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
+        """
+        return pulumi.get(self, "rate_limits")
+
+    @rate_limits.setter
+    def rate_limits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputAiGatewayRateLimitArgs']]]]):
+        pulumi.set(self, "rate_limits", value)
+
+    @property
+    @pulumi.getter(name="usageTrackingConfig")
+    def usage_tracking_config(self) -> Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs']]:
+        """
+        Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
+        """
+        return pulumi.get(self, "usage_tracking_config")
+
+    @usage_tracking_config.setter
+    def usage_tracking_config(self, value: Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs']]):
+        pulumi.set(self, "usage_tracking_config", value)
+
+
+if not MYPY:
+    class ModelServingProvisionedThroughputAiGatewayFallbackConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[builtins.bool]
+        """
+        boolean flag specifying if usage tracking is enabled.
+        """
+elif False:
+    ModelServingProvisionedThroughputAiGatewayFallbackConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingProvisionedThroughputAiGatewayFallbackConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[builtins.bool]):
+        """
+        :param pulumi.Input[builtins.bool] enabled: boolean flag specifying if usage tracking is enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[builtins.bool]:
+        """
+        boolean flag specifying if usage tracking is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class ModelServingProvisionedThroughputAiGatewayGuardrailsArgsDict(TypedDict):
+        input: NotRequired[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsInputArgsDict']]
+        """
+        A block with configuration for input guardrail filters:
+        """
+        output: NotRequired[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsOutputArgsDict']]
+        """
+        A block with configuration for output guardrail filters.  Has the same structure as `input` block.
+        """
+elif False:
+    ModelServingProvisionedThroughputAiGatewayGuardrailsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingProvisionedThroughputAiGatewayGuardrailsArgs:
+    def __init__(__self__, *,
+                 input: Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsInputArgs']] = None,
+                 output: Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsOutputArgs']] = None):
+        """
+        :param pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsInputArgs'] input: A block with configuration for input guardrail filters:
+        :param pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsOutputArgs'] output: A block with configuration for output guardrail filters.  Has the same structure as `input` block.
+        """
+        if input is not None:
+            pulumi.set(__self__, "input", input)
+        if output is not None:
+            pulumi.set(__self__, "output", output)
+
+    @property
+    @pulumi.getter
+    def input(self) -> Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsInputArgs']]:
+        """
+        A block with configuration for input guardrail filters:
+        """
+        return pulumi.get(self, "input")
+
+    @input.setter
+    def input(self, value: Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsInputArgs']]):
+        pulumi.set(self, "input", value)
+
+    @property
+    @pulumi.getter
+    def output(self) -> Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsOutputArgs']]:
+        """
+        A block with configuration for output guardrail filters.  Has the same structure as `input` block.
+        """
+        return pulumi.get(self, "output")
+
+    @output.setter
+    def output(self, value: Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsOutputArgs']]):
+        pulumi.set(self, "output", value)
+
+
+if not MYPY:
+    class ModelServingProvisionedThroughputAiGatewayGuardrailsInputArgsDict(TypedDict):
+        invalid_keywords: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+        """
+        pii: NotRequired[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgsDict']]
+        """
+        Block with configuration for guardrail PII filter:
+        """
+        safety: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        the boolean flag that indicates whether the safety filter is enabled.
+        """
+        valid_topics: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+        """
+elif False:
+    ModelServingProvisionedThroughputAiGatewayGuardrailsInputArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingProvisionedThroughputAiGatewayGuardrailsInputArgs:
+    def __init__(__self__, *,
+                 invalid_keywords: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 pii: Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs']] = None,
+                 safety: Optional[pulumi.Input[builtins.bool]] = None,
+                 valid_topics: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] invalid_keywords: List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+        :param pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs'] pii: Block with configuration for guardrail PII filter:
+        :param pulumi.Input[builtins.bool] safety: the boolean flag that indicates whether the safety filter is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] valid_topics: The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+        """
+        if invalid_keywords is not None:
+            pulumi.set(__self__, "invalid_keywords", invalid_keywords)
+        if pii is not None:
+            pulumi.set(__self__, "pii", pii)
+        if safety is not None:
+            pulumi.set(__self__, "safety", safety)
+        if valid_topics is not None:
+            pulumi.set(__self__, "valid_topics", valid_topics)
+
+    @property
+    @pulumi.getter(name="invalidKeywords")
+    def invalid_keywords(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+        """
+        return pulumi.get(self, "invalid_keywords")
+
+    @invalid_keywords.setter
+    def invalid_keywords(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "invalid_keywords", value)
+
+    @property
+    @pulumi.getter
+    def pii(self) -> Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs']]:
+        """
+        Block with configuration for guardrail PII filter:
+        """
+        return pulumi.get(self, "pii")
+
+    @pii.setter
+    def pii(self, value: Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs']]):
+        pulumi.set(self, "pii", value)
+
+    @property
+    @pulumi.getter
+    def safety(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        the boolean flag that indicates whether the safety filter is enabled.
+        """
+        return pulumi.get(self, "safety")
+
+    @safety.setter
+    def safety(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "safety", value)
+
+    @property
+    @pulumi.getter(name="validTopics")
+    def valid_topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+        """
+        return pulumi.get(self, "valid_topics")
+
+    @valid_topics.setter
+    def valid_topics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "valid_topics", value)
+
+
+if not MYPY:
+    class ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgsDict(TypedDict):
+        behavior: NotRequired[pulumi.Input[builtins.str]]
+        """
+        a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+        """
+elif False:
+    ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingProvisionedThroughputAiGatewayGuardrailsInputPiiArgs:
+    def __init__(__self__, *,
+                 behavior: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] behavior: a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+        """
+        if behavior is not None:
+            pulumi.set(__self__, "behavior", behavior)
+
+    @property
+    @pulumi.getter
+    def behavior(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+        """
+        return pulumi.get(self, "behavior")
+
+    @behavior.setter
+    def behavior(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "behavior", value)
+
+
+if not MYPY:
+    class ModelServingProvisionedThroughputAiGatewayGuardrailsOutputArgsDict(TypedDict):
+        invalid_keywords: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+        """
+        pii: NotRequired[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgsDict']]
+        """
+        Block with configuration for guardrail PII filter:
+        """
+        safety: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        the boolean flag that indicates whether the safety filter is enabled.
+        """
+        valid_topics: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+        """
+elif False:
+    ModelServingProvisionedThroughputAiGatewayGuardrailsOutputArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingProvisionedThroughputAiGatewayGuardrailsOutputArgs:
+    def __init__(__self__, *,
+                 invalid_keywords: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 pii: Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs']] = None,
+                 safety: Optional[pulumi.Input[builtins.bool]] = None,
+                 valid_topics: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] invalid_keywords: List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+        :param pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs'] pii: Block with configuration for guardrail PII filter:
+        :param pulumi.Input[builtins.bool] safety: the boolean flag that indicates whether the safety filter is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] valid_topics: The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+        """
+        if invalid_keywords is not None:
+            pulumi.set(__self__, "invalid_keywords", invalid_keywords)
+        if pii is not None:
+            pulumi.set(__self__, "pii", pii)
+        if safety is not None:
+            pulumi.set(__self__, "safety", safety)
+        if valid_topics is not None:
+            pulumi.set(__self__, "valid_topics", valid_topics)
+
+    @property
+    @pulumi.getter(name="invalidKeywords")
+    def invalid_keywords(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+        """
+        return pulumi.get(self, "invalid_keywords")
+
+    @invalid_keywords.setter
+    def invalid_keywords(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "invalid_keywords", value)
+
+    @property
+    @pulumi.getter
+    def pii(self) -> Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs']]:
+        """
+        Block with configuration for guardrail PII filter:
+        """
+        return pulumi.get(self, "pii")
+
+    @pii.setter
+    def pii(self, value: Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs']]):
+        pulumi.set(self, "pii", value)
+
+    @property
+    @pulumi.getter
+    def safety(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        the boolean flag that indicates whether the safety filter is enabled.
+        """
+        return pulumi.get(self, "safety")
+
+    @safety.setter
+    def safety(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "safety", value)
+
+    @property
+    @pulumi.getter(name="validTopics")
+    def valid_topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+        """
+        return pulumi.get(self, "valid_topics")
+
+    @valid_topics.setter
+    def valid_topics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "valid_topics", value)
+
+
+if not MYPY:
+    class ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgsDict(TypedDict):
+        behavior: NotRequired[pulumi.Input[builtins.str]]
+        """
+        a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+        """
+elif False:
+    ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPiiArgs:
+    def __init__(__self__, *,
+                 behavior: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] behavior: a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+        """
+        if behavior is not None:
+            pulumi.set(__self__, "behavior", behavior)
+
+    @property
+    @pulumi.getter
+    def behavior(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+        """
+        return pulumi.get(self, "behavior")
+
+    @behavior.setter
+    def behavior(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "behavior", value)
+
+
+if not MYPY:
+    class ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgsDict(TypedDict):
+        catalog_name: NotRequired[pulumi.Input[builtins.str]]
+        enabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        boolean flag specifying if usage tracking is enabled.
+        """
+        schema_name: NotRequired[pulumi.Input[builtins.str]]
+        table_name_prefix: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs:
+    def __init__(__self__, *,
+                 catalog_name: Optional[pulumi.Input[builtins.str]] = None,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 schema_name: Optional[pulumi.Input[builtins.str]] = None,
+                 table_name_prefix: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.bool] enabled: boolean flag specifying if usage tracking is enabled.
+        """
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if schema_name is not None:
+            pulumi.set(__self__, "schema_name", schema_name)
+        if table_name_prefix is not None:
+            pulumi.set(__self__, "table_name_prefix", table_name_prefix)
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "catalog_name")
+
+    @catalog_name.setter
+    def catalog_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "catalog_name", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        boolean flag specifying if usage tracking is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "schema_name")
+
+    @schema_name.setter
+    def schema_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "schema_name", value)
+
+    @property
+    @pulumi.getter(name="tableNamePrefix")
+    def table_name_prefix(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "table_name_prefix")
+
+    @table_name_prefix.setter
+    def table_name_prefix(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "table_name_prefix", value)
+
+
+if not MYPY:
+    class ModelServingProvisionedThroughputAiGatewayRateLimitArgsDict(TypedDict):
+        calls: pulumi.Input[builtins.int]
+        renewal_period: pulumi.Input[builtins.str]
+        key: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The key field for a tag.
+        """
+elif False:
+    ModelServingProvisionedThroughputAiGatewayRateLimitArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingProvisionedThroughputAiGatewayRateLimitArgs:
+    def __init__(__self__, *,
+                 calls: pulumi.Input[builtins.int],
+                 renewal_period: pulumi.Input[builtins.str],
+                 key: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] key: The key field for a tag.
+        """
+        pulumi.set(__self__, "calls", calls)
+        pulumi.set(__self__, "renewal_period", renewal_period)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def calls(self) -> pulumi.Input[builtins.int]:
+        return pulumi.get(self, "calls")
+
+    @calls.setter
+    def calls(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "calls", value)
+
+    @property
+    @pulumi.getter(name="renewalPeriod")
+    def renewal_period(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "renewal_period")
+
+    @renewal_period.setter
+    def renewal_period(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "renewal_period", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The key field for a tag.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "key", value)
+
+
+if not MYPY:
+    class ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        boolean flag specifying if usage tracking is enabled.
+        """
+elif False:
+    ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.bool] enabled: boolean flag specifying if usage tracking is enabled.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        boolean flag specifying if usage tracking is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class ModelServingProvisionedThroughputConfigArgsDict(TypedDict):
+        served_entities: NotRequired[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputConfigServedEntityArgsDict']]]]
+        """
+        A list of served entities for the endpoint to serve.
+        """
+        traffic_config: NotRequired[pulumi.Input['ModelServingProvisionedThroughputConfigTrafficConfigArgsDict']]
+        """
+        A single block represents the traffic split configuration amongst the served models.
+        """
+elif False:
+    ModelServingProvisionedThroughputConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingProvisionedThroughputConfigArgs:
+    def __init__(__self__, *,
+                 served_entities: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputConfigServedEntityArgs']]]] = None,
+                 traffic_config: Optional[pulumi.Input['ModelServingProvisionedThroughputConfigTrafficConfigArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputConfigServedEntityArgs']]] served_entities: A list of served entities for the endpoint to serve.
+        :param pulumi.Input['ModelServingProvisionedThroughputConfigTrafficConfigArgs'] traffic_config: A single block represents the traffic split configuration amongst the served models.
+        """
+        if served_entities is not None:
+            pulumi.set(__self__, "served_entities", served_entities)
+        if traffic_config is not None:
+            pulumi.set(__self__, "traffic_config", traffic_config)
+
+    @property
+    @pulumi.getter(name="servedEntities")
+    def served_entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputConfigServedEntityArgs']]]]:
+        """
+        A list of served entities for the endpoint to serve.
+        """
+        return pulumi.get(self, "served_entities")
+
+    @served_entities.setter
+    def served_entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputConfigServedEntityArgs']]]]):
+        pulumi.set(self, "served_entities", value)
+
+    @property
+    @pulumi.getter(name="trafficConfig")
+    def traffic_config(self) -> Optional[pulumi.Input['ModelServingProvisionedThroughputConfigTrafficConfigArgs']]:
+        """
+        A single block represents the traffic split configuration amongst the served models.
+        """
+        return pulumi.get(self, "traffic_config")
+
+    @traffic_config.setter
+    def traffic_config(self, value: Optional[pulumi.Input['ModelServingProvisionedThroughputConfigTrafficConfigArgs']]):
+        pulumi.set(self, "traffic_config", value)
+
+
+if not MYPY:
+    class ModelServingProvisionedThroughputConfigServedEntityArgsDict(TypedDict):
+        entity_name: pulumi.Input[builtins.str]
+        """
+        The full path of the UC model to be served, given in the form of `catalog_name.schema_name.model_name`.
+        """
+        entity_version: pulumi.Input[builtins.str]
+        """
+        The version of the model in UC to be served.
+        """
+        provisioned_model_units: pulumi.Input[builtins.int]
+        """
+        The number of model units to be provisioned.
+        """
+        name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entity_name` and `entity_version`
+        """
+elif False:
+    ModelServingProvisionedThroughputConfigServedEntityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingProvisionedThroughputConfigServedEntityArgs:
+    def __init__(__self__, *,
+                 entity_name: pulumi.Input[builtins.str],
+                 entity_version: pulumi.Input[builtins.str],
+                 provisioned_model_units: pulumi.Input[builtins.int],
+                 name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] entity_name: The full path of the UC model to be served, given in the form of `catalog_name.schema_name.model_name`.
+        :param pulumi.Input[builtins.str] entity_version: The version of the model in UC to be served.
+        :param pulumi.Input[builtins.int] provisioned_model_units: The number of model units to be provisioned.
+        :param pulumi.Input[builtins.str] name: The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entity_name` and `entity_version`
+        """
+        pulumi.set(__self__, "entity_name", entity_name)
+        pulumi.set(__self__, "entity_version", entity_version)
+        pulumi.set(__self__, "provisioned_model_units", provisioned_model_units)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="entityName")
+    def entity_name(self) -> pulumi.Input[builtins.str]:
+        """
+        The full path of the UC model to be served, given in the form of `catalog_name.schema_name.model_name`.
+        """
+        return pulumi.get(self, "entity_name")
+
+    @entity_name.setter
+    def entity_name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "entity_name", value)
+
+    @property
+    @pulumi.getter(name="entityVersion")
+    def entity_version(self) -> pulumi.Input[builtins.str]:
+        """
+        The version of the model in UC to be served.
+        """
+        return pulumi.get(self, "entity_version")
+
+    @entity_version.setter
+    def entity_version(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "entity_version", value)
+
+    @property
+    @pulumi.getter(name="provisionedModelUnits")
+    def provisioned_model_units(self) -> pulumi.Input[builtins.int]:
+        """
+        The number of model units to be provisioned.
+        """
+        return pulumi.get(self, "provisioned_model_units")
+
+    @provisioned_model_units.setter
+    def provisioned_model_units(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "provisioned_model_units", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entity_name` and `entity_version`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class ModelServingProvisionedThroughputConfigTrafficConfigArgsDict(TypedDict):
+        routes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputConfigTrafficConfigRouteArgsDict']]]]
+        """
+        Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
+        """
+elif False:
+    ModelServingProvisionedThroughputConfigTrafficConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingProvisionedThroughputConfigTrafficConfigArgs:
+    def __init__(__self__, *,
+                 routes: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs']]] routes: Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
+        """
+        if routes is not None:
+            pulumi.set(__self__, "routes", routes)
+
+    @property
+    @pulumi.getter
+    def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs']]]]:
+        """
+        Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
+        """
+        return pulumi.get(self, "routes")
+
+    @routes.setter
+    def routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs']]]]):
+        pulumi.set(self, "routes", value)
+
+
+if not MYPY:
+    class ModelServingProvisionedThroughputConfigTrafficConfigRouteArgsDict(TypedDict):
+        served_model_name: pulumi.Input[builtins.str]
+        traffic_percentage: pulumi.Input[builtins.int]
+        """
+        The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
+        """
+elif False:
+    ModelServingProvisionedThroughputConfigTrafficConfigRouteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs:
+    def __init__(__self__, *,
+                 served_model_name: pulumi.Input[builtins.str],
+                 traffic_percentage: pulumi.Input[builtins.int]):
+        """
+        :param pulumi.Input[builtins.int] traffic_percentage: The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
+        """
+        pulumi.set(__self__, "served_model_name", served_model_name)
+        pulumi.set(__self__, "traffic_percentage", traffic_percentage)
+
+    @property
+    @pulumi.getter(name="servedModelName")
+    def served_model_name(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "served_model_name")
+
+    @served_model_name.setter
+    def served_model_name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "served_model_name", value)
+
+    @property
+    @pulumi.getter(name="trafficPercentage")
+    def traffic_percentage(self) -> pulumi.Input[builtins.int]:
+        """
+        The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
+        """
+        return pulumi.get(self, "traffic_percentage")
+
+    @traffic_percentage.setter
+    def traffic_percentage(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "traffic_percentage", value)
+
+
+if not MYPY:
+    class ModelServingProvisionedThroughputTagArgsDict(TypedDict):
+        key: pulumi.Input[builtins.str]
+        """
+        The key field for a tag.
+        """
+        value: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The value field for a tag.
+        """
+elif False:
+    ModelServingProvisionedThroughputTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ModelServingProvisionedThroughputTagArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[builtins.str],
+                 value: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] key: The key field for a tag.
+        :param pulumi.Input[builtins.str] value: The value field for a tag.
+        """
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[builtins.str]:
+        """
+        The key field for a tag.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The value field for a tag.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -29412,13 +31409,7 @@ if not MYPY:
         The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
         """
         pod_ip_range_name: NotRequired[pulumi.Input[builtins.str]]
-        """
-        The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-        """
         service_ip_range_name: NotRequired[pulumi.Input[builtins.str]]
-        """
-        The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-        """
 elif False:
     MwsNetworksGcpNetworkInfoArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -29436,21 +31427,19 @@ class MwsNetworksGcpNetworkInfoArgs:
         :param pulumi.Input[builtins.str] subnet_id: The ID of the subnet associated with this network.
         :param pulumi.Input[builtins.str] subnet_region: The Google Cloud region of the workspace data plane. For example, `us-east4`.
         :param pulumi.Input[builtins.str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
-        :param pulumi.Input[builtins.str] pod_ip_range_name: The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-        :param pulumi.Input[builtins.str] service_ip_range_name: The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
         """
         pulumi.set(__self__, "network_project_id", network_project_id)
         pulumi.set(__self__, "subnet_id", subnet_id)
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -29504,11 +31493,8 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-        """
         return pulumi.get(self, "pod_ip_range_name")
 
     @pod_ip_range_name.setter
@@ -29517,11 +31503,8 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-        """
         return pulumi.get(self, "service_ip_range_name")
 
     @service_ip_range_name.setter
@@ -29796,13 +31779,13 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  gke_cluster_service_ip_range: Optional[pulumi.Input[builtins.str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
@@ -29817,7 +31800,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -29827,7 +31810,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -29839,13 +31822,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 if not MYPY:
     class MwsWorkspacesGkeConfigArgsDict(TypedDict):
         connectivity_type: NotRequired[pulumi.Input[builtins.str]]
-        """
-        Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
-        """
         master_ip_range: NotRequired[pulumi.Input[builtins.str]]
-        """
-        The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
-        """
 elif False:
     MwsWorkspacesGkeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -29854,10 +31831,6 @@ class MwsWorkspacesGkeConfigArgs:
     def __init__(__self__, *,
                  connectivity_type: Optional[pulumi.Input[builtins.str]] = None,
                  master_ip_range: Optional[pulumi.Input[builtins.str]] = None):
-        """
-        :param pulumi.Input[builtins.str] connectivity_type: Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
-        :param pulumi.Input[builtins.str] master_ip_range: The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
-        """
         if connectivity_type is not None:
             pulumi.set(__self__, "connectivity_type", connectivity_type)
         if master_ip_range is not None:
@@ -29866,9 +31839,6 @@ class MwsWorkspacesGkeConfigArgs:
     @property
     @pulumi.getter(name="connectivityType")
     def connectivity_type(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
-        """
         return pulumi.get(self, "connectivity_type")
 
     @connectivity_type.setter
@@ -29878,9 +31848,6 @@ class MwsWorkspacesGkeConfigArgs:
     @property
     @pulumi.getter(name="masterIpRange")
     def master_ip_range(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
-        """
         return pulumi.get(self, "master_ip_range")
 
     @master_ip_range.setter
@@ -31924,6 +33891,9 @@ if not MYPY:
         abfss: NotRequired[pulumi.Input['PipelineClusterInitScriptAbfssArgsDict']]
         dbfs: NotRequired[pulumi.Input['PipelineClusterInitScriptDbfsArgsDict']]
         file: NotRequired[pulumi.Input['PipelineClusterInitScriptFileArgsDict']]
+        """
+        specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+        """
         gcs: NotRequired[pulumi.Input['PipelineClusterInitScriptGcsArgsDict']]
         s3: NotRequired[pulumi.Input['PipelineClusterInitScriptS3ArgsDict']]
         volumes: NotRequired[pulumi.Input['PipelineClusterInitScriptVolumesArgsDict']]
@@ -31941,6 +33911,9 @@ class PipelineClusterInitScriptArgs:
                  s3: Optional[pulumi.Input['PipelineClusterInitScriptS3Args']] = None,
                  volumes: Optional[pulumi.Input['PipelineClusterInitScriptVolumesArgs']] = None,
                  workspace: Optional[pulumi.Input['PipelineClusterInitScriptWorkspaceArgs']] = None):
+        """
+        :param pulumi.Input['PipelineClusterInitScriptFileArgs'] file: specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+        """
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
@@ -31981,6 +33954,9 @@ class PipelineClusterInitScriptArgs:
     @property
     @pulumi.getter
     def file(self) -> Optional[pulumi.Input['PipelineClusterInitScriptFileArgs']]:
+        """
+        specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+        """
         return pulumi.get(self, "file")
 
     @file.setter
@@ -32537,6 +34513,7 @@ if not MYPY:
         connection_name: NotRequired[pulumi.Input[builtins.str]]
         ingestion_gateway_id: NotRequired[pulumi.Input[builtins.str]]
         objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectArgsDict']]]]
+        source_type: NotRequired[pulumi.Input[builtins.str]]
         table_configuration: NotRequired[pulumi.Input['PipelineIngestionDefinitionTableConfigurationArgsDict']]
 elif False:
     PipelineIngestionDefinitionArgsDict: TypeAlias = Mapping[str, Any]
@@ -32547,6 +34524,7 @@ class PipelineIngestionDefinitionArgs:
                  connection_name: Optional[pulumi.Input[builtins.str]] = None,
                  ingestion_gateway_id: Optional[pulumi.Input[builtins.str]] = None,
                  objects: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectArgs']]]] = None,
+                 source_type: Optional[pulumi.Input[builtins.str]] = None,
                  table_configuration: Optional[pulumi.Input['PipelineIngestionDefinitionTableConfigurationArgs']] = None):
         if connection_name is not None:
             pulumi.set(__self__, "connection_name", connection_name)
@@ -32554,6 +34532,8 @@ class PipelineIngestionDefinitionArgs:
             pulumi.set(__self__, "ingestion_gateway_id", ingestion_gateway_id)
         if objects is not None:
             pulumi.set(__self__, "objects", objects)
+        if source_type is not None:
+            pulumi.set(__self__, "source_type", source_type)
         if table_configuration is not None:
             pulumi.set(__self__, "table_configuration", table_configuration)
 
@@ -32583,6 +34563,15 @@ class PipelineIngestionDefinitionArgs:
     @objects.setter
     def objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectArgs']]]]):
         pulumi.set(self, "objects", value)
+
+    @property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "source_type")
+
+    @source_type.setter
+    def source_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "source_type", value)
 
     @property
     @pulumi.getter(name="tableConfiguration")
@@ -33298,9 +35287,19 @@ class PipelineLatestUpdateArgs:
 if not MYPY:
     class PipelineLibraryArgsDict(TypedDict):
         file: NotRequired[pulumi.Input['PipelineLibraryFileArgsDict']]
+        """
+        specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+        """
+        glob: NotRequired[pulumi.Input['PipelineLibraryGlobArgsDict']]
+        """
+        The unified field to include source code. Each entry should have the `include` attribute that can specify a notebook path, a file path, or a folder path that ends `/**` (to include everything from that folder). This field cannot be used together with `notebook` or `file`.
+        """
         jar: NotRequired[pulumi.Input[builtins.str]]
         maven: NotRequired[pulumi.Input['PipelineLibraryMavenArgsDict']]
         notebook: NotRequired[pulumi.Input['PipelineLibraryNotebookArgsDict']]
+        """
+        specifies path to a Databricks Notebook to include as source. Actual path is specified as `path` attribute inside the block.
+        """
         whl: NotRequired[pulumi.Input[builtins.str]]
 elif False:
     PipelineLibraryArgsDict: TypeAlias = Mapping[str, Any]
@@ -33309,12 +35308,20 @@ elif False:
 class PipelineLibraryArgs:
     def __init__(__self__, *,
                  file: Optional[pulumi.Input['PipelineLibraryFileArgs']] = None,
+                 glob: Optional[pulumi.Input['PipelineLibraryGlobArgs']] = None,
                  jar: Optional[pulumi.Input[builtins.str]] = None,
                  maven: Optional[pulumi.Input['PipelineLibraryMavenArgs']] = None,
                  notebook: Optional[pulumi.Input['PipelineLibraryNotebookArgs']] = None,
                  whl: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input['PipelineLibraryFileArgs'] file: specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+        :param pulumi.Input['PipelineLibraryGlobArgs'] glob: The unified field to include source code. Each entry should have the `include` attribute that can specify a notebook path, a file path, or a folder path that ends `/**` (to include everything from that folder). This field cannot be used together with `notebook` or `file`.
+        :param pulumi.Input['PipelineLibraryNotebookArgs'] notebook: specifies path to a Databricks Notebook to include as source. Actual path is specified as `path` attribute inside the block.
+        """
         if file is not None:
             pulumi.set(__self__, "file", file)
+        if glob is not None:
+            pulumi.set(__self__, "glob", glob)
         if jar is not None:
             pulumi.set(__self__, "jar", jar)
         if maven is not None:
@@ -33330,11 +35337,26 @@ class PipelineLibraryArgs:
     @property
     @pulumi.getter
     def file(self) -> Optional[pulumi.Input['PipelineLibraryFileArgs']]:
+        """
+        specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+        """
         return pulumi.get(self, "file")
 
     @file.setter
     def file(self, value: Optional[pulumi.Input['PipelineLibraryFileArgs']]):
         pulumi.set(self, "file", value)
+
+    @property
+    @pulumi.getter
+    def glob(self) -> Optional[pulumi.Input['PipelineLibraryGlobArgs']]:
+        """
+        The unified field to include source code. Each entry should have the `include` attribute that can specify a notebook path, a file path, or a folder path that ends `/**` (to include everything from that folder). This field cannot be used together with `notebook` or `file`.
+        """
+        return pulumi.get(self, "glob")
+
+    @glob.setter
+    def glob(self, value: Optional[pulumi.Input['PipelineLibraryGlobArgs']]):
+        pulumi.set(self, "glob", value)
 
     @property
     @pulumi.getter
@@ -33357,6 +35379,9 @@ class PipelineLibraryArgs:
     @property
     @pulumi.getter
     def notebook(self) -> Optional[pulumi.Input['PipelineLibraryNotebookArgs']]:
+        """
+        specifies path to a Databricks Notebook to include as source. Actual path is specified as `path` attribute inside the block.
+        """
         return pulumi.get(self, "notebook")
 
     @notebook.setter
@@ -33376,25 +35401,55 @@ class PipelineLibraryArgs:
 
 if not MYPY:
     class PipelineLibraryFileArgsDict(TypedDict):
-        path: NotRequired[pulumi.Input[builtins.str]]
+        path: pulumi.Input[builtins.str]
 elif False:
     PipelineLibraryFileArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineLibraryFileArgs:
     def __init__(__self__, *,
-                 path: Optional[pulumi.Input[builtins.str]] = None):
-        if path is not None:
-            pulumi.set(__self__, "path", path)
+                 path: pulumi.Input[builtins.str]):
+        pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[builtins.str]]:
+    def path(self) -> pulumi.Input[builtins.str]:
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[builtins.str]]):
+    def path(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "path", value)
+
+
+if not MYPY:
+    class PipelineLibraryGlobArgsDict(TypedDict):
+        include: pulumi.Input[builtins.str]
+        """
+        Paths to include.
+        """
+elif False:
+    PipelineLibraryGlobArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineLibraryGlobArgs:
+    def __init__(__self__, *,
+                 include: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] include: Paths to include.
+        """
+        pulumi.set(__self__, "include", include)
+
+    @property
+    @pulumi.getter
+    def include(self) -> pulumi.Input[builtins.str]:
+        """
+        Paths to include.
+        """
+        return pulumi.get(self, "include")
+
+    @include.setter
+    def include(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "include", value)
 
 
 if not MYPY:
@@ -33447,24 +35502,23 @@ class PipelineLibraryMavenArgs:
 
 if not MYPY:
     class PipelineLibraryNotebookArgsDict(TypedDict):
-        path: NotRequired[pulumi.Input[builtins.str]]
+        path: pulumi.Input[builtins.str]
 elif False:
     PipelineLibraryNotebookArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineLibraryNotebookArgs:
     def __init__(__self__, *,
-                 path: Optional[pulumi.Input[builtins.str]] = None):
-        if path is not None:
-            pulumi.set(__self__, "path", path)
+                 path: pulumi.Input[builtins.str]):
+        pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[builtins.str]]:
+    def path(self) -> pulumi.Input[builtins.str]:
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[builtins.str]]):
+    def path(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "path", value)
 
 
@@ -34932,6 +36986,140 @@ class QueryParameterTextValueArgs:
     @value.setter
     def value(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class RecipientFederationPolicyOidcPolicyArgsDict(TypedDict):
+        issuer: pulumi.Input[builtins.str]
+        """
+        The required token issuer, as specified in the 'iss' claim of federated tokens
+        """
+        subject: pulumi.Input[builtins.str]
+        """
+        The required token subject, as specified in the subject claim of federated tokens.
+        The subject claim identifies the identity of the user or machine accessing the resource.
+        Examples for Entra ID (AAD):
+        - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
+        - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
+        - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
+        """
+        subject_claim: pulumi.Input[builtins.str]
+        """
+        The claim that contains the subject of the token.
+        Depending on the identity provider and the use case (U2M or M2M), this can vary:
+        - For Entra ID (AAD):
+        * U2M flow (group access): Use `groups`.
+        * U2M flow (user access): Use `oid`.
+        * M2M flow (OAuth App access): Use `azp`.
+        - For other IdPs, refer to the specific IdP documentation.
+
+        Supported `subject_claim` values are:
+        """
+        audiences: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+        The audience identifier is intended to represent the recipient of the token.
+        Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
+        """
+elif False:
+    RecipientFederationPolicyOidcPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RecipientFederationPolicyOidcPolicyArgs:
+    def __init__(__self__, *,
+                 issuer: pulumi.Input[builtins.str],
+                 subject: pulumi.Input[builtins.str],
+                 subject_claim: pulumi.Input[builtins.str],
+                 audiences: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[builtins.str] issuer: The required token issuer, as specified in the 'iss' claim of federated tokens
+        :param pulumi.Input[builtins.str] subject: The required token subject, as specified in the subject claim of federated tokens.
+               The subject claim identifies the identity of the user or machine accessing the resource.
+               Examples for Entra ID (AAD):
+               - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
+               - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
+               - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
+        :param pulumi.Input[builtins.str] subject_claim: The claim that contains the subject of the token.
+               Depending on the identity provider and the use case (U2M or M2M), this can vary:
+               - For Entra ID (AAD):
+               * U2M flow (group access): Use `groups`.
+               * U2M flow (user access): Use `oid`.
+               * M2M flow (OAuth App access): Use `azp`.
+               - For other IdPs, refer to the specific IdP documentation.
+               
+               Supported `subject_claim` values are:
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] audiences: The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+               The audience identifier is intended to represent the recipient of the token.
+               Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
+        """
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "subject", subject)
+        pulumi.set(__self__, "subject_claim", subject_claim)
+        if audiences is not None:
+            pulumi.set(__self__, "audiences", audiences)
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> pulumi.Input[builtins.str]:
+        """
+        The required token issuer, as specified in the 'iss' claim of federated tokens
+        """
+        return pulumi.get(self, "issuer")
+
+    @issuer.setter
+    def issuer(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "issuer", value)
+
+    @property
+    @pulumi.getter
+    def subject(self) -> pulumi.Input[builtins.str]:
+        """
+        The required token subject, as specified in the subject claim of federated tokens.
+        The subject claim identifies the identity of the user or machine accessing the resource.
+        Examples for Entra ID (AAD):
+        - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
+        - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
+        - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
+        """
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "subject", value)
+
+    @property
+    @pulumi.getter(name="subjectClaim")
+    def subject_claim(self) -> pulumi.Input[builtins.str]:
+        """
+        The claim that contains the subject of the token.
+        Depending on the identity provider and the use case (U2M or M2M), this can vary:
+        - For Entra ID (AAD):
+        * U2M flow (group access): Use `groups`.
+        * U2M flow (user access): Use `oid`.
+        * M2M flow (OAuth App access): Use `azp`.
+        - For other IdPs, refer to the specific IdP documentation.
+
+        Supported `subject_claim` values are:
+        """
+        return pulumi.get(self, "subject_claim")
+
+    @subject_claim.setter
+    def subject_claim(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "subject_claim", value)
+
+    @property
+    @pulumi.getter
+    def audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+        The audience identifier is intended to represent the recipient of the token.
+        Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
+        """
+        return pulumi.get(self, "audiences")
+
+    @audiences.setter
+    def audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "audiences", value)
 
 
 if not MYPY:
@@ -38010,41 +40198,6 @@ class TableColumnArgs:
 
 
 if not MYPY:
-    class VectorSearchEndpointCustomTagArgsDict(TypedDict):
-        key: pulumi.Input[builtins.str]
-        value: NotRequired[pulumi.Input[builtins.str]]
-elif False:
-    VectorSearchEndpointCustomTagArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class VectorSearchEndpointCustomTagArgs:
-    def __init__(__self__, *,
-                 key: pulumi.Input[builtins.str],
-                 value: Optional[pulumi.Input[builtins.str]] = None):
-        pulumi.set(__self__, "key", key)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def key(self) -> pulumi.Input[builtins.str]:
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "key", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[builtins.str]]:
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "value", value)
-
-
-if not MYPY:
     class VectorSearchEndpointEndpointStatusArgsDict(TypedDict):
         message: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -38607,14 +40760,383 @@ class VectorSearchIndexStatusArgs:
 
 
 if not MYPY:
+    class GetAccountNetworkPolicyEgressArgsDict(TypedDict):
+        network_access: NotRequired['GetAccountNetworkPolicyEgressNetworkAccessArgsDict']
+        """
+        (EgressNetworkPolicyNetworkAccessPolicy) - The access policy enforced for egress traffic to the internet
+        """
+elif False:
+    GetAccountNetworkPolicyEgressArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetAccountNetworkPolicyEgressArgs:
+    def __init__(__self__, *,
+                 network_access: Optional['GetAccountNetworkPolicyEgressNetworkAccessArgs'] = None):
+        """
+        :param 'GetAccountNetworkPolicyEgressNetworkAccessArgs' network_access: (EgressNetworkPolicyNetworkAccessPolicy) - The access policy enforced for egress traffic to the internet
+        """
+        if network_access is not None:
+            pulumi.set(__self__, "network_access", network_access)
+
+    @property
+    @pulumi.getter(name="networkAccess")
+    def network_access(self) -> Optional['GetAccountNetworkPolicyEgressNetworkAccessArgs']:
+        """
+        (EgressNetworkPolicyNetworkAccessPolicy) - The access policy enforced for egress traffic to the internet
+        """
+        return pulumi.get(self, "network_access")
+
+    @network_access.setter
+    def network_access(self, value: Optional['GetAccountNetworkPolicyEgressNetworkAccessArgs']):
+        pulumi.set(self, "network_access", value)
+
+
+if not MYPY:
+    class GetAccountNetworkPolicyEgressNetworkAccessArgsDict(TypedDict):
+        restriction_mode: builtins.str
+        """
+        (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+        """
+        allowed_internet_destinations: NotRequired[Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgsDict']]
+        """
+        (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+        """
+        allowed_storage_destinations: NotRequired[Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgsDict']]
+        """
+        (list of EgressNetworkPolicyNetworkAccessPolicyStorageDestination) - List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+        """
+        policy_enforcement: NotRequired['GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgsDict']
+        """
+        (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+        """
+elif False:
+    GetAccountNetworkPolicyEgressNetworkAccessArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetAccountNetworkPolicyEgressNetworkAccessArgs:
+    def __init__(__self__, *,
+                 restriction_mode: builtins.str,
+                 allowed_internet_destinations: Optional[Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs']] = None,
+                 allowed_storage_destinations: Optional[Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs']] = None,
+                 policy_enforcement: Optional['GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs'] = None):
+        """
+        :param builtins.str restriction_mode: (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+        :param Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs'] allowed_internet_destinations: (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+        :param Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs'] allowed_storage_destinations: (list of EgressNetworkPolicyNetworkAccessPolicyStorageDestination) - List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+        :param 'GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs' policy_enforcement: (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+        """
+        pulumi.set(__self__, "restriction_mode", restriction_mode)
+        if allowed_internet_destinations is not None:
+            pulumi.set(__self__, "allowed_internet_destinations", allowed_internet_destinations)
+        if allowed_storage_destinations is not None:
+            pulumi.set(__self__, "allowed_storage_destinations", allowed_storage_destinations)
+        if policy_enforcement is not None:
+            pulumi.set(__self__, "policy_enforcement", policy_enforcement)
+
+    @property
+    @pulumi.getter(name="restrictionMode")
+    def restriction_mode(self) -> builtins.str:
+        """
+        (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+        """
+        return pulumi.get(self, "restriction_mode")
+
+    @restriction_mode.setter
+    def restriction_mode(self, value: builtins.str):
+        pulumi.set(self, "restriction_mode", value)
+
+    @property
+    @pulumi.getter(name="allowedInternetDestinations")
+    def allowed_internet_destinations(self) -> Optional[Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs']]:
+        """
+        (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+        """
+        return pulumi.get(self, "allowed_internet_destinations")
+
+    @allowed_internet_destinations.setter
+    def allowed_internet_destinations(self, value: Optional[Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs']]):
+        pulumi.set(self, "allowed_internet_destinations", value)
+
+    @property
+    @pulumi.getter(name="allowedStorageDestinations")
+    def allowed_storage_destinations(self) -> Optional[Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs']]:
+        """
+        (list of EgressNetworkPolicyNetworkAccessPolicyStorageDestination) - List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+        """
+        return pulumi.get(self, "allowed_storage_destinations")
+
+    @allowed_storage_destinations.setter
+    def allowed_storage_destinations(self, value: Optional[Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs']]):
+        pulumi.set(self, "allowed_storage_destinations", value)
+
+    @property
+    @pulumi.getter(name="policyEnforcement")
+    def policy_enforcement(self) -> Optional['GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs']:
+        """
+        (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+        """
+        return pulumi.get(self, "policy_enforcement")
+
+    @policy_enforcement.setter
+    def policy_enforcement(self, value: Optional['GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs']):
+        pulumi.set(self, "policy_enforcement", value)
+
+
+if not MYPY:
+    class GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgsDict(TypedDict):
+        destination: NotRequired[builtins.str]
+        """
+        (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+        """
+        internet_destination_type: NotRequired[builtins.str]
+        """
+        (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+        """
+elif False:
+    GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs:
+    def __init__(__self__, *,
+                 destination: Optional[builtins.str] = None,
+                 internet_destination_type: Optional[builtins.str] = None):
+        """
+        :param builtins.str destination: (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+        :param builtins.str internet_destination_type: (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if internet_destination_type is not None:
+            pulumi.set(__self__, "internet_destination_type", internet_destination_type)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[builtins.str]:
+        """
+        (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+        """
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[builtins.str]):
+        pulumi.set(self, "destination", value)
+
+    @property
+    @pulumi.getter(name="internetDestinationType")
+    def internet_destination_type(self) -> Optional[builtins.str]:
+        """
+        (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+        """
+        return pulumi.get(self, "internet_destination_type")
+
+    @internet_destination_type.setter
+    def internet_destination_type(self, value: Optional[builtins.str]):
+        pulumi.set(self, "internet_destination_type", value)
+
+
+if not MYPY:
+    class GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgsDict(TypedDict):
+        azure_storage_account: NotRequired[builtins.str]
+        """
+        (string) - The Azure storage account name
+        """
+        azure_storage_service: NotRequired[builtins.str]
+        """
+        (string) - The Azure storage service type (blob, dfs, etc.)
+        """
+        bucket_name: NotRequired[builtins.str]
+        """
+        (string) -
+        """
+        region: NotRequired[builtins.str]
+        """
+        (string) - The region of the S3 bucket
+        """
+        storage_destination_type: NotRequired[builtins.str]
+        """
+        (string) - The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+        """
+elif False:
+    GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs:
+    def __init__(__self__, *,
+                 azure_storage_account: Optional[builtins.str] = None,
+                 azure_storage_service: Optional[builtins.str] = None,
+                 bucket_name: Optional[builtins.str] = None,
+                 region: Optional[builtins.str] = None,
+                 storage_destination_type: Optional[builtins.str] = None):
+        """
+        :param builtins.str azure_storage_account: (string) - The Azure storage account name
+        :param builtins.str azure_storage_service: (string) - The Azure storage service type (blob, dfs, etc.)
+        :param builtins.str bucket_name: (string) -
+        :param builtins.str region: (string) - The region of the S3 bucket
+        :param builtins.str storage_destination_type: (string) - The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+        """
+        if azure_storage_account is not None:
+            pulumi.set(__self__, "azure_storage_account", azure_storage_account)
+        if azure_storage_service is not None:
+            pulumi.set(__self__, "azure_storage_service", azure_storage_service)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if storage_destination_type is not None:
+            pulumi.set(__self__, "storage_destination_type", storage_destination_type)
+
+    @property
+    @pulumi.getter(name="azureStorageAccount")
+    def azure_storage_account(self) -> Optional[builtins.str]:
+        """
+        (string) - The Azure storage account name
+        """
+        return pulumi.get(self, "azure_storage_account")
+
+    @azure_storage_account.setter
+    def azure_storage_account(self, value: Optional[builtins.str]):
+        pulumi.set(self, "azure_storage_account", value)
+
+    @property
+    @pulumi.getter(name="azureStorageService")
+    def azure_storage_service(self) -> Optional[builtins.str]:
+        """
+        (string) - The Azure storage service type (blob, dfs, etc.)
+        """
+        return pulumi.get(self, "azure_storage_service")
+
+    @azure_storage_service.setter
+    def azure_storage_service(self, value: Optional[builtins.str]):
+        pulumi.set(self, "azure_storage_service", value)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: Optional[builtins.str]):
+        pulumi.set(self, "bucket_name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[builtins.str]:
+        """
+        (string) - The region of the S3 bucket
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[builtins.str]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="storageDestinationType")
+    def storage_destination_type(self) -> Optional[builtins.str]:
+        """
+        (string) - The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+        """
+        return pulumi.get(self, "storage_destination_type")
+
+    @storage_destination_type.setter
+    def storage_destination_type(self, value: Optional[builtins.str]):
+        pulumi.set(self, "storage_destination_type", value)
+
+
+if not MYPY:
+    class GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgsDict(TypedDict):
+        dry_run_mode_product_filters: NotRequired[Sequence[builtins.str]]
+        """
+        (list of ) - When empty, it means dry run for all products.
+        When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
+        """
+        enforcement_mode: NotRequired[builtins.str]
+        """
+        (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
+        while DRY_RUN only logs violations without blocking. When not specified,
+        defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+        """
+elif False:
+    GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs:
+    def __init__(__self__, *,
+                 dry_run_mode_product_filters: Optional[Sequence[builtins.str]] = None,
+                 enforcement_mode: Optional[builtins.str] = None):
+        """
+        :param Sequence[builtins.str] dry_run_mode_product_filters: (list of ) - When empty, it means dry run for all products.
+               When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
+        :param builtins.str enforcement_mode: (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
+               while DRY_RUN only logs violations without blocking. When not specified,
+               defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+        """
+        if dry_run_mode_product_filters is not None:
+            pulumi.set(__self__, "dry_run_mode_product_filters", dry_run_mode_product_filters)
+        if enforcement_mode is not None:
+            pulumi.set(__self__, "enforcement_mode", enforcement_mode)
+
+    @property
+    @pulumi.getter(name="dryRunModeProductFilters")
+    def dry_run_mode_product_filters(self) -> Optional[Sequence[builtins.str]]:
+        """
+        (list of ) - When empty, it means dry run for all products.
+        When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
+        """
+        return pulumi.get(self, "dry_run_mode_product_filters")
+
+    @dry_run_mode_product_filters.setter
+    def dry_run_mode_product_filters(self, value: Optional[Sequence[builtins.str]]):
+        pulumi.set(self, "dry_run_mode_product_filters", value)
+
+    @property
+    @pulumi.getter(name="enforcementMode")
+    def enforcement_mode(self) -> Optional[builtins.str]:
+        """
+        (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
+        while DRY_RUN only logs violations without blocking. When not specified,
+        defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+        """
+        return pulumi.get(self, "enforcement_mode")
+
+    @enforcement_mode.setter
+    def enforcement_mode(self, value: Optional[builtins.str]):
+        pulumi.set(self, "enforcement_mode", value)
+
+
+if not MYPY:
     class GetAlertV2EvaluationArgsDict(TypedDict):
         last_evaluated_at: builtins.str
+        """
+        (string) - Timestamp of the last evaluation
+        """
         state: builtins.str
+        """
+        (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        """
         comparison_operator: NotRequired[builtins.str]
+        """
+        (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+        """
         empty_result_state: NotRequired[builtins.str]
+        """
+        (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        """
         notification: NotRequired['GetAlertV2EvaluationNotificationArgsDict']
+        """
+        (AlertV2Notification) - User or Notification Destination to notify when alert is triggered
+        """
         source: NotRequired['GetAlertV2EvaluationSourceArgsDict']
+        """
+        (AlertV2OperandColumn) - Source column from result to use to evaluate alert
+        """
         threshold: NotRequired['GetAlertV2EvaluationThresholdArgsDict']
+        """
+        (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
+        """
 elif False:
     GetAlertV2EvaluationArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -38628,6 +41150,15 @@ class GetAlertV2EvaluationArgs:
                  notification: Optional['GetAlertV2EvaluationNotificationArgs'] = None,
                  source: Optional['GetAlertV2EvaluationSourceArgs'] = None,
                  threshold: Optional['GetAlertV2EvaluationThresholdArgs'] = None):
+        """
+        :param builtins.str last_evaluated_at: (string) - Timestamp of the last evaluation
+        :param builtins.str state: (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        :param builtins.str comparison_operator: (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+        :param builtins.str empty_result_state: (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        :param 'GetAlertV2EvaluationNotificationArgs' notification: (AlertV2Notification) - User or Notification Destination to notify when alert is triggered
+        :param 'GetAlertV2EvaluationSourceArgs' source: (AlertV2OperandColumn) - Source column from result to use to evaluate alert
+        :param 'GetAlertV2EvaluationThresholdArgs' threshold: (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
+        """
         pulumi.set(__self__, "last_evaluated_at", last_evaluated_at)
         pulumi.set(__self__, "state", state)
         if comparison_operator is not None:
@@ -38644,6 +41175,9 @@ class GetAlertV2EvaluationArgs:
     @property
     @pulumi.getter(name="lastEvaluatedAt")
     def last_evaluated_at(self) -> builtins.str:
+        """
+        (string) - Timestamp of the last evaluation
+        """
         return pulumi.get(self, "last_evaluated_at")
 
     @last_evaluated_at.setter
@@ -38653,6 +41187,9 @@ class GetAlertV2EvaluationArgs:
     @property
     @pulumi.getter
     def state(self) -> builtins.str:
+        """
+        (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -38662,6 +41199,9 @@ class GetAlertV2EvaluationArgs:
     @property
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[builtins.str]:
+        """
+        (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+        """
         return pulumi.get(self, "comparison_operator")
 
     @comparison_operator.setter
@@ -38671,6 +41211,9 @@ class GetAlertV2EvaluationArgs:
     @property
     @pulumi.getter(name="emptyResultState")
     def empty_result_state(self) -> Optional[builtins.str]:
+        """
+        (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        """
         return pulumi.get(self, "empty_result_state")
 
     @empty_result_state.setter
@@ -38680,6 +41223,9 @@ class GetAlertV2EvaluationArgs:
     @property
     @pulumi.getter
     def notification(self) -> Optional['GetAlertV2EvaluationNotificationArgs']:
+        """
+        (AlertV2Notification) - User or Notification Destination to notify when alert is triggered
+        """
         return pulumi.get(self, "notification")
 
     @notification.setter
@@ -38689,6 +41235,9 @@ class GetAlertV2EvaluationArgs:
     @property
     @pulumi.getter
     def source(self) -> Optional['GetAlertV2EvaluationSourceArgs']:
+        """
+        (AlertV2OperandColumn) - Source column from result to use to evaluate alert
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -38698,6 +41247,9 @@ class GetAlertV2EvaluationArgs:
     @property
     @pulumi.getter
     def threshold(self) -> Optional['GetAlertV2EvaluationThresholdArgs']:
+        """
+        (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
+        """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
@@ -38708,8 +41260,17 @@ class GetAlertV2EvaluationArgs:
 if not MYPY:
     class GetAlertV2EvaluationNotificationArgsDict(TypedDict):
         notify_on_ok: NotRequired[builtins.bool]
+        """
+        (boolean) - Whether to notify alert subscribers when alert returns back to normal
+        """
         retrigger_seconds: NotRequired[builtins.int]
+        """
+        (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+        """
         subscriptions: NotRequired[Sequence['GetAlertV2EvaluationNotificationSubscriptionArgsDict']]
+        """
+        (list of AlertV2Subscription) -
+        """
 elif False:
     GetAlertV2EvaluationNotificationArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -38719,6 +41280,11 @@ class GetAlertV2EvaluationNotificationArgs:
                  notify_on_ok: Optional[builtins.bool] = None,
                  retrigger_seconds: Optional[builtins.int] = None,
                  subscriptions: Optional[Sequence['GetAlertV2EvaluationNotificationSubscriptionArgs']] = None):
+        """
+        :param builtins.bool notify_on_ok: (boolean) - Whether to notify alert subscribers when alert returns back to normal
+        :param builtins.int retrigger_seconds: (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+        :param Sequence['GetAlertV2EvaluationNotificationSubscriptionArgs'] subscriptions: (list of AlertV2Subscription) -
+        """
         if notify_on_ok is not None:
             pulumi.set(__self__, "notify_on_ok", notify_on_ok)
         if retrigger_seconds is not None:
@@ -38729,6 +41295,9 @@ class GetAlertV2EvaluationNotificationArgs:
     @property
     @pulumi.getter(name="notifyOnOk")
     def notify_on_ok(self) -> Optional[builtins.bool]:
+        """
+        (boolean) - Whether to notify alert subscribers when alert returns back to normal
+        """
         return pulumi.get(self, "notify_on_ok")
 
     @notify_on_ok.setter
@@ -38738,6 +41307,9 @@ class GetAlertV2EvaluationNotificationArgs:
     @property
     @pulumi.getter(name="retriggerSeconds")
     def retrigger_seconds(self) -> Optional[builtins.int]:
+        """
+        (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+        """
         return pulumi.get(self, "retrigger_seconds")
 
     @retrigger_seconds.setter
@@ -38747,6 +41319,9 @@ class GetAlertV2EvaluationNotificationArgs:
     @property
     @pulumi.getter
     def subscriptions(self) -> Optional[Sequence['GetAlertV2EvaluationNotificationSubscriptionArgs']]:
+        """
+        (list of AlertV2Subscription) -
+        """
         return pulumi.get(self, "subscriptions")
 
     @subscriptions.setter
@@ -38757,7 +41332,13 @@ class GetAlertV2EvaluationNotificationArgs:
 if not MYPY:
     class GetAlertV2EvaluationNotificationSubscriptionArgsDict(TypedDict):
         destination_id: NotRequired[builtins.str]
+        """
+        (string) -
+        """
         user_email: NotRequired[builtins.str]
+        """
+        (string) -
+        """
 elif False:
     GetAlertV2EvaluationNotificationSubscriptionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -38766,6 +41347,10 @@ class GetAlertV2EvaluationNotificationSubscriptionArgs:
     def __init__(__self__, *,
                  destination_id: Optional[builtins.str] = None,
                  user_email: Optional[builtins.str] = None):
+        """
+        :param builtins.str destination_id: (string) -
+        :param builtins.str user_email: (string) -
+        """
         if destination_id is not None:
             pulumi.set(__self__, "destination_id", destination_id)
         if user_email is not None:
@@ -38774,6 +41359,9 @@ class GetAlertV2EvaluationNotificationSubscriptionArgs:
     @property
     @pulumi.getter(name="destinationId")
     def destination_id(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
         return pulumi.get(self, "destination_id")
 
     @destination_id.setter
@@ -38783,6 +41371,9 @@ class GetAlertV2EvaluationNotificationSubscriptionArgs:
     @property
     @pulumi.getter(name="userEmail")
     def user_email(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
         return pulumi.get(self, "user_email")
 
     @user_email.setter
@@ -38793,8 +41384,17 @@ class GetAlertV2EvaluationNotificationSubscriptionArgs:
 if not MYPY:
     class GetAlertV2EvaluationSourceArgsDict(TypedDict):
         aggregation: NotRequired[builtins.str]
+        """
+        (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        """
         display: NotRequired[builtins.str]
+        """
+        (string) -
+        """
         name: NotRequired[builtins.str]
+        """
+        (string) -
+        """
 elif False:
     GetAlertV2EvaluationSourceArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -38804,6 +41404,11 @@ class GetAlertV2EvaluationSourceArgs:
                  aggregation: Optional[builtins.str] = None,
                  display: Optional[builtins.str] = None,
                  name: Optional[builtins.str] = None):
+        """
+        :param builtins.str aggregation: (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        :param builtins.str display: (string) -
+        :param builtins.str name: (string) -
+        """
         if aggregation is not None:
             pulumi.set(__self__, "aggregation", aggregation)
         if display is not None:
@@ -38814,6 +41419,9 @@ class GetAlertV2EvaluationSourceArgs:
     @property
     @pulumi.getter
     def aggregation(self) -> Optional[builtins.str]:
+        """
+        (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        """
         return pulumi.get(self, "aggregation")
 
     @aggregation.setter
@@ -38823,6 +41431,9 @@ class GetAlertV2EvaluationSourceArgs:
     @property
     @pulumi.getter
     def display(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
         return pulumi.get(self, "display")
 
     @display.setter
@@ -38832,6 +41443,9 @@ class GetAlertV2EvaluationSourceArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -38842,7 +41456,13 @@ class GetAlertV2EvaluationSourceArgs:
 if not MYPY:
     class GetAlertV2EvaluationThresholdArgsDict(TypedDict):
         column: NotRequired['GetAlertV2EvaluationThresholdColumnArgsDict']
+        """
+        (AlertV2OperandColumn) -
+        """
         value: NotRequired['GetAlertV2EvaluationThresholdValueArgsDict']
+        """
+        (AlertV2OperandValue) -
+        """
 elif False:
     GetAlertV2EvaluationThresholdArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -38851,6 +41471,10 @@ class GetAlertV2EvaluationThresholdArgs:
     def __init__(__self__, *,
                  column: Optional['GetAlertV2EvaluationThresholdColumnArgs'] = None,
                  value: Optional['GetAlertV2EvaluationThresholdValueArgs'] = None):
+        """
+        :param 'GetAlertV2EvaluationThresholdColumnArgs' column: (AlertV2OperandColumn) -
+        :param 'GetAlertV2EvaluationThresholdValueArgs' value: (AlertV2OperandValue) -
+        """
         if column is not None:
             pulumi.set(__self__, "column", column)
         if value is not None:
@@ -38859,6 +41483,9 @@ class GetAlertV2EvaluationThresholdArgs:
     @property
     @pulumi.getter
     def column(self) -> Optional['GetAlertV2EvaluationThresholdColumnArgs']:
+        """
+        (AlertV2OperandColumn) -
+        """
         return pulumi.get(self, "column")
 
     @column.setter
@@ -38868,6 +41495,9 @@ class GetAlertV2EvaluationThresholdArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional['GetAlertV2EvaluationThresholdValueArgs']:
+        """
+        (AlertV2OperandValue) -
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -38878,8 +41508,17 @@ class GetAlertV2EvaluationThresholdArgs:
 if not MYPY:
     class GetAlertV2EvaluationThresholdColumnArgsDict(TypedDict):
         aggregation: NotRequired[builtins.str]
+        """
+        (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        """
         display: NotRequired[builtins.str]
+        """
+        (string) -
+        """
         name: NotRequired[builtins.str]
+        """
+        (string) -
+        """
 elif False:
     GetAlertV2EvaluationThresholdColumnArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -38889,6 +41528,11 @@ class GetAlertV2EvaluationThresholdColumnArgs:
                  aggregation: Optional[builtins.str] = None,
                  display: Optional[builtins.str] = None,
                  name: Optional[builtins.str] = None):
+        """
+        :param builtins.str aggregation: (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        :param builtins.str display: (string) -
+        :param builtins.str name: (string) -
+        """
         if aggregation is not None:
             pulumi.set(__self__, "aggregation", aggregation)
         if display is not None:
@@ -38899,6 +41543,9 @@ class GetAlertV2EvaluationThresholdColumnArgs:
     @property
     @pulumi.getter
     def aggregation(self) -> Optional[builtins.str]:
+        """
+        (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        """
         return pulumi.get(self, "aggregation")
 
     @aggregation.setter
@@ -38908,6 +41555,9 @@ class GetAlertV2EvaluationThresholdColumnArgs:
     @property
     @pulumi.getter
     def display(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
         return pulumi.get(self, "display")
 
     @display.setter
@@ -38917,6 +41567,9 @@ class GetAlertV2EvaluationThresholdColumnArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -38927,8 +41580,17 @@ class GetAlertV2EvaluationThresholdColumnArgs:
 if not MYPY:
     class GetAlertV2EvaluationThresholdValueArgsDict(TypedDict):
         bool_value: NotRequired[builtins.bool]
+        """
+        (boolean) -
+        """
         double_value: NotRequired[builtins.float]
+        """
+        (number) -
+        """
         string_value: NotRequired[builtins.str]
+        """
+        (string) -
+        """
 elif False:
     GetAlertV2EvaluationThresholdValueArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -38938,6 +41600,11 @@ class GetAlertV2EvaluationThresholdValueArgs:
                  bool_value: Optional[builtins.bool] = None,
                  double_value: Optional[builtins.float] = None,
                  string_value: Optional[builtins.str] = None):
+        """
+        :param builtins.bool bool_value: (boolean) -
+        :param builtins.float double_value: (number) -
+        :param builtins.str string_value: (string) -
+        """
         if bool_value is not None:
             pulumi.set(__self__, "bool_value", bool_value)
         if double_value is not None:
@@ -38948,6 +41615,9 @@ class GetAlertV2EvaluationThresholdValueArgs:
     @property
     @pulumi.getter(name="boolValue")
     def bool_value(self) -> Optional[builtins.bool]:
+        """
+        (boolean) -
+        """
         return pulumi.get(self, "bool_value")
 
     @bool_value.setter
@@ -38957,6 +41627,9 @@ class GetAlertV2EvaluationThresholdValueArgs:
     @property
     @pulumi.getter(name="doubleValue")
     def double_value(self) -> Optional[builtins.float]:
+        """
+        (number) -
+        """
         return pulumi.get(self, "double_value")
 
     @double_value.setter
@@ -38966,6 +41639,9 @@ class GetAlertV2EvaluationThresholdValueArgs:
     @property
     @pulumi.getter(name="stringValue")
     def string_value(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
@@ -38976,8 +41652,20 @@ class GetAlertV2EvaluationThresholdValueArgs:
 if not MYPY:
     class GetAlertV2ScheduleArgsDict(TypedDict):
         pause_status: NotRequired[builtins.str]
+        """
+        (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+        """
         quartz_cron_schedule: NotRequired[builtins.str]
+        """
+        (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
+        Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+        """
         timezone_id: NotRequired[builtins.str]
+        """
+        (string) - A Java timezone id. The schedule will be resolved using this timezone.
+        This will be combined with the quartz_cron_schedule to determine the schedule.
+        See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+        """
 elif False:
     GetAlertV2ScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -38987,6 +41675,14 @@ class GetAlertV2ScheduleArgs:
                  pause_status: Optional[builtins.str] = None,
                  quartz_cron_schedule: Optional[builtins.str] = None,
                  timezone_id: Optional[builtins.str] = None):
+        """
+        :param builtins.str pause_status: (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+        :param builtins.str quartz_cron_schedule: (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
+               Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+        :param builtins.str timezone_id: (string) - A Java timezone id. The schedule will be resolved using this timezone.
+               This will be combined with the quartz_cron_schedule to determine the schedule.
+               See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+        """
         if pause_status is not None:
             pulumi.set(__self__, "pause_status", pause_status)
         if quartz_cron_schedule is not None:
@@ -38997,6 +41693,9 @@ class GetAlertV2ScheduleArgs:
     @property
     @pulumi.getter(name="pauseStatus")
     def pause_status(self) -> Optional[builtins.str]:
+        """
+        (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+        """
         return pulumi.get(self, "pause_status")
 
     @pause_status.setter
@@ -39006,6 +41705,10 @@ class GetAlertV2ScheduleArgs:
     @property
     @pulumi.getter(name="quartzCronSchedule")
     def quartz_cron_schedule(self) -> Optional[builtins.str]:
+        """
+        (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
+        Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+        """
         return pulumi.get(self, "quartz_cron_schedule")
 
     @quartz_cron_schedule.setter
@@ -39015,6 +41718,11 @@ class GetAlertV2ScheduleArgs:
     @property
     @pulumi.getter(name="timezoneId")
     def timezone_id(self) -> Optional[builtins.str]:
+        """
+        (string) - A Java timezone id. The schedule will be resolved using this timezone.
+        This will be combined with the quartz_cron_schedule to determine the schedule.
+        See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+        """
         return pulumi.get(self, "timezone_id")
 
     @timezone_id.setter
@@ -39025,7 +41733,16 @@ class GetAlertV2ScheduleArgs:
 if not MYPY:
     class GetBudgetPolicyCustomTagArgsDict(TypedDict):
         key: builtins.str
+        """
+        (string) - The key of the tag.
+        - Must be unique among all custom tags of the same policy
+        - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
+        these tags are preserved.
+        """
         value: NotRequired[builtins.str]
+        """
+        (string) - The value of the tag.
+        """
 elif False:
     GetBudgetPolicyCustomTagArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -39034,6 +41751,13 @@ class GetBudgetPolicyCustomTagArgs:
     def __init__(__self__, *,
                  key: builtins.str,
                  value: Optional[builtins.str] = None):
+        """
+        :param builtins.str key: (string) - The key of the tag.
+               - Must be unique among all custom tags of the same policy
+               - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
+               these tags are preserved.
+        :param builtins.str value: (string) - The value of the tag.
+        """
         pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
@@ -39041,6 +41765,12 @@ class GetBudgetPolicyCustomTagArgs:
     @property
     @pulumi.getter
     def key(self) -> builtins.str:
+        """
+        (string) - The key of the tag.
+        - Must be unique among all custom tags of the same policy
+        - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
+        these tags are preserved.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -39050,6 +41780,9 @@ class GetBudgetPolicyCustomTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[builtins.str]:
+        """
+        (string) - The value of the tag.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -44052,10 +46785,6 @@ class GetCurrentMetastoreMetastoreInfoArgs:
 
 if not MYPY:
     class GetExternalLocationExternalLocationInfoArgsDict(TypedDict):
-        access_point: NotRequired[builtins.str]
-        """
-        The ARN of the s3 access point to use with the external location (AWS).
-        """
         browse_only: NotRequired[builtins.bool]
         comment: NotRequired[builtins.str]
         """
@@ -44077,11 +46806,13 @@ if not MYPY:
         """
         Name of the StorageCredential to use with this external location.
         """
+        enable_file_events: NotRequired[builtins.bool]
         encryption_details: NotRequired['GetExternalLocationExternalLocationInfoEncryptionDetailsArgsDict']
         """
         The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         """
         fallback: NotRequired[builtins.bool]
+        file_event_queue: NotRequired['GetExternalLocationExternalLocationInfoFileEventQueueArgsDict']
         isolation_mode: NotRequired[builtins.str]
         metastore_id: NotRequired[builtins.str]
         """
@@ -44117,15 +46848,16 @@ elif False:
 @pulumi.input_type
 class GetExternalLocationExternalLocationInfoArgs:
     def __init__(__self__, *,
-                 access_point: Optional[builtins.str] = None,
                  browse_only: Optional[builtins.bool] = None,
                  comment: Optional[builtins.str] = None,
                  created_at: Optional[builtins.int] = None,
                  created_by: Optional[builtins.str] = None,
                  credential_id: Optional[builtins.str] = None,
                  credential_name: Optional[builtins.str] = None,
+                 enable_file_events: Optional[builtins.bool] = None,
                  encryption_details: Optional['GetExternalLocationExternalLocationInfoEncryptionDetailsArgs'] = None,
                  fallback: Optional[builtins.bool] = None,
+                 file_event_queue: Optional['GetExternalLocationExternalLocationInfoFileEventQueueArgs'] = None,
                  isolation_mode: Optional[builtins.str] = None,
                  metastore_id: Optional[builtins.str] = None,
                  name: Optional[builtins.str] = None,
@@ -44135,7 +46867,6 @@ class GetExternalLocationExternalLocationInfoArgs:
                  updated_by: Optional[builtins.str] = None,
                  url: Optional[builtins.str] = None):
         """
-        :param builtins.str access_point: The ARN of the s3 access point to use with the external location (AWS).
         :param builtins.str comment: User-supplied comment.
         :param builtins.int created_at: Time at which this catalog was created, in epoch milliseconds.
         :param builtins.str created_by: Username of catalog creator.
@@ -44150,8 +46881,6 @@ class GetExternalLocationExternalLocationInfoArgs:
         :param builtins.str updated_by: Username of user who last modified catalog.
         :param builtins.str url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         """
-        if access_point is not None:
-            pulumi.set(__self__, "access_point", access_point)
         if browse_only is not None:
             pulumi.set(__self__, "browse_only", browse_only)
         if comment is not None:
@@ -44164,10 +46893,14 @@ class GetExternalLocationExternalLocationInfoArgs:
             pulumi.set(__self__, "credential_id", credential_id)
         if credential_name is not None:
             pulumi.set(__self__, "credential_name", credential_name)
+        if enable_file_events is not None:
+            pulumi.set(__self__, "enable_file_events", enable_file_events)
         if encryption_details is not None:
             pulumi.set(__self__, "encryption_details", encryption_details)
         if fallback is not None:
             pulumi.set(__self__, "fallback", fallback)
+        if file_event_queue is not None:
+            pulumi.set(__self__, "file_event_queue", file_event_queue)
         if isolation_mode is not None:
             pulumi.set(__self__, "isolation_mode", isolation_mode)
         if metastore_id is not None:
@@ -44184,18 +46917,6 @@ class GetExternalLocationExternalLocationInfoArgs:
             pulumi.set(__self__, "updated_by", updated_by)
         if url is not None:
             pulumi.set(__self__, "url", url)
-
-    @property
-    @pulumi.getter(name="accessPoint")
-    def access_point(self) -> Optional[builtins.str]:
-        """
-        The ARN of the s3 access point to use with the external location (AWS).
-        """
-        return pulumi.get(self, "access_point")
-
-    @access_point.setter
-    def access_point(self, value: Optional[builtins.str]):
-        pulumi.set(self, "access_point", value)
 
     @property
     @pulumi.getter(name="browseOnly")
@@ -44267,6 +46988,15 @@ class GetExternalLocationExternalLocationInfoArgs:
         pulumi.set(self, "credential_name", value)
 
     @property
+    @pulumi.getter(name="enableFileEvents")
+    def enable_file_events(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "enable_file_events")
+
+    @enable_file_events.setter
+    def enable_file_events(self, value: Optional[builtins.bool]):
+        pulumi.set(self, "enable_file_events", value)
+
+    @property
     @pulumi.getter(name="encryptionDetails")
     def encryption_details(self) -> Optional['GetExternalLocationExternalLocationInfoEncryptionDetailsArgs']:
         """
@@ -44286,6 +47016,15 @@ class GetExternalLocationExternalLocationInfoArgs:
     @fallback.setter
     def fallback(self, value: Optional[builtins.bool]):
         pulumi.set(self, "fallback", value)
+
+    @property
+    @pulumi.getter(name="fileEventQueue")
+    def file_event_queue(self) -> Optional['GetExternalLocationExternalLocationInfoFileEventQueueArgs']:
+        return pulumi.get(self, "file_event_queue")
+
+    @file_event_queue.setter
+    def file_event_queue(self, value: Optional['GetExternalLocationExternalLocationInfoFileEventQueueArgs']):
+        pulumi.set(self, "file_event_queue", value)
 
     @property
     @pulumi.getter(name="isolationMode")
@@ -44438,6 +47177,362 @@ class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetai
     @aws_kms_key_arn.setter
     def aws_kms_key_arn(self, value: Optional[builtins.str]):
         pulumi.set(self, "aws_kms_key_arn", value)
+
+
+if not MYPY:
+    class GetExternalLocationExternalLocationInfoFileEventQueueArgsDict(TypedDict):
+        managed_aqs: NotRequired['GetExternalLocationExternalLocationInfoFileEventQueueManagedAqsArgsDict']
+        managed_pubsub: NotRequired['GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsubArgsDict']
+        managed_sqs: NotRequired['GetExternalLocationExternalLocationInfoFileEventQueueManagedSqsArgsDict']
+        provided_aqs: NotRequired['GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqsArgsDict']
+        provided_pubsub: NotRequired['GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsubArgsDict']
+        provided_sqs: NotRequired['GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsArgsDict']
+elif False:
+    GetExternalLocationExternalLocationInfoFileEventQueueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetExternalLocationExternalLocationInfoFileEventQueueArgs:
+    def __init__(__self__, *,
+                 managed_aqs: Optional['GetExternalLocationExternalLocationInfoFileEventQueueManagedAqsArgs'] = None,
+                 managed_pubsub: Optional['GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsubArgs'] = None,
+                 managed_sqs: Optional['GetExternalLocationExternalLocationInfoFileEventQueueManagedSqsArgs'] = None,
+                 provided_aqs: Optional['GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqsArgs'] = None,
+                 provided_pubsub: Optional['GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsubArgs'] = None,
+                 provided_sqs: Optional['GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsArgs'] = None):
+        if managed_aqs is not None:
+            pulumi.set(__self__, "managed_aqs", managed_aqs)
+        if managed_pubsub is not None:
+            pulumi.set(__self__, "managed_pubsub", managed_pubsub)
+        if managed_sqs is not None:
+            pulumi.set(__self__, "managed_sqs", managed_sqs)
+        if provided_aqs is not None:
+            pulumi.set(__self__, "provided_aqs", provided_aqs)
+        if provided_pubsub is not None:
+            pulumi.set(__self__, "provided_pubsub", provided_pubsub)
+        if provided_sqs is not None:
+            pulumi.set(__self__, "provided_sqs", provided_sqs)
+
+    @property
+    @pulumi.getter(name="managedAqs")
+    def managed_aqs(self) -> Optional['GetExternalLocationExternalLocationInfoFileEventQueueManagedAqsArgs']:
+        return pulumi.get(self, "managed_aqs")
+
+    @managed_aqs.setter
+    def managed_aqs(self, value: Optional['GetExternalLocationExternalLocationInfoFileEventQueueManagedAqsArgs']):
+        pulumi.set(self, "managed_aqs", value)
+
+    @property
+    @pulumi.getter(name="managedPubsub")
+    def managed_pubsub(self) -> Optional['GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsubArgs']:
+        return pulumi.get(self, "managed_pubsub")
+
+    @managed_pubsub.setter
+    def managed_pubsub(self, value: Optional['GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsubArgs']):
+        pulumi.set(self, "managed_pubsub", value)
+
+    @property
+    @pulumi.getter(name="managedSqs")
+    def managed_sqs(self) -> Optional['GetExternalLocationExternalLocationInfoFileEventQueueManagedSqsArgs']:
+        return pulumi.get(self, "managed_sqs")
+
+    @managed_sqs.setter
+    def managed_sqs(self, value: Optional['GetExternalLocationExternalLocationInfoFileEventQueueManagedSqsArgs']):
+        pulumi.set(self, "managed_sqs", value)
+
+    @property
+    @pulumi.getter(name="providedAqs")
+    def provided_aqs(self) -> Optional['GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqsArgs']:
+        return pulumi.get(self, "provided_aqs")
+
+    @provided_aqs.setter
+    def provided_aqs(self, value: Optional['GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqsArgs']):
+        pulumi.set(self, "provided_aqs", value)
+
+    @property
+    @pulumi.getter(name="providedPubsub")
+    def provided_pubsub(self) -> Optional['GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsubArgs']:
+        return pulumi.get(self, "provided_pubsub")
+
+    @provided_pubsub.setter
+    def provided_pubsub(self, value: Optional['GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsubArgs']):
+        pulumi.set(self, "provided_pubsub", value)
+
+    @property
+    @pulumi.getter(name="providedSqs")
+    def provided_sqs(self) -> Optional['GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsArgs']:
+        return pulumi.get(self, "provided_sqs")
+
+    @provided_sqs.setter
+    def provided_sqs(self, value: Optional['GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsArgs']):
+        pulumi.set(self, "provided_sqs", value)
+
+
+if not MYPY:
+    class GetExternalLocationExternalLocationInfoFileEventQueueManagedAqsArgsDict(TypedDict):
+        managed_resource_id: NotRequired[builtins.str]
+        queue_url: NotRequired[builtins.str]
+        resource_group: NotRequired[builtins.str]
+        subscription_id: NotRequired[builtins.str]
+elif False:
+    GetExternalLocationExternalLocationInfoFileEventQueueManagedAqsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetExternalLocationExternalLocationInfoFileEventQueueManagedAqsArgs:
+    def __init__(__self__, *,
+                 managed_resource_id: Optional[builtins.str] = None,
+                 queue_url: Optional[builtins.str] = None,
+                 resource_group: Optional[builtins.str] = None,
+                 subscription_id: Optional[builtins.str] = None):
+        if managed_resource_id is not None:
+            pulumi.set(__self__, "managed_resource_id", managed_resource_id)
+        if queue_url is not None:
+            pulumi.set(__self__, "queue_url", queue_url)
+        if resource_group is not None:
+            pulumi.set(__self__, "resource_group", resource_group)
+        if subscription_id is not None:
+            pulumi.set(__self__, "subscription_id", subscription_id)
+
+    @property
+    @pulumi.getter(name="managedResourceId")
+    def managed_resource_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "managed_resource_id")
+
+    @managed_resource_id.setter
+    def managed_resource_id(self, value: Optional[builtins.str]):
+        pulumi.set(self, "managed_resource_id", value)
+
+    @property
+    @pulumi.getter(name="queueUrl")
+    def queue_url(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "queue_url")
+
+    @queue_url.setter
+    def queue_url(self, value: Optional[builtins.str]):
+        pulumi.set(self, "queue_url", value)
+
+    @property
+    @pulumi.getter(name="resourceGroup")
+    def resource_group(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "resource_group")
+
+    @resource_group.setter
+    def resource_group(self, value: Optional[builtins.str]):
+        pulumi.set(self, "resource_group", value)
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "subscription_id")
+
+    @subscription_id.setter
+    def subscription_id(self, value: Optional[builtins.str]):
+        pulumi.set(self, "subscription_id", value)
+
+
+if not MYPY:
+    class GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsubArgsDict(TypedDict):
+        managed_resource_id: NotRequired[builtins.str]
+        subscription_name: NotRequired[builtins.str]
+elif False:
+    GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsubArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsubArgs:
+    def __init__(__self__, *,
+                 managed_resource_id: Optional[builtins.str] = None,
+                 subscription_name: Optional[builtins.str] = None):
+        if managed_resource_id is not None:
+            pulumi.set(__self__, "managed_resource_id", managed_resource_id)
+        if subscription_name is not None:
+            pulumi.set(__self__, "subscription_name", subscription_name)
+
+    @property
+    @pulumi.getter(name="managedResourceId")
+    def managed_resource_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "managed_resource_id")
+
+    @managed_resource_id.setter
+    def managed_resource_id(self, value: Optional[builtins.str]):
+        pulumi.set(self, "managed_resource_id", value)
+
+    @property
+    @pulumi.getter(name="subscriptionName")
+    def subscription_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "subscription_name")
+
+    @subscription_name.setter
+    def subscription_name(self, value: Optional[builtins.str]):
+        pulumi.set(self, "subscription_name", value)
+
+
+if not MYPY:
+    class GetExternalLocationExternalLocationInfoFileEventQueueManagedSqsArgsDict(TypedDict):
+        managed_resource_id: NotRequired[builtins.str]
+        queue_url: NotRequired[builtins.str]
+elif False:
+    GetExternalLocationExternalLocationInfoFileEventQueueManagedSqsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetExternalLocationExternalLocationInfoFileEventQueueManagedSqsArgs:
+    def __init__(__self__, *,
+                 managed_resource_id: Optional[builtins.str] = None,
+                 queue_url: Optional[builtins.str] = None):
+        if managed_resource_id is not None:
+            pulumi.set(__self__, "managed_resource_id", managed_resource_id)
+        if queue_url is not None:
+            pulumi.set(__self__, "queue_url", queue_url)
+
+    @property
+    @pulumi.getter(name="managedResourceId")
+    def managed_resource_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "managed_resource_id")
+
+    @managed_resource_id.setter
+    def managed_resource_id(self, value: Optional[builtins.str]):
+        pulumi.set(self, "managed_resource_id", value)
+
+    @property
+    @pulumi.getter(name="queueUrl")
+    def queue_url(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "queue_url")
+
+    @queue_url.setter
+    def queue_url(self, value: Optional[builtins.str]):
+        pulumi.set(self, "queue_url", value)
+
+
+if not MYPY:
+    class GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqsArgsDict(TypedDict):
+        managed_resource_id: NotRequired[builtins.str]
+        queue_url: NotRequired[builtins.str]
+        resource_group: NotRequired[builtins.str]
+        subscription_id: NotRequired[builtins.str]
+elif False:
+    GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqsArgs:
+    def __init__(__self__, *,
+                 managed_resource_id: Optional[builtins.str] = None,
+                 queue_url: Optional[builtins.str] = None,
+                 resource_group: Optional[builtins.str] = None,
+                 subscription_id: Optional[builtins.str] = None):
+        if managed_resource_id is not None:
+            pulumi.set(__self__, "managed_resource_id", managed_resource_id)
+        if queue_url is not None:
+            pulumi.set(__self__, "queue_url", queue_url)
+        if resource_group is not None:
+            pulumi.set(__self__, "resource_group", resource_group)
+        if subscription_id is not None:
+            pulumi.set(__self__, "subscription_id", subscription_id)
+
+    @property
+    @pulumi.getter(name="managedResourceId")
+    def managed_resource_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "managed_resource_id")
+
+    @managed_resource_id.setter
+    def managed_resource_id(self, value: Optional[builtins.str]):
+        pulumi.set(self, "managed_resource_id", value)
+
+    @property
+    @pulumi.getter(name="queueUrl")
+    def queue_url(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "queue_url")
+
+    @queue_url.setter
+    def queue_url(self, value: Optional[builtins.str]):
+        pulumi.set(self, "queue_url", value)
+
+    @property
+    @pulumi.getter(name="resourceGroup")
+    def resource_group(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "resource_group")
+
+    @resource_group.setter
+    def resource_group(self, value: Optional[builtins.str]):
+        pulumi.set(self, "resource_group", value)
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "subscription_id")
+
+    @subscription_id.setter
+    def subscription_id(self, value: Optional[builtins.str]):
+        pulumi.set(self, "subscription_id", value)
+
+
+if not MYPY:
+    class GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsubArgsDict(TypedDict):
+        managed_resource_id: NotRequired[builtins.str]
+        subscription_name: NotRequired[builtins.str]
+elif False:
+    GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsubArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsubArgs:
+    def __init__(__self__, *,
+                 managed_resource_id: Optional[builtins.str] = None,
+                 subscription_name: Optional[builtins.str] = None):
+        if managed_resource_id is not None:
+            pulumi.set(__self__, "managed_resource_id", managed_resource_id)
+        if subscription_name is not None:
+            pulumi.set(__self__, "subscription_name", subscription_name)
+
+    @property
+    @pulumi.getter(name="managedResourceId")
+    def managed_resource_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "managed_resource_id")
+
+    @managed_resource_id.setter
+    def managed_resource_id(self, value: Optional[builtins.str]):
+        pulumi.set(self, "managed_resource_id", value)
+
+    @property
+    @pulumi.getter(name="subscriptionName")
+    def subscription_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "subscription_name")
+
+    @subscription_name.setter
+    def subscription_name(self, value: Optional[builtins.str]):
+        pulumi.set(self, "subscription_name", value)
+
+
+if not MYPY:
+    class GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsArgsDict(TypedDict):
+        managed_resource_id: NotRequired[builtins.str]
+        queue_url: NotRequired[builtins.str]
+elif False:
+    GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsArgs:
+    def __init__(__self__, *,
+                 managed_resource_id: Optional[builtins.str] = None,
+                 queue_url: Optional[builtins.str] = None):
+        if managed_resource_id is not None:
+            pulumi.set(__self__, "managed_resource_id", managed_resource_id)
+        if queue_url is not None:
+            pulumi.set(__self__, "queue_url", queue_url)
+
+    @property
+    @pulumi.getter(name="managedResourceId")
+    def managed_resource_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "managed_resource_id")
+
+    @managed_resource_id.setter
+    def managed_resource_id(self, value: Optional[builtins.str]):
+        pulumi.set(self, "managed_resource_id", value)
+
+    @property
+    @pulumi.getter(name="queueUrl")
+    def queue_url(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "queue_url")
+
+    @queue_url.setter
+    def queue_url(self, value: Optional[builtins.str]):
+        pulumi.set(self, "queue_url", value)
 
 
 if not MYPY:
@@ -47386,6 +50481,7 @@ if not MYPY:
     class GetJobJobSettingsSettingsEnvironmentSpecArgsDict(TypedDict):
         client: builtins.str
         dependencies: NotRequired[Sequence[builtins.str]]
+        environment_version: NotRequired[builtins.str]
         jar_dependencies: NotRequired[Sequence[builtins.str]]
 elif False:
     GetJobJobSettingsSettingsEnvironmentSpecArgsDict: TypeAlias = Mapping[str, Any]
@@ -47395,10 +50491,13 @@ class GetJobJobSettingsSettingsEnvironmentSpecArgs:
     def __init__(__self__, *,
                  client: builtins.str,
                  dependencies: Optional[Sequence[builtins.str]] = None,
+                 environment_version: Optional[builtins.str] = None,
                  jar_dependencies: Optional[Sequence[builtins.str]] = None):
         pulumi.set(__self__, "client", client)
         if dependencies is not None:
             pulumi.set(__self__, "dependencies", dependencies)
+        if environment_version is not None:
+            pulumi.set(__self__, "environment_version", environment_version)
         if jar_dependencies is not None:
             pulumi.set(__self__, "jar_dependencies", jar_dependencies)
 
@@ -47419,6 +50518,15 @@ class GetJobJobSettingsSettingsEnvironmentSpecArgs:
     @dependencies.setter
     def dependencies(self, value: Optional[Sequence[builtins.str]]):
         pulumi.set(self, "dependencies", value)
+
+    @property
+    @pulumi.getter(name="environmentVersion")
+    def environment_version(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "environment_version")
+
+    @environment_version.setter
+    def environment_version(self, value: Optional[builtins.str]):
+        pulumi.set(self, "environment_version", value)
 
     @property
     @pulumi.getter(name="jarDependencies")
@@ -59925,6 +63033,134 @@ class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpoint
 
 
 if not MYPY:
+    class GetRecipientFederationPolicyOidcPolicyArgsDict(TypedDict):
+        issuer: builtins.str
+        """
+        (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+        """
+        subject: builtins.str
+        """
+        (string) - The required token subject, as specified in the subject claim of federated tokens.
+        The subject claim identifies the identity of the user or machine accessing the resource.
+        Examples for Entra ID (AAD):
+        - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
+        - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
+        - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
+        """
+        subject_claim: builtins.str
+        """
+        (string) - The claim that contains the subject of the token.
+        Depending on the identity provider and the use case (U2M or M2M), this can vary:
+        - For Entra ID (AAD):
+        * U2M flow (group access): Use `groups`.
+        * U2M flow (user access): Use `oid`.
+        * M2M flow (OAuth App access): Use `azp`.
+        - For other IdPs, refer to the specific IdP documentation.
+        """
+        audiences: NotRequired[Sequence[builtins.str]]
+        """
+        (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+        The audience identifier is intended to represent the recipient of the token.
+        Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
+        """
+elif False:
+    GetRecipientFederationPolicyOidcPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetRecipientFederationPolicyOidcPolicyArgs:
+    def __init__(__self__, *,
+                 issuer: builtins.str,
+                 subject: builtins.str,
+                 subject_claim: builtins.str,
+                 audiences: Optional[Sequence[builtins.str]] = None):
+        """
+        :param builtins.str issuer: (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+        :param builtins.str subject: (string) - The required token subject, as specified in the subject claim of federated tokens.
+               The subject claim identifies the identity of the user or machine accessing the resource.
+               Examples for Entra ID (AAD):
+               - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
+               - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
+               - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
+        :param builtins.str subject_claim: (string) - The claim that contains the subject of the token.
+               Depending on the identity provider and the use case (U2M or M2M), this can vary:
+               - For Entra ID (AAD):
+               * U2M flow (group access): Use `groups`.
+               * U2M flow (user access): Use `oid`.
+               * M2M flow (OAuth App access): Use `azp`.
+               - For other IdPs, refer to the specific IdP documentation.
+        :param Sequence[builtins.str] audiences: (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+               The audience identifier is intended to represent the recipient of the token.
+               Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
+        """
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "subject", subject)
+        pulumi.set(__self__, "subject_claim", subject_claim)
+        if audiences is not None:
+            pulumi.set(__self__, "audiences", audiences)
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> builtins.str:
+        """
+        (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+        """
+        return pulumi.get(self, "issuer")
+
+    @issuer.setter
+    def issuer(self, value: builtins.str):
+        pulumi.set(self, "issuer", value)
+
+    @property
+    @pulumi.getter
+    def subject(self) -> builtins.str:
+        """
+        (string) - The required token subject, as specified in the subject claim of federated tokens.
+        The subject claim identifies the identity of the user or machine accessing the resource.
+        Examples for Entra ID (AAD):
+        - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
+        - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
+        - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
+        """
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: builtins.str):
+        pulumi.set(self, "subject", value)
+
+    @property
+    @pulumi.getter(name="subjectClaim")
+    def subject_claim(self) -> builtins.str:
+        """
+        (string) - The claim that contains the subject of the token.
+        Depending on the identity provider and the use case (U2M or M2M), this can vary:
+        - For Entra ID (AAD):
+        * U2M flow (group access): Use `groups`.
+        * U2M flow (user access): Use `oid`.
+        * M2M flow (OAuth App access): Use `azp`.
+        - For other IdPs, refer to the specific IdP documentation.
+        """
+        return pulumi.get(self, "subject_claim")
+
+    @subject_claim.setter
+    def subject_claim(self, value: builtins.str):
+        pulumi.set(self, "subject_claim", value)
+
+    @property
+    @pulumi.getter
+    def audiences(self) -> Optional[Sequence[builtins.str]]:
+        """
+        (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+        The audience identifier is intended to represent the recipient of the token.
+        Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
+        """
+        return pulumi.get(self, "audiences")
+
+    @audiences.setter
+    def audiences(self, value: Optional[Sequence[builtins.str]]):
+        pulumi.set(self, "audiences", value)
+
+
+if not MYPY:
     class GetRegisteredModelModelInfoArgsDict(TypedDict):
         aliases: NotRequired[Sequence['GetRegisteredModelModelInfoAliasArgsDict']]
         """
@@ -65262,6 +68498,7 @@ if not MYPY:
         """
         Full name of the databricks_table: _`catalog`.`schema`.`table`_
         """
+        timeseries_columns: NotRequired[Sequence[builtins.str]]
 elif False:
     GetTableTableInfoTableConstraintPrimaryKeyConstraintArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -65269,12 +68506,15 @@ elif False:
 class GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs:
     def __init__(__self__, *,
                  child_columns: Sequence[builtins.str],
-                 name: builtins.str):
+                 name: builtins.str,
+                 timeseries_columns: Optional[Sequence[builtins.str]] = None):
         """
         :param builtins.str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
         """
         pulumi.set(__self__, "child_columns", child_columns)
         pulumi.set(__self__, "name", name)
+        if timeseries_columns is not None:
+            pulumi.set(__self__, "timeseries_columns", timeseries_columns)
 
     @property
     @pulumi.getter(name="childColumns")
@@ -65296,6 +68536,15 @@ class GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs:
     @name.setter
     def name(self, value: builtins.str):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="timeseriesColumns")
+    def timeseries_columns(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "timeseries_columns")
+
+    @timeseries_columns.setter
+    def timeseries_columns(self, value: Optional[Sequence[builtins.str]]):
+        pulumi.set(self, "timeseries_columns", value)
 
 
 if not MYPY:

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "databricks:index/accessControlRuleSet:AccessControlRuleSet":
 		r = &AccessControlRuleSet{}
+	case "databricks:index/accountNetworkPolicy:AccountNetworkPolicy":
+		r = &AccountNetworkPolicy{}
 	case "databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting":
 		r = &AibiDashboardEmbeddingAccessPolicySetting{}
 	case "databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting":
@@ -59,6 +61,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomAppIntegration{}
 	case "databricks:index/dashboard:Dashboard":
 		r = &Dashboard{}
+	case "databricks:index/databaseInstance:DatabaseInstance":
+		r = &DatabaseInstance{}
 	case "databricks:index/dbfsFile:DbfsFile":
 		r = &DbfsFile{}
 	case "databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting":
@@ -123,6 +127,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MlflowWebhook{}
 	case "databricks:index/modelServing:ModelServing":
 		r = &ModelServing{}
+	case "databricks:index/modelServingProvisionedThroughput:ModelServingProvisionedThroughput":
+		r = &ModelServingProvisionedThroughput{}
 	case "databricks:index/mount:Mount":
 		r = &Mount{}
 	case "databricks:index/mwsCredentials:MwsCredentials":
@@ -169,6 +175,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Query{}
 	case "databricks:index/recipient:Recipient":
 		r = &Recipient{}
+	case "databricks:index/recipientFederationPolicy:RecipientFederationPolicy":
+		r = &RecipientFederationPolicy{}
 	case "databricks:index/registeredModel:RegisteredModel":
 		r = &RegisteredModel{}
 	case "databricks:index/repo:Repo":
@@ -235,6 +243,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkspaceConf{}
 	case "databricks:index/workspaceFile:WorkspaceFile":
 		r = &WorkspaceFile{}
+	case "databricks:index/workspaceNetworkOption:WorkspaceNetworkOption":
+		r = &WorkspaceNetworkOption{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -269,6 +279,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/accessControlRuleSet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/accountNetworkPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -359,6 +374,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/dashboard",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/databaseInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -523,6 +543,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/modelServingProvisionedThroughput",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/mount",
 		&module{version},
 	)
@@ -634,6 +659,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/recipient",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/recipientFederationPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -799,6 +829,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/workspaceFile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/workspaceNetworkOption",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineLibraryFile
     {
-        public readonly string? Path;
+        public readonly string Path;
 
         [OutputConstructor]
-        private PipelineLibraryFile(string? path)
+        private PipelineLibraryFile(string path)
         {
             Path = path;
         }

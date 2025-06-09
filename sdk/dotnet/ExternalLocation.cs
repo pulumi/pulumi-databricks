@@ -73,6 +73,18 @@ namespace Pulumi.Databricks
     /// 
     /// This resource can be imported by `name`:
     /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_external_location.this
+    /// 
+    ///   id = "&lt;name&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+    /// 
     /// bash
     /// 
     /// ```sh
@@ -82,12 +94,6 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/externalLocation:ExternalLocation")]
     public partial class ExternalLocation : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ARN of the s3 access point to use with the external location (AWS).
-        /// </summary>
-        [Output("accessPoint")]
-        public Output<string?> AccessPoint { get; private set; } = null!;
-
         [Output("browseOnly")]
         public Output<bool> BrowseOnly { get; private set; } = null!;
 
@@ -122,6 +128,12 @@ namespace Pulumi.Databricks
         public Output<string> CredentialName { get; private set; } = null!;
 
         /// <summary>
+        /// indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
+        /// </summary>
+        [Output("enableFileEvents")]
+        public Output<bool?> EnableFileEvents { get; private set; } = null!;
+
+        /// <summary>
         /// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         /// </summary>
         [Output("encryptionDetails")]
@@ -132,6 +144,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("fallback")]
         public Output<bool?> Fallback { get; private set; } = null!;
+
+        [Output("fileEventQueue")]
+        public Output<Outputs.ExternalLocationFileEventQueue?> FileEventQueue { get; private set; } = null!;
 
         /// <summary>
         /// Destroy external location regardless of its dependents.
@@ -243,12 +258,6 @@ namespace Pulumi.Databricks
     public sealed class ExternalLocationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ARN of the s3 access point to use with the external location (AWS).
-        /// </summary>
-        [Input("accessPoint")]
-        public Input<string>? AccessPoint { get; set; }
-
-        /// <summary>
         /// User-supplied free-form text.
         /// </summary>
         [Input("comment")]
@@ -261,6 +270,12 @@ namespace Pulumi.Databricks
         public Input<string> CredentialName { get; set; } = null!;
 
         /// <summary>
+        /// indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
+        /// </summary>
+        [Input("enableFileEvents")]
+        public Input<bool>? EnableFileEvents { get; set; }
+
+        /// <summary>
         /// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         /// </summary>
         [Input("encryptionDetails")]
@@ -271,6 +286,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("fallback")]
         public Input<bool>? Fallback { get; set; }
+
+        [Input("fileEventQueue")]
+        public Input<Inputs.ExternalLocationFileEventQueueArgs>? FileEventQueue { get; set; }
 
         /// <summary>
         /// Destroy external location regardless of its dependents.
@@ -331,12 +349,6 @@ namespace Pulumi.Databricks
 
     public sealed class ExternalLocationState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ARN of the s3 access point to use with the external location (AWS).
-        /// </summary>
-        [Input("accessPoint")]
-        public Input<string>? AccessPoint { get; set; }
-
         [Input("browseOnly")]
         public Input<bool>? BrowseOnly { get; set; }
 
@@ -371,6 +383,12 @@ namespace Pulumi.Databricks
         public Input<string>? CredentialName { get; set; }
 
         /// <summary>
+        /// indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
+        /// </summary>
+        [Input("enableFileEvents")]
+        public Input<bool>? EnableFileEvents { get; set; }
+
+        /// <summary>
         /// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         /// </summary>
         [Input("encryptionDetails")]
@@ -381,6 +399,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("fallback")]
         public Input<bool>? Fallback { get; set; }
+
+        [Input("fileEventQueue")]
+        public Input<Inputs.ExternalLocationFileEventQueueGetArgs>? FileEventQueue { get; set; }
 
         /// <summary>
         /// Destroy external location regardless of its dependents.

@@ -14,16 +14,32 @@ public final class GetAlertV2EvaluationNotificationSubscription extends com.pulu
 
     public static final GetAlertV2EvaluationNotificationSubscription Empty = new GetAlertV2EvaluationNotificationSubscription();
 
+    /**
+     * (string) -
+     * 
+     */
     @Import(name="destinationId")
     private @Nullable String destinationId;
 
+    /**
+     * @return (string) -
+     * 
+     */
     public Optional<String> destinationId() {
         return Optional.ofNullable(this.destinationId);
     }
 
+    /**
+     * (string) -
+     * 
+     */
     @Import(name="userEmail")
     private @Nullable String userEmail;
 
+    /**
+     * @return (string) -
+     * 
+     */
     public Optional<String> userEmail() {
         return Optional.ofNullable(this.userEmail);
     }
@@ -53,11 +69,23 @@ public final class GetAlertV2EvaluationNotificationSubscription extends com.pulu
             $ = new GetAlertV2EvaluationNotificationSubscription(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param destinationId (string) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder destinationId(@Nullable String destinationId) {
             $.destinationId = destinationId;
             return this;
         }
 
+        /**
+         * @param userEmail (string) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder userEmail(@Nullable String userEmail) {
             $.userEmail = userEmail;
             return this;

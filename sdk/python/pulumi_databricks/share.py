@@ -416,6 +416,18 @@ class Share(pulumi.CustomResource):
 
         The share resource can be imported using the name of the share.
 
+        hcl
+
+        import {
+
+          to = databricks_share.this
+
+          id = "<share_name>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
@@ -526,6 +538,18 @@ class Share(pulumi.CustomResource):
         ## Import
 
         The share resource can be imported using the name of the share.
+
+        hcl
+
+        import {
+
+          to = databricks_share.this
+
+          id = "<share_name>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 

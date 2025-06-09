@@ -14,23 +14,47 @@ public final class GetAlertV2EvaluationThresholdColumn extends com.pulumi.resour
 
     public static final GetAlertV2EvaluationThresholdColumn Empty = new GetAlertV2EvaluationThresholdColumn();
 
+    /**
+     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * 
+     */
     @Import(name="aggregation")
     private @Nullable String aggregation;
 
+    /**
+     * @return (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * 
+     */
     public Optional<String> aggregation() {
         return Optional.ofNullable(this.aggregation);
     }
 
+    /**
+     * (string) -
+     * 
+     */
     @Import(name="display")
     private @Nullable String display;
 
+    /**
+     * @return (string) -
+     * 
+     */
     public Optional<String> display() {
         return Optional.ofNullable(this.display);
     }
 
+    /**
+     * (string) -
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return (string) -
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -61,16 +85,34 @@ public final class GetAlertV2EvaluationThresholdColumn extends com.pulumi.resour
             $ = new GetAlertV2EvaluationThresholdColumn(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aggregation (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+         * 
+         * @return builder
+         * 
+         */
         public Builder aggregation(@Nullable String aggregation) {
             $.aggregation = aggregation;
             return this;
         }
 
+        /**
+         * @param display (string) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder display(@Nullable String display) {
             $.display = display;
             return this;
         }
 
+        /**
+         * @param name (string) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;

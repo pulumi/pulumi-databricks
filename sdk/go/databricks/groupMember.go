@@ -90,6 +90,18 @@ import (
 //
 // You can import a `databricks_group_member` resource with name `my_group_member` like the following:
 //
+// hcl
+//
+// import {
+//
+//	to = databricks_group_member.my_group_member
+//
+//	id = "<group_id>|<member_id>"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+//
 // bash
 //
 // ```sh
@@ -98,9 +110,9 @@ import (
 type GroupMember struct {
 	pulumi.CustomResourceState
 
-	// This is the id of the group resource.
+	// This is the `id` attribute (SCIM ID) of the group resource.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// This is the id of the group, service principal, or user.
+	// This is the `id` attribute (SCIM ID) of the group, service principal, or user.
 	MemberId pulumi.StringOutput `pulumi:"memberId"`
 }
 
@@ -140,16 +152,16 @@ func GetGroupMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupMember resources.
 type groupMemberState struct {
-	// This is the id of the group resource.
+	// This is the `id` attribute (SCIM ID) of the group resource.
 	GroupId *string `pulumi:"groupId"`
-	// This is the id of the group, service principal, or user.
+	// This is the `id` attribute (SCIM ID) of the group, service principal, or user.
 	MemberId *string `pulumi:"memberId"`
 }
 
 type GroupMemberState struct {
-	// This is the id of the group resource.
+	// This is the `id` attribute (SCIM ID) of the group resource.
 	GroupId pulumi.StringPtrInput
-	// This is the id of the group, service principal, or user.
+	// This is the `id` attribute (SCIM ID) of the group, service principal, or user.
 	MemberId pulumi.StringPtrInput
 }
 
@@ -158,17 +170,17 @@ func (GroupMemberState) ElementType() reflect.Type {
 }
 
 type groupMemberArgs struct {
-	// This is the id of the group resource.
+	// This is the `id` attribute (SCIM ID) of the group resource.
 	GroupId string `pulumi:"groupId"`
-	// This is the id of the group, service principal, or user.
+	// This is the `id` attribute (SCIM ID) of the group, service principal, or user.
 	MemberId string `pulumi:"memberId"`
 }
 
 // The set of arguments for constructing a GroupMember resource.
 type GroupMemberArgs struct {
-	// This is the id of the group resource.
+	// This is the `id` attribute (SCIM ID) of the group resource.
 	GroupId pulumi.StringInput
-	// This is the id of the group, service principal, or user.
+	// This is the `id` attribute (SCIM ID) of the group, service principal, or user.
 	MemberId pulumi.StringInput
 }
 
@@ -259,12 +271,12 @@ func (o GroupMemberOutput) ToGroupMemberOutputWithContext(ctx context.Context) G
 	return o
 }
 
-// This is the id of the group resource.
+// This is the `id` attribute (SCIM ID) of the group resource.
 func (o GroupMemberOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMember) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// This is the id of the group, service principal, or user.
+// This is the `id` attribute (SCIM ID) of the group, service principal, or user.
 func (o GroupMemberOutput) MemberId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMember) pulumi.StringOutput { return v.MemberId }).(pulumi.StringOutput)
 }

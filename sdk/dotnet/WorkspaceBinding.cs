@@ -49,6 +49,20 @@ namespace Pulumi.Databricks
     /// 
     /// This resource can be imported by using combination of workspace ID, securable type and name:
     /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_workspace_binding.this
+    /// 
+    ///   id = "&lt;workspace_id&gt;|&lt;securable_type&gt;|&lt;securable_name&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+    /// 
+    /// bash
+    /// 
     /// ```sh
     /// $ pulumi import databricks:index/workspaceBinding:WorkspaceBinding this "&lt;workspace_id&gt;|&lt;securable_type&gt;|&lt;securable_name&gt;"
     /// ```
@@ -81,7 +95,7 @@ namespace Pulumi.Databricks
         /// ID of the workspace. Change forces creation of a new resource.
         /// </summary>
         [Output("workspaceId")]
-        public Output<string?> WorkspaceId { get; private set; } = null!;
+        public Output<string> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -91,7 +105,7 @@ namespace Pulumi.Databricks
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public WorkspaceBinding(string name, WorkspaceBindingArgs? args = null, CustomResourceOptions? options = null)
+        public WorkspaceBinding(string name, WorkspaceBindingArgs args, CustomResourceOptions? options = null)
             : base("databricks:index/workspaceBinding:WorkspaceBinding", name, args ?? new WorkspaceBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -153,8 +167,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// ID of the workspace. Change forces creation of a new resource.
         /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        [Input("workspaceId", required: true)]
+        public Input<string> WorkspaceId { get; set; } = null!;
 
         public WorkspaceBindingArgs()
         {

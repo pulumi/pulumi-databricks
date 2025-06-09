@@ -599,12 +599,24 @@ class SqlTable(pulumi.CustomResource):
         """
         ## Import
 
-        This resource can be imported by its full name.
+        This resource can be imported by its full name:
+
+        hcl
+
+        import {
+
+          to = databricks_sql_table.this
+
+          id = "<catalog_name>.<schema_name>.<name>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 
         ```sh
-        $ pulumi import databricks:index/sqlTable:SqlTable this <catalog_name>.<schema_name>.<name>
+        $ pulumi import databricks:index/sqlTable:SqlTable this "<catalog_name>.<schema_name>.<name>"
         ```
 
         :param str resource_name: The name of the resource.
@@ -634,12 +646,24 @@ class SqlTable(pulumi.CustomResource):
         """
         ## Import
 
-        This resource can be imported by its full name.
+        This resource can be imported by its full name:
+
+        hcl
+
+        import {
+
+          to = databricks_sql_table.this
+
+          id = "<catalog_name>.<schema_name>.<name>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 
         ```sh
-        $ pulumi import databricks:index/sqlTable:SqlTable this <catalog_name>.<schema_name>.<name>
+        $ pulumi import databricks:index/sqlTable:SqlTable this "<catalog_name>.<schema_name>.<name>"
         ```
 
         :param str resource_name: The name of the resource.
@@ -855,7 +879,7 @@ class SqlTable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def partitions(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+    def partitions(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
         a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
         """

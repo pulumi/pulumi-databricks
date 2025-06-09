@@ -211,6 +211,18 @@ class IpAccessList(pulumi.CustomResource):
 
         The databricks_ip_access_list can be imported using id:
 
+        hcl
+
+        import {
+
+          to = databricks_ip_access_list.this
+
+          id = "<list-id>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
@@ -271,6 +283,18 @@ class IpAccessList(pulumi.CustomResource):
         ## Import
 
         The databricks_ip_access_list can be imported using id:
+
+        hcl
+
+        import {
+
+          to = databricks_ip_access_list.this
+
+          id = "<list-id>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 

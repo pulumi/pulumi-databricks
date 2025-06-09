@@ -202,7 +202,7 @@ import (
 // * GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
 // * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 // * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
-// * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+// * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
 // * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
 //
 // ## Import

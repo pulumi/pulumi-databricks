@@ -15,9 +15,17 @@ public final class AlertV2EvaluationSourceArgs extends com.pulumi.resources.Reso
 
     public static final AlertV2EvaluationSourceArgs Empty = new AlertV2EvaluationSourceArgs();
 
+    /**
+     * . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * 
+     */
     @Import(name="aggregation")
     private @Nullable Output<String> aggregation;
 
+    /**
+     * @return . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * 
+     */
     public Optional<Output<String>> aggregation() {
         return Optional.ofNullable(this.aggregation);
     }
@@ -62,11 +70,23 @@ public final class AlertV2EvaluationSourceArgs extends com.pulumi.resources.Reso
             $ = new AlertV2EvaluationSourceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aggregation . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+         * 
+         * @return builder
+         * 
+         */
         public Builder aggregation(@Nullable Output<String> aggregation) {
             $.aggregation = aggregation;
             return this;
         }
 
+        /**
+         * @param aggregation . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+         * 
+         * @return builder
+         * 
+         */
         public Builder aggregation(String aggregation) {
             return aggregation(Output.of(aggregation));
         }

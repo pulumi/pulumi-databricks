@@ -30,6 +30,13 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec extends com.pulumi.r
         return Optional.ofNullable(this.dependencies);
     }
 
+    @Import(name="environmentVersion")
+    private @Nullable String environmentVersion;
+
+    public Optional<String> environmentVersion() {
+        return Optional.ofNullable(this.environmentVersion);
+    }
+
     @Import(name="jarDependencies")
     private @Nullable List<String> jarDependencies;
 
@@ -42,6 +49,7 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec extends com.pulumi.r
     private GetJobJobSettingsSettingsEnvironmentSpec(GetJobJobSettingsSettingsEnvironmentSpec $) {
         this.client = $.client;
         this.dependencies = $.dependencies;
+        this.environmentVersion = $.environmentVersion;
         this.jarDependencies = $.jarDependencies;
     }
 
@@ -75,6 +83,11 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec extends com.pulumi.r
 
         public Builder dependencies(String... dependencies) {
             return dependencies(List.of(dependencies));
+        }
+
+        public Builder environmentVersion(@Nullable String environmentVersion) {
+            $.environmentVersion = environmentVersion;
+            return this;
         }
 
         public Builder jarDependencies(@Nullable List<String> jarDependencies) {

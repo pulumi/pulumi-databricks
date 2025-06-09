@@ -4,18 +4,17 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineLibraryNotebook {
-    private @Nullable String path;
+    private String path;
 
     private PipelineLibraryNotebook() {}
-    public Optional<String> path() {
-        return Optional.ofNullable(this.path);
+    public String path() {
+        return this.path;
     }
 
     public static Builder builder() {
@@ -27,7 +26,7 @@ public final class PipelineLibraryNotebook {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String path;
+        private String path;
         public Builder() {}
         public Builder(PipelineLibraryNotebook defaults) {
     	      Objects.requireNonNull(defaults);
@@ -35,8 +34,10 @@ public final class PipelineLibraryNotebook {
         }
 
         @CustomType.Setter
-        public Builder path(@Nullable String path) {
-
+        public Builder path(String path) {
+            if (path == null) {
+              throw new MissingRequiredPropertyException("PipelineLibraryNotebook", "path");
+            }
             this.path = path;
             return this;
         }

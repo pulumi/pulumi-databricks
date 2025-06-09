@@ -175,6 +175,18 @@ import javax.annotation.Nullable;
  * 
  * * `spn/spn_id` - service principal `spn_id`.
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_entitlements.me
+ * 
+ *   id = &#34;user/&lt;user-id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh
@@ -273,18 +285,32 @@ public class Entitlements extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.userId);
     }
     /**
-     * This is a field to allow the principal to have access to Databricks Workspace.
+     * This is a field to allow the principal to have access to a Databricks Workspace.
      * 
      */
     @Export(name="workspaceAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> workspaceAccess;
 
     /**
-     * @return This is a field to allow the principal to have access to Databricks Workspace.
+     * @return This is a field to allow the principal to have access to a Databricks Workspace.
      * 
      */
     public Output<Optional<Boolean>> workspaceAccess() {
         return Codegen.optional(this.workspaceAccess);
+    }
+    /**
+     * This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     * 
+     */
+    @Export(name="workspaceConsume", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> workspaceConsume;
+
+    /**
+     * @return This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     * 
+     */
+    public Output<Optional<Boolean>> workspaceConsume() {
+        return Codegen.optional(this.workspaceConsume);
     }
 
     /**

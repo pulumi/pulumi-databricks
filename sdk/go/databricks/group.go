@@ -152,7 +152,19 @@ import (
 //
 // ## Import
 //
-// You can import a `databricks_group` resource with the name `my_group` like the following:
+// You can import a `databricks_group` resource by its SCIM ID:
+//
+// hcl
+//
+// import {
+//
+//	to = databricks_group.my_group
+//
+//	id = "<group_id>"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 //
 // bash
 //
@@ -177,8 +189,10 @@ type Group struct {
 	// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	Url   pulumi.StringOutput  `pulumi:"url"`
-	// This is a field to allow the group to have access to Databricks Workspace.
+	// This is a field to allow the group to have access to a Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrOutput `pulumi:"workspaceAccess"`
+	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	WorkspaceConsume pulumi.BoolPtrOutput `pulumi:"workspaceConsume"`
 }
 
 // NewGroup registers a new resource with the given unique name, arguments, and options.
@@ -226,8 +240,10 @@ type groupState struct {
 	// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
 	Force *bool   `pulumi:"force"`
 	Url   *string `pulumi:"url"`
-	// This is a field to allow the group to have access to Databricks Workspace.
+	// This is a field to allow the group to have access to a Databricks Workspace.
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
+	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	WorkspaceConsume *bool `pulumi:"workspaceConsume"`
 }
 
 type GroupState struct {
@@ -246,8 +262,10 @@ type GroupState struct {
 	// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
 	Force pulumi.BoolPtrInput
 	Url   pulumi.StringPtrInput
-	// This is a field to allow the group to have access to Databricks Workspace.
+	// This is a field to allow the group to have access to a Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrInput
+	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	WorkspaceConsume pulumi.BoolPtrInput
 }
 
 func (GroupState) ElementType() reflect.Type {
@@ -270,8 +288,10 @@ type groupArgs struct {
 	// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
 	Force *bool   `pulumi:"force"`
 	Url   *string `pulumi:"url"`
-	// This is a field to allow the group to have access to Databricks Workspace.
+	// This is a field to allow the group to have access to a Databricks Workspace.
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
+	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	WorkspaceConsume *bool `pulumi:"workspaceConsume"`
 }
 
 // The set of arguments for constructing a Group resource.
@@ -291,8 +311,10 @@ type GroupArgs struct {
 	// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
 	Force pulumi.BoolPtrInput
 	Url   pulumi.StringPtrInput
-	// This is a field to allow the group to have access to Databricks Workspace.
+	// This is a field to allow the group to have access to a Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrInput
+	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	WorkspaceConsume pulumi.BoolPtrInput
 }
 
 func (GroupArgs) ElementType() reflect.Type {
@@ -421,9 +443,14 @@ func (o GroupOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
-// This is a field to allow the group to have access to Databricks Workspace.
+// This is a field to allow the group to have access to a Databricks Workspace.
 func (o GroupOutput) WorkspaceAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.WorkspaceAccess }).(pulumi.BoolPtrOutput)
+}
+
+// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+func (o GroupOutput) WorkspaceConsume() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.WorkspaceConsume }).(pulumi.BoolPtrOutput)
 }
 
 type GroupArrayOutput struct{ *pulumi.OutputState }

@@ -125,10 +125,22 @@ namespace Pulumi.Databricks
     /// 
     /// This resource can be imported by `id`:
     /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_connection.this
+    /// 
+    ///   id = "&lt;metastore_id&gt;|&lt;name&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+    /// 
     /// bash
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/connection:Connection this '&lt;metastore_id&gt;|&lt;name&gt;'
+    /// $ pulumi import databricks:index/connection:Connection this "&lt;metastore_id&gt;|&lt;name&gt;"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/connection:Connection")]

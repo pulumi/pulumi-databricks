@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+ * This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks, including custom models, external models, and foundation models. For newer foundation models, including Llama 4, please use the databricks.ModelServingProvisionedThroughput resource.
  *
  * > This resource can only be used with a workspace-level provider!
  *
@@ -142,6 +142,7 @@ import * as utilities from "./utilities";
  *
  * The following resources are often used in the same context:
  *
+ * * databricks.ModelServingProvisionedThroughput to create [Foundation Model provisioned throughput](https://docs.databricks.com/aws/en/machine-learning/foundation-model-apis/deploy-prov-throughput-foundation-model-apis) endpoints in Databricks.
  * * databricks.RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
  * * End to end workspace management guide.
  * * databricks.Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
@@ -153,6 +154,18 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * The model serving resource can be imported using the name of the endpoint.
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_model_serving.this
+ *
+ *   id = "<model-serving-endpoint-name>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  *
  * bash
  *
@@ -206,6 +219,8 @@ export class ModelServing extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
+     *
+     * @deprecated Please use AI Gateway to manage rate limits.
      */
     public readonly rateLimits!: pulumi.Output<outputs.ModelServingRateLimit[] | undefined>;
     /**
@@ -280,6 +295,8 @@ export interface ModelServingState {
     name?: pulumi.Input<string>;
     /**
      * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
+     *
+     * @deprecated Please use AI Gateway to manage rate limits.
      */
     rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingRateLimit>[]>;
     /**
@@ -318,6 +335,8 @@ export interface ModelServingArgs {
     name?: pulumi.Input<string>;
     /**
      * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
+     *
+     * @deprecated Please use AI Gateway to manage rate limits.
      */
     rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingRateLimit>[]>;
     /**

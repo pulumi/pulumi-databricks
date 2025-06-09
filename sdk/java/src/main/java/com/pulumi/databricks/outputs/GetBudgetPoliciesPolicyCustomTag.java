@@ -12,13 +12,35 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBudgetPoliciesPolicyCustomTag {
+    /**
+     * @return (string) - The key of the tag.
+     * - Must be unique among all custom tags of the same policy
+     * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
+     *   these tags are preserved.
+     * 
+     */
     private String key;
+    /**
+     * @return (string) - The value of the tag.
+     * 
+     */
     private @Nullable String value;
 
     private GetBudgetPoliciesPolicyCustomTag() {}
+    /**
+     * @return (string) - The key of the tag.
+     * - Must be unique among all custom tags of the same policy
+     * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
+     *   these tags are preserved.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return (string) - The value of the tag.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

@@ -205,8 +205,22 @@ class MwsStorageConfigurations(pulumi.CustomResource):
 
         This resource can be imported by Databricks account ID and storage configuration ID.
 
+        hcl
+
+        import {
+
+          to = databricks_mws_storage_configurations.this
+
+          id = "<account_id>/<storage_configuration_id>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
+        bash
+
         ```sh
-        $ pulumi import databricks:index/mwsStorageConfigurations:MwsStorageConfigurations this '<account_id>/<storage_configuration_id>'
+        $ pulumi import databricks:index/mwsStorageConfigurations:MwsStorageConfigurations this "<account_id>/<storage_configuration_id>"
         ```
 
         ~> This resource does not support updates. If your configuration does not match the existing resource,
@@ -268,8 +282,22 @@ class MwsStorageConfigurations(pulumi.CustomResource):
 
         This resource can be imported by Databricks account ID and storage configuration ID.
 
+        hcl
+
+        import {
+
+          to = databricks_mws_storage_configurations.this
+
+          id = "<account_id>/<storage_configuration_id>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
+        bash
+
         ```sh
-        $ pulumi import databricks:index/mwsStorageConfigurations:MwsStorageConfigurations this '<account_id>/<storage_configuration_id>'
+        $ pulumi import databricks:index/mwsStorageConfigurations:MwsStorageConfigurations this "<account_id>/<storage_configuration_id>"
         ```
 
         ~> This resource does not support updates. If your configuration does not match the existing resource,

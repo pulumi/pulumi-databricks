@@ -12,8 +12,8 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskForEachTaskTaskGenAiComputeTaskComputeArgs : global::Pulumi.ResourceArgs
     {
-        [Input("gpuNodePoolId", required: true)]
-        public Input<string> GpuNodePoolId { get; set; } = null!;
+        [Input("gpuNodePoolId")]
+        public Input<string>? GpuNodePoolId { get; set; }
 
         [Input("gpuType")]
         public Input<string>? GpuType { get; set; }

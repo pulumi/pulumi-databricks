@@ -123,7 +123,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.MwsWorkspacesArgs;
  * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerArgs;
  * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerGcpArgs;
- * import com.pulumi.databricks.inputs.MwsWorkspacesGkeConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -145,10 +144,6 @@ import javax.annotation.Nullable;
  *                 .gcp(MwsWorkspacesCloudResourceContainerGcpArgs.builder()
  *                     .projectId(googleProject)
  *                     .build())
- *                 .build())
- *             .gkeConfig(MwsWorkspacesGkeConfigArgs.builder()
- *                 .connectivityType("PRIVATE_NODE_PUBLIC_MASTER")
- *                 .masterIpRange("10.3.0.0/28")
  *                 .build())
  *             .networkId(thisDatabricksMwsNetworks.networkId())
  *             .privateAccessSettingsId(pas.privateAccessSettingsId())
@@ -178,6 +173,18 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * This resource can be imported by Databricks account ID and private access settings ID.
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_mws_private_access_settings.this
+ * 
+ *   id = &#34;&lt;account_id&gt;/&lt;private_access_settings_id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  * 
  * ```sh
  * $ pulumi import databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings this &#39;&lt;account_id&gt;/&lt;private_access_settings_id&gt;&#39;

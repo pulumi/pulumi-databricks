@@ -835,10 +835,22 @@ import javax.annotation.Nullable;
  * 
  * The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...), it&#39;s name and `principal`:
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_grant.this
+ * 
+ *   id = &#34;&lt;securable_type&gt;/&lt;securable_name&gt;/&lt;principal&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh
- * $ pulumi import databricks:index/grant:Grant this catalog/abc/user_name
+ * $ pulumi import databricks:index/grant:Grant this &lt;securable_type&gt;/&lt;securable_name&gt;/&lt;principal&gt;
  * ```
  * 
  */

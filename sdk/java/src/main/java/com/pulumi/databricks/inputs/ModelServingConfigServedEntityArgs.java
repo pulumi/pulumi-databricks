@@ -139,6 +139,13 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="provisionedModelUnits")
+    private @Nullable Output<Integer> provisionedModelUnits;
+
+    public Optional<Output<Integer>> provisionedModelUnits() {
+        return Optional.ofNullable(this.provisionedModelUnits);
+    }
+
     /**
      * Whether the compute resources for the served entity should scale down to zero.
      * 
@@ -195,6 +202,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         this.maxProvisionedThroughput = $.maxProvisionedThroughput;
         this.minProvisionedThroughput = $.minProvisionedThroughput;
         this.name = $.name;
+        this.provisionedModelUnits = $.provisionedModelUnits;
         this.scaleToZeroEnabled = $.scaleToZeroEnabled;
         this.workloadSize = $.workloadSize;
         this.workloadType = $.workloadType;
@@ -384,6 +392,15 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder provisionedModelUnits(@Nullable Output<Integer> provisionedModelUnits) {
+            $.provisionedModelUnits = provisionedModelUnits;
+            return this;
+        }
+
+        public Builder provisionedModelUnits(Integer provisionedModelUnits) {
+            return provisionedModelUnits(Output.of(provisionedModelUnits));
         }
 
         /**

@@ -26,6 +26,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("timeseriesColumns")]
+        private InputList<string>? _timeseriesColumns;
+        public InputList<string> TimeseriesColumns
+        {
+            get => _timeseriesColumns ?? (_timeseriesColumns = new InputList<string>());
+            set => _timeseriesColumns = value;
+        }
+
         public GetTableTableInfoTableConstraintPrimaryKeyConstraintInputArgs()
         {
         }

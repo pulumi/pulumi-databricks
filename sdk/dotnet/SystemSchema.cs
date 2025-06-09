@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
+    /// Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account's operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!
     /// 
-    /// &gt; Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.
+    /// &gt; Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.  Certain schemas can't also be disabled completely.
     /// 
     /// ## Example Usage
     /// 
@@ -38,7 +38,19 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by the metastore id and schema name
+    /// This resource can be imported by the metastore id and schema name:
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_system_schema.this
+    /// 
+    ///   id = "&lt;metastore_id&gt;|&lt;schema_name&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
     /// 
     /// bash
     /// 
@@ -65,7 +77,7 @@ namespace Pulumi.Databricks
         /// name of the system schema.
         /// </summary>
         [Output("schema")]
-        public Output<string?> Schema { get; private set; } = null!;
+        public Output<string> Schema { get; private set; } = null!;
 
         /// <summary>
         /// The current state of enablement for the system schema.
@@ -81,7 +93,7 @@ namespace Pulumi.Databricks
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public SystemSchema(string name, SystemSchemaArgs? args = null, CustomResourceOptions? options = null)
+        public SystemSchema(string name, SystemSchemaArgs args, CustomResourceOptions? options = null)
             : base("databricks:index/systemSchema:SystemSchema", name, args ?? new SystemSchemaArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -122,14 +134,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// name of the system schema.
         /// </summary>
-        [Input("schema")]
-        public Input<string>? Schema { get; set; }
-
-        /// <summary>
-        /// The current state of enablement for the system schema.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
+        [Input("schema", required: true)]
+        public Input<string> Schema { get; set; } = null!;
 
         public SystemSchemaArgs()
         {

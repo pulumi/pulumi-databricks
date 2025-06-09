@@ -96,6 +96,18 @@ import javax.annotation.Nullable;
  * 
  * This resource can be imported by the combination of its identifier and the account id:
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_mws_credentials.this
+ * 
+ *   id = &#34;&lt;account_id&gt;/&lt;credentials_id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh

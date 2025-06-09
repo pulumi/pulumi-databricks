@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -59,6 +60,20 @@ import (
 //
 // This resource can be imported by using combination of workspace ID, securable type and name:
 //
+// hcl
+//
+// import {
+//
+//	to = databricks_workspace_binding.this
+//
+//	id = "<workspace_id>|<securable_type>|<securable_name>"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+//
+// bash
+//
 // ```sh
 // $ pulumi import databricks:index/workspaceBinding:WorkspaceBinding this "<workspace_id>|<securable_type>|<securable_name>"
 // ```
@@ -74,16 +89,19 @@ type WorkspaceBinding struct {
 	// Type of securable. Can be `catalog`, `externalLocation`, `storageCredential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType pulumi.StringPtrOutput `pulumi:"securableType"`
 	// ID of the workspace. Change forces creation of a new resource.
-	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
+	WorkspaceId pulumi.StringOutput `pulumi:"workspaceId"`
 }
 
 // NewWorkspaceBinding registers a new resource with the given unique name, arguments, and options.
 func NewWorkspaceBinding(ctx *pulumi.Context,
 	name string, args *WorkspaceBindingArgs, opts ...pulumi.ResourceOption) (*WorkspaceBinding, error) {
 	if args == nil {
-		args = &WorkspaceBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.WorkspaceId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkspaceId'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkspaceBinding
 	err := ctx.RegisterResource("databricks:index/workspaceBinding:WorkspaceBinding", name, args, &resource, opts...)
@@ -146,7 +164,7 @@ type workspaceBindingArgs struct {
 	// Type of securable. Can be `catalog`, `externalLocation`, `storageCredential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType *string `pulumi:"securableType"`
 	// ID of the workspace. Change forces creation of a new resource.
-	WorkspaceId *string `pulumi:"workspaceId"`
+	WorkspaceId string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a WorkspaceBinding resource.
@@ -160,7 +178,7 @@ type WorkspaceBindingArgs struct {
 	// Type of securable. Can be `catalog`, `externalLocation`, `storageCredential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType pulumi.StringPtrInput
 	// ID of the workspace. Change forces creation of a new resource.
-	WorkspaceId pulumi.StringPtrInput
+	WorkspaceId pulumi.StringInput
 }
 
 func (WorkspaceBindingArgs) ElementType() reflect.Type {
@@ -271,8 +289,8 @@ func (o WorkspaceBindingOutput) SecurableType() pulumi.StringPtrOutput {
 }
 
 // ID of the workspace. Change forces creation of a new resource.
-func (o WorkspaceBindingOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceBinding) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+func (o WorkspaceBindingOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceBinding) pulumi.StringOutput { return v.WorkspaceId }).(pulumi.StringOutput)
 }
 
 type WorkspaceBindingArrayOutput struct{ *pulumi.OutputState }

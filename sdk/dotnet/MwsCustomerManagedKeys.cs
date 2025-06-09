@@ -381,6 +381,18 @@ namespace Pulumi.Databricks
     /// 
     /// This resource can be imported by Databricks account ID and customer managed key ID.
     /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_mws_customer_managed_keys.this
+    /// 
+    ///   id = "&lt;account_id&gt;/&lt;customer_managed_key_id&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+    /// 
     /// ```sh
     /// $ pulumi import databricks:index/mwsCustomerManagedKeys:MwsCustomerManagedKeys this '&lt;account_id&gt;/&lt;customer_managed_key_id&gt;'
     /// ```

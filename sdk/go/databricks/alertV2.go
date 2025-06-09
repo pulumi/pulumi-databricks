@@ -11,22 +11,52 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Import
+//
+// As of terraform v1.5, resources can be imported through configuration.
+//
+// hcl
+//
+// import {
+//
+//	id = id
+//
+//	to = databricks_alert_v2.this
+//
+// }
+//
+// If you are using an older version of terraform, you can import the resource using cli as follows:
+//
+// ```sh
+// $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 id
+// ```
 type AlertV2 struct {
 	pulumi.CustomResourceState
 
-	CreateTime        pulumi.StringOutput        `pulumi:"createTime"`
-	CustomDescription pulumi.StringPtrOutput     `pulumi:"customDescription"`
-	CustomSummary     pulumi.StringPtrOutput     `pulumi:"customSummary"`
-	DisplayName       pulumi.StringPtrOutput     `pulumi:"displayName"`
-	Evaluation        AlertV2EvaluationPtrOutput `pulumi:"evaluation"`
-	LifecycleState    pulumi.StringOutput        `pulumi:"lifecycleState"`
-	OwnerUserName     pulumi.StringOutput        `pulumi:"ownerUserName"`
-	ParentPath        pulumi.StringPtrOutput     `pulumi:"parentPath"`
-	QueryText         pulumi.StringPtrOutput     `pulumi:"queryText"`
-	RunAsUserName     pulumi.StringOutput        `pulumi:"runAsUserName"`
-	Schedule          AlertV2SchedulePtrOutput   `pulumi:"schedule"`
-	UpdateTime        pulumi.StringOutput        `pulumi:"updateTime"`
-	WarehouseId       pulumi.StringPtrOutput     `pulumi:"warehouseId"`
+	// (string) - The timestamp indicating when the alert was created
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Custom description for the alert. support mustache template
+	CustomDescription pulumi.StringPtrOutput `pulumi:"customDescription"`
+	// Custom summary for the alert. support mustache template
+	CustomSummary pulumi.StringPtrOutput `pulumi:"customSummary"`
+	// The display name of the alert
+	DisplayName pulumi.StringPtrOutput     `pulumi:"displayName"`
+	Evaluation  AlertV2EvaluationPtrOutput `pulumi:"evaluation"`
+	// (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
+	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
+	OwnerUserName pulumi.StringOutput `pulumi:"ownerUserName"`
+	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+	ParentPath pulumi.StringPtrOutput `pulumi:"parentPath"`
+	// Text of the query to be run
+	QueryText pulumi.StringPtrOutput `pulumi:"queryText"`
+	// (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+	RunAsUserName pulumi.StringOutput      `pulumi:"runAsUserName"`
+	Schedule      AlertV2SchedulePtrOutput `pulumi:"schedule"`
+	// (string) - The timestamp indicating when the alert was updated
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// ID of the SQL warehouse attached to the alert
+	WarehouseId pulumi.StringPtrOutput `pulumi:"warehouseId"`
 }
 
 // NewAlertV2 registers a new resource with the given unique name, arguments, and options.
@@ -59,35 +89,57 @@ func GetAlertV2(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AlertV2 resources.
 type alertV2State struct {
-	CreateTime        *string            `pulumi:"createTime"`
-	CustomDescription *string            `pulumi:"customDescription"`
-	CustomSummary     *string            `pulumi:"customSummary"`
-	DisplayName       *string            `pulumi:"displayName"`
-	Evaluation        *AlertV2Evaluation `pulumi:"evaluation"`
-	LifecycleState    *string            `pulumi:"lifecycleState"`
-	OwnerUserName     *string            `pulumi:"ownerUserName"`
-	ParentPath        *string            `pulumi:"parentPath"`
-	QueryText         *string            `pulumi:"queryText"`
-	RunAsUserName     *string            `pulumi:"runAsUserName"`
-	Schedule          *AlertV2Schedule   `pulumi:"schedule"`
-	UpdateTime        *string            `pulumi:"updateTime"`
-	WarehouseId       *string            `pulumi:"warehouseId"`
+	// (string) - The timestamp indicating when the alert was created
+	CreateTime *string `pulumi:"createTime"`
+	// Custom description for the alert. support mustache template
+	CustomDescription *string `pulumi:"customDescription"`
+	// Custom summary for the alert. support mustache template
+	CustomSummary *string `pulumi:"customSummary"`
+	// The display name of the alert
+	DisplayName *string            `pulumi:"displayName"`
+	Evaluation  *AlertV2Evaluation `pulumi:"evaluation"`
+	// (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+	LifecycleState *string `pulumi:"lifecycleState"`
+	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
+	OwnerUserName *string `pulumi:"ownerUserName"`
+	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+	ParentPath *string `pulumi:"parentPath"`
+	// Text of the query to be run
+	QueryText *string `pulumi:"queryText"`
+	// (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+	RunAsUserName *string          `pulumi:"runAsUserName"`
+	Schedule      *AlertV2Schedule `pulumi:"schedule"`
+	// (string) - The timestamp indicating when the alert was updated
+	UpdateTime *string `pulumi:"updateTime"`
+	// ID of the SQL warehouse attached to the alert
+	WarehouseId *string `pulumi:"warehouseId"`
 }
 
 type AlertV2State struct {
-	CreateTime        pulumi.StringPtrInput
+	// (string) - The timestamp indicating when the alert was created
+	CreateTime pulumi.StringPtrInput
+	// Custom description for the alert. support mustache template
 	CustomDescription pulumi.StringPtrInput
-	CustomSummary     pulumi.StringPtrInput
-	DisplayName       pulumi.StringPtrInput
-	Evaluation        AlertV2EvaluationPtrInput
-	LifecycleState    pulumi.StringPtrInput
-	OwnerUserName     pulumi.StringPtrInput
-	ParentPath        pulumi.StringPtrInput
-	QueryText         pulumi.StringPtrInput
-	RunAsUserName     pulumi.StringPtrInput
-	Schedule          AlertV2SchedulePtrInput
-	UpdateTime        pulumi.StringPtrInput
-	WarehouseId       pulumi.StringPtrInput
+	// Custom summary for the alert. support mustache template
+	CustomSummary pulumi.StringPtrInput
+	// The display name of the alert
+	DisplayName pulumi.StringPtrInput
+	Evaluation  AlertV2EvaluationPtrInput
+	// (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+	LifecycleState pulumi.StringPtrInput
+	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
+	OwnerUserName pulumi.StringPtrInput
+	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+	ParentPath pulumi.StringPtrInput
+	// Text of the query to be run
+	QueryText pulumi.StringPtrInput
+	// (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+	RunAsUserName pulumi.StringPtrInput
+	Schedule      AlertV2SchedulePtrInput
+	// (string) - The timestamp indicating when the alert was updated
+	UpdateTime pulumi.StringPtrInput
+	// ID of the SQL warehouse attached to the alert
+	WarehouseId pulumi.StringPtrInput
 }
 
 func (AlertV2State) ElementType() reflect.Type {
@@ -95,26 +147,38 @@ func (AlertV2State) ElementType() reflect.Type {
 }
 
 type alertV2Args struct {
-	CustomDescription *string            `pulumi:"customDescription"`
-	CustomSummary     *string            `pulumi:"customSummary"`
-	DisplayName       *string            `pulumi:"displayName"`
-	Evaluation        *AlertV2Evaluation `pulumi:"evaluation"`
-	ParentPath        *string            `pulumi:"parentPath"`
-	QueryText         *string            `pulumi:"queryText"`
-	Schedule          *AlertV2Schedule   `pulumi:"schedule"`
-	WarehouseId       *string            `pulumi:"warehouseId"`
+	// Custom description for the alert. support mustache template
+	CustomDescription *string `pulumi:"customDescription"`
+	// Custom summary for the alert. support mustache template
+	CustomSummary *string `pulumi:"customSummary"`
+	// The display name of the alert
+	DisplayName *string            `pulumi:"displayName"`
+	Evaluation  *AlertV2Evaluation `pulumi:"evaluation"`
+	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+	ParentPath *string `pulumi:"parentPath"`
+	// Text of the query to be run
+	QueryText *string          `pulumi:"queryText"`
+	Schedule  *AlertV2Schedule `pulumi:"schedule"`
+	// ID of the SQL warehouse attached to the alert
+	WarehouseId *string `pulumi:"warehouseId"`
 }
 
 // The set of arguments for constructing a AlertV2 resource.
 type AlertV2Args struct {
+	// Custom description for the alert. support mustache template
 	CustomDescription pulumi.StringPtrInput
-	CustomSummary     pulumi.StringPtrInput
-	DisplayName       pulumi.StringPtrInput
-	Evaluation        AlertV2EvaluationPtrInput
-	ParentPath        pulumi.StringPtrInput
-	QueryText         pulumi.StringPtrInput
-	Schedule          AlertV2SchedulePtrInput
-	WarehouseId       pulumi.StringPtrInput
+	// Custom summary for the alert. support mustache template
+	CustomSummary pulumi.StringPtrInput
+	// The display name of the alert
+	DisplayName pulumi.StringPtrInput
+	Evaluation  AlertV2EvaluationPtrInput
+	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+	ParentPath pulumi.StringPtrInput
+	// Text of the query to be run
+	QueryText pulumi.StringPtrInput
+	Schedule  AlertV2SchedulePtrInput
+	// ID of the SQL warehouse attached to the alert
+	WarehouseId pulumi.StringPtrInput
 }
 
 func (AlertV2Args) ElementType() reflect.Type {
@@ -204,18 +268,22 @@ func (o AlertV2Output) ToAlertV2OutputWithContext(ctx context.Context) AlertV2Ou
 	return o
 }
 
+// (string) - The timestamp indicating when the alert was created
 func (o AlertV2Output) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Custom description for the alert. support mustache template
 func (o AlertV2Output) CustomDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.CustomDescription }).(pulumi.StringPtrOutput)
 }
 
+// Custom summary for the alert. support mustache template
 func (o AlertV2Output) CustomSummary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.CustomSummary }).(pulumi.StringPtrOutput)
 }
 
+// The display name of the alert
 func (o AlertV2Output) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
@@ -224,22 +292,27 @@ func (o AlertV2Output) Evaluation() AlertV2EvaluationPtrOutput {
 	return o.ApplyT(func(v *AlertV2) AlertV2EvaluationPtrOutput { return v.Evaluation }).(AlertV2EvaluationPtrOutput)
 }
 
+// (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
 func (o AlertV2Output) LifecycleState() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringOutput { return v.LifecycleState }).(pulumi.StringOutput)
 }
 
+// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
 func (o AlertV2Output) OwnerUserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringOutput { return v.OwnerUserName }).(pulumi.StringOutput)
 }
 
+// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 func (o AlertV2Output) ParentPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.ParentPath }).(pulumi.StringPtrOutput)
 }
 
+// Text of the query to be run
 func (o AlertV2Output) QueryText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.QueryText }).(pulumi.StringPtrOutput)
 }
 
+// (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
 func (o AlertV2Output) RunAsUserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringOutput { return v.RunAsUserName }).(pulumi.StringOutput)
 }
@@ -248,10 +321,12 @@ func (o AlertV2Output) Schedule() AlertV2SchedulePtrOutput {
 	return o.ApplyT(func(v *AlertV2) AlertV2SchedulePtrOutput { return v.Schedule }).(AlertV2SchedulePtrOutput)
 }
 
+// (string) - The timestamp indicating when the alert was updated
 func (o AlertV2Output) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
+// ID of the SQL warehouse attached to the alert
 func (o AlertV2Output) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.WarehouseId }).(pulumi.StringPtrOutput)
 }

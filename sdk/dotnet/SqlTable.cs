@@ -12,12 +12,24 @@ namespace Pulumi.Databricks
     /// <summary>
     /// ## Import
     /// 
-    /// This resource can be imported by its full name.
+    /// This resource can be imported by its full name:
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_sql_table.this
+    /// 
+    ///   id = "&lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
     /// 
     /// bash
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/sqlTable:SqlTable this &lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;
+    /// $ pulumi import databricks:index/sqlTable:SqlTable this "&lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlTable:SqlTable")]

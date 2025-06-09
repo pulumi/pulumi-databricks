@@ -16,16 +16,32 @@ public final class GetAlertV2EvaluationThresholdArgs extends com.pulumi.resource
 
     public static final GetAlertV2EvaluationThresholdArgs Empty = new GetAlertV2EvaluationThresholdArgs();
 
+    /**
+     * (AlertV2OperandColumn) -
+     * 
+     */
     @Import(name="column")
     private @Nullable Output<GetAlertV2EvaluationThresholdColumnArgs> column;
 
+    /**
+     * @return (AlertV2OperandColumn) -
+     * 
+     */
     public Optional<Output<GetAlertV2EvaluationThresholdColumnArgs>> column() {
         return Optional.ofNullable(this.column);
     }
 
+    /**
+     * (AlertV2OperandValue) -
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<GetAlertV2EvaluationThresholdValueArgs> value;
 
+    /**
+     * @return (AlertV2OperandValue) -
+     * 
+     */
     public Optional<Output<GetAlertV2EvaluationThresholdValueArgs>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -55,20 +71,44 @@ public final class GetAlertV2EvaluationThresholdArgs extends com.pulumi.resource
             $ = new GetAlertV2EvaluationThresholdArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param column (AlertV2OperandColumn) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder column(@Nullable Output<GetAlertV2EvaluationThresholdColumnArgs> column) {
             $.column = column;
             return this;
         }
 
+        /**
+         * @param column (AlertV2OperandColumn) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder column(GetAlertV2EvaluationThresholdColumnArgs column) {
             return column(Output.of(column));
         }
 
+        /**
+         * @param value (AlertV2OperandValue) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<GetAlertV2EvaluationThresholdValueArgs> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value (AlertV2OperandValue) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(GetAlertV2EvaluationThresholdValueArgs value) {
             return value(Output.of(value));
         }

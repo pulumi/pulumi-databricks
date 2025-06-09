@@ -154,10 +154,22 @@ import (
 //
 // You can import a `databricks_sql_query` resource with ID like the following:
 //
+// hcl
+//
+// import {
+//
+//	to = databricks_sql_query.this
+//
+//	id = "<query-id>"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+//
 // bash
 //
 // ```sh
-// $ pulumi import databricks:index/sqlQuery:SqlQuery this <query-id>
+// $ pulumi import databricks:index/sqlQuery:SqlQuery this "<query-id>"
 // ```
 type SqlQuery struct {
 	pulumi.CustomResourceState

@@ -13,8 +13,17 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAlertV2EvaluationThresholdValueResult
     {
+        /// <summary>
+        /// (boolean) -
+        /// </summary>
         public readonly bool? BoolValue;
+        /// <summary>
+        /// (number) -
+        /// </summary>
         public readonly double? DoubleValue;
+        /// <summary>
+        /// (string) -
+        /// </summary>
         public readonly string? StringValue;
 
         [OutputConstructor]

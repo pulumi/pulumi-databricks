@@ -13,19 +13,61 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAlertsV2ResultResult
     {
+        /// <summary>
+        /// (string) - The timestamp indicating when the alert was created
+        /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// (string) - Custom description for the alert. support mustache template
+        /// </summary>
         public readonly string? CustomDescription;
+        /// <summary>
+        /// (string) - Custom summary for the alert. support mustache template
+        /// </summary>
         public readonly string? CustomSummary;
+        /// <summary>
+        /// (string) - The display name of the alert
+        /// </summary>
         public readonly string? DisplayName;
+        /// <summary>
+        /// (AlertV2Evaluation) -
+        /// </summary>
         public readonly Outputs.GetAlertsV2ResultEvaluationResult? Evaluation;
+        /// <summary>
+        /// (string) - UUID identifying the alert
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        /// </summary>
         public readonly string LifecycleState;
+        /// <summary>
+        /// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
+        /// </summary>
         public readonly string OwnerUserName;
+        /// <summary>
+        /// (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        /// </summary>
         public readonly string? ParentPath;
+        /// <summary>
+        /// (string) - Text of the query to be run
+        /// </summary>
         public readonly string? QueryText;
+        /// <summary>
+        /// (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+        /// </summary>
         public readonly string RunAsUserName;
+        /// <summary>
+        /// (CronSchedule) -
+        /// </summary>
         public readonly Outputs.GetAlertsV2ResultScheduleResult? Schedule;
+        /// <summary>
+        /// (string) - The timestamp indicating when the alert was updated
+        /// </summary>
         public readonly string UpdateTime;
+        /// <summary>
+        /// (string) - ID of the SQL warehouse attached to the alert
+        /// </summary>
         public readonly string? WarehouseId;
 
         [OutputConstructor]

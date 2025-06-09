@@ -66,6 +66,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("provisionedModelUnits")]
+        public Input<int>? ProvisionedModelUnits { get; set; }
+
         /// <summary>
         /// Whether the compute resources for the served entity should scale down to zero.
         /// </summary>

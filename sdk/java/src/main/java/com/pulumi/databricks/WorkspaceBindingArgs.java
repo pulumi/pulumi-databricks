@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -83,15 +84,15 @@ public final class WorkspaceBindingArgs extends com.pulumi.resources.ResourceArg
      * ID of the workspace. Change forces creation of a new resource.
      * 
      */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
+    @Import(name="workspaceId", required=true)
+    private Output<String> workspaceId;
 
     /**
      * @return ID of the workspace. Change forces creation of a new resource.
      * 
      */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Output<String> workspaceId() {
+        return this.workspaceId;
     }
 
     private WorkspaceBindingArgs() {}
@@ -216,7 +217,7 @@ public final class WorkspaceBindingArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
+        public Builder workspaceId(Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
@@ -232,6 +233,9 @@ public final class WorkspaceBindingArgs extends com.pulumi.resources.ResourceArg
         }
 
         public WorkspaceBindingArgs build() {
+            if ($.workspaceId == null) {
+                throw new MissingRequiredPropertyException("WorkspaceBindingArgs", "workspaceId");
+            }
             return $;
         }
     }

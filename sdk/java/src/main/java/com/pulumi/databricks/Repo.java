@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  * * End to end workspace management guide.
  * * databricks.GitCredential to manage Git credentials.
  * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
- * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
  * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
  * * databricks.SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
  * * databricks.SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
@@ -79,6 +79,18 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * The resource can be imported using the Git folder ID (obtained via UI or using API)
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_repo.this
+ * 
+ *   id = &#34;repo_id&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  * 
  * bash
  * 

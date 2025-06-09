@@ -55,6 +55,7 @@ export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promi
         "servicePrincipals": args.servicePrincipals,
         "users": args.users,
         "workspaceAccess": args.workspaceAccess,
+        "workspaceConsume": args.workspaceConsume,
     }, opts);
 }
 
@@ -112,6 +113,7 @@ export interface GetGroupArgs {
      */
     users?: string[];
     workspaceAccess?: boolean;
+    workspaceConsume?: boolean;
 }
 
 /**
@@ -166,6 +168,7 @@ export interface GetGroupResult {
      */
     readonly users: string[];
     readonly workspaceAccess?: boolean;
+    readonly workspaceConsume?: boolean;
 }
 /**
  * Retrieves information about databricks.Group members, entitlements and instance profiles.
@@ -218,6 +221,7 @@ export function getGroupOutput(args: GetGroupOutputArgs, opts?: pulumi.InvokeOut
         "servicePrincipals": args.servicePrincipals,
         "users": args.users,
         "workspaceAccess": args.workspaceAccess,
+        "workspaceConsume": args.workspaceConsume,
     }, opts);
 }
 
@@ -275,4 +279,5 @@ export interface GetGroupOutputArgs {
      */
     users?: pulumi.Input<pulumi.Input<string>[]>;
     workspaceAccess?: pulumi.Input<boolean>;
+    workspaceConsume?: pulumi.Input<boolean>;
 }

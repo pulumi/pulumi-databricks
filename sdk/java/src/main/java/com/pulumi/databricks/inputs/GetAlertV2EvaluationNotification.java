@@ -17,23 +17,47 @@ public final class GetAlertV2EvaluationNotification extends com.pulumi.resources
 
     public static final GetAlertV2EvaluationNotification Empty = new GetAlertV2EvaluationNotification();
 
+    /**
+     * (boolean) - Whether to notify alert subscribers when alert returns back to normal
+     * 
+     */
     @Import(name="notifyOnOk")
     private @Nullable Boolean notifyOnOk;
 
+    /**
+     * @return (boolean) - Whether to notify alert subscribers when alert returns back to normal
+     * 
+     */
     public Optional<Boolean> notifyOnOk() {
         return Optional.ofNullable(this.notifyOnOk);
     }
 
+    /**
+     * (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     * 
+     */
     @Import(name="retriggerSeconds")
     private @Nullable Integer retriggerSeconds;
 
+    /**
+     * @return (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     * 
+     */
     public Optional<Integer> retriggerSeconds() {
         return Optional.ofNullable(this.retriggerSeconds);
     }
 
+    /**
+     * (list of AlertV2Subscription) -
+     * 
+     */
     @Import(name="subscriptions")
     private @Nullable List<GetAlertV2EvaluationNotificationSubscription> subscriptions;
 
+    /**
+     * @return (list of AlertV2Subscription) -
+     * 
+     */
     public Optional<List<GetAlertV2EvaluationNotificationSubscription>> subscriptions() {
         return Optional.ofNullable(this.subscriptions);
     }
@@ -64,21 +88,45 @@ public final class GetAlertV2EvaluationNotification extends com.pulumi.resources
             $ = new GetAlertV2EvaluationNotification(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param notifyOnOk (boolean) - Whether to notify alert subscribers when alert returns back to normal
+         * 
+         * @return builder
+         * 
+         */
         public Builder notifyOnOk(@Nullable Boolean notifyOnOk) {
             $.notifyOnOk = notifyOnOk;
             return this;
         }
 
+        /**
+         * @param retriggerSeconds (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+         * 
+         * @return builder
+         * 
+         */
         public Builder retriggerSeconds(@Nullable Integer retriggerSeconds) {
             $.retriggerSeconds = retriggerSeconds;
             return this;
         }
 
+        /**
+         * @param subscriptions (list of AlertV2Subscription) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscriptions(@Nullable List<GetAlertV2EvaluationNotificationSubscription> subscriptions) {
             $.subscriptions = subscriptions;
             return this;
         }
 
+        /**
+         * @param subscriptions (list of AlertV2Subscription) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscriptions(GetAlertV2EvaluationNotificationSubscription... subscriptions) {
             return subscriptions(List.of(subscriptions));
         }

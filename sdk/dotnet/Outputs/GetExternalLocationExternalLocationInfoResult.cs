@@ -13,10 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetExternalLocationExternalLocationInfoResult
     {
-        /// <summary>
-        /// The ARN of the s3 access point to use with the external location (AWS).
-        /// </summary>
-        public readonly string? AccessPoint;
         public readonly bool? BrowseOnly;
         /// <summary>
         /// User-supplied comment.
@@ -38,11 +34,13 @@ namespace Pulumi.Databricks.Outputs
         /// Name of the databricks.StorageCredential to use with this external location.
         /// </summary>
         public readonly string? CredentialName;
+        public readonly bool? EnableFileEvents;
         /// <summary>
         /// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         /// </summary>
         public readonly Outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsResult? EncryptionDetails;
         public readonly bool? Fallback;
+        public readonly Outputs.GetExternalLocationExternalLocationInfoFileEventQueueResult? FileEventQueue;
         public readonly string? IsolationMode;
         /// <summary>
         /// Unique identifier of the parent Metastore.
@@ -75,8 +73,6 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetExternalLocationExternalLocationInfoResult(
-            string? accessPoint,
-
             bool? browseOnly,
 
             string? comment,
@@ -89,9 +85,13 @@ namespace Pulumi.Databricks.Outputs
 
             string? credentialName,
 
+            bool? enableFileEvents,
+
             Outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsResult? encryptionDetails,
 
             bool? fallback,
+
+            Outputs.GetExternalLocationExternalLocationInfoFileEventQueueResult? fileEventQueue,
 
             string? isolationMode,
 
@@ -109,15 +109,16 @@ namespace Pulumi.Databricks.Outputs
 
             string? url)
         {
-            AccessPoint = accessPoint;
             BrowseOnly = browseOnly;
             Comment = comment;
             CreatedAt = createdAt;
             CreatedBy = createdBy;
             CredentialId = credentialId;
             CredentialName = credentialName;
+            EnableFileEvents = enableFileEvents;
             EncryptionDetails = encryptionDetails;
             Fallback = fallback;
+            FileEventQueue = fileEventQueue;
             IsolationMode = isolationMode;
             MetastoreId = metastoreId;
             Name = name;

@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.PipelineLibraryFile;
+import com.pulumi.databricks.outputs.PipelineLibraryGlob;
 import com.pulumi.databricks.outputs.PipelineLibraryMaven;
 import com.pulumi.databricks.outputs.PipelineLibraryNotebook;
 import java.lang.String;
@@ -14,9 +15,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineLibrary {
+    /**
+     * @return specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+     * 
+     */
     private @Nullable PipelineLibraryFile file;
+    /**
+     * @return The unified field to include source code. Each entry should have the `include` attribute that can specify a notebook path, a file path, or a folder path that ends `/**` (to include everything from that folder). This field cannot be used together with `notebook` or `file`.
+     * 
+     */
+    private @Nullable PipelineLibraryGlob glob;
     private @Nullable String jar;
     private @Nullable PipelineLibraryMaven maven;
+    /**
+     * @return specifies path to a Databricks Notebook to include as source. Actual path is specified as `path` attribute inside the block.
+     * 
+     */
     private @Nullable PipelineLibraryNotebook notebook;
     /**
      * @deprecated
@@ -27,8 +41,19 @@ public final class PipelineLibrary {
     private @Nullable String whl;
 
     private PipelineLibrary() {}
+    /**
+     * @return specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+     * 
+     */
     public Optional<PipelineLibraryFile> file() {
         return Optional.ofNullable(this.file);
+    }
+    /**
+     * @return The unified field to include source code. Each entry should have the `include` attribute that can specify a notebook path, a file path, or a folder path that ends `/**` (to include everything from that folder). This field cannot be used together with `notebook` or `file`.
+     * 
+     */
+    public Optional<PipelineLibraryGlob> glob() {
+        return Optional.ofNullable(this.glob);
     }
     public Optional<String> jar() {
         return Optional.ofNullable(this.jar);
@@ -36,6 +61,10 @@ public final class PipelineLibrary {
     public Optional<PipelineLibraryMaven> maven() {
         return Optional.ofNullable(this.maven);
     }
+    /**
+     * @return specifies path to a Databricks Notebook to include as source. Actual path is specified as `path` attribute inside the block.
+     * 
+     */
     public Optional<PipelineLibraryNotebook> notebook() {
         return Optional.ofNullable(this.notebook);
     }
@@ -59,6 +88,7 @@ public final class PipelineLibrary {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable PipelineLibraryFile file;
+        private @Nullable PipelineLibraryGlob glob;
         private @Nullable String jar;
         private @Nullable PipelineLibraryMaven maven;
         private @Nullable PipelineLibraryNotebook notebook;
@@ -67,6 +97,7 @@ public final class PipelineLibrary {
         public Builder(PipelineLibrary defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.file = defaults.file;
+    	      this.glob = defaults.glob;
     	      this.jar = defaults.jar;
     	      this.maven = defaults.maven;
     	      this.notebook = defaults.notebook;
@@ -77,6 +108,12 @@ public final class PipelineLibrary {
         public Builder file(@Nullable PipelineLibraryFile file) {
 
             this.file = file;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder glob(@Nullable PipelineLibraryGlob glob) {
+
+            this.glob = glob;
             return this;
         }
         @CustomType.Setter
@@ -106,6 +143,7 @@ public final class PipelineLibrary {
         public PipelineLibrary build() {
             final var _resultValue = new PipelineLibrary();
             _resultValue.file = file;
+            _resultValue.glob = glob;
             _resultValue.jar = jar;
             _resultValue.maven = maven;
             _resultValue.notebook = notebook;

@@ -19,6 +19,18 @@ import javax.annotation.Nullable;
  * 
  * You can import a `databricks_sql_visualization` resource with ID like the following:
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_sql_visualization.this
+ * 
+ *   id = &#34;&lt;query-id&gt;/&lt;visualization-id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh

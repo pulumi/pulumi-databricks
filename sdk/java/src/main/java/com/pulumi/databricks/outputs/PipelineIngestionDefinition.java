@@ -17,6 +17,7 @@ public final class PipelineIngestionDefinition {
     private @Nullable String connectionName;
     private @Nullable String ingestionGatewayId;
     private @Nullable List<PipelineIngestionDefinitionObject> objects;
+    private @Nullable String sourceType;
     private @Nullable PipelineIngestionDefinitionTableConfiguration tableConfiguration;
 
     private PipelineIngestionDefinition() {}
@@ -28,6 +29,9 @@ public final class PipelineIngestionDefinition {
     }
     public List<PipelineIngestionDefinitionObject> objects() {
         return this.objects == null ? List.of() : this.objects;
+    }
+    public Optional<String> sourceType() {
+        return Optional.ofNullable(this.sourceType);
     }
     public Optional<PipelineIngestionDefinitionTableConfiguration> tableConfiguration() {
         return Optional.ofNullable(this.tableConfiguration);
@@ -45,6 +49,7 @@ public final class PipelineIngestionDefinition {
         private @Nullable String connectionName;
         private @Nullable String ingestionGatewayId;
         private @Nullable List<PipelineIngestionDefinitionObject> objects;
+        private @Nullable String sourceType;
         private @Nullable PipelineIngestionDefinitionTableConfiguration tableConfiguration;
         public Builder() {}
         public Builder(PipelineIngestionDefinition defaults) {
@@ -52,6 +57,7 @@ public final class PipelineIngestionDefinition {
     	      this.connectionName = defaults.connectionName;
     	      this.ingestionGatewayId = defaults.ingestionGatewayId;
     	      this.objects = defaults.objects;
+    	      this.sourceType = defaults.sourceType;
     	      this.tableConfiguration = defaults.tableConfiguration;
         }
 
@@ -77,6 +83,12 @@ public final class PipelineIngestionDefinition {
             return objects(List.of(objects));
         }
         @CustomType.Setter
+        public Builder sourceType(@Nullable String sourceType) {
+
+            this.sourceType = sourceType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tableConfiguration(@Nullable PipelineIngestionDefinitionTableConfiguration tableConfiguration) {
 
             this.tableConfiguration = tableConfiguration;
@@ -87,6 +99,7 @@ public final class PipelineIngestionDefinition {
             _resultValue.connectionName = connectionName;
             _resultValue.ingestionGatewayId = ingestionGatewayId;
             _resultValue.objects = objects;
+            _resultValue.sourceType = sourceType;
             _resultValue.tableConfiguration = tableConfiguration;
             return _resultValue;
         }

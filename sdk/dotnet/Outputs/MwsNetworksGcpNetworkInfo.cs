@@ -17,13 +17,7 @@ namespace Pulumi.Databricks.Outputs
         /// The Google Cloud project ID of the VPC network.
         /// </summary>
         public readonly string NetworkProjectId;
-        /// <summary>
-        /// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-        /// </summary>
         public readonly string? PodIpRangeName;
-        /// <summary>
-        /// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-        /// </summary>
         public readonly string? ServiceIpRangeName;
         /// <summary>
         /// The ID of the subnet associated with this network.

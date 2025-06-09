@@ -39,19 +39,6 @@ namespace Pulumi.Databricks
     ///         IpCidrRange = "10.0.0.0/16",
     ///         Region = "us-central1",
     ///         Network = dbxPrivateVpc.Id,
-    ///         SecondaryIpRange = new[]
-    ///         {
-    ///             
-    ///             {
-    ///                 { "rangeName", "pods" },
-    ///                 { "ipCidrRange", "10.1.0.0/16" },
-    ///             },
-    ///             
-    ///             {
-    ///                 { "rangeName", "svc" },
-    ///                 { "ipCidrRange", "10.2.0.0/20" },
-    ///             },
-    ///         },
     ///         PrivateIpGoogleAccess = true,
     ///     });
     /// 
@@ -81,8 +68,6 @@ namespace Pulumi.Databricks
     ///             VpcId = dbxPrivateVpc.Name,
     ///             SubnetId = networkWithPrivateSecondaryIpRanges.Name,
     ///             SubnetRegion = networkWithPrivateSecondaryIpRanges.Region,
-    ///             PodIpRangeName = "pods",
-    ///             ServiceIpRangeName = "svc",
     ///         },
     ///     });
     /// 
@@ -109,8 +94,6 @@ namespace Pulumi.Databricks
     ///             VpcId = dbxPrivateVpc.Name,
     ///             SubnetId = networkWithPrivateSecondaryIpRanges.Name,
     ///             SubnetRegion = networkWithPrivateSecondaryIpRanges.Region,
-    ///             PodIpRangeName = "pods",
-    ///             ServiceIpRangeName = "svc",
     ///         },
     ///         VpcEndpoints = new Databricks.Inputs.MwsNetworksVpcEndpointsArgs
     ///         {
@@ -152,6 +135,18 @@ namespace Pulumi.Databricks
     /// ## Import
     /// 
     /// This resource can be imported by Databricks account ID and network ID.
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_mws_networks.this
+    /// 
+    ///   id = "&lt;account_id&gt;/&lt;network_id&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/mwsNetworks:MwsNetworks this '&lt;account_id&gt;/&lt;network_id&gt;'

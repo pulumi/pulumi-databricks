@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PipelineLibraryFileArgs;
+import com.pulumi.databricks.inputs.PipelineLibraryGlobArgs;
 import com.pulumi.databricks.inputs.PipelineLibraryMavenArgs;
 import com.pulumi.databricks.inputs.PipelineLibraryNotebookArgs;
 import java.lang.String;
@@ -18,11 +19,34 @@ public final class PipelineLibraryArgs extends com.pulumi.resources.ResourceArgs
 
     public static final PipelineLibraryArgs Empty = new PipelineLibraryArgs();
 
+    /**
+     * specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+     * 
+     */
     @Import(name="file")
     private @Nullable Output<PipelineLibraryFileArgs> file;
 
+    /**
+     * @return specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+     * 
+     */
     public Optional<Output<PipelineLibraryFileArgs>> file() {
         return Optional.ofNullable(this.file);
+    }
+
+    /**
+     * The unified field to include source code. Each entry should have the `include` attribute that can specify a notebook path, a file path, or a folder path that ends `/**` (to include everything from that folder). This field cannot be used together with `notebook` or `file`.
+     * 
+     */
+    @Import(name="glob")
+    private @Nullable Output<PipelineLibraryGlobArgs> glob;
+
+    /**
+     * @return The unified field to include source code. Each entry should have the `include` attribute that can specify a notebook path, a file path, or a folder path that ends `/**` (to include everything from that folder). This field cannot be used together with `notebook` or `file`.
+     * 
+     */
+    public Optional<Output<PipelineLibraryGlobArgs>> glob() {
+        return Optional.ofNullable(this.glob);
     }
 
     @Import(name="jar")
@@ -39,9 +63,17 @@ public final class PipelineLibraryArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.maven);
     }
 
+    /**
+     * specifies path to a Databricks Notebook to include as source. Actual path is specified as `path` attribute inside the block.
+     * 
+     */
     @Import(name="notebook")
     private @Nullable Output<PipelineLibraryNotebookArgs> notebook;
 
+    /**
+     * @return specifies path to a Databricks Notebook to include as source. Actual path is specified as `path` attribute inside the block.
+     * 
+     */
     public Optional<Output<PipelineLibraryNotebookArgs>> notebook() {
         return Optional.ofNullable(this.notebook);
     }
@@ -69,6 +101,7 @@ public final class PipelineLibraryArgs extends com.pulumi.resources.ResourceArgs
 
     private PipelineLibraryArgs(PipelineLibraryArgs $) {
         this.file = $.file;
+        this.glob = $.glob;
         this.jar = $.jar;
         this.maven = $.maven;
         this.notebook = $.notebook;
@@ -93,13 +126,46 @@ public final class PipelineLibraryArgs extends com.pulumi.resources.ResourceArgs
             $ = new PipelineLibraryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param file specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder file(@Nullable Output<PipelineLibraryFileArgs> file) {
             $.file = file;
             return this;
         }
 
+        /**
+         * @param file specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder file(PipelineLibraryFileArgs file) {
             return file(Output.of(file));
+        }
+
+        /**
+         * @param glob The unified field to include source code. Each entry should have the `include` attribute that can specify a notebook path, a file path, or a folder path that ends `/**` (to include everything from that folder). This field cannot be used together with `notebook` or `file`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder glob(@Nullable Output<PipelineLibraryGlobArgs> glob) {
+            $.glob = glob;
+            return this;
+        }
+
+        /**
+         * @param glob The unified field to include source code. Each entry should have the `include` attribute that can specify a notebook path, a file path, or a folder path that ends `/**` (to include everything from that folder). This field cannot be used together with `notebook` or `file`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder glob(PipelineLibraryGlobArgs glob) {
+            return glob(Output.of(glob));
         }
 
         public Builder jar(@Nullable Output<String> jar) {
@@ -120,11 +186,23 @@ public final class PipelineLibraryArgs extends com.pulumi.resources.ResourceArgs
             return maven(Output.of(maven));
         }
 
+        /**
+         * @param notebook specifies path to a Databricks Notebook to include as source. Actual path is specified as `path` attribute inside the block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder notebook(@Nullable Output<PipelineLibraryNotebookArgs> notebook) {
             $.notebook = notebook;
             return this;
         }
 
+        /**
+         * @param notebook specifies path to a Databricks Notebook to include as source. Actual path is specified as `path` attribute inside the block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder notebook(PipelineLibraryNotebookArgs notebook) {
             return notebook(Output.of(notebook));
         }

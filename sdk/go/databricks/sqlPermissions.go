@@ -120,6 +120,18 @@ import (
 //
 // * `anonymous function/` - anonymous function. `/` suffix is mandatory.
 //
+// hcl
+//
+// import {
+//
+//	to = databricks_sql_permissions.foo
+//
+//	id = "/<object-type>/<object-name>"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+//
 // bash
 //
 // ```sh

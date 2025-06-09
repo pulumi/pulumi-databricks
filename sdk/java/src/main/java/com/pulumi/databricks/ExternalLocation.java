@@ -11,6 +11,7 @@ import com.pulumi.databricks.ExternalLocationArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ExternalLocationState;
 import com.pulumi.databricks.outputs.ExternalLocationEncryptionDetails;
+import com.pulumi.databricks.outputs.ExternalLocationFileEventQueue;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -95,6 +96,18 @@ import javax.annotation.Nullable;
  * 
  * This resource can be imported by `name`:
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_external_location.this
+ * 
+ *   id = &#34;&lt;name&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh
@@ -104,20 +117,6 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/externalLocation:ExternalLocation")
 public class ExternalLocation extends com.pulumi.resources.CustomResource {
-    /**
-     * The ARN of the s3 access point to use with the external location (AWS).
-     * 
-     */
-    @Export(name="accessPoint", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accessPoint;
-
-    /**
-     * @return The ARN of the s3 access point to use with the external location (AWS).
-     * 
-     */
-    public Output<Optional<String>> accessPoint() {
-        return Codegen.optional(this.accessPoint);
-    }
     @Export(name="browseOnly", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> browseOnly;
 
@@ -195,6 +194,20 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
         return this.credentialName;
     }
     /**
+     * indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
+     * 
+     */
+    @Export(name="enableFileEvents", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableFileEvents;
+
+    /**
+     * @return indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
+     * 
+     */
+    public Output<Optional<Boolean>> enableFileEvents() {
+        return Codegen.optional(this.enableFileEvents);
+    }
+    /**
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      * 
      */
@@ -221,6 +234,12 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> fallback() {
         return Codegen.optional(this.fallback);
+    }
+    @Export(name="fileEventQueue", refs={ExternalLocationFileEventQueue.class}, tree="[0]")
+    private Output</* @Nullable */ ExternalLocationFileEventQueue> fileEventQueue;
+
+    public Output<Optional<ExternalLocationFileEventQueue>> fileEventQueue() {
+        return Codegen.optional(this.fileEventQueue);
     }
     /**
      * Destroy external location regardless of its dependents.

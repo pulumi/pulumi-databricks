@@ -78,8 +78,22 @@ import javax.annotation.Nullable;
  * 
  * This resource can be imported by Databricks account ID and Network Connectivity Config ID.
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_mws_network_connectivity_config.this
+ * 
+ *   id = &#34;&lt;account_id&gt;/&lt;network_connectivity_config_id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
+ * bash
+ * 
  * ```sh
- * $ pulumi import databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig ncc &lt;account_id&gt;/&lt;network_connectivity_config_id&gt;
+ * $ pulumi import databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig this &#34;&lt;account_id&gt;/&lt;network_connectivity_config_id&gt;&#34;
  * ```
  * 
  */

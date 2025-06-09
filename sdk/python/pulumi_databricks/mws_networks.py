@@ -442,16 +442,6 @@ class MwsNetworks(pulumi.CustomResource):
             ip_cidr_range=10.0.0.0/16,
             region=us-central1,
             network=dbx_private_vpc.id,
-            secondary_ip_range=[
-                {
-                    rangeName: pods,
-                    ipCidrRange: 10.1.0.0/16,
-                },
-                {
-                    rangeName: svc,
-                    ipCidrRange: 10.2.0.0/20,
-                },
-            ],
             private_ip_google_access=True)
         router = google.index.ComputeRouter("router",
             name=fmy-router-{suffix.result},
@@ -471,8 +461,6 @@ class MwsNetworks(pulumi.CustomResource):
                 "vpc_id": dbx_private_vpc["name"],
                 "subnet_id": network_with_private_secondary_ip_ranges["name"],
                 "subnet_region": network_with_private_secondary_ip_ranges["region"],
-                "pod_ip_range_name": "pods",
-                "service_ip_range_name": "svc",
             })
         ```
 
@@ -490,8 +478,6 @@ class MwsNetworks(pulumi.CustomResource):
                 "vpc_id": dbx_private_vpc["name"],
                 "subnet_id": network_with_private_secondary_ip_ranges["name"],
                 "subnet_region": network_with_private_secondary_ip_ranges["region"],
-                "pod_ip_range_name": "pods",
-                "service_ip_range_name": "svc",
             },
             vpc_endpoints={
                 "dataplane_relays": [relay["vpcEndpointId"]],
@@ -523,6 +509,18 @@ class MwsNetworks(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by Databricks account ID and network ID.
+
+        hcl
+
+        import {
+
+          to = databricks_mws_networks.this
+
+          id = "<account_id>/<network_id>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         ```sh
         $ pulumi import databricks:index/mwsNetworks:MwsNetworks this '<account_id>/<network_id>'
@@ -575,16 +573,6 @@ class MwsNetworks(pulumi.CustomResource):
             ip_cidr_range=10.0.0.0/16,
             region=us-central1,
             network=dbx_private_vpc.id,
-            secondary_ip_range=[
-                {
-                    rangeName: pods,
-                    ipCidrRange: 10.1.0.0/16,
-                },
-                {
-                    rangeName: svc,
-                    ipCidrRange: 10.2.0.0/20,
-                },
-            ],
             private_ip_google_access=True)
         router = google.index.ComputeRouter("router",
             name=fmy-router-{suffix.result},
@@ -604,8 +592,6 @@ class MwsNetworks(pulumi.CustomResource):
                 "vpc_id": dbx_private_vpc["name"],
                 "subnet_id": network_with_private_secondary_ip_ranges["name"],
                 "subnet_region": network_with_private_secondary_ip_ranges["region"],
-                "pod_ip_range_name": "pods",
-                "service_ip_range_name": "svc",
             })
         ```
 
@@ -623,8 +609,6 @@ class MwsNetworks(pulumi.CustomResource):
                 "vpc_id": dbx_private_vpc["name"],
                 "subnet_id": network_with_private_secondary_ip_ranges["name"],
                 "subnet_region": network_with_private_secondary_ip_ranges["region"],
-                "pod_ip_range_name": "pods",
-                "service_ip_range_name": "svc",
             },
             vpc_endpoints={
                 "dataplane_relays": [relay["vpcEndpointId"]],
@@ -656,6 +640,18 @@ class MwsNetworks(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by Databricks account ID and network ID.
+
+        hcl
+
+        import {
+
+          to = databricks_mws_networks.this
+
+          id = "<account_id>/<network_id>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         ```sh
         $ pulumi import databricks:index/mwsNetworks:MwsNetworks this '<account_id>/<network_id>'

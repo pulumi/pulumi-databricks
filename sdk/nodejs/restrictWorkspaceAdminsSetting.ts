@@ -40,6 +40,18 @@ import * as utilities from "./utilities";
  *
  * This resource can be imported by predefined name `global`:
  *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_restrict_workspace_admins_setting.this
+ *
+ *   id = "global"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ *
  * bash
  *
  * ```sh

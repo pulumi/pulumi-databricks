@@ -42,10 +42,22 @@ import * as utilities from "./utilities";
  *
  * This resource can be imported by combination of metastore id and the data access name.
  *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_metastore_data_access.this
+ *
+ *   id = "<metastore_id>|<name>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ *
  * bash
  *
  * ```sh
- * $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this '<metastore_id>|<name>'
+ * $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this "<metastore_id>|<name>"
  * ```
  */
 export class MetastoreDataAccess extends pulumi.CustomResource {

@@ -302,6 +302,18 @@ import javax.annotation.Nullable;
  * 
  * The resource instance profile can be imported using the ARN of it
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_instance_profile.this
+ * 
+ *   id = &#34;&lt;instance-profile-arn&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh

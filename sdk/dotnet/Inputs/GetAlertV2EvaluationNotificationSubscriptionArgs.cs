@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetAlertV2EvaluationNotificationSubscriptionInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (string) -
+        /// </summary>
         [Input("destinationId")]
         public Input<string>? DestinationId { get; set; }
 
+        /// <summary>
+        /// (string) -
+        /// </summary>
         [Input("userEmail")]
         public Input<string>? UserEmail { get; set; }
 

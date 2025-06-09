@@ -143,6 +143,18 @@ import (
 //
 // * `spn/spn_id` - service principal `spn_id`.
 //
+// hcl
+//
+// import {
+//
+//	to = databricks_entitlements.me
+//
+//	id = "user/<user-id>"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+//
 // bash
 //
 // ```sh
@@ -165,8 +177,10 @@ type Entitlements struct {
 	ServicePrincipalId pulumi.StringPtrOutput `pulumi:"servicePrincipalId"`
 	// Canonical unique identifier for the user.
 	UserId pulumi.StringPtrOutput `pulumi:"userId"`
-	// This is a field to allow the principal to have access to Databricks Workspace.
+	// This is a field to allow the principal to have access to a Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrOutput `pulumi:"workspaceAccess"`
+	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	WorkspaceConsume pulumi.BoolPtrOutput `pulumi:"workspaceConsume"`
 }
 
 // NewEntitlements registers a new resource with the given unique name, arguments, and options.
@@ -213,8 +227,10 @@ type entitlementsState struct {
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 	// Canonical unique identifier for the user.
 	UserId *string `pulumi:"userId"`
-	// This is a field to allow the principal to have access to Databricks Workspace.
+	// This is a field to allow the principal to have access to a Databricks Workspace.
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
+	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	WorkspaceConsume *bool `pulumi:"workspaceConsume"`
 }
 
 type EntitlementsState struct {
@@ -232,8 +248,10 @@ type EntitlementsState struct {
 	ServicePrincipalId pulumi.StringPtrInput
 	// Canonical unique identifier for the user.
 	UserId pulumi.StringPtrInput
-	// This is a field to allow the principal to have access to Databricks Workspace.
+	// This is a field to allow the principal to have access to a Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrInput
+	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	WorkspaceConsume pulumi.BoolPtrInput
 }
 
 func (EntitlementsState) ElementType() reflect.Type {
@@ -255,8 +273,10 @@ type entitlementsArgs struct {
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 	// Canonical unique identifier for the user.
 	UserId *string `pulumi:"userId"`
-	// This is a field to allow the principal to have access to Databricks Workspace.
+	// This is a field to allow the principal to have access to a Databricks Workspace.
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
+	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	WorkspaceConsume *bool `pulumi:"workspaceConsume"`
 }
 
 // The set of arguments for constructing a Entitlements resource.
@@ -275,8 +295,10 @@ type EntitlementsArgs struct {
 	ServicePrincipalId pulumi.StringPtrInput
 	// Canonical unique identifier for the user.
 	UserId pulumi.StringPtrInput
-	// This is a field to allow the principal to have access to Databricks Workspace.
+	// This is a field to allow the principal to have access to a Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrInput
+	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	WorkspaceConsume pulumi.BoolPtrInput
 }
 
 func (EntitlementsArgs) ElementType() reflect.Type {
@@ -398,9 +420,14 @@ func (o EntitlementsOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Entitlements) pulumi.StringPtrOutput { return v.UserId }).(pulumi.StringPtrOutput)
 }
 
-// This is a field to allow the principal to have access to Databricks Workspace.
+// This is a field to allow the principal to have access to a Databricks Workspace.
 func (o EntitlementsOutput) WorkspaceAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Entitlements) pulumi.BoolPtrOutput { return v.WorkspaceAccess }).(pulumi.BoolPtrOutput)
+}
+
+// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+func (o EntitlementsOutput) WorkspaceConsume() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Entitlements) pulumi.BoolPtrOutput { return v.WorkspaceConsume }).(pulumi.BoolPtrOutput)
 }
 
 type EntitlementsArrayOutput struct{ *pulumi.OutputState }

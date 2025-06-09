@@ -20,18 +20,19 @@ __all__ = ['WorkspaceBindingArgs', 'WorkspaceBinding']
 @pulumi.input_type
 class WorkspaceBindingArgs:
     def __init__(__self__, *,
+                 workspace_id: pulumi.Input[builtins.str],
                  binding_type: Optional[pulumi.Input[builtins.str]] = None,
                  catalog_name: Optional[pulumi.Input[builtins.str]] = None,
                  securable_name: Optional[pulumi.Input[builtins.str]] = None,
-                 securable_type: Optional[pulumi.Input[builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[builtins.str]] = None):
+                 securable_type: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceBinding resource.
+        :param pulumi.Input[builtins.str] workspace_id: ID of the workspace. Change forces creation of a new resource.
         :param pulumi.Input[builtins.str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
         :param pulumi.Input[builtins.str] securable_name: Name of securable. Change forces creation of a new resource.
         :param pulumi.Input[builtins.str] securable_type: Type of securable. Can be `catalog`, `external_location`, `storage_credential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
-        :param pulumi.Input[builtins.str] workspace_id: ID of the workspace. Change forces creation of a new resource.
         """
+        pulumi.set(__self__, "workspace_id", workspace_id)
         if binding_type is not None:
             pulumi.set(__self__, "binding_type", binding_type)
         if catalog_name is not None:
@@ -43,8 +44,18 @@ class WorkspaceBindingArgs:
             pulumi.set(__self__, "securable_name", securable_name)
         if securable_type is not None:
             pulumi.set(__self__, "securable_type", securable_type)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[builtins.str]:
+        """
+        ID of the workspace. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
     @property
     @pulumi.getter(name="bindingType")
@@ -91,18 +102,6 @@ class WorkspaceBindingArgs:
     @securable_type.setter
     def securable_type(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "securable_type", value)
-
-    @property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        ID of the workspace. Change forces creation of a new resource.
-        """
-        return pulumi.get(self, "workspace_id")
-
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
 
 
 @pulumi.input_type
@@ -234,6 +233,20 @@ class WorkspaceBinding(pulumi.CustomResource):
 
         This resource can be imported by using combination of workspace ID, securable type and name:
 
+        hcl
+
+        import {
+
+          to = databricks_workspace_binding.this
+
+          id = "<workspace_id>|<securable_type>|<securable_name>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
+        bash
+
         ```sh
         $ pulumi import databricks:index/workspaceBinding:WorkspaceBinding this "<workspace_id>|<securable_type>|<securable_name>"
         ```
@@ -249,7 +262,7 @@ class WorkspaceBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[WorkspaceBindingArgs] = None,
+                 args: WorkspaceBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         If you use workspaces to isolate user data access, you may want to limit access to catalog, external locations or storage credentials from specific workspaces in your account, also known as workspace binding
@@ -279,6 +292,20 @@ class WorkspaceBinding(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by using combination of workspace ID, securable type and name:
+
+        hcl
+
+        import {
+
+          to = databricks_workspace_binding.this
+
+          id = "<workspace_id>|<securable_type>|<securable_name>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
+        bash
 
         ```sh
         $ pulumi import databricks:index/workspaceBinding:WorkspaceBinding this "<workspace_id>|<securable_type>|<securable_name>"
@@ -317,6 +344,8 @@ class WorkspaceBinding(pulumi.CustomResource):
             __props__.__dict__["catalog_name"] = catalog_name
             __props__.__dict__["securable_name"] = securable_name
             __props__.__dict__["securable_type"] = securable_type
+            if workspace_id is None and not opts.urn:
+                raise TypeError("Missing required property 'workspace_id'")
             __props__.__dict__["workspace_id"] = workspace_id
         super(WorkspaceBinding, __self__).__init__(
             'databricks:index/workspaceBinding:WorkspaceBinding',
@@ -388,7 +417,7 @@ class WorkspaceBinding(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> pulumi.Output[Optional[builtins.str]]:
+    def workspace_id(self) -> pulumi.Output[builtins.str]:
         """
         ID of the workspace. Change forces creation of a new resource.
         """

@@ -71,7 +71,7 @@ func GetAwsBucketPolicy(ctx *pulumi.Context, args *GetAwsBucketPolicyArgs, opts 
 type GetAwsBucketPolicyArgs struct {
 	// AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
 	AwsPartition *string `pulumi:"awsPartition"`
-	// AWS S3 Bucket name for which to generate the policy document.
+	// AWS S3 Bucket name for which to generate the policy document. The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
 	Bucket string `pulumi:"bucket"`
 	// Deprecated: databricks_account_id will be will be removed in the next major release.
 	DatabricksAccountId *string `pulumi:"databricksAccountId"`
@@ -108,7 +108,7 @@ func GetAwsBucketPolicyOutput(ctx *pulumi.Context, args GetAwsBucketPolicyOutput
 type GetAwsBucketPolicyOutputArgs struct {
 	// AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
 	AwsPartition pulumi.StringPtrInput `pulumi:"awsPartition"`
-	// AWS S3 Bucket name for which to generate the policy document.
+	// AWS S3 Bucket name for which to generate the policy document. The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
 	Bucket pulumi.StringInput `pulumi:"bucket"`
 	// Deprecated: databricks_account_id will be will be removed in the next major release.
 	DatabricksAccountId pulumi.StringPtrInput `pulumi:"databricksAccountId"`

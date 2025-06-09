@@ -24,27 +24,51 @@ namespace Pulumi.Databricks
 
     public sealed class GetAlertV2Args : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// (string) - Custom description for the alert. support mustache template
+        /// </summary>
         [Input("customDescription")]
         public string? CustomDescription { get; set; }
 
+        /// <summary>
+        /// (string) - Custom summary for the alert. support mustache template
+        /// </summary>
         [Input("customSummary")]
         public string? CustomSummary { get; set; }
 
+        /// <summary>
+        /// (string) - The display name of the alert
+        /// </summary>
         [Input("displayName")]
         public string? DisplayName { get; set; }
 
+        /// <summary>
+        /// (AlertV2Evaluation) -
+        /// </summary>
         [Input("evaluation")]
         public Inputs.GetAlertV2EvaluationArgs? Evaluation { get; set; }
 
+        /// <summary>
+        /// (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        /// </summary>
         [Input("parentPath")]
         public string? ParentPath { get; set; }
 
+        /// <summary>
+        /// (string) - Text of the query to be run
+        /// </summary>
         [Input("queryText")]
         public string? QueryText { get; set; }
 
+        /// <summary>
+        /// (CronSchedule) -
+        /// </summary>
         [Input("schedule")]
         public Inputs.GetAlertV2ScheduleArgs? Schedule { get; set; }
 
+        /// <summary>
+        /// (string) - ID of the SQL warehouse attached to the alert
+        /// </summary>
         [Input("warehouseId")]
         public string? WarehouseId { get; set; }
 
@@ -56,27 +80,51 @@ namespace Pulumi.Databricks
 
     public sealed class GetAlertV2InvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// (string) - Custom description for the alert. support mustache template
+        /// </summary>
         [Input("customDescription")]
         public Input<string>? CustomDescription { get; set; }
 
+        /// <summary>
+        /// (string) - Custom summary for the alert. support mustache template
+        /// </summary>
         [Input("customSummary")]
         public Input<string>? CustomSummary { get; set; }
 
+        /// <summary>
+        /// (string) - The display name of the alert
+        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// (AlertV2Evaluation) -
+        /// </summary>
         [Input("evaluation")]
         public Input<Inputs.GetAlertV2EvaluationInputArgs>? Evaluation { get; set; }
 
+        /// <summary>
+        /// (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        /// </summary>
         [Input("parentPath")]
         public Input<string>? ParentPath { get; set; }
 
+        /// <summary>
+        /// (string) - Text of the query to be run
+        /// </summary>
         [Input("queryText")]
         public Input<string>? QueryText { get; set; }
 
+        /// <summary>
+        /// (CronSchedule) -
+        /// </summary>
         [Input("schedule")]
         public Input<Inputs.GetAlertV2ScheduleInputArgs>? Schedule { get; set; }
 
+        /// <summary>
+        /// (string) - ID of the SQL warehouse attached to the alert
+        /// </summary>
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }
 
@@ -90,19 +138,61 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetAlertV2Result
     {
+        /// <summary>
+        /// (string) - The timestamp indicating when the alert was created
+        /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// (string) - Custom description for the alert. support mustache template
+        /// </summary>
         public readonly string? CustomDescription;
+        /// <summary>
+        /// (string) - Custom summary for the alert. support mustache template
+        /// </summary>
         public readonly string? CustomSummary;
+        /// <summary>
+        /// (string) - The display name of the alert
+        /// </summary>
         public readonly string? DisplayName;
+        /// <summary>
+        /// (AlertV2Evaluation) -
+        /// </summary>
         public readonly Outputs.GetAlertV2EvaluationResult? Evaluation;
+        /// <summary>
+        /// (string) - UUID identifying the alert
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        /// </summary>
         public readonly string LifecycleState;
+        /// <summary>
+        /// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
+        /// </summary>
         public readonly string OwnerUserName;
+        /// <summary>
+        /// (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+        /// </summary>
         public readonly string? ParentPath;
+        /// <summary>
+        /// (string) - Text of the query to be run
+        /// </summary>
         public readonly string? QueryText;
+        /// <summary>
+        /// (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+        /// </summary>
         public readonly string RunAsUserName;
+        /// <summary>
+        /// (CronSchedule) -
+        /// </summary>
         public readonly Outputs.GetAlertV2ScheduleResult? Schedule;
+        /// <summary>
+        /// (string) - The timestamp indicating when the alert was updated
+        /// </summary>
         public readonly string UpdateTime;
+        /// <summary>
+        /// (string) - ID of the SQL warehouse attached to the alert
+        /// </summary>
         public readonly string? WarehouseId;
 
         [OutputConstructor]

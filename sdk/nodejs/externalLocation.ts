@@ -53,6 +53,18 @@ import * as utilities from "./utilities";
  *
  * This resource can be imported by `name`:
  *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_external_location.this
+ *
+ *   id = "<name>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ *
  * bash
  *
  * ```sh
@@ -87,10 +99,6 @@ export class ExternalLocation extends pulumi.CustomResource {
         return obj['__pulumiType'] === ExternalLocation.__pulumiType;
     }
 
-    /**
-     * The ARN of the s3 access point to use with the external location (AWS).
-     */
-    public readonly accessPoint!: pulumi.Output<string | undefined>;
     public /*out*/ readonly browseOnly!: pulumi.Output<boolean>;
     /**
      * User-supplied free-form text.
@@ -113,6 +121,10 @@ export class ExternalLocation extends pulumi.CustomResource {
      */
     public readonly credentialName!: pulumi.Output<string>;
     /**
+     * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
+     */
+    public readonly enableFileEvents!: pulumi.Output<boolean | undefined>;
+    /**
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      */
     public readonly encryptionDetails!: pulumi.Output<outputs.ExternalLocationEncryptionDetails | undefined>;
@@ -120,6 +132,7 @@ export class ExternalLocation extends pulumi.CustomResource {
      * Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
      */
     public readonly fallback!: pulumi.Output<boolean | undefined>;
+    public readonly fileEventQueue!: pulumi.Output<outputs.ExternalLocationFileEventQueue | undefined>;
     /**
      * Destroy external location regardless of its dependents.
      */
@@ -175,15 +188,16 @@ export class ExternalLocation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExternalLocationState | undefined;
-            resourceInputs["accessPoint"] = state ? state.accessPoint : undefined;
             resourceInputs["browseOnly"] = state ? state.browseOnly : undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
             resourceInputs["credentialId"] = state ? state.credentialId : undefined;
             resourceInputs["credentialName"] = state ? state.credentialName : undefined;
+            resourceInputs["enableFileEvents"] = state ? state.enableFileEvents : undefined;
             resourceInputs["encryptionDetails"] = state ? state.encryptionDetails : undefined;
             resourceInputs["fallback"] = state ? state.fallback : undefined;
+            resourceInputs["fileEventQueue"] = state ? state.fileEventQueue : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
             resourceInputs["isolationMode"] = state ? state.isolationMode : undefined;
@@ -203,11 +217,12 @@ export class ExternalLocation extends pulumi.CustomResource {
             if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["accessPoint"] = args ? args.accessPoint : undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["credentialName"] = args ? args.credentialName : undefined;
+            resourceInputs["enableFileEvents"] = args ? args.enableFileEvents : undefined;
             resourceInputs["encryptionDetails"] = args ? args.encryptionDetails : undefined;
             resourceInputs["fallback"] = args ? args.fallback : undefined;
+            resourceInputs["fileEventQueue"] = args ? args.fileEventQueue : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
             resourceInputs["isolationMode"] = args ? args.isolationMode : undefined;
@@ -233,10 +248,6 @@ export class ExternalLocation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ExternalLocation resources.
  */
 export interface ExternalLocationState {
-    /**
-     * The ARN of the s3 access point to use with the external location (AWS).
-     */
-    accessPoint?: pulumi.Input<string>;
     browseOnly?: pulumi.Input<boolean>;
     /**
      * User-supplied free-form text.
@@ -259,6 +270,10 @@ export interface ExternalLocationState {
      */
     credentialName?: pulumi.Input<string>;
     /**
+     * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
+     */
+    enableFileEvents?: pulumi.Input<boolean>;
+    /**
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      */
     encryptionDetails?: pulumi.Input<inputs.ExternalLocationEncryptionDetails>;
@@ -266,6 +281,7 @@ export interface ExternalLocationState {
      * Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
      */
     fallback?: pulumi.Input<boolean>;
+    fileEventQueue?: pulumi.Input<inputs.ExternalLocationFileEventQueue>;
     /**
      * Destroy external location regardless of its dependents.
      */
@@ -314,10 +330,6 @@ export interface ExternalLocationState {
  */
 export interface ExternalLocationArgs {
     /**
-     * The ARN of the s3 access point to use with the external location (AWS).
-     */
-    accessPoint?: pulumi.Input<string>;
-    /**
      * User-supplied free-form text.
      */
     comment?: pulumi.Input<string>;
@@ -326,6 +338,10 @@ export interface ExternalLocationArgs {
      */
     credentialName: pulumi.Input<string>;
     /**
+     * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
+     */
+    enableFileEvents?: pulumi.Input<boolean>;
+    /**
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      */
     encryptionDetails?: pulumi.Input<inputs.ExternalLocationEncryptionDetails>;
@@ -333,6 +349,7 @@ export interface ExternalLocationArgs {
      * Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
      */
     fallback?: pulumi.Input<boolean>;
+    fileEventQueue?: pulumi.Input<inputs.ExternalLocationFileEventQueue>;
     /**
      * Destroy external location regardless of its dependents.
      */

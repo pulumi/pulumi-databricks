@@ -30,6 +30,77 @@ export interface AccessControlRuleSetGrantRule {
     role: string;
 }
 
+export interface AccountNetworkPolicyEgress {
+    /**
+     * The access policy enforced for egress traffic to the internet
+     */
+    networkAccess?: outputs.AccountNetworkPolicyEgressNetworkAccess;
+}
+
+export interface AccountNetworkPolicyEgressNetworkAccess {
+    /**
+     * List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+     */
+    allowedInternetDestinations?: outputs.AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination[];
+    /**
+     * List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+     */
+    allowedStorageDestinations?: outputs.AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination[];
+    /**
+     * Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+     */
+    policyEnforcement?: outputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement;
+    /**
+     * The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+     */
+    restrictionMode: string;
+}
+
+export interface AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination {
+    /**
+     * The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: string;
+    /**
+     * The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+     */
+    internetDestinationType?: string;
+}
+
+export interface AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination {
+    /**
+     * The Azure storage account name
+     */
+    azureStorageAccount?: string;
+    /**
+     * The Azure storage service type (blob, dfs, etc.)
+     */
+    azureStorageService?: string;
+    bucketName?: string;
+    /**
+     * The region of the S3 bucket
+     */
+    region?: string;
+    /**
+     * The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+     */
+    storageDestinationType?: string;
+}
+
+export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
+    /**
+     * When empty, it means dry run for all products.
+     * When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
+     */
+    dryRunModeProductFilters?: string[];
+    /**
+     * The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
+     * while DRY_RUN only logs violations without blocking. When not specified,
+     * defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+     */
+    enforcementMode?: string;
+}
+
 export interface AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy {
     /**
      * Configured embedding policy. Possible values are `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`.
@@ -100,17 +171,44 @@ export interface AlertConditionThresholdValue {
 }
 
 export interface AlertV2Evaluation {
+    /**
+     * Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     */
     comparisonOperator?: string;
+    /**
+     * Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     */
     emptyResultState?: string;
+    /**
+     * (string) - Timestamp of the last evaluation
+     */
     lastEvaluatedAt: string;
+    /**
+     * User or Notification Destination to notify when alert is triggered
+     */
     notification?: outputs.AlertV2EvaluationNotification;
+    /**
+     * Source column from result to use to evaluate alert
+     */
     source?: outputs.AlertV2EvaluationSource;
+    /**
+     * (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     */
     state: string;
+    /**
+     * Threshold to user for alert evaluation, can be a column or a value
+     */
     threshold?: outputs.AlertV2EvaluationThreshold;
 }
 
 export interface AlertV2EvaluationNotification {
+    /**
+     * Whether to notify alert subscribers when alert returns back to normal
+     */
     notifyOnOk?: boolean;
+    /**
+     * Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     */
     retriggerSeconds?: number;
     subscriptions?: outputs.AlertV2EvaluationNotificationSubscription[];
 }
@@ -121,6 +219,9 @@ export interface AlertV2EvaluationNotificationSubscription {
 }
 
 export interface AlertV2EvaluationSource {
+    /**
+     * . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     */
     aggregation?: string;
     display?: string;
     name?: string;
@@ -132,6 +233,9 @@ export interface AlertV2EvaluationThreshold {
 }
 
 export interface AlertV2EvaluationThresholdColumn {
+    /**
+     * . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     */
     aggregation?: string;
     display?: string;
     name?: string;
@@ -144,8 +248,20 @@ export interface AlertV2EvaluationThresholdValue {
 }
 
 export interface AlertV2Schedule {
+    /**
+     * Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     */
     pauseStatus?: string;
+    /**
+     * A cron expression using quartz syntax that specifies the schedule for this pipeline.
+     * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+     */
     quartzCronSchedule?: string;
+    /**
+     * A Java timezone id. The schedule will be resolved using this timezone.
+     * This will be combined with the quartzCronSchedule to determine the schedule.
+     * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+     */
     timezoneId?: string;
 }
 
@@ -268,6 +384,7 @@ export interface AppResource {
      * attribute
      */
     sqlWarehouse?: outputs.AppResourceSqlWarehouse;
+    ucSecurable?: outputs.AppResourceUcSecurable;
 }
 
 export interface AppResourceJob {
@@ -316,6 +433,12 @@ export interface AppResourceSqlWarehouse {
      * Permission to grant on the SQL warehouse. Supported permissions are: `CAN_MANAGE`, `CAN_USE`, `IS_OWNER`.
      */
     permission: string;
+}
+
+export interface AppResourceUcSecurable {
+    permission: string;
+    securableFullName: string;
+    securableType: string;
 }
 
 export interface ArtifactAllowlistArtifactMatcher {
@@ -440,7 +563,10 @@ export interface BudgetFilterWorkspaceId {
 
 export interface BudgetPolicyCustomTag {
     /**
-     * The key of the tag. - Must be unique among all custom tags of the same policy. Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" as these tags are preserved.
+     * The key of the tag.
+     * - Must be unique among all custom tags of the same policy
+     * - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
+     * these tags are preserved.
      */
     key: string;
     /**
@@ -995,120 +1121,581 @@ export interface ExternalLocationEncryptionDetailsSseEncryptionDetails {
     awsKmsKeyArn?: string;
 }
 
+export interface ExternalLocationFileEventQueue {
+    /**
+     * Configuration for managed Azure Queue Storage queue.
+     */
+    managedAqs?: outputs.ExternalLocationFileEventQueueManagedAqs;
+    /**
+     * Configuration for managed Google Cloud Pub/Sub queue.
+     */
+    managedPubsub?: outputs.ExternalLocationFileEventQueueManagedPubsub;
+    /**
+     * Configuration for managed Amazon SQS queue.
+     */
+    managedSqs?: outputs.ExternalLocationFileEventQueueManagedSqs;
+    /**
+     * Configuration for provided Azure Storage Queue.
+     */
+    providedAqs?: outputs.ExternalLocationFileEventQueueProvidedAqs;
+    /**
+     * Configuration for provided Google Cloud Pub/Sub queue.
+     */
+    providedPubsub?: outputs.ExternalLocationFileEventQueueProvidedPubsub;
+    /**
+     * Configuration for provided Amazon SQS queue.
+     */
+    providedSqs?: outputs.ExternalLocationFileEventQueueProvidedSqs;
+}
+
+export interface ExternalLocationFileEventQueueManagedAqs {
+    /**
+     * The ID of the managed resource.
+     */
+    managedResourceId: string;
+    queueUrl?: string;
+    /**
+     * The Azure resource group.
+     */
+    resourceGroup: string;
+    /**
+     * The Azure subscription ID.
+     */
+    subscriptionId: string;
+}
+
+export interface ExternalLocationFileEventQueueManagedPubsub {
+    /**
+     * The ID of the managed resource.
+     */
+    managedResourceId: string;
+    /**
+     * The name of the subscription.
+     */
+    subscriptionName?: string;
+}
+
+export interface ExternalLocationFileEventQueueManagedSqs {
+    /**
+     * The ID of the managed resource.
+     */
+    managedResourceId: string;
+    queueUrl?: string;
+}
+
+export interface ExternalLocationFileEventQueueProvidedAqs {
+    managedResourceId: string;
+    /**
+     * The URL of the queue.
+     */
+    queueUrl: string;
+    /**
+     * The Azure resource group.
+     */
+    resourceGroup?: string;
+    /**
+     * The Azure subscription ID.
+     */
+    subscriptionId?: string;
+}
+
+export interface ExternalLocationFileEventQueueProvidedPubsub {
+    managedResourceId: string;
+    /**
+     * The name of the subscription.
+     */
+    subscriptionName: string;
+}
+
+export interface ExternalLocationFileEventQueueProvidedSqs {
+    managedResourceId: string;
+    /**
+     * The URL of the SQS queue.
+     */
+    queueUrl: string;
+}
+
+export interface GetAccountNetworkPoliciesItem {
+    /**
+     * (string) - The associated account ID for this Network Policy object
+     */
+    accountId?: string;
+    /**
+     * (NetworkPolicyEgress) - The network policies applying for egress traffic
+     */
+    egress?: outputs.GetAccountNetworkPoliciesItemEgress;
+    /**
+     * (string) - The unique identifier for the network policy
+     */
+    networkPolicyId?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemEgress {
+    /**
+     * (EgressNetworkPolicyNetworkAccessPolicy) - The access policy enforced for egress traffic to the internet
+     */
+    networkAccess?: outputs.GetAccountNetworkPoliciesItemEgressNetworkAccess;
+}
+
+export interface GetAccountNetworkPoliciesItemEgressNetworkAccess {
+    /**
+     * (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+     */
+    allowedInternetDestinations?: outputs.GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedInternetDestination[];
+    /**
+     * (list of EgressNetworkPolicyNetworkAccessPolicyStorageDestination) - List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+     */
+    allowedStorageDestinations?: outputs.GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedStorageDestination[];
+    /**
+     * (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+     */
+    policyEnforcement?: outputs.GetAccountNetworkPoliciesItemEgressNetworkAccessPolicyEnforcement;
+    /**
+     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+     */
+    restrictionMode: string;
+}
+
+export interface GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedInternetDestination {
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: string;
+    /**
+     * (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+     */
+    internetDestinationType?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedStorageDestination {
+    /**
+     * (string) - The Azure storage account name
+     */
+    azureStorageAccount?: string;
+    /**
+     * (string) - The Azure storage service type (blob, dfs, etc.)
+     */
+    azureStorageService?: string;
+    /**
+     * (string) -
+     */
+    bucketName?: string;
+    /**
+     * (string) - The region of the S3 bucket
+     */
+    region?: string;
+    /**
+     * (string) - The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+     */
+    storageDestinationType?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemEgressNetworkAccessPolicyEnforcement {
+    /**
+     * (list of ) - When empty, it means dry run for all products.
+     * When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
+     */
+    dryRunModeProductFilters?: string[];
+    /**
+     * (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
+     * while DRY_RUN only logs violations without blocking. When not specified,
+     * defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+     */
+    enforcementMode?: string;
+}
+
+export interface GetAccountNetworkPolicyEgress {
+    /**
+     * (EgressNetworkPolicyNetworkAccessPolicy) - The access policy enforced for egress traffic to the internet
+     */
+    networkAccess?: outputs.GetAccountNetworkPolicyEgressNetworkAccess;
+}
+
+export interface GetAccountNetworkPolicyEgressNetworkAccess {
+    /**
+     * (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+     */
+    allowedInternetDestinations?: outputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination[];
+    /**
+     * (list of EgressNetworkPolicyNetworkAccessPolicyStorageDestination) - List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+     */
+    allowedStorageDestinations?: outputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination[];
+    /**
+     * (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+     */
+    policyEnforcement?: outputs.GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement;
+    /**
+     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+     */
+    restrictionMode: string;
+}
+
+export interface GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination {
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: string;
+    /**
+     * (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+     */
+    internetDestinationType?: string;
+}
+
+export interface GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination {
+    /**
+     * (string) - The Azure storage account name
+     */
+    azureStorageAccount?: string;
+    /**
+     * (string) - The Azure storage service type (blob, dfs, etc.)
+     */
+    azureStorageService?: string;
+    /**
+     * (string) -
+     */
+    bucketName?: string;
+    /**
+     * (string) - The region of the S3 bucket
+     */
+    region?: string;
+    /**
+     * (string) - The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+     */
+    storageDestinationType?: string;
+}
+
+export interface GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
+    /**
+     * (list of ) - When empty, it means dry run for all products.
+     * When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
+     */
+    dryRunModeProductFilters?: string[];
+    /**
+     * (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
+     * while DRY_RUN only logs violations without blocking. When not specified,
+     * defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+     */
+    enforcementMode?: string;
+}
+
 export interface GetAlertV2Evaluation {
+    /**
+     * (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     */
     comparisonOperator?: string;
+    /**
+     * (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     */
     emptyResultState?: string;
+    /**
+     * (string) - Timestamp of the last evaluation
+     */
     lastEvaluatedAt: string;
+    /**
+     * (AlertV2Notification) - User or Notification Destination to notify when alert is triggered
+     */
     notification?: outputs.GetAlertV2EvaluationNotification;
+    /**
+     * (AlertV2OperandColumn) - Source column from result to use to evaluate alert
+     */
     source?: outputs.GetAlertV2EvaluationSource;
+    /**
+     * (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     */
     state: string;
+    /**
+     * (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
+     */
     threshold?: outputs.GetAlertV2EvaluationThreshold;
 }
 
 export interface GetAlertV2EvaluationNotification {
+    /**
+     * (boolean) - Whether to notify alert subscribers when alert returns back to normal
+     */
     notifyOnOk?: boolean;
+    /**
+     * (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     */
     retriggerSeconds?: number;
+    /**
+     * (list of AlertV2Subscription) -
+     */
     subscriptions?: outputs.GetAlertV2EvaluationNotificationSubscription[];
 }
 
 export interface GetAlertV2EvaluationNotificationSubscription {
+    /**
+     * (string) -
+     */
     destinationId?: string;
+    /**
+     * (string) -
+     */
     userEmail?: string;
 }
 
 export interface GetAlertV2EvaluationSource {
+    /**
+     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     */
     aggregation?: string;
+    /**
+     * (string) -
+     */
     display?: string;
+    /**
+     * (string) -
+     */
     name?: string;
 }
 
 export interface GetAlertV2EvaluationThreshold {
+    /**
+     * (AlertV2OperandColumn) -
+     */
     column?: outputs.GetAlertV2EvaluationThresholdColumn;
+    /**
+     * (AlertV2OperandValue) -
+     */
     value?: outputs.GetAlertV2EvaluationThresholdValue;
 }
 
 export interface GetAlertV2EvaluationThresholdColumn {
+    /**
+     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     */
     aggregation?: string;
+    /**
+     * (string) -
+     */
     display?: string;
+    /**
+     * (string) -
+     */
     name?: string;
 }
 
 export interface GetAlertV2EvaluationThresholdValue {
+    /**
+     * (boolean) -
+     */
     boolValue?: boolean;
+    /**
+     * (number) -
+     */
     doubleValue?: number;
+    /**
+     * (string) -
+     */
     stringValue?: string;
 }
 
 export interface GetAlertV2Schedule {
+    /**
+     * (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     */
     pauseStatus?: string;
+    /**
+     * (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
+     * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+     */
     quartzCronSchedule?: string;
+    /**
+     * (string) - A Java timezone id. The schedule will be resolved using this timezone.
+     * This will be combined with the quartzCronSchedule to determine the schedule.
+     * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+     */
     timezoneId?: string;
 }
 
 export interface GetAlertsV2Result {
+    /**
+     * (string) - The timestamp indicating when the alert was created
+     */
     createTime: string;
+    /**
+     * (string) - Custom description for the alert. support mustache template
+     */
     customDescription?: string;
+    /**
+     * (string) - Custom summary for the alert. support mustache template
+     */
     customSummary?: string;
+    /**
+     * (string) - The display name of the alert
+     */
     displayName?: string;
+    /**
+     * (AlertV2Evaluation) -
+     */
     evaluation?: outputs.GetAlertsV2ResultEvaluation;
+    /**
+     * (string) - UUID identifying the alert
+     */
     id: string;
+    /**
+     * (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     */
     lifecycleState: string;
+    /**
+     * (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
+     */
     ownerUserName: string;
+    /**
+     * (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
+     */
     parentPath?: string;
+    /**
+     * (string) - Text of the query to be run
+     */
     queryText?: string;
+    /**
+     * (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+     */
     runAsUserName: string;
+    /**
+     * (CronSchedule) -
+     */
     schedule?: outputs.GetAlertsV2ResultSchedule;
+    /**
+     * (string) - The timestamp indicating when the alert was updated
+     */
     updateTime: string;
+    /**
+     * (string) - ID of the SQL warehouse attached to the alert
+     */
     warehouseId?: string;
 }
 
 export interface GetAlertsV2ResultEvaluation {
+    /**
+     * (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     */
     comparisonOperator?: string;
+    /**
+     * (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     */
     emptyResultState?: string;
+    /**
+     * (string) - Timestamp of the last evaluation
+     */
     lastEvaluatedAt: string;
+    /**
+     * (AlertV2Notification) - User or Notification Destination to notify when alert is triggered
+     */
     notification?: outputs.GetAlertsV2ResultEvaluationNotification;
+    /**
+     * (AlertV2OperandColumn) - Source column from result to use to evaluate alert
+     */
     source?: outputs.GetAlertsV2ResultEvaluationSource;
+    /**
+     * (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     */
     state: string;
+    /**
+     * (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
+     */
     threshold?: outputs.GetAlertsV2ResultEvaluationThreshold;
 }
 
 export interface GetAlertsV2ResultEvaluationNotification {
+    /**
+     * (boolean) - Whether to notify alert subscribers when alert returns back to normal
+     */
     notifyOnOk?: boolean;
+    /**
+     * (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     */
     retriggerSeconds?: number;
+    /**
+     * (list of AlertV2Subscription) -
+     */
     subscriptions?: outputs.GetAlertsV2ResultEvaluationNotificationSubscription[];
 }
 
 export interface GetAlertsV2ResultEvaluationNotificationSubscription {
+    /**
+     * (string) -
+     */
     destinationId?: string;
+    /**
+     * (string) -
+     */
     userEmail?: string;
 }
 
 export interface GetAlertsV2ResultEvaluationSource {
+    /**
+     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     */
     aggregation?: string;
+    /**
+     * (string) -
+     */
     display?: string;
+    /**
+     * (string) -
+     */
     name?: string;
 }
 
 export interface GetAlertsV2ResultEvaluationThreshold {
+    /**
+     * (AlertV2OperandColumn) -
+     */
     column?: outputs.GetAlertsV2ResultEvaluationThresholdColumn;
+    /**
+     * (AlertV2OperandValue) -
+     */
     value?: outputs.GetAlertsV2ResultEvaluationThresholdValue;
 }
 
 export interface GetAlertsV2ResultEvaluationThresholdColumn {
+    /**
+     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     */
     aggregation?: string;
+    /**
+     * (string) -
+     */
     display?: string;
+    /**
+     * (string) -
+     */
     name?: string;
 }
 
 export interface GetAlertsV2ResultEvaluationThresholdValue {
+    /**
+     * (boolean) -
+     */
     boolValue?: boolean;
+    /**
+     * (number) -
+     */
     doubleValue?: number;
+    /**
+     * (string) -
+     */
     stringValue?: string;
 }
 
 export interface GetAlertsV2ResultSchedule {
+    /**
+     * (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     */
     pauseStatus?: string;
+    /**
+     * (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
+     * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+     */
     quartzCronSchedule?: string;
+    /**
+     * (string) - A Java timezone id. The schedule will be resolved using this timezone.
+     * This will be combined with the quartzCronSchedule to determine the schedule.
+     * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+     */
     timezoneId?: string;
 }
 
@@ -1306,6 +1893,7 @@ export interface GetAppAppResource {
      * attribute
      */
     sqlWarehouse?: outputs.GetAppAppResourceSqlWarehouse;
+    ucSecurable?: outputs.GetAppAppResourceUcSecurable;
 }
 
 export interface GetAppAppResourceJob {
@@ -1354,6 +1942,15 @@ export interface GetAppAppResourceSqlWarehouse {
      * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
      */
     permission: string;
+}
+
+export interface GetAppAppResourceUcSecurable {
+    /**
+     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     */
+    permission: string;
+    securableFullName: string;
+    securableType: string;
 }
 
 export interface GetAppsApp {
@@ -1550,6 +2147,7 @@ export interface GetAppsAppResource {
      * attribute
      */
     sqlWarehouse?: outputs.GetAppsAppResourceSqlWarehouse;
+    ucSecurable?: outputs.GetAppsAppResourceUcSecurable;
 }
 
 export interface GetAppsAppResourceJob {
@@ -1600,23 +2198,63 @@ export interface GetAppsAppResourceSqlWarehouse {
     permission: string;
 }
 
+export interface GetAppsAppResourceUcSecurable {
+    /**
+     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     */
+    permission: string;
+    securableFullName: string;
+    securableType: string;
+}
+
 export interface GetBudgetPoliciesPolicy {
+    /**
+     * (list of integer) - List of workspaces that this budget policy will be exclusively bound to.
+     * An empty binding implies that this budget policy is open to any workspace in the account
+     */
     bindingWorkspaceIds?: number[];
+    /**
+     * (list of CustomPolicyTag) - A list of tags defined by the customer. At most 20 entries are allowed per policy
+     */
     customTags?: outputs.GetBudgetPoliciesPolicyCustomTag[];
+    /**
+     * (string) - The Id of the policy. This field is generated by Databricks and globally unique
+     */
     policyId: string;
     /**
-     * The partial name of policies to be filtered on. If unspecified, all policies will be returned.
+     * (string) - The name of the policy.
+     * - Must be unique among active policies.
+     * - Can contain only characters from the ISO 8859-1 (latin1) set.
+     * - Can't start with reserved keywords such as `databricks:default-policy`
      */
     policyName?: string;
 }
 
 export interface GetBudgetPoliciesPolicyCustomTag {
+    /**
+     * (string) - The key of the tag.
+     * - Must be unique among all custom tags of the same policy
+     * - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
+     * these tags are preserved.
+     */
     key: string;
+    /**
+     * (string) - The value of the tag.
+     */
     value?: string;
 }
 
 export interface GetBudgetPolicyCustomTag {
+    /**
+     * (string) - The key of the tag.
+     * - Must be unique among all custom tags of the same policy
+     * - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
+     * these tags are preserved.
+     */
     key: string;
+    /**
+     * (string) - The value of the tag.
+     */
     value?: string;
 }
 
@@ -2359,6 +2997,53 @@ export interface GetDashboardsDashboard {
     warehouseId?: string;
 }
 
+export interface GetDatabaseInstancesDatabaseInstance {
+    /**
+     * (string) - Password for admin user to create. If not provided, no user will be created
+     */
+    adminPassword?: string;
+    /**
+     * (string) - Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
+     */
+    adminRolename?: string;
+    /**
+     * (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+     */
+    capacity?: string;
+    /**
+     * (string) - The timestamp when the instance was created
+     */
+    creationTime: string;
+    /**
+     * (string) - The email of the creator of the instance
+     */
+    creator: string;
+    /**
+     * (string) - The name of the instance. This is the unique identifier for the instance
+     */
+    name: string;
+    /**
+     * (string) - The version of Postgres running on the instance
+     */
+    pgVersion: string;
+    /**
+     * (string) - The DNS endpoint to connect to the instance for read+write access
+     */
+    readWriteDns: string;
+    /**
+     * (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+     */
+    state: string;
+    /**
+     * (boolean) - Whether the instance is stopped
+     */
+    stopped?: boolean;
+    /**
+     * (string) - An immutable UUID identifier for the instance
+     */
+    uid: string;
+}
+
 export interface GetDbfsFilePathsPathList {
     fileSize?: number;
     /**
@@ -2368,10 +3053,6 @@ export interface GetDbfsFilePathsPathList {
 }
 
 export interface GetExternalLocationExternalLocationInfo {
-    /**
-     * The ARN of the s3 access point to use with the external location (AWS).
-     */
-    accessPoint?: string;
     browseOnly?: boolean;
     /**
      * User-supplied comment.
@@ -2393,11 +3074,13 @@ export interface GetExternalLocationExternalLocationInfo {
      * Name of the databricks.StorageCredential to use with this external location.
      */
     credentialName?: string;
+    enableFileEvents?: boolean;
     /**
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      */
     encryptionDetails?: outputs.GetExternalLocationExternalLocationInfoEncryptionDetails;
     fallback?: boolean;
+    fileEventQueue?: outputs.GetExternalLocationExternalLocationInfoFileEventQueue;
     isolationMode?: string;
     /**
      * Unique identifier of the parent Metastore.
@@ -2436,6 +3119,49 @@ export interface GetExternalLocationExternalLocationInfoEncryptionDetails {
 export interface GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails {
     algorithm?: string;
     awsKmsKeyArn?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueue {
+    managedAqs?: outputs.GetExternalLocationExternalLocationInfoFileEventQueueManagedAqs;
+    managedPubsub?: outputs.GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsub;
+    managedSqs?: outputs.GetExternalLocationExternalLocationInfoFileEventQueueManagedSqs;
+    providedAqs?: outputs.GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqs;
+    providedPubsub?: outputs.GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsub;
+    providedSqs?: outputs.GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqs;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueManagedAqs {
+    managedResourceId?: string;
+    queueUrl?: string;
+    resourceGroup?: string;
+    subscriptionId?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsub {
+    managedResourceId?: string;
+    subscriptionName?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueManagedSqs {
+    managedResourceId?: string;
+    queueUrl?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqs {
+    managedResourceId?: string;
+    queueUrl?: string;
+    resourceGroup?: string;
+    subscriptionId?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsub {
+    managedResourceId?: string;
+    subscriptionName?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqs {
+    managedResourceId?: string;
+    queueUrl?: string;
 }
 
 export interface GetFunctionsFunction {
@@ -2886,6 +3612,7 @@ export interface GetJobJobSettingsSettingsEnvironment {
 export interface GetJobJobSettingsSettingsEnvironmentSpec {
     client: string;
     dependencies?: string[];
+    environmentVersion?: string;
     jarDependencies?: string[];
 }
 
@@ -4465,6 +5192,98 @@ export interface GetNotificationDestinationsNotificationDestination {
     id?: string;
 }
 
+export interface GetRecipientFederationPoliciesPolicy {
+    /**
+     * (string) - Description of the policy. This is a user-provided description
+     */
+    comment?: string;
+    /**
+     * (string) - System-generated timestamp indicating when the policy was created
+     */
+    createTime: string;
+    /**
+     * (string) - Unique, immutable system-generated identifier for the federation policy
+     */
+    id: string;
+    /**
+     * (string) - Name of the federation policy. A recipient can have multiple policies with different names.
+     * The name must contain only lowercase alphanumeric characters, numbers, and hyphens
+     */
+    name?: string;
+    /**
+     * (OidcFederationPolicy) - Specifies the policy to use for validating OIDC claims in the federated tokens
+     */
+    oidcPolicy?: outputs.GetRecipientFederationPoliciesPolicyOidcPolicy;
+    /**
+     * (string) - System-generated timestamp indicating when the policy was last updated
+     */
+    updateTime: string;
+}
+
+export interface GetRecipientFederationPoliciesPolicyOidcPolicy {
+    /**
+     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+     * The audience identifier is intended to represent the recipient of the token.
+     * Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
+     */
+    audiences?: string[];
+    /**
+     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+     */
+    issuer: string;
+    /**
+     * (string) - The required token subject, as specified in the subject claim of federated tokens.
+     * The subject claim identifies the identity of the user or machine accessing the resource.
+     * Examples for Entra ID (AAD):
+     * - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
+     * - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
+     * - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
+     */
+    subject: string;
+    /**
+     * (string) - The claim that contains the subject of the token.
+     * Depending on the identity provider and the use case (U2M or M2M), this can vary:
+     * - For Entra ID (AAD):
+     * * U2M flow (group access): Use `groups`.
+     * * U2M flow (user access): Use `oid`.
+     * * M2M flow (OAuth App access): Use `azp`.
+     * - For other IdPs, refer to the specific IdP documentation.
+     */
+    subjectClaim: string;
+}
+
+export interface GetRecipientFederationPolicyOidcPolicy {
+    /**
+     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+     * The audience identifier is intended to represent the recipient of the token.
+     * Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
+     */
+    audiences?: string[];
+    /**
+     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+     */
+    issuer: string;
+    /**
+     * (string) - The required token subject, as specified in the subject claim of federated tokens.
+     * The subject claim identifies the identity of the user or machine accessing the resource.
+     * Examples for Entra ID (AAD):
+     * - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
+     * - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
+     * - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
+     */
+    subject: string;
+    /**
+     * (string) - The claim that contains the subject of the token.
+     * Depending on the identity provider and the use case (U2M or M2M), this can vary:
+     * - For Entra ID (AAD):
+     * * U2M flow (group access): Use `groups`.
+     * * U2M flow (user access): Use `oid`.
+     * * M2M flow (OAuth App access): Use `azp`.
+     * - For other IdPs, refer to the specific IdP documentation.
+     */
+    subjectClaim: string;
+}
+
 export interface GetRegisteredModelModelInfo {
     /**
      * the list of aliases associated with this model. Each item is object consisting of following attributes:
@@ -5286,6 +6105,7 @@ export interface GetTableTableInfoTableConstraintPrimaryKeyConstraint {
      * Full name of the databricks_table: _`catalog`.`schema`.`table`_
      */
     name: string;
+    timeseriesColumns?: string[];
 }
 
 export interface GetTableTableInfoViewDependencies {
@@ -5396,7 +6216,7 @@ export interface InstancePoolAwsAttributes {
      */
     availability?: string;
     /**
-     * (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
+     * (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type's on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
      */
     spotBidPricePercent?: number;
     /**
@@ -5601,6 +6421,7 @@ export interface JobEnvironmentSpec {
      * List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
      */
     dependencies?: string[];
+    environmentVersion?: string;
     jarDependencies?: string[];
 }
 
@@ -6128,7 +6949,7 @@ export interface JobNewClusterWorkloadTypeClients {
 
 export interface JobNotebookTask {
     /**
-     * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+     * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
      */
     baseParameters?: {[key: string]: string};
     /**
@@ -6814,7 +7635,7 @@ export interface JobTaskForEachTaskTaskGenAiComputeTask {
 }
 
 export interface JobTaskForEachTaskTaskGenAiComputeTaskCompute {
-    gpuNodePoolId: string;
+    gpuNodePoolId?: string;
     gpuType?: string;
     numGpus: number;
 }
@@ -7083,7 +7904,7 @@ export interface JobTaskForEachTaskTaskNewClusterWorkloadTypeClients {
 
 export interface JobTaskForEachTaskTaskNotebookTask {
     /**
-     * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+     * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
      */
     baseParameters?: {[key: string]: string};
     /**
@@ -7491,7 +8312,7 @@ export interface JobTaskGenAiComputeTask {
 }
 
 export interface JobTaskGenAiComputeTaskCompute {
-    gpuNodePoolId: string;
+    gpuNodePoolId?: string;
     gpuType?: string;
     numGpus: number;
 }
@@ -7760,7 +8581,7 @@ export interface JobTaskNewClusterWorkloadTypeClients {
 
 export interface JobTaskNotebookTask {
     /**
-     * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+     * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
      */
     baseParameters?: {[key: string]: string};
     /**
@@ -8692,6 +9513,7 @@ export interface ModelServingConfigServedEntity {
      * The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with '.' and ':' replaced with '-', and if not specified for other entities, it defaults to -.
      */
     name: string;
+    provisionedModelUnits?: number;
     /**
      * Whether the compute resources for the served entity should scale down to zero.
      */
@@ -8975,6 +9797,7 @@ export interface ModelServingConfigServedModel {
      * The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
      */
     name: string;
+    provisionedModelUnits?: number;
     /**
      * Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
      */
@@ -9002,6 +9825,178 @@ export interface ModelServingConfigTrafficConfigRoute {
      * The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
      */
     trafficPercentage: number;
+}
+
+export interface ModelServingProvisionedThroughputAiGateway {
+    fallbackConfig?: outputs.ModelServingProvisionedThroughputAiGatewayFallbackConfig;
+    /**
+     * Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
+     */
+    guardrails?: outputs.ModelServingProvisionedThroughputAiGatewayGuardrails;
+    /**
+     * Block describing the configuration of usage tracking. Consists of the following attributes:
+     */
+    inferenceTableConfig?: outputs.ModelServingProvisionedThroughputAiGatewayInferenceTableConfig;
+    /**
+     * Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
+     */
+    rateLimits?: outputs.ModelServingProvisionedThroughputAiGatewayRateLimit[];
+    /**
+     * Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
+     */
+    usageTrackingConfig: outputs.ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig;
+}
+
+export interface ModelServingProvisionedThroughputAiGatewayFallbackConfig {
+    /**
+     * boolean flag specifying if usage tracking is enabled.
+     */
+    enabled: boolean;
+}
+
+export interface ModelServingProvisionedThroughputAiGatewayGuardrails {
+    /**
+     * A block with configuration for input guardrail filters:
+     */
+    input?: outputs.ModelServingProvisionedThroughputAiGatewayGuardrailsInput;
+    /**
+     * A block with configuration for output guardrail filters.  Has the same structure as `input` block.
+     */
+    output?: outputs.ModelServingProvisionedThroughputAiGatewayGuardrailsOutput;
+}
+
+export interface ModelServingProvisionedThroughputAiGatewayGuardrailsInput {
+    /**
+     * List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+     */
+    invalidKeywords?: string[];
+    /**
+     * Block with configuration for guardrail PII filter:
+     */
+    pii: outputs.ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii;
+    /**
+     * the boolean flag that indicates whether the safety filter is enabled.
+     */
+    safety?: boolean;
+    /**
+     * The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+     */
+    validTopics?: string[];
+}
+
+export interface ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii {
+    /**
+     * a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+     */
+    behavior: string;
+}
+
+export interface ModelServingProvisionedThroughputAiGatewayGuardrailsOutput {
+    /**
+     * List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+     */
+    invalidKeywords?: string[];
+    /**
+     * Block with configuration for guardrail PII filter:
+     */
+    pii?: outputs.ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii;
+    /**
+     * the boolean flag that indicates whether the safety filter is enabled.
+     */
+    safety?: boolean;
+    /**
+     * The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+     */
+    validTopics?: string[];
+}
+
+export interface ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii {
+    /**
+     * a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+     */
+    behavior?: string;
+}
+
+export interface ModelServingProvisionedThroughputAiGatewayInferenceTableConfig {
+    catalogName?: string;
+    /**
+     * boolean flag specifying if usage tracking is enabled.
+     */
+    enabled?: boolean;
+    schemaName?: string;
+    tableNamePrefix?: string;
+}
+
+export interface ModelServingProvisionedThroughputAiGatewayRateLimit {
+    calls: number;
+    /**
+     * The key field for a tag.
+     */
+    key?: string;
+    renewalPeriod: string;
+}
+
+export interface ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig {
+    /**
+     * boolean flag specifying if usage tracking is enabled.
+     */
+    enabled: boolean;
+}
+
+export interface ModelServingProvisionedThroughputConfig {
+    /**
+     * A list of served entities for the endpoint to serve.
+     */
+    servedEntities?: outputs.ModelServingProvisionedThroughputConfigServedEntity[];
+    /**
+     * A single block represents the traffic split configuration amongst the served models.
+     */
+    trafficConfig: outputs.ModelServingProvisionedThroughputConfigTrafficConfig;
+}
+
+export interface ModelServingProvisionedThroughputConfigServedEntity {
+    /**
+     * The full path of the UC model to be served, given in the form of `catalog_name.schema_name.model_name`.
+     */
+    entityName: string;
+    /**
+     * The version of the model in UC to be served.
+     */
+    entityVersion: string;
+    /**
+     * The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entityName` and `entityVersion`
+     */
+    name: string;
+    /**
+     * The number of model units to be provisioned.
+     */
+    provisionedModelUnits: number;
+}
+
+export interface ModelServingProvisionedThroughputConfigTrafficConfig {
+    /**
+     * Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
+     */
+    routes?: outputs.ModelServingProvisionedThroughputConfigTrafficConfigRoute[];
+}
+
+export interface ModelServingProvisionedThroughputConfigTrafficConfigRoute {
+    servedModelName: string;
+    /**
+     * The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
+     */
+    trafficPercentage: number;
+}
+
+export interface ModelServingProvisionedThroughputTag {
+    /**
+     * The key field for a tag.
+     */
+    key: string;
+    /**
+     * The value field for a tag.
+     */
+    value?: string;
 }
 
 export interface ModelServingRateLimit {
@@ -9171,15 +10166,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-     *
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-     *
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -9246,24 +10237,18 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.77.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
 }
 
 export interface MwsWorkspacesGkeConfig {
-    /**
-     * Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
-     */
     connectivityType?: string;
-    /**
-     * The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
-     */
     masterIpRange?: string;
 }
 
@@ -9562,6 +10547,9 @@ export interface PipelineClusterInitScript {
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
     dbfs?: outputs.PipelineClusterInitScriptDbfs;
+    /**
+     * specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+     */
     file?: outputs.PipelineClusterInitScriptFile;
     gcs?: outputs.PipelineClusterInitScriptGcs;
     s3?: outputs.PipelineClusterInitScriptS3;
@@ -9664,6 +10652,7 @@ export interface PipelineIngestionDefinition {
     connectionName?: string;
     ingestionGatewayId?: string;
     objects?: outputs.PipelineIngestionDefinitionObject[];
+    sourceType?: string;
     tableConfiguration?: outputs.PipelineIngestionDefinitionTableConfiguration;
 }
 
@@ -9745,9 +10734,19 @@ export interface PipelineLatestUpdate {
 }
 
 export interface PipelineLibrary {
+    /**
+     * specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+     */
     file?: outputs.PipelineLibraryFile;
+    /**
+     * The unified field to include source code. Each entry should have the `include` attribute that can specify a notebook path, a file path, or a folder path that ends `/**` (to include everything from that folder). This field cannot be used together with `notebook` or `file`.
+     */
+    glob?: outputs.PipelineLibraryGlob;
     jar?: string;
     maven?: outputs.PipelineLibraryMaven;
+    /**
+     * specifies path to a Databricks Notebook to include as source. Actual path is specified as `path` attribute inside the block.
+     */
     notebook?: outputs.PipelineLibraryNotebook;
     /**
      * @deprecated The 'whl' field is deprecated
@@ -9756,7 +10755,14 @@ export interface PipelineLibrary {
 }
 
 export interface PipelineLibraryFile {
-    path?: string;
+    path: string;
+}
+
+export interface PipelineLibraryGlob {
+    /**
+     * Paths to include.
+     */
+    include: string;
 }
 
 export interface PipelineLibraryMaven {
@@ -9766,7 +10772,7 @@ export interface PipelineLibraryMaven {
 }
 
 export interface PipelineLibraryNotebook {
-    path?: string;
+    path: string;
 }
 
 export interface PipelineNotification {
@@ -10063,6 +11069,40 @@ export interface QueryParameterTextValue {
      * actual text value.
      */
     value: string;
+}
+
+export interface RecipientFederationPolicyOidcPolicy {
+    /**
+     * The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+     * The audience identifier is intended to represent the recipient of the token.
+     * Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
+     */
+    audiences?: string[];
+    /**
+     * The required token issuer, as specified in the 'iss' claim of federated tokens
+     */
+    issuer: string;
+    /**
+     * The required token subject, as specified in the subject claim of federated tokens.
+     * The subject claim identifies the identity of the user or machine accessing the resource.
+     * Examples for Entra ID (AAD):
+     * - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
+     * - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
+     * - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
+     */
+    subject: string;
+    /**
+     * The claim that contains the subject of the token.
+     * Depending on the identity provider and the use case (U2M or M2M), this can vary:
+     * - For Entra ID (AAD):
+     * * U2M flow (group access): Use `groups`.
+     * * U2M flow (user access): Use `oid`.
+     * * M2M flow (OAuth App access): Use `azp`.
+     * - For other IdPs, refer to the specific IdP documentation.
+     *
+     * Supported `subjectClaim` values are:
+     */
+    subjectClaim: string;
 }
 
 export interface RecipientIpAccessList {
@@ -10591,11 +11631,6 @@ export interface TableColumn {
     typePrecision?: number;
     typeScale?: number;
     typeText: string;
-}
-
-export interface VectorSearchEndpointCustomTag {
-    key: string;
-    value?: string;
 }
 
 export interface VectorSearchEndpointEndpointStatus {

@@ -48,6 +48,9 @@ class ModelServingArgs:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if rate_limits is not None:
+            warnings.warn("""Please use AI Gateway to manage rate limits.""", DeprecationWarning)
+            pulumi.log.warn("""rate_limits is deprecated: Please use AI Gateway to manage rate limits.""")
+        if rate_limits is not None:
             pulumi.set(__self__, "rate_limits", rate_limits)
         if route_optimized is not None:
             pulumi.set(__self__, "route_optimized", route_optimized)
@@ -104,6 +107,7 @@ class ModelServingArgs:
 
     @property
     @pulumi.getter(name="rateLimits")
+    @_utilities.deprecated("""Please use AI Gateway to manage rate limits.""")
     def rate_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]]:
         """
         A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
@@ -170,6 +174,9 @@ class _ModelServingState:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if rate_limits is not None:
+            warnings.warn("""Please use AI Gateway to manage rate limits.""", DeprecationWarning)
+            pulumi.log.warn("""rate_limits is deprecated: Please use AI Gateway to manage rate limits.""")
+        if rate_limits is not None:
             pulumi.set(__self__, "rate_limits", rate_limits)
         if route_optimized is not None:
             pulumi.set(__self__, "route_optimized", route_optimized)
@@ -228,6 +235,7 @@ class _ModelServingState:
 
     @property
     @pulumi.getter(name="rateLimits")
+    @_utilities.deprecated("""Please use AI Gateway to manage rate limits.""")
     def rate_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]]:
         """
         A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
@@ -290,7 +298,7 @@ class ModelServing(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]]] = None,
                  __props__=None):
         """
-        This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+        This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks, including custom models, external models, and foundation models. For newer foundation models, including Llama 4, please use the ModelServingProvisionedThroughput resource.
 
         > This resource can only be used with a workspace-level provider!
 
@@ -422,6 +430,7 @@ class ModelServing(pulumi.CustomResource):
 
         The following resources are often used in the same context:
 
+        * ModelServingProvisionedThroughput to create [Foundation Model provisioned throughput](https://docs.databricks.com/aws/en/machine-learning/foundation-model-apis/deploy-prov-throughput-foundation-model-apis) endpoints in Databricks.
         * RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
         * End to end workspace management guide.
         * Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
@@ -433,6 +442,18 @@ class ModelServing(pulumi.CustomResource):
         ## Import
 
         The model serving resource can be imported using the name of the endpoint.
+
+        hcl
+
+        import {
+
+          to = databricks_model_serving.this
+
+          id = "<model-serving-endpoint-name>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 
@@ -457,7 +478,7 @@ class ModelServing(pulumi.CustomResource):
                  args: Optional[ModelServingArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+        This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks, including custom models, external models, and foundation models. For newer foundation models, including Llama 4, please use the ModelServingProvisionedThroughput resource.
 
         > This resource can only be used with a workspace-level provider!
 
@@ -589,6 +610,7 @@ class ModelServing(pulumi.CustomResource):
 
         The following resources are often used in the same context:
 
+        * ModelServingProvisionedThroughput to create [Foundation Model provisioned throughput](https://docs.databricks.com/aws/en/machine-learning/foundation-model-apis/deploy-prov-throughput-foundation-model-apis) endpoints in Databricks.
         * RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
         * End to end workspace management guide.
         * Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
@@ -600,6 +622,18 @@ class ModelServing(pulumi.CustomResource):
         ## Import
 
         The model serving resource can be imported using the name of the endpoint.
+
+        hcl
+
+        import {
+
+          to = databricks_model_serving.this
+
+          id = "<model-serving-endpoint-name>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 
@@ -728,6 +762,7 @@ class ModelServing(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rateLimits")
+    @_utilities.deprecated("""Please use AI Gateway to manage rate limits.""")
     def rate_limits(self) -> pulumi.Output[Optional[Sequence['outputs.ModelServingRateLimit']]]:
         """
         A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*

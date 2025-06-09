@@ -78,6 +78,18 @@ import javax.annotation.Nullable;
  * 
  * The resource directory can be imported using directory path:
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_directory.this
+ * 
+ *   id = &#34;/path/to/directory&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh

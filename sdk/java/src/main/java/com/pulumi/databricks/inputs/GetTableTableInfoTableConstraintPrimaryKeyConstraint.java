@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetTableTableInfoTableConstraintPrimaryKeyConstraint extends com.pulumi.resources.InvokeArgs {
@@ -36,11 +38,19 @@ public final class GetTableTableInfoTableConstraintPrimaryKeyConstraint extends 
         return this.name;
     }
 
+    @Import(name="timeseriesColumns")
+    private @Nullable List<String> timeseriesColumns;
+
+    public Optional<List<String>> timeseriesColumns() {
+        return Optional.ofNullable(this.timeseriesColumns);
+    }
+
     private GetTableTableInfoTableConstraintPrimaryKeyConstraint() {}
 
     private GetTableTableInfoTableConstraintPrimaryKeyConstraint(GetTableTableInfoTableConstraintPrimaryKeyConstraint $) {
         this.childColumns = $.childColumns;
         this.name = $.name;
+        this.timeseriesColumns = $.timeseriesColumns;
     }
 
     public static Builder builder() {
@@ -79,6 +89,15 @@ public final class GetTableTableInfoTableConstraintPrimaryKeyConstraint extends 
         public Builder name(String name) {
             $.name = name;
             return this;
+        }
+
+        public Builder timeseriesColumns(@Nullable List<String> timeseriesColumns) {
+            $.timeseriesColumns = timeseriesColumns;
+            return this;
+        }
+
+        public Builder timeseriesColumns(String... timeseriesColumns) {
+            return timeseriesColumns(List.of(timeseriesColumns));
         }
 
         public GetTableTableInfoTableConstraintPrimaryKeyConstraint build() {

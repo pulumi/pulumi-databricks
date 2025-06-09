@@ -162,8 +162,23 @@ func Provider() tfbridge.ProviderInfo {
 
 			"databricks_table": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 
-			"databricks_automatic_cluster_update_workspace_setting":     {Docs: &tfbridge.DocInfo{AllowMissing: true}},
-			"databricks_compliance_security_profile_workspace_setting":  {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"databricks_account_network_policy": {
+				ComputeID: tfbridge.DelegateIDField(
+					"networkPolicyId",
+					"databricks",
+					"https://github.com/pulumi/pulumi-databricks",
+				),
+			},
+
+			"databricks_automatic_cluster_update_workspace_setting":    {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"databricks_compliance_security_profile_workspace_setting": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"databricks_database_instance": {
+				ComputeID: tfbridge.DelegateIDField(
+					"name",
+					"databricks",
+					"https://github.com/pulumi/pulumi-databricks",
+				),
+			},
 			"databricks_enhanced_security_monitoring_workspace_setting": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 
 			// Upstream has introduced an ID field for backwards compatibility with sdkv2 on these PF resources:
@@ -200,6 +215,13 @@ func Provider() tfbridge.ProviderInfo {
 			"databricks_budget_policy": {
 				ComputeID: tfbridge.DelegateIDField(
 					"policyId",
+					"databricks",
+					"https://github.com/pulumi/pulumi-databricks",
+				),
+			},
+			"databricks_workspace_network_option": {
+				ComputeID: tfbridge.DelegateIDField(
+					"workspaceId",
 					"databricks",
 					"https://github.com/pulumi/pulumi-databricks",
 				),

@@ -13,12 +13,33 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AlertV2Evaluation
     {
+        /// <summary>
+        /// Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+        /// </summary>
         public readonly string? ComparisonOperator;
+        /// <summary>
+        /// Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        /// </summary>
         public readonly string? EmptyResultState;
+        /// <summary>
+        /// (string) - Timestamp of the last evaluation
+        /// </summary>
         public readonly string? LastEvaluatedAt;
+        /// <summary>
+        /// User or Notification Destination to notify when alert is triggered
+        /// </summary>
         public readonly Outputs.AlertV2EvaluationNotification? Notification;
+        /// <summary>
+        /// Source column from result to use to evaluate alert
+        /// </summary>
         public readonly Outputs.AlertV2EvaluationSource? Source;
+        /// <summary>
+        /// (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        /// </summary>
         public readonly string? State;
+        /// <summary>
+        /// Threshold to user for alert evaluation, can be a column or a value
+        /// </summary>
         public readonly Outputs.AlertV2EvaluationThreshold? Threshold;
 
         [OutputConstructor]

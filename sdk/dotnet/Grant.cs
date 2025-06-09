@@ -627,10 +627,22 @@ namespace Pulumi.Databricks
     /// 
     /// The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...), it's name and `principal`:
     /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_grant.this
+    /// 
+    ///   id = "&lt;securable_type&gt;/&lt;securable_name&gt;/&lt;principal&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+    /// 
     /// bash
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/grant:Grant this catalog/abc/user_name
+    /// $ pulumi import databricks:index/grant:Grant this &lt;securable_type&gt;/&lt;securable_name&gt;/&lt;principal&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/grant:Grant")]

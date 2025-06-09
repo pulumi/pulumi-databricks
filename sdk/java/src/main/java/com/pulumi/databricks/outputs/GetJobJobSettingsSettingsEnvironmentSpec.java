@@ -8,12 +8,14 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsEnvironmentSpec {
     private String client;
     private @Nullable List<String> dependencies;
+    private @Nullable String environmentVersion;
     private @Nullable List<String> jarDependencies;
 
     private GetJobJobSettingsSettingsEnvironmentSpec() {}
@@ -22,6 +24,9 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
     }
     public List<String> dependencies() {
         return this.dependencies == null ? List.of() : this.dependencies;
+    }
+    public Optional<String> environmentVersion() {
+        return Optional.ofNullable(this.environmentVersion);
     }
     public List<String> jarDependencies() {
         return this.jarDependencies == null ? List.of() : this.jarDependencies;
@@ -38,12 +43,14 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
     public static final class Builder {
         private String client;
         private @Nullable List<String> dependencies;
+        private @Nullable String environmentVersion;
         private @Nullable List<String> jarDependencies;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsEnvironmentSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.client = defaults.client;
     	      this.dependencies = defaults.dependencies;
+    	      this.environmentVersion = defaults.environmentVersion;
     	      this.jarDependencies = defaults.jarDependencies;
         }
 
@@ -65,6 +72,12 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
             return dependencies(List.of(dependencies));
         }
         @CustomType.Setter
+        public Builder environmentVersion(@Nullable String environmentVersion) {
+
+            this.environmentVersion = environmentVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder jarDependencies(@Nullable List<String> jarDependencies) {
 
             this.jarDependencies = jarDependencies;
@@ -77,6 +90,7 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
             final var _resultValue = new GetJobJobSettingsSettingsEnvironmentSpec();
             _resultValue.client = client;
             _resultValue.dependencies = dependencies;
+            _resultValue.environmentVersion = environmentVersion;
             _resultValue.jarDependencies = jarDependencies;
             return _resultValue;
         }

@@ -57,6 +57,18 @@ import * as utilities from "./utilities";
  *
  * You can import a `databricks_sql_widget` resource with ID like the following:
  *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_sql_widget.this
+ *
+ *   id = "<dashboard-id>/<widget-id>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ *
  * bash
  *
  * ```sh

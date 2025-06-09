@@ -13,8 +13,17 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAlertV2EvaluationSourceResult
     {
+        /// <summary>
+        /// (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        /// </summary>
         public readonly string? Aggregation;
+        /// <summary>
+        /// (string) -
+        /// </summary>
         public readonly string? Display;
+        /// <summary>
+        /// (string) -
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

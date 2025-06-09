@@ -596,7 +596,7 @@ import * as utilities from "./utilities";
  *
  * ## Passwords usage
  *
- * By default on AWS deployments, all admin users can sign in to Databricks using either SSO or their username and password, and all API users can authenticate to the Databricks REST APIs using their username and password. As an admin, you [can limit](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#optional-configure-password-access-control) admin users’ and API users’ ability to authenticate with their username and password by configuring `CAN_USE` permissions using password access control.
+ * By default on AWS deployments, all admin users can sign in to Databricks using either SSO or their username and password, and all API users can authenticate to the Databricks REST APIs using their username and password. As an admin, you [can limit](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#optional-configure-password-access-control) admin users' and API users' ability to authenticate with their username and password by configuring `CAN_USE` permissions using password access control.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

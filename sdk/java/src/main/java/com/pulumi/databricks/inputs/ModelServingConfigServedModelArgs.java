@@ -124,6 +124,13 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="provisionedModelUnits")
+    private @Nullable Output<Integer> provisionedModelUnits;
+
+    public Optional<Output<Integer>> provisionedModelUnits() {
+        return Optional.ofNullable(this.provisionedModelUnits);
+    }
+
     /**
      * Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
      * 
@@ -179,6 +186,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         this.modelName = $.modelName;
         this.modelVersion = $.modelVersion;
         this.name = $.name;
+        this.provisionedModelUnits = $.provisionedModelUnits;
         this.scaleToZeroEnabled = $.scaleToZeroEnabled;
         this.workloadSize = $.workloadSize;
         this.workloadType = $.workloadType;
@@ -347,6 +355,15 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder provisionedModelUnits(@Nullable Output<Integer> provisionedModelUnits) {
+            $.provisionedModelUnits = provisionedModelUnits;
+            return this;
+        }
+
+        public Builder provisionedModelUnits(Integer provisionedModelUnits) {
+            return provisionedModelUnits(Output.of(provisionedModelUnits));
         }
 
         /**

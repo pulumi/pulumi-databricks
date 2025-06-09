@@ -24,8 +24,8 @@ class GroupMemberArgs:
                  member_id: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a GroupMember resource.
-        :param pulumi.Input[builtins.str] group_id: This is the id of the group resource.
-        :param pulumi.Input[builtins.str] member_id: This is the id of the group, service principal, or user.
+        :param pulumi.Input[builtins.str] group_id: This is the `id` attribute (SCIM ID) of the group resource.
+        :param pulumi.Input[builtins.str] member_id: This is the `id` attribute (SCIM ID) of the group, service principal, or user.
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "member_id", member_id)
@@ -34,7 +34,7 @@ class GroupMemberArgs:
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Input[builtins.str]:
         """
-        This is the id of the group resource.
+        This is the `id` attribute (SCIM ID) of the group resource.
         """
         return pulumi.get(self, "group_id")
 
@@ -46,7 +46,7 @@ class GroupMemberArgs:
     @pulumi.getter(name="memberId")
     def member_id(self) -> pulumi.Input[builtins.str]:
         """
-        This is the id of the group, service principal, or user.
+        This is the `id` attribute (SCIM ID) of the group, service principal, or user.
         """
         return pulumi.get(self, "member_id")
 
@@ -62,8 +62,8 @@ class _GroupMemberState:
                  member_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupMember resources.
-        :param pulumi.Input[builtins.str] group_id: This is the id of the group resource.
-        :param pulumi.Input[builtins.str] member_id: This is the id of the group, service principal, or user.
+        :param pulumi.Input[builtins.str] group_id: This is the `id` attribute (SCIM ID) of the group resource.
+        :param pulumi.Input[builtins.str] member_id: This is the `id` attribute (SCIM ID) of the group, service principal, or user.
         """
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
@@ -74,7 +74,7 @@ class _GroupMemberState:
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        This is the id of the group resource.
+        This is the `id` attribute (SCIM ID) of the group resource.
         """
         return pulumi.get(self, "group_id")
 
@@ -86,7 +86,7 @@ class _GroupMemberState:
     @pulumi.getter(name="memberId")
     def member_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        This is the id of the group, service principal, or user.
+        This is the `id` attribute (SCIM ID) of the group, service principal, or user.
         """
         return pulumi.get(self, "member_id")
 
@@ -148,6 +148,18 @@ class GroupMember(pulumi.CustomResource):
 
         You can import a `databricks_group_member` resource with name `my_group_member` like the following:
 
+        hcl
+
+        import {
+
+          to = databricks_group_member.my_group_member
+
+          id = "<group_id>|<member_id>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
@@ -156,8 +168,8 @@ class GroupMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] group_id: This is the id of the group resource.
-        :param pulumi.Input[builtins.str] member_id: This is the id of the group, service principal, or user.
+        :param pulumi.Input[builtins.str] group_id: This is the `id` attribute (SCIM ID) of the group resource.
+        :param pulumi.Input[builtins.str] member_id: This is the `id` attribute (SCIM ID) of the group, service principal, or user.
         """
         ...
     @overload
@@ -208,6 +220,18 @@ class GroupMember(pulumi.CustomResource):
         ## Import
 
         You can import a `databricks_group_member` resource with name `my_group_member` like the following:
+
+        hcl
+
+        import {
+
+          to = databricks_group_member.my_group_member
+
+          id = "<group_id>|<member_id>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 
@@ -266,8 +290,8 @@ class GroupMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] group_id: This is the id of the group resource.
-        :param pulumi.Input[builtins.str] member_id: This is the id of the group, service principal, or user.
+        :param pulumi.Input[builtins.str] group_id: This is the `id` attribute (SCIM ID) of the group resource.
+        :param pulumi.Input[builtins.str] member_id: This is the `id` attribute (SCIM ID) of the group, service principal, or user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -281,7 +305,7 @@ class GroupMember(pulumi.CustomResource):
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[builtins.str]:
         """
-        This is the id of the group resource.
+        This is the `id` attribute (SCIM ID) of the group resource.
         """
         return pulumi.get(self, "group_id")
 
@@ -289,7 +313,7 @@ class GroupMember(pulumi.CustomResource):
     @pulumi.getter(name="memberId")
     def member_id(self) -> pulumi.Output[builtins.str]:
         """
-        This is the id of the group, service principal, or user.
+        This is the `id` attribute (SCIM ID) of the group, service principal, or user.
         """
         return pulumi.get(self, "member_id")
 

@@ -12,9 +12,18 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetBudgetPolicyCustomTagArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// (string) - The key of the tag.
+        /// - Must be unique among all custom tags of the same policy
+        /// - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
+        /// these tags are preserved.
+        /// </summary>
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
 
+        /// <summary>
+        /// (string) - The value of the tag.
+        /// </summary>
         [Input("value")]
         public string? Value { get; set; }
 

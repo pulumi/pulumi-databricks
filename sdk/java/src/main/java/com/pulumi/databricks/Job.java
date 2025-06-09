@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; In Pulumi configuration, it is recommended to define tasks in alphabetical order of their `task_key` arguments, so that you get consistent and readable diff. Whenever tasks are added or removed, or `task_key` is renamed, you&#39;ll observe a change in the majority of tasks. It&#39;s related to the fact that the current version of the provider treats `task` blocks as an ordered list. Alternatively, `task` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
  * 
- * It is possible to create [a Databricks job](https://docs.databricks.com/data-engineering/jobs/jobs-user-guide.html) using `task` blocks. A single task is defined with the `task` block containing one of the `*_task` blocks, `task_key`, and additional arguments described below.
+ * It is possible to create [a Databricks job](https://docs.databricks.com/aws/en/jobs/) using `task` blocks. A single task is defined with the `task` block containing one of the `*_task` blocks, `task_key`, and additional arguments described below.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -140,14 +140,26 @@ import javax.annotation.Nullable;
  * 
  * ## Access Control
  * 
- * By default, all users can create and modify jobs unless an administrator [enables jobs access control](https://docs.databricks.com/administration-guide/access-control/jobs-acl.html). With jobs access control, individual permissions determine a user’s abilities.
+ * By default, all users can create and modify jobs unless an administrator [enables jobs access control](https://docs.databricks.com/administration-guide/access-control/jobs-acl.html). With jobs access control, individual permissions determine a user&#39;s abilities.
  * 
  * * databricks.Permissions can control which groups or individual users can *Can View*, *Can Manage Run*, and *Can Manage*.
  * * databricks.ClusterPolicy can control which kinds of clusters users can create for jobs.
  * 
  * ## Import
  * 
- * The resource job can be imported using the id of the job
+ * The resource job can be imported using the id of the job:
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_job.this
+ * 
+ *   id = &#34;&lt;job-id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  * 
  * bash
  * 

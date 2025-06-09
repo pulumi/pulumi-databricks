@@ -16,16 +16,38 @@ public final class GetBudgetPolicyCustomTagArgs extends com.pulumi.resources.Res
 
     public static final GetBudgetPolicyCustomTagArgs Empty = new GetBudgetPolicyCustomTagArgs();
 
+    /**
+     * (string) - The key of the tag.
+     * - Must be unique among all custom tags of the same policy
+     * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
+     *   these tags are preserved.
+     * 
+     */
     @Import(name="key", required=true)
     private Output<String> key;
 
+    /**
+     * @return (string) - The key of the tag.
+     * - Must be unique among all custom tags of the same policy
+     * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
+     *   these tags are preserved.
+     * 
+     */
     public Output<String> key() {
         return this.key;
     }
 
+    /**
+     * (string) - The value of the tag.
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return (string) - The value of the tag.
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -55,20 +77,50 @@ public final class GetBudgetPolicyCustomTagArgs extends com.pulumi.resources.Res
             $ = new GetBudgetPolicyCustomTagArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key (string) - The key of the tag.
+         * - Must be unique among all custom tags of the same policy
+         * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
+         *   these tags are preserved.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key (string) - The key of the tag.
+         * - Must be unique among all custom tags of the same policy
+         * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
+         *   these tags are preserved.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param value (string) - The value of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value (string) - The value of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

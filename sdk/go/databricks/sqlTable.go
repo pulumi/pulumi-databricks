@@ -14,12 +14,24 @@ import (
 
 // ## Import
 //
-// This resource can be imported by its full name.
+// This resource can be imported by its full name:
+//
+// hcl
+//
+// import {
+//
+//	to = databricks_sql_table.this
+//
+//	id = "<catalog_name>.<schema_name>.<name>"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 //
 // bash
 //
 // ```sh
-// $ pulumi import databricks:index/sqlTable:SqlTable this <catalog_name>.<schema_name>.<name>
+// $ pulumi import databricks:index/sqlTable:SqlTable this "<catalog_name>.<schema_name>.<name>"
 // ```
 type SqlTable struct {
 	pulumi.CustomResourceState

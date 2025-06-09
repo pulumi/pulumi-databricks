@@ -13,13 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskGenAiComputeTaskCompute {
-    private String gpuNodePoolId;
+    private @Nullable String gpuNodePoolId;
     private @Nullable String gpuType;
     private Integer numGpus;
 
     private JobTaskGenAiComputeTaskCompute() {}
-    public String gpuNodePoolId() {
-        return this.gpuNodePoolId;
+    public Optional<String> gpuNodePoolId() {
+        return Optional.ofNullable(this.gpuNodePoolId);
     }
     public Optional<String> gpuType() {
         return Optional.ofNullable(this.gpuType);
@@ -37,7 +37,7 @@ public final class JobTaskGenAiComputeTaskCompute {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String gpuNodePoolId;
+        private @Nullable String gpuNodePoolId;
         private @Nullable String gpuType;
         private Integer numGpus;
         public Builder() {}
@@ -49,10 +49,8 @@ public final class JobTaskGenAiComputeTaskCompute {
         }
 
         @CustomType.Setter
-        public Builder gpuNodePoolId(String gpuNodePoolId) {
-            if (gpuNodePoolId == null) {
-              throw new MissingRequiredPropertyException("JobTaskGenAiComputeTaskCompute", "gpuNodePoolId");
-            }
+        public Builder gpuNodePoolId(@Nullable String gpuNodePoolId) {
+
             this.gpuNodePoolId = gpuNodePoolId;
             return this;
         }

@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ExternalLocationEncryptionDetailsArgs;
+import com.pulumi.databricks.inputs.ExternalLocationFileEventQueueArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -17,21 +18,6 @@ import javax.annotation.Nullable;
 public final class ExternalLocationState extends com.pulumi.resources.ResourceArgs {
 
     public static final ExternalLocationState Empty = new ExternalLocationState();
-
-    /**
-     * The ARN of the s3 access point to use with the external location (AWS).
-     * 
-     */
-    @Import(name="accessPoint")
-    private @Nullable Output<String> accessPoint;
-
-    /**
-     * @return The ARN of the s3 access point to use with the external location (AWS).
-     * 
-     */
-    public Optional<Output<String>> accessPoint() {
-        return Optional.ofNullable(this.accessPoint);
-    }
 
     @Import(name="browseOnly")
     private @Nullable Output<Boolean> browseOnly;
@@ -116,6 +102,21 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
+     * 
+     */
+    @Import(name="enableFileEvents")
+    private @Nullable Output<Boolean> enableFileEvents;
+
+    /**
+     * @return indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
+     * 
+     */
+    public Optional<Output<Boolean>> enableFileEvents() {
+        return Optional.ofNullable(this.enableFileEvents);
+    }
+
+    /**
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      * 
      */
@@ -143,6 +144,13 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Boolean>> fallback() {
         return Optional.ofNullable(this.fallback);
+    }
+
+    @Import(name="fileEventQueue")
+    private @Nullable Output<ExternalLocationFileEventQueueArgs> fileEventQueue;
+
+    public Optional<Output<ExternalLocationFileEventQueueArgs>> fileEventQueue() {
+        return Optional.ofNullable(this.fileEventQueue);
     }
 
     /**
@@ -305,15 +313,16 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
     private ExternalLocationState() {}
 
     private ExternalLocationState(ExternalLocationState $) {
-        this.accessPoint = $.accessPoint;
         this.browseOnly = $.browseOnly;
         this.comment = $.comment;
         this.createdAt = $.createdAt;
         this.createdBy = $.createdBy;
         this.credentialId = $.credentialId;
         this.credentialName = $.credentialName;
+        this.enableFileEvents = $.enableFileEvents;
         this.encryptionDetails = $.encryptionDetails;
         this.fallback = $.fallback;
+        this.fileEventQueue = $.fileEventQueue;
         this.forceDestroy = $.forceDestroy;
         this.forceUpdate = $.forceUpdate;
         this.isolationMode = $.isolationMode;
@@ -343,27 +352,6 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
 
         public Builder(ExternalLocationState defaults) {
             $ = new ExternalLocationState(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param accessPoint The ARN of the s3 access point to use with the external location (AWS).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accessPoint(@Nullable Output<String> accessPoint) {
-            $.accessPoint = accessPoint;
-            return this;
-        }
-
-        /**
-         * @param accessPoint The ARN of the s3 access point to use with the external location (AWS).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accessPoint(String accessPoint) {
-            return accessPoint(Output.of(accessPoint));
         }
 
         public Builder browseOnly(@Nullable Output<Boolean> browseOnly) {
@@ -481,6 +469,27 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param enableFileEvents indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableFileEvents(@Nullable Output<Boolean> enableFileEvents) {
+            $.enableFileEvents = enableFileEvents;
+            return this;
+        }
+
+        /**
+         * @param enableFileEvents indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableFileEvents(Boolean enableFileEvents) {
+            return enableFileEvents(Output.of(enableFileEvents));
+        }
+
+        /**
          * @param encryptionDetails The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
          * 
          * @return builder
@@ -520,6 +529,15 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
          */
         public Builder fallback(Boolean fallback) {
             return fallback(Output.of(fallback));
+        }
+
+        public Builder fileEventQueue(@Nullable Output<ExternalLocationFileEventQueueArgs> fileEventQueue) {
+            $.fileEventQueue = fileEventQueue;
+            return this;
+        }
+
+        public Builder fileEventQueue(ExternalLocationFileEventQueueArgs fileEventQueue) {
+            return fileEventQueue(Output.of(fileEventQueue));
         }
 
         /**

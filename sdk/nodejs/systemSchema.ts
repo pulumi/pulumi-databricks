@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
+ * Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account's operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
  *
  * > This resource can only be used with a workspace-level provider!
  *
- * > Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.
+ * > Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.  Certain schemas can't also be disabled completely.
  *
  * ## Example Usage
  *
@@ -24,7 +24,19 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported by the metastore id and schema name
+ * This resource can be imported by the metastore id and schema name:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_system_schema.this
+ *
+ *   id = "<metastore_id>|<schema_name>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
  *
  * bash
  *
@@ -69,11 +81,11 @@ export class SystemSchema extends pulumi.CustomResource {
     /**
      * name of the system schema.
      */
-    public readonly schema!: pulumi.Output<string | undefined>;
+    public readonly schema!: pulumi.Output<string>;
     /**
      * The current state of enablement for the system schema.
      */
-    public readonly state!: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a SystemSchema resource with the given unique name, arguments, and options.
@@ -82,7 +94,7 @@ export class SystemSchema extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: SystemSchemaArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: SystemSchemaArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SystemSchemaArgs | SystemSchemaState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -95,11 +107,14 @@ export class SystemSchema extends pulumi.CustomResource {
             resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as SystemSchemaArgs | undefined;
+            if ((!args || args.schema === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'schema'");
+            }
             resourceInputs["schema"] = args ? args.schema : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["autoEnabled"] = undefined /*out*/;
             resourceInputs["fullName"] = undefined /*out*/;
             resourceInputs["metastoreId"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SystemSchema.__pulumiType, name, resourceInputs, opts);
@@ -133,9 +148,5 @@ export interface SystemSchemaArgs {
     /**
      * name of the system schema.
      */
-    schema?: pulumi.Input<string>;
-    /**
-     * The current state of enablement for the system schema.
-     */
-    state?: pulumi.Input<string>;
+    schema: pulumi.Input<string>;
 }

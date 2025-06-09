@@ -16,7 +16,7 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; To assign account level users to workspace use databricks_mws_permission_assignment.
     /// 
-    /// &gt; Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level users.  Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level users.
+    /// &gt; Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access`, `workspace_consume` applicable only for workspace-level users.  Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level users.
     /// 
     /// To create users in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments.
     /// 
@@ -143,12 +143,24 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// The resource scim user can be imported using id:
+    /// The resource scim user can be imported using its SCIM id:
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_user.this
+    /// 
+    ///   id = "&lt;user-id&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
     /// 
     /// bash
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/user:User me &lt;user-id&gt;
+    /// $ pulumi import databricks:index/user:User this "&lt;user-id&gt;"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/user:User")]
@@ -179,7 +191,7 @@ namespace Pulumi.Databricks
         public Output<bool?> AllowInstancePoolCreate { get; private set; } = null!;
 
         /// <summary>
-        /// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        /// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
         /// </summary>
         [Output("databricksSqlAccess")]
         public Output<bool?> DatabricksSqlAccess { get; private set; } = null!;
@@ -238,8 +250,17 @@ namespace Pulumi.Databricks
         [Output("userName")]
         public Output<string> UserName { get; private set; } = null!;
 
+        /// <summary>
+        /// This is a field to allow the user to have access to a Databricks Workspace.
+        /// </summary>
         [Output("workspaceAccess")]
         public Output<bool?> WorkspaceAccess { get; private set; } = null!;
+
+        /// <summary>
+        /// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        /// </summary>
+        [Output("workspaceConsume")]
+        public Output<bool?> WorkspaceConsume { get; private set; } = null!;
 
 
         /// <summary>
@@ -312,7 +333,7 @@ namespace Pulumi.Databricks
         public Input<bool>? AllowInstancePoolCreate { get; set; }
 
         /// <summary>
-        /// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        /// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
         /// </summary>
         [Input("databricksSqlAccess")]
         public Input<bool>? DatabricksSqlAccess { get; set; }
@@ -371,8 +392,17 @@ namespace Pulumi.Databricks
         [Input("userName", required: true)]
         public Input<string> UserName { get; set; } = null!;
 
+        /// <summary>
+        /// This is a field to allow the user to have access to a Databricks Workspace.
+        /// </summary>
         [Input("workspaceAccess")]
         public Input<bool>? WorkspaceAccess { get; set; }
+
+        /// <summary>
+        /// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        /// </summary>
+        [Input("workspaceConsume")]
+        public Input<bool>? WorkspaceConsume { get; set; }
 
         public UserArgs()
         {
@@ -407,7 +437,7 @@ namespace Pulumi.Databricks
         public Input<bool>? AllowInstancePoolCreate { get; set; }
 
         /// <summary>
-        /// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        /// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
         /// </summary>
         [Input("databricksSqlAccess")]
         public Input<bool>? DatabricksSqlAccess { get; set; }
@@ -466,8 +496,17 @@ namespace Pulumi.Databricks
         [Input("userName")]
         public Input<string>? UserName { get; set; }
 
+        /// <summary>
+        /// This is a field to allow the user to have access to a Databricks Workspace.
+        /// </summary>
         [Input("workspaceAccess")]
         public Input<bool>? WorkspaceAccess { get; set; }
+
+        /// <summary>
+        /// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        /// </summary>
+        [Input("workspaceConsume")]
+        public Input<bool>? WorkspaceConsume { get; set; }
 
         public UserState()
         {

@@ -94,6 +94,18 @@ import javax.annotation.Nullable;
  * 
  * You can import a `databricks_sql_widget` resource with ID like the following:
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_sql_widget.this
+ * 
+ *   id = &#34;&lt;dashboard-id&gt;/&lt;widget-id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh

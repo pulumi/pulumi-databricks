@@ -16,23 +16,47 @@ public final class GetAlertV2EvaluationThresholdValue extends com.pulumi.resourc
 
     public static final GetAlertV2EvaluationThresholdValue Empty = new GetAlertV2EvaluationThresholdValue();
 
+    /**
+     * (boolean) -
+     * 
+     */
     @Import(name="boolValue")
     private @Nullable Boolean boolValue;
 
+    /**
+     * @return (boolean) -
+     * 
+     */
     public Optional<Boolean> boolValue() {
         return Optional.ofNullable(this.boolValue);
     }
 
+    /**
+     * (number) -
+     * 
+     */
     @Import(name="doubleValue")
     private @Nullable Double doubleValue;
 
+    /**
+     * @return (number) -
+     * 
+     */
     public Optional<Double> doubleValue() {
         return Optional.ofNullable(this.doubleValue);
     }
 
+    /**
+     * (string) -
+     * 
+     */
     @Import(name="stringValue")
     private @Nullable String stringValue;
 
+    /**
+     * @return (string) -
+     * 
+     */
     public Optional<String> stringValue() {
         return Optional.ofNullable(this.stringValue);
     }
@@ -63,16 +87,34 @@ public final class GetAlertV2EvaluationThresholdValue extends com.pulumi.resourc
             $ = new GetAlertV2EvaluationThresholdValue(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param boolValue (boolean) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder boolValue(@Nullable Boolean boolValue) {
             $.boolValue = boolValue;
             return this;
         }
 
+        /**
+         * @param doubleValue (number) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder doubleValue(@Nullable Double doubleValue) {
             $.doubleValue = doubleValue;
             return this;
         }
 
+        /**
+         * @param stringValue (string) -
+         * 
+         * @return builder
+         * 
+         */
         public Builder stringValue(@Nullable String stringValue) {
             $.stringValue = stringValue;
             return this;

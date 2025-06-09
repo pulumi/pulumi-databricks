@@ -49,6 +49,18 @@ namespace Pulumi.Databricks
     /// 
     /// You can import a `databricks_dashboard` resource with ID like the following:
     /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_dashboard.this
+    /// 
+    ///   id = "&lt;dashboard-id&gt;"
+    /// 
+    /// }
+    /// 
+    /// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+    /// 
     /// bash
     /// 
     /// ```sh

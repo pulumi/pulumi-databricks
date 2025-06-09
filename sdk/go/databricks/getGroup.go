@@ -102,8 +102,9 @@ type LookupGroupArgs struct {
 	// Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
 	ServicePrincipals []string `pulumi:"servicePrincipals"`
 	// Set of User identifiers, that can be modified with GroupMember resource.
-	Users           []string `pulumi:"users"`
-	WorkspaceAccess *bool    `pulumi:"workspaceAccess"`
+	Users            []string `pulumi:"users"`
+	WorkspaceAccess  *bool    `pulumi:"workspaceAccess"`
+	WorkspaceConsume *bool    `pulumi:"workspaceConsume"`
 }
 
 // A collection of values returned by getGroup.
@@ -132,8 +133,9 @@ type LookupGroupResult struct {
 	// Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
 	ServicePrincipals []string `pulumi:"servicePrincipals"`
 	// Set of User identifiers, that can be modified with GroupMember resource.
-	Users           []string `pulumi:"users"`
-	WorkspaceAccess *bool    `pulumi:"workspaceAccess"`
+	Users            []string `pulumi:"users"`
+	WorkspaceAccess  *bool    `pulumi:"workspaceAccess"`
+	WorkspaceConsume *bool    `pulumi:"workspaceConsume"`
 }
 
 func LookupGroupOutput(ctx *pulumi.Context, args LookupGroupOutputArgs, opts ...pulumi.InvokeOption) LookupGroupResultOutput {
@@ -171,8 +173,9 @@ type LookupGroupOutputArgs struct {
 	// Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
 	ServicePrincipals pulumi.StringArrayInput `pulumi:"servicePrincipals"`
 	// Set of User identifiers, that can be modified with GroupMember resource.
-	Users           pulumi.StringArrayInput `pulumi:"users"`
-	WorkspaceAccess pulumi.BoolPtrInput     `pulumi:"workspaceAccess"`
+	Users            pulumi.StringArrayInput `pulumi:"users"`
+	WorkspaceAccess  pulumi.BoolPtrInput     `pulumi:"workspaceAccess"`
+	WorkspaceConsume pulumi.BoolPtrInput     `pulumi:"workspaceConsume"`
 }
 
 func (LookupGroupOutputArgs) ElementType() reflect.Type {
@@ -263,6 +266,10 @@ func (o LookupGroupResultOutput) Users() pulumi.StringArrayOutput {
 
 func (o LookupGroupResultOutput) WorkspaceAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupGroupResult) *bool { return v.WorkspaceAccess }).(pulumi.BoolPtrOutput)
+}
+
+func (o LookupGroupResultOutput) WorkspaceConsume() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupGroupResult) *bool { return v.WorkspaceConsume }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

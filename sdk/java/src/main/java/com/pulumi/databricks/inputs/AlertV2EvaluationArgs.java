@@ -18,51 +18,107 @@ public final class AlertV2EvaluationArgs extends com.pulumi.resources.ResourceAr
 
     public static final AlertV2EvaluationArgs Empty = new AlertV2EvaluationArgs();
 
+    /**
+     * Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     * 
+     */
     @Import(name="comparisonOperator")
     private @Nullable Output<String> comparisonOperator;
 
+    /**
+     * @return Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     * 
+     */
     public Optional<Output<String>> comparisonOperator() {
         return Optional.ofNullable(this.comparisonOperator);
     }
 
+    /**
+     * Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * 
+     */
     @Import(name="emptyResultState")
     private @Nullable Output<String> emptyResultState;
 
+    /**
+     * @return Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * 
+     */
     public Optional<Output<String>> emptyResultState() {
         return Optional.ofNullable(this.emptyResultState);
     }
 
+    /**
+     * (string) - Timestamp of the last evaluation
+     * 
+     */
     @Import(name="lastEvaluatedAt")
     private @Nullable Output<String> lastEvaluatedAt;
 
+    /**
+     * @return (string) - Timestamp of the last evaluation
+     * 
+     */
     public Optional<Output<String>> lastEvaluatedAt() {
         return Optional.ofNullable(this.lastEvaluatedAt);
     }
 
+    /**
+     * User or Notification Destination to notify when alert is triggered
+     * 
+     */
     @Import(name="notification")
     private @Nullable Output<AlertV2EvaluationNotificationArgs> notification;
 
+    /**
+     * @return User or Notification Destination to notify when alert is triggered
+     * 
+     */
     public Optional<Output<AlertV2EvaluationNotificationArgs>> notification() {
         return Optional.ofNullable(this.notification);
     }
 
+    /**
+     * Source column from result to use to evaluate alert
+     * 
+     */
     @Import(name="source")
     private @Nullable Output<AlertV2EvaluationSourceArgs> source;
 
+    /**
+     * @return Source column from result to use to evaluate alert
+     * 
+     */
     public Optional<Output<AlertV2EvaluationSourceArgs>> source() {
         return Optional.ofNullable(this.source);
     }
 
+    /**
+     * (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * 
+     */
     @Import(name="state")
     private @Nullable Output<String> state;
 
+    /**
+     * @return (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * 
+     */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
 
+    /**
+     * Threshold to user for alert evaluation, can be a column or a value
+     * 
+     */
     @Import(name="threshold")
     private @Nullable Output<AlertV2EvaluationThresholdArgs> threshold;
 
+    /**
+     * @return Threshold to user for alert evaluation, can be a column or a value
+     * 
+     */
     public Optional<Output<AlertV2EvaluationThresholdArgs>> threshold() {
         return Optional.ofNullable(this.threshold);
     }
@@ -97,65 +153,149 @@ public final class AlertV2EvaluationArgs extends com.pulumi.resources.ResourceAr
             $ = new AlertV2EvaluationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param comparisonOperator Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+         * 
+         * @return builder
+         * 
+         */
         public Builder comparisonOperator(@Nullable Output<String> comparisonOperator) {
             $.comparisonOperator = comparisonOperator;
             return this;
         }
 
+        /**
+         * @param comparisonOperator Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+         * 
+         * @return builder
+         * 
+         */
         public Builder comparisonOperator(String comparisonOperator) {
             return comparisonOperator(Output.of(comparisonOperator));
         }
 
+        /**
+         * @param emptyResultState Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+         * 
+         * @return builder
+         * 
+         */
         public Builder emptyResultState(@Nullable Output<String> emptyResultState) {
             $.emptyResultState = emptyResultState;
             return this;
         }
 
+        /**
+         * @param emptyResultState Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+         * 
+         * @return builder
+         * 
+         */
         public Builder emptyResultState(String emptyResultState) {
             return emptyResultState(Output.of(emptyResultState));
         }
 
+        /**
+         * @param lastEvaluatedAt (string) - Timestamp of the last evaluation
+         * 
+         * @return builder
+         * 
+         */
         public Builder lastEvaluatedAt(@Nullable Output<String> lastEvaluatedAt) {
             $.lastEvaluatedAt = lastEvaluatedAt;
             return this;
         }
 
+        /**
+         * @param lastEvaluatedAt (string) - Timestamp of the last evaluation
+         * 
+         * @return builder
+         * 
+         */
         public Builder lastEvaluatedAt(String lastEvaluatedAt) {
             return lastEvaluatedAt(Output.of(lastEvaluatedAt));
         }
 
+        /**
+         * @param notification User or Notification Destination to notify when alert is triggered
+         * 
+         * @return builder
+         * 
+         */
         public Builder notification(@Nullable Output<AlertV2EvaluationNotificationArgs> notification) {
             $.notification = notification;
             return this;
         }
 
+        /**
+         * @param notification User or Notification Destination to notify when alert is triggered
+         * 
+         * @return builder
+         * 
+         */
         public Builder notification(AlertV2EvaluationNotificationArgs notification) {
             return notification(Output.of(notification));
         }
 
+        /**
+         * @param source Source column from result to use to evaluate alert
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(@Nullable Output<AlertV2EvaluationSourceArgs> source) {
             $.source = source;
             return this;
         }
 
+        /**
+         * @param source Source column from result to use to evaluate alert
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(AlertV2EvaluationSourceArgs source) {
             return source(Output.of(source));
         }
 
+        /**
+         * @param state (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(@Nullable Output<String> state) {
             $.state = state;
             return this;
         }
 
+        /**
+         * @param state (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(String state) {
             return state(Output.of(state));
         }
 
+        /**
+         * @param threshold Threshold to user for alert evaluation, can be a column or a value
+         * 
+         * @return builder
+         * 
+         */
         public Builder threshold(@Nullable Output<AlertV2EvaluationThresholdArgs> threshold) {
             $.threshold = threshold;
             return this;
         }
 
+        /**
+         * @param threshold Threshold to user for alert evaluation, can be a column or a value
+         * 
+         * @return builder
+         * 
+         */
         public Builder threshold(AlertV2EvaluationThresholdArgs threshold) {
             return threshold(Output.of(threshold));
         }

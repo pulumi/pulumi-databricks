@@ -276,6 +276,9 @@ namespace Pulumi.Databricks
         [Input("workspaceAccess")]
         public bool? WorkspaceAccess { get; set; }
 
+        [Input("workspaceConsume")]
+        public bool? WorkspaceConsume { get; set; }
+
         public GetGroupArgs()
         {
         }
@@ -395,6 +398,9 @@ namespace Pulumi.Databricks
         [Input("workspaceAccess")]
         public Input<bool>? WorkspaceAccess { get; set; }
 
+        [Input("workspaceConsume")]
+        public Input<bool>? WorkspaceConsume { get; set; }
+
         public GetGroupInvokeArgs()
         {
         }
@@ -450,6 +456,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly ImmutableArray<string> Users;
         public readonly bool? WorkspaceAccess;
+        public readonly bool? WorkspaceConsume;
 
         [OutputConstructor]
         private GetGroupResult(
@@ -481,7 +488,9 @@ namespace Pulumi.Databricks
 
             ImmutableArray<string> users,
 
-            bool? workspaceAccess)
+            bool? workspaceAccess,
+
+            bool? workspaceConsume)
         {
             AclPrincipalId = aclPrincipalId;
             AllowClusterCreate = allowClusterCreate;
@@ -498,6 +507,7 @@ namespace Pulumi.Databricks
             ServicePrincipals = servicePrincipals;
             Users = users;
             WorkspaceAccess = workspaceAccess;
+            WorkspaceConsume = workspaceConsume;
         }
     }
 }

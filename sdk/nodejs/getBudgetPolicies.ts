@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * This data source can be used to fetch the list of budget policies.
  *
- * > This data source can only be used with an account-level provider!
+ * > **Note** This data source can only be used with an account-level provider!
  *
  * ## Example Usage
  *
@@ -41,7 +41,7 @@ export interface GetBudgetPoliciesResult {
 /**
  * This data source can be used to fetch the list of budget policies.
  *
- * > This data source can only be used with an account-level provider!
+ * > **Note** This data source can only be used with an account-level provider!
  *
  * ## Example Usage
  *

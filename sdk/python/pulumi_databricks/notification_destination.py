@@ -224,6 +224,18 @@ class NotificationDestination(pulumi.CustomResource):
 
         This resource can be imported by notification ID:
 
+        hcl
+
+        import {
+
+          to = databricks_notification_destination.this
+
+          id = "<notification-id>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
@@ -325,6 +337,18 @@ class NotificationDestination(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by notification ID:
+
+        hcl
+
+        import {
+
+          to = databricks_notification_destination.this
+
+          id = "<notification-id>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
 
         bash
 

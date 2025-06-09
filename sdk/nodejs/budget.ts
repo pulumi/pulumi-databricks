@@ -64,10 +64,24 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported by Databricks account ID and Budget.
+ * This resource can be imported by Databricks account ID and Budget:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_budget.this
+ *
+ *   id = "<account_id>|<budget_configuration_id>"
+ *
+ * }
+ *
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ *
+ * bash
  *
  * ```sh
- * $ pulumi import databricks:index/budget:Budget this '<account_id>|<budget_configuration_id>'
+ * $ pulumi import databricks:index/budget:Budget this "<account_id>|<budget_configuration_id>"
  * ```
  */
 export class Budget extends pulumi.CustomResource {

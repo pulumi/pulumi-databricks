@@ -47,6 +47,13 @@ public final class JobEnvironmentSpecArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.dependencies);
     }
 
+    @Import(name="environmentVersion")
+    private @Nullable Output<String> environmentVersion;
+
+    public Optional<Output<String>> environmentVersion() {
+        return Optional.ofNullable(this.environmentVersion);
+    }
+
     @Import(name="jarDependencies")
     private @Nullable Output<List<String>> jarDependencies;
 
@@ -59,6 +66,7 @@ public final class JobEnvironmentSpecArgs extends com.pulumi.resources.ResourceA
     private JobEnvironmentSpecArgs(JobEnvironmentSpecArgs $) {
         this.client = $.client;
         this.dependencies = $.dependencies;
+        this.environmentVersion = $.environmentVersion;
         this.jarDependencies = $.jarDependencies;
     }
 
@@ -130,6 +138,15 @@ public final class JobEnvironmentSpecArgs extends com.pulumi.resources.ResourceA
          */
         public Builder dependencies(String... dependencies) {
             return dependencies(List.of(dependencies));
+        }
+
+        public Builder environmentVersion(@Nullable Output<String> environmentVersion) {
+            $.environmentVersion = environmentVersion;
+            return this;
+        }
+
+        public Builder environmentVersion(String environmentVersion) {
+            return environmentVersion(Output.of(environmentVersion));
         }
 
         public Builder jarDependencies(@Nullable Output<List<String>> jarDependencies) {

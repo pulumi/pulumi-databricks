@@ -169,7 +169,7 @@ class Secret(pulumi.CustomResource):
                  string_value: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        With this resource you can insert a secret under the provided scope with the given name. If a secret already exists with the same name, this command overwrites the existing secret’s value. The server encrypts the secret using the secret scope’s encryption settings before storing it. You must have WRITE or MANAGE permission on the secret scope. The secret key must consist of alphanumeric characters, dashes, underscores, and periods, and cannot exceed 128 characters. The maximum allowed secret value size is 128 KB. The maximum number of secrets in a given scope is 1000. You can read a secret value only from within a command on a cluster (for example, through a notebook); there is no API to read a secret value outside of a cluster. The permission applied is based on who is invoking the command and you must have at least READ permission. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
+        With this resource you can insert a secret under the provided scope with the given name. If a secret already exists with the same name, this command overwrites the existing secret's value. The server encrypts the secret using the secret scope's encryption settings before storing it. You must have WRITE or MANAGE permission on the secret scope. The secret key must consist of alphanumeric characters, dashes, underscores, and periods, and cannot exceed 128 characters. The maximum allowed secret value size is 128 KB. The maximum number of secrets in a given scope is 1000. You can read a secret value only from within a command on a cluster (for example, through a notebook); there is no API to read a secret value outside of a cluster. The permission applied is based on who is invoking the command and you must have at least READ permission. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
 
         > This resource can only be used with a workspace-level provider!
 
@@ -195,7 +195,7 @@ class Secret(pulumi.CustomResource):
 
         * End to end workspace management guide.
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-        * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+        * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
         * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
@@ -204,10 +204,22 @@ class Secret(pulumi.CustomResource):
 
         The resource secret can be imported using `scopeName|||secretKey` combination. **This may change in future versions.**
 
+        hcl
+
+        import {
+
+          to = databricks_secret.app
+
+          id = "<scopeName>|||<secretKey>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
-        $ pulumi import databricks:index/secret:Secret app `scopeName|||secretKey`
+        $ pulumi import databricks:index/secret:Secret app "<scopeName>|||<secretKey>"
         ```
 
         :param str resource_name: The name of the resource.
@@ -223,7 +235,7 @@ class Secret(pulumi.CustomResource):
                  args: SecretArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        With this resource you can insert a secret under the provided scope with the given name. If a secret already exists with the same name, this command overwrites the existing secret’s value. The server encrypts the secret using the secret scope’s encryption settings before storing it. You must have WRITE or MANAGE permission on the secret scope. The secret key must consist of alphanumeric characters, dashes, underscores, and periods, and cannot exceed 128 characters. The maximum allowed secret value size is 128 KB. The maximum number of secrets in a given scope is 1000. You can read a secret value only from within a command on a cluster (for example, through a notebook); there is no API to read a secret value outside of a cluster. The permission applied is based on who is invoking the command and you must have at least READ permission. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
+        With this resource you can insert a secret under the provided scope with the given name. If a secret already exists with the same name, this command overwrites the existing secret's value. The server encrypts the secret using the secret scope's encryption settings before storing it. You must have WRITE or MANAGE permission on the secret scope. The secret key must consist of alphanumeric characters, dashes, underscores, and periods, and cannot exceed 128 characters. The maximum allowed secret value size is 128 KB. The maximum number of secrets in a given scope is 1000. You can read a secret value only from within a command on a cluster (for example, through a notebook); there is no API to read a secret value outside of a cluster. The permission applied is based on who is invoking the command and you must have at least READ permission. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
 
         > This resource can only be used with a workspace-level provider!
 
@@ -249,7 +261,7 @@ class Secret(pulumi.CustomResource):
 
         * End to end workspace management guide.
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-        * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+        * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
         * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
@@ -258,10 +270,22 @@ class Secret(pulumi.CustomResource):
 
         The resource secret can be imported using `scopeName|||secretKey` combination. **This may change in future versions.**
 
+        hcl
+
+        import {
+
+          to = databricks_secret.app
+
+          id = "<scopeName>|||<secretKey>"
+
+        }
+
+        Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+
         bash
 
         ```sh
-        $ pulumi import databricks:index/secret:Secret app `scopeName|||secretKey`
+        $ pulumi import databricks:index/secret:Secret app "<scopeName>|||<secretKey>"
         ```
 
         :param str resource_name: The name of the resource.

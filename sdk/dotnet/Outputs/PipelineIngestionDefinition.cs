@@ -16,6 +16,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? ConnectionName;
         public readonly string? IngestionGatewayId;
         public readonly ImmutableArray<Outputs.PipelineIngestionDefinitionObject> Objects;
+        public readonly string? SourceType;
         public readonly Outputs.PipelineIngestionDefinitionTableConfiguration? TableConfiguration;
 
         [OutputConstructor]
@@ -26,11 +27,14 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<Outputs.PipelineIngestionDefinitionObject> objects,
 
+            string? sourceType,
+
             Outputs.PipelineIngestionDefinitionTableConfiguration? tableConfiguration)
         {
             ConnectionName = connectionName;
             IngestionGatewayId = ingestionGatewayId;
             Objects = objects;
+            SourceType = sourceType;
             TableConfiguration = tableConfiguration;
         }
     }

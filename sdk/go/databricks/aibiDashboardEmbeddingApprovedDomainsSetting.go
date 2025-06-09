@@ -66,6 +66,18 @@ import (
 //
 // This resource can be imported by predefined name `global`:
 //
+// hcl
+//
+// import {
+//
+//	to = databricks_aibi_dashboard_embedding_approved_domains_setting.this
+//
+//	id = "global"
+//
+// }
+//
+// Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+//
 // bash
 //
 // ```sh

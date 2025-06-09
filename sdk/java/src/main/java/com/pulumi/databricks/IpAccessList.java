@@ -87,6 +87,18 @@ import javax.annotation.Nullable;
  * 
  * The databricks_ip_access_list can be imported using id:
  * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_ip_access_list.this
+ * 
+ *   id = &#34;&lt;list-id&gt;&#34;
+ * 
+ * }
+ * 
+ * Alternatively, when using `terraform` version 1.4 or earlier, import using the `pulumi import` command:
+ * 
  * bash
  * 
  * ```sh
