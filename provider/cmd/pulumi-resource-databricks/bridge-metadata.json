@@ -1145,6 +1145,12 @@
                                         }
                                     }
                                 },
+                                "dbt_cloud_task": {
+                                    "maxItemsOne": true
+                                },
+                                "dbt_platform_task": {
+                                    "maxItemsOne": true
+                                },
                                 "dbt_task": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -1210,6 +1216,12 @@
                                                                     }
                                                                 }
                                                             }
+                                                        },
+                                                        "dbt_cloud_task": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "dbt_platform_task": {
+                                                            "maxItemsOne": true
                                                         },
                                                         "dbt_task": {
                                                             "maxItemsOne": true,
@@ -2380,6 +2392,9 @@
                 "fields": {
                     "domain_names": {
                         "maxItemsOne": false
+                    },
+                    "resource_names": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -2425,6 +2440,19 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "aws_private_endpoint_rules": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "domain_names": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "resource_names": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "azure_private_endpoint_rules": {
                                                 "maxItemsOne": false,
                                                 "elem": {
@@ -2574,6 +2602,10 @@
             },
             "databricks_obo_token": {
                 "current": "databricks:index/oboToken:OboToken",
+                "majorVersion": 1
+            },
+            "databricks_online_store": {
+                "current": "databricks:index/onlineStore:OnlineStore",
                 "majorVersion": 1
             },
             "databricks_online_table": {
@@ -2735,6 +2767,16 @@
                     },
                     "deployment": {
                         "maxItemsOne": true
+                    },
+                    "environment": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "dependencies": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "event_log": {
                         "maxItemsOne": true
@@ -3014,6 +3056,10 @@
                         }
                     }
                 }
+            },
+            "databricks_quality_monitor_v2": {
+                "current": "databricks:index/qualityMonitorV2:QualityMonitorV2",
+                "majorVersion": 1
             },
             "databricks_query": {
                 "current": "databricks:index/query:Query",
@@ -5442,6 +5488,19 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "aws_private_endpoint_rules": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "domain_names": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "resource_names": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "azure_private_endpoint_rules": {
                                                 "maxItemsOne": false,
                                                 "elem": {
@@ -5499,11 +5558,37 @@
                     }
                 }
             },
+            "databricks_online_store": {
+                "current": "databricks:index/getOnlineStore:getOnlineStore",
+                "majorVersion": 1
+            },
+            "databricks_online_stores": {
+                "current": "databricks:index/getOnlineStores:getOnlineStores",
+                "majorVersion": 1,
+                "fields": {
+                    "online_stores": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_pipelines": {
                 "current": "databricks:index/getPipelines:getPipelines",
                 "majorVersion": 1,
                 "fields": {
                     "ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_quality_monitor_v2": {
+                "current": "databricks:index/getQualityMonitorV2:getQualityMonitorV2",
+                "majorVersion": 1
+            },
+            "databricks_quality_monitors_v2": {
+                "current": "databricks:index/getQualityMonitorsV2:getQualityMonitorsV2",
+                "majorVersion": 1,
+                "fields": {
+                    "quality_monitors": {
                         "maxItemsOne": false
                     }
                 }
@@ -6174,11 +6259,13 @@
             "databricks:index/notebook:Notebook": 0,
             "databricks:index/notificationDestination:NotificationDestination": 0,
             "databricks:index/oboToken:OboToken": 0,
+            "databricks:index/onlineStore:OnlineStore": 1,
             "databricks:index/onlineTable:OnlineTable": 0,
             "databricks:index/permissionAssignment:PermissionAssignment": 0,
             "databricks:index/permissions:Permissions": 0,
             "databricks:index/pipeline:Pipeline": 0,
             "databricks:index/qualityMonitor:QualityMonitor": 1,
+            "databricks:index/qualityMonitorV2:QualityMonitorV2": 1,
             "databricks:index/query:Query": 0,
             "databricks:index/recipient:Recipient": 0,
             "databricks:index/recipientFederationPolicy:RecipientFederationPolicy": 1,
@@ -6266,7 +6353,11 @@
             "databricks:index/getNotebook:getNotebook": 0,
             "databricks:index/getNotebookPaths:getNotebookPaths": 0,
             "databricks:index/getNotificationDestinations:getNotificationDestinations": 1,
+            "databricks:index/getOnlineStore:getOnlineStore": 1,
+            "databricks:index/getOnlineStores:getOnlineStores": 1,
             "databricks:index/getPipelines:getPipelines": 0,
+            "databricks:index/getQualityMonitorV2:getQualityMonitorV2": 1,
+            "databricks:index/getQualityMonitorsV2:getQualityMonitorsV2": 1,
             "databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies": 1,
             "databricks:index/getRecipientFederationPolicy:getRecipientFederationPolicy": 1,
             "databricks:index/getRegisteredModel:getRegisteredModel": 1,
