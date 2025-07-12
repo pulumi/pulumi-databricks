@@ -34,11 +34,11 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/walk"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	"github.com/pulumi/pulumi-databricks/provider/disablelogs" // Disable logging before terraform-provider-databricks is loaded
 	"github.com/pulumi/pulumi-databricks/provider/pkg/version"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 //go:embed cmd/pulumi-resource-databricks/bridge-metadata.json
@@ -237,7 +237,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"databricks_quality_monitor_v2": {
 				ComputeID: func(
-					ctx context.Context,
+					_ context.Context,
 					state resource.PropertyMap,
 				) (resource.ID, error) {
 					return attr(state, "objectId", "objectType"), nil
@@ -396,7 +396,8 @@ var cleanUpDocument = tfbridge.DocsEdit{
 }
 
 // Helper for defining multi-attribute ComputeID.
-// See also: https://github.com/pulumi/pulumi-aws/blob/4a5d90d31974e995964d89d260ae56e0e76d6bef/provider/resources.go#L5921
+// See also:
+// https://github.com/pulumi/pulumi-aws/blob/4a5d90d31974e995964d89d260ae56e0e76d6bef/provider/resources.go#L5921
 func attrWithSeparator(state resource.PropertyMap, sep string, attrs ...resource.PropertyKey) resource.ID {
 	parts := []string{}
 	stateResource := resource.NewObjectProperty(state)
