@@ -31,10 +31,22 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? InstanceProfileArn { get; set; }
 
         /// <summary>
+        /// The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+        /// </summary>
+        [Input("maxProvisionedConcurrency")]
+        public Input<int>? MaxProvisionedConcurrency { get; set; }
+
+        /// <summary>
         /// The maximum tokens per second that the endpoint can scale up to.
         /// </summary>
         [Input("maxProvisionedThroughput")]
         public Input<int>? MaxProvisionedThroughput { get; set; }
+
+        /// <summary>
+        /// The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+        /// </summary>
+        [Input("minProvisionedConcurrency")]
+        public Input<int>? MinProvisionedConcurrency { get; set; }
 
         /// <summary>
         /// The minimum tokens per second that the endpoint can scale down to.

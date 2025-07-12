@@ -62,7 +62,20 @@ class AwaitableGetDatabaseInstancesResult(GetDatabaseInstancesResult):
 
 def get_database_instances(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseInstancesResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source can be used to fetch the list of Database Instances within the workspace.
+    The list can then be accessed via the data object's `database_instances` field.
+
+    ## Example Usage
+
+    Getting a list of all Database Instances:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_database_instances()
+    pulumi.export("allDatabaseInstances", all.database_instances)
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -73,7 +86,20 @@ def get_database_instances(opts: Optional[pulumi.InvokeOptions] = None) -> Await
         id=pulumi.get(__ret__, 'id'))
 def get_database_instances_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstancesResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source can be used to fetch the list of Database Instances within the workspace.
+    The list can then be accessed via the data object's `database_instances` field.
+
+    ## Example Usage
+
+    Getting a list of all Database Instances:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_database_instances()
+    pulumi.export("allDatabaseInstances", all.database_instances)
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

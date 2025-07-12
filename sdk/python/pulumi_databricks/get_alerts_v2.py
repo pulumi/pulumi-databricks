@@ -62,7 +62,23 @@ class AwaitableGetAlertsV2Result(GetAlertsV2Result):
 
 def get_alerts_v2(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlertsV2Result:
     """
-    Use this data source to access information about an existing resource.
+    The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
+
+    You can use this data source to:
+    - Get a comprehensive list of all alerts in your workspace
+    - Monitor and audit alert configurations across your workspace
+
+    ## Example Usage
+
+    ### List All Alerts
+    This example retrieves all alerts accessible to the current user:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_alert_v2()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -73,7 +89,23 @@ def get_alerts_v2(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAl
         results=pulumi.get(__ret__, 'results'))
 def get_alerts_v2_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertsV2Result]:
     """
-    Use this data source to access information about an existing resource.
+    The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
+
+    You can use this data source to:
+    - Get a comprehensive list of all alerts in your workspace
+    - Monitor and audit alert configurations across your workspace
+
+    ## Example Usage
+
+    ### List All Alerts
+    This example retrieves all alerts accessible to the current user:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_alert_v2()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

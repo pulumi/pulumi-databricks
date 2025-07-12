@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class GetAlertV2ScheduleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+        /// (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
         /// </summary>
         [Input("pauseStatus")]
         public string? PauseStatus { get; set; }

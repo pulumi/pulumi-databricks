@@ -97,7 +97,7 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// the unique identifier of the volume
+        /// the unique identifier of the schema
         /// </summary>
         [Input("schemaId")]
         public Input<string>? SchemaId { get; set; }

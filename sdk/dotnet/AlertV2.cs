@@ -10,9 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// The Alert v2 resource allows you to manage SQL alerts in Databricks SQL. Alerts monitor query results and notify you when specific conditions are met.
+    /// 
+    /// Alerts run on a schedule and evaluate query results against defined thresholds. When an alert is triggered, notifications can be sent to specified users or destinations.
+    /// 
+    /// ## Example Usage
+    /// 
     /// ## Import
     /// 
-    /// As of terraform v1.5, resources can be imported through configuration.
+    /// As of Pulumi v1.5, resources can be imported through configuration.
     /// 
     /// hcl
     /// 
@@ -24,7 +30,7 @@ namespace Pulumi.Databricks
     /// 
     /// }
     /// 
-    /// If you are using an older version of terraform, you can import the resource using cli as follows:
+    /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 id
@@ -61,7 +67,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.AlertV2Evaluation?> Evaluation { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        /// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
         /// </summary>
         [Output("lifecycleState")]
         public Output<string> LifecycleState { get; private set; } = null!;
@@ -229,7 +235,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.AlertV2EvaluationGetArgs>? Evaluation { get; set; }
 
         /// <summary>
-        /// (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        /// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
         /// </summary>
         [Input("lifecycleState")]
         public Input<string>? LifecycleState { get; set; }

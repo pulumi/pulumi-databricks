@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs;
 import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,13 @@ import javax.annotation.Nullable;
 public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs Empty = new GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs();
+
+    @Import(name="awsPrivateEndpointRules")
+    private @Nullable Output<List<GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs>> awsPrivateEndpointRules;
+
+    public Optional<Output<List<GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs>>> awsPrivateEndpointRules() {
+        return Optional.ofNullable(this.awsPrivateEndpointRules);
+    }
 
     /**
      * Array of private endpoint rule objects.
@@ -34,6 +42,7 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs ex
     private GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs() {}
 
     private GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs(GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs $) {
+        this.awsPrivateEndpointRules = $.awsPrivateEndpointRules;
         this.azurePrivateEndpointRules = $.azurePrivateEndpointRules;
     }
 
@@ -53,6 +62,19 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs ex
 
         public Builder(GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs defaults) {
             $ = new GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder awsPrivateEndpointRules(@Nullable Output<List<GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs>> awsPrivateEndpointRules) {
+            $.awsPrivateEndpointRules = awsPrivateEndpointRules;
+            return this;
+        }
+
+        public Builder awsPrivateEndpointRules(List<GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs> awsPrivateEndpointRules) {
+            return awsPrivateEndpointRules(Output.of(awsPrivateEndpointRules));
+        }
+
+        public Builder awsPrivateEndpointRules(GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs... awsPrivateEndpointRules) {
+            return awsPrivateEndpointRules(List.of(awsPrivateEndpointRules));
         }
 
         /**

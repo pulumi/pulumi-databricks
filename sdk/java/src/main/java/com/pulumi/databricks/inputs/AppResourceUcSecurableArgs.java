@@ -14,23 +14,47 @@ public final class AppResourceUcSecurableArgs extends com.pulumi.resources.Resou
 
     public static final AppResourceUcSecurableArgs Empty = new AppResourceUcSecurableArgs();
 
+    /**
+     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * 
+     */
     @Import(name="permission", required=true)
     private Output<String> permission;
 
+    /**
+     * @return Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * 
+     */
     public Output<String> permission() {
         return this.permission;
     }
 
+    /**
+     * the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     * 
+     */
     @Import(name="securableFullName", required=true)
     private Output<String> securableFullName;
 
+    /**
+     * @return the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     * 
+     */
     public Output<String> securableFullName() {
         return this.securableFullName;
     }
 
+    /**
+     * the type of UC securable, i.e. `VOLUME`.
+     * 
+     */
     @Import(name="securableType", required=true)
     private Output<String> securableType;
 
+    /**
+     * @return the type of UC securable, i.e. `VOLUME`.
+     * 
+     */
     public Output<String> securableType() {
         return this.securableType;
     }
@@ -61,29 +85,65 @@ public final class AppResourceUcSecurableArgs extends com.pulumi.resources.Resou
             $ = new AppResourceUcSecurableArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param permission Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(Output<String> permission) {
             $.permission = permission;
             return this;
         }
 
+        /**
+         * @param permission Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(String permission) {
             return permission(Output.of(permission));
         }
 
+        /**
+         * @param securableFullName the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securableFullName(Output<String> securableFullName) {
             $.securableFullName = securableFullName;
             return this;
         }
 
+        /**
+         * @param securableFullName the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securableFullName(String securableFullName) {
             return securableFullName(Output.of(securableFullName));
         }
 
+        /**
+         * @param securableType the type of UC securable, i.e. `VOLUME`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securableType(Output<String> securableType) {
             $.securableType = securableType;
             return this;
         }
 
+        /**
+         * @param securableType the type of UC securable, i.e. `VOLUME`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securableType(String securableType) {
             return securableType(Output.of(securableType));
         }

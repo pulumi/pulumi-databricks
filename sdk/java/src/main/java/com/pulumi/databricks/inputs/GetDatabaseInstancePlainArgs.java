@@ -17,44 +17,14 @@ public final class GetDatabaseInstancePlainArgs extends com.pulumi.resources.Inv
     public static final GetDatabaseInstancePlainArgs Empty = new GetDatabaseInstancePlainArgs();
 
     /**
-     * (string) - Password for admin user to create. If not provided, no user will be created
-     * 
-     */
-    @Import(name="adminPassword")
-    private @Nullable String adminPassword;
-
-    /**
-     * @return (string) - Password for admin user to create. If not provided, no user will be created
-     * 
-     */
-    public Optional<String> adminPassword() {
-        return Optional.ofNullable(this.adminPassword);
-    }
-
-    /**
-     * (string) - Name of the admin role for the instance. If not provided, defaults to &#39;databricks_admin&#39;
-     * 
-     */
-    @Import(name="adminRolename")
-    private @Nullable String adminRolename;
-
-    /**
-     * @return (string) - Name of the admin role for the instance. If not provided, defaults to &#39;databricks_admin&#39;
-     * 
-     */
-    public Optional<String> adminRolename() {
-        return Optional.ofNullable(this.adminRolename);
-    }
-
-    /**
-     * (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;
+     * (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
      * 
      */
     @Import(name="capacity")
     private @Nullable String capacity;
 
     /**
-     * @return (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;
+     * @return (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
      * 
      */
     public Optional<String> capacity() {
@@ -94,8 +64,6 @@ public final class GetDatabaseInstancePlainArgs extends com.pulumi.resources.Inv
     private GetDatabaseInstancePlainArgs() {}
 
     private GetDatabaseInstancePlainArgs(GetDatabaseInstancePlainArgs $) {
-        this.adminPassword = $.adminPassword;
-        this.adminRolename = $.adminRolename;
         this.capacity = $.capacity;
         this.name = $.name;
         this.stopped = $.stopped;
@@ -120,29 +88,7 @@ public final class GetDatabaseInstancePlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param adminPassword (string) - Password for admin user to create. If not provided, no user will be created
-         * 
-         * @return builder
-         * 
-         */
-        public Builder adminPassword(@Nullable String adminPassword) {
-            $.adminPassword = adminPassword;
-            return this;
-        }
-
-        /**
-         * @param adminRolename (string) - Name of the admin role for the instance. If not provided, defaults to &#39;databricks_admin&#39;
-         * 
-         * @return builder
-         * 
-         */
-        public Builder adminRolename(@Nullable String adminRolename) {
-            $.adminRolename = adminRolename;
-            return this;
-        }
-
-        /**
-         * @param capacity (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;
+         * @param capacity (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
          * 
          * @return builder
          * 

@@ -210,6 +210,9 @@ namespace Pulumi.Databricks
         [Output("edition")]
         public Output<string?> Edition { get; private set; } = null!;
 
+        [Output("environment")]
+        public Output<Outputs.PipelineEnvironment?> Environment { get; private set; } = null!;
+
         /// <summary>
         /// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
         /// </summary>
@@ -299,6 +302,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("storage")]
         public Output<string?> Storage { get; private set; } = null!;
+
+        /// <summary>
+        /// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
@@ -442,6 +451,9 @@ namespace Pulumi.Databricks
         [Input("edition")]
         public Input<string>? Edition { get; set; }
 
+        [Input("environment")]
+        public Input<Inputs.PipelineEnvironmentArgs>? Environment { get; set; }
+
         /// <summary>
         /// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
         /// </summary>
@@ -548,6 +560,18 @@ namespace Pulumi.Databricks
         [Input("storage")]
         public Input<string>? Storage { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         /// </summary>
@@ -651,6 +675,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
+
+        [Input("environment")]
+        public Input<Inputs.PipelineEnvironmentGetArgs>? Environment { get; set; }
 
         /// <summary>
         /// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
@@ -757,6 +784,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("storage")]
         public Input<string>? Storage { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.

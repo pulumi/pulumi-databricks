@@ -17,44 +17,14 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     public static final DatabaseInstanceState Empty = new DatabaseInstanceState();
 
     /**
-     * Password for admin user to create. If not provided, no user will be created
-     * 
-     */
-    @Import(name="adminPassword")
-    private @Nullable Output<String> adminPassword;
-
-    /**
-     * @return Password for admin user to create. If not provided, no user will be created
-     * 
-     */
-    public Optional<Output<String>> adminPassword() {
-        return Optional.ofNullable(this.adminPassword);
-    }
-
-    /**
-     * Name of the admin role for the instance. If not provided, defaults to &#39;databricks_admin&#39;
-     * 
-     */
-    @Import(name="adminRolename")
-    private @Nullable Output<String> adminRolename;
-
-    /**
-     * @return Name of the admin role for the instance. If not provided, defaults to &#39;databricks_admin&#39;
-     * 
-     */
-    public Optional<Output<String>> adminRolename() {
-        return Optional.ofNullable(this.adminRolename);
-    }
-
-    /**
-     * The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;
+     * The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
      * 
      */
     @Import(name="capacity")
     private @Nullable Output<String> capacity;
 
     /**
-     * @return The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;
+     * @return The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
      * 
      */
     public Optional<Output<String>> capacity() {
@@ -89,6 +59,25 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> creator() {
         return Optional.ofNullable(this.creator);
+    }
+
+    /**
+     * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    @Import(name="effectiveStopped")
+    private @Nullable Output<Boolean> effectiveStopped;
+
+    /**
+     * @return (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    public Optional<Output<Boolean>> effectiveStopped() {
+        return Optional.ofNullable(this.effectiveStopped);
     }
 
     /**
@@ -137,14 +126,14 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+     * (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+     * @return (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      * 
      */
     public Optional<Output<String>> state() {
@@ -184,11 +173,10 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     private DatabaseInstanceState() {}
 
     private DatabaseInstanceState(DatabaseInstanceState $) {
-        this.adminPassword = $.adminPassword;
-        this.adminRolename = $.adminRolename;
         this.capacity = $.capacity;
         this.creationTime = $.creationTime;
         this.creator = $.creator;
+        this.effectiveStopped = $.effectiveStopped;
         this.name = $.name;
         this.pgVersion = $.pgVersion;
         this.readWriteDns = $.readWriteDns;
@@ -216,49 +204,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param adminPassword Password for admin user to create. If not provided, no user will be created
-         * 
-         * @return builder
-         * 
-         */
-        public Builder adminPassword(@Nullable Output<String> adminPassword) {
-            $.adminPassword = adminPassword;
-            return this;
-        }
-
-        /**
-         * @param adminPassword Password for admin user to create. If not provided, no user will be created
-         * 
-         * @return builder
-         * 
-         */
-        public Builder adminPassword(String adminPassword) {
-            return adminPassword(Output.of(adminPassword));
-        }
-
-        /**
-         * @param adminRolename Name of the admin role for the instance. If not provided, defaults to &#39;databricks_admin&#39;
-         * 
-         * @return builder
-         * 
-         */
-        public Builder adminRolename(@Nullable Output<String> adminRolename) {
-            $.adminRolename = adminRolename;
-            return this;
-        }
-
-        /**
-         * @param adminRolename Name of the admin role for the instance. If not provided, defaults to &#39;databricks_admin&#39;
-         * 
-         * @return builder
-         * 
-         */
-        public Builder adminRolename(String adminRolename) {
-            return adminRolename(Output.of(adminRolename));
-        }
-
-        /**
-         * @param capacity The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;
+         * @param capacity The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
          * 
          * @return builder
          * 
@@ -269,7 +215,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param capacity The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;
+         * @param capacity The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
          * 
          * @return builder
          * 
@@ -318,6 +264,31 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder creator(String creator) {
             return creator(Output.of(creator));
+        }
+
+        /**
+         * @param effectiveStopped (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+         * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+         * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveStopped(@Nullable Output<Boolean> effectiveStopped) {
+            $.effectiveStopped = effectiveStopped;
+            return this;
+        }
+
+        /**
+         * @param effectiveStopped (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+         * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+         * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveStopped(Boolean effectiveStopped) {
+            return effectiveStopped(Output.of(effectiveStopped));
         }
 
         /**
@@ -384,7 +355,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param state (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+         * @param state (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
          * 
          * @return builder
          * 
@@ -395,7 +366,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param state (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+         * @param state (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
          * 
          * @return builder
          * 

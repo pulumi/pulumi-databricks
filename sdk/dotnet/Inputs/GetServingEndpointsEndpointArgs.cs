@@ -45,6 +45,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("creator")]
         public Input<string>? Creator { get; set; }
 
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
         [Input("id")]
         public Input<string>? Id { get; set; }
 

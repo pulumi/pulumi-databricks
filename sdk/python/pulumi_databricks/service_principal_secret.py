@@ -27,6 +27,7 @@ class ServicePrincipalSecretArgs:
                  secret: Optional[pulumi.Input[builtins.str]] = None,
                  secret_hash: Optional[pulumi.Input[builtins.str]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
+                 time_rotating: Optional[pulumi.Input[builtins.str]] = None,
                  update_time: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a ServicePrincipalSecret resource.
@@ -34,9 +35,10 @@ class ServicePrincipalSecretArgs:
         :param pulumi.Input[builtins.str] create_time: UTC time when the secret was created.
         :param pulumi.Input[builtins.str] expire_time: UTC time when the secret will expire. If the field is not present, the secret does not expire.
         :param pulumi.Input[builtins.str] lifetime: The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
-        :param pulumi.Input[builtins.str] secret: Generated secret for the service principal.
+        :param pulumi.Input[builtins.str] secret: **Sensitive** Generated secret for the service principal.
         :param pulumi.Input[builtins.str] secret_hash: Secret Hash.
         :param pulumi.Input[builtins.str] status: Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+        :param pulumi.Input[builtins.str] time_rotating: Changing this argument forces recreation of the secret.
         :param pulumi.Input[builtins.str] update_time: UTC time when the secret was updated.
         """
         pulumi.set(__self__, "service_principal_id", service_principal_id)
@@ -52,6 +54,8 @@ class ServicePrincipalSecretArgs:
             pulumi.set(__self__, "secret_hash", secret_hash)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if time_rotating is not None:
+            pulumi.set(__self__, "time_rotating", time_rotating)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -107,7 +111,7 @@ class ServicePrincipalSecretArgs:
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Generated secret for the service principal.
+        **Sensitive** Generated secret for the service principal.
         """
         return pulumi.get(self, "secret")
 
@@ -140,6 +144,18 @@ class ServicePrincipalSecretArgs:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="timeRotating")
+    def time_rotating(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Changing this argument forces recreation of the secret.
+        """
+        return pulumi.get(self, "time_rotating")
+
+    @time_rotating.setter
+    def time_rotating(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "time_rotating", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -162,16 +178,18 @@ class _ServicePrincipalSecretState:
                  secret_hash: Optional[pulumi.Input[builtins.str]] = None,
                  service_principal_id: Optional[pulumi.Input[builtins.str]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
+                 time_rotating: Optional[pulumi.Input[builtins.str]] = None,
                  update_time: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalSecret resources.
         :param pulumi.Input[builtins.str] create_time: UTC time when the secret was created.
         :param pulumi.Input[builtins.str] expire_time: UTC time when the secret will expire. If the field is not present, the secret does not expire.
         :param pulumi.Input[builtins.str] lifetime: The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
-        :param pulumi.Input[builtins.str] secret: Generated secret for the service principal.
+        :param pulumi.Input[builtins.str] secret: **Sensitive** Generated secret for the service principal.
         :param pulumi.Input[builtins.str] secret_hash: Secret Hash.
         :param pulumi.Input[builtins.str] service_principal_id: SCIM ID of the ServicePrincipal (not application ID).
         :param pulumi.Input[builtins.str] status: Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+        :param pulumi.Input[builtins.str] time_rotating: Changing this argument forces recreation of the secret.
         :param pulumi.Input[builtins.str] update_time: UTC time when the secret was updated.
         """
         if create_time is not None:
@@ -188,6 +206,8 @@ class _ServicePrincipalSecretState:
             pulumi.set(__self__, "service_principal_id", service_principal_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if time_rotating is not None:
+            pulumi.set(__self__, "time_rotating", time_rotating)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -231,7 +251,7 @@ class _ServicePrincipalSecretState:
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Generated secret for the service principal.
+        **Sensitive** Generated secret for the service principal.
         """
         return pulumi.get(self, "secret")
 
@@ -276,6 +296,18 @@ class _ServicePrincipalSecretState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="timeRotating")
+    def time_rotating(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Changing this argument forces recreation of the secret.
+        """
+        return pulumi.get(self, "time_rotating")
+
+    @time_rotating.setter
+    def time_rotating(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "time_rotating", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -301,6 +333,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
                  secret_hash: Optional[pulumi.Input[builtins.str]] = None,
                  service_principal_id: Optional[pulumi.Input[builtins.str]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
+                 time_rotating: Optional[pulumi.Input[builtins.str]] = None,
                  update_time: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
@@ -323,6 +356,19 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         terraform_sp = databricks.ServicePrincipalSecret("terraform_sp", service_principal_id=this["id"])
         ```
 
+        A secret can be automatically rotated by taking a dependency on the `time_rotating` resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumiverse_time as time
+
+        this = time.Rotating("this", rotation_days=30)
+        terraform_sp = databricks.ServicePrincipalSecret("terraform_sp",
+            service_principal_id=this_databricks_service_principal["id"],
+            time_rotating=this.rfc3339.apply(lambda rfc3339: f"Pulumi (created: {rfc3339})"))
+        ```
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -334,10 +380,11 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] create_time: UTC time when the secret was created.
         :param pulumi.Input[builtins.str] expire_time: UTC time when the secret will expire. If the field is not present, the secret does not expire.
         :param pulumi.Input[builtins.str] lifetime: The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
-        :param pulumi.Input[builtins.str] secret: Generated secret for the service principal.
+        :param pulumi.Input[builtins.str] secret: **Sensitive** Generated secret for the service principal.
         :param pulumi.Input[builtins.str] secret_hash: Secret Hash.
         :param pulumi.Input[builtins.str] service_principal_id: SCIM ID of the ServicePrincipal (not application ID).
         :param pulumi.Input[builtins.str] status: Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+        :param pulumi.Input[builtins.str] time_rotating: Changing this argument forces recreation of the secret.
         :param pulumi.Input[builtins.str] update_time: UTC time when the secret was updated.
         """
         ...
@@ -364,6 +411,19 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         terraform_sp = databricks.ServicePrincipalSecret("terraform_sp", service_principal_id=this["id"])
+        ```
+
+        A secret can be automatically rotated by taking a dependency on the `time_rotating` resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumiverse_time as time
+
+        this = time.Rotating("this", rotation_days=30)
+        terraform_sp = databricks.ServicePrincipalSecret("terraform_sp",
+            service_principal_id=this_databricks_service_principal["id"],
+            time_rotating=this.rfc3339.apply(lambda rfc3339: f"Pulumi (created: {rfc3339})"))
         ```
 
         ## Related Resources
@@ -394,6 +454,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
                  secret_hash: Optional[pulumi.Input[builtins.str]] = None,
                  service_principal_id: Optional[pulumi.Input[builtins.str]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
+                 time_rotating: Optional[pulumi.Input[builtins.str]] = None,
                  update_time: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -413,6 +474,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
                 raise TypeError("Missing required property 'service_principal_id'")
             __props__.__dict__["service_principal_id"] = service_principal_id
             __props__.__dict__["status"] = status
+            __props__.__dict__["time_rotating"] = time_rotating
             __props__.__dict__["update_time"] = update_time
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -433,6 +495,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
             secret_hash: Optional[pulumi.Input[builtins.str]] = None,
             service_principal_id: Optional[pulumi.Input[builtins.str]] = None,
             status: Optional[pulumi.Input[builtins.str]] = None,
+            time_rotating: Optional[pulumi.Input[builtins.str]] = None,
             update_time: Optional[pulumi.Input[builtins.str]] = None) -> 'ServicePrincipalSecret':
         """
         Get an existing ServicePrincipalSecret resource's state with the given name, id, and optional extra
@@ -444,10 +507,11 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] create_time: UTC time when the secret was created.
         :param pulumi.Input[builtins.str] expire_time: UTC time when the secret will expire. If the field is not present, the secret does not expire.
         :param pulumi.Input[builtins.str] lifetime: The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
-        :param pulumi.Input[builtins.str] secret: Generated secret for the service principal.
+        :param pulumi.Input[builtins.str] secret: **Sensitive** Generated secret for the service principal.
         :param pulumi.Input[builtins.str] secret_hash: Secret Hash.
         :param pulumi.Input[builtins.str] service_principal_id: SCIM ID of the ServicePrincipal (not application ID).
         :param pulumi.Input[builtins.str] status: Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
+        :param pulumi.Input[builtins.str] time_rotating: Changing this argument forces recreation of the secret.
         :param pulumi.Input[builtins.str] update_time: UTC time when the secret was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -461,6 +525,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         __props__.__dict__["secret_hash"] = secret_hash
         __props__.__dict__["service_principal_id"] = service_principal_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["time_rotating"] = time_rotating
         __props__.__dict__["update_time"] = update_time
         return ServicePrincipalSecret(resource_name, opts=opts, __props__=__props__)
 
@@ -492,7 +557,7 @@ class ServicePrincipalSecret(pulumi.CustomResource):
     @pulumi.getter
     def secret(self) -> pulumi.Output[builtins.str]:
         """
-        Generated secret for the service principal.
+        **Sensitive** Generated secret for the service principal.
         """
         return pulumi.get(self, "secret")
 
@@ -519,6 +584,14 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="timeRotating")
+    def time_rotating(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Changing this argument forces recreation of the secret.
+        """
+        return pulumi.get(self, "time_rotating")
 
     @property
     @pulumi.getter(name="updateTime")

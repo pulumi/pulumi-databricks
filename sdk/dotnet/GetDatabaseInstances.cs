@@ -11,12 +11,90 @@ namespace Pulumi.Databricks
 {
     public static class GetDatabaseInstances
     {
+        /// <summary>
+        /// This data source can be used to fetch the list of Database Instances within the workspace.
+        /// The list can then be accessed via the data object's `database_instances` field.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting a list of all Database Instances:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetDatabaseInstances.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allDatabaseInstances"] = all.Apply(getDatabaseInstancesResult =&gt; getDatabaseInstancesResult.DatabaseInstances),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetDatabaseInstancesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseInstancesResult>("databricks:index/getDatabaseInstances:getDatabaseInstances", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// This data source can be used to fetch the list of Database Instances within the workspace.
+        /// The list can then be accessed via the data object's `database_instances` field.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting a list of all Database Instances:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetDatabaseInstances.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allDatabaseInstances"] = all.Apply(getDatabaseInstancesResult =&gt; getDatabaseInstancesResult.DatabaseInstances),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetDatabaseInstancesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseInstancesResult>("databricks:index/getDatabaseInstances:getDatabaseInstances", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// This data source can be used to fetch the list of Database Instances within the workspace.
+        /// The list can then be accessed via the data object's `database_instances` field.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting a list of all Database Instances:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetDatabaseInstances.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allDatabaseInstances"] = all.Apply(getDatabaseInstancesResult =&gt; getDatabaseInstancesResult.DatabaseInstances),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetDatabaseInstancesResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseInstancesResult>("databricks:index/getDatabaseInstances:getDatabaseInstances", InvokeArgs.Empty, options.WithDefaults());
     }

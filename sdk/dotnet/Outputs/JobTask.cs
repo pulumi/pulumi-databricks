@@ -16,6 +16,8 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.JobTaskCleanRoomsNotebookTask? CleanRoomsNotebookTask;
         public readonly Outputs.JobTaskConditionTask? ConditionTask;
         public readonly Outputs.JobTaskDashboardTask? DashboardTask;
+        public readonly Outputs.JobTaskDbtCloudTask? DbtCloudTask;
+        public readonly Outputs.JobTaskDbtPlatformTask? DbtPlatformTask;
         public readonly Outputs.JobTaskDbtTask? DbtTask;
         /// <summary>
         /// block specifying dependency(-ies) for a given task.
@@ -112,6 +114,10 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskDashboardTask? dashboardTask,
 
+            Outputs.JobTaskDbtCloudTask? dbtCloudTask,
+
+            Outputs.JobTaskDbtPlatformTask? dbtPlatformTask,
+
             Outputs.JobTaskDbtTask? dbtTask,
 
             ImmutableArray<Outputs.JobTaskDependsOn> dependsOns,
@@ -175,6 +181,8 @@ namespace Pulumi.Databricks.Outputs
             CleanRoomsNotebookTask = cleanRoomsNotebookTask;
             ConditionTask = conditionTask;
             DashboardTask = dashboardTask;
+            DbtCloudTask = dbtCloudTask;
+            DbtPlatformTask = dbtPlatformTask;
             DbtTask = dbtTask;
             DependsOns = dependsOns;
             Description = description;

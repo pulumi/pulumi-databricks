@@ -52,30 +52,22 @@ public final class AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinat
         return Optional.ofNullable(this.bucketName);
     }
 
-    /**
-     * The region of the S3 bucket
-     * 
-     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
-    /**
-     * @return The region of the S3 bucket
-     * 
-     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
 
     /**
-     * The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+     * The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
      * 
      */
     @Import(name="storageDestinationType")
     private @Nullable Output<String> storageDestinationType;
 
     /**
-     * @return The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+     * @return The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
      * 
      */
     public Optional<Output<String>> storageDestinationType() {
@@ -161,29 +153,17 @@ public final class AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinat
             return bucketName(Output.of(bucketName));
         }
 
-        /**
-         * @param region The region of the S3 bucket
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
-        /**
-         * @param region The region of the S3 bucket
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(String region) {
             return region(Output.of(region));
         }
 
         /**
-         * @param storageDestinationType The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+         * @param storageDestinationType The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
          * 
          * @return builder
          * 
@@ -194,7 +174,7 @@ public final class AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinat
         }
 
         /**
-         * @param storageDestinationType The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+         * @param storageDestinationType The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
          * 
          * @return builder
          * 

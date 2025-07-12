@@ -5,9 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Database Instances are managed Postgres instances, composed of a primary Postgres compute instance and 0 or more read replica instances.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.DatabaseInstance("this", {
+ *     name: "my-database-instance",
+ *     capacity: "CU_2",
+ * });
+ * ```
+ *
  * ## Import
  *
- * As of terraform v1.5, resources can be imported through configuration.
+ * As of Pulumi v1.5, resources can be imported through configuration.
  *
  * hcl
  *
@@ -19,7 +33,7 @@ import * as utilities from "./utilities";
  *
  * }
  *
- * If you are using an older version of terraform, you can import the resource using cli as follows:
+ * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
  * $ pulumi import databricks:index/databaseInstance:DatabaseInstance databricks_database_instance name
@@ -54,15 +68,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
     }
 
     /**
-     * Password for admin user to create. If not provided, no user will be created
-     */
-    public readonly adminPassword!: pulumi.Output<string | undefined>;
-    /**
-     * Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-     */
-    public readonly adminRolename!: pulumi.Output<string | undefined>;
-    /**
-     * The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+     * The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
     public readonly capacity!: pulumi.Output<string | undefined>;
     /**
@@ -73,6 +79,12 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * (string) - The email of the creator of the instance
      */
     public /*out*/ readonly creator!: pulumi.Output<string>;
+    /**
+     * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
+     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     */
+    public /*out*/ readonly effectiveStopped!: pulumi.Output<boolean>;
     /**
      * The name of the instance. This is the unique identifier for the instance
      */
@@ -86,7 +98,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly readWriteDns!: pulumi.Output<string>;
     /**
-     * (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+     * (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -111,11 +123,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseInstanceState | undefined;
-            resourceInputs["adminPassword"] = state ? state.adminPassword : undefined;
-            resourceInputs["adminRolename"] = state ? state.adminRolename : undefined;
             resourceInputs["capacity"] = state ? state.capacity : undefined;
             resourceInputs["creationTime"] = state ? state.creationTime : undefined;
             resourceInputs["creator"] = state ? state.creator : undefined;
+            resourceInputs["effectiveStopped"] = state ? state.effectiveStopped : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["pgVersion"] = state ? state.pgVersion : undefined;
             resourceInputs["readWriteDns"] = state ? state.readWriteDns : undefined;
@@ -124,13 +135,12 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["uid"] = state ? state.uid : undefined;
         } else {
             const args = argsOrState as DatabaseInstanceArgs | undefined;
-            resourceInputs["adminPassword"] = args ? args.adminPassword : undefined;
-            resourceInputs["adminRolename"] = args ? args.adminRolename : undefined;
             resourceInputs["capacity"] = args ? args.capacity : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["stopped"] = args ? args.stopped : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
+            resourceInputs["effectiveStopped"] = undefined /*out*/;
             resourceInputs["pgVersion"] = undefined /*out*/;
             resourceInputs["readWriteDns"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -146,15 +156,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
  */
 export interface DatabaseInstanceState {
     /**
-     * Password for admin user to create. If not provided, no user will be created
-     */
-    adminPassword?: pulumi.Input<string>;
-    /**
-     * Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-     */
-    adminRolename?: pulumi.Input<string>;
-    /**
-     * The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+     * The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
     capacity?: pulumi.Input<string>;
     /**
@@ -165,6 +167,12 @@ export interface DatabaseInstanceState {
      * (string) - The email of the creator of the instance
      */
     creator?: pulumi.Input<string>;
+    /**
+     * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
+     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     */
+    effectiveStopped?: pulumi.Input<boolean>;
     /**
      * The name of the instance. This is the unique identifier for the instance
      */
@@ -178,7 +186,7 @@ export interface DatabaseInstanceState {
      */
     readWriteDns?: pulumi.Input<string>;
     /**
-     * (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+     * (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     state?: pulumi.Input<string>;
     /**
@@ -196,15 +204,7 @@ export interface DatabaseInstanceState {
  */
 export interface DatabaseInstanceArgs {
     /**
-     * Password for admin user to create. If not provided, no user will be created
-     */
-    adminPassword?: pulumi.Input<string>;
-    /**
-     * Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-     */
-    adminRolename?: pulumi.Input<string>;
-    /**
-     * The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+     * The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
     capacity?: pulumi.Input<string>;
     /**

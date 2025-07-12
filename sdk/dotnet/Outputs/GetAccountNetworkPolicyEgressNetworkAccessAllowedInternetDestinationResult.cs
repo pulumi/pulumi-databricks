@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Destination;
         /// <summary>
-        /// (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+        /// (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
         /// </summary>
         public readonly string? InternetDestinationType;
 

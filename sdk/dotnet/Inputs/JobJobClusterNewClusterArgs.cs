@@ -111,6 +111,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
 
+        [Input("remoteDiskThroughput")]
+        public Input<int>? RemoteDiskThroughput { get; set; }
+
         [Input("runtimeEngine")]
         public Input<string>? RuntimeEngine { get; set; }
 
@@ -143,6 +146,9 @@ namespace Pulumi.Databricks.Inputs
             get => _sshPublicKeys ?? (_sshPublicKeys = new InputList<string>());
             set => _sshPublicKeys = value;
         }
+
+        [Input("totalInitialRemoteDiskSize")]
+        public Input<int>? TotalInitialRemoteDiskSize { get; set; }
 
         [Input("useMlRuntime")]
         public Input<bool>? UseMlRuntime { get; set; }

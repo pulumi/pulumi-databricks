@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ServicePrincipalSecretState;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -52,6 +53,48 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var terraformSp = new ServicePrincipalSecret("terraformSp", ServicePrincipalSecretArgs.builder()
  *             .servicePrincipalId(this_.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * A secret can be automatically rotated by taking a dependency on the `time_rotating` resource:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumiverse.time.Rotating;
+ * import com.pulumiverse.time.RotatingArgs;
+ * import com.pulumi.databricks.ServicePrincipalSecret;
+ * import com.pulumi.databricks.ServicePrincipalSecretArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new Rotating("this", RotatingArgs.builder()
+ *             .rotationDays(30)
+ *             .build());
+ * 
+ *         var terraformSp = new ServicePrincipalSecret("terraformSp", ServicePrincipalSecretArgs.builder()
+ *             .servicePrincipalId(thisDatabricksServicePrincipal.id())
+ *             .timeRotating(this_.rfc3339().applyValue(_rfc3339 -> String.format("Pulumi (created: %s)", _rfc3339)))
  *             .build());
  * 
  *     }
@@ -112,14 +155,14 @@ public class ServicePrincipalSecret extends com.pulumi.resources.CustomResource 
         return this.lifetime;
     }
     /**
-     * Generated secret for the service principal.
+     * **Sensitive** Generated secret for the service principal.
      * 
      */
     @Export(name="secret", refs={String.class}, tree="[0]")
     private Output<String> secret;
 
     /**
-     * @return Generated secret for the service principal.
+     * @return **Sensitive** Generated secret for the service principal.
      * 
      */
     public Output<String> secret() {
@@ -166,6 +209,20 @@ public class ServicePrincipalSecret extends com.pulumi.resources.CustomResource 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * Changing this argument forces recreation of the secret.
+     * 
+     */
+    @Export(name="timeRotating", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> timeRotating;
+
+    /**
+     * @return Changing this argument forces recreation of the secret.
+     * 
+     */
+    public Output<Optional<String>> timeRotating() {
+        return Codegen.optional(this.timeRotating);
     }
     /**
      * UTC time when the secret was updated.

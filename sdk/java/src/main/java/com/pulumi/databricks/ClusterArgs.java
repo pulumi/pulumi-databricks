@@ -573,6 +573,13 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.policyId);
     }
 
+    @Import(name="remoteDiskThroughput")
+    private @Nullable Output<Integer> remoteDiskThroughput;
+
+    public Optional<Output<Integer>> remoteDiskThroughput() {
+        return Optional.ofNullable(this.remoteDiskThroughput);
+    }
+
     /**
      * The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
      * 
@@ -667,6 +674,13 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sshPublicKeys);
     }
 
+    @Import(name="totalInitialRemoteDiskSize")
+    private @Nullable Output<Integer> totalInitialRemoteDiskSize;
+
+    public Optional<Output<Integer>> totalInitialRemoteDiskSize() {
+        return Optional.ofNullable(this.totalInitialRemoteDiskSize);
+    }
+
     /**
      * Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
      * 
@@ -719,12 +733,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.nodeTypeId = $.nodeTypeId;
         this.numWorkers = $.numWorkers;
         this.policyId = $.policyId;
+        this.remoteDiskThroughput = $.remoteDiskThroughput;
         this.runtimeEngine = $.runtimeEngine;
         this.singleUserName = $.singleUserName;
         this.sparkConf = $.sparkConf;
         this.sparkEnvVars = $.sparkEnvVars;
         this.sparkVersion = $.sparkVersion;
         this.sshPublicKeys = $.sshPublicKeys;
+        this.totalInitialRemoteDiskSize = $.totalInitialRemoteDiskSize;
         this.useMlRuntime = $.useMlRuntime;
         this.workloadType = $.workloadType;
     }
@@ -1428,6 +1444,15 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
             return policyId(Output.of(policyId));
         }
 
+        public Builder remoteDiskThroughput(@Nullable Output<Integer> remoteDiskThroughput) {
+            $.remoteDiskThroughput = remoteDiskThroughput;
+            return this;
+        }
+
+        public Builder remoteDiskThroughput(Integer remoteDiskThroughput) {
+            return remoteDiskThroughput(Output.of(remoteDiskThroughput));
+        }
+
         /**
          * @param runtimeEngine The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
          * 
@@ -1566,6 +1591,15 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sshPublicKeys(String... sshPublicKeys) {
             return sshPublicKeys(List.of(sshPublicKeys));
+        }
+
+        public Builder totalInitialRemoteDiskSize(@Nullable Output<Integer> totalInitialRemoteDiskSize) {
+            $.totalInitialRemoteDiskSize = totalInitialRemoteDiskSize;
+            return this;
+        }
+
+        public Builder totalInitialRemoteDiskSize(Integer totalInitialRemoteDiskSize) {
+            return totalInitialRemoteDiskSize(Output.of(totalInitialRemoteDiskSize));
         }
 
         /**

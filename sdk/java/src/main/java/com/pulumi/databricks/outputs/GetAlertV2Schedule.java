@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAlertV2Schedule {
     /**
-     * @return (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     * @return (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
      * 
      */
     private @Nullable String pauseStatus;
@@ -32,7 +32,7 @@ public final class GetAlertV2Schedule {
 
     private GetAlertV2Schedule() {}
     /**
-     * @return (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     * @return (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
      * 
      */
     public Optional<String> pauseStatus() {

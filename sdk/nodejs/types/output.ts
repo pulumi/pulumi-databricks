@@ -51,7 +51,7 @@ export interface AccountNetworkPolicyEgressNetworkAccess {
      */
     policyEnforcement?: outputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement;
     /**
-     * The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+     * The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
      */
     restrictionMode: string;
 }
@@ -62,7 +62,7 @@ export interface AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinati
      */
     destination?: string;
     /**
-     * The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+     * The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
      */
     internetDestinationType?: string;
 }
@@ -77,12 +77,9 @@ export interface AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinatio
      */
     azureStorageService?: string;
     bucketName?: string;
-    /**
-     * The region of the S3 bucket
-     */
     region?: string;
     /**
-     * The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+     * The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
      */
     storageDestinationType?: string;
 }
@@ -96,7 +93,7 @@ export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
     /**
      * The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
      * while DRY_RUN only logs violations without blocking. When not specified,
-     * defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+     * defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
      */
     enforcementMode?: string;
 }
@@ -172,11 +169,11 @@ export interface AlertConditionThresholdValue {
 
 export interface AlertV2Evaluation {
     /**
-     * Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     * Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      */
     comparisonOperator?: string;
     /**
-     * Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     emptyResultState?: string;
     /**
@@ -192,7 +189,7 @@ export interface AlertV2Evaluation {
      */
     source?: outputs.AlertV2EvaluationSource;
     /**
-     * (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     state: string;
     /**
@@ -220,7 +217,7 @@ export interface AlertV2EvaluationNotificationSubscription {
 
 export interface AlertV2EvaluationSource {
     /**
-     * . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     display?: string;
@@ -234,7 +231,7 @@ export interface AlertV2EvaluationThreshold {
 
 export interface AlertV2EvaluationThresholdColumn {
     /**
-     * . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     display?: string;
@@ -249,7 +246,7 @@ export interface AlertV2EvaluationThresholdValue {
 
 export interface AlertV2Schedule {
     /**
-     * Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     * Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
      */
     pauseStatus?: string;
     /**
@@ -384,6 +381,9 @@ export interface AppResource {
      * attribute
      */
     sqlWarehouse?: outputs.AppResourceSqlWarehouse;
+    /**
+     * attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
+     */
     ucSecurable?: outputs.AppResourceUcSecurable;
 }
 
@@ -436,8 +436,17 @@ export interface AppResourceSqlWarehouse {
 }
 
 export interface AppResourceUcSecurable {
+    /**
+     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     */
     permission: string;
+    /**
+     * the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     */
     securableFullName: string;
+    /**
+     * the type of UC securable, i.e. `VOLUME`.
+     */
     securableType: string;
 }
 
@@ -566,11 +575,11 @@ export interface BudgetPolicyCustomTag {
      * The key of the tag.
      * - Must be unique among all custom tags of the same policy
      * - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-     * these tags are preserved.
+     * these tags are preserved
      */
     key: string;
     /**
-     * The value of the tag.
+     * The value of the tag
      */
     value?: string;
 }
@@ -1251,7 +1260,7 @@ export interface GetAccountNetworkPoliciesItemEgressNetworkAccess {
      */
     policyEnforcement?: outputs.GetAccountNetworkPoliciesItemEgressNetworkAccessPolicyEnforcement;
     /**
-     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
      */
     restrictionMode: string;
 }
@@ -1262,7 +1271,7 @@ export interface GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedInternet
      */
     destination?: string;
     /**
-     * (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+     * (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
      */
     internetDestinationType?: string;
 }
@@ -1281,11 +1290,11 @@ export interface GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedStorageD
      */
     bucketName?: string;
     /**
-     * (string) - The region of the S3 bucket
+     * (string) -
      */
     region?: string;
     /**
-     * (string) - The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+     * (string) - The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
      */
     storageDestinationType?: string;
 }
@@ -1299,7 +1308,7 @@ export interface GetAccountNetworkPoliciesItemEgressNetworkAccessPolicyEnforceme
     /**
      * (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
      * while DRY_RUN only logs violations without blocking. When not specified,
-     * defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+     * defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
      */
     enforcementMode?: string;
 }
@@ -1325,7 +1334,7 @@ export interface GetAccountNetworkPolicyEgressNetworkAccess {
      */
     policyEnforcement?: outputs.GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement;
     /**
-     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
      */
     restrictionMode: string;
 }
@@ -1336,7 +1345,7 @@ export interface GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestin
      */
     destination?: string;
     /**
-     * (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+     * (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
      */
     internetDestinationType?: string;
 }
@@ -1355,11 +1364,11 @@ export interface GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestina
      */
     bucketName?: string;
     /**
-     * (string) - The region of the S3 bucket
+     * (string) -
      */
     region?: string;
     /**
-     * (string) - The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+     * (string) - The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
      */
     storageDestinationType?: string;
 }
@@ -1373,18 +1382,18 @@ export interface GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
     /**
      * (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
      * while DRY_RUN only logs violations without blocking. When not specified,
-     * defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+     * defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
      */
     enforcementMode?: string;
 }
 
 export interface GetAlertV2Evaluation {
     /**
-     * (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     * (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      */
     comparisonOperator?: string;
     /**
-     * (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * (string) - Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     emptyResultState?: string;
     /**
@@ -1400,7 +1409,7 @@ export interface GetAlertV2Evaluation {
      */
     source?: outputs.GetAlertV2EvaluationSource;
     /**
-     * (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     state: string;
     /**
@@ -1437,7 +1446,7 @@ export interface GetAlertV2EvaluationNotificationSubscription {
 
 export interface GetAlertV2EvaluationSource {
     /**
-     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     /**
@@ -1463,7 +1472,7 @@ export interface GetAlertV2EvaluationThreshold {
 
 export interface GetAlertV2EvaluationThresholdColumn {
     /**
-     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     /**
@@ -1493,7 +1502,7 @@ export interface GetAlertV2EvaluationThresholdValue {
 
 export interface GetAlertV2Schedule {
     /**
-     * (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     * (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
      */
     pauseStatus?: string;
     /**
@@ -1535,7 +1544,7 @@ export interface GetAlertsV2Result {
      */
     id: string;
     /**
-     * (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
      */
     lifecycleState: string;
     /**
@@ -1570,11 +1579,11 @@ export interface GetAlertsV2Result {
 
 export interface GetAlertsV2ResultEvaluation {
     /**
-     * (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     * (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      */
     comparisonOperator?: string;
     /**
-     * (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * (string) - Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     emptyResultState?: string;
     /**
@@ -1590,7 +1599,7 @@ export interface GetAlertsV2ResultEvaluation {
      */
     source?: outputs.GetAlertsV2ResultEvaluationSource;
     /**
-     * (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     state: string;
     /**
@@ -1627,7 +1636,7 @@ export interface GetAlertsV2ResultEvaluationNotificationSubscription {
 
 export interface GetAlertsV2ResultEvaluationSource {
     /**
-     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     /**
@@ -1653,7 +1662,7 @@ export interface GetAlertsV2ResultEvaluationThreshold {
 
 export interface GetAlertsV2ResultEvaluationThresholdColumn {
     /**
-     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     /**
@@ -1683,7 +1692,7 @@ export interface GetAlertsV2ResultEvaluationThresholdValue {
 
 export interface GetAlertsV2ResultSchedule {
     /**
-     * (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     * (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
      */
     pauseStatus?: string;
     /**
@@ -1893,6 +1902,9 @@ export interface GetAppAppResource {
      * attribute
      */
     sqlWarehouse?: outputs.GetAppAppResourceSqlWarehouse;
+    /**
+     * attribute
+     */
     ucSecurable?: outputs.GetAppAppResourceUcSecurable;
 }
 
@@ -1902,7 +1914,7 @@ export interface GetAppAppResourceJob {
      */
     id: string;
     /**
-     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
      */
     permission: string;
 }
@@ -1913,7 +1925,7 @@ export interface GetAppAppResourceSecret {
      */
     key: string;
     /**
-     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
      */
     permission: string;
     /**
@@ -1928,7 +1940,7 @@ export interface GetAppAppResourceServingEndpoint {
      */
     name: string;
     /**
-     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
      */
     permission: string;
 }
@@ -1939,17 +1951,23 @@ export interface GetAppAppResourceSqlWarehouse {
      */
     id: string;
     /**
-     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
      */
     permission: string;
 }
 
 export interface GetAppAppResourceUcSecurable {
     /**
-     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
      */
     permission: string;
+    /**
+     * the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     */
     securableFullName: string;
+    /**
+     * the type of UC securable, i.e. `VOLUME`.
+     */
     securableType: string;
 }
 
@@ -2147,6 +2165,9 @@ export interface GetAppsAppResource {
      * attribute
      */
     sqlWarehouse?: outputs.GetAppsAppResourceSqlWarehouse;
+    /**
+     * attribute
+     */
     ucSecurable?: outputs.GetAppsAppResourceUcSecurable;
 }
 
@@ -2156,7 +2177,7 @@ export interface GetAppsAppResourceJob {
      */
     id: string;
     /**
-     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
      */
     permission: string;
 }
@@ -2167,7 +2188,7 @@ export interface GetAppsAppResourceSecret {
      */
     key: string;
     /**
-     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
      */
     permission: string;
     /**
@@ -2182,7 +2203,7 @@ export interface GetAppsAppResourceServingEndpoint {
      */
     name: string;
     /**
-     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
      */
     permission: string;
 }
@@ -2193,17 +2214,23 @@ export interface GetAppsAppResourceSqlWarehouse {
      */
     id: string;
     /**
-     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
      */
     permission: string;
 }
 
 export interface GetAppsAppResourceUcSecurable {
     /**
-     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
      */
     permission: string;
+    /**
+     * the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     */
     securableFullName: string;
+    /**
+     * the type of UC securable, i.e. `VOLUME`.
+     */
     securableType: string;
 }
 
@@ -2235,11 +2262,11 @@ export interface GetBudgetPoliciesPolicyCustomTag {
      * (string) - The key of the tag.
      * - Must be unique among all custom tags of the same policy
      * - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-     * these tags are preserved.
+     * these tags are preserved
      */
     key: string;
     /**
-     * (string) - The value of the tag.
+     * (string) - The value of the tag
      */
     value?: string;
 }
@@ -2249,11 +2276,11 @@ export interface GetBudgetPolicyCustomTag {
      * (string) - The key of the tag.
      * - Must be unique among all custom tags of the same policy
      * - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-     * these tags are preserved.
+     * these tags are preserved
      */
     key: string;
     /**
-     * (string) - The value of the tag.
+     * (string) - The value of the tag
      */
     value?: string;
 }
@@ -2427,6 +2454,7 @@ export interface GetClusterClusterInfo {
      * Identifier of Cluster Policy to validate cluster and preset certain defaults.
      */
     policyId?: string;
+    remoteDiskThroughput?: number;
     /**
      * The type of runtime of the cluster
      */
@@ -2458,6 +2486,7 @@ export interface GetClusterClusterInfo {
     stateMessage?: string;
     terminatedTime?: number;
     terminationReason?: outputs.GetClusterClusterInfoTerminationReason;
+    totalInitialRemoteDiskSize?: number;
     useMlRuntime?: boolean;
     workloadType?: outputs.GetClusterClusterInfoWorkloadType;
 }
@@ -2674,6 +2703,7 @@ export interface GetClusterClusterInfoSpec {
      * Identifier of Cluster Policy to validate cluster and preset certain defaults.
      */
     policyId?: string;
+    remoteDiskThroughput?: number;
     /**
      * The type of runtime of the cluster
      */
@@ -2698,6 +2728,7 @@ export interface GetClusterClusterInfoSpec {
      * SSH public key contents that will be added to each Spark node in this cluster.
      */
     sshPublicKeys?: string[];
+    totalInitialRemoteDiskSize?: number;
     useMlRuntime?: boolean;
     workloadType?: outputs.GetClusterClusterInfoSpecWorkloadType;
 }
@@ -2999,15 +3030,7 @@ export interface GetDashboardsDashboard {
 
 export interface GetDatabaseInstancesDatabaseInstance {
     /**
-     * (string) - Password for admin user to create. If not provided, no user will be created
-     */
-    adminPassword?: string;
-    /**
-     * (string) - Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-     */
-    adminRolename?: string;
-    /**
-     * (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+     * (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
     capacity?: string;
     /**
@@ -3018,6 +3041,12 @@ export interface GetDatabaseInstancesDatabaseInstance {
      * (string) - The email of the creator of the instance
      */
     creator: string;
+    /**
+     * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
+     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     */
+    effectiveStopped: boolean;
     /**
      * (string) - The name of the instance. This is the unique identifier for the instance
      */
@@ -3031,7 +3060,7 @@ export interface GetDatabaseInstancesDatabaseInstance {
      */
     readWriteDns: string;
     /**
-     * (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+     * (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     state: string;
     /**
@@ -3610,7 +3639,7 @@ export interface GetJobJobSettingsSettingsEnvironment {
 }
 
 export interface GetJobJobSettingsSettingsEnvironmentSpec {
-    client: string;
+    client?: string;
     dependencies?: string[];
     environmentVersion?: string;
     jarDependencies?: string[];
@@ -5119,10 +5148,51 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureSer
 }
 
 export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRules {
+    awsPrivateEndpointRules?: outputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule[];
     /**
      * Array of private endpoint rule objects.
      */
     azurePrivateEndpointRules?: outputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule[];
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule {
+    /**
+     * The Databricks account ID associated with this network configuration.
+     */
+    accountId?: string;
+    /**
+     * The current status of this private endpoint.
+     */
+    connectionState?: string;
+    /**
+     * Time in epoch milliseconds when this object was created.
+     */
+    creationTime?: number;
+    /**
+     * Whether this private endpoint is deactivated.
+     */
+    deactivated?: boolean;
+    /**
+     * Time in epoch milliseconds when this object was deactivated.
+     */
+    deactivatedAt?: number;
+    domainNames?: string[];
+    enabled?: boolean;
+    endpointService?: string;
+    /**
+     * The Databricks network connectivity configuration ID.
+     */
+    networkConnectivityConfigId?: string;
+    resourceNames?: string[];
+    /**
+     * The ID of a private endpoint rule.
+     */
+    ruleId?: string;
+    /**
+     * Time in epoch milliseconds when the network was updated.
+     */
+    updatedTime?: number;
+    vpcEndpointId?: string;
 }
 
 export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
@@ -5190,6 +5260,66 @@ export interface GetNotificationDestinationsNotificationDestination {
      * The unique ID of the Notification Destination.
      */
     id?: string;
+}
+
+export interface GetOnlineStoresOnlineStore {
+    /**
+     * (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+     */
+    capacity?: string;
+    /**
+     * (string) - The timestamp when the online store was created
+     */
+    creationTime: string;
+    /**
+     * (string) - The email of the creator of the online store
+     */
+    creator: string;
+    /**
+     * (string) - The name of the online store. This is the unique identifier for the online store
+     */
+    name: string;
+    /**
+     * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
+     */
+    state: string;
+}
+
+export interface GetQualityMonitorV2AnomalyDetectionConfig {
+    /**
+     * (string) - Run id of the last run of the workflow
+     */
+    lastRunId: string;
+    /**
+     * (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
+     */
+    latestRunStatus: string;
+}
+
+export interface GetQualityMonitorsV2QualityMonitor {
+    /**
+     * (AnomalyDetectionConfig) -
+     */
+    anomalyDetectionConfig: outputs.GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfig;
+    /**
+     * (string) - The uuid of the request object. For example, schema id
+     */
+    objectId: string;
+    /**
+     * (string) - The type of the monitored object. Can be one of the following: schema
+     */
+    objectType: string;
+}
+
+export interface GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfig {
+    /**
+     * (string) - Run id of the last run of the workflow
+     */
+    lastRunId: string;
+    /**
+     * (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
+     */
+    latestRunStatus: string;
 }
 
 export interface GetRecipientFederationPoliciesPolicy {
@@ -5521,7 +5651,7 @@ export interface GetSchemaSchemaInfo {
      */
     properties?: {[key: string]: string};
     /**
-     * the unique identifier of the volume
+     * the unique identifier of the schema
      */
     schemaId?: string;
     /**
@@ -5560,6 +5690,7 @@ export interface GetServingEndpointsEndpoint {
     configs?: outputs.GetServingEndpointsEndpointConfig[];
     creationTimestamp?: number;
     creator?: string;
+    description?: string;
     id?: string;
     lastUpdatedTimestamp?: number;
     /**
@@ -6416,7 +6547,7 @@ export interface JobEnvironmentSpec {
     /**
      * client version used by the environment.
      */
-    client: string;
+    client?: string;
     /**
      * List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
      */
@@ -6522,12 +6653,14 @@ export interface JobJobClusterNewCluster {
     nodeTypeId: string;
     numWorkers?: number;
     policyId?: string;
+    remoteDiskThroughput?: number;
     runtimeEngine?: string;
     singleUserName?: string;
     sparkConf?: {[key: string]: string};
     sparkEnvVars?: {[key: string]: string};
     sparkVersion?: string;
     sshPublicKeys?: string[];
+    totalInitialRemoteDiskSize?: number;
     useMlRuntime?: boolean;
     /**
      * isn't supported
@@ -6762,12 +6895,14 @@ export interface JobNewCluster {
     nodeTypeId: string;
     numWorkers?: number;
     policyId?: string;
+    remoteDiskThroughput?: number;
     runtimeEngine?: string;
     singleUserName?: string;
     sparkConf?: {[key: string]: string};
     sparkEnvVars?: {[key: string]: string};
     sparkVersion?: string;
     sshPublicKeys?: string[];
+    totalInitialRemoteDiskSize?: number;
     useMlRuntime?: boolean;
     /**
      * isn't supported
@@ -7119,6 +7254,8 @@ export interface JobTask {
     cleanRoomsNotebookTask?: outputs.JobTaskCleanRoomsNotebookTask;
     conditionTask?: outputs.JobTaskConditionTask;
     dashboardTask?: outputs.JobTaskDashboardTask;
+    dbtCloudTask?: outputs.JobTaskDbtCloudTask;
+    dbtPlatformTask?: outputs.JobTaskDbtPlatformTask;
     dbtTask?: outputs.JobTaskDbtTask;
     /**
      * block specifying dependency(-ies) for a given task.
@@ -7285,6 +7422,22 @@ export interface JobTaskDashboardTaskSubscriptionSubscriber {
     userName?: string;
 }
 
+export interface JobTaskDbtCloudTask {
+    /**
+     * The resource name of the UC connection to authenticate from Databricks to Power BI
+     */
+    connectionResourceName?: string;
+    dbtCloudJobId?: number;
+}
+
+export interface JobTaskDbtPlatformTask {
+    /**
+     * The resource name of the UC connection to authenticate from Databricks to Power BI
+     */
+    connectionResourceName?: string;
+    dbtPlatformJobId?: string;
+}
+
 export interface JobTaskDbtTask {
     /**
      * The name of the catalog to use inside Unity Catalog.
@@ -7381,6 +7534,8 @@ export interface JobTaskForEachTaskTask {
     cleanRoomsNotebookTask?: outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask;
     conditionTask?: outputs.JobTaskForEachTaskTaskConditionTask;
     dashboardTask?: outputs.JobTaskForEachTaskTaskDashboardTask;
+    dbtCloudTask?: outputs.JobTaskForEachTaskTaskDbtCloudTask;
+    dbtPlatformTask?: outputs.JobTaskForEachTaskTaskDbtPlatformTask;
     dbtTask?: outputs.JobTaskForEachTaskTaskDbtTask;
     /**
      * block specifying dependency(-ies) for a given task.
@@ -7544,6 +7699,22 @@ export interface JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber {
      * A snapshot of the dashboard will be sent to the user's email when the `userName` field is present.
      */
     userName?: string;
+}
+
+export interface JobTaskForEachTaskTaskDbtCloudTask {
+    /**
+     * The resource name of the UC connection to authenticate from Databricks to Power BI
+     */
+    connectionResourceName?: string;
+    dbtCloudJobId?: number;
+}
+
+export interface JobTaskForEachTaskTaskDbtPlatformTask {
+    /**
+     * The resource name of the UC connection to authenticate from Databricks to Power BI
+     */
+    connectionResourceName?: string;
+    dbtPlatformJobId?: string;
 }
 
 export interface JobTaskForEachTaskTaskDbtTask {
@@ -7717,12 +7888,14 @@ export interface JobTaskForEachTaskTaskNewCluster {
     nodeTypeId: string;
     numWorkers?: number;
     policyId?: string;
+    remoteDiskThroughput?: number;
     runtimeEngine?: string;
     singleUserName?: string;
     sparkConf?: {[key: string]: string};
     sparkEnvVars?: {[key: string]: string};
     sparkVersion?: string;
     sshPublicKeys?: string[];
+    totalInitialRemoteDiskSize?: number;
     useMlRuntime?: boolean;
     /**
      * isn't supported
@@ -8394,12 +8567,14 @@ export interface JobTaskNewCluster {
     nodeTypeId: string;
     numWorkers?: number;
     policyId?: string;
+    remoteDiskThroughput?: number;
     runtimeEngine?: string;
     singleUserName?: string;
     sparkConf?: {[key: string]: string};
     sparkEnvVars?: {[key: string]: string};
     sparkVersion?: string;
     sshPublicKeys?: string[];
+    totalInitialRemoteDiskSize?: number;
     useMlRuntime?: boolean;
     /**
      * isn't supported
@@ -9502,9 +9677,17 @@ export interface ModelServingConfigServedEntity {
      */
     instanceProfileArn?: string;
     /**
+     * The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
+     */
+    maxProvisionedConcurrency?: number;
+    /**
      * The maximum tokens per second that the endpoint can scale up to.
      */
     maxProvisionedThroughput?: number;
+    /**
+     * The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
+     */
+    minProvisionedConcurrency?: number;
     /**
      * The minimum tokens per second that the endpoint can scale down to.
      */
@@ -9519,7 +9702,7 @@ export interface ModelServingConfigServedEntity {
      */
     scaleToZeroEnabled?: boolean;
     /**
-     * The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
+     * The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `minProvisionedConcurrency` and `maxProvisionedConcurrency`.
      */
     workloadSize: string;
     /**
@@ -9778,9 +9961,17 @@ export interface ModelServingConfigServedModel {
      */
     instanceProfileArn?: string;
     /**
+     * The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
+     */
+    maxProvisionedConcurrency?: number;
+    /**
      * The maximum tokens per second that the endpoint can scale up to.
      */
     maxProvisionedThroughput?: number;
+    /**
+     * The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
+     */
+    minProvisionedConcurrency?: number;
     /**
      * The minimum tokens per second that the endpoint can scale down to.
      */
@@ -10132,10 +10323,30 @@ export interface MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServic
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigTargetRules {
+    awsPrivateEndpointRules?: outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule[];
     /**
      * (Azure only) - list containing information about configure Azure Private Endpoints.
      */
     azurePrivateEndpointRules?: outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule[];
+}
+
+export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule {
+    accountId?: string;
+    connectionState?: string;
+    creationTime?: number;
+    deactivated?: boolean;
+    deactivatedAt?: number;
+    domainNames?: string[];
+    enabled?: boolean;
+    endpointService?: string;
+    /**
+     * Canonical unique identifier of Network Connectivity Config in Databricks Account
+     */
+    networkConnectivityConfigId?: string;
+    resourceNames?: string[];
+    ruleId?: string;
+    updatedTime?: number;
+    vpcEndpointId?: string;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
@@ -10166,11 +10377,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -10237,11 +10448,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -10602,6 +10813,10 @@ export interface PipelineDeployment {
     metadataFilePath?: string;
 }
 
+export interface PipelineEnvironment {
+    dependencies?: string[];
+}
+
 export interface PipelineEventLog {
     /**
      * The UC catalog the event log is published under.
@@ -10915,6 +11130,17 @@ export interface QualityMonitorTimeSeries {
      * Column of the timestamp of predictions
      */
     timestampCol: string;
+}
+
+export interface QualityMonitorV2AnomalyDetectionConfig {
+    /**
+     * (string) - Run id of the last run of the workflow
+     */
+    lastRunId: string;
+    /**
+     * (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
+     */
+    latestRunStatus: string;
 }
 
 export interface QueryParameter {

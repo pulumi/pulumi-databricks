@@ -14,10 +14,16 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAppsAppResourceUcSecurableResult
     {
         /// <summary>
-        /// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        /// Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         /// </summary>
         public readonly string Permission;
+        /// <summary>
+        /// the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+        /// </summary>
         public readonly string SecurableFullName;
+        /// <summary>
+        /// the type of UC securable, i.e. `VOLUME`.
+        /// </summary>
         public readonly string SecurableType;
 
         [OutputConstructor]

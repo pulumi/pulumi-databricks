@@ -16,14 +16,14 @@ public final class AlertV2EvaluationSourceArgs extends com.pulumi.resources.Reso
     public static final AlertV2EvaluationSourceArgs Empty = new AlertV2EvaluationSourceArgs();
 
     /**
-     * . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      * 
      */
     @Import(name="aggregation")
     private @Nullable Output<String> aggregation;
 
     /**
-     * @return . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * @return . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      * 
      */
     public Optional<Output<String>> aggregation() {
@@ -71,7 +71,7 @@ public final class AlertV2EvaluationSourceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param aggregation . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+         * @param aggregation . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class AlertV2EvaluationSourceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param aggregation . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+         * @param aggregation . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
          * 
          * @return builder
          * 

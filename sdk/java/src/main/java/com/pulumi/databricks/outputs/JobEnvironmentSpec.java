@@ -4,7 +4,6 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,7 +16,7 @@ public final class JobEnvironmentSpec {
      * @return client version used by the environment.
      * 
      */
-    private String client;
+    private @Nullable String client;
     /**
      * @return List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
      * 
@@ -31,8 +30,8 @@ public final class JobEnvironmentSpec {
      * @return client version used by the environment.
      * 
      */
-    public String client() {
-        return this.client;
+    public Optional<String> client() {
+        return Optional.ofNullable(this.client);
     }
     /**
      * @return List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
@@ -57,7 +56,7 @@ public final class JobEnvironmentSpec {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String client;
+        private @Nullable String client;
         private @Nullable List<String> dependencies;
         private @Nullable String environmentVersion;
         private @Nullable List<String> jarDependencies;
@@ -71,10 +70,8 @@ public final class JobEnvironmentSpec {
         }
 
         @CustomType.Setter
-        public Builder client(String client) {
-            if (client == null) {
-              throw new MissingRequiredPropertyException("JobEnvironmentSpec", "client");
-            }
+        public Builder client(@Nullable String client) {
+
             this.client = client;
             return this;
         }

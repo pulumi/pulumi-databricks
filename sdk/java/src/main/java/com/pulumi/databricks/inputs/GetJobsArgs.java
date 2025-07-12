@@ -46,11 +46,27 @@ public final class GetJobsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.jobNameContains);
     }
 
+    /**
+     * Attribute to use for keys in the returned map of databricks.Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
+     * 
+     */
+    @Import(name="key")
+    private @Nullable Output<String> key;
+
+    /**
+     * @return Attribute to use for keys in the returned map of databricks.Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
+     * 
+     */
+    public Optional<Output<String>> key() {
+        return Optional.ofNullable(this.key);
+    }
+
     private GetJobsArgs() {}
 
     private GetJobsArgs(GetJobsArgs $) {
         this.ids = $.ids;
         this.jobNameContains = $.jobNameContains;
+        this.key = $.key;
     }
 
     public static Builder builder() {
@@ -111,6 +127,27 @@ public final class GetJobsArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder jobNameContains(String jobNameContains) {
             return jobNameContains(Output.of(jobNameContains));
+        }
+
+        /**
+         * @param key Attribute to use for keys in the returned map of databricks.Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder key(@Nullable Output<String> key) {
+            $.key = key;
+            return this;
+        }
+
+        /**
+         * @param key Attribute to use for keys in the returned map of databricks.Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder key(String key) {
+            return key(Output.of(key));
         }
 
         public GetJobsArgs build() {

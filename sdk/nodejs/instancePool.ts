@@ -13,6 +13,8 @@ import * as utilities from "./utilities";
  *
  * > It is important to know that different cloud service providers have different `nodeTypeId`, `diskSpecs` and potentially other configurations.
  *
+ * > "auto" `zoneId` is only supported for fleet node types.
+ *
  * ## Example Usage
  *
  * ```typescript

@@ -184,6 +184,7 @@ export class Cluster extends pulumi.CustomResource {
      * Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
      */
     public readonly policyId!: pulumi.Output<string | undefined>;
+    public readonly remoteDiskThroughput!: pulumi.Output<number | undefined>;
     /**
      * The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
      */
@@ -214,6 +215,7 @@ export class Cluster extends pulumi.CustomResource {
      * (string) State of the cluster.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    public readonly totalInitialRemoteDiskSize!: pulumi.Output<number | undefined>;
     public /*out*/ readonly url!: pulumi.Output<string>;
     /**
      * Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
@@ -263,6 +265,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["nodeTypeId"] = state ? state.nodeTypeId : undefined;
             resourceInputs["numWorkers"] = state ? state.numWorkers : undefined;
             resourceInputs["policyId"] = state ? state.policyId : undefined;
+            resourceInputs["remoteDiskThroughput"] = state ? state.remoteDiskThroughput : undefined;
             resourceInputs["runtimeEngine"] = state ? state.runtimeEngine : undefined;
             resourceInputs["singleUserName"] = state ? state.singleUserName : undefined;
             resourceInputs["sparkConf"] = state ? state.sparkConf : undefined;
@@ -270,6 +273,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["sparkVersion"] = state ? state.sparkVersion : undefined;
             resourceInputs["sshPublicKeys"] = state ? state.sshPublicKeys : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["totalInitialRemoteDiskSize"] = state ? state.totalInitialRemoteDiskSize : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
             resourceInputs["useMlRuntime"] = state ? state.useMlRuntime : undefined;
             resourceInputs["workloadType"] = state ? state.workloadType : undefined;
@@ -305,12 +309,14 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["nodeTypeId"] = args ? args.nodeTypeId : undefined;
             resourceInputs["numWorkers"] = args ? args.numWorkers : undefined;
             resourceInputs["policyId"] = args ? args.policyId : undefined;
+            resourceInputs["remoteDiskThroughput"] = args ? args.remoteDiskThroughput : undefined;
             resourceInputs["runtimeEngine"] = args ? args.runtimeEngine : undefined;
             resourceInputs["singleUserName"] = args ? args.singleUserName : undefined;
             resourceInputs["sparkConf"] = args ? args.sparkConf : undefined;
             resourceInputs["sparkEnvVars"] = args ? args.sparkEnvVars : undefined;
             resourceInputs["sparkVersion"] = args ? args.sparkVersion : undefined;
             resourceInputs["sshPublicKeys"] = args ? args.sshPublicKeys : undefined;
+            resourceInputs["totalInitialRemoteDiskSize"] = args ? args.totalInitialRemoteDiskSize : undefined;
             resourceInputs["useMlRuntime"] = args ? args.useMlRuntime : undefined;
             resourceInputs["workloadType"] = args ? args.workloadType : undefined;
             resourceInputs["clusterId"] = undefined /*out*/;
@@ -466,6 +472,7 @@ export interface ClusterState {
      * Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
      */
     policyId?: pulumi.Input<string>;
+    remoteDiskThroughput?: pulumi.Input<number>;
     /**
      * The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
      */
@@ -496,6 +503,7 @@ export interface ClusterState {
      * (string) State of the cluster.
      */
     state?: pulumi.Input<string>;
+    totalInitialRemoteDiskSize?: pulumi.Input<number>;
     url?: pulumi.Input<string>;
     /**
      * Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
@@ -642,6 +650,7 @@ export interface ClusterArgs {
      * Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
      */
     policyId?: pulumi.Input<string>;
+    remoteDiskThroughput?: pulumi.Input<number>;
     /**
      * The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
      */
@@ -668,6 +677,7 @@ export interface ClusterArgs {
      * SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
      */
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    totalInitialRemoteDiskSize?: pulumi.Input<number>;
     /**
      * Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
      */

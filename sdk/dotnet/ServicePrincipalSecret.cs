@@ -38,6 +38,31 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// A secret can be automatically rotated by taking a dependency on the `time_rotating` resource:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Time.Rotating("this", new()
+    ///     {
+    ///         RotationDays = 30,
+    ///     });
+    /// 
+    ///     var terraformSp = new Databricks.ServicePrincipalSecret("terraform_sp", new()
+    ///     {
+    ///         ServicePrincipalId = thisDatabricksServicePrincipal.Id,
+    ///         TimeRotating = @this.Rfc3339.Apply(rfc3339 =&gt; $"Pulumi (created: {rfc3339})"),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Related Resources
     /// 
     /// The following resources are often used in the same context:
@@ -66,7 +91,7 @@ namespace Pulumi.Databricks
         public Output<string> Lifetime { get; private set; } = null!;
 
         /// <summary>
-        /// Generated secret for the service principal.
+        /// **Sensitive** Generated secret for the service principal.
         /// </summary>
         [Output("secret")]
         public Output<string> Secret { get; private set; } = null!;
@@ -88,6 +113,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Changing this argument forces recreation of the secret.
+        /// </summary>
+        [Output("timeRotating")]
+        public Output<string?> TimeRotating { get; private set; } = null!;
 
         /// <summary>
         /// UTC time when the secret was updated.
@@ -167,7 +198,7 @@ namespace Pulumi.Databricks
         private Input<string>? _secret;
 
         /// <summary>
-        /// Generated secret for the service principal.
+        /// **Sensitive** Generated secret for the service principal.
         /// </summary>
         public Input<string>? Secret
         {
@@ -196,6 +227,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Changing this argument forces recreation of the secret.
+        /// </summary>
+        [Input("timeRotating")]
+        public Input<string>? TimeRotating { get; set; }
 
         /// <summary>
         /// UTC time when the secret was updated.
@@ -233,7 +270,7 @@ namespace Pulumi.Databricks
         private Input<string>? _secret;
 
         /// <summary>
-        /// Generated secret for the service principal.
+        /// **Sensitive** Generated secret for the service principal.
         /// </summary>
         public Input<string>? Secret
         {
@@ -262,6 +299,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Changing this argument forces recreation of the secret.
+        /// </summary>
+        [Input("timeRotating")]
+        public Input<string>? TimeRotating { get; set; }
 
         /// <summary>
         /// UTC time when the secret was updated.

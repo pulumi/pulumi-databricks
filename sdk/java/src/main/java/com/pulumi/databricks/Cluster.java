@@ -578,6 +578,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> policyId() {
         return Codegen.optional(this.policyId);
     }
+    @Export(name="remoteDiskThroughput", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> remoteDiskThroughput;
+
+    public Output<Optional<Integer>> remoteDiskThroughput() {
+        return Codegen.optional(this.remoteDiskThroughput);
+    }
     /**
      * The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
      * 
@@ -679,6 +685,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> state() {
         return this.state;
+    }
+    @Export(name="totalInitialRemoteDiskSize", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> totalInitialRemoteDiskSize;
+
+    public Output<Optional<Integer>> totalInitialRemoteDiskSize() {
+        return Codegen.optional(this.totalInitialRemoteDiskSize);
     }
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;

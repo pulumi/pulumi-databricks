@@ -18,6 +18,13 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
 
     public static final MwsNccPrivateEndpointRuleState Empty = new MwsNccPrivateEndpointRuleState();
 
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
+
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
     /**
      * The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
      * The possible values are:
@@ -88,11 +95,34 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
         return Optional.ofNullable(this.deactivatedAt);
     }
 
+    /**
+     * Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+     * 
+     */
     @Import(name="domainNames")
     private @Nullable Output<List<String>> domainNames;
 
+    /**
+     * @return Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+     * 
+     */
     public Optional<Output<List<String>>> domainNames() {
         return Optional.ofNullable(this.domainNames);
+    }
+
+    /**
+     * Activation status. Only used by private endpoints towards an AWS S3 service.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
+
+    /**
+     * @return Activation status. Only used by private endpoints towards an AWS S3 service.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
     /**
@@ -108,6 +138,21 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
      */
     public Optional<Output<String>> endpointName() {
         return Optional.ofNullable(this.endpointName);
+    }
+
+    /**
+     * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+     * 
+     */
+    @Import(name="endpointService")
+    private @Nullable Output<String> endpointService;
+
+    /**
+     * @return Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+     * 
+     */
+    public Optional<Output<String>> endpointService() {
+        return Optional.ofNullable(this.endpointService);
     }
 
     /**
@@ -156,6 +201,21 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
     }
 
     /**
+     * Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
+     * 
+     */
+    @Import(name="resourceNames")
+    private @Nullable Output<List<String>> resourceNames;
+
+    /**
+     * @return Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
+     * 
+     */
+    public Optional<Output<List<String>>> resourceNames() {
+        return Optional.ofNullable(this.resourceNames);
+    }
+
+    /**
      * the ID of a private endpoint rule.
      * 
      */
@@ -185,20 +245,40 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
         return Optional.ofNullable(this.updatedTime);
     }
 
+    /**
+     * The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
+     * 
+     */
+    @Import(name="vpcEndpointId")
+    private @Nullable Output<String> vpcEndpointId;
+
+    /**
+     * @return The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
+     * 
+     */
+    public Optional<Output<String>> vpcEndpointId() {
+        return Optional.ofNullable(this.vpcEndpointId);
+    }
+
     private MwsNccPrivateEndpointRuleState() {}
 
     private MwsNccPrivateEndpointRuleState(MwsNccPrivateEndpointRuleState $) {
+        this.accountId = $.accountId;
         this.connectionState = $.connectionState;
         this.creationTime = $.creationTime;
         this.deactivated = $.deactivated;
         this.deactivatedAt = $.deactivatedAt;
         this.domainNames = $.domainNames;
+        this.enabled = $.enabled;
         this.endpointName = $.endpointName;
+        this.endpointService = $.endpointService;
         this.groupId = $.groupId;
         this.networkConnectivityConfigId = $.networkConnectivityConfigId;
         this.resourceId = $.resourceId;
+        this.resourceNames = $.resourceNames;
         this.ruleId = $.ruleId;
         this.updatedTime = $.updatedTime;
+        this.vpcEndpointId = $.vpcEndpointId;
     }
 
     public static Builder builder() {
@@ -217,6 +297,15 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
 
         public Builder(MwsNccPrivateEndpointRuleState defaults) {
             $ = new MwsNccPrivateEndpointRuleState(Objects.requireNonNull(defaults));
+        }
+
+        public Builder accountId(@Nullable Output<String> accountId) {
+            $.accountId = accountId;
+            return this;
+        }
+
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
         }
 
         /**
@@ -313,17 +402,56 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
             return deactivatedAt(Output.of(deactivatedAt));
         }
 
+        /**
+         * @param domainNames Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domainNames(@Nullable Output<List<String>> domainNames) {
             $.domainNames = domainNames;
             return this;
         }
 
+        /**
+         * @param domainNames Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domainNames(List<String> domainNames) {
             return domainNames(Output.of(domainNames));
         }
 
+        /**
+         * @param domainNames Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domainNames(String... domainNames) {
             return domainNames(List.of(domainNames));
+        }
+
+        /**
+         * @param enabled Activation status. Only used by private endpoints towards an AWS S3 service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Activation status. Only used by private endpoints towards an AWS S3 service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
         }
 
         /**
@@ -345,6 +473,27 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
          */
         public Builder endpointName(String endpointName) {
             return endpointName(Output.of(endpointName));
+        }
+
+        /**
+         * @param endpointService Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointService(@Nullable Output<String> endpointService) {
+            $.endpointService = endpointService;
+            return this;
+        }
+
+        /**
+         * @param endpointService Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointService(String endpointService) {
+            return endpointService(Output.of(endpointService));
         }
 
         /**
@@ -411,6 +560,37 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
         }
 
         /**
+         * @param resourceNames Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceNames(@Nullable Output<List<String>> resourceNames) {
+            $.resourceNames = resourceNames;
+            return this;
+        }
+
+        /**
+         * @param resourceNames Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceNames(List<String> resourceNames) {
+            return resourceNames(Output.of(resourceNames));
+        }
+
+        /**
+         * @param resourceNames Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceNames(String... resourceNames) {
+            return resourceNames(List.of(resourceNames));
+        }
+
+        /**
          * @param ruleId the ID of a private endpoint rule.
          * 
          * @return builder
@@ -450,6 +630,27 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
          */
         public Builder updatedTime(Integer updatedTime) {
             return updatedTime(Output.of(updatedTime));
+        }
+
+        /**
+         * @param vpcEndpointId The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcEndpointId(@Nullable Output<String> vpcEndpointId) {
+            $.vpcEndpointId = vpcEndpointId;
+            return this;
+        }
+
+        /**
+         * @param vpcEndpointId The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcEndpointId(String vpcEndpointId) {
+            return vpcEndpointId(Output.of(vpcEndpointId));
         }
 
         public MwsNccPrivateEndpointRuleState build() {

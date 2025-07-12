@@ -11,12 +11,45 @@ namespace Pulumi.Databricks
 {
     public static class GetAlertV2
     {
+        /// <summary>
+        /// The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
+        /// 
+        /// You can use this data source to:
+        /// - Retrieve alert details for reference in other resources
+        /// - Check the current state and configuration of an alert
+        /// - Verify notification settings and subscribers
+        /// - Examine the schedule configuration
+        /// 
+        /// ## Example Usage
+        /// </summary>
         public static Task<GetAlertV2Result> InvokeAsync(GetAlertV2Args? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlertV2Result>("databricks:index/getAlertV2:getAlertV2", args ?? new GetAlertV2Args(), options.WithDefaults());
 
+        /// <summary>
+        /// The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
+        /// 
+        /// You can use this data source to:
+        /// - Retrieve alert details for reference in other resources
+        /// - Check the current state and configuration of an alert
+        /// - Verify notification settings and subscribers
+        /// - Examine the schedule configuration
+        /// 
+        /// ## Example Usage
+        /// </summary>
         public static Output<GetAlertV2Result> Invoke(GetAlertV2InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlertV2Result>("databricks:index/getAlertV2:getAlertV2", args ?? new GetAlertV2InvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
+        /// 
+        /// You can use this data source to:
+        /// - Retrieve alert details for reference in other resources
+        /// - Check the current state and configuration of an alert
+        /// - Verify notification settings and subscribers
+        /// - Examine the schedule configuration
+        /// 
+        /// ## Example Usage
+        /// </summary>
         public static Output<GetAlertV2Result> Invoke(GetAlertV2InvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlertV2Result>("databricks:index/getAlertV2:getAlertV2", args ?? new GetAlertV2InvokeArgs(), options.WithDefaults());
     }
@@ -163,7 +196,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        /// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
         /// </summary>
         public readonly string LifecycleState;
         /// <summary>

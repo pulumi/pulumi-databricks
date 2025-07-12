@@ -21,6 +21,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("dashboardTask")]
         public Input<Inputs.JobTaskForEachTaskTaskDashboardTaskGetArgs>? DashboardTask { get; set; }
 
+        [Input("dbtCloudTask")]
+        public Input<Inputs.JobTaskForEachTaskTaskDbtCloudTaskGetArgs>? DbtCloudTask { get; set; }
+
+        [Input("dbtPlatformTask")]
+        public Input<Inputs.JobTaskForEachTaskTaskDbtPlatformTaskGetArgs>? DbtPlatformTask { get; set; }
+
         [Input("dbtTask")]
         public Input<Inputs.JobTaskForEachTaskTaskDbtTaskGetArgs>? DbtTask { get; set; }
 

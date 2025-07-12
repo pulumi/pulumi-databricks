@@ -37,6 +37,9 @@ namespace Pulumi.Databricks.Outputs
         /// attribute
         /// </summary>
         public readonly Outputs.GetAppsAppResourceSqlWarehouseResult? SqlWarehouse;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.GetAppsAppResourceUcSecurableResult? UcSecurable;
 
         [OutputConstructor]

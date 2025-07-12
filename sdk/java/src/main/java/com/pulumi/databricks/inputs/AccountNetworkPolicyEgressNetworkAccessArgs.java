@@ -66,14 +66,14 @@ public final class AccountNetworkPolicyEgressNetworkAccessArgs extends com.pulum
     }
 
     /**
-     * The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+     * The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
      * 
      */
     @Import(name="restrictionMode", required=true)
     private Output<String> restrictionMode;
 
     /**
-     * @return The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+     * @return The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
      * 
      */
     public Output<String> restrictionMode() {
@@ -191,7 +191,7 @@ public final class AccountNetworkPolicyEgressNetworkAccessArgs extends com.pulum
         }
 
         /**
-         * @param restrictionMode The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+         * @param restrictionMode The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class AccountNetworkPolicyEgressNetworkAccessArgs extends com.pulum
         }
 
         /**
-         * @param restrictionMode The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+         * @param restrictionMode The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
          * 
          * @return builder
          * 

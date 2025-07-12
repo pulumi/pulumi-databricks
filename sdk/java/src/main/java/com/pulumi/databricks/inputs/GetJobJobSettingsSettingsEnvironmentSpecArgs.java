@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,11 +16,11 @@ public final class GetJobJobSettingsSettingsEnvironmentSpecArgs extends com.pulu
 
     public static final GetJobJobSettingsSettingsEnvironmentSpecArgs Empty = new GetJobJobSettingsSettingsEnvironmentSpecArgs();
 
-    @Import(name="client", required=true)
-    private Output<String> client;
+    @Import(name="client")
+    private @Nullable Output<String> client;
 
-    public Output<String> client() {
-        return this.client;
+    public Optional<Output<String>> client() {
+        return Optional.ofNullable(this.client);
     }
 
     @Import(name="dependencies")
@@ -72,7 +71,7 @@ public final class GetJobJobSettingsSettingsEnvironmentSpecArgs extends com.pulu
             $ = new GetJobJobSettingsSettingsEnvironmentSpecArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder client(Output<String> client) {
+        public Builder client(@Nullable Output<String> client) {
             $.client = client;
             return this;
         }
@@ -117,9 +116,6 @@ public final class GetJobJobSettingsSettingsEnvironmentSpecArgs extends com.pulu
         }
 
         public GetJobJobSettingsSettingsEnvironmentSpecArgs build() {
-            if ($.client == null) {
-                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsEnvironmentSpecArgs", "client");
-            }
             return $;
         }
     }

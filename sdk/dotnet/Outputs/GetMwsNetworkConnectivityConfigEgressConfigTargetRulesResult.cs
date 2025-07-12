@@ -13,14 +13,19 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesResult
     {
+        public readonly ImmutableArray<Outputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleResult> AwsPrivateEndpointRules;
         /// <summary>
         /// Array of private endpoint rule objects.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleResult> AzurePrivateEndpointRules;
 
         [OutputConstructor]
-        private GetMwsNetworkConnectivityConfigEgressConfigTargetRulesResult(ImmutableArray<Outputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleResult> azurePrivateEndpointRules)
+        private GetMwsNetworkConnectivityConfigEgressConfigTargetRulesResult(
+            ImmutableArray<Outputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleResult> awsPrivateEndpointRules,
+
+            ImmutableArray<Outputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleResult> azurePrivateEndpointRules)
         {
+            AwsPrivateEndpointRules = awsPrivateEndpointRules;
             AzurePrivateEndpointRules = azurePrivateEndpointRules;
         }
     }

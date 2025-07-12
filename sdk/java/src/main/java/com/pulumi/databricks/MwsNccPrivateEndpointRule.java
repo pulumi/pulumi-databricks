@@ -22,9 +22,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource can only be used with an account-level provider!
  * 
- * &gt; This feature is only available in Azure.
+ * &gt; This feature is available on Azure, and in Public Preview on AWS.
  * 
  * ## Example Usage
+ * 
+ * Create a private endpoint to an Azure storage account
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -71,6 +73,58 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * Create a private endpoint rule to an AWS VPC endpoint and to an S3 bucket
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsNetworkConnectivityConfig;
+ * import com.pulumi.databricks.MwsNetworkConnectivityConfigArgs;
+ * import com.pulumi.databricks.MwsNccPrivateEndpointRule;
+ * import com.pulumi.databricks.MwsNccPrivateEndpointRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var region = config.get("region");
+ *         final var prefix = config.get("prefix");
+ *         var ncc = new MwsNetworkConnectivityConfig("ncc", MwsNetworkConnectivityConfigArgs.builder()
+ *             .name(String.format("ncc-for-%s", prefix))
+ *             .region(region)
+ *             .build());
+ * 
+ *         var storage = new MwsNccPrivateEndpointRule("storage", MwsNccPrivateEndpointRuleArgs.builder()
+ *             .networkConnectivityConfigId(ncc.networkConnectivityConfigId())
+ *             .resourceNames("bucket")
+ *             .build());
+ * 
+ *         var vpce = new MwsNccPrivateEndpointRule("vpce", MwsNccPrivateEndpointRuleArgs.builder()
+ *             .networkConnectivityConfigId(ncc.networkConnectivityConfigId())
+ *             .endpointService("com.amazonaws.vpce.us-west-2.vpce-svc-xyz")
+ *             .domainNames("subdomain.internal.net")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Related Resources
  * 
  * The following resources are used in the context:
@@ -101,6 +155,12 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule")
 public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResource {
+    @Export(name="accountId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> accountId;
+
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
+    }
     /**
      * The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
      * The possible values are:
@@ -167,11 +227,33 @@ public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResour
     public Output<Optional<Integer>> deactivatedAt() {
         return Codegen.optional(this.deactivatedAt);
     }
+    /**
+     * Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+     * 
+     */
     @Export(name="domainNames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> domainNames;
 
+    /**
+     * @return Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+     * 
+     */
     public Output<Optional<List<String>>> domainNames() {
         return Codegen.optional(this.domainNames);
+    }
+    /**
+     * Activation status. Only used by private endpoints towards an AWS S3 service.
+     * 
+     */
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enabled;
+
+    /**
+     * @return Activation status. Only used by private endpoints towards an AWS S3 service.
+     * 
+     */
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
     /**
      * The name of the Azure private endpoint resource, e.g. &#34;databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234&#34;
@@ -188,18 +270,32 @@ public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResour
         return this.endpointName;
     }
     /**
+     * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+     * 
+     */
+    @Export(name="endpointService", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> endpointService;
+
+    /**
+     * @return Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+     * 
+     */
+    public Output<Optional<String>> endpointService() {
+        return Codegen.optional(this.endpointService);
+    }
+    /**
      * The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
      * 
      */
     @Export(name="groupId", refs={String.class}, tree="[0]")
-    private Output<String> groupId;
+    private Output</* @Nullable */ String> groupId;
 
     /**
      * @return The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
      * 
      */
-    public Output<String> groupId() {
-        return this.groupId;
+    public Output<Optional<String>> groupId() {
+        return Codegen.optional(this.groupId);
     }
     /**
      * Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
@@ -220,14 +316,28 @@ public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResour
      * 
      */
     @Export(name="resourceId", refs={String.class}, tree="[0]")
-    private Output<String> resourceId;
+    private Output</* @Nullable */ String> resourceId;
 
     /**
      * @return The Azure resource ID of the target resource. Change forces creation of a new resource.
      * 
      */
-    public Output<String> resourceId() {
-        return this.resourceId;
+    public Output<Optional<String>> resourceId() {
+        return Codegen.optional(this.resourceId);
+    }
+    /**
+     * Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
+     * 
+     */
+    @Export(name="resourceNames", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> resourceNames;
+
+    /**
+     * @return Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
+     * 
+     */
+    public Output<Optional<List<String>>> resourceNames() {
+        return Codegen.optional(this.resourceNames);
     }
     /**
      * the ID of a private endpoint rule.
@@ -256,6 +366,20 @@ public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResour
      */
     public Output<Integer> updatedTime() {
         return this.updatedTime;
+    }
+    /**
+     * The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
+     * 
+     */
+    @Export(name="vpcEndpointId", refs={String.class}, tree="[0]")
+    private Output<String> vpcEndpointId;
+
+    /**
+     * @return The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
+     * 
+     */
+    public Output<String> vpcEndpointId() {
+        return this.vpcEndpointId;
     }
 
     /**

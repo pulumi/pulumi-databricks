@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * As of terraform v1.5, resources can be imported through configuration.
+ * As of Pulumi v1.5, resources can be imported through configuration.
  * 
  * hcl
  * 
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * If you are using an older version of terraform, you can import the resource using cli as follows:
+ * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
  * $ pulumi import databricks:index/budgetPolicy:BudgetPolicy databricks_budget_policy policy_id

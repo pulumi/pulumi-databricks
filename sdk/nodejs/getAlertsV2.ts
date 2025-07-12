@@ -6,6 +6,25 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
+ *
+ * You can use this data source to:
+ * - Get a comprehensive list of all alerts in your workspace
+ * - Monitor and audit alert configurations across your workspace
+ *
+ * ## Example Usage
+ *
+ * ### List All Alerts
+ * This example retrieves all alerts accessible to the current user:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getAlertV2({});
+ * ```
+ */
 export function getAlertsV2(opts?: pulumi.InvokeOptions): Promise<GetAlertsV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAlertsV2:getAlertsV2", {
@@ -22,6 +41,25 @@ export interface GetAlertsV2Result {
     readonly id: string;
     readonly results: outputs.GetAlertsV2Result[];
 }
+/**
+ * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
+ *
+ * You can use this data source to:
+ * - Get a comprehensive list of all alerts in your workspace
+ * - Monitor and audit alert configurations across your workspace
+ *
+ * ## Example Usage
+ *
+ * ### List All Alerts
+ * This example retrieves all alerts accessible to the current user:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getAlertV2({});
+ * ```
+ */
 export function getAlertsV2Output(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlertsV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAlertsV2:getAlertsV2", {

@@ -45,11 +45,27 @@ public final class GetJobsPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.jobNameContains);
     }
 
+    /**
+     * Attribute to use for keys in the returned map of databricks.Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
+     * 
+     */
+    @Import(name="key")
+    private @Nullable String key;
+
+    /**
+     * @return Attribute to use for keys in the returned map of databricks.Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
+     * 
+     */
+    public Optional<String> key() {
+        return Optional.ofNullable(this.key);
+    }
+
     private GetJobsPlainArgs() {}
 
     private GetJobsPlainArgs(GetJobsPlainArgs $) {
         this.ids = $.ids;
         this.jobNameContains = $.jobNameContains;
+        this.key = $.key;
     }
 
     public static Builder builder() {
@@ -89,6 +105,17 @@ public final class GetJobsPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder jobNameContains(@Nullable String jobNameContains) {
             $.jobNameContains = jobNameContains;
+            return this;
+        }
+
+        /**
+         * @param key Attribute to use for keys in the returned map of databricks.Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder key(@Nullable String key) {
+            $.key = key;
             return this;
         }
 

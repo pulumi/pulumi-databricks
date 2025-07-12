@@ -54,12 +54,14 @@ public final class JobTaskForEachTaskTaskNewCluster {
     private @Nullable String nodeTypeId;
     private @Nullable Integer numWorkers;
     private @Nullable String policyId;
+    private @Nullable Integer remoteDiskThroughput;
     private @Nullable String runtimeEngine;
     private @Nullable String singleUserName;
     private @Nullable Map<String,String> sparkConf;
     private @Nullable Map<String,String> sparkEnvVars;
     private @Nullable String sparkVersion;
     private @Nullable List<String> sshPublicKeys;
+    private @Nullable Integer totalInitialRemoteDiskSize;
     private @Nullable Boolean useMlRuntime;
     /**
      * @return isn&#39;t supported
@@ -147,6 +149,9 @@ public final class JobTaskForEachTaskTaskNewCluster {
     public Optional<String> policyId() {
         return Optional.ofNullable(this.policyId);
     }
+    public Optional<Integer> remoteDiskThroughput() {
+        return Optional.ofNullable(this.remoteDiskThroughput);
+    }
     public Optional<String> runtimeEngine() {
         return Optional.ofNullable(this.runtimeEngine);
     }
@@ -164,6 +169,9 @@ public final class JobTaskForEachTaskTaskNewCluster {
     }
     public List<String> sshPublicKeys() {
         return this.sshPublicKeys == null ? List.of() : this.sshPublicKeys;
+    }
+    public Optional<Integer> totalInitialRemoteDiskSize() {
+        return Optional.ofNullable(this.totalInitialRemoteDiskSize);
     }
     public Optional<Boolean> useMlRuntime() {
         return Optional.ofNullable(this.useMlRuntime);
@@ -210,12 +218,14 @@ public final class JobTaskForEachTaskTaskNewCluster {
         private @Nullable String nodeTypeId;
         private @Nullable Integer numWorkers;
         private @Nullable String policyId;
+        private @Nullable Integer remoteDiskThroughput;
         private @Nullable String runtimeEngine;
         private @Nullable String singleUserName;
         private @Nullable Map<String,String> sparkConf;
         private @Nullable Map<String,String> sparkEnvVars;
         private @Nullable String sparkVersion;
         private @Nullable List<String> sshPublicKeys;
+        private @Nullable Integer totalInitialRemoteDiskSize;
         private @Nullable Boolean useMlRuntime;
         private @Nullable JobTaskForEachTaskTaskNewClusterWorkloadType workloadType;
         public Builder() {}
@@ -246,12 +256,14 @@ public final class JobTaskForEachTaskTaskNewCluster {
     	      this.nodeTypeId = defaults.nodeTypeId;
     	      this.numWorkers = defaults.numWorkers;
     	      this.policyId = defaults.policyId;
+    	      this.remoteDiskThroughput = defaults.remoteDiskThroughput;
     	      this.runtimeEngine = defaults.runtimeEngine;
     	      this.singleUserName = defaults.singleUserName;
     	      this.sparkConf = defaults.sparkConf;
     	      this.sparkEnvVars = defaults.sparkEnvVars;
     	      this.sparkVersion = defaults.sparkVersion;
     	      this.sshPublicKeys = defaults.sshPublicKeys;
+    	      this.totalInitialRemoteDiskSize = defaults.totalInitialRemoteDiskSize;
     	      this.useMlRuntime = defaults.useMlRuntime;
     	      this.workloadType = defaults.workloadType;
         }
@@ -416,6 +428,12 @@ public final class JobTaskForEachTaskTaskNewCluster {
             return this;
         }
         @CustomType.Setter
+        public Builder remoteDiskThroughput(@Nullable Integer remoteDiskThroughput) {
+
+            this.remoteDiskThroughput = remoteDiskThroughput;
+            return this;
+        }
+        @CustomType.Setter
         public Builder runtimeEngine(@Nullable String runtimeEngine) {
 
             this.runtimeEngine = runtimeEngine;
@@ -453,6 +471,12 @@ public final class JobTaskForEachTaskTaskNewCluster {
         }
         public Builder sshPublicKeys(String... sshPublicKeys) {
             return sshPublicKeys(List.of(sshPublicKeys));
+        }
+        @CustomType.Setter
+        public Builder totalInitialRemoteDiskSize(@Nullable Integer totalInitialRemoteDiskSize) {
+
+            this.totalInitialRemoteDiskSize = totalInitialRemoteDiskSize;
+            return this;
         }
         @CustomType.Setter
         public Builder useMlRuntime(@Nullable Boolean useMlRuntime) {
@@ -493,12 +517,14 @@ public final class JobTaskForEachTaskTaskNewCluster {
             _resultValue.nodeTypeId = nodeTypeId;
             _resultValue.numWorkers = numWorkers;
             _resultValue.policyId = policyId;
+            _resultValue.remoteDiskThroughput = remoteDiskThroughput;
             _resultValue.runtimeEngine = runtimeEngine;
             _resultValue.singleUserName = singleUserName;
             _resultValue.sparkConf = sparkConf;
             _resultValue.sparkEnvVars = sparkEnvVars;
             _resultValue.sparkVersion = sparkVersion;
             _resultValue.sshPublicKeys = sshPublicKeys;
+            _resultValue.totalInitialRemoteDiskSize = totalInitialRemoteDiskSize;
             _resultValue.useMlRuntime = useMlRuntime;
             _resultValue.workloadType = workloadType;
             return _resultValue;

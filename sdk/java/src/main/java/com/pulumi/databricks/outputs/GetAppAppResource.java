@@ -47,6 +47,10 @@ public final class GetAppAppResource {
      * 
      */
     private @Nullable GetAppAppResourceSqlWarehouse sqlWarehouse;
+    /**
+     * @return attribute
+     * 
+     */
     private @Nullable GetAppAppResourceUcSecurable ucSecurable;
 
     private GetAppAppResource() {}
@@ -92,6 +96,10 @@ public final class GetAppAppResource {
     public Optional<GetAppAppResourceSqlWarehouse> sqlWarehouse() {
         return Optional.ofNullable(this.sqlWarehouse);
     }
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<GetAppAppResourceUcSecurable> ucSecurable() {
         return Optional.ofNullable(this.ucSecurable);
     }

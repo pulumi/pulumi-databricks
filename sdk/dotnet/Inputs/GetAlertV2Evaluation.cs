@@ -13,13 +13,13 @@ namespace Pulumi.Databricks.Inputs
     public sealed class GetAlertV2EvaluationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+        /// (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
         /// </summary>
         [Input("comparisonOperator")]
         public string? ComparisonOperator { get; set; }
 
         /// <summary>
-        /// (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        /// (string) - Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         /// </summary>
         [Input("emptyResultState")]
         public string? EmptyResultState { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.Databricks.Inputs
         public Inputs.GetAlertV2EvaluationSourceArgs? Source { get; set; }
 
         /// <summary>
-        /// (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        /// (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         /// </summary>
         [Input("state", required: true)]
         public string State { get; set; } = null!;

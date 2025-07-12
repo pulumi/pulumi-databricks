@@ -20,22 +20,25 @@ __all__ = ['MwsNccPrivateEndpointRuleArgs', 'MwsNccPrivateEndpointRule']
 @pulumi.input_type
 class MwsNccPrivateEndpointRuleArgs:
     def __init__(__self__, *,
-                 group_id: pulumi.Input[builtins.str],
                  network_connectivity_config_id: pulumi.Input[builtins.str],
-                 resource_id: pulumi.Input[builtins.str],
+                 account_id: Optional[pulumi.Input[builtins.str]] = None,
                  connection_state: Optional[pulumi.Input[builtins.str]] = None,
                  creation_time: Optional[pulumi.Input[builtins.int]] = None,
                  deactivated: Optional[pulumi.Input[builtins.bool]] = None,
                  deactivated_at: Optional[pulumi.Input[builtins.int]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  endpoint_name: Optional[pulumi.Input[builtins.str]] = None,
+                 endpoint_service: Optional[pulumi.Input[builtins.str]] = None,
+                 group_id: Optional[pulumi.Input[builtins.str]] = None,
+                 resource_id: Optional[pulumi.Input[builtins.str]] = None,
+                 resource_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  rule_id: Optional[pulumi.Input[builtins.str]] = None,
-                 updated_time: Optional[pulumi.Input[builtins.int]] = None):
+                 updated_time: Optional[pulumi.Input[builtins.int]] = None,
+                 vpc_endpoint_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a MwsNccPrivateEndpointRule resource.
-        :param pulumi.Input[builtins.str] group_id: The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
         :param pulumi.Input[builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
-        :param pulumi.Input[builtins.str] resource_id: The Azure resource ID of the target resource. Change forces creation of a new resource.
         :param pulumi.Input[builtins.str] connection_state: The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
                The possible values are:
                * `PENDING`: The endpoint has been created and pending approval.
@@ -45,13 +48,20 @@ class MwsNccPrivateEndpointRuleArgs:
         :param pulumi.Input[builtins.int] creation_time: Time in epoch milliseconds when this object was created.
         :param pulumi.Input[builtins.bool] deactivated: Whether this private endpoint is deactivated.
         :param pulumi.Input[builtins.int] deactivated_at: Time in epoch milliseconds when this object was deactivated.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] domain_names: Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+        :param pulumi.Input[builtins.bool] enabled: Activation status. Only used by private endpoints towards an AWS S3 service.
         :param pulumi.Input[builtins.str] endpoint_name: The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
+        :param pulumi.Input[builtins.str] endpoint_service: Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+        :param pulumi.Input[builtins.str] group_id: The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
+        :param pulumi.Input[builtins.str] resource_id: The Azure resource ID of the target resource. Change forces creation of a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] resource_names: Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
         :param pulumi.Input[builtins.str] rule_id: the ID of a private endpoint rule.
         :param pulumi.Input[builtins.int] updated_time: Time in epoch milliseconds when this object was updated.
+        :param pulumi.Input[builtins.str] vpc_endpoint_id: The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
         """
-        pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "network_connectivity_config_id", network_connectivity_config_id)
-        pulumi.set(__self__, "resource_id", resource_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if connection_state is not None:
             pulumi.set(__self__, "connection_state", connection_state)
         if creation_time is not None:
@@ -62,24 +72,24 @@ class MwsNccPrivateEndpointRuleArgs:
             pulumi.set(__self__, "deactivated_at", deactivated_at)
         if domain_names is not None:
             pulumi.set(__self__, "domain_names", domain_names)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if endpoint_name is not None:
             pulumi.set(__self__, "endpoint_name", endpoint_name)
+        if endpoint_service is not None:
+            pulumi.set(__self__, "endpoint_service", endpoint_service)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
+        if resource_names is not None:
+            pulumi.set(__self__, "resource_names", resource_names)
         if rule_id is not None:
             pulumi.set(__self__, "rule_id", rule_id)
         if updated_time is not None:
             pulumi.set(__self__, "updated_time", updated_time)
-
-    @property
-    @pulumi.getter(name="groupId")
-    def group_id(self) -> pulumi.Input[builtins.str]:
-        """
-        The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
-        """
-        return pulumi.get(self, "group_id")
-
-    @group_id.setter
-    def group_id(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "group_id", value)
+        if vpc_endpoint_id is not None:
+            pulumi.set(__self__, "vpc_endpoint_id", vpc_endpoint_id)
 
     @property
     @pulumi.getter(name="networkConnectivityConfigId")
@@ -94,16 +104,13 @@ class MwsNccPrivateEndpointRuleArgs:
         pulumi.set(self, "network_connectivity_config_id", value)
 
     @property
-    @pulumi.getter(name="resourceId")
-    def resource_id(self) -> pulumi.Input[builtins.str]:
-        """
-        The Azure resource ID of the target resource. Change forces creation of a new resource.
-        """
-        return pulumi.get(self, "resource_id")
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "account_id")
 
-    @resource_id.setter
-    def resource_id(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "resource_id", value)
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="connectionState")
@@ -161,11 +168,26 @@ class MwsNccPrivateEndpointRuleArgs:
     @property
     @pulumi.getter(name="domainNames")
     def domain_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+        """
         return pulumi.get(self, "domain_names")
 
     @domain_names.setter
     def domain_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "domain_names", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Activation status. Only used by private endpoints towards an AWS S3 service.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter(name="endpointName")
@@ -178,6 +200,54 @@ class MwsNccPrivateEndpointRuleArgs:
     @endpoint_name.setter
     def endpoint_name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "endpoint_name", value)
+
+    @property
+    @pulumi.getter(name="endpointService")
+    def endpoint_service(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+        """
+        return pulumi.get(self, "endpoint_service")
+
+    @endpoint_service.setter
+    def endpoint_service(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "endpoint_service", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The Azure resource ID of the target resource. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "resource_id", value)
+
+    @property
+    @pulumi.getter(name="resourceNames")
+    def resource_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
+        """
+        return pulumi.get(self, "resource_names")
+
+    @resource_names.setter
+    def resource_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "resource_names", value)
 
     @property
     @pulumi.getter(name="ruleId")
@@ -203,21 +273,38 @@ class MwsNccPrivateEndpointRuleArgs:
     def updated_time(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "updated_time", value)
 
+    @property
+    @pulumi.getter(name="vpcEndpointId")
+    def vpc_endpoint_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
+        """
+        return pulumi.get(self, "vpc_endpoint_id")
+
+    @vpc_endpoint_id.setter
+    def vpc_endpoint_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "vpc_endpoint_id", value)
+
 
 @pulumi.input_type
 class _MwsNccPrivateEndpointRuleState:
     def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[builtins.str]] = None,
                  connection_state: Optional[pulumi.Input[builtins.str]] = None,
                  creation_time: Optional[pulumi.Input[builtins.int]] = None,
                  deactivated: Optional[pulumi.Input[builtins.bool]] = None,
                  deactivated_at: Optional[pulumi.Input[builtins.int]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  endpoint_name: Optional[pulumi.Input[builtins.str]] = None,
+                 endpoint_service: Optional[pulumi.Input[builtins.str]] = None,
                  group_id: Optional[pulumi.Input[builtins.str]] = None,
                  network_connectivity_config_id: Optional[pulumi.Input[builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[builtins.str]] = None,
+                 resource_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  rule_id: Optional[pulumi.Input[builtins.str]] = None,
-                 updated_time: Optional[pulumi.Input[builtins.int]] = None):
+                 updated_time: Optional[pulumi.Input[builtins.int]] = None,
+                 vpc_endpoint_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering MwsNccPrivateEndpointRule resources.
         :param pulumi.Input[builtins.str] connection_state: The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
@@ -229,13 +316,20 @@ class _MwsNccPrivateEndpointRuleState:
         :param pulumi.Input[builtins.int] creation_time: Time in epoch milliseconds when this object was created.
         :param pulumi.Input[builtins.bool] deactivated: Whether this private endpoint is deactivated.
         :param pulumi.Input[builtins.int] deactivated_at: Time in epoch milliseconds when this object was deactivated.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] domain_names: Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+        :param pulumi.Input[builtins.bool] enabled: Activation status. Only used by private endpoints towards an AWS S3 service.
         :param pulumi.Input[builtins.str] endpoint_name: The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
+        :param pulumi.Input[builtins.str] endpoint_service: Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
         :param pulumi.Input[builtins.str] group_id: The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
         :param pulumi.Input[builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
         :param pulumi.Input[builtins.str] resource_id: The Azure resource ID of the target resource. Change forces creation of a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] resource_names: Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
         :param pulumi.Input[builtins.str] rule_id: the ID of a private endpoint rule.
         :param pulumi.Input[builtins.int] updated_time: Time in epoch milliseconds when this object was updated.
+        :param pulumi.Input[builtins.str] vpc_endpoint_id: The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
         """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if connection_state is not None:
             pulumi.set(__self__, "connection_state", connection_state)
         if creation_time is not None:
@@ -246,18 +340,35 @@ class _MwsNccPrivateEndpointRuleState:
             pulumi.set(__self__, "deactivated_at", deactivated_at)
         if domain_names is not None:
             pulumi.set(__self__, "domain_names", domain_names)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if endpoint_name is not None:
             pulumi.set(__self__, "endpoint_name", endpoint_name)
+        if endpoint_service is not None:
+            pulumi.set(__self__, "endpoint_service", endpoint_service)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if network_connectivity_config_id is not None:
             pulumi.set(__self__, "network_connectivity_config_id", network_connectivity_config_id)
         if resource_id is not None:
             pulumi.set(__self__, "resource_id", resource_id)
+        if resource_names is not None:
+            pulumi.set(__self__, "resource_names", resource_names)
         if rule_id is not None:
             pulumi.set(__self__, "rule_id", rule_id)
         if updated_time is not None:
             pulumi.set(__self__, "updated_time", updated_time)
+        if vpc_endpoint_id is not None:
+            pulumi.set(__self__, "vpc_endpoint_id", vpc_endpoint_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="connectionState")
@@ -315,11 +426,26 @@ class _MwsNccPrivateEndpointRuleState:
     @property
     @pulumi.getter(name="domainNames")
     def domain_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+        """
         return pulumi.get(self, "domain_names")
 
     @domain_names.setter
     def domain_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "domain_names", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Activation status. Only used by private endpoints towards an AWS S3 service.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter(name="endpointName")
@@ -332,6 +458,18 @@ class _MwsNccPrivateEndpointRuleState:
     @endpoint_name.setter
     def endpoint_name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "endpoint_name", value)
+
+    @property
+    @pulumi.getter(name="endpointService")
+    def endpoint_service(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+        """
+        return pulumi.get(self, "endpoint_service")
+
+    @endpoint_service.setter
+    def endpoint_service(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "endpoint_service", value)
 
     @property
     @pulumi.getter(name="groupId")
@@ -370,6 +508,18 @@ class _MwsNccPrivateEndpointRuleState:
         pulumi.set(self, "resource_id", value)
 
     @property
+    @pulumi.getter(name="resourceNames")
+    def resource_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
+        """
+        return pulumi.get(self, "resource_names")
+
+    @resource_names.setter
+    def resource_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "resource_names", value)
+
+    @property
     @pulumi.getter(name="ruleId")
     def rule_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -393,6 +543,18 @@ class _MwsNccPrivateEndpointRuleState:
     def updated_time(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "updated_time", value)
 
+    @property
+    @pulumi.getter(name="vpcEndpointId")
+    def vpc_endpoint_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
+        """
+        return pulumi.get(self, "vpc_endpoint_id")
+
+    @vpc_endpoint_id.setter
+    def vpc_endpoint_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "vpc_endpoint_id", value)
+
 
 @pulumi.type_token("databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule")
 class MwsNccPrivateEndpointRule(pulumi.CustomResource):
@@ -400,26 +562,33 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[builtins.str]] = None,
                  connection_state: Optional[pulumi.Input[builtins.str]] = None,
                  creation_time: Optional[pulumi.Input[builtins.int]] = None,
                  deactivated: Optional[pulumi.Input[builtins.bool]] = None,
                  deactivated_at: Optional[pulumi.Input[builtins.int]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  endpoint_name: Optional[pulumi.Input[builtins.str]] = None,
+                 endpoint_service: Optional[pulumi.Input[builtins.str]] = None,
                  group_id: Optional[pulumi.Input[builtins.str]] = None,
                  network_connectivity_config_id: Optional[pulumi.Input[builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[builtins.str]] = None,
+                 resource_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  rule_id: Optional[pulumi.Input[builtins.str]] = None,
                  updated_time: Optional[pulumi.Input[builtins.int]] = None,
+                 vpc_endpoint_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
         Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
 
         > This resource can only be used with an account-level provider!
 
-        > This feature is only available in Azure.
+        > This feature is available on Azure, and in Public Preview on AWS.
 
         ## Example Usage
+
+        Create a private endpoint to an Azure storage account
 
         ```python
         import pulumi
@@ -435,6 +604,27 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
             network_connectivity_config_id=ncc.network_connectivity_config_id,
             resource_id="/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa",
             group_id="blob")
+        ```
+
+        Create a private endpoint rule to an AWS VPC endpoint and to an S3 bucket
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        region = config.require_object("region")
+        prefix = config.require_object("prefix")
+        ncc = databricks.MwsNetworkConnectivityConfig("ncc",
+            name=f"ncc-for-{prefix}",
+            region=region)
+        storage = databricks.MwsNccPrivateEndpointRule("storage",
+            network_connectivity_config_id=ncc.network_connectivity_config_id,
+            resource_names=["bucket"])
+        vpce = databricks.MwsNccPrivateEndpointRule("vpce",
+            network_connectivity_config_id=ncc.network_connectivity_config_id,
+            endpoint_service="com.amazonaws.vpce.us-west-2.vpce-svc-xyz",
+            domain_names=["subdomain.internal.net"])
         ```
 
         ## Related Resources
@@ -475,12 +665,17 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] creation_time: Time in epoch milliseconds when this object was created.
         :param pulumi.Input[builtins.bool] deactivated: Whether this private endpoint is deactivated.
         :param pulumi.Input[builtins.int] deactivated_at: Time in epoch milliseconds when this object was deactivated.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] domain_names: Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+        :param pulumi.Input[builtins.bool] enabled: Activation status. Only used by private endpoints towards an AWS S3 service.
         :param pulumi.Input[builtins.str] endpoint_name: The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
+        :param pulumi.Input[builtins.str] endpoint_service: Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
         :param pulumi.Input[builtins.str] group_id: The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
         :param pulumi.Input[builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
         :param pulumi.Input[builtins.str] resource_id: The Azure resource ID of the target resource. Change forces creation of a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] resource_names: Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
         :param pulumi.Input[builtins.str] rule_id: the ID of a private endpoint rule.
         :param pulumi.Input[builtins.int] updated_time: Time in epoch milliseconds when this object was updated.
+        :param pulumi.Input[builtins.str] vpc_endpoint_id: The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
         """
         ...
     @overload
@@ -493,9 +688,11 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
 
         > This resource can only be used with an account-level provider!
 
-        > This feature is only available in Azure.
+        > This feature is available on Azure, and in Public Preview on AWS.
 
         ## Example Usage
+
+        Create a private endpoint to an Azure storage account
 
         ```python
         import pulumi
@@ -511,6 +708,27 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
             network_connectivity_config_id=ncc.network_connectivity_config_id,
             resource_id="/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa",
             group_id="blob")
+        ```
+
+        Create a private endpoint rule to an AWS VPC endpoint and to an S3 bucket
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        region = config.require_object("region")
+        prefix = config.require_object("prefix")
+        ncc = databricks.MwsNetworkConnectivityConfig("ncc",
+            name=f"ncc-for-{prefix}",
+            region=region)
+        storage = databricks.MwsNccPrivateEndpointRule("storage",
+            network_connectivity_config_id=ncc.network_connectivity_config_id,
+            resource_names=["bucket"])
+        vpce = databricks.MwsNccPrivateEndpointRule("vpce",
+            network_connectivity_config_id=ncc.network_connectivity_config_id,
+            endpoint_service="com.amazonaws.vpce.us-west-2.vpce-svc-xyz",
+            domain_names=["subdomain.internal.net"])
         ```
 
         ## Related Resources
@@ -555,17 +773,22 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[builtins.str]] = None,
                  connection_state: Optional[pulumi.Input[builtins.str]] = None,
                  creation_time: Optional[pulumi.Input[builtins.int]] = None,
                  deactivated: Optional[pulumi.Input[builtins.bool]] = None,
                  deactivated_at: Optional[pulumi.Input[builtins.int]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  endpoint_name: Optional[pulumi.Input[builtins.str]] = None,
+                 endpoint_service: Optional[pulumi.Input[builtins.str]] = None,
                  group_id: Optional[pulumi.Input[builtins.str]] = None,
                  network_connectivity_config_id: Optional[pulumi.Input[builtins.str]] = None,
                  resource_id: Optional[pulumi.Input[builtins.str]] = None,
+                 resource_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  rule_id: Optional[pulumi.Input[builtins.str]] = None,
                  updated_time: Optional[pulumi.Input[builtins.int]] = None,
+                 vpc_endpoint_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -575,23 +798,24 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MwsNccPrivateEndpointRuleArgs.__new__(MwsNccPrivateEndpointRuleArgs)
 
+            __props__.__dict__["account_id"] = account_id
             __props__.__dict__["connection_state"] = connection_state
             __props__.__dict__["creation_time"] = creation_time
             __props__.__dict__["deactivated"] = deactivated
             __props__.__dict__["deactivated_at"] = deactivated_at
             __props__.__dict__["domain_names"] = domain_names
+            __props__.__dict__["enabled"] = enabled
             __props__.__dict__["endpoint_name"] = endpoint_name
-            if group_id is None and not opts.urn:
-                raise TypeError("Missing required property 'group_id'")
+            __props__.__dict__["endpoint_service"] = endpoint_service
             __props__.__dict__["group_id"] = group_id
             if network_connectivity_config_id is None and not opts.urn:
                 raise TypeError("Missing required property 'network_connectivity_config_id'")
             __props__.__dict__["network_connectivity_config_id"] = network_connectivity_config_id
-            if resource_id is None and not opts.urn:
-                raise TypeError("Missing required property 'resource_id'")
             __props__.__dict__["resource_id"] = resource_id
+            __props__.__dict__["resource_names"] = resource_names
             __props__.__dict__["rule_id"] = rule_id
             __props__.__dict__["updated_time"] = updated_time
+            __props__.__dict__["vpc_endpoint_id"] = vpc_endpoint_id
         super(MwsNccPrivateEndpointRule, __self__).__init__(
             'databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule',
             resource_name,
@@ -602,17 +826,22 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: Optional[pulumi.Input[builtins.str]] = None,
             connection_state: Optional[pulumi.Input[builtins.str]] = None,
             creation_time: Optional[pulumi.Input[builtins.int]] = None,
             deactivated: Optional[pulumi.Input[builtins.bool]] = None,
             deactivated_at: Optional[pulumi.Input[builtins.int]] = None,
             domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            enabled: Optional[pulumi.Input[builtins.bool]] = None,
             endpoint_name: Optional[pulumi.Input[builtins.str]] = None,
+            endpoint_service: Optional[pulumi.Input[builtins.str]] = None,
             group_id: Optional[pulumi.Input[builtins.str]] = None,
             network_connectivity_config_id: Optional[pulumi.Input[builtins.str]] = None,
             resource_id: Optional[pulumi.Input[builtins.str]] = None,
+            resource_names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             rule_id: Optional[pulumi.Input[builtins.str]] = None,
-            updated_time: Optional[pulumi.Input[builtins.int]] = None) -> 'MwsNccPrivateEndpointRule':
+            updated_time: Optional[pulumi.Input[builtins.int]] = None,
+            vpc_endpoint_id: Optional[pulumi.Input[builtins.str]] = None) -> 'MwsNccPrivateEndpointRule':
         """
         Get an existing MwsNccPrivateEndpointRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -629,29 +858,44 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] creation_time: Time in epoch milliseconds when this object was created.
         :param pulumi.Input[builtins.bool] deactivated: Whether this private endpoint is deactivated.
         :param pulumi.Input[builtins.int] deactivated_at: Time in epoch milliseconds when this object was deactivated.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] domain_names: Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+        :param pulumi.Input[builtins.bool] enabled: Activation status. Only used by private endpoints towards an AWS S3 service.
         :param pulumi.Input[builtins.str] endpoint_name: The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
+        :param pulumi.Input[builtins.str] endpoint_service: Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
         :param pulumi.Input[builtins.str] group_id: The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
         :param pulumi.Input[builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
         :param pulumi.Input[builtins.str] resource_id: The Azure resource ID of the target resource. Change forces creation of a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] resource_names: Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
         :param pulumi.Input[builtins.str] rule_id: the ID of a private endpoint rule.
         :param pulumi.Input[builtins.int] updated_time: Time in epoch milliseconds when this object was updated.
+        :param pulumi.Input[builtins.str] vpc_endpoint_id: The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _MwsNccPrivateEndpointRuleState.__new__(_MwsNccPrivateEndpointRuleState)
 
+        __props__.__dict__["account_id"] = account_id
         __props__.__dict__["connection_state"] = connection_state
         __props__.__dict__["creation_time"] = creation_time
         __props__.__dict__["deactivated"] = deactivated
         __props__.__dict__["deactivated_at"] = deactivated_at
         __props__.__dict__["domain_names"] = domain_names
+        __props__.__dict__["enabled"] = enabled
         __props__.__dict__["endpoint_name"] = endpoint_name
+        __props__.__dict__["endpoint_service"] = endpoint_service
         __props__.__dict__["group_id"] = group_id
         __props__.__dict__["network_connectivity_config_id"] = network_connectivity_config_id
         __props__.__dict__["resource_id"] = resource_id
+        __props__.__dict__["resource_names"] = resource_names
         __props__.__dict__["rule_id"] = rule_id
         __props__.__dict__["updated_time"] = updated_time
+        __props__.__dict__["vpc_endpoint_id"] = vpc_endpoint_id
         return MwsNccPrivateEndpointRule(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Output[Optional[builtins.str]]:
+        return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="connectionState")
@@ -693,7 +937,18 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
     @property
     @pulumi.getter(name="domainNames")
     def domain_names(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+        """
+        Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+        """
         return pulumi.get(self, "domain_names")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Output[builtins.bool]:
+        """
+        Activation status. Only used by private endpoints towards an AWS S3 service.
+        """
+        return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="endpointName")
@@ -704,8 +959,16 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
         return pulumi.get(self, "endpoint_name")
 
     @property
+    @pulumi.getter(name="endpointService")
+    def endpoint_service(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+        """
+        return pulumi.get(self, "endpoint_service")
+
+    @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> pulumi.Output[builtins.str]:
+    def group_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
         """
@@ -721,11 +984,19 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> pulumi.Output[builtins.str]:
+    def resource_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         The Azure resource ID of the target resource. Change forces creation of a new resource.
         """
         return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="resourceNames")
+    def resource_names(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+        """
+        Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
+        """
+        return pulumi.get(self, "resource_names")
 
     @property
     @pulumi.getter(name="ruleId")
@@ -742,4 +1013,12 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
         Time in epoch milliseconds when this object was updated.
         """
         return pulumi.get(self, "updated_time")
+
+    @property
+    @pulumi.getter(name="vpcEndpointId")
+    def vpc_endpoint_id(self) -> pulumi.Output[builtins.str]:
+        """
+        The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
+        """
+        return pulumi.get(self, "vpc_endpoint_id")
 

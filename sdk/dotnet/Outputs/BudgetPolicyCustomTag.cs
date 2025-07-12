@@ -17,11 +17,11 @@ namespace Pulumi.Databricks.Outputs
         /// The key of the tag.
         /// - Must be unique among all custom tags of the same policy
         /// - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-        /// these tags are preserved.
+        /// these tags are preserved
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The value of the tag.
+        /// The value of the tag
         /// </summary>
         public readonly string? Value;
 

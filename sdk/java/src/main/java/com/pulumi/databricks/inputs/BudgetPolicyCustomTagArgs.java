@@ -20,7 +20,7 @@ public final class BudgetPolicyCustomTagArgs extends com.pulumi.resources.Resour
      * The key of the tag.
      * - Must be unique among all custom tags of the same policy
      * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
-     *   these tags are preserved.
+     *   these tags are preserved
      * 
      */
     @Import(name="key", required=true)
@@ -30,7 +30,7 @@ public final class BudgetPolicyCustomTagArgs extends com.pulumi.resources.Resour
      * @return The key of the tag.
      * - Must be unique among all custom tags of the same policy
      * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
-     *   these tags are preserved.
+     *   these tags are preserved
      * 
      */
     public Output<String> key() {
@@ -38,14 +38,14 @@ public final class BudgetPolicyCustomTagArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The value of the tag.
+     * The value of the tag
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The value of the tag.
+     * @return The value of the tag
      * 
      */
     public Optional<Output<String>> value() {
@@ -81,7 +81,7 @@ public final class BudgetPolicyCustomTagArgs extends com.pulumi.resources.Resour
          * @param key The key of the tag.
          * - Must be unique among all custom tags of the same policy
          * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
-         *   these tags are preserved.
+         *   these tags are preserved
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class BudgetPolicyCustomTagArgs extends com.pulumi.resources.Resour
          * @param key The key of the tag.
          * - Must be unique among all custom tags of the same policy
          * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
-         *   these tags are preserved.
+         *   these tags are preserved
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class BudgetPolicyCustomTagArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param value The value of the tag.
+         * @param value The value of the tag
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class BudgetPolicyCustomTagArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param value The value of the tag.
+         * @param value The value of the tag
          * 
          * @return builder
          * 

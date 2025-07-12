@@ -14,17 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDatabaseInstancesDatabaseInstance {
     /**
-     * @return (string) - Password for admin user to create. If not provided, no user will be created
-     * 
-     */
-    private @Nullable String adminPassword;
-    /**
-     * @return (string) - Name of the admin role for the instance. If not provided, defaults to &#39;databricks_admin&#39;
-     * 
-     */
-    private @Nullable String adminRolename;
-    /**
-     * @return (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;
+     * @return (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
      * 
      */
     private @Nullable String capacity;
@@ -38,6 +28,13 @@ public final class GetDatabaseInstancesDatabaseInstance {
      * 
      */
     private String creator;
+    /**
+     * @return (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    private Boolean effectiveStopped;
     /**
      * @return (string) - The name of the instance. This is the unique identifier for the instance
      * 
@@ -54,7 +51,7 @@ public final class GetDatabaseInstancesDatabaseInstance {
      */
     private String readWriteDns;
     /**
-     * @return (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+     * @return (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      * 
      */
     private String state;
@@ -71,21 +68,7 @@ public final class GetDatabaseInstancesDatabaseInstance {
 
     private GetDatabaseInstancesDatabaseInstance() {}
     /**
-     * @return (string) - Password for admin user to create. If not provided, no user will be created
-     * 
-     */
-    public Optional<String> adminPassword() {
-        return Optional.ofNullable(this.adminPassword);
-    }
-    /**
-     * @return (string) - Name of the admin role for the instance. If not provided, defaults to &#39;databricks_admin&#39;
-     * 
-     */
-    public Optional<String> adminRolename() {
-        return Optional.ofNullable(this.adminRolename);
-    }
-    /**
-     * @return (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;
+     * @return (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
      * 
      */
     public Optional<String> capacity() {
@@ -104,6 +87,15 @@ public final class GetDatabaseInstancesDatabaseInstance {
      */
     public String creator() {
         return this.creator;
+    }
+    /**
+     * @return (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    public Boolean effectiveStopped() {
+        return this.effectiveStopped;
     }
     /**
      * @return (string) - The name of the instance. This is the unique identifier for the instance
@@ -127,7 +119,7 @@ public final class GetDatabaseInstancesDatabaseInstance {
         return this.readWriteDns;
     }
     /**
-     * @return (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+     * @return (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      * 
      */
     public String state() {
@@ -157,11 +149,10 @@ public final class GetDatabaseInstancesDatabaseInstance {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String adminPassword;
-        private @Nullable String adminRolename;
         private @Nullable String capacity;
         private String creationTime;
         private String creator;
+        private Boolean effectiveStopped;
         private String name;
         private String pgVersion;
         private String readWriteDns;
@@ -171,11 +162,10 @@ public final class GetDatabaseInstancesDatabaseInstance {
         public Builder() {}
         public Builder(GetDatabaseInstancesDatabaseInstance defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.adminPassword = defaults.adminPassword;
-    	      this.adminRolename = defaults.adminRolename;
     	      this.capacity = defaults.capacity;
     	      this.creationTime = defaults.creationTime;
     	      this.creator = defaults.creator;
+    	      this.effectiveStopped = defaults.effectiveStopped;
     	      this.name = defaults.name;
     	      this.pgVersion = defaults.pgVersion;
     	      this.readWriteDns = defaults.readWriteDns;
@@ -184,18 +174,6 @@ public final class GetDatabaseInstancesDatabaseInstance {
     	      this.uid = defaults.uid;
         }
 
-        @CustomType.Setter
-        public Builder adminPassword(@Nullable String adminPassword) {
-
-            this.adminPassword = adminPassword;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder adminRolename(@Nullable String adminRolename) {
-
-            this.adminRolename = adminRolename;
-            return this;
-        }
         @CustomType.Setter
         public Builder capacity(@Nullable String capacity) {
 
@@ -216,6 +194,14 @@ public final class GetDatabaseInstancesDatabaseInstance {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "creator");
             }
             this.creator = creator;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveStopped(Boolean effectiveStopped) {
+            if (effectiveStopped == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "effectiveStopped");
+            }
+            this.effectiveStopped = effectiveStopped;
             return this;
         }
         @CustomType.Setter
@@ -266,11 +252,10 @@ public final class GetDatabaseInstancesDatabaseInstance {
         }
         public GetDatabaseInstancesDatabaseInstance build() {
             final var _resultValue = new GetDatabaseInstancesDatabaseInstance();
-            _resultValue.adminPassword = adminPassword;
-            _resultValue.adminRolename = adminRolename;
             _resultValue.capacity = capacity;
             _resultValue.creationTime = creationTime;
             _resultValue.creator = creator;
+            _resultValue.effectiveStopped = effectiveStopped;
             _resultValue.name = name;
             _resultValue.pgVersion = pgVersion;
             _resultValue.readWriteDns = readWriteDns;

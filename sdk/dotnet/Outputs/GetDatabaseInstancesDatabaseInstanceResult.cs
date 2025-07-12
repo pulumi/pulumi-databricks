@@ -14,15 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetDatabaseInstancesDatabaseInstanceResult
     {
         /// <summary>
-        /// (string) - Password for admin user to create. If not provided, no user will be created
-        /// </summary>
-        public readonly string? AdminPassword;
-        /// <summary>
-        /// (string) - Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-        /// </summary>
-        public readonly string? AdminRolename;
-        /// <summary>
-        /// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+        /// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         /// </summary>
         public readonly string? Capacity;
         /// <summary>
@@ -33,6 +25,12 @@ namespace Pulumi.Databricks.Outputs
         /// (string) - The email of the creator of the instance
         /// </summary>
         public readonly string Creator;
+        /// <summary>
+        /// (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+        /// `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        /// `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// </summary>
+        public readonly bool EffectiveStopped;
         /// <summary>
         /// (string) - The name of the instance. This is the unique identifier for the instance
         /// </summary>
@@ -46,7 +44,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string ReadWriteDns;
         /// <summary>
-        /// (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+        /// (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         /// </summary>
         public readonly string State;
         /// <summary>
@@ -60,15 +58,13 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetDatabaseInstancesDatabaseInstanceResult(
-            string? adminPassword,
-
-            string? adminRolename,
-
             string? capacity,
 
             string creationTime,
 
             string creator,
+
+            bool effectiveStopped,
 
             string name,
 
@@ -82,11 +78,10 @@ namespace Pulumi.Databricks.Outputs
 
             string uid)
         {
-            AdminPassword = adminPassword;
-            AdminRolename = adminRolename;
             Capacity = capacity;
             CreationTime = creationTime;
             Creator = creator;
+            EffectiveStopped = effectiveStopped;
             Name = name;
             PgVersion = pgVersion;
             ReadWriteDns = readWriteDns;

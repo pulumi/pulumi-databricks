@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// client version used by the environment.
         /// </summary>
-        [Input("client", required: true)]
-        public Input<string> Client { get; set; } = null!;
+        [Input("client")]
+        public Input<string>? Client { get; set; }
 
         [Input("dependencies")]
         private InputList<string>? _dependencies;

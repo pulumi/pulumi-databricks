@@ -164,7 +164,8 @@ type Pipeline struct {
 	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
 	Development pulumi.BoolPtrOutput `pulumi:"development"`
 	// optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-	Edition pulumi.StringPtrOutput `pulumi:"edition"`
+	Edition     pulumi.StringPtrOutput       `pulumi:"edition"`
+	Environment PipelineEnvironmentPtrOutput `pulumi:"environment"`
 	// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
 	EventLog             PipelineEventLogPtrOutput `pulumi:"eventLog"`
 	ExpectedLastModified pulumi.IntPtrOutput       `pulumi:"expectedLastModified"`
@@ -195,6 +196,8 @@ type Pipeline struct {
 	State      pulumi.StringOutput  `pulumi:"state"`
 	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage pulumi.StringPtrOutput `pulumi:"storage"`
+	// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target  pulumi.StringPtrOutput   `pulumi:"target"`
 	Trigger PipelineTriggerPtrOutput `pulumi:"trigger"`
@@ -254,7 +257,8 @@ type pipelineState struct {
 	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
 	Development *bool `pulumi:"development"`
 	// optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-	Edition *string `pulumi:"edition"`
+	Edition     *string              `pulumi:"edition"`
+	Environment *PipelineEnvironment `pulumi:"environment"`
 	// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
 	EventLog             *PipelineEventLog `pulumi:"eventLog"`
 	ExpectedLastModified *int              `pulumi:"expectedLastModified"`
@@ -285,6 +289,8 @@ type pipelineState struct {
 	State      *string `pulumi:"state"`
 	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage *string `pulumi:"storage"`
+	// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+	Tags map[string]string `pulumi:"tags"`
 	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target  *string          `pulumi:"target"`
 	Trigger *PipelineTrigger `pulumi:"trigger"`
@@ -315,7 +321,8 @@ type PipelineState struct {
 	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
 	Development pulumi.BoolPtrInput
 	// optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-	Edition pulumi.StringPtrInput
+	Edition     pulumi.StringPtrInput
+	Environment PipelineEnvironmentPtrInput
 	// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
 	EventLog             PipelineEventLogPtrInput
 	ExpectedLastModified pulumi.IntPtrInput
@@ -346,6 +353,8 @@ type PipelineState struct {
 	State      pulumi.StringPtrInput
 	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage pulumi.StringPtrInput
+	// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+	Tags pulumi.StringMapInput
 	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target  pulumi.StringPtrInput
 	Trigger PipelineTriggerPtrInput
@@ -380,7 +389,8 @@ type pipelineArgs struct {
 	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
 	Development *bool `pulumi:"development"`
 	// optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-	Edition *string `pulumi:"edition"`
+	Edition     *string              `pulumi:"edition"`
+	Environment *PipelineEnvironment `pulumi:"environment"`
 	// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
 	EventLog             *PipelineEventLog `pulumi:"eventLog"`
 	ExpectedLastModified *int              `pulumi:"expectedLastModified"`
@@ -411,6 +421,8 @@ type pipelineArgs struct {
 	State      *string `pulumi:"state"`
 	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage *string `pulumi:"storage"`
+	// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+	Tags map[string]string `pulumi:"tags"`
 	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target  *string          `pulumi:"target"`
 	Trigger *PipelineTrigger `pulumi:"trigger"`
@@ -442,7 +454,8 @@ type PipelineArgs struct {
 	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
 	Development pulumi.BoolPtrInput
 	// optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-	Edition pulumi.StringPtrInput
+	Edition     pulumi.StringPtrInput
+	Environment PipelineEnvironmentPtrInput
 	// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
 	EventLog             PipelineEventLogPtrInput
 	ExpectedLastModified pulumi.IntPtrInput
@@ -473,6 +486,8 @@ type PipelineArgs struct {
 	State      pulumi.StringPtrInput
 	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage pulumi.StringPtrInput
+	// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+	Tags pulumi.StringMapInput
 	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target  pulumi.StringPtrInput
 	Trigger PipelineTriggerPtrInput
@@ -629,6 +644,10 @@ func (o PipelineOutput) Edition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Edition }).(pulumi.StringPtrOutput)
 }
 
+func (o PipelineOutput) Environment() PipelineEnvironmentPtrOutput {
+	return o.ApplyT(func(v *Pipeline) PipelineEnvironmentPtrOutput { return v.Environment }).(PipelineEnvironmentPtrOutput)
+}
+
 // an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
 func (o PipelineOutput) EventLog() PipelineEventLogPtrOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineEventLogPtrOutput { return v.EventLog }).(PipelineEventLogPtrOutput)
@@ -717,6 +736,11 @@ func (o PipelineOutput) State() pulumi.StringOutput {
 // A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 func (o PipelineOutput) Storage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Storage }).(pulumi.StringPtrOutput)
+}
+
+// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+func (o PipelineOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.

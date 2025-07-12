@@ -81,7 +81,7 @@ public final class GetSchemaSchemaInfo {
      */
     private @Nullable Map<String,String> properties;
     /**
-     * @return the unique identifier of the volume
+     * @return the unique identifier of the schema
      * 
      */
     private @Nullable String schemaId;
@@ -199,7 +199,7 @@ public final class GetSchemaSchemaInfo {
         return this.properties == null ? Map.of() : this.properties;
     }
     /**
-     * @return the unique identifier of the volume
+     * @return the unique identifier of the schema
      * 
      */
     public Optional<String> schemaId() {

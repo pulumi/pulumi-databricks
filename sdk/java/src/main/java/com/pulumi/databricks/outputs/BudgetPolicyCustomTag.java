@@ -16,12 +16,12 @@ public final class BudgetPolicyCustomTag {
      * @return The key of the tag.
      * - Must be unique among all custom tags of the same policy
      * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
-     *   these tags are preserved.
+     *   these tags are preserved
      * 
      */
     private String key;
     /**
-     * @return The value of the tag.
+     * @return The value of the tag
      * 
      */
     private @Nullable String value;
@@ -31,14 +31,14 @@ public final class BudgetPolicyCustomTag {
      * @return The key of the tag.
      * - Must be unique among all custom tags of the same policy
      * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
-     *   these tags are preserved.
+     *   these tags are preserved
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return The value of the tag.
+     * @return The value of the tag
      * 
      */
     public Optional<String> value() {

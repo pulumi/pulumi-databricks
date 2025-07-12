@@ -66,7 +66,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
         /// <summary>
-        /// the unique identifier of the volume
+        /// the unique identifier of the schema
         /// </summary>
         public readonly string? SchemaId;
         /// <summary>

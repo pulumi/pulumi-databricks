@@ -154,7 +154,8 @@ type Cluster struct {
 	// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
 	NumWorkers pulumi.IntPtrOutput `pulumi:"numWorkers"`
 	// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
-	PolicyId pulumi.StringPtrOutput `pulumi:"policyId"`
+	PolicyId             pulumi.StringPtrOutput `pulumi:"policyId"`
+	RemoteDiskThroughput pulumi.IntPtrOutput    `pulumi:"remoteDiskThroughput"`
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine pulumi.StringPtrOutput `pulumi:"runtimeEngine"`
 	// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
@@ -170,8 +171,9 @@ type Cluster struct {
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
 	SshPublicKeys pulumi.StringArrayOutput `pulumi:"sshPublicKeys"`
 	// (string) State of the cluster.
-	State pulumi.StringOutput `pulumi:"state"`
-	Url   pulumi.StringOutput `pulumi:"url"`
+	State                      pulumi.StringOutput `pulumi:"state"`
+	TotalInitialRemoteDiskSize pulumi.IntPtrOutput `pulumi:"totalInitialRemoteDiskSize"`
+	Url                        pulumi.StringOutput `pulumi:"url"`
 	// Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
 	UseMlRuntime pulumi.BoolPtrOutput         `pulumi:"useMlRuntime"`
 	WorkloadType ClusterWorkloadTypePtrOutput `pulumi:"workloadType"`
@@ -340,7 +342,8 @@ type clusterState struct {
 	// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
 	NumWorkers *int `pulumi:"numWorkers"`
 	// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
-	PolicyId *string `pulumi:"policyId"`
+	PolicyId             *string `pulumi:"policyId"`
+	RemoteDiskThroughput *int    `pulumi:"remoteDiskThroughput"`
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine *string `pulumi:"runtimeEngine"`
 	// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
@@ -356,8 +359,9 @@ type clusterState struct {
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
 	SshPublicKeys []string `pulumi:"sshPublicKeys"`
 	// (string) State of the cluster.
-	State *string `pulumi:"state"`
-	Url   *string `pulumi:"url"`
+	State                      *string `pulumi:"state"`
+	TotalInitialRemoteDiskSize *int    `pulumi:"totalInitialRemoteDiskSize"`
+	Url                        *string `pulumi:"url"`
 	// Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
 	UseMlRuntime *bool                `pulumi:"useMlRuntime"`
 	WorkloadType *ClusterWorkloadType `pulumi:"workloadType"`
@@ -494,7 +498,8 @@ type ClusterState struct {
 	// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
 	NumWorkers pulumi.IntPtrInput
 	// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
-	PolicyId pulumi.StringPtrInput
+	PolicyId             pulumi.StringPtrInput
+	RemoteDiskThroughput pulumi.IntPtrInput
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine pulumi.StringPtrInput
 	// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
@@ -510,8 +515,9 @@ type ClusterState struct {
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
 	SshPublicKeys pulumi.StringArrayInput
 	// (string) State of the cluster.
-	State pulumi.StringPtrInput
-	Url   pulumi.StringPtrInput
+	State                      pulumi.StringPtrInput
+	TotalInitialRemoteDiskSize pulumi.IntPtrInput
+	Url                        pulumi.StringPtrInput
 	// Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
 	UseMlRuntime pulumi.BoolPtrInput
 	WorkloadType ClusterWorkloadTypePtrInput
@@ -649,7 +655,8 @@ type clusterArgs struct {
 	// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
 	NumWorkers *int `pulumi:"numWorkers"`
 	// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
-	PolicyId *string `pulumi:"policyId"`
+	PolicyId             *string `pulumi:"policyId"`
+	RemoteDiskThroughput *int    `pulumi:"remoteDiskThroughput"`
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine *string `pulumi:"runtimeEngine"`
 	// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
@@ -663,7 +670,8 @@ type clusterArgs struct {
 	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported getSparkVersion id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
 	SparkVersion string `pulumi:"sparkVersion"`
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
-	SshPublicKeys []string `pulumi:"sshPublicKeys"`
+	SshPublicKeys              []string `pulumi:"sshPublicKeys"`
+	TotalInitialRemoteDiskSize *int     `pulumi:"totalInitialRemoteDiskSize"`
 	// Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
 	UseMlRuntime *bool                `pulumi:"useMlRuntime"`
 	WorkloadType *ClusterWorkloadType `pulumi:"workloadType"`
@@ -798,7 +806,8 @@ type ClusterArgs struct {
 	// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
 	NumWorkers pulumi.IntPtrInput
 	// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
-	PolicyId pulumi.StringPtrInput
+	PolicyId             pulumi.StringPtrInput
+	RemoteDiskThroughput pulumi.IntPtrInput
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine pulumi.StringPtrInput
 	// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
@@ -812,7 +821,8 @@ type ClusterArgs struct {
 	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported getSparkVersion id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
 	SparkVersion pulumi.StringInput
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
-	SshPublicKeys pulumi.StringArrayInput
+	SshPublicKeys              pulumi.StringArrayInput
+	TotalInitialRemoteDiskSize pulumi.IntPtrInput
 	// Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
 	UseMlRuntime pulumi.BoolPtrInput
 	WorkloadType ClusterWorkloadTypePtrInput
@@ -1129,6 +1139,10 @@ func (o ClusterOutput) PolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.PolicyId }).(pulumi.StringPtrOutput)
 }
 
+func (o ClusterOutput) RemoteDiskThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.RemoteDiskThroughput }).(pulumi.IntPtrOutput)
+}
+
 // The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 func (o ClusterOutput) RuntimeEngine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.RuntimeEngine }).(pulumi.StringPtrOutput)
@@ -1164,6 +1178,10 @@ func (o ClusterOutput) SshPublicKeys() pulumi.StringArrayOutput {
 // (string) State of the cluster.
 func (o ClusterOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) TotalInitialRemoteDiskSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.TotalInitialRemoteDiskSize }).(pulumi.IntPtrOutput)
 }
 
 func (o ClusterOutput) Url() pulumi.StringOutput {

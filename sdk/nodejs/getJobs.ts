@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * > This data source can only be used with a workspace-level provider!
  *
- * > Data resource will error in case of jobs with duplicate names.
+ * > By default, this data resource will error in case of jobs with duplicate names. To support duplicate names, set `key = "id"` to map jobs by ID.
  *
  * ## Example Usage
  *
@@ -21,9 +21,6 @@ import * as utilities from "./utilities";
  *
  * export = async () => {
  *     const _this = await databricks.getJobs({});
- *     const tests = await databricks.getJobs({
- *         jobNameContains: "test",
- *     });
  *     const everyoneCanViewAllJobs: databricks.Permissions[] = [];
  *     for (const range of Object.entries(_this.ids).map(([k, v]) => ({key: k, value: v}))) {
  *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyone_can_view_all_jobs-${range.key}`, {
@@ -43,8 +40,33 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = databricks.getJobs({});
+ * const _this = databricks.getJobs({
+ *     jobNameContains: "test",
+ * });
  * export const x = _this.then(_this => `ID of `x` job is ${_this.ids?.x}`);
+ * ```
+ *
+ * Getting IDs of databricks.Job mapped by ID, allowing duplicate job names:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * export = async () => {
+ *     const _this = await databricks.getJobs({
+ *         key: "id",
+ *     });
+ *     const everyoneCanViewAllJobs: databricks.Permissions[] = [];
+ *     for (const range of Object.entries(_this.ids).map(([k, v]) => ({key: k, value: v}))) {
+ *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyone_can_view_all_jobs-${range.key}`, {
+ *             jobId: range.value,
+ *             accessControls: [{
+ *                 groupName: "users",
+ *                 permissionLevel: "CAN_VIEW",
+ *             }],
+ *         }));
+ *     }
+ * }
  * ```
  *
  * ## Related Resources
@@ -59,6 +81,7 @@ export function getJobs(args?: GetJobsArgs, opts?: pulumi.InvokeOptions): Promis
     return pulumi.runtime.invoke("databricks:index/getJobs:getJobs", {
         "ids": args.ids,
         "jobNameContains": args.jobNameContains,
+        "key": args.key,
     }, opts);
 }
 
@@ -74,6 +97,10 @@ export interface GetJobsArgs {
      * Only return databricks.Job ids that match the given name string (case-insensitive).
      */
     jobNameContains?: string;
+    /**
+     * Attribute to use for keys in the returned map of databricks.Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
+     */
+    key?: string;
 }
 
 /**
@@ -89,13 +116,14 @@ export interface GetJobsResult {
      */
     readonly ids: {[key: string]: string};
     readonly jobNameContains?: string;
+    readonly key?: string;
 }
 /**
  * Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
  *
  * > This data source can only be used with a workspace-level provider!
  *
- * > Data resource will error in case of jobs with duplicate names.
+ * > By default, this data resource will error in case of jobs with duplicate names. To support duplicate names, set `key = "id"` to map jobs by ID.
  *
  * ## Example Usage
  *
@@ -107,9 +135,6 @@ export interface GetJobsResult {
  *
  * export = async () => {
  *     const _this = await databricks.getJobs({});
- *     const tests = await databricks.getJobs({
- *         jobNameContains: "test",
- *     });
  *     const everyoneCanViewAllJobs: databricks.Permissions[] = [];
  *     for (const range of Object.entries(_this.ids).map(([k, v]) => ({key: k, value: v}))) {
  *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyone_can_view_all_jobs-${range.key}`, {
@@ -129,8 +154,33 @@ export interface GetJobsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = databricks.getJobs({});
+ * const _this = databricks.getJobs({
+ *     jobNameContains: "test",
+ * });
  * export const x = _this.then(_this => `ID of `x` job is ${_this.ids?.x}`);
+ * ```
+ *
+ * Getting IDs of databricks.Job mapped by ID, allowing duplicate job names:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * export = async () => {
+ *     const _this = await databricks.getJobs({
+ *         key: "id",
+ *     });
+ *     const everyoneCanViewAllJobs: databricks.Permissions[] = [];
+ *     for (const range of Object.entries(_this.ids).map(([k, v]) => ({key: k, value: v}))) {
+ *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyone_can_view_all_jobs-${range.key}`, {
+ *             jobId: range.value,
+ *             accessControls: [{
+ *                 groupName: "users",
+ *                 permissionLevel: "CAN_VIEW",
+ *             }],
+ *         }));
+ *     }
+ * }
  * ```
  *
  * ## Related Resources
@@ -145,6 +195,7 @@ export function getJobsOutput(args?: GetJobsOutputArgs, opts?: pulumi.InvokeOutp
     return pulumi.runtime.invokeOutput("databricks:index/getJobs:getJobs", {
         "ids": args.ids,
         "jobNameContains": args.jobNameContains,
+        "key": args.key,
     }, opts);
 }
 
@@ -160,4 +211,8 @@ export interface GetJobsOutputArgs {
      * Only return databricks.Job ids that match the given name string (case-insensitive).
      */
     jobNameContains?: pulumi.Input<string>;
+    /**
+     * Attribute to use for keys in the returned map of databricks.Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
+     */
+    key?: pulumi.Input<string>;
 }

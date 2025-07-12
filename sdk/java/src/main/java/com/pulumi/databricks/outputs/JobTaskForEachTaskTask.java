@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskConditionTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskDashboardTask;
+import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskDbtCloudTask;
+import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskDbtPlatformTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskDbtTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskDependsOn;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskEmailNotifications;
@@ -39,6 +41,8 @@ public final class JobTaskForEachTaskTask {
     private @Nullable JobTaskForEachTaskTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
     private @Nullable JobTaskForEachTaskTaskConditionTask conditionTask;
     private @Nullable JobTaskForEachTaskTaskDashboardTask dashboardTask;
+    private @Nullable JobTaskForEachTaskTaskDbtCloudTask dbtCloudTask;
+    private @Nullable JobTaskForEachTaskTaskDbtPlatformTask dbtPlatformTask;
     private @Nullable JobTaskForEachTaskTaskDbtTask dbtTask;
     /**
      * @return block specifying dependency(-ies) for a given task.
@@ -153,6 +157,12 @@ public final class JobTaskForEachTaskTask {
     }
     public Optional<JobTaskForEachTaskTaskDashboardTask> dashboardTask() {
         return Optional.ofNullable(this.dashboardTask);
+    }
+    public Optional<JobTaskForEachTaskTaskDbtCloudTask> dbtCloudTask() {
+        return Optional.ofNullable(this.dbtCloudTask);
+    }
+    public Optional<JobTaskForEachTaskTaskDbtPlatformTask> dbtPlatformTask() {
+        return Optional.ofNullable(this.dbtPlatformTask);
     }
     public Optional<JobTaskForEachTaskTaskDbtTask> dbtTask() {
         return Optional.ofNullable(this.dbtTask);
@@ -329,6 +339,8 @@ public final class JobTaskForEachTaskTask {
         private @Nullable JobTaskForEachTaskTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
         private @Nullable JobTaskForEachTaskTaskConditionTask conditionTask;
         private @Nullable JobTaskForEachTaskTaskDashboardTask dashboardTask;
+        private @Nullable JobTaskForEachTaskTaskDbtCloudTask dbtCloudTask;
+        private @Nullable JobTaskForEachTaskTaskDbtPlatformTask dbtPlatformTask;
         private @Nullable JobTaskForEachTaskTaskDbtTask dbtTask;
         private @Nullable List<JobTaskForEachTaskTaskDependsOn> dependsOns;
         private @Nullable String description;
@@ -364,6 +376,8 @@ public final class JobTaskForEachTaskTask {
     	      this.cleanRoomsNotebookTask = defaults.cleanRoomsNotebookTask;
     	      this.conditionTask = defaults.conditionTask;
     	      this.dashboardTask = defaults.dashboardTask;
+    	      this.dbtCloudTask = defaults.dbtCloudTask;
+    	      this.dbtPlatformTask = defaults.dbtPlatformTask;
     	      this.dbtTask = defaults.dbtTask;
     	      this.dependsOns = defaults.dependsOns;
     	      this.description = defaults.description;
@@ -411,6 +425,18 @@ public final class JobTaskForEachTaskTask {
         public Builder dashboardTask(@Nullable JobTaskForEachTaskTaskDashboardTask dashboardTask) {
 
             this.dashboardTask = dashboardTask;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dbtCloudTask(@Nullable JobTaskForEachTaskTaskDbtCloudTask dbtCloudTask) {
+
+            this.dbtCloudTask = dbtCloudTask;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dbtPlatformTask(@Nullable JobTaskForEachTaskTaskDbtPlatformTask dbtPlatformTask) {
+
+            this.dbtPlatformTask = dbtPlatformTask;
             return this;
         }
         @CustomType.Setter
@@ -600,6 +626,8 @@ public final class JobTaskForEachTaskTask {
             _resultValue.cleanRoomsNotebookTask = cleanRoomsNotebookTask;
             _resultValue.conditionTask = conditionTask;
             _resultValue.dashboardTask = dashboardTask;
+            _resultValue.dbtCloudTask = dbtCloudTask;
+            _resultValue.dbtPlatformTask = dbtPlatformTask;
             _resultValue.dbtTask = dbtTask;
             _resultValue.dependsOns = dependsOns;
             _resultValue.description = description;

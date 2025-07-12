@@ -16,14 +16,14 @@ public final class ServicePrincipalRoleState extends com.pulumi.resources.Resour
     public static final ServicePrincipalRoleState Empty = new ServicePrincipalRoleState();
 
     /**
-     * This is the id of the role or instance profile resource.
+     * This is the role name, role id, or instance profile resource.
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return This is the id of the role or instance profile resource.
+     * @return This is the role name, role id, or instance profile resource.
      * 
      */
     public Optional<Output<String>> role() {
@@ -71,7 +71,7 @@ public final class ServicePrincipalRoleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param role This is the id of the role or instance profile resource.
+         * @param role This is the role name, role id, or instance profile resource.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ServicePrincipalRoleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param role This is the id of the role or instance profile resource.
+         * @param role This is the role name, role id, or instance profile resource.
          * 
          * @return builder
          * 

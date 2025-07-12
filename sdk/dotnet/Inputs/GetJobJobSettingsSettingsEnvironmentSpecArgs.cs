@@ -12,8 +12,8 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsEnvironmentSpecInputArgs : global::Pulumi.ResourceArgs
     {
-        [Input("client", required: true)]
-        public Input<string> Client { get; set; } = null!;
+        [Input("client")]
+        public Input<string>? Client { get; set; }
 
         [Input("dependencies")]
         private InputList<string>? _dependencies;

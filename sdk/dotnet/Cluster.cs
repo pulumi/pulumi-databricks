@@ -242,6 +242,9 @@ namespace Pulumi.Databricks
         [Output("policyId")]
         public Output<string?> PolicyId { get; private set; } = null!;
 
+        [Output("remoteDiskThroughput")]
+        public Output<int?> RemoteDiskThroughput { get; private set; } = null!;
+
         /// <summary>
         /// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
         /// </summary>
@@ -285,6 +288,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        [Output("totalInitialRemoteDiskSize")]
+        public Output<int?> TotalInitialRemoteDiskSize { get; private set; } = null!;
 
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -575,6 +581,9 @@ namespace Pulumi.Databricks
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
 
+        [Input("remoteDiskThroughput")]
+        public Input<int>? RemoteDiskThroughput { get; set; }
+
         /// <summary>
         /// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
         /// </summary>
@@ -630,6 +639,9 @@ namespace Pulumi.Databricks
             get => _sshPublicKeys ?? (_sshPublicKeys = new InputList<string>());
             set => _sshPublicKeys = value;
         }
+
+        [Input("totalInitialRemoteDiskSize")]
+        public Input<int>? TotalInitialRemoteDiskSize { get; set; }
 
         /// <summary>
         /// Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
@@ -894,6 +906,9 @@ namespace Pulumi.Databricks
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
 
+        [Input("remoteDiskThroughput")]
+        public Input<int>? RemoteDiskThroughput { get; set; }
+
         /// <summary>
         /// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
         /// </summary>
@@ -955,6 +970,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("totalInitialRemoteDiskSize")]
+        public Input<int>? TotalInitialRemoteDiskSize { get; set; }
 
         [Input("url")]
         public Input<string>? Url { get; set; }

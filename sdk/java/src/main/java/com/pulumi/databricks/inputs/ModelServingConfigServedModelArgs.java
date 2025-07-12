@@ -50,6 +50,21 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
     }
 
     /**
+     * The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+     * 
+     */
+    @Import(name="maxProvisionedConcurrency")
+    private @Nullable Output<Integer> maxProvisionedConcurrency;
+
+    /**
+     * @return The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+     * 
+     */
+    public Optional<Output<Integer>> maxProvisionedConcurrency() {
+        return Optional.ofNullable(this.maxProvisionedConcurrency);
+    }
+
+    /**
      * The maximum tokens per second that the endpoint can scale up to.
      * 
      */
@@ -62,6 +77,21 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
      */
     public Optional<Output<Integer>> maxProvisionedThroughput() {
         return Optional.ofNullable(this.maxProvisionedThroughput);
+    }
+
+    /**
+     * The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+     * 
+     */
+    @Import(name="minProvisionedConcurrency")
+    private @Nullable Output<Integer> minProvisionedConcurrency;
+
+    /**
+     * @return The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+     * 
+     */
+    public Optional<Output<Integer>> minProvisionedConcurrency() {
+        return Optional.ofNullable(this.minProvisionedConcurrency);
     }
 
     /**
@@ -181,7 +211,9 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
     private ModelServingConfigServedModelArgs(ModelServingConfigServedModelArgs $) {
         this.environmentVars = $.environmentVars;
         this.instanceProfileArn = $.instanceProfileArn;
+        this.maxProvisionedConcurrency = $.maxProvisionedConcurrency;
         this.maxProvisionedThroughput = $.maxProvisionedThroughput;
+        this.minProvisionedConcurrency = $.minProvisionedConcurrency;
         this.minProvisionedThroughput = $.minProvisionedThroughput;
         this.modelName = $.modelName;
         this.modelVersion = $.modelVersion;
@@ -253,6 +285,27 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         }
 
         /**
+         * @param maxProvisionedConcurrency The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxProvisionedConcurrency(@Nullable Output<Integer> maxProvisionedConcurrency) {
+            $.maxProvisionedConcurrency = maxProvisionedConcurrency;
+            return this;
+        }
+
+        /**
+         * @param maxProvisionedConcurrency The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxProvisionedConcurrency(Integer maxProvisionedConcurrency) {
+            return maxProvisionedConcurrency(Output.of(maxProvisionedConcurrency));
+        }
+
+        /**
          * @param maxProvisionedThroughput The maximum tokens per second that the endpoint can scale up to.
          * 
          * @return builder
@@ -271,6 +324,27 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
          */
         public Builder maxProvisionedThroughput(Integer maxProvisionedThroughput) {
             return maxProvisionedThroughput(Output.of(maxProvisionedThroughput));
+        }
+
+        /**
+         * @param minProvisionedConcurrency The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minProvisionedConcurrency(@Nullable Output<Integer> minProvisionedConcurrency) {
+            $.minProvisionedConcurrency = minProvisionedConcurrency;
+            return this;
+        }
+
+        /**
+         * @param minProvisionedConcurrency The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minProvisionedConcurrency(Integer minProvisionedConcurrency) {
+            return minProvisionedConcurrency(Output.of(minProvisionedConcurrency));
         }
 
         /**

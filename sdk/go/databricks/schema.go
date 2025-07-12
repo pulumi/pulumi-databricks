@@ -106,6 +106,8 @@ type Schema struct {
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Extensible Schema properties.
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
+	// The unique identifier of the schema.
+	SchemaId pulumi.StringOutput `pulumi:"schemaId"`
 	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrOutput `pulumi:"storageRoot"`
 }
@@ -158,6 +160,8 @@ type schemaState struct {
 	Owner *string `pulumi:"owner"`
 	// Extensible Schema properties.
 	Properties map[string]string `pulumi:"properties"`
+	// The unique identifier of the schema.
+	SchemaId *string `pulumi:"schemaId"`
 	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot *string `pulumi:"storageRoot"`
 }
@@ -178,6 +182,8 @@ type SchemaState struct {
 	Owner pulumi.StringPtrInput
 	// Extensible Schema properties.
 	Properties pulumi.StringMapInput
+	// The unique identifier of the schema.
+	SchemaId pulumi.StringPtrInput
 	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrInput
 }
@@ -351,6 +357,11 @@ func (o SchemaOutput) Owner() pulumi.StringOutput {
 // Extensible Schema properties.
 func (o SchemaOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// The unique identifier of the schema.
+func (o SchemaOutput) SchemaId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.SchemaId }).(pulumi.StringOutput)
 }
 
 // Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.

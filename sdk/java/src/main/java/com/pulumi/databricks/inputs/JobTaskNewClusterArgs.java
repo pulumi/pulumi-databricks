@@ -212,6 +212,13 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.policyId);
     }
 
+    @Import(name="remoteDiskThroughput")
+    private @Nullable Output<Integer> remoteDiskThroughput;
+
+    public Optional<Output<Integer>> remoteDiskThroughput() {
+        return Optional.ofNullable(this.remoteDiskThroughput);
+    }
+
     @Import(name="runtimeEngine")
     private @Nullable Output<String> runtimeEngine;
 
@@ -252,6 +259,13 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
 
     public Optional<Output<List<String>>> sshPublicKeys() {
         return Optional.ofNullable(this.sshPublicKeys);
+    }
+
+    @Import(name="totalInitialRemoteDiskSize")
+    private @Nullable Output<Integer> totalInitialRemoteDiskSize;
+
+    public Optional<Output<Integer>> totalInitialRemoteDiskSize() {
+        return Optional.ofNullable(this.totalInitialRemoteDiskSize);
     }
 
     @Import(name="useMlRuntime")
@@ -304,12 +318,14 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
         this.nodeTypeId = $.nodeTypeId;
         this.numWorkers = $.numWorkers;
         this.policyId = $.policyId;
+        this.remoteDiskThroughput = $.remoteDiskThroughput;
         this.runtimeEngine = $.runtimeEngine;
         this.singleUserName = $.singleUserName;
         this.sparkConf = $.sparkConf;
         this.sparkEnvVars = $.sparkEnvVars;
         this.sparkVersion = $.sparkVersion;
         this.sshPublicKeys = $.sshPublicKeys;
+        this.totalInitialRemoteDiskSize = $.totalInitialRemoteDiskSize;
         this.useMlRuntime = $.useMlRuntime;
         this.workloadType = $.workloadType;
     }
@@ -587,6 +603,15 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
             return policyId(Output.of(policyId));
         }
 
+        public Builder remoteDiskThroughput(@Nullable Output<Integer> remoteDiskThroughput) {
+            $.remoteDiskThroughput = remoteDiskThroughput;
+            return this;
+        }
+
+        public Builder remoteDiskThroughput(Integer remoteDiskThroughput) {
+            return remoteDiskThroughput(Output.of(remoteDiskThroughput));
+        }
+
         public Builder runtimeEngine(@Nullable Output<String> runtimeEngine) {
             $.runtimeEngine = runtimeEngine;
             return this;
@@ -643,6 +668,15 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
 
         public Builder sshPublicKeys(String... sshPublicKeys) {
             return sshPublicKeys(List.of(sshPublicKeys));
+        }
+
+        public Builder totalInitialRemoteDiskSize(@Nullable Output<Integer> totalInitialRemoteDiskSize) {
+            $.totalInitialRemoteDiskSize = totalInitialRemoteDiskSize;
+            return this;
+        }
+
+        public Builder totalInitialRemoteDiskSize(Integer totalInitialRemoteDiskSize) {
+            return totalInitialRemoteDiskSize(Output.of(totalInitialRemoteDiskSize));
         }
 
         public Builder useMlRuntime(@Nullable Output<Boolean> useMlRuntime) {

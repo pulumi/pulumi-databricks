@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTaskCleanRoomsNotebookTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskConditionTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskDashboardTaskArgs;
+import com.pulumi.databricks.inputs.JobTaskDbtCloudTaskArgs;
+import com.pulumi.databricks.inputs.JobTaskDbtPlatformTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskDbtTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskDependsOnArgs;
 import com.pulumi.databricks.inputs.JobTaskEmailNotificationsArgs;
@@ -60,6 +62,20 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<JobTaskDashboardTaskArgs>> dashboardTask() {
         return Optional.ofNullable(this.dashboardTask);
+    }
+
+    @Import(name="dbtCloudTask")
+    private @Nullable Output<JobTaskDbtCloudTaskArgs> dbtCloudTask;
+
+    public Optional<Output<JobTaskDbtCloudTaskArgs>> dbtCloudTask() {
+        return Optional.ofNullable(this.dbtCloudTask);
+    }
+
+    @Import(name="dbtPlatformTask")
+    private @Nullable Output<JobTaskDbtPlatformTaskArgs> dbtPlatformTask;
+
+    public Optional<Output<JobTaskDbtPlatformTaskArgs>> dbtPlatformTask() {
+        return Optional.ofNullable(this.dbtPlatformTask);
     }
 
     @Import(name="dbtTask")
@@ -428,6 +444,8 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         this.cleanRoomsNotebookTask = $.cleanRoomsNotebookTask;
         this.conditionTask = $.conditionTask;
         this.dashboardTask = $.dashboardTask;
+        this.dbtCloudTask = $.dbtCloudTask;
+        this.dbtPlatformTask = $.dbtPlatformTask;
         this.dbtTask = $.dbtTask;
         this.dependsOns = $.dependsOns;
         this.description = $.description;
@@ -503,6 +521,24 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder dashboardTask(JobTaskDashboardTaskArgs dashboardTask) {
             return dashboardTask(Output.of(dashboardTask));
+        }
+
+        public Builder dbtCloudTask(@Nullable Output<JobTaskDbtCloudTaskArgs> dbtCloudTask) {
+            $.dbtCloudTask = dbtCloudTask;
+            return this;
+        }
+
+        public Builder dbtCloudTask(JobTaskDbtCloudTaskArgs dbtCloudTask) {
+            return dbtCloudTask(Output.of(dbtCloudTask));
+        }
+
+        public Builder dbtPlatformTask(@Nullable Output<JobTaskDbtPlatformTaskArgs> dbtPlatformTask) {
+            $.dbtPlatformTask = dbtPlatformTask;
+            return this;
+        }
+
+        public Builder dbtPlatformTask(JobTaskDbtPlatformTaskArgs dbtPlatformTask) {
+            return dbtPlatformTask(Output.of(dbtPlatformTask));
         }
 
         public Builder dbtTask(@Nullable Output<JobTaskDbtTaskArgs> dbtTask) {

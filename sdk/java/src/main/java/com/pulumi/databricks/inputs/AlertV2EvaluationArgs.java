@@ -19,14 +19,14 @@ public final class AlertV2EvaluationArgs extends com.pulumi.resources.ResourceAr
     public static final AlertV2EvaluationArgs Empty = new AlertV2EvaluationArgs();
 
     /**
-     * Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     * Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      * 
      */
     @Import(name="comparisonOperator")
     private @Nullable Output<String> comparisonOperator;
 
     /**
-     * @return Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     * @return Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      * 
      */
     public Optional<Output<String>> comparisonOperator() {
@@ -34,14 +34,14 @@ public final class AlertV2EvaluationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
      */
     @Import(name="emptyResultState")
     private @Nullable Output<String> emptyResultState;
 
     /**
-     * @return Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * @return Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
      */
     public Optional<Output<String>> emptyResultState() {
@@ -94,14 +94,14 @@ public final class AlertV2EvaluationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * @return (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
      */
     public Optional<Output<String>> state() {
@@ -154,7 +154,7 @@ public final class AlertV2EvaluationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param comparisonOperator Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+         * @param comparisonOperator Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class AlertV2EvaluationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param comparisonOperator Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+         * @param comparisonOperator Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class AlertV2EvaluationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param emptyResultState Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+         * @param emptyResultState Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class AlertV2EvaluationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param emptyResultState Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+         * @param emptyResultState Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class AlertV2EvaluationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param state (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+         * @param state (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class AlertV2EvaluationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param state (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+         * @param state (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
          * 
          * @return builder
          * 

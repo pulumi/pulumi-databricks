@@ -82,6 +82,7 @@ namespace Pulumi.Databricks.Outputs
         /// Identifier of Cluster Policy to validate cluster and preset certain defaults.
         /// </summary>
         public readonly string? PolicyId;
+        public readonly int? RemoteDiskThroughput;
         /// <summary>
         /// The type of runtime of the cluster
         /// </summary>
@@ -113,6 +114,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? StateMessage;
         public readonly int? TerminatedTime;
         public readonly Outputs.GetClusterClusterInfoTerminationReasonResult? TerminationReason;
+        public readonly int? TotalInitialRemoteDiskSize;
         public readonly bool? UseMlRuntime;
         public readonly Outputs.GetClusterClusterInfoWorkloadTypeResult? WorkloadType;
 
@@ -184,6 +186,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? policyId,
 
+            int? remoteDiskThroughput,
+
             string? runtimeEngine,
 
             string? singleUserName,
@@ -209,6 +213,8 @@ namespace Pulumi.Databricks.Outputs
             int? terminatedTime,
 
             Outputs.GetClusterClusterInfoTerminationReasonResult? terminationReason,
+
+            int? totalInitialRemoteDiskSize,
 
             bool? useMlRuntime,
 
@@ -247,6 +253,7 @@ namespace Pulumi.Databricks.Outputs
             NodeTypeId = nodeTypeId;
             NumWorkers = numWorkers;
             PolicyId = policyId;
+            RemoteDiskThroughput = remoteDiskThroughput;
             RuntimeEngine = runtimeEngine;
             SingleUserName = singleUserName;
             SparkConf = sparkConf;
@@ -260,6 +267,7 @@ namespace Pulumi.Databricks.Outputs
             StateMessage = stateMessage;
             TerminatedTime = terminatedTime;
             TerminationReason = terminationReason;
+            TotalInitialRemoteDiskSize = totalInitialRemoteDiskSize;
             UseMlRuntime = useMlRuntime;
             WorkloadType = workloadType;
         }

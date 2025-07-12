@@ -31,14 +31,14 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDest
     }
 
     /**
-     * (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+     * (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
      * 
      */
     @Import(name="internetDestinationType")
     private @Nullable Output<String> internetDestinationType;
 
     /**
-     * @return (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+     * @return (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
      * 
      */
     public Optional<Output<String>> internetDestinationType() {
@@ -92,7 +92,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDest
         }
 
         /**
-         * @param internetDestinationType (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+         * @param internetDestinationType (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDest
         }
 
         /**
-         * @param internetDestinationType (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+         * @param internetDestinationType (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
          * 
          * @return builder
          * 

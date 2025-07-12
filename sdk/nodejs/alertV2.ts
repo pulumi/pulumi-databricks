@@ -7,9 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * The Alert v2 resource allows you to manage SQL alerts in Databricks SQL. Alerts monitor query results and notify you when specific conditions are met.
+ *
+ * Alerts run on a schedule and evaluate query results against defined thresholds. When an alert is triggered, notifications can be sent to specified users or destinations.
+ *
+ * ## Example Usage
+ *
  * ## Import
  *
- * As of terraform v1.5, resources can be imported through configuration.
+ * As of Pulumi v1.5, resources can be imported through configuration.
  *
  * hcl
  *
@@ -21,7 +27,7 @@ import * as utilities from "./utilities";
  *
  * }
  *
- * If you are using an older version of terraform, you can import the resource using cli as follows:
+ * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
  * $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 id
@@ -73,7 +79,7 @@ export class AlertV2 extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string | undefined>;
     public readonly evaluation!: pulumi.Output<outputs.AlertV2Evaluation | undefined>;
     /**
-     * (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
      */
     public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
     /**
@@ -171,7 +177,7 @@ export interface AlertV2State {
     displayName?: pulumi.Input<string>;
     evaluation?: pulumi.Input<inputs.AlertV2Evaluation>;
     /**
-     * (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
      */
     lifecycleState?: pulumi.Input<string>;
     /**

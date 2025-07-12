@@ -22,12 +22,9 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? AzureStorageService;
         public readonly string? BucketName;
-        /// <summary>
-        /// The region of the S3 bucket
-        /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+        /// The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
         /// </summary>
         public readonly string? StorageDestinationType;
 

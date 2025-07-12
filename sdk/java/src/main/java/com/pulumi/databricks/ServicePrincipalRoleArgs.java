@@ -15,14 +15,14 @@ public final class ServicePrincipalRoleArgs extends com.pulumi.resources.Resourc
     public static final ServicePrincipalRoleArgs Empty = new ServicePrincipalRoleArgs();
 
     /**
-     * This is the id of the role or instance profile resource.
+     * This is the role name, role id, or instance profile resource.
      * 
      */
     @Import(name="role", required=true)
     private Output<String> role;
 
     /**
-     * @return This is the id of the role or instance profile resource.
+     * @return This is the role name, role id, or instance profile resource.
      * 
      */
     public Output<String> role() {
@@ -70,7 +70,7 @@ public final class ServicePrincipalRoleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param role This is the id of the role or instance profile resource.
+         * @param role This is the role name, role id, or instance profile resource.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class ServicePrincipalRoleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param role This is the id of the role or instance profile resource.
+         * @param role This is the role name, role id, or instance profile resource.
          * 
          * @return builder
          * 

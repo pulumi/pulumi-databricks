@@ -17,7 +17,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDest
      */
     private @Nullable String destination;
     /**
-     * @return (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+     * @return (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
      * 
      */
     private @Nullable String internetDestinationType;
@@ -31,7 +31,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDest
         return Optional.ofNullable(this.destination);
     }
     /**
-     * @return (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+     * @return (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
      * 
      */
     public Optional<String> internetDestinationType() {

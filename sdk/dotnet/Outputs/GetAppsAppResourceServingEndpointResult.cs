@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        /// Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         /// </summary>
         public readonly string Permission;
 

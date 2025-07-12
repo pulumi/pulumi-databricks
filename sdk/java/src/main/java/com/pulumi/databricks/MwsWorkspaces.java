@@ -103,7 +103,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.MwsNetworksArgs;
  * import com.pulumi.databricks.MwsWorkspaces;
  * import com.pulumi.databricks.MwsWorkspacesArgs;
- * import com.pulumi.databricks.inputs.MwsWorkspacesTokenArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -150,11 +149,8 @@ import javax.annotation.Nullable;
  *             .credentialsId(this_.credentialsId())
  *             .storageConfigurationId(thisMwsStorageConfigurations.storageConfigurationId())
  *             .networkId(thisMwsNetworks.networkId())
- *             .token(MwsWorkspacesTokenArgs.builder()
- *                 .build())
  *             .build());
  * 
- *         ctx.export("databricksToken", thisMwsWorkspaces.token().applyValue(_token -> _token.tokenValue()));
  *     }
  * }
  * }
@@ -204,7 +200,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.MwsStorageConfigurationsArgs;
  * import com.pulumi.databricks.MwsWorkspaces;
  * import com.pulumi.databricks.MwsWorkspacesArgs;
- * import com.pulumi.databricks.inputs.MwsWorkspacesTokenArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -310,12 +305,9 @@ import javax.annotation.Nullable;
  *             .awsRegion("us-east-1")
  *             .credentialsId(thisMwsCredentials.credentialsId())
  *             .storageConfigurationId(thisMwsStorageConfigurations.storageConfigurationId())
- *             .token(MwsWorkspacesTokenArgs.builder()
- *                 .build())
  *             .customTags(Map.of("SoldToCode", "1234"))
  *             .build());
  * 
- *         ctx.export("databricksToken", thisMwsWorkspaces.token().applyValue(_token -> _token.tokenValue()));
  *     }
  * }
  * }
@@ -345,7 +337,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.MwsWorkspacesArgs;
  * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerArgs;
  * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerGcpArgs;
- * import com.pulumi.databricks.inputs.MwsWorkspacesTokenArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -388,11 +379,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .networkId(this_.networkId())
- *             .token(MwsWorkspacesTokenArgs.builder()
- *                 .build())
  *             .build());
  * 
- *         ctx.export("databricksToken", thisMwsWorkspaces.token().applyValue(_token -> _token.tokenValue()));
  *     }
  * }
  * }
@@ -489,12 +477,16 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     /**
      * The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
      * 
+     * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
+     * 
      */
     @Export(name="computeMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> computeMode;
 
     /**
      * @return The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+     * 
+     * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
      * 
      */
     public Output<Optional<String>> computeMode() {
@@ -610,10 +602,10 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
     @Export(name="gkeConfig", refs={MwsWorkspacesGkeConfig.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesGkeConfig> gkeConfig;
 

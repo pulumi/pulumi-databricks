@@ -300,6 +300,13 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.policyId);
     }
 
+    @Import(name="remoteDiskThroughput")
+    private @Nullable Integer remoteDiskThroughput;
+
+    public Optional<Integer> remoteDiskThroughput() {
+        return Optional.ofNullable(this.remoteDiskThroughput);
+    }
+
     /**
      * The type of runtime of the cluster
      * 
@@ -390,6 +397,13 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.sshPublicKeys);
     }
 
+    @Import(name="totalInitialRemoteDiskSize")
+    private @Nullable Integer totalInitialRemoteDiskSize;
+
+    public Optional<Integer> totalInitialRemoteDiskSize() {
+        return Optional.ofNullable(this.totalInitialRemoteDiskSize);
+    }
+
     @Import(name="useMlRuntime")
     private @Nullable Boolean useMlRuntime;
 
@@ -432,12 +446,14 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
         this.nodeTypeId = $.nodeTypeId;
         this.numWorkers = $.numWorkers;
         this.policyId = $.policyId;
+        this.remoteDiskThroughput = $.remoteDiskThroughput;
         this.runtimeEngine = $.runtimeEngine;
         this.singleUserName = $.singleUserName;
         this.sparkConf = $.sparkConf;
         this.sparkEnvVars = $.sparkEnvVars;
         this.sparkVersion = $.sparkVersion;
         this.sshPublicKeys = $.sshPublicKeys;
+        this.totalInitialRemoteDiskSize = $.totalInitialRemoteDiskSize;
         this.useMlRuntime = $.useMlRuntime;
         this.workloadType = $.workloadType;
     }
@@ -669,6 +685,11 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
             return this;
         }
 
+        public Builder remoteDiskThroughput(@Nullable Integer remoteDiskThroughput) {
+            $.remoteDiskThroughput = remoteDiskThroughput;
+            return this;
+        }
+
         /**
          * @param runtimeEngine The type of runtime of the cluster
          * 
@@ -743,6 +764,11 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
          */
         public Builder sshPublicKeys(String... sshPublicKeys) {
             return sshPublicKeys(List.of(sshPublicKeys));
+        }
+
+        public Builder totalInitialRemoteDiskSize(@Nullable Integer totalInitialRemoteDiskSize) {
+            $.totalInitialRemoteDiskSize = totalInitialRemoteDiskSize;
+            return this;
         }
 
         public Builder useMlRuntime(@Nullable Boolean useMlRuntime) {

@@ -24,7 +24,7 @@ class ServicePrincipalRoleArgs:
                  service_principal_id: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a ServicePrincipalRole resource.
-        :param pulumi.Input[builtins.str] role: This is the id of the role or instance profile resource.
+        :param pulumi.Input[builtins.str] role: This is the role name, role id, or instance profile resource.
         :param pulumi.Input[builtins.str] service_principal_id: This is the id of the service principal resource.
         """
         pulumi.set(__self__, "role", role)
@@ -34,7 +34,7 @@ class ServicePrincipalRoleArgs:
     @pulumi.getter
     def role(self) -> pulumi.Input[builtins.str]:
         """
-        This is the id of the role or instance profile resource.
+        This is the role name, role id, or instance profile resource.
         """
         return pulumi.get(self, "role")
 
@@ -62,7 +62,7 @@ class _ServicePrincipalRoleState:
                  service_principal_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalRole resources.
-        :param pulumi.Input[builtins.str] role: This is the id of the role or instance profile resource.
+        :param pulumi.Input[builtins.str] role: This is the role name, role id, or instance profile resource.
         :param pulumi.Input[builtins.str] service_principal_id: This is the id of the service principal resource.
         """
         if role is not None:
@@ -74,7 +74,7 @@ class _ServicePrincipalRoleState:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        This is the id of the role or instance profile resource.
+        This is the role name, role id, or instance profile resource.
         """
         return pulumi.get(self, "role")
 
@@ -124,6 +124,20 @@ class ServicePrincipalRole(pulumi.CustomResource):
             role=instance_profile.id)
         ```
 
+        Granting a service principal the Account Admin role.
+
+        > This can only be used with an account-level provider.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        tf_admin = databricks.ServicePrincipal("tf_admin", display_name="Pulumi Admin")
+        tf_admin_account = databricks.ServicePrincipalRole("tf_admin_account",
+            service_principal_id=tf_admin.id,
+            role="account_admin")
+        ```
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -133,6 +147,7 @@ class ServicePrincipalRole(pulumi.CustomResource):
         * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
         * GroupMember to attach users and groups as group members.
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
+        * AccessControlRuleSet to attach other roles to account level resources.
 
         ## Import
 
@@ -140,7 +155,7 @@ class ServicePrincipalRole(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] role: This is the id of the role or instance profile resource.
+        :param pulumi.Input[builtins.str] role: This is the role name, role id, or instance profile resource.
         :param pulumi.Input[builtins.str] service_principal_id: This is the id of the service principal resource.
         """
         ...
@@ -169,6 +184,20 @@ class ServicePrincipalRole(pulumi.CustomResource):
             role=instance_profile.id)
         ```
 
+        Granting a service principal the Account Admin role.
+
+        > This can only be used with an account-level provider.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        tf_admin = databricks.ServicePrincipal("tf_admin", display_name="Pulumi Admin")
+        tf_admin_account = databricks.ServicePrincipalRole("tf_admin_account",
+            service_principal_id=tf_admin.id,
+            role="account_admin")
+        ```
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -178,6 +207,7 @@ class ServicePrincipalRole(pulumi.CustomResource):
         * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
         * GroupMember to attach users and groups as group members.
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
+        * AccessControlRuleSet to attach other roles to account level resources.
 
         ## Import
 
@@ -234,7 +264,7 @@ class ServicePrincipalRole(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] role: This is the id of the role or instance profile resource.
+        :param pulumi.Input[builtins.str] role: This is the role name, role id, or instance profile resource.
         :param pulumi.Input[builtins.str] service_principal_id: This is the id of the service principal resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -249,7 +279,7 @@ class ServicePrincipalRole(pulumi.CustomResource):
     @pulumi.getter
     def role(self) -> pulumi.Output[builtins.str]:
         """
-        This is the id of the role or instance profile resource.
+        This is the role name, role id, or instance profile resource.
         """
         return pulumi.get(self, "role")
 

@@ -4,11 +4,25 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * This data source can be used to get a single Database Instance.
+ *
+ * ## Example Usage
+ *
+ * Referring to a Database Instance by name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getDatabaseInstance({
+ *     name: "my-database-instance",
+ * });
+ * ```
+ */
 export function getDatabaseInstance(args: GetDatabaseInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDatabaseInstance:getDatabaseInstance", {
-        "adminPassword": args.adminPassword,
-        "adminRolename": args.adminRolename,
         "capacity": args.capacity,
         "name": args.name,
         "stopped": args.stopped,
@@ -20,15 +34,7 @@ export function getDatabaseInstance(args: GetDatabaseInstanceArgs, opts?: pulumi
  */
 export interface GetDatabaseInstanceArgs {
     /**
-     * (string) - Password for admin user to create. If not provided, no user will be created
-     */
-    adminPassword?: string;
-    /**
-     * (string) - Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-     */
-    adminRolename?: string;
-    /**
-     * (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+     * (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
     capacity?: string;
     /**
@@ -46,15 +52,7 @@ export interface GetDatabaseInstanceArgs {
  */
 export interface GetDatabaseInstanceResult {
     /**
-     * (string) - Password for admin user to create. If not provided, no user will be created
-     */
-    readonly adminPassword?: string;
-    /**
-     * (string) - Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-     */
-    readonly adminRolename?: string;
-    /**
-     * (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+     * (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
     readonly capacity?: string;
     /**
@@ -65,6 +63,12 @@ export interface GetDatabaseInstanceResult {
      * (string) - The email of the creator of the instance
      */
     readonly creator: string;
+    /**
+     * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
+     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     */
+    readonly effectiveStopped: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -82,7 +86,7 @@ export interface GetDatabaseInstanceResult {
      */
     readonly readWriteDns: string;
     /**
-     * (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+     * (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     readonly state: string;
     /**
@@ -94,11 +98,25 @@ export interface GetDatabaseInstanceResult {
      */
     readonly uid: string;
 }
+/**
+ * This data source can be used to get a single Database Instance.
+ *
+ * ## Example Usage
+ *
+ * Referring to a Database Instance by name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getDatabaseInstance({
+ *     name: "my-database-instance",
+ * });
+ * ```
+ */
 export function getDatabaseInstanceOutput(args: GetDatabaseInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDatabaseInstance:getDatabaseInstance", {
-        "adminPassword": args.adminPassword,
-        "adminRolename": args.adminRolename,
         "capacity": args.capacity,
         "name": args.name,
         "stopped": args.stopped,
@@ -110,15 +128,7 @@ export function getDatabaseInstanceOutput(args: GetDatabaseInstanceOutputArgs, o
  */
 export interface GetDatabaseInstanceOutputArgs {
     /**
-     * (string) - Password for admin user to create. If not provided, no user will be created
-     */
-    adminPassword?: pulumi.Input<string>;
-    /**
-     * (string) - Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-     */
-    adminRolename?: pulumi.Input<string>;
-    /**
-     * (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+     * (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
     capacity?: pulumi.Input<string>;
     /**

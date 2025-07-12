@@ -50,11 +50,13 @@ class ClusterArgs:
                  node_type_id: Optional[pulumi.Input[builtins.str]] = None,
                  num_workers: Optional[pulumi.Input[builtins.int]] = None,
                  policy_id: Optional[pulumi.Input[builtins.str]] = None,
+                 remote_disk_throughput: Optional[pulumi.Input[builtins.int]] = None,
                  runtime_engine: Optional[pulumi.Input[builtins.str]] = None,
                  single_user_name: Optional[pulumi.Input[builtins.str]] = None,
                  spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 total_initial_remote_disk_size: Optional[pulumi.Input[builtins.int]] = None,
                  use_ml_runtime: Optional[pulumi.Input[builtins.bool]] = None,
                  workload_type: Optional[pulumi.Input['ClusterWorkloadTypeArgs']] = None):
         """
@@ -189,6 +191,8 @@ class ClusterArgs:
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if remote_disk_throughput is not None:
+            pulumi.set(__self__, "remote_disk_throughput", remote_disk_throughput)
         if runtime_engine is not None:
             pulumi.set(__self__, "runtime_engine", runtime_engine)
         if single_user_name is not None:
@@ -199,6 +203,8 @@ class ClusterArgs:
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
+        if total_initial_remote_disk_size is not None:
+            pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
@@ -561,6 +567,15 @@ class ClusterArgs:
         pulumi.set(self, "policy_id", value)
 
     @property
+    @pulumi.getter(name="remoteDiskThroughput")
+    def remote_disk_throughput(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "remote_disk_throughput")
+
+    @remote_disk_throughput.setter
+    def remote_disk_throughput(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "remote_disk_throughput", value)
+
+    @property
     @pulumi.getter(name="runtimeEngine")
     def runtime_engine(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -623,6 +638,15 @@ class ClusterArgs:
         pulumi.set(self, "ssh_public_keys", value)
 
     @property
+    @pulumi.getter(name="totalInitialRemoteDiskSize")
+    def total_initial_remote_disk_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "total_initial_remote_disk_size")
+
+    @total_initial_remote_disk_size.setter
+    def total_initial_remote_disk_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "total_initial_remote_disk_size", value)
+
+    @property
     @pulumi.getter(name="useMlRuntime")
     def use_ml_runtime(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -676,6 +700,7 @@ class _ClusterState:
                  node_type_id: Optional[pulumi.Input[builtins.str]] = None,
                  num_workers: Optional[pulumi.Input[builtins.int]] = None,
                  policy_id: Optional[pulumi.Input[builtins.str]] = None,
+                 remote_disk_throughput: Optional[pulumi.Input[builtins.int]] = None,
                  runtime_engine: Optional[pulumi.Input[builtins.str]] = None,
                  single_user_name: Optional[pulumi.Input[builtins.str]] = None,
                  spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -683,6 +708,7 @@ class _ClusterState:
                  spark_version: Optional[pulumi.Input[builtins.str]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
+                 total_initial_remote_disk_size: Optional[pulumi.Input[builtins.int]] = None,
                  url: Optional[pulumi.Input[builtins.str]] = None,
                  use_ml_runtime: Optional[pulumi.Input[builtins.bool]] = None,
                  workload_type: Optional[pulumi.Input['ClusterWorkloadTypeArgs']] = None):
@@ -823,6 +849,8 @@ class _ClusterState:
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if remote_disk_throughput is not None:
+            pulumi.set(__self__, "remote_disk_throughput", remote_disk_throughput)
         if runtime_engine is not None:
             pulumi.set(__self__, "runtime_engine", runtime_engine)
         if single_user_name is not None:
@@ -837,6 +865,8 @@ class _ClusterState:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if total_initial_remote_disk_size is not None:
+            pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if url is not None:
             pulumi.set(__self__, "url", url)
         if use_ml_runtime is not None:
@@ -1210,6 +1240,15 @@ class _ClusterState:
         pulumi.set(self, "policy_id", value)
 
     @property
+    @pulumi.getter(name="remoteDiskThroughput")
+    def remote_disk_throughput(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "remote_disk_throughput")
+
+    @remote_disk_throughput.setter
+    def remote_disk_throughput(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "remote_disk_throughput", value)
+
+    @property
     @pulumi.getter(name="runtimeEngine")
     def runtime_engine(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -1296,6 +1335,15 @@ class _ClusterState:
         pulumi.set(self, "state", value)
 
     @property
+    @pulumi.getter(name="totalInitialRemoteDiskSize")
+    def total_initial_remote_disk_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "total_initial_remote_disk_size")
+
+    @total_initial_remote_disk_size.setter
+    def total_initial_remote_disk_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "total_initial_remote_disk_size", value)
+
+    @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "url")
@@ -1359,12 +1407,14 @@ class Cluster(pulumi.CustomResource):
                  node_type_id: Optional[pulumi.Input[builtins.str]] = None,
                  num_workers: Optional[pulumi.Input[builtins.int]] = None,
                  policy_id: Optional[pulumi.Input[builtins.str]] = None,
+                 remote_disk_throughput: Optional[pulumi.Input[builtins.int]] = None,
                  runtime_engine: Optional[pulumi.Input[builtins.str]] = None,
                  single_user_name: Optional[pulumi.Input[builtins.str]] = None,
                  spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  spark_version: Optional[pulumi.Input[builtins.str]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 total_initial_remote_disk_size: Optional[pulumi.Input[builtins.int]] = None,
                  use_ml_runtime: Optional[pulumi.Input[builtins.bool]] = None,
                  workload_type: Optional[pulumi.Input[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None,
                  __props__=None):
@@ -1515,12 +1565,14 @@ class Cluster(pulumi.CustomResource):
                  node_type_id: Optional[pulumi.Input[builtins.str]] = None,
                  num_workers: Optional[pulumi.Input[builtins.int]] = None,
                  policy_id: Optional[pulumi.Input[builtins.str]] = None,
+                 remote_disk_throughput: Optional[pulumi.Input[builtins.int]] = None,
                  runtime_engine: Optional[pulumi.Input[builtins.str]] = None,
                  single_user_name: Optional[pulumi.Input[builtins.str]] = None,
                  spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  spark_version: Optional[pulumi.Input[builtins.str]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 total_initial_remote_disk_size: Optional[pulumi.Input[builtins.int]] = None,
                  use_ml_runtime: Optional[pulumi.Input[builtins.bool]] = None,
                  workload_type: Optional[pulumi.Input[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None,
                  __props__=None):
@@ -1559,6 +1611,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["node_type_id"] = node_type_id
             __props__.__dict__["num_workers"] = num_workers
             __props__.__dict__["policy_id"] = policy_id
+            __props__.__dict__["remote_disk_throughput"] = remote_disk_throughput
             __props__.__dict__["runtime_engine"] = runtime_engine
             __props__.__dict__["single_user_name"] = single_user_name
             __props__.__dict__["spark_conf"] = spark_conf
@@ -1567,6 +1620,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'spark_version'")
             __props__.__dict__["spark_version"] = spark_version
             __props__.__dict__["ssh_public_keys"] = ssh_public_keys
+            __props__.__dict__["total_initial_remote_disk_size"] = total_initial_remote_disk_size
             __props__.__dict__["use_ml_runtime"] = use_ml_runtime
             __props__.__dict__["workload_type"] = workload_type
             __props__.__dict__["cluster_id"] = None
@@ -1612,6 +1666,7 @@ class Cluster(pulumi.CustomResource):
             node_type_id: Optional[pulumi.Input[builtins.str]] = None,
             num_workers: Optional[pulumi.Input[builtins.int]] = None,
             policy_id: Optional[pulumi.Input[builtins.str]] = None,
+            remote_disk_throughput: Optional[pulumi.Input[builtins.int]] = None,
             runtime_engine: Optional[pulumi.Input[builtins.str]] = None,
             single_user_name: Optional[pulumi.Input[builtins.str]] = None,
             spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -1619,6 +1674,7 @@ class Cluster(pulumi.CustomResource):
             spark_version: Optional[pulumi.Input[builtins.str]] = None,
             ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             state: Optional[pulumi.Input[builtins.str]] = None,
+            total_initial_remote_disk_size: Optional[pulumi.Input[builtins.int]] = None,
             url: Optional[pulumi.Input[builtins.str]] = None,
             use_ml_runtime: Optional[pulumi.Input[builtins.bool]] = None,
             workload_type: Optional[pulumi.Input[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None) -> 'Cluster':
@@ -1739,6 +1795,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["node_type_id"] = node_type_id
         __props__.__dict__["num_workers"] = num_workers
         __props__.__dict__["policy_id"] = policy_id
+        __props__.__dict__["remote_disk_throughput"] = remote_disk_throughput
         __props__.__dict__["runtime_engine"] = runtime_engine
         __props__.__dict__["single_user_name"] = single_user_name
         __props__.__dict__["spark_conf"] = spark_conf
@@ -1746,6 +1803,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["spark_version"] = spark_version
         __props__.__dict__["ssh_public_keys"] = ssh_public_keys
         __props__.__dict__["state"] = state
+        __props__.__dict__["total_initial_remote_disk_size"] = total_initial_remote_disk_size
         __props__.__dict__["url"] = url
         __props__.__dict__["use_ml_runtime"] = use_ml_runtime
         __props__.__dict__["workload_type"] = workload_type
@@ -2001,6 +2059,11 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "policy_id")
 
     @property
+    @pulumi.getter(name="remoteDiskThroughput")
+    def remote_disk_throughput(self) -> pulumi.Output[Optional[builtins.int]]:
+        return pulumi.get(self, "remote_disk_throughput")
+
+    @property
     @pulumi.getter(name="runtimeEngine")
     def runtime_engine(self) -> pulumi.Output[Optional[builtins.str]]:
         """
@@ -2057,6 +2120,11 @@ class Cluster(pulumi.CustomResource):
         (string) State of the cluster.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="totalInitialRemoteDiskSize")
+    def total_initial_remote_disk_size(self) -> pulumi.Output[Optional[builtins.int]]:
+        return pulumi.get(self, "total_initial_remote_disk_size")
 
     @property
     @pulumi.getter

@@ -24,6 +24,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointConfigResult> Configs;
         public readonly int? CreationTimestamp;
         public readonly string? Creator;
+        public readonly string? Description;
         public readonly string? Id;
         public readonly int? LastUpdatedTimestamp;
         /// <summary>
@@ -49,6 +50,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? creator,
 
+            string? description,
+
             string? id,
 
             int? lastUpdatedTimestamp,
@@ -66,6 +69,7 @@ namespace Pulumi.Databricks.Outputs
             Configs = configs;
             CreationTimestamp = creationTimestamp;
             Creator = creator;
+            Description = description;
             Id = id;
             LastUpdatedTimestamp = lastUpdatedTimestamp;
             Name = name;

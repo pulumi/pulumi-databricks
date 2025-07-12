@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class AlertV2Schedule
     {
         /// <summary>
-        /// Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+        /// Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
         /// </summary>
         public readonly string? PauseStatus;
         /// <summary>

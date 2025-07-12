@@ -21,7 +21,7 @@ public final class AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
     /**
      * @return The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
      * while DRY_RUN only logs violations without blocking. When not specified,
-     * defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+     * defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
      * 
      */
     private @Nullable String enforcementMode;
@@ -38,7 +38,7 @@ public final class AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
     /**
      * @return The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
      * while DRY_RUN only logs violations without blocking. When not specified,
-     * defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+     * defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
      * 
      */
     public Optional<String> enforcementMode() {

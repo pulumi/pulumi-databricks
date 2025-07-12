@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAlertsV2ResultEvaluationSource {
     /**
-     * @return (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * @return (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      * 
      */
     private @Nullable String aggregation;
@@ -29,7 +29,7 @@ public final class GetAlertsV2ResultEvaluationSource {
 
     private GetAlertsV2ResultEvaluationSource() {}
     /**
-     * @return (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * @return (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      * 
      */
     public Optional<String> aggregation() {

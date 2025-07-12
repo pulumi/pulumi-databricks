@@ -14,9 +14,11 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; This resource can only be used with an account-level provider!
     /// 
-    /// &gt; This feature is only available in Azure.
+    /// &gt; This feature is available on Azure, and in Public Preview on AWS.
     /// 
     /// ## Example Usage
+    /// 
+    /// Create a private endpoint to an Azure storage account
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -40,6 +42,47 @@ namespace Pulumi.Databricks
     ///         NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,
     ///         ResourceId = "/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa",
     ///         GroupId = "blob",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Create a private endpoint rule to an AWS VPC endpoint and to an S3 bucket
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var region = config.RequireObject&lt;dynamic&gt;("region");
+    ///     var prefix = config.RequireObject&lt;dynamic&gt;("prefix");
+    ///     var ncc = new Databricks.MwsNetworkConnectivityConfig("ncc", new()
+    ///     {
+    ///         Name = $"ncc-for-{prefix}",
+    ///         Region = region,
+    ///     });
+    /// 
+    ///     var storage = new Databricks.MwsNccPrivateEndpointRule("storage", new()
+    ///     {
+    ///         NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,
+    ///         ResourceNames = new[]
+    ///         {
+    ///             "bucket",
+    ///         },
+    ///     });
+    /// 
+    ///     var vpce = new Databricks.MwsNccPrivateEndpointRule("vpce", new()
+    ///     {
+    ///         NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,
+    ///         EndpointService = "com.amazonaws.vpce.us-west-2.vpce-svc-xyz",
+    ///         DomainNames = new[]
+    ///         {
+    ///             "subdomain.internal.net",
+    ///         },
     ///     });
     /// 
     /// });
@@ -75,6 +118,9 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule")]
     public partial class MwsNccPrivateEndpointRule : global::Pulumi.CustomResource
     {
+        [Output("accountId")]
+        public Output<string?> AccountId { get; private set; } = null!;
+
         /// <summary>
         /// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
         /// The possible values are:
@@ -104,8 +150,17 @@ namespace Pulumi.Databricks
         [Output("deactivatedAt")]
         public Output<int?> DeactivatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+        /// </summary>
         [Output("domainNames")]
         public Output<ImmutableArray<string>> DomainNames { get; private set; } = null!;
+
+        /// <summary>
+        /// Activation status. Only used by private endpoints towards an AWS S3 service.
+        /// </summary>
+        [Output("enabled")]
+        public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
@@ -114,10 +169,16 @@ namespace Pulumi.Databricks
         public Output<string> EndpointName { get; private set; } = null!;
 
         /// <summary>
+        /// Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+        /// </summary>
+        [Output("endpointService")]
+        public Output<string?> EndpointService { get; private set; } = null!;
+
+        /// <summary>
         /// The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
         /// </summary>
         [Output("groupId")]
-        public Output<string> GroupId { get; private set; } = null!;
+        public Output<string?> GroupId { get; private set; } = null!;
 
         /// <summary>
         /// Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
@@ -129,7 +190,13 @@ namespace Pulumi.Databricks
         /// The Azure resource ID of the target resource. Change forces creation of a new resource.
         /// </summary>
         [Output("resourceId")]
-        public Output<string> ResourceId { get; private set; } = null!;
+        public Output<string?> ResourceId { get; private set; } = null!;
+
+        /// <summary>
+        /// Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
+        /// </summary>
+        [Output("resourceNames")]
+        public Output<ImmutableArray<string>> ResourceNames { get; private set; } = null!;
 
         /// <summary>
         /// the ID of a private endpoint rule.
@@ -142,6 +209,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("updatedTime")]
         public Output<int> UpdatedTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
+        /// </summary>
+        [Output("vpcEndpointId")]
+        public Output<string> VpcEndpointId { get; private set; } = null!;
 
 
         /// <summary>
@@ -189,6 +262,9 @@ namespace Pulumi.Databricks
 
     public sealed class MwsNccPrivateEndpointRuleArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
         /// <summary>
         /// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
         /// The possible values are:
@@ -220,11 +296,21 @@ namespace Pulumi.Databricks
 
         [Input("domainNames")]
         private InputList<string>? _domainNames;
+
+        /// <summary>
+        /// Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+        /// </summary>
         public InputList<string> DomainNames
         {
             get => _domainNames ?? (_domainNames = new InputList<string>());
             set => _domainNames = value;
         }
+
+        /// <summary>
+        /// Activation status. Only used by private endpoints towards an AWS S3 service.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
@@ -233,10 +319,16 @@ namespace Pulumi.Databricks
         public Input<string>? EndpointName { get; set; }
 
         /// <summary>
+        /// Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+        /// </summary>
+        [Input("endpointService")]
+        public Input<string>? EndpointService { get; set; }
+
+        /// <summary>
         /// The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
         /// </summary>
-        [Input("groupId", required: true)]
-        public Input<string> GroupId { get; set; } = null!;
+        [Input("groupId")]
+        public Input<string>? GroupId { get; set; }
 
         /// <summary>
         /// Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
@@ -247,8 +339,20 @@ namespace Pulumi.Databricks
         /// <summary>
         /// The Azure resource ID of the target resource. Change forces creation of a new resource.
         /// </summary>
-        [Input("resourceId", required: true)]
-        public Input<string> ResourceId { get; set; } = null!;
+        [Input("resourceId")]
+        public Input<string>? ResourceId { get; set; }
+
+        [Input("resourceNames")]
+        private InputList<string>? _resourceNames;
+
+        /// <summary>
+        /// Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
+        /// </summary>
+        public InputList<string> ResourceNames
+        {
+            get => _resourceNames ?? (_resourceNames = new InputList<string>());
+            set => _resourceNames = value;
+        }
 
         /// <summary>
         /// the ID of a private endpoint rule.
@@ -262,6 +366,12 @@ namespace Pulumi.Databricks
         [Input("updatedTime")]
         public Input<int>? UpdatedTime { get; set; }
 
+        /// <summary>
+        /// The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
+        /// </summary>
+        [Input("vpcEndpointId")]
+        public Input<string>? VpcEndpointId { get; set; }
+
         public MwsNccPrivateEndpointRuleArgs()
         {
         }
@@ -270,6 +380,9 @@ namespace Pulumi.Databricks
 
     public sealed class MwsNccPrivateEndpointRuleState : global::Pulumi.ResourceArgs
     {
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
         /// <summary>
         /// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
         /// The possible values are:
@@ -301,6 +414,10 @@ namespace Pulumi.Databricks
 
         [Input("domainNames")]
         private InputList<string>? _domainNames;
+
+        /// <summary>
+        /// Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+        /// </summary>
         public InputList<string> DomainNames
         {
             get => _domainNames ?? (_domainNames = new InputList<string>());
@@ -308,10 +425,22 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
+        /// Activation status. Only used by private endpoints towards an AWS S3 service.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
         /// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
         /// </summary>
         [Input("endpointName")]
         public Input<string>? EndpointName { get; set; }
+
+        /// <summary>
+        /// Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+        /// </summary>
+        [Input("endpointService")]
+        public Input<string>? EndpointService { get; set; }
 
         /// <summary>
         /// The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
@@ -331,6 +460,18 @@ namespace Pulumi.Databricks
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }
 
+        [Input("resourceNames")]
+        private InputList<string>? _resourceNames;
+
+        /// <summary>
+        /// Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
+        /// </summary>
+        public InputList<string> ResourceNames
+        {
+            get => _resourceNames ?? (_resourceNames = new InputList<string>());
+            set => _resourceNames = value;
+        }
+
         /// <summary>
         /// the ID of a private endpoint rule.
         /// </summary>
@@ -342,6 +483,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("updatedTime")]
         public Input<int>? UpdatedTime { get; set; }
+
+        /// <summary>
+        /// The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
+        /// </summary>
+        [Input("vpcEndpointId")]
+        public Input<string>? VpcEndpointId { get; set; }
 
         public MwsNccPrivateEndpointRuleState()
         {

@@ -18,44 +18,14 @@ public final class GetDatabaseInstanceArgs extends com.pulumi.resources.InvokeAr
     public static final GetDatabaseInstanceArgs Empty = new GetDatabaseInstanceArgs();
 
     /**
-     * (string) - Password for admin user to create. If not provided, no user will be created
-     * 
-     */
-    @Import(name="adminPassword")
-    private @Nullable Output<String> adminPassword;
-
-    /**
-     * @return (string) - Password for admin user to create. If not provided, no user will be created
-     * 
-     */
-    public Optional<Output<String>> adminPassword() {
-        return Optional.ofNullable(this.adminPassword);
-    }
-
-    /**
-     * (string) - Name of the admin role for the instance. If not provided, defaults to &#39;databricks_admin&#39;
-     * 
-     */
-    @Import(name="adminRolename")
-    private @Nullable Output<String> adminRolename;
-
-    /**
-     * @return (string) - Name of the admin role for the instance. If not provided, defaults to &#39;databricks_admin&#39;
-     * 
-     */
-    public Optional<Output<String>> adminRolename() {
-        return Optional.ofNullable(this.adminRolename);
-    }
-
-    /**
-     * (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;
+     * (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
      * 
      */
     @Import(name="capacity")
     private @Nullable Output<String> capacity;
 
     /**
-     * @return (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;
+     * @return (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
      * 
      */
     public Optional<Output<String>> capacity() {
@@ -95,8 +65,6 @@ public final class GetDatabaseInstanceArgs extends com.pulumi.resources.InvokeAr
     private GetDatabaseInstanceArgs() {}
 
     private GetDatabaseInstanceArgs(GetDatabaseInstanceArgs $) {
-        this.adminPassword = $.adminPassword;
-        this.adminRolename = $.adminRolename;
         this.capacity = $.capacity;
         this.name = $.name;
         this.stopped = $.stopped;
@@ -121,49 +89,7 @@ public final class GetDatabaseInstanceArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param adminPassword (string) - Password for admin user to create. If not provided, no user will be created
-         * 
-         * @return builder
-         * 
-         */
-        public Builder adminPassword(@Nullable Output<String> adminPassword) {
-            $.adminPassword = adminPassword;
-            return this;
-        }
-
-        /**
-         * @param adminPassword (string) - Password for admin user to create. If not provided, no user will be created
-         * 
-         * @return builder
-         * 
-         */
-        public Builder adminPassword(String adminPassword) {
-            return adminPassword(Output.of(adminPassword));
-        }
-
-        /**
-         * @param adminRolename (string) - Name of the admin role for the instance. If not provided, defaults to &#39;databricks_admin&#39;
-         * 
-         * @return builder
-         * 
-         */
-        public Builder adminRolename(@Nullable Output<String> adminRolename) {
-            $.adminRolename = adminRolename;
-            return this;
-        }
-
-        /**
-         * @param adminRolename (string) - Name of the admin role for the instance. If not provided, defaults to &#39;databricks_admin&#39;
-         * 
-         * @return builder
-         * 
-         */
-        public Builder adminRolename(String adminRolename) {
-            return adminRolename(Output.of(adminRolename));
-        }
-
-        /**
-         * @param capacity (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;
+         * @param capacity (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
          * 
          * @return builder
          * 
@@ -174,7 +100,7 @@ public final class GetDatabaseInstanceArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param capacity (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;
+         * @param capacity (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
          * 
          * @return builder
          * 

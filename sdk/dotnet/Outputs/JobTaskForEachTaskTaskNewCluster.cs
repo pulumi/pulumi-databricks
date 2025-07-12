@@ -41,12 +41,14 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? NodeTypeId;
         public readonly int? NumWorkers;
         public readonly string? PolicyId;
+        public readonly int? RemoteDiskThroughput;
         public readonly string? RuntimeEngine;
         public readonly string? SingleUserName;
         public readonly ImmutableDictionary<string, string>? SparkConf;
         public readonly ImmutableDictionary<string, string>? SparkEnvVars;
         public readonly string? SparkVersion;
         public readonly ImmutableArray<string> SshPublicKeys;
+        public readonly int? TotalInitialRemoteDiskSize;
         public readonly bool? UseMlRuntime;
         /// <summary>
         /// isn't supported
@@ -105,6 +107,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? policyId,
 
+            int? remoteDiskThroughput,
+
             string? runtimeEngine,
 
             string? singleUserName,
@@ -116,6 +120,8 @@ namespace Pulumi.Databricks.Outputs
             string? sparkVersion,
 
             ImmutableArray<string> sshPublicKeys,
+
+            int? totalInitialRemoteDiskSize,
 
             bool? useMlRuntime,
 
@@ -146,12 +152,14 @@ namespace Pulumi.Databricks.Outputs
             NodeTypeId = nodeTypeId;
             NumWorkers = numWorkers;
             PolicyId = policyId;
+            RemoteDiskThroughput = remoteDiskThroughput;
             RuntimeEngine = runtimeEngine;
             SingleUserName = singleUserName;
             SparkConf = sparkConf;
             SparkEnvVars = sparkEnvVars;
             SparkVersion = sparkVersion;
             SshPublicKeys = sshPublicKeys;
+            TotalInitialRemoteDiskSize = totalInitialRemoteDiskSize;
             UseMlRuntime = useMlRuntime;
             WorkloadType = workloadType;
         }

@@ -200,7 +200,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     public readonly workspaceAccess!: pulumi.Output<boolean | undefined>;
     /**
-     * This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     * This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
      */
     public readonly workspaceConsume!: pulumi.Output<boolean | undefined>;
 
@@ -322,7 +322,7 @@ export interface ServicePrincipalState {
      */
     workspaceAccess?: pulumi.Input<boolean>;
     /**
-     * This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     * This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
      */
     workspaceConsume?: pulumi.Input<boolean>;
 }
@@ -392,7 +392,7 @@ export interface ServicePrincipalArgs {
      */
     workspaceAccess?: pulumi.Input<boolean>;
     /**
-     * This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     * This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
      */
     workspaceConsume?: pulumi.Input<boolean>;
 }

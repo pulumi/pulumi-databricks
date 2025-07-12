@@ -57,6 +57,41 @@ import (
 //
 // ```
 //
+// Granting a service principal the Account Admin role.
+//
+// > This can only be used with an account-level provider.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tfAdmin, err := databricks.NewServicePrincipal(ctx, "tf_admin", &databricks.ServicePrincipalArgs{
+//				DisplayName: pulumi.String("Pulumi Admin"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewServicePrincipalRole(ctx, "tf_admin_account", &databricks.ServicePrincipalRoleArgs{
+//				ServicePrincipalId: tfAdmin.ID(),
+//				Role:               pulumi.String("account_admin"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Related Resources
 //
 // The following resources are often used in the same context:
@@ -66,6 +101,7 @@ import (
 // * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
 // * GroupMember to attach users and groups as group members.
 // * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
+// * AccessControlRuleSet to attach other roles to account level resources.
 //
 // ## Import
 //
@@ -73,7 +109,7 @@ import (
 type ServicePrincipalRole struct {
 	pulumi.CustomResourceState
 
-	// This is the id of the role or instance profile resource.
+	// This is the role name, role id, or instance profile resource.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// This is the id of the service principal resource.
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
@@ -115,14 +151,14 @@ func GetServicePrincipalRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePrincipalRole resources.
 type servicePrincipalRoleState struct {
-	// This is the id of the role or instance profile resource.
+	// This is the role name, role id, or instance profile resource.
 	Role *string `pulumi:"role"`
 	// This is the id of the service principal resource.
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 }
 
 type ServicePrincipalRoleState struct {
-	// This is the id of the role or instance profile resource.
+	// This is the role name, role id, or instance profile resource.
 	Role pulumi.StringPtrInput
 	// This is the id of the service principal resource.
 	ServicePrincipalId pulumi.StringPtrInput
@@ -133,7 +169,7 @@ func (ServicePrincipalRoleState) ElementType() reflect.Type {
 }
 
 type servicePrincipalRoleArgs struct {
-	// This is the id of the role or instance profile resource.
+	// This is the role name, role id, or instance profile resource.
 	Role string `pulumi:"role"`
 	// This is the id of the service principal resource.
 	ServicePrincipalId string `pulumi:"servicePrincipalId"`
@@ -141,7 +177,7 @@ type servicePrincipalRoleArgs struct {
 
 // The set of arguments for constructing a ServicePrincipalRole resource.
 type ServicePrincipalRoleArgs struct {
-	// This is the id of the role or instance profile resource.
+	// This is the role name, role id, or instance profile resource.
 	Role pulumi.StringInput
 	// This is the id of the service principal resource.
 	ServicePrincipalId pulumi.StringInput
@@ -234,7 +270,7 @@ func (o ServicePrincipalRoleOutput) ToServicePrincipalRoleOutputWithContext(ctx 
 	return o
 }
 
-// This is the id of the role or instance profile resource.
+// This is the role name, role id, or instance profile resource.
 func (o ServicePrincipalRoleOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalRole) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

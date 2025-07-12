@@ -179,7 +179,7 @@ type Entitlements struct {
 	UserId pulumi.StringPtrOutput `pulumi:"userId"`
 	// This is a field to allow the principal to have access to a Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrOutput `pulumi:"workspaceAccess"`
-	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrOutput `pulumi:"workspaceConsume"`
 }
 
@@ -229,7 +229,7 @@ type entitlementsState struct {
 	UserId *string `pulumi:"userId"`
 	// This is a field to allow the principal to have access to a Databricks Workspace.
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
-	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume *bool `pulumi:"workspaceConsume"`
 }
 
@@ -250,7 +250,7 @@ type EntitlementsState struct {
 	UserId pulumi.StringPtrInput
 	// This is a field to allow the principal to have access to a Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrInput
-	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrInput
 }
 
@@ -275,7 +275,7 @@ type entitlementsArgs struct {
 	UserId *string `pulumi:"userId"`
 	// This is a field to allow the principal to have access to a Databricks Workspace.
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
-	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume *bool `pulumi:"workspaceConsume"`
 }
 
@@ -297,7 +297,7 @@ type EntitlementsArgs struct {
 	UserId pulumi.StringPtrInput
 	// This is a field to allow the principal to have access to a Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrInput
-	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrInput
 }
 
@@ -425,7 +425,7 @@ func (o EntitlementsOutput) WorkspaceAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Entitlements) pulumi.BoolPtrOutput { return v.WorkspaceAccess }).(pulumi.BoolPtrOutput)
 }
 
-// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 func (o EntitlementsOutput) WorkspaceConsume() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Entitlements) pulumi.BoolPtrOutput { return v.WorkspaceConsume }).(pulumi.BoolPtrOutput)
 }

@@ -30,6 +30,7 @@ public final class GetServingEndpointsEndpoint {
     private @Nullable List<GetServingEndpointsEndpointConfig> configs;
     private @Nullable Integer creationTimestamp;
     private @Nullable String creator;
+    private @Nullable String description;
     private @Nullable String id;
     private @Nullable Integer lastUpdatedTimestamp;
     /**
@@ -68,6 +69,9 @@ public final class GetServingEndpointsEndpoint {
     }
     public Optional<String> creator() {
         return Optional.ofNullable(this.creator);
+    }
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
     }
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
@@ -110,6 +114,7 @@ public final class GetServingEndpointsEndpoint {
         private @Nullable List<GetServingEndpointsEndpointConfig> configs;
         private @Nullable Integer creationTimestamp;
         private @Nullable String creator;
+        private @Nullable String description;
         private @Nullable String id;
         private @Nullable Integer lastUpdatedTimestamp;
         private @Nullable String name;
@@ -124,6 +129,7 @@ public final class GetServingEndpointsEndpoint {
     	      this.configs = defaults.configs;
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.creator = defaults.creator;
+    	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.lastUpdatedTimestamp = defaults.lastUpdatedTimestamp;
     	      this.name = defaults.name;
@@ -166,6 +172,12 @@ public final class GetServingEndpointsEndpoint {
         public Builder creator(@Nullable String creator) {
 
             this.creator = creator;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(@Nullable String description) {
+
+            this.description = description;
             return this;
         }
         @CustomType.Setter
@@ -217,6 +229,7 @@ public final class GetServingEndpointsEndpoint {
             _resultValue.configs = configs;
             _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.creator = creator;
+            _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.lastUpdatedTimestamp = lastUpdatedTimestamp;
             _resultValue.name = name;

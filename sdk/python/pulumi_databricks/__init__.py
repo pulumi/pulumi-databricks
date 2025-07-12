@@ -85,7 +85,11 @@ from .get_node_type import *
 from .get_notebook import *
 from .get_notebook_paths import *
 from .get_notification_destinations import *
+from .get_online_store import *
+from .get_online_stores import *
 from .get_pipelines import *
+from .get_quality_monitor_v2 import *
+from .get_quality_monitors_v2 import *
 from .get_recipient_federation_policies import *
 from .get_recipient_federation_policy import *
 from .get_registered_model import *
@@ -149,12 +153,14 @@ from .mws_workspaces import *
 from .notebook import *
 from .notification_destination import *
 from .obo_token import *
+from .online_store import *
 from .online_table import *
 from .permission_assignment import *
 from .permissions import *
 from .pipeline import *
 from .provider import *
 from .quality_monitor import *
+from .quality_monitor_v2 import *
 from .query import *
 from .recipient import *
 from .recipient_federation_policy import *
@@ -767,6 +773,14 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
+  "mod": "index/onlineStore",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/onlineStore:OnlineStore": "OnlineStore"
+  }
+ },
+ {
+  "pkg": "databricks",
   "mod": "index/onlineTable",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -803,6 +817,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/qualityMonitor:QualityMonitor": "QualityMonitor"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/qualityMonitorV2",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/qualityMonitorV2:QualityMonitorV2": "QualityMonitorV2"
   }
  },
  {

@@ -116,21 +116,17 @@ import (
 //				return err
 //			}
 //			// create workspace in given VPC with DBFS on root bucket
-//			thisMwsWorkspaces, err := databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
+//			_, err = databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
 //				AccountId:              pulumi.Any(databricksAccountId),
 //				WorkspaceName:          pulumi.Any(prefix),
 //				AwsRegion:              pulumi.Any(region),
 //				CredentialsId:          this.CredentialsId,
 //				StorageConfigurationId: thisMwsStorageConfigurations.StorageConfigurationId,
 //				NetworkId:              thisMwsNetworks.NetworkId,
-//				Token:                  &databricks.MwsWorkspacesTokenArgs{},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("databricksToken", thisMwsWorkspaces.Token.ApplyT(func(token databricks.MwsWorkspacesToken) (*string, error) {
-//				return &token.TokenValue, nil
-//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -272,13 +268,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			thisMwsWorkspaces, err := databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
+//			_, err = databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
 //				AccountId:              pulumi.Any(databricksAccountId),
 //				WorkspaceName:          pulumi.String(prefix),
 //				AwsRegion:              pulumi.String("us-east-1"),
 //				CredentialsId:          thisMwsCredentials.CredentialsId,
 //				StorageConfigurationId: thisMwsStorageConfigurations.StorageConfigurationId,
-//				Token:                  &databricks.MwsWorkspacesTokenArgs{},
 //				CustomTags: pulumi.StringMap{
 //					"SoldToCode": pulumi.String("1234"),
 //				},
@@ -286,9 +281,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("databricksToken", thisMwsWorkspaces.Token.ApplyT(func(token databricks.MwsWorkspacesToken) (*string, error) {
-//				return &token.TokenValue, nil
-//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -340,7 +332,7 @@ import (
 //				return err
 //			}
 //			// create workspace in given VPC
-//			thisMwsWorkspaces, err := databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
+//			_, err = databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
 //				AccountId:     pulumi.Any(databricksAccountId),
 //				WorkspaceName: pulumi.Any(prefix),
 //				Location:      pulumi.Any(subnetRegion),
@@ -350,14 +342,10 @@ import (
 //					},
 //				},
 //				NetworkId: this.NetworkId,
-//				Token:     &databricks.MwsWorkspacesTokenArgs{},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("databricksToken", thisMwsWorkspaces.Token.ApplyT(func(token databricks.MwsWorkspacesToken) (*string, error) {
-//				return &token.TokenValue, nil
-//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -410,6 +398,8 @@ type MwsWorkspaces struct {
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer MwsWorkspacesCloudResourceContainerPtrOutput `pulumi:"cloudResourceContainer"`
 	// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+	//
+	// > Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
 	ComputeMode pulumi.StringPtrOutput `pulumi:"computeMode"`
 	// (Integer) time when workspace was created
 	CreationTime pulumi.IntOutput `pulumi:"creationTime"`
@@ -427,7 +417,7 @@ type MwsWorkspaces struct {
 	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrOutput `pulumi:"gcpManagedNetworkConfig"`
 	// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
 	GcpWorkspaceSa pulumi.StringOutput `pulumi:"gcpWorkspaceSa"`
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           MwsWorkspacesGkeConfigPtrOutput `pulumi:"gkeConfig"`
 	IsNoPublicIpEnabled pulumi.BoolPtrOutput            `pulumi:"isNoPublicIpEnabled"`
 	// region of the subnet.
@@ -508,6 +498,8 @@ type mwsWorkspacesState struct {
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer *MwsWorkspacesCloudResourceContainer `pulumi:"cloudResourceContainer"`
 	// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+	//
+	// > Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
 	ComputeMode *string `pulumi:"computeMode"`
 	// (Integer) time when workspace was created
 	CreationTime *int `pulumi:"creationTime"`
@@ -525,7 +517,7 @@ type mwsWorkspacesState struct {
 	GcpManagedNetworkConfig *MwsWorkspacesGcpManagedNetworkConfig `pulumi:"gcpManagedNetworkConfig"`
 	// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
 	GcpWorkspaceSa *string `pulumi:"gcpWorkspaceSa"`
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           *MwsWorkspacesGkeConfig `pulumi:"gkeConfig"`
 	IsNoPublicIpEnabled *bool                   `pulumi:"isNoPublicIpEnabled"`
 	// region of the subnet.
@@ -564,6 +556,8 @@ type MwsWorkspacesState struct {
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer MwsWorkspacesCloudResourceContainerPtrInput
 	// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+	//
+	// > Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
 	ComputeMode pulumi.StringPtrInput
 	// (Integer) time when workspace was created
 	CreationTime pulumi.IntPtrInput
@@ -581,7 +575,7 @@ type MwsWorkspacesState struct {
 	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrInput
 	// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
 	GcpWorkspaceSa pulumi.StringPtrInput
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           MwsWorkspacesGkeConfigPtrInput
 	IsNoPublicIpEnabled pulumi.BoolPtrInput
 	// region of the subnet.
@@ -624,6 +618,8 @@ type mwsWorkspacesArgs struct {
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer *MwsWorkspacesCloudResourceContainer `pulumi:"cloudResourceContainer"`
 	// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+	//
+	// > Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
 	ComputeMode *string `pulumi:"computeMode"`
 	// (Integer) time when workspace was created
 	CreationTime *int `pulumi:"creationTime"`
@@ -637,7 +633,7 @@ type mwsWorkspacesArgs struct {
 	DeploymentName          *string                               `pulumi:"deploymentName"`
 	ExternalCustomerInfo    *MwsWorkspacesExternalCustomerInfo    `pulumi:"externalCustomerInfo"`
 	GcpManagedNetworkConfig *MwsWorkspacesGcpManagedNetworkConfig `pulumi:"gcpManagedNetworkConfig"`
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           *MwsWorkspacesGkeConfig `pulumi:"gkeConfig"`
 	IsNoPublicIpEnabled *bool                   `pulumi:"isNoPublicIpEnabled"`
 	// region of the subnet.
@@ -677,6 +673,8 @@ type MwsWorkspacesArgs struct {
 	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer MwsWorkspacesCloudResourceContainerPtrInput
 	// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+	//
+	// > Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
 	ComputeMode pulumi.StringPtrInput
 	// (Integer) time when workspace was created
 	CreationTime pulumi.IntPtrInput
@@ -690,7 +688,7 @@ type MwsWorkspacesArgs struct {
 	DeploymentName          pulumi.StringPtrInput
 	ExternalCustomerInfo    MwsWorkspacesExternalCustomerInfoPtrInput
 	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrInput
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           MwsWorkspacesGkeConfigPtrInput
 	IsNoPublicIpEnabled pulumi.BoolPtrInput
 	// region of the subnet.
@@ -827,6 +825,8 @@ func (o MwsWorkspacesOutput) CloudResourceContainer() MwsWorkspacesCloudResource
 }
 
 // The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+//
+// > Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
 func (o MwsWorkspacesOutput) ComputeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.ComputeMode }).(pulumi.StringPtrOutput)
 }
@@ -874,7 +874,7 @@ func (o MwsWorkspacesOutput) GcpWorkspaceSa() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.GcpWorkspaceSa }).(pulumi.StringOutput)
 }
 
-// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesOutput) GkeConfig() MwsWorkspacesGkeConfigPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesGkeConfigPtrOutput { return v.GkeConfig }).(MwsWorkspacesGkeConfigPtrOutput)
 }

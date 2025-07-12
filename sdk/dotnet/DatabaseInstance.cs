@@ -10,9 +10,30 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// Database Instances are managed Postgres instances, composed of a primary Postgres compute instance and 0 or more read replica instances.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.DatabaseInstance("this", new()
+    ///     {
+    ///         Name = "my-database-instance",
+    ///         Capacity = "CU_2",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// As of terraform v1.5, resources can be imported through configuration.
+    /// As of Pulumi v1.5, resources can be imported through configuration.
     /// 
     /// hcl
     /// 
@@ -24,7 +45,7 @@ namespace Pulumi.Databricks
     /// 
     /// }
     /// 
-    /// If you are using an older version of terraform, you can import the resource using cli as follows:
+    /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/databaseInstance:DatabaseInstance databricks_database_instance name
@@ -34,19 +55,7 @@ namespace Pulumi.Databricks
     public partial class DatabaseInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Password for admin user to create. If not provided, no user will be created
-        /// </summary>
-        [Output("adminPassword")]
-        public Output<string?> AdminPassword { get; private set; } = null!;
-
-        /// <summary>
-        /// Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-        /// </summary>
-        [Output("adminRolename")]
-        public Output<string?> AdminRolename { get; private set; } = null!;
-
-        /// <summary>
-        /// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+        /// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         /// </summary>
         [Output("capacity")]
         public Output<string?> Capacity { get; private set; } = null!;
@@ -62,6 +71,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("creator")]
         public Output<string> Creator { get; private set; } = null!;
+
+        /// <summary>
+        /// (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+        /// `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        /// `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// </summary>
+        [Output("effectiveStopped")]
+        public Output<bool> EffectiveStopped { get; private set; } = null!;
 
         /// <summary>
         /// The name of the instance. This is the unique identifier for the instance
@@ -82,7 +99,7 @@ namespace Pulumi.Databricks
         public Output<string> ReadWriteDns { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+        /// (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -146,19 +163,7 @@ namespace Pulumi.Databricks
     public sealed class DatabaseInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Password for admin user to create. If not provided, no user will be created
-        /// </summary>
-        [Input("adminPassword")]
-        public Input<string>? AdminPassword { get; set; }
-
-        /// <summary>
-        /// Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-        /// </summary>
-        [Input("adminRolename")]
-        public Input<string>? AdminRolename { get; set; }
-
-        /// <summary>
-        /// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+        /// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         /// </summary>
         [Input("capacity")]
         public Input<string>? Capacity { get; set; }
@@ -184,19 +189,7 @@ namespace Pulumi.Databricks
     public sealed class DatabaseInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Password for admin user to create. If not provided, no user will be created
-        /// </summary>
-        [Input("adminPassword")]
-        public Input<string>? AdminPassword { get; set; }
-
-        /// <summary>
-        /// Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-        /// </summary>
-        [Input("adminRolename")]
-        public Input<string>? AdminRolename { get; set; }
-
-        /// <summary>
-        /// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+        /// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         /// </summary>
         [Input("capacity")]
         public Input<string>? Capacity { get; set; }
@@ -212,6 +205,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("creator")]
         public Input<string>? Creator { get; set; }
+
+        /// <summary>
+        /// (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+        /// `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        /// `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// </summary>
+        [Input("effectiveStopped")]
+        public Input<bool>? EffectiveStopped { get; set; }
 
         /// <summary>
         /// The name of the instance. This is the unique identifier for the instance
@@ -232,7 +233,7 @@ namespace Pulumi.Databricks
         public Input<string>? ReadWriteDns { get; set; }
 
         /// <summary>
-        /// (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+        /// (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

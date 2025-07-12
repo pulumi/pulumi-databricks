@@ -15,14 +15,14 @@ public final class GetAlertV2EvaluationSource extends com.pulumi.resources.Invok
     public static final GetAlertV2EvaluationSource Empty = new GetAlertV2EvaluationSource();
 
     /**
-     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      * 
      */
     @Import(name="aggregation")
     private @Nullable String aggregation;
 
     /**
-     * @return (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * @return (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      * 
      */
     public Optional<String> aggregation() {
@@ -86,7 +86,7 @@ public final class GetAlertV2EvaluationSource extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param aggregation (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+         * @param aggregation (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
          * 
          * @return builder
          * 

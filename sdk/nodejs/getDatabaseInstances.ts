@@ -6,6 +6,22 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * This data source can be used to fetch the list of Database Instances within the workspace.
+ * The list can then be accessed via the data object's `databaseInstances` field.
+ *
+ * ## Example Usage
+ *
+ * Getting a list of all Database Instances:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getDatabaseInstances({});
+ * export const allDatabaseInstances = all.then(all => all.databaseInstances);
+ * ```
+ */
 export function getDatabaseInstances(opts?: pulumi.InvokeOptions): Promise<GetDatabaseInstancesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDatabaseInstances:getDatabaseInstances", {
@@ -22,6 +38,22 @@ export interface GetDatabaseInstancesResult {
      */
     readonly id: string;
 }
+/**
+ * This data source can be used to fetch the list of Database Instances within the workspace.
+ * The list can then be accessed via the data object's `databaseInstances` field.
+ *
+ * ## Example Usage
+ *
+ * Getting a list of all Database Instances:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getDatabaseInstances({});
+ * export const allDatabaseInstances = all.then(all => all.databaseInstances);
+ * ```
+ */
 export function getDatabaseInstancesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseInstancesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDatabaseInstances:getDatabaseInstances", {

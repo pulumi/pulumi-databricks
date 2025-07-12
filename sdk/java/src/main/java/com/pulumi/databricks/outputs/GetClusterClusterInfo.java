@@ -110,6 +110,7 @@ public final class GetClusterClusterInfo {
      * 
      */
     private @Nullable String policyId;
+    private @Nullable Integer remoteDiskThroughput;
     /**
      * @return The type of runtime of the cluster
      * 
@@ -147,6 +148,7 @@ public final class GetClusterClusterInfo {
     private @Nullable String stateMessage;
     private @Nullable Integer terminatedTime;
     private @Nullable GetClusterClusterInfoTerminationReason terminationReason;
+    private @Nullable Integer totalInitialRemoteDiskSize;
     private @Nullable Boolean useMlRuntime;
     private @Nullable GetClusterClusterInfoWorkloadType workloadType;
 
@@ -298,6 +300,9 @@ public final class GetClusterClusterInfo {
     public Optional<String> policyId() {
         return Optional.ofNullable(this.policyId);
     }
+    public Optional<Integer> remoteDiskThroughput() {
+        return Optional.ofNullable(this.remoteDiskThroughput);
+    }
     /**
      * @return The type of runtime of the cluster
      * 
@@ -361,6 +366,9 @@ public final class GetClusterClusterInfo {
     public Optional<GetClusterClusterInfoTerminationReason> terminationReason() {
         return Optional.ofNullable(this.terminationReason);
     }
+    public Optional<Integer> totalInitialRemoteDiskSize() {
+        return Optional.ofNullable(this.totalInitialRemoteDiskSize);
+    }
     public Optional<Boolean> useMlRuntime() {
         return Optional.ofNullable(this.useMlRuntime);
     }
@@ -410,6 +418,7 @@ public final class GetClusterClusterInfo {
         private @Nullable String nodeTypeId;
         private @Nullable Integer numWorkers;
         private @Nullable String policyId;
+        private @Nullable Integer remoteDiskThroughput;
         private @Nullable String runtimeEngine;
         private @Nullable String singleUserName;
         private @Nullable Map<String,String> sparkConf;
@@ -423,6 +432,7 @@ public final class GetClusterClusterInfo {
         private @Nullable String stateMessage;
         private @Nullable Integer terminatedTime;
         private @Nullable GetClusterClusterInfoTerminationReason terminationReason;
+        private @Nullable Integer totalInitialRemoteDiskSize;
         private @Nullable Boolean useMlRuntime;
         private @Nullable GetClusterClusterInfoWorkloadType workloadType;
         public Builder() {}
@@ -461,6 +471,7 @@ public final class GetClusterClusterInfo {
     	      this.nodeTypeId = defaults.nodeTypeId;
     	      this.numWorkers = defaults.numWorkers;
     	      this.policyId = defaults.policyId;
+    	      this.remoteDiskThroughput = defaults.remoteDiskThroughput;
     	      this.runtimeEngine = defaults.runtimeEngine;
     	      this.singleUserName = defaults.singleUserName;
     	      this.sparkConf = defaults.sparkConf;
@@ -474,6 +485,7 @@ public final class GetClusterClusterInfo {
     	      this.stateMessage = defaults.stateMessage;
     	      this.terminatedTime = defaults.terminatedTime;
     	      this.terminationReason = defaults.terminationReason;
+    	      this.totalInitialRemoteDiskSize = defaults.totalInitialRemoteDiskSize;
     	      this.useMlRuntime = defaults.useMlRuntime;
     	      this.workloadType = defaults.workloadType;
         }
@@ -683,6 +695,12 @@ public final class GetClusterClusterInfo {
             return this;
         }
         @CustomType.Setter
+        public Builder remoteDiskThroughput(@Nullable Integer remoteDiskThroughput) {
+
+            this.remoteDiskThroughput = remoteDiskThroughput;
+            return this;
+        }
+        @CustomType.Setter
         public Builder runtimeEngine(@Nullable String runtimeEngine) {
 
             this.runtimeEngine = runtimeEngine;
@@ -764,6 +782,12 @@ public final class GetClusterClusterInfo {
             return this;
         }
         @CustomType.Setter
+        public Builder totalInitialRemoteDiskSize(@Nullable Integer totalInitialRemoteDiskSize) {
+
+            this.totalInitialRemoteDiskSize = totalInitialRemoteDiskSize;
+            return this;
+        }
+        @CustomType.Setter
         public Builder useMlRuntime(@Nullable Boolean useMlRuntime) {
 
             this.useMlRuntime = useMlRuntime;
@@ -810,6 +834,7 @@ public final class GetClusterClusterInfo {
             _resultValue.nodeTypeId = nodeTypeId;
             _resultValue.numWorkers = numWorkers;
             _resultValue.policyId = policyId;
+            _resultValue.remoteDiskThroughput = remoteDiskThroughput;
             _resultValue.runtimeEngine = runtimeEngine;
             _resultValue.singleUserName = singleUserName;
             _resultValue.sparkConf = sparkConf;
@@ -823,6 +848,7 @@ public final class GetClusterClusterInfo {
             _resultValue.stateMessage = stateMessage;
             _resultValue.terminatedTime = terminatedTime;
             _resultValue.terminationReason = terminationReason;
+            _resultValue.totalInitialRemoteDiskSize = totalInitialRemoteDiskSize;
             _resultValue.useMlRuntime = useMlRuntime;
             _resultValue.workloadType = workloadType;
             return _resultValue;

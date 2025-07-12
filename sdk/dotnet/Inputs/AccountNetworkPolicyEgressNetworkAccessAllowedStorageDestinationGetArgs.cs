@@ -27,14 +27,11 @@ namespace Pulumi.Databricks.Inputs
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
 
-        /// <summary>
-        /// The region of the S3 bucket
-        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+        /// The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
         /// </summary>
         [Input("storageDestinationType")]
         public Input<string>? StorageDestinationType { get; set; }

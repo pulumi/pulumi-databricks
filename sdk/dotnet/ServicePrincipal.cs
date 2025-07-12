@@ -257,7 +257,7 @@ namespace Pulumi.Databricks
         public Output<bool?> WorkspaceAccess { get; private set; } = null!;
 
         /// <summary>
-        /// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        /// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         /// </summary>
         [Output("workspaceConsume")]
         public Output<bool?> WorkspaceConsume { get; private set; } = null!;
@@ -399,7 +399,7 @@ namespace Pulumi.Databricks
         public Input<bool>? WorkspaceAccess { get; set; }
 
         /// <summary>
-        /// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        /// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         /// </summary>
         [Input("workspaceConsume")]
         public Input<bool>? WorkspaceConsume { get; set; }
@@ -503,7 +503,7 @@ namespace Pulumi.Databricks
         public Input<bool>? WorkspaceAccess { get; set; }
 
         /// <summary>
-        /// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        /// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         /// </summary>
         [Input("workspaceConsume")]
         public Input<bool>? WorkspaceConsume { get; set; }
