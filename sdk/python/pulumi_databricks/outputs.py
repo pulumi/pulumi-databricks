@@ -219,6 +219,8 @@ __all__ = [
     'JobTaskDashboardTask',
     'JobTaskDashboardTaskSubscription',
     'JobTaskDashboardTaskSubscriptionSubscriber',
+    'JobTaskDbtCloudTask',
+    'JobTaskDbtPlatformTask',
     'JobTaskDbtTask',
     'JobTaskDependsOn',
     'JobTaskEmailNotifications',
@@ -229,6 +231,8 @@ __all__ = [
     'JobTaskForEachTaskTaskDashboardTask',
     'JobTaskForEachTaskTaskDashboardTaskSubscription',
     'JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber',
+    'JobTaskForEachTaskTaskDbtCloudTask',
+    'JobTaskForEachTaskTaskDbtPlatformTask',
     'JobTaskForEachTaskTaskDbtTask',
     'JobTaskForEachTaskTaskDependsOn',
     'JobTaskForEachTaskTaskEmailNotifications',
@@ -444,6 +448,7 @@ __all__ = [
     'MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule',
     'MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule',
     'MwsNetworkConnectivityConfigEgressConfigTargetRules',
+    'MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule',
     'MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule',
     'MwsNetworksErrorMessage',
     'MwsNetworksGcpNetworkInfo',
@@ -492,6 +497,7 @@ __all__ = [
     'PipelineClusterInitScriptVolumes',
     'PipelineClusterInitScriptWorkspace',
     'PipelineDeployment',
+    'PipelineEnvironment',
     'PipelineEventLog',
     'PipelineFilters',
     'PipelineGatewayDefinition',
@@ -525,6 +531,7 @@ __all__ = [
     'QualityMonitorSchedule',
     'QualityMonitorSnapshot',
     'QualityMonitorTimeSeries',
+    'QualityMonitorV2AnomalyDetectionConfig',
     'QueryParameter',
     'QueryParameterDateRangeValue',
     'QueryParameterDateRangeValueDateRangeValue',
@@ -963,9 +970,14 @@ __all__ = [
     'GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleResult',
     'GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleResult',
     'GetMwsNetworkConnectivityConfigEgressConfigTargetRulesResult',
+    'GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleResult',
     'GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleResult',
     'GetNotebookPathsNotebookPathListResult',
     'GetNotificationDestinationsNotificationDestinationResult',
+    'GetOnlineStoresOnlineStoreResult',
+    'GetQualityMonitorV2AnomalyDetectionConfigResult',
+    'GetQualityMonitorsV2QualityMonitorResult',
+    'GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigResult',
     'GetRecipientFederationPoliciesPolicyResult',
     'GetRecipientFederationPoliciesPolicyOidcPolicyResult',
     'GetRecipientFederationPolicyOidcPolicyResult',
@@ -1169,7 +1181,7 @@ class AccountNetworkPolicyEgressNetworkAccess(dict):
                  allowed_storage_destinations: Optional[Sequence['outputs.AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination']] = None,
                  policy_enforcement: Optional['outputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement'] = None):
         """
-        :param builtins.str restriction_mode: The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+        :param builtins.str restriction_mode: The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
         :param Sequence['AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs'] allowed_internet_destinations: List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
         :param Sequence['AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs'] allowed_storage_destinations: List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
         :param 'AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs' policy_enforcement: Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
@@ -1186,7 +1198,7 @@ class AccountNetworkPolicyEgressNetworkAccess(dict):
     @pulumi.getter(name="restrictionMode")
     def restriction_mode(self) -> builtins.str:
         """
-        The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+        The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
         """
         return pulumi.get(self, "restriction_mode")
 
@@ -1239,7 +1251,7 @@ class AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination(dict):
                  internet_destination_type: Optional[builtins.str] = None):
         """
         :param builtins.str destination: The internet destination to which access will be allowed. Format dependent on the destination type
-        :param builtins.str internet_destination_type: The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+        :param builtins.str internet_destination_type: The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
         """
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
@@ -1258,7 +1270,7 @@ class AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination(dict):
     @pulumi.getter(name="internetDestinationType")
     def internet_destination_type(self) -> Optional[builtins.str]:
         """
-        The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+        The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
         """
         return pulumi.get(self, "internet_destination_type")
 
@@ -1297,8 +1309,7 @@ class AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination(dict):
         """
         :param builtins.str azure_storage_account: The Azure storage account name
         :param builtins.str azure_storage_service: The Azure storage service type (blob, dfs, etc.)
-        :param builtins.str region: The region of the S3 bucket
-        :param builtins.str storage_destination_type: The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+        :param builtins.str storage_destination_type: The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
         """
         if azure_storage_account is not None:
             pulumi.set(__self__, "azure_storage_account", azure_storage_account)
@@ -1335,16 +1346,13 @@ class AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination(dict):
     @property
     @pulumi.getter
     def region(self) -> Optional[builtins.str]:
-        """
-        The region of the S3 bucket
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="storageDestinationType")
     def storage_destination_type(self) -> Optional[builtins.str]:
         """
-        The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+        The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
         """
         return pulumi.get(self, "storage_destination_type")
 
@@ -1378,7 +1386,7 @@ class AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement(dict):
                When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
         :param builtins.str enforcement_mode: The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
                while DRY_RUN only logs violations without blocking. When not specified,
-               defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+               defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
         """
         if dry_run_mode_product_filters is not None:
             pulumi.set(__self__, "dry_run_mode_product_filters", dry_run_mode_product_filters)
@@ -1400,7 +1408,7 @@ class AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement(dict):
         """
         The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
         while DRY_RUN only logs violations without blocking. When not specified,
-        defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+        defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
         """
         return pulumi.get(self, "enforcement_mode")
 
@@ -1695,12 +1703,12 @@ class AlertV2Evaluation(dict):
                  state: Optional[builtins.str] = None,
                  threshold: Optional['outputs.AlertV2EvaluationThreshold'] = None):
         """
-        :param builtins.str comparison_operator: Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
-        :param builtins.str empty_result_state: Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        :param builtins.str comparison_operator: Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
+        :param builtins.str empty_result_state: Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         :param builtins.str last_evaluated_at: (string) - Timestamp of the last evaluation
         :param 'AlertV2EvaluationNotificationArgs' notification: User or Notification Destination to notify when alert is triggered
         :param 'AlertV2EvaluationSourceArgs' source: Source column from result to use to evaluate alert
-        :param builtins.str state: (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        :param builtins.str state: (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         :param 'AlertV2EvaluationThresholdArgs' threshold: Threshold to user for alert evaluation, can be a column or a value
         """
         if comparison_operator is not None:
@@ -1722,7 +1730,7 @@ class AlertV2Evaluation(dict):
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[builtins.str]:
         """
-        Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+        Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -1730,7 +1738,7 @@ class AlertV2Evaluation(dict):
     @pulumi.getter(name="emptyResultState")
     def empty_result_state(self) -> Optional[builtins.str]:
         """
-        Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         """
         return pulumi.get(self, "empty_result_state")
 
@@ -1762,7 +1770,7 @@ class AlertV2Evaluation(dict):
     @pulumi.getter
     def state(self) -> Optional[builtins.str]:
         """
-        (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         """
         return pulumi.get(self, "state")
 
@@ -1880,7 +1888,7 @@ class AlertV2EvaluationSource(dict):
                  display: Optional[builtins.str] = None,
                  name: Optional[builtins.str] = None):
         """
-        :param builtins.str aggregation: . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        :param builtins.str aggregation: . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         if aggregation is not None:
             pulumi.set(__self__, "aggregation", aggregation)
@@ -1893,7 +1901,7 @@ class AlertV2EvaluationSource(dict):
     @pulumi.getter
     def aggregation(self) -> Optional[builtins.str]:
         """
-        . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         return pulumi.get(self, "aggregation")
 
@@ -1936,7 +1944,7 @@ class AlertV2EvaluationThresholdColumn(dict):
                  display: Optional[builtins.str] = None,
                  name: Optional[builtins.str] = None):
         """
-        :param builtins.str aggregation: . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        :param builtins.str aggregation: . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         if aggregation is not None:
             pulumi.set(__self__, "aggregation", aggregation)
@@ -1949,7 +1957,7 @@ class AlertV2EvaluationThresholdColumn(dict):
     @pulumi.getter
     def aggregation(self) -> Optional[builtins.str]:
         """
-        . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         return pulumi.get(self, "aggregation")
 
@@ -2042,7 +2050,7 @@ class AlertV2Schedule(dict):
                  quartz_cron_schedule: Optional[builtins.str] = None,
                  timezone_id: Optional[builtins.str] = None):
         """
-        :param builtins.str pause_status: Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+        :param builtins.str pause_status: Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
         :param builtins.str quartz_cron_schedule: A cron expression using quartz syntax that specifies the schedule for this pipeline.
                Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
         :param builtins.str timezone_id: A Java timezone id. The schedule will be resolved using this timezone.
@@ -2060,7 +2068,7 @@ class AlertV2Schedule(dict):
     @pulumi.getter(name="pauseStatus")
     def pause_status(self) -> Optional[builtins.str]:
         """
-        Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+        Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
         """
         return pulumi.get(self, "pause_status")
 
@@ -2524,6 +2532,7 @@ class AppResource(dict):
         :param 'AppResourceSecretArgs' secret: attribute
         :param 'AppResourceServingEndpointArgs' serving_endpoint: attribute
         :param 'AppResourceSqlWarehouseArgs' sql_warehouse: attribute
+        :param 'AppResourceUcSecurableArgs' uc_securable: attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
         """
         pulumi.set(__self__, "name", name)
         if description is not None:
@@ -2592,6 +2601,9 @@ class AppResource(dict):
     @property
     @pulumi.getter(name="ucSecurable")
     def uc_securable(self) -> Optional['outputs.AppResourceUcSecurable']:
+        """
+        attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
+        """
         return pulumi.get(self, "uc_securable")
 
 
@@ -2747,6 +2759,11 @@ class AppResourceUcSecurable(dict):
                  permission: builtins.str,
                  securable_full_name: builtins.str,
                  securable_type: builtins.str):
+        """
+        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param builtins.str securable_full_name: the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+        :param builtins.str securable_type: the type of UC securable, i.e. `VOLUME`.
+        """
         pulumi.set(__self__, "permission", permission)
         pulumi.set(__self__, "securable_full_name", securable_full_name)
         pulumi.set(__self__, "securable_type", securable_type)
@@ -2754,16 +2771,25 @@ class AppResourceUcSecurable(dict):
     @property
     @pulumi.getter
     def permission(self) -> builtins.str:
+        """
+        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        """
         return pulumi.get(self, "permission")
 
     @property
     @pulumi.getter(name="securableFullName")
     def securable_full_name(self) -> builtins.str:
+        """
+        the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+        """
         return pulumi.get(self, "securable_full_name")
 
     @property
     @pulumi.getter(name="securableType")
     def securable_type(self) -> builtins.str:
+        """
+        the type of UC securable, i.e. `VOLUME`.
+        """
         return pulumi.get(self, "securable_type")
 
 
@@ -3335,8 +3361,8 @@ class BudgetPolicyCustomTag(dict):
         :param builtins.str key: The key of the tag.
                - Must be unique among all custom tags of the same policy
                - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-               these tags are preserved.
-        :param builtins.str value: The value of the tag.
+               these tags are preserved
+        :param builtins.str value: The value of the tag
         """
         pulumi.set(__self__, "key", key)
         if value is not None:
@@ -3349,7 +3375,7 @@ class BudgetPolicyCustomTag(dict):
         The key of the tag.
         - Must be unique among all custom tags of the same policy
         - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-        these tags are preserved.
+        these tags are preserved
         """
         return pulumi.get(self, "key")
 
@@ -3357,7 +3383,7 @@ class BudgetPolicyCustomTag(dict):
     @pulumi.getter
     def value(self) -> Optional[builtins.str]:
         """
-        The value of the tag.
+        The value of the tag
         """
         return pulumi.get(self, "value")
 
@@ -6770,7 +6796,7 @@ class JobEnvironmentSpec(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 client: builtins.str,
+                 client: Optional[builtins.str] = None,
                  dependencies: Optional[Sequence[builtins.str]] = None,
                  environment_version: Optional[builtins.str] = None,
                  jar_dependencies: Optional[Sequence[builtins.str]] = None):
@@ -6778,7 +6804,8 @@ class JobEnvironmentSpec(dict):
         :param builtins.str client: client version used by the environment.
         :param Sequence[builtins.str] dependencies: List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
         """
-        pulumi.set(__self__, "client", client)
+        if client is not None:
+            pulumi.set(__self__, "client", client)
         if dependencies is not None:
             pulumi.set(__self__, "dependencies", dependencies)
         if environment_version is not None:
@@ -6788,7 +6815,7 @@ class JobEnvironmentSpec(dict):
 
     @property
     @pulumi.getter
-    def client(self) -> builtins.str:
+    def client(self) -> Optional[builtins.str]:
         """
         client version used by the environment.
         """
@@ -7147,6 +7174,8 @@ class JobJobClusterNewCluster(dict):
             suggest = "num_workers"
         elif key == "policyId":
             suggest = "policy_id"
+        elif key == "remoteDiskThroughput":
+            suggest = "remote_disk_throughput"
         elif key == "runtimeEngine":
             suggest = "runtime_engine"
         elif key == "singleUserName":
@@ -7159,6 +7188,8 @@ class JobJobClusterNewCluster(dict):
             suggest = "spark_version"
         elif key == "sshPublicKeys":
             suggest = "ssh_public_keys"
+        elif key == "totalInitialRemoteDiskSize":
+            suggest = "total_initial_remote_disk_size"
         elif key == "useMlRuntime":
             suggest = "use_ml_runtime"
         elif key == "workloadType":
@@ -7201,12 +7232,14 @@ class JobJobClusterNewCluster(dict):
                  node_type_id: Optional[builtins.str] = None,
                  num_workers: Optional[builtins.int] = None,
                  policy_id: Optional[builtins.str] = None,
+                 remote_disk_throughput: Optional[builtins.int] = None,
                  runtime_engine: Optional[builtins.str] = None,
                  single_user_name: Optional[builtins.str] = None,
                  spark_conf: Optional[Mapping[str, builtins.str]] = None,
                  spark_env_vars: Optional[Mapping[str, builtins.str]] = None,
                  spark_version: Optional[builtins.str] = None,
                  ssh_public_keys: Optional[Sequence[builtins.str]] = None,
+                 total_initial_remote_disk_size: Optional[builtins.int] = None,
                  use_ml_runtime: Optional[builtins.bool] = None,
                  workload_type: Optional['outputs.JobJobClusterNewClusterWorkloadType'] = None):
         """
@@ -7263,6 +7296,8 @@ class JobJobClusterNewCluster(dict):
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if remote_disk_throughput is not None:
+            pulumi.set(__self__, "remote_disk_throughput", remote_disk_throughput)
         if runtime_engine is not None:
             pulumi.set(__self__, "runtime_engine", runtime_engine)
         if single_user_name is not None:
@@ -7275,6 +7310,8 @@ class JobJobClusterNewCluster(dict):
             pulumi.set(__self__, "spark_version", spark_version)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
+        if total_initial_remote_disk_size is not None:
+            pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
@@ -7409,6 +7446,11 @@ class JobJobClusterNewCluster(dict):
         return pulumi.get(self, "policy_id")
 
     @property
+    @pulumi.getter(name="remoteDiskThroughput")
+    def remote_disk_throughput(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "remote_disk_throughput")
+
+    @property
     @pulumi.getter(name="runtimeEngine")
     def runtime_engine(self) -> Optional[builtins.str]:
         return pulumi.get(self, "runtime_engine")
@@ -7437,6 +7479,11 @@ class JobJobClusterNewCluster(dict):
     @pulumi.getter(name="sshPublicKeys")
     def ssh_public_keys(self) -> Optional[Sequence[builtins.str]]:
         return pulumi.get(self, "ssh_public_keys")
+
+    @property
+    @pulumi.getter(name="totalInitialRemoteDiskSize")
+    def total_initial_remote_disk_size(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "total_initial_remote_disk_size")
 
     @property
     @pulumi.getter(name="useMlRuntime")
@@ -8634,6 +8681,8 @@ class JobNewCluster(dict):
             suggest = "num_workers"
         elif key == "policyId":
             suggest = "policy_id"
+        elif key == "remoteDiskThroughput":
+            suggest = "remote_disk_throughput"
         elif key == "runtimeEngine":
             suggest = "runtime_engine"
         elif key == "singleUserName":
@@ -8646,6 +8695,8 @@ class JobNewCluster(dict):
             suggest = "spark_version"
         elif key == "sshPublicKeys":
             suggest = "ssh_public_keys"
+        elif key == "totalInitialRemoteDiskSize":
+            suggest = "total_initial_remote_disk_size"
         elif key == "useMlRuntime":
             suggest = "use_ml_runtime"
         elif key == "workloadType":
@@ -8688,12 +8739,14 @@ class JobNewCluster(dict):
                  node_type_id: Optional[builtins.str] = None,
                  num_workers: Optional[builtins.int] = None,
                  policy_id: Optional[builtins.str] = None,
+                 remote_disk_throughput: Optional[builtins.int] = None,
                  runtime_engine: Optional[builtins.str] = None,
                  single_user_name: Optional[builtins.str] = None,
                  spark_conf: Optional[Mapping[str, builtins.str]] = None,
                  spark_env_vars: Optional[Mapping[str, builtins.str]] = None,
                  spark_version: Optional[builtins.str] = None,
                  ssh_public_keys: Optional[Sequence[builtins.str]] = None,
+                 total_initial_remote_disk_size: Optional[builtins.int] = None,
                  use_ml_runtime: Optional[builtins.bool] = None,
                  workload_type: Optional['outputs.JobNewClusterWorkloadType'] = None):
         """
@@ -8750,6 +8803,8 @@ class JobNewCluster(dict):
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if remote_disk_throughput is not None:
+            pulumi.set(__self__, "remote_disk_throughput", remote_disk_throughput)
         if runtime_engine is not None:
             pulumi.set(__self__, "runtime_engine", runtime_engine)
         if single_user_name is not None:
@@ -8762,6 +8817,8 @@ class JobNewCluster(dict):
             pulumi.set(__self__, "spark_version", spark_version)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
+        if total_initial_remote_disk_size is not None:
+            pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
@@ -8896,6 +8953,11 @@ class JobNewCluster(dict):
         return pulumi.get(self, "policy_id")
 
     @property
+    @pulumi.getter(name="remoteDiskThroughput")
+    def remote_disk_throughput(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "remote_disk_throughput")
+
+    @property
     @pulumi.getter(name="runtimeEngine")
     def runtime_engine(self) -> Optional[builtins.str]:
         return pulumi.get(self, "runtime_engine")
@@ -8924,6 +8986,11 @@ class JobNewCluster(dict):
     @pulumi.getter(name="sshPublicKeys")
     def ssh_public_keys(self) -> Optional[Sequence[builtins.str]]:
         return pulumi.get(self, "ssh_public_keys")
+
+    @property
+    @pulumi.getter(name="totalInitialRemoteDiskSize")
+    def total_initial_remote_disk_size(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "total_initial_remote_disk_size")
 
     @property
     @pulumi.getter(name="useMlRuntime")
@@ -10588,6 +10655,10 @@ class JobTask(dict):
             suggest = "condition_task"
         elif key == "dashboardTask":
             suggest = "dashboard_task"
+        elif key == "dbtCloudTask":
+            suggest = "dbt_cloud_task"
+        elif key == "dbtPlatformTask":
+            suggest = "dbt_platform_task"
         elif key == "dbtTask":
             suggest = "dbt_task"
         elif key == "dependsOns":
@@ -10657,6 +10728,8 @@ class JobTask(dict):
                  clean_rooms_notebook_task: Optional['outputs.JobTaskCleanRoomsNotebookTask'] = None,
                  condition_task: Optional['outputs.JobTaskConditionTask'] = None,
                  dashboard_task: Optional['outputs.JobTaskDashboardTask'] = None,
+                 dbt_cloud_task: Optional['outputs.JobTaskDbtCloudTask'] = None,
+                 dbt_platform_task: Optional['outputs.JobTaskDbtPlatformTask'] = None,
                  dbt_task: Optional['outputs.JobTaskDbtTask'] = None,
                  depends_ons: Optional[Sequence['outputs.JobTaskDependsOn']] = None,
                  description: Optional[builtins.str] = None,
@@ -10716,6 +10789,10 @@ class JobTask(dict):
             pulumi.set(__self__, "condition_task", condition_task)
         if dashboard_task is not None:
             pulumi.set(__self__, "dashboard_task", dashboard_task)
+        if dbt_cloud_task is not None:
+            pulumi.set(__self__, "dbt_cloud_task", dbt_cloud_task)
+        if dbt_platform_task is not None:
+            pulumi.set(__self__, "dbt_platform_task", dbt_platform_task)
         if dbt_task is not None:
             pulumi.set(__self__, "dbt_task", dbt_task)
         if depends_ons is not None:
@@ -10798,6 +10875,16 @@ class JobTask(dict):
     @pulumi.getter(name="dashboardTask")
     def dashboard_task(self) -> Optional['outputs.JobTaskDashboardTask']:
         return pulumi.get(self, "dashboard_task")
+
+    @property
+    @pulumi.getter(name="dbtCloudTask")
+    def dbt_cloud_task(self) -> Optional['outputs.JobTaskDbtCloudTask']:
+        return pulumi.get(self, "dbt_cloud_task")
+
+    @property
+    @pulumi.getter(name="dbtPlatformTask")
+    def dbt_platform_task(self) -> Optional['outputs.JobTaskDbtPlatformTask']:
+        return pulumi.get(self, "dbt_platform_task")
 
     @property
     @pulumi.getter(name="dbtTask")
@@ -11289,6 +11376,98 @@ class JobTaskDashboardTaskSubscriptionSubscriber(dict):
 
 
 @pulumi.output_type
+class JobTaskDbtCloudTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionResourceName":
+            suggest = "connection_resource_name"
+        elif key == "dbtCloudJobId":
+            suggest = "dbt_cloud_job_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskDbtCloudTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskDbtCloudTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskDbtCloudTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_resource_name: Optional[builtins.str] = None,
+                 dbt_cloud_job_id: Optional[builtins.int] = None):
+        """
+        :param builtins.str connection_resource_name: The resource name of the UC connection to authenticate from Databricks to Power BI
+        """
+        if connection_resource_name is not None:
+            pulumi.set(__self__, "connection_resource_name", connection_resource_name)
+        if dbt_cloud_job_id is not None:
+            pulumi.set(__self__, "dbt_cloud_job_id", dbt_cloud_job_id)
+
+    @property
+    @pulumi.getter(name="connectionResourceName")
+    def connection_resource_name(self) -> Optional[builtins.str]:
+        """
+        The resource name of the UC connection to authenticate from Databricks to Power BI
+        """
+        return pulumi.get(self, "connection_resource_name")
+
+    @property
+    @pulumi.getter(name="dbtCloudJobId")
+    def dbt_cloud_job_id(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "dbt_cloud_job_id")
+
+
+@pulumi.output_type
+class JobTaskDbtPlatformTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionResourceName":
+            suggest = "connection_resource_name"
+        elif key == "dbtPlatformJobId":
+            suggest = "dbt_platform_job_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskDbtPlatformTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskDbtPlatformTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskDbtPlatformTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_resource_name: Optional[builtins.str] = None,
+                 dbt_platform_job_id: Optional[builtins.str] = None):
+        """
+        :param builtins.str connection_resource_name: The resource name of the UC connection to authenticate from Databricks to Power BI
+        """
+        if connection_resource_name is not None:
+            pulumi.set(__self__, "connection_resource_name", connection_resource_name)
+        if dbt_platform_job_id is not None:
+            pulumi.set(__self__, "dbt_platform_job_id", dbt_platform_job_id)
+
+    @property
+    @pulumi.getter(name="connectionResourceName")
+    def connection_resource_name(self) -> Optional[builtins.str]:
+        """
+        The resource name of the UC connection to authenticate from Databricks to Power BI
+        """
+        return pulumi.get(self, "connection_resource_name")
+
+    @property
+    @pulumi.getter(name="dbtPlatformJobId")
+    def dbt_platform_job_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "dbt_platform_job_id")
+
+
+@pulumi.output_type
 class JobTaskDbtTask(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -11622,6 +11801,10 @@ class JobTaskForEachTaskTask(dict):
             suggest = "condition_task"
         elif key == "dashboardTask":
             suggest = "dashboard_task"
+        elif key == "dbtCloudTask":
+            suggest = "dbt_cloud_task"
+        elif key == "dbtPlatformTask":
+            suggest = "dbt_platform_task"
         elif key == "dbtTask":
             suggest = "dbt_task"
         elif key == "dependsOns":
@@ -11689,6 +11872,8 @@ class JobTaskForEachTaskTask(dict):
                  clean_rooms_notebook_task: Optional['outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask'] = None,
                  condition_task: Optional['outputs.JobTaskForEachTaskTaskConditionTask'] = None,
                  dashboard_task: Optional['outputs.JobTaskForEachTaskTaskDashboardTask'] = None,
+                 dbt_cloud_task: Optional['outputs.JobTaskForEachTaskTaskDbtCloudTask'] = None,
+                 dbt_platform_task: Optional['outputs.JobTaskForEachTaskTaskDbtPlatformTask'] = None,
                  dbt_task: Optional['outputs.JobTaskForEachTaskTaskDbtTask'] = None,
                  depends_ons: Optional[Sequence['outputs.JobTaskForEachTaskTaskDependsOn']] = None,
                  description: Optional[builtins.str] = None,
@@ -11747,6 +11932,10 @@ class JobTaskForEachTaskTask(dict):
             pulumi.set(__self__, "condition_task", condition_task)
         if dashboard_task is not None:
             pulumi.set(__self__, "dashboard_task", dashboard_task)
+        if dbt_cloud_task is not None:
+            pulumi.set(__self__, "dbt_cloud_task", dbt_cloud_task)
+        if dbt_platform_task is not None:
+            pulumi.set(__self__, "dbt_platform_task", dbt_platform_task)
         if dbt_task is not None:
             pulumi.set(__self__, "dbt_task", dbt_task)
         if depends_ons is not None:
@@ -11827,6 +12016,16 @@ class JobTaskForEachTaskTask(dict):
     @pulumi.getter(name="dashboardTask")
     def dashboard_task(self) -> Optional['outputs.JobTaskForEachTaskTaskDashboardTask']:
         return pulumi.get(self, "dashboard_task")
+
+    @property
+    @pulumi.getter(name="dbtCloudTask")
+    def dbt_cloud_task(self) -> Optional['outputs.JobTaskForEachTaskTaskDbtCloudTask']:
+        return pulumi.get(self, "dbt_cloud_task")
+
+    @property
+    @pulumi.getter(name="dbtPlatformTask")
+    def dbt_platform_task(self) -> Optional['outputs.JobTaskForEachTaskTaskDbtPlatformTask']:
+        return pulumi.get(self, "dbt_platform_task")
 
     @property
     @pulumi.getter(name="dbtTask")
@@ -12310,6 +12509,98 @@ class JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber(dict):
         A snapshot of the dashboard will be sent to the user's email when the `user_name` field is present.
         """
         return pulumi.get(self, "user_name")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskDbtCloudTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionResourceName":
+            suggest = "connection_resource_name"
+        elif key == "dbtCloudJobId":
+            suggest = "dbt_cloud_job_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskDbtCloudTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskDbtCloudTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskDbtCloudTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_resource_name: Optional[builtins.str] = None,
+                 dbt_cloud_job_id: Optional[builtins.int] = None):
+        """
+        :param builtins.str connection_resource_name: The resource name of the UC connection to authenticate from Databricks to Power BI
+        """
+        if connection_resource_name is not None:
+            pulumi.set(__self__, "connection_resource_name", connection_resource_name)
+        if dbt_cloud_job_id is not None:
+            pulumi.set(__self__, "dbt_cloud_job_id", dbt_cloud_job_id)
+
+    @property
+    @pulumi.getter(name="connectionResourceName")
+    def connection_resource_name(self) -> Optional[builtins.str]:
+        """
+        The resource name of the UC connection to authenticate from Databricks to Power BI
+        """
+        return pulumi.get(self, "connection_resource_name")
+
+    @property
+    @pulumi.getter(name="dbtCloudJobId")
+    def dbt_cloud_job_id(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "dbt_cloud_job_id")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskDbtPlatformTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionResourceName":
+            suggest = "connection_resource_name"
+        elif key == "dbtPlatformJobId":
+            suggest = "dbt_platform_job_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskDbtPlatformTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskDbtPlatformTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskDbtPlatformTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_resource_name: Optional[builtins.str] = None,
+                 dbt_platform_job_id: Optional[builtins.str] = None):
+        """
+        :param builtins.str connection_resource_name: The resource name of the UC connection to authenticate from Databricks to Power BI
+        """
+        if connection_resource_name is not None:
+            pulumi.set(__self__, "connection_resource_name", connection_resource_name)
+        if dbt_platform_job_id is not None:
+            pulumi.set(__self__, "dbt_platform_job_id", dbt_platform_job_id)
+
+    @property
+    @pulumi.getter(name="connectionResourceName")
+    def connection_resource_name(self) -> Optional[builtins.str]:
+        """
+        The resource name of the UC connection to authenticate from Databricks to Power BI
+        """
+        return pulumi.get(self, "connection_resource_name")
+
+    @property
+    @pulumi.getter(name="dbtPlatformJobId")
+    def dbt_platform_job_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "dbt_platform_job_id")
 
 
 @pulumi.output_type
@@ -12970,6 +13261,8 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             suggest = "num_workers"
         elif key == "policyId":
             suggest = "policy_id"
+        elif key == "remoteDiskThroughput":
+            suggest = "remote_disk_throughput"
         elif key == "runtimeEngine":
             suggest = "runtime_engine"
         elif key == "singleUserName":
@@ -12982,6 +13275,8 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             suggest = "spark_version"
         elif key == "sshPublicKeys":
             suggest = "ssh_public_keys"
+        elif key == "totalInitialRemoteDiskSize":
+            suggest = "total_initial_remote_disk_size"
         elif key == "useMlRuntime":
             suggest = "use_ml_runtime"
         elif key == "workloadType":
@@ -13024,12 +13319,14 @@ class JobTaskForEachTaskTaskNewCluster(dict):
                  node_type_id: Optional[builtins.str] = None,
                  num_workers: Optional[builtins.int] = None,
                  policy_id: Optional[builtins.str] = None,
+                 remote_disk_throughput: Optional[builtins.int] = None,
                  runtime_engine: Optional[builtins.str] = None,
                  single_user_name: Optional[builtins.str] = None,
                  spark_conf: Optional[Mapping[str, builtins.str]] = None,
                  spark_env_vars: Optional[Mapping[str, builtins.str]] = None,
                  spark_version: Optional[builtins.str] = None,
                  ssh_public_keys: Optional[Sequence[builtins.str]] = None,
+                 total_initial_remote_disk_size: Optional[builtins.int] = None,
                  use_ml_runtime: Optional[builtins.bool] = None,
                  workload_type: Optional['outputs.JobTaskForEachTaskTaskNewClusterWorkloadType'] = None):
         """
@@ -13086,6 +13383,8 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if remote_disk_throughput is not None:
+            pulumi.set(__self__, "remote_disk_throughput", remote_disk_throughput)
         if runtime_engine is not None:
             pulumi.set(__self__, "runtime_engine", runtime_engine)
         if single_user_name is not None:
@@ -13098,6 +13397,8 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             pulumi.set(__self__, "spark_version", spark_version)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
+        if total_initial_remote_disk_size is not None:
+            pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
@@ -13232,6 +13533,11 @@ class JobTaskForEachTaskTaskNewCluster(dict):
         return pulumi.get(self, "policy_id")
 
     @property
+    @pulumi.getter(name="remoteDiskThroughput")
+    def remote_disk_throughput(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "remote_disk_throughput")
+
+    @property
     @pulumi.getter(name="runtimeEngine")
     def runtime_engine(self) -> Optional[builtins.str]:
         return pulumi.get(self, "runtime_engine")
@@ -13260,6 +13566,11 @@ class JobTaskForEachTaskTaskNewCluster(dict):
     @pulumi.getter(name="sshPublicKeys")
     def ssh_public_keys(self) -> Optional[Sequence[builtins.str]]:
         return pulumi.get(self, "ssh_public_keys")
+
+    @property
+    @pulumi.getter(name="totalInitialRemoteDiskSize")
+    def total_initial_remote_disk_size(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "total_initial_remote_disk_size")
 
     @property
     @pulumi.getter(name="useMlRuntime")
@@ -16164,6 +16475,8 @@ class JobTaskNewCluster(dict):
             suggest = "num_workers"
         elif key == "policyId":
             suggest = "policy_id"
+        elif key == "remoteDiskThroughput":
+            suggest = "remote_disk_throughput"
         elif key == "runtimeEngine":
             suggest = "runtime_engine"
         elif key == "singleUserName":
@@ -16176,6 +16489,8 @@ class JobTaskNewCluster(dict):
             suggest = "spark_version"
         elif key == "sshPublicKeys":
             suggest = "ssh_public_keys"
+        elif key == "totalInitialRemoteDiskSize":
+            suggest = "total_initial_remote_disk_size"
         elif key == "useMlRuntime":
             suggest = "use_ml_runtime"
         elif key == "workloadType":
@@ -16218,12 +16533,14 @@ class JobTaskNewCluster(dict):
                  node_type_id: Optional[builtins.str] = None,
                  num_workers: Optional[builtins.int] = None,
                  policy_id: Optional[builtins.str] = None,
+                 remote_disk_throughput: Optional[builtins.int] = None,
                  runtime_engine: Optional[builtins.str] = None,
                  single_user_name: Optional[builtins.str] = None,
                  spark_conf: Optional[Mapping[str, builtins.str]] = None,
                  spark_env_vars: Optional[Mapping[str, builtins.str]] = None,
                  spark_version: Optional[builtins.str] = None,
                  ssh_public_keys: Optional[Sequence[builtins.str]] = None,
+                 total_initial_remote_disk_size: Optional[builtins.int] = None,
                  use_ml_runtime: Optional[builtins.bool] = None,
                  workload_type: Optional['outputs.JobTaskNewClusterWorkloadType'] = None):
         """
@@ -16280,6 +16597,8 @@ class JobTaskNewCluster(dict):
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if remote_disk_throughput is not None:
+            pulumi.set(__self__, "remote_disk_throughput", remote_disk_throughput)
         if runtime_engine is not None:
             pulumi.set(__self__, "runtime_engine", runtime_engine)
         if single_user_name is not None:
@@ -16292,6 +16611,8 @@ class JobTaskNewCluster(dict):
             pulumi.set(__self__, "spark_version", spark_version)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
+        if total_initial_remote_disk_size is not None:
+            pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
@@ -16426,6 +16747,11 @@ class JobTaskNewCluster(dict):
         return pulumi.get(self, "policy_id")
 
     @property
+    @pulumi.getter(name="remoteDiskThroughput")
+    def remote_disk_throughput(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "remote_disk_throughput")
+
+    @property
     @pulumi.getter(name="runtimeEngine")
     def runtime_engine(self) -> Optional[builtins.str]:
         return pulumi.get(self, "runtime_engine")
@@ -16454,6 +16780,11 @@ class JobTaskNewCluster(dict):
     @pulumi.getter(name="sshPublicKeys")
     def ssh_public_keys(self) -> Optional[Sequence[builtins.str]]:
         return pulumi.get(self, "ssh_public_keys")
+
+    @property
+    @pulumi.getter(name="totalInitialRemoteDiskSize")
+    def total_initial_remote_disk_size(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "total_initial_remote_disk_size")
 
     @property
     @pulumi.getter(name="useMlRuntime")
@@ -21066,8 +21397,12 @@ class ModelServingConfigServedEntity(dict):
             suggest = "external_model"
         elif key == "instanceProfileArn":
             suggest = "instance_profile_arn"
+        elif key == "maxProvisionedConcurrency":
+            suggest = "max_provisioned_concurrency"
         elif key == "maxProvisionedThroughput":
             suggest = "max_provisioned_throughput"
+        elif key == "minProvisionedConcurrency":
+            suggest = "min_provisioned_concurrency"
         elif key == "minProvisionedThroughput":
             suggest = "min_provisioned_throughput"
         elif key == "provisionedModelUnits":
@@ -21096,7 +21431,9 @@ class ModelServingConfigServedEntity(dict):
                  environment_vars: Optional[Mapping[str, builtins.str]] = None,
                  external_model: Optional['outputs.ModelServingConfigServedEntityExternalModel'] = None,
                  instance_profile_arn: Optional[builtins.str] = None,
+                 max_provisioned_concurrency: Optional[builtins.int] = None,
                  max_provisioned_throughput: Optional[builtins.int] = None,
+                 min_provisioned_concurrency: Optional[builtins.int] = None,
                  min_provisioned_throughput: Optional[builtins.int] = None,
                  name: Optional[builtins.str] = None,
                  provisioned_model_units: Optional[builtins.int] = None,
@@ -21109,11 +21446,13 @@ class ModelServingConfigServedEntity(dict):
         :param Mapping[str, builtins.str] environment_vars: An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and is subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
         :param 'ModelServingConfigServedEntityExternalModelArgs' external_model: The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. An existing endpoint with `external_model` can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
         :param builtins.str instance_profile_arn: ARN of the instance profile that the served entity uses to access AWS resources.
+        :param builtins.int max_provisioned_concurrency: The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
         :param builtins.int max_provisioned_throughput: The maximum tokens per second that the endpoint can scale up to.
+        :param builtins.int min_provisioned_concurrency: The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
         :param builtins.int min_provisioned_throughput: The minimum tokens per second that the endpoint can scale down to.
         :param builtins.str name: The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with '.' and ':' replaced with '-', and if not specified for other entities, it defaults to -.
         :param builtins.bool scale_to_zero_enabled: Whether the compute resources for the served entity should scale down to zero.
-        :param builtins.str workload_size: The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
+        :param builtins.str workload_size: The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `min_provisioned_concurrency` and `max_provisioned_concurrency`.
         :param builtins.str workload_type: The workload type of the served entity. The workload type selects which type of compute to use in the endpoint. The default value for this parameter is `CPU`. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the available [GPU types](https://docs.databricks.com/machine-learning/model-serving/create-manage-serving-endpoints.html#gpu-workload-types).
         """
         if entity_name is not None:
@@ -21126,8 +21465,12 @@ class ModelServingConfigServedEntity(dict):
             pulumi.set(__self__, "external_model", external_model)
         if instance_profile_arn is not None:
             pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
+        if max_provisioned_concurrency is not None:
+            pulumi.set(__self__, "max_provisioned_concurrency", max_provisioned_concurrency)
         if max_provisioned_throughput is not None:
             pulumi.set(__self__, "max_provisioned_throughput", max_provisioned_throughput)
+        if min_provisioned_concurrency is not None:
+            pulumi.set(__self__, "min_provisioned_concurrency", min_provisioned_concurrency)
         if min_provisioned_throughput is not None:
             pulumi.set(__self__, "min_provisioned_throughput", min_provisioned_throughput)
         if name is not None:
@@ -21182,12 +21525,28 @@ class ModelServingConfigServedEntity(dict):
         return pulumi.get(self, "instance_profile_arn")
 
     @property
+    @pulumi.getter(name="maxProvisionedConcurrency")
+    def max_provisioned_concurrency(self) -> Optional[builtins.int]:
+        """
+        The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+        """
+        return pulumi.get(self, "max_provisioned_concurrency")
+
+    @property
     @pulumi.getter(name="maxProvisionedThroughput")
     def max_provisioned_throughput(self) -> Optional[builtins.int]:
         """
         The maximum tokens per second that the endpoint can scale up to.
         """
         return pulumi.get(self, "max_provisioned_throughput")
+
+    @property
+    @pulumi.getter(name="minProvisionedConcurrency")
+    def min_provisioned_concurrency(self) -> Optional[builtins.int]:
+        """
+        The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+        """
+        return pulumi.get(self, "min_provisioned_concurrency")
 
     @property
     @pulumi.getter(name="minProvisionedThroughput")
@@ -21222,7 +21581,7 @@ class ModelServingConfigServedEntity(dict):
     @pulumi.getter(name="workloadSize")
     def workload_size(self) -> Optional[builtins.str]:
         """
-        The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
+        The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `min_provisioned_concurrency` and `max_provisioned_concurrency`.
         """
         return pulumi.get(self, "workload_size")
 
@@ -22228,8 +22587,12 @@ class ModelServingConfigServedModel(dict):
             suggest = "environment_vars"
         elif key == "instanceProfileArn":
             suggest = "instance_profile_arn"
+        elif key == "maxProvisionedConcurrency":
+            suggest = "max_provisioned_concurrency"
         elif key == "maxProvisionedThroughput":
             suggest = "max_provisioned_throughput"
+        elif key == "minProvisionedConcurrency":
+            suggest = "min_provisioned_concurrency"
         elif key == "minProvisionedThroughput":
             suggest = "min_provisioned_throughput"
         elif key == "provisionedModelUnits":
@@ -22257,7 +22620,9 @@ class ModelServingConfigServedModel(dict):
                  model_version: builtins.str,
                  environment_vars: Optional[Mapping[str, builtins.str]] = None,
                  instance_profile_arn: Optional[builtins.str] = None,
+                 max_provisioned_concurrency: Optional[builtins.int] = None,
                  max_provisioned_throughput: Optional[builtins.int] = None,
+                 min_provisioned_concurrency: Optional[builtins.int] = None,
                  min_provisioned_throughput: Optional[builtins.int] = None,
                  name: Optional[builtins.str] = None,
                  provisioned_model_units: Optional[builtins.int] = None,
@@ -22269,7 +22634,9 @@ class ModelServingConfigServedModel(dict):
         :param builtins.str model_version: The version of the model in Databricks Model Registry to be served.
         :param Mapping[str, builtins.str] environment_vars: a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
         :param builtins.str instance_profile_arn: ARN of the instance profile that the served model will use to access AWS resources.
+        :param builtins.int max_provisioned_concurrency: The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
         :param builtins.int max_provisioned_throughput: The maximum tokens per second that the endpoint can scale up to.
+        :param builtins.int min_provisioned_concurrency: The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
         :param builtins.int min_provisioned_throughput: The minimum tokens per second that the endpoint can scale down to.
         :param builtins.str name: The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
         :param builtins.bool scale_to_zero_enabled: Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
@@ -22282,8 +22649,12 @@ class ModelServingConfigServedModel(dict):
             pulumi.set(__self__, "environment_vars", environment_vars)
         if instance_profile_arn is not None:
             pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
+        if max_provisioned_concurrency is not None:
+            pulumi.set(__self__, "max_provisioned_concurrency", max_provisioned_concurrency)
         if max_provisioned_throughput is not None:
             pulumi.set(__self__, "max_provisioned_throughput", max_provisioned_throughput)
+        if min_provisioned_concurrency is not None:
+            pulumi.set(__self__, "min_provisioned_concurrency", min_provisioned_concurrency)
         if min_provisioned_throughput is not None:
             pulumi.set(__self__, "min_provisioned_throughput", min_provisioned_throughput)
         if name is not None:
@@ -22330,12 +22701,28 @@ class ModelServingConfigServedModel(dict):
         return pulumi.get(self, "instance_profile_arn")
 
     @property
+    @pulumi.getter(name="maxProvisionedConcurrency")
+    def max_provisioned_concurrency(self) -> Optional[builtins.int]:
+        """
+        The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+        """
+        return pulumi.get(self, "max_provisioned_concurrency")
+
+    @property
     @pulumi.getter(name="maxProvisionedThroughput")
     def max_provisioned_throughput(self) -> Optional[builtins.int]:
         """
         The maximum tokens per second that the endpoint can scale up to.
         """
         return pulumi.get(self, "max_provisioned_throughput")
+
+    @property
+    @pulumi.getter(name="minProvisionedConcurrency")
+    def min_provisioned_concurrency(self) -> Optional[builtins.int]:
+        """
+        The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+        """
+        return pulumi.get(self, "min_provisioned_concurrency")
 
     @property
     @pulumi.getter(name="minProvisionedThroughput")
@@ -23837,7 +24224,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRules(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "azurePrivateEndpointRules":
+        if key == "awsPrivateEndpointRules":
+            suggest = "aws_private_endpoint_rules"
+        elif key == "azurePrivateEndpointRules":
             suggest = "azure_private_endpoint_rules"
 
         if suggest:
@@ -23852,12 +24241,20 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRules(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 aws_private_endpoint_rules: Optional[Sequence['outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule']] = None,
                  azure_private_endpoint_rules: Optional[Sequence['outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule']] = None):
         """
         :param Sequence['MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs'] azure_private_endpoint_rules: (Azure only) - list containing information about configure Azure Private Endpoints.
         """
+        if aws_private_endpoint_rules is not None:
+            pulumi.set(__self__, "aws_private_endpoint_rules", aws_private_endpoint_rules)
         if azure_private_endpoint_rules is not None:
             pulumi.set(__self__, "azure_private_endpoint_rules", azure_private_endpoint_rules)
+
+    @property
+    @pulumi.getter(name="awsPrivateEndpointRules")
+    def aws_private_endpoint_rules(self) -> Optional[Sequence['outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule']]:
+        return pulumi.get(self, "aws_private_endpoint_rules")
 
     @property
     @pulumi.getter(name="azurePrivateEndpointRules")
@@ -23866,6 +24263,158 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRules(dict):
         (Azure only) - list containing information about configure Azure Private Endpoints.
         """
         return pulumi.get(self, "azure_private_endpoint_rules")
+
+
+@pulumi.output_type
+class MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountId":
+            suggest = "account_id"
+        elif key == "connectionState":
+            suggest = "connection_state"
+        elif key == "creationTime":
+            suggest = "creation_time"
+        elif key == "deactivatedAt":
+            suggest = "deactivated_at"
+        elif key == "domainNames":
+            suggest = "domain_names"
+        elif key == "endpointService":
+            suggest = "endpoint_service"
+        elif key == "networkConnectivityConfigId":
+            suggest = "network_connectivity_config_id"
+        elif key == "resourceNames":
+            suggest = "resource_names"
+        elif key == "ruleId":
+            suggest = "rule_id"
+        elif key == "updatedTime":
+            suggest = "updated_time"
+        elif key == "vpcEndpointId":
+            suggest = "vpc_endpoint_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 account_id: Optional[builtins.str] = None,
+                 connection_state: Optional[builtins.str] = None,
+                 creation_time: Optional[builtins.int] = None,
+                 deactivated: Optional[builtins.bool] = None,
+                 deactivated_at: Optional[builtins.int] = None,
+                 domain_names: Optional[Sequence[builtins.str]] = None,
+                 enabled: Optional[builtins.bool] = None,
+                 endpoint_service: Optional[builtins.str] = None,
+                 network_connectivity_config_id: Optional[builtins.str] = None,
+                 resource_names: Optional[Sequence[builtins.str]] = None,
+                 rule_id: Optional[builtins.str] = None,
+                 updated_time: Optional[builtins.int] = None,
+                 vpc_endpoint_id: Optional[builtins.str] = None):
+        """
+        :param builtins.str network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if connection_state is not None:
+            pulumi.set(__self__, "connection_state", connection_state)
+        if creation_time is not None:
+            pulumi.set(__self__, "creation_time", creation_time)
+        if deactivated is not None:
+            pulumi.set(__self__, "deactivated", deactivated)
+        if deactivated_at is not None:
+            pulumi.set(__self__, "deactivated_at", deactivated_at)
+        if domain_names is not None:
+            pulumi.set(__self__, "domain_names", domain_names)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if endpoint_service is not None:
+            pulumi.set(__self__, "endpoint_service", endpoint_service)
+        if network_connectivity_config_id is not None:
+            pulumi.set(__self__, "network_connectivity_config_id", network_connectivity_config_id)
+        if resource_names is not None:
+            pulumi.set(__self__, "resource_names", resource_names)
+        if rule_id is not None:
+            pulumi.set(__self__, "rule_id", rule_id)
+        if updated_time is not None:
+            pulumi.set(__self__, "updated_time", updated_time)
+        if vpc_endpoint_id is not None:
+            pulumi.set(__self__, "vpc_endpoint_id", vpc_endpoint_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="connectionState")
+    def connection_state(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "connection_state")
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter
+    def deactivated(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "deactivated")
+
+    @property
+    @pulumi.getter(name="deactivatedAt")
+    def deactivated_at(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "deactivated_at")
+
+    @property
+    @pulumi.getter(name="domainNames")
+    def domain_names(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "domain_names")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="endpointService")
+    def endpoint_service(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "endpoint_service")
+
+    @property
+    @pulumi.getter(name="networkConnectivityConfigId")
+    def network_connectivity_config_id(self) -> Optional[builtins.str]:
+        """
+        Canonical unique identifier of Network Connectivity Config in Databricks Account
+        """
+        return pulumi.get(self, "network_connectivity_config_id")
+
+    @property
+    @pulumi.getter(name="resourceNames")
+    def resource_names(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "resource_names")
+
+    @property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "rule_id")
+
+    @property
+    @pulumi.getter(name="updatedTime")
+    def updated_time(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "updated_time")
+
+    @property
+    @pulumi.getter(name="vpcEndpointId")
+    def vpc_endpoint_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "vpc_endpoint_id")
 
 
 @pulumi.output_type
@@ -24127,13 +24676,13 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[builtins.str]:
         return pulumi.get(self, "pod_ip_range_name")
 
     @property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[builtins.str]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -24405,13 +24954,13 @@ class MwsWorkspacesGcpManagedNetworkConfig(dict):
 
     @property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[builtins.str]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
     @property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[builtins.str]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -26464,6 +27013,19 @@ class PipelineDeployment(dict):
 
 
 @pulumi.output_type
+class PipelineEnvironment(dict):
+    def __init__(__self__, *,
+                 dependencies: Optional[Sequence[builtins.str]] = None):
+        if dependencies is not None:
+            pulumi.set(__self__, "dependencies", dependencies)
+
+    @property
+    @pulumi.getter
+    def dependencies(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "dependencies")
+
+
+@pulumi.output_type
 class PipelineEventLog(dict):
     def __init__(__self__, *,
                  name: builtins.str,
@@ -28088,6 +28650,56 @@ class QualityMonitorTimeSeries(dict):
         Column of the timestamp of predictions
         """
         return pulumi.get(self, "timestamp_col")
+
+
+@pulumi.output_type
+class QualityMonitorV2AnomalyDetectionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastRunId":
+            suggest = "last_run_id"
+        elif key == "latestRunStatus":
+            suggest = "latest_run_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QualityMonitorV2AnomalyDetectionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QualityMonitorV2AnomalyDetectionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QualityMonitorV2AnomalyDetectionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 last_run_id: Optional[builtins.str] = None,
+                 latest_run_status: Optional[builtins.str] = None):
+        """
+        :param builtins.str last_run_id: (string) - Run id of the last run of the workflow
+        :param builtins.str latest_run_status: (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
+        """
+        if last_run_id is not None:
+            pulumi.set(__self__, "last_run_id", last_run_id)
+        if latest_run_status is not None:
+            pulumi.set(__self__, "latest_run_status", latest_run_status)
+
+    @property
+    @pulumi.getter(name="lastRunId")
+    def last_run_id(self) -> Optional[builtins.str]:
+        """
+        (string) - Run id of the last run of the workflow
+        """
+        return pulumi.get(self, "last_run_id")
+
+    @property
+    @pulumi.getter(name="latestRunStatus")
+    def latest_run_status(self) -> Optional[builtins.str]:
+        """
+        (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
+        """
+        return pulumi.get(self, "latest_run_status")
 
 
 @pulumi.output_type
@@ -31588,7 +32200,7 @@ class GetAccountNetworkPoliciesItemEgressNetworkAccessResult(dict):
                  allowed_storage_destinations: Optional[Sequence['outputs.GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedStorageDestinationResult']] = None,
                  policy_enforcement: Optional['outputs.GetAccountNetworkPoliciesItemEgressNetworkAccessPolicyEnforcementResult'] = None):
         """
-        :param builtins.str restriction_mode: (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+        :param builtins.str restriction_mode: (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
         :param Sequence['GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedInternetDestinationArgs'] allowed_internet_destinations: (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
         :param Sequence['GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedStorageDestinationArgs'] allowed_storage_destinations: (list of EgressNetworkPolicyNetworkAccessPolicyStorageDestination) - List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
         :param 'GetAccountNetworkPoliciesItemEgressNetworkAccessPolicyEnforcementArgs' policy_enforcement: (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
@@ -31605,7 +32217,7 @@ class GetAccountNetworkPoliciesItemEgressNetworkAccessResult(dict):
     @pulumi.getter(name="restrictionMode")
     def restriction_mode(self) -> builtins.str:
         """
-        (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+        (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
         """
         return pulumi.get(self, "restriction_mode")
 
@@ -31641,7 +32253,7 @@ class GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedInternetDestination
                  internet_destination_type: Optional[builtins.str] = None):
         """
         :param builtins.str destination: (string) - The internet destination to which access will be allowed. Format dependent on the destination type
-        :param builtins.str internet_destination_type: (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+        :param builtins.str internet_destination_type: (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
         """
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
@@ -31660,7 +32272,7 @@ class GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedInternetDestination
     @pulumi.getter(name="internetDestinationType")
     def internet_destination_type(self) -> Optional[builtins.str]:
         """
-        (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+        (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
         """
         return pulumi.get(self, "internet_destination_type")
 
@@ -31677,8 +32289,8 @@ class GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedStorageDestinationR
         :param builtins.str azure_storage_account: (string) - The Azure storage account name
         :param builtins.str azure_storage_service: (string) - The Azure storage service type (blob, dfs, etc.)
         :param builtins.str bucket_name: (string) -
-        :param builtins.str region: (string) - The region of the S3 bucket
-        :param builtins.str storage_destination_type: (string) - The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+        :param builtins.str region: (string) -
+        :param builtins.str storage_destination_type: (string) - The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
         """
         if azure_storage_account is not None:
             pulumi.set(__self__, "azure_storage_account", azure_storage_account)
@@ -31719,7 +32331,7 @@ class GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedStorageDestinationR
     @pulumi.getter
     def region(self) -> Optional[builtins.str]:
         """
-        (string) - The region of the S3 bucket
+        (string) -
         """
         return pulumi.get(self, "region")
 
@@ -31727,7 +32339,7 @@ class GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedStorageDestinationR
     @pulumi.getter(name="storageDestinationType")
     def storage_destination_type(self) -> Optional[builtins.str]:
         """
-        (string) - The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+        (string) - The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
         """
         return pulumi.get(self, "storage_destination_type")
 
@@ -31742,7 +32354,7 @@ class GetAccountNetworkPoliciesItemEgressNetworkAccessPolicyEnforcementResult(di
                When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
         :param builtins.str enforcement_mode: (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
                while DRY_RUN only logs violations without blocking. When not specified,
-               defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+               defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
         """
         if dry_run_mode_product_filters is not None:
             pulumi.set(__self__, "dry_run_mode_product_filters", dry_run_mode_product_filters)
@@ -31764,7 +32376,7 @@ class GetAccountNetworkPoliciesItemEgressNetworkAccessPolicyEnforcementResult(di
         """
         (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
         while DRY_RUN only logs violations without blocking. When not specified,
-        defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+        defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
         """
         return pulumi.get(self, "enforcement_mode")
 
@@ -31796,7 +32408,7 @@ class GetAccountNetworkPolicyEgressNetworkAccessResult(dict):
                  allowed_storage_destinations: Optional[Sequence['outputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationResult']] = None,
                  policy_enforcement: Optional['outputs.GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementResult'] = None):
         """
-        :param builtins.str restriction_mode: (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+        :param builtins.str restriction_mode: (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
         :param Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs'] allowed_internet_destinations: (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
         :param Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs'] allowed_storage_destinations: (list of EgressNetworkPolicyNetworkAccessPolicyStorageDestination) - List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
         :param 'GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs' policy_enforcement: (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
@@ -31813,7 +32425,7 @@ class GetAccountNetworkPolicyEgressNetworkAccessResult(dict):
     @pulumi.getter(name="restrictionMode")
     def restriction_mode(self) -> builtins.str:
         """
-        (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+        (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
         """
         return pulumi.get(self, "restriction_mode")
 
@@ -31849,7 +32461,7 @@ class GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationResult
                  internet_destination_type: Optional[builtins.str] = None):
         """
         :param builtins.str destination: (string) - The internet destination to which access will be allowed. Format dependent on the destination type
-        :param builtins.str internet_destination_type: (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+        :param builtins.str internet_destination_type: (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
         """
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
@@ -31868,7 +32480,7 @@ class GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationResult
     @pulumi.getter(name="internetDestinationType")
     def internet_destination_type(self) -> Optional[builtins.str]:
         """
-        (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+        (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
         """
         return pulumi.get(self, "internet_destination_type")
 
@@ -31885,8 +32497,8 @@ class GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationResult(
         :param builtins.str azure_storage_account: (string) - The Azure storage account name
         :param builtins.str azure_storage_service: (string) - The Azure storage service type (blob, dfs, etc.)
         :param builtins.str bucket_name: (string) -
-        :param builtins.str region: (string) - The region of the S3 bucket
-        :param builtins.str storage_destination_type: (string) - The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+        :param builtins.str region: (string) -
+        :param builtins.str storage_destination_type: (string) - The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
         """
         if azure_storage_account is not None:
             pulumi.set(__self__, "azure_storage_account", azure_storage_account)
@@ -31927,7 +32539,7 @@ class GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationResult(
     @pulumi.getter
     def region(self) -> Optional[builtins.str]:
         """
-        (string) - The region of the S3 bucket
+        (string) -
         """
         return pulumi.get(self, "region")
 
@@ -31935,7 +32547,7 @@ class GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationResult(
     @pulumi.getter(name="storageDestinationType")
     def storage_destination_type(self) -> Optional[builtins.str]:
         """
-        (string) - The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+        (string) - The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
         """
         return pulumi.get(self, "storage_destination_type")
 
@@ -31950,7 +32562,7 @@ class GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementResult(dict):
                When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
         :param builtins.str enforcement_mode: (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
                while DRY_RUN only logs violations without blocking. When not specified,
-               defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+               defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
         """
         if dry_run_mode_product_filters is not None:
             pulumi.set(__self__, "dry_run_mode_product_filters", dry_run_mode_product_filters)
@@ -31972,7 +32584,7 @@ class GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementResult(dict):
         """
         (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
         while DRY_RUN only logs violations without blocking. When not specified,
-        defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+        defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
         """
         return pulumi.get(self, "enforcement_mode")
 
@@ -31989,9 +32601,9 @@ class GetAlertV2EvaluationResult(dict):
                  threshold: Optional['outputs.GetAlertV2EvaluationThresholdResult'] = None):
         """
         :param builtins.str last_evaluated_at: (string) - Timestamp of the last evaluation
-        :param builtins.str state: (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
-        :param builtins.str comparison_operator: (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
-        :param builtins.str empty_result_state: (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        :param builtins.str state: (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+        :param builtins.str comparison_operator: (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
+        :param builtins.str empty_result_state: (string) - Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         :param 'GetAlertV2EvaluationNotificationArgs' notification: (AlertV2Notification) - User or Notification Destination to notify when alert is triggered
         :param 'GetAlertV2EvaluationSourceArgs' source: (AlertV2OperandColumn) - Source column from result to use to evaluate alert
         :param 'GetAlertV2EvaluationThresholdArgs' threshold: (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
@@ -32021,7 +32633,7 @@ class GetAlertV2EvaluationResult(dict):
     @pulumi.getter
     def state(self) -> builtins.str:
         """
-        (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         """
         return pulumi.get(self, "state")
 
@@ -32029,7 +32641,7 @@ class GetAlertV2EvaluationResult(dict):
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[builtins.str]:
         """
-        (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+        (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -32037,7 +32649,7 @@ class GetAlertV2EvaluationResult(dict):
     @pulumi.getter(name="emptyResultState")
     def empty_result_state(self) -> Optional[builtins.str]:
         """
-        (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        (string) - Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         """
         return pulumi.get(self, "empty_result_state")
 
@@ -32147,7 +32759,7 @@ class GetAlertV2EvaluationSourceResult(dict):
                  display: Optional[builtins.str] = None,
                  name: Optional[builtins.str] = None):
         """
-        :param builtins.str aggregation: (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        :param builtins.str aggregation: (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         :param builtins.str display: (string) -
         :param builtins.str name: (string) -
         """
@@ -32162,7 +32774,7 @@ class GetAlertV2EvaluationSourceResult(dict):
     @pulumi.getter
     def aggregation(self) -> Optional[builtins.str]:
         """
-        (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         return pulumi.get(self, "aggregation")
 
@@ -32221,7 +32833,7 @@ class GetAlertV2EvaluationThresholdColumnResult(dict):
                  display: Optional[builtins.str] = None,
                  name: Optional[builtins.str] = None):
         """
-        :param builtins.str aggregation: (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        :param builtins.str aggregation: (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         :param builtins.str display: (string) -
         :param builtins.str name: (string) -
         """
@@ -32236,7 +32848,7 @@ class GetAlertV2EvaluationThresholdColumnResult(dict):
     @pulumi.getter
     def aggregation(self) -> Optional[builtins.str]:
         """
-        (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         return pulumi.get(self, "aggregation")
 
@@ -32307,7 +32919,7 @@ class GetAlertV2ScheduleResult(dict):
                  quartz_cron_schedule: Optional[builtins.str] = None,
                  timezone_id: Optional[builtins.str] = None):
         """
-        :param builtins.str pause_status: (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+        :param builtins.str pause_status: (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
         :param builtins.str quartz_cron_schedule: (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
                Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
         :param builtins.str timezone_id: (string) - A Java timezone id. The schedule will be resolved using this timezone.
@@ -32325,7 +32937,7 @@ class GetAlertV2ScheduleResult(dict):
     @pulumi.getter(name="pauseStatus")
     def pause_status(self) -> Optional[builtins.str]:
         """
-        (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+        (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
         """
         return pulumi.get(self, "pause_status")
 
@@ -32369,7 +32981,7 @@ class GetAlertsV2ResultResult(dict):
         """
         :param builtins.str create_time: (string) - The timestamp indicating when the alert was created
         :param builtins.str id: (string) - UUID identifying the alert
-        :param builtins.str lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        :param builtins.str lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
         :param builtins.str owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
         :param builtins.str run_as_user_name: (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
         :param builtins.str update_time: (string) - The timestamp indicating when the alert was updated
@@ -32425,7 +33037,7 @@ class GetAlertsV2ResultResult(dict):
     @pulumi.getter(name="lifecycleState")
     def lifecycle_state(self) -> builtins.str:
         """
-        (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
         """
         return pulumi.get(self, "lifecycle_state")
 
@@ -32530,9 +33142,9 @@ class GetAlertsV2ResultEvaluationResult(dict):
                  threshold: Optional['outputs.GetAlertsV2ResultEvaluationThresholdResult'] = None):
         """
         :param builtins.str last_evaluated_at: (string) - Timestamp of the last evaluation
-        :param builtins.str state: (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
-        :param builtins.str comparison_operator: (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
-        :param builtins.str empty_result_state: (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        :param builtins.str state: (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+        :param builtins.str comparison_operator: (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
+        :param builtins.str empty_result_state: (string) - Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         :param 'GetAlertsV2ResultEvaluationNotificationArgs' notification: (AlertV2Notification) - User or Notification Destination to notify when alert is triggered
         :param 'GetAlertsV2ResultEvaluationSourceArgs' source: (AlertV2OperandColumn) - Source column from result to use to evaluate alert
         :param 'GetAlertsV2ResultEvaluationThresholdArgs' threshold: (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
@@ -32562,7 +33174,7 @@ class GetAlertsV2ResultEvaluationResult(dict):
     @pulumi.getter
     def state(self) -> builtins.str:
         """
-        (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         """
         return pulumi.get(self, "state")
 
@@ -32570,7 +33182,7 @@ class GetAlertsV2ResultEvaluationResult(dict):
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[builtins.str]:
         """
-        (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+        (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -32578,7 +33190,7 @@ class GetAlertsV2ResultEvaluationResult(dict):
     @pulumi.getter(name="emptyResultState")
     def empty_result_state(self) -> Optional[builtins.str]:
         """
-        (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        (string) - Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         """
         return pulumi.get(self, "empty_result_state")
 
@@ -32688,7 +33300,7 @@ class GetAlertsV2ResultEvaluationSourceResult(dict):
                  display: Optional[builtins.str] = None,
                  name: Optional[builtins.str] = None):
         """
-        :param builtins.str aggregation: (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        :param builtins.str aggregation: (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         :param builtins.str display: (string) -
         :param builtins.str name: (string) -
         """
@@ -32703,7 +33315,7 @@ class GetAlertsV2ResultEvaluationSourceResult(dict):
     @pulumi.getter
     def aggregation(self) -> Optional[builtins.str]:
         """
-        (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         return pulumi.get(self, "aggregation")
 
@@ -32762,7 +33374,7 @@ class GetAlertsV2ResultEvaluationThresholdColumnResult(dict):
                  display: Optional[builtins.str] = None,
                  name: Optional[builtins.str] = None):
         """
-        :param builtins.str aggregation: (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        :param builtins.str aggregation: (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         :param builtins.str display: (string) -
         :param builtins.str name: (string) -
         """
@@ -32777,7 +33389,7 @@ class GetAlertsV2ResultEvaluationThresholdColumnResult(dict):
     @pulumi.getter
     def aggregation(self) -> Optional[builtins.str]:
         """
-        (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         return pulumi.get(self, "aggregation")
 
@@ -32848,7 +33460,7 @@ class GetAlertsV2ResultScheduleResult(dict):
                  quartz_cron_schedule: Optional[builtins.str] = None,
                  timezone_id: Optional[builtins.str] = None):
         """
-        :param builtins.str pause_status: (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+        :param builtins.str pause_status: (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
         :param builtins.str quartz_cron_schedule: (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
                Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
         :param builtins.str timezone_id: (string) - A Java timezone id. The schedule will be resolved using this timezone.
@@ -32866,7 +33478,7 @@ class GetAlertsV2ResultScheduleResult(dict):
     @pulumi.getter(name="pauseStatus")
     def pause_status(self) -> Optional[builtins.str]:
         """
-        (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+        (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
         """
         return pulumi.get(self, "pause_status")
 
@@ -33445,6 +34057,7 @@ class GetAppAppResourceResult(dict):
         :param 'GetAppAppResourceSecretArgs' secret: attribute
         :param 'GetAppAppResourceServingEndpointArgs' serving_endpoint: attribute
         :param 'GetAppAppResourceSqlWarehouseArgs' sql_warehouse: attribute
+        :param 'GetAppAppResourceUcSecurableArgs' uc_securable: attribute
         """
         pulumi.set(__self__, "name", name)
         if description is not None:
@@ -33511,6 +34124,9 @@ class GetAppAppResourceResult(dict):
     @property
     @pulumi.getter(name="ucSecurable")
     def uc_securable(self) -> Optional['outputs.GetAppAppResourceUcSecurableResult']:
+        """
+        attribute
+        """
         return pulumi.get(self, "uc_securable")
 
 
@@ -33521,7 +34137,7 @@ class GetAppAppResourceJobResult(dict):
                  permission: builtins.str):
         """
         :param builtins.str id: Id of the job to grant permission on.
-        :param builtins.str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permission", permission)
@@ -33538,7 +34154,7 @@ class GetAppAppResourceJobResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         """
         return pulumi.get(self, "permission")
 
@@ -33551,7 +34167,7 @@ class GetAppAppResourceSecretResult(dict):
                  scope: builtins.str):
         """
         :param builtins.str key: Key of the secret to grant permission on.
-        :param builtins.str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         :param builtins.str scope: Scope of the secret to grant permission on.
         """
         pulumi.set(__self__, "key", key)
@@ -33570,7 +34186,7 @@ class GetAppAppResourceSecretResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         """
         return pulumi.get(self, "permission")
 
@@ -33590,7 +34206,7 @@ class GetAppAppResourceServingEndpointResult(dict):
                  permission: builtins.str):
         """
         :param builtins.str name: The name of the app.
-        :param builtins.str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "permission", permission)
@@ -33607,7 +34223,7 @@ class GetAppAppResourceServingEndpointResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         """
         return pulumi.get(self, "permission")
 
@@ -33619,7 +34235,7 @@ class GetAppAppResourceSqlWarehouseResult(dict):
                  permission: builtins.str):
         """
         :param builtins.str id: Id of the job to grant permission on.
-        :param builtins.str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permission", permission)
@@ -33636,7 +34252,7 @@ class GetAppAppResourceSqlWarehouseResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         """
         return pulumi.get(self, "permission")
 
@@ -33648,7 +34264,9 @@ class GetAppAppResourceUcSecurableResult(dict):
                  securable_full_name: builtins.str,
                  securable_type: builtins.str):
         """
-        :param builtins.str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param builtins.str securable_full_name: the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+        :param builtins.str securable_type: the type of UC securable, i.e. `VOLUME`.
         """
         pulumi.set(__self__, "permission", permission)
         pulumi.set(__self__, "securable_full_name", securable_full_name)
@@ -33658,18 +34276,24 @@ class GetAppAppResourceUcSecurableResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         """
         return pulumi.get(self, "permission")
 
     @property
     @pulumi.getter(name="securableFullName")
     def securable_full_name(self) -> builtins.str:
+        """
+        the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+        """
         return pulumi.get(self, "securable_full_name")
 
     @property
     @pulumi.getter(name="securableType")
     def securable_type(self) -> builtins.str:
+        """
+        the type of UC securable, i.e. `VOLUME`.
+        """
         return pulumi.get(self, "securable_type")
 
 
@@ -34228,6 +34852,7 @@ class GetAppsAppResourceResult(dict):
         :param 'GetAppsAppResourceSecretArgs' secret: attribute
         :param 'GetAppsAppResourceServingEndpointArgs' serving_endpoint: attribute
         :param 'GetAppsAppResourceSqlWarehouseArgs' sql_warehouse: attribute
+        :param 'GetAppsAppResourceUcSecurableArgs' uc_securable: attribute
         """
         pulumi.set(__self__, "name", name)
         if description is not None:
@@ -34294,6 +34919,9 @@ class GetAppsAppResourceResult(dict):
     @property
     @pulumi.getter(name="ucSecurable")
     def uc_securable(self) -> Optional['outputs.GetAppsAppResourceUcSecurableResult']:
+        """
+        attribute
+        """
         return pulumi.get(self, "uc_securable")
 
 
@@ -34304,7 +34932,7 @@ class GetAppsAppResourceJobResult(dict):
                  permission: builtins.str):
         """
         :param builtins.str id: Id of the job to grant permission on.
-        :param builtins.str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permission", permission)
@@ -34321,7 +34949,7 @@ class GetAppsAppResourceJobResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         """
         return pulumi.get(self, "permission")
 
@@ -34334,7 +34962,7 @@ class GetAppsAppResourceSecretResult(dict):
                  scope: builtins.str):
         """
         :param builtins.str key: Key of the secret to grant permission on.
-        :param builtins.str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         :param builtins.str scope: Scope of the secret to grant permission on.
         """
         pulumi.set(__self__, "key", key)
@@ -34353,7 +34981,7 @@ class GetAppsAppResourceSecretResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         """
         return pulumi.get(self, "permission")
 
@@ -34373,7 +35001,7 @@ class GetAppsAppResourceServingEndpointResult(dict):
                  permission: builtins.str):
         """
         :param builtins.str name: Name of the serving endpoint to grant permission on.
-        :param builtins.str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "permission", permission)
@@ -34390,7 +35018,7 @@ class GetAppsAppResourceServingEndpointResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         """
         return pulumi.get(self, "permission")
 
@@ -34402,7 +35030,7 @@ class GetAppsAppResourceSqlWarehouseResult(dict):
                  permission: builtins.str):
         """
         :param builtins.str id: Id of the job to grant permission on.
-        :param builtins.str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permission", permission)
@@ -34419,7 +35047,7 @@ class GetAppsAppResourceSqlWarehouseResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         """
         return pulumi.get(self, "permission")
 
@@ -34431,7 +35059,9 @@ class GetAppsAppResourceUcSecurableResult(dict):
                  securable_full_name: builtins.str,
                  securable_type: builtins.str):
         """
-        :param builtins.str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param builtins.str securable_full_name: the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+        :param builtins.str securable_type: the type of UC securable, i.e. `VOLUME`.
         """
         pulumi.set(__self__, "permission", permission)
         pulumi.set(__self__, "securable_full_name", securable_full_name)
@@ -34441,18 +35071,24 @@ class GetAppsAppResourceUcSecurableResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
         """
         return pulumi.get(self, "permission")
 
     @property
     @pulumi.getter(name="securableFullName")
     def securable_full_name(self) -> builtins.str:
+        """
+        the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+        """
         return pulumi.get(self, "securable_full_name")
 
     @property
     @pulumi.getter(name="securableType")
     def securable_type(self) -> builtins.str:
+        """
+        the type of UC securable, i.e. `VOLUME`.
+        """
         return pulumi.get(self, "securable_type")
 
 
@@ -34527,8 +35163,8 @@ class GetBudgetPoliciesPolicyCustomTagResult(dict):
         :param builtins.str key: (string) - The key of the tag.
                - Must be unique among all custom tags of the same policy
                - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-               these tags are preserved.
-        :param builtins.str value: (string) - The value of the tag.
+               these tags are preserved
+        :param builtins.str value: (string) - The value of the tag
         """
         pulumi.set(__self__, "key", key)
         if value is not None:
@@ -34541,7 +35177,7 @@ class GetBudgetPoliciesPolicyCustomTagResult(dict):
         (string) - The key of the tag.
         - Must be unique among all custom tags of the same policy
         - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-        these tags are preserved.
+        these tags are preserved
         """
         return pulumi.get(self, "key")
 
@@ -34549,7 +35185,7 @@ class GetBudgetPoliciesPolicyCustomTagResult(dict):
     @pulumi.getter
     def value(self) -> Optional[builtins.str]:
         """
-        (string) - The value of the tag.
+        (string) - The value of the tag
         """
         return pulumi.get(self, "value")
 
@@ -34563,8 +35199,8 @@ class GetBudgetPolicyCustomTagResult(dict):
         :param builtins.str key: (string) - The key of the tag.
                - Must be unique among all custom tags of the same policy
                - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-               these tags are preserved.
-        :param builtins.str value: (string) - The value of the tag.
+               these tags are preserved
+        :param builtins.str value: (string) - The value of the tag
         """
         pulumi.set(__self__, "key", key)
         if value is not None:
@@ -34577,7 +35213,7 @@ class GetBudgetPolicyCustomTagResult(dict):
         (string) - The key of the tag.
         - Must be unique among all custom tags of the same policy
         - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-        these tags are preserved.
+        these tags are preserved
         """
         return pulumi.get(self, "key")
 
@@ -34585,7 +35221,7 @@ class GetBudgetPolicyCustomTagResult(dict):
     @pulumi.getter
     def value(self) -> Optional[builtins.str]:
         """
-        (string) - The value of the tag.
+        (string) - The value of the tag
         """
         return pulumi.get(self, "value")
 
@@ -34942,6 +35578,7 @@ class GetClusterClusterInfoResult(dict):
                  node_type_id: Optional[builtins.str] = None,
                  num_workers: Optional[builtins.int] = None,
                  policy_id: Optional[builtins.str] = None,
+                 remote_disk_throughput: Optional[builtins.int] = None,
                  runtime_engine: Optional[builtins.str] = None,
                  single_user_name: Optional[builtins.str] = None,
                  spark_conf: Optional[Mapping[str, builtins.str]] = None,
@@ -34955,6 +35592,7 @@ class GetClusterClusterInfoResult(dict):
                  state_message: Optional[builtins.str] = None,
                  terminated_time: Optional[builtins.int] = None,
                  termination_reason: Optional['outputs.GetClusterClusterInfoTerminationReasonResult'] = None,
+                 total_initial_remote_disk_size: Optional[builtins.int] = None,
                  use_ml_runtime: Optional[builtins.bool] = None,
                  workload_type: Optional['outputs.GetClusterClusterInfoWorkloadTypeResult'] = None):
         """
@@ -35043,6 +35681,8 @@ class GetClusterClusterInfoResult(dict):
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if remote_disk_throughput is not None:
+            pulumi.set(__self__, "remote_disk_throughput", remote_disk_throughput)
         if runtime_engine is not None:
             pulumi.set(__self__, "runtime_engine", runtime_engine)
         if single_user_name is not None:
@@ -35069,6 +35709,8 @@ class GetClusterClusterInfoResult(dict):
             pulumi.set(__self__, "terminated_time", terminated_time)
         if termination_reason is not None:
             pulumi.set(__self__, "termination_reason", termination_reason)
+        if total_initial_remote_disk_size is not None:
+            pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
@@ -35276,6 +35918,11 @@ class GetClusterClusterInfoResult(dict):
         return pulumi.get(self, "policy_id")
 
     @property
+    @pulumi.getter(name="remoteDiskThroughput")
+    def remote_disk_throughput(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "remote_disk_throughput")
+
+    @property
     @pulumi.getter(name="runtimeEngine")
     def runtime_engine(self) -> Optional[builtins.str]:
         """
@@ -35357,6 +36004,11 @@ class GetClusterClusterInfoResult(dict):
     @pulumi.getter(name="terminationReason")
     def termination_reason(self) -> Optional['outputs.GetClusterClusterInfoTerminationReasonResult']:
         return pulumi.get(self, "termination_reason")
+
+    @property
+    @pulumi.getter(name="totalInitialRemoteDiskSize")
+    def total_initial_remote_disk_size(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "total_initial_remote_disk_size")
 
     @property
     @pulumi.getter(name="useMlRuntime")
@@ -36131,12 +36783,14 @@ class GetClusterClusterInfoSpecResult(dict):
                  libraries: Optional[Sequence['outputs.GetClusterClusterInfoSpecLibraryResult']] = None,
                  num_workers: Optional[builtins.int] = None,
                  policy_id: Optional[builtins.str] = None,
+                 remote_disk_throughput: Optional[builtins.int] = None,
                  runtime_engine: Optional[builtins.str] = None,
                  single_user_name: Optional[builtins.str] = None,
                  spark_conf: Optional[Mapping[str, builtins.str]] = None,
                  spark_env_vars: Optional[Mapping[str, builtins.str]] = None,
                  spark_version: Optional[builtins.str] = None,
                  ssh_public_keys: Optional[Sequence[builtins.str]] = None,
+                 total_initial_remote_disk_size: Optional[builtins.int] = None,
                  use_ml_runtime: Optional[builtins.bool] = None,
                  workload_type: Optional['outputs.GetClusterClusterInfoSpecWorkloadTypeResult'] = None):
         """
@@ -36203,6 +36857,8 @@ class GetClusterClusterInfoSpecResult(dict):
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if remote_disk_throughput is not None:
+            pulumi.set(__self__, "remote_disk_throughput", remote_disk_throughput)
         if runtime_engine is not None:
             pulumi.set(__self__, "runtime_engine", runtime_engine)
         if single_user_name is not None:
@@ -36215,6 +36871,8 @@ class GetClusterClusterInfoSpecResult(dict):
             pulumi.set(__self__, "spark_version", spark_version)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
+        if total_initial_remote_disk_size is not None:
+            pulumi.set(__self__, "total_initial_remote_disk_size", total_initial_remote_disk_size)
         if use_ml_runtime is not None:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
@@ -36382,6 +37040,11 @@ class GetClusterClusterInfoSpecResult(dict):
         return pulumi.get(self, "policy_id")
 
     @property
+    @pulumi.getter(name="remoteDiskThroughput")
+    def remote_disk_throughput(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "remote_disk_throughput")
+
+    @property
     @pulumi.getter(name="runtimeEngine")
     def runtime_engine(self) -> Optional[builtins.str]:
         """
@@ -36428,6 +37091,11 @@ class GetClusterClusterInfoSpecResult(dict):
         SSH public key contents that will be added to each Spark node in this cluster.
         """
         return pulumi.get(self, "ssh_public_keys")
+
+    @property
+    @pulumi.getter(name="totalInitialRemoteDiskSize")
+    def total_initial_remote_disk_size(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "total_initial_remote_disk_size")
 
     @property
     @pulumi.getter(name="useMlRuntime")
@@ -37653,39 +38321,36 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
     def __init__(__self__, *,
                  creation_time: builtins.str,
                  creator: builtins.str,
+                 effective_stopped: builtins.bool,
                  name: builtins.str,
                  pg_version: builtins.str,
                  read_write_dns: builtins.str,
                  state: builtins.str,
                  uid: builtins.str,
-                 admin_password: Optional[builtins.str] = None,
-                 admin_rolename: Optional[builtins.str] = None,
                  capacity: Optional[builtins.str] = None,
                  stopped: Optional[builtins.bool] = None):
         """
         :param builtins.str creation_time: (string) - The timestamp when the instance was created
         :param builtins.str creator: (string) - The email of the creator of the instance
+        :param builtins.bool effective_stopped: (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+               `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
         :param builtins.str name: (string) - The name of the instance. This is the unique identifier for the instance
         :param builtins.str pg_version: (string) - The version of Postgres running on the instance
         :param builtins.str read_write_dns: (string) - The DNS endpoint to connect to the instance for read+write access
-        :param builtins.str state: (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+        :param builtins.str state: (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         :param builtins.str uid: (string) - An immutable UUID identifier for the instance
-        :param builtins.str admin_password: (string) - Password for admin user to create. If not provided, no user will be created
-        :param builtins.str admin_rolename: (string) - Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-        :param builtins.str capacity: (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+        :param builtins.str capacity: (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         :param builtins.bool stopped: (boolean) - Whether the instance is stopped
         """
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "creator", creator)
+        pulumi.set(__self__, "effective_stopped", effective_stopped)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "pg_version", pg_version)
         pulumi.set(__self__, "read_write_dns", read_write_dns)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "uid", uid)
-        if admin_password is not None:
-            pulumi.set(__self__, "admin_password", admin_password)
-        if admin_rolename is not None:
-            pulumi.set(__self__, "admin_rolename", admin_rolename)
         if capacity is not None:
             pulumi.set(__self__, "capacity", capacity)
         if stopped is not None:
@@ -37706,6 +38371,16 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
         (string) - The email of the creator of the instance
         """
         return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter(name="effectiveStopped")
+    def effective_stopped(self) -> builtins.bool:
+        """
+        (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+        `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        """
+        return pulumi.get(self, "effective_stopped")
 
     @property
     @pulumi.getter
@@ -37735,7 +38410,7 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
     @pulumi.getter
     def state(self) -> builtins.str:
         """
-        (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+        (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         """
         return pulumi.get(self, "state")
 
@@ -37748,26 +38423,10 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
         return pulumi.get(self, "uid")
 
     @property
-    @pulumi.getter(name="adminPassword")
-    def admin_password(self) -> Optional[builtins.str]:
-        """
-        (string) - Password for admin user to create. If not provided, no user will be created
-        """
-        return pulumi.get(self, "admin_password")
-
-    @property
-    @pulumi.getter(name="adminRolename")
-    def admin_rolename(self) -> Optional[builtins.str]:
-        """
-        (string) - Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-        """
-        return pulumi.get(self, "admin_rolename")
-
-    @property
     @pulumi.getter
     def capacity(self) -> Optional[builtins.str]:
         """
-        (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+        (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         """
         return pulumi.get(self, "capacity")
 
@@ -40007,11 +40666,12 @@ class GetJobJobSettingsSettingsEnvironmentResult(dict):
 @pulumi.output_type
 class GetJobJobSettingsSettingsEnvironmentSpecResult(dict):
     def __init__(__self__, *,
-                 client: builtins.str,
+                 client: Optional[builtins.str] = None,
                  dependencies: Optional[Sequence[builtins.str]] = None,
                  environment_version: Optional[builtins.str] = None,
                  jar_dependencies: Optional[Sequence[builtins.str]] = None):
-        pulumi.set(__self__, "client", client)
+        if client is not None:
+            pulumi.set(__self__, "client", client)
         if dependencies is not None:
             pulumi.set(__self__, "dependencies", dependencies)
         if environment_version is not None:
@@ -40021,7 +40681,7 @@ class GetJobJobSettingsSettingsEnvironmentSpecResult(dict):
 
     @property
     @pulumi.getter
-    def client(self) -> builtins.str:
+    def client(self) -> Optional[builtins.str]:
         return pulumi.get(self, "client")
 
     @property
@@ -47276,12 +47936,20 @@ class GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpoin
 @pulumi.output_type
 class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesResult(dict):
     def __init__(__self__, *,
+                 aws_private_endpoint_rules: Optional[Sequence['outputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleResult']] = None,
                  azure_private_endpoint_rules: Optional[Sequence['outputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleResult']] = None):
         """
         :param Sequence['GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs'] azure_private_endpoint_rules: Array of private endpoint rule objects.
         """
+        if aws_private_endpoint_rules is not None:
+            pulumi.set(__self__, "aws_private_endpoint_rules", aws_private_endpoint_rules)
         if azure_private_endpoint_rules is not None:
             pulumi.set(__self__, "azure_private_endpoint_rules", azure_private_endpoint_rules)
+
+    @property
+    @pulumi.getter(name="awsPrivateEndpointRules")
+    def aws_private_endpoint_rules(self) -> Optional[Sequence['outputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleResult']]:
+        return pulumi.get(self, "aws_private_endpoint_rules")
 
     @property
     @pulumi.getter(name="azurePrivateEndpointRules")
@@ -47290,6 +47958,149 @@ class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesResult(dict):
         Array of private endpoint rule objects.
         """
         return pulumi.get(self, "azure_private_endpoint_rules")
+
+
+@pulumi.output_type
+class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleResult(dict):
+    def __init__(__self__, *,
+                 account_id: Optional[builtins.str] = None,
+                 connection_state: Optional[builtins.str] = None,
+                 creation_time: Optional[builtins.int] = None,
+                 deactivated: Optional[builtins.bool] = None,
+                 deactivated_at: Optional[builtins.int] = None,
+                 domain_names: Optional[Sequence[builtins.str]] = None,
+                 enabled: Optional[builtins.bool] = None,
+                 endpoint_service: Optional[builtins.str] = None,
+                 network_connectivity_config_id: Optional[builtins.str] = None,
+                 resource_names: Optional[Sequence[builtins.str]] = None,
+                 rule_id: Optional[builtins.str] = None,
+                 updated_time: Optional[builtins.int] = None,
+                 vpc_endpoint_id: Optional[builtins.str] = None):
+        """
+        :param builtins.str account_id: The Databricks account ID associated with this network configuration.
+        :param builtins.str connection_state: The current status of this private endpoint.
+        :param builtins.int creation_time: Time in epoch milliseconds when this object was created.
+        :param builtins.bool deactivated: Whether this private endpoint is deactivated.
+        :param builtins.int deactivated_at: Time in epoch milliseconds when this object was deactivated.
+        :param builtins.str network_connectivity_config_id: The Databricks network connectivity configuration ID.
+        :param builtins.str rule_id: The ID of a private endpoint rule.
+        :param builtins.int updated_time: Time in epoch milliseconds when the network was updated.
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if connection_state is not None:
+            pulumi.set(__self__, "connection_state", connection_state)
+        if creation_time is not None:
+            pulumi.set(__self__, "creation_time", creation_time)
+        if deactivated is not None:
+            pulumi.set(__self__, "deactivated", deactivated)
+        if deactivated_at is not None:
+            pulumi.set(__self__, "deactivated_at", deactivated_at)
+        if domain_names is not None:
+            pulumi.set(__self__, "domain_names", domain_names)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if endpoint_service is not None:
+            pulumi.set(__self__, "endpoint_service", endpoint_service)
+        if network_connectivity_config_id is not None:
+            pulumi.set(__self__, "network_connectivity_config_id", network_connectivity_config_id)
+        if resource_names is not None:
+            pulumi.set(__self__, "resource_names", resource_names)
+        if rule_id is not None:
+            pulumi.set(__self__, "rule_id", rule_id)
+        if updated_time is not None:
+            pulumi.set(__self__, "updated_time", updated_time)
+        if vpc_endpoint_id is not None:
+            pulumi.set(__self__, "vpc_endpoint_id", vpc_endpoint_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[builtins.str]:
+        """
+        The Databricks account ID associated with this network configuration.
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="connectionState")
+    def connection_state(self) -> Optional[builtins.str]:
+        """
+        The current status of this private endpoint.
+        """
+        return pulumi.get(self, "connection_state")
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> Optional[builtins.int]:
+        """
+        Time in epoch milliseconds when this object was created.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter
+    def deactivated(self) -> Optional[builtins.bool]:
+        """
+        Whether this private endpoint is deactivated.
+        """
+        return pulumi.get(self, "deactivated")
+
+    @property
+    @pulumi.getter(name="deactivatedAt")
+    def deactivated_at(self) -> Optional[builtins.int]:
+        """
+        Time in epoch milliseconds when this object was deactivated.
+        """
+        return pulumi.get(self, "deactivated_at")
+
+    @property
+    @pulumi.getter(name="domainNames")
+    def domain_names(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "domain_names")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="endpointService")
+    def endpoint_service(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "endpoint_service")
+
+    @property
+    @pulumi.getter(name="networkConnectivityConfigId")
+    def network_connectivity_config_id(self) -> Optional[builtins.str]:
+        """
+        The Databricks network connectivity configuration ID.
+        """
+        return pulumi.get(self, "network_connectivity_config_id")
+
+    @property
+    @pulumi.getter(name="resourceNames")
+    def resource_names(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "resource_names")
+
+    @property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> Optional[builtins.str]:
+        """
+        The ID of a private endpoint rule.
+        """
+        return pulumi.get(self, "rule_id")
+
+    @property
+    @pulumi.getter(name="updatedTime")
+    def updated_time(self) -> Optional[builtins.int]:
+        """
+        Time in epoch milliseconds when the network was updated.
+        """
+        return pulumi.get(self, "updated_time")
+
+    @property
+    @pulumi.getter(name="vpcEndpointId")
+    def vpc_endpoint_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "vpc_endpoint_id")
 
 
 @pulumi.output_type
@@ -47495,6 +48306,167 @@ class GetNotificationDestinationsNotificationDestinationResult(dict):
         The unique ID of the Notification Destination.
         """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetOnlineStoresOnlineStoreResult(dict):
+    def __init__(__self__, *,
+                 creation_time: builtins.str,
+                 creator: builtins.str,
+                 name: builtins.str,
+                 state: builtins.str,
+                 capacity: Optional[builtins.str] = None):
+        """
+        :param builtins.str creation_time: (string) - The timestamp when the online store was created
+        :param builtins.str creator: (string) - The email of the creator of the online store
+        :param builtins.str name: (string) - The name of the online store. This is the unique identifier for the online store
+        :param builtins.str state: (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
+        :param builtins.str capacity: (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        """
+        pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "creator", creator)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "state", state)
+        if capacity is not None:
+            pulumi.set(__self__, "capacity", capacity)
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> builtins.str:
+        """
+        (string) - The timestamp when the online store was created
+        """
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter
+    def creator(self) -> builtins.str:
+        """
+        (string) - The email of the creator of the online store
+        """
+        return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        (string) - The name of the online store. This is the unique identifier for the online store
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> builtins.str:
+        """
+        (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def capacity(self) -> Optional[builtins.str]:
+        """
+        (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        """
+        return pulumi.get(self, "capacity")
+
+
+@pulumi.output_type
+class GetQualityMonitorV2AnomalyDetectionConfigResult(dict):
+    def __init__(__self__, *,
+                 last_run_id: builtins.str,
+                 latest_run_status: builtins.str):
+        """
+        :param builtins.str last_run_id: (string) - Run id of the last run of the workflow
+        :param builtins.str latest_run_status: (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
+        """
+        pulumi.set(__self__, "last_run_id", last_run_id)
+        pulumi.set(__self__, "latest_run_status", latest_run_status)
+
+    @property
+    @pulumi.getter(name="lastRunId")
+    def last_run_id(self) -> builtins.str:
+        """
+        (string) - Run id of the last run of the workflow
+        """
+        return pulumi.get(self, "last_run_id")
+
+    @property
+    @pulumi.getter(name="latestRunStatus")
+    def latest_run_status(self) -> builtins.str:
+        """
+        (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
+        """
+        return pulumi.get(self, "latest_run_status")
+
+
+@pulumi.output_type
+class GetQualityMonitorsV2QualityMonitorResult(dict):
+    def __init__(__self__, *,
+                 anomaly_detection_config: 'outputs.GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigResult',
+                 object_id: builtins.str,
+                 object_type: builtins.str):
+        """
+        :param 'GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigArgs' anomaly_detection_config: (AnomalyDetectionConfig) -
+        :param builtins.str object_id: (string) - The uuid of the request object. For example, schema id
+        :param builtins.str object_type: (string) - The type of the monitored object. Can be one of the following: schema
+        """
+        pulumi.set(__self__, "anomaly_detection_config", anomaly_detection_config)
+        pulumi.set(__self__, "object_id", object_id)
+        pulumi.set(__self__, "object_type", object_type)
+
+    @property
+    @pulumi.getter(name="anomalyDetectionConfig")
+    def anomaly_detection_config(self) -> 'outputs.GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigResult':
+        """
+        (AnomalyDetectionConfig) -
+        """
+        return pulumi.get(self, "anomaly_detection_config")
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> builtins.str:
+        """
+        (string) - The uuid of the request object. For example, schema id
+        """
+        return pulumi.get(self, "object_id")
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> builtins.str:
+        """
+        (string) - The type of the monitored object. Can be one of the following: schema
+        """
+        return pulumi.get(self, "object_type")
+
+
+@pulumi.output_type
+class GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigResult(dict):
+    def __init__(__self__, *,
+                 last_run_id: builtins.str,
+                 latest_run_status: builtins.str):
+        """
+        :param builtins.str last_run_id: (string) - Run id of the last run of the workflow
+        :param builtins.str latest_run_status: (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
+        """
+        pulumi.set(__self__, "last_run_id", last_run_id)
+        pulumi.set(__self__, "latest_run_status", latest_run_status)
+
+    @property
+    @pulumi.getter(name="lastRunId")
+    def last_run_id(self) -> builtins.str:
+        """
+        (string) - Run id of the last run of the workflow
+        """
+        return pulumi.get(self, "last_run_id")
+
+    @property
+    @pulumi.getter(name="latestRunStatus")
+    def latest_run_status(self) -> builtins.str:
+        """
+        (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
+        """
+        return pulumi.get(self, "latest_run_status")
 
 
 @pulumi.output_type
@@ -48312,7 +49284,7 @@ class GetSchemaSchemaInfoResult(dict):
         :param builtins.str name: a fully qualified name of databricks_schema: *`catalog`.`schema`*
         :param builtins.str owner: the identifier of the user who owns the schema
         :param Mapping[str, builtins.str] properties: map of properties set on the schema
-        :param builtins.str schema_id: the unique identifier of the volume
+        :param builtins.str schema_id: the unique identifier of the schema
         :param builtins.str storage_location: the storage location on the cloud.
         :param builtins.str storage_root: storage root URL for managed tables within schema.
         :param builtins.int updated_at: the timestamp of the last time changes were made to the schema
@@ -48463,7 +49435,7 @@ class GetSchemaSchemaInfoResult(dict):
     @pulumi.getter(name="schemaId")
     def schema_id(self) -> Optional[builtins.str]:
         """
-        the unique identifier of the volume
+        the unique identifier of the schema
         """
         return pulumi.get(self, "schema_id")
 
@@ -48536,6 +49508,7 @@ class GetServingEndpointsEndpointResult(dict):
                  configs: Optional[Sequence['outputs.GetServingEndpointsEndpointConfigResult']] = None,
                  creation_timestamp: Optional[builtins.int] = None,
                  creator: Optional[builtins.str] = None,
+                 description: Optional[builtins.str] = None,
                  id: Optional[builtins.str] = None,
                  last_updated_timestamp: Optional[builtins.int] = None,
                  name: Optional[builtins.str] = None,
@@ -48558,6 +49531,8 @@ class GetServingEndpointsEndpointResult(dict):
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if creator is not None:
             pulumi.set(__self__, "creator", creator)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if last_updated_timestamp is not None:
@@ -48601,6 +49576,11 @@ class GetServingEndpointsEndpointResult(dict):
     @pulumi.getter
     def creator(self) -> Optional[builtins.str]:
         return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter

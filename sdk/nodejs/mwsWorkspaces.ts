@@ -81,9 +81,7 @@ import * as utilities from "./utilities";
  *     credentialsId: _this.credentialsId,
  *     storageConfigurationId: thisMwsStorageConfigurations.storageConfigurationId,
  *     networkId: thisMwsNetworks.networkId,
- *     token: {},
  * });
- * export const databricksToken = thisMwsWorkspaces.token.apply(token => token?.tokenValue);
  * ```
  *
  * ### Creating a workspace on AWS with Databricks-Managed VPC
@@ -175,12 +173,10 @@ import * as utilities from "./utilities";
  *     awsRegion: "us-east-1",
  *     credentialsId: thisMwsCredentials.credentialsId,
  *     storageConfigurationId: thisMwsStorageConfigurations.storageConfigurationId,
- *     token: {},
  *     customTags: {
  *         SoldToCode: "1234",
  *     },
  * });
- * export const databricksToken = thisMwsWorkspaces.token.apply(token => token?.tokenValue);
  * ```
  *
  * In order to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) please ensure that you have read and understood the [Enable Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mwsPrivateAccessSettings and mws_networks.
@@ -224,9 +220,7 @@ import * as utilities from "./utilities";
  *         },
  *     },
  *     networkId: _this.networkId,
- *     token: {},
  * });
- * export const databricksToken = thisMwsWorkspaces.token.apply(token => token?.tokenValue);
  * ```
  *
  * In order to create a [Databricks Workspace that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) please ensure that you have read and understood the [Enable Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mwsPrivateAccessSettings and mws_networks.
@@ -308,6 +302,8 @@ export class MwsWorkspaces extends pulumi.CustomResource {
     public readonly cloudResourceContainer!: pulumi.Output<outputs.MwsWorkspacesCloudResourceContainer | undefined>;
     /**
      * The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+     *
+     * > Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
      */
     public readonly computeMode!: pulumi.Output<string | undefined>;
     /**
@@ -341,7 +337,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
      */
     public /*out*/ readonly gcpWorkspaceSa!: pulumi.Output<string>;
     /**
-     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     public readonly gkeConfig!: pulumi.Output<outputs.MwsWorkspacesGkeConfig | undefined>;
     public readonly isNoPublicIpEnabled!: pulumi.Output<boolean | undefined>;
@@ -501,6 +497,8 @@ export interface MwsWorkspacesState {
     cloudResourceContainer?: pulumi.Input<inputs.MwsWorkspacesCloudResourceContainer>;
     /**
      * The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+     *
+     * > Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
      */
     computeMode?: pulumi.Input<string>;
     /**
@@ -534,7 +532,7 @@ export interface MwsWorkspacesState {
      */
     gcpWorkspaceSa?: pulumi.Input<string>;
     /**
-     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig>;
     isNoPublicIpEnabled?: pulumi.Input<boolean>;
@@ -608,6 +606,8 @@ export interface MwsWorkspacesArgs {
     cloudResourceContainer?: pulumi.Input<inputs.MwsWorkspacesCloudResourceContainer>;
     /**
      * The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+     *
+     * > Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
      */
     computeMode?: pulumi.Input<string>;
     /**
@@ -633,7 +633,7 @@ export interface MwsWorkspacesArgs {
     externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo>;
     gcpManagedNetworkConfig?: pulumi.Input<inputs.MwsWorkspacesGcpManagedNetworkConfig>;
     /**
-     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig>;
     isNoPublicIpEnabled?: pulumi.Input<boolean>;

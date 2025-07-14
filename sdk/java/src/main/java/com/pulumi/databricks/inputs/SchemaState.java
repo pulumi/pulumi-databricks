@@ -130,6 +130,21 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The unique identifier of the schema.
+     * 
+     */
+    @Import(name="schemaId")
+    private @Nullable Output<String> schemaId;
+
+    /**
+     * @return The unique identifier of the schema.
+     * 
+     */
+    public Optional<Output<String>> schemaId() {
+        return Optional.ofNullable(this.schemaId);
+    }
+
+    /**
      * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      * 
      */
@@ -155,6 +170,7 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.owner = $.owner;
         this.properties = $.properties;
+        this.schemaId = $.schemaId;
         this.storageRoot = $.storageRoot;
     }
 
@@ -330,6 +346,27 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder properties(Map<String,String> properties) {
             return properties(Output.of(properties));
+        }
+
+        /**
+         * @param schemaId The unique identifier of the schema.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemaId(@Nullable Output<String> schemaId) {
+            $.schemaId = schemaId;
+            return this;
+        }
+
+        /**
+         * @param schemaId The unique identifier of the schema.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemaId(String schemaId) {
+            return schemaId(Output.of(schemaId));
         }
 
         /**

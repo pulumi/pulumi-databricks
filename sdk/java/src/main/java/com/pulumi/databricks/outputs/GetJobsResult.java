@@ -24,6 +24,7 @@ public final class GetJobsResult {
      */
     private Map<String,String> ids;
     private @Nullable String jobNameContains;
+    private @Nullable String key;
 
     private GetJobsResult() {}
     /**
@@ -43,6 +44,9 @@ public final class GetJobsResult {
     public Optional<String> jobNameContains() {
         return Optional.ofNullable(this.jobNameContains);
     }
+    public Optional<String> key() {
+        return Optional.ofNullable(this.key);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -56,12 +60,14 @@ public final class GetJobsResult {
         private String id;
         private Map<String,String> ids;
         private @Nullable String jobNameContains;
+        private @Nullable String key;
         public Builder() {}
         public Builder(GetJobsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
     	      this.jobNameContains = defaults.jobNameContains;
+    	      this.key = defaults.key;
         }
 
         @CustomType.Setter
@@ -86,11 +92,18 @@ public final class GetJobsResult {
             this.jobNameContains = jobNameContains;
             return this;
         }
+        @CustomType.Setter
+        public Builder key(@Nullable String key) {
+
+            this.key = key;
+            return this;
+        }
         public GetJobsResult build() {
             final var _resultValue = new GetJobsResult();
             _resultValue.id = id;
             _resultValue.ids = ids;
             _resultValue.jobNameContains = jobNameContains;
+            _resultValue.key = key;
             return _resultValue;
         }
     }

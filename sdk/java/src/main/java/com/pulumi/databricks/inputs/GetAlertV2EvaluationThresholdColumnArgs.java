@@ -16,14 +16,14 @@ public final class GetAlertV2EvaluationThresholdColumnArgs extends com.pulumi.re
     public static final GetAlertV2EvaluationThresholdColumnArgs Empty = new GetAlertV2EvaluationThresholdColumnArgs();
 
     /**
-     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      * 
      */
     @Import(name="aggregation")
     private @Nullable Output<String> aggregation;
 
     /**
-     * @return (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * @return (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      * 
      */
     public Optional<Output<String>> aggregation() {
@@ -87,7 +87,7 @@ public final class GetAlertV2EvaluationThresholdColumnArgs extends com.pulumi.re
         }
 
         /**
-         * @param aggregation (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+         * @param aggregation (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class GetAlertV2EvaluationThresholdColumnArgs extends com.pulumi.re
         }
 
         /**
-         * @param aggregation (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+         * @param aggregation (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
          * 
          * @return builder
          * 

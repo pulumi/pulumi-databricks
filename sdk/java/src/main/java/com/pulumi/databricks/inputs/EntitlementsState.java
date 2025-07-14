@@ -126,14 +126,14 @@ public final class EntitlementsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     * This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspace_access` or `databricks_sql_access`.
      * 
      */
     @Import(name="workspaceConsume")
     private @Nullable Output<Boolean> workspaceConsume;
 
     /**
-     * @return This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     * @return This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspace_access` or `databricks_sql_access`.
      * 
      */
     public Optional<Output<Boolean>> workspaceConsume() {
@@ -323,7 +323,7 @@ public final class EntitlementsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workspaceConsume This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+         * @param workspaceConsume This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspace_access` or `databricks_sql_access`.
          * 
          * @return builder
          * 
@@ -334,7 +334,7 @@ public final class EntitlementsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workspaceConsume This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+         * @param workspaceConsume This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspace_access` or `databricks_sql_access`.
          * 
          * @return builder
          * 

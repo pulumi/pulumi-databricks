@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.PipelineState;
 import com.pulumi.databricks.outputs.PipelineCluster;
 import com.pulumi.databricks.outputs.PipelineDeployment;
+import com.pulumi.databricks.outputs.PipelineEnvironment;
 import com.pulumi.databricks.outputs.PipelineEventLog;
 import com.pulumi.databricks.outputs.PipelineFilters;
 import com.pulumi.databricks.outputs.PipelineGatewayDefinition;
@@ -318,6 +319,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> edition() {
         return Codegen.optional(this.edition);
     }
+    @Export(name="environment", refs={PipelineEnvironment.class}, tree="[0]")
+    private Output</* @Nullable */ PipelineEnvironment> environment;
+
+    public Output<Optional<PipelineEnvironment>> environment() {
+        return Codegen.optional(this.environment);
+    }
     /**
      * an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
      * 
@@ -517,6 +524,20 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> storage() {
         return Codegen.optional(this.storage);
+    }
+    /**
+     * A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.

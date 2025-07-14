@@ -68,6 +68,50 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * Granting a service principal the Account Admin role.
+ * 
+ * &gt; This can only be used with an account-level provider.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.ServicePrincipal;
+ * import com.pulumi.databricks.ServicePrincipalArgs;
+ * import com.pulumi.databricks.ServicePrincipalRole;
+ * import com.pulumi.databricks.ServicePrincipalRoleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var tfAdmin = new ServicePrincipal("tfAdmin", ServicePrincipalArgs.builder()
+ *             .displayName("Pulumi Admin")
+ *             .build());
+ * 
+ *         var tfAdminAccount = new ServicePrincipalRole("tfAdminAccount", ServicePrincipalRoleArgs.builder()
+ *             .servicePrincipalId(tfAdmin.id())
+ *             .role("account_admin")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Related Resources
  * 
  * The following resources are often used in the same context:
@@ -77,6 +121,7 @@ import javax.annotation.Nullable;
  * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
  * * databricks.GroupMember to attach users and groups as group members.
  * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+ * * databricks.AccessControlRuleSet to attach other roles to account level resources.
  * 
  * ## Import
  * 
@@ -86,14 +131,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/servicePrincipalRole:ServicePrincipalRole")
 public class ServicePrincipalRole extends com.pulumi.resources.CustomResource {
     /**
-     * This is the id of the role or instance profile resource.
+     * This is the role name, role id, or instance profile resource.
      * 
      */
     @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
-     * @return This is the id of the role or instance profile resource.
+     * @return This is the role name, role id, or instance profile resource.
      * 
      */
     public Output<String> role() {

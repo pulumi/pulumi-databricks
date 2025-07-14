@@ -53,7 +53,7 @@ class ServicePrincipalArgs:
         :param pulumi.Input[builtins.str] home: Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[builtins.str] repos: Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the service principal to have access to a Databricks Workspace.
-        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         if acl_principal_id is not None:
             pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -272,7 +272,7 @@ class ServicePrincipalArgs:
     @pulumi.getter(name="workspaceConsume")
     def workspace_consume(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 
@@ -317,7 +317,7 @@ class _ServicePrincipalState:
         :param pulumi.Input[builtins.str] home: Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[builtins.str] repos: Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the service principal to have access to a Databricks Workspace.
-        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         if acl_principal_id is not None:
             pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -536,7 +536,7 @@ class _ServicePrincipalState:
     @pulumi.getter(name="workspaceConsume")
     def workspace_consume(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 
@@ -688,7 +688,7 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] home: Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[builtins.str] repos: Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the service principal to have access to a Databricks Workspace.
-        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         ...
     @overload
@@ -903,7 +903,7 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] home: Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[builtins.str] repos: Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the service principal to have access to a Databricks Workspace.
-        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1051,7 +1051,7 @@ class ServicePrincipal(pulumi.CustomResource):
     @pulumi.getter(name="workspaceConsume")
     def workspace_consume(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 

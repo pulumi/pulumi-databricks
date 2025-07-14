@@ -207,6 +207,20 @@ public class Schema extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.properties);
     }
     /**
+     * The unique identifier of the schema.
+     * 
+     */
+    @Export(name="schemaId", refs={String.class}, tree="[0]")
+    private Output<String> schemaId;
+
+    /**
+     * @return The unique identifier of the schema.
+     * 
+     */
+    public Output<String> schemaId() {
+        return this.schemaId;
+    }
+    /**
      * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      * 
      */

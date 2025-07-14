@@ -39,6 +39,9 @@ namespace Pulumi.Databricks.Outputs
         /// attribute
         /// </summary>
         public readonly Outputs.AppResourceSqlWarehouse? SqlWarehouse;
+        /// <summary>
+        /// attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
+        /// </summary>
         public readonly Outputs.AppResourceUcSecurable? UcSecurable;
 
         [OutputConstructor]

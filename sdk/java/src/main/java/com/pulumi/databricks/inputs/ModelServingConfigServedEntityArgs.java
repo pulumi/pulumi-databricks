@@ -95,6 +95,21 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
     }
 
     /**
+     * The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+     * 
+     */
+    @Import(name="maxProvisionedConcurrency")
+    private @Nullable Output<Integer> maxProvisionedConcurrency;
+
+    /**
+     * @return The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+     * 
+     */
+    public Optional<Output<Integer>> maxProvisionedConcurrency() {
+        return Optional.ofNullable(this.maxProvisionedConcurrency);
+    }
+
+    /**
      * The maximum tokens per second that the endpoint can scale up to.
      * 
      */
@@ -107,6 +122,21 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
      */
     public Optional<Output<Integer>> maxProvisionedThroughput() {
         return Optional.ofNullable(this.maxProvisionedThroughput);
+    }
+
+    /**
+     * The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+     * 
+     */
+    @Import(name="minProvisionedConcurrency")
+    private @Nullable Output<Integer> minProvisionedConcurrency;
+
+    /**
+     * @return The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+     * 
+     */
+    public Optional<Output<Integer>> minProvisionedConcurrency() {
+        return Optional.ofNullable(this.minProvisionedConcurrency);
     }
 
     /**
@@ -162,14 +192,14 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
     }
 
     /**
-     * The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
+     * The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `min_provisioned_concurrency` and `max_provisioned_concurrency`.
      * 
      */
     @Import(name="workloadSize")
     private @Nullable Output<String> workloadSize;
 
     /**
-     * @return The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
+     * @return The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `min_provisioned_concurrency` and `max_provisioned_concurrency`.
      * 
      */
     public Optional<Output<String>> workloadSize() {
@@ -199,7 +229,9 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         this.environmentVars = $.environmentVars;
         this.externalModel = $.externalModel;
         this.instanceProfileArn = $.instanceProfileArn;
+        this.maxProvisionedConcurrency = $.maxProvisionedConcurrency;
         this.maxProvisionedThroughput = $.maxProvisionedThroughput;
+        this.minProvisionedConcurrency = $.minProvisionedConcurrency;
         this.minProvisionedThroughput = $.minProvisionedThroughput;
         this.name = $.name;
         this.provisionedModelUnits = $.provisionedModelUnits;
@@ -332,6 +364,27 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
+         * @param maxProvisionedConcurrency The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxProvisionedConcurrency(@Nullable Output<Integer> maxProvisionedConcurrency) {
+            $.maxProvisionedConcurrency = maxProvisionedConcurrency;
+            return this;
+        }
+
+        /**
+         * @param maxProvisionedConcurrency The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxProvisionedConcurrency(Integer maxProvisionedConcurrency) {
+            return maxProvisionedConcurrency(Output.of(maxProvisionedConcurrency));
+        }
+
+        /**
          * @param maxProvisionedThroughput The maximum tokens per second that the endpoint can scale up to.
          * 
          * @return builder
@@ -350,6 +403,27 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
          */
         public Builder maxProvisionedThroughput(Integer maxProvisionedThroughput) {
             return maxProvisionedThroughput(Output.of(maxProvisionedThroughput));
+        }
+
+        /**
+         * @param minProvisionedConcurrency The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minProvisionedConcurrency(@Nullable Output<Integer> minProvisionedConcurrency) {
+            $.minProvisionedConcurrency = minProvisionedConcurrency;
+            return this;
+        }
+
+        /**
+         * @param minProvisionedConcurrency The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minProvisionedConcurrency(Integer minProvisionedConcurrency) {
+            return minProvisionedConcurrency(Output.of(minProvisionedConcurrency));
         }
 
         /**
@@ -425,7 +499,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param workloadSize The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
+         * @param workloadSize The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `min_provisioned_concurrency` and `max_provisioned_concurrency`.
          * 
          * @return builder
          * 
@@ -436,7 +510,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param workloadSize The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
+         * @param workloadSize The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `min_provisioned_concurrency` and `max_provisioned_concurrency`.
          * 
          * @return builder
          * 

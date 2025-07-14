@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskConditionTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskDashboardTaskArgs;
+import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskDbtCloudTaskArgs;
+import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskDbtPlatformTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskDbtTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskDependsOnArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskEmailNotificationsArgs;
@@ -59,6 +61,20 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
 
     public Optional<Output<JobTaskForEachTaskTaskDashboardTaskArgs>> dashboardTask() {
         return Optional.ofNullable(this.dashboardTask);
+    }
+
+    @Import(name="dbtCloudTask")
+    private @Nullable Output<JobTaskForEachTaskTaskDbtCloudTaskArgs> dbtCloudTask;
+
+    public Optional<Output<JobTaskForEachTaskTaskDbtCloudTaskArgs>> dbtCloudTask() {
+        return Optional.ofNullable(this.dbtCloudTask);
+    }
+
+    @Import(name="dbtPlatformTask")
+    private @Nullable Output<JobTaskForEachTaskTaskDbtPlatformTaskArgs> dbtPlatformTask;
+
+    public Optional<Output<JobTaskForEachTaskTaskDbtPlatformTaskArgs>> dbtPlatformTask() {
+        return Optional.ofNullable(this.dbtPlatformTask);
     }
 
     @Import(name="dbtTask")
@@ -420,6 +436,8 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         this.cleanRoomsNotebookTask = $.cleanRoomsNotebookTask;
         this.conditionTask = $.conditionTask;
         this.dashboardTask = $.dashboardTask;
+        this.dbtCloudTask = $.dbtCloudTask;
+        this.dbtPlatformTask = $.dbtPlatformTask;
         this.dbtTask = $.dbtTask;
         this.dependsOns = $.dependsOns;
         this.description = $.description;
@@ -494,6 +512,24 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
 
         public Builder dashboardTask(JobTaskForEachTaskTaskDashboardTaskArgs dashboardTask) {
             return dashboardTask(Output.of(dashboardTask));
+        }
+
+        public Builder dbtCloudTask(@Nullable Output<JobTaskForEachTaskTaskDbtCloudTaskArgs> dbtCloudTask) {
+            $.dbtCloudTask = dbtCloudTask;
+            return this;
+        }
+
+        public Builder dbtCloudTask(JobTaskForEachTaskTaskDbtCloudTaskArgs dbtCloudTask) {
+            return dbtCloudTask(Output.of(dbtCloudTask));
+        }
+
+        public Builder dbtPlatformTask(@Nullable Output<JobTaskForEachTaskTaskDbtPlatformTaskArgs> dbtPlatformTask) {
+            $.dbtPlatformTask = dbtPlatformTask;
+            return this;
+        }
+
+        public Builder dbtPlatformTask(JobTaskForEachTaskTaskDbtPlatformTaskArgs dbtPlatformTask) {
+            return dbtPlatformTask(Output.of(dbtPlatformTask));
         }
 
         public Builder dbtTask(@Nullable Output<JobTaskForEachTaskTaskDbtTaskArgs> dbtTask) {

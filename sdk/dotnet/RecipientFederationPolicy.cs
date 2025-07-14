@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     /// <summary>
     /// ## Import
     /// 
-    /// As of terraform v1.5, resources can be imported through configuration.
+    /// As of Pulumi v1.5, resources can be imported through configuration.
     /// 
     /// hcl
     /// 
@@ -24,7 +24,7 @@ namespace Pulumi.Databricks
     /// 
     /// }
     /// 
-    /// If you are using an older version of terraform, you can import the resource using cli as follows:
+    /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/recipientFederationPolicy:RecipientFederationPolicy databricks_recipient_federation_policy name

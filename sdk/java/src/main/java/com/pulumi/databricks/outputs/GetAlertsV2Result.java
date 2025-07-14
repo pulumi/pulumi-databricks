@@ -45,7 +45,7 @@ public final class GetAlertsV2Result {
      */
     private String id;
     /**
-     * @return (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     * @return (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
      * 
      */
     private String lifecycleState;
@@ -129,7 +129,7 @@ public final class GetAlertsV2Result {
         return this.id;
     }
     /**
-     * @return (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     * @return (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
      * 
      */
     public String lifecycleState() {

@@ -39,7 +39,7 @@ class EntitlementsArgs:
                The following entitlements are available.
         :param pulumi.Input[builtins.str] user_id: Canonical unique identifier for the user.
         :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the principal to have access to a Databricks Workspace.
-        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         if allow_cluster_create is not None:
             pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
@@ -148,7 +148,7 @@ class EntitlementsArgs:
     @pulumi.getter(name="workspaceConsume")
     def workspace_consume(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 
@@ -179,7 +179,7 @@ class _EntitlementsState:
                The following entitlements are available.
         :param pulumi.Input[builtins.str] user_id: Canonical unique identifier for the user.
         :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the principal to have access to a Databricks Workspace.
-        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         if allow_cluster_create is not None:
             pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
@@ -288,7 +288,7 @@ class _EntitlementsState:
     @pulumi.getter(name="workspaceConsume")
     def workspace_consume(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 
@@ -411,7 +411,7 @@ class Entitlements(pulumi.CustomResource):
                The following entitlements are available.
         :param pulumi.Input[builtins.str] user_id: Canonical unique identifier for the user.
         :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the principal to have access to a Databricks Workspace.
-        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         ...
     @overload
@@ -581,7 +581,7 @@ class Entitlements(pulumi.CustomResource):
                The following entitlements are available.
         :param pulumi.Input[builtins.str] user_id: Canonical unique identifier for the user.
         :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the principal to have access to a Databricks Workspace.
-        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -659,7 +659,7 @@ class Entitlements(pulumi.CustomResource):
     @pulumi.getter(name="workspaceConsume")
     def workspace_consume(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 

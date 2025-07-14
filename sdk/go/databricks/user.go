@@ -239,7 +239,7 @@ type User struct {
 	UserName pulumi.StringOutput `pulumi:"userName"`
 	// This is a field to allow the user to have access to a Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrOutput `pulumi:"workspaceAccess"`
-	// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrOutput `pulumi:"workspaceConsume"`
 }
 
@@ -306,7 +306,7 @@ type userState struct {
 	UserName *string `pulumi:"userName"`
 	// This is a field to allow the user to have access to a Databricks Workspace.
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
-	// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume *bool `pulumi:"workspaceConsume"`
 }
 
@@ -341,7 +341,7 @@ type UserState struct {
 	UserName pulumi.StringPtrInput
 	// This is a field to allow the user to have access to a Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrInput
-	// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrInput
 }
 
@@ -380,7 +380,7 @@ type userArgs struct {
 	UserName string `pulumi:"userName"`
 	// This is a field to allow the user to have access to a Databricks Workspace.
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
-	// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume *bool `pulumi:"workspaceConsume"`
 }
 
@@ -416,7 +416,7 @@ type UserArgs struct {
 	UserName pulumi.StringInput
 	// This is a field to allow the user to have access to a Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrInput
-	// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrInput
 }
 
@@ -582,7 +582,7 @@ func (o UserOutput) WorkspaceAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.WorkspaceAccess }).(pulumi.BoolPtrOutput)
 }
 
-// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 func (o UserOutput) WorkspaceConsume() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.WorkspaceConsume }).(pulumi.BoolPtrOutput)
 }

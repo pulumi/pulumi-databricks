@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AlertV2EvaluationThresholdColumnArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+        /// . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         /// </summary>
         [Input("aggregation")]
         public Input<string>? Aggregation { get; set; }

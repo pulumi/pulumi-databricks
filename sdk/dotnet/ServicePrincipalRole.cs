@@ -45,6 +45,32 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// Granting a service principal the Account Admin role.
+    /// 
+    /// &gt; This can only be used with an account-level provider.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tfAdmin = new Databricks.ServicePrincipal("tf_admin", new()
+    ///     {
+    ///         DisplayName = "Pulumi Admin",
+    ///     });
+    /// 
+    ///     var tfAdminAccount = new Databricks.ServicePrincipalRole("tf_admin_account", new()
+    ///     {
+    ///         ServicePrincipalId = tfAdmin.Id,
+    ///         Role = "account_admin",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Related Resources
     /// 
     /// The following resources are often used in the same context:
@@ -54,6 +80,7 @@ namespace Pulumi.Databricks
     /// * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
     /// * databricks.GroupMember to attach users and groups as group members.
     /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+    /// * databricks.AccessControlRuleSet to attach other roles to account level resources.
     /// 
     /// ## Import
     /// 
@@ -63,7 +90,7 @@ namespace Pulumi.Databricks
     public partial class ServicePrincipalRole : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// This is the id of the role or instance profile resource.
+        /// This is the role name, role id, or instance profile resource.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -121,7 +148,7 @@ namespace Pulumi.Databricks
     public sealed class ServicePrincipalRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This is the id of the role or instance profile resource.
+        /// This is the role name, role id, or instance profile resource.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
@@ -141,7 +168,7 @@ namespace Pulumi.Databricks
     public sealed class ServicePrincipalRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This is the id of the role or instance profile resource.
+        /// This is the role name, role id, or instance profile resource.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

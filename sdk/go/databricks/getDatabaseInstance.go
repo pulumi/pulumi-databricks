@@ -11,6 +11,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source can be used to get a single Database Instance.
+//
+// ## Example Usage
+//
+// Referring to a Database Instance by name:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.LookupDatabaseInstance(ctx, &databricks.LookupDatabaseInstanceArgs{
+//				Name: "my-database-instance",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupDatabaseInstance(ctx *pulumi.Context, args *LookupDatabaseInstanceArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseInstanceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseInstanceResult
@@ -23,11 +52,7 @@ func LookupDatabaseInstance(ctx *pulumi.Context, args *LookupDatabaseInstanceArg
 
 // A collection of arguments for invoking getDatabaseInstance.
 type LookupDatabaseInstanceArgs struct {
-	// (string) - Password for admin user to create. If not provided, no user will be created
-	AdminPassword *string `pulumi:"adminPassword"`
-	// (string) - Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-	AdminRolename *string `pulumi:"adminRolename"`
-	// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+	// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
 	Capacity *string `pulumi:"capacity"`
 	// The name of the instance. This is the unique identifier for the instance
 	Name string `pulumi:"name"`
@@ -37,16 +62,16 @@ type LookupDatabaseInstanceArgs struct {
 
 // A collection of values returned by getDatabaseInstance.
 type LookupDatabaseInstanceResult struct {
-	// (string) - Password for admin user to create. If not provided, no user will be created
-	AdminPassword *string `pulumi:"adminPassword"`
-	// (string) - Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-	AdminRolename *string `pulumi:"adminRolename"`
-	// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+	// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
 	Capacity *string `pulumi:"capacity"`
 	// (string) - The timestamp when the instance was created
 	CreationTime string `pulumi:"creationTime"`
 	// (string) - The email of the creator of the instance
 	Creator string `pulumi:"creator"`
+	// (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
+	// `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+	// `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+	EffectiveStopped bool `pulumi:"effectiveStopped"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (string) - The name of the instance. This is the unique identifier for the instance
@@ -55,7 +80,7 @@ type LookupDatabaseInstanceResult struct {
 	PgVersion string `pulumi:"pgVersion"`
 	// (string) - The DNS endpoint to connect to the instance for read+write access
 	ReadWriteDns string `pulumi:"readWriteDns"`
-	// (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+	// (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 	State string `pulumi:"state"`
 	// (boolean) - Whether the instance is stopped
 	Stopped *bool `pulumi:"stopped"`
@@ -74,11 +99,7 @@ func LookupDatabaseInstanceOutput(ctx *pulumi.Context, args LookupDatabaseInstan
 
 // A collection of arguments for invoking getDatabaseInstance.
 type LookupDatabaseInstanceOutputArgs struct {
-	// (string) - Password for admin user to create. If not provided, no user will be created
-	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
-	// (string) - Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-	AdminRolename pulumi.StringPtrInput `pulumi:"adminRolename"`
-	// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+	// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
 	Capacity pulumi.StringPtrInput `pulumi:"capacity"`
 	// The name of the instance. This is the unique identifier for the instance
 	Name pulumi.StringInput `pulumi:"name"`
@@ -105,17 +126,7 @@ func (o LookupDatabaseInstanceResultOutput) ToLookupDatabaseInstanceResultOutput
 	return o
 }
 
-// (string) - Password for admin user to create. If not provided, no user will be created
-func (o LookupDatabaseInstanceResultOutput) AdminPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDatabaseInstanceResult) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
-}
-
-// (string) - Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-func (o LookupDatabaseInstanceResultOutput) AdminRolename() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDatabaseInstanceResult) *string { return v.AdminRolename }).(pulumi.StringPtrOutput)
-}
-
-// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
 func (o LookupDatabaseInstanceResultOutput) Capacity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) *string { return v.Capacity }).(pulumi.StringPtrOutput)
 }
@@ -128,6 +139,13 @@ func (o LookupDatabaseInstanceResultOutput) CreationTime() pulumi.StringOutput {
 // (string) - The email of the creator of the instance
 func (o LookupDatabaseInstanceResultOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.Creator }).(pulumi.StringOutput)
+}
+
+// (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
+// `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+// `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+func (o LookupDatabaseInstanceResultOutput) EffectiveStopped() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.EffectiveStopped }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -150,7 +168,7 @@ func (o LookupDatabaseInstanceResultOutput) ReadWriteDns() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.ReadWriteDns }).(pulumi.StringOutput)
 }
 
-// (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+// (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 func (o LookupDatabaseInstanceResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.State }).(pulumi.StringOutput)
 }

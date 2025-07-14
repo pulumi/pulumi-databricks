@@ -22,9 +22,17 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? InstanceProfileArn;
         /// <summary>
+        /// The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+        /// </summary>
+        public readonly int? MaxProvisionedConcurrency;
+        /// <summary>
         /// The maximum tokens per second that the endpoint can scale up to.
         /// </summary>
         public readonly int? MaxProvisionedThroughput;
+        /// <summary>
+        /// The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+        /// </summary>
+        public readonly int? MinProvisionedConcurrency;
         /// <summary>
         /// The minimum tokens per second that the endpoint can scale down to.
         /// </summary>
@@ -61,7 +69,11 @@ namespace Pulumi.Databricks.Outputs
 
             string? instanceProfileArn,
 
+            int? maxProvisionedConcurrency,
+
             int? maxProvisionedThroughput,
+
+            int? minProvisionedConcurrency,
 
             int? minProvisionedThroughput,
 
@@ -81,7 +93,9 @@ namespace Pulumi.Databricks.Outputs
         {
             EnvironmentVars = environmentVars;
             InstanceProfileArn = instanceProfileArn;
+            MaxProvisionedConcurrency = maxProvisionedConcurrency;
             MaxProvisionedThroughput = maxProvisionedThroughput;
+            MinProvisionedConcurrency = minProvisionedConcurrency;
             MinProvisionedThroughput = minProvisionedThroughput;
             ModelName = modelName;
             ModelVersion = modelVersion;

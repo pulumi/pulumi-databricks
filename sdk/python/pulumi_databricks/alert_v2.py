@@ -169,7 +169,7 @@ class _AlertV2State:
         :param pulumi.Input[builtins.str] custom_description: Custom description for the alert. support mustache template
         :param pulumi.Input[builtins.str] custom_summary: Custom summary for the alert. support mustache template
         :param pulumi.Input[builtins.str] display_name: The display name of the alert
-        :param pulumi.Input[builtins.str] lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        :param pulumi.Input[builtins.str] lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
         :param pulumi.Input[builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
         :param pulumi.Input[builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input[builtins.str] query_text: Text of the query to be run
@@ -265,7 +265,7 @@ class _AlertV2State:
     @pulumi.getter(name="lifecycleState")
     def lifecycle_state(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
         """
         return pulumi.get(self, "lifecycle_state")
 
@@ -371,9 +371,15 @@ class AlertV2(pulumi.CustomResource):
                  warehouse_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
+        The Alert v2 resource allows you to manage SQL alerts in Databricks SQL. Alerts monitor query results and notify you when specific conditions are met.
+
+        Alerts run on a schedule and evaluate query results against defined thresholds. When an alert is triggered, notifications can be sent to specified users or destinations.
+
+        ## Example Usage
+
         ## Import
 
-        As of terraform v1.5, resources can be imported through configuration.
+        As of Pulumi v1.5, resources can be imported through configuration.
 
         hcl
 
@@ -385,7 +391,7 @@ class AlertV2(pulumi.CustomResource):
 
         }
 
-        If you are using an older version of terraform, you can import the resource using cli as follows:
+        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
         $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 id
@@ -407,9 +413,15 @@ class AlertV2(pulumi.CustomResource):
                  args: Optional[AlertV2Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The Alert v2 resource allows you to manage SQL alerts in Databricks SQL. Alerts monitor query results and notify you when specific conditions are met.
+
+        Alerts run on a schedule and evaluate query results against defined thresholds. When an alert is triggered, notifications can be sent to specified users or destinations.
+
+        ## Example Usage
+
         ## Import
 
-        As of terraform v1.5, resources can be imported through configuration.
+        As of Pulumi v1.5, resources can be imported through configuration.
 
         hcl
 
@@ -421,7 +433,7 @@ class AlertV2(pulumi.CustomResource):
 
         }
 
-        If you are using an older version of terraform, you can import the resource using cli as follows:
+        If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
         $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 id
@@ -506,7 +518,7 @@ class AlertV2(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] custom_description: Custom description for the alert. support mustache template
         :param pulumi.Input[builtins.str] custom_summary: Custom summary for the alert. support mustache template
         :param pulumi.Input[builtins.str] display_name: The display name of the alert
-        :param pulumi.Input[builtins.str] lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        :param pulumi.Input[builtins.str] lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
         :param pulumi.Input[builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
         :param pulumi.Input[builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input[builtins.str] query_text: Text of the query to be run
@@ -574,7 +586,7 @@ class AlertV2(pulumi.CustomResource):
     @pulumi.getter(name="lifecycleState")
     def lifecycle_state(self) -> pulumi.Output[builtins.str]:
         """
-        (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
         """
         return pulumi.get(self, "lifecycle_state")
 

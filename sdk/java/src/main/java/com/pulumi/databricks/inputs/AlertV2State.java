@@ -85,14 +85,14 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
      * 
      */
     @Import(name="lifecycleState")
     private @Nullable Output<String> lifecycleState;
 
     /**
-     * @return (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     * @return (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
      * 
      */
     public Optional<Output<String>> lifecycleState() {
@@ -326,7 +326,7 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifecycleState (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+         * @param lifecycleState (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifecycleState (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+         * @param lifecycleState (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
          * 
          * @return builder
          * 

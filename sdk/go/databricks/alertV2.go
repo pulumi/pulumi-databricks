@@ -11,9 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The Alert v2 resource allows you to manage SQL alerts in Databricks SQL. Alerts monitor query results and notify you when specific conditions are met.
+//
+// Alerts run on a schedule and evaluate query results against defined thresholds. When an alert is triggered, notifications can be sent to specified users or destinations.
+//
+// ## Example Usage
+//
 // ## Import
 //
-// As of terraform v1.5, resources can be imported through configuration.
+// As of Pulumi v1.5, resources can be imported through configuration.
 //
 // hcl
 //
@@ -25,7 +31,7 @@ import (
 //
 // }
 //
-// If you are using an older version of terraform, you can import the resource using cli as follows:
+// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
 // $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 id
@@ -42,7 +48,7 @@ type AlertV2 struct {
 	// The display name of the alert
 	DisplayName pulumi.StringPtrOutput     `pulumi:"displayName"`
 	Evaluation  AlertV2EvaluationPtrOutput `pulumi:"evaluation"`
-	// (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+	// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
 	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
 	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
 	OwnerUserName pulumi.StringOutput `pulumi:"ownerUserName"`
@@ -98,7 +104,7 @@ type alertV2State struct {
 	// The display name of the alert
 	DisplayName *string            `pulumi:"displayName"`
 	Evaluation  *AlertV2Evaluation `pulumi:"evaluation"`
-	// (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+	// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
 	LifecycleState *string `pulumi:"lifecycleState"`
 	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
 	OwnerUserName *string `pulumi:"ownerUserName"`
@@ -125,7 +131,7 @@ type AlertV2State struct {
 	// The display name of the alert
 	DisplayName pulumi.StringPtrInput
 	Evaluation  AlertV2EvaluationPtrInput
-	// (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+	// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
 	LifecycleState pulumi.StringPtrInput
 	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
 	OwnerUserName pulumi.StringPtrInput
@@ -292,7 +298,7 @@ func (o AlertV2Output) Evaluation() AlertV2EvaluationPtrOutput {
 	return o.ApplyT(func(v *AlertV2) AlertV2EvaluationPtrOutput { return v.Evaluation }).(AlertV2EvaluationPtrOutput)
 }
 
-// (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
 func (o AlertV2Output) LifecycleState() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringOutput { return v.LifecycleState }).(pulumi.StringOutput)
 }

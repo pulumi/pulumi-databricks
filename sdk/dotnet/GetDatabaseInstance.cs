@@ -11,12 +11,84 @@ namespace Pulumi.Databricks
 {
     public static class GetDatabaseInstance
     {
+        /// <summary>
+        /// This data source can be used to get a single Database Instance.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a Database Instance by name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetDatabaseInstance.Invoke(new()
+        ///     {
+        ///         Name = "my-database-instance",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetDatabaseInstanceResult> InvokeAsync(GetDatabaseInstanceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseInstanceResult>("databricks:index/getDatabaseInstance:getDatabaseInstance", args ?? new GetDatabaseInstanceArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source can be used to get a single Database Instance.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a Database Instance by name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetDatabaseInstance.Invoke(new()
+        ///     {
+        ///         Name = "my-database-instance",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetDatabaseInstanceResult> Invoke(GetDatabaseInstanceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseInstanceResult>("databricks:index/getDatabaseInstance:getDatabaseInstance", args ?? new GetDatabaseInstanceInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source can be used to get a single Database Instance.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a Database Instance by name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetDatabaseInstance.Invoke(new()
+        ///     {
+        ///         Name = "my-database-instance",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetDatabaseInstanceResult> Invoke(GetDatabaseInstanceInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseInstanceResult>("databricks:index/getDatabaseInstance:getDatabaseInstance", args ?? new GetDatabaseInstanceInvokeArgs(), options.WithDefaults());
     }
@@ -25,19 +97,7 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseInstanceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (string) - Password for admin user to create. If not provided, no user will be created
-        /// </summary>
-        [Input("adminPassword")]
-        public string? AdminPassword { get; set; }
-
-        /// <summary>
-        /// (string) - Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-        /// </summary>
-        [Input("adminRolename")]
-        public string? AdminRolename { get; set; }
-
-        /// <summary>
-        /// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+        /// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         /// </summary>
         [Input("capacity")]
         public string? Capacity { get; set; }
@@ -63,19 +123,7 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseInstanceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (string) - Password for admin user to create. If not provided, no user will be created
-        /// </summary>
-        [Input("adminPassword")]
-        public Input<string>? AdminPassword { get; set; }
-
-        /// <summary>
-        /// (string) - Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-        /// </summary>
-        [Input("adminRolename")]
-        public Input<string>? AdminRolename { get; set; }
-
-        /// <summary>
-        /// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+        /// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         /// </summary>
         [Input("capacity")]
         public Input<string>? Capacity { get; set; }
@@ -103,15 +151,7 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseInstanceResult
     {
         /// <summary>
-        /// (string) - Password for admin user to create. If not provided, no user will be created
-        /// </summary>
-        public readonly string? AdminPassword;
-        /// <summary>
-        /// (string) - Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-        /// </summary>
-        public readonly string? AdminRolename;
-        /// <summary>
-        /// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+        /// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         /// </summary>
         public readonly string? Capacity;
         /// <summary>
@@ -122,6 +162,12 @@ namespace Pulumi.Databricks
         /// (string) - The email of the creator of the instance
         /// </summary>
         public readonly string Creator;
+        /// <summary>
+        /// (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+        /// `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        /// `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// </summary>
+        public readonly bool EffectiveStopped;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -139,7 +185,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string ReadWriteDns;
         /// <summary>
-        /// (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+        /// (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         /// </summary>
         public readonly string State;
         /// <summary>
@@ -153,15 +199,13 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetDatabaseInstanceResult(
-            string? adminPassword,
-
-            string? adminRolename,
-
             string? capacity,
 
             string creationTime,
 
             string creator,
+
+            bool effectiveStopped,
 
             string id,
 
@@ -177,11 +221,10 @@ namespace Pulumi.Databricks
 
             string uid)
         {
-            AdminPassword = adminPassword;
-            AdminRolename = adminRolename;
             Capacity = capacity;
             CreationTime = creationTime;
             Creator = creator;
+            EffectiveStopped = effectiveStopped;
             Id = id;
             Name = name;
             PgVersion = pgVersion;

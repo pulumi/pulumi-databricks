@@ -486,6 +486,8 @@ class InstancePool(pulumi.CustomResource):
 
         > It is important to know that different cloud service providers have different `node_type_id`, `disk_specs` and potentially other configurations.
 
+        > "auto" `zone_id` is only supported for fleet node types.
+
         ## Example Usage
 
         ```python
@@ -563,6 +565,8 @@ class InstancePool(pulumi.CustomResource):
         > This resource can only be used with a workspace-level provider!
 
         > It is important to know that different cloud service providers have different `node_type_id`, `disk_specs` and potentially other configurations.
+
+        > "auto" `zone_id` is only supported for fleet node types.
 
         ## Example Usage
 

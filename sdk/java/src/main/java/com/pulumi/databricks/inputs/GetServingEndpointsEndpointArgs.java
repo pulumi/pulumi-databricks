@@ -72,6 +72,13 @@ public final class GetServingEndpointsEndpointArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.creator);
     }
 
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
     @Import(name="id")
     private @Nullable Output<String> id;
 
@@ -138,6 +145,7 @@ public final class GetServingEndpointsEndpointArgs extends com.pulumi.resources.
         this.configs = $.configs;
         this.creationTimestamp = $.creationTimestamp;
         this.creator = $.creator;
+        this.description = $.description;
         this.id = $.id;
         this.lastUpdatedTimestamp = $.lastUpdatedTimestamp;
         this.name = $.name;
@@ -251,6 +259,15 @@ public final class GetServingEndpointsEndpointArgs extends com.pulumi.resources.
 
         public Builder creator(String creator) {
             return creator(Output.of(creator));
+        }
+
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         public Builder id(@Nullable Output<String> id) {

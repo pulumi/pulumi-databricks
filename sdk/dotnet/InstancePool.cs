@@ -16,6 +16,8 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; It is important to know that different cloud service providers have different `node_type_id`, `disk_specs` and potentially other configurations.
     /// 
+    /// &gt; "auto" `zone_id` is only supported for fleet node types.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

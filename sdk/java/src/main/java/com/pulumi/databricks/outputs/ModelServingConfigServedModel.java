@@ -26,10 +26,20 @@ public final class ModelServingConfigServedModel {
      */
     private @Nullable String instanceProfileArn;
     /**
+     * @return The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+     * 
+     */
+    private @Nullable Integer maxProvisionedConcurrency;
+    /**
      * @return The maximum tokens per second that the endpoint can scale up to.
      * 
      */
     private @Nullable Integer maxProvisionedThroughput;
+    /**
+     * @return The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+     * 
+     */
+    private @Nullable Integer minProvisionedConcurrency;
     /**
      * @return The minimum tokens per second that the endpoint can scale down to.
      * 
@@ -83,11 +93,25 @@ public final class ModelServingConfigServedModel {
         return Optional.ofNullable(this.instanceProfileArn);
     }
     /**
+     * @return The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+     * 
+     */
+    public Optional<Integer> maxProvisionedConcurrency() {
+        return Optional.ofNullable(this.maxProvisionedConcurrency);
+    }
+    /**
      * @return The maximum tokens per second that the endpoint can scale up to.
      * 
      */
     public Optional<Integer> maxProvisionedThroughput() {
         return Optional.ofNullable(this.maxProvisionedThroughput);
+    }
+    /**
+     * @return The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+     * 
+     */
+    public Optional<Integer> minProvisionedConcurrency() {
+        return Optional.ofNullable(this.minProvisionedConcurrency);
     }
     /**
      * @return The minimum tokens per second that the endpoint can scale down to.
@@ -153,7 +177,9 @@ public final class ModelServingConfigServedModel {
     public static final class Builder {
         private @Nullable Map<String,String> environmentVars;
         private @Nullable String instanceProfileArn;
+        private @Nullable Integer maxProvisionedConcurrency;
         private @Nullable Integer maxProvisionedThroughput;
+        private @Nullable Integer minProvisionedConcurrency;
         private @Nullable Integer minProvisionedThroughput;
         private String modelName;
         private String modelVersion;
@@ -167,7 +193,9 @@ public final class ModelServingConfigServedModel {
     	      Objects.requireNonNull(defaults);
     	      this.environmentVars = defaults.environmentVars;
     	      this.instanceProfileArn = defaults.instanceProfileArn;
+    	      this.maxProvisionedConcurrency = defaults.maxProvisionedConcurrency;
     	      this.maxProvisionedThroughput = defaults.maxProvisionedThroughput;
+    	      this.minProvisionedConcurrency = defaults.minProvisionedConcurrency;
     	      this.minProvisionedThroughput = defaults.minProvisionedThroughput;
     	      this.modelName = defaults.modelName;
     	      this.modelVersion = defaults.modelVersion;
@@ -191,9 +219,21 @@ public final class ModelServingConfigServedModel {
             return this;
         }
         @CustomType.Setter
+        public Builder maxProvisionedConcurrency(@Nullable Integer maxProvisionedConcurrency) {
+
+            this.maxProvisionedConcurrency = maxProvisionedConcurrency;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxProvisionedThroughput(@Nullable Integer maxProvisionedThroughput) {
 
             this.maxProvisionedThroughput = maxProvisionedThroughput;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder minProvisionedConcurrency(@Nullable Integer minProvisionedConcurrency) {
+
+            this.minProvisionedConcurrency = minProvisionedConcurrency;
             return this;
         }
         @CustomType.Setter
@@ -252,7 +292,9 @@ public final class ModelServingConfigServedModel {
             final var _resultValue = new ModelServingConfigServedModel();
             _resultValue.environmentVars = environmentVars;
             _resultValue.instanceProfileArn = instanceProfileArn;
+            _resultValue.maxProvisionedConcurrency = maxProvisionedConcurrency;
             _resultValue.maxProvisionedThroughput = maxProvisionedThroughput;
+            _resultValue.minProvisionedConcurrency = minProvisionedConcurrency;
             _resultValue.minProvisionedThroughput = minProvisionedThroughput;
             _resultValue.modelName = modelName;
             _resultValue.modelVersion = modelVersion;

@@ -15,12 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AlertV2Evaluation {
     /**
-     * @return Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     * @return Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      * 
      */
     private @Nullable String comparisonOperator;
     /**
-     * @return Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * @return Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
      */
     private @Nullable String emptyResultState;
@@ -40,7 +40,7 @@ public final class AlertV2Evaluation {
      */
     private @Nullable AlertV2EvaluationSource source;
     /**
-     * @return (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * @return (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
      */
     private @Nullable String state;
@@ -52,14 +52,14 @@ public final class AlertV2Evaluation {
 
     private AlertV2Evaluation() {}
     /**
-     * @return Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     * @return Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      * 
      */
     public Optional<String> comparisonOperator() {
         return Optional.ofNullable(this.comparisonOperator);
     }
     /**
-     * @return Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * @return Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
      */
     public Optional<String> emptyResultState() {
@@ -87,7 +87,7 @@ public final class AlertV2Evaluation {
         return Optional.ofNullable(this.source);
     }
     /**
-     * @return (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * @return (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
      */
     public Optional<String> state() {

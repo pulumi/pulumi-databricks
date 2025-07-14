@@ -62,14 +62,14 @@ public final class ServicePrincipalSecretArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Generated secret for the service principal.
+     * **Sensitive** Generated secret for the service principal.
      * 
      */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
     /**
-     * @return Generated secret for the service principal.
+     * @return **Sensitive** Generated secret for the service principal.
      * 
      */
     public Optional<Output<String>> secret() {
@@ -122,6 +122,21 @@ public final class ServicePrincipalSecretArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Changing this argument forces recreation of the secret.
+     * 
+     */
+    @Import(name="timeRotating")
+    private @Nullable Output<String> timeRotating;
+
+    /**
+     * @return Changing this argument forces recreation of the secret.
+     * 
+     */
+    public Optional<Output<String>> timeRotating() {
+        return Optional.ofNullable(this.timeRotating);
+    }
+
+    /**
      * UTC time when the secret was updated.
      * 
      */
@@ -146,6 +161,7 @@ public final class ServicePrincipalSecretArgs extends com.pulumi.resources.Resou
         this.secretHash = $.secretHash;
         this.servicePrincipalId = $.servicePrincipalId;
         this.status = $.status;
+        this.timeRotating = $.timeRotating;
         this.updateTime = $.updateTime;
     }
 
@@ -231,7 +247,7 @@ public final class ServicePrincipalSecretArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param secret Generated secret for the service principal.
+         * @param secret **Sensitive** Generated secret for the service principal.
          * 
          * @return builder
          * 
@@ -242,7 +258,7 @@ public final class ServicePrincipalSecretArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param secret Generated secret for the service principal.
+         * @param secret **Sensitive** Generated secret for the service principal.
          * 
          * @return builder
          * 
@@ -312,6 +328,27 @@ public final class ServicePrincipalSecretArgs extends com.pulumi.resources.Resou
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param timeRotating Changing this argument forces recreation of the secret.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeRotating(@Nullable Output<String> timeRotating) {
+            $.timeRotating = timeRotating;
+            return this;
+        }
+
+        /**
+         * @param timeRotating Changing this argument forces recreation of the secret.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeRotating(String timeRotating) {
+            return timeRotating(Output.of(timeRotating));
         }
 
         /**

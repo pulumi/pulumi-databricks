@@ -16,7 +16,7 @@ public final class GetAppsAppResourceSqlWarehouse {
      */
     private String id;
     /**
-     * @return Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * @return Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
      * 
      */
     private String permission;
@@ -30,7 +30,7 @@ public final class GetAppsAppResourceSqlWarehouse {
         return this.id;
     }
     /**
-     * @return Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * @return Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
      * 
      */
     public String permission() {

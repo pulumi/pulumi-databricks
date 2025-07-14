@@ -71,6 +71,13 @@ public final class GetServingEndpointsEndpoint extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.creator);
     }
 
+    @Import(name="description")
+    private @Nullable String description;
+
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
+    }
+
     @Import(name="id")
     private @Nullable String id;
 
@@ -137,6 +144,7 @@ public final class GetServingEndpointsEndpoint extends com.pulumi.resources.Invo
         this.configs = $.configs;
         this.creationTimestamp = $.creationTimestamp;
         this.creator = $.creator;
+        this.description = $.description;
         this.id = $.id;
         this.lastUpdatedTimestamp = $.lastUpdatedTimestamp;
         this.name = $.name;
@@ -217,6 +225,11 @@ public final class GetServingEndpointsEndpoint extends com.pulumi.resources.Invo
 
         public Builder creator(@Nullable String creator) {
             $.creator = creator;
+            return this;
+        }
+
+        public Builder description(@Nullable String description) {
+            $.description = description;
             return this;
         }
 

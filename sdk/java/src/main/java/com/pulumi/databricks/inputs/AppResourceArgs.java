@@ -115,9 +115,17 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sqlWarehouse);
     }
 
+    /**
+     * attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
+     * 
+     */
     @Import(name="ucSecurable")
     private @Nullable Output<AppResourceUcSecurableArgs> ucSecurable;
 
+    /**
+     * @return attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
+     * 
+     */
     public Optional<Output<AppResourceUcSecurableArgs>> ucSecurable() {
         return Optional.ofNullable(this.ucSecurable);
     }
@@ -282,11 +290,23 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
             return sqlWarehouse(Output.of(sqlWarehouse));
         }
 
+        /**
+         * @param ucSecurable attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
+         * 
+         * @return builder
+         * 
+         */
         public Builder ucSecurable(@Nullable Output<AppResourceUcSecurableArgs> ucSecurable) {
             $.ucSecurable = ucSecurable;
             return this;
         }
 
+        /**
+         * @param ucSecurable attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
+         * 
+         * @return builder
+         * 
+         */
         public Builder ucSecurable(AppResourceUcSecurableArgs ucSecurable) {
             return ucSecurable(Output.of(ucSecurable));
         }

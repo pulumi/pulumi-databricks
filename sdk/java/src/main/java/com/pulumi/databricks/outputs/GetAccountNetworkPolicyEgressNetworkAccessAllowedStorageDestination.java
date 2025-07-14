@@ -27,12 +27,12 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDesti
      */
     private @Nullable String bucketName;
     /**
-     * @return (string) - The region of the S3 bucket
+     * @return (string) -
      * 
      */
     private @Nullable String region;
     /**
-     * @return (string) - The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+     * @return (string) - The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
      * 
      */
     private @Nullable String storageDestinationType;
@@ -60,14 +60,14 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDesti
         return Optional.ofNullable(this.bucketName);
     }
     /**
-     * @return (string) - The region of the S3 bucket
+     * @return (string) -
      * 
      */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return (string) - The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+     * @return (string) - The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
      * 
      */
     public Optional<String> storageDestinationType() {

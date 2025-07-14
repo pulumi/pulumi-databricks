@@ -12,6 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs : global::Pulumi.InvokeArgs
     {
+        [Input("awsPrivateEndpointRules")]
+        private List<Inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs>? _awsPrivateEndpointRules;
+        public List<Inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs> AwsPrivateEndpointRules
+        {
+            get => _awsPrivateEndpointRules ?? (_awsPrivateEndpointRules = new List<Inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs>());
+            set => _awsPrivateEndpointRules = value;
+        }
+
         [Input("azurePrivateEndpointRules")]
         private List<Inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs>? _azurePrivateEndpointRules;
 

@@ -11,12 +11,87 @@ namespace Pulumi.Databricks
 {
     public static class GetAlertsV2
     {
+        /// <summary>
+        /// The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
+        /// 
+        /// You can use this data source to:
+        /// - Get a comprehensive list of all alerts in your workspace
+        /// - Monitor and audit alert configurations across your workspace
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### List All Alerts
+        /// This example retrieves all alerts accessible to the current user:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetAlertV2.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetAlertsV2Result> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlertsV2Result>("databricks:index/getAlertsV2:getAlertsV2", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
+        /// 
+        /// You can use this data source to:
+        /// - Get a comprehensive list of all alerts in your workspace
+        /// - Monitor and audit alert configurations across your workspace
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### List All Alerts
+        /// This example retrieves all alerts accessible to the current user:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetAlertV2.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetAlertsV2Result> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlertsV2Result>("databricks:index/getAlertsV2:getAlertsV2", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
+        /// 
+        /// You can use this data source to:
+        /// - Get a comprehensive list of all alerts in your workspace
+        /// - Monitor and audit alert configurations across your workspace
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### List All Alerts
+        /// This example retrieves all alerts accessible to the current user:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetAlertV2.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetAlertsV2Result> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlertsV2Result>("databricks:index/getAlertsV2:getAlertsV2", InvokeArgs.Empty, options.WithDefaults());
     }

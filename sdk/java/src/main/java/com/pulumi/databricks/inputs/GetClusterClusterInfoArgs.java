@@ -360,6 +360,13 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.policyId);
     }
 
+    @Import(name="remoteDiskThroughput")
+    private @Nullable Output<Integer> remoteDiskThroughput;
+
+    public Optional<Output<Integer>> remoteDiskThroughput() {
+        return Optional.ofNullable(this.remoteDiskThroughput);
+    }
+
     /**
      * The type of runtime of the cluster
      * 
@@ -499,6 +506,13 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.terminationReason);
     }
 
+    @Import(name="totalInitialRemoteDiskSize")
+    private @Nullable Output<Integer> totalInitialRemoteDiskSize;
+
+    public Optional<Output<Integer>> totalInitialRemoteDiskSize() {
+        return Optional.ofNullable(this.totalInitialRemoteDiskSize);
+    }
+
     @Import(name="useMlRuntime")
     private @Nullable Output<Boolean> useMlRuntime;
 
@@ -549,6 +563,7 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
         this.nodeTypeId = $.nodeTypeId;
         this.numWorkers = $.numWorkers;
         this.policyId = $.policyId;
+        this.remoteDiskThroughput = $.remoteDiskThroughput;
         this.runtimeEngine = $.runtimeEngine;
         this.singleUserName = $.singleUserName;
         this.sparkConf = $.sparkConf;
@@ -562,6 +577,7 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
         this.stateMessage = $.stateMessage;
         this.terminatedTime = $.terminatedTime;
         this.terminationReason = $.terminationReason;
+        this.totalInitialRemoteDiskSize = $.totalInitialRemoteDiskSize;
         this.useMlRuntime = $.useMlRuntime;
         this.workloadType = $.workloadType;
     }
@@ -1033,6 +1049,15 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
             return policyId(Output.of(policyId));
         }
 
+        public Builder remoteDiskThroughput(@Nullable Output<Integer> remoteDiskThroughput) {
+            $.remoteDiskThroughput = remoteDiskThroughput;
+            return this;
+        }
+
+        public Builder remoteDiskThroughput(Integer remoteDiskThroughput) {
+            return remoteDiskThroughput(Output.of(remoteDiskThroughput));
+        }
+
         /**
          * @param runtimeEngine The type of runtime of the cluster
          * 
@@ -1230,6 +1255,15 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
 
         public Builder terminationReason(GetClusterClusterInfoTerminationReasonArgs terminationReason) {
             return terminationReason(Output.of(terminationReason));
+        }
+
+        public Builder totalInitialRemoteDiskSize(@Nullable Output<Integer> totalInitialRemoteDiskSize) {
+            $.totalInitialRemoteDiskSize = totalInitialRemoteDiskSize;
+            return this;
+        }
+
+        public Builder totalInitialRemoteDiskSize(Integer totalInitialRemoteDiskSize) {
+            return totalInitialRemoteDiskSize(Output.of(totalInitialRemoteDiskSize));
         }
 
         public Builder useMlRuntime(@Nullable Output<Boolean> useMlRuntime) {

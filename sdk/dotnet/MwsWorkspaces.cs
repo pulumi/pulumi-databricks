@@ -105,13 +105,8 @@ namespace Pulumi.Databricks
     ///         CredentialsId = @this.CredentialsId,
     ///         StorageConfigurationId = thisMwsStorageConfigurations.StorageConfigurationId,
     ///         NetworkId = thisMwsNetworks.NetworkId,
-    ///         Token = null,
     ///     });
     /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["databricksToken"] = thisMwsWorkspaces.Token.Apply(token =&gt; token?.TokenValue),
-    ///     };
     /// });
     /// ```
     /// 
@@ -249,17 +244,12 @@ namespace Pulumi.Databricks
     ///         AwsRegion = "us-east-1",
     ///         CredentialsId = thisMwsCredentials.CredentialsId,
     ///         StorageConfigurationId = thisMwsStorageConfigurations.StorageConfigurationId,
-    ///         Token = null,
     ///         CustomTags = 
     ///         {
     ///             { "SoldToCode", "1234" },
     ///         },
     ///     });
     /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["databricksToken"] = thisMwsWorkspaces.Token.Apply(token =&gt; token?.TokenValue),
-    ///     };
     /// });
     /// ```
     /// 
@@ -314,13 +304,8 @@ namespace Pulumi.Databricks
     ///             },
     ///         },
     ///         NetworkId = @this.NetworkId,
-    ///         Token = null,
     ///     });
     /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["databricksToken"] = thisMwsWorkspaces.Token.Apply(token =&gt; token?.TokenValue),
-    ///     };
     /// });
     /// ```
     /// 
@@ -386,6 +371,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+        /// 
+        /// &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
         /// </summary>
         [Output("computeMode")]
         public Output<string?> ComputeMode { get; private set; } = null!;
@@ -599,6 +586,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+        /// 
+        /// &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
         /// </summary>
         [Input("computeMode")]
         public Input<string>? ComputeMode { get; set; }
@@ -764,6 +753,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+        /// 
+        /// &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
         /// </summary>
         [Input("computeMode")]
         public Input<string>? ComputeMode { get; set; }

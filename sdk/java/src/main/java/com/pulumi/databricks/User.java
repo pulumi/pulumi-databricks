@@ -470,14 +470,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.workspaceAccess);
     }
     /**
-     * This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     * This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspace_access` or `databricks_sql_access`.
      * 
      */
     @Export(name="workspaceConsume", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> workspaceConsume;
 
     /**
-     * @return This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+     * @return This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspace_access` or `databricks_sql_access`.
      * 
      */
     public Output<Optional<Boolean>> workspaceConsume() {

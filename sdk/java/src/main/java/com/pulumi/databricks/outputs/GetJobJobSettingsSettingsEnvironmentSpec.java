@@ -4,7 +4,6 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,14 +12,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsEnvironmentSpec {
-    private String client;
+    private @Nullable String client;
     private @Nullable List<String> dependencies;
     private @Nullable String environmentVersion;
     private @Nullable List<String> jarDependencies;
 
     private GetJobJobSettingsSettingsEnvironmentSpec() {}
-    public String client() {
-        return this.client;
+    public Optional<String> client() {
+        return Optional.ofNullable(this.client);
     }
     public List<String> dependencies() {
         return this.dependencies == null ? List.of() : this.dependencies;
@@ -41,7 +40,7 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String client;
+        private @Nullable String client;
         private @Nullable List<String> dependencies;
         private @Nullable String environmentVersion;
         private @Nullable List<String> jarDependencies;
@@ -55,10 +54,8 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
         }
 
         @CustomType.Setter
-        public Builder client(String client) {
-            if (client == null) {
-              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsEnvironmentSpec", "client");
-            }
+        public Builder client(@Nullable String client) {
+
             this.client = client;
             return this;
         }

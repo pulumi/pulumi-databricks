@@ -16,14 +16,14 @@ public final class GetAlertV2ScheduleArgs extends com.pulumi.resources.ResourceA
     public static final GetAlertV2ScheduleArgs Empty = new GetAlertV2ScheduleArgs();
 
     /**
-     * (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     * (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
      * 
      */
     @Import(name="pauseStatus")
     private @Nullable Output<String> pauseStatus;
 
     /**
-     * @return (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     * @return (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
      * 
      */
     public Optional<Output<String>> pauseStatus() {
@@ -93,7 +93,7 @@ public final class GetAlertV2ScheduleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param pauseStatus (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+         * @param pauseStatus (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GetAlertV2ScheduleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param pauseStatus (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+         * @param pauseStatus (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
          * 
          * @return builder
          * 

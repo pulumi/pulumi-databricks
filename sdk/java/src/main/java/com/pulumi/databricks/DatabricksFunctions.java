@@ -88,8 +88,12 @@ import com.pulumi.databricks.inputs.GetNotebookPathsPlainArgs;
 import com.pulumi.databricks.inputs.GetNotebookPlainArgs;
 import com.pulumi.databricks.inputs.GetNotificationDestinationsArgs;
 import com.pulumi.databricks.inputs.GetNotificationDestinationsPlainArgs;
+import com.pulumi.databricks.inputs.GetOnlineStoreArgs;
+import com.pulumi.databricks.inputs.GetOnlineStorePlainArgs;
 import com.pulumi.databricks.inputs.GetPipelinesArgs;
 import com.pulumi.databricks.inputs.GetPipelinesPlainArgs;
+import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
+import com.pulumi.databricks.inputs.GetQualityMonitorV2PlainArgs;
 import com.pulumi.databricks.inputs.GetRecipientFederationPolicyArgs;
 import com.pulumi.databricks.inputs.GetRecipientFederationPolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelArgs;
@@ -184,7 +188,11 @@ import com.pulumi.databricks.outputs.GetNodeTypeResult;
 import com.pulumi.databricks.outputs.GetNotebookPathsResult;
 import com.pulumi.databricks.outputs.GetNotebookResult;
 import com.pulumi.databricks.outputs.GetNotificationDestinationsResult;
+import com.pulumi.databricks.outputs.GetOnlineStoreResult;
+import com.pulumi.databricks.outputs.GetOnlineStoresResult;
 import com.pulumi.databricks.outputs.GetPipelinesResult;
+import com.pulumi.databricks.outputs.GetQualityMonitorV2Result;
+import com.pulumi.databricks.outputs.GetQualityMonitorsV2Result;
 import com.pulumi.databricks.outputs.GetRecipientFederationPoliciesResult;
 import com.pulumi.databricks.outputs.GetRecipientFederationPolicyResult;
 import com.pulumi.databricks.outputs.GetRegisteredModelResult;
@@ -258,45 +266,486 @@ public final class DatabricksFunctions {
     public static CompletableFuture<GetAccountNetworkPolicyResult> getAccountNetworkPolicyPlain(GetAccountNetworkPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", TypeShape.of(GetAccountNetworkPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
+     * 
+     * You can use this data source to:
+     * - Retrieve alert details for reference in other resources
+     * - Check the current state and configuration of an alert
+     * - Verify notification settings and subscribers
+     * - Examine the schedule configuration
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Alert by ID
+     * This example retrieves a specific alert by its ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAlertV2Result> getAlertV2() {
         return getAlertV2(GetAlertV2Args.Empty, InvokeOptions.Empty);
     }
+    /**
+     * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
+     * 
+     * You can use this data source to:
+     * - Retrieve alert details for reference in other resources
+     * - Check the current state and configuration of an alert
+     * - Verify notification settings and subscribers
+     * - Examine the schedule configuration
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Alert by ID
+     * This example retrieves a specific alert by its ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAlertV2Result> getAlertV2Plain() {
         return getAlertV2Plain(GetAlertV2PlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
+     * 
+     * You can use this data source to:
+     * - Retrieve alert details for reference in other resources
+     * - Check the current state and configuration of an alert
+     * - Verify notification settings and subscribers
+     * - Examine the schedule configuration
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Alert by ID
+     * This example retrieves a specific alert by its ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAlertV2Result> getAlertV2(GetAlertV2Args args) {
         return getAlertV2(args, InvokeOptions.Empty);
     }
+    /**
+     * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
+     * 
+     * You can use this data source to:
+     * - Retrieve alert details for reference in other resources
+     * - Check the current state and configuration of an alert
+     * - Verify notification settings and subscribers
+     * - Examine the schedule configuration
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Alert by ID
+     * This example retrieves a specific alert by its ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAlertV2Result> getAlertV2Plain(GetAlertV2PlainArgs args) {
         return getAlertV2Plain(args, InvokeOptions.Empty);
     }
+    /**
+     * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
+     * 
+     * You can use this data source to:
+     * - Retrieve alert details for reference in other resources
+     * - Check the current state and configuration of an alert
+     * - Verify notification settings and subscribers
+     * - Examine the schedule configuration
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Alert by ID
+     * This example retrieves a specific alert by its ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAlertV2Result> getAlertV2(GetAlertV2Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAlertV2:getAlertV2", TypeShape.of(GetAlertV2Result.class), args, Utilities.withVersion(options));
     }
+    /**
+     * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
+     * 
+     * You can use this data source to:
+     * - Retrieve alert details for reference in other resources
+     * - Check the current state and configuration of an alert
+     * - Verify notification settings and subscribers
+     * - Examine the schedule configuration
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Alert by ID
+     * This example retrieves a specific alert by its ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAlertV2Result> getAlertV2(GetAlertV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAlertV2:getAlertV2", TypeShape.of(GetAlertV2Result.class), args, Utilities.withVersion(options));
     }
+    /**
+     * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
+     * 
+     * You can use this data source to:
+     * - Retrieve alert details for reference in other resources
+     * - Check the current state and configuration of an alert
+     * - Verify notification settings and subscribers
+     * - Examine the schedule configuration
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Alert by ID
+     * This example retrieves a specific alert by its ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAlertV2Result> getAlertV2Plain(GetAlertV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAlertV2:getAlertV2", TypeShape.of(GetAlertV2Result.class), args, Utilities.withVersion(options));
     }
+    /**
+     * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
+     * 
+     * You can use this data source to:
+     * - Get a comprehensive list of all alerts in your workspace
+     * - Monitor and audit alert configurations across your workspace
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Alerts
+     * This example retrieves all alerts accessible to the current user:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAlertV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAlertV2(GetAlertV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAlertsV2InvokeResult> getAlertsV2() {
         return getAlertsV2(InvokeArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
+     * 
+     * You can use this data source to:
+     * - Get a comprehensive list of all alerts in your workspace
+     * - Monitor and audit alert configurations across your workspace
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Alerts
+     * This example retrieves all alerts accessible to the current user:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAlertV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAlertV2(GetAlertV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAlertsV2InvokeResult> getAlertsV2Plain() {
         return getAlertsV2Plain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
+     * 
+     * You can use this data source to:
+     * - Get a comprehensive list of all alerts in your workspace
+     * - Monitor and audit alert configurations across your workspace
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Alerts
+     * This example retrieves all alerts accessible to the current user:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAlertV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAlertV2(GetAlertV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAlertsV2InvokeResult> getAlertsV2(InvokeArgs args) {
         return getAlertsV2(args, InvokeOptions.Empty);
     }
+    /**
+     * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
+     * 
+     * You can use this data source to:
+     * - Get a comprehensive list of all alerts in your workspace
+     * - Monitor and audit alert configurations across your workspace
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Alerts
+     * This example retrieves all alerts accessible to the current user:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAlertV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAlertV2(GetAlertV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAlertsV2InvokeResult> getAlertsV2Plain(InvokeArgs args) {
         return getAlertsV2Plain(args, InvokeOptions.Empty);
     }
+    /**
+     * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
+     * 
+     * You can use this data source to:
+     * - Get a comprehensive list of all alerts in your workspace
+     * - Monitor and audit alert configurations across your workspace
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Alerts
+     * This example retrieves all alerts accessible to the current user:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAlertV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAlertV2(GetAlertV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAlertsV2InvokeResult> getAlertsV2(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAlertsV2:getAlertsV2", TypeShape.of(GetAlertsV2InvokeResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
+     * 
+     * You can use this data source to:
+     * - Get a comprehensive list of all alerts in your workspace
+     * - Monitor and audit alert configurations across your workspace
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Alerts
+     * This example retrieves all alerts accessible to the current user:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAlertV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAlertV2(GetAlertV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAlertsV2InvokeResult> getAlertsV2(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAlertsV2:getAlertsV2", TypeShape.of(GetAlertsV2InvokeResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
+     * 
+     * You can use this data source to:
+     * - Get a comprehensive list of all alerts in your workspace
+     * - Monitor and audit alert configurations across your workspace
+     * 
+     * ## Example Usage
+     * 
+     * ### List All Alerts
+     * This example retrieves all alerts accessible to the current user:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAlertV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAlertV2(GetAlertV2Args.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAlertsV2InvokeResult> getAlertsV2Plain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAlertsV2:getAlertsV2", TypeShape.of(GetAlertsV2InvokeResult.class), args, Utilities.withVersion(options));
     }
@@ -6299,39 +6748,524 @@ public final class DatabricksFunctions {
     public static CompletableFuture<GetDashboardsResult> getDashboardsPlain(GetDashboardsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDashboards:getDashboards", TypeShape.of(GetDashboardsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source can be used to get a single Database Instance.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a Database Instance by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDatabaseInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getDatabaseInstance(GetDatabaseInstanceArgs.builder()
+     *             .name("my-database-instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetDatabaseInstanceResult> getDatabaseInstance(GetDatabaseInstanceArgs args) {
         return getDatabaseInstance(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source can be used to get a single Database Instance.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a Database Instance by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDatabaseInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getDatabaseInstance(GetDatabaseInstanceArgs.builder()
+     *             .name("my-database-instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDatabaseInstanceResult> getDatabaseInstancePlain(GetDatabaseInstancePlainArgs args) {
         return getDatabaseInstancePlain(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source can be used to get a single Database Instance.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a Database Instance by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDatabaseInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getDatabaseInstance(GetDatabaseInstanceArgs.builder()
+     *             .name("my-database-instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetDatabaseInstanceResult> getDatabaseInstance(GetDatabaseInstanceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseInstance:getDatabaseInstance", TypeShape.of(GetDatabaseInstanceResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source can be used to get a single Database Instance.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a Database Instance by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDatabaseInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getDatabaseInstance(GetDatabaseInstanceArgs.builder()
+     *             .name("my-database-instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetDatabaseInstanceResult> getDatabaseInstance(GetDatabaseInstanceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseInstance:getDatabaseInstance", TypeShape.of(GetDatabaseInstanceResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source can be used to get a single Database Instance.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a Database Instance by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDatabaseInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getDatabaseInstance(GetDatabaseInstanceArgs.builder()
+     *             .name("my-database-instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDatabaseInstanceResult> getDatabaseInstancePlain(GetDatabaseInstancePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDatabaseInstance:getDatabaseInstance", TypeShape.of(GetDatabaseInstanceResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source can be used to fetch the list of Database Instances within the workspace.
+     * The list can then be accessed via the data object&#39;s `database_instances` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all Database Instances:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDatabaseInstances(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("allDatabaseInstances", all.databaseInstances());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetDatabaseInstancesResult> getDatabaseInstances() {
         return getDatabaseInstances(InvokeArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * This data source can be used to fetch the list of Database Instances within the workspace.
+     * The list can then be accessed via the data object&#39;s `database_instances` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all Database Instances:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDatabaseInstances(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("allDatabaseInstances", all.databaseInstances());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain() {
         return getDatabaseInstancesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * This data source can be used to fetch the list of Database Instances within the workspace.
+     * The list can then be accessed via the data object&#39;s `database_instances` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all Database Instances:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDatabaseInstances(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("allDatabaseInstances", all.databaseInstances());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetDatabaseInstancesResult> getDatabaseInstances(InvokeArgs args) {
         return getDatabaseInstances(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source can be used to fetch the list of Database Instances within the workspace.
+     * The list can then be accessed via the data object&#39;s `database_instances` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all Database Instances:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDatabaseInstances(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("allDatabaseInstances", all.databaseInstances());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain(InvokeArgs args) {
         return getDatabaseInstancesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source can be used to fetch the list of Database Instances within the workspace.
+     * The list can then be accessed via the data object&#39;s `database_instances` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all Database Instances:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDatabaseInstances(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("allDatabaseInstances", all.databaseInstances());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetDatabaseInstancesResult> getDatabaseInstances(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseInstances:getDatabaseInstances", TypeShape.of(GetDatabaseInstancesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source can be used to fetch the list of Database Instances within the workspace.
+     * The list can then be accessed via the data object&#39;s `database_instances` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all Database Instances:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDatabaseInstances(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("allDatabaseInstances", all.databaseInstances());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetDatabaseInstancesResult> getDatabaseInstances(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseInstances:getDatabaseInstances", TypeShape.of(GetDatabaseInstancesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source can be used to fetch the list of Database Instances within the workspace.
+     * The list can then be accessed via the data object&#39;s `database_instances` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all Database Instances:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDatabaseInstances(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("allDatabaseInstances", all.databaseInstances());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDatabaseInstances:getDatabaseInstances", TypeShape.of(GetDatabaseInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -9331,7 +10265,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; Data resource will error in case of jobs with duplicate names.
+     * &gt; By default, this data resource will error in case of jobs with duplicate names. To support duplicate names, set `key = &#34;id&#34;` to map jobs by ID.
      * 
      * ## Example Usage
      * 
@@ -9365,10 +10299,6 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
-     *             .build());
-     * 
-     *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
-     *             .jobNameContains("test")
      *             .build());
      * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
@@ -9420,9 +10350,66 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .jobNameContains("test")
      *             .build());
      * 
      *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Getting IDs of databricks.Job mapped by ID, allowing duplicate job names:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .key("id")
+     *             .build());
+     * 
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
+     *             final var resources = new ArrayList<Permissions>();
+     *             for (var range : KeyedValue.of(getJobsResult.ids())) {
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
+     *                     .jobId(range.value())
+     *                     .accessControls(PermissionsAccessControlArgs.builder()
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
      *     }
      * }
      * }
@@ -9444,7 +10431,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; Data resource will error in case of jobs with duplicate names.
+     * &gt; By default, this data resource will error in case of jobs with duplicate names. To support duplicate names, set `key = &#34;id&#34;` to map jobs by ID.
      * 
      * ## Example Usage
      * 
@@ -9478,10 +10465,6 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
-     *             .build());
-     * 
-     *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
-     *             .jobNameContains("test")
      *             .build());
      * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
@@ -9533,9 +10516,66 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .jobNameContains("test")
      *             .build());
      * 
      *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Getting IDs of databricks.Job mapped by ID, allowing duplicate job names:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .key("id")
+     *             .build());
+     * 
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
+     *             final var resources = new ArrayList<Permissions>();
+     *             for (var range : KeyedValue.of(getJobsResult.ids())) {
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
+     *                     .jobId(range.value())
+     *                     .accessControls(PermissionsAccessControlArgs.builder()
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
      *     }
      * }
      * }
@@ -9557,7 +10597,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; Data resource will error in case of jobs with duplicate names.
+     * &gt; By default, this data resource will error in case of jobs with duplicate names. To support duplicate names, set `key = &#34;id&#34;` to map jobs by ID.
      * 
      * ## Example Usage
      * 
@@ -9591,10 +10631,6 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
-     *             .build());
-     * 
-     *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
-     *             .jobNameContains("test")
      *             .build());
      * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
@@ -9646,9 +10682,66 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .jobNameContains("test")
      *             .build());
      * 
      *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Getting IDs of databricks.Job mapped by ID, allowing duplicate job names:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .key("id")
+     *             .build());
+     * 
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
+     *             final var resources = new ArrayList<Permissions>();
+     *             for (var range : KeyedValue.of(getJobsResult.ids())) {
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
+     *                     .jobId(range.value())
+     *                     .accessControls(PermissionsAccessControlArgs.builder()
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
      *     }
      * }
      * }
@@ -9670,7 +10763,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; Data resource will error in case of jobs with duplicate names.
+     * &gt; By default, this data resource will error in case of jobs with duplicate names. To support duplicate names, set `key = &#34;id&#34;` to map jobs by ID.
      * 
      * ## Example Usage
      * 
@@ -9704,10 +10797,6 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
-     *             .build());
-     * 
-     *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
-     *             .jobNameContains("test")
      *             .build());
      * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
@@ -9759,9 +10848,66 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .jobNameContains("test")
      *             .build());
      * 
      *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Getting IDs of databricks.Job mapped by ID, allowing duplicate job names:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .key("id")
+     *             .build());
+     * 
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
+     *             final var resources = new ArrayList<Permissions>();
+     *             for (var range : KeyedValue.of(getJobsResult.ids())) {
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
+     *                     .jobId(range.value())
+     *                     .accessControls(PermissionsAccessControlArgs.builder()
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
      *     }
      * }
      * }
@@ -9783,7 +10929,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; Data resource will error in case of jobs with duplicate names.
+     * &gt; By default, this data resource will error in case of jobs with duplicate names. To support duplicate names, set `key = &#34;id&#34;` to map jobs by ID.
      * 
      * ## Example Usage
      * 
@@ -9817,10 +10963,6 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
-     *             .build());
-     * 
-     *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
-     *             .jobNameContains("test")
      *             .build());
      * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
@@ -9872,9 +11014,66 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .jobNameContains("test")
      *             .build());
      * 
      *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Getting IDs of databricks.Job mapped by ID, allowing duplicate job names:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .key("id")
+     *             .build());
+     * 
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
+     *             final var resources = new ArrayList<Permissions>();
+     *             for (var range : KeyedValue.of(getJobsResult.ids())) {
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
+     *                     .jobId(range.value())
+     *                     .accessControls(PermissionsAccessControlArgs.builder()
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
      *     }
      * }
      * }
@@ -9896,7 +11095,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; Data resource will error in case of jobs with duplicate names.
+     * &gt; By default, this data resource will error in case of jobs with duplicate names. To support duplicate names, set `key = &#34;id&#34;` to map jobs by ID.
      * 
      * ## Example Usage
      * 
@@ -9930,10 +11129,6 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
-     *             .build());
-     * 
-     *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
-     *             .jobNameContains("test")
      *             .build());
      * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
@@ -9985,9 +11180,66 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .jobNameContains("test")
      *             .build());
      * 
      *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Getting IDs of databricks.Job mapped by ID, allowing duplicate job names:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .key("id")
+     *             .build());
+     * 
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
+     *             final var resources = new ArrayList<Permissions>();
+     *             for (var range : KeyedValue.of(getJobsResult.ids())) {
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
+     *                     .jobId(range.value())
+     *                     .accessControls(PermissionsAccessControlArgs.builder()
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
      *     }
      * }
      * }
@@ -10009,7 +11261,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; Data resource will error in case of jobs with duplicate names.
+     * &gt; By default, this data resource will error in case of jobs with duplicate names. To support duplicate names, set `key = &#34;id&#34;` to map jobs by ID.
      * 
      * ## Example Usage
      * 
@@ -10043,10 +11295,6 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
-     *             .build());
-     * 
-     *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
-     *             .jobNameContains("test")
      *             .build());
      * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
@@ -10098,9 +11346,66 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .jobNameContains("test")
      *             .build());
      * 
      *         ctx.export("x", String.format("ID of `x` job is %s", this_.ids().x()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Getting IDs of databricks.Job mapped by ID, allowing duplicate job names:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetJobsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .key("id")
+     *             .build());
+     * 
+     *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
+     *             final var resources = new ArrayList<Permissions>();
+     *             for (var range : KeyedValue.of(getJobsResult.ids())) {
+     *                 var resource = new Permissions("everyoneCanViewAllJobs-" + range.key(), PermissionsArgs.builder()
+     *                     .jobId(range.value())
+     *                     .accessControls(PermissionsAccessControlArgs.builder()
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
      *     }
      * }
      * }
@@ -15095,6 +16400,42 @@ public final class DatabricksFunctions {
     public static CompletableFuture<GetNotificationDestinationsResult> getNotificationDestinationsPlain(GetNotificationDestinationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getNotificationDestinations:getNotificationDestinations", TypeShape.of(GetNotificationDestinationsResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetOnlineStoreResult> getOnlineStore(GetOnlineStoreArgs args) {
+        return getOnlineStore(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetOnlineStoreResult> getOnlineStorePlain(GetOnlineStorePlainArgs args) {
+        return getOnlineStorePlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetOnlineStoreResult> getOnlineStore(GetOnlineStoreArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getOnlineStore:getOnlineStore", TypeShape.of(GetOnlineStoreResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetOnlineStoreResult> getOnlineStore(GetOnlineStoreArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getOnlineStore:getOnlineStore", TypeShape.of(GetOnlineStoreResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetOnlineStoreResult> getOnlineStorePlain(GetOnlineStorePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getOnlineStore:getOnlineStore", TypeShape.of(GetOnlineStoreResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetOnlineStoresResult> getOnlineStores() {
+        return getOnlineStores(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetOnlineStoresResult> getOnlineStoresPlain() {
+        return getOnlineStoresPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetOnlineStoresResult> getOnlineStores(InvokeArgs args) {
+        return getOnlineStores(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetOnlineStoresResult> getOnlineStoresPlain(InvokeArgs args) {
+        return getOnlineStoresPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetOnlineStoresResult> getOnlineStores(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getOnlineStores:getOnlineStores", TypeShape.of(GetOnlineStoresResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetOnlineStoresResult> getOnlineStores(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getOnlineStores:getOnlineStores", TypeShape.of(GetOnlineStoresResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetOnlineStoresResult> getOnlineStoresPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getOnlineStores:getOnlineStores", TypeShape.of(GetOnlineStoresResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
      * 
@@ -15990,6 +17331,567 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetPipelinesResult> getPipelinesPlain(GetPipelinesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPipelines:getPipelines", TypeShape.of(GetPipelinesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch a quality monitors v2.
+     * 
+     * &gt; **Note** This data source can only be used with an workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a quality monitor by uc object type (currently only support `schema`) and object id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("my_catalog.my_schema")
+     *             .build());
+     * 
+     *         final var thisGetQualityMonitorV2 = DatabricksFunctions.getQualityMonitorV2(GetQualityMonitorV2Args.builder()
+     *             .objectType("schema")
+     *             .objectId(this_.schemaInfo().schemaId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetQualityMonitorV2Result> getQualityMonitorV2(GetQualityMonitorV2Args args) {
+        return getQualityMonitorV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch a quality monitors v2.
+     * 
+     * &gt; **Note** This data source can only be used with an workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a quality monitor by uc object type (currently only support `schema`) and object id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("my_catalog.my_schema")
+     *             .build());
+     * 
+     *         final var thisGetQualityMonitorV2 = DatabricksFunctions.getQualityMonitorV2(GetQualityMonitorV2Args.builder()
+     *             .objectType("schema")
+     *             .objectId(this_.schemaInfo().schemaId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetQualityMonitorV2Result> getQualityMonitorV2Plain(GetQualityMonitorV2PlainArgs args) {
+        return getQualityMonitorV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch a quality monitors v2.
+     * 
+     * &gt; **Note** This data source can only be used with an workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a quality monitor by uc object type (currently only support `schema`) and object id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("my_catalog.my_schema")
+     *             .build());
+     * 
+     *         final var thisGetQualityMonitorV2 = DatabricksFunctions.getQualityMonitorV2(GetQualityMonitorV2Args.builder()
+     *             .objectType("schema")
+     *             .objectId(this_.schemaInfo().schemaId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetQualityMonitorV2Result> getQualityMonitorV2(GetQualityMonitorV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getQualityMonitorV2:getQualityMonitorV2", TypeShape.of(GetQualityMonitorV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch a quality monitors v2.
+     * 
+     * &gt; **Note** This data source can only be used with an workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a quality monitor by uc object type (currently only support `schema`) and object id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("my_catalog.my_schema")
+     *             .build());
+     * 
+     *         final var thisGetQualityMonitorV2 = DatabricksFunctions.getQualityMonitorV2(GetQualityMonitorV2Args.builder()
+     *             .objectType("schema")
+     *             .objectId(this_.schemaInfo().schemaId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetQualityMonitorV2Result> getQualityMonitorV2(GetQualityMonitorV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getQualityMonitorV2:getQualityMonitorV2", TypeShape.of(GetQualityMonitorV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch a quality monitors v2.
+     * 
+     * &gt; **Note** This data source can only be used with an workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a quality monitor by uc object type (currently only support `schema`) and object id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("my_catalog.my_schema")
+     *             .build());
+     * 
+     *         final var thisGetQualityMonitorV2 = DatabricksFunctions.getQualityMonitorV2(GetQualityMonitorV2Args.builder()
+     *             .objectType("schema")
+     *             .objectId(this_.schemaInfo().schemaId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetQualityMonitorV2Result> getQualityMonitorV2Plain(GetQualityMonitorV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getQualityMonitorV2:getQualityMonitorV2", TypeShape.of(GetQualityMonitorV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch the list of quality monitors v2.
+     * 
+     * &gt; **Note** This data source can only be used with an workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all quality monitors:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getQualityMonitorsV2(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetQualityMonitorsV2Result> getQualityMonitorsV2() {
+        return getQualityMonitorsV2(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of quality monitors v2.
+     * 
+     * &gt; **Note** This data source can only be used with an workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all quality monitors:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getQualityMonitorsV2(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetQualityMonitorsV2Result> getQualityMonitorsV2Plain() {
+        return getQualityMonitorsV2Plain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of quality monitors v2.
+     * 
+     * &gt; **Note** This data source can only be used with an workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all quality monitors:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getQualityMonitorsV2(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetQualityMonitorsV2Result> getQualityMonitorsV2(InvokeArgs args) {
+        return getQualityMonitorsV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of quality monitors v2.
+     * 
+     * &gt; **Note** This data source can only be used with an workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all quality monitors:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getQualityMonitorsV2(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetQualityMonitorsV2Result> getQualityMonitorsV2Plain(InvokeArgs args) {
+        return getQualityMonitorsV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of quality monitors v2.
+     * 
+     * &gt; **Note** This data source can only be used with an workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all quality monitors:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getQualityMonitorsV2(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetQualityMonitorsV2Result> getQualityMonitorsV2(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", TypeShape.of(GetQualityMonitorsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch the list of quality monitors v2.
+     * 
+     * &gt; **Note** This data source can only be used with an workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all quality monitors:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getQualityMonitorsV2(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetQualityMonitorsV2Result> getQualityMonitorsV2(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", TypeShape.of(GetQualityMonitorsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch the list of quality monitors v2.
+     * 
+     * &gt; **Note** This data source can only be used with an workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all quality monitors:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getQualityMonitorsV2(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetQualityMonitorsV2Result> getQualityMonitorsV2Plain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", TypeShape.of(GetQualityMonitorsV2Result.class), args, Utilities.withVersion(options));
     }
     public static Output<GetRecipientFederationPoliciesResult> getRecipientFederationPolicies() {
         return getRecipientFederationPolicies(InvokeArgs.Empty, InvokeOptions.Empty);

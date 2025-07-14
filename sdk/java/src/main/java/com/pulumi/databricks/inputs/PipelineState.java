@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PipelineClusterArgs;
 import com.pulumi.databricks.inputs.PipelineDeploymentArgs;
+import com.pulumi.databricks.inputs.PipelineEnvironmentArgs;
 import com.pulumi.databricks.inputs.PipelineEventLogArgs;
 import com.pulumi.databricks.inputs.PipelineFiltersArgs;
 import com.pulumi.databricks.inputs.PipelineGatewayDefinitionArgs;
@@ -200,6 +201,13 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> edition() {
         return Optional.ofNullable(this.edition);
+    }
+
+    @Import(name="environment")
+    private @Nullable Output<PipelineEnvironmentArgs> environment;
+
+    public Optional<Output<PipelineEnvironmentArgs>> environment() {
+        return Optional.ofNullable(this.environment);
     }
 
     /**
@@ -423,6 +431,21 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      * 
      */
@@ -475,6 +498,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         this.deployment = $.deployment;
         this.development = $.development;
         this.edition = $.edition;
+        this.environment = $.environment;
         this.eventLog = $.eventLog;
         this.expectedLastModified = $.expectedLastModified;
         this.filters = $.filters;
@@ -495,6 +519,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         this.serverless = $.serverless;
         this.state = $.state;
         this.storage = $.storage;
+        this.tags = $.tags;
         this.target = $.target;
         this.trigger = $.trigger;
         this.url = $.url;
@@ -763,6 +788,15 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder edition(String edition) {
             return edition(Output.of(edition));
+        }
+
+        public Builder environment(@Nullable Output<PipelineEnvironmentArgs> environment) {
+            $.environment = environment;
+            return this;
+        }
+
+        public Builder environment(PipelineEnvironmentArgs environment) {
+            return environment(Output.of(environment));
         }
 
         /**
@@ -1081,6 +1115,27 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder storage(String storage) {
             return storage(Output.of(storage));
+        }
+
+        /**
+         * @param tags A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

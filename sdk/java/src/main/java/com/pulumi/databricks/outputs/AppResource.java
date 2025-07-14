@@ -49,6 +49,10 @@ public final class AppResource {
      * 
      */
     private @Nullable AppResourceSqlWarehouse sqlWarehouse;
+    /**
+     * @return attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
+     * 
+     */
     private @Nullable AppResourceUcSecurable ucSecurable;
 
     private AppResource() {}
@@ -96,6 +100,10 @@ public final class AppResource {
     public Optional<AppResourceSqlWarehouse> sqlWarehouse() {
         return Optional.ofNullable(this.sqlWarehouse);
     }
+    /**
+     * @return attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
+     * 
+     */
     public Optional<AppResourceUcSecurable> ucSecurable() {
         return Optional.ofNullable(this.ucSecurable);
     }

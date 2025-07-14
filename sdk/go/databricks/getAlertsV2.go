@@ -11,6 +11,38 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
+//
+// You can use this data source to:
+// - Get a comprehensive list of all alerts in your workspace
+// - Monitor and audit alert configurations across your workspace
+//
+// ## Example Usage
+//
+// ### List All Alerts
+// This example retrieves all alerts accessible to the current user:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.LookupAlertV2(ctx, &databricks.LookupAlertV2Args{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAlertsV2(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupAlertsV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlertsV2Result

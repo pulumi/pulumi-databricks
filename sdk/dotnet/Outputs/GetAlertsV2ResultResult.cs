@@ -38,7 +38,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+        /// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
         /// </summary>
         public readonly string LifecycleState;
         /// <summary>

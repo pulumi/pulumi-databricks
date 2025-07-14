@@ -27,7 +27,7 @@ class GetJobsResult:
     """
     A collection of values returned by getJobs.
     """
-    def __init__(__self__, id=None, ids=None, job_name_contains=None):
+    def __init__(__self__, id=None, ids=None, job_name_contains=None, key=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -37,6 +37,9 @@ class GetJobsResult:
         if job_name_contains and not isinstance(job_name_contains, str):
             raise TypeError("Expected argument 'job_name_contains' to be a str")
         pulumi.set(__self__, "job_name_contains", job_name_contains)
+        if key and not isinstance(key, str):
+            raise TypeError("Expected argument 'key' to be a str")
+        pulumi.set(__self__, "key", key)
 
     @property
     @pulumi.getter
@@ -59,6 +62,11 @@ class GetJobsResult:
     def job_name_contains(self) -> Optional[builtins.str]:
         return pulumi.get(self, "job_name_contains")
 
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "key")
+
 
 class AwaitableGetJobsResult(GetJobsResult):
     # pylint: disable=using-constant-test
@@ -68,18 +76,20 @@ class AwaitableGetJobsResult(GetJobsResult):
         return GetJobsResult(
             id=self.id,
             ids=self.ids,
-            job_name_contains=self.job_name_contains)
+            job_name_contains=self.job_name_contains,
+            key=self.key)
 
 
 def get_jobs(ids: Optional[Mapping[str, builtins.str]] = None,
              job_name_contains: Optional[builtins.str] = None,
+             key: Optional[builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobsResult:
     """
     Retrieves a list of Job ids, that were created by Pulumi or manually, so that special handling could be applied.
 
     > This data source can only be used with a workspace-level provider!
 
-    > Data resource will error in case of jobs with duplicate names.
+    > By default, this data resource will error in case of jobs with duplicate names. To support duplicate names, set `key = "id"` to map jobs by ID.
 
     ## Example Usage
 
@@ -90,7 +100,6 @@ def get_jobs(ids: Optional[Mapping[str, builtins.str]] = None,
     import pulumi_databricks as databricks
 
     this = databricks.get_jobs()
-    tests = databricks.get_jobs(job_name_contains="test")
     everyone_can_view_all_jobs = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
         everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{range['key']}",
@@ -107,8 +116,25 @@ def get_jobs(ids: Optional[Mapping[str, builtins.str]] = None,
     import pulumi
     import pulumi_databricks as databricks
 
-    this = databricks.get_jobs()
+    this = databricks.get_jobs(job_name_contains="test")
     pulumi.export("x", f"ID of `x` job is {this.ids['x']}")
+    ```
+
+    Getting IDs of Job mapped by ID, allowing duplicate job names:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_jobs(key="id")
+    everyone_can_view_all_jobs = []
+    for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
+        everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{range['key']}",
+            job_id=range["value"],
+            access_controls=[{
+                "group_name": "users",
+                "permission_level": "CAN_VIEW",
+            }]))
     ```
 
     ## Related Resources
@@ -120,26 +146,30 @@ def get_jobs(ids: Optional[Mapping[str, builtins.str]] = None,
 
     :param Mapping[str, builtins.str] ids: map of Job names to ids
     :param builtins.str job_name_contains: Only return Job ids that match the given name string (case-insensitive).
+    :param builtins.str key: Attribute to use for keys in the returned map of Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
     """
     __args__ = dict()
     __args__['ids'] = ids
     __args__['jobNameContains'] = job_name_contains
+    __args__['key'] = key
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getJobs:getJobs', __args__, opts=opts, typ=GetJobsResult).value
 
     return AwaitableGetJobsResult(
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
-        job_name_contains=pulumi.get(__ret__, 'job_name_contains'))
+        job_name_contains=pulumi.get(__ret__, 'job_name_contains'),
+        key=pulumi.get(__ret__, 'key'))
 def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, builtins.str]]]] = None,
                     job_name_contains: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                    key: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetJobsResult]:
     """
     Retrieves a list of Job ids, that were created by Pulumi or manually, so that special handling could be applied.
 
     > This data source can only be used with a workspace-level provider!
 
-    > Data resource will error in case of jobs with duplicate names.
+    > By default, this data resource will error in case of jobs with duplicate names. To support duplicate names, set `key = "id"` to map jobs by ID.
 
     ## Example Usage
 
@@ -150,7 +180,6 @@ def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, builtins.st
     import pulumi_databricks as databricks
 
     this = databricks.get_jobs()
-    tests = databricks.get_jobs(job_name_contains="test")
     everyone_can_view_all_jobs = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
         everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{range['key']}",
@@ -167,8 +196,25 @@ def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, builtins.st
     import pulumi
     import pulumi_databricks as databricks
 
-    this = databricks.get_jobs()
+    this = databricks.get_jobs(job_name_contains="test")
     pulumi.export("x", f"ID of `x` job is {this.ids['x']}")
+    ```
+
+    Getting IDs of Job mapped by ID, allowing duplicate job names:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_jobs(key="id")
+    everyone_can_view_all_jobs = []
+    for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
+        everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{range['key']}",
+            job_id=range["value"],
+            access_controls=[{
+                "group_name": "users",
+                "permission_level": "CAN_VIEW",
+            }]))
     ```
 
     ## Related Resources
@@ -180,13 +226,16 @@ def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, builtins.st
 
     :param Mapping[str, builtins.str] ids: map of Job names to ids
     :param builtins.str job_name_contains: Only return Job ids that match the given name string (case-insensitive).
+    :param builtins.str key: Attribute to use for keys in the returned map of Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
     """
     __args__ = dict()
     __args__['ids'] = ids
     __args__['jobNameContains'] = job_name_contains
+    __args__['key'] = key
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getJobs:getJobs', __args__, opts=opts, typ=GetJobsResult)
     return __ret__.apply(lambda __response__: GetJobsResult(
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
-        job_name_contains=pulumi.get(__response__, 'job_name_contains')))
+        job_name_contains=pulumi.get(__response__, 'job_name_contains'),
+        key=pulumi.get(__response__, 'key')))

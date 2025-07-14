@@ -53,7 +53,7 @@ class UserArgs:
         :param pulumi.Input[builtins.str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
         :param pulumi.Input[builtins.str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the user to have access to a Databricks Workspace.
-        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         pulumi.set(__self__, "user_name", user_name)
         if acl_principal_id is not None:
@@ -271,7 +271,7 @@ class UserArgs:
     @pulumi.getter(name="workspaceConsume")
     def workspace_consume(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 
@@ -316,7 +316,7 @@ class _UserState:
         :param pulumi.Input[builtins.str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         :param pulumi.Input[builtins.str] user_name: This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
         :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the user to have access to a Databricks Workspace.
-        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         if acl_principal_id is not None:
             pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -535,7 +535,7 @@ class _UserState:
     @pulumi.getter(name="workspaceConsume")
     def workspace_consume(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 
@@ -689,7 +689,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         :param pulumi.Input[builtins.str] user_name: This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
         :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the user to have access to a Databricks Workspace.
-        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         ...
     @overload
@@ -908,7 +908,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         :param pulumi.Input[builtins.str] user_name: This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
         :param pulumi.Input[builtins.bool] workspace_access: This is a field to allow the user to have access to a Databricks Workspace.
-        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        :param pulumi.Input[builtins.bool] workspace_consume: This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1056,7 +1056,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="workspaceConsume")
     def workspace_consume(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+        This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 

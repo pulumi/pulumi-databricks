@@ -122,6 +122,10 @@ export class Schema extends pulumi.CustomResource {
      */
     public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * The unique identifier of the schema.
+     */
+    public /*out*/ readonly schemaId!: pulumi.Output<string>;
+    /**
      * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      */
     public readonly storageRoot!: pulumi.Output<string | undefined>;
@@ -147,6 +151,7 @@ export class Schema extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
             resourceInputs["properties"] = state ? state.properties : undefined;
+            resourceInputs["schemaId"] = state ? state.schemaId : undefined;
             resourceInputs["storageRoot"] = state ? state.storageRoot : undefined;
         } else {
             const args = argsOrState as SchemaArgs | undefined;
@@ -162,6 +167,7 @@ export class Schema extends pulumi.CustomResource {
             resourceInputs["owner"] = args ? args.owner : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["storageRoot"] = args ? args.storageRoot : undefined;
+            resourceInputs["schemaId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Schema.__pulumiType, name, resourceInputs, opts);
@@ -201,6 +207,10 @@ export interface SchemaState {
      * Extensible Schema properties.
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The unique identifier of the schema.
+     */
+    schemaId?: pulumi.Input<string>;
     /**
      * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      */

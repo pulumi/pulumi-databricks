@@ -27,13 +27,7 @@ class GetDatabaseInstanceResult:
     """
     A collection of values returned by getDatabaseInstance.
     """
-    def __init__(__self__, admin_password=None, admin_rolename=None, capacity=None, creation_time=None, creator=None, id=None, name=None, pg_version=None, read_write_dns=None, state=None, stopped=None, uid=None):
-        if admin_password and not isinstance(admin_password, str):
-            raise TypeError("Expected argument 'admin_password' to be a str")
-        pulumi.set(__self__, "admin_password", admin_password)
-        if admin_rolename and not isinstance(admin_rolename, str):
-            raise TypeError("Expected argument 'admin_rolename' to be a str")
-        pulumi.set(__self__, "admin_rolename", admin_rolename)
+    def __init__(__self__, capacity=None, creation_time=None, creator=None, effective_stopped=None, id=None, name=None, pg_version=None, read_write_dns=None, state=None, stopped=None, uid=None):
         if capacity and not isinstance(capacity, str):
             raise TypeError("Expected argument 'capacity' to be a str")
         pulumi.set(__self__, "capacity", capacity)
@@ -43,6 +37,9 @@ class GetDatabaseInstanceResult:
         if creator and not isinstance(creator, str):
             raise TypeError("Expected argument 'creator' to be a str")
         pulumi.set(__self__, "creator", creator)
+        if effective_stopped and not isinstance(effective_stopped, bool):
+            raise TypeError("Expected argument 'effective_stopped' to be a bool")
+        pulumi.set(__self__, "effective_stopped", effective_stopped)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -66,26 +63,10 @@ class GetDatabaseInstanceResult:
         pulumi.set(__self__, "uid", uid)
 
     @property
-    @pulumi.getter(name="adminPassword")
-    def admin_password(self) -> Optional[builtins.str]:
-        """
-        (string) - Password for admin user to create. If not provided, no user will be created
-        """
-        return pulumi.get(self, "admin_password")
-
-    @property
-    @pulumi.getter(name="adminRolename")
-    def admin_rolename(self) -> Optional[builtins.str]:
-        """
-        (string) - Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-        """
-        return pulumi.get(self, "admin_rolename")
-
-    @property
     @pulumi.getter
     def capacity(self) -> Optional[builtins.str]:
         """
-        (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+        (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         """
         return pulumi.get(self, "capacity")
 
@@ -104,6 +85,16 @@ class GetDatabaseInstanceResult:
         (string) - The email of the creator of the instance
         """
         return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter(name="effectiveStopped")
+    def effective_stopped(self) -> builtins.bool:
+        """
+        (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+        `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        """
+        return pulumi.get(self, "effective_stopped")
 
     @property
     @pulumi.getter
@@ -141,7 +132,7 @@ class GetDatabaseInstanceResult:
     @pulumi.getter
     def state(self) -> builtins.str:
         """
-        (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+        (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         """
         return pulumi.get(self, "state")
 
@@ -168,11 +159,10 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
         if False:
             yield self
         return GetDatabaseInstanceResult(
-            admin_password=self.admin_password,
-            admin_rolename=self.admin_rolename,
             capacity=self.capacity,
             creation_time=self.creation_time,
             creator=self.creator,
+            effective_stopped=self.effective_stopped,
             id=self.id,
             name=self.name,
             pg_version=self.pg_version,
@@ -182,24 +172,30 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             uid=self.uid)
 
 
-def get_database_instance(admin_password: Optional[builtins.str] = None,
-                          admin_rolename: Optional[builtins.str] = None,
-                          capacity: Optional[builtins.str] = None,
+def get_database_instance(capacity: Optional[builtins.str] = None,
                           name: Optional[builtins.str] = None,
                           stopped: Optional[builtins.bool] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseInstanceResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source can be used to get a single Database Instance.
 
-    :param builtins.str admin_password: (string) - Password for admin user to create. If not provided, no user will be created
-    :param builtins.str admin_rolename: (string) - Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-    :param builtins.str capacity: (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+    ## Example Usage
+
+    Referring to a Database Instance by name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_database_instance(name="my-database-instance")
+    ```
+
+
+    :param builtins.str capacity: (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
     :param builtins.str name: The name of the instance. This is the unique identifier for the instance
     :param builtins.bool stopped: (boolean) - Whether the instance is stopped
     """
     __args__ = dict()
-    __args__['adminPassword'] = admin_password
-    __args__['adminRolename'] = admin_rolename
     __args__['capacity'] = capacity
     __args__['name'] = name
     __args__['stopped'] = stopped
@@ -207,11 +203,10 @@ def get_database_instance(admin_password: Optional[builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getDatabaseInstance:getDatabaseInstance', __args__, opts=opts, typ=GetDatabaseInstanceResult).value
 
     return AwaitableGetDatabaseInstanceResult(
-        admin_password=pulumi.get(__ret__, 'admin_password'),
-        admin_rolename=pulumi.get(__ret__, 'admin_rolename'),
         capacity=pulumi.get(__ret__, 'capacity'),
         creation_time=pulumi.get(__ret__, 'creation_time'),
         creator=pulumi.get(__ret__, 'creator'),
+        effective_stopped=pulumi.get(__ret__, 'effective_stopped'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         pg_version=pulumi.get(__ret__, 'pg_version'),
@@ -219,35 +214,40 @@ def get_database_instance(admin_password: Optional[builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         stopped=pulumi.get(__ret__, 'stopped'),
         uid=pulumi.get(__ret__, 'uid'))
-def get_database_instance_output(admin_password: Optional[pulumi.Input[Optional[builtins.str]]] = None,
-                                 admin_rolename: Optional[pulumi.Input[Optional[builtins.str]]] = None,
-                                 capacity: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+def get_database_instance_output(capacity: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                  name: Optional[pulumi.Input[builtins.str]] = None,
                                  stopped: Optional[pulumi.Input[Optional[builtins.bool]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstanceResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source can be used to get a single Database Instance.
 
-    :param builtins.str admin_password: (string) - Password for admin user to create. If not provided, no user will be created
-    :param builtins.str admin_rolename: (string) - Name of the admin role for the instance. If not provided, defaults to 'databricks_admin'
-    :param builtins.str capacity: (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4"
+    ## Example Usage
+
+    Referring to a Database Instance by name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_database_instance(name="my-database-instance")
+    ```
+
+
+    :param builtins.str capacity: (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
     :param builtins.str name: The name of the instance. This is the unique identifier for the instance
     :param builtins.bool stopped: (boolean) - Whether the instance is stopped
     """
     __args__ = dict()
-    __args__['adminPassword'] = admin_password
-    __args__['adminRolename'] = admin_rolename
     __args__['capacity'] = capacity
     __args__['name'] = name
     __args__['stopped'] = stopped
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDatabaseInstance:getDatabaseInstance', __args__, opts=opts, typ=GetDatabaseInstanceResult)
     return __ret__.apply(lambda __response__: GetDatabaseInstanceResult(
-        admin_password=pulumi.get(__response__, 'admin_password'),
-        admin_rolename=pulumi.get(__response__, 'admin_rolename'),
         capacity=pulumi.get(__response__, 'capacity'),
         creation_time=pulumi.get(__response__, 'creation_time'),
         creator=pulumi.get(__response__, 'creator'),
+        effective_stopped=pulumi.get(__response__, 'effective_stopped'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         pg_version=pulumi.get(__response__, 'pg_version'),

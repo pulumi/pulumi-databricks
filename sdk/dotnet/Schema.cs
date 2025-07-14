@@ -129,6 +129,12 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier of the schema.
+        /// </summary>
+        [Output("schemaId")]
+        public Output<string> SchemaId { get; private set; } = null!;
+
+        /// <summary>
         /// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         /// </summary>
         [Output("storageRoot")]
@@ -295,6 +301,12 @@ namespace Pulumi.Databricks
             get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
+
+        /// <summary>
+        /// The unique identifier of the schema.
+        /// </summary>
+        [Input("schemaId")]
+        public Input<string>? SchemaId { get; set; }
 
         /// <summary>
         /// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.

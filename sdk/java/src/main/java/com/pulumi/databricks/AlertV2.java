@@ -17,9 +17,21 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The Alert v2 resource allows you to manage SQL alerts in Databricks SQL. Alerts monitor query results and notify you when specific conditions are met.
+ * 
+ * Alerts run on a schedule and evaluate query results against defined thresholds. When an alert is triggered, notifications can be sent to specified users or destinations.
+ * 
+ * ## Example Usage
+ * 
+ * ### Basic Alert Example
+ * This example creates a basic alert that monitors a query and sends notifications to a user when the value exceeds a threshold:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
- * As of terraform v1.5, resources can be imported through configuration.
+ * As of Pulumi v1.5, resources can be imported through configuration.
  * 
  * hcl
  * 
@@ -31,7 +43,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * If you are using an older version of terraform, you can import the resource using cli as follows:
+ * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
  * $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 id
@@ -103,14 +115,14 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.evaluation);
     }
     /**
-     * (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
      * 
      */
     @Export(name="lifecycleState", refs={String.class}, tree="[0]")
     private Output<String> lifecycleState;
 
     /**
-     * @return (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     * @return (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
      * 
      */
     public Output<String> lifecycleState() {

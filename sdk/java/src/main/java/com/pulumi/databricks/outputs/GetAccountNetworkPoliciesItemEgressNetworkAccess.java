@@ -32,7 +32,7 @@ public final class GetAccountNetworkPoliciesItemEgressNetworkAccess {
      */
     private @Nullable GetAccountNetworkPoliciesItemEgressNetworkAccessPolicyEnforcement policyEnforcement;
     /**
-     * @return (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+     * @return (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
      * 
      */
     private String restrictionMode;
@@ -60,7 +60,7 @@ public final class GetAccountNetworkPoliciesItemEgressNetworkAccess {
         return Optional.ofNullable(this.policyEnforcement);
     }
     /**
-     * @return (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+     * @return (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
      * 
      */
     public String restrictionMode() {

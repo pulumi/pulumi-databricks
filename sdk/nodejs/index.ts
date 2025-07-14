@@ -400,10 +400,30 @@ export const getNotificationDestinations: typeof import("./getNotificationDestin
 export const getNotificationDestinationsOutput: typeof import("./getNotificationDestinations").getNotificationDestinationsOutput = null as any;
 utilities.lazyLoad(exports, ["getNotificationDestinations","getNotificationDestinationsOutput"], () => require("./getNotificationDestinations"));
 
+export { GetOnlineStoreArgs, GetOnlineStoreResult, GetOnlineStoreOutputArgs } from "./getOnlineStore";
+export const getOnlineStore: typeof import("./getOnlineStore").getOnlineStore = null as any;
+export const getOnlineStoreOutput: typeof import("./getOnlineStore").getOnlineStoreOutput = null as any;
+utilities.lazyLoad(exports, ["getOnlineStore","getOnlineStoreOutput"], () => require("./getOnlineStore"));
+
+export { GetOnlineStoresResult } from "./getOnlineStores";
+export const getOnlineStores: typeof import("./getOnlineStores").getOnlineStores = null as any;
+export const getOnlineStoresOutput: typeof import("./getOnlineStores").getOnlineStoresOutput = null as any;
+utilities.lazyLoad(exports, ["getOnlineStores","getOnlineStoresOutput"], () => require("./getOnlineStores"));
+
 export { GetPipelinesArgs, GetPipelinesResult, GetPipelinesOutputArgs } from "./getPipelines";
 export const getPipelines: typeof import("./getPipelines").getPipelines = null as any;
 export const getPipelinesOutput: typeof import("./getPipelines").getPipelinesOutput = null as any;
 utilities.lazyLoad(exports, ["getPipelines","getPipelinesOutput"], () => require("./getPipelines"));
+
+export { GetQualityMonitorV2Args, GetQualityMonitorV2Result, GetQualityMonitorV2OutputArgs } from "./getQualityMonitorV2";
+export const getQualityMonitorV2: typeof import("./getQualityMonitorV2").getQualityMonitorV2 = null as any;
+export const getQualityMonitorV2Output: typeof import("./getQualityMonitorV2").getQualityMonitorV2Output = null as any;
+utilities.lazyLoad(exports, ["getQualityMonitorV2","getQualityMonitorV2Output"], () => require("./getQualityMonitorV2"));
+
+export { GetQualityMonitorsV2Result } from "./getQualityMonitorsV2";
+export const getQualityMonitorsV2: typeof import("./getQualityMonitorsV2").getQualityMonitorsV2 = null as any;
+export const getQualityMonitorsV2Output: typeof import("./getQualityMonitorsV2").getQualityMonitorsV2Output = null as any;
+utilities.lazyLoad(exports, ["getQualityMonitorsV2","getQualityMonitorsV2Output"], () => require("./getQualityMonitorsV2"));
 
 export { GetRecipientFederationPoliciesResult } from "./getRecipientFederationPolicies";
 export const getRecipientFederationPolicies: typeof import("./getRecipientFederationPolicies").getRecipientFederationPolicies = null as any;
@@ -720,6 +740,11 @@ export type OboToken = import("./oboToken").OboToken;
 export const OboToken: typeof import("./oboToken").OboToken = null as any;
 utilities.lazyLoad(exports, ["OboToken"], () => require("./oboToken"));
 
+export { OnlineStoreArgs, OnlineStoreState } from "./onlineStore";
+export type OnlineStore = import("./onlineStore").OnlineStore;
+export const OnlineStore: typeof import("./onlineStore").OnlineStore = null as any;
+utilities.lazyLoad(exports, ["OnlineStore"], () => require("./onlineStore"));
+
 export { OnlineTableArgs, OnlineTableState } from "./onlineTable";
 export type OnlineTable = import("./onlineTable").OnlineTable;
 export const OnlineTable: typeof import("./onlineTable").OnlineTable = null as any;
@@ -747,6 +772,11 @@ export { QualityMonitorArgs, QualityMonitorState } from "./qualityMonitor";
 export type QualityMonitor = import("./qualityMonitor").QualityMonitor;
 export const QualityMonitor: typeof import("./qualityMonitor").QualityMonitor = null as any;
 utilities.lazyLoad(exports, ["QualityMonitor"], () => require("./qualityMonitor"));
+
+export { QualityMonitorV2Args, QualityMonitorV2State } from "./qualityMonitorV2";
+export type QualityMonitorV2 = import("./qualityMonitorV2").QualityMonitorV2;
+export const QualityMonitorV2: typeof import("./qualityMonitorV2").QualityMonitorV2 = null as any;
+utilities.lazyLoad(exports, ["QualityMonitorV2"], () => require("./qualityMonitorV2"));
 
 export { QueryArgs, QueryState } from "./query";
 export type Query = import("./query").Query;
@@ -1087,6 +1117,8 @@ const _module = {
                 return new NotificationDestination(name, <any>undefined, { urn })
             case "databricks:index/oboToken:OboToken":
                 return new OboToken(name, <any>undefined, { urn })
+            case "databricks:index/onlineStore:OnlineStore":
+                return new OnlineStore(name, <any>undefined, { urn })
             case "databricks:index/onlineTable:OnlineTable":
                 return new OnlineTable(name, <any>undefined, { urn })
             case "databricks:index/permissionAssignment:PermissionAssignment":
@@ -1097,6 +1129,8 @@ const _module = {
                 return new Pipeline(name, <any>undefined, { urn })
             case "databricks:index/qualityMonitor:QualityMonitor":
                 return new QualityMonitor(name, <any>undefined, { urn })
+            case "databricks:index/qualityMonitorV2:QualityMonitorV2":
+                return new QualityMonitorV2(name, <any>undefined, { urn })
             case "databricks:index/query:Query":
                 return new Query(name, <any>undefined, { urn })
             case "databricks:index/recipient:Recipient":
@@ -1246,11 +1280,13 @@ pulumi.runtime.registerResourceModule("databricks", "index/mwsWorkspaces", _modu
 pulumi.runtime.registerResourceModule("databricks", "index/notebook", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/notificationDestination", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/oboToken", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/onlineStore", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/onlineTable", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/permissionAssignment", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/permissions", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/pipeline", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/qualityMonitor", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/qualityMonitorV2", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/query", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/recipient", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/recipientFederationPolicy", _module)

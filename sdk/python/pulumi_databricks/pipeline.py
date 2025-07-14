@@ -35,6 +35,7 @@ class PipelineArgs:
                  deployment: Optional[pulumi.Input['PipelineDeploymentArgs']] = None,
                  development: Optional[pulumi.Input[builtins.bool]] = None,
                  edition: Optional[pulumi.Input[builtins.str]] = None,
+                 environment: Optional[pulumi.Input['PipelineEnvironmentArgs']] = None,
                  event_log: Optional[pulumi.Input['PipelineEventLogArgs']] = None,
                  expected_last_modified: Optional[pulumi.Input[builtins.int]] = None,
                  filters: Optional[pulumi.Input['PipelineFiltersArgs']] = None,
@@ -55,6 +56,7 @@ class PipelineArgs:
                  serverless: Optional[pulumi.Input[builtins.bool]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
                  storage: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  target: Optional[pulumi.Input[builtins.str]] = None,
                  trigger: Optional[pulumi.Input['PipelineTriggerArgs']] = None,
                  url: Optional[pulumi.Input[builtins.str]] = None):
@@ -80,6 +82,7 @@ class PipelineArgs:
         :param pulumi.Input[builtins.str] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
         :param pulumi.Input[builtins.bool] serverless: An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         :param pulumi.Input[builtins.str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
         :param pulumi.Input[builtins.str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         :param pulumi.Input[builtins.str] url: URL of the DLT pipeline on the given workspace.
         """
@@ -109,6 +112,8 @@ class PipelineArgs:
             pulumi.set(__self__, "development", development)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
         if event_log is not None:
             pulumi.set(__self__, "event_log", event_log)
         if expected_last_modified is not None:
@@ -149,6 +154,8 @@ class PipelineArgs:
             pulumi.set(__self__, "state", state)
         if storage is not None:
             pulumi.set(__self__, "storage", storage)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if target is not None:
             pulumi.set(__self__, "target", target)
         if trigger is not None:
@@ -302,6 +309,15 @@ class PipelineArgs:
     @edition.setter
     def edition(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "edition", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input['PipelineEnvironmentArgs']]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input['PipelineEnvironmentArgs']]):
+        pulumi.set(self, "environment", value)
 
     @property
     @pulumi.getter(name="eventLog")
@@ -512,6 +528,18 @@ class PipelineArgs:
     @storage.setter
     def storage(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "storage", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter
@@ -563,6 +591,7 @@ class _PipelineState:
                  deployment: Optional[pulumi.Input['PipelineDeploymentArgs']] = None,
                  development: Optional[pulumi.Input[builtins.bool]] = None,
                  edition: Optional[pulumi.Input[builtins.str]] = None,
+                 environment: Optional[pulumi.Input['PipelineEnvironmentArgs']] = None,
                  event_log: Optional[pulumi.Input['PipelineEventLogArgs']] = None,
                  expected_last_modified: Optional[pulumi.Input[builtins.int]] = None,
                  filters: Optional[pulumi.Input['PipelineFiltersArgs']] = None,
@@ -583,6 +612,7 @@ class _PipelineState:
                  serverless: Optional[pulumi.Input[builtins.bool]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
                  storage: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  target: Optional[pulumi.Input[builtins.str]] = None,
                  trigger: Optional[pulumi.Input['PipelineTriggerArgs']] = None,
                  url: Optional[pulumi.Input[builtins.str]] = None):
@@ -608,6 +638,7 @@ class _PipelineState:
         :param pulumi.Input[builtins.str] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
         :param pulumi.Input[builtins.bool] serverless: An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         :param pulumi.Input[builtins.str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
         :param pulumi.Input[builtins.str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         :param pulumi.Input[builtins.str] url: URL of the DLT pipeline on the given workspace.
         """
@@ -637,6 +668,8 @@ class _PipelineState:
             pulumi.set(__self__, "development", development)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
         if event_log is not None:
             pulumi.set(__self__, "event_log", event_log)
         if expected_last_modified is not None:
@@ -677,6 +710,8 @@ class _PipelineState:
             pulumi.set(__self__, "state", state)
         if storage is not None:
             pulumi.set(__self__, "storage", storage)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if target is not None:
             pulumi.set(__self__, "target", target)
         if trigger is not None:
@@ -830,6 +865,15 @@ class _PipelineState:
     @edition.setter
     def edition(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "edition", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input['PipelineEnvironmentArgs']]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input['PipelineEnvironmentArgs']]):
+        pulumi.set(self, "environment", value)
 
     @property
     @pulumi.getter(name="eventLog")
@@ -1040,6 +1084,18 @@ class _PipelineState:
     @storage.setter
     def storage(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "storage", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter
@@ -1094,6 +1150,7 @@ class Pipeline(pulumi.CustomResource):
                  deployment: Optional[pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']]] = None,
                  development: Optional[pulumi.Input[builtins.bool]] = None,
                  edition: Optional[pulumi.Input[builtins.str]] = None,
+                 environment: Optional[pulumi.Input[Union['PipelineEnvironmentArgs', 'PipelineEnvironmentArgsDict']]] = None,
                  event_log: Optional[pulumi.Input[Union['PipelineEventLogArgs', 'PipelineEventLogArgsDict']]] = None,
                  expected_last_modified: Optional[pulumi.Input[builtins.int]] = None,
                  filters: Optional[pulumi.Input[Union['PipelineFiltersArgs', 'PipelineFiltersArgsDict']]] = None,
@@ -1114,6 +1171,7 @@ class Pipeline(pulumi.CustomResource):
                  serverless: Optional[pulumi.Input[builtins.bool]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
                  storage: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  target: Optional[pulumi.Input[builtins.str]] = None,
                  trigger: Optional[pulumi.Input[Union['PipelineTriggerArgs', 'PipelineTriggerArgsDict']]] = None,
                  url: Optional[pulumi.Input[builtins.str]] = None,
@@ -1240,6 +1298,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
         :param pulumi.Input[builtins.bool] serverless: An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         :param pulumi.Input[builtins.str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
         :param pulumi.Input[builtins.str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         :param pulumi.Input[builtins.str] url: URL of the DLT pipeline on the given workspace.
         """
@@ -1377,6 +1436,7 @@ class Pipeline(pulumi.CustomResource):
                  deployment: Optional[pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']]] = None,
                  development: Optional[pulumi.Input[builtins.bool]] = None,
                  edition: Optional[pulumi.Input[builtins.str]] = None,
+                 environment: Optional[pulumi.Input[Union['PipelineEnvironmentArgs', 'PipelineEnvironmentArgsDict']]] = None,
                  event_log: Optional[pulumi.Input[Union['PipelineEventLogArgs', 'PipelineEventLogArgsDict']]] = None,
                  expected_last_modified: Optional[pulumi.Input[builtins.int]] = None,
                  filters: Optional[pulumi.Input[Union['PipelineFiltersArgs', 'PipelineFiltersArgsDict']]] = None,
@@ -1397,6 +1457,7 @@ class Pipeline(pulumi.CustomResource):
                  serverless: Optional[pulumi.Input[builtins.bool]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
                  storage: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  target: Optional[pulumi.Input[builtins.str]] = None,
                  trigger: Optional[pulumi.Input[Union['PipelineTriggerArgs', 'PipelineTriggerArgsDict']]] = None,
                  url: Optional[pulumi.Input[builtins.str]] = None,
@@ -1422,6 +1483,7 @@ class Pipeline(pulumi.CustomResource):
             __props__.__dict__["deployment"] = deployment
             __props__.__dict__["development"] = development
             __props__.__dict__["edition"] = edition
+            __props__.__dict__["environment"] = environment
             __props__.__dict__["event_log"] = event_log
             __props__.__dict__["expected_last_modified"] = expected_last_modified
             __props__.__dict__["filters"] = filters
@@ -1442,6 +1504,7 @@ class Pipeline(pulumi.CustomResource):
             __props__.__dict__["serverless"] = serverless
             __props__.__dict__["state"] = state
             __props__.__dict__["storage"] = storage
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["target"] = target
             __props__.__dict__["trigger"] = trigger
             __props__.__dict__["url"] = url
@@ -1468,6 +1531,7 @@ class Pipeline(pulumi.CustomResource):
             deployment: Optional[pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']]] = None,
             development: Optional[pulumi.Input[builtins.bool]] = None,
             edition: Optional[pulumi.Input[builtins.str]] = None,
+            environment: Optional[pulumi.Input[Union['PipelineEnvironmentArgs', 'PipelineEnvironmentArgsDict']]] = None,
             event_log: Optional[pulumi.Input[Union['PipelineEventLogArgs', 'PipelineEventLogArgsDict']]] = None,
             expected_last_modified: Optional[pulumi.Input[builtins.int]] = None,
             filters: Optional[pulumi.Input[Union['PipelineFiltersArgs', 'PipelineFiltersArgsDict']]] = None,
@@ -1488,6 +1552,7 @@ class Pipeline(pulumi.CustomResource):
             serverless: Optional[pulumi.Input[builtins.bool]] = None,
             state: Optional[pulumi.Input[builtins.str]] = None,
             storage: Optional[pulumi.Input[builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             target: Optional[pulumi.Input[builtins.str]] = None,
             trigger: Optional[pulumi.Input[Union['PipelineTriggerArgs', 'PipelineTriggerArgsDict']]] = None,
             url: Optional[pulumi.Input[builtins.str]] = None) -> 'Pipeline':
@@ -1518,6 +1583,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
         :param pulumi.Input[builtins.bool] serverless: An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         :param pulumi.Input[builtins.str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
         :param pulumi.Input[builtins.str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         :param pulumi.Input[builtins.str] url: URL of the DLT pipeline on the given workspace.
         """
@@ -1538,6 +1604,7 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["deployment"] = deployment
         __props__.__dict__["development"] = development
         __props__.__dict__["edition"] = edition
+        __props__.__dict__["environment"] = environment
         __props__.__dict__["event_log"] = event_log
         __props__.__dict__["expected_last_modified"] = expected_last_modified
         __props__.__dict__["filters"] = filters
@@ -1558,6 +1625,7 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["serverless"] = serverless
         __props__.__dict__["state"] = state
         __props__.__dict__["storage"] = storage
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["target"] = target
         __props__.__dict__["trigger"] = trigger
         __props__.__dict__["url"] = url
@@ -1657,6 +1725,11 @@ class Pipeline(pulumi.CustomResource):
         optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
         """
         return pulumi.get(self, "edition")
+
+    @property
+    @pulumi.getter
+    def environment(self) -> pulumi.Output[Optional['outputs.PipelineEnvironment']]:
+        return pulumi.get(self, "environment")
 
     @property
     @pulumi.getter(name="eventLog")
@@ -1787,6 +1860,14 @@ class Pipeline(pulumi.CustomResource):
         A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         """
         return pulumi.get(self, "storage")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
+        """
+        A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

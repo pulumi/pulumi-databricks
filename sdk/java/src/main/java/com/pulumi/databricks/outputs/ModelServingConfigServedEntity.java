@@ -41,10 +41,20 @@ public final class ModelServingConfigServedEntity {
      */
     private @Nullable String instanceProfileArn;
     /**
+     * @return The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+     * 
+     */
+    private @Nullable Integer maxProvisionedConcurrency;
+    /**
      * @return The maximum tokens per second that the endpoint can scale up to.
      * 
      */
     private @Nullable Integer maxProvisionedThroughput;
+    /**
+     * @return The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+     * 
+     */
+    private @Nullable Integer minProvisionedConcurrency;
     /**
      * @return The minimum tokens per second that the endpoint can scale down to.
      * 
@@ -62,7 +72,7 @@ public final class ModelServingConfigServedEntity {
      */
     private @Nullable Boolean scaleToZeroEnabled;
     /**
-     * @return The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
+     * @return The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `min_provisioned_concurrency` and `max_provisioned_concurrency`.
      * 
      */
     private @Nullable String workloadSize;
@@ -109,11 +119,25 @@ public final class ModelServingConfigServedEntity {
         return Optional.ofNullable(this.instanceProfileArn);
     }
     /**
+     * @return The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+     * 
+     */
+    public Optional<Integer> maxProvisionedConcurrency() {
+        return Optional.ofNullable(this.maxProvisionedConcurrency);
+    }
+    /**
      * @return The maximum tokens per second that the endpoint can scale up to.
      * 
      */
     public Optional<Integer> maxProvisionedThroughput() {
         return Optional.ofNullable(this.maxProvisionedThroughput);
+    }
+    /**
+     * @return The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+     * 
+     */
+    public Optional<Integer> minProvisionedConcurrency() {
+        return Optional.ofNullable(this.minProvisionedConcurrency);
     }
     /**
      * @return The minimum tokens per second that the endpoint can scale down to.
@@ -140,7 +164,7 @@ public final class ModelServingConfigServedEntity {
         return Optional.ofNullable(this.scaleToZeroEnabled);
     }
     /**
-     * @return The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
+     * @return The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `min_provisioned_concurrency` and `max_provisioned_concurrency`.
      * 
      */
     public Optional<String> workloadSize() {
@@ -168,7 +192,9 @@ public final class ModelServingConfigServedEntity {
         private @Nullable Map<String,String> environmentVars;
         private @Nullable ModelServingConfigServedEntityExternalModel externalModel;
         private @Nullable String instanceProfileArn;
+        private @Nullable Integer maxProvisionedConcurrency;
         private @Nullable Integer maxProvisionedThroughput;
+        private @Nullable Integer minProvisionedConcurrency;
         private @Nullable Integer minProvisionedThroughput;
         private @Nullable String name;
         private @Nullable Integer provisionedModelUnits;
@@ -183,7 +209,9 @@ public final class ModelServingConfigServedEntity {
     	      this.environmentVars = defaults.environmentVars;
     	      this.externalModel = defaults.externalModel;
     	      this.instanceProfileArn = defaults.instanceProfileArn;
+    	      this.maxProvisionedConcurrency = defaults.maxProvisionedConcurrency;
     	      this.maxProvisionedThroughput = defaults.maxProvisionedThroughput;
+    	      this.minProvisionedConcurrency = defaults.minProvisionedConcurrency;
     	      this.minProvisionedThroughput = defaults.minProvisionedThroughput;
     	      this.name = defaults.name;
     	      this.provisionedModelUnits = defaults.provisionedModelUnits;
@@ -223,9 +251,21 @@ public final class ModelServingConfigServedEntity {
             return this;
         }
         @CustomType.Setter
+        public Builder maxProvisionedConcurrency(@Nullable Integer maxProvisionedConcurrency) {
+
+            this.maxProvisionedConcurrency = maxProvisionedConcurrency;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxProvisionedThroughput(@Nullable Integer maxProvisionedThroughput) {
 
             this.maxProvisionedThroughput = maxProvisionedThroughput;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder minProvisionedConcurrency(@Nullable Integer minProvisionedConcurrency) {
+
+            this.minProvisionedConcurrency = minProvisionedConcurrency;
             return this;
         }
         @CustomType.Setter
@@ -271,7 +311,9 @@ public final class ModelServingConfigServedEntity {
             _resultValue.environmentVars = environmentVars;
             _resultValue.externalModel = externalModel;
             _resultValue.instanceProfileArn = instanceProfileArn;
+            _resultValue.maxProvisionedConcurrency = maxProvisionedConcurrency;
             _resultValue.maxProvisionedThroughput = maxProvisionedThroughput;
+            _resultValue.minProvisionedConcurrency = minProvisionedConcurrency;
             _resultValue.minProvisionedThroughput = minProvisionedThroughput;
             _resultValue.name = name;
             _resultValue.provisionedModelUnits = provisionedModelUnits;

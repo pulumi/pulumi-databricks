@@ -20,14 +20,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; This resource can only be used with a workspace-level provider!
+ * 
  * Lakehouse Federation is the query federation platform for Databricks. Databricks uses Unity Catalog to manage query federation. To make a dataset available for read-only querying using Lakehouse Federation, you create the following:
  * 
  * - A connection, a securable object in Unity Catalog that specifies a path and credentials for accessing an external database system.
  * - A foreign catalog
  * 
- * This resource manages connections in Unity Catalog
- * 
- * &gt; This resource can only be used with a workspace-level provider!
+ * This resource manages connections in Unity Catalog. Please note that OAuth U2M is not supported as it requires user interaction for authentication.
  * 
  * ## Example Usage
  * 
@@ -134,42 +134,6 @@ import javax.annotation.Nullable;
  * 
  * Create a connection to builtin Hive Metastore
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.Connection;
- * import com.pulumi.databricks.ConnectionArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var this_ = new Connection("this", ConnectionArgs.builder()
- *             .name("hms-builtin")
- *             .connectionType("HIVE_METASTORE")
- *             .comment("This is a connection to builtin HMS")
- *             .options(Map.of("builtin", "true"))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * This resource can be imported by `id`:
@@ -196,14 +160,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/connection:Connection")
 public class Connection extends com.pulumi.resources.CustomResource {
     /**
-     * Free-form text.
+     * Free-form text. Change forces creation of a new resource.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return Free-form text.
+     * @return Free-form text. Change forces creation of a new resource.
      * 
      */
     public Output<Optional<String>> comment() {
@@ -224,14 +188,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.connectionId;
     }
     /**
-     * Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+     * Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
      * 
      */
     @Export(name="connectionType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> connectionType;
 
     /**
-     * @return Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+     * @return Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
      * 
      */
     public Output<Optional<String>> connectionType() {
@@ -322,14 +286,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+     * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      * 
      */
     @Export(name="options", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> options;
 
     /**
-     * @return The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+     * @return The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      * 
      */
     public Output<Optional<Map<String,String>>> options() {
@@ -350,14 +314,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.owner;
     }
     /**
-     * Free-form connection properties.
+     * Free-form connection properties. Change forces creation of a new resource.
      * 
      */
     @Export(name="properties", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> properties;
 
     /**
-     * @return Free-form connection properties.
+     * @return Free-form connection properties. Change forces creation of a new resource.
      * 
      */
     public Output<Optional<Map<String,String>>> properties() {
@@ -377,9 +341,17 @@ public class Connection extends com.pulumi.resources.CustomResource {
     public Output<List<ConnectionProvisioningInfo>> provisioningInfos() {
         return this.provisioningInfos;
     }
+    /**
+     * Indicates whether the connection is read-only. Change forces creation of a new resource.
+     * 
+     */
     @Export(name="readOnly", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> readOnly;
 
+    /**
+     * @return Indicates whether the connection is read-only. Change forces creation of a new resource.
+     * 
+     */
     public Output<Boolean> readOnly() {
         return this.readOnly;
     }

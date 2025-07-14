@@ -238,7 +238,7 @@ type ServicePrincipal struct {
 	Repos pulumi.StringOutput `pulumi:"repos"`
 	// This is a field to allow the service principal to have access to a Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrOutput `pulumi:"workspaceAccess"`
-	// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrOutput `pulumi:"workspaceConsume"`
 }
 
@@ -302,7 +302,7 @@ type servicePrincipalState struct {
 	Repos *string `pulumi:"repos"`
 	// This is a field to allow the service principal to have access to a Databricks Workspace.
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
-	// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume *bool `pulumi:"workspaceConsume"`
 }
 
@@ -337,7 +337,7 @@ type ServicePrincipalState struct {
 	Repos pulumi.StringPtrInput
 	// This is a field to allow the service principal to have access to a Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrInput
-	// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrInput
 }
 
@@ -376,7 +376,7 @@ type servicePrincipalArgs struct {
 	Repos *string `pulumi:"repos"`
 	// This is a field to allow the service principal to have access to a Databricks Workspace.
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
-	// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume *bool `pulumi:"workspaceConsume"`
 }
 
@@ -412,7 +412,7 @@ type ServicePrincipalArgs struct {
 	Repos pulumi.StringPtrInput
 	// This is a field to allow the service principal to have access to a Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrInput
-	// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrInput
 }
 
@@ -578,7 +578,7 @@ func (o ServicePrincipalOutput) WorkspaceAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.BoolPtrOutput { return v.WorkspaceAccess }).(pulumi.BoolPtrOutput)
 }
 
-// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 func (o ServicePrincipalOutput) WorkspaceConsume() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.BoolPtrOutput { return v.WorkspaceConsume }).(pulumi.BoolPtrOutput)
 }

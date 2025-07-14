@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTaskCleanRoomsNotebookTask;
 import com.pulumi.databricks.outputs.JobTaskConditionTask;
 import com.pulumi.databricks.outputs.JobTaskDashboardTask;
+import com.pulumi.databricks.outputs.JobTaskDbtCloudTask;
+import com.pulumi.databricks.outputs.JobTaskDbtPlatformTask;
 import com.pulumi.databricks.outputs.JobTaskDbtTask;
 import com.pulumi.databricks.outputs.JobTaskDependsOn;
 import com.pulumi.databricks.outputs.JobTaskEmailNotifications;
@@ -40,6 +42,8 @@ public final class JobTask {
     private @Nullable JobTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
     private @Nullable JobTaskConditionTask conditionTask;
     private @Nullable JobTaskDashboardTask dashboardTask;
+    private @Nullable JobTaskDbtCloudTask dbtCloudTask;
+    private @Nullable JobTaskDbtPlatformTask dbtPlatformTask;
     private @Nullable JobTaskDbtTask dbtTask;
     /**
      * @return block specifying dependency(-ies) for a given task.
@@ -155,6 +159,12 @@ public final class JobTask {
     }
     public Optional<JobTaskDashboardTask> dashboardTask() {
         return Optional.ofNullable(this.dashboardTask);
+    }
+    public Optional<JobTaskDbtCloudTask> dbtCloudTask() {
+        return Optional.ofNullable(this.dbtCloudTask);
+    }
+    public Optional<JobTaskDbtPlatformTask> dbtPlatformTask() {
+        return Optional.ofNullable(this.dbtPlatformTask);
     }
     public Optional<JobTaskDbtTask> dbtTask() {
         return Optional.ofNullable(this.dbtTask);
@@ -334,6 +344,8 @@ public final class JobTask {
         private @Nullable JobTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
         private @Nullable JobTaskConditionTask conditionTask;
         private @Nullable JobTaskDashboardTask dashboardTask;
+        private @Nullable JobTaskDbtCloudTask dbtCloudTask;
+        private @Nullable JobTaskDbtPlatformTask dbtPlatformTask;
         private @Nullable JobTaskDbtTask dbtTask;
         private @Nullable List<JobTaskDependsOn> dependsOns;
         private @Nullable String description;
@@ -370,6 +382,8 @@ public final class JobTask {
     	      this.cleanRoomsNotebookTask = defaults.cleanRoomsNotebookTask;
     	      this.conditionTask = defaults.conditionTask;
     	      this.dashboardTask = defaults.dashboardTask;
+    	      this.dbtCloudTask = defaults.dbtCloudTask;
+    	      this.dbtPlatformTask = defaults.dbtPlatformTask;
     	      this.dbtTask = defaults.dbtTask;
     	      this.dependsOns = defaults.dependsOns;
     	      this.description = defaults.description;
@@ -418,6 +432,18 @@ public final class JobTask {
         public Builder dashboardTask(@Nullable JobTaskDashboardTask dashboardTask) {
 
             this.dashboardTask = dashboardTask;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dbtCloudTask(@Nullable JobTaskDbtCloudTask dbtCloudTask) {
+
+            this.dbtCloudTask = dbtCloudTask;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dbtPlatformTask(@Nullable JobTaskDbtPlatformTask dbtPlatformTask) {
+
+            this.dbtPlatformTask = dbtPlatformTask;
             return this;
         }
         @CustomType.Setter
@@ -613,6 +639,8 @@ public final class JobTask {
             _resultValue.cleanRoomsNotebookTask = cleanRoomsNotebookTask;
             _resultValue.conditionTask = conditionTask;
             _resultValue.dashboardTask = dashboardTask;
+            _resultValue.dbtCloudTask = dbtCloudTask;
+            _resultValue.dbtPlatformTask = dbtPlatformTask;
             _resultValue.dbtTask = dbtTask;
             _resultValue.dependsOns = dependsOns;
             _resultValue.description = description;

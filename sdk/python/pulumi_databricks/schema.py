@@ -175,6 +175,7 @@ class _SchemaState:
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  owner: Optional[pulumi.Input[builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 schema_id: Optional[pulumi.Input[builtins.str]] = None,
                  storage_root: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Schema resources.
@@ -185,6 +186,7 @@ class _SchemaState:
         :param pulumi.Input[builtins.str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[builtins.str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] properties: Extensible Schema properties.
+        :param pulumi.Input[builtins.str] schema_id: The unique identifier of the schema.
         :param pulumi.Input[builtins.str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         if catalog_name is not None:
@@ -203,6 +205,8 @@ class _SchemaState:
             pulumi.set(__self__, "owner", owner)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if schema_id is not None:
+            pulumi.set(__self__, "schema_id", schema_id)
         if storage_root is not None:
             pulumi.set(__self__, "storage_root", storage_root)
 
@@ -298,6 +302,18 @@ class _SchemaState:
     @properties.setter
     def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="schemaId")
+    def schema_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The unique identifier of the schema.
+        """
+        return pulumi.get(self, "schema_id")
+
+    @schema_id.setter
+    def schema_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "schema_id", value)
 
     @property
     @pulumi.getter(name="storageRoot")
@@ -505,6 +521,7 @@ class Schema(pulumi.CustomResource):
             __props__.__dict__["owner"] = owner
             __props__.__dict__["properties"] = properties
             __props__.__dict__["storage_root"] = storage_root
+            __props__.__dict__["schema_id"] = None
         super(Schema, __self__).__init__(
             'databricks:index/schema:Schema',
             resource_name,
@@ -523,6 +540,7 @@ class Schema(pulumi.CustomResource):
             name: Optional[pulumi.Input[builtins.str]] = None,
             owner: Optional[pulumi.Input[builtins.str]] = None,
             properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+            schema_id: Optional[pulumi.Input[builtins.str]] = None,
             storage_root: Optional[pulumi.Input[builtins.str]] = None) -> 'Schema':
         """
         Get an existing Schema resource's state with the given name, id, and optional extra
@@ -538,6 +556,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[builtins.str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] properties: Extensible Schema properties.
+        :param pulumi.Input[builtins.str] schema_id: The unique identifier of the schema.
         :param pulumi.Input[builtins.str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -552,6 +571,7 @@ class Schema(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
         __props__.__dict__["properties"] = properties
+        __props__.__dict__["schema_id"] = schema_id
         __props__.__dict__["storage_root"] = storage_root
         return Schema(resource_name, opts=opts, __props__=__props__)
 
@@ -615,6 +635,14 @@ class Schema(pulumi.CustomResource):
         Extensible Schema properties.
         """
         return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter(name="schemaId")
+    def schema_id(self) -> pulumi.Output[builtins.str]:
+        """
+        The unique identifier of the schema.
+        """
+        return pulumi.get(self, "schema_id")
 
     @property
     @pulumi.getter(name="storageRoot")

@@ -178,6 +178,7 @@ export class Pipeline extends pulumi.CustomResource {
      * optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      */
     public readonly edition!: pulumi.Output<string | undefined>;
+    public readonly environment!: pulumi.Output<outputs.PipelineEnvironment | undefined>;
     /**
      * an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
      */
@@ -229,6 +230,10 @@ export class Pipeline extends pulumi.CustomResource {
      */
     public readonly storage!: pulumi.Output<string | undefined>;
     /**
+     * A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      */
     public readonly target!: pulumi.Output<string | undefined>;
@@ -264,6 +269,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["deployment"] = state ? state.deployment : undefined;
             resourceInputs["development"] = state ? state.development : undefined;
             resourceInputs["edition"] = state ? state.edition : undefined;
+            resourceInputs["environment"] = state ? state.environment : undefined;
             resourceInputs["eventLog"] = state ? state.eventLog : undefined;
             resourceInputs["expectedLastModified"] = state ? state.expectedLastModified : undefined;
             resourceInputs["filters"] = state ? state.filters : undefined;
@@ -284,6 +290,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["serverless"] = state ? state.serverless : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["storage"] = state ? state.storage : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["target"] = state ? state.target : undefined;
             resourceInputs["trigger"] = state ? state.trigger : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
@@ -302,6 +309,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["deployment"] = args ? args.deployment : undefined;
             resourceInputs["development"] = args ? args.development : undefined;
             resourceInputs["edition"] = args ? args.edition : undefined;
+            resourceInputs["environment"] = args ? args.environment : undefined;
             resourceInputs["eventLog"] = args ? args.eventLog : undefined;
             resourceInputs["expectedLastModified"] = args ? args.expectedLastModified : undefined;
             resourceInputs["filters"] = args ? args.filters : undefined;
@@ -322,6 +330,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["serverless"] = args ? args.serverless : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["storage"] = args ? args.storage : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["target"] = args ? args.target : undefined;
             resourceInputs["trigger"] = args ? args.trigger : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
@@ -378,6 +387,7 @@ export interface PipelineState {
      * optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      */
     edition?: pulumi.Input<string>;
+    environment?: pulumi.Input<inputs.PipelineEnvironment>;
     /**
      * an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
      */
@@ -428,6 +438,10 @@ export interface PipelineState {
      * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
      */
     storage?: pulumi.Input<string>;
+    /**
+     * A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      */
@@ -486,6 +500,7 @@ export interface PipelineArgs {
      * optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      */
     edition?: pulumi.Input<string>;
+    environment?: pulumi.Input<inputs.PipelineEnvironment>;
     /**
      * an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
      */
@@ -536,6 +551,10 @@ export interface PipelineArgs {
      * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
      */
     storage?: pulumi.Input<string>;
+    /**
+     * A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      */

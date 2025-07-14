@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule;
 import com.pulumi.databricks.outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule;
 import java.util.List;
 import java.util.Objects;
@@ -11,6 +12,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MwsNetworkConnectivityConfigEgressConfigTargetRules {
+    private @Nullable List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule> awsPrivateEndpointRules;
     /**
      * @return (Azure only) - list containing information about configure Azure Private Endpoints.
      * 
@@ -18,6 +20,9 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRules {
     private @Nullable List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule> azurePrivateEndpointRules;
 
     private MwsNetworkConnectivityConfigEgressConfigTargetRules() {}
+    public List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule> awsPrivateEndpointRules() {
+        return this.awsPrivateEndpointRules == null ? List.of() : this.awsPrivateEndpointRules;
+    }
     /**
      * @return (Azure only) - list containing information about configure Azure Private Endpoints.
      * 
@@ -35,13 +40,24 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRules {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule> awsPrivateEndpointRules;
         private @Nullable List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule> azurePrivateEndpointRules;
         public Builder() {}
         public Builder(MwsNetworkConnectivityConfigEgressConfigTargetRules defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.awsPrivateEndpointRules = defaults.awsPrivateEndpointRules;
     	      this.azurePrivateEndpointRules = defaults.azurePrivateEndpointRules;
         }
 
+        @CustomType.Setter
+        public Builder awsPrivateEndpointRules(@Nullable List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule> awsPrivateEndpointRules) {
+
+            this.awsPrivateEndpointRules = awsPrivateEndpointRules;
+            return this;
+        }
+        public Builder awsPrivateEndpointRules(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule... awsPrivateEndpointRules) {
+            return awsPrivateEndpointRules(List.of(awsPrivateEndpointRules));
+        }
         @CustomType.Setter
         public Builder azurePrivateEndpointRules(@Nullable List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule> azurePrivateEndpointRules) {
 
@@ -53,6 +69,7 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRules {
         }
         public MwsNetworkConnectivityConfigEgressConfigTargetRules build() {
             final var _resultValue = new MwsNetworkConnectivityConfigEgressConfigTargetRules();
+            _resultValue.awsPrivateEndpointRules = awsPrivateEndpointRules;
             _resultValue.azurePrivateEndpointRules = azurePrivateEndpointRules;
             return _resultValue;
         }

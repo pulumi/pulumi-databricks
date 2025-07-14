@@ -25,6 +25,21 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * Granting a service principal the Account Admin role.
+ *
+ * > This can only be used with an account-level provider.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const tfAdmin = new databricks.ServicePrincipal("tf_admin", {displayName: "Pulumi Admin"});
+ * const tfAdminAccount = new databricks.ServicePrincipalRole("tf_admin_account", {
+ *     servicePrincipalId: tfAdmin.id,
+ *     role: "account_admin",
+ * });
+ * ```
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -34,6 +49,7 @@ import * as utilities from "./utilities";
  * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
  * * databricks.GroupMember to attach users and groups as group members.
  * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+ * * databricks.AccessControlRuleSet to attach other roles to account level resources.
  *
  * ## Import
  *
@@ -68,7 +84,7 @@ export class ServicePrincipalRole extends pulumi.CustomResource {
     }
 
     /**
-     * This is the id of the role or instance profile resource.
+     * This is the role name, role id, or instance profile resource.
      */
     public readonly role!: pulumi.Output<string>;
     /**
@@ -112,7 +128,7 @@ export class ServicePrincipalRole extends pulumi.CustomResource {
  */
 export interface ServicePrincipalRoleState {
     /**
-     * This is the id of the role or instance profile resource.
+     * This is the role name, role id, or instance profile resource.
      */
     role?: pulumi.Input<string>;
     /**
@@ -126,7 +142,7 @@ export interface ServicePrincipalRoleState {
  */
 export interface ServicePrincipalRoleArgs {
     /**
-     * This is the id of the role or instance profile resource.
+     * This is the role name, role id, or instance profile resource.
      */
     role: pulumi.Input<string>;
     /**

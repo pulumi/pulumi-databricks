@@ -16,9 +16,47 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Database Instances are managed Postgres instances, composed of a primary Postgres compute instance and 0 or more read replica instances.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabaseInstance;
+ * import com.pulumi.databricks.DatabaseInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new DatabaseInstance("this", DatabaseInstanceArgs.builder()
+ *             .name("my-database-instance")
+ *             .capacity("CU_2")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
- * As of terraform v1.5, resources can be imported through configuration.
+ * As of Pulumi v1.5, resources can be imported through configuration.
  * 
  * hcl
  * 
@@ -30,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  * }
  * 
- * If you are using an older version of terraform, you can import the resource using cli as follows:
+ * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
  * $ pulumi import databricks:index/databaseInstance:DatabaseInstance databricks_database_instance name
@@ -40,42 +78,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/databaseInstance:DatabaseInstance")
 public class DatabaseInstance extends com.pulumi.resources.CustomResource {
     /**
-     * Password for admin user to create. If not provided, no user will be created
-     * 
-     */
-    @Export(name="adminPassword", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> adminPassword;
-
-    /**
-     * @return Password for admin user to create. If not provided, no user will be created
-     * 
-     */
-    public Output<Optional<String>> adminPassword() {
-        return Codegen.optional(this.adminPassword);
-    }
-    /**
-     * Name of the admin role for the instance. If not provided, defaults to &#39;databricks_admin&#39;
-     * 
-     */
-    @Export(name="adminRolename", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> adminRolename;
-
-    /**
-     * @return Name of the admin role for the instance. If not provided, defaults to &#39;databricks_admin&#39;
-     * 
-     */
-    public Output<Optional<String>> adminRolename() {
-        return Codegen.optional(this.adminRolename);
-    }
-    /**
-     * The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;
+     * The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
      * 
      */
     @Export(name="capacity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> capacity;
 
     /**
-     * @return The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;
+     * @return The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
      * 
      */
     public Output<Optional<String>> capacity() {
@@ -108,6 +118,24 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> creator() {
         return this.creator;
+    }
+    /**
+     * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    @Export(name="effectiveStopped", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> effectiveStopped;
+
+    /**
+     * @return (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    public Output<Boolean> effectiveStopped() {
+        return this.effectiveStopped;
     }
     /**
      * The name of the instance. This is the unique identifier for the instance
@@ -152,14 +180,14 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.readWriteDns;
     }
     /**
-     * (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+     * (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return (string) - The current state of the instance. Possible values are: AVAILABLE, DELETING, FAILING_OVER, STARTING, STOPPED, UPDATING
+     * @return (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      * 
      */
     public Output<String> state() {

@@ -16,7 +16,7 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
-        /// &gt; Data resource will error in case of jobs with duplicate names.
+        /// &gt; By default, this data resource will error in case of jobs with duplicate names. To support duplicate names, set `key = "id"` to map jobs by ID.
         /// 
         /// ## Example Usage
         /// 
@@ -32,11 +32,6 @@ namespace Pulumi.Databricks
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
         ///     var @this = await Databricks.GetJobs.InvokeAsync();
-        /// 
-        ///     var tests = await Databricks.GetJobs.InvokeAsync(new()
-        ///     {
-        ///         JobNameContains = "test",
-        ///     });
         /// 
         ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
         ///     foreach (var range in )
@@ -67,12 +62,50 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetJobs.Invoke();
+        ///     var @this = Databricks.GetJobs.Invoke(new()
+        ///     {
+        ///         JobNameContains = "test",
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
         ///         ["x"] = @this.Apply(@this =&gt; $"ID of `x` job is {@this.Apply(getJobsResult =&gt; getJobsResult.Ids?.X)}"),
         ///     };
+        /// });
+        /// ```
+        /// 
+        /// Getting IDs of databricks.Job mapped by ID, allowing duplicate job names:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var @this = await Databricks.GetJobs.InvokeAsync(new()
+        ///     {
+        ///         Key = "id",
+        ///     });
+        /// 
+        ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
+        ///     foreach (var range in )
+        ///     {
+        ///         everyoneCanViewAllJobs.Add(new Databricks.Permissions($"everyone_can_view_all_jobs-{range.Key}", new()
+        ///         {
+        ///             JobId = range.Value,
+        ///             AccessControls = new[]
+        ///             {
+        ///                 new Databricks.Inputs.PermissionsAccessControlArgs
+        ///                 {
+        ///                     GroupName = "users",
+        ///                     PermissionLevel = "CAN_VIEW",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
         /// });
         /// ```
         /// 
@@ -90,7 +123,7 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
-        /// &gt; Data resource will error in case of jobs with duplicate names.
+        /// &gt; By default, this data resource will error in case of jobs with duplicate names. To support duplicate names, set `key = "id"` to map jobs by ID.
         /// 
         /// ## Example Usage
         /// 
@@ -106,11 +139,6 @@ namespace Pulumi.Databricks
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
         ///     var @this = await Databricks.GetJobs.InvokeAsync();
-        /// 
-        ///     var tests = await Databricks.GetJobs.InvokeAsync(new()
-        ///     {
-        ///         JobNameContains = "test",
-        ///     });
         /// 
         ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
         ///     foreach (var range in )
@@ -141,12 +169,50 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetJobs.Invoke();
+        ///     var @this = Databricks.GetJobs.Invoke(new()
+        ///     {
+        ///         JobNameContains = "test",
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
         ///         ["x"] = @this.Apply(@this =&gt; $"ID of `x` job is {@this.Apply(getJobsResult =&gt; getJobsResult.Ids?.X)}"),
         ///     };
+        /// });
+        /// ```
+        /// 
+        /// Getting IDs of databricks.Job mapped by ID, allowing duplicate job names:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var @this = await Databricks.GetJobs.InvokeAsync(new()
+        ///     {
+        ///         Key = "id",
+        ///     });
+        /// 
+        ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
+        ///     foreach (var range in )
+        ///     {
+        ///         everyoneCanViewAllJobs.Add(new Databricks.Permissions($"everyone_can_view_all_jobs-{range.Key}", new()
+        ///         {
+        ///             JobId = range.Value,
+        ///             AccessControls = new[]
+        ///             {
+        ///                 new Databricks.Inputs.PermissionsAccessControlArgs
+        ///                 {
+        ///                     GroupName = "users",
+        ///                     PermissionLevel = "CAN_VIEW",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
         /// });
         /// ```
         /// 
@@ -164,7 +230,7 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
-        /// &gt; Data resource will error in case of jobs with duplicate names.
+        /// &gt; By default, this data resource will error in case of jobs with duplicate names. To support duplicate names, set `key = "id"` to map jobs by ID.
         /// 
         /// ## Example Usage
         /// 
@@ -180,11 +246,6 @@ namespace Pulumi.Databricks
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
         ///     var @this = await Databricks.GetJobs.InvokeAsync();
-        /// 
-        ///     var tests = await Databricks.GetJobs.InvokeAsync(new()
-        ///     {
-        ///         JobNameContains = "test",
-        ///     });
         /// 
         ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
         ///     foreach (var range in )
@@ -215,12 +276,50 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.GetJobs.Invoke();
+        ///     var @this = Databricks.GetJobs.Invoke(new()
+        ///     {
+        ///         JobNameContains = "test",
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
         ///         ["x"] = @this.Apply(@this =&gt; $"ID of `x` job is {@this.Apply(getJobsResult =&gt; getJobsResult.Ids?.X)}"),
         ///     };
+        /// });
+        /// ```
+        /// 
+        /// Getting IDs of databricks.Job mapped by ID, allowing duplicate job names:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var @this = await Databricks.GetJobs.InvokeAsync(new()
+        ///     {
+        ///         Key = "id",
+        ///     });
+        /// 
+        ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
+        ///     foreach (var range in )
+        ///     {
+        ///         everyoneCanViewAllJobs.Add(new Databricks.Permissions($"everyone_can_view_all_jobs-{range.Key}", new()
+        ///         {
+        ///             JobId = range.Value,
+        ///             AccessControls = new[]
+        ///             {
+        ///                 new Databricks.Inputs.PermissionsAccessControlArgs
+        ///                 {
+        ///                     GroupName = "users",
+        ///                     PermissionLevel = "CAN_VIEW",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
         /// });
         /// ```
         /// 
@@ -255,6 +354,12 @@ namespace Pulumi.Databricks
         [Input("jobNameContains")]
         public string? JobNameContains { get; set; }
 
+        /// <summary>
+        /// Attribute to use for keys in the returned map of databricks.Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
+        /// </summary>
+        [Input("key")]
+        public string? Key { get; set; }
+
         public GetJobsArgs()
         {
         }
@@ -281,6 +386,12 @@ namespace Pulumi.Databricks
         [Input("jobNameContains")]
         public Input<string>? JobNameContains { get; set; }
 
+        /// <summary>
+        /// Attribute to use for keys in the returned map of databricks.Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
+        /// </summary>
+        [Input("key")]
+        public Input<string>? Key { get; set; }
+
         public GetJobsInvokeArgs()
         {
         }
@@ -300,6 +411,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly ImmutableDictionary<string, string> Ids;
         public readonly string? JobNameContains;
+        public readonly string? Key;
 
         [OutputConstructor]
         private GetJobsResult(
@@ -307,11 +419,14 @@ namespace Pulumi.Databricks
 
             ImmutableDictionary<string, string> ids,
 
-            string? jobNameContains)
+            string? jobNameContains,
+
+            string? key)
         {
             Id = id;
             Ids = ids;
             JobNameContains = jobNameContains;
+            Key = key;
         }
     }
 }

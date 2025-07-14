@@ -6,6 +6,17 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
+ *
+ * You can use this data source to:
+ * - Retrieve alert details for reference in other resources
+ * - Check the current state and configuration of an alert
+ * - Verify notification settings and subscribers
+ * - Examine the schedule configuration
+ *
+ * ## Example Usage
+ */
 export function getAlertV2(args?: GetAlertV2Args, opts?: pulumi.InvokeOptions): Promise<GetAlertV2Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -88,7 +99,7 @@ export interface GetAlertV2Result {
      */
     readonly id: string;
     /**
-     * (string) - Indicates whether the query is trashed. Possible values are: ACTIVE, TRASHED
+     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
      */
     readonly lifecycleState: string;
     /**
@@ -120,6 +131,17 @@ export interface GetAlertV2Result {
      */
     readonly warehouseId?: string;
 }
+/**
+ * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
+ *
+ * You can use this data source to:
+ * - Retrieve alert details for reference in other resources
+ * - Check the current state and configuration of an alert
+ * - Verify notification settings and subscribers
+ * - Examine the schedule configuration
+ *
+ * ## Example Usage
+ */
 export function getAlertV2Output(args?: GetAlertV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlertV2Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

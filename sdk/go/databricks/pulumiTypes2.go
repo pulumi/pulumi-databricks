@@ -13,6 +13,1618 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetServingEndpointsEndpointConfigServedModel struct {
+	ModelName    *string `pulumi:"modelName"`
+	ModelVersion *string `pulumi:"modelVersion"`
+	// The name of the model serving endpoint.
+	Name *string `pulumi:"name"`
+}
+
+// GetServingEndpointsEndpointConfigServedModelInput is an input type that accepts GetServingEndpointsEndpointConfigServedModelArgs and GetServingEndpointsEndpointConfigServedModelOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointConfigServedModelInput` via:
+//
+//	GetServingEndpointsEndpointConfigServedModelArgs{...}
+type GetServingEndpointsEndpointConfigServedModelInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointConfigServedModelOutput() GetServingEndpointsEndpointConfigServedModelOutput
+	ToGetServingEndpointsEndpointConfigServedModelOutputWithContext(context.Context) GetServingEndpointsEndpointConfigServedModelOutput
+}
+
+type GetServingEndpointsEndpointConfigServedModelArgs struct {
+	ModelName    pulumi.StringPtrInput `pulumi:"modelName"`
+	ModelVersion pulumi.StringPtrInput `pulumi:"modelVersion"`
+	// The name of the model serving endpoint.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GetServingEndpointsEndpointConfigServedModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointConfigServedModel)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointConfigServedModelArgs) ToGetServingEndpointsEndpointConfigServedModelOutput() GetServingEndpointsEndpointConfigServedModelOutput {
+	return i.ToGetServingEndpointsEndpointConfigServedModelOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointConfigServedModelArgs) ToGetServingEndpointsEndpointConfigServedModelOutputWithContext(ctx context.Context) GetServingEndpointsEndpointConfigServedModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointConfigServedModelOutput)
+}
+
+// GetServingEndpointsEndpointConfigServedModelArrayInput is an input type that accepts GetServingEndpointsEndpointConfigServedModelArray and GetServingEndpointsEndpointConfigServedModelArrayOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointConfigServedModelArrayInput` via:
+//
+//	GetServingEndpointsEndpointConfigServedModelArray{ GetServingEndpointsEndpointConfigServedModelArgs{...} }
+type GetServingEndpointsEndpointConfigServedModelArrayInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointConfigServedModelArrayOutput() GetServingEndpointsEndpointConfigServedModelArrayOutput
+	ToGetServingEndpointsEndpointConfigServedModelArrayOutputWithContext(context.Context) GetServingEndpointsEndpointConfigServedModelArrayOutput
+}
+
+type GetServingEndpointsEndpointConfigServedModelArray []GetServingEndpointsEndpointConfigServedModelInput
+
+func (GetServingEndpointsEndpointConfigServedModelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointConfigServedModel)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointConfigServedModelArray) ToGetServingEndpointsEndpointConfigServedModelArrayOutput() GetServingEndpointsEndpointConfigServedModelArrayOutput {
+	return i.ToGetServingEndpointsEndpointConfigServedModelArrayOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointConfigServedModelArray) ToGetServingEndpointsEndpointConfigServedModelArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointConfigServedModelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointConfigServedModelArrayOutput)
+}
+
+type GetServingEndpointsEndpointConfigServedModelOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointConfigServedModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointConfigServedModel)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointConfigServedModelOutput) ToGetServingEndpointsEndpointConfigServedModelOutput() GetServingEndpointsEndpointConfigServedModelOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointConfigServedModelOutput) ToGetServingEndpointsEndpointConfigServedModelOutputWithContext(ctx context.Context) GetServingEndpointsEndpointConfigServedModelOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointConfigServedModelOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointConfigServedModel) *string { return v.ModelName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServingEndpointsEndpointConfigServedModelOutput) ModelVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointConfigServedModel) *string { return v.ModelVersion }).(pulumi.StringPtrOutput)
+}
+
+// The name of the model serving endpoint.
+func (o GetServingEndpointsEndpointConfigServedModelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointConfigServedModel) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type GetServingEndpointsEndpointConfigServedModelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointConfigServedModelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointConfigServedModel)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointConfigServedModelArrayOutput) ToGetServingEndpointsEndpointConfigServedModelArrayOutput() GetServingEndpointsEndpointConfigServedModelArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointConfigServedModelArrayOutput) ToGetServingEndpointsEndpointConfigServedModelArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointConfigServedModelArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointConfigServedModelArrayOutput) Index(i pulumi.IntInput) GetServingEndpointsEndpointConfigServedModelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServingEndpointsEndpointConfigServedModel {
+		return vs[0].([]GetServingEndpointsEndpointConfigServedModel)[vs[1].(int)]
+	}).(GetServingEndpointsEndpointConfigServedModelOutput)
+}
+
+type GetServingEndpointsEndpointState struct {
+	ConfigUpdate *string `pulumi:"configUpdate"`
+	Ready        *string `pulumi:"ready"`
+}
+
+// GetServingEndpointsEndpointStateInput is an input type that accepts GetServingEndpointsEndpointStateArgs and GetServingEndpointsEndpointStateOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointStateInput` via:
+//
+//	GetServingEndpointsEndpointStateArgs{...}
+type GetServingEndpointsEndpointStateInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointStateOutput() GetServingEndpointsEndpointStateOutput
+	ToGetServingEndpointsEndpointStateOutputWithContext(context.Context) GetServingEndpointsEndpointStateOutput
+}
+
+type GetServingEndpointsEndpointStateArgs struct {
+	ConfigUpdate pulumi.StringPtrInput `pulumi:"configUpdate"`
+	Ready        pulumi.StringPtrInput `pulumi:"ready"`
+}
+
+func (GetServingEndpointsEndpointStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointState)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointStateArgs) ToGetServingEndpointsEndpointStateOutput() GetServingEndpointsEndpointStateOutput {
+	return i.ToGetServingEndpointsEndpointStateOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointStateArgs) ToGetServingEndpointsEndpointStateOutputWithContext(ctx context.Context) GetServingEndpointsEndpointStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointStateOutput)
+}
+
+// GetServingEndpointsEndpointStateArrayInput is an input type that accepts GetServingEndpointsEndpointStateArray and GetServingEndpointsEndpointStateArrayOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointStateArrayInput` via:
+//
+//	GetServingEndpointsEndpointStateArray{ GetServingEndpointsEndpointStateArgs{...} }
+type GetServingEndpointsEndpointStateArrayInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointStateArrayOutput() GetServingEndpointsEndpointStateArrayOutput
+	ToGetServingEndpointsEndpointStateArrayOutputWithContext(context.Context) GetServingEndpointsEndpointStateArrayOutput
+}
+
+type GetServingEndpointsEndpointStateArray []GetServingEndpointsEndpointStateInput
+
+func (GetServingEndpointsEndpointStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointState)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointStateArray) ToGetServingEndpointsEndpointStateArrayOutput() GetServingEndpointsEndpointStateArrayOutput {
+	return i.ToGetServingEndpointsEndpointStateArrayOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointStateArray) ToGetServingEndpointsEndpointStateArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointStateArrayOutput)
+}
+
+type GetServingEndpointsEndpointStateOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointState)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointStateOutput) ToGetServingEndpointsEndpointStateOutput() GetServingEndpointsEndpointStateOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointStateOutput) ToGetServingEndpointsEndpointStateOutputWithContext(ctx context.Context) GetServingEndpointsEndpointStateOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointStateOutput) ConfigUpdate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointState) *string { return v.ConfigUpdate }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServingEndpointsEndpointStateOutput) Ready() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointState) *string { return v.Ready }).(pulumi.StringPtrOutput)
+}
+
+type GetServingEndpointsEndpointStateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointState)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointStateArrayOutput) ToGetServingEndpointsEndpointStateArrayOutput() GetServingEndpointsEndpointStateArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointStateArrayOutput) ToGetServingEndpointsEndpointStateArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointStateArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointStateArrayOutput) Index(i pulumi.IntInput) GetServingEndpointsEndpointStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServingEndpointsEndpointState {
+		return vs[0].([]GetServingEndpointsEndpointState)[vs[1].(int)]
+	}).(GetServingEndpointsEndpointStateOutput)
+}
+
+type GetServingEndpointsEndpointTag struct {
+	Key   string  `pulumi:"key"`
+	Value *string `pulumi:"value"`
+}
+
+// GetServingEndpointsEndpointTagInput is an input type that accepts GetServingEndpointsEndpointTagArgs and GetServingEndpointsEndpointTagOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointTagInput` via:
+//
+//	GetServingEndpointsEndpointTagArgs{...}
+type GetServingEndpointsEndpointTagInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointTagOutput() GetServingEndpointsEndpointTagOutput
+	ToGetServingEndpointsEndpointTagOutputWithContext(context.Context) GetServingEndpointsEndpointTagOutput
+}
+
+type GetServingEndpointsEndpointTagArgs struct {
+	Key   pulumi.StringInput    `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetServingEndpointsEndpointTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointTag)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointTagArgs) ToGetServingEndpointsEndpointTagOutput() GetServingEndpointsEndpointTagOutput {
+	return i.ToGetServingEndpointsEndpointTagOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointTagArgs) ToGetServingEndpointsEndpointTagOutputWithContext(ctx context.Context) GetServingEndpointsEndpointTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointTagOutput)
+}
+
+// GetServingEndpointsEndpointTagArrayInput is an input type that accepts GetServingEndpointsEndpointTagArray and GetServingEndpointsEndpointTagArrayOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointTagArrayInput` via:
+//
+//	GetServingEndpointsEndpointTagArray{ GetServingEndpointsEndpointTagArgs{...} }
+type GetServingEndpointsEndpointTagArrayInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointTagArrayOutput() GetServingEndpointsEndpointTagArrayOutput
+	ToGetServingEndpointsEndpointTagArrayOutputWithContext(context.Context) GetServingEndpointsEndpointTagArrayOutput
+}
+
+type GetServingEndpointsEndpointTagArray []GetServingEndpointsEndpointTagInput
+
+func (GetServingEndpointsEndpointTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointTag)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointTagArray) ToGetServingEndpointsEndpointTagArrayOutput() GetServingEndpointsEndpointTagArrayOutput {
+	return i.ToGetServingEndpointsEndpointTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointTagArray) ToGetServingEndpointsEndpointTagArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointTagArrayOutput)
+}
+
+type GetServingEndpointsEndpointTagOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointTag)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointTagOutput) ToGetServingEndpointsEndpointTagOutput() GetServingEndpointsEndpointTagOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointTagOutput) ToGetServingEndpointsEndpointTagOutputWithContext(ctx context.Context) GetServingEndpointsEndpointTagOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetServingEndpointsEndpointTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetServingEndpointsEndpointTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointTag)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointTagArrayOutput) ToGetServingEndpointsEndpointTagArrayOutput() GetServingEndpointsEndpointTagArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointTagArrayOutput) ToGetServingEndpointsEndpointTagArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointTagArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointTagArrayOutput) Index(i pulumi.IntInput) GetServingEndpointsEndpointTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServingEndpointsEndpointTag {
+		return vs[0].([]GetServingEndpointsEndpointTag)[vs[1].(int)]
+	}).(GetServingEndpointsEndpointTagOutput)
+}
+
+type GetShareObject struct {
+	AddedAt    int    `pulumi:"addedAt"`
+	AddedBy    string `pulumi:"addedBy"`
+	CdfEnabled *bool  `pulumi:"cdfEnabled"`
+	// Description about the object.
+	Comment *string `pulumi:"comment"`
+	Content *string `pulumi:"content"`
+	// Type of the object.
+	DataObjectType           string  `pulumi:"dataObjectType"`
+	HistoryDataSharingStatus *string `pulumi:"historyDataSharingStatus"`
+	// The name of the share
+	Name           string                    `pulumi:"name"`
+	Partitions     []GetShareObjectPartition `pulumi:"partitions"`
+	SharedAs       *string                   `pulumi:"sharedAs"`
+	StartVersion   *int                      `pulumi:"startVersion"`
+	Status         string                    `pulumi:"status"`
+	StringSharedAs *string                   `pulumi:"stringSharedAs"`
+}
+
+// GetShareObjectInput is an input type that accepts GetShareObjectArgs and GetShareObjectOutput values.
+// You can construct a concrete instance of `GetShareObjectInput` via:
+//
+//	GetShareObjectArgs{...}
+type GetShareObjectInput interface {
+	pulumi.Input
+
+	ToGetShareObjectOutput() GetShareObjectOutput
+	ToGetShareObjectOutputWithContext(context.Context) GetShareObjectOutput
+}
+
+type GetShareObjectArgs struct {
+	AddedAt    pulumi.IntInput     `pulumi:"addedAt"`
+	AddedBy    pulumi.StringInput  `pulumi:"addedBy"`
+	CdfEnabled pulumi.BoolPtrInput `pulumi:"cdfEnabled"`
+	// Description about the object.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	// Type of the object.
+	DataObjectType           pulumi.StringInput    `pulumi:"dataObjectType"`
+	HistoryDataSharingStatus pulumi.StringPtrInput `pulumi:"historyDataSharingStatus"`
+	// The name of the share
+	Name           pulumi.StringInput                `pulumi:"name"`
+	Partitions     GetShareObjectPartitionArrayInput `pulumi:"partitions"`
+	SharedAs       pulumi.StringPtrInput             `pulumi:"sharedAs"`
+	StartVersion   pulumi.IntPtrInput                `pulumi:"startVersion"`
+	Status         pulumi.StringInput                `pulumi:"status"`
+	StringSharedAs pulumi.StringPtrInput             `pulumi:"stringSharedAs"`
+}
+
+func (GetShareObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetShareObject)(nil)).Elem()
+}
+
+func (i GetShareObjectArgs) ToGetShareObjectOutput() GetShareObjectOutput {
+	return i.ToGetShareObjectOutputWithContext(context.Background())
+}
+
+func (i GetShareObjectArgs) ToGetShareObjectOutputWithContext(ctx context.Context) GetShareObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetShareObjectOutput)
+}
+
+// GetShareObjectArrayInput is an input type that accepts GetShareObjectArray and GetShareObjectArrayOutput values.
+// You can construct a concrete instance of `GetShareObjectArrayInput` via:
+//
+//	GetShareObjectArray{ GetShareObjectArgs{...} }
+type GetShareObjectArrayInput interface {
+	pulumi.Input
+
+	ToGetShareObjectArrayOutput() GetShareObjectArrayOutput
+	ToGetShareObjectArrayOutputWithContext(context.Context) GetShareObjectArrayOutput
+}
+
+type GetShareObjectArray []GetShareObjectInput
+
+func (GetShareObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetShareObject)(nil)).Elem()
+}
+
+func (i GetShareObjectArray) ToGetShareObjectArrayOutput() GetShareObjectArrayOutput {
+	return i.ToGetShareObjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetShareObjectArray) ToGetShareObjectArrayOutputWithContext(ctx context.Context) GetShareObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetShareObjectArrayOutput)
+}
+
+type GetShareObjectOutput struct{ *pulumi.OutputState }
+
+func (GetShareObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetShareObject)(nil)).Elem()
+}
+
+func (o GetShareObjectOutput) ToGetShareObjectOutput() GetShareObjectOutput {
+	return o
+}
+
+func (o GetShareObjectOutput) ToGetShareObjectOutputWithContext(ctx context.Context) GetShareObjectOutput {
+	return o
+}
+
+func (o GetShareObjectOutput) AddedAt() pulumi.IntOutput {
+	return o.ApplyT(func(v GetShareObject) int { return v.AddedAt }).(pulumi.IntOutput)
+}
+
+func (o GetShareObjectOutput) AddedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShareObject) string { return v.AddedBy }).(pulumi.StringOutput)
+}
+
+func (o GetShareObjectOutput) CdfEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetShareObject) *bool { return v.CdfEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Description about the object.
+func (o GetShareObjectOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetShareObject) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+func (o GetShareObjectOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetShareObject) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+// Type of the object.
+func (o GetShareObjectOutput) DataObjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShareObject) string { return v.DataObjectType }).(pulumi.StringOutput)
+}
+
+func (o GetShareObjectOutput) HistoryDataSharingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetShareObject) *string { return v.HistoryDataSharingStatus }).(pulumi.StringPtrOutput)
+}
+
+// The name of the share
+func (o GetShareObjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShareObject) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetShareObjectOutput) Partitions() GetShareObjectPartitionArrayOutput {
+	return o.ApplyT(func(v GetShareObject) []GetShareObjectPartition { return v.Partitions }).(GetShareObjectPartitionArrayOutput)
+}
+
+func (o GetShareObjectOutput) SharedAs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetShareObject) *string { return v.SharedAs }).(pulumi.StringPtrOutput)
+}
+
+func (o GetShareObjectOutput) StartVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetShareObject) *int { return v.StartVersion }).(pulumi.IntPtrOutput)
+}
+
+func (o GetShareObjectOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShareObject) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o GetShareObjectOutput) StringSharedAs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetShareObject) *string { return v.StringSharedAs }).(pulumi.StringPtrOutput)
+}
+
+type GetShareObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetShareObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetShareObject)(nil)).Elem()
+}
+
+func (o GetShareObjectArrayOutput) ToGetShareObjectArrayOutput() GetShareObjectArrayOutput {
+	return o
+}
+
+func (o GetShareObjectArrayOutput) ToGetShareObjectArrayOutputWithContext(ctx context.Context) GetShareObjectArrayOutput {
+	return o
+}
+
+func (o GetShareObjectArrayOutput) Index(i pulumi.IntInput) GetShareObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetShareObject {
+		return vs[0].([]GetShareObject)[vs[1].(int)]
+	}).(GetShareObjectOutput)
+}
+
+type GetShareObjectPartition struct {
+	Values []GetShareObjectPartitionValue `pulumi:"values"`
+}
+
+// GetShareObjectPartitionInput is an input type that accepts GetShareObjectPartitionArgs and GetShareObjectPartitionOutput values.
+// You can construct a concrete instance of `GetShareObjectPartitionInput` via:
+//
+//	GetShareObjectPartitionArgs{...}
+type GetShareObjectPartitionInput interface {
+	pulumi.Input
+
+	ToGetShareObjectPartitionOutput() GetShareObjectPartitionOutput
+	ToGetShareObjectPartitionOutputWithContext(context.Context) GetShareObjectPartitionOutput
+}
+
+type GetShareObjectPartitionArgs struct {
+	Values GetShareObjectPartitionValueArrayInput `pulumi:"values"`
+}
+
+func (GetShareObjectPartitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetShareObjectPartition)(nil)).Elem()
+}
+
+func (i GetShareObjectPartitionArgs) ToGetShareObjectPartitionOutput() GetShareObjectPartitionOutput {
+	return i.ToGetShareObjectPartitionOutputWithContext(context.Background())
+}
+
+func (i GetShareObjectPartitionArgs) ToGetShareObjectPartitionOutputWithContext(ctx context.Context) GetShareObjectPartitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetShareObjectPartitionOutput)
+}
+
+// GetShareObjectPartitionArrayInput is an input type that accepts GetShareObjectPartitionArray and GetShareObjectPartitionArrayOutput values.
+// You can construct a concrete instance of `GetShareObjectPartitionArrayInput` via:
+//
+//	GetShareObjectPartitionArray{ GetShareObjectPartitionArgs{...} }
+type GetShareObjectPartitionArrayInput interface {
+	pulumi.Input
+
+	ToGetShareObjectPartitionArrayOutput() GetShareObjectPartitionArrayOutput
+	ToGetShareObjectPartitionArrayOutputWithContext(context.Context) GetShareObjectPartitionArrayOutput
+}
+
+type GetShareObjectPartitionArray []GetShareObjectPartitionInput
+
+func (GetShareObjectPartitionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetShareObjectPartition)(nil)).Elem()
+}
+
+func (i GetShareObjectPartitionArray) ToGetShareObjectPartitionArrayOutput() GetShareObjectPartitionArrayOutput {
+	return i.ToGetShareObjectPartitionArrayOutputWithContext(context.Background())
+}
+
+func (i GetShareObjectPartitionArray) ToGetShareObjectPartitionArrayOutputWithContext(ctx context.Context) GetShareObjectPartitionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetShareObjectPartitionArrayOutput)
+}
+
+type GetShareObjectPartitionOutput struct{ *pulumi.OutputState }
+
+func (GetShareObjectPartitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetShareObjectPartition)(nil)).Elem()
+}
+
+func (o GetShareObjectPartitionOutput) ToGetShareObjectPartitionOutput() GetShareObjectPartitionOutput {
+	return o
+}
+
+func (o GetShareObjectPartitionOutput) ToGetShareObjectPartitionOutputWithContext(ctx context.Context) GetShareObjectPartitionOutput {
+	return o
+}
+
+func (o GetShareObjectPartitionOutput) Values() GetShareObjectPartitionValueArrayOutput {
+	return o.ApplyT(func(v GetShareObjectPartition) []GetShareObjectPartitionValue { return v.Values }).(GetShareObjectPartitionValueArrayOutput)
+}
+
+type GetShareObjectPartitionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetShareObjectPartitionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetShareObjectPartition)(nil)).Elem()
+}
+
+func (o GetShareObjectPartitionArrayOutput) ToGetShareObjectPartitionArrayOutput() GetShareObjectPartitionArrayOutput {
+	return o
+}
+
+func (o GetShareObjectPartitionArrayOutput) ToGetShareObjectPartitionArrayOutputWithContext(ctx context.Context) GetShareObjectPartitionArrayOutput {
+	return o
+}
+
+func (o GetShareObjectPartitionArrayOutput) Index(i pulumi.IntInput) GetShareObjectPartitionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetShareObjectPartition {
+		return vs[0].([]GetShareObjectPartition)[vs[1].(int)]
+	}).(GetShareObjectPartitionOutput)
+}
+
+type GetShareObjectPartitionValue struct {
+	// The name of the share
+	Name                 string  `pulumi:"name"`
+	Op                   string  `pulumi:"op"`
+	RecipientPropertyKey *string `pulumi:"recipientPropertyKey"`
+	Value                *string `pulumi:"value"`
+}
+
+// GetShareObjectPartitionValueInput is an input type that accepts GetShareObjectPartitionValueArgs and GetShareObjectPartitionValueOutput values.
+// You can construct a concrete instance of `GetShareObjectPartitionValueInput` via:
+//
+//	GetShareObjectPartitionValueArgs{...}
+type GetShareObjectPartitionValueInput interface {
+	pulumi.Input
+
+	ToGetShareObjectPartitionValueOutput() GetShareObjectPartitionValueOutput
+	ToGetShareObjectPartitionValueOutputWithContext(context.Context) GetShareObjectPartitionValueOutput
+}
+
+type GetShareObjectPartitionValueArgs struct {
+	// The name of the share
+	Name                 pulumi.StringInput    `pulumi:"name"`
+	Op                   pulumi.StringInput    `pulumi:"op"`
+	RecipientPropertyKey pulumi.StringPtrInput `pulumi:"recipientPropertyKey"`
+	Value                pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetShareObjectPartitionValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetShareObjectPartitionValue)(nil)).Elem()
+}
+
+func (i GetShareObjectPartitionValueArgs) ToGetShareObjectPartitionValueOutput() GetShareObjectPartitionValueOutput {
+	return i.ToGetShareObjectPartitionValueOutputWithContext(context.Background())
+}
+
+func (i GetShareObjectPartitionValueArgs) ToGetShareObjectPartitionValueOutputWithContext(ctx context.Context) GetShareObjectPartitionValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetShareObjectPartitionValueOutput)
+}
+
+// GetShareObjectPartitionValueArrayInput is an input type that accepts GetShareObjectPartitionValueArray and GetShareObjectPartitionValueArrayOutput values.
+// You can construct a concrete instance of `GetShareObjectPartitionValueArrayInput` via:
+//
+//	GetShareObjectPartitionValueArray{ GetShareObjectPartitionValueArgs{...} }
+type GetShareObjectPartitionValueArrayInput interface {
+	pulumi.Input
+
+	ToGetShareObjectPartitionValueArrayOutput() GetShareObjectPartitionValueArrayOutput
+	ToGetShareObjectPartitionValueArrayOutputWithContext(context.Context) GetShareObjectPartitionValueArrayOutput
+}
+
+type GetShareObjectPartitionValueArray []GetShareObjectPartitionValueInput
+
+func (GetShareObjectPartitionValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetShareObjectPartitionValue)(nil)).Elem()
+}
+
+func (i GetShareObjectPartitionValueArray) ToGetShareObjectPartitionValueArrayOutput() GetShareObjectPartitionValueArrayOutput {
+	return i.ToGetShareObjectPartitionValueArrayOutputWithContext(context.Background())
+}
+
+func (i GetShareObjectPartitionValueArray) ToGetShareObjectPartitionValueArrayOutputWithContext(ctx context.Context) GetShareObjectPartitionValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetShareObjectPartitionValueArrayOutput)
+}
+
+type GetShareObjectPartitionValueOutput struct{ *pulumi.OutputState }
+
+func (GetShareObjectPartitionValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetShareObjectPartitionValue)(nil)).Elem()
+}
+
+func (o GetShareObjectPartitionValueOutput) ToGetShareObjectPartitionValueOutput() GetShareObjectPartitionValueOutput {
+	return o
+}
+
+func (o GetShareObjectPartitionValueOutput) ToGetShareObjectPartitionValueOutputWithContext(ctx context.Context) GetShareObjectPartitionValueOutput {
+	return o
+}
+
+// The name of the share
+func (o GetShareObjectPartitionValueOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShareObjectPartitionValue) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetShareObjectPartitionValueOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v GetShareObjectPartitionValue) string { return v.Op }).(pulumi.StringOutput)
+}
+
+func (o GetShareObjectPartitionValueOutput) RecipientPropertyKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetShareObjectPartitionValue) *string { return v.RecipientPropertyKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetShareObjectPartitionValueOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetShareObjectPartitionValue) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetShareObjectPartitionValueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetShareObjectPartitionValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetShareObjectPartitionValue)(nil)).Elem()
+}
+
+func (o GetShareObjectPartitionValueArrayOutput) ToGetShareObjectPartitionValueArrayOutput() GetShareObjectPartitionValueArrayOutput {
+	return o
+}
+
+func (o GetShareObjectPartitionValueArrayOutput) ToGetShareObjectPartitionValueArrayOutputWithContext(ctx context.Context) GetShareObjectPartitionValueArrayOutput {
+	return o
+}
+
+func (o GetShareObjectPartitionValueArrayOutput) Index(i pulumi.IntInput) GetShareObjectPartitionValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetShareObjectPartitionValue {
+		return vs[0].([]GetShareObjectPartitionValue)[vs[1].(int)]
+	}).(GetShareObjectPartitionValueOutput)
+}
+
+type GetSqlWarehouseChannel struct {
+	DbsqlVersion *string `pulumi:"dbsqlVersion"`
+	// Name of the SQL warehouse to search (case-sensitive).
+	Name *string `pulumi:"name"`
+}
+
+// GetSqlWarehouseChannelInput is an input type that accepts GetSqlWarehouseChannelArgs and GetSqlWarehouseChannelOutput values.
+// You can construct a concrete instance of `GetSqlWarehouseChannelInput` via:
+//
+//	GetSqlWarehouseChannelArgs{...}
+type GetSqlWarehouseChannelInput interface {
+	pulumi.Input
+
+	ToGetSqlWarehouseChannelOutput() GetSqlWarehouseChannelOutput
+	ToGetSqlWarehouseChannelOutputWithContext(context.Context) GetSqlWarehouseChannelOutput
+}
+
+type GetSqlWarehouseChannelArgs struct {
+	DbsqlVersion pulumi.StringPtrInput `pulumi:"dbsqlVersion"`
+	// Name of the SQL warehouse to search (case-sensitive).
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GetSqlWarehouseChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlWarehouseChannel)(nil)).Elem()
+}
+
+func (i GetSqlWarehouseChannelArgs) ToGetSqlWarehouseChannelOutput() GetSqlWarehouseChannelOutput {
+	return i.ToGetSqlWarehouseChannelOutputWithContext(context.Background())
+}
+
+func (i GetSqlWarehouseChannelArgs) ToGetSqlWarehouseChannelOutputWithContext(ctx context.Context) GetSqlWarehouseChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseChannelOutput)
+}
+
+func (i GetSqlWarehouseChannelArgs) ToGetSqlWarehouseChannelPtrOutput() GetSqlWarehouseChannelPtrOutput {
+	return i.ToGetSqlWarehouseChannelPtrOutputWithContext(context.Background())
+}
+
+func (i GetSqlWarehouseChannelArgs) ToGetSqlWarehouseChannelPtrOutputWithContext(ctx context.Context) GetSqlWarehouseChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseChannelOutput).ToGetSqlWarehouseChannelPtrOutputWithContext(ctx)
+}
+
+// GetSqlWarehouseChannelPtrInput is an input type that accepts GetSqlWarehouseChannelArgs, GetSqlWarehouseChannelPtr and GetSqlWarehouseChannelPtrOutput values.
+// You can construct a concrete instance of `GetSqlWarehouseChannelPtrInput` via:
+//
+//	        GetSqlWarehouseChannelArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSqlWarehouseChannelPtrInput interface {
+	pulumi.Input
+
+	ToGetSqlWarehouseChannelPtrOutput() GetSqlWarehouseChannelPtrOutput
+	ToGetSqlWarehouseChannelPtrOutputWithContext(context.Context) GetSqlWarehouseChannelPtrOutput
+}
+
+type getSqlWarehouseChannelPtrType GetSqlWarehouseChannelArgs
+
+func GetSqlWarehouseChannelPtr(v *GetSqlWarehouseChannelArgs) GetSqlWarehouseChannelPtrInput {
+	return (*getSqlWarehouseChannelPtrType)(v)
+}
+
+func (*getSqlWarehouseChannelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlWarehouseChannel)(nil)).Elem()
+}
+
+func (i *getSqlWarehouseChannelPtrType) ToGetSqlWarehouseChannelPtrOutput() GetSqlWarehouseChannelPtrOutput {
+	return i.ToGetSqlWarehouseChannelPtrOutputWithContext(context.Background())
+}
+
+func (i *getSqlWarehouseChannelPtrType) ToGetSqlWarehouseChannelPtrOutputWithContext(ctx context.Context) GetSqlWarehouseChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseChannelPtrOutput)
+}
+
+type GetSqlWarehouseChannelOutput struct{ *pulumi.OutputState }
+
+func (GetSqlWarehouseChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlWarehouseChannel)(nil)).Elem()
+}
+
+func (o GetSqlWarehouseChannelOutput) ToGetSqlWarehouseChannelOutput() GetSqlWarehouseChannelOutput {
+	return o
+}
+
+func (o GetSqlWarehouseChannelOutput) ToGetSqlWarehouseChannelOutputWithContext(ctx context.Context) GetSqlWarehouseChannelOutput {
+	return o
+}
+
+func (o GetSqlWarehouseChannelOutput) ToGetSqlWarehouseChannelPtrOutput() GetSqlWarehouseChannelPtrOutput {
+	return o.ToGetSqlWarehouseChannelPtrOutputWithContext(context.Background())
+}
+
+func (o GetSqlWarehouseChannelOutput) ToGetSqlWarehouseChannelPtrOutputWithContext(ctx context.Context) GetSqlWarehouseChannelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSqlWarehouseChannel) *GetSqlWarehouseChannel {
+		return &v
+	}).(GetSqlWarehouseChannelPtrOutput)
+}
+
+func (o GetSqlWarehouseChannelOutput) DbsqlVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseChannel) *string { return v.DbsqlVersion }).(pulumi.StringPtrOutput)
+}
+
+// Name of the SQL warehouse to search (case-sensitive).
+func (o GetSqlWarehouseChannelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseChannel) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type GetSqlWarehouseChannelPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSqlWarehouseChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlWarehouseChannel)(nil)).Elem()
+}
+
+func (o GetSqlWarehouseChannelPtrOutput) ToGetSqlWarehouseChannelPtrOutput() GetSqlWarehouseChannelPtrOutput {
+	return o
+}
+
+func (o GetSqlWarehouseChannelPtrOutput) ToGetSqlWarehouseChannelPtrOutputWithContext(ctx context.Context) GetSqlWarehouseChannelPtrOutput {
+	return o
+}
+
+func (o GetSqlWarehouseChannelPtrOutput) Elem() GetSqlWarehouseChannelOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseChannel) GetSqlWarehouseChannel {
+		if v != nil {
+			return *v
+		}
+		var ret GetSqlWarehouseChannel
+		return ret
+	}).(GetSqlWarehouseChannelOutput)
+}
+
+func (o GetSqlWarehouseChannelPtrOutput) DbsqlVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbsqlVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the SQL warehouse to search (case-sensitive).
+func (o GetSqlWarehouseChannelPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetSqlWarehouseHealth struct {
+	Details       *string                             `pulumi:"details"`
+	FailureReason *GetSqlWarehouseHealthFailureReason `pulumi:"failureReason"`
+	Message       *string                             `pulumi:"message"`
+	Status        *string                             `pulumi:"status"`
+	Summary       *string                             `pulumi:"summary"`
+}
+
+// GetSqlWarehouseHealthInput is an input type that accepts GetSqlWarehouseHealthArgs and GetSqlWarehouseHealthOutput values.
+// You can construct a concrete instance of `GetSqlWarehouseHealthInput` via:
+//
+//	GetSqlWarehouseHealthArgs{...}
+type GetSqlWarehouseHealthInput interface {
+	pulumi.Input
+
+	ToGetSqlWarehouseHealthOutput() GetSqlWarehouseHealthOutput
+	ToGetSqlWarehouseHealthOutputWithContext(context.Context) GetSqlWarehouseHealthOutput
+}
+
+type GetSqlWarehouseHealthArgs struct {
+	Details       pulumi.StringPtrInput                      `pulumi:"details"`
+	FailureReason GetSqlWarehouseHealthFailureReasonPtrInput `pulumi:"failureReason"`
+	Message       pulumi.StringPtrInput                      `pulumi:"message"`
+	Status        pulumi.StringPtrInput                      `pulumi:"status"`
+	Summary       pulumi.StringPtrInput                      `pulumi:"summary"`
+}
+
+func (GetSqlWarehouseHealthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlWarehouseHealth)(nil)).Elem()
+}
+
+func (i GetSqlWarehouseHealthArgs) ToGetSqlWarehouseHealthOutput() GetSqlWarehouseHealthOutput {
+	return i.ToGetSqlWarehouseHealthOutputWithContext(context.Background())
+}
+
+func (i GetSqlWarehouseHealthArgs) ToGetSqlWarehouseHealthOutputWithContext(ctx context.Context) GetSqlWarehouseHealthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseHealthOutput)
+}
+
+func (i GetSqlWarehouseHealthArgs) ToGetSqlWarehouseHealthPtrOutput() GetSqlWarehouseHealthPtrOutput {
+	return i.ToGetSqlWarehouseHealthPtrOutputWithContext(context.Background())
+}
+
+func (i GetSqlWarehouseHealthArgs) ToGetSqlWarehouseHealthPtrOutputWithContext(ctx context.Context) GetSqlWarehouseHealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseHealthOutput).ToGetSqlWarehouseHealthPtrOutputWithContext(ctx)
+}
+
+// GetSqlWarehouseHealthPtrInput is an input type that accepts GetSqlWarehouseHealthArgs, GetSqlWarehouseHealthPtr and GetSqlWarehouseHealthPtrOutput values.
+// You can construct a concrete instance of `GetSqlWarehouseHealthPtrInput` via:
+//
+//	        GetSqlWarehouseHealthArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSqlWarehouseHealthPtrInput interface {
+	pulumi.Input
+
+	ToGetSqlWarehouseHealthPtrOutput() GetSqlWarehouseHealthPtrOutput
+	ToGetSqlWarehouseHealthPtrOutputWithContext(context.Context) GetSqlWarehouseHealthPtrOutput
+}
+
+type getSqlWarehouseHealthPtrType GetSqlWarehouseHealthArgs
+
+func GetSqlWarehouseHealthPtr(v *GetSqlWarehouseHealthArgs) GetSqlWarehouseHealthPtrInput {
+	return (*getSqlWarehouseHealthPtrType)(v)
+}
+
+func (*getSqlWarehouseHealthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlWarehouseHealth)(nil)).Elem()
+}
+
+func (i *getSqlWarehouseHealthPtrType) ToGetSqlWarehouseHealthPtrOutput() GetSqlWarehouseHealthPtrOutput {
+	return i.ToGetSqlWarehouseHealthPtrOutputWithContext(context.Background())
+}
+
+func (i *getSqlWarehouseHealthPtrType) ToGetSqlWarehouseHealthPtrOutputWithContext(ctx context.Context) GetSqlWarehouseHealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseHealthPtrOutput)
+}
+
+type GetSqlWarehouseHealthOutput struct{ *pulumi.OutputState }
+
+func (GetSqlWarehouseHealthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlWarehouseHealth)(nil)).Elem()
+}
+
+func (o GetSqlWarehouseHealthOutput) ToGetSqlWarehouseHealthOutput() GetSqlWarehouseHealthOutput {
+	return o
+}
+
+func (o GetSqlWarehouseHealthOutput) ToGetSqlWarehouseHealthOutputWithContext(ctx context.Context) GetSqlWarehouseHealthOutput {
+	return o
+}
+
+func (o GetSqlWarehouseHealthOutput) ToGetSqlWarehouseHealthPtrOutput() GetSqlWarehouseHealthPtrOutput {
+	return o.ToGetSqlWarehouseHealthPtrOutputWithContext(context.Background())
+}
+
+func (o GetSqlWarehouseHealthOutput) ToGetSqlWarehouseHealthPtrOutputWithContext(ctx context.Context) GetSqlWarehouseHealthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSqlWarehouseHealth) *GetSqlWarehouseHealth {
+		return &v
+	}).(GetSqlWarehouseHealthPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseHealth) *string { return v.Details }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthOutput) FailureReason() GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseHealth) *GetSqlWarehouseHealthFailureReason { return v.FailureReason }).(GetSqlWarehouseHealthFailureReasonPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseHealth) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseHealth) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthOutput) Summary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseHealth) *string { return v.Summary }).(pulumi.StringPtrOutput)
+}
+
+type GetSqlWarehouseHealthPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSqlWarehouseHealthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlWarehouseHealth)(nil)).Elem()
+}
+
+func (o GetSqlWarehouseHealthPtrOutput) ToGetSqlWarehouseHealthPtrOutput() GetSqlWarehouseHealthPtrOutput {
+	return o
+}
+
+func (o GetSqlWarehouseHealthPtrOutput) ToGetSqlWarehouseHealthPtrOutputWithContext(ctx context.Context) GetSqlWarehouseHealthPtrOutput {
+	return o
+}
+
+func (o GetSqlWarehouseHealthPtrOutput) Elem() GetSqlWarehouseHealthOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealth) GetSqlWarehouseHealth {
+		if v != nil {
+			return *v
+		}
+		var ret GetSqlWarehouseHealth
+		return ret
+	}).(GetSqlWarehouseHealthOutput)
+}
+
+func (o GetSqlWarehouseHealthPtrOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthPtrOutput) FailureReason() GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealth) *GetSqlWarehouseHealthFailureReason {
+		if v == nil {
+			return nil
+		}
+		return v.FailureReason
+	}).(GetSqlWarehouseHealthFailureReasonPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthPtrOutput) Summary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Summary
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetSqlWarehouseHealthFailureReason struct {
+	Code       *string           `pulumi:"code"`
+	Parameters map[string]string `pulumi:"parameters"`
+	Type       *string           `pulumi:"type"`
+}
+
+// GetSqlWarehouseHealthFailureReasonInput is an input type that accepts GetSqlWarehouseHealthFailureReasonArgs and GetSqlWarehouseHealthFailureReasonOutput values.
+// You can construct a concrete instance of `GetSqlWarehouseHealthFailureReasonInput` via:
+//
+//	GetSqlWarehouseHealthFailureReasonArgs{...}
+type GetSqlWarehouseHealthFailureReasonInput interface {
+	pulumi.Input
+
+	ToGetSqlWarehouseHealthFailureReasonOutput() GetSqlWarehouseHealthFailureReasonOutput
+	ToGetSqlWarehouseHealthFailureReasonOutputWithContext(context.Context) GetSqlWarehouseHealthFailureReasonOutput
+}
+
+type GetSqlWarehouseHealthFailureReasonArgs struct {
+	Code       pulumi.StringPtrInput `pulumi:"code"`
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	Type       pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetSqlWarehouseHealthFailureReasonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlWarehouseHealthFailureReason)(nil)).Elem()
+}
+
+func (i GetSqlWarehouseHealthFailureReasonArgs) ToGetSqlWarehouseHealthFailureReasonOutput() GetSqlWarehouseHealthFailureReasonOutput {
+	return i.ToGetSqlWarehouseHealthFailureReasonOutputWithContext(context.Background())
+}
+
+func (i GetSqlWarehouseHealthFailureReasonArgs) ToGetSqlWarehouseHealthFailureReasonOutputWithContext(ctx context.Context) GetSqlWarehouseHealthFailureReasonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseHealthFailureReasonOutput)
+}
+
+func (i GetSqlWarehouseHealthFailureReasonArgs) ToGetSqlWarehouseHealthFailureReasonPtrOutput() GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return i.ToGetSqlWarehouseHealthFailureReasonPtrOutputWithContext(context.Background())
+}
+
+func (i GetSqlWarehouseHealthFailureReasonArgs) ToGetSqlWarehouseHealthFailureReasonPtrOutputWithContext(ctx context.Context) GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseHealthFailureReasonOutput).ToGetSqlWarehouseHealthFailureReasonPtrOutputWithContext(ctx)
+}
+
+// GetSqlWarehouseHealthFailureReasonPtrInput is an input type that accepts GetSqlWarehouseHealthFailureReasonArgs, GetSqlWarehouseHealthFailureReasonPtr and GetSqlWarehouseHealthFailureReasonPtrOutput values.
+// You can construct a concrete instance of `GetSqlWarehouseHealthFailureReasonPtrInput` via:
+//
+//	        GetSqlWarehouseHealthFailureReasonArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSqlWarehouseHealthFailureReasonPtrInput interface {
+	pulumi.Input
+
+	ToGetSqlWarehouseHealthFailureReasonPtrOutput() GetSqlWarehouseHealthFailureReasonPtrOutput
+	ToGetSqlWarehouseHealthFailureReasonPtrOutputWithContext(context.Context) GetSqlWarehouseHealthFailureReasonPtrOutput
+}
+
+type getSqlWarehouseHealthFailureReasonPtrType GetSqlWarehouseHealthFailureReasonArgs
+
+func GetSqlWarehouseHealthFailureReasonPtr(v *GetSqlWarehouseHealthFailureReasonArgs) GetSqlWarehouseHealthFailureReasonPtrInput {
+	return (*getSqlWarehouseHealthFailureReasonPtrType)(v)
+}
+
+func (*getSqlWarehouseHealthFailureReasonPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlWarehouseHealthFailureReason)(nil)).Elem()
+}
+
+func (i *getSqlWarehouseHealthFailureReasonPtrType) ToGetSqlWarehouseHealthFailureReasonPtrOutput() GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return i.ToGetSqlWarehouseHealthFailureReasonPtrOutputWithContext(context.Background())
+}
+
+func (i *getSqlWarehouseHealthFailureReasonPtrType) ToGetSqlWarehouseHealthFailureReasonPtrOutputWithContext(ctx context.Context) GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseHealthFailureReasonPtrOutput)
+}
+
+type GetSqlWarehouseHealthFailureReasonOutput struct{ *pulumi.OutputState }
+
+func (GetSqlWarehouseHealthFailureReasonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlWarehouseHealthFailureReason)(nil)).Elem()
+}
+
+func (o GetSqlWarehouseHealthFailureReasonOutput) ToGetSqlWarehouseHealthFailureReasonOutput() GetSqlWarehouseHealthFailureReasonOutput {
+	return o
+}
+
+func (o GetSqlWarehouseHealthFailureReasonOutput) ToGetSqlWarehouseHealthFailureReasonOutputWithContext(ctx context.Context) GetSqlWarehouseHealthFailureReasonOutput {
+	return o
+}
+
+func (o GetSqlWarehouseHealthFailureReasonOutput) ToGetSqlWarehouseHealthFailureReasonPtrOutput() GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return o.ToGetSqlWarehouseHealthFailureReasonPtrOutputWithContext(context.Background())
+}
+
+func (o GetSqlWarehouseHealthFailureReasonOutput) ToGetSqlWarehouseHealthFailureReasonPtrOutputWithContext(ctx context.Context) GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSqlWarehouseHealthFailureReason) *GetSqlWarehouseHealthFailureReason {
+		return &v
+	}).(GetSqlWarehouseHealthFailureReasonPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthFailureReasonOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseHealthFailureReason) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthFailureReasonOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSqlWarehouseHealthFailureReason) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+func (o GetSqlWarehouseHealthFailureReasonOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseHealthFailureReason) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetSqlWarehouseHealthFailureReasonPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSqlWarehouseHealthFailureReasonPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlWarehouseHealthFailureReason)(nil)).Elem()
+}
+
+func (o GetSqlWarehouseHealthFailureReasonPtrOutput) ToGetSqlWarehouseHealthFailureReasonPtrOutput() GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return o
+}
+
+func (o GetSqlWarehouseHealthFailureReasonPtrOutput) ToGetSqlWarehouseHealthFailureReasonPtrOutputWithContext(ctx context.Context) GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return o
+}
+
+func (o GetSqlWarehouseHealthFailureReasonPtrOutput) Elem() GetSqlWarehouseHealthFailureReasonOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealthFailureReason) GetSqlWarehouseHealthFailureReason {
+		if v != nil {
+			return *v
+		}
+		var ret GetSqlWarehouseHealthFailureReason
+		return ret
+	}).(GetSqlWarehouseHealthFailureReasonOutput)
+}
+
+func (o GetSqlWarehouseHealthFailureReasonPtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealthFailureReason) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthFailureReasonPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealthFailureReason) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
+func (o GetSqlWarehouseHealthFailureReasonPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealthFailureReason) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetSqlWarehouseOdbcParams struct {
+	Hostname *string `pulumi:"hostname"`
+	Path     *string `pulumi:"path"`
+	Port     *int    `pulumi:"port"`
+	Protocol *string `pulumi:"protocol"`
+}
+
+// GetSqlWarehouseOdbcParamsInput is an input type that accepts GetSqlWarehouseOdbcParamsArgs and GetSqlWarehouseOdbcParamsOutput values.
+// You can construct a concrete instance of `GetSqlWarehouseOdbcParamsInput` via:
+//
+//	GetSqlWarehouseOdbcParamsArgs{...}
+type GetSqlWarehouseOdbcParamsInput interface {
+	pulumi.Input
+
+	ToGetSqlWarehouseOdbcParamsOutput() GetSqlWarehouseOdbcParamsOutput
+	ToGetSqlWarehouseOdbcParamsOutputWithContext(context.Context) GetSqlWarehouseOdbcParamsOutput
+}
+
+type GetSqlWarehouseOdbcParamsArgs struct {
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	Path     pulumi.StringPtrInput `pulumi:"path"`
+	Port     pulumi.IntPtrInput    `pulumi:"port"`
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+}
+
+func (GetSqlWarehouseOdbcParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlWarehouseOdbcParams)(nil)).Elem()
+}
+
+func (i GetSqlWarehouseOdbcParamsArgs) ToGetSqlWarehouseOdbcParamsOutput() GetSqlWarehouseOdbcParamsOutput {
+	return i.ToGetSqlWarehouseOdbcParamsOutputWithContext(context.Background())
+}
+
+func (i GetSqlWarehouseOdbcParamsArgs) ToGetSqlWarehouseOdbcParamsOutputWithContext(ctx context.Context) GetSqlWarehouseOdbcParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseOdbcParamsOutput)
+}
+
+func (i GetSqlWarehouseOdbcParamsArgs) ToGetSqlWarehouseOdbcParamsPtrOutput() GetSqlWarehouseOdbcParamsPtrOutput {
+	return i.ToGetSqlWarehouseOdbcParamsPtrOutputWithContext(context.Background())
+}
+
+func (i GetSqlWarehouseOdbcParamsArgs) ToGetSqlWarehouseOdbcParamsPtrOutputWithContext(ctx context.Context) GetSqlWarehouseOdbcParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseOdbcParamsOutput).ToGetSqlWarehouseOdbcParamsPtrOutputWithContext(ctx)
+}
+
+// GetSqlWarehouseOdbcParamsPtrInput is an input type that accepts GetSqlWarehouseOdbcParamsArgs, GetSqlWarehouseOdbcParamsPtr and GetSqlWarehouseOdbcParamsPtrOutput values.
+// You can construct a concrete instance of `GetSqlWarehouseOdbcParamsPtrInput` via:
+//
+//	        GetSqlWarehouseOdbcParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSqlWarehouseOdbcParamsPtrInput interface {
+	pulumi.Input
+
+	ToGetSqlWarehouseOdbcParamsPtrOutput() GetSqlWarehouseOdbcParamsPtrOutput
+	ToGetSqlWarehouseOdbcParamsPtrOutputWithContext(context.Context) GetSqlWarehouseOdbcParamsPtrOutput
+}
+
+type getSqlWarehouseOdbcParamsPtrType GetSqlWarehouseOdbcParamsArgs
+
+func GetSqlWarehouseOdbcParamsPtr(v *GetSqlWarehouseOdbcParamsArgs) GetSqlWarehouseOdbcParamsPtrInput {
+	return (*getSqlWarehouseOdbcParamsPtrType)(v)
+}
+
+func (*getSqlWarehouseOdbcParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlWarehouseOdbcParams)(nil)).Elem()
+}
+
+func (i *getSqlWarehouseOdbcParamsPtrType) ToGetSqlWarehouseOdbcParamsPtrOutput() GetSqlWarehouseOdbcParamsPtrOutput {
+	return i.ToGetSqlWarehouseOdbcParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *getSqlWarehouseOdbcParamsPtrType) ToGetSqlWarehouseOdbcParamsPtrOutputWithContext(ctx context.Context) GetSqlWarehouseOdbcParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseOdbcParamsPtrOutput)
+}
+
+type GetSqlWarehouseOdbcParamsOutput struct{ *pulumi.OutputState }
+
+func (GetSqlWarehouseOdbcParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlWarehouseOdbcParams)(nil)).Elem()
+}
+
+func (o GetSqlWarehouseOdbcParamsOutput) ToGetSqlWarehouseOdbcParamsOutput() GetSqlWarehouseOdbcParamsOutput {
+	return o
+}
+
+func (o GetSqlWarehouseOdbcParamsOutput) ToGetSqlWarehouseOdbcParamsOutputWithContext(ctx context.Context) GetSqlWarehouseOdbcParamsOutput {
+	return o
+}
+
+func (o GetSqlWarehouseOdbcParamsOutput) ToGetSqlWarehouseOdbcParamsPtrOutput() GetSqlWarehouseOdbcParamsPtrOutput {
+	return o.ToGetSqlWarehouseOdbcParamsPtrOutputWithContext(context.Background())
+}
+
+func (o GetSqlWarehouseOdbcParamsOutput) ToGetSqlWarehouseOdbcParamsPtrOutputWithContext(ctx context.Context) GetSqlWarehouseOdbcParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSqlWarehouseOdbcParams) *GetSqlWarehouseOdbcParams {
+		return &v
+	}).(GetSqlWarehouseOdbcParamsPtrOutput)
+}
+
+func (o GetSqlWarehouseOdbcParamsOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseOdbcParams) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseOdbcParamsOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseOdbcParams) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseOdbcParamsOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseOdbcParams) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+func (o GetSqlWarehouseOdbcParamsOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseOdbcParams) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+type GetSqlWarehouseOdbcParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSqlWarehouseOdbcParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlWarehouseOdbcParams)(nil)).Elem()
+}
+
+func (o GetSqlWarehouseOdbcParamsPtrOutput) ToGetSqlWarehouseOdbcParamsPtrOutput() GetSqlWarehouseOdbcParamsPtrOutput {
+	return o
+}
+
+func (o GetSqlWarehouseOdbcParamsPtrOutput) ToGetSqlWarehouseOdbcParamsPtrOutputWithContext(ctx context.Context) GetSqlWarehouseOdbcParamsPtrOutput {
+	return o
+}
+
+func (o GetSqlWarehouseOdbcParamsPtrOutput) Elem() GetSqlWarehouseOdbcParamsOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseOdbcParams) GetSqlWarehouseOdbcParams {
+		if v != nil {
+			return *v
+		}
+		var ret GetSqlWarehouseOdbcParams
+		return ret
+	}).(GetSqlWarehouseOdbcParamsOutput)
+}
+
+func (o GetSqlWarehouseOdbcParamsPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseOdbcParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseOdbcParamsPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseOdbcParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseOdbcParamsPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseOdbcParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetSqlWarehouseOdbcParamsPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseOdbcParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetSqlWarehouseTags struct {
+	CustomTags []GetSqlWarehouseTagsCustomTag `pulumi:"customTags"`
+}
+
+// GetSqlWarehouseTagsInput is an input type that accepts GetSqlWarehouseTagsArgs and GetSqlWarehouseTagsOutput values.
+// You can construct a concrete instance of `GetSqlWarehouseTagsInput` via:
+//
+//	GetSqlWarehouseTagsArgs{...}
+type GetSqlWarehouseTagsInput interface {
+	pulumi.Input
+
+	ToGetSqlWarehouseTagsOutput() GetSqlWarehouseTagsOutput
+	ToGetSqlWarehouseTagsOutputWithContext(context.Context) GetSqlWarehouseTagsOutput
+}
+
+type GetSqlWarehouseTagsArgs struct {
+	CustomTags GetSqlWarehouseTagsCustomTagArrayInput `pulumi:"customTags"`
+}
+
+func (GetSqlWarehouseTagsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlWarehouseTags)(nil)).Elem()
+}
+
+func (i GetSqlWarehouseTagsArgs) ToGetSqlWarehouseTagsOutput() GetSqlWarehouseTagsOutput {
+	return i.ToGetSqlWarehouseTagsOutputWithContext(context.Background())
+}
+
+func (i GetSqlWarehouseTagsArgs) ToGetSqlWarehouseTagsOutputWithContext(ctx context.Context) GetSqlWarehouseTagsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseTagsOutput)
+}
+
+func (i GetSqlWarehouseTagsArgs) ToGetSqlWarehouseTagsPtrOutput() GetSqlWarehouseTagsPtrOutput {
+	return i.ToGetSqlWarehouseTagsPtrOutputWithContext(context.Background())
+}
+
+func (i GetSqlWarehouseTagsArgs) ToGetSqlWarehouseTagsPtrOutputWithContext(ctx context.Context) GetSqlWarehouseTagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseTagsOutput).ToGetSqlWarehouseTagsPtrOutputWithContext(ctx)
+}
+
+// GetSqlWarehouseTagsPtrInput is an input type that accepts GetSqlWarehouseTagsArgs, GetSqlWarehouseTagsPtr and GetSqlWarehouseTagsPtrOutput values.
+// You can construct a concrete instance of `GetSqlWarehouseTagsPtrInput` via:
+//
+//	        GetSqlWarehouseTagsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSqlWarehouseTagsPtrInput interface {
+	pulumi.Input
+
+	ToGetSqlWarehouseTagsPtrOutput() GetSqlWarehouseTagsPtrOutput
+	ToGetSqlWarehouseTagsPtrOutputWithContext(context.Context) GetSqlWarehouseTagsPtrOutput
+}
+
+type getSqlWarehouseTagsPtrType GetSqlWarehouseTagsArgs
+
+func GetSqlWarehouseTagsPtr(v *GetSqlWarehouseTagsArgs) GetSqlWarehouseTagsPtrInput {
+	return (*getSqlWarehouseTagsPtrType)(v)
+}
+
+func (*getSqlWarehouseTagsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlWarehouseTags)(nil)).Elem()
+}
+
+func (i *getSqlWarehouseTagsPtrType) ToGetSqlWarehouseTagsPtrOutput() GetSqlWarehouseTagsPtrOutput {
+	return i.ToGetSqlWarehouseTagsPtrOutputWithContext(context.Background())
+}
+
+func (i *getSqlWarehouseTagsPtrType) ToGetSqlWarehouseTagsPtrOutputWithContext(ctx context.Context) GetSqlWarehouseTagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseTagsPtrOutput)
+}
+
+type GetSqlWarehouseTagsOutput struct{ *pulumi.OutputState }
+
+func (GetSqlWarehouseTagsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlWarehouseTags)(nil)).Elem()
+}
+
+func (o GetSqlWarehouseTagsOutput) ToGetSqlWarehouseTagsOutput() GetSqlWarehouseTagsOutput {
+	return o
+}
+
+func (o GetSqlWarehouseTagsOutput) ToGetSqlWarehouseTagsOutputWithContext(ctx context.Context) GetSqlWarehouseTagsOutput {
+	return o
+}
+
+func (o GetSqlWarehouseTagsOutput) ToGetSqlWarehouseTagsPtrOutput() GetSqlWarehouseTagsPtrOutput {
+	return o.ToGetSqlWarehouseTagsPtrOutputWithContext(context.Background())
+}
+
+func (o GetSqlWarehouseTagsOutput) ToGetSqlWarehouseTagsPtrOutputWithContext(ctx context.Context) GetSqlWarehouseTagsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSqlWarehouseTags) *GetSqlWarehouseTags {
+		return &v
+	}).(GetSqlWarehouseTagsPtrOutput)
+}
+
+func (o GetSqlWarehouseTagsOutput) CustomTags() GetSqlWarehouseTagsCustomTagArrayOutput {
+	return o.ApplyT(func(v GetSqlWarehouseTags) []GetSqlWarehouseTagsCustomTag { return v.CustomTags }).(GetSqlWarehouseTagsCustomTagArrayOutput)
+}
+
+type GetSqlWarehouseTagsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSqlWarehouseTagsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlWarehouseTags)(nil)).Elem()
+}
+
+func (o GetSqlWarehouseTagsPtrOutput) ToGetSqlWarehouseTagsPtrOutput() GetSqlWarehouseTagsPtrOutput {
+	return o
+}
+
+func (o GetSqlWarehouseTagsPtrOutput) ToGetSqlWarehouseTagsPtrOutputWithContext(ctx context.Context) GetSqlWarehouseTagsPtrOutput {
+	return o
+}
+
+func (o GetSqlWarehouseTagsPtrOutput) Elem() GetSqlWarehouseTagsOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseTags) GetSqlWarehouseTags {
+		if v != nil {
+			return *v
+		}
+		var ret GetSqlWarehouseTags
+		return ret
+	}).(GetSqlWarehouseTagsOutput)
+}
+
+func (o GetSqlWarehouseTagsPtrOutput) CustomTags() GetSqlWarehouseTagsCustomTagArrayOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseTags) []GetSqlWarehouseTagsCustomTag {
+		if v == nil {
+			return nil
+		}
+		return v.CustomTags
+	}).(GetSqlWarehouseTagsCustomTagArrayOutput)
+}
+
+type GetSqlWarehouseTagsCustomTag struct {
+	Key   *string `pulumi:"key"`
+	Value *string `pulumi:"value"`
+}
+
+// GetSqlWarehouseTagsCustomTagInput is an input type that accepts GetSqlWarehouseTagsCustomTagArgs and GetSqlWarehouseTagsCustomTagOutput values.
+// You can construct a concrete instance of `GetSqlWarehouseTagsCustomTagInput` via:
+//
+//	GetSqlWarehouseTagsCustomTagArgs{...}
+type GetSqlWarehouseTagsCustomTagInput interface {
+	pulumi.Input
+
+	ToGetSqlWarehouseTagsCustomTagOutput() GetSqlWarehouseTagsCustomTagOutput
+	ToGetSqlWarehouseTagsCustomTagOutputWithContext(context.Context) GetSqlWarehouseTagsCustomTagOutput
+}
+
+type GetSqlWarehouseTagsCustomTagArgs struct {
+	Key   pulumi.StringPtrInput `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetSqlWarehouseTagsCustomTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlWarehouseTagsCustomTag)(nil)).Elem()
+}
+
+func (i GetSqlWarehouseTagsCustomTagArgs) ToGetSqlWarehouseTagsCustomTagOutput() GetSqlWarehouseTagsCustomTagOutput {
+	return i.ToGetSqlWarehouseTagsCustomTagOutputWithContext(context.Background())
+}
+
+func (i GetSqlWarehouseTagsCustomTagArgs) ToGetSqlWarehouseTagsCustomTagOutputWithContext(ctx context.Context) GetSqlWarehouseTagsCustomTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseTagsCustomTagOutput)
+}
+
+// GetSqlWarehouseTagsCustomTagArrayInput is an input type that accepts GetSqlWarehouseTagsCustomTagArray and GetSqlWarehouseTagsCustomTagArrayOutput values.
+// You can construct a concrete instance of `GetSqlWarehouseTagsCustomTagArrayInput` via:
+//
+//	GetSqlWarehouseTagsCustomTagArray{ GetSqlWarehouseTagsCustomTagArgs{...} }
+type GetSqlWarehouseTagsCustomTagArrayInput interface {
+	pulumi.Input
+
+	ToGetSqlWarehouseTagsCustomTagArrayOutput() GetSqlWarehouseTagsCustomTagArrayOutput
+	ToGetSqlWarehouseTagsCustomTagArrayOutputWithContext(context.Context) GetSqlWarehouseTagsCustomTagArrayOutput
+}
+
+type GetSqlWarehouseTagsCustomTagArray []GetSqlWarehouseTagsCustomTagInput
+
+func (GetSqlWarehouseTagsCustomTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSqlWarehouseTagsCustomTag)(nil)).Elem()
+}
+
+func (i GetSqlWarehouseTagsCustomTagArray) ToGetSqlWarehouseTagsCustomTagArrayOutput() GetSqlWarehouseTagsCustomTagArrayOutput {
+	return i.ToGetSqlWarehouseTagsCustomTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetSqlWarehouseTagsCustomTagArray) ToGetSqlWarehouseTagsCustomTagArrayOutputWithContext(ctx context.Context) GetSqlWarehouseTagsCustomTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseTagsCustomTagArrayOutput)
+}
+
+type GetSqlWarehouseTagsCustomTagOutput struct{ *pulumi.OutputState }
+
+func (GetSqlWarehouseTagsCustomTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlWarehouseTagsCustomTag)(nil)).Elem()
+}
+
+func (o GetSqlWarehouseTagsCustomTagOutput) ToGetSqlWarehouseTagsCustomTagOutput() GetSqlWarehouseTagsCustomTagOutput {
+	return o
+}
+
+func (o GetSqlWarehouseTagsCustomTagOutput) ToGetSqlWarehouseTagsCustomTagOutputWithContext(ctx context.Context) GetSqlWarehouseTagsCustomTagOutput {
+	return o
+}
+
+func (o GetSqlWarehouseTagsCustomTagOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseTagsCustomTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseTagsCustomTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseTagsCustomTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetSqlWarehouseTagsCustomTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSqlWarehouseTagsCustomTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSqlWarehouseTagsCustomTag)(nil)).Elem()
+}
+
+func (o GetSqlWarehouseTagsCustomTagArrayOutput) ToGetSqlWarehouseTagsCustomTagArrayOutput() GetSqlWarehouseTagsCustomTagArrayOutput {
+	return o
+}
+
+func (o GetSqlWarehouseTagsCustomTagArrayOutput) ToGetSqlWarehouseTagsCustomTagArrayOutputWithContext(ctx context.Context) GetSqlWarehouseTagsCustomTagArrayOutput {
+	return o
+}
+
+func (o GetSqlWarehouseTagsCustomTagArrayOutput) Index(i pulumi.IntInput) GetSqlWarehouseTagsCustomTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSqlWarehouseTagsCustomTag {
+		return vs[0].([]GetSqlWarehouseTagsCustomTag)[vs[1].(int)]
+	}).(GetSqlWarehouseTagsCustomTagOutput)
+}
+
 type GetStorageCredentialStorageCredentialInfo struct {
 	// credential details for AWS:
 	AwsIamRole *GetStorageCredentialStorageCredentialInfoAwsIamRole `pulumi:"awsIamRole"`
@@ -4814,6 +6426,30 @@ func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) AwsKm
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointConfigServedModelInput)(nil)).Elem(), GetServingEndpointsEndpointConfigServedModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointConfigServedModelArrayInput)(nil)).Elem(), GetServingEndpointsEndpointConfigServedModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointStateInput)(nil)).Elem(), GetServingEndpointsEndpointStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointStateArrayInput)(nil)).Elem(), GetServingEndpointsEndpointStateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointTagInput)(nil)).Elem(), GetServingEndpointsEndpointTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointTagArrayInput)(nil)).Elem(), GetServingEndpointsEndpointTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetShareObjectInput)(nil)).Elem(), GetShareObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetShareObjectArrayInput)(nil)).Elem(), GetShareObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetShareObjectPartitionInput)(nil)).Elem(), GetShareObjectPartitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetShareObjectPartitionArrayInput)(nil)).Elem(), GetShareObjectPartitionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetShareObjectPartitionValueInput)(nil)).Elem(), GetShareObjectPartitionValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetShareObjectPartitionValueArrayInput)(nil)).Elem(), GetShareObjectPartitionValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseChannelInput)(nil)).Elem(), GetSqlWarehouseChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseChannelPtrInput)(nil)).Elem(), GetSqlWarehouseChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseHealthInput)(nil)).Elem(), GetSqlWarehouseHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseHealthPtrInput)(nil)).Elem(), GetSqlWarehouseHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseHealthFailureReasonInput)(nil)).Elem(), GetSqlWarehouseHealthFailureReasonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseHealthFailureReasonPtrInput)(nil)).Elem(), GetSqlWarehouseHealthFailureReasonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseOdbcParamsInput)(nil)).Elem(), GetSqlWarehouseOdbcParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseOdbcParamsPtrInput)(nil)).Elem(), GetSqlWarehouseOdbcParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseTagsInput)(nil)).Elem(), GetSqlWarehouseTagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseTagsPtrInput)(nil)).Elem(), GetSqlWarehouseTagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseTagsCustomTagInput)(nil)).Elem(), GetSqlWarehouseTagsCustomTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseTagsCustomTagArrayInput)(nil)).Elem(), GetSqlWarehouseTagsCustomTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageCredentialStorageCredentialInfoInput)(nil)).Elem(), GetStorageCredentialStorageCredentialInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageCredentialStorageCredentialInfoPtrInput)(nil)).Elem(), GetStorageCredentialStorageCredentialInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageCredentialStorageCredentialInfoAwsIamRoleInput)(nil)).Elem(), GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs{})
@@ -4864,6 +6500,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointConfigServedModelOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointConfigServedModelArrayOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointStateOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointStateArrayOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointTagOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointTagArrayOutput{})
+	pulumi.RegisterOutputType(GetShareObjectOutput{})
+	pulumi.RegisterOutputType(GetShareObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetShareObjectPartitionOutput{})
+	pulumi.RegisterOutputType(GetShareObjectPartitionArrayOutput{})
+	pulumi.RegisterOutputType(GetShareObjectPartitionValueOutput{})
+	pulumi.RegisterOutputType(GetShareObjectPartitionValueArrayOutput{})
+	pulumi.RegisterOutputType(GetSqlWarehouseChannelOutput{})
+	pulumi.RegisterOutputType(GetSqlWarehouseChannelPtrOutput{})
+	pulumi.RegisterOutputType(GetSqlWarehouseHealthOutput{})
+	pulumi.RegisterOutputType(GetSqlWarehouseHealthPtrOutput{})
+	pulumi.RegisterOutputType(GetSqlWarehouseHealthFailureReasonOutput{})
+	pulumi.RegisterOutputType(GetSqlWarehouseHealthFailureReasonPtrOutput{})
+	pulumi.RegisterOutputType(GetSqlWarehouseOdbcParamsOutput{})
+	pulumi.RegisterOutputType(GetSqlWarehouseOdbcParamsPtrOutput{})
+	pulumi.RegisterOutputType(GetSqlWarehouseTagsOutput{})
+	pulumi.RegisterOutputType(GetSqlWarehouseTagsPtrOutput{})
+	pulumi.RegisterOutputType(GetSqlWarehouseTagsCustomTagOutput{})
+	pulumi.RegisterOutputType(GetSqlWarehouseTagsCustomTagArrayOutput{})
 	pulumi.RegisterOutputType(GetStorageCredentialStorageCredentialInfoOutput{})
 	pulumi.RegisterOutputType(GetStorageCredentialStorageCredentialInfoPtrOutput{})
 	pulumi.RegisterOutputType(GetStorageCredentialStorageCredentialInfoAwsIamRoleOutput{})

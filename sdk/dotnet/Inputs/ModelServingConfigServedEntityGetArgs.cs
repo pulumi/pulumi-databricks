@@ -49,10 +49,22 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? InstanceProfileArn { get; set; }
 
         /// <summary>
+        /// The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+        /// </summary>
+        [Input("maxProvisionedConcurrency")]
+        public Input<int>? MaxProvisionedConcurrency { get; set; }
+
+        /// <summary>
         /// The maximum tokens per second that the endpoint can scale up to.
         /// </summary>
         [Input("maxProvisionedThroughput")]
         public Input<int>? MaxProvisionedThroughput { get; set; }
+
+        /// <summary>
+        /// The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+        /// </summary>
+        [Input("minProvisionedConcurrency")]
+        public Input<int>? MinProvisionedConcurrency { get; set; }
 
         /// <summary>
         /// The minimum tokens per second that the endpoint can scale down to.
@@ -76,7 +88,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<bool>? ScaleToZeroEnabled { get; set; }
 
         /// <summary>
-        /// The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
+        /// The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `min_provisioned_concurrency` and `max_provisioned_concurrency`.
         /// </summary>
         [Input("workloadSize")]
         public Input<string>? WorkloadSize { get; set; }

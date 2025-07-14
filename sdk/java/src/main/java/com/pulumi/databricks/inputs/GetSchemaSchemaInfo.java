@@ -214,14 +214,14 @@ public final class GetSchemaSchemaInfo extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * the unique identifier of the volume
+     * the unique identifier of the schema
      * 
      */
     @Import(name="schemaId")
     private @Nullable String schemaId;
 
     /**
-     * @return the unique identifier of the volume
+     * @return the unique identifier of the schema
      * 
      */
     public Optional<String> schemaId() {
@@ -473,7 +473,7 @@ public final class GetSchemaSchemaInfo extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param schemaId the unique identifier of the volume
+         * @param schemaId the unique identifier of the schema
          * 
          * @return builder
          * 

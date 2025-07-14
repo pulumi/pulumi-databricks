@@ -161,6 +161,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NotificationDestination{}
 	case "databricks:index/oboToken:OboToken":
 		r = &OboToken{}
+	case "databricks:index/onlineStore:OnlineStore":
+		r = &OnlineStore{}
 	case "databricks:index/onlineTable:OnlineTable":
 		r = &OnlineTable{}
 	case "databricks:index/permissionAssignment:PermissionAssignment":
@@ -171,6 +173,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Pipeline{}
 	case "databricks:index/qualityMonitor:QualityMonitor":
 		r = &QualityMonitor{}
+	case "databricks:index/qualityMonitorV2:QualityMonitorV2":
+		r = &QualityMonitorV2{}
 	case "databricks:index/query:Query":
 		r = &Query{}
 	case "databricks:index/recipient:Recipient":
@@ -628,6 +632,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/onlineStore",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/onlineTable",
 		&module{version},
 	)
@@ -649,6 +658,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/qualityMonitor",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/qualityMonitorV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

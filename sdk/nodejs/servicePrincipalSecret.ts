@@ -24,6 +24,20 @@ import * as utilities from "./utilities";
  * const terraformSp = new databricks.ServicePrincipalSecret("terraform_sp", {servicePrincipalId: _this.id});
  * ```
  *
+ * A secret can be automatically rotated by taking a dependency on the `timeRotating` resource:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const _this = new time.Rotating("this", {rotationDays: 30});
+ * const terraformSp = new databricks.ServicePrincipalSecret("terraform_sp", {
+ *     servicePrincipalId: thisDatabricksServicePrincipal.id,
+ *     timeRotating: pulumi.interpolate`Pulumi (created: ${_this.rfc3339})`,
+ * });
+ * ```
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -71,7 +85,7 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
      */
     public readonly lifetime!: pulumi.Output<string>;
     /**
-     * Generated secret for the service principal.
+     * **Sensitive** Generated secret for the service principal.
      */
     public readonly secret!: pulumi.Output<string>;
     /**
@@ -86,6 +100,10 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
      * Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
      */
     public readonly status!: pulumi.Output<string>;
+    /**
+     * Changing this argument forces recreation of the secret.
+     */
+    public readonly timeRotating!: pulumi.Output<string | undefined>;
     /**
      * UTC time when the secret was updated.
      */
@@ -111,6 +129,7 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
             resourceInputs["secretHash"] = state ? state.secretHash : undefined;
             resourceInputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["timeRotating"] = state ? state.timeRotating : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as ServicePrincipalSecretArgs | undefined;
@@ -124,6 +143,7 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
             resourceInputs["secretHash"] = args ? args.secretHash : undefined;
             resourceInputs["servicePrincipalId"] = args ? args.servicePrincipalId : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["timeRotating"] = args ? args.timeRotating : undefined;
             resourceInputs["updateTime"] = args ? args.updateTime : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -150,7 +170,7 @@ export interface ServicePrincipalSecretState {
      */
     lifetime?: pulumi.Input<string>;
     /**
-     * Generated secret for the service principal.
+     * **Sensitive** Generated secret for the service principal.
      */
     secret?: pulumi.Input<string>;
     /**
@@ -165,6 +185,10 @@ export interface ServicePrincipalSecretState {
      * Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
      */
     status?: pulumi.Input<string>;
+    /**
+     * Changing this argument forces recreation of the secret.
+     */
+    timeRotating?: pulumi.Input<string>;
     /**
      * UTC time when the secret was updated.
      */
@@ -188,7 +212,7 @@ export interface ServicePrincipalSecretArgs {
      */
     lifetime?: pulumi.Input<string>;
     /**
-     * Generated secret for the service principal.
+     * **Sensitive** Generated secret for the service principal.
      */
     secret?: pulumi.Input<string>;
     /**
@@ -203,6 +227,10 @@ export interface ServicePrincipalSecretArgs {
      * Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
      */
     status?: pulumi.Input<string>;
+    /**
+     * Changing this argument forces recreation of the secret.
+     */
+    timeRotating?: pulumi.Input<string>;
     /**
      * UTC time when the secret was updated.
      */

@@ -50,6 +50,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("sqlWarehouse")]
         public Input<Inputs.AppResourceSqlWarehouseArgs>? SqlWarehouse { get; set; }
 
+        /// <summary>
+        /// attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
+        /// </summary>
         [Input("ucSecurable")]
         public Input<Inputs.AppResourceUcSecurableArgs>? UcSecurable { get; set; }
 

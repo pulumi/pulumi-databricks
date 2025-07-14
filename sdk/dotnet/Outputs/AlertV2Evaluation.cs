@@ -14,11 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class AlertV2Evaluation
     {
         /// <summary>
-        /// Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+        /// Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
         /// </summary>
         public readonly string? ComparisonOperator;
         /// <summary>
-        /// Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        /// Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         /// </summary>
         public readonly string? EmptyResultState;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.AlertV2EvaluationSource? Source;
         /// <summary>
-        /// (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+        /// (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         /// </summary>
         public readonly string? State;
         /// <summary>

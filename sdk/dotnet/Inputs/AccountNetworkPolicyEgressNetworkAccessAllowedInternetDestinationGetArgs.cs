@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Destination { get; set; }
 
         /// <summary>
-        /// The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+        /// The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
         /// </summary>
         [Input("internetDestinationType")]
         public Input<string>? InternetDestinationType { get; set; }

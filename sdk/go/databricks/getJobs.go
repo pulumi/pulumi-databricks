@@ -15,7 +15,7 @@ import (
 //
 // > This data source can only be used with a workspace-level provider!
 //
-// > Data resource will error in case of jobs with duplicate names.
+// > By default, this data resource will error in case of jobs with duplicate names. To support duplicate names, set `key = "id"` to map jobs by ID.
 //
 // ## Example Usage
 //
@@ -34,12 +34,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			this, err := databricks.GetJobs(ctx, &databricks.GetJobsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.GetJobs(ctx, &databricks.GetJobsArgs{
-//				JobNameContains: pulumi.StringRef("test"),
-//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -81,11 +75,55 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.GetJobs(ctx, &databricks.GetJobsArgs{}, nil)
+//			this, err := databricks.GetJobs(ctx, &databricks.GetJobsArgs{
+//				JobNameContains: pulumi.StringRef("test"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			ctx.Export("x", pulumi.Sprintf("ID of `x` job is %v", this.Ids.X))
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Getting IDs of Job mapped by ID, allowing duplicate job names:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.GetJobs(ctx, &databricks.GetJobsArgs{
+//				Key: pulumi.StringRef("id"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var everyoneCanViewAllJobs []*databricks.Permissions
+//			for key0, val0 := range this.Ids {
+//				__res, err := databricks.NewPermissions(ctx, fmt.Sprintf("everyone_can_view_all_jobs-%v", key0), &databricks.PermissionsArgs{
+//					JobId: pulumi.String(val0),
+//					AccessControls: databricks.PermissionsAccessControlArray{
+//						&databricks.PermissionsAccessControlArgs{
+//							GroupName:       pulumi.String("users"),
+//							PermissionLevel: pulumi.String("CAN_VIEW"),
+//						},
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				everyoneCanViewAllJobs = append(everyoneCanViewAllJobs, __res)
+//			}
 //			return nil
 //		})
 //	}
@@ -113,6 +151,8 @@ type GetJobsArgs struct {
 	Ids map[string]string `pulumi:"ids"`
 	// Only return Job ids that match the given name string (case-insensitive).
 	JobNameContains *string `pulumi:"jobNameContains"`
+	// Attribute to use for keys in the returned map of Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
+	Key *string `pulumi:"key"`
 }
 
 // A collection of values returned by getJobs.
@@ -122,6 +162,7 @@ type GetJobsResult struct {
 	// map of Job names to ids
 	Ids             map[string]string `pulumi:"ids"`
 	JobNameContains *string           `pulumi:"jobNameContains"`
+	Key             *string           `pulumi:"key"`
 }
 
 func GetJobsOutput(ctx *pulumi.Context, args GetJobsOutputArgs, opts ...pulumi.InvokeOption) GetJobsResultOutput {
@@ -139,6 +180,8 @@ type GetJobsOutputArgs struct {
 	Ids pulumi.StringMapInput `pulumi:"ids"`
 	// Only return Job ids that match the given name string (case-insensitive).
 	JobNameContains pulumi.StringPtrInput `pulumi:"jobNameContains"`
+	// Attribute to use for keys in the returned map of Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
+	Key pulumi.StringPtrInput `pulumi:"key"`
 }
 
 func (GetJobsOutputArgs) ElementType() reflect.Type {
@@ -172,6 +215,10 @@ func (o GetJobsResultOutput) Ids() pulumi.StringMapOutput {
 
 func (o GetJobsResultOutput) JobNameContains() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetJobsResult) *string { return v.JobNameContains }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobsResultOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobsResult) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
 func init() {

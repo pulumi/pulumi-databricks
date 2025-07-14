@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; It is important to know that different cloud service providers have different `node_type_id`, `disk_specs` and potentially other configurations.
  * 
+ * &gt; &#34;auto&#34; `zone_id` is only supported for fleet node types.
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

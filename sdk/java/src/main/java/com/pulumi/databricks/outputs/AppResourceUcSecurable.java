@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class AppResourceUcSecurable {
+    /**
+     * @return Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * 
+     */
     private String permission;
+    /**
+     * @return the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     * 
+     */
     private String securableFullName;
+    /**
+     * @return the type of UC securable, i.e. `VOLUME`.
+     * 
+     */
     private String securableType;
 
     private AppResourceUcSecurable() {}
+    /**
+     * @return Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * 
+     */
     public String permission() {
         return this.permission;
     }
+    /**
+     * @return the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     * 
+     */
     public String securableFullName() {
         return this.securableFullName;
     }
+    /**
+     * @return the type of UC securable, i.e. `VOLUME`.
+     * 
+     */
     public String securableType() {
         return this.securableType;
     }

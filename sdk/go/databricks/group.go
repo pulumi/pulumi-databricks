@@ -191,7 +191,7 @@ type Group struct {
 	Url   pulumi.StringOutput  `pulumi:"url"`
 	// This is a field to allow the group to have access to a Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrOutput `pulumi:"workspaceAccess"`
-	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrOutput `pulumi:"workspaceConsume"`
 }
 
@@ -242,7 +242,7 @@ type groupState struct {
 	Url   *string `pulumi:"url"`
 	// This is a field to allow the group to have access to a Databricks Workspace.
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
-	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume *bool `pulumi:"workspaceConsume"`
 }
 
@@ -264,7 +264,7 @@ type GroupState struct {
 	Url   pulumi.StringPtrInput
 	// This is a field to allow the group to have access to a Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrInput
-	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrInput
 }
 
@@ -290,7 +290,7 @@ type groupArgs struct {
 	Url   *string `pulumi:"url"`
 	// This is a field to allow the group to have access to a Databricks Workspace.
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
-	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume *bool `pulumi:"workspaceConsume"`
 }
 
@@ -313,7 +313,7 @@ type GroupArgs struct {
 	Url   pulumi.StringPtrInput
 	// This is a field to allow the group to have access to a Databricks Workspace.
 	WorkspaceAccess pulumi.BoolPtrInput
-	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrInput
 }
 
@@ -448,7 +448,7 @@ func (o GroupOutput) WorkspaceAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.WorkspaceAccess }).(pulumi.BoolPtrOutput)
 }
 
-// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.
+// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 func (o GroupOutput) WorkspaceConsume() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.WorkspaceConsume }).(pulumi.BoolPtrOutput)
 }

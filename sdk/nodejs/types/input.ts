@@ -51,7 +51,7 @@ export interface AccountNetworkPolicyEgressNetworkAccess {
      */
     policyEnforcement?: pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement>;
     /**
-     * The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+     * The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
      */
     restrictionMode: pulumi.Input<string>;
 }
@@ -62,7 +62,7 @@ export interface AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinati
      */
     destination?: pulumi.Input<string>;
     /**
-     * The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+     * The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
      */
     internetDestinationType?: pulumi.Input<string>;
 }
@@ -77,12 +77,9 @@ export interface AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinatio
      */
     azureStorageService?: pulumi.Input<string>;
     bucketName?: pulumi.Input<string>;
-    /**
-     * The region of the S3 bucket
-     */
     region?: pulumi.Input<string>;
     /**
-     * The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+     * The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
      */
     storageDestinationType?: pulumi.Input<string>;
 }
@@ -96,7 +93,7 @@ export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
     /**
      * The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
      * while DRY_RUN only logs violations without blocking. When not specified,
-     * defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+     * defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
      */
     enforcementMode?: pulumi.Input<string>;
 }
@@ -172,11 +169,11 @@ export interface AlertConditionThresholdValue {
 
 export interface AlertV2Evaluation {
     /**
-     * Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     * Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      */
     comparisonOperator?: pulumi.Input<string>;
     /**
-     * Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     emptyResultState?: pulumi.Input<string>;
     /**
@@ -192,7 +189,7 @@ export interface AlertV2Evaluation {
      */
     source?: pulumi.Input<inputs.AlertV2EvaluationSource>;
     /**
-     * (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     state?: pulumi.Input<string>;
     /**
@@ -220,7 +217,7 @@ export interface AlertV2EvaluationNotificationSubscription {
 
 export interface AlertV2EvaluationSource {
     /**
-     * . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: pulumi.Input<string>;
     display?: pulumi.Input<string>;
@@ -234,7 +231,7 @@ export interface AlertV2EvaluationThreshold {
 
 export interface AlertV2EvaluationThresholdColumn {
     /**
-     * . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: pulumi.Input<string>;
     display?: pulumi.Input<string>;
@@ -249,7 +246,7 @@ export interface AlertV2EvaluationThresholdValue {
 
 export interface AlertV2Schedule {
     /**
-     * Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     * Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
      */
     pauseStatus?: pulumi.Input<string>;
     /**
@@ -384,6 +381,9 @@ export interface AppResource {
      * attribute
      */
     sqlWarehouse?: pulumi.Input<inputs.AppResourceSqlWarehouse>;
+    /**
+     * attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
+     */
     ucSecurable?: pulumi.Input<inputs.AppResourceUcSecurable>;
 }
 
@@ -436,8 +436,17 @@ export interface AppResourceSqlWarehouse {
 }
 
 export interface AppResourceUcSecurable {
+    /**
+     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     */
     permission: pulumi.Input<string>;
+    /**
+     * the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     */
     securableFullName: pulumi.Input<string>;
+    /**
+     * the type of UC securable, i.e. `VOLUME`.
+     */
     securableType: pulumi.Input<string>;
 }
 
@@ -566,11 +575,11 @@ export interface BudgetPolicyCustomTag {
      * The key of the tag.
      * - Must be unique among all custom tags of the same policy
      * - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-     * these tags are preserved.
+     * these tags are preserved
      */
     key: pulumi.Input<string>;
     /**
-     * The value of the tag.
+     * The value of the tag
      */
     value?: pulumi.Input<string>;
 }
@@ -1243,7 +1252,7 @@ export interface GetAccountNetworkPolicyEgressNetworkAccess {
      */
     policyEnforcement?: inputs.GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement;
     /**
-     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
      */
     restrictionMode: string;
 }
@@ -1262,7 +1271,7 @@ export interface GetAccountNetworkPolicyEgressNetworkAccessArgs {
      */
     policyEnforcement?: pulumi.Input<inputs.GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs>;
     /**
-     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
      */
     restrictionMode: pulumi.Input<string>;
 }
@@ -1273,7 +1282,7 @@ export interface GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestin
      */
     destination?: string;
     /**
-     * (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+     * (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
      */
     internetDestinationType?: string;
 }
@@ -1284,7 +1293,7 @@ export interface GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestin
      */
     destination?: pulumi.Input<string>;
     /**
-     * (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: DNS_NAME
+     * (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
      */
     internetDestinationType?: pulumi.Input<string>;
 }
@@ -1303,11 +1312,11 @@ export interface GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestina
      */
     bucketName?: string;
     /**
-     * (string) - The region of the S3 bucket
+     * (string) -
      */
     region?: string;
     /**
-     * (string) - The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+     * (string) - The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
      */
     storageDestinationType?: string;
 }
@@ -1326,11 +1335,11 @@ export interface GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestina
      */
     bucketName?: pulumi.Input<string>;
     /**
-     * (string) - The region of the S3 bucket
+     * (string) -
      */
     region?: pulumi.Input<string>;
     /**
-     * (string) - The type of storage destination. Possible values are: AWS_S3, AZURE_STORAGE, GOOGLE_CLOUD_STORAGE
+     * (string) - The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
      */
     storageDestinationType?: pulumi.Input<string>;
 }
@@ -1344,7 +1353,7 @@ export interface GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
     /**
      * (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
      * while DRY_RUN only logs violations without blocking. When not specified,
-     * defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+     * defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
      */
     enforcementMode?: string;
 }
@@ -1358,18 +1367,18 @@ export interface GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs
     /**
      * (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
      * while DRY_RUN only logs violations without blocking. When not specified,
-     * defaults to ENFORCED. Possible values are: DRY_RUN, ENFORCED
+     * defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
      */
     enforcementMode?: pulumi.Input<string>;
 }
 
 export interface GetAlertV2Evaluation {
     /**
-     * (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     * (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      */
     comparisonOperator?: string;
     /**
-     * (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * (string) - Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     emptyResultState?: string;
     /**
@@ -1385,7 +1394,7 @@ export interface GetAlertV2Evaluation {
      */
     source?: inputs.GetAlertV2EvaluationSource;
     /**
-     * (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     state?: string;
     /**
@@ -1396,11 +1405,11 @@ export interface GetAlertV2Evaluation {
 
 export interface GetAlertV2EvaluationArgs {
     /**
-     * (string) - Operator used for comparison in alert evaluation. Possible values are: EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, IS_NOT_NULL, IS_NULL, LESS_THAN, LESS_THAN_OR_EQUAL, NOT_EQUAL
+     * (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      */
     comparisonOperator?: pulumi.Input<string>;
     /**
-     * (string) - Alert state if result is empty. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * (string) - Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     emptyResultState?: pulumi.Input<string>;
     /**
@@ -1416,7 +1425,7 @@ export interface GetAlertV2EvaluationArgs {
      */
     source?: pulumi.Input<inputs.GetAlertV2EvaluationSourceArgs>;
     /**
-     * (string) - Latest state of alert evaluation. Possible values are: ERROR, OK, TRIGGERED, UNKNOWN
+     * (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     state?: pulumi.Input<string>;
     /**
@@ -1479,7 +1488,7 @@ export interface GetAlertV2EvaluationNotificationSubscriptionArgs {
 
 export interface GetAlertV2EvaluationSource {
     /**
-     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     /**
@@ -1494,7 +1503,7 @@ export interface GetAlertV2EvaluationSource {
 
 export interface GetAlertV2EvaluationSourceArgs {
     /**
-     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: pulumi.Input<string>;
     /**
@@ -1531,7 +1540,7 @@ export interface GetAlertV2EvaluationThresholdArgs {
 
 export interface GetAlertV2EvaluationThresholdColumn {
     /**
-     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     /**
@@ -1546,7 +1555,7 @@ export interface GetAlertV2EvaluationThresholdColumn {
 
 export interface GetAlertV2EvaluationThresholdColumnArgs {
     /**
-     * (string) - . Possible values are: AVG, COUNT, COUNT_DISTINCT, MAX, MEDIAN, MIN, STDDEV, SUM
+     * (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: pulumi.Input<string>;
     /**
@@ -1591,7 +1600,7 @@ export interface GetAlertV2EvaluationThresholdValueArgs {
 
 export interface GetAlertV2Schedule {
     /**
-     * (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     * (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
      */
     pauseStatus?: string;
     /**
@@ -1609,7 +1618,7 @@ export interface GetAlertV2Schedule {
 
 export interface GetAlertV2ScheduleArgs {
     /**
-     * (string) - Indicate whether this schedule is paused or not. Possible values are: PAUSED, UNPAUSED
+     * (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
      */
     pauseStatus?: pulumi.Input<string>;
     /**
@@ -1630,11 +1639,11 @@ export interface GetBudgetPolicyCustomTag {
      * (string) - The key of the tag.
      * - Must be unique among all custom tags of the same policy
      * - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-     * these tags are preserved.
+     * these tags are preserved
      */
     key: string;
     /**
-     * (string) - The value of the tag.
+     * (string) - The value of the tag
      */
     value?: string;
 }
@@ -1644,11 +1653,11 @@ export interface GetBudgetPolicyCustomTagArgs {
      * (string) - The key of the tag.
      * - Must be unique among all custom tags of the same policy
      * - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-     * these tags are preserved.
+     * these tags are preserved
      */
     key: pulumi.Input<string>;
     /**
-     * (string) - The value of the tag.
+     * (string) - The value of the tag
      */
     value?: pulumi.Input<string>;
 }
@@ -1921,6 +1930,7 @@ export interface GetClusterClusterInfo {
      * Identifier of Cluster Policy to validate cluster and preset certain defaults.
      */
     policyId?: string;
+    remoteDiskThroughput?: number;
     /**
      * The type of runtime of the cluster
      */
@@ -1952,6 +1962,7 @@ export interface GetClusterClusterInfo {
     stateMessage?: string;
     terminatedTime?: number;
     terminationReason?: inputs.GetClusterClusterInfoTerminationReason;
+    totalInitialRemoteDiskSize?: number;
     useMlRuntime?: boolean;
     workloadType?: inputs.GetClusterClusterInfoWorkloadType;
 }
@@ -2026,6 +2037,7 @@ export interface GetClusterClusterInfoArgs {
      * Identifier of Cluster Policy to validate cluster and preset certain defaults.
      */
     policyId?: pulumi.Input<string>;
+    remoteDiskThroughput?: pulumi.Input<number>;
     /**
      * The type of runtime of the cluster
      */
@@ -2057,6 +2069,7 @@ export interface GetClusterClusterInfoArgs {
     stateMessage?: pulumi.Input<string>;
     terminatedTime?: pulumi.Input<number>;
     terminationReason?: pulumi.Input<inputs.GetClusterClusterInfoTerminationReasonArgs>;
+    totalInitialRemoteDiskSize?: pulumi.Input<number>;
     useMlRuntime?: pulumi.Input<boolean>;
     workloadType?: pulumi.Input<inputs.GetClusterClusterInfoWorkloadTypeArgs>;
 }
@@ -2423,6 +2436,7 @@ export interface GetClusterClusterInfoSpec {
      * Identifier of Cluster Policy to validate cluster and preset certain defaults.
      */
     policyId?: string;
+    remoteDiskThroughput?: number;
     /**
      * The type of runtime of the cluster
      */
@@ -2447,6 +2461,7 @@ export interface GetClusterClusterInfoSpec {
      * SSH public key contents that will be added to each Spark node in this cluster.
      */
     sshPublicKeys?: string[];
+    totalInitialRemoteDiskSize?: number;
     useMlRuntime?: boolean;
     workloadType?: inputs.GetClusterClusterInfoSpecWorkloadType;
 }
@@ -2513,6 +2528,7 @@ export interface GetClusterClusterInfoSpecArgs {
      * Identifier of Cluster Policy to validate cluster and preset certain defaults.
      */
     policyId?: pulumi.Input<string>;
+    remoteDiskThroughput?: pulumi.Input<number>;
     /**
      * The type of runtime of the cluster
      */
@@ -2537,6 +2553,7 @@ export interface GetClusterClusterInfoSpecArgs {
      * SSH public key contents that will be added to each Spark node in this cluster.
      */
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    totalInitialRemoteDiskSize?: pulumi.Input<number>;
     useMlRuntime?: pulumi.Input<boolean>;
     workloadType?: pulumi.Input<inputs.GetClusterClusterInfoSpecWorkloadTypeArgs>;
 }
@@ -4202,14 +4219,14 @@ export interface GetJobJobSettingsSettingsEnvironmentArgs {
 }
 
 export interface GetJobJobSettingsSettingsEnvironmentSpec {
-    client: string;
+    client?: string;
     dependencies?: string[];
     environmentVersion?: string;
     jarDependencies?: string[];
 }
 
 export interface GetJobJobSettingsSettingsEnvironmentSpecArgs {
-    client: pulumi.Input<string>;
+    client?: pulumi.Input<string>;
     dependencies?: pulumi.Input<pulumi.Input<string>[]>;
     environmentVersion?: pulumi.Input<string>;
     jarDependencies?: pulumi.Input<pulumi.Input<string>[]>;
@@ -7220,6 +7237,7 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureSer
 }
 
 export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRules {
+    awsPrivateEndpointRules?: inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule[];
     /**
      * Array of private endpoint rule objects.
      */
@@ -7227,10 +7245,91 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRules {
 }
 
 export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs {
+    awsPrivateEndpointRules?: pulumi.Input<pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs>[]>;
     /**
      * Array of private endpoint rule objects.
      */
     azurePrivateEndpointRules?: pulumi.Input<pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs>[]>;
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule {
+    /**
+     * The Databricks account ID associated with this network configuration.
+     */
+    accountId?: string;
+    /**
+     * The current status of this private endpoint.
+     */
+    connectionState?: string;
+    /**
+     * Time in epoch milliseconds when this object was created.
+     */
+    creationTime?: number;
+    /**
+     * Whether this private endpoint is deactivated.
+     */
+    deactivated?: boolean;
+    /**
+     * Time in epoch milliseconds when this object was deactivated.
+     */
+    deactivatedAt?: number;
+    domainNames?: string[];
+    enabled?: boolean;
+    endpointService?: string;
+    /**
+     * The Databricks network connectivity configuration ID.
+     */
+    networkConnectivityConfigId?: string;
+    resourceNames?: string[];
+    /**
+     * The ID of a private endpoint rule.
+     */
+    ruleId?: string;
+    /**
+     * Time in epoch milliseconds when the network was updated.
+     */
+    updatedTime?: number;
+    vpcEndpointId?: string;
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs {
+    /**
+     * The Databricks account ID associated with this network configuration.
+     */
+    accountId?: pulumi.Input<string>;
+    /**
+     * The current status of this private endpoint.
+     */
+    connectionState?: pulumi.Input<string>;
+    /**
+     * Time in epoch milliseconds when this object was created.
+     */
+    creationTime?: pulumi.Input<number>;
+    /**
+     * Whether this private endpoint is deactivated.
+     */
+    deactivated?: pulumi.Input<boolean>;
+    /**
+     * Time in epoch milliseconds when this object was deactivated.
+     */
+    deactivatedAt?: pulumi.Input<number>;
+    domainNames?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+    endpointService?: pulumi.Input<string>;
+    /**
+     * The Databricks network connectivity configuration ID.
+     */
+    networkConnectivityConfigId?: pulumi.Input<string>;
+    resourceNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of a private endpoint rule.
+     */
+    ruleId?: pulumi.Input<string>;
+    /**
+     * Time in epoch milliseconds when the network was updated.
+     */
+    updatedTime?: pulumi.Input<number>;
+    vpcEndpointId?: pulumi.Input<string>;
 }
 
 export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
@@ -7805,7 +7904,7 @@ export interface GetSchemaSchemaInfo {
      */
     properties?: {[key: string]: string};
     /**
-     * the unique identifier of the volume
+     * the unique identifier of the schema
      */
     schemaId?: string;
     /**
@@ -7880,7 +7979,7 @@ export interface GetSchemaSchemaInfoArgs {
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * the unique identifier of the volume
+     * the unique identifier of the schema
      */
     schemaId?: pulumi.Input<string>;
     /**
@@ -7925,6 +8024,7 @@ export interface GetServingEndpointsEndpoint {
     configs?: inputs.GetServingEndpointsEndpointConfig[];
     creationTimestamp?: number;
     creator?: string;
+    description?: string;
     id?: string;
     lastUpdatedTimestamp?: number;
     /**
@@ -7951,6 +8051,7 @@ export interface GetServingEndpointsEndpointArgs {
     configs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigArgs>[]>;
     creationTimestamp?: pulumi.Input<number>;
     creator?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     id?: pulumi.Input<string>;
     lastUpdatedTimestamp?: pulumi.Input<number>;
     /**
@@ -9438,7 +9539,7 @@ export interface JobEnvironmentSpec {
     /**
      * client version used by the environment.
      */
-    client: pulumi.Input<string>;
+    client?: pulumi.Input<string>;
     /**
      * List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
      */
@@ -9544,12 +9645,14 @@ export interface JobJobClusterNewCluster {
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
+    remoteDiskThroughput?: pulumi.Input<number>;
     runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion?: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    totalInitialRemoteDiskSize?: pulumi.Input<number>;
     useMlRuntime?: pulumi.Input<boolean>;
     /**
      * isn't supported
@@ -9784,12 +9887,14 @@ export interface JobNewCluster {
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
+    remoteDiskThroughput?: pulumi.Input<number>;
     runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion?: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    totalInitialRemoteDiskSize?: pulumi.Input<number>;
     useMlRuntime?: pulumi.Input<boolean>;
     /**
      * isn't supported
@@ -10141,6 +10246,8 @@ export interface JobTask {
     cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskCleanRoomsNotebookTask>;
     conditionTask?: pulumi.Input<inputs.JobTaskConditionTask>;
     dashboardTask?: pulumi.Input<inputs.JobTaskDashboardTask>;
+    dbtCloudTask?: pulumi.Input<inputs.JobTaskDbtCloudTask>;
+    dbtPlatformTask?: pulumi.Input<inputs.JobTaskDbtPlatformTask>;
     dbtTask?: pulumi.Input<inputs.JobTaskDbtTask>;
     /**
      * block specifying dependency(-ies) for a given task.
@@ -10307,6 +10414,22 @@ export interface JobTaskDashboardTaskSubscriptionSubscriber {
     userName?: pulumi.Input<string>;
 }
 
+export interface JobTaskDbtCloudTask {
+    /**
+     * The resource name of the UC connection to authenticate from Databricks to Power BI
+     */
+    connectionResourceName?: pulumi.Input<string>;
+    dbtCloudJobId?: pulumi.Input<number>;
+}
+
+export interface JobTaskDbtPlatformTask {
+    /**
+     * The resource name of the UC connection to authenticate from Databricks to Power BI
+     */
+    connectionResourceName?: pulumi.Input<string>;
+    dbtPlatformJobId?: pulumi.Input<string>;
+}
+
 export interface JobTaskDbtTask {
     /**
      * The name of the catalog to use inside Unity Catalog.
@@ -10403,6 +10526,8 @@ export interface JobTaskForEachTaskTask {
     cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask>;
     conditionTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskConditionTask>;
     dashboardTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDashboardTask>;
+    dbtCloudTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDbtCloudTask>;
+    dbtPlatformTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDbtPlatformTask>;
     dbtTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDbtTask>;
     /**
      * block specifying dependency(-ies) for a given task.
@@ -10566,6 +10691,22 @@ export interface JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber {
      * A snapshot of the dashboard will be sent to the user's email when the `userName` field is present.
      */
     userName?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskDbtCloudTask {
+    /**
+     * The resource name of the UC connection to authenticate from Databricks to Power BI
+     */
+    connectionResourceName?: pulumi.Input<string>;
+    dbtCloudJobId?: pulumi.Input<number>;
+}
+
+export interface JobTaskForEachTaskTaskDbtPlatformTask {
+    /**
+     * The resource name of the UC connection to authenticate from Databricks to Power BI
+     */
+    connectionResourceName?: pulumi.Input<string>;
+    dbtPlatformJobId?: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskDbtTask {
@@ -10739,12 +10880,14 @@ export interface JobTaskForEachTaskTaskNewCluster {
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
+    remoteDiskThroughput?: pulumi.Input<number>;
     runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion?: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    totalInitialRemoteDiskSize?: pulumi.Input<number>;
     useMlRuntime?: pulumi.Input<boolean>;
     /**
      * isn't supported
@@ -11416,12 +11559,14 @@ export interface JobTaskNewCluster {
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
+    remoteDiskThroughput?: pulumi.Input<number>;
     runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
     sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion?: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    totalInitialRemoteDiskSize?: pulumi.Input<number>;
     useMlRuntime?: pulumi.Input<boolean>;
     /**
      * isn't supported
@@ -12524,9 +12669,17 @@ export interface ModelServingConfigServedEntity {
      */
     instanceProfileArn?: pulumi.Input<string>;
     /**
+     * The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
+     */
+    maxProvisionedConcurrency?: pulumi.Input<number>;
+    /**
      * The maximum tokens per second that the endpoint can scale up to.
      */
     maxProvisionedThroughput?: pulumi.Input<number>;
+    /**
+     * The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
+     */
+    minProvisionedConcurrency?: pulumi.Input<number>;
     /**
      * The minimum tokens per second that the endpoint can scale down to.
      */
@@ -12541,7 +12694,7 @@ export interface ModelServingConfigServedEntity {
      */
     scaleToZeroEnabled?: pulumi.Input<boolean>;
     /**
-     * The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
+     * The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `minProvisionedConcurrency` and `maxProvisionedConcurrency`.
      */
     workloadSize?: pulumi.Input<string>;
     /**
@@ -12800,9 +12953,17 @@ export interface ModelServingConfigServedModel {
      */
     instanceProfileArn?: pulumi.Input<string>;
     /**
+     * The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
+     */
+    maxProvisionedConcurrency?: pulumi.Input<number>;
+    /**
      * The maximum tokens per second that the endpoint can scale up to.
      */
     maxProvisionedThroughput?: pulumi.Input<number>;
+    /**
+     * The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
+     */
+    minProvisionedConcurrency?: pulumi.Input<number>;
     /**
      * The minimum tokens per second that the endpoint can scale down to.
      */
@@ -13154,10 +13315,30 @@ export interface MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServic
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigTargetRules {
+    awsPrivateEndpointRules?: pulumi.Input<pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule>[]>;
     /**
      * (Azure only) - list containing information about configure Azure Private Endpoints.
      */
     azurePrivateEndpointRules?: pulumi.Input<pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule>[]>;
+}
+
+export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule {
+    accountId?: pulumi.Input<string>;
+    connectionState?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<number>;
+    deactivated?: pulumi.Input<boolean>;
+    deactivatedAt?: pulumi.Input<number>;
+    domainNames?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+    endpointService?: pulumi.Input<string>;
+    /**
+     * Canonical unique identifier of Network Connectivity Config in Databricks Account
+     */
+    networkConnectivityConfigId?: pulumi.Input<string>;
+    resourceNames?: pulumi.Input<pulumi.Input<string>[]>;
+    ruleId?: pulumi.Input<string>;
+    updatedTime?: pulumi.Input<number>;
+    vpcEndpointId?: pulumi.Input<string>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
@@ -13188,11 +13369,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -13259,11 +13440,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.82.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;
@@ -13624,6 +13805,10 @@ export interface PipelineDeployment {
     metadataFilePath?: pulumi.Input<string>;
 }
 
+export interface PipelineEnvironment {
+    dependencies?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface PipelineEventLog {
     /**
      * The UC catalog the event log is published under.
@@ -13937,6 +14122,17 @@ export interface QualityMonitorTimeSeries {
      * Column of the timestamp of predictions
      */
     timestampCol: pulumi.Input<string>;
+}
+
+export interface QualityMonitorV2AnomalyDetectionConfig {
+    /**
+     * (string) - Run id of the last run of the workflow
+     */
+    lastRunId?: pulumi.Input<string>;
+    /**
+     * (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
+     */
+    latestRunStatus?: pulumi.Input<string>;
 }
 
 export interface QueryParameter {

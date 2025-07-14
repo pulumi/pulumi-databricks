@@ -19,7 +19,7 @@ public final class GetBudgetPolicyCustomTag extends com.pulumi.resources.InvokeA
      * (string) - The key of the tag.
      * - Must be unique among all custom tags of the same policy
      * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
-     *   these tags are preserved.
+     *   these tags are preserved
      * 
      */
     @Import(name="key", required=true)
@@ -29,7 +29,7 @@ public final class GetBudgetPolicyCustomTag extends com.pulumi.resources.InvokeA
      * @return (string) - The key of the tag.
      * - Must be unique among all custom tags of the same policy
      * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
-     *   these tags are preserved.
+     *   these tags are preserved
      * 
      */
     public String key() {
@@ -37,14 +37,14 @@ public final class GetBudgetPolicyCustomTag extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * (string) - The value of the tag.
+     * (string) - The value of the tag
      * 
      */
     @Import(name="value")
     private @Nullable String value;
 
     /**
-     * @return (string) - The value of the tag.
+     * @return (string) - The value of the tag
      * 
      */
     public Optional<String> value() {
@@ -80,7 +80,7 @@ public final class GetBudgetPolicyCustomTag extends com.pulumi.resources.InvokeA
          * @param key (string) - The key of the tag.
          * - Must be unique among all custom tags of the same policy
          * - Cannot be “budget-policy-name”, “budget-policy-id” or &#34;budget-policy-resolution-result&#34; -
-         *   these tags are preserved.
+         *   these tags are preserved
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetBudgetPolicyCustomTag extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param value (string) - The value of the tag.
+         * @param value (string) - The value of the tag
          * 
          * @return builder
          * 

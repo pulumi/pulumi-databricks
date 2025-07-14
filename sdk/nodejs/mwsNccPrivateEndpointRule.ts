@@ -9,9 +9,11 @@ import * as utilities from "./utilities";
  *
  * > This resource can only be used with an account-level provider!
  *
- * > This feature is only available in Azure.
+ * > This feature is available on Azure, and in Public Preview on AWS.
  *
  * ## Example Usage
+ *
+ * Create a private endpoint to an Azure storage account
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +30,30 @@ import * as utilities from "./utilities";
  *     networkConnectivityConfigId: ncc.networkConnectivityConfigId,
  *     resourceId: "/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa",
  *     groupId: "blob",
+ * });
+ * ```
+ *
+ * Create a private endpoint rule to an AWS VPC endpoint and to an S3 bucket
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const config = new pulumi.Config();
+ * const region = config.requireObject<any>("region");
+ * const prefix = config.requireObject<any>("prefix");
+ * const ncc = new databricks.MwsNetworkConnectivityConfig("ncc", {
+ *     name: `ncc-for-${prefix}`,
+ *     region: region,
+ * });
+ * const storage = new databricks.MwsNccPrivateEndpointRule("storage", {
+ *     networkConnectivityConfigId: ncc.networkConnectivityConfigId,
+ *     resourceNames: ["bucket"],
+ * });
+ * const vpce = new databricks.MwsNccPrivateEndpointRule("vpce", {
+ *     networkConnectivityConfigId: ncc.networkConnectivityConfigId,
+ *     endpointService: "com.amazonaws.vpce.us-west-2.vpce-svc-xyz",
+ *     domainNames: ["subdomain.internal.net"],
  * });
  * ```
  *
@@ -86,6 +112,7 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === MwsNccPrivateEndpointRule.__pulumiType;
     }
 
+    public readonly accountId!: pulumi.Output<string | undefined>;
     /**
      * The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
      * The possible values are:
@@ -107,15 +134,26 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
      * Time in epoch milliseconds when this object was deactivated.
      */
     public readonly deactivatedAt!: pulumi.Output<number | undefined>;
+    /**
+     * Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resourceNames`.
+     */
     public readonly domainNames!: pulumi.Output<string[] | undefined>;
+    /**
+     * Activation status. Only used by private endpoints towards an AWS S3 service.
+     */
+    public readonly enabled!: pulumi.Output<boolean>;
     /**
      * The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
      */
     public readonly endpointName!: pulumi.Output<string>;
     /**
+     * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+     */
+    public readonly endpointService!: pulumi.Output<string | undefined>;
+    /**
      * The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    public readonly groupId!: pulumi.Output<string | undefined>;
     /**
      * Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
      */
@@ -123,7 +161,11 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
     /**
      * The Azure resource ID of the target resource. Change forces creation of a new resource.
      */
-    public readonly resourceId!: pulumi.Output<string>;
+    public readonly resourceId!: pulumi.Output<string | undefined>;
+    /**
+     * Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domainNames`.
+     */
+    public readonly resourceNames!: pulumi.Output<string[] | undefined>;
     /**
      * the ID of a private endpoint rule.
      */
@@ -132,6 +174,10 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
      * Time in epoch milliseconds when this object was updated.
      */
     public readonly updatedTime!: pulumi.Output<number>;
+    /**
+     * The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
+     */
+    public readonly vpcEndpointId!: pulumi.Output<string>;
 
     /**
      * Create a MwsNccPrivateEndpointRule resource with the given unique name, arguments, and options.
@@ -146,39 +192,43 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MwsNccPrivateEndpointRuleState | undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["connectionState"] = state ? state.connectionState : undefined;
             resourceInputs["creationTime"] = state ? state.creationTime : undefined;
             resourceInputs["deactivated"] = state ? state.deactivated : undefined;
             resourceInputs["deactivatedAt"] = state ? state.deactivatedAt : undefined;
             resourceInputs["domainNames"] = state ? state.domainNames : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["endpointName"] = state ? state.endpointName : undefined;
+            resourceInputs["endpointService"] = state ? state.endpointService : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
             resourceInputs["networkConnectivityConfigId"] = state ? state.networkConnectivityConfigId : undefined;
             resourceInputs["resourceId"] = state ? state.resourceId : undefined;
+            resourceInputs["resourceNames"] = state ? state.resourceNames : undefined;
             resourceInputs["ruleId"] = state ? state.ruleId : undefined;
             resourceInputs["updatedTime"] = state ? state.updatedTime : undefined;
+            resourceInputs["vpcEndpointId"] = state ? state.vpcEndpointId : undefined;
         } else {
             const args = argsOrState as MwsNccPrivateEndpointRuleArgs | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'groupId'");
-            }
             if ((!args || args.networkConnectivityConfigId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkConnectivityConfigId'");
             }
-            if ((!args || args.resourceId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'resourceId'");
-            }
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["connectionState"] = args ? args.connectionState : undefined;
             resourceInputs["creationTime"] = args ? args.creationTime : undefined;
             resourceInputs["deactivated"] = args ? args.deactivated : undefined;
             resourceInputs["deactivatedAt"] = args ? args.deactivatedAt : undefined;
             resourceInputs["domainNames"] = args ? args.domainNames : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["endpointName"] = args ? args.endpointName : undefined;
+            resourceInputs["endpointService"] = args ? args.endpointService : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
             resourceInputs["networkConnectivityConfigId"] = args ? args.networkConnectivityConfigId : undefined;
             resourceInputs["resourceId"] = args ? args.resourceId : undefined;
+            resourceInputs["resourceNames"] = args ? args.resourceNames : undefined;
             resourceInputs["ruleId"] = args ? args.ruleId : undefined;
             resourceInputs["updatedTime"] = args ? args.updatedTime : undefined;
+            resourceInputs["vpcEndpointId"] = args ? args.vpcEndpointId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MwsNccPrivateEndpointRule.__pulumiType, name, resourceInputs, opts);
@@ -189,6 +239,7 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MwsNccPrivateEndpointRule resources.
  */
 export interface MwsNccPrivateEndpointRuleState {
+    accountId?: pulumi.Input<string>;
     /**
      * The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
      * The possible values are:
@@ -210,11 +261,22 @@ export interface MwsNccPrivateEndpointRuleState {
      * Time in epoch milliseconds when this object was deactivated.
      */
     deactivatedAt?: pulumi.Input<number>;
+    /**
+     * Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resourceNames`.
+     */
     domainNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Activation status. Only used by private endpoints towards an AWS S3 service.
+     */
+    enabled?: pulumi.Input<boolean>;
     /**
      * The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
      */
     endpointName?: pulumi.Input<string>;
+    /**
+     * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+     */
+    endpointService?: pulumi.Input<string>;
     /**
      * The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
      */
@@ -228,6 +290,10 @@ export interface MwsNccPrivateEndpointRuleState {
      */
     resourceId?: pulumi.Input<string>;
     /**
+     * Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domainNames`.
+     */
+    resourceNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * the ID of a private endpoint rule.
      */
     ruleId?: pulumi.Input<string>;
@@ -235,12 +301,17 @@ export interface MwsNccPrivateEndpointRuleState {
      * Time in epoch milliseconds when this object was updated.
      */
     updatedTime?: pulumi.Input<number>;
+    /**
+     * The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
+     */
+    vpcEndpointId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a MwsNccPrivateEndpointRule resource.
  */
 export interface MwsNccPrivateEndpointRuleArgs {
+    accountId?: pulumi.Input<string>;
     /**
      * The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
      * The possible values are:
@@ -262,15 +333,26 @@ export interface MwsNccPrivateEndpointRuleArgs {
      * Time in epoch milliseconds when this object was deactivated.
      */
     deactivatedAt?: pulumi.Input<number>;
+    /**
+     * Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resourceNames`.
+     */
     domainNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Activation status. Only used by private endpoints towards an AWS S3 service.
+     */
+    enabled?: pulumi.Input<boolean>;
     /**
      * The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
      */
     endpointName?: pulumi.Input<string>;
     /**
+     * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+     */
+    endpointService?: pulumi.Input<string>;
+    /**
      * The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
      */
-    groupId: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
      */
@@ -278,7 +360,11 @@ export interface MwsNccPrivateEndpointRuleArgs {
     /**
      * The Azure resource ID of the target resource. Change forces creation of a new resource.
      */
-    resourceId: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string>;
+    /**
+     * Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domainNames`.
+     */
+    resourceNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * the ID of a private endpoint rule.
      */
@@ -287,4 +373,8 @@ export interface MwsNccPrivateEndpointRuleArgs {
      * Time in epoch milliseconds when this object was updated.
      */
     updatedTime?: pulumi.Input<number>;
+    /**
+     * The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
+     */
+    vpcEndpointId?: pulumi.Input<string>;
 }

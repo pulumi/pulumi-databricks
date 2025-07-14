@@ -43,7 +43,7 @@ namespace Pulumi.Databricks.Inputs
         public Inputs.GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs? PolicyEnforcement { get; set; }
 
         /// <summary>
-        /// (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: FULL_ACCESS, RESTRICTED_ACCESS
+        /// (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
         /// </summary>
         [Input("restrictionMode", required: true)]
         public string RestrictionMode { get; set; } = null!;
