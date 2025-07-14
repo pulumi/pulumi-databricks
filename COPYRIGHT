@@ -1,7 +1,0 @@
-This project is a larger work that combines with software written
-by third parties, licensed under their own terms.
-
-Notably, this larger work combines with the Databricks Terraform Provider,
-which is licensed under the Apache 2.0 License (see
-<https://github.com/databrickslabs/terraform-provider-databricks/blob/master/LICENSE> 
-or the project itself at <https://github.com/databrickslabs/terraform-provider-databricks>).
