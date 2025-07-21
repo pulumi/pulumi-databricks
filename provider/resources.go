@@ -243,6 +243,19 @@ func Provider() tfbridge.ProviderInfo {
 					return attr(state, "objectId", "objectType"), nil
 				},
 			},
+			"databricks_materialized_features_feature_tag": {
+				ComputeID: tfbridge.DelegateIDField(
+					"key",
+					"databricks",
+					"https://github.com/pulumi/pulumi-databricks"),
+			},
+			"databricks_clean_rooms_clean_room": {
+				ComputeID: tfbridge.DelegateIDField(
+					"name",
+					"databricks",
+					"https://github.com/pulumi/pulumi-databricks",
+				),
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"databricks_aws_crossaccount_policy": {
