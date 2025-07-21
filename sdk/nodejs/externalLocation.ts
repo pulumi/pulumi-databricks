@@ -124,9 +124,6 @@ export class ExternalLocation extends pulumi.CustomResource {
      * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
      */
     public readonly enableFileEvents!: pulumi.Output<boolean | undefined>;
-    /**
-     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-     */
     public readonly encryptionDetails!: pulumi.Output<outputs.ExternalLocationEncryptionDetails | undefined>;
     /**
      * Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
@@ -273,9 +270,6 @@ export interface ExternalLocationState {
      * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
      */
     enableFileEvents?: pulumi.Input<boolean>;
-    /**
-     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-     */
     encryptionDetails?: pulumi.Input<inputs.ExternalLocationEncryptionDetails>;
     /**
      * Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
@@ -341,9 +335,6 @@ export interface ExternalLocationArgs {
      * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
      */
     enableFileEvents?: pulumi.Input<boolean>;
-    /**
-     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-     */
     encryptionDetails?: pulumi.Input<inputs.ExternalLocationEncryptionDetails>;
     /**
      * Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.

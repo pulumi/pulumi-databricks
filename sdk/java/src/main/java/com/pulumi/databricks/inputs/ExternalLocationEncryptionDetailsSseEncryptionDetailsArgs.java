@@ -15,16 +15,32 @@ public final class ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs ext
 
     public static final ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs Empty = new ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs();
 
+    /**
+     * Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+     * 
+     */
     @Import(name="algorithm")
     private @Nullable Output<String> algorithm;
 
+    /**
+     * @return Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+     * 
+     */
     public Optional<Output<String>> algorithm() {
         return Optional.ofNullable(this.algorithm);
     }
 
+    /**
+     * Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = &#34;SSE-KMS&#34;`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
+     * 
+     */
     @Import(name="awsKmsKeyArn")
     private @Nullable Output<String> awsKmsKeyArn;
 
+    /**
+     * @return Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = &#34;SSE-KMS&#34;`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
+     * 
+     */
     public Optional<Output<String>> awsKmsKeyArn() {
         return Optional.ofNullable(this.awsKmsKeyArn);
     }
@@ -54,20 +70,44 @@ public final class ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs ext
             $ = new ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param algorithm Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder algorithm(@Nullable Output<String> algorithm) {
             $.algorithm = algorithm;
             return this;
         }
 
+        /**
+         * @param algorithm Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder algorithm(String algorithm) {
             return algorithm(Output.of(algorithm));
         }
 
+        /**
+         * @param awsKmsKeyArn Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = &#34;SSE-KMS&#34;`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsKmsKeyArn(@Nullable Output<String> awsKmsKeyArn) {
             $.awsKmsKeyArn = awsKmsKeyArn;
             return this;
         }
 
+        /**
+         * @param awsKmsKeyArn Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = &#34;SSE-KMS&#34;`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsKmsKeyArn(String awsKmsKeyArn) {
             return awsKmsKeyArn(Output.of(awsKmsKeyArn));
         }

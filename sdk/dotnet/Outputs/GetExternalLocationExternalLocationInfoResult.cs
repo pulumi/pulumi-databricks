@@ -36,7 +36,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? CredentialName;
         public readonly bool? EnableFileEvents;
         /// <summary>
-        /// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        /// A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
         /// </summary>
         public readonly Outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsResult? EncryptionDetails;
         public readonly bool? Fallback;

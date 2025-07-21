@@ -33,14 +33,14 @@ public final class ModelServingRateLimitArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+     * Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+     * @return Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
      * 
      */
     public Optional<Output<String>> key() {
@@ -110,7 +110,7 @@ public final class ModelServingRateLimitArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param key Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+         * @param key Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ModelServingRateLimitArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param key Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+         * @param key Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
          * 
          * @return builder
          * 

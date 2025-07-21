@@ -19,7 +19,7 @@ public final class GetPipelinesResult {
      */
     private String id;
     /**
-     * @return List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+     * @return List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
      * 
      */
     private List<String> ids;
@@ -34,7 +34,7 @@ public final class GetPipelinesResult {
         return this.id;
     }
     /**
-     * @return List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+     * @return List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
      * 
      */
     public List<String> ids() {

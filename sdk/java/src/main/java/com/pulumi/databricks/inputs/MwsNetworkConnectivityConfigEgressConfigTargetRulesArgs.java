@@ -17,9 +17,17 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs exten
 
     public static final MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs Empty = new MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs();
 
+    /**
+     * (AWS only) - list containing information about configure AWS Private Endpoints.
+     * 
+     */
     @Import(name="awsPrivateEndpointRules")
     private @Nullable Output<List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs>> awsPrivateEndpointRules;
 
+    /**
+     * @return (AWS only) - list containing information about configure AWS Private Endpoints.
+     * 
+     */
     public Optional<Output<List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs>>> awsPrivateEndpointRules() {
         return Optional.ofNullable(this.awsPrivateEndpointRules);
     }
@@ -64,15 +72,33 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs exten
             $ = new MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param awsPrivateEndpointRules (AWS only) - list containing information about configure AWS Private Endpoints.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsPrivateEndpointRules(@Nullable Output<List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs>> awsPrivateEndpointRules) {
             $.awsPrivateEndpointRules = awsPrivateEndpointRules;
             return this;
         }
 
+        /**
+         * @param awsPrivateEndpointRules (AWS only) - list containing information about configure AWS Private Endpoints.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsPrivateEndpointRules(List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs> awsPrivateEndpointRules) {
             return awsPrivateEndpointRules(Output.of(awsPrivateEndpointRules));
         }
 
+        /**
+         * @param awsPrivateEndpointRules (AWS only) - list containing information about configure AWS Private Endpoints.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsPrivateEndpointRules(MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs... awsPrivateEndpointRules) {
             return awsPrivateEndpointRules(List.of(awsPrivateEndpointRules));
         }

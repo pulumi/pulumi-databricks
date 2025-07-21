@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly string? AccountId;
         public readonly string? ConnectionState;
+        /// <summary>
+        /// time in epoch milliseconds when this object was created.
+        /// </summary>
         public readonly int? CreationTime;
         public readonly bool? Deactivated;
         public readonly int? DeactivatedAt;
@@ -27,6 +30,9 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? NetworkConnectivityConfigId;
         public readonly ImmutableArray<string> ResourceNames;
         public readonly string? RuleId;
+        /// <summary>
+        /// time in epoch milliseconds when this object was updated.
+        /// </summary>
         public readonly int? UpdatedTime;
         public readonly string? VpcEndpointId;
 

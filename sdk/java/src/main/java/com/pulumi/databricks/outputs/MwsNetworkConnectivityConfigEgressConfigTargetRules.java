@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MwsNetworkConnectivityConfigEgressConfigTargetRules {
+    /**
+     * @return (AWS only) - list containing information about configure AWS Private Endpoints.
+     * 
+     */
     private @Nullable List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule> awsPrivateEndpointRules;
     /**
      * @return (Azure only) - list containing information about configure Azure Private Endpoints.
@@ -20,6 +24,10 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRules {
     private @Nullable List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule> azurePrivateEndpointRules;
 
     private MwsNetworkConnectivityConfigEgressConfigTargetRules() {}
+    /**
+     * @return (AWS only) - list containing information about configure AWS Private Endpoints.
+     * 
+     */
     public List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule> awsPrivateEndpointRules() {
         return this.awsPrivateEndpointRules == null ? List.of() : this.awsPrivateEndpointRules;
     }

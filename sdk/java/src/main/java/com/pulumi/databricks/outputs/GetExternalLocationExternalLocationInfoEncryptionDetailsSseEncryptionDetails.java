@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails {
+    /**
+     * @return Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+     * 
+     */
     private @Nullable String algorithm;
+    /**
+     * @return ARN of the SSE-KMS key used with the S3 location, when `algorithm = &#34;SSE-KMS&#34;`.
+     * 
+     */
     private @Nullable String awsKmsKeyArn;
 
     private GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails() {}
+    /**
+     * @return Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+     * 
+     */
     public Optional<String> algorithm() {
         return Optional.ofNullable(this.algorithm);
     }
+    /**
+     * @return ARN of the SSE-KMS key used with the S3 location, when `algorithm = &#34;SSE-KMS&#34;`.
+     * 
+     */
     public Optional<String> awsKmsKeyArn() {
         return Optional.ofNullable(this.awsKmsKeyArn);
     }

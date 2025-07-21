@@ -336,42 +336,6 @@ class Entitlements(pulumi.CustomResource):
 
         Setting entitlements for a service principal:
 
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.get_service_principal(application_id="11111111-2222-3333-4444-555666777888")
-        this_entitlements = databricks.Entitlements("this",
-            service_principal_id=this.sp_id,
-            allow_cluster_create=True,
-            allow_instance_pool_create=True)
-        ```
-
-        Setting entitlements to all users in a workspace - referencing special `users` Group
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        users = databricks.get_group(display_name="users")
-        workspace_users = databricks.Entitlements("workspace-users",
-            group_id=users.id,
-            allow_cluster_create=True,
-            allow_instance_pool_create=True)
-        ```
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-        * Group data to retrieve information about Group members, entitlements and instance profiles.
-        * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-        * GroupMember to attach users and groups as group members.
-        * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-        * User data to retrieve information about databricks_user.
-
         ## Import
 
         The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
@@ -442,42 +406,6 @@ class Entitlements(pulumi.CustomResource):
         ```
 
         Setting entitlements for a service principal:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.get_service_principal(application_id="11111111-2222-3333-4444-555666777888")
-        this_entitlements = databricks.Entitlements("this",
-            service_principal_id=this.sp_id,
-            allow_cluster_create=True,
-            allow_instance_pool_create=True)
-        ```
-
-        Setting entitlements to all users in a workspace - referencing special `users` Group
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        users = databricks.get_group(display_name="users")
-        workspace_users = databricks.Entitlements("workspace-users",
-            group_id=users.id,
-            allow_cluster_create=True,
-            allow_instance_pool_create=True)
-        ```
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-        * Group data to retrieve information about Group members, entitlements and instance profiles.
-        * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-        * GroupMember to attach users and groups as group members.
-        * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-        * User data to retrieve information about databricks_user.
 
         ## Import
 

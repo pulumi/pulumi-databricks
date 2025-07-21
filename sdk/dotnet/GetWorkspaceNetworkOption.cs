@@ -11,12 +11,87 @@ namespace Pulumi.Databricks
 {
     public static class GetWorkspaceNetworkOption
     {
+        /// <summary>
+        /// This data source can be used to get a single workspace network option.
+        /// 
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a network policy by id:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetWorkspaceNetworkOption.Invoke(new()
+        ///     {
+        ///         WorkspaceId = "9999999999999999",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetWorkspaceNetworkOptionResult> InvokeAsync(GetWorkspaceNetworkOptionArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkspaceNetworkOptionResult>("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", args ?? new GetWorkspaceNetworkOptionArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source can be used to get a single workspace network option.
+        /// 
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a network policy by id:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetWorkspaceNetworkOption.Invoke(new()
+        ///     {
+        ///         WorkspaceId = "9999999999999999",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetWorkspaceNetworkOptionResult> Invoke(GetWorkspaceNetworkOptionInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkspaceNetworkOptionResult>("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", args ?? new GetWorkspaceNetworkOptionInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source can be used to get a single workspace network option.
+        /// 
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a network policy by id:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetWorkspaceNetworkOption.Invoke(new()
+        ///     {
+        ///         WorkspaceId = "9999999999999999",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetWorkspaceNetworkOptionResult> Invoke(GetWorkspaceNetworkOptionInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkspaceNetworkOptionResult>("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", args ?? new GetWorkspaceNetworkOptionInvokeArgs(), options.WithDefaults());
     }

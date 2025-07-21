@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<int> Calls { get; set; } = null!;
 
         /// <summary>
-        /// Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        /// Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }

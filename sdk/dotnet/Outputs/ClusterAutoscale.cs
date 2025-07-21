@@ -16,16 +16,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
         /// 
-        /// When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
-        /// 
-        /// * `spark.master` must have prefix `local`, like `local[*]`
-        /// * `spark.databricks.cluster.profile` must have value `singleNode`
-        /// 
-        /// and also `custom_tag` entry:
-        /// 
-        /// * `"ResourceClass" = "SingleNode"`
-        /// 
-        /// The following example demonstrates how to create an single node cluster:
+        /// To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `is_single_node = true` and `kind = "CLASSIC_PREVIEW"` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -51,15 +42,8 @@ namespace Pulumi.Databricks.Outputs
         ///         SparkVersion = latestLts.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
         ///         NodeTypeId = smallest.Apply(getNodeTypeResult =&gt; getNodeTypeResult.Id),
         ///         AutoterminationMinutes = 20,
-        ///         SparkConf = 
-        ///         {
-        ///             { "spark.databricks.cluster.profile", "singleNode" },
-        ///             { "spark.master", "local[*]" },
-        ///         },
-        ///         CustomTags = 
-        ///         {
-        ///             { "ResourceClass", "SingleNode" },
-        ///         },
+        ///         IsSingleNode = true,
+        ///         Kind = "CLASSIC_PREVIEW",
         ///     });
         /// 
         /// });

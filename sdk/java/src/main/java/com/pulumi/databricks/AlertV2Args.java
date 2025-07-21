@@ -99,6 +99,23 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.queryText);
     }
 
+    /**
+     * The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * 
+     */
+    @Import(name="runAsUserName")
+    private @Nullable Output<String> runAsUserName;
+
+    /**
+     * @return The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * 
+     */
+    public Optional<Output<String>> runAsUserName() {
+        return Optional.ofNullable(this.runAsUserName);
+    }
+
     @Import(name="schedule")
     private @Nullable Output<AlertV2ScheduleArgs> schedule;
 
@@ -130,6 +147,7 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         this.evaluation = $.evaluation;
         this.parentPath = $.parentPath;
         this.queryText = $.queryText;
+        this.runAsUserName = $.runAsUserName;
         this.schedule = $.schedule;
         this.warehouseId = $.warehouseId;
     }
@@ -264,6 +282,29 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
          */
         public Builder queryText(String queryText) {
             return queryText(Output.of(queryText));
+        }
+
+        /**
+         * @param runAsUserName The run as username or application ID of service principal.
+         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runAsUserName(@Nullable Output<String> runAsUserName) {
+            $.runAsUserName = runAsUserName;
+            return this;
+        }
+
+        /**
+         * @param runAsUserName The run as username or application ID of service principal.
+         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runAsUserName(String runAsUserName) {
+            return runAsUserName(Output.of(runAsUserName));
         }
 
         public Builder schedule(@Nullable Output<AlertV2ScheduleArgs> schedule) {

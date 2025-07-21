@@ -13,7 +13,11 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingConfigTrafficConfigRoute
     {
-        public readonly string ServedModelName;
+        /// <summary>
+        /// The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+        /// </summary>
+        public readonly string? ServedEntityName;
+        public readonly string? ServedModelName;
         /// <summary>
         /// The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
         /// </summary>
@@ -21,10 +25,13 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private ModelServingConfigTrafficConfigRoute(
-            string servedModelName,
+            string? servedEntityName,
+
+            string? servedModelName,
 
             int trafficPercentage)
         {
+            ServedEntityName = servedEntityName;
             ServedModelName = servedModelName;
             TrafficPercentage = trafficPercentage;
         }

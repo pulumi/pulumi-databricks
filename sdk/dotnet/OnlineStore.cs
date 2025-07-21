@@ -37,7 +37,7 @@ namespace Pulumi.Databricks
         /// The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         /// </summary>
         [Output("capacity")]
-        public Output<string?> Capacity { get; private set; } = null!;
+        public Output<string> Capacity { get; private set; } = null!;
 
         /// <summary>
         /// (string) - The timestamp when the online store was created
@@ -58,6 +58,12 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The number of read replicas for the online store. Defaults to 0
+        /// </summary>
+        [Output("readReplicaCount")]
+        public Output<int?> ReadReplicaCount { get; private set; } = null!;
+
+        /// <summary>
         /// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         /// </summary>
         [Output("state")]
@@ -71,7 +77,7 @@ namespace Pulumi.Databricks
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public OnlineStore(string name, OnlineStoreArgs? args = null, CustomResourceOptions? options = null)
+        public OnlineStore(string name, OnlineStoreArgs args, CustomResourceOptions? options = null)
             : base("databricks:index/onlineStore:OnlineStore", name, args ?? new OnlineStoreArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -112,14 +118,20 @@ namespace Pulumi.Databricks
         /// <summary>
         /// The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         /// </summary>
-        [Input("capacity")]
-        public Input<string>? Capacity { get; set; }
+        [Input("capacity", required: true)]
+        public Input<string> Capacity { get; set; } = null!;
 
         /// <summary>
         /// The name of the online store. This is the unique identifier for the online store
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The number of read replicas for the online store. Defaults to 0
+        /// </summary>
+        [Input("readReplicaCount")]
+        public Input<int>? ReadReplicaCount { get; set; }
 
         public OnlineStoreArgs()
         {
@@ -152,6 +164,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The number of read replicas for the online store. Defaults to 0
+        /// </summary>
+        [Input("readReplicaCount")]
+        public Input<int>? ReadReplicaCount { get; set; }
 
         /// <summary>
         /// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`

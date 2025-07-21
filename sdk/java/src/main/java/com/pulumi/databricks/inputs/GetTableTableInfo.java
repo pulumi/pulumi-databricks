@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.GetTableTableInfoDeltaRuntimePropertiesKvpai
 import com.pulumi.databricks.inputs.GetTableTableInfoEffectivePredictiveOptimizationFlag;
 import com.pulumi.databricks.inputs.GetTableTableInfoEncryptionDetails;
 import com.pulumi.databricks.inputs.GetTableTableInfoRowFilter;
+import com.pulumi.databricks.inputs.GetTableTableInfoSecurableKindManifest;
 import com.pulumi.databricks.inputs.GetTableTableInfoTableConstraint;
 import com.pulumi.databricks.inputs.GetTableTableInfoViewDependencies;
 import java.lang.Boolean;
@@ -235,6 +236,13 @@ public final class GetTableTableInfo extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.schemaName);
     }
 
+    @Import(name="securableKindManifest")
+    private @Nullable GetTableTableInfoSecurableKindManifest securableKindManifest;
+
+    public Optional<GetTableTableInfoSecurableKindManifest> securableKindManifest() {
+        return Optional.ofNullable(this.securableKindManifest);
+    }
+
     @Import(name="sqlPath")
     private @Nullable String sqlPath;
 
@@ -354,6 +362,7 @@ public final class GetTableTableInfo extends com.pulumi.resources.InvokeArgs {
         this.properties = $.properties;
         this.rowFilter = $.rowFilter;
         this.schemaName = $.schemaName;
+        this.securableKindManifest = $.securableKindManifest;
         this.sqlPath = $.sqlPath;
         this.storageCredentialName = $.storageCredentialName;
         this.storageLocation = $.storageLocation;
@@ -543,6 +552,11 @@ public final class GetTableTableInfo extends com.pulumi.resources.InvokeArgs {
          */
         public Builder schemaName(@Nullable String schemaName) {
             $.schemaName = schemaName;
+            return this;
+        }
+
+        public Builder securableKindManifest(@Nullable GetTableTableInfoSecurableKindManifest securableKindManifest) {
+            $.securableKindManifest = securableKindManifest;
             return this;
         }
 

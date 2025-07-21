@@ -6,9 +6,12 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetTableTableInfoTableConstraintForeignKeyConstraintArgs extends com.pulumi.resources.ResourceArgs {
@@ -51,6 +54,13 @@ public final class GetTableTableInfoTableConstraintForeignKeyConstraintArgs exte
         return this.parentTable;
     }
 
+    @Import(name="rely")
+    private @Nullable Output<Boolean> rely;
+
+    public Optional<Output<Boolean>> rely() {
+        return Optional.ofNullable(this.rely);
+    }
+
     private GetTableTableInfoTableConstraintForeignKeyConstraintArgs() {}
 
     private GetTableTableInfoTableConstraintForeignKeyConstraintArgs(GetTableTableInfoTableConstraintForeignKeyConstraintArgs $) {
@@ -58,6 +68,7 @@ public final class GetTableTableInfoTableConstraintForeignKeyConstraintArgs exte
         this.name = $.name;
         this.parentColumns = $.parentColumns;
         this.parentTable = $.parentTable;
+        this.rely = $.rely;
     }
 
     public static Builder builder() {
@@ -132,6 +143,15 @@ public final class GetTableTableInfoTableConstraintForeignKeyConstraintArgs exte
 
         public Builder parentTable(String parentTable) {
             return parentTable(Output.of(parentTable));
+        }
+
+        public Builder rely(@Nullable Output<Boolean> rely) {
+            $.rely = rely;
+            return this;
+        }
+
+        public Builder rely(Boolean rely) {
+            return rely(Output.of(rely));
         }
 
         public GetTableTableInfoTableConstraintForeignKeyConstraintArgs build() {

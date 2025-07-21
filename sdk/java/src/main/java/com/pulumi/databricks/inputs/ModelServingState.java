@@ -67,6 +67,21 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The description of the model serving endpoint.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the model serving endpoint.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      * 
      */
@@ -155,6 +170,7 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
         this.aiGateway = $.aiGateway;
         this.budgetPolicyId = $.budgetPolicyId;
         this.config = $.config;
+        this.description = $.description;
         this.name = $.name;
         this.rateLimits = $.rateLimits;
         this.routeOptimized = $.routeOptimized;
@@ -241,6 +257,27 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder config(ModelServingConfigArgs config) {
             return config(Output.of(config));
+        }
+
+        /**
+         * @param description The description of the model serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the model serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

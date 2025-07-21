@@ -4,6 +4,8 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetTableTableInfoViewDependenciesDependencyConnection;
+import com.pulumi.databricks.inputs.GetTableTableInfoViewDependenciesDependencyCredential;
 import com.pulumi.databricks.inputs.GetTableTableInfoViewDependenciesDependencyFunction;
 import com.pulumi.databricks.inputs.GetTableTableInfoViewDependenciesDependencyTable;
 import java.util.Objects;
@@ -14,6 +16,20 @@ import javax.annotation.Nullable;
 public final class GetTableTableInfoViewDependenciesDependency extends com.pulumi.resources.InvokeArgs {
 
     public static final GetTableTableInfoViewDependenciesDependency Empty = new GetTableTableInfoViewDependenciesDependency();
+
+    @Import(name="connection")
+    private @Nullable GetTableTableInfoViewDependenciesDependencyConnection connection;
+
+    public Optional<GetTableTableInfoViewDependenciesDependencyConnection> connection() {
+        return Optional.ofNullable(this.connection);
+    }
+
+    @Import(name="credential")
+    private @Nullable GetTableTableInfoViewDependenciesDependencyCredential credential;
+
+    public Optional<GetTableTableInfoViewDependenciesDependencyCredential> credential() {
+        return Optional.ofNullable(this.credential);
+    }
 
     @Import(name="function")
     private @Nullable GetTableTableInfoViewDependenciesDependencyFunction function;
@@ -32,6 +48,8 @@ public final class GetTableTableInfoViewDependenciesDependency extends com.pulum
     private GetTableTableInfoViewDependenciesDependency() {}
 
     private GetTableTableInfoViewDependenciesDependency(GetTableTableInfoViewDependenciesDependency $) {
+        this.connection = $.connection;
+        this.credential = $.credential;
         this.function = $.function;
         this.table = $.table;
     }
@@ -52,6 +70,16 @@ public final class GetTableTableInfoViewDependenciesDependency extends com.pulum
 
         public Builder(GetTableTableInfoViewDependenciesDependency defaults) {
             $ = new GetTableTableInfoViewDependenciesDependency(Objects.requireNonNull(defaults));
+        }
+
+        public Builder connection(@Nullable GetTableTableInfoViewDependenciesDependencyConnection connection) {
+            $.connection = connection;
+            return this;
+        }
+
+        public Builder credential(@Nullable GetTableTableInfoViewDependenciesDependencyCredential credential) {
+            $.credential = credential;
+            return this;
         }
 
         public Builder function(@Nullable GetTableTableInfoViewDependenciesDependencyFunction function) {

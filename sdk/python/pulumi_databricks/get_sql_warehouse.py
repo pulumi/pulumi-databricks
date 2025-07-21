@@ -255,7 +255,7 @@ class GetSqlWarehouseResult:
     @pulumi.getter(name="warehouseType")
     def warehouse_type(self) -> builtins.str:
         """
-        SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+        SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
         """
         return pulumi.get(self, "warehouse_type")
 
@@ -345,7 +345,7 @@ def get_sql_warehouse(auto_stop_mins: Optional[builtins.int] = None,
     * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
     * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
     * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all get_sql_warehouse of workspace.
-    * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+    * Grants to manage data access in Unity Catalog.
 
 
     :param builtins.int auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops.
@@ -367,7 +367,7 @@ def get_sql_warehouse(auto_stop_mins: Optional[builtins.int] = None,
     :param builtins.str spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
     :param builtins.str state: The current state of the endpoint.
     :param Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict'] tags: tags used for SQL warehouse resources.
-    :param builtins.str warehouse_type: SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+    :param builtins.str warehouse_type: SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
     """
     __args__ = dict()
     __args__['autoStopMins'] = auto_stop_mins
@@ -472,7 +472,7 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[buil
     * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
     * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
     * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all get_sql_warehouse of workspace.
-    * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+    * Grants to manage data access in Unity Catalog.
 
 
     :param builtins.int auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops.
@@ -494,7 +494,7 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[buil
     :param builtins.str spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
     :param builtins.str state: The current state of the endpoint.
     :param Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict'] tags: tags used for SQL warehouse resources.
-    :param builtins.str warehouse_type: SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+    :param builtins.str warehouse_type: SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
     """
     __args__ = dict()
     __args__['autoStopMins'] = auto_stop_mins

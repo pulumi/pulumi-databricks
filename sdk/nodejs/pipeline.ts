@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Use `databricks.Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
+ * Use `databricks.Pipeline` to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
  *
  * > This resource can only be used with a workspace-level provider!
  *
@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const dltDemo = new databricks.Notebook("dlt_demo", {});
- * const dltDemoRepo = new databricks.Repo("dlt_demo", {});
+ * const ldpDemo = new databricks.Notebook("ldp_demo", {});
+ * const ldpDemoRepo = new databricks.Repo("ldp_demo", {});
  * const _this = new databricks.Pipeline("this", {
  *     name: "Pipeline Name",
  *     storage: "/test/first-pipeline",
@@ -45,17 +45,17 @@ import * as utilities from "./utilities";
  *     libraries: [
  *         {
  *             notebook: {
- *                 path: dltDemo.id,
+ *                 path: ldpDemo.id,
  *             },
  *         },
  *         {
  *             file: {
- *                 path: pulumi.interpolate`${dltDemoRepo.path}/pipeline.sql`,
+ *                 path: pulumi.interpolate`${ldpDemoRepo.path}/pipeline.sql`,
  *             },
  *         },
  *         {
  *             glob: {
- *                 include: pulumi.interpolate`${dltDemoRepo.path}/subfolder/**`,
+ *                 include: pulumi.interpolate`${ldpDemoRepo.path}/subfolder/**`,
  *             },
  *         },
  *     ],
@@ -80,7 +80,7 @@ import * as utilities from "./utilities";
  * The following resources are often used in the same context:
  *
  * * End to end workspace management guide.
- * * databricks.getPipelines to retrieve [Delta Live Tables](https://docs.databricks.com/aws/en/dlt) pipeline data.
+ * * databricks.getPipelines to retrieve [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) data.
  * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
  * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
  * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -140,7 +140,7 @@ export class Pipeline extends pulumi.CustomResource {
      */
     public readonly allowDuplicateNames!: pulumi.Output<boolean | undefined>;
     /**
-     * optional string specifying ID of the budget policy for this DLT pipeline.
+     * optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
      */
     public readonly budgetPolicyId!: pulumi.Output<string | undefined>;
     /**
@@ -149,12 +149,12 @@ export class Pipeline extends pulumi.CustomResource {
     public readonly catalog!: pulumi.Output<string | undefined>;
     public readonly cause!: pulumi.Output<string>;
     /**
-     * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+     * optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
      */
     public readonly channel!: pulumi.Output<string | undefined>;
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
      */
     public readonly clusters!: pulumi.Output<outputs.PipelineCluster[] | undefined>;
     /**
@@ -180,7 +180,7 @@ export class Pipeline extends pulumi.CustomResource {
     public readonly edition!: pulumi.Output<string | undefined>;
     public readonly environment!: pulumi.Output<outputs.PipelineEnvironment | undefined>;
     /**
-     * an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+     * an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
      */
     public readonly eventLog!: pulumi.Output<outputs.PipelineEventLog | undefined>;
     public readonly expectedLastModified!: pulumi.Output<number | undefined>;
@@ -221,7 +221,7 @@ export class Pipeline extends pulumi.CustomResource {
      */
     public readonly schema!: pulumi.Output<string | undefined>;
     /**
-     * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+     * An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
      */
     public readonly serverless!: pulumi.Output<boolean | undefined>;
     public readonly state!: pulumi.Output<string>;
@@ -239,7 +239,7 @@ export class Pipeline extends pulumi.CustomResource {
     public readonly target!: pulumi.Output<string | undefined>;
     public readonly trigger!: pulumi.Output<outputs.PipelineTrigger | undefined>;
     /**
-     * URL of the DLT pipeline on the given workspace.
+     * URL of the Lakeflow Declarative Pipeline on the given workspace.
      */
     public readonly url!: pulumi.Output<string>;
 
@@ -349,7 +349,7 @@ export interface PipelineState {
      */
     allowDuplicateNames?: pulumi.Input<boolean>;
     /**
-     * optional string specifying ID of the budget policy for this DLT pipeline.
+     * optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
      */
     budgetPolicyId?: pulumi.Input<string>;
     /**
@@ -358,12 +358,12 @@ export interface PipelineState {
     catalog?: pulumi.Input<string>;
     cause?: pulumi.Input<string>;
     /**
-     * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+     * optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
      */
     channel?: pulumi.Input<string>;
     clusterId?: pulumi.Input<string>;
     /**
-     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
      */
     clusters?: pulumi.Input<pulumi.Input<inputs.PipelineCluster>[]>;
     /**
@@ -389,7 +389,7 @@ export interface PipelineState {
     edition?: pulumi.Input<string>;
     environment?: pulumi.Input<inputs.PipelineEnvironment>;
     /**
-     * an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+     * an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
      */
     eventLog?: pulumi.Input<inputs.PipelineEventLog>;
     expectedLastModified?: pulumi.Input<number>;
@@ -430,7 +430,7 @@ export interface PipelineState {
      */
     schema?: pulumi.Input<string>;
     /**
-     * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+     * An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
      */
     serverless?: pulumi.Input<boolean>;
     state?: pulumi.Input<string>;
@@ -448,7 +448,7 @@ export interface PipelineState {
     target?: pulumi.Input<string>;
     trigger?: pulumi.Input<inputs.PipelineTrigger>;
     /**
-     * URL of the DLT pipeline on the given workspace.
+     * URL of the Lakeflow Declarative Pipeline on the given workspace.
      */
     url?: pulumi.Input<string>;
 }
@@ -462,7 +462,7 @@ export interface PipelineArgs {
      */
     allowDuplicateNames?: pulumi.Input<boolean>;
     /**
-     * optional string specifying ID of the budget policy for this DLT pipeline.
+     * optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
      */
     budgetPolicyId?: pulumi.Input<string>;
     /**
@@ -471,12 +471,12 @@ export interface PipelineArgs {
     catalog?: pulumi.Input<string>;
     cause?: pulumi.Input<string>;
     /**
-     * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+     * optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
      */
     channel?: pulumi.Input<string>;
     clusterId?: pulumi.Input<string>;
     /**
-     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
      */
     clusters?: pulumi.Input<pulumi.Input<inputs.PipelineCluster>[]>;
     /**
@@ -502,7 +502,7 @@ export interface PipelineArgs {
     edition?: pulumi.Input<string>;
     environment?: pulumi.Input<inputs.PipelineEnvironment>;
     /**
-     * an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+     * an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
      */
     eventLog?: pulumi.Input<inputs.PipelineEventLog>;
     expectedLastModified?: pulumi.Input<number>;
@@ -543,7 +543,7 @@ export interface PipelineArgs {
      */
     schema?: pulumi.Input<string>;
     /**
-     * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+     * An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
      */
     serverless?: pulumi.Input<boolean>;
     state?: pulumi.Input<string>;
@@ -561,7 +561,7 @@ export interface PipelineArgs {
     target?: pulumi.Input<string>;
     trigger?: pulumi.Input<inputs.PipelineTrigger>;
     /**
-     * URL of the DLT pipeline on the given workspace.
+     * URL of the Lakeflow Declarative Pipeline on the given workspace.
      */
     url?: pulumi.Input<string>;
 }

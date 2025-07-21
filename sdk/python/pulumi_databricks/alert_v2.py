@@ -28,6 +28,7 @@ class AlertV2Args:
                  evaluation: Optional[pulumi.Input['AlertV2EvaluationArgs']] = None,
                  parent_path: Optional[pulumi.Input[builtins.str]] = None,
                  query_text: Optional[pulumi.Input[builtins.str]] = None,
+                 run_as_user_name: Optional[pulumi.Input[builtins.str]] = None,
                  schedule: Optional[pulumi.Input['AlertV2ScheduleArgs']] = None,
                  warehouse_id: Optional[pulumi.Input[builtins.str]] = None):
         """
@@ -37,6 +38,8 @@ class AlertV2Args:
         :param pulumi.Input[builtins.str] display_name: The display name of the alert
         :param pulumi.Input[builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input[builtins.str] query_text: Text of the query to be run
+        :param pulumi.Input[builtins.str] run_as_user_name: The run as username or application ID of service principal.
+               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         :param pulumi.Input[builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
         """
         if custom_description is not None:
@@ -51,6 +54,8 @@ class AlertV2Args:
             pulumi.set(__self__, "parent_path", parent_path)
         if query_text is not None:
             pulumi.set(__self__, "query_text", query_text)
+        if run_as_user_name is not None:
+            pulumi.set(__self__, "run_as_user_name", run_as_user_name)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if warehouse_id is not None:
@@ -126,6 +131,19 @@ class AlertV2Args:
         pulumi.set(self, "query_text", value)
 
     @property
+    @pulumi.getter(name="runAsUserName")
+    def run_as_user_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The run as username or application ID of service principal.
+        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+        """
+        return pulumi.get(self, "run_as_user_name")
+
+    @run_as_user_name.setter
+    def run_as_user_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "run_as_user_name", value)
+
+    @property
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['AlertV2ScheduleArgs']]:
         return pulumi.get(self, "schedule")
@@ -173,7 +191,8 @@ class _AlertV2State:
         :param pulumi.Input[builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
         :param pulumi.Input[builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input[builtins.str] query_text: Text of the query to be run
-        :param pulumi.Input[builtins.str] run_as_user_name: (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+        :param pulumi.Input[builtins.str] run_as_user_name: The run as username or application ID of service principal.
+               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         :param pulumi.Input[builtins.str] update_time: (string) - The timestamp indicating when the alert was updated
         :param pulumi.Input[builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
         """
@@ -313,7 +332,8 @@ class _AlertV2State:
     @pulumi.getter(name="runAsUserName")
     def run_as_user_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+        The run as username or application ID of service principal.
+        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         """
         return pulumi.get(self, "run_as_user_name")
 
@@ -367,6 +387,7 @@ class AlertV2(pulumi.CustomResource):
                  evaluation: Optional[pulumi.Input[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
                  parent_path: Optional[pulumi.Input[builtins.str]] = None,
                  query_text: Optional[pulumi.Input[builtins.str]] = None,
+                 run_as_user_name: Optional[pulumi.Input[builtins.str]] = None,
                  schedule: Optional[pulumi.Input[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict']]] = None,
                  warehouse_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -404,6 +425,8 @@ class AlertV2(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: The display name of the alert
         :param pulumi.Input[builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input[builtins.str] query_text: Text of the query to be run
+        :param pulumi.Input[builtins.str] run_as_user_name: The run as username or application ID of service principal.
+               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         :param pulumi.Input[builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
         """
         ...
@@ -460,6 +483,7 @@ class AlertV2(pulumi.CustomResource):
                  evaluation: Optional[pulumi.Input[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
                  parent_path: Optional[pulumi.Input[builtins.str]] = None,
                  query_text: Optional[pulumi.Input[builtins.str]] = None,
+                 run_as_user_name: Optional[pulumi.Input[builtins.str]] = None,
                  schedule: Optional[pulumi.Input[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict']]] = None,
                  warehouse_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -477,12 +501,12 @@ class AlertV2(pulumi.CustomResource):
             __props__.__dict__["evaluation"] = evaluation
             __props__.__dict__["parent_path"] = parent_path
             __props__.__dict__["query_text"] = query_text
+            __props__.__dict__["run_as_user_name"] = run_as_user_name
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["warehouse_id"] = warehouse_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["lifecycle_state"] = None
             __props__.__dict__["owner_user_name"] = None
-            __props__.__dict__["run_as_user_name"] = None
             __props__.__dict__["update_time"] = None
         super(AlertV2, __self__).__init__(
             'databricks:index/alertV2:AlertV2',
@@ -522,7 +546,8 @@ class AlertV2(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
         :param pulumi.Input[builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input[builtins.str] query_text: Text of the query to be run
-        :param pulumi.Input[builtins.str] run_as_user_name: (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+        :param pulumi.Input[builtins.str] run_as_user_name: The run as username or application ID of service principal.
+               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         :param pulumi.Input[builtins.str] update_time: (string) - The timestamp indicating when the alert was updated
         :param pulumi.Input[builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
         """
@@ -616,9 +641,10 @@ class AlertV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runAsUserName")
-    def run_as_user_name(self) -> pulumi.Output[builtins.str]:
+    def run_as_user_name(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+        The run as username or application ID of service principal.
+        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         """
         return pulumi.get(self, "run_as_user_name")
 

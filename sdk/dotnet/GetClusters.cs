@@ -114,7 +114,7 @@ namespace Pulumi.Databricks
         /// * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
         /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         /// * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-        /// * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+        /// * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("databricks:index/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
@@ -222,7 +222,7 @@ namespace Pulumi.Databricks
         /// * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
         /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         /// * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-        /// * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+        /// * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("databricks:index/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
@@ -330,7 +330,7 @@ namespace Pulumi.Databricks
         /// * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
         /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         /// * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-        /// * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+        /// * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("databricks:index/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());

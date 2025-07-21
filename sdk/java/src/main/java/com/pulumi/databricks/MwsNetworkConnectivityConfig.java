@@ -105,27 +105,43 @@ public class MwsNetworkConnectivityConfig extends com.pulumi.resources.CustomRes
     public Output<String> accountId() {
         return this.accountId;
     }
+    /**
+     * time in epoch milliseconds when this object was created.
+     * 
+     */
     @Export(name="creationTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> creationTime;
 
+    /**
+     * @return time in epoch milliseconds when this object was created.
+     * 
+     */
     public Output<Integer> creationTime() {
         return this.creationTime;
     }
+    /**
+     * block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
+     * 
+     */
     @Export(name="egressConfig", refs={MwsNetworkConnectivityConfigEgressConfig.class}, tree="[0]")
     private Output<MwsNetworkConnectivityConfigEgressConfig> egressConfig;
 
+    /**
+     * @return block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
+     * 
+     */
     public Output<MwsNetworkConnectivityConfigEgressConfig> egressConfig() {
         return this.egressConfig;
     }
     /**
-     * Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+     * Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+     * @return Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
      * 
      */
     public Output<String> name() {
@@ -159,9 +175,17 @@ public class MwsNetworkConnectivityConfig extends com.pulumi.resources.CustomRes
     public Output<String> region() {
         return this.region;
     }
+    /**
+     * time in epoch milliseconds when this object was updated.
+     * 
+     */
     @Export(name="updatedTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> updatedTime;
 
+    /**
+     * @return time in epoch milliseconds when this object was updated.
+     * 
+     */
     public Output<Integer> updatedTime() {
         return this.updatedTime;
     }

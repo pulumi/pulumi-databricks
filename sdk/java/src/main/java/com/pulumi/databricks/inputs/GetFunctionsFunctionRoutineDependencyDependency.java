@@ -4,6 +4,8 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetFunctionsFunctionRoutineDependencyDependencyConnection;
+import com.pulumi.databricks.inputs.GetFunctionsFunctionRoutineDependencyDependencyCredential;
 import com.pulumi.databricks.inputs.GetFunctionsFunctionRoutineDependencyDependencyFunction;
 import com.pulumi.databricks.inputs.GetFunctionsFunctionRoutineDependencyDependencyTable;
 import java.util.List;
@@ -15,6 +17,20 @@ import javax.annotation.Nullable;
 public final class GetFunctionsFunctionRoutineDependencyDependency extends com.pulumi.resources.InvokeArgs {
 
     public static final GetFunctionsFunctionRoutineDependencyDependency Empty = new GetFunctionsFunctionRoutineDependencyDependency();
+
+    @Import(name="connections")
+    private @Nullable List<GetFunctionsFunctionRoutineDependencyDependencyConnection> connections;
+
+    public Optional<List<GetFunctionsFunctionRoutineDependencyDependencyConnection>> connections() {
+        return Optional.ofNullable(this.connections);
+    }
+
+    @Import(name="credentials")
+    private @Nullable List<GetFunctionsFunctionRoutineDependencyDependencyCredential> credentials;
+
+    public Optional<List<GetFunctionsFunctionRoutineDependencyDependencyCredential>> credentials() {
+        return Optional.ofNullable(this.credentials);
+    }
 
     @Import(name="functions")
     private @Nullable List<GetFunctionsFunctionRoutineDependencyDependencyFunction> functions;
@@ -33,6 +49,8 @@ public final class GetFunctionsFunctionRoutineDependencyDependency extends com.p
     private GetFunctionsFunctionRoutineDependencyDependency() {}
 
     private GetFunctionsFunctionRoutineDependencyDependency(GetFunctionsFunctionRoutineDependencyDependency $) {
+        this.connections = $.connections;
+        this.credentials = $.credentials;
         this.functions = $.functions;
         this.tables = $.tables;
     }
@@ -53,6 +71,24 @@ public final class GetFunctionsFunctionRoutineDependencyDependency extends com.p
 
         public Builder(GetFunctionsFunctionRoutineDependencyDependency defaults) {
             $ = new GetFunctionsFunctionRoutineDependencyDependency(Objects.requireNonNull(defaults));
+        }
+
+        public Builder connections(@Nullable List<GetFunctionsFunctionRoutineDependencyDependencyConnection> connections) {
+            $.connections = connections;
+            return this;
+        }
+
+        public Builder connections(GetFunctionsFunctionRoutineDependencyDependencyConnection... connections) {
+            return connections(List.of(connections));
+        }
+
+        public Builder credentials(@Nullable List<GetFunctionsFunctionRoutineDependencyDependencyCredential> credentials) {
+            $.credentials = credentials;
+            return this;
+        }
+
+        public Builder credentials(GetFunctionsFunctionRoutineDependencyDependencyCredential... credentials) {
+            return credentials(List.of(credentials));
         }
 
         public Builder functions(@Nullable List<GetFunctionsFunctionRoutineDependencyDependencyFunction> functions) {

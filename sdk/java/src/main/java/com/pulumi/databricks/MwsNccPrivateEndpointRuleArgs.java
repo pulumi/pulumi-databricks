@@ -27,24 +27,26 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+     * The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
      * The possible values are:
      * * `PENDING`: The endpoint has been created and pending approval.
      * * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
      * * `REJECTED`: Connection was rejected by the private link resource owner.
      * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
+     * * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
      * 
      */
     @Import(name="connectionState")
     private @Nullable Output<String> connectionState;
 
     /**
-     * @return The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+     * @return The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
      * The possible values are:
      * * `PENDING`: The endpoint has been created and pending approval.
      * * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
      * * `REJECTED`: Connection was rejected by the private link resource owner.
      * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
+     * * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
      * 
      */
     public Optional<Output<String>> connectionState() {
@@ -97,14 +99,16 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+     * * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `group_id`.
+     * * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `resource_names`.
      * 
      */
     @Import(name="domainNames")
     private @Nullable Output<List<String>> domainNames;
 
     /**
-     * @return Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+     * @return * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `group_id`.
+     * * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `resource_names`.
      * 
      */
     public Optional<Output<List<String>>> domainNames() {
@@ -112,14 +116,14 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Activation status. Only used by private endpoints towards an AWS S3 service.
+     * Activation status. Only used by private endpoints towards an AWS S3 service. Update this field to activate/deactivate this private endpoint to allow egress access from serverless compute resources. Can only be updated after a private endpoint rule towards an AWS S3 service is successfully created.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Activation status. Only used by private endpoints towards an AWS S3 service.
+     * @return Activation status. Only used by private endpoints towards an AWS S3 service. Update this field to activate/deactivate this private endpoint to allow egress access from serverless compute resources. Can only be updated after a private endpoint rule towards an AWS S3 service is successfully created.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -157,14 +161,14 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
+     * Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domain_names`.
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<String> groupId;
 
     /**
-     * @return The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
+     * @return Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domain_names`.
      * 
      */
     public Optional<Output<String>> groupId() {
@@ -310,12 +314,13 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param connectionState The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+         * @param connectionState The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
          * The possible values are:
          * * `PENDING`: The endpoint has been created and pending approval.
          * * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
          * * `REJECTED`: Connection was rejected by the private link resource owner.
          * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
+         * * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
          * 
          * @return builder
          * 
@@ -326,12 +331,13 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param connectionState The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+         * @param connectionState The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
          * The possible values are:
          * * `PENDING`: The endpoint has been created and pending approval.
          * * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
          * * `REJECTED`: Connection was rejected by the private link resource owner.
          * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
+         * * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
          * 
          * @return builder
          * 
@@ -404,7 +410,8 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param domainNames Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+         * @param domainNames * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `group_id`.
+         * * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `resource_names`.
          * 
          * @return builder
          * 
@@ -415,7 +422,8 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param domainNames Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+         * @param domainNames * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `group_id`.
+         * * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `resource_names`.
          * 
          * @return builder
          * 
@@ -425,7 +433,8 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param domainNames Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+         * @param domainNames * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `group_id`.
+         * * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `resource_names`.
          * 
          * @return builder
          * 
@@ -435,7 +444,7 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enabled Activation status. Only used by private endpoints towards an AWS S3 service.
+         * @param enabled Activation status. Only used by private endpoints towards an AWS S3 service. Update this field to activate/deactivate this private endpoint to allow egress access from serverless compute resources. Can only be updated after a private endpoint rule towards an AWS S3 service is successfully created.
          * 
          * @return builder
          * 
@@ -446,7 +455,7 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enabled Activation status. Only used by private endpoints towards an AWS S3 service.
+         * @param enabled Activation status. Only used by private endpoints towards an AWS S3 service. Update this field to activate/deactivate this private endpoint to allow egress access from serverless compute resources. Can only be updated after a private endpoint rule towards an AWS S3 service is successfully created.
          * 
          * @return builder
          * 
@@ -498,7 +507,7 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param groupId The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
+         * @param groupId Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domain_names`.
          * 
          * @return builder
          * 
@@ -509,7 +518,7 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param groupId The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
+         * @param groupId Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domain_names`.
          * 
          * @return builder
          * 

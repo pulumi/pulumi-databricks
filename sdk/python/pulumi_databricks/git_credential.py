@@ -23,12 +23,16 @@ class GitCredentialArgs:
                  git_provider: pulumi.Input[builtins.str],
                  force: Optional[pulumi.Input[builtins.bool]] = None,
                  git_username: Optional[pulumi.Input[builtins.str]] = None,
+                 is_default_for_provider: Optional[pulumi.Input[builtins.bool]] = None,
+                 name: Optional[pulumi.Input[builtins.str]] = None,
                  personal_access_token: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a GitCredential resource.
         :param pulumi.Input[builtins.str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
-        :param pulumi.Input[builtins.bool] force: specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
+        :param pulumi.Input[builtins.bool] force: specify if settings need to be enforced.
         :param pulumi.Input[builtins.str] git_username: user name at Git provider.
+        :param pulumi.Input[builtins.bool] is_default_for_provider: boolean flag specifying if the credential is the default for the given provider type.
+        :param pulumi.Input[builtins.str] name: the name of the git credential, used for identification and ease of lookup.
         :param pulumi.Input[builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
         """
         pulumi.set(__self__, "git_provider", git_provider)
@@ -36,6 +40,10 @@ class GitCredentialArgs:
             pulumi.set(__self__, "force", force)
         if git_username is not None:
             pulumi.set(__self__, "git_username", git_username)
+        if is_default_for_provider is not None:
+            pulumi.set(__self__, "is_default_for_provider", is_default_for_provider)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if personal_access_token is not None:
             pulumi.set(__self__, "personal_access_token", personal_access_token)
 
@@ -55,7 +63,7 @@ class GitCredentialArgs:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
+        specify if settings need to be enforced.
         """
         return pulumi.get(self, "force")
 
@@ -76,6 +84,30 @@ class GitCredentialArgs:
         pulumi.set(self, "git_username", value)
 
     @property
+    @pulumi.getter(name="isDefaultForProvider")
+    def is_default_for_provider(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        boolean flag specifying if the credential is the default for the given provider type.
+        """
+        return pulumi.get(self, "is_default_for_provider")
+
+    @is_default_for_provider.setter
+    def is_default_for_provider(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "is_default_for_provider", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        the name of the git credential, used for identification and ease of lookup.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @property
     @pulumi.getter(name="personalAccessToken")
     def personal_access_token(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -94,12 +126,16 @@ class _GitCredentialState:
                  force: Optional[pulumi.Input[builtins.bool]] = None,
                  git_provider: Optional[pulumi.Input[builtins.str]] = None,
                  git_username: Optional[pulumi.Input[builtins.str]] = None,
+                 is_default_for_provider: Optional[pulumi.Input[builtins.bool]] = None,
+                 name: Optional[pulumi.Input[builtins.str]] = None,
                  personal_access_token: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering GitCredential resources.
-        :param pulumi.Input[builtins.bool] force: specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
+        :param pulumi.Input[builtins.bool] force: specify if settings need to be enforced.
         :param pulumi.Input[builtins.str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
         :param pulumi.Input[builtins.str] git_username: user name at Git provider.
+        :param pulumi.Input[builtins.bool] is_default_for_provider: boolean flag specifying if the credential is the default for the given provider type.
+        :param pulumi.Input[builtins.str] name: the name of the git credential, used for identification and ease of lookup.
         :param pulumi.Input[builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
         """
         if force is not None:
@@ -108,6 +144,10 @@ class _GitCredentialState:
             pulumi.set(__self__, "git_provider", git_provider)
         if git_username is not None:
             pulumi.set(__self__, "git_username", git_username)
+        if is_default_for_provider is not None:
+            pulumi.set(__self__, "is_default_for_provider", is_default_for_provider)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if personal_access_token is not None:
             pulumi.set(__self__, "personal_access_token", personal_access_token)
 
@@ -115,7 +155,7 @@ class _GitCredentialState:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
+        specify if settings need to be enforced.
         """
         return pulumi.get(self, "force")
 
@@ -148,6 +188,30 @@ class _GitCredentialState:
         pulumi.set(self, "git_username", value)
 
     @property
+    @pulumi.getter(name="isDefaultForProvider")
+    def is_default_for_provider(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        boolean flag specifying if the credential is the default for the given provider type.
+        """
+        return pulumi.get(self, "is_default_for_provider")
+
+    @is_default_for_provider.setter
+    def is_default_for_provider(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "is_default_for_provider", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        the name of the git credential, used for identification and ease of lookup.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @property
     @pulumi.getter(name="personalAccessToken")
     def personal_access_token(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -169,6 +233,8 @@ class GitCredential(pulumi.CustomResource):
                  force: Optional[pulumi.Input[builtins.bool]] = None,
                  git_provider: Optional[pulumi.Input[builtins.str]] = None,
                  git_username: Optional[pulumi.Input[builtins.str]] = None,
+                 is_default_for_provider: Optional[pulumi.Input[builtins.bool]] = None,
+                 name: Optional[pulumi.Input[builtins.str]] = None,
                  personal_access_token: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
@@ -177,6 +243,8 @@ class GitCredential(pulumi.CustomResource):
         > This resource can only be used with a workspace-level provider!
 
         ## Example Usage
+
+        ### Git credential that uses personal access token
 
         You can declare Pulumi-managed Git credential using following code:
 
@@ -188,6 +256,17 @@ class GitCredential(pulumi.CustomResource):
             git_username="myuser",
             git_provider="azureDevOpsServices",
             personal_access_token="sometoken")
+        ```
+
+        ### Git credential configuration for Azure Service Principal and Azure DevOps
+
+        Databricks now supports Azure service principal federation to Azure DevOps.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/repos/automate-with-ms-entra) on how to configure service principal federation, and after everything is configured, it could be used as simple as:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ado = databricks.GitCredential("ado", git_provider="azureDevOpsServicesAad")
         ```
 
         ## Related Resources
@@ -220,9 +299,11 @@ class GitCredential(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] force: specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
+        :param pulumi.Input[builtins.bool] force: specify if settings need to be enforced.
         :param pulumi.Input[builtins.str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
         :param pulumi.Input[builtins.str] git_username: user name at Git provider.
+        :param pulumi.Input[builtins.bool] is_default_for_provider: boolean flag specifying if the credential is the default for the given provider type.
+        :param pulumi.Input[builtins.str] name: the name of the git credential, used for identification and ease of lookup.
         :param pulumi.Input[builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
         """
         ...
@@ -238,6 +319,8 @@ class GitCredential(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Git credential that uses personal access token
+
         You can declare Pulumi-managed Git credential using following code:
 
         ```python
@@ -248,6 +331,17 @@ class GitCredential(pulumi.CustomResource):
             git_username="myuser",
             git_provider="azureDevOpsServices",
             personal_access_token="sometoken")
+        ```
+
+        ### Git credential configuration for Azure Service Principal and Azure DevOps
+
+        Databricks now supports Azure service principal federation to Azure DevOps.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/repos/automate-with-ms-entra) on how to configure service principal federation, and after everything is configured, it could be used as simple as:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ado = databricks.GitCredential("ado", git_provider="azureDevOpsServicesAad")
         ```
 
         ## Related Resources
@@ -296,6 +390,8 @@ class GitCredential(pulumi.CustomResource):
                  force: Optional[pulumi.Input[builtins.bool]] = None,
                  git_provider: Optional[pulumi.Input[builtins.str]] = None,
                  git_username: Optional[pulumi.Input[builtins.str]] = None,
+                 is_default_for_provider: Optional[pulumi.Input[builtins.bool]] = None,
+                 name: Optional[pulumi.Input[builtins.str]] = None,
                  personal_access_token: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -311,6 +407,8 @@ class GitCredential(pulumi.CustomResource):
                 raise TypeError("Missing required property 'git_provider'")
             __props__.__dict__["git_provider"] = git_provider
             __props__.__dict__["git_username"] = git_username
+            __props__.__dict__["is_default_for_provider"] = is_default_for_provider
+            __props__.__dict__["name"] = name
             __props__.__dict__["personal_access_token"] = personal_access_token
         super(GitCredential, __self__).__init__(
             'databricks:index/gitCredential:GitCredential',
@@ -325,6 +423,8 @@ class GitCredential(pulumi.CustomResource):
             force: Optional[pulumi.Input[builtins.bool]] = None,
             git_provider: Optional[pulumi.Input[builtins.str]] = None,
             git_username: Optional[pulumi.Input[builtins.str]] = None,
+            is_default_for_provider: Optional[pulumi.Input[builtins.bool]] = None,
+            name: Optional[pulumi.Input[builtins.str]] = None,
             personal_access_token: Optional[pulumi.Input[builtins.str]] = None) -> 'GitCredential':
         """
         Get an existing GitCredential resource's state with the given name, id, and optional extra
@@ -333,9 +433,11 @@ class GitCredential(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] force: specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
+        :param pulumi.Input[builtins.bool] force: specify if settings need to be enforced.
         :param pulumi.Input[builtins.str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
         :param pulumi.Input[builtins.str] git_username: user name at Git provider.
+        :param pulumi.Input[builtins.bool] is_default_for_provider: boolean flag specifying if the credential is the default for the given provider type.
+        :param pulumi.Input[builtins.str] name: the name of the git credential, used for identification and ease of lookup.
         :param pulumi.Input[builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -345,6 +447,8 @@ class GitCredential(pulumi.CustomResource):
         __props__.__dict__["force"] = force
         __props__.__dict__["git_provider"] = git_provider
         __props__.__dict__["git_username"] = git_username
+        __props__.__dict__["is_default_for_provider"] = is_default_for_provider
+        __props__.__dict__["name"] = name
         __props__.__dict__["personal_access_token"] = personal_access_token
         return GitCredential(resource_name, opts=opts, __props__=__props__)
 
@@ -352,7 +456,7 @@ class GitCredential(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
+        specify if settings need to be enforced.
         """
         return pulumi.get(self, "force")
 
@@ -371,6 +475,22 @@ class GitCredential(pulumi.CustomResource):
         user name at Git provider.
         """
         return pulumi.get(self, "git_username")
+
+    @property
+    @pulumi.getter(name="isDefaultForProvider")
+    def is_default_for_provider(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        boolean flag specifying if the credential is the default for the given provider type.
+        """
+        return pulumi.get(self, "is_default_for_provider")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[builtins.str]:
+        """
+        the name of the git credential, used for identification and ease of lookup.
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="personalAccessToken")

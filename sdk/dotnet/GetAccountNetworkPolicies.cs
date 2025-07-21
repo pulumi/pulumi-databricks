@@ -11,12 +11,78 @@ namespace Pulumi.Databricks
 {
     public static class GetAccountNetworkPolicies
     {
+        /// <summary>
+        /// This data source can be used to fetch the list of network policies.
+        /// 
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting a list of all network policies:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetAccountNetworkPolicies.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetAccountNetworkPoliciesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountNetworkPoliciesResult>("databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// This data source can be used to fetch the list of network policies.
+        /// 
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting a list of all network policies:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetAccountNetworkPolicies.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetAccountNetworkPoliciesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountNetworkPoliciesResult>("databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// This data source can be used to fetch the list of network policies.
+        /// 
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting a list of all network policies:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetAccountNetworkPolicies.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetAccountNetworkPoliciesResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountNetworkPoliciesResult>("databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies", InvokeArgs.Empty, options.WithDefaults());
     }

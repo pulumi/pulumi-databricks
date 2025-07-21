@@ -61,7 +61,7 @@ namespace Pulumi.Databricks
         /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
         /// * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
         /// * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
-        /// * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+        /// * databricks.Grants to manage data access in Unity Catalog.
         /// </summary>
         public static Task<GetSqlWarehouseResult> InvokeAsync(GetSqlWarehouseArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSqlWarehouseResult>("databricks:index/getSqlWarehouse:getSqlWarehouse", args ?? new GetSqlWarehouseArgs(), options.WithDefaults());
@@ -116,7 +116,7 @@ namespace Pulumi.Databricks
         /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
         /// * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
         /// * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
-        /// * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+        /// * databricks.Grants to manage data access in Unity Catalog.
         /// </summary>
         public static Output<GetSqlWarehouseResult> Invoke(GetSqlWarehouseInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSqlWarehouseResult>("databricks:index/getSqlWarehouse:getSqlWarehouse", args ?? new GetSqlWarehouseInvokeArgs(), options.WithDefaults());
@@ -171,7 +171,7 @@ namespace Pulumi.Databricks
         /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
         /// * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
         /// * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
-        /// * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+        /// * databricks.Grants to manage data access in Unity Catalog.
         /// </summary>
         public static Output<GetSqlWarehouseResult> Invoke(GetSqlWarehouseInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSqlWarehouseResult>("databricks:index/getSqlWarehouse:getSqlWarehouse", args ?? new GetSqlWarehouseInvokeArgs(), options.WithDefaults());
@@ -298,7 +298,7 @@ namespace Pulumi.Databricks
         public Inputs.GetSqlWarehouseTagsArgs? Tags { get; set; }
 
         /// <summary>
-        /// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+        /// SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
         /// </summary>
         [Input("warehouseType")]
         public string? WarehouseType { get; set; }
@@ -429,7 +429,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.GetSqlWarehouseTagsInputArgs>? Tags { get; set; }
 
         /// <summary>
-        /// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+        /// SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
         /// </summary>
         [Input("warehouseType")]
         public Input<string>? WarehouseType { get; set; }
@@ -522,7 +522,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetSqlWarehouseTagsResult Tags;
         /// <summary>
-        /// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+        /// SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
         /// </summary>
         public readonly string WarehouseType;
 

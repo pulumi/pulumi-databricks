@@ -13,15 +13,23 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetFunctionsFunctionRoutineDependencyDependencyResult
     {
+        public readonly ImmutableArray<Outputs.GetFunctionsFunctionRoutineDependencyDependencyConnectionResult> Connections;
+        public readonly ImmutableArray<Outputs.GetFunctionsFunctionRoutineDependencyDependencyCredentialResult> Credentials;
         public readonly ImmutableArray<Outputs.GetFunctionsFunctionRoutineDependencyDependencyFunctionResult> Functions;
         public readonly ImmutableArray<Outputs.GetFunctionsFunctionRoutineDependencyDependencyTableResult> Tables;
 
         [OutputConstructor]
         private GetFunctionsFunctionRoutineDependencyDependencyResult(
+            ImmutableArray<Outputs.GetFunctionsFunctionRoutineDependencyDependencyConnectionResult> connections,
+
+            ImmutableArray<Outputs.GetFunctionsFunctionRoutineDependencyDependencyCredentialResult> credentials,
+
             ImmutableArray<Outputs.GetFunctionsFunctionRoutineDependencyDependencyFunctionResult> functions,
 
             ImmutableArray<Outputs.GetFunctionsFunctionRoutineDependencyDependencyTableResult> tables)
         {
+            Connections = connections;
+            Credentials = credentials;
             Functions = functions;
             Tables = tables;
         }

@@ -18,6 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// Full name of the databricks_table: _`catalog`.`schema`.`table`_
         /// </summary>
         public readonly string Name;
+        public readonly bool? Rely;
         public readonly ImmutableArray<string> TimeseriesColumns;
 
         [OutputConstructor]
@@ -26,10 +27,13 @@ namespace Pulumi.Databricks.Outputs
 
             string name,
 
+            bool? rely,
+
             ImmutableArray<string> timeseriesColumns)
         {
             ChildColumns = childColumns;
             Name = name;
+            Rely = rely;
             TimeseriesColumns = timeseriesColumns;
         }
     }

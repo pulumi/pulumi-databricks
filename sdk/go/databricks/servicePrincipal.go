@@ -182,7 +182,8 @@ import (
 // * Group data to retrieve information about Group members, entitlements and instance profiles.
 // * GroupMember to attach users and groups as group members.
 // * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-// * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and more to manage secrets for the service principal (only for AWS deployments)
+// * Grants to manage data access in Unity Catalog.
+// * databricks-service-principal-secret to manage secrets for the service principal (only for AWS deployments)
 //
 // ## Import
 //

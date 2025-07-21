@@ -18,6 +18,7 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
         /// </summary>
+        [Obsolete(@"Please use 'pii' and 'safety' instead.")]
         public InputList<string> InvalidKeywords
         {
             get => _invalidKeywords ?? (_invalidKeywords = new InputList<string>());
@@ -42,6 +43,7 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
         /// </summary>
+        [Obsolete(@"Please use 'pii' and 'safety' instead.")]
         public InputList<string> ValidTopics
         {
             get => _validTopics ?? (_validTopics = new InputList<string>());

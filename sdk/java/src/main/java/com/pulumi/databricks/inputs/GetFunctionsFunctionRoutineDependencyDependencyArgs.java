@@ -5,6 +5,8 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetFunctionsFunctionRoutineDependencyDependencyConnectionArgs;
+import com.pulumi.databricks.inputs.GetFunctionsFunctionRoutineDependencyDependencyCredentialArgs;
 import com.pulumi.databricks.inputs.GetFunctionsFunctionRoutineDependencyDependencyFunctionArgs;
 import com.pulumi.databricks.inputs.GetFunctionsFunctionRoutineDependencyDependencyTableArgs;
 import java.util.List;
@@ -16,6 +18,20 @@ import javax.annotation.Nullable;
 public final class GetFunctionsFunctionRoutineDependencyDependencyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetFunctionsFunctionRoutineDependencyDependencyArgs Empty = new GetFunctionsFunctionRoutineDependencyDependencyArgs();
+
+    @Import(name="connections")
+    private @Nullable Output<List<GetFunctionsFunctionRoutineDependencyDependencyConnectionArgs>> connections;
+
+    public Optional<Output<List<GetFunctionsFunctionRoutineDependencyDependencyConnectionArgs>>> connections() {
+        return Optional.ofNullable(this.connections);
+    }
+
+    @Import(name="credentials")
+    private @Nullable Output<List<GetFunctionsFunctionRoutineDependencyDependencyCredentialArgs>> credentials;
+
+    public Optional<Output<List<GetFunctionsFunctionRoutineDependencyDependencyCredentialArgs>>> credentials() {
+        return Optional.ofNullable(this.credentials);
+    }
 
     @Import(name="functions")
     private @Nullable Output<List<GetFunctionsFunctionRoutineDependencyDependencyFunctionArgs>> functions;
@@ -34,6 +50,8 @@ public final class GetFunctionsFunctionRoutineDependencyDependencyArgs extends c
     private GetFunctionsFunctionRoutineDependencyDependencyArgs() {}
 
     private GetFunctionsFunctionRoutineDependencyDependencyArgs(GetFunctionsFunctionRoutineDependencyDependencyArgs $) {
+        this.connections = $.connections;
+        this.credentials = $.credentials;
         this.functions = $.functions;
         this.tables = $.tables;
     }
@@ -54,6 +72,32 @@ public final class GetFunctionsFunctionRoutineDependencyDependencyArgs extends c
 
         public Builder(GetFunctionsFunctionRoutineDependencyDependencyArgs defaults) {
             $ = new GetFunctionsFunctionRoutineDependencyDependencyArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder connections(@Nullable Output<List<GetFunctionsFunctionRoutineDependencyDependencyConnectionArgs>> connections) {
+            $.connections = connections;
+            return this;
+        }
+
+        public Builder connections(List<GetFunctionsFunctionRoutineDependencyDependencyConnectionArgs> connections) {
+            return connections(Output.of(connections));
+        }
+
+        public Builder connections(GetFunctionsFunctionRoutineDependencyDependencyConnectionArgs... connections) {
+            return connections(List.of(connections));
+        }
+
+        public Builder credentials(@Nullable Output<List<GetFunctionsFunctionRoutineDependencyDependencyCredentialArgs>> credentials) {
+            $.credentials = credentials;
+            return this;
+        }
+
+        public Builder credentials(List<GetFunctionsFunctionRoutineDependencyDependencyCredentialArgs> credentials) {
+            return credentials(Output.of(credentials));
+        }
+
+        public Builder credentials(GetFunctionsFunctionRoutineDependencyDependencyCredentialArgs... credentials) {
+            return credentials(List.of(credentials));
         }
 
         public Builder functions(@Nullable Output<List<GetFunctionsFunctionRoutineDependencyDependencyFunctionArgs>> functions) {

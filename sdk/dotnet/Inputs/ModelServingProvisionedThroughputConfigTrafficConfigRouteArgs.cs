@@ -12,8 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs : global::Pulumi.ResourceArgs
     {
-        [Input("servedModelName", required: true)]
-        public Input<string> ServedModelName { get; set; } = null!;
+        /// <summary>
+        /// The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+        /// </summary>
+        [Input("servedEntityName")]
+        public Input<string>? ServedEntityName { get; set; }
+
+        [Input("servedModelName")]
+        public Input<string>? ServedModelName { get; set; }
 
         /// <summary>
         /// The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.

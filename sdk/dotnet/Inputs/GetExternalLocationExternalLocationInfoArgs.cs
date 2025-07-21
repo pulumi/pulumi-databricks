@@ -49,7 +49,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<bool>? EnableFileEvents { get; set; }
 
         /// <summary>
-        /// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        /// A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
         /// </summary>
         [Input("encryptionDetails")]
         public Input<Inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsInputArgs>? EncryptionDetails { get; set; }

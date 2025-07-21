@@ -115,8 +115,7 @@ type ExternalLocation struct {
 	// Name of the StorageCredential to use with this external location.
 	CredentialName pulumi.StringOutput `pulumi:"credentialName"`
 	// indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
-	EnableFileEvents pulumi.BoolPtrOutput `pulumi:"enableFileEvents"`
-	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+	EnableFileEvents  pulumi.BoolPtrOutput                       `pulumi:"enableFileEvents"`
 	EncryptionDetails ExternalLocationEncryptionDetailsPtrOutput `pulumi:"encryptionDetails"`
 	// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
 	Fallback       pulumi.BoolPtrOutput                    `pulumi:"fallback"`
@@ -192,8 +191,7 @@ type externalLocationState struct {
 	// Name of the StorageCredential to use with this external location.
 	CredentialName *string `pulumi:"credentialName"`
 	// indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
-	EnableFileEvents *bool `pulumi:"enableFileEvents"`
-	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+	EnableFileEvents  *bool                              `pulumi:"enableFileEvents"`
 	EncryptionDetails *ExternalLocationEncryptionDetails `pulumi:"encryptionDetails"`
 	// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
 	Fallback       *bool                           `pulumi:"fallback"`
@@ -234,8 +232,7 @@ type ExternalLocationState struct {
 	// Name of the StorageCredential to use with this external location.
 	CredentialName pulumi.StringPtrInput
 	// indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
-	EnableFileEvents pulumi.BoolPtrInput
-	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+	EnableFileEvents  pulumi.BoolPtrInput
 	EncryptionDetails ExternalLocationEncryptionDetailsPtrInput
 	// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
 	Fallback       pulumi.BoolPtrInput
@@ -273,8 +270,7 @@ type externalLocationArgs struct {
 	// Name of the StorageCredential to use with this external location.
 	CredentialName string `pulumi:"credentialName"`
 	// indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
-	EnableFileEvents *bool `pulumi:"enableFileEvents"`
-	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+	EnableFileEvents  *bool                              `pulumi:"enableFileEvents"`
 	EncryptionDetails *ExternalLocationEncryptionDetails `pulumi:"encryptionDetails"`
 	// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
 	Fallback       *bool                           `pulumi:"fallback"`
@@ -305,8 +301,7 @@ type ExternalLocationArgs struct {
 	// Name of the StorageCredential to use with this external location.
 	CredentialName pulumi.StringInput
 	// indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
-	EnableFileEvents pulumi.BoolPtrInput
-	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+	EnableFileEvents  pulumi.BoolPtrInput
 	EncryptionDetails ExternalLocationEncryptionDetailsPtrInput
 	// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
 	Fallback       pulumi.BoolPtrInput
@@ -451,7 +446,6 @@ func (o ExternalLocationOutput) EnableFileEvents() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolPtrOutput { return v.EnableFileEvents }).(pulumi.BoolPtrOutput)
 }
 
-// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 func (o ExternalLocationOutput) EncryptionDetails() ExternalLocationEncryptionDetailsPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) ExternalLocationEncryptionDetailsPtrOutput { return v.EncryptionDetails }).(ExternalLocationEncryptionDetailsPtrOutput)
 }

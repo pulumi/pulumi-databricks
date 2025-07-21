@@ -95,9 +95,10 @@ export class AlertV2 extends pulumi.CustomResource {
      */
     public readonly queryText!: pulumi.Output<string | undefined>;
     /**
-     * (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+     * The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      */
-    public /*out*/ readonly runAsUserName!: pulumi.Output<string>;
+    public readonly runAsUserName!: pulumi.Output<string | undefined>;
     public readonly schedule!: pulumi.Output<outputs.AlertV2Schedule | undefined>;
     /**
      * (string) - The timestamp indicating when the alert was updated
@@ -142,12 +143,12 @@ export class AlertV2 extends pulumi.CustomResource {
             resourceInputs["evaluation"] = args ? args.evaluation : undefined;
             resourceInputs["parentPath"] = args ? args.parentPath : undefined;
             resourceInputs["queryText"] = args ? args.queryText : undefined;
+            resourceInputs["runAsUserName"] = args ? args.runAsUserName : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["warehouseId"] = args ? args.warehouseId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lifecycleState"] = undefined /*out*/;
             resourceInputs["ownerUserName"] = undefined /*out*/;
-            resourceInputs["runAsUserName"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -193,7 +194,8 @@ export interface AlertV2State {
      */
     queryText?: pulumi.Input<string>;
     /**
-     * (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+     * The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      */
     runAsUserName?: pulumi.Input<string>;
     schedule?: pulumi.Input<inputs.AlertV2Schedule>;
@@ -232,6 +234,11 @@ export interface AlertV2Args {
      * Text of the query to be run
      */
     queryText?: pulumi.Input<string>;
+    /**
+     * The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     */
+    runAsUserName?: pulumi.Input<string>;
     schedule?: pulumi.Input<inputs.AlertV2Schedule>;
     /**
      * ID of the SQL warehouse attached to the alert

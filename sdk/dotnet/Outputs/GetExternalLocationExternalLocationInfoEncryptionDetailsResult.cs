@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetExternalLocationExternalLocationInfoEncryptionDetailsResult
     {
+        /// <summary>
+        /// a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+        /// </summary>
         public readonly Outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsResult? SseEncryptionDetails;
 
         [OutputConstructor]

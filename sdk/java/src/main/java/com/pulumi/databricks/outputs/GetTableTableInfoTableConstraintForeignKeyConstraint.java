@@ -5,9 +5,12 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTableTableInfoTableConstraintForeignKeyConstraint {
@@ -19,6 +22,7 @@ public final class GetTableTableInfoTableConstraintForeignKeyConstraint {
     private String name;
     private List<String> parentColumns;
     private String parentTable;
+    private @Nullable Boolean rely;
 
     private GetTableTableInfoTableConstraintForeignKeyConstraint() {}
     public List<String> childColumns() {
@@ -37,6 +41,9 @@ public final class GetTableTableInfoTableConstraintForeignKeyConstraint {
     public String parentTable() {
         return this.parentTable;
     }
+    public Optional<Boolean> rely() {
+        return Optional.ofNullable(this.rely);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -51,6 +58,7 @@ public final class GetTableTableInfoTableConstraintForeignKeyConstraint {
         private String name;
         private List<String> parentColumns;
         private String parentTable;
+        private @Nullable Boolean rely;
         public Builder() {}
         public Builder(GetTableTableInfoTableConstraintForeignKeyConstraint defaults) {
     	      Objects.requireNonNull(defaults);
@@ -58,6 +66,7 @@ public final class GetTableTableInfoTableConstraintForeignKeyConstraint {
     	      this.name = defaults.name;
     	      this.parentColumns = defaults.parentColumns;
     	      this.parentTable = defaults.parentTable;
+    	      this.rely = defaults.rely;
         }
 
         @CustomType.Setter
@@ -98,12 +107,19 @@ public final class GetTableTableInfoTableConstraintForeignKeyConstraint {
             this.parentTable = parentTable;
             return this;
         }
+        @CustomType.Setter
+        public Builder rely(@Nullable Boolean rely) {
+
+            this.rely = rely;
+            return this;
+        }
         public GetTableTableInfoTableConstraintForeignKeyConstraint build() {
             final var _resultValue = new GetTableTableInfoTableConstraintForeignKeyConstraint();
             _resultValue.childColumns = childColumns;
             _resultValue.name = name;
             _resultValue.parentColumns = parentColumns;
             _resultValue.parentTable = parentTable;
+            _resultValue.rely = rely;
             return _resultValue;
         }
     }

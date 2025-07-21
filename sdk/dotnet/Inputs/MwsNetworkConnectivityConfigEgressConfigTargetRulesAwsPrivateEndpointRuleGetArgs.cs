@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("connectionState")]
         public Input<string>? ConnectionState { get; set; }
 
+        /// <summary>
+        /// time in epoch milliseconds when this object was created.
+        /// </summary>
         [Input("creationTime")]
         public Input<int>? CreationTime { get; set; }
 
@@ -58,6 +61,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("ruleId")]
         public Input<string>? RuleId { get; set; }
 
+        /// <summary>
+        /// time in epoch milliseconds when this object was updated.
+        /// </summary>
         [Input("updatedTime")]
         public Input<int>? UpdatedTime { get; set; }
 

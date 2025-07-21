@@ -113,7 +113,7 @@ public final class GetSqlWarehouseResult {
      */
     private GetSqlWarehouseTags tags;
     /**
-     * @return SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+     * @return SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
      * 
      */
     private String warehouseType;
@@ -256,7 +256,7 @@ public final class GetSqlWarehouseResult {
         return this.tags;
     }
     /**
-     * @return SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+     * @return SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
      * 
      */
     public String warehouseType() {

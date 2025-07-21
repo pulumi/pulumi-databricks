@@ -25,9 +25,17 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
         return Optional.ofNullable(this.connectionState);
     }
 
+    /**
+     * time in epoch milliseconds when this object was created.
+     * 
+     */
     @Import(name="creationTime")
     private @Nullable Output<Integer> creationTime;
 
+    /**
+     * @return time in epoch milliseconds when this object was created.
+     * 
+     */
     public Optional<Output<Integer>> creationTime() {
         return Optional.ofNullable(this.creationTime);
     }
@@ -96,9 +104,17 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
         return Optional.ofNullable(this.ruleId);
     }
 
+    /**
+     * time in epoch milliseconds when this object was updated.
+     * 
+     */
     @Import(name="updatedTime")
     private @Nullable Output<Integer> updatedTime;
 
+    /**
+     * @return time in epoch milliseconds when this object was updated.
+     * 
+     */
     public Optional<Output<Integer>> updatedTime() {
         return Optional.ofNullable(this.updatedTime);
     }
@@ -146,11 +162,23 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
             return connectionState(Output.of(connectionState));
         }
 
+        /**
+         * @param creationTime time in epoch milliseconds when this object was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder creationTime(@Nullable Output<Integer> creationTime) {
             $.creationTime = creationTime;
             return this;
         }
 
+        /**
+         * @param creationTime time in epoch milliseconds when this object was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder creationTime(Integer creationTime) {
             return creationTime(Output.of(creationTime));
         }
@@ -243,11 +271,23 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
             return ruleId(Output.of(ruleId));
         }
 
+        /**
+         * @param updatedTime time in epoch milliseconds when this object was updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedTime(@Nullable Output<Integer> updatedTime) {
             $.updatedTime = updatedTime;
             return this;
         }
 
+        /**
+         * @param updatedTime time in epoch milliseconds when this object was updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedTime(Integer updatedTime) {
             return updatedTime(Output.of(updatedTime));
         }

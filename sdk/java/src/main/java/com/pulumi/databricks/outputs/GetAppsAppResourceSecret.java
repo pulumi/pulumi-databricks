@@ -16,7 +16,7 @@ public final class GetAppsAppResourceSecret {
      */
     private String key;
     /**
-     * @return Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      * 
      */
     private String permission;
@@ -35,7 +35,7 @@ public final class GetAppsAppResourceSecret {
         return this.key;
     }
     /**
-     * @return Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      * 
      */
     public String permission() {

@@ -17,14 +17,14 @@ public final class GitCredentialState extends com.pulumi.resources.ResourceArgs 
     public static final GitCredentialState Empty = new GitCredentialState();
 
     /**
-     * specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it&#39;s already configured, the apply operation will fail.
+     * specify if settings need to be enforced.
      * 
      */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it&#39;s already configured, the apply operation will fail.
+     * @return specify if settings need to be enforced.
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -62,6 +62,36 @@ public final class GitCredentialState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * boolean flag specifying if the credential is the default for the given provider type.
+     * 
+     */
+    @Import(name="isDefaultForProvider")
+    private @Nullable Output<Boolean> isDefaultForProvider;
+
+    /**
+     * @return boolean flag specifying if the credential is the default for the given provider type.
+     * 
+     */
+    public Optional<Output<Boolean>> isDefaultForProvider() {
+        return Optional.ofNullable(this.isDefaultForProvider);
+    }
+
+    /**
+     * the name of the git credential, used for identification and ease of lookup.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return the name of the git credential, used for identification and ease of lookup.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
      * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      * 
      */
@@ -82,6 +112,8 @@ public final class GitCredentialState extends com.pulumi.resources.ResourceArgs 
         this.force = $.force;
         this.gitProvider = $.gitProvider;
         this.gitUsername = $.gitUsername;
+        this.isDefaultForProvider = $.isDefaultForProvider;
+        this.name = $.name;
         this.personalAccessToken = $.personalAccessToken;
     }
 
@@ -104,7 +136,7 @@ public final class GitCredentialState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param force specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it&#39;s already configured, the apply operation will fail.
+         * @param force specify if settings need to be enforced.
          * 
          * @return builder
          * 
@@ -115,7 +147,7 @@ public final class GitCredentialState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param force specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it&#39;s already configured, the apply operation will fail.
+         * @param force specify if settings need to be enforced.
          * 
          * @return builder
          * 
@@ -164,6 +196,48 @@ public final class GitCredentialState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder gitUsername(String gitUsername) {
             return gitUsername(Output.of(gitUsername));
+        }
+
+        /**
+         * @param isDefaultForProvider boolean flag specifying if the credential is the default for the given provider type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefaultForProvider(@Nullable Output<Boolean> isDefaultForProvider) {
+            $.isDefaultForProvider = isDefaultForProvider;
+            return this;
+        }
+
+        /**
+         * @param isDefaultForProvider boolean flag specifying if the credential is the default for the given provider type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefaultForProvider(Boolean isDefaultForProvider) {
+            return isDefaultForProvider(Output.of(isDefaultForProvider));
+        }
+
+        /**
+         * @param name the name of the git credential, used for identification and ease of lookup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name the name of the git credential, used for identification and ease of lookup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**

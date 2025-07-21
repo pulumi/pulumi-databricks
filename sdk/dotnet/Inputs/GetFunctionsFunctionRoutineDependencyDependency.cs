@@ -12,6 +12,22 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetFunctionsFunctionRoutineDependencyDependencyArgs : global::Pulumi.InvokeArgs
     {
+        [Input("connections")]
+        private List<Inputs.GetFunctionsFunctionRoutineDependencyDependencyConnectionArgs>? _connections;
+        public List<Inputs.GetFunctionsFunctionRoutineDependencyDependencyConnectionArgs> Connections
+        {
+            get => _connections ?? (_connections = new List<Inputs.GetFunctionsFunctionRoutineDependencyDependencyConnectionArgs>());
+            set => _connections = value;
+        }
+
+        [Input("credentials")]
+        private List<Inputs.GetFunctionsFunctionRoutineDependencyDependencyCredentialArgs>? _credentials;
+        public List<Inputs.GetFunctionsFunctionRoutineDependencyDependencyCredentialArgs> Credentials
+        {
+            get => _credentials ?? (_credentials = new List<Inputs.GetFunctionsFunctionRoutineDependencyDependencyCredentialArgs>());
+            set => _credentials = value;
+        }
+
         [Input("functions")]
         private List<Inputs.GetFunctionsFunctionRoutineDependencyDependencyFunctionArgs>? _functions;
         public List<Inputs.GetFunctionsFunctionRoutineDependencyDependencyFunctionArgs> Functions

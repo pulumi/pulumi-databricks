@@ -9,6 +9,7 @@ import com.pulumi.databricks.outputs.GetTableTableInfoDeltaRuntimePropertiesKvpa
 import com.pulumi.databricks.outputs.GetTableTableInfoEffectivePredictiveOptimizationFlag;
 import com.pulumi.databricks.outputs.GetTableTableInfoEncryptionDetails;
 import com.pulumi.databricks.outputs.GetTableTableInfoRowFilter;
+import com.pulumi.databricks.outputs.GetTableTableInfoSecurableKindManifest;
 import com.pulumi.databricks.outputs.GetTableTableInfoTableConstraint;
 import com.pulumi.databricks.outputs.GetTableTableInfoViewDependencies;
 import java.lang.Boolean;
@@ -72,6 +73,7 @@ public final class GetTableTableInfo {
      * 
      */
     private @Nullable String schemaName;
+    private @Nullable GetTableTableInfoSecurableKindManifest securableKindManifest;
     private @Nullable String sqlPath;
     private @Nullable String storageCredentialName;
     private @Nullable String storageLocation;
@@ -190,6 +192,9 @@ public final class GetTableTableInfo {
     public Optional<String> schemaName() {
         return Optional.ofNullable(this.schemaName);
     }
+    public Optional<GetTableTableInfoSecurableKindManifest> securableKindManifest() {
+        return Optional.ofNullable(this.securableKindManifest);
+    }
     public Optional<String> sqlPath() {
         return Optional.ofNullable(this.sqlPath);
     }
@@ -264,6 +269,7 @@ public final class GetTableTableInfo {
         private @Nullable Map<String,String> properties;
         private @Nullable GetTableTableInfoRowFilter rowFilter;
         private @Nullable String schemaName;
+        private @Nullable GetTableTableInfoSecurableKindManifest securableKindManifest;
         private @Nullable String sqlPath;
         private @Nullable String storageCredentialName;
         private @Nullable String storageLocation;
@@ -299,6 +305,7 @@ public final class GetTableTableInfo {
     	      this.properties = defaults.properties;
     	      this.rowFilter = defaults.rowFilter;
     	      this.schemaName = defaults.schemaName;
+    	      this.securableKindManifest = defaults.securableKindManifest;
     	      this.sqlPath = defaults.sqlPath;
     	      this.storageCredentialName = defaults.storageCredentialName;
     	      this.storageLocation = defaults.storageLocation;
@@ -447,6 +454,12 @@ public final class GetTableTableInfo {
             return this;
         }
         @CustomType.Setter
+        public Builder securableKindManifest(@Nullable GetTableTableInfoSecurableKindManifest securableKindManifest) {
+
+            this.securableKindManifest = securableKindManifest;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sqlPath(@Nullable String sqlPath) {
 
             this.sqlPath = sqlPath;
@@ -533,6 +546,7 @@ public final class GetTableTableInfo {
             _resultValue.properties = properties;
             _resultValue.rowFilter = rowFilter;
             _resultValue.schemaName = schemaName;
+            _resultValue.securableKindManifest = securableKindManifest;
             _resultValue.sqlPath = sqlPath;
             _resultValue.storageCredentialName = storageCredentialName;
             _resultValue.storageLocation = storageLocation;

@@ -15,14 +15,20 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// Used to specify how many calls are allowed for a key within the renewal_period.
         /// </summary>
-        [Input("calls", required: true)]
-        public Input<int> Calls { get; set; } = null!;
+        [Input("calls")]
+        public Input<int>? Calls { get; set; }
 
         /// <summary>
-        /// Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        /// Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
+
+        /// <summary>
+        /// Principal field for a user, user group, or service principal to apply rate limiting to. Accepts a user email, group name, or service principal application ID.
+        /// </summary>
+        [Input("principal")]
+        public Input<string>? Principal { get; set; }
 
         /// <summary>
         /// Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.

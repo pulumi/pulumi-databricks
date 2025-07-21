@@ -8,10 +8,17 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigTrafficConfigRoute {
-    private String servedModelName;
+    /**
+     * @return The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+     * 
+     */
+    private @Nullable String servedEntityName;
+    private @Nullable String servedModelName;
     /**
      * @return The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
      * 
@@ -19,8 +26,15 @@ public final class ModelServingConfigTrafficConfigRoute {
     private Integer trafficPercentage;
 
     private ModelServingConfigTrafficConfigRoute() {}
-    public String servedModelName() {
-        return this.servedModelName;
+    /**
+     * @return The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+     * 
+     */
+    public Optional<String> servedEntityName() {
+        return Optional.ofNullable(this.servedEntityName);
+    }
+    public Optional<String> servedModelName() {
+        return Optional.ofNullable(this.servedModelName);
     }
     /**
      * @return The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
@@ -39,20 +53,26 @@ public final class ModelServingConfigTrafficConfigRoute {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String servedModelName;
+        private @Nullable String servedEntityName;
+        private @Nullable String servedModelName;
         private Integer trafficPercentage;
         public Builder() {}
         public Builder(ModelServingConfigTrafficConfigRoute defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.servedEntityName = defaults.servedEntityName;
     	      this.servedModelName = defaults.servedModelName;
     	      this.trafficPercentage = defaults.trafficPercentage;
         }
 
         @CustomType.Setter
-        public Builder servedModelName(String servedModelName) {
-            if (servedModelName == null) {
-              throw new MissingRequiredPropertyException("ModelServingConfigTrafficConfigRoute", "servedModelName");
-            }
+        public Builder servedEntityName(@Nullable String servedEntityName) {
+
+            this.servedEntityName = servedEntityName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder servedModelName(@Nullable String servedModelName) {
+
             this.servedModelName = servedModelName;
             return this;
         }
@@ -66,6 +86,7 @@ public final class ModelServingConfigTrafficConfigRoute {
         }
         public ModelServingConfigTrafficConfigRoute build() {
             final var _resultValue = new ModelServingConfigTrafficConfigRoute();
+            _resultValue.servedEntityName = servedEntityName;
             _resultValue.servedModelName = servedModelName;
             _resultValue.trafficPercentage = trafficPercentage;
             return _resultValue;

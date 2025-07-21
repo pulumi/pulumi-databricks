@@ -317,6 +317,20 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
         return this.config;
     }
     /**
+     * The description of the model serving endpoint.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return The description of the model serving endpoint.
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
+    }
+    /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      * 
      */

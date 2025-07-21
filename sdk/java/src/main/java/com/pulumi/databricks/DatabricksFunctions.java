@@ -28,6 +28,8 @@ import com.pulumi.databricks.inputs.GetCatalogArgs;
 import com.pulumi.databricks.inputs.GetCatalogPlainArgs;
 import com.pulumi.databricks.inputs.GetCatalogsArgs;
 import com.pulumi.databricks.inputs.GetCatalogsPlainArgs;
+import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
+import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomPlainArgs;
 import com.pulumi.databricks.inputs.GetClusterArgs;
 import com.pulumi.databricks.inputs.GetClusterPlainArgs;
 import com.pulumi.databricks.inputs.GetClusterPolicyArgs;
@@ -52,6 +54,8 @@ import com.pulumi.databricks.inputs.GetExternalLocationArgs;
 import com.pulumi.databricks.inputs.GetExternalLocationPlainArgs;
 import com.pulumi.databricks.inputs.GetExternalLocationsArgs;
 import com.pulumi.databricks.inputs.GetExternalLocationsPlainArgs;
+import com.pulumi.databricks.inputs.GetExternalMetadataArgs;
+import com.pulumi.databricks.inputs.GetExternalMetadataPlainArgs;
 import com.pulumi.databricks.inputs.GetFunctionsArgs;
 import com.pulumi.databricks.inputs.GetFunctionsPlainArgs;
 import com.pulumi.databricks.inputs.GetGroupArgs;
@@ -64,6 +68,8 @@ import com.pulumi.databricks.inputs.GetJobArgs;
 import com.pulumi.databricks.inputs.GetJobPlainArgs;
 import com.pulumi.databricks.inputs.GetJobsArgs;
 import com.pulumi.databricks.inputs.GetJobsPlainArgs;
+import com.pulumi.databricks.inputs.GetMaterializedFeaturesFeatureTagArgs;
+import com.pulumi.databricks.inputs.GetMaterializedFeaturesFeatureTagPlainArgs;
 import com.pulumi.databricks.inputs.GetMetastoreArgs;
 import com.pulumi.databricks.inputs.GetMetastorePlainArgs;
 import com.pulumi.databricks.inputs.GetMetastoresArgs;
@@ -155,6 +161,8 @@ import com.pulumi.databricks.outputs.GetBudgetPoliciesResult;
 import com.pulumi.databricks.outputs.GetBudgetPolicyResult;
 import com.pulumi.databricks.outputs.GetCatalogResult;
 import com.pulumi.databricks.outputs.GetCatalogsResult;
+import com.pulumi.databricks.outputs.GetCleanRoomsCleanRoomResult;
+import com.pulumi.databricks.outputs.GetCleanRoomsCleanRoomsResult;
 import com.pulumi.databricks.outputs.GetClusterPolicyResult;
 import com.pulumi.databricks.outputs.GetClusterResult;
 import com.pulumi.databricks.outputs.GetClustersResult;
@@ -169,12 +177,16 @@ import com.pulumi.databricks.outputs.GetDbfsFileResult;
 import com.pulumi.databricks.outputs.GetDirectoryResult;
 import com.pulumi.databricks.outputs.GetExternalLocationResult;
 import com.pulumi.databricks.outputs.GetExternalLocationsResult;
+import com.pulumi.databricks.outputs.GetExternalMetadataResult;
+import com.pulumi.databricks.outputs.GetExternalMetadatasResult;
 import com.pulumi.databricks.outputs.GetFunctionsResult;
 import com.pulumi.databricks.outputs.GetGroupResult;
 import com.pulumi.databricks.outputs.GetInstancePoolResult;
 import com.pulumi.databricks.outputs.GetInstanceProfilesResult;
 import com.pulumi.databricks.outputs.GetJobResult;
 import com.pulumi.databricks.outputs.GetJobsResult;
+import com.pulumi.databricks.outputs.GetMaterializedFeaturesFeatureTagResult;
+import com.pulumi.databricks.outputs.GetMaterializedFeaturesFeatureTagsResult;
 import com.pulumi.databricks.outputs.GetMetastoreResult;
 import com.pulumi.databricks.outputs.GetMetastoresResult;
 import com.pulumi.databricks.outputs.GetMlflowExperimentResult;
@@ -224,45 +236,416 @@ import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class DatabricksFunctions {
+    /**
+     * This data source can be used to fetch the list of network policies.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all network policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAccountNetworkPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAccountNetworkPoliciesResult> getAccountNetworkPolicies() {
         return getAccountNetworkPolicies(InvokeArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * This data source can be used to fetch the list of network policies.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all network policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAccountNetworkPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAccountNetworkPoliciesResult> getAccountNetworkPoliciesPlain() {
         return getAccountNetworkPoliciesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * This data source can be used to fetch the list of network policies.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all network policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAccountNetworkPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAccountNetworkPoliciesResult> getAccountNetworkPolicies(InvokeArgs args) {
         return getAccountNetworkPolicies(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source can be used to fetch the list of network policies.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all network policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAccountNetworkPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAccountNetworkPoliciesResult> getAccountNetworkPoliciesPlain(InvokeArgs args) {
         return getAccountNetworkPoliciesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source can be used to fetch the list of network policies.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all network policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAccountNetworkPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAccountNetworkPoliciesResult> getAccountNetworkPolicies(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies", TypeShape.of(GetAccountNetworkPoliciesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source can be used to fetch the list of network policies.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all network policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAccountNetworkPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAccountNetworkPoliciesResult> getAccountNetworkPolicies(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies", TypeShape.of(GetAccountNetworkPoliciesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source can be used to fetch the list of network policies.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all network policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAccountNetworkPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAccountNetworkPoliciesResult> getAccountNetworkPoliciesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies", TypeShape.of(GetAccountNetworkPoliciesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source can be used to get a single network policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAccountNetworkPolicyResult> getAccountNetworkPolicy() {
         return getAccountNetworkPolicy(GetAccountNetworkPolicyArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * This data source can be used to get a single network policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAccountNetworkPolicyResult> getAccountNetworkPolicyPlain() {
         return getAccountNetworkPolicyPlain(GetAccountNetworkPolicyPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * This data source can be used to get a single network policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAccountNetworkPolicyResult> getAccountNetworkPolicy(GetAccountNetworkPolicyArgs args) {
         return getAccountNetworkPolicy(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source can be used to get a single network policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAccountNetworkPolicyResult> getAccountNetworkPolicyPlain(GetAccountNetworkPolicyPlainArgs args) {
         return getAccountNetworkPolicyPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source can be used to get a single network policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAccountNetworkPolicyResult> getAccountNetworkPolicy(GetAccountNetworkPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", TypeShape.of(GetAccountNetworkPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source can be used to get a single network policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetAccountNetworkPolicyResult> getAccountNetworkPolicy(GetAccountNetworkPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", TypeShape.of(GetAccountNetworkPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source can be used to get a single network policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAccountNetworkPolicyResult> getAccountNetworkPolicyPlain(GetAccountNetworkPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", TypeShape.of(GetAccountNetworkPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -4432,6 +4815,615 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getCatalogs:getCatalogs", TypeShape.of(GetCatalogsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source can be used to get a single clean room.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: Datasource (Singular) Artifact
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
+     *             .name("example-clean-room")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCleanRoomsCleanRoomResult> getCleanRoomsCleanRoom() {
+        return getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to get a single clean room.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: Datasource (Singular) Artifact
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
+     *             .name("example-clean-room")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCleanRoomsCleanRoomResult> getCleanRoomsCleanRoomPlain() {
+        return getCleanRoomsCleanRoomPlain(GetCleanRoomsCleanRoomPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to get a single clean room.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: Datasource (Singular) Artifact
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
+     *             .name("example-clean-room")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCleanRoomsCleanRoomResult> getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs args) {
+        return getCleanRoomsCleanRoom(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to get a single clean room.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: Datasource (Singular) Artifact
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
+     *             .name("example-clean-room")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCleanRoomsCleanRoomResult> getCleanRoomsCleanRoomPlain(GetCleanRoomsCleanRoomPlainArgs args) {
+        return getCleanRoomsCleanRoomPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to get a single clean room.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: Datasource (Singular) Artifact
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
+     *             .name("example-clean-room")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCleanRoomsCleanRoomResult> getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getCleanRoomsCleanRoom:getCleanRoomsCleanRoom", TypeShape.of(GetCleanRoomsCleanRoomResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to get a single clean room.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: Datasource (Singular) Artifact
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
+     *             .name("example-clean-room")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCleanRoomsCleanRoomResult> getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getCleanRoomsCleanRoom:getCleanRoomsCleanRoom", TypeShape.of(GetCleanRoomsCleanRoomResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to get a single clean room.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: Datasource (Singular) Artifact
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
+     *             .name("example-clean-room")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCleanRoomsCleanRoomResult> getCleanRoomsCleanRoomPlain(GetCleanRoomsCleanRoomPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getCleanRoomsCleanRoom:getCleanRoomsCleanRoom", TypeShape.of(GetCleanRoomsCleanRoomResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch the list of clean rooms.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: Clean Room Datasource (Plural)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRooms() {
+        return getCleanRoomsCleanRooms(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of clean rooms.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: Clean Room Datasource (Plural)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRoomsPlain() {
+        return getCleanRoomsCleanRoomsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of clean rooms.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: Clean Room Datasource (Plural)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRooms(InvokeArgs args) {
+        return getCleanRoomsCleanRooms(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of clean rooms.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: Clean Room Datasource (Plural)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRoomsPlain(InvokeArgs args) {
+        return getCleanRoomsCleanRoomsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of clean rooms.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: Clean Room Datasource (Plural)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRooms(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", TypeShape.of(GetCleanRoomsCleanRoomsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch the list of clean rooms.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: Clean Room Datasource (Plural)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRooms(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", TypeShape.of(GetCleanRoomsCleanRoomsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch the list of clean rooms.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: Clean Room Datasource (Plural)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRoomsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", TypeShape.of(GetCleanRoomsCleanRoomsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
@@ -5051,7 +6043,7 @@ public final class DatabricksFunctions {
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
      * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
      * 
      */
     public static Output<GetClustersResult> getClusters() {
@@ -5201,7 +6193,7 @@ public final class DatabricksFunctions {
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
      * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain() {
@@ -5351,7 +6343,7 @@ public final class DatabricksFunctions {
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
      * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args) {
@@ -5501,7 +6493,7 @@ public final class DatabricksFunctions {
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
      * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args) {
@@ -5651,7 +6643,7 @@ public final class DatabricksFunctions {
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
      * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOptions options) {
@@ -5801,7 +6793,7 @@ public final class DatabricksFunctions {
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
      * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOutputOptions options) {
@@ -5951,7 +6943,7 @@ public final class DatabricksFunctions {
      * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
      * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args, InvokeOptions options) {
@@ -8679,6 +9671,299 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetExternalLocationsResult> getExternalLocationsPlain(GetExternalLocationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getExternalLocations:getExternalLocations", TypeShape.of(GetExternalLocationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to get a single external metadata object.
+     * 
+     * &gt; **Note** This resource can only be used with an workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external metadata object by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalMetadataArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getExternalMetadata(GetExternalMetadataArgs.builder()
+     *             .name("security_events_stream")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetExternalMetadataResult> getExternalMetadata(GetExternalMetadataArgs args) {
+        return getExternalMetadata(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to get a single external metadata object.
+     * 
+     * &gt; **Note** This resource can only be used with an workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external metadata object by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalMetadataArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getExternalMetadata(GetExternalMetadataArgs.builder()
+     *             .name("security_events_stream")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetExternalMetadataResult> getExternalMetadataPlain(GetExternalMetadataPlainArgs args) {
+        return getExternalMetadataPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to get a single external metadata object.
+     * 
+     * &gt; **Note** This resource can only be used with an workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external metadata object by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalMetadataArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getExternalMetadata(GetExternalMetadataArgs.builder()
+     *             .name("security_events_stream")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetExternalMetadataResult> getExternalMetadata(GetExternalMetadataArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getExternalMetadata:getExternalMetadata", TypeShape.of(GetExternalMetadataResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to get a single external metadata object.
+     * 
+     * &gt; **Note** This resource can only be used with an workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external metadata object by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalMetadataArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getExternalMetadata(GetExternalMetadataArgs.builder()
+     *             .name("security_events_stream")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetExternalMetadataResult> getExternalMetadata(GetExternalMetadataArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getExternalMetadata:getExternalMetadata", TypeShape.of(GetExternalMetadataResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to get a single external metadata object.
+     * 
+     * &gt; **Note** This resource can only be used with an workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an external metadata object by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalMetadataArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getExternalMetadata(GetExternalMetadataArgs.builder()
+     *             .name("security_events_stream")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetExternalMetadataResult> getExternalMetadataPlain(GetExternalMetadataPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getExternalMetadata:getExternalMetadata", TypeShape.of(GetExternalMetadataResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch the list of external metadata objects.
+     * 
+     * &gt; **Note** This resource can only be used with an workspace-level provider!
+     * 
+     */
+    public static Output<GetExternalMetadatasResult> getExternalMetadatas() {
+        return getExternalMetadatas(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of external metadata objects.
+     * 
+     * &gt; **Note** This resource can only be used with an workspace-level provider!
+     * 
+     */
+    public static CompletableFuture<GetExternalMetadatasResult> getExternalMetadatasPlain() {
+        return getExternalMetadatasPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of external metadata objects.
+     * 
+     * &gt; **Note** This resource can only be used with an workspace-level provider!
+     * 
+     */
+    public static Output<GetExternalMetadatasResult> getExternalMetadatas(InvokeArgs args) {
+        return getExternalMetadatas(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of external metadata objects.
+     * 
+     * &gt; **Note** This resource can only be used with an workspace-level provider!
+     * 
+     */
+    public static CompletableFuture<GetExternalMetadatasResult> getExternalMetadatasPlain(InvokeArgs args) {
+        return getExternalMetadatasPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of external metadata objects.
+     * 
+     * &gt; **Note** This resource can only be used with an workspace-level provider!
+     * 
+     */
+    public static Output<GetExternalMetadatasResult> getExternalMetadatas(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getExternalMetadatas:getExternalMetadatas", TypeShape.of(GetExternalMetadatasResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch the list of external metadata objects.
+     * 
+     * &gt; **Note** This resource can only be used with an workspace-level provider!
+     * 
+     */
+    public static Output<GetExternalMetadatasResult> getExternalMetadatas(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getExternalMetadatas:getExternalMetadatas", TypeShape.of(GetExternalMetadatasResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch the list of external metadata objects.
+     * 
+     * &gt; **Note** This resource can only be used with an workspace-level provider!
+     * 
+     */
+    public static CompletableFuture<GetExternalMetadatasResult> getExternalMetadatasPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getExternalMetadatas:getExternalMetadatas", TypeShape.of(GetExternalMetadatasResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).
@@ -11421,6 +12706,42 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetJobsResult> getJobsPlain(GetJobsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getJobs:getJobs", TypeShape.of(GetJobsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetMaterializedFeaturesFeatureTagResult> getMaterializedFeaturesFeatureTag(GetMaterializedFeaturesFeatureTagArgs args) {
+        return getMaterializedFeaturesFeatureTag(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetMaterializedFeaturesFeatureTagResult> getMaterializedFeaturesFeatureTagPlain(GetMaterializedFeaturesFeatureTagPlainArgs args) {
+        return getMaterializedFeaturesFeatureTagPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetMaterializedFeaturesFeatureTagResult> getMaterializedFeaturesFeatureTag(GetMaterializedFeaturesFeatureTagArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag", TypeShape.of(GetMaterializedFeaturesFeatureTagResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetMaterializedFeaturesFeatureTagResult> getMaterializedFeaturesFeatureTag(GetMaterializedFeaturesFeatureTagArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag", TypeShape.of(GetMaterializedFeaturesFeatureTagResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetMaterializedFeaturesFeatureTagResult> getMaterializedFeaturesFeatureTagPlain(GetMaterializedFeaturesFeatureTagPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag", TypeShape.of(GetMaterializedFeaturesFeatureTagResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTags() {
+        return getMaterializedFeaturesFeatureTags(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTagsPlain() {
+        return getMaterializedFeaturesFeatureTagsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTags(InvokeArgs args) {
+        return getMaterializedFeaturesFeatureTags(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTagsPlain(InvokeArgs args) {
+        return getMaterializedFeaturesFeatureTagsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTags(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", TypeShape.of(GetMaterializedFeaturesFeatureTagsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTags(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", TypeShape.of(GetMaterializedFeaturesFeatureTagsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTagsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", TypeShape.of(GetMaterializedFeaturesFeatureTagsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
@@ -16437,13 +17758,13 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getOnlineStores:getOnlineStores", TypeShape.of(GetOnlineStoresResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+     * Retrieves a list of all databricks.Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
      * ## Example Usage
      * 
-     * Get all Delta Live Tables pipelines:
+     * Get all Lakeflow Declarative Pipelines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16478,7 +17799,7 @@ public final class DatabricksFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Filter Delta Live Tables pipelines by name (exact match):
+     * Filter Lakeflow Declarative Pipelines by name (exact match):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16514,7 +17835,7 @@ public final class DatabricksFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Filter Delta Live Tables pipelines by name (wildcard search):
+     * Filter Lakeflow Declarative Pipelines by name (wildcard search):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16555,7 +17876,7 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * End to end workspace management guide.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
      * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -16565,13 +17886,13 @@ public final class DatabricksFunctions {
         return getPipelines(GetPipelinesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+     * Retrieves a list of all databricks.Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
      * ## Example Usage
      * 
-     * Get all Delta Live Tables pipelines:
+     * Get all Lakeflow Declarative Pipelines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16606,7 +17927,7 @@ public final class DatabricksFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Filter Delta Live Tables pipelines by name (exact match):
+     * Filter Lakeflow Declarative Pipelines by name (exact match):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16642,7 +17963,7 @@ public final class DatabricksFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Filter Delta Live Tables pipelines by name (wildcard search):
+     * Filter Lakeflow Declarative Pipelines by name (wildcard search):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16683,7 +18004,7 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * End to end workspace management guide.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
      * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -16693,13 +18014,13 @@ public final class DatabricksFunctions {
         return getPipelinesPlain(GetPipelinesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+     * Retrieves a list of all databricks.Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
      * ## Example Usage
      * 
-     * Get all Delta Live Tables pipelines:
+     * Get all Lakeflow Declarative Pipelines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16734,7 +18055,7 @@ public final class DatabricksFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Filter Delta Live Tables pipelines by name (exact match):
+     * Filter Lakeflow Declarative Pipelines by name (exact match):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16770,7 +18091,7 @@ public final class DatabricksFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Filter Delta Live Tables pipelines by name (wildcard search):
+     * Filter Lakeflow Declarative Pipelines by name (wildcard search):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16811,7 +18132,7 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * End to end workspace management guide.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
      * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -16821,13 +18142,13 @@ public final class DatabricksFunctions {
         return getPipelines(args, InvokeOptions.Empty);
     }
     /**
-     * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+     * Retrieves a list of all databricks.Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
      * ## Example Usage
      * 
-     * Get all Delta Live Tables pipelines:
+     * Get all Lakeflow Declarative Pipelines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16862,7 +18183,7 @@ public final class DatabricksFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Filter Delta Live Tables pipelines by name (exact match):
+     * Filter Lakeflow Declarative Pipelines by name (exact match):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16898,7 +18219,7 @@ public final class DatabricksFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Filter Delta Live Tables pipelines by name (wildcard search):
+     * Filter Lakeflow Declarative Pipelines by name (wildcard search):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16939,7 +18260,7 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * End to end workspace management guide.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
      * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -16949,13 +18270,13 @@ public final class DatabricksFunctions {
         return getPipelinesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+     * Retrieves a list of all databricks.Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
      * ## Example Usage
      * 
-     * Get all Delta Live Tables pipelines:
+     * Get all Lakeflow Declarative Pipelines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -16990,7 +18311,7 @@ public final class DatabricksFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Filter Delta Live Tables pipelines by name (exact match):
+     * Filter Lakeflow Declarative Pipelines by name (exact match):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -17026,7 +18347,7 @@ public final class DatabricksFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Filter Delta Live Tables pipelines by name (wildcard search):
+     * Filter Lakeflow Declarative Pipelines by name (wildcard search):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -17067,7 +18388,7 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * End to end workspace management guide.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
      * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -17077,13 +18398,13 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPipelines:getPipelines", TypeShape.of(GetPipelinesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+     * Retrieves a list of all databricks.Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
      * ## Example Usage
      * 
-     * Get all Delta Live Tables pipelines:
+     * Get all Lakeflow Declarative Pipelines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -17118,7 +18439,7 @@ public final class DatabricksFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Filter Delta Live Tables pipelines by name (exact match):
+     * Filter Lakeflow Declarative Pipelines by name (exact match):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -17154,7 +18475,7 @@ public final class DatabricksFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Filter Delta Live Tables pipelines by name (wildcard search):
+     * Filter Lakeflow Declarative Pipelines by name (wildcard search):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -17195,7 +18516,7 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * End to end workspace management guide.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
      * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -17205,13 +18526,13 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPipelines:getPipelines", TypeShape.of(GetPipelinesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+     * Retrieves a list of all databricks.Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
      * ## Example Usage
      * 
-     * Get all Delta Live Tables pipelines:
+     * Get all Lakeflow Declarative Pipelines:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -17246,7 +18567,7 @@ public final class DatabricksFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Filter Delta Live Tables pipelines by name (exact match):
+     * Filter Lakeflow Declarative Pipelines by name (exact match):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -17282,7 +18603,7 @@ public final class DatabricksFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * Filter Delta Live Tables pipelines by name (wildcard search):
+     * Filter Lakeflow Declarative Pipelines by name (wildcard search):
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -17323,7 +18644,7 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * End to end workspace management guide.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+     * * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
      * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
      * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -21467,7 +22788,7 @@ public final class DatabricksFunctions {
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
      * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
-     * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+     * * databricks.Grants to manage data access in Unity Catalog.
      * 
      */
     public static Output<GetSqlWarehouseResult> getSqlWarehouse() {
@@ -21528,7 +22849,7 @@ public final class DatabricksFunctions {
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
      * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
-     * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+     * * databricks.Grants to manage data access in Unity Catalog.
      * 
      */
     public static CompletableFuture<GetSqlWarehouseResult> getSqlWarehousePlain() {
@@ -21589,7 +22910,7 @@ public final class DatabricksFunctions {
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
      * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
-     * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+     * * databricks.Grants to manage data access in Unity Catalog.
      * 
      */
     public static Output<GetSqlWarehouseResult> getSqlWarehouse(GetSqlWarehouseArgs args) {
@@ -21650,7 +22971,7 @@ public final class DatabricksFunctions {
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
      * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
-     * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+     * * databricks.Grants to manage data access in Unity Catalog.
      * 
      */
     public static CompletableFuture<GetSqlWarehouseResult> getSqlWarehousePlain(GetSqlWarehousePlainArgs args) {
@@ -21711,7 +23032,7 @@ public final class DatabricksFunctions {
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
      * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
-     * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+     * * databricks.Grants to manage data access in Unity Catalog.
      * 
      */
     public static Output<GetSqlWarehouseResult> getSqlWarehouse(GetSqlWarehouseArgs args, InvokeOptions options) {
@@ -21772,7 +23093,7 @@ public final class DatabricksFunctions {
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
      * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
-     * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+     * * databricks.Grants to manage data access in Unity Catalog.
      * 
      */
     public static Output<GetSqlWarehouseResult> getSqlWarehouse(GetSqlWarehouseArgs args, InvokeOutputOptions options) {
@@ -21833,7 +23154,7 @@ public final class DatabricksFunctions {
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
      * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
-     * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+     * * databricks.Grants to manage data access in Unity Catalog.
      * 
      */
     public static CompletableFuture<GetSqlWarehouseResult> getSqlWarehousePlain(GetSqlWarehousePlainArgs args, InvokeOptions options) {
@@ -21923,7 +23244,7 @@ public final class DatabricksFunctions {
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
      * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
-     * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+     * * databricks.Grants to manage data access in Unity Catalog.
      * 
      */
     public static Output<GetSqlWarehousesResult> getSqlWarehouses() {
@@ -22013,7 +23334,7 @@ public final class DatabricksFunctions {
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
      * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
-     * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+     * * databricks.Grants to manage data access in Unity Catalog.
      * 
      */
     public static CompletableFuture<GetSqlWarehousesResult> getSqlWarehousesPlain() {
@@ -22103,7 +23424,7 @@ public final class DatabricksFunctions {
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
      * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
-     * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+     * * databricks.Grants to manage data access in Unity Catalog.
      * 
      */
     public static Output<GetSqlWarehousesResult> getSqlWarehouses(GetSqlWarehousesArgs args) {
@@ -22193,7 +23514,7 @@ public final class DatabricksFunctions {
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
      * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
-     * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+     * * databricks.Grants to manage data access in Unity Catalog.
      * 
      */
     public static CompletableFuture<GetSqlWarehousesResult> getSqlWarehousesPlain(GetSqlWarehousesPlainArgs args) {
@@ -22283,7 +23604,7 @@ public final class DatabricksFunctions {
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
      * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
-     * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+     * * databricks.Grants to manage data access in Unity Catalog.
      * 
      */
     public static Output<GetSqlWarehousesResult> getSqlWarehouses(GetSqlWarehousesArgs args, InvokeOptions options) {
@@ -22373,7 +23694,7 @@ public final class DatabricksFunctions {
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
      * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
-     * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+     * * databricks.Grants to manage data access in Unity Catalog.
      * 
      */
     public static Output<GetSqlWarehousesResult> getSqlWarehouses(GetSqlWarehousesArgs args, InvokeOutputOptions options) {
@@ -22463,7 +23784,7 @@ public final class DatabricksFunctions {
      * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
      * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
      * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
-     * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+     * * databricks.Grants to manage data access in Unity Catalog.
      * 
      */
     public static CompletableFuture<GetSqlWarehousesResult> getSqlWarehousesPlain(GetSqlWarehousesPlainArgs args, InvokeOptions options) {
@@ -25314,24 +26635,325 @@ public final class DatabricksFunctions {
     public static CompletableFuture<GetVolumesResult> getVolumesPlain(GetVolumesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source can be used to get a single workspace network option.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceNetworkOption(GetWorkspaceNetworkOptionArgs.builder()
+     *             .workspaceId("9999999999999999")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetWorkspaceNetworkOptionResult> getWorkspaceNetworkOption() {
         return getWorkspaceNetworkOption(GetWorkspaceNetworkOptionArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * This data source can be used to get a single workspace network option.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceNetworkOption(GetWorkspaceNetworkOptionArgs.builder()
+     *             .workspaceId("9999999999999999")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetWorkspaceNetworkOptionResult> getWorkspaceNetworkOptionPlain() {
         return getWorkspaceNetworkOptionPlain(GetWorkspaceNetworkOptionPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * This data source can be used to get a single workspace network option.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceNetworkOption(GetWorkspaceNetworkOptionArgs.builder()
+     *             .workspaceId("9999999999999999")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetWorkspaceNetworkOptionResult> getWorkspaceNetworkOption(GetWorkspaceNetworkOptionArgs args) {
         return getWorkspaceNetworkOption(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source can be used to get a single workspace network option.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceNetworkOption(GetWorkspaceNetworkOptionArgs.builder()
+     *             .workspaceId("9999999999999999")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetWorkspaceNetworkOptionResult> getWorkspaceNetworkOptionPlain(GetWorkspaceNetworkOptionPlainArgs args) {
         return getWorkspaceNetworkOptionPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source can be used to get a single workspace network option.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceNetworkOption(GetWorkspaceNetworkOptionArgs.builder()
+     *             .workspaceId("9999999999999999")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetWorkspaceNetworkOptionResult> getWorkspaceNetworkOption(GetWorkspaceNetworkOptionArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", TypeShape.of(GetWorkspaceNetworkOptionResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source can be used to get a single workspace network option.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceNetworkOption(GetWorkspaceNetworkOptionArgs.builder()
+     *             .workspaceId("9999999999999999")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetWorkspaceNetworkOptionResult> getWorkspaceNetworkOption(GetWorkspaceNetworkOptionArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", TypeShape.of(GetWorkspaceNetworkOptionResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source can be used to get a single workspace network option.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getWorkspaceNetworkOption(GetWorkspaceNetworkOptionArgs.builder()
+     *             .workspaceId("9999999999999999")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetWorkspaceNetworkOptionResult> getWorkspaceNetworkOptionPlain(GetWorkspaceNetworkOptionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", TypeShape.of(GetWorkspaceNetworkOptionResult.class), args, Utilities.withVersion(options));
     }

@@ -76,6 +76,8 @@ __all__ = [
     'AppPendingDeploymentStatusArgsDict',
     'AppResourceArgs',
     'AppResourceArgsDict',
+    'AppResourceDatabaseArgs',
+    'AppResourceDatabaseArgsDict',
     'AppResourceJobArgs',
     'AppResourceJobArgsDict',
     'AppResourceSecretArgs',
@@ -112,6 +114,26 @@ __all__ = [
     'BudgetFilterWorkspaceIdArgsDict',
     'BudgetPolicyCustomTagArgs',
     'BudgetPolicyCustomTagArgsDict',
+    'CleanRoomsCleanRoomOutputCatalogArgs',
+    'CleanRoomsCleanRoomOutputCatalogArgsDict',
+    'CleanRoomsCleanRoomRemoteDetailedInfoArgs',
+    'CleanRoomsCleanRoomRemoteDetailedInfoArgsDict',
+    'CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs',
+    'CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgsDict',
+    'CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs',
+    'CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgsDict',
+    'CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs',
+    'CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgsDict',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgsDict',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgsDict',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgsDict',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgsDict',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgsDict',
     'ClusterAutoscaleArgs',
     'ClusterAutoscaleArgsDict',
     'ClusterAwsAttributesArgs',
@@ -188,6 +210,10 @@ __all__ = [
     'CredentialDatabricksGcpServiceAccountArgsDict',
     'CustomAppIntegrationTokenAccessPolicyArgs',
     'CustomAppIntegrationTokenAccessPolicyArgsDict',
+    'DatabaseInstanceChildInstanceRefArgs',
+    'DatabaseInstanceChildInstanceRefArgsDict',
+    'DatabaseInstanceParentInstanceRefArgs',
+    'DatabaseInstanceParentInstanceRefArgsDict',
     'DefaultNamespaceSettingNamespaceArgs',
     'DefaultNamespaceSettingNamespaceArgsDict',
     'DisableLegacyAccessSettingDisableLegacyAccessArgs',
@@ -1212,6 +1238,24 @@ __all__ = [
     'GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgsDict',
     'GetCatalogCatalogInfoProvisioningInfoArgs',
     'GetCatalogCatalogInfoProvisioningInfoArgsDict',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoArgs',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoArgsDict',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgsDict',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgsDict',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgsDict',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgsDict',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgsDict',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgsDict',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgsDict',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgsDict',
     'GetClusterClusterInfoArgs',
     'GetClusterClusterInfoArgsDict',
     'GetClusterClusterInfoAutoscaleArgs',
@@ -1328,6 +1372,8 @@ __all__ = [
     'GetClustersFilterByArgsDict',
     'GetCurrentMetastoreMetastoreInfoArgs',
     'GetCurrentMetastoreMetastoreInfoArgsDict',
+    'GetDatabaseInstanceParentInstanceRefArgs',
+    'GetDatabaseInstanceParentInstanceRefArgsDict',
     'GetExternalLocationExternalLocationInfoArgs',
     'GetExternalLocationExternalLocationInfoArgsDict',
     'GetExternalLocationExternalLocationInfoEncryptionDetailsArgs',
@@ -1362,6 +1408,10 @@ __all__ = [
     'GetFunctionsFunctionRoutineDependencyArgsDict',
     'GetFunctionsFunctionRoutineDependencyDependencyArgs',
     'GetFunctionsFunctionRoutineDependencyDependencyArgsDict',
+    'GetFunctionsFunctionRoutineDependencyDependencyConnectionArgs',
+    'GetFunctionsFunctionRoutineDependencyDependencyConnectionArgsDict',
+    'GetFunctionsFunctionRoutineDependencyDependencyCredentialArgs',
+    'GetFunctionsFunctionRoutineDependencyDependencyCredentialArgsDict',
     'GetFunctionsFunctionRoutineDependencyDependencyFunctionArgs',
     'GetFunctionsFunctionRoutineDependencyDependencyFunctionArgsDict',
     'GetFunctionsFunctionRoutineDependencyDependencyTableArgs',
@@ -1840,6 +1890,10 @@ __all__ = [
     'GetRegisteredModelVersionsModelVersionModelVersionDependencyArgsDict',
     'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs',
     'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgsDict',
+    'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs',
+    'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgsDict',
+    'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs',
+    'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgsDict',
     'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs',
     'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgsDict',
     'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs',
@@ -1952,6 +2006,10 @@ __all__ = [
     'GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgsDict',
     'GetTableTableInfoRowFilterArgs',
     'GetTableTableInfoRowFilterArgsDict',
+    'GetTableTableInfoSecurableKindManifestArgs',
+    'GetTableTableInfoSecurableKindManifestArgsDict',
+    'GetTableTableInfoSecurableKindManifestOptionArgs',
+    'GetTableTableInfoSecurableKindManifestOptionArgsDict',
     'GetTableTableInfoTableConstraintArgs',
     'GetTableTableInfoTableConstraintArgsDict',
     'GetTableTableInfoTableConstraintForeignKeyConstraintArgs',
@@ -1964,6 +2022,10 @@ __all__ = [
     'GetTableTableInfoViewDependenciesArgsDict',
     'GetTableTableInfoViewDependenciesDependencyArgs',
     'GetTableTableInfoViewDependenciesDependencyArgsDict',
+    'GetTableTableInfoViewDependenciesDependencyConnectionArgs',
+    'GetTableTableInfoViewDependenciesDependencyConnectionArgsDict',
+    'GetTableTableInfoViewDependenciesDependencyCredentialArgs',
+    'GetTableTableInfoViewDependenciesDependencyCredentialArgsDict',
     'GetTableTableInfoViewDependenciesDependencyFunctionArgs',
     'GetTableTableInfoViewDependenciesDependencyFunctionArgsDict',
     'GetTableTableInfoViewDependenciesDependencyTableArgs',
@@ -3791,6 +3853,10 @@ if not MYPY:
         """
         The name of the resource.
         """
+        database: NotRequired[pulumi.Input['AppResourceDatabaseArgsDict']]
+        """
+        attribute
+        """
         description: NotRequired[pulumi.Input[builtins.str]]
         """
         The description of the resource.
@@ -3824,6 +3890,7 @@ elif False:
 class AppResourceArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[builtins.str],
+                 database: Optional[pulumi.Input['AppResourceDatabaseArgs']] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  job: Optional[pulumi.Input['AppResourceJobArgs']] = None,
                  secret: Optional[pulumi.Input['AppResourceSecretArgs']] = None,
@@ -3832,6 +3899,7 @@ class AppResourceArgs:
                  uc_securable: Optional[pulumi.Input['AppResourceUcSecurableArgs']] = None):
         """
         :param pulumi.Input[builtins.str] name: The name of the resource.
+        :param pulumi.Input['AppResourceDatabaseArgs'] database: attribute
         :param pulumi.Input[builtins.str] description: The description of the resource.
                
                Exactly one of the following attributes must be provided:
@@ -3842,6 +3910,8 @@ class AppResourceArgs:
         :param pulumi.Input['AppResourceUcSecurableArgs'] uc_securable: attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
         """
         pulumi.set(__self__, "name", name)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if job is not None:
@@ -3866,6 +3936,18 @@ class AppResourceArgs:
     @name.setter
     def name(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input['AppResourceDatabaseArgs']]:
+        """
+        attribute
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input['AppResourceDatabaseArgs']]):
+        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter
@@ -3940,6 +4022,75 @@ class AppResourceArgs:
     @uc_securable.setter
     def uc_securable(self, value: Optional[pulumi.Input['AppResourceUcSecurableArgs']]):
         pulumi.set(self, "uc_securable", value)
+
+
+if not MYPY:
+    class AppResourceDatabaseArgsDict(TypedDict):
+        database_name: pulumi.Input[builtins.str]
+        """
+        The name of database.
+        """
+        instance_name: pulumi.Input[builtins.str]
+        """
+        The name of database instance.
+        """
+        permission: pulumi.Input[builtins.str]
+        """
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        """
+elif False:
+    AppResourceDatabaseArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppResourceDatabaseArgs:
+    def __init__(__self__, *,
+                 database_name: pulumi.Input[builtins.str],
+                 instance_name: pulumi.Input[builtins.str],
+                 permission: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] database_name: The name of database.
+        :param pulumi.Input[builtins.str] instance_name: The name of database instance.
+        :param pulumi.Input[builtins.str] permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        """
+        pulumi.set(__self__, "database_name", database_name)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> pulumi.Input[builtins.str]:
+        """
+        The name of database.
+        """
+        return pulumi.get(self, "database_name")
+
+    @database_name.setter
+    def database_name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "database_name", value)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> pulumi.Input[builtins.str]:
+        """
+        The name of database instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter
+    def permission(self) -> pulumi.Input[builtins.str]:
+        """
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        """
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "permission", value)
 
 
 if not MYPY:
@@ -4966,21 +5117,925 @@ class BudgetPolicyCustomTagArgs:
 
 
 if not MYPY:
+    class CleanRoomsCleanRoomOutputCatalogArgsDict(TypedDict):
+        catalog_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the output catalog in UC.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+        The field will always exist if status is CREATED
+        """
+        status: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        """
+elif False:
+    CleanRoomsCleanRoomOutputCatalogArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CleanRoomsCleanRoomOutputCatalogArgs:
+    def __init__(__self__, *,
+                 catalog_name: Optional[pulumi.Input[builtins.str]] = None,
+                 status: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] catalog_name: The name of the output catalog in UC.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+               The field will always exist if status is CREATED
+        :param pulumi.Input[builtins.str] status: (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        """
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the output catalog in UC.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+        The field will always exist if status is CREATED
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @catalog_name.setter
+    def catalog_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "catalog_name", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "status", value)
+
+
+if not MYPY:
+    class CleanRoomsCleanRoomRemoteDetailedInfoArgsDict(TypedDict):
+        central_clean_room_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (string) - Central clean room ID
+        """
+        cloud_vendor: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Cloud vendor (aws,azure,gcp) of the central clean room
+        """
+        collaborators: NotRequired[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgsDict']]]]
+        """
+        Collaborators in the central clean room. There should one and only one collaborator
+        in the list that satisfies the owner condition:
+
+        1. It has the creator's global_metastore_id (determined by caller of CreateCleanRoom).
+
+        2. Its invite_recipient_email is empty
+        """
+        compliance_security_profile: NotRequired[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgsDict']]
+        """
+        (ComplianceSecurityProfile) -
+        """
+        creator: NotRequired[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgsDict']]
+        """
+        (CleanRoomCollaborator) - Collaborator who creates the clean room
+        """
+        egress_network_policy: NotRequired[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgsDict']]
+        """
+        Egress network policy to apply to the central clean room workspace
+        """
+        region: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    CleanRoomsCleanRoomRemoteDetailedInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CleanRoomsCleanRoomRemoteDetailedInfoArgs:
+    def __init__(__self__, *,
+                 central_clean_room_id: Optional[pulumi.Input[builtins.str]] = None,
+                 cloud_vendor: Optional[pulumi.Input[builtins.str]] = None,
+                 collaborators: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs']]]] = None,
+                 compliance_security_profile: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs']] = None,
+                 creator: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs']] = None,
+                 egress_network_policy: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs']] = None,
+                 region: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] central_clean_room_id: (string) - Central clean room ID
+        :param pulumi.Input[builtins.str] cloud_vendor: Cloud vendor (aws,azure,gcp) of the central clean room
+        :param pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs']]] collaborators: Collaborators in the central clean room. There should one and only one collaborator
+               in the list that satisfies the owner condition:
+               
+               1. It has the creator's global_metastore_id (determined by caller of CreateCleanRoom).
+               
+               2. Its invite_recipient_email is empty
+        :param pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs'] compliance_security_profile: (ComplianceSecurityProfile) -
+        :param pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs'] creator: (CleanRoomCollaborator) - Collaborator who creates the clean room
+        :param pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs'] egress_network_policy: Egress network policy to apply to the central clean room workspace
+        """
+        if central_clean_room_id is not None:
+            pulumi.set(__self__, "central_clean_room_id", central_clean_room_id)
+        if cloud_vendor is not None:
+            pulumi.set(__self__, "cloud_vendor", cloud_vendor)
+        if collaborators is not None:
+            pulumi.set(__self__, "collaborators", collaborators)
+        if compliance_security_profile is not None:
+            pulumi.set(__self__, "compliance_security_profile", compliance_security_profile)
+        if creator is not None:
+            pulumi.set(__self__, "creator", creator)
+        if egress_network_policy is not None:
+            pulumi.set(__self__, "egress_network_policy", egress_network_policy)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="centralCleanRoomId")
+    def central_clean_room_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (string) - Central clean room ID
+        """
+        return pulumi.get(self, "central_clean_room_id")
+
+    @central_clean_room_id.setter
+    def central_clean_room_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "central_clean_room_id", value)
+
+    @property
+    @pulumi.getter(name="cloudVendor")
+    def cloud_vendor(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Cloud vendor (aws,azure,gcp) of the central clean room
+        """
+        return pulumi.get(self, "cloud_vendor")
+
+    @cloud_vendor.setter
+    def cloud_vendor(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "cloud_vendor", value)
+
+    @property
+    @pulumi.getter
+    def collaborators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs']]]]:
+        """
+        Collaborators in the central clean room. There should one and only one collaborator
+        in the list that satisfies the owner condition:
+
+        1. It has the creator's global_metastore_id (determined by caller of CreateCleanRoom).
+
+        2. Its invite_recipient_email is empty
+        """
+        return pulumi.get(self, "collaborators")
+
+    @collaborators.setter
+    def collaborators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs']]]]):
+        pulumi.set(self, "collaborators", value)
+
+    @property
+    @pulumi.getter(name="complianceSecurityProfile")
+    def compliance_security_profile(self) -> Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs']]:
+        """
+        (ComplianceSecurityProfile) -
+        """
+        return pulumi.get(self, "compliance_security_profile")
+
+    @compliance_security_profile.setter
+    def compliance_security_profile(self, value: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs']]):
+        pulumi.set(self, "compliance_security_profile", value)
+
+    @property
+    @pulumi.getter
+    def creator(self) -> Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs']]:
+        """
+        (CleanRoomCollaborator) - Collaborator who creates the clean room
+        """
+        return pulumi.get(self, "creator")
+
+    @creator.setter
+    def creator(self, value: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs']]):
+        pulumi.set(self, "creator", value)
+
+    @property
+    @pulumi.getter(name="egressNetworkPolicy")
+    def egress_network_policy(self) -> Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs']]:
+        """
+        Egress network policy to apply to the central clean room workspace
+        """
+        return pulumi.get(self, "egress_network_policy")
+
+    @egress_network_policy.setter
+    def egress_network_policy(self, value: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs']]):
+        pulumi.set(self, "egress_network_policy", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgsDict(TypedDict):
+        collaborator_alias: pulumi.Input[builtins.str]
+        """
+        Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        display_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        global_metastore_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        invite_recipient_email: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        invite_recipient_workspace_id: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+        organization_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+elif False:
+    CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs:
+    def __init__(__self__, *,
+                 collaborator_alias: pulumi.Input[builtins.str],
+                 display_name: Optional[pulumi.Input[builtins.str]] = None,
+                 global_metastore_id: Optional[pulumi.Input[builtins.str]] = None,
+                 invite_recipient_email: Optional[pulumi.Input[builtins.str]] = None,
+                 invite_recipient_workspace_id: Optional[pulumi.Input[builtins.int]] = None,
+                 organization_name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] collaborator_alias: Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        :param pulumi.Input[builtins.str] display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+               these values and could change in the future
+        :param pulumi.Input[builtins.str] global_metastore_id: The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        :param pulumi.Input[builtins.str] invite_recipient_email: Email of the user who is receiving the clean room "invitation". It should be empty
+               for the creator of the clean room, and non-empty for the invitees of the clean room.
+               It is only returned in the output when clean room creator calls GET
+        :param pulumi.Input[builtins.int] invite_recipient_workspace_id: Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+               invite_recipient_email is specified.
+               It should be empty when the collaborator is the creator of the clean room
+        :param pulumi.Input[builtins.str] organization_name: (string) - Organization name
+               configured in the metastore
+        """
+        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if global_metastore_id is not None:
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if invite_recipient_email is not None:
+            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
+        if invite_recipient_workspace_id is not None:
+            pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
+        if organization_name is not None:
+            pulumi.set(__self__, "organization_name", organization_name)
+
+    @property
+    @pulumi.getter(name="collaboratorAlias")
+    def collaborator_alias(self) -> pulumi.Input[builtins.str]:
+        """
+        Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        return pulumi.get(self, "collaborator_alias")
+
+    @collaborator_alias.setter
+    def collaborator_alias(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "collaborator_alias", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="globalMetastoreId")
+    def global_metastore_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        return pulumi.get(self, "global_metastore_id")
+
+    @global_metastore_id.setter
+    def global_metastore_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "global_metastore_id", value)
+
+    @property
+    @pulumi.getter(name="inviteRecipientEmail")
+    def invite_recipient_email(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        return pulumi.get(self, "invite_recipient_email")
+
+    @invite_recipient_email.setter
+    def invite_recipient_email(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "invite_recipient_email", value)
+
+    @property
+    @pulumi.getter(name="inviteRecipientWorkspaceId")
+    def invite_recipient_workspace_id(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+        return pulumi.get(self, "invite_recipient_workspace_id")
+
+    @invite_recipient_workspace_id.setter
+    def invite_recipient_workspace_id(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "invite_recipient_workspace_id", value)
+
+    @property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+        return pulumi.get(self, "organization_name")
+
+    @organization_name.setter
+    def organization_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "organization_name", value)
+
+
+if not MYPY:
+    class CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgsDict(TypedDict):
+        compliance_standards: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        The list of compliance standards that the compliance security profile is configured to enforce
+        """
+        is_enabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Whether the compliance security profile is enabled
+        """
+elif False:
+    CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs:
+    def __init__(__self__, *,
+                 compliance_standards: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 is_enabled: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] compliance_standards: The list of compliance standards that the compliance security profile is configured to enforce
+        :param pulumi.Input[builtins.bool] is_enabled: Whether the compliance security profile is enabled
+        """
+        if compliance_standards is not None:
+            pulumi.set(__self__, "compliance_standards", compliance_standards)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @property
+    @pulumi.getter(name="complianceStandards")
+    def compliance_standards(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        The list of compliance standards that the compliance security profile is configured to enforce
+        """
+        return pulumi.get(self, "compliance_standards")
+
+    @compliance_standards.setter
+    def compliance_standards(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "compliance_standards", value)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether the compliance security profile is enabled
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "is_enabled", value)
+
+
+if not MYPY:
+    class CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgsDict(TypedDict):
+        collaborator_alias: pulumi.Input[builtins.str]
+        """
+        Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        display_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        global_metastore_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        invite_recipient_email: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        invite_recipient_workspace_id: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+        organization_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+elif False:
+    CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs:
+    def __init__(__self__, *,
+                 collaborator_alias: pulumi.Input[builtins.str],
+                 display_name: Optional[pulumi.Input[builtins.str]] = None,
+                 global_metastore_id: Optional[pulumi.Input[builtins.str]] = None,
+                 invite_recipient_email: Optional[pulumi.Input[builtins.str]] = None,
+                 invite_recipient_workspace_id: Optional[pulumi.Input[builtins.int]] = None,
+                 organization_name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] collaborator_alias: Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        :param pulumi.Input[builtins.str] display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+               these values and could change in the future
+        :param pulumi.Input[builtins.str] global_metastore_id: The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        :param pulumi.Input[builtins.str] invite_recipient_email: Email of the user who is receiving the clean room "invitation". It should be empty
+               for the creator of the clean room, and non-empty for the invitees of the clean room.
+               It is only returned in the output when clean room creator calls GET
+        :param pulumi.Input[builtins.int] invite_recipient_workspace_id: Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+               invite_recipient_email is specified.
+               It should be empty when the collaborator is the creator of the clean room
+        :param pulumi.Input[builtins.str] organization_name: (string) - Organization name
+               configured in the metastore
+        """
+        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if global_metastore_id is not None:
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if invite_recipient_email is not None:
+            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
+        if invite_recipient_workspace_id is not None:
+            pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
+        if organization_name is not None:
+            pulumi.set(__self__, "organization_name", organization_name)
+
+    @property
+    @pulumi.getter(name="collaboratorAlias")
+    def collaborator_alias(self) -> pulumi.Input[builtins.str]:
+        """
+        Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        return pulumi.get(self, "collaborator_alias")
+
+    @collaborator_alias.setter
+    def collaborator_alias(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "collaborator_alias", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="globalMetastoreId")
+    def global_metastore_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        return pulumi.get(self, "global_metastore_id")
+
+    @global_metastore_id.setter
+    def global_metastore_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "global_metastore_id", value)
+
+    @property
+    @pulumi.getter(name="inviteRecipientEmail")
+    def invite_recipient_email(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        return pulumi.get(self, "invite_recipient_email")
+
+    @invite_recipient_email.setter
+    def invite_recipient_email(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "invite_recipient_email", value)
+
+    @property
+    @pulumi.getter(name="inviteRecipientWorkspaceId")
+    def invite_recipient_workspace_id(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+        return pulumi.get(self, "invite_recipient_workspace_id")
+
+    @invite_recipient_workspace_id.setter
+    def invite_recipient_workspace_id(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "invite_recipient_workspace_id", value)
+
+    @property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+        return pulumi.get(self, "organization_name")
+
+    @organization_name.setter
+    def organization_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "organization_name", value)
+
+
+if not MYPY:
+    class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgsDict(TypedDict):
+        internet_access: NotRequired[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgsDict']]
+        """
+        The access policy enforced for egress traffic to the internet
+        """
+elif False:
+    CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs:
+    def __init__(__self__, *,
+                 internet_access: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs']] = None):
+        """
+        :param pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs'] internet_access: The access policy enforced for egress traffic to the internet
+        """
+        if internet_access is not None:
+            pulumi.set(__self__, "internet_access", internet_access)
+
+    @property
+    @pulumi.getter(name="internetAccess")
+    def internet_access(self) -> Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs']]:
+        """
+        The access policy enforced for egress traffic to the internet
+        """
+        return pulumi.get(self, "internet_access")
+
+    @internet_access.setter
+    def internet_access(self, value: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs']]):
+        pulumi.set(self, "internet_access", value)
+
+
+if not MYPY:
+    class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgsDict(TypedDict):
+        allowed_internet_destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgsDict']]]]
+        allowed_storage_destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgsDict']]]]
+        log_only_mode: NotRequired[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgsDict']]
+        """
+        Optional. If not specified, assume the policy is enforced for all workloads
+        """
+        restriction_mode: NotRequired[pulumi.Input[builtins.str]]
+        """
+        . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+        """
+elif False:
+    CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs:
+    def __init__(__self__, *,
+                 allowed_internet_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs']]]] = None,
+                 allowed_storage_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs']]]] = None,
+                 log_only_mode: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs']] = None,
+                 restriction_mode: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs'] log_only_mode: Optional. If not specified, assume the policy is enforced for all workloads
+        :param pulumi.Input[builtins.str] restriction_mode: . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+        """
+        if allowed_internet_destinations is not None:
+            pulumi.set(__self__, "allowed_internet_destinations", allowed_internet_destinations)
+        if allowed_storage_destinations is not None:
+            pulumi.set(__self__, "allowed_storage_destinations", allowed_storage_destinations)
+        if log_only_mode is not None:
+            pulumi.set(__self__, "log_only_mode", log_only_mode)
+        if restriction_mode is not None:
+            pulumi.set(__self__, "restriction_mode", restriction_mode)
+
+    @property
+    @pulumi.getter(name="allowedInternetDestinations")
+    def allowed_internet_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs']]]]:
+        return pulumi.get(self, "allowed_internet_destinations")
+
+    @allowed_internet_destinations.setter
+    def allowed_internet_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs']]]]):
+        pulumi.set(self, "allowed_internet_destinations", value)
+
+    @property
+    @pulumi.getter(name="allowedStorageDestinations")
+    def allowed_storage_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs']]]]:
+        return pulumi.get(self, "allowed_storage_destinations")
+
+    @allowed_storage_destinations.setter
+    def allowed_storage_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs']]]]):
+        pulumi.set(self, "allowed_storage_destinations", value)
+
+    @property
+    @pulumi.getter(name="logOnlyMode")
+    def log_only_mode(self) -> Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs']]:
+        """
+        Optional. If not specified, assume the policy is enforced for all workloads
+        """
+        return pulumi.get(self, "log_only_mode")
+
+    @log_only_mode.setter
+    def log_only_mode(self, value: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs']]):
+        pulumi.set(self, "log_only_mode", value)
+
+    @property
+    @pulumi.getter(name="restrictionMode")
+    def restriction_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+        """
+        return pulumi.get(self, "restriction_mode")
+
+    @restriction_mode.setter
+    def restriction_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "restriction_mode", value)
+
+
+if not MYPY:
+    class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgsDict(TypedDict):
+        destination: NotRequired[pulumi.Input[builtins.str]]
+        protocol: NotRequired[pulumi.Input[builtins.str]]
+        """
+        . Possible values are: `TCP`
+        """
+        type: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[builtins.str]] = None,
+                 protocol: Optional[pulumi.Input[builtins.str]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] protocol: . Possible values are: `TCP`
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "destination", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        . Possible values are: `TCP`
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgsDict(TypedDict):
+        allowed_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        azure_container: NotRequired[pulumi.Input[builtins.str]]
+        azure_dns_zone: NotRequired[pulumi.Input[builtins.str]]
+        azure_storage_account: NotRequired[pulumi.Input[builtins.str]]
+        azure_storage_service: NotRequired[pulumi.Input[builtins.str]]
+        bucket_name: NotRequired[pulumi.Input[builtins.str]]
+        region: NotRequired[pulumi.Input[builtins.str]]
+        type: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs:
+    def __init__(__self__, *,
+                 allowed_paths: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 azure_container: Optional[pulumi.Input[builtins.str]] = None,
+                 azure_dns_zone: Optional[pulumi.Input[builtins.str]] = None,
+                 azure_storage_account: Optional[pulumi.Input[builtins.str]] = None,
+                 azure_storage_service: Optional[pulumi.Input[builtins.str]] = None,
+                 bucket_name: Optional[pulumi.Input[builtins.str]] = None,
+                 region: Optional[pulumi.Input[builtins.str]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None):
+        if allowed_paths is not None:
+            pulumi.set(__self__, "allowed_paths", allowed_paths)
+        if azure_container is not None:
+            pulumi.set(__self__, "azure_container", azure_container)
+        if azure_dns_zone is not None:
+            pulumi.set(__self__, "azure_dns_zone", azure_dns_zone)
+        if azure_storage_account is not None:
+            pulumi.set(__self__, "azure_storage_account", azure_storage_account)
+        if azure_storage_service is not None:
+            pulumi.set(__self__, "azure_storage_service", azure_storage_service)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="allowedPaths")
+    def allowed_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "allowed_paths")
+
+    @allowed_paths.setter
+    def allowed_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "allowed_paths", value)
+
+    @property
+    @pulumi.getter(name="azureContainer")
+    def azure_container(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "azure_container")
+
+    @azure_container.setter
+    def azure_container(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "azure_container", value)
+
+    @property
+    @pulumi.getter(name="azureDnsZone")
+    def azure_dns_zone(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "azure_dns_zone")
+
+    @azure_dns_zone.setter
+    def azure_dns_zone(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "azure_dns_zone", value)
+
+    @property
+    @pulumi.getter(name="azureStorageAccount")
+    def azure_storage_account(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "azure_storage_account")
+
+    @azure_storage_account.setter
+    def azure_storage_account(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "azure_storage_account", value)
+
+    @property
+    @pulumi.getter(name="azureStorageService")
+    def azure_storage_service(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "azure_storage_service")
+
+    @azure_storage_service.setter
+    def azure_storage_service(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "azure_storage_service", value)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "bucket_name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgsDict(TypedDict):
+        log_only_mode_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+        """
+        workloads: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+elif False:
+    CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs:
+    def __init__(__self__, *,
+                 log_only_mode_type: Optional[pulumi.Input[builtins.str]] = None,
+                 workloads: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[builtins.str] log_only_mode_type: . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+        """
+        if log_only_mode_type is not None:
+            pulumi.set(__self__, "log_only_mode_type", log_only_mode_type)
+        if workloads is not None:
+            pulumi.set(__self__, "workloads", workloads)
+
+    @property
+    @pulumi.getter(name="logOnlyModeType")
+    def log_only_mode_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+        """
+        return pulumi.get(self, "log_only_mode_type")
+
+    @log_only_mode_type.setter
+    def log_only_mode_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "log_only_mode_type", value)
+
+    @property
+    @pulumi.getter
+    def workloads(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "workloads")
+
+    @workloads.setter
+    def workloads(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "workloads", value)
+
+
+if not MYPY:
     class ClusterAutoscaleArgsDict(TypedDict):
         max_workers: NotRequired[pulumi.Input[builtins.int]]
         """
         The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
 
-        When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
-
-        * `spark.master` must have prefix `local`, like `local[*]`
-        * `spark.databricks.cluster.profile` must have value `singleNode`
-
-        and also `custom_tag` entry:
-
-        * `"ResourceClass" = "SingleNode"`
-
-        The following example demonstrates how to create an single node cluster:
+        To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `is_single_node = true` and `kind = "CLASSIC_PREVIEW"` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
 
         ```python
         import pulumi
@@ -4993,13 +6048,8 @@ if not MYPY:
             spark_version=latest_lts.id,
             node_type_id=smallest.id,
             autotermination_minutes=20,
-            spark_conf={
-                "spark.databricks.cluster.profile": "singleNode",
-                "spark.master": "local[*]",
-            },
-            custom_tags={
-                "ResourceClass": "SingleNode",
-            })
+            is_single_node=True,
+            kind="CLASSIC_PREVIEW")
         ```
         """
         min_workers: NotRequired[pulumi.Input[builtins.int]]
@@ -5017,16 +6067,7 @@ class ClusterAutoscaleArgs:
         """
         :param pulumi.Input[builtins.int] max_workers: The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
                
-               When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
-               
-               * `spark.master` must have prefix `local`, like `local[*]`
-               * `spark.databricks.cluster.profile` must have value `singleNode`
-               
-               and also `custom_tag` entry:
-               
-               * `"ResourceClass" = "SingleNode"`
-               
-               The following example demonstrates how to create an single node cluster:
+               To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `is_single_node = true` and `kind = "CLASSIC_PREVIEW"` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
                
                ```python
                import pulumi
@@ -5039,13 +6080,8 @@ class ClusterAutoscaleArgs:
                    spark_version=latest_lts.id,
                    node_type_id=smallest.id,
                    autotermination_minutes=20,
-                   spark_conf={
-                       "spark.databricks.cluster.profile": "singleNode",
-                       "spark.master": "local[*]",
-                   },
-                   custom_tags={
-                       "ResourceClass": "SingleNode",
-                   })
+                   is_single_node=True,
+                   kind="CLASSIC_PREVIEW")
                ```
         :param pulumi.Input[builtins.int] min_workers: The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
         """
@@ -5060,16 +6096,7 @@ class ClusterAutoscaleArgs:
         """
         The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
 
-        When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
-
-        * `spark.master` must have prefix `local`, like `local[*]`
-        * `spark.databricks.cluster.profile` must have value `singleNode`
-
-        and also `custom_tag` entry:
-
-        * `"ResourceClass" = "SingleNode"`
-
-        The following example demonstrates how to create an single node cluster:
+        To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `is_single_node = true` and `kind = "CLASSIC_PREVIEW"` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
 
         ```python
         import pulumi
@@ -5082,13 +6109,8 @@ class ClusterAutoscaleArgs:
             spark_version=latest_lts.id,
             node_type_id=smallest.id,
             autotermination_minutes=20,
-            spark_conf={
-                "spark.databricks.cluster.profile": "singleNode",
-                "spark.master": "local[*]",
-            },
-            custom_tags={
-                "ResourceClass": "SingleNode",
-            })
+            is_single_node=True,
+            kind="CLASSIC_PREVIEW")
         ```
         """
         return pulumi.get(self, "max_workers")
@@ -7530,6 +8552,320 @@ class CustomAppIntegrationTokenAccessPolicyArgs:
 
 
 if not MYPY:
+    class DatabaseInstanceChildInstanceRefArgsDict(TypedDict):
+        branch_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Branch time of the ref database instance.
+        For a parent ref instance, this is the point in time on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the point in time on the instance from which the child
+        instance was created.
+        Input: For specifying the point in time to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        effective_lsn: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+        For a parent ref instance, this is the LSN on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the LSN on the instance from which the child instance
+        was created
+        """
+        lsn: NotRequired[pulumi.Input[builtins.str]]
+        """
+        User-specified WAL LSN of the ref database instance.
+
+        Input: For specifying the WAL LSN to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the instance. This is the unique identifier for the instance
+        """
+        uid: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (string) - Id of the ref database instance
+        """
+elif False:
+    DatabaseInstanceChildInstanceRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatabaseInstanceChildInstanceRefArgs:
+    def __init__(__self__, *,
+                 branch_time: Optional[pulumi.Input[builtins.str]] = None,
+                 effective_lsn: Optional[pulumi.Input[builtins.str]] = None,
+                 lsn: Optional[pulumi.Input[builtins.str]] = None,
+                 name: Optional[pulumi.Input[builtins.str]] = None,
+                 uid: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] branch_time: Branch time of the ref database instance.
+               For a parent ref instance, this is the point in time on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the point in time on the instance from which the child
+               instance was created.
+               Input: For specifying the point in time to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param pulumi.Input[builtins.str] effective_lsn: (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+               `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+               For a parent ref instance, this is the LSN on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the LSN on the instance from which the child instance
+               was created
+        :param pulumi.Input[builtins.str] lsn: User-specified WAL LSN of the ref database instance.
+               
+               Input: For specifying the WAL LSN to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param pulumi.Input[builtins.str] name: The name of the instance. This is the unique identifier for the instance
+        :param pulumi.Input[builtins.str] uid: (string) - Id of the ref database instance
+        """
+        if branch_time is not None:
+            pulumi.set(__self__, "branch_time", branch_time)
+        if effective_lsn is not None:
+            pulumi.set(__self__, "effective_lsn", effective_lsn)
+        if lsn is not None:
+            pulumi.set(__self__, "lsn", lsn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter(name="branchTime")
+    def branch_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Branch time of the ref database instance.
+        For a parent ref instance, this is the point in time on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the point in time on the instance from which the child
+        instance was created.
+        Input: For specifying the point in time to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "branch_time")
+
+    @branch_time.setter
+    def branch_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "branch_time", value)
+
+    @property
+    @pulumi.getter(name="effectiveLsn")
+    def effective_lsn(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+        For a parent ref instance, this is the LSN on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the LSN on the instance from which the child instance
+        was created
+        """
+        return pulumi.get(self, "effective_lsn")
+
+    @effective_lsn.setter
+    def effective_lsn(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "effective_lsn", value)
+
+    @property
+    @pulumi.getter
+    def lsn(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        User-specified WAL LSN of the ref database instance.
+
+        Input: For specifying the WAL LSN to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "lsn")
+
+    @lsn.setter
+    def lsn(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "lsn", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the instance. This is the unique identifier for the instance
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (string) - Id of the ref database instance
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "uid", value)
+
+
+if not MYPY:
+    class DatabaseInstanceParentInstanceRefArgsDict(TypedDict):
+        branch_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Branch time of the ref database instance.
+        For a parent ref instance, this is the point in time on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the point in time on the instance from which the child
+        instance was created.
+        Input: For specifying the point in time to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        effective_lsn: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+        For a parent ref instance, this is the LSN on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the LSN on the instance from which the child instance
+        was created
+        """
+        lsn: NotRequired[pulumi.Input[builtins.str]]
+        """
+        User-specified WAL LSN of the ref database instance.
+
+        Input: For specifying the WAL LSN to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the instance. This is the unique identifier for the instance
+        """
+        uid: NotRequired[pulumi.Input[builtins.str]]
+        """
+        (string) - Id of the ref database instance
+        """
+elif False:
+    DatabaseInstanceParentInstanceRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatabaseInstanceParentInstanceRefArgs:
+    def __init__(__self__, *,
+                 branch_time: Optional[pulumi.Input[builtins.str]] = None,
+                 effective_lsn: Optional[pulumi.Input[builtins.str]] = None,
+                 lsn: Optional[pulumi.Input[builtins.str]] = None,
+                 name: Optional[pulumi.Input[builtins.str]] = None,
+                 uid: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] branch_time: Branch time of the ref database instance.
+               For a parent ref instance, this is the point in time on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the point in time on the instance from which the child
+               instance was created.
+               Input: For specifying the point in time to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param pulumi.Input[builtins.str] effective_lsn: (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+               `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+               For a parent ref instance, this is the LSN on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the LSN on the instance from which the child instance
+               was created
+        :param pulumi.Input[builtins.str] lsn: User-specified WAL LSN of the ref database instance.
+               
+               Input: For specifying the WAL LSN to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param pulumi.Input[builtins.str] name: The name of the instance. This is the unique identifier for the instance
+        :param pulumi.Input[builtins.str] uid: (string) - Id of the ref database instance
+        """
+        if branch_time is not None:
+            pulumi.set(__self__, "branch_time", branch_time)
+        if effective_lsn is not None:
+            pulumi.set(__self__, "effective_lsn", effective_lsn)
+        if lsn is not None:
+            pulumi.set(__self__, "lsn", lsn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter(name="branchTime")
+    def branch_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Branch time of the ref database instance.
+        For a parent ref instance, this is the point in time on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the point in time on the instance from which the child
+        instance was created.
+        Input: For specifying the point in time to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "branch_time")
+
+    @branch_time.setter
+    def branch_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "branch_time", value)
+
+    @property
+    @pulumi.getter(name="effectiveLsn")
+    def effective_lsn(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+        For a parent ref instance, this is the LSN on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the LSN on the instance from which the child instance
+        was created
+        """
+        return pulumi.get(self, "effective_lsn")
+
+    @effective_lsn.setter
+    def effective_lsn(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "effective_lsn", value)
+
+    @property
+    @pulumi.getter
+    def lsn(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        User-specified WAL LSN of the ref database instance.
+
+        Input: For specifying the WAL LSN to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "lsn")
+
+    @lsn.setter
+    def lsn(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "lsn", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the instance. This is the unique identifier for the instance
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (string) - Id of the ref database instance
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "uid", value)
+
+
+if not MYPY:
     class DefaultNamespaceSettingNamespaceArgsDict(TypedDict):
         value: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -7670,6 +9006,9 @@ class EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorksp
 if not MYPY:
     class ExternalLocationEncryptionDetailsArgsDict(TypedDict):
         sse_encryption_details: NotRequired[pulumi.Input['ExternalLocationEncryptionDetailsSseEncryptionDetailsArgsDict']]
+        """
+        a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+        """
 elif False:
     ExternalLocationEncryptionDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -7677,12 +9016,18 @@ elif False:
 class ExternalLocationEncryptionDetailsArgs:
     def __init__(__self__, *,
                  sse_encryption_details: Optional[pulumi.Input['ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs']] = None):
+        """
+        :param pulumi.Input['ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs'] sse_encryption_details: a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+        """
         if sse_encryption_details is not None:
             pulumi.set(__self__, "sse_encryption_details", sse_encryption_details)
 
     @property
     @pulumi.getter(name="sseEncryptionDetails")
     def sse_encryption_details(self) -> Optional[pulumi.Input['ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs']]:
+        """
+        a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+        """
         return pulumi.get(self, "sse_encryption_details")
 
     @sse_encryption_details.setter
@@ -7693,7 +9038,13 @@ class ExternalLocationEncryptionDetailsArgs:
 if not MYPY:
     class ExternalLocationEncryptionDetailsSseEncryptionDetailsArgsDict(TypedDict):
         algorithm: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+        """
         aws_kms_key_arn: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
+        """
 elif False:
     ExternalLocationEncryptionDetailsSseEncryptionDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -7702,6 +9053,10 @@ class ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs:
     def __init__(__self__, *,
                  algorithm: Optional[pulumi.Input[builtins.str]] = None,
                  aws_kms_key_arn: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] algorithm: Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+        :param pulumi.Input[builtins.str] aws_kms_key_arn: Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
+        """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
         if aws_kms_key_arn is not None:
@@ -7710,6 +9065,9 @@ class ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs:
     @property
     @pulumi.getter
     def algorithm(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+        """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
@@ -7719,6 +9077,9 @@ class ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs:
     @property
     @pulumi.getter(name="awsKmsKeyArn")
     def aws_kms_key_arn(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
+        """
         return pulumi.get(self, "aws_kms_key_arn")
 
     @aws_kms_key_arn.setter
@@ -9691,6 +11052,7 @@ class JobJobClusterArgs:
 
 if not MYPY:
     class JobJobClusterNewClusterArgsDict(TypedDict):
+        __apply_policy_default_values_allow_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         apply_policy_default_values: NotRequired[pulumi.Input[builtins.bool]]
         autoscale: NotRequired[pulumi.Input['JobJobClusterNewClusterAutoscaleArgsDict']]
         aws_attributes: NotRequired[pulumi.Input['JobJobClusterNewClusterAwsAttributesArgsDict']]
@@ -9738,6 +11100,7 @@ elif False:
 @pulumi.input_type
 class JobJobClusterNewClusterArgs:
     def __init__(__self__, *,
+                 __apply_policy_default_values_allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  apply_policy_default_values: Optional[pulumi.Input[builtins.bool]] = None,
                  autoscale: Optional[pulumi.Input['JobJobClusterNewClusterAutoscaleArgs']] = None,
                  aws_attributes: Optional[pulumi.Input['JobJobClusterNewClusterAwsAttributesArgs']] = None,
@@ -9777,6 +11140,8 @@ class JobJobClusterNewClusterArgs:
         :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         :param pulumi.Input['JobJobClusterNewClusterWorkloadTypeArgs'] workload_type: isn't supported
         """
+        if __apply_policy_default_values_allow_lists is not None:
+            pulumi.set(__self__, "__apply_policy_default_values_allow_lists", __apply_policy_default_values_allow_lists)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -9847,6 +11212,15 @@ class JobJobClusterNewClusterArgs:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
+
+    @property
+    @pulumi.getter(name="__applyPolicyDefaultValuesAllowLists")
+    def __apply_policy_default_values_allow_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "__apply_policy_default_values_allow_lists")
+
+    @__apply_policy_default_values_allow_lists.setter
+    def __apply_policy_default_values_allow_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "__apply_policy_default_values_allow_lists", value)
 
     @property
     @pulumi.getter(name="applyPolicyDefaultValues")
@@ -21853,6 +23227,7 @@ class JobTaskLibraryPypiArgs:
 
 if not MYPY:
     class JobTaskNewClusterArgsDict(TypedDict):
+        __apply_policy_default_values_allow_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         apply_policy_default_values: NotRequired[pulumi.Input[builtins.bool]]
         autoscale: NotRequired[pulumi.Input['JobTaskNewClusterAutoscaleArgsDict']]
         aws_attributes: NotRequired[pulumi.Input['JobTaskNewClusterAwsAttributesArgsDict']]
@@ -21900,6 +23275,7 @@ elif False:
 @pulumi.input_type
 class JobTaskNewClusterArgs:
     def __init__(__self__, *,
+                 __apply_policy_default_values_allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  apply_policy_default_values: Optional[pulumi.Input[builtins.bool]] = None,
                  autoscale: Optional[pulumi.Input['JobTaskNewClusterAutoscaleArgs']] = None,
                  aws_attributes: Optional[pulumi.Input['JobTaskNewClusterAwsAttributesArgs']] = None,
@@ -21939,6 +23315,8 @@ class JobTaskNewClusterArgs:
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         :param pulumi.Input['JobTaskNewClusterWorkloadTypeArgs'] workload_type: isn't supported
         """
+        if __apply_policy_default_values_allow_lists is not None:
+            pulumi.set(__self__, "__apply_policy_default_values_allow_lists", __apply_policy_default_values_allow_lists)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -22009,6 +23387,15 @@ class JobTaskNewClusterArgs:
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
+
+    @property
+    @pulumi.getter(name="__applyPolicyDefaultValuesAllowLists")
+    def __apply_policy_default_values_allow_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "__apply_policy_default_values_allow_lists")
+
+    @__apply_policy_default_values_allow_lists.setter
+    def __apply_policy_default_values_allow_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "__apply_policy_default_values_allow_lists", value)
 
     @property
     @pulumi.getter(name="applyPolicyDefaultValues")
@@ -27565,16 +28952,23 @@ class ModelServingAiGatewayGuardrailsInputArgs:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] valid_topics: The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
         """
         if invalid_keywords is not None:
+            warnings.warn("""Please use 'pii' and 'safety' instead.""", DeprecationWarning)
+            pulumi.log.warn("""invalid_keywords is deprecated: Please use 'pii' and 'safety' instead.""")
+        if invalid_keywords is not None:
             pulumi.set(__self__, "invalid_keywords", invalid_keywords)
         if pii is not None:
             pulumi.set(__self__, "pii", pii)
         if safety is not None:
             pulumi.set(__self__, "safety", safety)
         if valid_topics is not None:
+            warnings.warn("""Please use 'pii' and 'safety' instead.""", DeprecationWarning)
+            pulumi.log.warn("""valid_topics is deprecated: Please use 'pii' and 'safety' instead.""")
+        if valid_topics is not None:
             pulumi.set(__self__, "valid_topics", valid_topics)
 
     @property
     @pulumi.getter(name="invalidKeywords")
+    @_utilities.deprecated("""Please use 'pii' and 'safety' instead.""")
     def invalid_keywords(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
@@ -27611,6 +29005,7 @@ class ModelServingAiGatewayGuardrailsInputArgs:
 
     @property
     @pulumi.getter(name="validTopics")
+    @_utilities.deprecated("""Please use 'pii' and 'safety' instead.""")
     def valid_topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
@@ -27689,16 +29084,23 @@ class ModelServingAiGatewayGuardrailsOutputArgs:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] valid_topics: The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
         """
         if invalid_keywords is not None:
+            warnings.warn("""Please use 'pii' and 'safety' instead.""", DeprecationWarning)
+            pulumi.log.warn("""invalid_keywords is deprecated: Please use 'pii' and 'safety' instead.""")
+        if invalid_keywords is not None:
             pulumi.set(__self__, "invalid_keywords", invalid_keywords)
         if pii is not None:
             pulumi.set(__self__, "pii", pii)
         if safety is not None:
             pulumi.set(__self__, "safety", safety)
         if valid_topics is not None:
+            warnings.warn("""Please use 'pii' and 'safety' instead.""", DeprecationWarning)
+            pulumi.log.warn("""valid_topics is deprecated: Please use 'pii' and 'safety' instead.""")
+        if valid_topics is not None:
             pulumi.set(__self__, "valid_topics", valid_topics)
 
     @property
     @pulumi.getter(name="invalidKeywords")
+    @_utilities.deprecated("""Please use 'pii' and 'safety' instead.""")
     def invalid_keywords(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
@@ -27735,6 +29137,7 @@ class ModelServingAiGatewayGuardrailsOutputArgs:
 
     @property
     @pulumi.getter(name="validTopics")
+    @_utilities.deprecated("""Please use 'pii' and 'safety' instead.""")
     def valid_topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
@@ -27872,17 +29275,21 @@ class ModelServingAiGatewayInferenceTableConfigArgs:
 
 if not MYPY:
     class ModelServingAiGatewayRateLimitArgsDict(TypedDict):
-        calls: pulumi.Input[builtins.int]
-        """
-        Used to specify how many calls are allowed for a key within the renewal_period.
-        """
         renewal_period: pulumi.Input[builtins.str]
         """
         Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
         """
+        calls: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Used to specify how many calls are allowed for a key within the renewal_period.
+        """
         key: NotRequired[pulumi.Input[builtins.str]]
         """
-        Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
+        """
+        principal: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Principal field for a user, user group, or service principal to apply rate limiting to. Accepts a user email, group name, or service principal application ID.
         """
 elif False:
     ModelServingAiGatewayRateLimitArgsDict: TypeAlias = Mapping[str, Any]
@@ -27890,30 +29297,23 @@ elif False:
 @pulumi.input_type
 class ModelServingAiGatewayRateLimitArgs:
     def __init__(__self__, *,
-                 calls: pulumi.Input[builtins.int],
                  renewal_period: pulumi.Input[builtins.str],
-                 key: Optional[pulumi.Input[builtins.str]] = None):
+                 calls: Optional[pulumi.Input[builtins.int]] = None,
+                 key: Optional[pulumi.Input[builtins.str]] = None,
+                 principal: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.int] calls: Used to specify how many calls are allowed for a key within the renewal_period.
         :param pulumi.Input[builtins.str] renewal_period: Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
-        :param pulumi.Input[builtins.str] key: Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        :param pulumi.Input[builtins.int] calls: Used to specify how many calls are allowed for a key within the renewal_period.
+        :param pulumi.Input[builtins.str] key: Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
+        :param pulumi.Input[builtins.str] principal: Principal field for a user, user group, or service principal to apply rate limiting to. Accepts a user email, group name, or service principal application ID.
         """
-        pulumi.set(__self__, "calls", calls)
         pulumi.set(__self__, "renewal_period", renewal_period)
+        if calls is not None:
+            pulumi.set(__self__, "calls", calls)
         if key is not None:
             pulumi.set(__self__, "key", key)
-
-    @property
-    @pulumi.getter
-    def calls(self) -> pulumi.Input[builtins.int]:
-        """
-        Used to specify how many calls are allowed for a key within the renewal_period.
-        """
-        return pulumi.get(self, "calls")
-
-    @calls.setter
-    def calls(self, value: pulumi.Input[builtins.int]):
-        pulumi.set(self, "calls", value)
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
 
     @property
     @pulumi.getter(name="renewalPeriod")
@@ -27929,15 +29329,39 @@ class ModelServingAiGatewayRateLimitArgs:
 
     @property
     @pulumi.getter
+    def calls(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Used to specify how many calls are allowed for a key within the renewal_period.
+        """
+        return pulumi.get(self, "calls")
+
+    @calls.setter
+    def calls(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "calls", value)
+
+    @property
+    @pulumi.getter
     def key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
         """
         return pulumi.get(self, "key")
 
     @key.setter
     def key(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def principal(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Principal field for a user, user group, or service principal to apply rate limiting to. Accepts a user email, group name, or service principal application ID.
+        """
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "principal", value)
 
 
 if not MYPY:
@@ -29919,33 +31343,33 @@ class ModelServingConfigTrafficConfigArgs:
 
 if not MYPY:
     class ModelServingConfigTrafficConfigRouteArgsDict(TypedDict):
-        served_model_name: pulumi.Input[builtins.str]
         traffic_percentage: pulumi.Input[builtins.int]
         """
         The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
         """
+        served_entity_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+        """
+        served_model_name: NotRequired[pulumi.Input[builtins.str]]
 elif False:
     ModelServingConfigTrafficConfigRouteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ModelServingConfigTrafficConfigRouteArgs:
     def __init__(__self__, *,
-                 served_model_name: pulumi.Input[builtins.str],
-                 traffic_percentage: pulumi.Input[builtins.int]):
+                 traffic_percentage: pulumi.Input[builtins.int],
+                 served_entity_name: Optional[pulumi.Input[builtins.str]] = None,
+                 served_model_name: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.int] traffic_percentage: The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
+        :param pulumi.Input[builtins.str] served_entity_name: The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
         """
-        pulumi.set(__self__, "served_model_name", served_model_name)
         pulumi.set(__self__, "traffic_percentage", traffic_percentage)
-
-    @property
-    @pulumi.getter(name="servedModelName")
-    def served_model_name(self) -> pulumi.Input[builtins.str]:
-        return pulumi.get(self, "served_model_name")
-
-    @served_model_name.setter
-    def served_model_name(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "served_model_name", value)
+        if served_entity_name is not None:
+            pulumi.set(__self__, "served_entity_name", served_entity_name)
+        if served_model_name is not None:
+            pulumi.set(__self__, "served_model_name", served_model_name)
 
     @property
     @pulumi.getter(name="trafficPercentage")
@@ -29958,6 +31382,27 @@ class ModelServingConfigTrafficConfigRouteArgs:
     @traffic_percentage.setter
     def traffic_percentage(self, value: pulumi.Input[builtins.int]):
         pulumi.set(self, "traffic_percentage", value)
+
+    @property
+    @pulumi.getter(name="servedEntityName")
+    def served_entity_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+        """
+        return pulumi.get(self, "served_entity_name")
+
+    @served_entity_name.setter
+    def served_entity_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "served_entity_name", value)
+
+    @property
+    @pulumi.getter(name="servedModelName")
+    def served_model_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "served_model_name")
+
+    @served_model_name.setter
+    def served_model_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "served_model_name", value)
 
 
 if not MYPY:
@@ -30469,37 +31914,33 @@ class ModelServingProvisionedThroughputAiGatewayInferenceTableConfigArgs:
 
 if not MYPY:
     class ModelServingProvisionedThroughputAiGatewayRateLimitArgsDict(TypedDict):
-        calls: pulumi.Input[builtins.int]
         renewal_period: pulumi.Input[builtins.str]
+        calls: NotRequired[pulumi.Input[builtins.int]]
         key: NotRequired[pulumi.Input[builtins.str]]
         """
         The key field for a tag.
         """
+        principal: NotRequired[pulumi.Input[builtins.str]]
 elif False:
     ModelServingProvisionedThroughputAiGatewayRateLimitArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ModelServingProvisionedThroughputAiGatewayRateLimitArgs:
     def __init__(__self__, *,
-                 calls: pulumi.Input[builtins.int],
                  renewal_period: pulumi.Input[builtins.str],
-                 key: Optional[pulumi.Input[builtins.str]] = None):
+                 calls: Optional[pulumi.Input[builtins.int]] = None,
+                 key: Optional[pulumi.Input[builtins.str]] = None,
+                 principal: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] key: The key field for a tag.
         """
-        pulumi.set(__self__, "calls", calls)
         pulumi.set(__self__, "renewal_period", renewal_period)
+        if calls is not None:
+            pulumi.set(__self__, "calls", calls)
         if key is not None:
             pulumi.set(__self__, "key", key)
-
-    @property
-    @pulumi.getter
-    def calls(self) -> pulumi.Input[builtins.int]:
-        return pulumi.get(self, "calls")
-
-    @calls.setter
-    def calls(self, value: pulumi.Input[builtins.int]):
-        pulumi.set(self, "calls", value)
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
 
     @property
     @pulumi.getter(name="renewalPeriod")
@@ -30512,6 +31953,15 @@ class ModelServingProvisionedThroughputAiGatewayRateLimitArgs:
 
     @property
     @pulumi.getter
+    def calls(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "calls")
+
+    @calls.setter
+    def calls(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "calls", value)
+
+    @property
+    @pulumi.getter
     def key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The key field for a tag.
@@ -30521,6 +31971,15 @@ class ModelServingProvisionedThroughputAiGatewayRateLimitArgs:
     @key.setter
     def key(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def principal(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "principal", value)
 
 
 if not MYPY:
@@ -30730,33 +32189,33 @@ class ModelServingProvisionedThroughputConfigTrafficConfigArgs:
 
 if not MYPY:
     class ModelServingProvisionedThroughputConfigTrafficConfigRouteArgsDict(TypedDict):
-        served_model_name: pulumi.Input[builtins.str]
         traffic_percentage: pulumi.Input[builtins.int]
         """
         The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
         """
+        served_entity_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+        """
+        served_model_name: NotRequired[pulumi.Input[builtins.str]]
 elif False:
     ModelServingProvisionedThroughputConfigTrafficConfigRouteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs:
     def __init__(__self__, *,
-                 served_model_name: pulumi.Input[builtins.str],
-                 traffic_percentage: pulumi.Input[builtins.int]):
+                 traffic_percentage: pulumi.Input[builtins.int],
+                 served_entity_name: Optional[pulumi.Input[builtins.str]] = None,
+                 served_model_name: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.int] traffic_percentage: The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
+        :param pulumi.Input[builtins.str] served_entity_name: The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
         """
-        pulumi.set(__self__, "served_model_name", served_model_name)
         pulumi.set(__self__, "traffic_percentage", traffic_percentage)
-
-    @property
-    @pulumi.getter(name="servedModelName")
-    def served_model_name(self) -> pulumi.Input[builtins.str]:
-        return pulumi.get(self, "served_model_name")
-
-    @served_model_name.setter
-    def served_model_name(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "served_model_name", value)
+        if served_entity_name is not None:
+            pulumi.set(__self__, "served_entity_name", served_entity_name)
+        if served_model_name is not None:
+            pulumi.set(__self__, "served_model_name", served_model_name)
 
     @property
     @pulumi.getter(name="trafficPercentage")
@@ -30769,6 +32228,27 @@ class ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs:
     @traffic_percentage.setter
     def traffic_percentage(self, value: pulumi.Input[builtins.int]):
         pulumi.set(self, "traffic_percentage", value)
+
+    @property
+    @pulumi.getter(name="servedEntityName")
+    def served_entity_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+        """
+        return pulumi.get(self, "served_entity_name")
+
+    @served_entity_name.setter
+    def served_entity_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "served_entity_name", value)
+
+    @property
+    @pulumi.getter(name="servedModelName")
+    def served_model_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "served_model_name")
+
+    @served_model_name.setter
+    def served_model_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "served_model_name", value)
 
 
 if not MYPY:
@@ -30834,7 +32314,7 @@ if not MYPY:
         """
         key: NotRequired[pulumi.Input[builtins.str]]
         """
-        Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
         """
 elif False:
     ModelServingRateLimitArgsDict: TypeAlias = Mapping[str, Any]
@@ -30848,7 +32328,7 @@ class ModelServingRateLimitArgs:
         """
         :param pulumi.Input[builtins.int] calls: Used to specify how many calls are allowed for a key within the renewal_period.
         :param pulumi.Input[builtins.str] renewal_period: Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
-        :param pulumi.Input[builtins.str] key: Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        :param pulumi.Input[builtins.str] key: Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
         """
         pulumi.set(__self__, "calls", calls)
         pulumi.set(__self__, "renewal_period", renewal_period)
@@ -30883,7 +32363,7 @@ class ModelServingRateLimitArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
         """
         return pulumi.get(self, "key")
 
@@ -31619,6 +33099,9 @@ class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRu
 if not MYPY:
     class MwsNetworkConnectivityConfigEgressConfigTargetRulesArgsDict(TypedDict):
         aws_private_endpoint_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgsDict']]]]
+        """
+        (AWS only) - list containing information about configure AWS Private Endpoints.
+        """
         azure_private_endpoint_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgsDict']]]]
         """
         (Azure only) - list containing information about configure Azure Private Endpoints.
@@ -31632,6 +33115,7 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs:
                  aws_private_endpoint_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs']]]] = None,
                  azure_private_endpoint_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs']]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs']]] aws_private_endpoint_rules: (AWS only) - list containing information about configure AWS Private Endpoints.
         :param pulumi.Input[Sequence[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs']]] azure_private_endpoint_rules: (Azure only) - list containing information about configure Azure Private Endpoints.
         """
         if aws_private_endpoint_rules is not None:
@@ -31642,6 +33126,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs:
     @property
     @pulumi.getter(name="awsPrivateEndpointRules")
     def aws_private_endpoint_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs']]]]:
+        """
+        (AWS only) - list containing information about configure AWS Private Endpoints.
+        """
         return pulumi.get(self, "aws_private_endpoint_rules")
 
     @aws_private_endpoint_rules.setter
@@ -31666,6 +33153,9 @@ if not MYPY:
         account_id: NotRequired[pulumi.Input[builtins.str]]
         connection_state: NotRequired[pulumi.Input[builtins.str]]
         creation_time: NotRequired[pulumi.Input[builtins.int]]
+        """
+        time in epoch milliseconds when this object was created.
+        """
         deactivated: NotRequired[pulumi.Input[builtins.bool]]
         deactivated_at: NotRequired[pulumi.Input[builtins.int]]
         domain_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
@@ -31678,6 +33168,9 @@ if not MYPY:
         resource_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         rule_id: NotRequired[pulumi.Input[builtins.str]]
         updated_time: NotRequired[pulumi.Input[builtins.int]]
+        """
+        time in epoch milliseconds when this object was updated.
+        """
         vpc_endpoint_id: NotRequired[pulumi.Input[builtins.str]]
 elif False:
     MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -31699,7 +33192,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleA
                  updated_time: Optional[pulumi.Input[builtins.int]] = None,
                  vpc_endpoint_id: Optional[pulumi.Input[builtins.str]] = None):
         """
+        :param pulumi.Input[builtins.int] creation_time: time in epoch milliseconds when this object was created.
         :param pulumi.Input[builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account
+        :param pulumi.Input[builtins.int] updated_time: time in epoch milliseconds when this object was updated.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -31749,6 +33244,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleA
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        time in epoch milliseconds when this object was created.
+        """
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
@@ -31833,6 +33331,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleA
     @property
     @pulumi.getter(name="updatedTime")
     def updated_time(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        time in epoch milliseconds when this object was updated.
+        """
         return pulumi.get(self, "updated_time")
 
     @updated_time.setter
@@ -31853,6 +33354,9 @@ if not MYPY:
     class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgsDict(TypedDict):
         connection_state: NotRequired[pulumi.Input[builtins.str]]
         creation_time: NotRequired[pulumi.Input[builtins.int]]
+        """
+        time in epoch milliseconds when this object was created.
+        """
         deactivated: NotRequired[pulumi.Input[builtins.bool]]
         deactivated_at: NotRequired[pulumi.Input[builtins.int]]
         domain_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
@@ -31865,6 +33369,9 @@ if not MYPY:
         resource_id: NotRequired[pulumi.Input[builtins.str]]
         rule_id: NotRequired[pulumi.Input[builtins.str]]
         updated_time: NotRequired[pulumi.Input[builtins.int]]
+        """
+        time in epoch milliseconds when this object was updated.
+        """
 elif False:
     MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -31883,7 +33390,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRul
                  rule_id: Optional[pulumi.Input[builtins.str]] = None,
                  updated_time: Optional[pulumi.Input[builtins.int]] = None):
         """
+        :param pulumi.Input[builtins.int] creation_time: time in epoch milliseconds when this object was created.
         :param pulumi.Input[builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account
+        :param pulumi.Input[builtins.int] updated_time: time in epoch milliseconds when this object was updated.
         """
         if connection_state is not None:
             pulumi.set(__self__, "connection_state", connection_state)
@@ -31920,6 +33429,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRul
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        time in epoch milliseconds when this object was created.
+        """
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
@@ -32004,6 +33516,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRul
     @property
     @pulumi.getter(name="updatedTime")
     def updated_time(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        time in epoch milliseconds when this object was updated.
+        """
         return pulumi.get(self, "updated_time")
 
     @updated_time.setter
@@ -32090,13 +33605,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -32150,7 +33665,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "pod_ip_range_name")
 
@@ -32160,7 +33675,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -32436,13 +33951,13 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  gke_cluster_service_ip_range: Optional[pulumi.Input[builtins.str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
@@ -32457,7 +33972,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -32467,7 +33982,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -35103,7 +36618,7 @@ if not MYPY:
         """
         gateway_storage_name: NotRequired[pulumi.Input[builtins.str]]
         """
-        Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+        Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Lakeflow Declarative Pipelines system will automatically create the storage location under the catalog and schema.
         """
 elif False:
     PipelineGatewayDefinitionArgsDict: TypeAlias = Mapping[str, Any]
@@ -35120,7 +36635,7 @@ class PipelineGatewayDefinitionArgs:
         :param pulumi.Input[builtins.str] gateway_storage_catalog: Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
         :param pulumi.Input[builtins.str] gateway_storage_schema: Required, Immutable. The name of the schema for the gateway pipelines's storage location.
         :param pulumi.Input[builtins.str] connection_id: Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
-        :param pulumi.Input[builtins.str] gateway_storage_name: Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+        :param pulumi.Input[builtins.str] gateway_storage_name: Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Lakeflow Declarative Pipelines system will automatically create the storage location under the catalog and schema.
         """
         pulumi.set(__self__, "connection_name", connection_name)
         pulumi.set(__self__, "gateway_storage_catalog", gateway_storage_catalog)
@@ -35179,7 +36694,7 @@ class PipelineGatewayDefinitionArgs:
     @pulumi.getter(name="gatewayStorageName")
     def gateway_storage_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+        Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Lakeflow Declarative Pipelines system will automatically create the storage location under the catalog and schema.
         """
         return pulumi.get(self, "gateway_storage_name")
 
@@ -43052,6 +44567,942 @@ class GetCatalogCatalogInfoProvisioningInfoArgs:
 
 
 if not MYPY:
+    class GetCleanRoomsCleanRoomRemoteDetailedInfoArgsDict(TypedDict):
+        central_clean_room_id: builtins.str
+        """
+        (string) - Central clean room ID
+        """
+        compliance_security_profile: 'GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgsDict'
+        """
+        (ComplianceSecurityProfile) -
+        """
+        creator: 'GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgsDict'
+        """
+        (CleanRoomCollaborator) - Collaborator who creates the clean room
+        """
+        cloud_vendor: NotRequired[builtins.str]
+        """
+        (string) - Cloud vendor (aws,azure,gcp) of the central clean room
+        """
+        collaborators: NotRequired[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgsDict']]
+        """
+        (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
+        in the list that satisfies the owner condition:
+        """
+        egress_network_policy: NotRequired['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgsDict']
+        """
+        (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
+        """
+        region: NotRequired[builtins.str]
+        """
+        (string) -
+        """
+elif False:
+    GetCleanRoomsCleanRoomRemoteDetailedInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoArgs:
+    def __init__(__self__, *,
+                 central_clean_room_id: builtins.str,
+                 compliance_security_profile: 'GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs',
+                 creator: 'GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs',
+                 cloud_vendor: Optional[builtins.str] = None,
+                 collaborators: Optional[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs']] = None,
+                 egress_network_policy: Optional['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs'] = None,
+                 region: Optional[builtins.str] = None):
+        """
+        :param builtins.str central_clean_room_id: (string) - Central clean room ID
+        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs' compliance_security_profile: (ComplianceSecurityProfile) -
+        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs' creator: (CleanRoomCollaborator) - Collaborator who creates the clean room
+        :param builtins.str cloud_vendor: (string) - Cloud vendor (aws,azure,gcp) of the central clean room
+        :param Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs'] collaborators: (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
+               in the list that satisfies the owner condition:
+        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs' egress_network_policy: (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
+        :param builtins.str region: (string) -
+        """
+        pulumi.set(__self__, "central_clean_room_id", central_clean_room_id)
+        pulumi.set(__self__, "compliance_security_profile", compliance_security_profile)
+        pulumi.set(__self__, "creator", creator)
+        if cloud_vendor is not None:
+            pulumi.set(__self__, "cloud_vendor", cloud_vendor)
+        if collaborators is not None:
+            pulumi.set(__self__, "collaborators", collaborators)
+        if egress_network_policy is not None:
+            pulumi.set(__self__, "egress_network_policy", egress_network_policy)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="centralCleanRoomId")
+    def central_clean_room_id(self) -> builtins.str:
+        """
+        (string) - Central clean room ID
+        """
+        return pulumi.get(self, "central_clean_room_id")
+
+    @central_clean_room_id.setter
+    def central_clean_room_id(self, value: builtins.str):
+        pulumi.set(self, "central_clean_room_id", value)
+
+    @property
+    @pulumi.getter(name="complianceSecurityProfile")
+    def compliance_security_profile(self) -> 'GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs':
+        """
+        (ComplianceSecurityProfile) -
+        """
+        return pulumi.get(self, "compliance_security_profile")
+
+    @compliance_security_profile.setter
+    def compliance_security_profile(self, value: 'GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs'):
+        pulumi.set(self, "compliance_security_profile", value)
+
+    @property
+    @pulumi.getter
+    def creator(self) -> 'GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs':
+        """
+        (CleanRoomCollaborator) - Collaborator who creates the clean room
+        """
+        return pulumi.get(self, "creator")
+
+    @creator.setter
+    def creator(self, value: 'GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs'):
+        pulumi.set(self, "creator", value)
+
+    @property
+    @pulumi.getter(name="cloudVendor")
+    def cloud_vendor(self) -> Optional[builtins.str]:
+        """
+        (string) - Cloud vendor (aws,azure,gcp) of the central clean room
+        """
+        return pulumi.get(self, "cloud_vendor")
+
+    @cloud_vendor.setter
+    def cloud_vendor(self, value: Optional[builtins.str]):
+        pulumi.set(self, "cloud_vendor", value)
+
+    @property
+    @pulumi.getter
+    def collaborators(self) -> Optional[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs']]:
+        """
+        (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
+        in the list that satisfies the owner condition:
+        """
+        return pulumi.get(self, "collaborators")
+
+    @collaborators.setter
+    def collaborators(self, value: Optional[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs']]):
+        pulumi.set(self, "collaborators", value)
+
+    @property
+    @pulumi.getter(name="egressNetworkPolicy")
+    def egress_network_policy(self) -> Optional['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs']:
+        """
+        (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
+        """
+        return pulumi.get(self, "egress_network_policy")
+
+    @egress_network_policy.setter
+    def egress_network_policy(self, value: Optional['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs']):
+        pulumi.set(self, "egress_network_policy", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[builtins.str]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgsDict(TypedDict):
+        collaborator_alias: builtins.str
+        """
+        (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        display_name: builtins.str
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        organization_name: builtins.str
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+        global_metastore_id: NotRequired[builtins.str]
+        """
+        (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        invite_recipient_email: NotRequired[builtins.str]
+        """
+        (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        invite_recipient_workspace_id: NotRequired[builtins.int]
+        """
+        (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+elif False:
+    GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs:
+    def __init__(__self__, *,
+                 collaborator_alias: builtins.str,
+                 display_name: builtins.str,
+                 organization_name: builtins.str,
+                 global_metastore_id: Optional[builtins.str] = None,
+                 invite_recipient_email: Optional[builtins.str] = None,
+                 invite_recipient_workspace_id: Optional[builtins.int] = None):
+        """
+        :param builtins.str collaborator_alias: (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        :param builtins.str display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+               these values and could change in the future
+        :param builtins.str organization_name: (string) - Organization name
+               configured in the metastore
+        :param builtins.str global_metastore_id: (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        :param builtins.str invite_recipient_email: (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+               for the creator of the clean room, and non-empty for the invitees of the clean room.
+               It is only returned in the output when clean room creator calls GET
+        :param builtins.int invite_recipient_workspace_id: (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+               invite_recipient_email is specified.
+               It should be empty when the collaborator is the creator of the clean room
+        """
+        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "organization_name", organization_name)
+        if global_metastore_id is not None:
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if invite_recipient_email is not None:
+            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
+        if invite_recipient_workspace_id is not None:
+            pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
+
+    @property
+    @pulumi.getter(name="collaboratorAlias")
+    def collaborator_alias(self) -> builtins.str:
+        """
+        (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        return pulumi.get(self, "collaborator_alias")
+
+    @collaborator_alias.setter
+    def collaborator_alias(self, value: builtins.str):
+        pulumi.set(self, "collaborator_alias", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> builtins.str:
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: builtins.str):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> builtins.str:
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+        return pulumi.get(self, "organization_name")
+
+    @organization_name.setter
+    def organization_name(self, value: builtins.str):
+        pulumi.set(self, "organization_name", value)
+
+    @property
+    @pulumi.getter(name="globalMetastoreId")
+    def global_metastore_id(self) -> Optional[builtins.str]:
+        """
+        (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        return pulumi.get(self, "global_metastore_id")
+
+    @global_metastore_id.setter
+    def global_metastore_id(self, value: Optional[builtins.str]):
+        pulumi.set(self, "global_metastore_id", value)
+
+    @property
+    @pulumi.getter(name="inviteRecipientEmail")
+    def invite_recipient_email(self) -> Optional[builtins.str]:
+        """
+        (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        return pulumi.get(self, "invite_recipient_email")
+
+    @invite_recipient_email.setter
+    def invite_recipient_email(self, value: Optional[builtins.str]):
+        pulumi.set(self, "invite_recipient_email", value)
+
+    @property
+    @pulumi.getter(name="inviteRecipientWorkspaceId")
+    def invite_recipient_workspace_id(self) -> Optional[builtins.int]:
+        """
+        (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+        return pulumi.get(self, "invite_recipient_workspace_id")
+
+    @invite_recipient_workspace_id.setter
+    def invite_recipient_workspace_id(self, value: Optional[builtins.int]):
+        pulumi.set(self, "invite_recipient_workspace_id", value)
+
+
+if not MYPY:
+    class GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgsDict(TypedDict):
+        compliance_standards: NotRequired[Sequence[builtins.str]]
+        """
+        (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
+        """
+        is_enabled: NotRequired[builtins.bool]
+        """
+        (boolean) - Whether the compliance security profile is enabled
+        """
+elif False:
+    GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs:
+    def __init__(__self__, *,
+                 compliance_standards: Optional[Sequence[builtins.str]] = None,
+                 is_enabled: Optional[builtins.bool] = None):
+        """
+        :param Sequence[builtins.str] compliance_standards: (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
+        :param builtins.bool is_enabled: (boolean) - Whether the compliance security profile is enabled
+        """
+        if compliance_standards is not None:
+            pulumi.set(__self__, "compliance_standards", compliance_standards)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @property
+    @pulumi.getter(name="complianceStandards")
+    def compliance_standards(self) -> Optional[Sequence[builtins.str]]:
+        """
+        (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
+        """
+        return pulumi.get(self, "compliance_standards")
+
+    @compliance_standards.setter
+    def compliance_standards(self, value: Optional[Sequence[builtins.str]]):
+        pulumi.set(self, "compliance_standards", value)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[builtins.bool]:
+        """
+        (boolean) - Whether the compliance security profile is enabled
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[builtins.bool]):
+        pulumi.set(self, "is_enabled", value)
+
+
+if not MYPY:
+    class GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgsDict(TypedDict):
+        collaborator_alias: builtins.str
+        """
+        (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        display_name: builtins.str
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        organization_name: builtins.str
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+        global_metastore_id: NotRequired[builtins.str]
+        """
+        (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        invite_recipient_email: NotRequired[builtins.str]
+        """
+        (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        invite_recipient_workspace_id: NotRequired[builtins.int]
+        """
+        (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+elif False:
+    GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs:
+    def __init__(__self__, *,
+                 collaborator_alias: builtins.str,
+                 display_name: builtins.str,
+                 organization_name: builtins.str,
+                 global_metastore_id: Optional[builtins.str] = None,
+                 invite_recipient_email: Optional[builtins.str] = None,
+                 invite_recipient_workspace_id: Optional[builtins.int] = None):
+        """
+        :param builtins.str collaborator_alias: (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        :param builtins.str display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+               these values and could change in the future
+        :param builtins.str organization_name: (string) - Organization name
+               configured in the metastore
+        :param builtins.str global_metastore_id: (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        :param builtins.str invite_recipient_email: (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+               for the creator of the clean room, and non-empty for the invitees of the clean room.
+               It is only returned in the output when clean room creator calls GET
+        :param builtins.int invite_recipient_workspace_id: (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+               invite_recipient_email is specified.
+               It should be empty when the collaborator is the creator of the clean room
+        """
+        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "organization_name", organization_name)
+        if global_metastore_id is not None:
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if invite_recipient_email is not None:
+            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
+        if invite_recipient_workspace_id is not None:
+            pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
+
+    @property
+    @pulumi.getter(name="collaboratorAlias")
+    def collaborator_alias(self) -> builtins.str:
+        """
+        (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        return pulumi.get(self, "collaborator_alias")
+
+    @collaborator_alias.setter
+    def collaborator_alias(self, value: builtins.str):
+        pulumi.set(self, "collaborator_alias", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> builtins.str:
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: builtins.str):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> builtins.str:
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+        return pulumi.get(self, "organization_name")
+
+    @organization_name.setter
+    def organization_name(self, value: builtins.str):
+        pulumi.set(self, "organization_name", value)
+
+    @property
+    @pulumi.getter(name="globalMetastoreId")
+    def global_metastore_id(self) -> Optional[builtins.str]:
+        """
+        (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        return pulumi.get(self, "global_metastore_id")
+
+    @global_metastore_id.setter
+    def global_metastore_id(self, value: Optional[builtins.str]):
+        pulumi.set(self, "global_metastore_id", value)
+
+    @property
+    @pulumi.getter(name="inviteRecipientEmail")
+    def invite_recipient_email(self) -> Optional[builtins.str]:
+        """
+        (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        return pulumi.get(self, "invite_recipient_email")
+
+    @invite_recipient_email.setter
+    def invite_recipient_email(self, value: Optional[builtins.str]):
+        pulumi.set(self, "invite_recipient_email", value)
+
+    @property
+    @pulumi.getter(name="inviteRecipientWorkspaceId")
+    def invite_recipient_workspace_id(self) -> Optional[builtins.int]:
+        """
+        (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+        return pulumi.get(self, "invite_recipient_workspace_id")
+
+    @invite_recipient_workspace_id.setter
+    def invite_recipient_workspace_id(self, value: Optional[builtins.int]):
+        pulumi.set(self, "invite_recipient_workspace_id", value)
+
+
+if not MYPY:
+    class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgsDict(TypedDict):
+        internet_access: NotRequired['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgsDict']
+        """
+        (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
+        """
+elif False:
+    GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs:
+    def __init__(__self__, *,
+                 internet_access: Optional['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs'] = None):
+        """
+        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs' internet_access: (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
+        """
+        if internet_access is not None:
+            pulumi.set(__self__, "internet_access", internet_access)
+
+    @property
+    @pulumi.getter(name="internetAccess")
+    def internet_access(self) -> Optional['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs']:
+        """
+        (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
+        """
+        return pulumi.get(self, "internet_access")
+
+    @internet_access.setter
+    def internet_access(self, value: Optional['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs']):
+        pulumi.set(self, "internet_access", value)
+
+
+if not MYPY:
+    class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgsDict(TypedDict):
+        allowed_internet_destinations: NotRequired[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgsDict']]
+        """
+        (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination) -
+        """
+        allowed_storage_destinations: NotRequired[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgsDict']]
+        """
+        (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination) -
+        """
+        log_only_mode: NotRequired['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgsDict']
+        """
+        (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
+        """
+        restriction_mode: NotRequired[builtins.str]
+        """
+        (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+        """
+elif False:
+    GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs:
+    def __init__(__self__, *,
+                 allowed_internet_destinations: Optional[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs']] = None,
+                 allowed_storage_destinations: Optional[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs']] = None,
+                 log_only_mode: Optional['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs'] = None,
+                 restriction_mode: Optional[builtins.str] = None):
+        """
+        :param Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs'] allowed_internet_destinations: (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination) -
+        :param Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs'] allowed_storage_destinations: (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination) -
+        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs' log_only_mode: (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
+        :param builtins.str restriction_mode: (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+        """
+        if allowed_internet_destinations is not None:
+            pulumi.set(__self__, "allowed_internet_destinations", allowed_internet_destinations)
+        if allowed_storage_destinations is not None:
+            pulumi.set(__self__, "allowed_storage_destinations", allowed_storage_destinations)
+        if log_only_mode is not None:
+            pulumi.set(__self__, "log_only_mode", log_only_mode)
+        if restriction_mode is not None:
+            pulumi.set(__self__, "restriction_mode", restriction_mode)
+
+    @property
+    @pulumi.getter(name="allowedInternetDestinations")
+    def allowed_internet_destinations(self) -> Optional[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs']]:
+        """
+        (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination) -
+        """
+        return pulumi.get(self, "allowed_internet_destinations")
+
+    @allowed_internet_destinations.setter
+    def allowed_internet_destinations(self, value: Optional[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs']]):
+        pulumi.set(self, "allowed_internet_destinations", value)
+
+    @property
+    @pulumi.getter(name="allowedStorageDestinations")
+    def allowed_storage_destinations(self) -> Optional[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs']]:
+        """
+        (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination) -
+        """
+        return pulumi.get(self, "allowed_storage_destinations")
+
+    @allowed_storage_destinations.setter
+    def allowed_storage_destinations(self, value: Optional[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs']]):
+        pulumi.set(self, "allowed_storage_destinations", value)
+
+    @property
+    @pulumi.getter(name="logOnlyMode")
+    def log_only_mode(self) -> Optional['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs']:
+        """
+        (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
+        """
+        return pulumi.get(self, "log_only_mode")
+
+    @log_only_mode.setter
+    def log_only_mode(self, value: Optional['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs']):
+        pulumi.set(self, "log_only_mode", value)
+
+    @property
+    @pulumi.getter(name="restrictionMode")
+    def restriction_mode(self) -> Optional[builtins.str]:
+        """
+        (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+        """
+        return pulumi.get(self, "restriction_mode")
+
+    @restriction_mode.setter
+    def restriction_mode(self, value: Optional[builtins.str]):
+        pulumi.set(self, "restriction_mode", value)
+
+
+if not MYPY:
+    class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgsDict(TypedDict):
+        destination: NotRequired[builtins.str]
+        """
+        (string) -
+        """
+        protocol: NotRequired[builtins.str]
+        """
+        (string) - . Possible values are: `TCP`
+        """
+        type: NotRequired[builtins.str]
+        """
+        (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+elif False:
+    GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs:
+    def __init__(__self__, *,
+                 destination: Optional[builtins.str] = None,
+                 protocol: Optional[builtins.str] = None,
+                 type: Optional[builtins.str] = None):
+        """
+        :param builtins.str destination: (string) -
+        :param builtins.str protocol: (string) - . Possible values are: `TCP`
+        :param builtins.str type: (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[builtins.str]):
+        pulumi.set(self, "destination", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[builtins.str]:
+        """
+        (string) - . Possible values are: `TCP`
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[builtins.str]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[builtins.str]:
+        """
+        (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[builtins.str]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgsDict(TypedDict):
+        allowed_paths: NotRequired[Sequence[builtins.str]]
+        """
+        (list of string) -
+        """
+        azure_container: NotRequired[builtins.str]
+        """
+        (string) -
+        """
+        azure_dns_zone: NotRequired[builtins.str]
+        """
+        (string) -
+        """
+        azure_storage_account: NotRequired[builtins.str]
+        """
+        (string) -
+        """
+        azure_storage_service: NotRequired[builtins.str]
+        """
+        (string) -
+        """
+        bucket_name: NotRequired[builtins.str]
+        """
+        (string) -
+        """
+        region: NotRequired[builtins.str]
+        """
+        (string) -
+        """
+        type: NotRequired[builtins.str]
+        """
+        (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+elif False:
+    GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs:
+    def __init__(__self__, *,
+                 allowed_paths: Optional[Sequence[builtins.str]] = None,
+                 azure_container: Optional[builtins.str] = None,
+                 azure_dns_zone: Optional[builtins.str] = None,
+                 azure_storage_account: Optional[builtins.str] = None,
+                 azure_storage_service: Optional[builtins.str] = None,
+                 bucket_name: Optional[builtins.str] = None,
+                 region: Optional[builtins.str] = None,
+                 type: Optional[builtins.str] = None):
+        """
+        :param Sequence[builtins.str] allowed_paths: (list of string) -
+        :param builtins.str azure_container: (string) -
+        :param builtins.str azure_dns_zone: (string) -
+        :param builtins.str azure_storage_account: (string) -
+        :param builtins.str azure_storage_service: (string) -
+        :param builtins.str bucket_name: (string) -
+        :param builtins.str region: (string) -
+        :param builtins.str type: (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        if allowed_paths is not None:
+            pulumi.set(__self__, "allowed_paths", allowed_paths)
+        if azure_container is not None:
+            pulumi.set(__self__, "azure_container", azure_container)
+        if azure_dns_zone is not None:
+            pulumi.set(__self__, "azure_dns_zone", azure_dns_zone)
+        if azure_storage_account is not None:
+            pulumi.set(__self__, "azure_storage_account", azure_storage_account)
+        if azure_storage_service is not None:
+            pulumi.set(__self__, "azure_storage_service", azure_storage_service)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="allowedPaths")
+    def allowed_paths(self) -> Optional[Sequence[builtins.str]]:
+        """
+        (list of string) -
+        """
+        return pulumi.get(self, "allowed_paths")
+
+    @allowed_paths.setter
+    def allowed_paths(self, value: Optional[Sequence[builtins.str]]):
+        pulumi.set(self, "allowed_paths", value)
+
+    @property
+    @pulumi.getter(name="azureContainer")
+    def azure_container(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "azure_container")
+
+    @azure_container.setter
+    def azure_container(self, value: Optional[builtins.str]):
+        pulumi.set(self, "azure_container", value)
+
+    @property
+    @pulumi.getter(name="azureDnsZone")
+    def azure_dns_zone(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "azure_dns_zone")
+
+    @azure_dns_zone.setter
+    def azure_dns_zone(self, value: Optional[builtins.str]):
+        pulumi.set(self, "azure_dns_zone", value)
+
+    @property
+    @pulumi.getter(name="azureStorageAccount")
+    def azure_storage_account(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "azure_storage_account")
+
+    @azure_storage_account.setter
+    def azure_storage_account(self, value: Optional[builtins.str]):
+        pulumi.set(self, "azure_storage_account", value)
+
+    @property
+    @pulumi.getter(name="azureStorageService")
+    def azure_storage_service(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "azure_storage_service")
+
+    @azure_storage_service.setter
+    def azure_storage_service(self, value: Optional[builtins.str]):
+        pulumi.set(self, "azure_storage_service", value)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: Optional[builtins.str]):
+        pulumi.set(self, "bucket_name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[builtins.str]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[builtins.str]:
+        """
+        (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[builtins.str]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgsDict(TypedDict):
+        log_only_mode_type: NotRequired[builtins.str]
+        """
+        (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+        """
+        workloads: NotRequired[Sequence[builtins.str]]
+        """
+        (list of ) -
+        """
+elif False:
+    GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs:
+    def __init__(__self__, *,
+                 log_only_mode_type: Optional[builtins.str] = None,
+                 workloads: Optional[Sequence[builtins.str]] = None):
+        """
+        :param builtins.str log_only_mode_type: (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+        :param Sequence[builtins.str] workloads: (list of ) -
+        """
+        if log_only_mode_type is not None:
+            pulumi.set(__self__, "log_only_mode_type", log_only_mode_type)
+        if workloads is not None:
+            pulumi.set(__self__, "workloads", workloads)
+
+    @property
+    @pulumi.getter(name="logOnlyModeType")
+    def log_only_mode_type(self) -> Optional[builtins.str]:
+        """
+        (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+        """
+        return pulumi.get(self, "log_only_mode_type")
+
+    @log_only_mode_type.setter
+    def log_only_mode_type(self, value: Optional[builtins.str]):
+        pulumi.set(self, "log_only_mode_type", value)
+
+    @property
+    @pulumi.getter
+    def workloads(self) -> Optional[Sequence[builtins.str]]:
+        """
+        (list of ) -
+        """
+        return pulumi.get(self, "workloads")
+
+    @workloads.setter
+    def workloads(self, value: Optional[Sequence[builtins.str]]):
+        pulumi.set(self, "workloads", value)
+
+
+if not MYPY:
     class GetClusterClusterInfoArgsDict(TypedDict):
         autoscale: NotRequired['GetClusterClusterInfoAutoscaleArgsDict']
         autotermination_minutes: NotRequired[builtins.int]
@@ -47568,6 +50019,152 @@ class GetCurrentMetastoreMetastoreInfoArgs:
 
 
 if not MYPY:
+    class GetDatabaseInstanceParentInstanceRefArgsDict(TypedDict):
+        effective_lsn: builtins.str
+        """
+        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+        For a parent ref instance, this is the LSN on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the LSN on the instance from which the child instance
+        was created
+        """
+        uid: builtins.str
+        """
+        (string) - Id of the ref database instance
+        """
+        branch_time: NotRequired[builtins.str]
+        """
+        (string) - Branch time of the ref database instance.
+        For a parent ref instance, this is the point in time on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the point in time on the instance from which the child
+        instance was created.
+        Input: For specifying the point in time to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        lsn: NotRequired[builtins.str]
+        """
+        (string) - User-specified WAL LSN of the ref database instance.
+        """
+        name: NotRequired[builtins.str]
+        """
+        The name of the instance. This is the unique identifier for the instance
+        """
+elif False:
+    GetDatabaseInstanceParentInstanceRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetDatabaseInstanceParentInstanceRefArgs:
+    def __init__(__self__, *,
+                 effective_lsn: builtins.str,
+                 uid: builtins.str,
+                 branch_time: Optional[builtins.str] = None,
+                 lsn: Optional[builtins.str] = None,
+                 name: Optional[builtins.str] = None):
+        """
+        :param builtins.str effective_lsn: (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+               `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+               For a parent ref instance, this is the LSN on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the LSN on the instance from which the child instance
+               was created
+        :param builtins.str uid: (string) - Id of the ref database instance
+        :param builtins.str branch_time: (string) - Branch time of the ref database instance.
+               For a parent ref instance, this is the point in time on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the point in time on the instance from which the child
+               instance was created.
+               Input: For specifying the point in time to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param builtins.str lsn: (string) - User-specified WAL LSN of the ref database instance.
+        :param builtins.str name: The name of the instance. This is the unique identifier for the instance
+        """
+        pulumi.set(__self__, "effective_lsn", effective_lsn)
+        pulumi.set(__self__, "uid", uid)
+        if branch_time is not None:
+            pulumi.set(__self__, "branch_time", branch_time)
+        if lsn is not None:
+            pulumi.set(__self__, "lsn", lsn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="effectiveLsn")
+    def effective_lsn(self) -> builtins.str:
+        """
+        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+        For a parent ref instance, this is the LSN on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the LSN on the instance from which the child instance
+        was created
+        """
+        return pulumi.get(self, "effective_lsn")
+
+    @effective_lsn.setter
+    def effective_lsn(self, value: builtins.str):
+        pulumi.set(self, "effective_lsn", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> builtins.str:
+        """
+        (string) - Id of the ref database instance
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: builtins.str):
+        pulumi.set(self, "uid", value)
+
+    @property
+    @pulumi.getter(name="branchTime")
+    def branch_time(self) -> Optional[builtins.str]:
+        """
+        (string) - Branch time of the ref database instance.
+        For a parent ref instance, this is the point in time on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the point in time on the instance from which the child
+        instance was created.
+        Input: For specifying the point in time to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "branch_time")
+
+    @branch_time.setter
+    def branch_time(self, value: Optional[builtins.str]):
+        pulumi.set(self, "branch_time", value)
+
+    @property
+    @pulumi.getter
+    def lsn(self) -> Optional[builtins.str]:
+        """
+        (string) - User-specified WAL LSN of the ref database instance.
+        """
+        return pulumi.get(self, "lsn")
+
+    @lsn.setter
+    def lsn(self, value: Optional[builtins.str]):
+        pulumi.set(self, "lsn", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        The name of the instance. This is the unique identifier for the instance
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[builtins.str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
     class GetExternalLocationExternalLocationInfoArgsDict(TypedDict):
         browse_only: NotRequired[builtins.bool]
         comment: NotRequired[builtins.str]
@@ -47593,7 +50190,7 @@ if not MYPY:
         enable_file_events: NotRequired[builtins.bool]
         encryption_details: NotRequired['GetExternalLocationExternalLocationInfoEncryptionDetailsArgsDict']
         """
-        The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
         """
         fallback: NotRequired[builtins.bool]
         file_event_queue: NotRequired['GetExternalLocationExternalLocationInfoFileEventQueueArgsDict']
@@ -47656,7 +50253,7 @@ class GetExternalLocationExternalLocationInfoArgs:
         :param builtins.str created_by: Username of catalog creator.
         :param builtins.str credential_id: Unique ID of storage credential.
         :param builtins.str credential_name: Name of the StorageCredential to use with this external location.
-        :param 'GetExternalLocationExternalLocationInfoEncryptionDetailsArgs' encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        :param 'GetExternalLocationExternalLocationInfoEncryptionDetailsArgs' encryption_details: A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
         :param builtins.str metastore_id: Unique identifier of the parent Metastore.
         :param builtins.str name: The name of the external location
         :param builtins.str owner: Username/groupname/sp application_id of the external location owner.
@@ -47784,7 +50381,7 @@ class GetExternalLocationExternalLocationInfoArgs:
     @pulumi.getter(name="encryptionDetails")
     def encryption_details(self) -> Optional['GetExternalLocationExternalLocationInfoEncryptionDetailsArgs']:
         """
-        The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
         """
         return pulumi.get(self, "encryption_details")
 
@@ -47907,6 +50504,9 @@ class GetExternalLocationExternalLocationInfoArgs:
 if not MYPY:
     class GetExternalLocationExternalLocationInfoEncryptionDetailsArgsDict(TypedDict):
         sse_encryption_details: NotRequired['GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgsDict']
+        """
+        a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+        """
 elif False:
     GetExternalLocationExternalLocationInfoEncryptionDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -47914,12 +50514,18 @@ elif False:
 class GetExternalLocationExternalLocationInfoEncryptionDetailsArgs:
     def __init__(__self__, *,
                  sse_encryption_details: Optional['GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs'] = None):
+        """
+        :param 'GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs' sse_encryption_details: a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+        """
         if sse_encryption_details is not None:
             pulumi.set(__self__, "sse_encryption_details", sse_encryption_details)
 
     @property
     @pulumi.getter(name="sseEncryptionDetails")
     def sse_encryption_details(self) -> Optional['GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs']:
+        """
+        a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+        """
         return pulumi.get(self, "sse_encryption_details")
 
     @sse_encryption_details.setter
@@ -47930,7 +50536,13 @@ class GetExternalLocationExternalLocationInfoEncryptionDetailsArgs:
 if not MYPY:
     class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgsDict(TypedDict):
         algorithm: NotRequired[builtins.str]
+        """
+        Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+        """
         aws_kms_key_arn: NotRequired[builtins.str]
+        """
+        ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`.
+        """
 elif False:
     GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -47939,6 +50551,10 @@ class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetai
     def __init__(__self__, *,
                  algorithm: Optional[builtins.str] = None,
                  aws_kms_key_arn: Optional[builtins.str] = None):
+        """
+        :param builtins.str algorithm: Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+        :param builtins.str aws_kms_key_arn: ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`.
+        """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
         if aws_kms_key_arn is not None:
@@ -47947,6 +50563,9 @@ class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetai
     @property
     @pulumi.getter
     def algorithm(self) -> Optional[builtins.str]:
+        """
+        Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+        """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
@@ -47956,6 +50575,9 @@ class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetai
     @property
     @pulumi.getter(name="awsKmsKeyArn")
     def aws_kms_key_arn(self) -> Optional[builtins.str]:
+        """
+        ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`.
+        """
         return pulumi.get(self, "aws_kms_key_arn")
 
     @aws_kms_key_arn.setter
@@ -49516,6 +52138,8 @@ class GetFunctionsFunctionRoutineDependencyArgs:
 
 if not MYPY:
     class GetFunctionsFunctionRoutineDependencyDependencyArgsDict(TypedDict):
+        connections: NotRequired[Sequence['GetFunctionsFunctionRoutineDependencyDependencyConnectionArgsDict']]
+        credentials: NotRequired[Sequence['GetFunctionsFunctionRoutineDependencyDependencyCredentialArgsDict']]
         functions: NotRequired[Sequence['GetFunctionsFunctionRoutineDependencyDependencyFunctionArgsDict']]
         tables: NotRequired[Sequence['GetFunctionsFunctionRoutineDependencyDependencyTableArgsDict']]
 elif False:
@@ -49524,12 +52148,36 @@ elif False:
 @pulumi.input_type
 class GetFunctionsFunctionRoutineDependencyDependencyArgs:
     def __init__(__self__, *,
+                 connections: Optional[Sequence['GetFunctionsFunctionRoutineDependencyDependencyConnectionArgs']] = None,
+                 credentials: Optional[Sequence['GetFunctionsFunctionRoutineDependencyDependencyCredentialArgs']] = None,
                  functions: Optional[Sequence['GetFunctionsFunctionRoutineDependencyDependencyFunctionArgs']] = None,
                  tables: Optional[Sequence['GetFunctionsFunctionRoutineDependencyDependencyTableArgs']] = None):
+        if connections is not None:
+            pulumi.set(__self__, "connections", connections)
+        if credentials is not None:
+            pulumi.set(__self__, "credentials", credentials)
         if functions is not None:
             pulumi.set(__self__, "functions", functions)
         if tables is not None:
             pulumi.set(__self__, "tables", tables)
+
+    @property
+    @pulumi.getter
+    def connections(self) -> Optional[Sequence['GetFunctionsFunctionRoutineDependencyDependencyConnectionArgs']]:
+        return pulumi.get(self, "connections")
+
+    @connections.setter
+    def connections(self, value: Optional[Sequence['GetFunctionsFunctionRoutineDependencyDependencyConnectionArgs']]):
+        pulumi.set(self, "connections", value)
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> Optional[Sequence['GetFunctionsFunctionRoutineDependencyDependencyCredentialArgs']]:
+        return pulumi.get(self, "credentials")
+
+    @credentials.setter
+    def credentials(self, value: Optional[Sequence['GetFunctionsFunctionRoutineDependencyDependencyCredentialArgs']]):
+        pulumi.set(self, "credentials", value)
 
     @property
     @pulumi.getter
@@ -49548,6 +52196,52 @@ class GetFunctionsFunctionRoutineDependencyDependencyArgs:
     @tables.setter
     def tables(self, value: Optional[Sequence['GetFunctionsFunctionRoutineDependencyDependencyTableArgs']]):
         pulumi.set(self, "tables", value)
+
+
+if not MYPY:
+    class GetFunctionsFunctionRoutineDependencyDependencyConnectionArgsDict(TypedDict):
+        connection_name: NotRequired[builtins.str]
+elif False:
+    GetFunctionsFunctionRoutineDependencyDependencyConnectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetFunctionsFunctionRoutineDependencyDependencyConnectionArgs:
+    def __init__(__self__, *,
+                 connection_name: Optional[builtins.str] = None):
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: Optional[builtins.str]):
+        pulumi.set(self, "connection_name", value)
+
+
+if not MYPY:
+    class GetFunctionsFunctionRoutineDependencyDependencyCredentialArgsDict(TypedDict):
+        credential_name: NotRequired[builtins.str]
+elif False:
+    GetFunctionsFunctionRoutineDependencyDependencyCredentialArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetFunctionsFunctionRoutineDependencyDependencyCredentialArgs:
+    def __init__(__self__, *,
+                 credential_name: Optional[builtins.str] = None):
+        if credential_name is not None:
+            pulumi.set(__self__, "credential_name", credential_name)
+
+    @property
+    @pulumi.getter(name="credentialName")
+    def credential_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "credential_name")
+
+    @credential_name.setter
+    def credential_name(self, value: Optional[builtins.str]):
+        pulumi.set(self, "credential_name", value)
 
 
 if not MYPY:
@@ -64996,6 +67690,8 @@ class GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs:
 
 if not MYPY:
     class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgsDict(TypedDict):
+        connections: NotRequired[Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgsDict']]
+        credentials: NotRequired[Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgsDict']]
         functions: NotRequired[Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgsDict']]
         """
         A function that is dependent on a SQL object:
@@ -65010,16 +67706,40 @@ elif False:
 @pulumi.input_type
 class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs:
     def __init__(__self__, *,
+                 connections: Optional[Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs']] = None,
+                 credentials: Optional[Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs']] = None,
                  functions: Optional[Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs']] = None,
                  tables: Optional[Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs']] = None):
         """
         :param Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs'] functions: A function that is dependent on a SQL object:
         :param Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs'] tables: A table that is dependent on a SQL object
         """
+        if connections is not None:
+            pulumi.set(__self__, "connections", connections)
+        if credentials is not None:
+            pulumi.set(__self__, "credentials", credentials)
         if functions is not None:
             pulumi.set(__self__, "functions", functions)
         if tables is not None:
             pulumi.set(__self__, "tables", tables)
+
+    @property
+    @pulumi.getter
+    def connections(self) -> Optional[Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs']]:
+        return pulumi.get(self, "connections")
+
+    @connections.setter
+    def connections(self, value: Optional[Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs']]):
+        pulumi.set(self, "connections", value)
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> Optional[Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs']]:
+        return pulumi.get(self, "credentials")
+
+    @credentials.setter
+    def credentials(self, value: Optional[Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs']]):
+        pulumi.set(self, "credentials", value)
 
     @property
     @pulumi.getter
@@ -65044,6 +67764,52 @@ class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs
     @tables.setter
     def tables(self, value: Optional[Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs']]):
         pulumi.set(self, "tables", value)
+
+
+if not MYPY:
+    class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgsDict(TypedDict):
+        connection_name: NotRequired[builtins.str]
+elif False:
+    GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs:
+    def __init__(__self__, *,
+                 connection_name: Optional[builtins.str] = None):
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: Optional[builtins.str]):
+        pulumi.set(self, "connection_name", value)
+
+
+if not MYPY:
+    class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgsDict(TypedDict):
+        credential_name: NotRequired[builtins.str]
+elif False:
+    GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs:
+    def __init__(__self__, *,
+                 credential_name: Optional[builtins.str] = None):
+        if credential_name is not None:
+            pulumi.set(__self__, "credential_name", credential_name)
+
+    @property
+    @pulumi.getter(name="credentialName")
+    def credential_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "credential_name")
+
+    @credential_name.setter
+    def credential_name(self, value: Optional[builtins.str]):
+        pulumi.set(self, "credential_name", value)
 
 
 if not MYPY:
@@ -66100,31 +68866,27 @@ class GetServingEndpointsEndpointAiGatewayInferenceTableConfigArgs:
 
 if not MYPY:
     class GetServingEndpointsEndpointAiGatewayRateLimitArgsDict(TypedDict):
-        calls: builtins.int
         renewal_period: builtins.str
+        calls: NotRequired[builtins.int]
         key: NotRequired[builtins.str]
+        principal: NotRequired[builtins.str]
 elif False:
     GetServingEndpointsEndpointAiGatewayRateLimitArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetServingEndpointsEndpointAiGatewayRateLimitArgs:
     def __init__(__self__, *,
-                 calls: builtins.int,
                  renewal_period: builtins.str,
-                 key: Optional[builtins.str] = None):
-        pulumi.set(__self__, "calls", calls)
+                 calls: Optional[builtins.int] = None,
+                 key: Optional[builtins.str] = None,
+                 principal: Optional[builtins.str] = None):
         pulumi.set(__self__, "renewal_period", renewal_period)
+        if calls is not None:
+            pulumi.set(__self__, "calls", calls)
         if key is not None:
             pulumi.set(__self__, "key", key)
-
-    @property
-    @pulumi.getter
-    def calls(self) -> builtins.int:
-        return pulumi.get(self, "calls")
-
-    @calls.setter
-    def calls(self, value: builtins.int):
-        pulumi.set(self, "calls", value)
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
 
     @property
     @pulumi.getter(name="renewalPeriod")
@@ -66137,12 +68899,30 @@ class GetServingEndpointsEndpointAiGatewayRateLimitArgs:
 
     @property
     @pulumi.getter
+    def calls(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "calls")
+
+    @calls.setter
+    def calls(self, value: Optional[builtins.int]):
+        pulumi.set(self, "calls", value)
+
+    @property
+    @pulumi.getter
     def key(self) -> Optional[builtins.str]:
         return pulumi.get(self, "key")
 
     @key.setter
     def key(self, value: Optional[builtins.str]):
         pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def principal(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: Optional[builtins.str]):
+        pulumi.set(self, "principal", value)
 
 
 if not MYPY:
@@ -68558,6 +71338,7 @@ if not MYPY:
         """
         Name of parent schema relative to its parent catalog.
         """
+        securable_kind_manifest: NotRequired['GetTableTableInfoSecurableKindManifestArgsDict']
         sql_path: NotRequired[builtins.str]
         storage_credential_name: NotRequired[builtins.str]
         storage_location: NotRequired[builtins.str]
@@ -68605,6 +71386,7 @@ class GetTableTableInfoArgs:
                  properties: Optional[Mapping[str, builtins.str]] = None,
                  row_filter: Optional['GetTableTableInfoRowFilterArgs'] = None,
                  schema_name: Optional[builtins.str] = None,
+                 securable_kind_manifest: Optional['GetTableTableInfoSecurableKindManifestArgs'] = None,
                  sql_path: Optional[builtins.str] = None,
                  storage_credential_name: Optional[builtins.str] = None,
                  storage_location: Optional[builtins.str] = None,
@@ -68671,6 +71453,8 @@ class GetTableTableInfoArgs:
             pulumi.set(__self__, "row_filter", row_filter)
         if schema_name is not None:
             pulumi.set(__self__, "schema_name", schema_name)
+        if securable_kind_manifest is not None:
+            pulumi.set(__self__, "securable_kind_manifest", securable_kind_manifest)
         if sql_path is not None:
             pulumi.set(__self__, "sql_path", sql_path)
         if storage_credential_name is not None:
@@ -68910,6 +71694,15 @@ class GetTableTableInfoArgs:
     @schema_name.setter
     def schema_name(self, value: Optional[builtins.str]):
         pulumi.set(self, "schema_name", value)
+
+    @property
+    @pulumi.getter(name="securableKindManifest")
+    def securable_kind_manifest(self) -> Optional['GetTableTableInfoSecurableKindManifestArgs']:
+        return pulumi.get(self, "securable_kind_manifest")
+
+    @securable_kind_manifest.setter
+    def securable_kind_manifest(self, value: Optional['GetTableTableInfoSecurableKindManifestArgs']):
+        pulumi.set(self, "securable_kind_manifest", value)
 
     @property
     @pulumi.getter(name="sqlPath")
@@ -69393,6 +72186,282 @@ class GetTableTableInfoRowFilterArgs:
 
 
 if not MYPY:
+    class GetTableTableInfoSecurableKindManifestArgsDict(TypedDict):
+        assignable_privileges: NotRequired[Sequence[builtins.str]]
+        capabilities: NotRequired[Sequence[builtins.str]]
+        options: NotRequired[Sequence['GetTableTableInfoSecurableKindManifestOptionArgsDict']]
+        securable_kind: NotRequired[builtins.str]
+        securable_type: NotRequired[builtins.str]
+elif False:
+    GetTableTableInfoSecurableKindManifestArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetTableTableInfoSecurableKindManifestArgs:
+    def __init__(__self__, *,
+                 assignable_privileges: Optional[Sequence[builtins.str]] = None,
+                 capabilities: Optional[Sequence[builtins.str]] = None,
+                 options: Optional[Sequence['GetTableTableInfoSecurableKindManifestOptionArgs']] = None,
+                 securable_kind: Optional[builtins.str] = None,
+                 securable_type: Optional[builtins.str] = None):
+        if assignable_privileges is not None:
+            pulumi.set(__self__, "assignable_privileges", assignable_privileges)
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if securable_kind is not None:
+            pulumi.set(__self__, "securable_kind", securable_kind)
+        if securable_type is not None:
+            pulumi.set(__self__, "securable_type", securable_type)
+
+    @property
+    @pulumi.getter(name="assignablePrivileges")
+    def assignable_privileges(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "assignable_privileges")
+
+    @assignable_privileges.setter
+    def assignable_privileges(self, value: Optional[Sequence[builtins.str]]):
+        pulumi.set(self, "assignable_privileges", value)
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "capabilities")
+
+    @capabilities.setter
+    def capabilities(self, value: Optional[Sequence[builtins.str]]):
+        pulumi.set(self, "capabilities", value)
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[Sequence['GetTableTableInfoSecurableKindManifestOptionArgs']]:
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[Sequence['GetTableTableInfoSecurableKindManifestOptionArgs']]):
+        pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter(name="securableKind")
+    def securable_kind(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "securable_kind")
+
+    @securable_kind.setter
+    def securable_kind(self, value: Optional[builtins.str]):
+        pulumi.set(self, "securable_kind", value)
+
+    @property
+    @pulumi.getter(name="securableType")
+    def securable_type(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "securable_type")
+
+    @securable_type.setter
+    def securable_type(self, value: Optional[builtins.str]):
+        pulumi.set(self, "securable_type", value)
+
+
+if not MYPY:
+    class GetTableTableInfoSecurableKindManifestOptionArgsDict(TypedDict):
+        allowed_values: NotRequired[Sequence[builtins.str]]
+        default_value: NotRequired[builtins.str]
+        description: NotRequired[builtins.str]
+        hint: NotRequired[builtins.str]
+        is_copiable: NotRequired[builtins.bool]
+        is_creatable: NotRequired[builtins.bool]
+        is_hidden: NotRequired[builtins.bool]
+        is_loggable: NotRequired[builtins.bool]
+        is_required: NotRequired[builtins.bool]
+        is_secret: NotRequired[builtins.bool]
+        is_updatable: NotRequired[builtins.bool]
+        name: NotRequired[builtins.str]
+        """
+        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        oauth_stage: NotRequired[builtins.str]
+        type: NotRequired[builtins.str]
+elif False:
+    GetTableTableInfoSecurableKindManifestOptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetTableTableInfoSecurableKindManifestOptionArgs:
+    def __init__(__self__, *,
+                 allowed_values: Optional[Sequence[builtins.str]] = None,
+                 default_value: Optional[builtins.str] = None,
+                 description: Optional[builtins.str] = None,
+                 hint: Optional[builtins.str] = None,
+                 is_copiable: Optional[builtins.bool] = None,
+                 is_creatable: Optional[builtins.bool] = None,
+                 is_hidden: Optional[builtins.bool] = None,
+                 is_loggable: Optional[builtins.bool] = None,
+                 is_required: Optional[builtins.bool] = None,
+                 is_secret: Optional[builtins.bool] = None,
+                 is_updatable: Optional[builtins.bool] = None,
+                 name: Optional[builtins.str] = None,
+                 oauth_stage: Optional[builtins.str] = None,
+                 type: Optional[builtins.str] = None):
+        """
+        :param builtins.str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        if allowed_values is not None:
+            pulumi.set(__self__, "allowed_values", allowed_values)
+        if default_value is not None:
+            pulumi.set(__self__, "default_value", default_value)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if hint is not None:
+            pulumi.set(__self__, "hint", hint)
+        if is_copiable is not None:
+            pulumi.set(__self__, "is_copiable", is_copiable)
+        if is_creatable is not None:
+            pulumi.set(__self__, "is_creatable", is_creatable)
+        if is_hidden is not None:
+            pulumi.set(__self__, "is_hidden", is_hidden)
+        if is_loggable is not None:
+            pulumi.set(__self__, "is_loggable", is_loggable)
+        if is_required is not None:
+            pulumi.set(__self__, "is_required", is_required)
+        if is_secret is not None:
+            pulumi.set(__self__, "is_secret", is_secret)
+        if is_updatable is not None:
+            pulumi.set(__self__, "is_updatable", is_updatable)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if oauth_stage is not None:
+            pulumi.set(__self__, "oauth_stage", oauth_stage)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "allowed_values")
+
+    @allowed_values.setter
+    def allowed_values(self, value: Optional[Sequence[builtins.str]]):
+        pulumi.set(self, "allowed_values", value)
+
+    @property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "default_value")
+
+    @default_value.setter
+    def default_value(self, value: Optional[builtins.str]):
+        pulumi.set(self, "default_value", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[builtins.str]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def hint(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "hint")
+
+    @hint.setter
+    def hint(self, value: Optional[builtins.str]):
+        pulumi.set(self, "hint", value)
+
+    @property
+    @pulumi.getter(name="isCopiable")
+    def is_copiable(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "is_copiable")
+
+    @is_copiable.setter
+    def is_copiable(self, value: Optional[builtins.bool]):
+        pulumi.set(self, "is_copiable", value)
+
+    @property
+    @pulumi.getter(name="isCreatable")
+    def is_creatable(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "is_creatable")
+
+    @is_creatable.setter
+    def is_creatable(self, value: Optional[builtins.bool]):
+        pulumi.set(self, "is_creatable", value)
+
+    @property
+    @pulumi.getter(name="isHidden")
+    def is_hidden(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "is_hidden")
+
+    @is_hidden.setter
+    def is_hidden(self, value: Optional[builtins.bool]):
+        pulumi.set(self, "is_hidden", value)
+
+    @property
+    @pulumi.getter(name="isLoggable")
+    def is_loggable(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "is_loggable")
+
+    @is_loggable.setter
+    def is_loggable(self, value: Optional[builtins.bool]):
+        pulumi.set(self, "is_loggable", value)
+
+    @property
+    @pulumi.getter(name="isRequired")
+    def is_required(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "is_required")
+
+    @is_required.setter
+    def is_required(self, value: Optional[builtins.bool]):
+        pulumi.set(self, "is_required", value)
+
+    @property
+    @pulumi.getter(name="isSecret")
+    def is_secret(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "is_secret")
+
+    @is_secret.setter
+    def is_secret(self, value: Optional[builtins.bool]):
+        pulumi.set(self, "is_secret", value)
+
+    @property
+    @pulumi.getter(name="isUpdatable")
+    def is_updatable(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "is_updatable")
+
+    @is_updatable.setter
+    def is_updatable(self, value: Optional[builtins.bool]):
+        pulumi.set(self, "is_updatable", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="oauthStage")
+    def oauth_stage(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "oauth_stage")
+
+    @oauth_stage.setter
+    def oauth_stage(self, value: Optional[builtins.str]):
+        pulumi.set(self, "oauth_stage", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[builtins.str]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
     class GetTableTableInfoTableConstraintArgsDict(TypedDict):
         foreign_key_constraint: NotRequired['GetTableTableInfoTableConstraintForeignKeyConstraintArgsDict']
         named_table_constraint: NotRequired['GetTableTableInfoTableConstraintNamedTableConstraintArgsDict']
@@ -69450,6 +72519,7 @@ if not MYPY:
         """
         parent_columns: Sequence[builtins.str]
         parent_table: builtins.str
+        rely: NotRequired[builtins.bool]
 elif False:
     GetTableTableInfoTableConstraintForeignKeyConstraintArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -69459,7 +72529,8 @@ class GetTableTableInfoTableConstraintForeignKeyConstraintArgs:
                  child_columns: Sequence[builtins.str],
                  name: builtins.str,
                  parent_columns: Sequence[builtins.str],
-                 parent_table: builtins.str):
+                 parent_table: builtins.str,
+                 rely: Optional[builtins.bool] = None):
         """
         :param builtins.str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
         """
@@ -69467,6 +72538,8 @@ class GetTableTableInfoTableConstraintForeignKeyConstraintArgs:
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "parent_columns", parent_columns)
         pulumi.set(__self__, "parent_table", parent_table)
+        if rely is not None:
+            pulumi.set(__self__, "rely", rely)
 
     @property
     @pulumi.getter(name="childColumns")
@@ -69507,6 +72580,15 @@ class GetTableTableInfoTableConstraintForeignKeyConstraintArgs:
     def parent_table(self, value: builtins.str):
         pulumi.set(self, "parent_table", value)
 
+    @property
+    @pulumi.getter
+    def rely(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "rely")
+
+    @rely.setter
+    def rely(self, value: Optional[builtins.bool]):
+        pulumi.set(self, "rely", value)
+
 
 if not MYPY:
     class GetTableTableInfoTableConstraintNamedTableConstraintArgsDict(TypedDict):
@@ -69546,6 +72628,7 @@ if not MYPY:
         """
         Full name of the databricks_table: _`catalog`.`schema`.`table`_
         """
+        rely: NotRequired[builtins.bool]
         timeseries_columns: NotRequired[Sequence[builtins.str]]
 elif False:
     GetTableTableInfoTableConstraintPrimaryKeyConstraintArgsDict: TypeAlias = Mapping[str, Any]
@@ -69555,12 +72638,15 @@ class GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs:
     def __init__(__self__, *,
                  child_columns: Sequence[builtins.str],
                  name: builtins.str,
+                 rely: Optional[builtins.bool] = None,
                  timeseries_columns: Optional[Sequence[builtins.str]] = None):
         """
         :param builtins.str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
         """
         pulumi.set(__self__, "child_columns", child_columns)
         pulumi.set(__self__, "name", name)
+        if rely is not None:
+            pulumi.set(__self__, "rely", rely)
         if timeseries_columns is not None:
             pulumi.set(__self__, "timeseries_columns", timeseries_columns)
 
@@ -69584,6 +72670,15 @@ class GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs:
     @name.setter
     def name(self, value: builtins.str):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def rely(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "rely")
+
+    @rely.setter
+    def rely(self, value: Optional[builtins.bool]):
+        pulumi.set(self, "rely", value)
 
     @property
     @pulumi.getter(name="timeseriesColumns")
@@ -69620,6 +72715,8 @@ class GetTableTableInfoViewDependenciesArgs:
 
 if not MYPY:
     class GetTableTableInfoViewDependenciesDependencyArgsDict(TypedDict):
+        connection: NotRequired['GetTableTableInfoViewDependenciesDependencyConnectionArgsDict']
+        credential: NotRequired['GetTableTableInfoViewDependenciesDependencyCredentialArgsDict']
         function: NotRequired['GetTableTableInfoViewDependenciesDependencyFunctionArgsDict']
         table: NotRequired['GetTableTableInfoViewDependenciesDependencyTableArgsDict']
 elif False:
@@ -69628,12 +72725,36 @@ elif False:
 @pulumi.input_type
 class GetTableTableInfoViewDependenciesDependencyArgs:
     def __init__(__self__, *,
+                 connection: Optional['GetTableTableInfoViewDependenciesDependencyConnectionArgs'] = None,
+                 credential: Optional['GetTableTableInfoViewDependenciesDependencyCredentialArgs'] = None,
                  function: Optional['GetTableTableInfoViewDependenciesDependencyFunctionArgs'] = None,
                  table: Optional['GetTableTableInfoViewDependenciesDependencyTableArgs'] = None):
+        if connection is not None:
+            pulumi.set(__self__, "connection", connection)
+        if credential is not None:
+            pulumi.set(__self__, "credential", credential)
         if function is not None:
             pulumi.set(__self__, "function", function)
         if table is not None:
             pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter
+    def connection(self) -> Optional['GetTableTableInfoViewDependenciesDependencyConnectionArgs']:
+        return pulumi.get(self, "connection")
+
+    @connection.setter
+    def connection(self, value: Optional['GetTableTableInfoViewDependenciesDependencyConnectionArgs']):
+        pulumi.set(self, "connection", value)
+
+    @property
+    @pulumi.getter
+    def credential(self) -> Optional['GetTableTableInfoViewDependenciesDependencyCredentialArgs']:
+        return pulumi.get(self, "credential")
+
+    @credential.setter
+    def credential(self, value: Optional['GetTableTableInfoViewDependenciesDependencyCredentialArgs']):
+        pulumi.set(self, "credential", value)
 
     @property
     @pulumi.getter
@@ -69652,6 +72773,52 @@ class GetTableTableInfoViewDependenciesDependencyArgs:
     @table.setter
     def table(self, value: Optional['GetTableTableInfoViewDependenciesDependencyTableArgs']):
         pulumi.set(self, "table", value)
+
+
+if not MYPY:
+    class GetTableTableInfoViewDependenciesDependencyConnectionArgsDict(TypedDict):
+        connection_name: NotRequired[builtins.str]
+elif False:
+    GetTableTableInfoViewDependenciesDependencyConnectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetTableTableInfoViewDependenciesDependencyConnectionArgs:
+    def __init__(__self__, *,
+                 connection_name: Optional[builtins.str] = None):
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: Optional[builtins.str]):
+        pulumi.set(self, "connection_name", value)
+
+
+if not MYPY:
+    class GetTableTableInfoViewDependenciesDependencyCredentialArgsDict(TypedDict):
+        credential_name: NotRequired[builtins.str]
+elif False:
+    GetTableTableInfoViewDependenciesDependencyCredentialArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetTableTableInfoViewDependenciesDependencyCredentialArgs:
+    def __init__(__self__, *,
+                 credential_name: Optional[builtins.str] = None):
+        if credential_name is not None:
+            pulumi.set(__self__, "credential_name", credential_name)
+
+    @property
+    @pulumi.getter(name="credentialName")
+    def credential_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "credential_name")
+
+    @credential_name.setter
+    def credential_name(self, value: Optional[builtins.str]):
+        pulumi.set(self, "credential_name", value)
 
 
 if not MYPY:

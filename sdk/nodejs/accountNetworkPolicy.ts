@@ -7,6 +7,18 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Network policies control which network destinations can be accessed from the Databricks environment.
+ *
+ * Each Databricks account includes a default policy named `default-policy`. This policy is:
+ *
+ * - Associated with any workspace lacking an explicit network policy assignment
+ * - Automatically associated with each newly created workspace
+ * - Reserved and cannot be deleted, but can be updated to customize the default network access rules for your account
+ *
+ * The `default-policy` provides a baseline security configuration that ensures all workspaces have network access controls in place.
+ *
+ * > **Note** This resource can only be used with an account-level provider!
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.

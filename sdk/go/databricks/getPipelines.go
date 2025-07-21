@@ -11,13 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieves a list of all Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+// Retrieves a list of all Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
 //
 // > This data source can only be used with a workspace-level provider!
 //
 // ## Example Usage
 //
-// Get all Delta Live Tables pipelines:
+// Get all Lakeflow Declarative Pipelines:
 //
 // ```go
 // package main
@@ -42,7 +42,7 @@ import (
 //
 // ```
 //
-// Filter Delta Live Tables pipelines by name (exact match):
+// Filter Lakeflow Declarative Pipelines by name (exact match):
 //
 // ```go
 // package main
@@ -69,7 +69,7 @@ import (
 //
 // ```
 //
-// Filter Delta Live Tables pipelines by name (wildcard search):
+// Filter Lakeflow Declarative Pipelines by name (wildcard search):
 //
 // ```go
 // package main
@@ -101,7 +101,7 @@ import (
 // The following resources are used in the same context:
 //
 // * End to end workspace management guide.
-// * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+// * Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
 // * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
 // * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 // * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -117,9 +117,9 @@ func GetPipelines(ctx *pulumi.Context, args *GetPipelinesArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getPipelines.
 type GetPipelinesArgs struct {
-	// List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+	// List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
 	Ids []string `pulumi:"ids"`
-	// Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+	// Filter Lakeflow Declarative Pipelines by name for a given search term. `%` is the supported wildcard operator.
 	PipelineName *string `pulumi:"pipelineName"`
 }
 
@@ -127,7 +127,7 @@ type GetPipelinesArgs struct {
 type GetPipelinesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+	// List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
 	Ids          []string `pulumi:"ids"`
 	PipelineName *string  `pulumi:"pipelineName"`
 }
@@ -143,9 +143,9 @@ func GetPipelinesOutput(ctx *pulumi.Context, args GetPipelinesOutputArgs, opts .
 
 // A collection of arguments for invoking getPipelines.
 type GetPipelinesOutputArgs struct {
-	// List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+	// List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+	// Filter Lakeflow Declarative Pipelines by name for a given search term. `%` is the supported wildcard operator.
 	PipelineName pulumi.StringPtrInput `pulumi:"pipelineName"`
 }
 
@@ -173,7 +173,7 @@ func (o GetPipelinesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelinesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+// List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
 func (o GetPipelinesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPipelinesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

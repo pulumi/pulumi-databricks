@@ -13,6 +13,12 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AppResourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// attribute
+        /// </summary>
+        [Input("database")]
+        public Input<Inputs.AppResourceDatabaseGetArgs>? Database { get; set; }
+
+        /// <summary>
         /// The description of the resource.
         /// 
         /// Exactly one of the following attributes must be provided:

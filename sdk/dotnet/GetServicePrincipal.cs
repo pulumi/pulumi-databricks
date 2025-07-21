@@ -208,7 +208,7 @@ namespace Pulumi.Databricks
         public string? Home { get; set; }
 
         /// <summary>
-        /// The id of the service principal.
+        /// The id of the service principal (SCIM ID).
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
@@ -219,8 +219,11 @@ namespace Pulumi.Databricks
         [Input("repos")]
         public string? Repos { get; set; }
 
-        [Input("spId")]
-        public string? SpId { get; set; }
+        /// <summary>
+        /// Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+        /// </summary>
+        [Input("scimId")]
+        public string? ScimId { get; set; }
 
         public GetServicePrincipalArgs()
         {
@@ -267,7 +270,7 @@ namespace Pulumi.Databricks
         public Input<string>? Home { get; set; }
 
         /// <summary>
-        /// The id of the service principal.
+        /// The id of the service principal (SCIM ID).
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -278,8 +281,11 @@ namespace Pulumi.Databricks
         [Input("repos")]
         public Input<string>? Repos { get; set; }
 
-        [Input("spId")]
-        public Input<string>? SpId { get; set; }
+        /// <summary>
+        /// Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+        /// </summary>
+        [Input("scimId")]
+        public Input<string>? ScimId { get; set; }
 
         public GetServicePrincipalInvokeArgs()
         {
@@ -313,14 +319,17 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Home;
         /// <summary>
-        /// The id of the service principal.
+        /// The id of the service principal (SCIM ID).
         /// </summary>
         public readonly string Id;
         /// <summary>
         /// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
         /// </summary>
         public readonly string Repos;
-        public readonly string SpId;
+        /// <summary>
+        /// same as `id`.
+        /// </summary>
+        public readonly string ScimId;
 
         [OutputConstructor]
         private GetServicePrincipalResult(
@@ -340,7 +349,7 @@ namespace Pulumi.Databricks
 
             string repos,
 
-            string spId)
+            string scimId)
         {
             AclPrincipalId = aclPrincipalId;
             Active = active;
@@ -350,7 +359,7 @@ namespace Pulumi.Databricks
             Home = home;
             Id = id;
             Repos = repos;
-            SpId = spId;
+            ScimId = scimId;
         }
     }
 }

@@ -4,6 +4,24 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * This data source can be used to get a single workspace network option.
+ *
+ * > **Note** This data source can only be used with an account-level provider!
+ *
+ * ## Example Usage
+ *
+ * Referring to a network policy by id:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getWorkspaceNetworkOption({
+ *     workspaceId: "9999999999999999",
+ * });
+ * ```
+ */
 export function getWorkspaceNetworkOption(args?: GetWorkspaceNetworkOptionArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceNetworkOptionResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -50,6 +68,24 @@ export interface GetWorkspaceNetworkOptionResult {
      */
     readonly workspaceId?: string;
 }
+/**
+ * This data source can be used to get a single workspace network option.
+ *
+ * > **Note** This data source can only be used with an account-level provider!
+ *
+ * ## Example Usage
+ *
+ * Referring to a network policy by id:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getWorkspaceNetworkOption({
+ *     workspaceId: "9999999999999999",
+ * });
+ * ```
+ */
 export function getWorkspaceNetworkOptionOutput(args?: GetWorkspaceNetworkOptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkspaceNetworkOptionResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

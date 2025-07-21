@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetAppAppResourceDatabase;
 import com.pulumi.databricks.outputs.GetAppAppResourceJob;
 import com.pulumi.databricks.outputs.GetAppAppResourceSecret;
 import com.pulumi.databricks.outputs.GetAppAppResourceServingEndpoint;
@@ -17,6 +18,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppAppResource {
+    /**
+     * @return attribute
+     * 
+     */
+    private @Nullable GetAppAppResourceDatabase database;
     /**
      * @return The description of the resource.
      * 
@@ -54,6 +60,13 @@ public final class GetAppAppResource {
     private @Nullable GetAppAppResourceUcSecurable ucSecurable;
 
     private GetAppAppResource() {}
+    /**
+     * @return attribute
+     * 
+     */
+    public Optional<GetAppAppResourceDatabase> database() {
+        return Optional.ofNullable(this.database);
+    }
     /**
      * @return The description of the resource.
      * 
@@ -113,6 +126,7 @@ public final class GetAppAppResource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetAppAppResourceDatabase database;
         private @Nullable String description;
         private @Nullable GetAppAppResourceJob job;
         private String name;
@@ -123,6 +137,7 @@ public final class GetAppAppResource {
         public Builder() {}
         public Builder(GetAppAppResource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.database = defaults.database;
     	      this.description = defaults.description;
     	      this.job = defaults.job;
     	      this.name = defaults.name;
@@ -132,6 +147,12 @@ public final class GetAppAppResource {
     	      this.ucSecurable = defaults.ucSecurable;
         }
 
+        @CustomType.Setter
+        public Builder database(@Nullable GetAppAppResourceDatabase database) {
+
+            this.database = database;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
 
@@ -178,6 +199,7 @@ public final class GetAppAppResource {
         }
         public GetAppAppResource build() {
             final var _resultValue = new GetAppAppResource();
+            _resultValue.database = database;
             _resultValue.description = description;
             _resultValue.job = job;
             _resultValue.name = name;

@@ -27,14 +27,20 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         /// </summary>
-        [Input("capacity")]
-        public string? Capacity { get; set; }
+        [Input("capacity", required: true)]
+        public string Capacity { get; set; } = null!;
 
         /// <summary>
         /// The name of the online store. This is the unique identifier for the online store
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
+
+        /// <summary>
+        /// (integer) - The number of read replicas for the online store. Defaults to 0
+        /// </summary>
+        [Input("readReplicaCount")]
+        public int? ReadReplicaCount { get; set; }
 
         public GetOnlineStoreArgs()
         {
@@ -47,14 +53,20 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         /// </summary>
-        [Input("capacity")]
-        public Input<string>? Capacity { get; set; }
+        [Input("capacity", required: true)]
+        public Input<string> Capacity { get; set; } = null!;
 
         /// <summary>
         /// The name of the online store. This is the unique identifier for the online store
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// (integer) - The number of read replicas for the online store. Defaults to 0
+        /// </summary>
+        [Input("readReplicaCount")]
+        public Input<int>? ReadReplicaCount { get; set; }
 
         public GetOnlineStoreInvokeArgs()
         {
@@ -69,7 +81,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         /// </summary>
-        public readonly string? Capacity;
+        public readonly string Capacity;
         /// <summary>
         /// (string) - The timestamp when the online store was created
         /// </summary>
@@ -87,13 +99,17 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// (integer) - The number of read replicas for the online store. Defaults to 0
+        /// </summary>
+        public readonly int? ReadReplicaCount;
+        /// <summary>
         /// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         /// </summary>
         public readonly string State;
 
         [OutputConstructor]
         private GetOnlineStoreResult(
-            string? capacity,
+            string capacity,
 
             string creationTime,
 
@@ -103,6 +119,8 @@ namespace Pulumi.Databricks
 
             string name,
 
+            int? readReplicaCount,
+
             string state)
         {
             Capacity = capacity;
@@ -110,6 +128,7 @@ namespace Pulumi.Databricks
             Creator = creator;
             Id = id;
             Name = name;
+            ReadReplicaCount = readReplicaCount;
             State = state;
         }
     }

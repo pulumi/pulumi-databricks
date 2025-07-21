@@ -13,6 +13,8 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyResult
     {
+        public readonly ImmutableArray<Outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionResult> Connections;
+        public readonly ImmutableArray<Outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialResult> Credentials;
         /// <summary>
         /// A function that is dependent on a SQL object:
         /// </summary>
@@ -24,10 +26,16 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyResult(
+            ImmutableArray<Outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionResult> connections,
+
+            ImmutableArray<Outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialResult> credentials,
+
             ImmutableArray<Outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionResult> functions,
 
             ImmutableArray<Outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableResult> tables)
         {
+            Connections = connections;
+            Credentials = credentials;
             Functions = functions;
             Tables = tables;
         }

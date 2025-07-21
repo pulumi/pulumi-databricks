@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetExternalLocationExternalLocationInfoEncryptionDetailsInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+        /// </summary>
         [Input("sseEncryptionDetails")]
         public Input<Inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsInputArgs>? SseEncryptionDetails { get; set; }
 

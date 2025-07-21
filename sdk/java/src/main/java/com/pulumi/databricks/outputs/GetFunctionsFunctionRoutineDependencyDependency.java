@@ -4,6 +4,8 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetFunctionsFunctionRoutineDependencyDependencyConnection;
+import com.pulumi.databricks.outputs.GetFunctionsFunctionRoutineDependencyDependencyCredential;
 import com.pulumi.databricks.outputs.GetFunctionsFunctionRoutineDependencyDependencyFunction;
 import com.pulumi.databricks.outputs.GetFunctionsFunctionRoutineDependencyDependencyTable;
 import java.util.List;
@@ -12,10 +14,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFunctionsFunctionRoutineDependencyDependency {
+    private @Nullable List<GetFunctionsFunctionRoutineDependencyDependencyConnection> connections;
+    private @Nullable List<GetFunctionsFunctionRoutineDependencyDependencyCredential> credentials;
     private @Nullable List<GetFunctionsFunctionRoutineDependencyDependencyFunction> functions;
     private @Nullable List<GetFunctionsFunctionRoutineDependencyDependencyTable> tables;
 
     private GetFunctionsFunctionRoutineDependencyDependency() {}
+    public List<GetFunctionsFunctionRoutineDependencyDependencyConnection> connections() {
+        return this.connections == null ? List.of() : this.connections;
+    }
+    public List<GetFunctionsFunctionRoutineDependencyDependencyCredential> credentials() {
+        return this.credentials == null ? List.of() : this.credentials;
+    }
     public List<GetFunctionsFunctionRoutineDependencyDependencyFunction> functions() {
         return this.functions == null ? List.of() : this.functions;
     }
@@ -32,15 +42,37 @@ public final class GetFunctionsFunctionRoutineDependencyDependency {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<GetFunctionsFunctionRoutineDependencyDependencyConnection> connections;
+        private @Nullable List<GetFunctionsFunctionRoutineDependencyDependencyCredential> credentials;
         private @Nullable List<GetFunctionsFunctionRoutineDependencyDependencyFunction> functions;
         private @Nullable List<GetFunctionsFunctionRoutineDependencyDependencyTable> tables;
         public Builder() {}
         public Builder(GetFunctionsFunctionRoutineDependencyDependency defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.connections = defaults.connections;
+    	      this.credentials = defaults.credentials;
     	      this.functions = defaults.functions;
     	      this.tables = defaults.tables;
         }
 
+        @CustomType.Setter
+        public Builder connections(@Nullable List<GetFunctionsFunctionRoutineDependencyDependencyConnection> connections) {
+
+            this.connections = connections;
+            return this;
+        }
+        public Builder connections(GetFunctionsFunctionRoutineDependencyDependencyConnection... connections) {
+            return connections(List.of(connections));
+        }
+        @CustomType.Setter
+        public Builder credentials(@Nullable List<GetFunctionsFunctionRoutineDependencyDependencyCredential> credentials) {
+
+            this.credentials = credentials;
+            return this;
+        }
+        public Builder credentials(GetFunctionsFunctionRoutineDependencyDependencyCredential... credentials) {
+            return credentials(List.of(credentials));
+        }
         @CustomType.Setter
         public Builder functions(@Nullable List<GetFunctionsFunctionRoutineDependencyDependencyFunction> functions) {
 
@@ -61,6 +93,8 @@ public final class GetFunctionsFunctionRoutineDependencyDependency {
         }
         public GetFunctionsFunctionRoutineDependencyDependency build() {
             final var _resultValue = new GetFunctionsFunctionRoutineDependencyDependency();
+            _resultValue.connections = connections;
+            _resultValue.credentials = credentials;
             _resultValue.functions = functions;
             _resultValue.tables = tables;
             return _resultValue;

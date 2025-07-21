@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.OnlineStoreArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.OnlineStoreState;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -43,14 +44,14 @@ public class OnlineStore extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="capacity", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> capacity;
+    private Output<String> capacity;
 
     /**
      * @return The capacity of the online store. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
      * 
      */
-    public Output<Optional<String>> capacity() {
-        return Codegen.optional(this.capacity);
+    public Output<String> capacity() {
+        return this.capacity;
     }
     /**
      * (string) - The timestamp when the online store was created
@@ -95,6 +96,20 @@ public class OnlineStore extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * The number of read replicas for the online store. Defaults to 0
+     * 
+     */
+    @Export(name="readReplicaCount", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> readReplicaCount;
+
+    /**
+     * @return The number of read replicas for the online store. Defaults to 0
+     * 
+     */
+    public Output<Optional<Integer>> readReplicaCount() {
+        return Codegen.optional(this.readReplicaCount);
+    }
+    /**
      * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      * 
      */
@@ -121,7 +136,7 @@ public class OnlineStore extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OnlineStore(java.lang.String name, @Nullable OnlineStoreArgs args) {
+    public OnlineStore(java.lang.String name, OnlineStoreArgs args) {
         this(name, args, null);
     }
     /**
@@ -130,7 +145,7 @@ public class OnlineStore extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OnlineStore(java.lang.String name, @Nullable OnlineStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public OnlineStore(java.lang.String name, OnlineStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("databricks:index/onlineStore:OnlineStore", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -138,7 +153,7 @@ public class OnlineStore extends com.pulumi.resources.CustomResource {
         super("databricks:index/onlineStore:OnlineStore", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static OnlineStoreArgs makeArgs(@Nullable OnlineStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static OnlineStoreArgs makeArgs(OnlineStoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

@@ -5,9 +5,11 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -18,6 +20,7 @@ public final class GetTableTableInfoTableConstraintPrimaryKeyConstraint {
      * 
      */
     private String name;
+    private @Nullable Boolean rely;
     private @Nullable List<String> timeseriesColumns;
 
     private GetTableTableInfoTableConstraintPrimaryKeyConstraint() {}
@@ -30,6 +33,9 @@ public final class GetTableTableInfoTableConstraintPrimaryKeyConstraint {
      */
     public String name() {
         return this.name;
+    }
+    public Optional<Boolean> rely() {
+        return Optional.ofNullable(this.rely);
     }
     public List<String> timeseriesColumns() {
         return this.timeseriesColumns == null ? List.of() : this.timeseriesColumns;
@@ -46,12 +52,14 @@ public final class GetTableTableInfoTableConstraintPrimaryKeyConstraint {
     public static final class Builder {
         private List<String> childColumns;
         private String name;
+        private @Nullable Boolean rely;
         private @Nullable List<String> timeseriesColumns;
         public Builder() {}
         public Builder(GetTableTableInfoTableConstraintPrimaryKeyConstraint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.childColumns = defaults.childColumns;
     	      this.name = defaults.name;
+    	      this.rely = defaults.rely;
     	      this.timeseriesColumns = defaults.timeseriesColumns;
         }
 
@@ -75,6 +83,12 @@ public final class GetTableTableInfoTableConstraintPrimaryKeyConstraint {
             return this;
         }
         @CustomType.Setter
+        public Builder rely(@Nullable Boolean rely) {
+
+            this.rely = rely;
+            return this;
+        }
+        @CustomType.Setter
         public Builder timeseriesColumns(@Nullable List<String> timeseriesColumns) {
 
             this.timeseriesColumns = timeseriesColumns;
@@ -87,6 +101,7 @@ public final class GetTableTableInfoTableConstraintPrimaryKeyConstraint {
             final var _resultValue = new GetTableTableInfoTableConstraintPrimaryKeyConstraint();
             _resultValue.childColumns = childColumns;
             _resultValue.name = name;
+            _resultValue.rely = rely;
             _resultValue.timeseriesColumns = timeseriesColumns;
             return _resultValue;
         }

@@ -27,6 +27,7 @@ export function getAlertV2(args?: GetAlertV2Args, opts?: pulumi.InvokeOptions): 
         "evaluation": args.evaluation,
         "parentPath": args.parentPath,
         "queryText": args.queryText,
+        "runAsUserName": args.runAsUserName,
         "schedule": args.schedule,
         "warehouseId": args.warehouseId,
     }, opts);
@@ -60,6 +61,11 @@ export interface GetAlertV2Args {
      * (string) - Text of the query to be run
      */
     queryText?: string;
+    /**
+     * (string) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     */
+    runAsUserName?: string;
     /**
      * (CronSchedule) -
      */
@@ -115,9 +121,10 @@ export interface GetAlertV2Result {
      */
     readonly queryText?: string;
     /**
-     * (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+     * (string) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      */
-    readonly runAsUserName: string;
+    readonly runAsUserName?: string;
     /**
      * (CronSchedule) -
      */
@@ -152,6 +159,7 @@ export function getAlertV2Output(args?: GetAlertV2OutputArgs, opts?: pulumi.Invo
         "evaluation": args.evaluation,
         "parentPath": args.parentPath,
         "queryText": args.queryText,
+        "runAsUserName": args.runAsUserName,
         "schedule": args.schedule,
         "warehouseId": args.warehouseId,
     }, opts);
@@ -185,6 +193,11 @@ export interface GetAlertV2OutputArgs {
      * (string) - Text of the query to be run
      */
     queryText?: pulumi.Input<string>;
+    /**
+     * (string) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     */
+    runAsUserName?: pulumi.Input<string>;
     /**
      * (CronSchedule) -
      */

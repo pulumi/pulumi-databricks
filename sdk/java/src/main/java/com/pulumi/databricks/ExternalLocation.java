@@ -207,17 +207,9 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> enableFileEvents() {
         return Codegen.optional(this.enableFileEvents);
     }
-    /**
-     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-     * 
-     */
     @Export(name="encryptionDetails", refs={ExternalLocationEncryptionDetails.class}, tree="[0]")
     private Output</* @Nullable */ ExternalLocationEncryptionDetails> encryptionDetails;
 
-    /**
-     * @return The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-     * 
-     */
     public Output<Optional<ExternalLocationEncryptionDetails>> encryptionDetails() {
         return Codegen.optional(this.encryptionDetails);
     }

@@ -110,6 +110,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("schemaName")]
         public string? SchemaName { get; set; }
 
+        [Input("securableKindManifest")]
+        public Inputs.GetTableTableInfoSecurableKindManifestArgs? SecurableKindManifest { get; set; }
+
         [Input("sqlPath")]
         public string? SqlPath { get; set; }
 

@@ -38,7 +38,7 @@ public final class GetServicePrincipalResult {
      */
     private String home;
     /**
-     * @return The id of the service principal.
+     * @return The id of the service principal (SCIM ID).
      * 
      */
     private String id;
@@ -47,7 +47,11 @@ public final class GetServicePrincipalResult {
      * 
      */
     private String repos;
-    private String spId;
+    /**
+     * @return same as `id`.
+     * 
+     */
+    private String scimId;
 
     private GetServicePrincipalResult() {}
     /**
@@ -89,7 +93,7 @@ public final class GetServicePrincipalResult {
         return this.home;
     }
     /**
-     * @return The id of the service principal.
+     * @return The id of the service principal (SCIM ID).
      * 
      */
     public String id() {
@@ -102,8 +106,12 @@ public final class GetServicePrincipalResult {
     public String repos() {
         return this.repos;
     }
-    public String spId() {
-        return this.spId;
+    /**
+     * @return same as `id`.
+     * 
+     */
+    public String scimId() {
+        return this.scimId;
     }
 
     public static Builder builder() {
@@ -123,7 +131,7 @@ public final class GetServicePrincipalResult {
         private String home;
         private String id;
         private String repos;
-        private String spId;
+        private String scimId;
         public Builder() {}
         public Builder(GetServicePrincipalResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -135,7 +143,7 @@ public final class GetServicePrincipalResult {
     	      this.home = defaults.home;
     	      this.id = defaults.id;
     	      this.repos = defaults.repos;
-    	      this.spId = defaults.spId;
+    	      this.scimId = defaults.scimId;
         }
 
         @CustomType.Setter
@@ -203,11 +211,11 @@ public final class GetServicePrincipalResult {
             return this;
         }
         @CustomType.Setter
-        public Builder spId(String spId) {
-            if (spId == null) {
-              throw new MissingRequiredPropertyException("GetServicePrincipalResult", "spId");
+        public Builder scimId(String scimId) {
+            if (scimId == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalResult", "scimId");
             }
-            this.spId = spId;
+            this.scimId = scimId;
             return this;
         }
         public GetServicePrincipalResult build() {
@@ -220,7 +228,7 @@ public final class GetServicePrincipalResult {
             _resultValue.home = home;
             _resultValue.id = id;
             _resultValue.repos = repos;
-            _resultValue.spId = spId;
+            _resultValue.scimId = scimId;
             return _resultValue;
         }
     }

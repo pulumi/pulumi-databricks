@@ -314,14 +314,14 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+     * SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
      * 
      */
     @Import(name="warehouseType")
     private @Nullable Output<String> warehouseType;
 
     /**
-     * @return SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+     * @return SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
      * 
      */
     public Optional<Output<String>> warehouseType() {
@@ -781,7 +781,7 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param warehouseType SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+         * @param warehouseType SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
          * 
          * @return builder
          * 
@@ -792,7 +792,7 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param warehouseType SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+         * @param warehouseType SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
          * 
          * @return builder
          * 

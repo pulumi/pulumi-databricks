@@ -73,7 +73,7 @@ import * as utilities from "./utilities";
  * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
  * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
  * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
- * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ * * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};
@@ -184,7 +184,7 @@ export interface GetClustersResult {
  * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
  * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
  * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
- * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ * * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
  */
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClustersResult> {
     args = args || {};

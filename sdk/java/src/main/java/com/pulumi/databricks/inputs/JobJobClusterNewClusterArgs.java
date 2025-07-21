@@ -29,6 +29,13 @@ public final class JobJobClusterNewClusterArgs extends com.pulumi.resources.Reso
 
     public static final JobJobClusterNewClusterArgs Empty = new JobJobClusterNewClusterArgs();
 
+    @Import(name="__applyPolicyDefaultValuesAllowLists")
+    private @Nullable Output<List<String>> __applyPolicyDefaultValuesAllowLists;
+
+    public Optional<Output<List<String>>> __applyPolicyDefaultValuesAllowLists() {
+        return Optional.ofNullable(this.__applyPolicyDefaultValuesAllowLists);
+    }
+
     @Import(name="applyPolicyDefaultValues")
     private @Nullable Output<Boolean> applyPolicyDefaultValues;
 
@@ -293,6 +300,7 @@ public final class JobJobClusterNewClusterArgs extends com.pulumi.resources.Reso
     private JobJobClusterNewClusterArgs() {}
 
     private JobJobClusterNewClusterArgs(JobJobClusterNewClusterArgs $) {
+        this.__applyPolicyDefaultValuesAllowLists = $.__applyPolicyDefaultValuesAllowLists;
         this.applyPolicyDefaultValues = $.applyPolicyDefaultValues;
         this.autoscale = $.autoscale;
         this.awsAttributes = $.awsAttributes;
@@ -346,6 +354,19 @@ public final class JobJobClusterNewClusterArgs extends com.pulumi.resources.Reso
 
         public Builder(JobJobClusterNewClusterArgs defaults) {
             $ = new JobJobClusterNewClusterArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder __applyPolicyDefaultValuesAllowLists(@Nullable Output<List<String>> __applyPolicyDefaultValuesAllowLists) {
+            $.__applyPolicyDefaultValuesAllowLists = __applyPolicyDefaultValuesAllowLists;
+            return this;
+        }
+
+        public Builder __applyPolicyDefaultValuesAllowLists(List<String> __applyPolicyDefaultValuesAllowLists) {
+            return __applyPolicyDefaultValuesAllowLists(Output.of(__applyPolicyDefaultValuesAllowLists));
+        }
+
+        public Builder __applyPolicyDefaultValuesAllowLists(String... __applyPolicyDefaultValuesAllowLists) {
+            return __applyPolicyDefaultValuesAllowLists(List.of(__applyPolicyDefaultValuesAllowLists));
         }
 
         public Builder applyPolicyDefaultValues(@Nullable Output<Boolean> applyPolicyDefaultValues) {

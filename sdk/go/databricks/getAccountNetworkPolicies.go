@@ -11,6 +11,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source can be used to fetch the list of network policies.
+//
+// > **Note** This data source can only be used with an account-level provider!
+//
+// ## Example Usage
+//
+// Getting a list of all network policies:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetAccountNetworkPolicies(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAccountNetworkPolicies(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAccountNetworkPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountNetworkPoliciesResult

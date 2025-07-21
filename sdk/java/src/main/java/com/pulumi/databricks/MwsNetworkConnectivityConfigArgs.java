@@ -25,29 +25,45 @@ public final class MwsNetworkConnectivityConfigArgs extends com.pulumi.resources
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * time in epoch milliseconds when this object was created.
+     * 
+     */
     @Import(name="creationTime")
     private @Nullable Output<Integer> creationTime;
 
+    /**
+     * @return time in epoch milliseconds when this object was created.
+     * 
+     */
     public Optional<Output<Integer>> creationTime() {
         return Optional.ofNullable(this.creationTime);
     }
 
+    /**
+     * block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
+     * 
+     */
     @Import(name="egressConfig")
     private @Nullable Output<MwsNetworkConnectivityConfigEgressConfigArgs> egressConfig;
 
+    /**
+     * @return block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
+     * 
+     */
     public Optional<Output<MwsNetworkConnectivityConfigEgressConfigArgs>> egressConfig() {
         return Optional.ofNullable(this.egressConfig);
     }
 
     /**
-     * Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+     * Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+     * @return Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> name() {
@@ -84,9 +100,17 @@ public final class MwsNetworkConnectivityConfigArgs extends com.pulumi.resources
         return this.region;
     }
 
+    /**
+     * time in epoch milliseconds when this object was updated.
+     * 
+     */
     @Import(name="updatedTime")
     private @Nullable Output<Integer> updatedTime;
 
+    /**
+     * @return time in epoch milliseconds when this object was updated.
+     * 
+     */
     public Optional<Output<Integer>> updatedTime() {
         return Optional.ofNullable(this.updatedTime);
     }
@@ -130,26 +154,50 @@ public final class MwsNetworkConnectivityConfigArgs extends com.pulumi.resources
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param creationTime time in epoch milliseconds when this object was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder creationTime(@Nullable Output<Integer> creationTime) {
             $.creationTime = creationTime;
             return this;
         }
 
+        /**
+         * @param creationTime time in epoch milliseconds when this object was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder creationTime(Integer creationTime) {
             return creationTime(Output.of(creationTime));
         }
 
+        /**
+         * @param egressConfig block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder egressConfig(@Nullable Output<MwsNetworkConnectivityConfigEgressConfigArgs> egressConfig) {
             $.egressConfig = egressConfig;
             return this;
         }
 
+        /**
+         * @param egressConfig block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder egressConfig(MwsNetworkConnectivityConfigEgressConfigArgs egressConfig) {
             return egressConfig(Output.of(egressConfig));
         }
 
         /**
-         * @param name Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+         * @param name Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -160,7 +208,7 @@ public final class MwsNetworkConnectivityConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+         * @param name Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -211,11 +259,23 @@ public final class MwsNetworkConnectivityConfigArgs extends com.pulumi.resources
             return region(Output.of(region));
         }
 
+        /**
+         * @param updatedTime time in epoch milliseconds when this object was updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedTime(@Nullable Output<Integer> updatedTime) {
             $.updatedTime = updatedTime;
             return this;
         }
 
+        /**
+         * @param updatedTime time in epoch milliseconds when this object was updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedTime(Integer updatedTime) {
             return updatedTime(Output.of(updatedTime));
         }

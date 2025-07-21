@@ -288,8 +288,8 @@ class SqlGlobalConfig(pulumi.CustomResource):
         * End to end workspace management guide.
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
-        * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
-        * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+        * SqlEndpoint to manage Databricks SQL [Warehouses](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+        * Grants to manage data access in Unity Catalog.
 
         ## Import
 
@@ -377,8 +377,8 @@ class SqlGlobalConfig(pulumi.CustomResource):
         * End to end workspace management guide.
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
-        * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
-        * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+        * SqlEndpoint to manage Databricks SQL [Warehouses](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+        * Grants to manage data access in Unity Catalog.
 
         ## Import
 

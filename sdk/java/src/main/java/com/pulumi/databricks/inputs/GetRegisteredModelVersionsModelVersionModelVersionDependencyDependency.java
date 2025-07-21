@@ -4,6 +4,8 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection;
+import com.pulumi.databricks.inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential;
 import com.pulumi.databricks.inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction;
 import com.pulumi.databricks.inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable;
 import java.util.List;
@@ -15,6 +17,20 @@ import javax.annotation.Nullable;
 public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency extends com.pulumi.resources.InvokeArgs {
 
     public static final GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency Empty = new GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency();
+
+    @Import(name="connections")
+    private @Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection> connections;
+
+    public Optional<List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection>> connections() {
+        return Optional.ofNullable(this.connections);
+    }
+
+    @Import(name="credentials")
+    private @Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential> credentials;
+
+    public Optional<List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential>> credentials() {
+        return Optional.ofNullable(this.credentials);
+    }
 
     /**
      * A function that is dependent on a SQL object:
@@ -49,6 +65,8 @@ public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyD
     private GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency() {}
 
     private GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency $) {
+        this.connections = $.connections;
+        this.credentials = $.credentials;
         this.functions = $.functions;
         this.tables = $.tables;
     }
@@ -69,6 +87,24 @@ public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyD
 
         public Builder(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency defaults) {
             $ = new GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency(Objects.requireNonNull(defaults));
+        }
+
+        public Builder connections(@Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection> connections) {
+            $.connections = connections;
+            return this;
+        }
+
+        public Builder connections(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection... connections) {
+            return connections(List.of(connections));
+        }
+
+        public Builder credentials(@Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential> credentials) {
+            $.credentials = credentials;
+            return this;
+        }
+
+        public Builder credentials(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential... credentials) {
+            return credentials(List.of(credentials));
         }
 
         /**

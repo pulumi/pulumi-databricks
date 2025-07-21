@@ -13,15 +13,23 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetTableTableInfoViewDependenciesDependencyResult
     {
+        public readonly Outputs.GetTableTableInfoViewDependenciesDependencyConnectionResult? Connection;
+        public readonly Outputs.GetTableTableInfoViewDependenciesDependencyCredentialResult? Credential;
         public readonly Outputs.GetTableTableInfoViewDependenciesDependencyFunctionResult? Function;
         public readonly Outputs.GetTableTableInfoViewDependenciesDependencyTableResult? Table;
 
         [OutputConstructor]
         private GetTableTableInfoViewDependenciesDependencyResult(
+            Outputs.GetTableTableInfoViewDependenciesDependencyConnectionResult? connection,
+
+            Outputs.GetTableTableInfoViewDependenciesDependencyCredentialResult? credential,
+
             Outputs.GetTableTableInfoViewDependenciesDependencyFunctionResult? function,
 
             Outputs.GetTableTableInfoViewDependenciesDependencyTableResult? table)
         {
+            Connection = connection;
+            Credential = credential;
             Function = function;
             Table = table;
         }

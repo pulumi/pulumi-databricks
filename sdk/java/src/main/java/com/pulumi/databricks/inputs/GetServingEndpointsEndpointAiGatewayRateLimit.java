@@ -16,11 +16,11 @@ public final class GetServingEndpointsEndpointAiGatewayRateLimit extends com.pul
 
     public static final GetServingEndpointsEndpointAiGatewayRateLimit Empty = new GetServingEndpointsEndpointAiGatewayRateLimit();
 
-    @Import(name="calls", required=true)
-    private Integer calls;
+    @Import(name="calls")
+    private @Nullable Integer calls;
 
-    public Integer calls() {
-        return this.calls;
+    public Optional<Integer> calls() {
+        return Optional.ofNullable(this.calls);
     }
 
     @Import(name="key")
@@ -28,6 +28,13 @@ public final class GetServingEndpointsEndpointAiGatewayRateLimit extends com.pul
 
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
+    }
+
+    @Import(name="principal")
+    private @Nullable String principal;
+
+    public Optional<String> principal() {
+        return Optional.ofNullable(this.principal);
     }
 
     @Import(name="renewalPeriod", required=true)
@@ -42,6 +49,7 @@ public final class GetServingEndpointsEndpointAiGatewayRateLimit extends com.pul
     private GetServingEndpointsEndpointAiGatewayRateLimit(GetServingEndpointsEndpointAiGatewayRateLimit $) {
         this.calls = $.calls;
         this.key = $.key;
+        this.principal = $.principal;
         this.renewalPeriod = $.renewalPeriod;
     }
 
@@ -63,7 +71,7 @@ public final class GetServingEndpointsEndpointAiGatewayRateLimit extends com.pul
             $ = new GetServingEndpointsEndpointAiGatewayRateLimit(Objects.requireNonNull(defaults));
         }
 
-        public Builder calls(Integer calls) {
+        public Builder calls(@Nullable Integer calls) {
             $.calls = calls;
             return this;
         }
@@ -73,15 +81,17 @@ public final class GetServingEndpointsEndpointAiGatewayRateLimit extends com.pul
             return this;
         }
 
+        public Builder principal(@Nullable String principal) {
+            $.principal = principal;
+            return this;
+        }
+
         public Builder renewalPeriod(String renewalPeriod) {
             $.renewalPeriod = renewalPeriod;
             return this;
         }
 
         public GetServingEndpointsEndpointAiGatewayRateLimit build() {
-            if ($.calls == null) {
-                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointAiGatewayRateLimit", "calls");
-            }
             if ($.renewalPeriod == null) {
                 throw new MissingRequiredPropertyException("GetServingEndpointsEndpointAiGatewayRateLimit", "renewalPeriod");
             }

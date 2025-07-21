@@ -27,7 +27,7 @@ class GetOnlineStoreResult:
     """
     A collection of values returned by getOnlineStore.
     """
-    def __init__(__self__, capacity=None, creation_time=None, creator=None, id=None, name=None, state=None):
+    def __init__(__self__, capacity=None, creation_time=None, creator=None, id=None, name=None, read_replica_count=None, state=None):
         if capacity and not isinstance(capacity, str):
             raise TypeError("Expected argument 'capacity' to be a str")
         pulumi.set(__self__, "capacity", capacity)
@@ -43,13 +43,16 @@ class GetOnlineStoreResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if read_replica_count and not isinstance(read_replica_count, int):
+            raise TypeError("Expected argument 'read_replica_count' to be a int")
+        pulumi.set(__self__, "read_replica_count", read_replica_count)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
-    def capacity(self) -> Optional[builtins.str]:
+    def capacity(self) -> builtins.str:
         """
         (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         """
@@ -88,6 +91,14 @@ class GetOnlineStoreResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="readReplicaCount")
+    def read_replica_count(self) -> Optional[builtins.int]:
+        """
+        (integer) - The number of read replicas for the online store. Defaults to 0
+        """
+        return pulumi.get(self, "read_replica_count")
+
+    @property
     @pulumi.getter
     def state(self) -> builtins.str:
         """
@@ -107,21 +118,25 @@ class AwaitableGetOnlineStoreResult(GetOnlineStoreResult):
             creator=self.creator,
             id=self.id,
             name=self.name,
+            read_replica_count=self.read_replica_count,
             state=self.state)
 
 
 def get_online_store(capacity: Optional[builtins.str] = None,
                      name: Optional[builtins.str] = None,
+                     read_replica_count: Optional[builtins.int] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOnlineStoreResult:
     """
     Use this data source to access information about an existing resource.
 
     :param builtins.str capacity: (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
     :param builtins.str name: The name of the online store. This is the unique identifier for the online store
+    :param builtins.int read_replica_count: (integer) - The number of read replicas for the online store. Defaults to 0
     """
     __args__ = dict()
     __args__['capacity'] = capacity
     __args__['name'] = name
+    __args__['readReplicaCount'] = read_replica_count
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getOnlineStore:getOnlineStore', __args__, opts=opts, typ=GetOnlineStoreResult).value
 
@@ -131,19 +146,23 @@ def get_online_store(capacity: Optional[builtins.str] = None,
         creator=pulumi.get(__ret__, 'creator'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        read_replica_count=pulumi.get(__ret__, 'read_replica_count'),
         state=pulumi.get(__ret__, 'state'))
-def get_online_store_output(capacity: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+def get_online_store_output(capacity: Optional[pulumi.Input[builtins.str]] = None,
                             name: Optional[pulumi.Input[builtins.str]] = None,
+                            read_replica_count: Optional[pulumi.Input[Optional[builtins.int]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOnlineStoreResult]:
     """
     Use this data source to access information about an existing resource.
 
     :param builtins.str capacity: (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
     :param builtins.str name: The name of the online store. This is the unique identifier for the online store
+    :param builtins.int read_replica_count: (integer) - The number of read replicas for the online store. Defaults to 0
     """
     __args__ = dict()
     __args__['capacity'] = capacity
     __args__['name'] = name
+    __args__['readReplicaCount'] = read_replica_count
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getOnlineStore:getOnlineStore', __args__, opts=opts, typ=GetOnlineStoreResult)
     return __ret__.apply(lambda __response__: GetOnlineStoreResult(
@@ -152,4 +171,5 @@ def get_online_store_output(capacity: Optional[pulumi.Input[Optional[builtins.st
         creator=pulumi.get(__response__, 'creator'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
+        read_replica_count=pulumi.get(__response__, 'read_replica_count'),
         state=pulumi.get(__response__, 'state')))

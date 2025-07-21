@@ -37,6 +37,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("parentTable", required: true)]
         public string ParentTable { get; set; } = null!;
 
+        [Input("rely")]
+        public bool? Rely { get; set; }
+
         public GetTableTableInfoTableConstraintForeignKeyConstraintArgs()
         {
         }

@@ -356,6 +356,10 @@ export interface AppPendingDeploymentStatus {
 
 export interface AppResource {
     /**
+     * attribute
+     */
+    database?: pulumi.Input<inputs.AppResourceDatabase>;
+    /**
      * The description of the resource.
      *
      * Exactly one of the following attributes must be provided:
@@ -385,6 +389,21 @@ export interface AppResource {
      * attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
      */
     ucSecurable?: pulumi.Input<inputs.AppResourceUcSecurable>;
+}
+
+export interface AppResourceDatabase {
+    /**
+     * The name of database.
+     */
+    databaseName: pulumi.Input<string>;
+    /**
+     * The name of database instance.
+     */
+    instanceName: pulumi.Input<string>;
+    /**
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     */
+    permission: pulumi.Input<string>;
 }
 
 export interface AppResourceJob {
@@ -584,20 +603,188 @@ export interface BudgetPolicyCustomTag {
     value?: pulumi.Input<string>;
 }
 
+export interface CleanRoomsCleanRoomOutputCatalog {
+    /**
+     * The name of the output catalog in UC.
+     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+     * The field will always exist if status is CREATED
+     */
+    catalogName?: pulumi.Input<string>;
+    /**
+     * (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+     */
+    status?: pulumi.Input<string>;
+}
+
+export interface CleanRoomsCleanRoomRemoteDetailedInfo {
+    /**
+     * (string) - Central clean room ID
+     */
+    centralCleanRoomId?: pulumi.Input<string>;
+    /**
+     * Cloud vendor (aws,azure,gcp) of the central clean room
+     */
+    cloudVendor?: pulumi.Input<string>;
+    /**
+     * Collaborators in the central clean room. There should one and only one collaborator
+     * in the list that satisfies the owner condition:
+     *
+     * 1. It has the creator's globalMetastoreId (determined by caller of CreateCleanRoom).
+     *
+     * 2. Its inviteRecipientEmail is empty
+     */
+    collaborators?: pulumi.Input<pulumi.Input<inputs.CleanRoomsCleanRoomRemoteDetailedInfoCollaborator>[]>;
+    /**
+     * (ComplianceSecurityProfile) -
+     */
+    complianceSecurityProfile?: pulumi.Input<inputs.CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile>;
+    /**
+     * (CleanRoomCollaborator) - Collaborator who creates the clean room
+     */
+    creator?: pulumi.Input<inputs.CleanRoomsCleanRoomRemoteDetailedInfoCreator>;
+    /**
+     * Egress network policy to apply to the central clean room workspace
+     */
+    egressNetworkPolicy?: pulumi.Input<inputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy>;
+    region?: pulumi.Input<string>;
+}
+
+export interface CleanRoomsCleanRoomRemoteDetailedInfoCollaborator {
+    /**
+     * Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+     */
+    collaboratorAlias: pulumi.Input<string>;
+    /**
+     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+     * these values and could change in the future
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     */
+    globalMetastoreId?: pulumi.Input<string>;
+    /**
+     * Email of the user who is receiving the clean room "invitation". It should be empty
+     * for the creator of the clean room, and non-empty for the invitees of the clean room.
+     * It is only returned in the output when clean room creator calls GET
+     */
+    inviteRecipientEmail?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+     * inviteRecipientEmail is specified.
+     * It should be empty when the collaborator is the creator of the clean room
+     */
+    inviteRecipientWorkspaceId?: pulumi.Input<number>;
+    /**
+     * (string) - Organization name
+     * configured in the metastore
+     */
+    organizationName?: pulumi.Input<string>;
+}
+
+export interface CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile {
+    /**
+     * The list of compliance standards that the compliance security profile is configured to enforce
+     */
+    complianceStandards?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the compliance security profile is enabled
+     */
+    isEnabled?: pulumi.Input<boolean>;
+}
+
+export interface CleanRoomsCleanRoomRemoteDetailedInfoCreator {
+    /**
+     * Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+     */
+    collaboratorAlias: pulumi.Input<string>;
+    /**
+     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+     * these values and could change in the future
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     */
+    globalMetastoreId?: pulumi.Input<string>;
+    /**
+     * Email of the user who is receiving the clean room "invitation". It should be empty
+     * for the creator of the clean room, and non-empty for the invitees of the clean room.
+     * It is only returned in the output when clean room creator calls GET
+     */
+    inviteRecipientEmail?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+     * inviteRecipientEmail is specified.
+     * It should be empty when the collaborator is the creator of the clean room
+     */
+    inviteRecipientWorkspaceId?: pulumi.Input<number>;
+    /**
+     * (string) - Organization name
+     * configured in the metastore
+     */
+    organizationName?: pulumi.Input<string>;
+}
+
+export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy {
+    /**
+     * The access policy enforced for egress traffic to the internet
+     */
+    internetAccess?: pulumi.Input<inputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess>;
+}
+
+export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess {
+    allowedInternetDestinations?: pulumi.Input<pulumi.Input<inputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination>[]>;
+    allowedStorageDestinations?: pulumi.Input<pulumi.Input<inputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination>[]>;
+    /**
+     * Optional. If not specified, assume the policy is enforced for all workloads
+     */
+    logOnlyMode?: pulumi.Input<inputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode>;
+    /**
+     * . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+     */
+    restrictionMode?: pulumi.Input<string>;
+}
+
+export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination {
+    destination?: pulumi.Input<string>;
+    /**
+     * . Possible values are: `TCP`
+     */
+    protocol?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
+}
+
+export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination {
+    allowedPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    azureContainer?: pulumi.Input<string>;
+    azureDnsZone?: pulumi.Input<string>;
+    azureStorageAccount?: pulumi.Input<string>;
+    azureStorageService?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
+}
+
+export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode {
+    /**
+     * . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+     */
+    logOnlyModeType?: pulumi.Input<string>;
+    workloads?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ClusterAutoscale {
     /**
      * The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
      *
-     * When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `numWorkers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `numWorkers` is `0`, provider checks for presence of the required Spark configurations:
-     *
-     * * `spark.master` must have prefix `local`, like `local[*]`
-     * * `spark.databricks.cluster.profile` must have value `singleNode`
-     *
-     * and also `customTag` entry:
-     *
-     * * `"ResourceClass" = "SingleNode"`
-     *
-     * The following example demonstrates how to create an single node cluster:
+     * To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `isSingleNode = true` and `kind = "CLASSIC_PREVIEW"` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
      *
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
@@ -614,13 +801,8 @@ export interface ClusterAutoscale {
      *     sparkVersion: latestLts.then(latestLts => latestLts.id),
      *     nodeTypeId: smallest.then(smallest => smallest.id),
      *     autoterminationMinutes: 20,
-     *     sparkConf: {
-     *         "spark.databricks.cluster.profile": "singleNode",
-     *         "spark.master": "local[*]",
-     *     },
-     *     customTags: {
-     *         ResourceClass: "SingleNode",
-     *     },
+     *     isSingleNode: true,
+     *     kind: "CLASSIC_PREVIEW",
      * });
      * ```
      */
@@ -1092,6 +1274,82 @@ export interface CustomAppIntegrationTokenAccessPolicy {
     refreshTokenTtlInMinutes?: pulumi.Input<number>;
 }
 
+export interface DatabaseInstanceChildInstanceRef {
+    /**
+     * Branch time of the ref database instance.
+     * For a parent ref instance, this is the point in time on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the point in time on the instance from which the child
+     * instance was created.
+     * Input: For specifying the point in time to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     */
+    branchTime?: pulumi.Input<string>;
+    /**
+     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
+     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the LSN on the instance from which the child instance
+     * was created
+     */
+    effectiveLsn?: pulumi.Input<string>;
+    /**
+     * User-specified WAL LSN of the ref database instance.
+     *
+     * Input: For specifying the WAL LSN to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     */
+    lsn?: pulumi.Input<string>;
+    /**
+     * The name of the instance. This is the unique identifier for the instance
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * (string) - Id of the ref database instance
+     */
+    uid?: pulumi.Input<string>;
+}
+
+export interface DatabaseInstanceParentInstanceRef {
+    /**
+     * Branch time of the ref database instance.
+     * For a parent ref instance, this is the point in time on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the point in time on the instance from which the child
+     * instance was created.
+     * Input: For specifying the point in time to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     */
+    branchTime?: pulumi.Input<string>;
+    /**
+     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
+     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the LSN on the instance from which the child instance
+     * was created
+     */
+    effectiveLsn?: pulumi.Input<string>;
+    /**
+     * User-specified WAL LSN of the ref database instance.
+     *
+     * Input: For specifying the WAL LSN to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     */
+    lsn?: pulumi.Input<string>;
+    /**
+     * The name of the instance. This is the unique identifier for the instance
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * (string) - Id of the ref database instance
+     */
+    uid?: pulumi.Input<string>;
+}
+
 export interface DefaultNamespaceSettingNamespace {
     /**
      * The value for the setting.
@@ -1122,11 +1380,20 @@ export interface EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonit
 }
 
 export interface ExternalLocationEncryptionDetails {
+    /**
+     * a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+     */
     sseEncryptionDetails?: pulumi.Input<inputs.ExternalLocationEncryptionDetailsSseEncryptionDetails>;
 }
 
 export interface ExternalLocationEncryptionDetailsSseEncryptionDetails {
+    /**
+     * Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+     */
     algorithm?: pulumi.Input<string>;
+    /**
+     * Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
+     */
     awsKmsKeyArn?: pulumi.Input<string>;
 }
 
@@ -1858,6 +2125,410 @@ export interface GetCatalogCatalogInfoProvisioningInfo {
 
 export interface GetCatalogCatalogInfoProvisioningInfoArgs {
     state?: pulumi.Input<string>;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfo {
+    /**
+     * (string) - Central clean room ID
+     */
+    centralCleanRoomId?: string;
+    /**
+     * (string) - Cloud vendor (aws,azure,gcp) of the central clean room
+     */
+    cloudVendor?: string;
+    /**
+     * (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
+     * in the list that satisfies the owner condition:
+     */
+    collaborators?: inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCollaborator[];
+    /**
+     * (ComplianceSecurityProfile) -
+     */
+    complianceSecurityProfile?: inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile;
+    /**
+     * (CleanRoomCollaborator) - Collaborator who creates the clean room
+     */
+    creator?: inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCreator;
+    /**
+     * (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
+     */
+    egressNetworkPolicy?: inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy;
+    /**
+     * (string) -
+     */
+    region?: string;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoArgs {
+    /**
+     * (string) - Central clean room ID
+     */
+    centralCleanRoomId?: pulumi.Input<string>;
+    /**
+     * (string) - Cloud vendor (aws,azure,gcp) of the central clean room
+     */
+    cloudVendor?: pulumi.Input<string>;
+    /**
+     * (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
+     * in the list that satisfies the owner condition:
+     */
+    collaborators?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs>[]>;
+    /**
+     * (ComplianceSecurityProfile) -
+     */
+    complianceSecurityProfile?: pulumi.Input<inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs>;
+    /**
+     * (CleanRoomCollaborator) - Collaborator who creates the clean room
+     */
+    creator?: pulumi.Input<inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs>;
+    /**
+     * (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
+     */
+    egressNetworkPolicy?: pulumi.Input<inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs>;
+    /**
+     * (string) -
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoCollaborator {
+    /**
+     * (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+     */
+    collaboratorAlias: string;
+    /**
+     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+     * these values and could change in the future
+     */
+    displayName?: string;
+    /**
+     * (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     */
+    globalMetastoreId?: string;
+    /**
+     * (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+     * for the creator of the clean room, and non-empty for the invitees of the clean room.
+     * It is only returned in the output when clean room creator calls GET
+     */
+    inviteRecipientEmail?: string;
+    /**
+     * (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+     * inviteRecipientEmail is specified.
+     * It should be empty when the collaborator is the creator of the clean room
+     */
+    inviteRecipientWorkspaceId?: number;
+    /**
+     * (string) - Organization name
+     * configured in the metastore
+     */
+    organizationName?: string;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs {
+    /**
+     * (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+     */
+    collaboratorAlias: pulumi.Input<string>;
+    /**
+     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+     * these values and could change in the future
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     */
+    globalMetastoreId?: pulumi.Input<string>;
+    /**
+     * (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+     * for the creator of the clean room, and non-empty for the invitees of the clean room.
+     * It is only returned in the output when clean room creator calls GET
+     */
+    inviteRecipientEmail?: pulumi.Input<string>;
+    /**
+     * (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+     * inviteRecipientEmail is specified.
+     * It should be empty when the collaborator is the creator of the clean room
+     */
+    inviteRecipientWorkspaceId?: pulumi.Input<number>;
+    /**
+     * (string) - Organization name
+     * configured in the metastore
+     */
+    organizationName?: pulumi.Input<string>;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile {
+    /**
+     * (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
+     */
+    complianceStandards?: string[];
+    /**
+     * (boolean) - Whether the compliance security profile is enabled
+     */
+    isEnabled?: boolean;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs {
+    /**
+     * (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
+     */
+    complianceStandards?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (boolean) - Whether the compliance security profile is enabled
+     */
+    isEnabled?: pulumi.Input<boolean>;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoCreator {
+    /**
+     * (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+     */
+    collaboratorAlias: string;
+    /**
+     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+     * these values and could change in the future
+     */
+    displayName?: string;
+    /**
+     * (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     */
+    globalMetastoreId?: string;
+    /**
+     * (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+     * for the creator of the clean room, and non-empty for the invitees of the clean room.
+     * It is only returned in the output when clean room creator calls GET
+     */
+    inviteRecipientEmail?: string;
+    /**
+     * (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+     * inviteRecipientEmail is specified.
+     * It should be empty when the collaborator is the creator of the clean room
+     */
+    inviteRecipientWorkspaceId?: number;
+    /**
+     * (string) - Organization name
+     * configured in the metastore
+     */
+    organizationName?: string;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs {
+    /**
+     * (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+     */
+    collaboratorAlias: pulumi.Input<string>;
+    /**
+     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+     * these values and could change in the future
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     */
+    globalMetastoreId?: pulumi.Input<string>;
+    /**
+     * (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+     * for the creator of the clean room, and non-empty for the invitees of the clean room.
+     * It is only returned in the output when clean room creator calls GET
+     */
+    inviteRecipientEmail?: pulumi.Input<string>;
+    /**
+     * (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+     * inviteRecipientEmail is specified.
+     * It should be empty when the collaborator is the creator of the clean room
+     */
+    inviteRecipientWorkspaceId?: pulumi.Input<number>;
+    /**
+     * (string) - Organization name
+     * configured in the metastore
+     */
+    organizationName?: pulumi.Input<string>;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy {
+    /**
+     * (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
+     */
+    internetAccess?: inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs {
+    /**
+     * (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
+     */
+    internetAccess?: pulumi.Input<inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs>;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess {
+    /**
+     * (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination) -
+     */
+    allowedInternetDestinations?: inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination[];
+    /**
+     * (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination) -
+     */
+    allowedStorageDestinations?: inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination[];
+    /**
+     * (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
+     */
+    logOnlyMode?: inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode;
+    /**
+     * (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+     */
+    restrictionMode?: string;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs {
+    /**
+     * (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination) -
+     */
+    allowedInternetDestinations?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs>[]>;
+    /**
+     * (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination) -
+     */
+    allowedStorageDestinations?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs>[]>;
+    /**
+     * (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
+     */
+    logOnlyMode?: pulumi.Input<inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs>;
+    /**
+     * (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+     */
+    restrictionMode?: pulumi.Input<string>;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination {
+    /**
+     * (string) -
+     */
+    destination?: string;
+    /**
+     * (string) - . Possible values are: `TCP`
+     */
+    protocol?: string;
+    /**
+     * (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+     */
+    type?: string;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs {
+    /**
+     * (string) -
+     */
+    destination?: pulumi.Input<string>;
+    /**
+     * (string) - . Possible values are: `TCP`
+     */
+    protocol?: pulumi.Input<string>;
+    /**
+     * (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination {
+    /**
+     * (list of string) -
+     */
+    allowedPaths?: string[];
+    /**
+     * (string) -
+     */
+    azureContainer?: string;
+    /**
+     * (string) -
+     */
+    azureDnsZone?: string;
+    /**
+     * (string) -
+     */
+    azureStorageAccount?: string;
+    /**
+     * (string) -
+     */
+    azureStorageService?: string;
+    /**
+     * (string) -
+     */
+    bucketName?: string;
+    /**
+     * (string) -
+     */
+    region?: string;
+    /**
+     * (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+     */
+    type?: string;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs {
+    /**
+     * (list of string) -
+     */
+    allowedPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (string) -
+     */
+    azureContainer?: pulumi.Input<string>;
+    /**
+     * (string) -
+     */
+    azureDnsZone?: pulumi.Input<string>;
+    /**
+     * (string) -
+     */
+    azureStorageAccount?: pulumi.Input<string>;
+    /**
+     * (string) -
+     */
+    azureStorageService?: pulumi.Input<string>;
+    /**
+     * (string) -
+     */
+    bucketName?: pulumi.Input<string>;
+    /**
+     * (string) -
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode {
+    /**
+     * (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+     */
+    logOnlyModeType?: string;
+    /**
+     * (list of ) -
+     */
+    workloads?: string[];
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs {
+    /**
+     * (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+     */
+    logOnlyModeType?: pulumi.Input<string>;
+    /**
+     * (list of ) -
+     */
+    workloads?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetClusterClusterInfo {
@@ -3104,6 +3775,76 @@ export interface GetCurrentMetastoreMetastoreInfoArgs {
     updatedBy?: pulumi.Input<string>;
 }
 
+export interface GetDatabaseInstanceParentInstanceRef {
+    /**
+     * (string) - Branch time of the ref database instance.
+     * For a parent ref instance, this is the point in time on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the point in time on the instance from which the child
+     * instance was created.
+     * Input: For specifying the point in time to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     */
+    branchTime?: string;
+    /**
+     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
+     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the LSN on the instance from which the child instance
+     * was created
+     */
+    effectiveLsn?: string;
+    /**
+     * (string) - User-specified WAL LSN of the ref database instance.
+     */
+    lsn?: string;
+    /**
+     * The name of the instance. This is the unique identifier for the instance
+     */
+    name?: string;
+    /**
+     * (string) - Id of the ref database instance
+     */
+    uid?: string;
+}
+
+export interface GetDatabaseInstanceParentInstanceRefArgs {
+    /**
+     * (string) - Branch time of the ref database instance.
+     * For a parent ref instance, this is the point in time on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the point in time on the instance from which the child
+     * instance was created.
+     * Input: For specifying the point in time to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     */
+    branchTime?: pulumi.Input<string>;
+    /**
+     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
+     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the LSN on the instance from which the child instance
+     * was created
+     */
+    effectiveLsn?: pulumi.Input<string>;
+    /**
+     * (string) - User-specified WAL LSN of the ref database instance.
+     */
+    lsn?: pulumi.Input<string>;
+    /**
+     * The name of the instance. This is the unique identifier for the instance
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * (string) - Id of the ref database instance
+     */
+    uid?: pulumi.Input<string>;
+}
+
 export interface GetExternalLocationExternalLocationInfo {
     browseOnly?: boolean;
     /**
@@ -3128,7 +3869,7 @@ export interface GetExternalLocationExternalLocationInfo {
     credentialName?: string;
     enableFileEvents?: boolean;
     /**
-     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+     * A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
      */
     encryptionDetails?: inputs.GetExternalLocationExternalLocationInfoEncryptionDetails;
     fallback?: boolean;
@@ -3188,7 +3929,7 @@ export interface GetExternalLocationExternalLocationInfoArgs {
     credentialName?: pulumi.Input<string>;
     enableFileEvents?: pulumi.Input<boolean>;
     /**
-     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+     * A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
      */
     encryptionDetails?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsArgs>;
     fallback?: pulumi.Input<boolean>;
@@ -3225,20 +3966,38 @@ export interface GetExternalLocationExternalLocationInfoArgs {
 }
 
 export interface GetExternalLocationExternalLocationInfoEncryptionDetails {
+    /**
+     * a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+     */
     sseEncryptionDetails?: inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails;
 }
 
 export interface GetExternalLocationExternalLocationInfoEncryptionDetailsArgs {
+    /**
+     * a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+     */
     sseEncryptionDetails?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs>;
 }
 
 export interface GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails {
+    /**
+     * Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+     */
     algorithm?: string;
+    /**
+     * ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`.
+     */
     awsKmsKeyArn?: string;
 }
 
 export interface GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs {
+    /**
+     * Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+     */
     algorithm?: pulumi.Input<string>;
+    /**
+     * ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`.
+     */
     awsKmsKeyArn?: pulumi.Input<string>;
 }
 
@@ -3815,13 +4574,33 @@ export interface GetFunctionsFunctionRoutineDependencyArgs {
 }
 
 export interface GetFunctionsFunctionRoutineDependencyDependency {
+    connections?: inputs.GetFunctionsFunctionRoutineDependencyDependencyConnection[];
+    credentials?: inputs.GetFunctionsFunctionRoutineDependencyDependencyCredential[];
     functions?: inputs.GetFunctionsFunctionRoutineDependencyDependencyFunction[];
     tables?: inputs.GetFunctionsFunctionRoutineDependencyDependencyTable[];
 }
 
 export interface GetFunctionsFunctionRoutineDependencyDependencyArgs {
+    connections?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionRoutineDependencyDependencyConnectionArgs>[]>;
+    credentials?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionRoutineDependencyDependencyCredentialArgs>[]>;
     functions?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionRoutineDependencyDependencyFunctionArgs>[]>;
     tables?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionRoutineDependencyDependencyTableArgs>[]>;
+}
+
+export interface GetFunctionsFunctionRoutineDependencyDependencyConnection {
+    connectionName?: string;
+}
+
+export interface GetFunctionsFunctionRoutineDependencyDependencyConnectionArgs {
+    connectionName?: pulumi.Input<string>;
+}
+
+export interface GetFunctionsFunctionRoutineDependencyDependencyCredential {
+    credentialName?: string;
+}
+
+export interface GetFunctionsFunctionRoutineDependencyDependencyCredentialArgs {
+    credentialName?: pulumi.Input<string>;
 }
 
 export interface GetFunctionsFunctionRoutineDependencyDependencyFunction {
@@ -7801,6 +8580,8 @@ export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyArg
 }
 
 export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency {
+    connections?: inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection[];
+    credentials?: inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential[];
     /**
      * A function that is dependent on a SQL object:
      */
@@ -7812,6 +8593,8 @@ export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDep
 }
 
 export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs {
+    connections?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs>[]>;
+    credentials?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs>[]>;
     /**
      * A function that is dependent on a SQL object:
      */
@@ -7820,6 +8603,22 @@ export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDep
      * A table that is dependent on a SQL object
      */
     tables?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs>[]>;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection {
+    connectionName?: string;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs {
+    connectionName?: pulumi.Input<string>;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential {
+    credentialName?: string;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs {
+    credentialName?: pulumi.Input<string>;
 }
 
 export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction {
@@ -8165,14 +8964,16 @@ export interface GetServingEndpointsEndpointAiGatewayInferenceTableConfigArgs {
 }
 
 export interface GetServingEndpointsEndpointAiGatewayRateLimit {
-    calls: number;
+    calls?: number;
     key?: string;
+    principal?: string;
     renewalPeriod: string;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayRateLimitArgs {
-    calls: pulumi.Input<number>;
+    calls?: pulumi.Input<number>;
     key?: pulumi.Input<string>;
+    principal?: pulumi.Input<string>;
     renewalPeriod: pulumi.Input<string>;
 }
 
@@ -8884,6 +9685,7 @@ export interface GetTableTableInfo {
      * Name of parent schema relative to its parent catalog.
      */
     schemaName?: string;
+    securableKindManifest?: inputs.GetTableTableInfoSecurableKindManifest;
     sqlPath?: string;
     storageCredentialName?: string;
     storageLocation?: string;
@@ -8949,6 +9751,7 @@ export interface GetTableTableInfoArgs {
      * Name of parent schema relative to its parent catalog.
      */
     schemaName?: pulumi.Input<string>;
+    securableKindManifest?: pulumi.Input<inputs.GetTableTableInfoSecurableKindManifestArgs>;
     sqlPath?: pulumi.Input<string>;
     storageCredentialName?: pulumi.Input<string>;
     storageLocation?: pulumi.Input<string>;
@@ -9070,6 +9873,62 @@ export interface GetTableTableInfoRowFilterArgs {
     inputColumnNames: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetTableTableInfoSecurableKindManifest {
+    assignablePrivileges?: string[];
+    capabilities?: string[];
+    options?: inputs.GetTableTableInfoSecurableKindManifestOption[];
+    securableKind?: string;
+    securableType?: string;
+}
+
+export interface GetTableTableInfoSecurableKindManifestArgs {
+    assignablePrivileges?: pulumi.Input<pulumi.Input<string>[]>;
+    capabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    options?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoSecurableKindManifestOptionArgs>[]>;
+    securableKind?: pulumi.Input<string>;
+    securableType?: pulumi.Input<string>;
+}
+
+export interface GetTableTableInfoSecurableKindManifestOption {
+    allowedValues?: string[];
+    defaultValue?: string;
+    description?: string;
+    hint?: string;
+    isCopiable?: boolean;
+    isCreatable?: boolean;
+    isHidden?: boolean;
+    isLoggable?: boolean;
+    isRequired?: boolean;
+    isSecret?: boolean;
+    isUpdatable?: boolean;
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     */
+    name?: string;
+    oauthStage?: string;
+    type?: string;
+}
+
+export interface GetTableTableInfoSecurableKindManifestOptionArgs {
+    allowedValues?: pulumi.Input<pulumi.Input<string>[]>;
+    defaultValue?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    hint?: pulumi.Input<string>;
+    isCopiable?: pulumi.Input<boolean>;
+    isCreatable?: pulumi.Input<boolean>;
+    isHidden?: pulumi.Input<boolean>;
+    isLoggable?: pulumi.Input<boolean>;
+    isRequired?: pulumi.Input<boolean>;
+    isSecret?: pulumi.Input<boolean>;
+    isUpdatable?: pulumi.Input<boolean>;
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     */
+    name?: pulumi.Input<string>;
+    oauthStage?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
+}
+
 export interface GetTableTableInfoTableConstraint {
     foreignKeyConstraint?: inputs.GetTableTableInfoTableConstraintForeignKeyConstraint;
     namedTableConstraint?: inputs.GetTableTableInfoTableConstraintNamedTableConstraint;
@@ -9090,6 +9949,7 @@ export interface GetTableTableInfoTableConstraintForeignKeyConstraint {
     name: string;
     parentColumns: string[];
     parentTable: string;
+    rely?: boolean;
 }
 
 export interface GetTableTableInfoTableConstraintForeignKeyConstraintArgs {
@@ -9100,6 +9960,7 @@ export interface GetTableTableInfoTableConstraintForeignKeyConstraintArgs {
     name: pulumi.Input<string>;
     parentColumns: pulumi.Input<pulumi.Input<string>[]>;
     parentTable: pulumi.Input<string>;
+    rely?: pulumi.Input<boolean>;
 }
 
 export interface GetTableTableInfoTableConstraintNamedTableConstraint {
@@ -9122,6 +9983,7 @@ export interface GetTableTableInfoTableConstraintPrimaryKeyConstraint {
      * Full name of the databricks_table: _`catalog`.`schema`.`table`_
      */
     name: string;
+    rely?: boolean;
     timeseriesColumns?: string[];
 }
 
@@ -9131,6 +9993,7 @@ export interface GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs {
      * Full name of the databricks_table: _`catalog`.`schema`.`table`_
      */
     name: pulumi.Input<string>;
+    rely?: pulumi.Input<boolean>;
     timeseriesColumns?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -9143,13 +10006,33 @@ export interface GetTableTableInfoViewDependenciesArgs {
 }
 
 export interface GetTableTableInfoViewDependenciesDependency {
+    connection?: inputs.GetTableTableInfoViewDependenciesDependencyConnection;
+    credential?: inputs.GetTableTableInfoViewDependenciesDependencyCredential;
     function?: inputs.GetTableTableInfoViewDependenciesDependencyFunction;
     table?: inputs.GetTableTableInfoViewDependenciesDependencyTable;
 }
 
 export interface GetTableTableInfoViewDependenciesDependencyArgs {
+    connection?: pulumi.Input<inputs.GetTableTableInfoViewDependenciesDependencyConnectionArgs>;
+    credential?: pulumi.Input<inputs.GetTableTableInfoViewDependenciesDependencyCredentialArgs>;
     function?: pulumi.Input<inputs.GetTableTableInfoViewDependenciesDependencyFunctionArgs>;
     table?: pulumi.Input<inputs.GetTableTableInfoViewDependenciesDependencyTableArgs>;
+}
+
+export interface GetTableTableInfoViewDependenciesDependencyConnection {
+    connectionName?: string;
+}
+
+export interface GetTableTableInfoViewDependenciesDependencyConnectionArgs {
+    connectionName?: pulumi.Input<string>;
+}
+
+export interface GetTableTableInfoViewDependenciesDependencyCredential {
+    credentialName?: string;
+}
+
+export interface GetTableTableInfoViewDependenciesDependencyCredentialArgs {
+    credentialName?: pulumi.Input<string>;
 }
 
 export interface GetTableTableInfoViewDependenciesDependencyFunction {
@@ -9617,6 +10500,7 @@ export interface JobJobCluster {
 }
 
 export interface JobJobClusterNewCluster {
+    __applyPolicyDefaultValuesAllowLists?: pulumi.Input<pulumi.Input<string>[]>;
     applyPolicyDefaultValues?: pulumi.Input<boolean>;
     autoscale?: pulumi.Input<inputs.JobJobClusterNewClusterAutoscale>;
     awsAttributes?: pulumi.Input<inputs.JobJobClusterNewClusterAwsAttributes>;
@@ -11531,6 +12415,7 @@ export interface JobTaskLibraryPypi {
 }
 
 export interface JobTaskNewCluster {
+    __applyPolicyDefaultValuesAllowLists?: pulumi.Input<pulumi.Input<string>[]>;
     applyPolicyDefaultValues?: pulumi.Input<boolean>;
     autoscale?: pulumi.Input<inputs.JobTaskNewClusterAutoscale>;
     awsAttributes?: pulumi.Input<inputs.JobTaskNewClusterAwsAttributes>;
@@ -12520,6 +13405,8 @@ export interface ModelServingAiGatewayGuardrails {
 export interface ModelServingAiGatewayGuardrailsInput {
     /**
      * List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+     *
+     * @deprecated Please use 'pii' and 'safety' instead.
      */
     invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -12532,6 +13419,8 @@ export interface ModelServingAiGatewayGuardrailsInput {
     safety?: pulumi.Input<boolean>;
     /**
      * The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+     *
+     * @deprecated Please use 'pii' and 'safety' instead.
      */
     validTopics?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -12546,6 +13435,8 @@ export interface ModelServingAiGatewayGuardrailsInputPii {
 export interface ModelServingAiGatewayGuardrailsOutput {
     /**
      * List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+     *
+     * @deprecated Please use 'pii' and 'safety' instead.
      */
     invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -12558,6 +13449,8 @@ export interface ModelServingAiGatewayGuardrailsOutput {
     safety?: pulumi.Input<boolean>;
     /**
      * The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+     *
+     * @deprecated Please use 'pii' and 'safety' instead.
      */
     validTopics?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -12592,11 +13485,15 @@ export interface ModelServingAiGatewayRateLimit {
     /**
      * Used to specify how many calls are allowed for a key within the renewal_period.
      */
-    calls: pulumi.Input<number>;
+    calls?: pulumi.Input<number>;
     /**
-     * Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+     * Key field for a serving endpoint rate limit. Currently, `user`, `userGroup`, `servicePrincipal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
      */
     key?: pulumi.Input<string>;
+    /**
+     * Principal field for a user, user group, or service principal to apply rate limiting to. Accepts a user email, group name, or service principal application ID.
+     */
+    principal?: pulumi.Input<string>;
     /**
      * Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
      */
@@ -13003,7 +13900,11 @@ export interface ModelServingConfigTrafficConfig {
 }
 
 export interface ModelServingConfigTrafficConfigRoute {
-    servedModelName: pulumi.Input<string>;
+    /**
+     * The name of the served entity this route configures traffic for. This needs to match the name of a `servedEntity` block.
+     */
+    servedEntityName?: pulumi.Input<string>;
+    servedModelName?: pulumi.Input<string>;
     /**
      * The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
      */
@@ -13111,11 +14012,12 @@ export interface ModelServingProvisionedThroughputAiGatewayInferenceTableConfig 
 }
 
 export interface ModelServingProvisionedThroughputAiGatewayRateLimit {
-    calls: pulumi.Input<number>;
+    calls?: pulumi.Input<number>;
     /**
      * The key field for a tag.
      */
     key?: pulumi.Input<string>;
+    principal?: pulumi.Input<string>;
     renewalPeriod: pulumi.Input<string>;
 }
 
@@ -13164,7 +14066,11 @@ export interface ModelServingProvisionedThroughputConfigTrafficConfig {
 }
 
 export interface ModelServingProvisionedThroughputConfigTrafficConfigRoute {
-    servedModelName: pulumi.Input<string>;
+    /**
+     * The name of the served entity this route configures traffic for. This needs to match the name of a `servedEntity` block.
+     */
+    servedEntityName?: pulumi.Input<string>;
+    servedModelName?: pulumi.Input<string>;
     /**
      * The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
      */
@@ -13188,7 +14094,7 @@ export interface ModelServingRateLimit {
      */
     calls: pulumi.Input<number>;
     /**
-     * Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+     * Key field for a serving endpoint rate limit. Currently, `user`, `userGroup`, `servicePrincipal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
      */
     key?: pulumi.Input<string>;
     /**
@@ -13315,6 +14221,9 @@ export interface MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServic
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigTargetRules {
+    /**
+     * (AWS only) - list containing information about configure AWS Private Endpoints.
+     */
     awsPrivateEndpointRules?: pulumi.Input<pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule>[]>;
     /**
      * (Azure only) - list containing information about configure Azure Private Endpoints.
@@ -13325,6 +14234,9 @@ export interface MwsNetworkConnectivityConfigEgressConfigTargetRules {
 export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule {
     accountId?: pulumi.Input<string>;
     connectionState?: pulumi.Input<string>;
+    /**
+     * time in epoch milliseconds when this object was created.
+     */
     creationTime?: pulumi.Input<number>;
     deactivated?: pulumi.Input<boolean>;
     deactivatedAt?: pulumi.Input<number>;
@@ -13337,12 +14249,18 @@ export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEn
     networkConnectivityConfigId?: pulumi.Input<string>;
     resourceNames?: pulumi.Input<pulumi.Input<string>[]>;
     ruleId?: pulumi.Input<string>;
+    /**
+     * time in epoch milliseconds when this object was updated.
+     */
     updatedTime?: pulumi.Input<number>;
     vpcEndpointId?: pulumi.Input<string>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
     connectionState?: pulumi.Input<string>;
+    /**
+     * time in epoch milliseconds when this object was created.
+     */
     creationTime?: pulumi.Input<number>;
     deactivated?: pulumi.Input<boolean>;
     deactivatedAt?: pulumi.Input<number>;
@@ -13355,6 +14273,9 @@ export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivate
     networkConnectivityConfigId?: pulumi.Input<string>;
     resourceId?: pulumi.Input<string>;
     ruleId?: pulumi.Input<string>;
+    /**
+     * time in epoch milliseconds when this object was updated.
+     */
     updatedTime?: pulumi.Input<number>;
 }
 
@@ -13369,11 +14290,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -13440,11 +14361,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;
@@ -13846,7 +14767,7 @@ export interface PipelineGatewayDefinition {
      */
     gatewayStorageCatalog: pulumi.Input<string>;
     /**
-     * Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+     * Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Lakeflow Declarative Pipelines system will automatically create the storage location under the catalog and schema.
      */
     gatewayStorageName?: pulumi.Input<string>;
     /**

@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ### Git credential that uses personal access token
+ *
  * You can declare Pulumi-managed Git credential using following code:
  *
  * ```typescript
@@ -22,6 +24,17 @@ import * as utilities from "./utilities";
  *     gitProvider: "azureDevOpsServices",
  *     personalAccessToken: "sometoken",
  * });
+ * ```
+ *
+ * ### Git credential configuration for Azure Service Principal and Azure DevOps
+ *
+ * Databricks now supports Azure service principal federation to Azure DevOps.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/repos/automate-with-ms-entra) on how to configure service principal federation, and after everything is configured, it could be used as simple as:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const ado = new databricks.GitCredential("ado", {gitProvider: "azureDevOpsServicesAad"});
  * ```
  *
  * ## Related Resources
@@ -81,7 +94,7 @@ export class GitCredential extends pulumi.CustomResource {
     }
 
     /**
-     * specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
+     * specify if settings need to be enforced.
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
@@ -92,6 +105,14 @@ export class GitCredential extends pulumi.CustomResource {
      * user name at Git provider.
      */
     public readonly gitUsername!: pulumi.Output<string | undefined>;
+    /**
+     * boolean flag specifying if the credential is the default for the given provider type.
+     */
+    public readonly isDefaultForProvider!: pulumi.Output<boolean | undefined>;
+    /**
+     * the name of the git credential, used for identification and ease of lookup.
+     */
+    public readonly name!: pulumi.Output<string>;
     /**
      * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      */
@@ -113,6 +134,8 @@ export class GitCredential extends pulumi.CustomResource {
             resourceInputs["force"] = state ? state.force : undefined;
             resourceInputs["gitProvider"] = state ? state.gitProvider : undefined;
             resourceInputs["gitUsername"] = state ? state.gitUsername : undefined;
+            resourceInputs["isDefaultForProvider"] = state ? state.isDefaultForProvider : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["personalAccessToken"] = state ? state.personalAccessToken : undefined;
         } else {
             const args = argsOrState as GitCredentialArgs | undefined;
@@ -122,6 +145,8 @@ export class GitCredential extends pulumi.CustomResource {
             resourceInputs["force"] = args ? args.force : undefined;
             resourceInputs["gitProvider"] = args ? args.gitProvider : undefined;
             resourceInputs["gitUsername"] = args ? args.gitUsername : undefined;
+            resourceInputs["isDefaultForProvider"] = args ? args.isDefaultForProvider : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["personalAccessToken"] = args ? args.personalAccessToken : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -134,7 +159,7 @@ export class GitCredential extends pulumi.CustomResource {
  */
 export interface GitCredentialState {
     /**
-     * specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
+     * specify if settings need to be enforced.
      */
     force?: pulumi.Input<boolean>;
     /**
@@ -146,6 +171,14 @@ export interface GitCredentialState {
      */
     gitUsername?: pulumi.Input<string>;
     /**
+     * boolean flag specifying if the credential is the default for the given provider type.
+     */
+    isDefaultForProvider?: pulumi.Input<boolean>;
+    /**
+     * the name of the git credential, used for identification and ease of lookup.
+     */
+    name?: pulumi.Input<string>;
+    /**
      * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      */
     personalAccessToken?: pulumi.Input<string>;
@@ -156,7 +189,7 @@ export interface GitCredentialState {
  */
 export interface GitCredentialArgs {
     /**
-     * specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
+     * specify if settings need to be enforced.
      */
     force?: pulumi.Input<boolean>;
     /**
@@ -167,6 +200,14 @@ export interface GitCredentialArgs {
      * user name at Git provider.
      */
     gitUsername?: pulumi.Input<string>;
+    /**
+     * boolean flag specifying if the credential is the default for the given provider type.
+     */
+    isDefaultForProvider?: pulumi.Input<boolean>;
+    /**
+     * the name of the git credential, used for identification and ease of lookup.
+     */
+    name?: pulumi.Input<string>;
     /**
      * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      */

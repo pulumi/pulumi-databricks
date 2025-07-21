@@ -6,6 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * This data source can be used to get a single network policy.
+ *
+ * > **Note** This data source can only be used with an account-level provider!
+ */
 export function getAccountNetworkPolicy(args?: GetAccountNetworkPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountNetworkPolicyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -55,6 +60,11 @@ export interface GetAccountNetworkPolicyResult {
      */
     readonly networkPolicyId?: string;
 }
+/**
+ * This data source can be used to get a single network policy.
+ *
+ * > **Note** This data source can only be used with an account-level provider!
+ */
 export function getAccountNetworkPolicyOutput(args?: GetAccountNetworkPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountNetworkPolicyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

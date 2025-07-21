@@ -63,16 +63,16 @@ class PipelineArgs:
         """
         The set of arguments for constructing a Pipeline resource.
         :param pulumi.Input[builtins.bool] allow_duplicate_names: Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
-        :param pulumi.Input[builtins.str] budget_policy_id: optional string specifying ID of the budget policy for this DLT pipeline.
+        :param pulumi.Input[builtins.str] budget_policy_id: optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
         :param pulumi.Input[builtins.str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
-        :param pulumi.Input[builtins.str] channel: optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
-        :param pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+        :param pulumi.Input[builtins.str] channel: optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+        :param pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         :param pulumi.Input[builtins.bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input['PipelineDeploymentArgs'] deployment: Deployment type of this pipeline. Supports following attributes:
         :param pulumi.Input[builtins.bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `false`.
         :param pulumi.Input[builtins.str] edition: optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-        :param pulumi.Input['PipelineEventLogArgs'] event_log: an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+        :param pulumi.Input['PipelineEventLogArgs'] event_log: an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
         :param pulumi.Input['PipelineFiltersArgs'] filters: Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
         :param pulumi.Input['PipelineGatewayDefinitionArgs'] gateway_definition: The definition of a gateway pipeline to support CDC. Consists of following attributes:
         :param pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]] libraries: blocks - Specifies pipeline code.
@@ -80,11 +80,11 @@ class PipelineArgs:
         :param pulumi.Input[builtins.bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
         :param pulumi.Input[builtins.str] root_path: An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
         :param pulumi.Input[builtins.str] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
-        :param pulumi.Input[builtins.bool] serverless: An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        :param pulumi.Input[builtins.bool] serverless: An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         :param pulumi.Input[builtins.str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
         :param pulumi.Input[builtins.str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
-        :param pulumi.Input[builtins.str] url: URL of the DLT pipeline on the given workspace.
+        :param pulumi.Input[builtins.str] url: URL of the Lakeflow Declarative Pipeline on the given workspace.
         """
         if allow_duplicate_names is not None:
             pulumi.set(__self__, "allow_duplicate_names", allow_duplicate_names)
@@ -179,7 +179,7 @@ class PipelineArgs:
     @pulumi.getter(name="budgetPolicyId")
     def budget_policy_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        optional string specifying ID of the budget policy for this DLT pipeline.
+        optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
         """
         return pulumi.get(self, "budget_policy_id")
 
@@ -212,7 +212,7 @@ class PipelineArgs:
     @pulumi.getter
     def channel(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+        optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         """
         return pulumi.get(self, "channel")
 
@@ -233,7 +233,7 @@ class PipelineArgs:
     @pulumi.getter
     def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]]:
         """
-        blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+        blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         """
         return pulumi.get(self, "clusters")
 
@@ -323,7 +323,7 @@ class PipelineArgs:
     @pulumi.getter(name="eventLog")
     def event_log(self) -> Optional[pulumi.Input['PipelineEventLogArgs']]:
         """
-        an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+        an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
         """
         return pulumi.get(self, "event_log")
 
@@ -500,7 +500,7 @@ class PipelineArgs:
     @pulumi.getter
     def serverless(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         """
         return pulumi.get(self, "serverless")
 
@@ -566,7 +566,7 @@ class PipelineArgs:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        URL of the DLT pipeline on the given workspace.
+        URL of the Lakeflow Declarative Pipeline on the given workspace.
         """
         return pulumi.get(self, "url")
 
@@ -619,16 +619,16 @@ class _PipelineState:
         """
         Input properties used for looking up and filtering Pipeline resources.
         :param pulumi.Input[builtins.bool] allow_duplicate_names: Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
-        :param pulumi.Input[builtins.str] budget_policy_id: optional string specifying ID of the budget policy for this DLT pipeline.
+        :param pulumi.Input[builtins.str] budget_policy_id: optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
         :param pulumi.Input[builtins.str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
-        :param pulumi.Input[builtins.str] channel: optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
-        :param pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+        :param pulumi.Input[builtins.str] channel: optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+        :param pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         :param pulumi.Input[builtins.bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input['PipelineDeploymentArgs'] deployment: Deployment type of this pipeline. Supports following attributes:
         :param pulumi.Input[builtins.bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `false`.
         :param pulumi.Input[builtins.str] edition: optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-        :param pulumi.Input['PipelineEventLogArgs'] event_log: an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+        :param pulumi.Input['PipelineEventLogArgs'] event_log: an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
         :param pulumi.Input['PipelineFiltersArgs'] filters: Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
         :param pulumi.Input['PipelineGatewayDefinitionArgs'] gateway_definition: The definition of a gateway pipeline to support CDC. Consists of following attributes:
         :param pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]] libraries: blocks - Specifies pipeline code.
@@ -636,11 +636,11 @@ class _PipelineState:
         :param pulumi.Input[builtins.bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
         :param pulumi.Input[builtins.str] root_path: An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
         :param pulumi.Input[builtins.str] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
-        :param pulumi.Input[builtins.bool] serverless: An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        :param pulumi.Input[builtins.bool] serverless: An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         :param pulumi.Input[builtins.str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
         :param pulumi.Input[builtins.str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
-        :param pulumi.Input[builtins.str] url: URL of the DLT pipeline on the given workspace.
+        :param pulumi.Input[builtins.str] url: URL of the Lakeflow Declarative Pipeline on the given workspace.
         """
         if allow_duplicate_names is not None:
             pulumi.set(__self__, "allow_duplicate_names", allow_duplicate_names)
@@ -735,7 +735,7 @@ class _PipelineState:
     @pulumi.getter(name="budgetPolicyId")
     def budget_policy_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        optional string specifying ID of the budget policy for this DLT pipeline.
+        optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
         """
         return pulumi.get(self, "budget_policy_id")
 
@@ -768,7 +768,7 @@ class _PipelineState:
     @pulumi.getter
     def channel(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+        optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         """
         return pulumi.get(self, "channel")
 
@@ -789,7 +789,7 @@ class _PipelineState:
     @pulumi.getter
     def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]]:
         """
-        blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+        blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         """
         return pulumi.get(self, "clusters")
 
@@ -879,7 +879,7 @@ class _PipelineState:
     @pulumi.getter(name="eventLog")
     def event_log(self) -> Optional[pulumi.Input['PipelineEventLogArgs']]:
         """
-        an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+        an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
         """
         return pulumi.get(self, "event_log")
 
@@ -1056,7 +1056,7 @@ class _PipelineState:
     @pulumi.getter
     def serverless(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         """
         return pulumi.get(self, "serverless")
 
@@ -1122,7 +1122,7 @@ class _PipelineState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        URL of the DLT pipeline on the given workspace.
+        URL of the Lakeflow Declarative Pipeline on the given workspace.
         """
         return pulumi.get(self, "url")
 
@@ -1177,7 +1177,7 @@ class Pipeline(pulumi.CustomResource):
                  url: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Use `Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
+        Use `Pipeline` to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
 
         > This resource can only be used with a workspace-level provider!
 
@@ -1187,8 +1187,8 @@ class Pipeline(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        dlt_demo = databricks.Notebook("dlt_demo")
-        dlt_demo_repo = databricks.Repo("dlt_demo")
+        ldp_demo = databricks.Notebook("ldp_demo")
+        ldp_demo_repo = databricks.Repo("ldp_demo")
         this = databricks.Pipeline("this",
             name="Pipeline Name",
             storage="/test/first-pipeline",
@@ -1215,17 +1215,17 @@ class Pipeline(pulumi.CustomResource):
             libraries=[
                 {
                     "notebook": {
-                        "path": dlt_demo.id,
+                        "path": ldp_demo.id,
                     },
                 },
                 {
                     "file": {
-                        "path": dlt_demo_repo.path.apply(lambda path: f"{path}/pipeline.sql"),
+                        "path": ldp_demo_repo.path.apply(lambda path: f"{path}/pipeline.sql"),
                     },
                 },
                 {
                     "glob": {
-                        "include": dlt_demo_repo.path.apply(lambda path: f"{path}/subfolder/**"),
+                        "include": ldp_demo_repo.path.apply(lambda path: f"{path}/subfolder/**"),
                     },
                 },
             ],
@@ -1249,7 +1249,7 @@ class Pipeline(pulumi.CustomResource):
         The following resources are often used in the same context:
 
         * End to end workspace management guide.
-        * get_pipelines to retrieve [Delta Live Tables](https://docs.databricks.com/aws/en/dlt) pipeline data.
+        * get_pipelines to retrieve [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) data.
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
         * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -1279,16 +1279,16 @@ class Pipeline(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] allow_duplicate_names: Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
-        :param pulumi.Input[builtins.str] budget_policy_id: optional string specifying ID of the budget policy for this DLT pipeline.
+        :param pulumi.Input[builtins.str] budget_policy_id: optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
         :param pulumi.Input[builtins.str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
-        :param pulumi.Input[builtins.str] channel: optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+        :param pulumi.Input[builtins.str] channel: optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         :param pulumi.Input[builtins.bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']] deployment: Deployment type of this pipeline. Supports following attributes:
         :param pulumi.Input[builtins.bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `false`.
         :param pulumi.Input[builtins.str] edition: optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-        :param pulumi.Input[Union['PipelineEventLogArgs', 'PipelineEventLogArgsDict']] event_log: an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+        :param pulumi.Input[Union['PipelineEventLogArgs', 'PipelineEventLogArgsDict']] event_log: an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
         :param pulumi.Input[Union['PipelineFiltersArgs', 'PipelineFiltersArgsDict']] filters: Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
         :param pulumi.Input[Union['PipelineGatewayDefinitionArgs', 'PipelineGatewayDefinitionArgsDict']] gateway_definition: The definition of a gateway pipeline to support CDC. Consists of following attributes:
         :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineLibraryArgs', 'PipelineLibraryArgsDict']]]] libraries: blocks - Specifies pipeline code.
@@ -1296,11 +1296,11 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
         :param pulumi.Input[builtins.str] root_path: An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
         :param pulumi.Input[builtins.str] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
-        :param pulumi.Input[builtins.bool] serverless: An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        :param pulumi.Input[builtins.bool] serverless: An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         :param pulumi.Input[builtins.str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
         :param pulumi.Input[builtins.str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
-        :param pulumi.Input[builtins.str] url: URL of the DLT pipeline on the given workspace.
+        :param pulumi.Input[builtins.str] url: URL of the Lakeflow Declarative Pipeline on the given workspace.
         """
         ...
     @overload
@@ -1309,7 +1309,7 @@ class Pipeline(pulumi.CustomResource):
                  args: Optional[PipelineArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Use `Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
+        Use `Pipeline` to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
 
         > This resource can only be used with a workspace-level provider!
 
@@ -1319,8 +1319,8 @@ class Pipeline(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        dlt_demo = databricks.Notebook("dlt_demo")
-        dlt_demo_repo = databricks.Repo("dlt_demo")
+        ldp_demo = databricks.Notebook("ldp_demo")
+        ldp_demo_repo = databricks.Repo("ldp_demo")
         this = databricks.Pipeline("this",
             name="Pipeline Name",
             storage="/test/first-pipeline",
@@ -1347,17 +1347,17 @@ class Pipeline(pulumi.CustomResource):
             libraries=[
                 {
                     "notebook": {
-                        "path": dlt_demo.id,
+                        "path": ldp_demo.id,
                     },
                 },
                 {
                     "file": {
-                        "path": dlt_demo_repo.path.apply(lambda path: f"{path}/pipeline.sql"),
+                        "path": ldp_demo_repo.path.apply(lambda path: f"{path}/pipeline.sql"),
                     },
                 },
                 {
                     "glob": {
-                        "include": dlt_demo_repo.path.apply(lambda path: f"{path}/subfolder/**"),
+                        "include": ldp_demo_repo.path.apply(lambda path: f"{path}/subfolder/**"),
                     },
                 },
             ],
@@ -1381,7 +1381,7 @@ class Pipeline(pulumi.CustomResource):
         The following resources are often used in the same context:
 
         * End to end workspace management guide.
-        * get_pipelines to retrieve [Delta Live Tables](https://docs.databricks.com/aws/en/dlt) pipeline data.
+        * get_pipelines to retrieve [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) data.
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
         * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -1564,16 +1564,16 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] allow_duplicate_names: Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
-        :param pulumi.Input[builtins.str] budget_policy_id: optional string specifying ID of the budget policy for this DLT pipeline.
+        :param pulumi.Input[builtins.str] budget_policy_id: optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
         :param pulumi.Input[builtins.str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
-        :param pulumi.Input[builtins.str] channel: optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+        :param pulumi.Input[builtins.str] channel: optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         :param pulumi.Input[builtins.bool] continuous: A flag indicating whether to run the pipeline continuously. The default value is `false`.
         :param pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']] deployment: Deployment type of this pipeline. Supports following attributes:
         :param pulumi.Input[builtins.bool] development: A flag indicating whether to run the pipeline in development mode. The default value is `false`.
         :param pulumi.Input[builtins.str] edition: optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
-        :param pulumi.Input[Union['PipelineEventLogArgs', 'PipelineEventLogArgsDict']] event_log: an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+        :param pulumi.Input[Union['PipelineEventLogArgs', 'PipelineEventLogArgsDict']] event_log: an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
         :param pulumi.Input[Union['PipelineFiltersArgs', 'PipelineFiltersArgsDict']] filters: Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
         :param pulumi.Input[Union['PipelineGatewayDefinitionArgs', 'PipelineGatewayDefinitionArgsDict']] gateway_definition: The definition of a gateway pipeline to support CDC. Consists of following attributes:
         :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineLibraryArgs', 'PipelineLibraryArgsDict']]]] libraries: blocks - Specifies pipeline code.
@@ -1581,11 +1581,11 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
         :param pulumi.Input[builtins.str] root_path: An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
         :param pulumi.Input[builtins.str] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
-        :param pulumi.Input[builtins.bool] serverless: An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        :param pulumi.Input[builtins.bool] serverless: An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         :param pulumi.Input[builtins.str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
         :param pulumi.Input[builtins.str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
-        :param pulumi.Input[builtins.str] url: URL of the DLT pipeline on the given workspace.
+        :param pulumi.Input[builtins.str] url: URL of the Lakeflow Declarative Pipeline on the given workspace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1643,7 +1643,7 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter(name="budgetPolicyId")
     def budget_policy_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        optional string specifying ID of the budget policy for this DLT pipeline.
+        optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
         """
         return pulumi.get(self, "budget_policy_id")
 
@@ -1664,7 +1664,7 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter
     def channel(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+        optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         """
         return pulumi.get(self, "channel")
 
@@ -1677,7 +1677,7 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter
     def clusters(self) -> pulumi.Output[Optional[Sequence['outputs.PipelineCluster']]]:
         """
-        blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+        blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         """
         return pulumi.get(self, "clusters")
 
@@ -1735,7 +1735,7 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter(name="eventLog")
     def event_log(self) -> pulumi.Output[Optional['outputs.PipelineEventLog']]:
         """
-        an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+        an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
         """
         return pulumi.get(self, "event_log")
 
@@ -1844,7 +1844,7 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter
     def serverless(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         """
         return pulumi.get(self, "serverless")
 
@@ -1886,7 +1886,7 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[builtins.str]:
         """
-        URL of the DLT pipeline on the given workspace.
+        URL of the Lakeflow Declarative Pipeline on the given workspace.
         """
         return pulumi.get(self, "url")
 

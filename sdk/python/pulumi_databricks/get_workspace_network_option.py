@@ -81,7 +81,21 @@ def get_workspace_network_option(network_policy_id: Optional[builtins.str] = Non
                                  workspace_id: Optional[builtins.str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceNetworkOptionResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source can be used to get a single workspace network option.
+
+    > **Note** This data source can only be used with an account-level provider!
+
+    ## Example Usage
+
+    Referring to a network policy by id:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_workspace_network_option(workspace_id="9999999999999999")
+    ```
+
 
     :param builtins.str network_policy_id: (string) - The network policy ID to apply to the workspace. This controls the network access rules
            for all serverless compute resources in the workspace. Each workspace can only be
@@ -103,7 +117,21 @@ def get_workspace_network_option_output(network_policy_id: Optional[pulumi.Input
                                         workspace_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceNetworkOptionResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source can be used to get a single workspace network option.
+
+    > **Note** This data source can only be used with an account-level provider!
+
+    ## Example Usage
+
+    Referring to a network policy by id:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_workspace_network_option(workspace_id="9999999999999999")
+    ```
+
 
     :param builtins.str network_policy_id: (string) - The network policy ID to apply to the workspace. This controls the network access rules
            for all serverless compute resources in the workspace. Each workspace can only be

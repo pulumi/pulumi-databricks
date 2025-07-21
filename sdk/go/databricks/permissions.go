@@ -344,15 +344,15 @@ import (
 //
 // ```
 //
-// ## Delta Live Tables usage
+// ## Lakeflow Declarative Pipelines usage
 //
-// There are four assignable [permission levels](https://docs.databricks.com/security/access-control/dlt-acl.html#delta-live-tables-permissions) for databricks_pipeline: `CAN_VIEW`, `CAN_RUN`, `CAN_MANAGE`, and `IS_OWNER`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
+// There are four assignable [permission levels](https://docs.databricks.com/aws/en/security/auth/access-control#lakeflow-declarative-pipelines-acls) for databricks_pipeline: `CAN_VIEW`, `CAN_RUN`, `CAN_MANAGE`, and `IS_OWNER`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
 //
-// - The creator of a DLT Pipeline has `IS_OWNER` permission. Destroying `Permissions` resource for a pipeline would revert ownership to the creator.
-// - A DLT pipeline must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the pipeline. Nothing would change, per se, if the pipeline was created through Pulumi.
-// - A DLT pipeline cannot have a group as an owner.
-// - DLT Pipelines triggered through _Start_ assume the permissions of the pipeline owner and not the user, and service principal who issued Run Now.
-// - Read [main documentation](https://docs.databricks.com/security/access-control/dlt-acl.html) for additional detail.
+// - The creator of a Lakeflow Declarative Pipeline has `IS_OWNER` permission. Destroying `Permissions` resource for a pipeline would revert ownership to the creator.
+// - A Lakeflow Declarative Pipeline must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the pipeline. Nothing would change, per se, if the pipeline was created through Pulumi.
+// - A Lakeflow Declarative Pipeline cannot have a group as an owner.
+// - Lakeflow Declarative Pipelines triggered through _Start_ assume the permissions of the pipeline owner and not the user, and service principal who issued Run Now.
+// - Read [main documentation](https://docs.databricks.com/aws/en/security/auth/access-control#lakeflow-declarative-pipelines-acls) for additional detail.
 //
 // ```go
 // package main
@@ -398,16 +398,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			dltDemo, err := databricks.NewNotebook(ctx, "dlt_demo", &databricks.NotebookArgs{
+//			ldpDemo, err := databricks.NewNotebook(ctx, "ldp_demo", &databricks.NotebookArgs{
 //				ContentBase64: pulumi.String(invokeBase64encode.Result),
 //				Language:      pulumi.String("PYTHON"),
-//				Path:          pulumi.Sprintf("%v/DLT_Demo", me.Home),
+//				Path:          pulumi.Sprintf("%v/ldp_demo", me.Home),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			this, err := databricks.NewPipeline(ctx, "this", &databricks.PipelineArgs{
-//				Name:    pulumi.Sprintf("DLT Demo Pipeline (%v)", me.Alphanumeric),
+//				Name:    pulumi.Sprintf("LDP Demo Pipeline (%v)", me.Alphanumeric),
 //				Storage: pulumi.String("/test/tf-pipeline"),
 //				Configuration: pulumi.StringMap{
 //					"key1": pulumi.String("value1"),
@@ -416,7 +416,7 @@ import (
 //				Libraries: databricks.PipelineLibraryArray{
 //					&databricks.PipelineLibraryArgs{
 //						Notebook: &databricks.PipelineLibraryNotebookArgs{
-//							Path: dltDemo.ID(),
+//							Path: ldpDemo.ID(),
 //						},
 //					},
 //				},
@@ -433,7 +433,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewPermissions(ctx, "dlt_usage", &databricks.PermissionsArgs{
+//			_, err = databricks.NewPermissions(ctx, "ldp_usage", &databricks.PermissionsArgs{
 //				PipelineId: this.ID(),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
@@ -1369,7 +1369,57 @@ import (
 //
 // ```
 //
-// ## SQL Alert usage
+// ## SQL Alert (AlertV2) usage
+//
+// [Alert V2](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) which is the new version of SQL Alert have 4 possible permission levels: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			auto, err := databricks.NewGroup(ctx, "auto", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("Automation"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("Engineering"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPermissions(ctx, "app_usage", &databricks.PermissionsArgs{
+//				AlertV2Id: pulumi.String("12345"),
+//				AccessControls: databricks.PermissionsAccessControlArray{
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       auto.DisplayName,
+//						PermissionLevel: pulumi.String("CAN_RUN"),
+//					},
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       eng.DisplayName,
+//						PermissionLevel: pulumi.String("CAN_EDIT"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## SQL Alert (legacy) usage
 //
 // [SQL alerts](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
 //
@@ -1463,6 +1513,50 @@ import (
 //
 // ```
 //
+// ## Lakebase Database Instances usage
+//
+// [Databricks Lakebase](https://docs.databricks.com/aws/en/oltp/) have two possible permissions: `CAN_USE` and `CAN_MANAGE`:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("Engineering"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPermissions(ctx, "app_usage", &databricks.PermissionsArgs{
+//				DatabaseInstanceName: pulumi.String("my_database"),
+//				AccessControls: databricks.PermissionsAccessControlArray{
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       pulumi.String("users"),
+//						PermissionLevel: pulumi.String("CAN_USE"),
+//					},
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       eng.DisplayName,
+//						PermissionLevel: pulumi.String("CAN_MANAGE"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Instance Profiles
 //
 // Instance Profiles are not managed by General Permissions API and therefore GroupInstanceProfile and UserInstanceProfile should be used to allow usage of specific AWS EC2 IAM roles to users or groups.
@@ -1489,19 +1583,21 @@ import (
 type Permissions struct {
 	pulumi.CustomResourceState
 
-	AccessControls  PermissionsAccessControlArrayOutput `pulumi:"accessControls"`
-	AppName         pulumi.StringPtrOutput              `pulumi:"appName"`
-	Authorization   pulumi.StringPtrOutput              `pulumi:"authorization"`
-	ClusterId       pulumi.StringPtrOutput              `pulumi:"clusterId"`
-	ClusterPolicyId pulumi.StringPtrOutput              `pulumi:"clusterPolicyId"`
-	DashboardId     pulumi.StringPtrOutput              `pulumi:"dashboardId"`
-	DirectoryId     pulumi.StringPtrOutput              `pulumi:"directoryId"`
-	DirectoryPath   pulumi.StringPtrOutput              `pulumi:"directoryPath"`
-	ExperimentId    pulumi.StringPtrOutput              `pulumi:"experimentId"`
-	InstancePoolId  pulumi.StringPtrOutput              `pulumi:"instancePoolId"`
-	JobId           pulumi.StringPtrOutput              `pulumi:"jobId"`
-	NotebookId      pulumi.StringPtrOutput              `pulumi:"notebookId"`
-	NotebookPath    pulumi.StringPtrOutput              `pulumi:"notebookPath"`
+	AccessControls       PermissionsAccessControlArrayOutput `pulumi:"accessControls"`
+	AlertV2Id            pulumi.StringPtrOutput              `pulumi:"alertV2Id"`
+	AppName              pulumi.StringPtrOutput              `pulumi:"appName"`
+	Authorization        pulumi.StringPtrOutput              `pulumi:"authorization"`
+	ClusterId            pulumi.StringPtrOutput              `pulumi:"clusterId"`
+	ClusterPolicyId      pulumi.StringPtrOutput              `pulumi:"clusterPolicyId"`
+	DashboardId          pulumi.StringPtrOutput              `pulumi:"dashboardId"`
+	DatabaseInstanceName pulumi.StringPtrOutput              `pulumi:"databaseInstanceName"`
+	DirectoryId          pulumi.StringPtrOutput              `pulumi:"directoryId"`
+	DirectoryPath        pulumi.StringPtrOutput              `pulumi:"directoryPath"`
+	ExperimentId         pulumi.StringPtrOutput              `pulumi:"experimentId"`
+	InstancePoolId       pulumi.StringPtrOutput              `pulumi:"instancePoolId"`
+	JobId                pulumi.StringPtrOutput              `pulumi:"jobId"`
+	NotebookId           pulumi.StringPtrOutput              `pulumi:"notebookId"`
+	NotebookPath         pulumi.StringPtrOutput              `pulumi:"notebookPath"`
 	// type of permissions.
 	ObjectType             pulumi.StringOutput    `pulumi:"objectType"`
 	PipelineId             pulumi.StringPtrOutput `pulumi:"pipelineId"`
@@ -1551,19 +1647,21 @@ func GetPermissions(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Permissions resources.
 type permissionsState struct {
-	AccessControls  []PermissionsAccessControl `pulumi:"accessControls"`
-	AppName         *string                    `pulumi:"appName"`
-	Authorization   *string                    `pulumi:"authorization"`
-	ClusterId       *string                    `pulumi:"clusterId"`
-	ClusterPolicyId *string                    `pulumi:"clusterPolicyId"`
-	DashboardId     *string                    `pulumi:"dashboardId"`
-	DirectoryId     *string                    `pulumi:"directoryId"`
-	DirectoryPath   *string                    `pulumi:"directoryPath"`
-	ExperimentId    *string                    `pulumi:"experimentId"`
-	InstancePoolId  *string                    `pulumi:"instancePoolId"`
-	JobId           *string                    `pulumi:"jobId"`
-	NotebookId      *string                    `pulumi:"notebookId"`
-	NotebookPath    *string                    `pulumi:"notebookPath"`
+	AccessControls       []PermissionsAccessControl `pulumi:"accessControls"`
+	AlertV2Id            *string                    `pulumi:"alertV2Id"`
+	AppName              *string                    `pulumi:"appName"`
+	Authorization        *string                    `pulumi:"authorization"`
+	ClusterId            *string                    `pulumi:"clusterId"`
+	ClusterPolicyId      *string                    `pulumi:"clusterPolicyId"`
+	DashboardId          *string                    `pulumi:"dashboardId"`
+	DatabaseInstanceName *string                    `pulumi:"databaseInstanceName"`
+	DirectoryId          *string                    `pulumi:"directoryId"`
+	DirectoryPath        *string                    `pulumi:"directoryPath"`
+	ExperimentId         *string                    `pulumi:"experimentId"`
+	InstancePoolId       *string                    `pulumi:"instancePoolId"`
+	JobId                *string                    `pulumi:"jobId"`
+	NotebookId           *string                    `pulumi:"notebookId"`
+	NotebookPath         *string                    `pulumi:"notebookPath"`
 	// type of permissions.
 	ObjectType             *string `pulumi:"objectType"`
 	PipelineId             *string `pulumi:"pipelineId"`
@@ -1581,19 +1679,21 @@ type permissionsState struct {
 }
 
 type PermissionsState struct {
-	AccessControls  PermissionsAccessControlArrayInput
-	AppName         pulumi.StringPtrInput
-	Authorization   pulumi.StringPtrInput
-	ClusterId       pulumi.StringPtrInput
-	ClusterPolicyId pulumi.StringPtrInput
-	DashboardId     pulumi.StringPtrInput
-	DirectoryId     pulumi.StringPtrInput
-	DirectoryPath   pulumi.StringPtrInput
-	ExperimentId    pulumi.StringPtrInput
-	InstancePoolId  pulumi.StringPtrInput
-	JobId           pulumi.StringPtrInput
-	NotebookId      pulumi.StringPtrInput
-	NotebookPath    pulumi.StringPtrInput
+	AccessControls       PermissionsAccessControlArrayInput
+	AlertV2Id            pulumi.StringPtrInput
+	AppName              pulumi.StringPtrInput
+	Authorization        pulumi.StringPtrInput
+	ClusterId            pulumi.StringPtrInput
+	ClusterPolicyId      pulumi.StringPtrInput
+	DashboardId          pulumi.StringPtrInput
+	DatabaseInstanceName pulumi.StringPtrInput
+	DirectoryId          pulumi.StringPtrInput
+	DirectoryPath        pulumi.StringPtrInput
+	ExperimentId         pulumi.StringPtrInput
+	InstancePoolId       pulumi.StringPtrInput
+	JobId                pulumi.StringPtrInput
+	NotebookId           pulumi.StringPtrInput
+	NotebookPath         pulumi.StringPtrInput
 	// type of permissions.
 	ObjectType             pulumi.StringPtrInput
 	PipelineId             pulumi.StringPtrInput
@@ -1615,19 +1715,21 @@ func (PermissionsState) ElementType() reflect.Type {
 }
 
 type permissionsArgs struct {
-	AccessControls  []PermissionsAccessControl `pulumi:"accessControls"`
-	AppName         *string                    `pulumi:"appName"`
-	Authorization   *string                    `pulumi:"authorization"`
-	ClusterId       *string                    `pulumi:"clusterId"`
-	ClusterPolicyId *string                    `pulumi:"clusterPolicyId"`
-	DashboardId     *string                    `pulumi:"dashboardId"`
-	DirectoryId     *string                    `pulumi:"directoryId"`
-	DirectoryPath   *string                    `pulumi:"directoryPath"`
-	ExperimentId    *string                    `pulumi:"experimentId"`
-	InstancePoolId  *string                    `pulumi:"instancePoolId"`
-	JobId           *string                    `pulumi:"jobId"`
-	NotebookId      *string                    `pulumi:"notebookId"`
-	NotebookPath    *string                    `pulumi:"notebookPath"`
+	AccessControls       []PermissionsAccessControl `pulumi:"accessControls"`
+	AlertV2Id            *string                    `pulumi:"alertV2Id"`
+	AppName              *string                    `pulumi:"appName"`
+	Authorization        *string                    `pulumi:"authorization"`
+	ClusterId            *string                    `pulumi:"clusterId"`
+	ClusterPolicyId      *string                    `pulumi:"clusterPolicyId"`
+	DashboardId          *string                    `pulumi:"dashboardId"`
+	DatabaseInstanceName *string                    `pulumi:"databaseInstanceName"`
+	DirectoryId          *string                    `pulumi:"directoryId"`
+	DirectoryPath        *string                    `pulumi:"directoryPath"`
+	ExperimentId         *string                    `pulumi:"experimentId"`
+	InstancePoolId       *string                    `pulumi:"instancePoolId"`
+	JobId                *string                    `pulumi:"jobId"`
+	NotebookId           *string                    `pulumi:"notebookId"`
+	NotebookPath         *string                    `pulumi:"notebookPath"`
 	// type of permissions.
 	ObjectType             *string `pulumi:"objectType"`
 	PipelineId             *string `pulumi:"pipelineId"`
@@ -1646,19 +1748,21 @@ type permissionsArgs struct {
 
 // The set of arguments for constructing a Permissions resource.
 type PermissionsArgs struct {
-	AccessControls  PermissionsAccessControlArrayInput
-	AppName         pulumi.StringPtrInput
-	Authorization   pulumi.StringPtrInput
-	ClusterId       pulumi.StringPtrInput
-	ClusterPolicyId pulumi.StringPtrInput
-	DashboardId     pulumi.StringPtrInput
-	DirectoryId     pulumi.StringPtrInput
-	DirectoryPath   pulumi.StringPtrInput
-	ExperimentId    pulumi.StringPtrInput
-	InstancePoolId  pulumi.StringPtrInput
-	JobId           pulumi.StringPtrInput
-	NotebookId      pulumi.StringPtrInput
-	NotebookPath    pulumi.StringPtrInput
+	AccessControls       PermissionsAccessControlArrayInput
+	AlertV2Id            pulumi.StringPtrInput
+	AppName              pulumi.StringPtrInput
+	Authorization        pulumi.StringPtrInput
+	ClusterId            pulumi.StringPtrInput
+	ClusterPolicyId      pulumi.StringPtrInput
+	DashboardId          pulumi.StringPtrInput
+	DatabaseInstanceName pulumi.StringPtrInput
+	DirectoryId          pulumi.StringPtrInput
+	DirectoryPath        pulumi.StringPtrInput
+	ExperimentId         pulumi.StringPtrInput
+	InstancePoolId       pulumi.StringPtrInput
+	JobId                pulumi.StringPtrInput
+	NotebookId           pulumi.StringPtrInput
+	NotebookPath         pulumi.StringPtrInput
 	// type of permissions.
 	ObjectType             pulumi.StringPtrInput
 	PipelineId             pulumi.StringPtrInput
@@ -1766,6 +1870,10 @@ func (o PermissionsOutput) AccessControls() PermissionsAccessControlArrayOutput 
 	return o.ApplyT(func(v *Permissions) PermissionsAccessControlArrayOutput { return v.AccessControls }).(PermissionsAccessControlArrayOutput)
 }
 
+func (o PermissionsOutput) AlertV2Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.AlertV2Id }).(pulumi.StringPtrOutput)
+}
+
 func (o PermissionsOutput) AppName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.AppName }).(pulumi.StringPtrOutput)
 }
@@ -1784,6 +1892,10 @@ func (o PermissionsOutput) ClusterPolicyId() pulumi.StringPtrOutput {
 
 func (o PermissionsOutput) DashboardId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.DashboardId }).(pulumi.StringPtrOutput)
+}
+
+func (o PermissionsOutput) DatabaseInstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.DatabaseInstanceName }).(pulumi.StringPtrOutput)
 }
 
 func (o PermissionsOutput) DirectoryId() pulumi.StringPtrOutput {

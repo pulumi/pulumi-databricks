@@ -11,6 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source can be used to get a single network policy.
+//
+// > **Note** This data source can only be used with an account-level provider!
 func LookupAccountNetworkPolicy(ctx *pulumi.Context, args *LookupAccountNetworkPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAccountNetworkPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountNetworkPolicyResult

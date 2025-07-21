@@ -54,8 +54,22 @@ func LookupDatabaseInstance(ctx *pulumi.Context, args *LookupDatabaseInstanceArg
 type LookupDatabaseInstanceArgs struct {
 	// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
 	Capacity *string `pulumi:"capacity"`
+	// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
 	// The name of the instance. This is the unique identifier for the instance
 	Name string `pulumi:"name"`
+	// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+	// 1 primary and 0 secondaries
+	NodeCount *int `pulumi:"nodeCount"`
+	// (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+	// child instance.
+	// Input: For specifying the parent instance to create a child instance. Optional.
+	// Output: Only populated if provided as input to create a child instance
+	ParentInstanceRef *GetDatabaseInstanceParentInstanceRef `pulumi:"parentInstanceRef"`
+	// (integer) - The retention window for the instance. This is the time window in days
+	// for which the historical data is retained. The default value is 7 days.
+	// Valid values are 2 to 35 days
+	RetentionWindowInDays *int `pulumi:"retentionWindowInDays"`
 	// (boolean) - Whether the instance is stopped
 	Stopped *bool `pulumi:"stopped"`
 }
@@ -64,27 +78,59 @@ type LookupDatabaseInstanceArgs struct {
 type LookupDatabaseInstanceResult struct {
 	// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
 	Capacity *string `pulumi:"capacity"`
+	// (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+	// parent instance
+	ChildInstanceRefs []GetDatabaseInstanceChildInstanceRef `pulumi:"childInstanceRefs"`
 	// (string) - The timestamp when the instance was created
 	CreationTime string `pulumi:"creationTime"`
 	// (string) - The email of the creator of the instance
 	Creator string `pulumi:"creator"`
+	// (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
+	// `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+	// `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+	EffectiveEnableReadableSecondaries bool `pulumi:"effectiveEnableReadableSecondaries"`
+	// (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
+	// `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+	// `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+	EffectiveNodeCount int `pulumi:"effectiveNodeCount"`
+	// (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
+	// `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+	// `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+	EffectiveRetentionWindowInDays int `pulumi:"effectiveRetentionWindowInDays"`
 	// (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
 	// `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
 	// `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
 	EffectiveStopped bool `pulumi:"effectiveStopped"`
+	// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// (string) - The name of the instance. This is the unique identifier for the instance
+	// (string) - Name of the ref database instance
 	Name string `pulumi:"name"`
+	// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+	// 1 primary and 0 secondaries
+	NodeCount *int `pulumi:"nodeCount"`
+	// (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+	// child instance.
+	// Input: For specifying the parent instance to create a child instance. Optional.
+	// Output: Only populated if provided as input to create a child instance
+	ParentInstanceRef *GetDatabaseInstanceParentInstanceRef `pulumi:"parentInstanceRef"`
 	// (string) - The version of Postgres running on the instance
 	PgVersion string `pulumi:"pgVersion"`
+	// (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+	// enableReadableSecondaries is true
+	ReadOnlyDns string `pulumi:"readOnlyDns"`
 	// (string) - The DNS endpoint to connect to the instance for read+write access
 	ReadWriteDns string `pulumi:"readWriteDns"`
+	// (integer) - The retention window for the instance. This is the time window in days
+	// for which the historical data is retained. The default value is 7 days.
+	// Valid values are 2 to 35 days
+	RetentionWindowInDays *int `pulumi:"retentionWindowInDays"`
 	// (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 	State string `pulumi:"state"`
 	// (boolean) - Whether the instance is stopped
 	Stopped *bool `pulumi:"stopped"`
-	// (string) - An immutable UUID identifier for the instance
+	// (string) - Id of the ref database instance
 	Uid string `pulumi:"uid"`
 }
 
@@ -101,8 +147,22 @@ func LookupDatabaseInstanceOutput(ctx *pulumi.Context, args LookupDatabaseInstan
 type LookupDatabaseInstanceOutputArgs struct {
 	// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
 	Capacity pulumi.StringPtrInput `pulumi:"capacity"`
+	// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+	EnableReadableSecondaries pulumi.BoolPtrInput `pulumi:"enableReadableSecondaries"`
 	// The name of the instance. This is the unique identifier for the instance
 	Name pulumi.StringInput `pulumi:"name"`
+	// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+	// 1 primary and 0 secondaries
+	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
+	// (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+	// child instance.
+	// Input: For specifying the parent instance to create a child instance. Optional.
+	// Output: Only populated if provided as input to create a child instance
+	ParentInstanceRef GetDatabaseInstanceParentInstanceRefPtrInput `pulumi:"parentInstanceRef"`
+	// (integer) - The retention window for the instance. This is the time window in days
+	// for which the historical data is retained. The default value is 7 days.
+	// Valid values are 2 to 35 days
+	RetentionWindowInDays pulumi.IntPtrInput `pulumi:"retentionWindowInDays"`
 	// (boolean) - Whether the instance is stopped
 	Stopped pulumi.BoolPtrInput `pulumi:"stopped"`
 }
@@ -131,6 +191,12 @@ func (o LookupDatabaseInstanceResultOutput) Capacity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) *string { return v.Capacity }).(pulumi.StringPtrOutput)
 }
 
+// (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+// parent instance
+func (o LookupDatabaseInstanceResultOutput) ChildInstanceRefs() GetDatabaseInstanceChildInstanceRefArrayOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) []GetDatabaseInstanceChildInstanceRef { return v.ChildInstanceRefs }).(GetDatabaseInstanceChildInstanceRefArrayOutput)
+}
+
 // (string) - The timestamp when the instance was created
 func (o LookupDatabaseInstanceResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.CreationTime }).(pulumi.StringOutput)
@@ -141,6 +207,27 @@ func (o LookupDatabaseInstanceResultOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.Creator }).(pulumi.StringOutput)
 }
 
+// (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
+// `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+// `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+func (o LookupDatabaseInstanceResultOutput) EffectiveEnableReadableSecondaries() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.EffectiveEnableReadableSecondaries }).(pulumi.BoolOutput)
+}
+
+// (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
+// `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+// `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+func (o LookupDatabaseInstanceResultOutput) EffectiveNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) int { return v.EffectiveNodeCount }).(pulumi.IntOutput)
+}
+
+// (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
+// `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+// `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+func (o LookupDatabaseInstanceResultOutput) EffectiveRetentionWindowInDays() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) int { return v.EffectiveRetentionWindowInDays }).(pulumi.IntOutput)
+}
+
 // (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
 // `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
 // `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
@@ -148,14 +235,33 @@ func (o LookupDatabaseInstanceResultOutput) EffectiveStopped() pulumi.BoolOutput
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.EffectiveStopped }).(pulumi.BoolOutput)
 }
 
+// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+func (o LookupDatabaseInstanceResultOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) *bool { return v.EnableReadableSecondaries }).(pulumi.BoolPtrOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupDatabaseInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (string) - The name of the instance. This is the unique identifier for the instance
+// (string) - Name of the ref database instance
 func (o LookupDatabaseInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+// 1 primary and 0 secondaries
+func (o LookupDatabaseInstanceResultOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+}
+
+// (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+// child instance.
+// Input: For specifying the parent instance to create a child instance. Optional.
+// Output: Only populated if provided as input to create a child instance
+func (o LookupDatabaseInstanceResultOutput) ParentInstanceRef() GetDatabaseInstanceParentInstanceRefPtrOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) *GetDatabaseInstanceParentInstanceRef { return v.ParentInstanceRef }).(GetDatabaseInstanceParentInstanceRefPtrOutput)
 }
 
 // (string) - The version of Postgres running on the instance
@@ -163,9 +269,22 @@ func (o LookupDatabaseInstanceResultOutput) PgVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.PgVersion }).(pulumi.StringOutput)
 }
 
+// (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+// enableReadableSecondaries is true
+func (o LookupDatabaseInstanceResultOutput) ReadOnlyDns() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.ReadOnlyDns }).(pulumi.StringOutput)
+}
+
 // (string) - The DNS endpoint to connect to the instance for read+write access
 func (o LookupDatabaseInstanceResultOutput) ReadWriteDns() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.ReadWriteDns }).(pulumi.StringOutput)
+}
+
+// (integer) - The retention window for the instance. This is the time window in days
+// for which the historical data is retained. The default value is 7 days.
+// Valid values are 2 to 35 days
+func (o LookupDatabaseInstanceResultOutput) RetentionWindowInDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) *int { return v.RetentionWindowInDays }).(pulumi.IntPtrOutput)
 }
 
 // (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
@@ -178,7 +297,7 @@ func (o LookupDatabaseInstanceResultOutput) Stopped() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) *bool { return v.Stopped }).(pulumi.BoolPtrOutput)
 }
 
-// (string) - An immutable UUID identifier for the instance
+// (string) - Id of the ref database instance
 func (o LookupDatabaseInstanceResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.Uid }).(pulumi.StringOutput)
 }

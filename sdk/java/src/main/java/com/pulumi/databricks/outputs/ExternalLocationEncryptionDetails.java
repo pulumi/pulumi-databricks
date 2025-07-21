@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ExternalLocationEncryptionDetails {
+    /**
+     * @return a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+     * 
+     */
     private @Nullable ExternalLocationEncryptionDetailsSseEncryptionDetails sseEncryptionDetails;
 
     private ExternalLocationEncryptionDetails() {}
+    /**
+     * @return a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+     * 
+     */
     public Optional<ExternalLocationEncryptionDetailsSseEncryptionDetails> sseEncryptionDetails() {
         return Optional.ofNullable(this.sseEncryptionDetails);
     }

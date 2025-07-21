@@ -54,7 +54,7 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
         "home": args.home,
         "id": args.id,
         "repos": args.repos,
-        "spId": args.spId,
+        "scimId": args.scimId,
     }, opts);
 }
 
@@ -87,14 +87,17 @@ export interface GetServicePrincipalArgs {
      */
     home?: string;
     /**
-     * The id of the service principal.
+     * The id of the service principal (SCIM ID).
      */
     id?: string;
     /**
      * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      */
     repos?: string;
-    spId?: string;
+    /**
+     * Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+     */
+    scimId?: string;
 }
 
 /**
@@ -123,14 +126,17 @@ export interface GetServicePrincipalResult {
      */
     readonly home: string;
     /**
-     * The id of the service principal.
+     * The id of the service principal (SCIM ID).
      */
     readonly id: string;
     /**
      * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      */
     readonly repos: string;
-    readonly spId: string;
+    /**
+     * same as `id`.
+     */
+    readonly scimId: string;
 }
 /**
  * Retrieves information about databricks_service_principal.
@@ -182,7 +188,7 @@ export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, 
         "home": args.home,
         "id": args.id,
         "repos": args.repos,
-        "spId": args.spId,
+        "scimId": args.scimId,
     }, opts);
 }
 
@@ -215,12 +221,15 @@ export interface GetServicePrincipalOutputArgs {
      */
     home?: pulumi.Input<string>;
     /**
-     * The id of the service principal.
+     * The id of the service principal (SCIM ID).
      */
     id?: pulumi.Input<string>;
     /**
      * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      */
     repos?: pulumi.Input<string>;
-    spId?: pulumi.Input<string>;
+    /**
+     * Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+     */
+    scimId?: pulumi.Input<string>;
 }

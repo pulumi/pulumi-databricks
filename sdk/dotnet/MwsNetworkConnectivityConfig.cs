@@ -78,14 +78,20 @@ namespace Pulumi.Databricks
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// time in epoch milliseconds when this object was created.
+        /// </summary>
         [Output("creationTime")]
         public Output<int> CreationTime { get; private set; } = null!;
 
+        /// <summary>
+        /// block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
+        /// </summary>
         [Output("egressConfig")]
         public Output<Outputs.MwsNetworkConnectivityConfigEgressConfig> EgressConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+        /// Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -102,6 +108,9 @@ namespace Pulumi.Databricks
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
+        /// <summary>
+        /// time in epoch milliseconds when this object was updated.
+        /// </summary>
         [Output("updatedTime")]
         public Output<int> UpdatedTime { get; private set; } = null!;
 
@@ -154,14 +163,20 @@ namespace Pulumi.Databricks
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// time in epoch milliseconds when this object was created.
+        /// </summary>
         [Input("creationTime")]
         public Input<int>? CreationTime { get; set; }
 
+        /// <summary>
+        /// block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
+        /// </summary>
         [Input("egressConfig")]
         public Input<Inputs.MwsNetworkConnectivityConfigEgressConfigArgs>? EgressConfig { get; set; }
 
         /// <summary>
-        /// Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+        /// Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -178,6 +193,9 @@ namespace Pulumi.Databricks
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        /// <summary>
+        /// time in epoch milliseconds when this object was updated.
+        /// </summary>
         [Input("updatedTime")]
         public Input<int>? UpdatedTime { get; set; }
 
@@ -192,14 +210,20 @@ namespace Pulumi.Databricks
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// time in epoch milliseconds when this object was created.
+        /// </summary>
         [Input("creationTime")]
         public Input<int>? CreationTime { get; set; }
 
+        /// <summary>
+        /// block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
+        /// </summary>
         [Input("egressConfig")]
         public Input<Inputs.MwsNetworkConnectivityConfigEgressConfigGetArgs>? EgressConfig { get; set; }
 
         /// <summary>
-        /// Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+        /// Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -216,6 +240,9 @@ namespace Pulumi.Databricks
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// time in epoch milliseconds when this object was updated.
+        /// </summary>
         [Input("updatedTime")]
         public Input<int>? UpdatedTime { get; set; }
 

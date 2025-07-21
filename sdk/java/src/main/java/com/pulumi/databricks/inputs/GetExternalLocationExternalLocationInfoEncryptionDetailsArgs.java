@@ -15,9 +15,17 @@ public final class GetExternalLocationExternalLocationInfoEncryptionDetailsArgs 
 
     public static final GetExternalLocationExternalLocationInfoEncryptionDetailsArgs Empty = new GetExternalLocationExternalLocationInfoEncryptionDetailsArgs();
 
+    /**
+     * a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+     * 
+     */
     @Import(name="sseEncryptionDetails")
     private @Nullable Output<GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs> sseEncryptionDetails;
 
+    /**
+     * @return a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+     * 
+     */
     public Optional<Output<GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs>> sseEncryptionDetails() {
         return Optional.ofNullable(this.sseEncryptionDetails);
     }
@@ -46,11 +54,23 @@ public final class GetExternalLocationExternalLocationInfoEncryptionDetailsArgs 
             $ = new GetExternalLocationExternalLocationInfoEncryptionDetailsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param sseEncryptionDetails a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder sseEncryptionDetails(@Nullable Output<GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs> sseEncryptionDetails) {
             $.sseEncryptionDetails = sseEncryptionDetails;
             return this;
         }
 
+        /**
+         * @param sseEncryptionDetails a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder sseEncryptionDetails(GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs sseEncryptionDetails) {
             return sseEncryptionDetails(Output.of(sseEncryptionDetails));
         }
