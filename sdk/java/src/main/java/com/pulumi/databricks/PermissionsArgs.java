@@ -25,6 +25,13 @@ public final class PermissionsArgs extends com.pulumi.resources.ResourceArgs {
         return this.accessControls;
     }
 
+    @Import(name="alertV2Id")
+    private @Nullable Output<String> alertV2Id;
+
+    public Optional<Output<String>> alertV2Id() {
+        return Optional.ofNullable(this.alertV2Id);
+    }
+
     @Import(name="appName")
     private @Nullable Output<String> appName;
 
@@ -58,6 +65,13 @@ public final class PermissionsArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> dashboardId() {
         return Optional.ofNullable(this.dashboardId);
+    }
+
+    @Import(name="databaseInstanceName")
+    private @Nullable Output<String> databaseInstanceName;
+
+    public Optional<Output<String>> databaseInstanceName() {
+        return Optional.ofNullable(this.databaseInstanceName);
     }
 
     @Import(name="directoryId")
@@ -212,11 +226,13 @@ public final class PermissionsArgs extends com.pulumi.resources.ResourceArgs {
 
     private PermissionsArgs(PermissionsArgs $) {
         this.accessControls = $.accessControls;
+        this.alertV2Id = $.alertV2Id;
         this.appName = $.appName;
         this.authorization = $.authorization;
         this.clusterId = $.clusterId;
         this.clusterPolicyId = $.clusterPolicyId;
         this.dashboardId = $.dashboardId;
+        this.databaseInstanceName = $.databaseInstanceName;
         this.directoryId = $.directoryId;
         this.directoryPath = $.directoryPath;
         this.experimentId = $.experimentId;
@@ -270,6 +286,15 @@ public final class PermissionsArgs extends com.pulumi.resources.ResourceArgs {
             return accessControls(List.of(accessControls));
         }
 
+        public Builder alertV2Id(@Nullable Output<String> alertV2Id) {
+            $.alertV2Id = alertV2Id;
+            return this;
+        }
+
+        public Builder alertV2Id(String alertV2Id) {
+            return alertV2Id(Output.of(alertV2Id));
+        }
+
         public Builder appName(@Nullable Output<String> appName) {
             $.appName = appName;
             return this;
@@ -313,6 +338,15 @@ public final class PermissionsArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder dashboardId(String dashboardId) {
             return dashboardId(Output.of(dashboardId));
+        }
+
+        public Builder databaseInstanceName(@Nullable Output<String> databaseInstanceName) {
+            $.databaseInstanceName = databaseInstanceName;
+            return this;
+        }
+
+        public Builder databaseInstanceName(String databaseInstanceName) {
+            return databaseInstanceName(Output.of(databaseInstanceName));
         }
 
         public Builder directoryId(@Nullable Output<String> directoryId) {

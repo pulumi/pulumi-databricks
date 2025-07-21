@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAppAppResourceResult
     {
         /// <summary>
+        /// attribute
+        /// </summary>
+        public readonly Outputs.GetAppAppResourceDatabaseResult? Database;
+        /// <summary>
         /// The description of the resource.
         /// </summary>
         public readonly string? Description;
@@ -44,6 +48,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetAppAppResourceResult(
+            Outputs.GetAppAppResourceDatabaseResult? database,
+
             string? description,
 
             Outputs.GetAppAppResourceJobResult? job,
@@ -58,6 +64,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetAppAppResourceUcSecurableResult? ucSecurable)
         {
+            Database = database;
             Description = description;
             Job = job;
             Name = name;

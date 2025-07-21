@@ -11,6 +11,37 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source can be used to get a single workspace network option.
+//
+// > **Note** This data source can only be used with an account-level provider!
+//
+// ## Example Usage
+//
+// Referring to a network policy by id:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.LookupWorkspaceNetworkOption(ctx, &databricks.LookupWorkspaceNetworkOptionArgs{
+//				WorkspaceId: pulumi.StringRef("9999999999999999"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupWorkspaceNetworkOption(ctx *pulumi.Context, args *LookupWorkspaceNetworkOptionArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceNetworkOptionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceNetworkOptionResult

@@ -372,15 +372,15 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Delta Live Tables usage
+ * ## Lakeflow Declarative Pipelines usage
  * 
- * There are four assignable [permission levels](https://docs.databricks.com/security/access-control/dlt-acl.html#delta-live-tables-permissions) for databricks_pipeline: `CAN_VIEW`, `CAN_RUN`, `CAN_MANAGE`, and `IS_OWNER`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
+ * There are four assignable [permission levels](https://docs.databricks.com/aws/en/security/auth/access-control#lakeflow-declarative-pipelines-acls) for databricks_pipeline: `CAN_VIEW`, `CAN_RUN`, `CAN_MANAGE`, and `IS_OWNER`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
  * 
- * - The creator of a DLT Pipeline has `IS_OWNER` permission. Destroying `databricks.Permissions` resource for a pipeline would revert ownership to the creator.
- * - A DLT pipeline must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the pipeline. Nothing would change, per se, if the pipeline was created through Pulumi.
- * - A DLT pipeline cannot have a group as an owner.
- * - DLT Pipelines triggered through _Start_ assume the permissions of the pipeline owner and not the user, and service principal who issued Run Now.
- * - Read [main documentation](https://docs.databricks.com/security/access-control/dlt-acl.html) for additional detail.
+ * - The creator of a Lakeflow Declarative Pipeline has `IS_OWNER` permission. Destroying `databricks.Permissions` resource for a pipeline would revert ownership to the creator.
+ * - A Lakeflow Declarative Pipeline must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the pipeline. Nothing would change, per se, if the pipeline was created through Pulumi.
+ * - A Lakeflow Declarative Pipeline cannot have a group as an owner.
+ * - Lakeflow Declarative Pipelines triggered through _Start_ assume the permissions of the pipeline owner and not the user, and service principal who issued Run Now.
+ * - Read [main documentation](https://docs.databricks.com/aws/en/security/auth/access-control#lakeflow-declarative-pipelines-acls) for additional detail.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -424,7 +424,7 @@ import javax.annotation.Nullable;
  *             .displayName("Engineering")
  *             .build());
  * 
- *         var dltDemo = new Notebook("dltDemo", NotebookArgs.builder()
+ *         var ldpDemo = new Notebook("ldpDemo", NotebookArgs.builder()
  *             .contentBase64(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                 .input("""
  * import dlt
@@ -437,11 +437,11 @@ import javax.annotation.Nullable;
  *                 """)
  *                 .build()).result())
  *             .language("PYTHON")
- *             .path(String.format("%s/DLT_Demo", me.home()))
+ *             .path(String.format("%s/ldp_demo", me.home()))
  *             .build());
  * 
  *         var this_ = new Pipeline("this", PipelineArgs.builder()
- *             .name(String.format("DLT Demo Pipeline (%s)", me.alphanumeric()))
+ *             .name(String.format("LDP Demo Pipeline (%s)", me.alphanumeric()))
  *             .storage("/test/tf-pipeline")
  *             .configuration(Map.ofEntries(
  *                 Map.entry("key1", "value1"),
@@ -449,7 +449,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .libraries(PipelineLibraryArgs.builder()
  *                 .notebook(PipelineLibraryNotebookArgs.builder()
- *                     .path(dltDemo.id())
+ *                     .path(ldpDemo.id())
  *                     .build())
  *                 .build())
  *             .continuous(false)
@@ -459,7 +459,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var dltUsage = new Permissions("dltUsage", PermissionsArgs.builder()
+ *         var ldpUsage = new Permissions("ldpUsage", PermissionsArgs.builder()
  *             .pipelineId(this_.id())
  *             .accessControls(            
  *                 PermissionsAccessControlArgs.builder()
@@ -1470,7 +1470,64 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## SQL Alert usage
+ * ## SQL Alert (AlertV2) usage
+ * 
+ * [Alert V2](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) which is the new version of SQL Alert have 4 possible permission levels: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
+ * import com.pulumi.databricks.Permissions;
+ * import com.pulumi.databricks.PermissionsArgs;
+ * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var auto = new Group("auto", GroupArgs.builder()
+ *             .displayName("Automation")
+ *             .build());
+ * 
+ *         var eng = new Group("eng", GroupArgs.builder()
+ *             .displayName("Engineering")
+ *             .build());
+ * 
+ *         var appUsage = new Permissions("appUsage", PermissionsArgs.builder()
+ *             .alertV2Id("12345")
+ *             .accessControls(            
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName(auto.displayName())
+ *                     .permissionLevel("CAN_RUN")
+ *                     .build(),
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName(eng.displayName())
+ *                     .permissionLevel("CAN_EDIT")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## SQL Alert (legacy) usage
  * 
  * [SQL alerts](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
  * 
@@ -1580,6 +1637,59 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Lakebase Database Instances usage
+ * 
+ * [Databricks Lakebase](https://docs.databricks.com/aws/en/oltp/) have two possible permissions: `CAN_USE` and `CAN_MANAGE`:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
+ * import com.pulumi.databricks.Permissions;
+ * import com.pulumi.databricks.PermissionsArgs;
+ * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var eng = new Group("eng", GroupArgs.builder()
+ *             .displayName("Engineering")
+ *             .build());
+ * 
+ *         var appUsage = new Permissions("appUsage", PermissionsArgs.builder()
+ *             .databaseInstanceName("my_database")
+ *             .accessControls(            
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName("users")
+ *                     .permissionLevel("CAN_USE")
+ *                     .build(),
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName(eng.displayName())
+ *                     .permissionLevel("CAN_MANAGE")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Instance Profiles
  * 
  * Instance Profiles are not managed by General Permissions API and therefore databricks.GroupInstanceProfile and databricks.UserInstanceProfile should be used to allow usage of specific AWS EC2 IAM roles to users or groups.
@@ -1613,6 +1723,12 @@ public class Permissions extends com.pulumi.resources.CustomResource {
     public Output<List<PermissionsAccessControl>> accessControls() {
         return this.accessControls;
     }
+    @Export(name="alertV2Id", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> alertV2Id;
+
+    public Output<Optional<String>> alertV2Id() {
+        return Codegen.optional(this.alertV2Id);
+    }
     @Export(name="appName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> appName;
 
@@ -1642,6 +1758,12 @@ public class Permissions extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> dashboardId() {
         return Codegen.optional(this.dashboardId);
+    }
+    @Export(name="databaseInstanceName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> databaseInstanceName;
+
+    public Output<Optional<String>> databaseInstanceName() {
+        return Codegen.optional(this.databaseInstanceName);
     }
     @Export(name="directoryId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> directoryId;

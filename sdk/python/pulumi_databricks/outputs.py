@@ -47,6 +47,7 @@ __all__ = [
     'AppPendingDeploymentDeploymentArtifacts',
     'AppPendingDeploymentStatus',
     'AppResource',
+    'AppResourceDatabase',
     'AppResourceJob',
     'AppResourceSecret',
     'AppResourceServingEndpoint',
@@ -65,6 +66,16 @@ __all__ = [
     'BudgetFilterTagValue',
     'BudgetFilterWorkspaceId',
     'BudgetPolicyCustomTag',
+    'CleanRoomsCleanRoomOutputCatalog',
+    'CleanRoomsCleanRoomRemoteDetailedInfo',
+    'CleanRoomsCleanRoomRemoteDetailedInfoCollaborator',
+    'CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile',
+    'CleanRoomsCleanRoomRemoteDetailedInfoCreator',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode',
     'ClusterAutoscale',
     'ClusterAwsAttributes',
     'ClusterAzureAttributes',
@@ -103,6 +114,8 @@ __all__ = [
     'CredentialAzureServicePrincipal',
     'CredentialDatabricksGcpServiceAccount',
     'CustomAppIntegrationTokenAccessPolicy',
+    'DatabaseInstanceChildInstanceRef',
+    'DatabaseInstanceParentInstanceRef',
     'DefaultNamespaceSettingNamespace',
     'DisableLegacyAccessSettingDisableLegacyAccess',
     'DisableLegacyDbfsSettingDisableLegacyDbfs',
@@ -636,6 +649,7 @@ __all__ = [
     'GetAppAppPendingDeploymentDeploymentArtifactsResult',
     'GetAppAppPendingDeploymentStatusResult',
     'GetAppAppResourceResult',
+    'GetAppAppResourceDatabaseResult',
     'GetAppAppResourceJobResult',
     'GetAppAppResourceSecretResult',
     'GetAppAppResourceServingEndpointResult',
@@ -651,6 +665,7 @@ __all__ = [
     'GetAppsAppPendingDeploymentDeploymentArtifactsResult',
     'GetAppsAppPendingDeploymentStatusResult',
     'GetAppsAppResourceResult',
+    'GetAppsAppResourceDatabaseResult',
     'GetAppsAppResourceJobResult',
     'GetAppsAppResourceSecretResult',
     'GetAppsAppResourceServingEndpointResult',
@@ -662,6 +677,27 @@ __all__ = [
     'GetCatalogCatalogInfoResult',
     'GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagResult',
     'GetCatalogCatalogInfoProvisioningInfoResult',
+    'GetCleanRoomsCleanRoomOutputCatalogResult',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoResult',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorResult',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileResult',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorResult',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyResult',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessResult',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationResult',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationResult',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeResult',
+    'GetCleanRoomsCleanRoomsCleanRoomResult',
+    'GetCleanRoomsCleanRoomsCleanRoomOutputCatalogResult',
+    'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoResult',
+    'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorResult',
+    'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileResult',
+    'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCreatorResult',
+    'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyResult',
+    'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessResult',
+    'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationResult',
+    'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationResult',
+    'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeResult',
     'GetClusterClusterInfoResult',
     'GetClusterClusterInfoAutoscaleResult',
     'GetClusterClusterInfoAwsAttributesResult',
@@ -721,7 +757,11 @@ __all__ = [
     'GetClustersFilterByResult',
     'GetCurrentMetastoreMetastoreInfoResult',
     'GetDashboardsDashboardResult',
+    'GetDatabaseInstanceChildInstanceRefResult',
+    'GetDatabaseInstanceParentInstanceRefResult',
     'GetDatabaseInstancesDatabaseInstanceResult',
+    'GetDatabaseInstancesDatabaseInstanceChildInstanceRefResult',
+    'GetDatabaseInstancesDatabaseInstanceParentInstanceRefResult',
     'GetDbfsFilePathsPathListResult',
     'GetExternalLocationExternalLocationInfoResult',
     'GetExternalLocationExternalLocationInfoEncryptionDetailsResult',
@@ -733,6 +773,7 @@ __all__ = [
     'GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqsResult',
     'GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsubResult',
     'GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsResult',
+    'GetExternalMetadatasExternalMetadataResult',
     'GetFunctionsFunctionResult',
     'GetFunctionsFunctionInputParamResult',
     'GetFunctionsFunctionInputParamParameterResult',
@@ -740,6 +781,8 @@ __all__ = [
     'GetFunctionsFunctionReturnParamParameterResult',
     'GetFunctionsFunctionRoutineDependencyResult',
     'GetFunctionsFunctionRoutineDependencyDependencyResult',
+    'GetFunctionsFunctionRoutineDependencyDependencyConnectionResult',
+    'GetFunctionsFunctionRoutineDependencyDependencyCredentialResult',
     'GetFunctionsFunctionRoutineDependencyDependencyFunctionResult',
     'GetFunctionsFunctionRoutineDependencyDependencyTableResult',
     'GetInstancePoolPoolInfoResult',
@@ -960,6 +1003,7 @@ __all__ = [
     'GetJobJobSettingsSettingsWebhookNotificationsOnStartResult',
     'GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededResult',
     'GetJobJobSettingsSettingsWebhookNotificationsOnSuccessResult',
+    'GetMaterializedFeaturesFeatureTagsFeatureTagResult',
     'GetMetastoreMetastoreInfoResult',
     'GetMlflowExperimentTagResult',
     'GetMlflowModelLatestVersionResult',
@@ -987,6 +1031,8 @@ __all__ = [
     'GetRegisteredModelVersionsModelVersionAliasResult',
     'GetRegisteredModelVersionsModelVersionModelVersionDependencyResult',
     'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyResult',
+    'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionResult',
+    'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialResult',
     'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionResult',
     'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableResult',
     'GetSchemaSchemaInfoResult',
@@ -1043,12 +1089,16 @@ __all__ = [
     'GetTableTableInfoEncryptionDetailsResult',
     'GetTableTableInfoEncryptionDetailsSseEncryptionDetailsResult',
     'GetTableTableInfoRowFilterResult',
+    'GetTableTableInfoSecurableKindManifestResult',
+    'GetTableTableInfoSecurableKindManifestOptionResult',
     'GetTableTableInfoTableConstraintResult',
     'GetTableTableInfoTableConstraintForeignKeyConstraintResult',
     'GetTableTableInfoTableConstraintNamedTableConstraintResult',
     'GetTableTableInfoTableConstraintPrimaryKeyConstraintResult',
     'GetTableTableInfoViewDependenciesResult',
     'GetTableTableInfoViewDependenciesDependencyResult',
+    'GetTableTableInfoViewDependenciesDependencyConnectionResult',
+    'GetTableTableInfoViewDependenciesDependencyCredentialResult',
     'GetTableTableInfoViewDependenciesDependencyFunctionResult',
     'GetTableTableInfoViewDependenciesDependencyTableResult',
     'GetVolumeVolumeInfoResult',
@@ -2517,6 +2567,7 @@ class AppResource(dict):
 
     def __init__(__self__, *,
                  name: builtins.str,
+                 database: Optional['outputs.AppResourceDatabase'] = None,
                  description: Optional[builtins.str] = None,
                  job: Optional['outputs.AppResourceJob'] = None,
                  secret: Optional['outputs.AppResourceSecret'] = None,
@@ -2525,6 +2576,7 @@ class AppResource(dict):
                  uc_securable: Optional['outputs.AppResourceUcSecurable'] = None):
         """
         :param builtins.str name: The name of the resource.
+        :param 'AppResourceDatabaseArgs' database: attribute
         :param builtins.str description: The description of the resource.
                
                Exactly one of the following attributes must be provided:
@@ -2535,6 +2587,8 @@ class AppResource(dict):
         :param 'AppResourceUcSecurableArgs' uc_securable: attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
         """
         pulumi.set(__self__, "name", name)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if job is not None:
@@ -2555,6 +2609,14 @@ class AppResource(dict):
         The name of the resource.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional['outputs.AppResourceDatabase']:
+        """
+        attribute
+        """
+        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter
@@ -2605,6 +2667,65 @@ class AppResource(dict):
         attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
         """
         return pulumi.get(self, "uc_securable")
+
+
+@pulumi.output_type
+class AppResourceDatabase(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseName":
+            suggest = "database_name"
+        elif key == "instanceName":
+            suggest = "instance_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppResourceDatabase. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppResourceDatabase.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppResourceDatabase.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database_name: builtins.str,
+                 instance_name: builtins.str,
+                 permission: builtins.str):
+        """
+        :param builtins.str database_name: The name of database.
+        :param builtins.str instance_name: The name of database instance.
+        :param builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        """
+        pulumi.set(__self__, "database_name", database_name)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> builtins.str:
+        """
+        The name of database.
+        """
+        return pulumi.get(self, "database_name")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> builtins.str:
+        """
+        The name of database instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> builtins.str:
+        """
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        """
+        return pulumi.get(self, "permission")
 
 
 @pulumi.output_type
@@ -3389,6 +3510,755 @@ class BudgetPolicyCustomTag(dict):
 
 
 @pulumi.output_type
+class CleanRoomsCleanRoomOutputCatalog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "catalogName":
+            suggest = "catalog_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomsCleanRoomOutputCatalog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomsCleanRoomOutputCatalog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomsCleanRoomOutputCatalog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 catalog_name: Optional[builtins.str] = None,
+                 status: Optional[builtins.str] = None):
+        """
+        :param builtins.str catalog_name: The name of the output catalog in UC.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+               The field will always exist if status is CREATED
+        :param builtins.str status: (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        """
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[builtins.str]:
+        """
+        The name of the output catalog in UC.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+        The field will always exist if status is CREATED
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[builtins.str]:
+        """
+        (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomRemoteDetailedInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "centralCleanRoomId":
+            suggest = "central_clean_room_id"
+        elif key == "cloudVendor":
+            suggest = "cloud_vendor"
+        elif key == "complianceSecurityProfile":
+            suggest = "compliance_security_profile"
+        elif key == "egressNetworkPolicy":
+            suggest = "egress_network_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomsCleanRoomRemoteDetailedInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 central_clean_room_id: Optional[builtins.str] = None,
+                 cloud_vendor: Optional[builtins.str] = None,
+                 collaborators: Optional[Sequence['outputs.CleanRoomsCleanRoomRemoteDetailedInfoCollaborator']] = None,
+                 compliance_security_profile: Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile'] = None,
+                 creator: Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoCreator'] = None,
+                 egress_network_policy: Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy'] = None,
+                 region: Optional[builtins.str] = None):
+        """
+        :param builtins.str central_clean_room_id: (string) - Central clean room ID
+        :param builtins.str cloud_vendor: Cloud vendor (aws,azure,gcp) of the central clean room
+        :param Sequence['CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs'] collaborators: Collaborators in the central clean room. There should one and only one collaborator
+               in the list that satisfies the owner condition:
+               
+               1. It has the creator's global_metastore_id (determined by caller of CreateCleanRoom).
+               
+               2. Its invite_recipient_email is empty
+        :param 'CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs' compliance_security_profile: (ComplianceSecurityProfile) -
+        :param 'CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs' creator: (CleanRoomCollaborator) - Collaborator who creates the clean room
+        :param 'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs' egress_network_policy: Egress network policy to apply to the central clean room workspace
+        """
+        if central_clean_room_id is not None:
+            pulumi.set(__self__, "central_clean_room_id", central_clean_room_id)
+        if cloud_vendor is not None:
+            pulumi.set(__self__, "cloud_vendor", cloud_vendor)
+        if collaborators is not None:
+            pulumi.set(__self__, "collaborators", collaborators)
+        if compliance_security_profile is not None:
+            pulumi.set(__self__, "compliance_security_profile", compliance_security_profile)
+        if creator is not None:
+            pulumi.set(__self__, "creator", creator)
+        if egress_network_policy is not None:
+            pulumi.set(__self__, "egress_network_policy", egress_network_policy)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="centralCleanRoomId")
+    def central_clean_room_id(self) -> Optional[builtins.str]:
+        """
+        (string) - Central clean room ID
+        """
+        return pulumi.get(self, "central_clean_room_id")
+
+    @property
+    @pulumi.getter(name="cloudVendor")
+    def cloud_vendor(self) -> Optional[builtins.str]:
+        """
+        Cloud vendor (aws,azure,gcp) of the central clean room
+        """
+        return pulumi.get(self, "cloud_vendor")
+
+    @property
+    @pulumi.getter
+    def collaborators(self) -> Optional[Sequence['outputs.CleanRoomsCleanRoomRemoteDetailedInfoCollaborator']]:
+        """
+        Collaborators in the central clean room. There should one and only one collaborator
+        in the list that satisfies the owner condition:
+
+        1. It has the creator's global_metastore_id (determined by caller of CreateCleanRoom).
+
+        2. Its invite_recipient_email is empty
+        """
+        return pulumi.get(self, "collaborators")
+
+    @property
+    @pulumi.getter(name="complianceSecurityProfile")
+    def compliance_security_profile(self) -> Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile']:
+        """
+        (ComplianceSecurityProfile) -
+        """
+        return pulumi.get(self, "compliance_security_profile")
+
+    @property
+    @pulumi.getter
+    def creator(self) -> Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoCreator']:
+        """
+        (CleanRoomCollaborator) - Collaborator who creates the clean room
+        """
+        return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter(name="egressNetworkPolicy")
+    def egress_network_policy(self) -> Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy']:
+        """
+        Egress network policy to apply to the central clean room workspace
+        """
+        return pulumi.get(self, "egress_network_policy")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomRemoteDetailedInfoCollaborator(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "collaboratorAlias":
+            suggest = "collaborator_alias"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "globalMetastoreId":
+            suggest = "global_metastore_id"
+        elif key == "inviteRecipientEmail":
+            suggest = "invite_recipient_email"
+        elif key == "inviteRecipientWorkspaceId":
+            suggest = "invite_recipient_workspace_id"
+        elif key == "organizationName":
+            suggest = "organization_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomsCleanRoomRemoteDetailedInfoCollaborator. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoCollaborator.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoCollaborator.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 collaborator_alias: builtins.str,
+                 display_name: Optional[builtins.str] = None,
+                 global_metastore_id: Optional[builtins.str] = None,
+                 invite_recipient_email: Optional[builtins.str] = None,
+                 invite_recipient_workspace_id: Optional[builtins.int] = None,
+                 organization_name: Optional[builtins.str] = None):
+        """
+        :param builtins.str collaborator_alias: Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        :param builtins.str display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+               these values and could change in the future
+        :param builtins.str global_metastore_id: The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        :param builtins.str invite_recipient_email: Email of the user who is receiving the clean room "invitation". It should be empty
+               for the creator of the clean room, and non-empty for the invitees of the clean room.
+               It is only returned in the output when clean room creator calls GET
+        :param builtins.int invite_recipient_workspace_id: Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+               invite_recipient_email is specified.
+               It should be empty when the collaborator is the creator of the clean room
+        :param builtins.str organization_name: (string) - Organization name
+               configured in the metastore
+        """
+        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if global_metastore_id is not None:
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if invite_recipient_email is not None:
+            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
+        if invite_recipient_workspace_id is not None:
+            pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
+        if organization_name is not None:
+            pulumi.set(__self__, "organization_name", organization_name)
+
+    @property
+    @pulumi.getter(name="collaboratorAlias")
+    def collaborator_alias(self) -> builtins.str:
+        """
+        Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        return pulumi.get(self, "collaborator_alias")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[builtins.str]:
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="globalMetastoreId")
+    def global_metastore_id(self) -> Optional[builtins.str]:
+        """
+        The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        return pulumi.get(self, "global_metastore_id")
+
+    @property
+    @pulumi.getter(name="inviteRecipientEmail")
+    def invite_recipient_email(self) -> Optional[builtins.str]:
+        """
+        Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        return pulumi.get(self, "invite_recipient_email")
+
+    @property
+    @pulumi.getter(name="inviteRecipientWorkspaceId")
+    def invite_recipient_workspace_id(self) -> Optional[builtins.int]:
+        """
+        Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+        return pulumi.get(self, "invite_recipient_workspace_id")
+
+    @property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> Optional[builtins.str]:
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+        return pulumi.get(self, "organization_name")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "complianceStandards":
+            suggest = "compliance_standards"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compliance_standards: Optional[Sequence[builtins.str]] = None,
+                 is_enabled: Optional[builtins.bool] = None):
+        """
+        :param Sequence[builtins.str] compliance_standards: The list of compliance standards that the compliance security profile is configured to enforce
+        :param builtins.bool is_enabled: Whether the compliance security profile is enabled
+        """
+        if compliance_standards is not None:
+            pulumi.set(__self__, "compliance_standards", compliance_standards)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @property
+    @pulumi.getter(name="complianceStandards")
+    def compliance_standards(self) -> Optional[Sequence[builtins.str]]:
+        """
+        The list of compliance standards that the compliance security profile is configured to enforce
+        """
+        return pulumi.get(self, "compliance_standards")
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[builtins.bool]:
+        """
+        Whether the compliance security profile is enabled
+        """
+        return pulumi.get(self, "is_enabled")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomRemoteDetailedInfoCreator(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "collaboratorAlias":
+            suggest = "collaborator_alias"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "globalMetastoreId":
+            suggest = "global_metastore_id"
+        elif key == "inviteRecipientEmail":
+            suggest = "invite_recipient_email"
+        elif key == "inviteRecipientWorkspaceId":
+            suggest = "invite_recipient_workspace_id"
+        elif key == "organizationName":
+            suggest = "organization_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomsCleanRoomRemoteDetailedInfoCreator. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoCreator.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoCreator.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 collaborator_alias: builtins.str,
+                 display_name: Optional[builtins.str] = None,
+                 global_metastore_id: Optional[builtins.str] = None,
+                 invite_recipient_email: Optional[builtins.str] = None,
+                 invite_recipient_workspace_id: Optional[builtins.int] = None,
+                 organization_name: Optional[builtins.str] = None):
+        """
+        :param builtins.str collaborator_alias: Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        :param builtins.str display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+               these values and could change in the future
+        :param builtins.str global_metastore_id: The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        :param builtins.str invite_recipient_email: Email of the user who is receiving the clean room "invitation". It should be empty
+               for the creator of the clean room, and non-empty for the invitees of the clean room.
+               It is only returned in the output when clean room creator calls GET
+        :param builtins.int invite_recipient_workspace_id: Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+               invite_recipient_email is specified.
+               It should be empty when the collaborator is the creator of the clean room
+        :param builtins.str organization_name: (string) - Organization name
+               configured in the metastore
+        """
+        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if global_metastore_id is not None:
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if invite_recipient_email is not None:
+            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
+        if invite_recipient_workspace_id is not None:
+            pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
+        if organization_name is not None:
+            pulumi.set(__self__, "organization_name", organization_name)
+
+    @property
+    @pulumi.getter(name="collaboratorAlias")
+    def collaborator_alias(self) -> builtins.str:
+        """
+        Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        return pulumi.get(self, "collaborator_alias")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[builtins.str]:
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="globalMetastoreId")
+    def global_metastore_id(self) -> Optional[builtins.str]:
+        """
+        The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        return pulumi.get(self, "global_metastore_id")
+
+    @property
+    @pulumi.getter(name="inviteRecipientEmail")
+    def invite_recipient_email(self) -> Optional[builtins.str]:
+        """
+        Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        return pulumi.get(self, "invite_recipient_email")
+
+    @property
+    @pulumi.getter(name="inviteRecipientWorkspaceId")
+    def invite_recipient_workspace_id(self) -> Optional[builtins.int]:
+        """
+        Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+        return pulumi.get(self, "invite_recipient_workspace_id")
+
+    @property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> Optional[builtins.str]:
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+        return pulumi.get(self, "organization_name")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "internetAccess":
+            suggest = "internet_access"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 internet_access: Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess'] = None):
+        """
+        :param 'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs' internet_access: The access policy enforced for egress traffic to the internet
+        """
+        if internet_access is not None:
+            pulumi.set(__self__, "internet_access", internet_access)
+
+    @property
+    @pulumi.getter(name="internetAccess")
+    def internet_access(self) -> Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess']:
+        """
+        The access policy enforced for egress traffic to the internet
+        """
+        return pulumi.get(self, "internet_access")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedInternetDestinations":
+            suggest = "allowed_internet_destinations"
+        elif key == "allowedStorageDestinations":
+            suggest = "allowed_storage_destinations"
+        elif key == "logOnlyMode":
+            suggest = "log_only_mode"
+        elif key == "restrictionMode":
+            suggest = "restriction_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_internet_destinations: Optional[Sequence['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination']] = None,
+                 allowed_storage_destinations: Optional[Sequence['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination']] = None,
+                 log_only_mode: Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode'] = None,
+                 restriction_mode: Optional[builtins.str] = None):
+        """
+        :param 'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs' log_only_mode: Optional. If not specified, assume the policy is enforced for all workloads
+        :param builtins.str restriction_mode: . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+        """
+        if allowed_internet_destinations is not None:
+            pulumi.set(__self__, "allowed_internet_destinations", allowed_internet_destinations)
+        if allowed_storage_destinations is not None:
+            pulumi.set(__self__, "allowed_storage_destinations", allowed_storage_destinations)
+        if log_only_mode is not None:
+            pulumi.set(__self__, "log_only_mode", log_only_mode)
+        if restriction_mode is not None:
+            pulumi.set(__self__, "restriction_mode", restriction_mode)
+
+    @property
+    @pulumi.getter(name="allowedInternetDestinations")
+    def allowed_internet_destinations(self) -> Optional[Sequence['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination']]:
+        return pulumi.get(self, "allowed_internet_destinations")
+
+    @property
+    @pulumi.getter(name="allowedStorageDestinations")
+    def allowed_storage_destinations(self) -> Optional[Sequence['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination']]:
+        return pulumi.get(self, "allowed_storage_destinations")
+
+    @property
+    @pulumi.getter(name="logOnlyMode")
+    def log_only_mode(self) -> Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode']:
+        """
+        Optional. If not specified, assume the policy is enforced for all workloads
+        """
+        return pulumi.get(self, "log_only_mode")
+
+    @property
+    @pulumi.getter(name="restrictionMode")
+    def restriction_mode(self) -> Optional[builtins.str]:
+        """
+        . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+        """
+        return pulumi.get(self, "restriction_mode")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination(dict):
+    def __init__(__self__, *,
+                 destination: Optional[builtins.str] = None,
+                 protocol: Optional[builtins.str] = None,
+                 type: Optional[builtins.str] = None):
+        """
+        :param builtins.str protocol: . Possible values are: `TCP`
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[builtins.str]:
+        """
+        . Possible values are: `TCP`
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedPaths":
+            suggest = "allowed_paths"
+        elif key == "azureContainer":
+            suggest = "azure_container"
+        elif key == "azureDnsZone":
+            suggest = "azure_dns_zone"
+        elif key == "azureStorageAccount":
+            suggest = "azure_storage_account"
+        elif key == "azureStorageService":
+            suggest = "azure_storage_service"
+        elif key == "bucketName":
+            suggest = "bucket_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_paths: Optional[Sequence[builtins.str]] = None,
+                 azure_container: Optional[builtins.str] = None,
+                 azure_dns_zone: Optional[builtins.str] = None,
+                 azure_storage_account: Optional[builtins.str] = None,
+                 azure_storage_service: Optional[builtins.str] = None,
+                 bucket_name: Optional[builtins.str] = None,
+                 region: Optional[builtins.str] = None,
+                 type: Optional[builtins.str] = None):
+        if allowed_paths is not None:
+            pulumi.set(__self__, "allowed_paths", allowed_paths)
+        if azure_container is not None:
+            pulumi.set(__self__, "azure_container", azure_container)
+        if azure_dns_zone is not None:
+            pulumi.set(__self__, "azure_dns_zone", azure_dns_zone)
+        if azure_storage_account is not None:
+            pulumi.set(__self__, "azure_storage_account", azure_storage_account)
+        if azure_storage_service is not None:
+            pulumi.set(__self__, "azure_storage_service", azure_storage_service)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="allowedPaths")
+    def allowed_paths(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "allowed_paths")
+
+    @property
+    @pulumi.getter(name="azureContainer")
+    def azure_container(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "azure_container")
+
+    @property
+    @pulumi.getter(name="azureDnsZone")
+    def azure_dns_zone(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "azure_dns_zone")
+
+    @property
+    @pulumi.getter(name="azureStorageAccount")
+    def azure_storage_account(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "azure_storage_account")
+
+    @property
+    @pulumi.getter(name="azureStorageService")
+    def azure_storage_service(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "azure_storage_service")
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logOnlyModeType":
+            suggest = "log_only_mode_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 log_only_mode_type: Optional[builtins.str] = None,
+                 workloads: Optional[Sequence[builtins.str]] = None):
+        """
+        :param builtins.str log_only_mode_type: . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+        """
+        if log_only_mode_type is not None:
+            pulumi.set(__self__, "log_only_mode_type", log_only_mode_type)
+        if workloads is not None:
+            pulumi.set(__self__, "workloads", workloads)
+
+    @property
+    @pulumi.getter(name="logOnlyModeType")
+    def log_only_mode_type(self) -> Optional[builtins.str]:
+        """
+        . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+        """
+        return pulumi.get(self, "log_only_mode_type")
+
+    @property
+    @pulumi.getter
+    def workloads(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "workloads")
+
+
+@pulumi.output_type
 class ClusterAutoscale(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3415,16 +4285,7 @@ class ClusterAutoscale(dict):
         """
         :param builtins.int max_workers: The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
                
-               When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
-               
-               * `spark.master` must have prefix `local`, like `local[*]`
-               * `spark.databricks.cluster.profile` must have value `singleNode`
-               
-               and also `custom_tag` entry:
-               
-               * `"ResourceClass" = "SingleNode"`
-               
-               The following example demonstrates how to create an single node cluster:
+               To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `is_single_node = true` and `kind = "CLASSIC_PREVIEW"` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
                
                ```python
                import pulumi
@@ -3437,13 +4298,8 @@ class ClusterAutoscale(dict):
                    spark_version=latest_lts.id,
                    node_type_id=smallest.id,
                    autotermination_minutes=20,
-                   spark_conf={
-                       "spark.databricks.cluster.profile": "singleNode",
-                       "spark.master": "local[*]",
-                   },
-                   custom_tags={
-                       "ResourceClass": "SingleNode",
-                   })
+                   is_single_node=True,
+                   kind="CLASSIC_PREVIEW")
                ```
         :param builtins.int min_workers: The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
         """
@@ -3458,16 +4314,7 @@ class ClusterAutoscale(dict):
         """
         The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
 
-        When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
-
-        * `spark.master` must have prefix `local`, like `local[*]`
-        * `spark.databricks.cluster.profile` must have value `singleNode`
-
-        and also `custom_tag` entry:
-
-        * `"ResourceClass" = "SingleNode"`
-
-        The following example demonstrates how to create an single node cluster:
+        To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `is_single_node = true` and `kind = "CLASSIC_PREVIEW"` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
 
         ```python
         import pulumi
@@ -3480,13 +4327,8 @@ class ClusterAutoscale(dict):
             spark_version=latest_lts.id,
             node_type_id=smallest.id,
             autotermination_minutes=20,
-            spark_conf={
-                "spark.databricks.cluster.profile": "singleNode",
-                "spark.master": "local[*]",
-            },
-            custom_tags={
-                "ResourceClass": "SingleNode",
-            })
+            is_single_node=True,
+            kind="CLASSIC_PREVIEW")
         ```
         """
         return pulumi.get(self, "max_workers")
@@ -5263,6 +6105,238 @@ class CustomAppIntegrationTokenAccessPolicy(dict):
 
 
 @pulumi.output_type
+class DatabaseInstanceChildInstanceRef(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "branchTime":
+            suggest = "branch_time"
+        elif key == "effectiveLsn":
+            suggest = "effective_lsn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceChildInstanceRef. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceChildInstanceRef.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceChildInstanceRef.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch_time: Optional[builtins.str] = None,
+                 effective_lsn: Optional[builtins.str] = None,
+                 lsn: Optional[builtins.str] = None,
+                 name: Optional[builtins.str] = None,
+                 uid: Optional[builtins.str] = None):
+        """
+        :param builtins.str branch_time: Branch time of the ref database instance.
+               For a parent ref instance, this is the point in time on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the point in time on the instance from which the child
+               instance was created.
+               Input: For specifying the point in time to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param builtins.str effective_lsn: (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+               `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+               For a parent ref instance, this is the LSN on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the LSN on the instance from which the child instance
+               was created
+        :param builtins.str lsn: User-specified WAL LSN of the ref database instance.
+               
+               Input: For specifying the WAL LSN to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param builtins.str name: The name of the instance. This is the unique identifier for the instance
+        :param builtins.str uid: (string) - Id of the ref database instance
+        """
+        if branch_time is not None:
+            pulumi.set(__self__, "branch_time", branch_time)
+        if effective_lsn is not None:
+            pulumi.set(__self__, "effective_lsn", effective_lsn)
+        if lsn is not None:
+            pulumi.set(__self__, "lsn", lsn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter(name="branchTime")
+    def branch_time(self) -> Optional[builtins.str]:
+        """
+        Branch time of the ref database instance.
+        For a parent ref instance, this is the point in time on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the point in time on the instance from which the child
+        instance was created.
+        Input: For specifying the point in time to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "branch_time")
+
+    @property
+    @pulumi.getter(name="effectiveLsn")
+    def effective_lsn(self) -> Optional[builtins.str]:
+        """
+        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+        For a parent ref instance, this is the LSN on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the LSN on the instance from which the child instance
+        was created
+        """
+        return pulumi.get(self, "effective_lsn")
+
+    @property
+    @pulumi.getter
+    def lsn(self) -> Optional[builtins.str]:
+        """
+        User-specified WAL LSN of the ref database instance.
+
+        Input: For specifying the WAL LSN to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "lsn")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        The name of the instance. This is the unique identifier for the instance
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[builtins.str]:
+        """
+        (string) - Id of the ref database instance
+        """
+        return pulumi.get(self, "uid")
+
+
+@pulumi.output_type
+class DatabaseInstanceParentInstanceRef(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "branchTime":
+            suggest = "branch_time"
+        elif key == "effectiveLsn":
+            suggest = "effective_lsn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceParentInstanceRef. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceParentInstanceRef.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceParentInstanceRef.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch_time: Optional[builtins.str] = None,
+                 effective_lsn: Optional[builtins.str] = None,
+                 lsn: Optional[builtins.str] = None,
+                 name: Optional[builtins.str] = None,
+                 uid: Optional[builtins.str] = None):
+        """
+        :param builtins.str branch_time: Branch time of the ref database instance.
+               For a parent ref instance, this is the point in time on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the point in time on the instance from which the child
+               instance was created.
+               Input: For specifying the point in time to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param builtins.str effective_lsn: (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+               `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+               For a parent ref instance, this is the LSN on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the LSN on the instance from which the child instance
+               was created
+        :param builtins.str lsn: User-specified WAL LSN of the ref database instance.
+               
+               Input: For specifying the WAL LSN to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param builtins.str name: The name of the instance. This is the unique identifier for the instance
+        :param builtins.str uid: (string) - Id of the ref database instance
+        """
+        if branch_time is not None:
+            pulumi.set(__self__, "branch_time", branch_time)
+        if effective_lsn is not None:
+            pulumi.set(__self__, "effective_lsn", effective_lsn)
+        if lsn is not None:
+            pulumi.set(__self__, "lsn", lsn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter(name="branchTime")
+    def branch_time(self) -> Optional[builtins.str]:
+        """
+        Branch time of the ref database instance.
+        For a parent ref instance, this is the point in time on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the point in time on the instance from which the child
+        instance was created.
+        Input: For specifying the point in time to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "branch_time")
+
+    @property
+    @pulumi.getter(name="effectiveLsn")
+    def effective_lsn(self) -> Optional[builtins.str]:
+        """
+        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+        For a parent ref instance, this is the LSN on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the LSN on the instance from which the child instance
+        was created
+        """
+        return pulumi.get(self, "effective_lsn")
+
+    @property
+    @pulumi.getter
+    def lsn(self) -> Optional[builtins.str]:
+        """
+        User-specified WAL LSN of the ref database instance.
+
+        Input: For specifying the WAL LSN to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "lsn")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        The name of the instance. This is the unique identifier for the instance
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[builtins.str]:
+        """
+        (string) - Id of the ref database instance
+        """
+        return pulumi.get(self, "uid")
+
+
+@pulumi.output_type
 class DefaultNamespaceSettingNamespace(dict):
     def __init__(__self__, *,
                  value: Optional[builtins.str] = None):
@@ -5379,12 +6453,18 @@ class ExternalLocationEncryptionDetails(dict):
 
     def __init__(__self__, *,
                  sse_encryption_details: Optional['outputs.ExternalLocationEncryptionDetailsSseEncryptionDetails'] = None):
+        """
+        :param 'ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs' sse_encryption_details: a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+        """
         if sse_encryption_details is not None:
             pulumi.set(__self__, "sse_encryption_details", sse_encryption_details)
 
     @property
     @pulumi.getter(name="sseEncryptionDetails")
     def sse_encryption_details(self) -> Optional['outputs.ExternalLocationEncryptionDetailsSseEncryptionDetails']:
+        """
+        a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+        """
         return pulumi.get(self, "sse_encryption_details")
 
 
@@ -5410,6 +6490,10 @@ class ExternalLocationEncryptionDetailsSseEncryptionDetails(dict):
     def __init__(__self__, *,
                  algorithm: Optional[builtins.str] = None,
                  aws_kms_key_arn: Optional[builtins.str] = None):
+        """
+        :param builtins.str algorithm: Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+        :param builtins.str aws_kms_key_arn: Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
+        """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
         if aws_kms_key_arn is not None:
@@ -5418,11 +6502,17 @@ class ExternalLocationEncryptionDetailsSseEncryptionDetails(dict):
     @property
     @pulumi.getter
     def algorithm(self) -> Optional[builtins.str]:
+        """
+        Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+        """
         return pulumi.get(self, "algorithm")
 
     @property
     @pulumi.getter(name="awsKmsKeyArn")
     def aws_kms_key_arn(self) -> Optional[builtins.str]:
+        """
+        Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
+        """
         return pulumi.get(self, "aws_kms_key_arn")
 
 
@@ -7130,7 +8220,9 @@ class JobJobClusterNewCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "applyPolicyDefaultValues":
+        if key == "__applyPolicyDefaultValuesAllowLists":
+            suggest = "__apply_policy_default_values_allow_lists"
+        elif key == "applyPolicyDefaultValues":
             suggest = "apply_policy_default_values"
         elif key == "awsAttributes":
             suggest = "aws_attributes"
@@ -7207,6 +8299,7 @@ class JobJobClusterNewCluster(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 __apply_policy_default_values_allow_lists: Optional[Sequence[builtins.str]] = None,
                  apply_policy_default_values: Optional[builtins.bool] = None,
                  autoscale: Optional['outputs.JobJobClusterNewClusterAutoscale'] = None,
                  aws_attributes: Optional['outputs.JobJobClusterNewClusterAwsAttributes'] = None,
@@ -7246,6 +8339,8 @@ class JobJobClusterNewCluster(dict):
         :param Sequence['JobJobClusterNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         :param 'JobJobClusterNewClusterWorkloadTypeArgs' workload_type: isn't supported
         """
+        if __apply_policy_default_values_allow_lists is not None:
+            pulumi.set(__self__, "__apply_policy_default_values_allow_lists", __apply_policy_default_values_allow_lists)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -7316,6 +8411,11 @@ class JobJobClusterNewCluster(dict):
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
+
+    @property
+    @pulumi.getter(name="__applyPolicyDefaultValuesAllowLists")
+    def __apply_policy_default_values_allow_lists(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "__apply_policy_default_values_allow_lists")
 
     @property
     @pulumi.getter(name="applyPolicyDefaultValues")
@@ -16431,7 +17531,9 @@ class JobTaskNewCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "applyPolicyDefaultValues":
+        if key == "__applyPolicyDefaultValuesAllowLists":
+            suggest = "__apply_policy_default_values_allow_lists"
+        elif key == "applyPolicyDefaultValues":
             suggest = "apply_policy_default_values"
         elif key == "awsAttributes":
             suggest = "aws_attributes"
@@ -16508,6 +17610,7 @@ class JobTaskNewCluster(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 __apply_policy_default_values_allow_lists: Optional[Sequence[builtins.str]] = None,
                  apply_policy_default_values: Optional[builtins.bool] = None,
                  autoscale: Optional['outputs.JobTaskNewClusterAutoscale'] = None,
                  aws_attributes: Optional['outputs.JobTaskNewClusterAwsAttributes'] = None,
@@ -16547,6 +17650,8 @@ class JobTaskNewCluster(dict):
         :param Sequence['JobTaskNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         :param 'JobTaskNewClusterWorkloadTypeArgs' workload_type: isn't supported
         """
+        if __apply_policy_default_values_allow_lists is not None:
+            pulumi.set(__self__, "__apply_policy_default_values_allow_lists", __apply_policy_default_values_allow_lists)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -16617,6 +17722,11 @@ class JobTaskNewCluster(dict):
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
+
+    @property
+    @pulumi.getter(name="__applyPolicyDefaultValuesAllowLists")
+    def __apply_policy_default_values_allow_lists(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "__apply_policy_default_values_allow_lists")
 
     @property
     @pulumi.getter(name="applyPolicyDefaultValues")
@@ -20937,6 +22047,7 @@ class ModelServingAiGatewayGuardrailsInput(dict):
 
     @property
     @pulumi.getter(name="invalidKeywords")
+    @_utilities.deprecated("""Please use 'pii' and 'safety' instead.""")
     def invalid_keywords(self) -> Optional[Sequence[builtins.str]]:
         """
         List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
@@ -20961,6 +22072,7 @@ class ModelServingAiGatewayGuardrailsInput(dict):
 
     @property
     @pulumi.getter(name="validTopics")
+    @_utilities.deprecated("""Please use 'pii' and 'safety' instead.""")
     def valid_topics(self) -> Optional[Sequence[builtins.str]]:
         """
         The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
@@ -21030,6 +22142,7 @@ class ModelServingAiGatewayGuardrailsOutput(dict):
 
     @property
     @pulumi.getter(name="invalidKeywords")
+    @_utilities.deprecated("""Please use 'pii' and 'safety' instead.""")
     def invalid_keywords(self) -> Optional[Sequence[builtins.str]]:
         """
         List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
@@ -21054,6 +22167,7 @@ class ModelServingAiGatewayGuardrailsOutput(dict):
 
     @property
     @pulumi.getter(name="validTopics")
+    @_utilities.deprecated("""Please use 'pii' and 'safety' instead.""")
     def valid_topics(self) -> Optional[Sequence[builtins.str]]:
         """
         The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
@@ -21176,26 +22290,23 @@ class ModelServingAiGatewayRateLimit(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 calls: builtins.int,
                  renewal_period: builtins.str,
-                 key: Optional[builtins.str] = None):
+                 calls: Optional[builtins.int] = None,
+                 key: Optional[builtins.str] = None,
+                 principal: Optional[builtins.str] = None):
         """
-        :param builtins.int calls: Used to specify how many calls are allowed for a key within the renewal_period.
         :param builtins.str renewal_period: Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
-        :param builtins.str key: Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        :param builtins.int calls: Used to specify how many calls are allowed for a key within the renewal_period.
+        :param builtins.str key: Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
+        :param builtins.str principal: Principal field for a user, user group, or service principal to apply rate limiting to. Accepts a user email, group name, or service principal application ID.
         """
-        pulumi.set(__self__, "calls", calls)
         pulumi.set(__self__, "renewal_period", renewal_period)
+        if calls is not None:
+            pulumi.set(__self__, "calls", calls)
         if key is not None:
             pulumi.set(__self__, "key", key)
-
-    @property
-    @pulumi.getter
-    def calls(self) -> builtins.int:
-        """
-        Used to specify how many calls are allowed for a key within the renewal_period.
-        """
-        return pulumi.get(self, "calls")
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
 
     @property
     @pulumi.getter(name="renewalPeriod")
@@ -21207,11 +22318,27 @@ class ModelServingAiGatewayRateLimit(dict):
 
     @property
     @pulumi.getter
+    def calls(self) -> Optional[builtins.int]:
+        """
+        Used to specify how many calls are allowed for a key within the renewal_period.
+        """
+        return pulumi.get(self, "calls")
+
+    @property
+    @pulumi.getter
     def key(self) -> Optional[builtins.str]:
         """
-        Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
         """
         return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def principal(self) -> Optional[builtins.str]:
+        """
+        Principal field for a user, user group, or service principal to apply rate limiting to. Accepts a user email, group name, or service principal application ID.
+        """
+        return pulumi.get(self, "principal")
 
 
 @pulumi.output_type
@@ -22794,10 +23921,12 @@ class ModelServingConfigTrafficConfigRoute(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "servedModelName":
-            suggest = "served_model_name"
-        elif key == "trafficPercentage":
+        if key == "trafficPercentage":
             suggest = "traffic_percentage"
+        elif key == "servedEntityName":
+            suggest = "served_entity_name"
+        elif key == "servedModelName":
+            suggest = "served_model_name"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ModelServingConfigTrafficConfigRoute. Access the value via the '{suggest}' property getter instead.")
@@ -22811,18 +23940,18 @@ class ModelServingConfigTrafficConfigRoute(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 served_model_name: builtins.str,
-                 traffic_percentage: builtins.int):
+                 traffic_percentage: builtins.int,
+                 served_entity_name: Optional[builtins.str] = None,
+                 served_model_name: Optional[builtins.str] = None):
         """
         :param builtins.int traffic_percentage: The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
+        :param builtins.str served_entity_name: The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
         """
-        pulumi.set(__self__, "served_model_name", served_model_name)
         pulumi.set(__self__, "traffic_percentage", traffic_percentage)
-
-    @property
-    @pulumi.getter(name="servedModelName")
-    def served_model_name(self) -> builtins.str:
-        return pulumi.get(self, "served_model_name")
+        if served_entity_name is not None:
+            pulumi.set(__self__, "served_entity_name", served_entity_name)
+        if served_model_name is not None:
+            pulumi.set(__self__, "served_model_name", served_model_name)
 
     @property
     @pulumi.getter(name="trafficPercentage")
@@ -22831,6 +23960,19 @@ class ModelServingConfigTrafficConfigRoute(dict):
         The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
         """
         return pulumi.get(self, "traffic_percentage")
+
+    @property
+    @pulumi.getter(name="servedEntityName")
+    def served_entity_name(self) -> Optional[builtins.str]:
+        """
+        The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+        """
+        return pulumi.get(self, "served_entity_name")
+
+    @property
+    @pulumi.getter(name="servedModelName")
+    def served_model_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "served_model_name")
 
 
 @pulumi.output_type
@@ -23238,21 +24380,20 @@ class ModelServingProvisionedThroughputAiGatewayRateLimit(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 calls: builtins.int,
                  renewal_period: builtins.str,
-                 key: Optional[builtins.str] = None):
+                 calls: Optional[builtins.int] = None,
+                 key: Optional[builtins.str] = None,
+                 principal: Optional[builtins.str] = None):
         """
         :param builtins.str key: The key field for a tag.
         """
-        pulumi.set(__self__, "calls", calls)
         pulumi.set(__self__, "renewal_period", renewal_period)
+        if calls is not None:
+            pulumi.set(__self__, "calls", calls)
         if key is not None:
             pulumi.set(__self__, "key", key)
-
-    @property
-    @pulumi.getter
-    def calls(self) -> builtins.int:
-        return pulumi.get(self, "calls")
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
 
     @property
     @pulumi.getter(name="renewalPeriod")
@@ -23261,11 +24402,21 @@ class ModelServingProvisionedThroughputAiGatewayRateLimit(dict):
 
     @property
     @pulumi.getter
+    def calls(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "calls")
+
+    @property
+    @pulumi.getter
     def key(self) -> Optional[builtins.str]:
         """
         The key field for a tag.
         """
         return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def principal(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "principal")
 
 
 @pulumi.output_type
@@ -23434,10 +24585,12 @@ class ModelServingProvisionedThroughputConfigTrafficConfigRoute(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "servedModelName":
-            suggest = "served_model_name"
-        elif key == "trafficPercentage":
+        if key == "trafficPercentage":
             suggest = "traffic_percentage"
+        elif key == "servedEntityName":
+            suggest = "served_entity_name"
+        elif key == "servedModelName":
+            suggest = "served_model_name"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ModelServingProvisionedThroughputConfigTrafficConfigRoute. Access the value via the '{suggest}' property getter instead.")
@@ -23451,18 +24604,18 @@ class ModelServingProvisionedThroughputConfigTrafficConfigRoute(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 served_model_name: builtins.str,
-                 traffic_percentage: builtins.int):
+                 traffic_percentage: builtins.int,
+                 served_entity_name: Optional[builtins.str] = None,
+                 served_model_name: Optional[builtins.str] = None):
         """
         :param builtins.int traffic_percentage: The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
+        :param builtins.str served_entity_name: The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
         """
-        pulumi.set(__self__, "served_model_name", served_model_name)
         pulumi.set(__self__, "traffic_percentage", traffic_percentage)
-
-    @property
-    @pulumi.getter(name="servedModelName")
-    def served_model_name(self) -> builtins.str:
-        return pulumi.get(self, "served_model_name")
+        if served_entity_name is not None:
+            pulumi.set(__self__, "served_entity_name", served_entity_name)
+        if served_model_name is not None:
+            pulumi.set(__self__, "served_model_name", served_model_name)
 
     @property
     @pulumi.getter(name="trafficPercentage")
@@ -23471,6 +24624,19 @@ class ModelServingProvisionedThroughputConfigTrafficConfigRoute(dict):
         The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
         """
         return pulumi.get(self, "traffic_percentage")
+
+    @property
+    @pulumi.getter(name="servedEntityName")
+    def served_entity_name(self) -> Optional[builtins.str]:
+        """
+        The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+        """
+        return pulumi.get(self, "served_entity_name")
+
+    @property
+    @pulumi.getter(name="servedModelName")
+    def served_model_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "served_model_name")
 
 
 @pulumi.output_type
@@ -23529,7 +24695,7 @@ class ModelServingRateLimit(dict):
         """
         :param builtins.int calls: Used to specify how many calls are allowed for a key within the renewal_period.
         :param builtins.str renewal_period: Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
-        :param builtins.str key: Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        :param builtins.str key: Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
         """
         pulumi.set(__self__, "calls", calls)
         pulumi.set(__self__, "renewal_period", renewal_period)
@@ -23556,7 +24722,7 @@ class ModelServingRateLimit(dict):
     @pulumi.getter
     def key(self) -> Optional[builtins.str]:
         """
-        Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
         """
         return pulumi.get(self, "key")
 
@@ -24244,6 +25410,7 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRules(dict):
                  aws_private_endpoint_rules: Optional[Sequence['outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule']] = None,
                  azure_private_endpoint_rules: Optional[Sequence['outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule']] = None):
         """
+        :param Sequence['MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs'] aws_private_endpoint_rules: (AWS only) - list containing information about configure AWS Private Endpoints.
         :param Sequence['MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs'] azure_private_endpoint_rules: (Azure only) - list containing information about configure Azure Private Endpoints.
         """
         if aws_private_endpoint_rules is not None:
@@ -24254,6 +25421,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRules(dict):
     @property
     @pulumi.getter(name="awsPrivateEndpointRules")
     def aws_private_endpoint_rules(self) -> Optional[Sequence['outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule']]:
+        """
+        (AWS only) - list containing information about configure AWS Private Endpoints.
+        """
         return pulumi.get(self, "aws_private_endpoint_rules")
 
     @property
@@ -24319,7 +25489,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule(
                  updated_time: Optional[builtins.int] = None,
                  vpc_endpoint_id: Optional[builtins.str] = None):
         """
+        :param builtins.int creation_time: time in epoch milliseconds when this object was created.
         :param builtins.str network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account
+        :param builtins.int updated_time: time in epoch milliseconds when this object was updated.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -24361,6 +25533,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule(
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> Optional[builtins.int]:
+        """
+        time in epoch milliseconds when this object was created.
+        """
         return pulumi.get(self, "creation_time")
 
     @property
@@ -24409,6 +25584,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule(
     @property
     @pulumi.getter(name="updatedTime")
     def updated_time(self) -> Optional[builtins.int]:
+        """
+        time in epoch milliseconds when this object was updated.
+        """
         return pulumi.get(self, "updated_time")
 
     @property
@@ -24467,7 +25645,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRul
                  rule_id: Optional[builtins.str] = None,
                  updated_time: Optional[builtins.int] = None):
         """
+        :param builtins.int creation_time: time in epoch milliseconds when this object was created.
         :param builtins.str network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account
+        :param builtins.int updated_time: time in epoch milliseconds when this object was updated.
         """
         if connection_state is not None:
             pulumi.set(__self__, "connection_state", connection_state)
@@ -24500,6 +25680,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRul
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> Optional[builtins.int]:
+        """
+        time in epoch milliseconds when this object was created.
+        """
         return pulumi.get(self, "creation_time")
 
     @property
@@ -24548,6 +25731,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRul
     @property
     @pulumi.getter(name="updatedTime")
     def updated_time(self) -> Optional[builtins.int]:
+        """
+        time in epoch milliseconds when this object was updated.
+        """
         return pulumi.get(self, "updated_time")
 
 
@@ -24676,13 +25862,13 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[builtins.str]:
         return pulumi.get(self, "pod_ip_range_name")
 
     @property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[builtins.str]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -24954,13 +26140,13 @@ class MwsWorkspacesGcpManagedNetworkConfig(dict):
 
     @property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[builtins.str]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
     @property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[builtins.str]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -27135,7 +28321,7 @@ class PipelineGatewayDefinition(dict):
         :param builtins.str gateway_storage_catalog: Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
         :param builtins.str gateway_storage_schema: Required, Immutable. The name of the schema for the gateway pipelines's storage location.
         :param builtins.str connection_id: Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
-        :param builtins.str gateway_storage_name: Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+        :param builtins.str gateway_storage_name: Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Lakeflow Declarative Pipelines system will automatically create the storage location under the catalog and schema.
         """
         pulumi.set(__self__, "connection_name", connection_name)
         pulumi.set(__self__, "gateway_storage_catalog", gateway_storage_catalog)
@@ -27178,7 +28364,7 @@ class PipelineGatewayDefinition(dict):
     @pulumi.getter(name="gatewayStorageName")
     def gateway_storage_name(self) -> Optional[builtins.str]:
         """
-        Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+        Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Lakeflow Declarative Pipelines system will automatically create the storage location under the catalog and schema.
         """
         return pulumi.get(self, "gateway_storage_name")
 
@@ -32968,7 +34154,6 @@ class GetAlertsV2ResultResult(dict):
                  id: builtins.str,
                  lifecycle_state: builtins.str,
                  owner_user_name: builtins.str,
-                 run_as_user_name: builtins.str,
                  update_time: builtins.str,
                  custom_description: Optional[builtins.str] = None,
                  custom_summary: Optional[builtins.str] = None,
@@ -32976,6 +34161,7 @@ class GetAlertsV2ResultResult(dict):
                  evaluation: Optional['outputs.GetAlertsV2ResultEvaluationResult'] = None,
                  parent_path: Optional[builtins.str] = None,
                  query_text: Optional[builtins.str] = None,
+                 run_as_user_name: Optional[builtins.str] = None,
                  schedule: Optional['outputs.GetAlertsV2ResultScheduleResult'] = None,
                  warehouse_id: Optional[builtins.str] = None):
         """
@@ -32983,7 +34169,6 @@ class GetAlertsV2ResultResult(dict):
         :param builtins.str id: (string) - UUID identifying the alert
         :param builtins.str lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
         :param builtins.str owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
-        :param builtins.str run_as_user_name: (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
         :param builtins.str update_time: (string) - The timestamp indicating when the alert was updated
         :param builtins.str custom_description: (string) - Custom description for the alert. support mustache template
         :param builtins.str custom_summary: (string) - Custom summary for the alert. support mustache template
@@ -32991,6 +34176,8 @@ class GetAlertsV2ResultResult(dict):
         :param 'GetAlertsV2ResultEvaluationArgs' evaluation: (AlertV2Evaluation) -
         :param builtins.str parent_path: (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param builtins.str query_text: (string) - Text of the query to be run
+        :param builtins.str run_as_user_name: (string) - The run as username or application ID of service principal.
+               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         :param 'GetAlertsV2ResultScheduleArgs' schedule: (CronSchedule) -
         :param builtins.str warehouse_id: (string) - ID of the SQL warehouse attached to the alert
         """
@@ -32998,7 +34185,6 @@ class GetAlertsV2ResultResult(dict):
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "lifecycle_state", lifecycle_state)
         pulumi.set(__self__, "owner_user_name", owner_user_name)
-        pulumi.set(__self__, "run_as_user_name", run_as_user_name)
         pulumi.set(__self__, "update_time", update_time)
         if custom_description is not None:
             pulumi.set(__self__, "custom_description", custom_description)
@@ -33012,6 +34198,8 @@ class GetAlertsV2ResultResult(dict):
             pulumi.set(__self__, "parent_path", parent_path)
         if query_text is not None:
             pulumi.set(__self__, "query_text", query_text)
+        if run_as_user_name is not None:
+            pulumi.set(__self__, "run_as_user_name", run_as_user_name)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if warehouse_id is not None:
@@ -33048,14 +34236,6 @@ class GetAlertsV2ResultResult(dict):
         (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
         """
         return pulumi.get(self, "owner_user_name")
-
-    @property
-    @pulumi.getter(name="runAsUserName")
-    def run_as_user_name(self) -> builtins.str:
-        """
-        (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
-        """
-        return pulumi.get(self, "run_as_user_name")
 
     @property
     @pulumi.getter(name="updateTime")
@@ -33112,6 +34292,15 @@ class GetAlertsV2ResultResult(dict):
         (string) - Text of the query to be run
         """
         return pulumi.get(self, "query_text")
+
+    @property
+    @pulumi.getter(name="runAsUserName")
+    def run_as_user_name(self) -> Optional[builtins.str]:
+        """
+        (string) - The run as username or application ID of service principal.
+        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+        """
+        return pulumi.get(self, "run_as_user_name")
 
     @property
     @pulumi.getter
@@ -34044,6 +35233,7 @@ class GetAppAppPendingDeploymentStatusResult(dict):
 class GetAppAppResourceResult(dict):
     def __init__(__self__, *,
                  name: builtins.str,
+                 database: Optional['outputs.GetAppAppResourceDatabaseResult'] = None,
                  description: Optional[builtins.str] = None,
                  job: Optional['outputs.GetAppAppResourceJobResult'] = None,
                  secret: Optional['outputs.GetAppAppResourceSecretResult'] = None,
@@ -34052,6 +35242,7 @@ class GetAppAppResourceResult(dict):
                  uc_securable: Optional['outputs.GetAppAppResourceUcSecurableResult'] = None):
         """
         :param builtins.str name: The name of the app.
+        :param 'GetAppAppResourceDatabaseArgs' database: attribute
         :param builtins.str description: The description of the resource.
         :param 'GetAppAppResourceJobArgs' job: attribute
         :param 'GetAppAppResourceSecretArgs' secret: attribute
@@ -34060,6 +35251,8 @@ class GetAppAppResourceResult(dict):
         :param 'GetAppAppResourceUcSecurableArgs' uc_securable: attribute
         """
         pulumi.set(__self__, "name", name)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if job is not None:
@@ -34080,6 +35273,14 @@ class GetAppAppResourceResult(dict):
         The name of the app.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional['outputs.GetAppAppResourceDatabaseResult']:
+        """
+        attribute
+        """
+        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter
@@ -34131,13 +35332,53 @@ class GetAppAppResourceResult(dict):
 
 
 @pulumi.output_type
+class GetAppAppResourceDatabaseResult(dict):
+    def __init__(__self__, *,
+                 database_name: builtins.str,
+                 instance_name: builtins.str,
+                 permission: builtins.str):
+        """
+        :param builtins.str database_name: The name of database.
+        :param builtins.str instance_name: The name of database instance.
+        :param builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        """
+        pulumi.set(__self__, "database_name", database_name)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> builtins.str:
+        """
+        The name of database.
+        """
+        return pulumi.get(self, "database_name")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> builtins.str:
+        """
+        The name of database instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> builtins.str:
+        """
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        """
+        return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
 class GetAppAppResourceJobResult(dict):
     def __init__(__self__, *,
                  id: builtins.str,
                  permission: builtins.str):
         """
         :param builtins.str id: Id of the job to grant permission on.
-        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permission", permission)
@@ -34154,7 +35395,7 @@ class GetAppAppResourceJobResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -34167,7 +35408,7 @@ class GetAppAppResourceSecretResult(dict):
                  scope: builtins.str):
         """
         :param builtins.str key: Key of the secret to grant permission on.
-        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         :param builtins.str scope: Scope of the secret to grant permission on.
         """
         pulumi.set(__self__, "key", key)
@@ -34186,7 +35427,7 @@ class GetAppAppResourceSecretResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -34206,7 +35447,7 @@ class GetAppAppResourceServingEndpointResult(dict):
                  permission: builtins.str):
         """
         :param builtins.str name: The name of the app.
-        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "permission", permission)
@@ -34223,7 +35464,7 @@ class GetAppAppResourceServingEndpointResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -34235,7 +35476,7 @@ class GetAppAppResourceSqlWarehouseResult(dict):
                  permission: builtins.str):
         """
         :param builtins.str id: Id of the job to grant permission on.
-        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permission", permission)
@@ -34252,7 +35493,7 @@ class GetAppAppResourceSqlWarehouseResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -34264,7 +35505,7 @@ class GetAppAppResourceUcSecurableResult(dict):
                  securable_full_name: builtins.str,
                  securable_type: builtins.str):
         """
-        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         :param builtins.str securable_full_name: the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
         :param builtins.str securable_type: the type of UC securable, i.e. `VOLUME`.
         """
@@ -34276,7 +35517,7 @@ class GetAppAppResourceUcSecurableResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -34839,6 +36080,7 @@ class GetAppsAppPendingDeploymentStatusResult(dict):
 class GetAppsAppResourceResult(dict):
     def __init__(__self__, *,
                  name: builtins.str,
+                 database: Optional['outputs.GetAppsAppResourceDatabaseResult'] = None,
                  description: Optional[builtins.str] = None,
                  job: Optional['outputs.GetAppsAppResourceJobResult'] = None,
                  secret: Optional['outputs.GetAppsAppResourceSecretResult'] = None,
@@ -34847,6 +36089,7 @@ class GetAppsAppResourceResult(dict):
                  uc_securable: Optional['outputs.GetAppsAppResourceUcSecurableResult'] = None):
         """
         :param builtins.str name: Name of the serving endpoint to grant permission on.
+        :param 'GetAppsAppResourceDatabaseArgs' database: attribute
         :param builtins.str description: The description of the resource.
         :param 'GetAppsAppResourceJobArgs' job: attribute
         :param 'GetAppsAppResourceSecretArgs' secret: attribute
@@ -34855,6 +36098,8 @@ class GetAppsAppResourceResult(dict):
         :param 'GetAppsAppResourceUcSecurableArgs' uc_securable: attribute
         """
         pulumi.set(__self__, "name", name)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if job is not None:
@@ -34875,6 +36120,14 @@ class GetAppsAppResourceResult(dict):
         Name of the serving endpoint to grant permission on.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional['outputs.GetAppsAppResourceDatabaseResult']:
+        """
+        attribute
+        """
+        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter
@@ -34926,13 +36179,53 @@ class GetAppsAppResourceResult(dict):
 
 
 @pulumi.output_type
+class GetAppsAppResourceDatabaseResult(dict):
+    def __init__(__self__, *,
+                 database_name: builtins.str,
+                 instance_name: builtins.str,
+                 permission: builtins.str):
+        """
+        :param builtins.str database_name: The name of database.
+        :param builtins.str instance_name: The name of database instance.
+        :param builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        """
+        pulumi.set(__self__, "database_name", database_name)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> builtins.str:
+        """
+        The name of database.
+        """
+        return pulumi.get(self, "database_name")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> builtins.str:
+        """
+        The name of database instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> builtins.str:
+        """
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        """
+        return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
 class GetAppsAppResourceJobResult(dict):
     def __init__(__self__, *,
                  id: builtins.str,
                  permission: builtins.str):
         """
         :param builtins.str id: Id of the job to grant permission on.
-        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permission", permission)
@@ -34949,7 +36242,7 @@ class GetAppsAppResourceJobResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -34962,7 +36255,7 @@ class GetAppsAppResourceSecretResult(dict):
                  scope: builtins.str):
         """
         :param builtins.str key: Key of the secret to grant permission on.
-        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         :param builtins.str scope: Scope of the secret to grant permission on.
         """
         pulumi.set(__self__, "key", key)
@@ -34981,7 +36274,7 @@ class GetAppsAppResourceSecretResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -35001,7 +36294,7 @@ class GetAppsAppResourceServingEndpointResult(dict):
                  permission: builtins.str):
         """
         :param builtins.str name: Name of the serving endpoint to grant permission on.
-        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "permission", permission)
@@ -35018,7 +36311,7 @@ class GetAppsAppResourceServingEndpointResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -35030,7 +36323,7 @@ class GetAppsAppResourceSqlWarehouseResult(dict):
                  permission: builtins.str):
         """
         :param builtins.str id: Id of the job to grant permission on.
-        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permission", permission)
@@ -35047,7 +36340,7 @@ class GetAppsAppResourceSqlWarehouseResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -35059,7 +36352,7 @@ class GetAppsAppResourceUcSecurableResult(dict):
                  securable_full_name: builtins.str,
                  securable_type: builtins.str):
         """
-        :param builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         :param builtins.str securable_full_name: the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
         :param builtins.str securable_type: the type of UC securable, i.e. `VOLUME`.
         """
@@ -35071,7 +36364,7 @@ class GetAppsAppResourceUcSecurableResult(dict):
     @pulumi.getter
     def permission(self) -> builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -35540,6 +36833,1323 @@ class GetCatalogCatalogInfoProvisioningInfoResult(dict):
     @pulumi.getter
     def state(self) -> Optional[builtins.str]:
         return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomOutputCatalogResult(dict):
+    def __init__(__self__, *,
+                 status: builtins.str,
+                 catalog_name: Optional[builtins.str] = None):
+        """
+        :param builtins.str status: (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        :param builtins.str catalog_name: (string) - The name of the output catalog in UC.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+               The field will always exist if status is CREATED
+        """
+        pulumi.set(__self__, "status", status)
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+
+    @property
+    @pulumi.getter
+    def status(self) -> builtins.str:
+        """
+        (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[builtins.str]:
+        """
+        (string) - The name of the output catalog in UC.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+        The field will always exist if status is CREATED
+        """
+        return pulumi.get(self, "catalog_name")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoResult(dict):
+    def __init__(__self__, *,
+                 central_clean_room_id: builtins.str,
+                 compliance_security_profile: 'outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileResult',
+                 creator: 'outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorResult',
+                 cloud_vendor: Optional[builtins.str] = None,
+                 collaborators: Optional[Sequence['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorResult']] = None,
+                 egress_network_policy: Optional['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyResult'] = None,
+                 region: Optional[builtins.str] = None):
+        """
+        :param builtins.str central_clean_room_id: (string) - Central clean room ID
+        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs' compliance_security_profile: (ComplianceSecurityProfile) -
+        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs' creator: (CleanRoomCollaborator) - Collaborator who creates the clean room
+        :param builtins.str cloud_vendor: (string) - Cloud vendor (aws,azure,gcp) of the central clean room
+        :param Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs'] collaborators: (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
+               in the list that satisfies the owner condition:
+        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs' egress_network_policy: (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
+        :param builtins.str region: (string) -
+        """
+        pulumi.set(__self__, "central_clean_room_id", central_clean_room_id)
+        pulumi.set(__self__, "compliance_security_profile", compliance_security_profile)
+        pulumi.set(__self__, "creator", creator)
+        if cloud_vendor is not None:
+            pulumi.set(__self__, "cloud_vendor", cloud_vendor)
+        if collaborators is not None:
+            pulumi.set(__self__, "collaborators", collaborators)
+        if egress_network_policy is not None:
+            pulumi.set(__self__, "egress_network_policy", egress_network_policy)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="centralCleanRoomId")
+    def central_clean_room_id(self) -> builtins.str:
+        """
+        (string) - Central clean room ID
+        """
+        return pulumi.get(self, "central_clean_room_id")
+
+    @property
+    @pulumi.getter(name="complianceSecurityProfile")
+    def compliance_security_profile(self) -> 'outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileResult':
+        """
+        (ComplianceSecurityProfile) -
+        """
+        return pulumi.get(self, "compliance_security_profile")
+
+    @property
+    @pulumi.getter
+    def creator(self) -> 'outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorResult':
+        """
+        (CleanRoomCollaborator) - Collaborator who creates the clean room
+        """
+        return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter(name="cloudVendor")
+    def cloud_vendor(self) -> Optional[builtins.str]:
+        """
+        (string) - Cloud vendor (aws,azure,gcp) of the central clean room
+        """
+        return pulumi.get(self, "cloud_vendor")
+
+    @property
+    @pulumi.getter
+    def collaborators(self) -> Optional[Sequence['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorResult']]:
+        """
+        (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
+        in the list that satisfies the owner condition:
+        """
+        return pulumi.get(self, "collaborators")
+
+    @property
+    @pulumi.getter(name="egressNetworkPolicy")
+    def egress_network_policy(self) -> Optional['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyResult']:
+        """
+        (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
+        """
+        return pulumi.get(self, "egress_network_policy")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorResult(dict):
+    def __init__(__self__, *,
+                 collaborator_alias: builtins.str,
+                 display_name: builtins.str,
+                 organization_name: builtins.str,
+                 global_metastore_id: Optional[builtins.str] = None,
+                 invite_recipient_email: Optional[builtins.str] = None,
+                 invite_recipient_workspace_id: Optional[builtins.int] = None):
+        """
+        :param builtins.str collaborator_alias: (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        :param builtins.str display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+               these values and could change in the future
+        :param builtins.str organization_name: (string) - Organization name
+               configured in the metastore
+        :param builtins.str global_metastore_id: (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        :param builtins.str invite_recipient_email: (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+               for the creator of the clean room, and non-empty for the invitees of the clean room.
+               It is only returned in the output when clean room creator calls GET
+        :param builtins.int invite_recipient_workspace_id: (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+               invite_recipient_email is specified.
+               It should be empty when the collaborator is the creator of the clean room
+        """
+        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "organization_name", organization_name)
+        if global_metastore_id is not None:
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if invite_recipient_email is not None:
+            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
+        if invite_recipient_workspace_id is not None:
+            pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
+
+    @property
+    @pulumi.getter(name="collaboratorAlias")
+    def collaborator_alias(self) -> builtins.str:
+        """
+        (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        return pulumi.get(self, "collaborator_alias")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> builtins.str:
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> builtins.str:
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+        return pulumi.get(self, "organization_name")
+
+    @property
+    @pulumi.getter(name="globalMetastoreId")
+    def global_metastore_id(self) -> Optional[builtins.str]:
+        """
+        (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        return pulumi.get(self, "global_metastore_id")
+
+    @property
+    @pulumi.getter(name="inviteRecipientEmail")
+    def invite_recipient_email(self) -> Optional[builtins.str]:
+        """
+        (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        return pulumi.get(self, "invite_recipient_email")
+
+    @property
+    @pulumi.getter(name="inviteRecipientWorkspaceId")
+    def invite_recipient_workspace_id(self) -> Optional[builtins.int]:
+        """
+        (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+        return pulumi.get(self, "invite_recipient_workspace_id")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileResult(dict):
+    def __init__(__self__, *,
+                 compliance_standards: Optional[Sequence[builtins.str]] = None,
+                 is_enabled: Optional[builtins.bool] = None):
+        """
+        :param Sequence[builtins.str] compliance_standards: (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
+        :param builtins.bool is_enabled: (boolean) - Whether the compliance security profile is enabled
+        """
+        if compliance_standards is not None:
+            pulumi.set(__self__, "compliance_standards", compliance_standards)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @property
+    @pulumi.getter(name="complianceStandards")
+    def compliance_standards(self) -> Optional[Sequence[builtins.str]]:
+        """
+        (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
+        """
+        return pulumi.get(self, "compliance_standards")
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[builtins.bool]:
+        """
+        (boolean) - Whether the compliance security profile is enabled
+        """
+        return pulumi.get(self, "is_enabled")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorResult(dict):
+    def __init__(__self__, *,
+                 collaborator_alias: builtins.str,
+                 display_name: builtins.str,
+                 organization_name: builtins.str,
+                 global_metastore_id: Optional[builtins.str] = None,
+                 invite_recipient_email: Optional[builtins.str] = None,
+                 invite_recipient_workspace_id: Optional[builtins.int] = None):
+        """
+        :param builtins.str collaborator_alias: (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        :param builtins.str display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+               these values and could change in the future
+        :param builtins.str organization_name: (string) - Organization name
+               configured in the metastore
+        :param builtins.str global_metastore_id: (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        :param builtins.str invite_recipient_email: (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+               for the creator of the clean room, and non-empty for the invitees of the clean room.
+               It is only returned in the output when clean room creator calls GET
+        :param builtins.int invite_recipient_workspace_id: (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+               invite_recipient_email is specified.
+               It should be empty when the collaborator is the creator of the clean room
+        """
+        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "organization_name", organization_name)
+        if global_metastore_id is not None:
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if invite_recipient_email is not None:
+            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
+        if invite_recipient_workspace_id is not None:
+            pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
+
+    @property
+    @pulumi.getter(name="collaboratorAlias")
+    def collaborator_alias(self) -> builtins.str:
+        """
+        (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        return pulumi.get(self, "collaborator_alias")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> builtins.str:
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> builtins.str:
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+        return pulumi.get(self, "organization_name")
+
+    @property
+    @pulumi.getter(name="globalMetastoreId")
+    def global_metastore_id(self) -> Optional[builtins.str]:
+        """
+        (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        return pulumi.get(self, "global_metastore_id")
+
+    @property
+    @pulumi.getter(name="inviteRecipientEmail")
+    def invite_recipient_email(self) -> Optional[builtins.str]:
+        """
+        (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        return pulumi.get(self, "invite_recipient_email")
+
+    @property
+    @pulumi.getter(name="inviteRecipientWorkspaceId")
+    def invite_recipient_workspace_id(self) -> Optional[builtins.int]:
+        """
+        (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+        return pulumi.get(self, "invite_recipient_workspace_id")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyResult(dict):
+    def __init__(__self__, *,
+                 internet_access: Optional['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessResult'] = None):
+        """
+        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs' internet_access: (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
+        """
+        if internet_access is not None:
+            pulumi.set(__self__, "internet_access", internet_access)
+
+    @property
+    @pulumi.getter(name="internetAccess")
+    def internet_access(self) -> Optional['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessResult']:
+        """
+        (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
+        """
+        return pulumi.get(self, "internet_access")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessResult(dict):
+    def __init__(__self__, *,
+                 allowed_internet_destinations: Optional[Sequence['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationResult']] = None,
+                 allowed_storage_destinations: Optional[Sequence['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationResult']] = None,
+                 log_only_mode: Optional['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeResult'] = None,
+                 restriction_mode: Optional[builtins.str] = None):
+        """
+        :param Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs'] allowed_internet_destinations: (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination) -
+        :param Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs'] allowed_storage_destinations: (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination) -
+        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs' log_only_mode: (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
+        :param builtins.str restriction_mode: (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+        """
+        if allowed_internet_destinations is not None:
+            pulumi.set(__self__, "allowed_internet_destinations", allowed_internet_destinations)
+        if allowed_storage_destinations is not None:
+            pulumi.set(__self__, "allowed_storage_destinations", allowed_storage_destinations)
+        if log_only_mode is not None:
+            pulumi.set(__self__, "log_only_mode", log_only_mode)
+        if restriction_mode is not None:
+            pulumi.set(__self__, "restriction_mode", restriction_mode)
+
+    @property
+    @pulumi.getter(name="allowedInternetDestinations")
+    def allowed_internet_destinations(self) -> Optional[Sequence['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationResult']]:
+        """
+        (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination) -
+        """
+        return pulumi.get(self, "allowed_internet_destinations")
+
+    @property
+    @pulumi.getter(name="allowedStorageDestinations")
+    def allowed_storage_destinations(self) -> Optional[Sequence['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationResult']]:
+        """
+        (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination) -
+        """
+        return pulumi.get(self, "allowed_storage_destinations")
+
+    @property
+    @pulumi.getter(name="logOnlyMode")
+    def log_only_mode(self) -> Optional['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeResult']:
+        """
+        (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
+        """
+        return pulumi.get(self, "log_only_mode")
+
+    @property
+    @pulumi.getter(name="restrictionMode")
+    def restriction_mode(self) -> Optional[builtins.str]:
+        """
+        (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+        """
+        return pulumi.get(self, "restriction_mode")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationResult(dict):
+    def __init__(__self__, *,
+                 destination: Optional[builtins.str] = None,
+                 protocol: Optional[builtins.str] = None,
+                 type: Optional[builtins.str] = None):
+        """
+        :param builtins.str destination: (string) -
+        :param builtins.str protocol: (string) - . Possible values are: `TCP`
+        :param builtins.str type: (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[builtins.str]:
+        """
+        (string) - . Possible values are: `TCP`
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[builtins.str]:
+        """
+        (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationResult(dict):
+    def __init__(__self__, *,
+                 allowed_paths: Optional[Sequence[builtins.str]] = None,
+                 azure_container: Optional[builtins.str] = None,
+                 azure_dns_zone: Optional[builtins.str] = None,
+                 azure_storage_account: Optional[builtins.str] = None,
+                 azure_storage_service: Optional[builtins.str] = None,
+                 bucket_name: Optional[builtins.str] = None,
+                 region: Optional[builtins.str] = None,
+                 type: Optional[builtins.str] = None):
+        """
+        :param Sequence[builtins.str] allowed_paths: (list of string) -
+        :param builtins.str azure_container: (string) -
+        :param builtins.str azure_dns_zone: (string) -
+        :param builtins.str azure_storage_account: (string) -
+        :param builtins.str azure_storage_service: (string) -
+        :param builtins.str bucket_name: (string) -
+        :param builtins.str region: (string) -
+        :param builtins.str type: (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        if allowed_paths is not None:
+            pulumi.set(__self__, "allowed_paths", allowed_paths)
+        if azure_container is not None:
+            pulumi.set(__self__, "azure_container", azure_container)
+        if azure_dns_zone is not None:
+            pulumi.set(__self__, "azure_dns_zone", azure_dns_zone)
+        if azure_storage_account is not None:
+            pulumi.set(__self__, "azure_storage_account", azure_storage_account)
+        if azure_storage_service is not None:
+            pulumi.set(__self__, "azure_storage_service", azure_storage_service)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="allowedPaths")
+    def allowed_paths(self) -> Optional[Sequence[builtins.str]]:
+        """
+        (list of string) -
+        """
+        return pulumi.get(self, "allowed_paths")
+
+    @property
+    @pulumi.getter(name="azureContainer")
+    def azure_container(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "azure_container")
+
+    @property
+    @pulumi.getter(name="azureDnsZone")
+    def azure_dns_zone(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "azure_dns_zone")
+
+    @property
+    @pulumi.getter(name="azureStorageAccount")
+    def azure_storage_account(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "azure_storage_account")
+
+    @property
+    @pulumi.getter(name="azureStorageService")
+    def azure_storage_service(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "azure_storage_service")
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[builtins.str]:
+        """
+        (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeResult(dict):
+    def __init__(__self__, *,
+                 log_only_mode_type: Optional[builtins.str] = None,
+                 workloads: Optional[Sequence[builtins.str]] = None):
+        """
+        :param builtins.str log_only_mode_type: (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+        :param Sequence[builtins.str] workloads: (list of ) -
+        """
+        if log_only_mode_type is not None:
+            pulumi.set(__self__, "log_only_mode_type", log_only_mode_type)
+        if workloads is not None:
+            pulumi.set(__self__, "workloads", workloads)
+
+    @property
+    @pulumi.getter(name="logOnlyModeType")
+    def log_only_mode_type(self) -> Optional[builtins.str]:
+        """
+        (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+        """
+        return pulumi.get(self, "log_only_mode_type")
+
+    @property
+    @pulumi.getter
+    def workloads(self) -> Optional[Sequence[builtins.str]]:
+        """
+        (list of ) -
+        """
+        return pulumi.get(self, "workloads")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomResult(dict):
+    def __init__(__self__, *,
+                 access_restricted: builtins.str,
+                 created_at: builtins.int,
+                 local_collaborator_alias: builtins.str,
+                 output_catalog: 'outputs.GetCleanRoomsCleanRoomsCleanRoomOutputCatalogResult',
+                 status: builtins.str,
+                 updated_at: builtins.int,
+                 comment: Optional[builtins.str] = None,
+                 name: Optional[builtins.str] = None,
+                 owner: Optional[builtins.str] = None,
+                 remote_detailed_info: Optional['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoResult'] = None):
+        """
+        :param builtins.str access_restricted: (string) - Whether clean room access is restricted due to [CSP](https://docs.databricks.com/en/security/privacy/security-profile.html). Possible values are: `CSP_MISMATCH`, `NO_RESTRICTION`
+        :param builtins.int created_at: (integer) - When the clean room was created, in epoch milliseconds
+        :param builtins.str local_collaborator_alias: (string) - The alias of the collaborator tied to the local clean room
+        :param 'GetCleanRoomsCleanRoomsCleanRoomOutputCatalogArgs' output_catalog: (CleanRoomOutputCatalog) - Output catalog of the clean room. It is an output only field. Output catalog is manipulated
+               using the separate CreateCleanRoomOutputCatalog API
+        :param builtins.str status: (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        :param builtins.int updated_at: (integer) - When the clean room was last updated, in epoch milliseconds
+        :param builtins.str comment: (string) -
+        :param builtins.str name: (string) - The name of the clean room.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        :param builtins.str owner: (string) - This is Databricks username of the owner of the local clean room securable for permission management
+        :param 'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoArgs' remote_detailed_info: (CleanRoomRemoteDetail) - Central clean room details. During creation, users need to specify
+               cloud_vendor, region, and collaborators.global_metastore_id.
+               This field will not be filled in the ListCleanRooms call
+        """
+        pulumi.set(__self__, "access_restricted", access_restricted)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "local_collaborator_alias", local_collaborator_alias)
+        pulumi.set(__self__, "output_catalog", output_catalog)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "updated_at", updated_at)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if remote_detailed_info is not None:
+            pulumi.set(__self__, "remote_detailed_info", remote_detailed_info)
+
+    @property
+    @pulumi.getter(name="accessRestricted")
+    def access_restricted(self) -> builtins.str:
+        """
+        (string) - Whether clean room access is restricted due to [CSP](https://docs.databricks.com/en/security/privacy/security-profile.html). Possible values are: `CSP_MISMATCH`, `NO_RESTRICTION`
+        """
+        return pulumi.get(self, "access_restricted")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> builtins.int:
+        """
+        (integer) - When the clean room was created, in epoch milliseconds
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="localCollaboratorAlias")
+    def local_collaborator_alias(self) -> builtins.str:
+        """
+        (string) - The alias of the collaborator tied to the local clean room
+        """
+        return pulumi.get(self, "local_collaborator_alias")
+
+    @property
+    @pulumi.getter(name="outputCatalog")
+    def output_catalog(self) -> 'outputs.GetCleanRoomsCleanRoomsCleanRoomOutputCatalogResult':
+        """
+        (CleanRoomOutputCatalog) - Output catalog of the clean room. It is an output only field. Output catalog is manipulated
+        using the separate CreateCleanRoomOutputCatalog API
+        """
+        return pulumi.get(self, "output_catalog")
+
+    @property
+    @pulumi.getter
+    def status(self) -> builtins.str:
+        """
+        (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> builtins.int:
+        """
+        (integer) - When the clean room was last updated, in epoch milliseconds
+        """
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        (string) - The name of the clean room.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[builtins.str]:
+        """
+        (string) - This is Databricks username of the owner of the local clean room securable for permission management
+        """
+        return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter(name="remoteDetailedInfo")
+    def remote_detailed_info(self) -> Optional['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoResult']:
+        """
+        (CleanRoomRemoteDetail) - Central clean room details. During creation, users need to specify
+        cloud_vendor, region, and collaborators.global_metastore_id.
+        This field will not be filled in the ListCleanRooms call
+        """
+        return pulumi.get(self, "remote_detailed_info")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomOutputCatalogResult(dict):
+    def __init__(__self__, *,
+                 status: builtins.str,
+                 catalog_name: Optional[builtins.str] = None):
+        """
+        :param builtins.str status: (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        :param builtins.str catalog_name: (string) - The name of the output catalog in UC.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+               The field will always exist if status is CREATED
+        """
+        pulumi.set(__self__, "status", status)
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+
+    @property
+    @pulumi.getter
+    def status(self) -> builtins.str:
+        """
+        (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[builtins.str]:
+        """
+        (string) - The name of the output catalog in UC.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+        The field will always exist if status is CREATED
+        """
+        return pulumi.get(self, "catalog_name")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoResult(dict):
+    def __init__(__self__, *,
+                 central_clean_room_id: builtins.str,
+                 compliance_security_profile: 'outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileResult',
+                 creator: 'outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCreatorResult',
+                 cloud_vendor: Optional[builtins.str] = None,
+                 collaborators: Optional[Sequence['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorResult']] = None,
+                 egress_network_policy: Optional['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyResult'] = None,
+                 region: Optional[builtins.str] = None):
+        """
+        :param builtins.str central_clean_room_id: (string) - Central clean room ID
+        :param 'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs' compliance_security_profile: (ComplianceSecurityProfile) -
+        :param 'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs' creator: (CleanRoomCollaborator) - Collaborator who creates the clean room
+        :param builtins.str cloud_vendor: (string) - Cloud vendor (aws,azure,gcp) of the central clean room
+        :param Sequence['GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs'] collaborators: (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
+               in the list that satisfies the owner condition:
+        :param 'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs' egress_network_policy: (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
+        :param builtins.str region: (string) -
+        """
+        pulumi.set(__self__, "central_clean_room_id", central_clean_room_id)
+        pulumi.set(__self__, "compliance_security_profile", compliance_security_profile)
+        pulumi.set(__self__, "creator", creator)
+        if cloud_vendor is not None:
+            pulumi.set(__self__, "cloud_vendor", cloud_vendor)
+        if collaborators is not None:
+            pulumi.set(__self__, "collaborators", collaborators)
+        if egress_network_policy is not None:
+            pulumi.set(__self__, "egress_network_policy", egress_network_policy)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="centralCleanRoomId")
+    def central_clean_room_id(self) -> builtins.str:
+        """
+        (string) - Central clean room ID
+        """
+        return pulumi.get(self, "central_clean_room_id")
+
+    @property
+    @pulumi.getter(name="complianceSecurityProfile")
+    def compliance_security_profile(self) -> 'outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileResult':
+        """
+        (ComplianceSecurityProfile) -
+        """
+        return pulumi.get(self, "compliance_security_profile")
+
+    @property
+    @pulumi.getter
+    def creator(self) -> 'outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCreatorResult':
+        """
+        (CleanRoomCollaborator) - Collaborator who creates the clean room
+        """
+        return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter(name="cloudVendor")
+    def cloud_vendor(self) -> Optional[builtins.str]:
+        """
+        (string) - Cloud vendor (aws,azure,gcp) of the central clean room
+        """
+        return pulumi.get(self, "cloud_vendor")
+
+    @property
+    @pulumi.getter
+    def collaborators(self) -> Optional[Sequence['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorResult']]:
+        """
+        (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
+        in the list that satisfies the owner condition:
+        """
+        return pulumi.get(self, "collaborators")
+
+    @property
+    @pulumi.getter(name="egressNetworkPolicy")
+    def egress_network_policy(self) -> Optional['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyResult']:
+        """
+        (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
+        """
+        return pulumi.get(self, "egress_network_policy")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorResult(dict):
+    def __init__(__self__, *,
+                 collaborator_alias: builtins.str,
+                 display_name: builtins.str,
+                 organization_name: builtins.str,
+                 global_metastore_id: Optional[builtins.str] = None,
+                 invite_recipient_email: Optional[builtins.str] = None,
+                 invite_recipient_workspace_id: Optional[builtins.int] = None):
+        """
+        :param builtins.str collaborator_alias: (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        :param builtins.str display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+               these values and could change in the future
+        :param builtins.str organization_name: (string) - Organization name
+               configured in the metastore
+        :param builtins.str global_metastore_id: (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        :param builtins.str invite_recipient_email: (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+               for the creator of the clean room, and non-empty for the invitees of the clean room.
+               It is only returned in the output when clean room creator calls GET
+        :param builtins.int invite_recipient_workspace_id: (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+               invite_recipient_email is specified.
+               It should be empty when the collaborator is the creator of the clean room
+        """
+        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "organization_name", organization_name)
+        if global_metastore_id is not None:
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if invite_recipient_email is not None:
+            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
+        if invite_recipient_workspace_id is not None:
+            pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
+
+    @property
+    @pulumi.getter(name="collaboratorAlias")
+    def collaborator_alias(self) -> builtins.str:
+        """
+        (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        return pulumi.get(self, "collaborator_alias")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> builtins.str:
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> builtins.str:
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+        return pulumi.get(self, "organization_name")
+
+    @property
+    @pulumi.getter(name="globalMetastoreId")
+    def global_metastore_id(self) -> Optional[builtins.str]:
+        """
+        (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        return pulumi.get(self, "global_metastore_id")
+
+    @property
+    @pulumi.getter(name="inviteRecipientEmail")
+    def invite_recipient_email(self) -> Optional[builtins.str]:
+        """
+        (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        return pulumi.get(self, "invite_recipient_email")
+
+    @property
+    @pulumi.getter(name="inviteRecipientWorkspaceId")
+    def invite_recipient_workspace_id(self) -> Optional[builtins.int]:
+        """
+        (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+        return pulumi.get(self, "invite_recipient_workspace_id")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileResult(dict):
+    def __init__(__self__, *,
+                 compliance_standards: Optional[Sequence[builtins.str]] = None,
+                 is_enabled: Optional[builtins.bool] = None):
+        """
+        :param Sequence[builtins.str] compliance_standards: (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
+        :param builtins.bool is_enabled: (boolean) - Whether the compliance security profile is enabled
+        """
+        if compliance_standards is not None:
+            pulumi.set(__self__, "compliance_standards", compliance_standards)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @property
+    @pulumi.getter(name="complianceStandards")
+    def compliance_standards(self) -> Optional[Sequence[builtins.str]]:
+        """
+        (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
+        """
+        return pulumi.get(self, "compliance_standards")
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[builtins.bool]:
+        """
+        (boolean) - Whether the compliance security profile is enabled
+        """
+        return pulumi.get(self, "is_enabled")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCreatorResult(dict):
+    def __init__(__self__, *,
+                 collaborator_alias: builtins.str,
+                 display_name: builtins.str,
+                 organization_name: builtins.str,
+                 global_metastore_id: Optional[builtins.str] = None,
+                 invite_recipient_email: Optional[builtins.str] = None,
+                 invite_recipient_workspace_id: Optional[builtins.int] = None):
+        """
+        :param builtins.str collaborator_alias: (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        :param builtins.str display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+               these values and could change in the future
+        :param builtins.str organization_name: (string) - Organization name
+               configured in the metastore
+        :param builtins.str global_metastore_id: (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        :param builtins.str invite_recipient_email: (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+               for the creator of the clean room, and non-empty for the invitees of the clean room.
+               It is only returned in the output when clean room creator calls GET
+        :param builtins.int invite_recipient_workspace_id: (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+               invite_recipient_email is specified.
+               It should be empty when the collaborator is the creator of the clean room
+        """
+        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "organization_name", organization_name)
+        if global_metastore_id is not None:
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if invite_recipient_email is not None:
+            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
+        if invite_recipient_workspace_id is not None:
+            pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
+
+    @property
+    @pulumi.getter(name="collaboratorAlias")
+    def collaborator_alias(self) -> builtins.str:
+        """
+        (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        return pulumi.get(self, "collaborator_alias")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> builtins.str:
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> builtins.str:
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+        return pulumi.get(self, "organization_name")
+
+    @property
+    @pulumi.getter(name="globalMetastoreId")
+    def global_metastore_id(self) -> Optional[builtins.str]:
+        """
+        (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        return pulumi.get(self, "global_metastore_id")
+
+    @property
+    @pulumi.getter(name="inviteRecipientEmail")
+    def invite_recipient_email(self) -> Optional[builtins.str]:
+        """
+        (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        return pulumi.get(self, "invite_recipient_email")
+
+    @property
+    @pulumi.getter(name="inviteRecipientWorkspaceId")
+    def invite_recipient_workspace_id(self) -> Optional[builtins.int]:
+        """
+        (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+        return pulumi.get(self, "invite_recipient_workspace_id")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyResult(dict):
+    def __init__(__self__, *,
+                 internet_access: Optional['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessResult'] = None):
+        """
+        :param 'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs' internet_access: (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
+        """
+        if internet_access is not None:
+            pulumi.set(__self__, "internet_access", internet_access)
+
+    @property
+    @pulumi.getter(name="internetAccess")
+    def internet_access(self) -> Optional['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessResult']:
+        """
+        (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
+        """
+        return pulumi.get(self, "internet_access")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessResult(dict):
+    def __init__(__self__, *,
+                 allowed_internet_destinations: Optional[Sequence['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationResult']] = None,
+                 allowed_storage_destinations: Optional[Sequence['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationResult']] = None,
+                 log_only_mode: Optional['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeResult'] = None,
+                 restriction_mode: Optional[builtins.str] = None):
+        """
+        :param Sequence['GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs'] allowed_internet_destinations: (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination) -
+        :param Sequence['GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs'] allowed_storage_destinations: (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination) -
+        :param 'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs' log_only_mode: (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
+        :param builtins.str restriction_mode: (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+        """
+        if allowed_internet_destinations is not None:
+            pulumi.set(__self__, "allowed_internet_destinations", allowed_internet_destinations)
+        if allowed_storage_destinations is not None:
+            pulumi.set(__self__, "allowed_storage_destinations", allowed_storage_destinations)
+        if log_only_mode is not None:
+            pulumi.set(__self__, "log_only_mode", log_only_mode)
+        if restriction_mode is not None:
+            pulumi.set(__self__, "restriction_mode", restriction_mode)
+
+    @property
+    @pulumi.getter(name="allowedInternetDestinations")
+    def allowed_internet_destinations(self) -> Optional[Sequence['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationResult']]:
+        """
+        (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination) -
+        """
+        return pulumi.get(self, "allowed_internet_destinations")
+
+    @property
+    @pulumi.getter(name="allowedStorageDestinations")
+    def allowed_storage_destinations(self) -> Optional[Sequence['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationResult']]:
+        """
+        (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination) -
+        """
+        return pulumi.get(self, "allowed_storage_destinations")
+
+    @property
+    @pulumi.getter(name="logOnlyMode")
+    def log_only_mode(self) -> Optional['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeResult']:
+        """
+        (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
+        """
+        return pulumi.get(self, "log_only_mode")
+
+    @property
+    @pulumi.getter(name="restrictionMode")
+    def restriction_mode(self) -> Optional[builtins.str]:
+        """
+        (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+        """
+        return pulumi.get(self, "restriction_mode")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationResult(dict):
+    def __init__(__self__, *,
+                 destination: Optional[builtins.str] = None,
+                 protocol: Optional[builtins.str] = None,
+                 type: Optional[builtins.str] = None):
+        """
+        :param builtins.str destination: (string) -
+        :param builtins.str protocol: (string) - . Possible values are: `TCP`
+        :param builtins.str type: (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[builtins.str]:
+        """
+        (string) - . Possible values are: `TCP`
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[builtins.str]:
+        """
+        (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationResult(dict):
+    def __init__(__self__, *,
+                 allowed_paths: Optional[Sequence[builtins.str]] = None,
+                 azure_container: Optional[builtins.str] = None,
+                 azure_dns_zone: Optional[builtins.str] = None,
+                 azure_storage_account: Optional[builtins.str] = None,
+                 azure_storage_service: Optional[builtins.str] = None,
+                 bucket_name: Optional[builtins.str] = None,
+                 region: Optional[builtins.str] = None,
+                 type: Optional[builtins.str] = None):
+        """
+        :param Sequence[builtins.str] allowed_paths: (list of string) -
+        :param builtins.str azure_container: (string) -
+        :param builtins.str azure_dns_zone: (string) -
+        :param builtins.str azure_storage_account: (string) -
+        :param builtins.str azure_storage_service: (string) -
+        :param builtins.str bucket_name: (string) -
+        :param builtins.str region: (string) -
+        :param builtins.str type: (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        if allowed_paths is not None:
+            pulumi.set(__self__, "allowed_paths", allowed_paths)
+        if azure_container is not None:
+            pulumi.set(__self__, "azure_container", azure_container)
+        if azure_dns_zone is not None:
+            pulumi.set(__self__, "azure_dns_zone", azure_dns_zone)
+        if azure_storage_account is not None:
+            pulumi.set(__self__, "azure_storage_account", azure_storage_account)
+        if azure_storage_service is not None:
+            pulumi.set(__self__, "azure_storage_service", azure_storage_service)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="allowedPaths")
+    def allowed_paths(self) -> Optional[Sequence[builtins.str]]:
+        """
+        (list of string) -
+        """
+        return pulumi.get(self, "allowed_paths")
+
+    @property
+    @pulumi.getter(name="azureContainer")
+    def azure_container(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "azure_container")
+
+    @property
+    @pulumi.getter(name="azureDnsZone")
+    def azure_dns_zone(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "azure_dns_zone")
+
+    @property
+    @pulumi.getter(name="azureStorageAccount")
+    def azure_storage_account(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "azure_storage_account")
+
+    @property
+    @pulumi.getter(name="azureStorageService")
+    def azure_storage_service(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "azure_storage_service")
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[builtins.str]:
+        """
+        (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeResult(dict):
+    def __init__(__self__, *,
+                 log_only_mode_type: Optional[builtins.str] = None,
+                 workloads: Optional[Sequence[builtins.str]] = None):
+        """
+        :param builtins.str log_only_mode_type: (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+        :param Sequence[builtins.str] workloads: (list of ) -
+        """
+        if log_only_mode_type is not None:
+            pulumi.set(__self__, "log_only_mode_type", log_only_mode_type)
+        if workloads is not None:
+            pulumi.set(__self__, "workloads", workloads)
+
+    @property
+    @pulumi.getter(name="logOnlyModeType")
+    def log_only_mode_type(self) -> Optional[builtins.str]:
+        """
+        (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+        """
+        return pulumi.get(self, "log_only_mode_type")
+
+    @property
+    @pulumi.getter
+    def workloads(self) -> Optional[Sequence[builtins.str]]:
+        """
+        (list of ) -
+        """
+        return pulumi.get(self, "workloads")
 
 
 @pulumi.output_type
@@ -38317,44 +40927,276 @@ class GetDashboardsDashboardResult(dict):
 
 
 @pulumi.output_type
+class GetDatabaseInstanceChildInstanceRefResult(dict):
+    def __init__(__self__, *,
+                 effective_lsn: builtins.str,
+                 uid: builtins.str,
+                 branch_time: Optional[builtins.str] = None,
+                 lsn: Optional[builtins.str] = None,
+                 name: Optional[builtins.str] = None):
+        """
+        :param builtins.str effective_lsn: (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+               `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+               For a parent ref instance, this is the LSN on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the LSN on the instance from which the child instance
+               was created
+        :param builtins.str uid: (string) - Id of the ref database instance
+        :param builtins.str branch_time: (string) - Branch time of the ref database instance.
+               For a parent ref instance, this is the point in time on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the point in time on the instance from which the child
+               instance was created.
+               Input: For specifying the point in time to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param builtins.str lsn: (string) - User-specified WAL LSN of the ref database instance.
+        :param builtins.str name: The name of the instance. This is the unique identifier for the instance
+        """
+        pulumi.set(__self__, "effective_lsn", effective_lsn)
+        pulumi.set(__self__, "uid", uid)
+        if branch_time is not None:
+            pulumi.set(__self__, "branch_time", branch_time)
+        if lsn is not None:
+            pulumi.set(__self__, "lsn", lsn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="effectiveLsn")
+    def effective_lsn(self) -> builtins.str:
+        """
+        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+        For a parent ref instance, this is the LSN on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the LSN on the instance from which the child instance
+        was created
+        """
+        return pulumi.get(self, "effective_lsn")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> builtins.str:
+        """
+        (string) - Id of the ref database instance
+        """
+        return pulumi.get(self, "uid")
+
+    @property
+    @pulumi.getter(name="branchTime")
+    def branch_time(self) -> Optional[builtins.str]:
+        """
+        (string) - Branch time of the ref database instance.
+        For a parent ref instance, this is the point in time on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the point in time on the instance from which the child
+        instance was created.
+        Input: For specifying the point in time to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "branch_time")
+
+    @property
+    @pulumi.getter
+    def lsn(self) -> Optional[builtins.str]:
+        """
+        (string) - User-specified WAL LSN of the ref database instance.
+        """
+        return pulumi.get(self, "lsn")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        The name of the instance. This is the unique identifier for the instance
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetDatabaseInstanceParentInstanceRefResult(dict):
+    def __init__(__self__, *,
+                 effective_lsn: builtins.str,
+                 uid: builtins.str,
+                 branch_time: Optional[builtins.str] = None,
+                 lsn: Optional[builtins.str] = None,
+                 name: Optional[builtins.str] = None):
+        """
+        :param builtins.str effective_lsn: (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+               `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+               For a parent ref instance, this is the LSN on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the LSN on the instance from which the child instance
+               was created
+        :param builtins.str uid: (string) - Id of the ref database instance
+        :param builtins.str branch_time: (string) - Branch time of the ref database instance.
+               For a parent ref instance, this is the point in time on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the point in time on the instance from which the child
+               instance was created.
+               Input: For specifying the point in time to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param builtins.str lsn: (string) - User-specified WAL LSN of the ref database instance.
+        :param builtins.str name: The name of the instance. This is the unique identifier for the instance
+        """
+        pulumi.set(__self__, "effective_lsn", effective_lsn)
+        pulumi.set(__self__, "uid", uid)
+        if branch_time is not None:
+            pulumi.set(__self__, "branch_time", branch_time)
+        if lsn is not None:
+            pulumi.set(__self__, "lsn", lsn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="effectiveLsn")
+    def effective_lsn(self) -> builtins.str:
+        """
+        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+        For a parent ref instance, this is the LSN on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the LSN on the instance from which the child instance
+        was created
+        """
+        return pulumi.get(self, "effective_lsn")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> builtins.str:
+        """
+        (string) - Id of the ref database instance
+        """
+        return pulumi.get(self, "uid")
+
+    @property
+    @pulumi.getter(name="branchTime")
+    def branch_time(self) -> Optional[builtins.str]:
+        """
+        (string) - Branch time of the ref database instance.
+        For a parent ref instance, this is the point in time on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the point in time on the instance from which the child
+        instance was created.
+        Input: For specifying the point in time to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "branch_time")
+
+    @property
+    @pulumi.getter
+    def lsn(self) -> Optional[builtins.str]:
+        """
+        (string) - User-specified WAL LSN of the ref database instance.
+        """
+        return pulumi.get(self, "lsn")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        The name of the instance. This is the unique identifier for the instance
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GetDatabaseInstancesDatabaseInstanceResult(dict):
     def __init__(__self__, *,
+                 child_instance_refs: Sequence['outputs.GetDatabaseInstancesDatabaseInstanceChildInstanceRefResult'],
                  creation_time: builtins.str,
                  creator: builtins.str,
+                 effective_enable_readable_secondaries: builtins.bool,
+                 effective_node_count: builtins.int,
+                 effective_retention_window_in_days: builtins.int,
                  effective_stopped: builtins.bool,
                  name: builtins.str,
                  pg_version: builtins.str,
+                 read_only_dns: builtins.str,
                  read_write_dns: builtins.str,
                  state: builtins.str,
                  uid: builtins.str,
                  capacity: Optional[builtins.str] = None,
+                 enable_readable_secondaries: Optional[builtins.bool] = None,
+                 node_count: Optional[builtins.int] = None,
+                 parent_instance_ref: Optional['outputs.GetDatabaseInstancesDatabaseInstanceParentInstanceRefResult'] = None,
+                 retention_window_in_days: Optional[builtins.int] = None,
                  stopped: Optional[builtins.bool] = None):
         """
+        :param Sequence['GetDatabaseInstancesDatabaseInstanceChildInstanceRefArgs'] child_instance_refs: (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+               parent instance
         :param builtins.str creation_time: (string) - The timestamp when the instance was created
         :param builtins.str creator: (string) - The email of the creator of the instance
+        :param builtins.bool effective_enable_readable_secondaries: (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
+               `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        :param builtins.int effective_node_count: (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
+               `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        :param builtins.int effective_retention_window_in_days: (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
+               `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
         :param builtins.bool effective_stopped: (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
                `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
                `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
-        :param builtins.str name: (string) - The name of the instance. This is the unique identifier for the instance
+        :param builtins.str name: (string) - Name of the ref database instance
         :param builtins.str pg_version: (string) - The version of Postgres running on the instance
+        :param builtins.str read_only_dns: (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+               enable_readable_secondaries is true
         :param builtins.str read_write_dns: (string) - The DNS endpoint to connect to the instance for read+write access
         :param builtins.str state: (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-        :param builtins.str uid: (string) - An immutable UUID identifier for the instance
+        :param builtins.str uid: (string) - Id of the ref database instance
         :param builtins.str capacity: (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        :param builtins.bool enable_readable_secondaries: (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+        :param builtins.int node_count: (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+               1 primary and 0 secondaries
+        :param 'GetDatabaseInstancesDatabaseInstanceParentInstanceRefArgs' parent_instance_ref: (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+               child instance.
+               Input: For specifying the parent instance to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param builtins.int retention_window_in_days: (integer) - The retention window for the instance. This is the time window in days
+               for which the historical data is retained. The default value is 7 days.
+               Valid values are 2 to 35 days
         :param builtins.bool stopped: (boolean) - Whether the instance is stopped
         """
+        pulumi.set(__self__, "child_instance_refs", child_instance_refs)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "creator", creator)
+        pulumi.set(__self__, "effective_enable_readable_secondaries", effective_enable_readable_secondaries)
+        pulumi.set(__self__, "effective_node_count", effective_node_count)
+        pulumi.set(__self__, "effective_retention_window_in_days", effective_retention_window_in_days)
         pulumi.set(__self__, "effective_stopped", effective_stopped)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "pg_version", pg_version)
+        pulumi.set(__self__, "read_only_dns", read_only_dns)
         pulumi.set(__self__, "read_write_dns", read_write_dns)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "uid", uid)
         if capacity is not None:
             pulumi.set(__self__, "capacity", capacity)
+        if enable_readable_secondaries is not None:
+            pulumi.set(__self__, "enable_readable_secondaries", enable_readable_secondaries)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
+        if parent_instance_ref is not None:
+            pulumi.set(__self__, "parent_instance_ref", parent_instance_ref)
+        if retention_window_in_days is not None:
+            pulumi.set(__self__, "retention_window_in_days", retention_window_in_days)
         if stopped is not None:
             pulumi.set(__self__, "stopped", stopped)
+
+    @property
+    @pulumi.getter(name="childInstanceRefs")
+    def child_instance_refs(self) -> Sequence['outputs.GetDatabaseInstancesDatabaseInstanceChildInstanceRefResult']:
+        """
+        (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+        parent instance
+        """
+        return pulumi.get(self, "child_instance_refs")
 
     @property
     @pulumi.getter(name="creationTime")
@@ -38373,6 +41215,36 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
         return pulumi.get(self, "creator")
 
     @property
+    @pulumi.getter(name="effectiveEnableReadableSecondaries")
+    def effective_enable_readable_secondaries(self) -> builtins.bool:
+        """
+        (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
+        `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        """
+        return pulumi.get(self, "effective_enable_readable_secondaries")
+
+    @property
+    @pulumi.getter(name="effectiveNodeCount")
+    def effective_node_count(self) -> builtins.int:
+        """
+        (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
+        `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        """
+        return pulumi.get(self, "effective_node_count")
+
+    @property
+    @pulumi.getter(name="effectiveRetentionWindowInDays")
+    def effective_retention_window_in_days(self) -> builtins.int:
+        """
+        (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
+        `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        """
+        return pulumi.get(self, "effective_retention_window_in_days")
+
+    @property
     @pulumi.getter(name="effectiveStopped")
     def effective_stopped(self) -> builtins.bool:
         """
@@ -38386,7 +41258,7 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
     @pulumi.getter
     def name(self) -> builtins.str:
         """
-        (string) - The name of the instance. This is the unique identifier for the instance
+        (string) - Name of the ref database instance
         """
         return pulumi.get(self, "name")
 
@@ -38397,6 +41269,15 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
         (string) - The version of Postgres running on the instance
         """
         return pulumi.get(self, "pg_version")
+
+    @property
+    @pulumi.getter(name="readOnlyDns")
+    def read_only_dns(self) -> builtins.str:
+        """
+        (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+        enable_readable_secondaries is true
+        """
+        return pulumi.get(self, "read_only_dns")
 
     @property
     @pulumi.getter(name="readWriteDns")
@@ -38418,7 +41299,7 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
     @pulumi.getter
     def uid(self) -> builtins.str:
         """
-        (string) - An immutable UUID identifier for the instance
+        (string) - Id of the ref database instance
         """
         return pulumi.get(self, "uid")
 
@@ -38431,12 +41312,228 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
         return pulumi.get(self, "capacity")
 
     @property
+    @pulumi.getter(name="enableReadableSecondaries")
+    def enable_readable_secondaries(self) -> Optional[builtins.bool]:
+        """
+        (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+        """
+        return pulumi.get(self, "enable_readable_secondaries")
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[builtins.int]:
+        """
+        (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+        1 primary and 0 secondaries
+        """
+        return pulumi.get(self, "node_count")
+
+    @property
+    @pulumi.getter(name="parentInstanceRef")
+    def parent_instance_ref(self) -> Optional['outputs.GetDatabaseInstancesDatabaseInstanceParentInstanceRefResult']:
+        """
+        (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+        child instance.
+        Input: For specifying the parent instance to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "parent_instance_ref")
+
+    @property
+    @pulumi.getter(name="retentionWindowInDays")
+    def retention_window_in_days(self) -> Optional[builtins.int]:
+        """
+        (integer) - The retention window for the instance. This is the time window in days
+        for which the historical data is retained. The default value is 7 days.
+        Valid values are 2 to 35 days
+        """
+        return pulumi.get(self, "retention_window_in_days")
+
+    @property
     @pulumi.getter
     def stopped(self) -> Optional[builtins.bool]:
         """
         (boolean) - Whether the instance is stopped
         """
         return pulumi.get(self, "stopped")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesDatabaseInstanceChildInstanceRefResult(dict):
+    def __init__(__self__, *,
+                 effective_lsn: builtins.str,
+                 uid: builtins.str,
+                 branch_time: Optional[builtins.str] = None,
+                 lsn: Optional[builtins.str] = None,
+                 name: Optional[builtins.str] = None):
+        """
+        :param builtins.str effective_lsn: (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+               `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+               For a parent ref instance, this is the LSN on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the LSN on the instance from which the child instance
+               was created
+        :param builtins.str uid: (string) - Id of the ref database instance
+        :param builtins.str branch_time: (string) - Branch time of the ref database instance.
+               For a parent ref instance, this is the point in time on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the point in time on the instance from which the child
+               instance was created.
+               Input: For specifying the point in time to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param builtins.str lsn: (string) - User-specified WAL LSN of the ref database instance.
+        :param builtins.str name: (string) - Name of the ref database instance
+        """
+        pulumi.set(__self__, "effective_lsn", effective_lsn)
+        pulumi.set(__self__, "uid", uid)
+        if branch_time is not None:
+            pulumi.set(__self__, "branch_time", branch_time)
+        if lsn is not None:
+            pulumi.set(__self__, "lsn", lsn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="effectiveLsn")
+    def effective_lsn(self) -> builtins.str:
+        """
+        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+        For a parent ref instance, this is the LSN on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the LSN on the instance from which the child instance
+        was created
+        """
+        return pulumi.get(self, "effective_lsn")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> builtins.str:
+        """
+        (string) - Id of the ref database instance
+        """
+        return pulumi.get(self, "uid")
+
+    @property
+    @pulumi.getter(name="branchTime")
+    def branch_time(self) -> Optional[builtins.str]:
+        """
+        (string) - Branch time of the ref database instance.
+        For a parent ref instance, this is the point in time on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the point in time on the instance from which the child
+        instance was created.
+        Input: For specifying the point in time to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "branch_time")
+
+    @property
+    @pulumi.getter
+    def lsn(self) -> Optional[builtins.str]:
+        """
+        (string) - User-specified WAL LSN of the ref database instance.
+        """
+        return pulumi.get(self, "lsn")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        (string) - Name of the ref database instance
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesDatabaseInstanceParentInstanceRefResult(dict):
+    def __init__(__self__, *,
+                 effective_lsn: builtins.str,
+                 uid: builtins.str,
+                 branch_time: Optional[builtins.str] = None,
+                 lsn: Optional[builtins.str] = None,
+                 name: Optional[builtins.str] = None):
+        """
+        :param builtins.str effective_lsn: (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+               `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+               For a parent ref instance, this is the LSN on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the LSN on the instance from which the child instance
+               was created
+        :param builtins.str uid: (string) - Id of the ref database instance
+        :param builtins.str branch_time: (string) - Branch time of the ref database instance.
+               For a parent ref instance, this is the point in time on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the point in time on the instance from which the child
+               instance was created.
+               Input: For specifying the point in time to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param builtins.str lsn: (string) - User-specified WAL LSN of the ref database instance.
+        :param builtins.str name: (string) - Name of the ref database instance
+        """
+        pulumi.set(__self__, "effective_lsn", effective_lsn)
+        pulumi.set(__self__, "uid", uid)
+        if branch_time is not None:
+            pulumi.set(__self__, "branch_time", branch_time)
+        if lsn is not None:
+            pulumi.set(__self__, "lsn", lsn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="effectiveLsn")
+    def effective_lsn(self) -> builtins.str:
+        """
+        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+        For a parent ref instance, this is the LSN on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the LSN on the instance from which the child instance
+        was created
+        """
+        return pulumi.get(self, "effective_lsn")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> builtins.str:
+        """
+        (string) - Id of the ref database instance
+        """
+        return pulumi.get(self, "uid")
+
+    @property
+    @pulumi.getter(name="branchTime")
+    def branch_time(self) -> Optional[builtins.str]:
+        """
+        (string) - Branch time of the ref database instance.
+        For a parent ref instance, this is the point in time on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the point in time on the instance from which the child
+        instance was created.
+        Input: For specifying the point in time to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "branch_time")
+
+    @property
+    @pulumi.getter
+    def lsn(self) -> Optional[builtins.str]:
+        """
+        (string) - User-specified WAL LSN of the ref database instance.
+        """
+        return pulumi.get(self, "lsn")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        (string) - Name of the ref database instance
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -38493,7 +41590,7 @@ class GetExternalLocationExternalLocationInfoResult(dict):
         :param builtins.str created_by: Username of catalog creator.
         :param builtins.str credential_id: Unique ID of storage credential.
         :param builtins.str credential_name: Name of the StorageCredential to use with this external location.
-        :param 'GetExternalLocationExternalLocationInfoEncryptionDetailsArgs' encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        :param 'GetExternalLocationExternalLocationInfoEncryptionDetailsArgs' encryption_details: A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
         :param builtins.str metastore_id: Unique identifier of the parent Metastore.
         :param builtins.str name: The name of the external location
         :param builtins.str owner: Username/groupname/sp application_id of the external location owner.
@@ -38593,7 +41690,7 @@ class GetExternalLocationExternalLocationInfoResult(dict):
     @pulumi.getter(name="encryptionDetails")
     def encryption_details(self) -> Optional['outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsResult']:
         """
-        The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
         """
         return pulumi.get(self, "encryption_details")
 
@@ -38673,12 +41770,18 @@ class GetExternalLocationExternalLocationInfoResult(dict):
 class GetExternalLocationExternalLocationInfoEncryptionDetailsResult(dict):
     def __init__(__self__, *,
                  sse_encryption_details: Optional['outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsResult'] = None):
+        """
+        :param 'GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs' sse_encryption_details: a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+        """
         if sse_encryption_details is not None:
             pulumi.set(__self__, "sse_encryption_details", sse_encryption_details)
 
     @property
     @pulumi.getter(name="sseEncryptionDetails")
     def sse_encryption_details(self) -> Optional['outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsResult']:
+        """
+        a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+        """
         return pulumi.get(self, "sse_encryption_details")
 
 
@@ -38687,6 +41790,10 @@ class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetai
     def __init__(__self__, *,
                  algorithm: Optional[builtins.str] = None,
                  aws_kms_key_arn: Optional[builtins.str] = None):
+        """
+        :param builtins.str algorithm: Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+        :param builtins.str aws_kms_key_arn: ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`.
+        """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
         if aws_kms_key_arn is not None:
@@ -38695,11 +41802,17 @@ class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetai
     @property
     @pulumi.getter
     def algorithm(self) -> Optional[builtins.str]:
+        """
+        Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+        """
         return pulumi.get(self, "algorithm")
 
     @property
     @pulumi.getter(name="awsKmsKeyArn")
     def aws_kms_key_arn(self) -> Optional[builtins.str]:
+        """
+        ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`.
+        """
         return pulumi.get(self, "aws_kms_key_arn")
 
 
@@ -38912,6 +42025,172 @@ class GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsResult(dic
     @pulumi.getter(name="queueUrl")
     def queue_url(self) -> Optional[builtins.str]:
         return pulumi.get(self, "queue_url")
+
+
+@pulumi.output_type
+class GetExternalMetadatasExternalMetadataResult(dict):
+    def __init__(__self__, *,
+                 create_time: builtins.str,
+                 created_by: builtins.str,
+                 entity_type: builtins.str,
+                 id: builtins.str,
+                 metastore_id: builtins.str,
+                 name: builtins.str,
+                 system_type: builtins.str,
+                 update_time: builtins.str,
+                 updated_by: builtins.str,
+                 columns: Optional[Sequence[builtins.str]] = None,
+                 description: Optional[builtins.str] = None,
+                 owner: Optional[builtins.str] = None,
+                 properties: Optional[Mapping[str, builtins.str]] = None,
+                 url: Optional[builtins.str] = None):
+        """
+        :param builtins.str create_time: (string) - Time at which this external metadata object was created
+        :param builtins.str created_by: (string) - Username of external metadata object creator
+        :param builtins.str entity_type: (string) - Type of entity within the external system
+        :param builtins.str id: (string) - Unique identifier of the external metadata object
+        :param builtins.str metastore_id: (string) - Unique identifier of parent metastore
+        :param builtins.str name: (string) - Name of the external metadata object
+        :param builtins.str system_type: (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        :param builtins.str update_time: (string) - Time at which this external metadata object was last modified
+        :param builtins.str updated_by: (string) - Username of user who last modified external metadata object
+        :param Sequence[builtins.str] columns: (list of string) - List of columns associated with the external metadata object
+        :param builtins.str description: (string) - User-provided free-form text description
+        :param builtins.str owner: (string) - Owner of the external metadata object
+        :param Mapping[str, builtins.str] properties: (object) - A map of key-value properties attached to the external metadata object
+        :param builtins.str url: (string) - URL associated with the external metadata object
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "entity_type", entity_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "metastore_id", metastore_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "system_type", system_type)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "updated_by", updated_by)
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> builtins.str:
+        """
+        (string) - Time at which this external metadata object was created
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> builtins.str:
+        """
+        (string) - Username of external metadata object creator
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> builtins.str:
+        """
+        (string) - Type of entity within the external system
+        """
+        return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        (string) - Unique identifier of the external metadata object
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="metastoreId")
+    def metastore_id(self) -> builtins.str:
+        """
+        (string) - Unique identifier of parent metastore
+        """
+        return pulumi.get(self, "metastore_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        (string) - Name of the external metadata object
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="systemType")
+    def system_type(self) -> builtins.str:
+        """
+        (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        """
+        return pulumi.get(self, "system_type")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> builtins.str:
+        """
+        (string) - Time at which this external metadata object was last modified
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> builtins.str:
+        """
+        (string) - Username of user who last modified external metadata object
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter
+    def columns(self) -> Optional[Sequence[builtins.str]]:
+        """
+        (list of string) - List of columns associated with the external metadata object
+        """
+        return pulumi.get(self, "columns")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        """
+        (string) - User-provided free-form text description
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[builtins.str]:
+        """
+        (string) - Owner of the external metadata object
+        """
+        return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        (object) - A map of key-value properties attached to the external metadata object
+        """
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[builtins.str]:
+        """
+        (string) - URL associated with the external metadata object
+        """
+        return pulumi.get(self, "url")
 
 
 @pulumi.output_type
@@ -39629,12 +42908,28 @@ class GetFunctionsFunctionRoutineDependencyResult(dict):
 @pulumi.output_type
 class GetFunctionsFunctionRoutineDependencyDependencyResult(dict):
     def __init__(__self__, *,
+                 connections: Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyConnectionResult']] = None,
+                 credentials: Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyCredentialResult']] = None,
                  functions: Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyFunctionResult']] = None,
                  tables: Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyTableResult']] = None):
+        if connections is not None:
+            pulumi.set(__self__, "connections", connections)
+        if credentials is not None:
+            pulumi.set(__self__, "credentials", credentials)
         if functions is not None:
             pulumi.set(__self__, "functions", functions)
         if tables is not None:
             pulumi.set(__self__, "tables", tables)
+
+    @property
+    @pulumi.getter
+    def connections(self) -> Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyConnectionResult']]:
+        return pulumi.get(self, "connections")
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyCredentialResult']]:
+        return pulumi.get(self, "credentials")
 
     @property
     @pulumi.getter
@@ -39645,6 +42940,32 @@ class GetFunctionsFunctionRoutineDependencyDependencyResult(dict):
     @pulumi.getter
     def tables(self) -> Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyTableResult']]:
         return pulumi.get(self, "tables")
+
+
+@pulumi.output_type
+class GetFunctionsFunctionRoutineDependencyDependencyConnectionResult(dict):
+    def __init__(__self__, *,
+                 connection_name: Optional[builtins.str] = None):
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "connection_name")
+
+
+@pulumi.output_type
+class GetFunctionsFunctionRoutineDependencyDependencyCredentialResult(dict):
+    def __init__(__self__, *,
+                 credential_name: Optional[builtins.str] = None):
+        if credential_name is not None:
+            pulumi.set(__self__, "credential_name", credential_name)
+
+    @property
+    @pulumi.getter(name="credentialName")
+    def credential_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "credential_name")
 
 
 @pulumi.output_type
@@ -47429,6 +50750,36 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnSuccessResult(dict):
 
 
 @pulumi.output_type
+class GetMaterializedFeaturesFeatureTagsFeatureTagResult(dict):
+    def __init__(__self__, *,
+                 key: builtins.str,
+                 value: Optional[builtins.str] = None):
+        """
+        :param builtins.str key: (string) -
+        :param builtins.str value: (string) -
+        """
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> builtins.str:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[builtins.str]:
+        """
+        (string) -
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class GetMetastoreMetastoreInfoResult(dict):
     def __init__(__self__, *,
                  cloud: Optional[builtins.str] = None,
@@ -48311,24 +51662,35 @@ class GetNotificationDestinationsNotificationDestinationResult(dict):
 @pulumi.output_type
 class GetOnlineStoresOnlineStoreResult(dict):
     def __init__(__self__, *,
+                 capacity: builtins.str,
                  creation_time: builtins.str,
                  creator: builtins.str,
                  name: builtins.str,
                  state: builtins.str,
-                 capacity: Optional[builtins.str] = None):
+                 read_replica_count: Optional[builtins.int] = None):
         """
+        :param builtins.str capacity: (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         :param builtins.str creation_time: (string) - The timestamp when the online store was created
         :param builtins.str creator: (string) - The email of the creator of the online store
         :param builtins.str name: (string) - The name of the online store. This is the unique identifier for the online store
         :param builtins.str state: (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-        :param builtins.str capacity: (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        :param builtins.int read_replica_count: (integer) - The number of read replicas for the online store. Defaults to 0
         """
+        pulumi.set(__self__, "capacity", capacity)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "creator", creator)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "state", state)
-        if capacity is not None:
-            pulumi.set(__self__, "capacity", capacity)
+        if read_replica_count is not None:
+            pulumi.set(__self__, "read_replica_count", read_replica_count)
+
+    @property
+    @pulumi.getter
+    def capacity(self) -> builtins.str:
+        """
+        (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        """
+        return pulumi.get(self, "capacity")
 
     @property
     @pulumi.getter(name="creationTime")
@@ -48363,12 +51725,12 @@ class GetOnlineStoresOnlineStoreResult(dict):
         return pulumi.get(self, "state")
 
     @property
-    @pulumi.getter
-    def capacity(self) -> Optional[builtins.str]:
+    @pulumi.getter(name="readReplicaCount")
+    def read_replica_count(self) -> Optional[builtins.int]:
         """
-        (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        (integer) - The number of read replicas for the online store. Defaults to 0
         """
-        return pulumi.get(self, "capacity")
+        return pulumi.get(self, "read_replica_count")
 
 
 @pulumi.output_type
@@ -49185,16 +52547,32 @@ class GetRegisteredModelVersionsModelVersionModelVersionDependencyResult(dict):
 @pulumi.output_type
 class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyResult(dict):
     def __init__(__self__, *,
+                 connections: Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionResult']] = None,
+                 credentials: Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialResult']] = None,
                  functions: Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionResult']] = None,
                  tables: Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableResult']] = None):
         """
         :param Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs'] functions: A function that is dependent on a SQL object:
         :param Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs'] tables: A table that is dependent on a SQL object
         """
+        if connections is not None:
+            pulumi.set(__self__, "connections", connections)
+        if credentials is not None:
+            pulumi.set(__self__, "credentials", credentials)
         if functions is not None:
             pulumi.set(__self__, "functions", functions)
         if tables is not None:
             pulumi.set(__self__, "tables", tables)
+
+    @property
+    @pulumi.getter
+    def connections(self) -> Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionResult']]:
+        return pulumi.get(self, "connections")
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialResult']]:
+        return pulumi.get(self, "credentials")
 
     @property
     @pulumi.getter
@@ -49211,6 +52589,32 @@ class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyResu
         A table that is dependent on a SQL object
         """
         return pulumi.get(self, "tables")
+
+
+@pulumi.output_type
+class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionResult(dict):
+    def __init__(__self__, *,
+                 connection_name: Optional[builtins.str] = None):
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "connection_name")
+
+
+@pulumi.output_type
+class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialResult(dict):
+    def __init__(__self__, *,
+                 credential_name: Optional[builtins.str] = None):
+        if credential_name is not None:
+            pulumi.set(__self__, "credential_name", credential_name)
+
+    @property
+    @pulumi.getter(name="credentialName")
+    def credential_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "credential_name")
 
 
 @pulumi.output_type
@@ -49843,18 +53247,17 @@ class GetServingEndpointsEndpointAiGatewayInferenceTableConfigResult(dict):
 @pulumi.output_type
 class GetServingEndpointsEndpointAiGatewayRateLimitResult(dict):
     def __init__(__self__, *,
-                 calls: builtins.int,
                  renewal_period: builtins.str,
-                 key: Optional[builtins.str] = None):
-        pulumi.set(__self__, "calls", calls)
+                 calls: Optional[builtins.int] = None,
+                 key: Optional[builtins.str] = None,
+                 principal: Optional[builtins.str] = None):
         pulumi.set(__self__, "renewal_period", renewal_period)
+        if calls is not None:
+            pulumi.set(__self__, "calls", calls)
         if key is not None:
             pulumi.set(__self__, "key", key)
-
-    @property
-    @pulumi.getter
-    def calls(self) -> builtins.int:
-        return pulumi.get(self, "calls")
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
 
     @property
     @pulumi.getter(name="renewalPeriod")
@@ -49863,8 +53266,18 @@ class GetServingEndpointsEndpointAiGatewayRateLimitResult(dict):
 
     @property
     @pulumi.getter
+    def calls(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "calls")
+
+    @property
+    @pulumi.getter
     def key(self) -> Optional[builtins.str]:
         return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def principal(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "principal")
 
 
 @pulumi.output_type
@@ -51300,6 +54713,7 @@ class GetTableTableInfoResult(dict):
                  properties: Optional[Mapping[str, builtins.str]] = None,
                  row_filter: Optional['outputs.GetTableTableInfoRowFilterResult'] = None,
                  schema_name: Optional[builtins.str] = None,
+                 securable_kind_manifest: Optional['outputs.GetTableTableInfoSecurableKindManifestResult'] = None,
                  sql_path: Optional[builtins.str] = None,
                  storage_credential_name: Optional[builtins.str] = None,
                  storage_location: Optional[builtins.str] = None,
@@ -51366,6 +54780,8 @@ class GetTableTableInfoResult(dict):
             pulumi.set(__self__, "row_filter", row_filter)
         if schema_name is not None:
             pulumi.set(__self__, "schema_name", schema_name)
+        if securable_kind_manifest is not None:
+            pulumi.set(__self__, "securable_kind_manifest", securable_kind_manifest)
         if sql_path is not None:
             pulumi.set(__self__, "sql_path", sql_path)
         if storage_credential_name is not None:
@@ -51517,6 +54933,11 @@ class GetTableTableInfoResult(dict):
         Name of parent schema relative to its parent catalog.
         """
         return pulumi.get(self, "schema_name")
+
+    @property
+    @pulumi.getter(name="securableKindManifest")
+    def securable_kind_manifest(self) -> Optional['outputs.GetTableTableInfoSecurableKindManifestResult']:
+        return pulumi.get(self, "securable_kind_manifest")
 
     @property
     @pulumi.getter(name="sqlPath")
@@ -51804,6 +55225,174 @@ class GetTableTableInfoRowFilterResult(dict):
 
 
 @pulumi.output_type
+class GetTableTableInfoSecurableKindManifestResult(dict):
+    def __init__(__self__, *,
+                 assignable_privileges: Optional[Sequence[builtins.str]] = None,
+                 capabilities: Optional[Sequence[builtins.str]] = None,
+                 options: Optional[Sequence['outputs.GetTableTableInfoSecurableKindManifestOptionResult']] = None,
+                 securable_kind: Optional[builtins.str] = None,
+                 securable_type: Optional[builtins.str] = None):
+        if assignable_privileges is not None:
+            pulumi.set(__self__, "assignable_privileges", assignable_privileges)
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if securable_kind is not None:
+            pulumi.set(__self__, "securable_kind", securable_kind)
+        if securable_type is not None:
+            pulumi.set(__self__, "securable_type", securable_type)
+
+    @property
+    @pulumi.getter(name="assignablePrivileges")
+    def assignable_privileges(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "assignable_privileges")
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "capabilities")
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[Sequence['outputs.GetTableTableInfoSecurableKindManifestOptionResult']]:
+        return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter(name="securableKind")
+    def securable_kind(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "securable_kind")
+
+    @property
+    @pulumi.getter(name="securableType")
+    def securable_type(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "securable_type")
+
+
+@pulumi.output_type
+class GetTableTableInfoSecurableKindManifestOptionResult(dict):
+    def __init__(__self__, *,
+                 allowed_values: Optional[Sequence[builtins.str]] = None,
+                 default_value: Optional[builtins.str] = None,
+                 description: Optional[builtins.str] = None,
+                 hint: Optional[builtins.str] = None,
+                 is_copiable: Optional[builtins.bool] = None,
+                 is_creatable: Optional[builtins.bool] = None,
+                 is_hidden: Optional[builtins.bool] = None,
+                 is_loggable: Optional[builtins.bool] = None,
+                 is_required: Optional[builtins.bool] = None,
+                 is_secret: Optional[builtins.bool] = None,
+                 is_updatable: Optional[builtins.bool] = None,
+                 name: Optional[builtins.str] = None,
+                 oauth_stage: Optional[builtins.str] = None,
+                 type: Optional[builtins.str] = None):
+        """
+        :param builtins.str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        if allowed_values is not None:
+            pulumi.set(__self__, "allowed_values", allowed_values)
+        if default_value is not None:
+            pulumi.set(__self__, "default_value", default_value)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if hint is not None:
+            pulumi.set(__self__, "hint", hint)
+        if is_copiable is not None:
+            pulumi.set(__self__, "is_copiable", is_copiable)
+        if is_creatable is not None:
+            pulumi.set(__self__, "is_creatable", is_creatable)
+        if is_hidden is not None:
+            pulumi.set(__self__, "is_hidden", is_hidden)
+        if is_loggable is not None:
+            pulumi.set(__self__, "is_loggable", is_loggable)
+        if is_required is not None:
+            pulumi.set(__self__, "is_required", is_required)
+        if is_secret is not None:
+            pulumi.set(__self__, "is_secret", is_secret)
+        if is_updatable is not None:
+            pulumi.set(__self__, "is_updatable", is_updatable)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if oauth_stage is not None:
+            pulumi.set(__self__, "oauth_stage", oauth_stage)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "allowed_values")
+
+    @property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "default_value")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def hint(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "hint")
+
+    @property
+    @pulumi.getter(name="isCopiable")
+    def is_copiable(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "is_copiable")
+
+    @property
+    @pulumi.getter(name="isCreatable")
+    def is_creatable(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "is_creatable")
+
+    @property
+    @pulumi.getter(name="isHidden")
+    def is_hidden(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "is_hidden")
+
+    @property
+    @pulumi.getter(name="isLoggable")
+    def is_loggable(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "is_loggable")
+
+    @property
+    @pulumi.getter(name="isRequired")
+    def is_required(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "is_required")
+
+    @property
+    @pulumi.getter(name="isSecret")
+    def is_secret(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "is_secret")
+
+    @property
+    @pulumi.getter(name="isUpdatable")
+    def is_updatable(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "is_updatable")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="oauthStage")
+    def oauth_stage(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "oauth_stage")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class GetTableTableInfoTableConstraintResult(dict):
     def __init__(__self__, *,
                  foreign_key_constraint: Optional['outputs.GetTableTableInfoTableConstraintForeignKeyConstraintResult'] = None,
@@ -51838,7 +55427,8 @@ class GetTableTableInfoTableConstraintForeignKeyConstraintResult(dict):
                  child_columns: Sequence[builtins.str],
                  name: builtins.str,
                  parent_columns: Sequence[builtins.str],
-                 parent_table: builtins.str):
+                 parent_table: builtins.str,
+                 rely: Optional[builtins.bool] = None):
         """
         :param builtins.str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
         """
@@ -51846,6 +55436,8 @@ class GetTableTableInfoTableConstraintForeignKeyConstraintResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "parent_columns", parent_columns)
         pulumi.set(__self__, "parent_table", parent_table)
+        if rely is not None:
+            pulumi.set(__self__, "rely", rely)
 
     @property
     @pulumi.getter(name="childColumns")
@@ -51869,6 +55461,11 @@ class GetTableTableInfoTableConstraintForeignKeyConstraintResult(dict):
     @pulumi.getter(name="parentTable")
     def parent_table(self) -> builtins.str:
         return pulumi.get(self, "parent_table")
+
+    @property
+    @pulumi.getter
+    def rely(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "rely")
 
 
 @pulumi.output_type
@@ -51894,12 +55491,15 @@ class GetTableTableInfoTableConstraintPrimaryKeyConstraintResult(dict):
     def __init__(__self__, *,
                  child_columns: Sequence[builtins.str],
                  name: builtins.str,
+                 rely: Optional[builtins.bool] = None,
                  timeseries_columns: Optional[Sequence[builtins.str]] = None):
         """
         :param builtins.str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
         """
         pulumi.set(__self__, "child_columns", child_columns)
         pulumi.set(__self__, "name", name)
+        if rely is not None:
+            pulumi.set(__self__, "rely", rely)
         if timeseries_columns is not None:
             pulumi.set(__self__, "timeseries_columns", timeseries_columns)
 
@@ -51915,6 +55515,11 @@ class GetTableTableInfoTableConstraintPrimaryKeyConstraintResult(dict):
         Full name of the databricks_table: _`catalog`.`schema`.`table`_
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def rely(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "rely")
 
     @property
     @pulumi.getter(name="timeseriesColumns")
@@ -51938,12 +55543,28 @@ class GetTableTableInfoViewDependenciesResult(dict):
 @pulumi.output_type
 class GetTableTableInfoViewDependenciesDependencyResult(dict):
     def __init__(__self__, *,
+                 connection: Optional['outputs.GetTableTableInfoViewDependenciesDependencyConnectionResult'] = None,
+                 credential: Optional['outputs.GetTableTableInfoViewDependenciesDependencyCredentialResult'] = None,
                  function: Optional['outputs.GetTableTableInfoViewDependenciesDependencyFunctionResult'] = None,
                  table: Optional['outputs.GetTableTableInfoViewDependenciesDependencyTableResult'] = None):
+        if connection is not None:
+            pulumi.set(__self__, "connection", connection)
+        if credential is not None:
+            pulumi.set(__self__, "credential", credential)
         if function is not None:
             pulumi.set(__self__, "function", function)
         if table is not None:
             pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter
+    def connection(self) -> Optional['outputs.GetTableTableInfoViewDependenciesDependencyConnectionResult']:
+        return pulumi.get(self, "connection")
+
+    @property
+    @pulumi.getter
+    def credential(self) -> Optional['outputs.GetTableTableInfoViewDependenciesDependencyCredentialResult']:
+        return pulumi.get(self, "credential")
 
     @property
     @pulumi.getter
@@ -51954,6 +55575,32 @@ class GetTableTableInfoViewDependenciesDependencyResult(dict):
     @pulumi.getter
     def table(self) -> Optional['outputs.GetTableTableInfoViewDependenciesDependencyTableResult']:
         return pulumi.get(self, "table")
+
+
+@pulumi.output_type
+class GetTableTableInfoViewDependenciesDependencyConnectionResult(dict):
+    def __init__(__self__, *,
+                 connection_name: Optional[builtins.str] = None):
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "connection_name")
+
+
+@pulumi.output_type
+class GetTableTableInfoViewDependenciesDependencyCredentialResult(dict):
+    def __init__(__self__, *,
+                 credential_name: Optional[builtins.str] = None):
+        if credential_name is not None:
+            pulumi.set(__self__, "credential_name", credential_name)
+
+    @property
+    @pulumi.getter(name="credentialName")
+    def credential_name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "credential_name")
 
 
 @pulumi.output_type

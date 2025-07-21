@@ -19,6 +19,7 @@ from .budget import *
 from .budget_policy import *
 from .catalog import *
 from .catalog_workspace_binding import *
+from .clean_rooms_clean_room import *
 from .cluster import *
 from .cluster_policy import *
 from .compliance_security_profile_workspace_setting import *
@@ -36,6 +37,7 @@ from .disable_legacy_features_setting import *
 from .enhanced_security_monitoring_workspace_setting import *
 from .entitlements import *
 from .external_location import *
+from .external_metadata import *
 from .file import *
 from .get_account_network_policies import *
 from .get_account_network_policy import *
@@ -52,6 +54,8 @@ from .get_budget_policies import *
 from .get_budget_policy import *
 from .get_catalog import *
 from .get_catalogs import *
+from .get_clean_rooms_clean_room import *
+from .get_clean_rooms_clean_rooms import *
 from .get_cluster import *
 from .get_cluster_policy import *
 from .get_clusters import *
@@ -66,12 +70,16 @@ from .get_dbfs_file_paths import *
 from .get_directory import *
 from .get_external_location import *
 from .get_external_locations import *
+from .get_external_metadata import *
+from .get_external_metadatas import *
 from .get_functions import *
 from .get_group import *
 from .get_instance_pool import *
 from .get_instance_profiles import *
 from .get_job import *
 from .get_jobs import *
+from .get_materialized_features_feature_tag import *
+from .get_materialized_features_feature_tags import *
 from .get_metastore import *
 from .get_metastores import *
 from .get_mlflow_experiment import *
@@ -128,6 +136,7 @@ from .ip_access_list import *
 from .job import *
 from .lakehouse_monitor import *
 from .library import *
+from .materialized_features_feature_tag import *
 from .metastore import *
 from .metastore_assignment import *
 from .metastore_data_access import *
@@ -317,6 +326,14 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
+  "mod": "index/cleanRoomsCleanRoom",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/cleanRoomsCleanRoom:CleanRoomsCleanRoom": "CleanRoomsCleanRoom"
+  }
+ },
+ {
+  "pkg": "databricks",
   "mod": "index/cluster",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -453,6 +470,14 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
+  "mod": "index/externalMetadata",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/externalMetadata:ExternalMetadata": "ExternalMetadata"
+  }
+ },
+ {
+  "pkg": "databricks",
   "mod": "index/file",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -569,6 +594,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/library:Library": "Library"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/materializedFeaturesFeatureTag",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag": "MaterializedFeaturesFeatureTag"
   }
  },
  {

@@ -195,7 +195,7 @@ class Secret(pulumi.CustomResource):
 
         * End to end workspace management guide.
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-        * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
+        * Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
         * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
@@ -261,7 +261,7 @@ class Secret(pulumi.CustomResource):
 
         * End to end workspace management guide.
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-        * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
+        * Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
         * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.

@@ -65,7 +65,7 @@ type GetSqlWarehouseArgs struct {
 	State *string `pulumi:"state"`
 	// tags used for SQL warehouse resources.
 	Tags *GetSqlWarehouseTags `pulumi:"tags"`
-	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+	// SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
 	WarehouseType *string `pulumi:"warehouseType"`
 }
 
@@ -110,7 +110,7 @@ type GetSqlWarehouseResult struct {
 	State string `pulumi:"state"`
 	// tags used for SQL warehouse resources.
 	Tags GetSqlWarehouseTags `pulumi:"tags"`
-	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+	// SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
 	WarehouseType string `pulumi:"warehouseType"`
 }
 
@@ -164,7 +164,7 @@ type GetSqlWarehouseOutputArgs struct {
 	State pulumi.StringPtrInput `pulumi:"state"`
 	// tags used for SQL warehouse resources.
 	Tags GetSqlWarehouseTagsPtrInput `pulumi:"tags"`
-	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+	// SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
 	WarehouseType pulumi.StringPtrInput `pulumi:"warehouseType"`
 }
 
@@ -286,7 +286,7 @@ func (o GetSqlWarehouseResultOutput) Tags() GetSqlWarehouseTagsOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) GetSqlWarehouseTags { return v.Tags }).(GetSqlWarehouseTagsOutput)
 }
 
-// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+// SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
 func (o GetSqlWarehouseResultOutput) WarehouseType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.WarehouseType }).(pulumi.StringOutput)
 }

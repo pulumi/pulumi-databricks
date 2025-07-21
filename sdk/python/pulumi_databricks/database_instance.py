@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DatabaseInstanceArgs', 'DatabaseInstance']
 
@@ -21,18 +23,40 @@ __all__ = ['DatabaseInstanceArgs', 'DatabaseInstance']
 class DatabaseInstanceArgs:
     def __init__(__self__, *,
                  capacity: Optional[pulumi.Input[builtins.str]] = None,
+                 enable_readable_secondaries: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 node_count: Optional[pulumi.Input[builtins.int]] = None,
+                 parent_instance_ref: Optional[pulumi.Input['DatabaseInstanceParentInstanceRefArgs']] = None,
+                 retention_window_in_days: Optional[pulumi.Input[builtins.int]] = None,
                  stopped: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a DatabaseInstance resource.
         :param pulumi.Input[builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        :param pulumi.Input[builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false
         :param pulumi.Input[builtins.str] name: The name of the instance. This is the unique identifier for the instance
+        :param pulumi.Input[builtins.int] node_count: The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+               1 primary and 0 secondaries
+        :param pulumi.Input['DatabaseInstanceParentInstanceRefArgs'] parent_instance_ref: The ref of the parent instance. This is only available if the instance is
+               child instance.
+               Input: For specifying the parent instance to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param pulumi.Input[builtins.int] retention_window_in_days: The retention window for the instance. This is the time window in days
+               for which the historical data is retained. The default value is 7 days.
+               Valid values are 2 to 35 days
         :param pulumi.Input[builtins.bool] stopped: Whether the instance is stopped
         """
         if capacity is not None:
             pulumi.set(__self__, "capacity", capacity)
+        if enable_readable_secondaries is not None:
+            pulumi.set(__self__, "enable_readable_secondaries", enable_readable_secondaries)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
+        if parent_instance_ref is not None:
+            pulumi.set(__self__, "parent_instance_ref", parent_instance_ref)
+        if retention_window_in_days is not None:
+            pulumi.set(__self__, "retention_window_in_days", retention_window_in_days)
         if stopped is not None:
             pulumi.set(__self__, "stopped", stopped)
 
@@ -49,6 +73,18 @@ class DatabaseInstanceArgs:
         pulumi.set(self, "capacity", value)
 
     @property
+    @pulumi.getter(name="enableReadableSecondaries")
+    def enable_readable_secondaries(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether to enable secondaries to serve read-only traffic. Defaults to false
+        """
+        return pulumi.get(self, "enable_readable_secondaries")
+
+    @enable_readable_secondaries.setter
+    def enable_readable_secondaries(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enable_readable_secondaries", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -59,6 +95,48 @@ class DatabaseInstanceArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+        1 primary and 0 secondaries
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "node_count", value)
+
+    @property
+    @pulumi.getter(name="parentInstanceRef")
+    def parent_instance_ref(self) -> Optional[pulumi.Input['DatabaseInstanceParentInstanceRefArgs']]:
+        """
+        The ref of the parent instance. This is only available if the instance is
+        child instance.
+        Input: For specifying the parent instance to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "parent_instance_ref")
+
+    @parent_instance_ref.setter
+    def parent_instance_ref(self, value: Optional[pulumi.Input['DatabaseInstanceParentInstanceRefArgs']]):
+        pulumi.set(self, "parent_instance_ref", value)
+
+    @property
+    @pulumi.getter(name="retentionWindowInDays")
+    def retention_window_in_days(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The retention window for the instance. This is the time window in days
+        for which the historical data is retained. The default value is 7 days.
+        Valid values are 2 to 35 days
+        """
+        return pulumi.get(self, "retention_window_in_days")
+
+    @retention_window_in_days.setter
+    def retention_window_in_days(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "retention_window_in_days", value)
 
     @property
     @pulumi.getter
@@ -77,44 +155,94 @@ class DatabaseInstanceArgs:
 class _DatabaseInstanceState:
     def __init__(__self__, *,
                  capacity: Optional[pulumi.Input[builtins.str]] = None,
+                 child_instance_refs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceChildInstanceRefArgs']]]] = None,
                  creation_time: Optional[pulumi.Input[builtins.str]] = None,
                  creator: Optional[pulumi.Input[builtins.str]] = None,
+                 effective_enable_readable_secondaries: Optional[pulumi.Input[builtins.bool]] = None,
+                 effective_node_count: Optional[pulumi.Input[builtins.int]] = None,
+                 effective_retention_window_in_days: Optional[pulumi.Input[builtins.int]] = None,
                  effective_stopped: Optional[pulumi.Input[builtins.bool]] = None,
+                 enable_readable_secondaries: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 node_count: Optional[pulumi.Input[builtins.int]] = None,
+                 parent_instance_ref: Optional[pulumi.Input['DatabaseInstanceParentInstanceRefArgs']] = None,
                  pg_version: Optional[pulumi.Input[builtins.str]] = None,
+                 read_only_dns: Optional[pulumi.Input[builtins.str]] = None,
                  read_write_dns: Optional[pulumi.Input[builtins.str]] = None,
+                 retention_window_in_days: Optional[pulumi.Input[builtins.int]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
                  stopped: Optional[pulumi.Input[builtins.bool]] = None,
                  uid: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseInstance resources.
         :param pulumi.Input[builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceChildInstanceRefArgs']]] child_instance_refs: (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+               parent instance
         :param pulumi.Input[builtins.str] creation_time: (string) - The timestamp when the instance was created
         :param pulumi.Input[builtins.str] creator: (string) - The email of the creator of the instance
+        :param pulumi.Input[builtins.bool] effective_enable_readable_secondaries: (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
+               `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        :param pulumi.Input[builtins.int] effective_node_count: (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
+               `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        :param pulumi.Input[builtins.int] effective_retention_window_in_days: (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
+               `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
         :param pulumi.Input[builtins.bool] effective_stopped: (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
                `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
                `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        :param pulumi.Input[builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false
         :param pulumi.Input[builtins.str] name: The name of the instance. This is the unique identifier for the instance
+        :param pulumi.Input[builtins.int] node_count: The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+               1 primary and 0 secondaries
+        :param pulumi.Input['DatabaseInstanceParentInstanceRefArgs'] parent_instance_ref: The ref of the parent instance. This is only available if the instance is
+               child instance.
+               Input: For specifying the parent instance to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
         :param pulumi.Input[builtins.str] pg_version: (string) - The version of Postgres running on the instance
+        :param pulumi.Input[builtins.str] read_only_dns: (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+               enable_readable_secondaries is true
         :param pulumi.Input[builtins.str] read_write_dns: (string) - The DNS endpoint to connect to the instance for read+write access
+        :param pulumi.Input[builtins.int] retention_window_in_days: The retention window for the instance. This is the time window in days
+               for which the historical data is retained. The default value is 7 days.
+               Valid values are 2 to 35 days
         :param pulumi.Input[builtins.str] state: (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         :param pulumi.Input[builtins.bool] stopped: Whether the instance is stopped
-        :param pulumi.Input[builtins.str] uid: (string) - An immutable UUID identifier for the instance
+        :param pulumi.Input[builtins.str] uid: (string) - Id of the ref database instance
         """
         if capacity is not None:
             pulumi.set(__self__, "capacity", capacity)
+        if child_instance_refs is not None:
+            pulumi.set(__self__, "child_instance_refs", child_instance_refs)
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
         if creator is not None:
             pulumi.set(__self__, "creator", creator)
+        if effective_enable_readable_secondaries is not None:
+            pulumi.set(__self__, "effective_enable_readable_secondaries", effective_enable_readable_secondaries)
+        if effective_node_count is not None:
+            pulumi.set(__self__, "effective_node_count", effective_node_count)
+        if effective_retention_window_in_days is not None:
+            pulumi.set(__self__, "effective_retention_window_in_days", effective_retention_window_in_days)
         if effective_stopped is not None:
             pulumi.set(__self__, "effective_stopped", effective_stopped)
+        if enable_readable_secondaries is not None:
+            pulumi.set(__self__, "enable_readable_secondaries", enable_readable_secondaries)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
+        if parent_instance_ref is not None:
+            pulumi.set(__self__, "parent_instance_ref", parent_instance_ref)
         if pg_version is not None:
             pulumi.set(__self__, "pg_version", pg_version)
+        if read_only_dns is not None:
+            pulumi.set(__self__, "read_only_dns", read_only_dns)
         if read_write_dns is not None:
             pulumi.set(__self__, "read_write_dns", read_write_dns)
+        if retention_window_in_days is not None:
+            pulumi.set(__self__, "retention_window_in_days", retention_window_in_days)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if stopped is not None:
@@ -133,6 +261,19 @@ class _DatabaseInstanceState:
     @capacity.setter
     def capacity(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "capacity", value)
+
+    @property
+    @pulumi.getter(name="childInstanceRefs")
+    def child_instance_refs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceChildInstanceRefArgs']]]]:
+        """
+        (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+        parent instance
+        """
+        return pulumi.get(self, "child_instance_refs")
+
+    @child_instance_refs.setter
+    def child_instance_refs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceChildInstanceRefArgs']]]]):
+        pulumi.set(self, "child_instance_refs", value)
 
     @property
     @pulumi.getter(name="creationTime")
@@ -159,6 +300,48 @@ class _DatabaseInstanceState:
         pulumi.set(self, "creator", value)
 
     @property
+    @pulumi.getter(name="effectiveEnableReadableSecondaries")
+    def effective_enable_readable_secondaries(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
+        `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        """
+        return pulumi.get(self, "effective_enable_readable_secondaries")
+
+    @effective_enable_readable_secondaries.setter
+    def effective_enable_readable_secondaries(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "effective_enable_readable_secondaries", value)
+
+    @property
+    @pulumi.getter(name="effectiveNodeCount")
+    def effective_node_count(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
+        `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        """
+        return pulumi.get(self, "effective_node_count")
+
+    @effective_node_count.setter
+    def effective_node_count(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "effective_node_count", value)
+
+    @property
+    @pulumi.getter(name="effectiveRetentionWindowInDays")
+    def effective_retention_window_in_days(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
+        `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        """
+        return pulumi.get(self, "effective_retention_window_in_days")
+
+    @effective_retention_window_in_days.setter
+    def effective_retention_window_in_days(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "effective_retention_window_in_days", value)
+
+    @property
     @pulumi.getter(name="effectiveStopped")
     def effective_stopped(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -173,6 +356,18 @@ class _DatabaseInstanceState:
         pulumi.set(self, "effective_stopped", value)
 
     @property
+    @pulumi.getter(name="enableReadableSecondaries")
+    def enable_readable_secondaries(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether to enable secondaries to serve read-only traffic. Defaults to false
+        """
+        return pulumi.get(self, "enable_readable_secondaries")
+
+    @enable_readable_secondaries.setter
+    def enable_readable_secondaries(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enable_readable_secondaries", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -183,6 +378,34 @@ class _DatabaseInstanceState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+        1 primary and 0 secondaries
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "node_count", value)
+
+    @property
+    @pulumi.getter(name="parentInstanceRef")
+    def parent_instance_ref(self) -> Optional[pulumi.Input['DatabaseInstanceParentInstanceRefArgs']]:
+        """
+        The ref of the parent instance. This is only available if the instance is
+        child instance.
+        Input: For specifying the parent instance to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "parent_instance_ref")
+
+    @parent_instance_ref.setter
+    def parent_instance_ref(self, value: Optional[pulumi.Input['DatabaseInstanceParentInstanceRefArgs']]):
+        pulumi.set(self, "parent_instance_ref", value)
 
     @property
     @pulumi.getter(name="pgVersion")
@@ -197,6 +420,19 @@ class _DatabaseInstanceState:
         pulumi.set(self, "pg_version", value)
 
     @property
+    @pulumi.getter(name="readOnlyDns")
+    def read_only_dns(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+        enable_readable_secondaries is true
+        """
+        return pulumi.get(self, "read_only_dns")
+
+    @read_only_dns.setter
+    def read_only_dns(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "read_only_dns", value)
+
+    @property
     @pulumi.getter(name="readWriteDns")
     def read_write_dns(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -207,6 +443,20 @@ class _DatabaseInstanceState:
     @read_write_dns.setter
     def read_write_dns(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "read_write_dns", value)
+
+    @property
+    @pulumi.getter(name="retentionWindowInDays")
+    def retention_window_in_days(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The retention window for the instance. This is the time window in days
+        for which the historical data is retained. The default value is 7 days.
+        Valid values are 2 to 35 days
+        """
+        return pulumi.get(self, "retention_window_in_days")
+
+    @retention_window_in_days.setter
+    def retention_window_in_days(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "retention_window_in_days", value)
 
     @property
     @pulumi.getter
@@ -236,7 +486,7 @@ class _DatabaseInstanceState:
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (string) - An immutable UUID identifier for the instance
+        (string) - Id of the ref database instance
         """
         return pulumi.get(self, "uid")
 
@@ -252,13 +502,21 @@ class DatabaseInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity: Optional[pulumi.Input[builtins.str]] = None,
+                 enable_readable_secondaries: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 node_count: Optional[pulumi.Input[builtins.int]] = None,
+                 parent_instance_ref: Optional[pulumi.Input[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict']]] = None,
+                 retention_window_in_days: Optional[pulumi.Input[builtins.int]] = None,
                  stopped: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         """
-        Database Instances are managed Postgres instances, composed of a primary Postgres compute instance and 0 or more read replica instances.
+        Lakebase Database Instances are managed Postgres instances, composed of a primary Postgres compute instance and 0 or more read replica instances.
 
         ## Example Usage
+
+        ### Basic Example
+
+        This example creates a simple Database Instance with the specified name and capacity.
 
         ```python
         import pulumi
@@ -267,6 +525,37 @@ class DatabaseInstance(pulumi.CustomResource):
         this = databricks.DatabaseInstance("this",
             name="my-database-instance",
             capacity="CU_2")
+        ```
+
+        ### Example with Readable Secondaries
+
+        This example creates a Database Instance with readable secondaries (and HA) enabled.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.DatabaseInstance("this",
+            name="my-database-instance",
+            capacity="CU_2",
+            node_count=2,
+            enable_readable_secondaries=True)
+        ```
+
+        ### Example Child Instance Created From Parent
+
+        This example creates a child Database Instance from a specified parent Database Instance at the current point in time.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        child = databricks.DatabaseInstance("child",
+            name="my-database-instance",
+            capacity="CU_2",
+            parent_instance_ref={
+                "name": "my-parent-instance",
+            })
         ```
 
         ## Import
@@ -292,7 +581,17 @@ class DatabaseInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        :param pulumi.Input[builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false
         :param pulumi.Input[builtins.str] name: The name of the instance. This is the unique identifier for the instance
+        :param pulumi.Input[builtins.int] node_count: The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+               1 primary and 0 secondaries
+        :param pulumi.Input[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict']] parent_instance_ref: The ref of the parent instance. This is only available if the instance is
+               child instance.
+               Input: For specifying the parent instance to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param pulumi.Input[builtins.int] retention_window_in_days: The retention window for the instance. This is the time window in days
+               for which the historical data is retained. The default value is 7 days.
+               Valid values are 2 to 35 days
         :param pulumi.Input[builtins.bool] stopped: Whether the instance is stopped
         """
         ...
@@ -302,9 +601,13 @@ class DatabaseInstance(pulumi.CustomResource):
                  args: Optional[DatabaseInstanceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Database Instances are managed Postgres instances, composed of a primary Postgres compute instance and 0 or more read replica instances.
+        Lakebase Database Instances are managed Postgres instances, composed of a primary Postgres compute instance and 0 or more read replica instances.
 
         ## Example Usage
+
+        ### Basic Example
+
+        This example creates a simple Database Instance with the specified name and capacity.
 
         ```python
         import pulumi
@@ -313,6 +616,37 @@ class DatabaseInstance(pulumi.CustomResource):
         this = databricks.DatabaseInstance("this",
             name="my-database-instance",
             capacity="CU_2")
+        ```
+
+        ### Example with Readable Secondaries
+
+        This example creates a Database Instance with readable secondaries (and HA) enabled.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.DatabaseInstance("this",
+            name="my-database-instance",
+            capacity="CU_2",
+            node_count=2,
+            enable_readable_secondaries=True)
+        ```
+
+        ### Example Child Instance Created From Parent
+
+        This example creates a child Database Instance from a specified parent Database Instance at the current point in time.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        child = databricks.DatabaseInstance("child",
+            name="my-database-instance",
+            capacity="CU_2",
+            parent_instance_ref={
+                "name": "my-parent-instance",
+            })
         ```
 
         ## Import
@@ -351,7 +685,11 @@ class DatabaseInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity: Optional[pulumi.Input[builtins.str]] = None,
+                 enable_readable_secondaries: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 node_count: Optional[pulumi.Input[builtins.int]] = None,
+                 parent_instance_ref: Optional[pulumi.Input[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict']]] = None,
+                 retention_window_in_days: Optional[pulumi.Input[builtins.int]] = None,
                  stopped: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -363,12 +701,21 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__ = DatabaseInstanceArgs.__new__(DatabaseInstanceArgs)
 
             __props__.__dict__["capacity"] = capacity
+            __props__.__dict__["enable_readable_secondaries"] = enable_readable_secondaries
             __props__.__dict__["name"] = name
+            __props__.__dict__["node_count"] = node_count
+            __props__.__dict__["parent_instance_ref"] = parent_instance_ref
+            __props__.__dict__["retention_window_in_days"] = retention_window_in_days
             __props__.__dict__["stopped"] = stopped
+            __props__.__dict__["child_instance_refs"] = None
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["creator"] = None
+            __props__.__dict__["effective_enable_readable_secondaries"] = None
+            __props__.__dict__["effective_node_count"] = None
+            __props__.__dict__["effective_retention_window_in_days"] = None
             __props__.__dict__["effective_stopped"] = None
             __props__.__dict__["pg_version"] = None
+            __props__.__dict__["read_only_dns"] = None
             __props__.__dict__["read_write_dns"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
@@ -383,12 +730,21 @@ class DatabaseInstance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             capacity: Optional[pulumi.Input[builtins.str]] = None,
+            child_instance_refs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceChildInstanceRefArgs', 'DatabaseInstanceChildInstanceRefArgsDict']]]]] = None,
             creation_time: Optional[pulumi.Input[builtins.str]] = None,
             creator: Optional[pulumi.Input[builtins.str]] = None,
+            effective_enable_readable_secondaries: Optional[pulumi.Input[builtins.bool]] = None,
+            effective_node_count: Optional[pulumi.Input[builtins.int]] = None,
+            effective_retention_window_in_days: Optional[pulumi.Input[builtins.int]] = None,
             effective_stopped: Optional[pulumi.Input[builtins.bool]] = None,
+            enable_readable_secondaries: Optional[pulumi.Input[builtins.bool]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
+            node_count: Optional[pulumi.Input[builtins.int]] = None,
+            parent_instance_ref: Optional[pulumi.Input[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict']]] = None,
             pg_version: Optional[pulumi.Input[builtins.str]] = None,
+            read_only_dns: Optional[pulumi.Input[builtins.str]] = None,
             read_write_dns: Optional[pulumi.Input[builtins.str]] = None,
+            retention_window_in_days: Optional[pulumi.Input[builtins.int]] = None,
             state: Optional[pulumi.Input[builtins.str]] = None,
             stopped: Optional[pulumi.Input[builtins.bool]] = None,
             uid: Optional[pulumi.Input[builtins.str]] = None) -> 'DatabaseInstance':
@@ -400,29 +756,61 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceChildInstanceRefArgs', 'DatabaseInstanceChildInstanceRefArgsDict']]]] child_instance_refs: (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+               parent instance
         :param pulumi.Input[builtins.str] creation_time: (string) - The timestamp when the instance was created
         :param pulumi.Input[builtins.str] creator: (string) - The email of the creator of the instance
+        :param pulumi.Input[builtins.bool] effective_enable_readable_secondaries: (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
+               `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        :param pulumi.Input[builtins.int] effective_node_count: (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
+               `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        :param pulumi.Input[builtins.int] effective_retention_window_in_days: (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
+               `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
         :param pulumi.Input[builtins.bool] effective_stopped: (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
                `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
                `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        :param pulumi.Input[builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false
         :param pulumi.Input[builtins.str] name: The name of the instance. This is the unique identifier for the instance
+        :param pulumi.Input[builtins.int] node_count: The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+               1 primary and 0 secondaries
+        :param pulumi.Input[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict']] parent_instance_ref: The ref of the parent instance. This is only available if the instance is
+               child instance.
+               Input: For specifying the parent instance to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
         :param pulumi.Input[builtins.str] pg_version: (string) - The version of Postgres running on the instance
+        :param pulumi.Input[builtins.str] read_only_dns: (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+               enable_readable_secondaries is true
         :param pulumi.Input[builtins.str] read_write_dns: (string) - The DNS endpoint to connect to the instance for read+write access
+        :param pulumi.Input[builtins.int] retention_window_in_days: The retention window for the instance. This is the time window in days
+               for which the historical data is retained. The default value is 7 days.
+               Valid values are 2 to 35 days
         :param pulumi.Input[builtins.str] state: (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         :param pulumi.Input[builtins.bool] stopped: Whether the instance is stopped
-        :param pulumi.Input[builtins.str] uid: (string) - An immutable UUID identifier for the instance
+        :param pulumi.Input[builtins.str] uid: (string) - Id of the ref database instance
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _DatabaseInstanceState.__new__(_DatabaseInstanceState)
 
         __props__.__dict__["capacity"] = capacity
+        __props__.__dict__["child_instance_refs"] = child_instance_refs
         __props__.__dict__["creation_time"] = creation_time
         __props__.__dict__["creator"] = creator
+        __props__.__dict__["effective_enable_readable_secondaries"] = effective_enable_readable_secondaries
+        __props__.__dict__["effective_node_count"] = effective_node_count
+        __props__.__dict__["effective_retention_window_in_days"] = effective_retention_window_in_days
         __props__.__dict__["effective_stopped"] = effective_stopped
+        __props__.__dict__["enable_readable_secondaries"] = enable_readable_secondaries
         __props__.__dict__["name"] = name
+        __props__.__dict__["node_count"] = node_count
+        __props__.__dict__["parent_instance_ref"] = parent_instance_ref
         __props__.__dict__["pg_version"] = pg_version
+        __props__.__dict__["read_only_dns"] = read_only_dns
         __props__.__dict__["read_write_dns"] = read_write_dns
+        __props__.__dict__["retention_window_in_days"] = retention_window_in_days
         __props__.__dict__["state"] = state
         __props__.__dict__["stopped"] = stopped
         __props__.__dict__["uid"] = uid
@@ -435,6 +823,15 @@ class DatabaseInstance(pulumi.CustomResource):
         The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         """
         return pulumi.get(self, "capacity")
+
+    @property
+    @pulumi.getter(name="childInstanceRefs")
+    def child_instance_refs(self) -> pulumi.Output[Sequence['outputs.DatabaseInstanceChildInstanceRef']]:
+        """
+        (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+        parent instance
+        """
+        return pulumi.get(self, "child_instance_refs")
 
     @property
     @pulumi.getter(name="creationTime")
@@ -453,6 +850,36 @@ class DatabaseInstance(pulumi.CustomResource):
         return pulumi.get(self, "creator")
 
     @property
+    @pulumi.getter(name="effectiveEnableReadableSecondaries")
+    def effective_enable_readable_secondaries(self) -> pulumi.Output[builtins.bool]:
+        """
+        (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
+        `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        """
+        return pulumi.get(self, "effective_enable_readable_secondaries")
+
+    @property
+    @pulumi.getter(name="effectiveNodeCount")
+    def effective_node_count(self) -> pulumi.Output[builtins.int]:
+        """
+        (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
+        `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        """
+        return pulumi.get(self, "effective_node_count")
+
+    @property
+    @pulumi.getter(name="effectiveRetentionWindowInDays")
+    def effective_retention_window_in_days(self) -> pulumi.Output[builtins.int]:
+        """
+        (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
+        `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        """
+        return pulumi.get(self, "effective_retention_window_in_days")
+
+    @property
     @pulumi.getter(name="effectiveStopped")
     def effective_stopped(self) -> pulumi.Output[builtins.bool]:
         """
@@ -463,12 +890,40 @@ class DatabaseInstance(pulumi.CustomResource):
         return pulumi.get(self, "effective_stopped")
 
     @property
+    @pulumi.getter(name="enableReadableSecondaries")
+    def enable_readable_secondaries(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Whether to enable secondaries to serve read-only traffic. Defaults to false
+        """
+        return pulumi.get(self, "enable_readable_secondaries")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The name of the instance. This is the unique identifier for the instance
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> pulumi.Output[Optional[builtins.int]]:
+        """
+        The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+        1 primary and 0 secondaries
+        """
+        return pulumi.get(self, "node_count")
+
+    @property
+    @pulumi.getter(name="parentInstanceRef")
+    def parent_instance_ref(self) -> pulumi.Output[Optional['outputs.DatabaseInstanceParentInstanceRef']]:
+        """
+        The ref of the parent instance. This is only available if the instance is
+        child instance.
+        Input: For specifying the parent instance to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "parent_instance_ref")
 
     @property
     @pulumi.getter(name="pgVersion")
@@ -479,12 +934,31 @@ class DatabaseInstance(pulumi.CustomResource):
         return pulumi.get(self, "pg_version")
 
     @property
+    @pulumi.getter(name="readOnlyDns")
+    def read_only_dns(self) -> pulumi.Output[builtins.str]:
+        """
+        (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+        enable_readable_secondaries is true
+        """
+        return pulumi.get(self, "read_only_dns")
+
+    @property
     @pulumi.getter(name="readWriteDns")
     def read_write_dns(self) -> pulumi.Output[builtins.str]:
         """
         (string) - The DNS endpoint to connect to the instance for read+write access
         """
         return pulumi.get(self, "read_write_dns")
+
+    @property
+    @pulumi.getter(name="retentionWindowInDays")
+    def retention_window_in_days(self) -> pulumi.Output[Optional[builtins.int]]:
+        """
+        The retention window for the instance. This is the time window in days
+        for which the historical data is retained. The default value is 7 days.
+        Valid values are 2 to 35 days
+        """
+        return pulumi.get(self, "retention_window_in_days")
 
     @property
     @pulumi.getter
@@ -506,7 +980,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[builtins.str]:
         """
-        (string) - An immutable UUID identifier for the instance
+        (string) - Id of the ref database instance
         """
         return pulumi.get(self, "uid")
 

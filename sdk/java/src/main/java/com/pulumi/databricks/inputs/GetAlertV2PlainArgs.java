@@ -107,6 +107,23 @@ public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * (string) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * 
+     */
+    @Import(name="runAsUserName")
+    private @Nullable String runAsUserName;
+
+    /**
+     * @return (string) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * 
+     */
+    public Optional<String> runAsUserName() {
+        return Optional.ofNullable(this.runAsUserName);
+    }
+
+    /**
      * (CronSchedule) -
      * 
      */
@@ -145,6 +162,7 @@ public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
         this.evaluation = $.evaluation;
         this.parentPath = $.parentPath;
         this.queryText = $.queryText;
+        this.runAsUserName = $.runAsUserName;
         this.schedule = $.schedule;
         this.warehouseId = $.warehouseId;
     }
@@ -230,6 +248,18 @@ public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder queryText(@Nullable String queryText) {
             $.queryText = queryText;
+            return this;
+        }
+
+        /**
+         * @param runAsUserName (string) - The run as username or application ID of service principal.
+         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runAsUserName(@Nullable String runAsUserName) {
+            $.runAsUserName = runAsUserName;
             return this;
         }
 

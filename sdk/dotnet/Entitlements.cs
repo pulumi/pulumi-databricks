@@ -45,66 +45,6 @@ namespace Pulumi.Databricks
     /// 
     /// Setting entitlements for a service principal:
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @this = Databricks.GetServicePrincipal.Invoke(new()
-    ///     {
-    ///         ApplicationId = "11111111-2222-3333-4444-555666777888",
-    ///     });
-    /// 
-    ///     var thisEntitlements = new Databricks.Entitlements("this", new()
-    ///     {
-    ///         ServicePrincipalId = @this.Apply(@this =&gt; @this.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.SpId)),
-    ///         AllowClusterCreate = true,
-    ///         AllowInstancePoolCreate = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Setting entitlements to all users in a workspace - referencing special `users` databricks.Group
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var users = Databricks.GetGroup.Invoke(new()
-    ///     {
-    ///         DisplayName = "users",
-    ///     });
-    /// 
-    ///     var workspace_users = new Databricks.Entitlements("workspace-users", new()
-    ///     {
-    ///         GroupId = users.Apply(getGroupResult =&gt; getGroupResult.Id),
-    ///         AllowClusterCreate = true,
-    ///         AllowInstancePoolCreate = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Related Resources
-    /// 
-    /// The following resources are often used in the same context:
-    /// 
-    /// * End to end workspace management guide.
-    /// * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-    /// * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-    /// * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-    /// * databricks.GroupMember to attach users and groups as group members.
-    /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
-    /// * databricks.User data to retrieve information about databricks_user.
-    /// 
     /// ## Import
     /// 
     /// The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:

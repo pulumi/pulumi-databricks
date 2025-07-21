@@ -23,11 +23,13 @@ __all__ = ['PermissionsArgs', 'Permissions']
 class PermissionsArgs:
     def __init__(__self__, *,
                  access_controls: pulumi.Input[Sequence[pulumi.Input['PermissionsAccessControlArgs']]],
+                 alert_v2_id: Optional[pulumi.Input[builtins.str]] = None,
                  app_name: Optional[pulumi.Input[builtins.str]] = None,
                  authorization: Optional[pulumi.Input[builtins.str]] = None,
                  cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                  cluster_policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  dashboard_id: Optional[pulumi.Input[builtins.str]] = None,
+                 database_instance_name: Optional[pulumi.Input[builtins.str]] = None,
                  directory_id: Optional[pulumi.Input[builtins.str]] = None,
                  directory_path: Optional[pulumi.Input[builtins.str]] = None,
                  experiment_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -53,6 +55,8 @@ class PermissionsArgs:
         :param pulumi.Input[builtins.str] object_type: type of permissions.
         """
         pulumi.set(__self__, "access_controls", access_controls)
+        if alert_v2_id is not None:
+            pulumi.set(__self__, "alert_v2_id", alert_v2_id)
         if app_name is not None:
             pulumi.set(__self__, "app_name", app_name)
         if authorization is not None:
@@ -63,6 +67,8 @@ class PermissionsArgs:
             pulumi.set(__self__, "cluster_policy_id", cluster_policy_id)
         if dashboard_id is not None:
             pulumi.set(__self__, "dashboard_id", dashboard_id)
+        if database_instance_name is not None:
+            pulumi.set(__self__, "database_instance_name", database_instance_name)
         if directory_id is not None:
             pulumi.set(__self__, "directory_id", directory_id)
         if directory_path is not None:
@@ -114,6 +120,15 @@ class PermissionsArgs:
         pulumi.set(self, "access_controls", value)
 
     @property
+    @pulumi.getter(name="alertV2Id")
+    def alert_v2_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "alert_v2_id")
+
+    @alert_v2_id.setter
+    def alert_v2_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "alert_v2_id", value)
+
+    @property
     @pulumi.getter(name="appName")
     def app_name(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "app_name")
@@ -157,6 +172,15 @@ class PermissionsArgs:
     @dashboard_id.setter
     def dashboard_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "dashboard_id", value)
+
+    @property
+    @pulumi.getter(name="databaseInstanceName")
+    def database_instance_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "database_instance_name")
+
+    @database_instance_name.setter
+    def database_instance_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "database_instance_name", value)
 
     @property
     @pulumi.getter(name="directoryId")
@@ -346,11 +370,13 @@ class PermissionsArgs:
 class _PermissionsState:
     def __init__(__self__, *,
                  access_controls: Optional[pulumi.Input[Sequence[pulumi.Input['PermissionsAccessControlArgs']]]] = None,
+                 alert_v2_id: Optional[pulumi.Input[builtins.str]] = None,
                  app_name: Optional[pulumi.Input[builtins.str]] = None,
                  authorization: Optional[pulumi.Input[builtins.str]] = None,
                  cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                  cluster_policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  dashboard_id: Optional[pulumi.Input[builtins.str]] = None,
+                 database_instance_name: Optional[pulumi.Input[builtins.str]] = None,
                  directory_id: Optional[pulumi.Input[builtins.str]] = None,
                  directory_path: Optional[pulumi.Input[builtins.str]] = None,
                  experiment_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -377,6 +403,8 @@ class _PermissionsState:
         """
         if access_controls is not None:
             pulumi.set(__self__, "access_controls", access_controls)
+        if alert_v2_id is not None:
+            pulumi.set(__self__, "alert_v2_id", alert_v2_id)
         if app_name is not None:
             pulumi.set(__self__, "app_name", app_name)
         if authorization is not None:
@@ -387,6 +415,8 @@ class _PermissionsState:
             pulumi.set(__self__, "cluster_policy_id", cluster_policy_id)
         if dashboard_id is not None:
             pulumi.set(__self__, "dashboard_id", dashboard_id)
+        if database_instance_name is not None:
+            pulumi.set(__self__, "database_instance_name", database_instance_name)
         if directory_id is not None:
             pulumi.set(__self__, "directory_id", directory_id)
         if directory_path is not None:
@@ -438,6 +468,15 @@ class _PermissionsState:
         pulumi.set(self, "access_controls", value)
 
     @property
+    @pulumi.getter(name="alertV2Id")
+    def alert_v2_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "alert_v2_id")
+
+    @alert_v2_id.setter
+    def alert_v2_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "alert_v2_id", value)
+
+    @property
     @pulumi.getter(name="appName")
     def app_name(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "app_name")
@@ -481,6 +520,15 @@ class _PermissionsState:
     @dashboard_id.setter
     def dashboard_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "dashboard_id", value)
+
+    @property
+    @pulumi.getter(name="databaseInstanceName")
+    def database_instance_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "database_instance_name")
+
+    @database_instance_name.setter
+    def database_instance_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "database_instance_name", value)
 
     @property
     @pulumi.getter(name="directoryId")
@@ -673,11 +721,13 @@ class Permissions(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_controls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict']]]]] = None,
+                 alert_v2_id: Optional[pulumi.Input[builtins.str]] = None,
                  app_name: Optional[pulumi.Input[builtins.str]] = None,
                  authorization: Optional[pulumi.Input[builtins.str]] = None,
                  cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                  cluster_policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  dashboard_id: Optional[pulumi.Input[builtins.str]] = None,
+                 database_instance_name: Optional[pulumi.Input[builtins.str]] = None,
                  directory_id: Optional[pulumi.Input[builtins.str]] = None,
                  directory_path: Optional[pulumi.Input[builtins.str]] = None,
                  experiment_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -873,15 +923,15 @@ class Permissions(pulumi.CustomResource):
             ])
         ```
 
-        ## Delta Live Tables usage
+        ## Lakeflow Declarative Pipelines usage
 
-        There are four assignable [permission levels](https://docs.databricks.com/security/access-control/dlt-acl.html#delta-live-tables-permissions) for databricks_pipeline: `CAN_VIEW`, `CAN_RUN`, `CAN_MANAGE`, and `IS_OWNER`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
+        There are four assignable [permission levels](https://docs.databricks.com/aws/en/security/auth/access-control#lakeflow-declarative-pipelines-acls) for databricks_pipeline: `CAN_VIEW`, `CAN_RUN`, `CAN_MANAGE`, and `IS_OWNER`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
 
-        - The creator of a DLT Pipeline has `IS_OWNER` permission. Destroying `Permissions` resource for a pipeline would revert ownership to the creator.
-        - A DLT pipeline must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the pipeline. Nothing would change, per se, if the pipeline was created through Pulumi.
-        - A DLT pipeline cannot have a group as an owner.
-        - DLT Pipelines triggered through _Start_ assume the permissions of the pipeline owner and not the user, and service principal who issued Run Now.
-        - Read [main documentation](https://docs.databricks.com/security/access-control/dlt-acl.html) for additional detail.
+        - The creator of a Lakeflow Declarative Pipeline has `IS_OWNER` permission. Destroying `Permissions` resource for a pipeline would revert ownership to the creator.
+        - A Lakeflow Declarative Pipeline must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the pipeline. Nothing would change, per se, if the pipeline was created through Pulumi.
+        - A Lakeflow Declarative Pipeline cannot have a group as an owner.
+        - Lakeflow Declarative Pipelines triggered through _Start_ assume the permissions of the pipeline owner and not the user, and service principal who issued Run Now.
+        - Read [main documentation](https://docs.databricks.com/aws/en/security/auth/access-control#lakeflow-declarative-pipelines-acls) for additional detail.
 
         ```python
         import pulumi
@@ -890,7 +940,7 @@ class Permissions(pulumi.CustomResource):
 
         me = databricks.get_current_user()
         eng = databricks.Group("eng", display_name="Engineering")
-        dlt_demo = databricks.Notebook("dlt_demo",
+        ldp_demo = databricks.Notebook("ldp_demo",
             content_base64=std.base64encode(input=\"\"\"import dlt
         json_path = "/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json"
         @dlt.table(
@@ -900,9 +950,9 @@ class Permissions(pulumi.CustomResource):
             return (spark.read.format("json").load(json_path))
         \"\"\").result,
             language="PYTHON",
-            path=f"{me.home}/DLT_Demo")
+            path=f"{me.home}/ldp_demo")
         this = databricks.Pipeline("this",
-            name=f"DLT Demo Pipeline ({me.alphanumeric})",
+            name=f"LDP Demo Pipeline ({me.alphanumeric})",
             storage="/test/tf-pipeline",
             configuration={
                 "key1": "value1",
@@ -910,7 +960,7 @@ class Permissions(pulumi.CustomResource):
             },
             libraries=[{
                 "notebook": {
-                    "path": dlt_demo.id,
+                    "path": ldp_demo.id,
                 },
             }],
             continuous=False,
@@ -918,7 +968,7 @@ class Permissions(pulumi.CustomResource):
                 "includes": ["com.databricks.include"],
                 "excludes": ["com.databricks.exclude"],
             })
-        dlt_usage = databricks.Permissions("dlt_usage",
+        ldp_usage = databricks.Permissions("ldp_usage",
             pipeline_id=this.id,
             access_controls=[
                 {
@@ -1408,7 +1458,31 @@ class Permissions(pulumi.CustomResource):
             ])
         ```
 
-        ## SQL Alert usage
+        ## SQL Alert (AlertV2) usage
+
+        [Alert V2](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) which is the new version of SQL Alert have 4 possible permission levels: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        auto = databricks.Group("auto", display_name="Automation")
+        eng = databricks.Group("eng", display_name="Engineering")
+        app_usage = databricks.Permissions("app_usage",
+            alert_v2_id="12345",
+            access_controls=[
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_EDIT",
+                },
+            ])
+        ```
+
+        ## SQL Alert (legacy) usage
 
         [SQL alerts](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
 
@@ -1443,6 +1517,29 @@ class Permissions(pulumi.CustomResource):
         eng = databricks.Group("eng", display_name="Engineering")
         app_usage = databricks.Permissions("app_usage",
             app_name="myapp",
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_USE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
+            ])
+        ```
+
+        ## Lakebase Database Instances usage
+
+        [Databricks Lakebase](https://docs.databricks.com/aws/en/oltp/) have two possible permissions: `CAN_USE` and `CAN_MANAGE`:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        eng = databricks.Group("eng", display_name="Engineering")
+        app_usage = databricks.Permissions("app_usage",
+            database_instance_name="my_database",
             access_controls=[
                 {
                     "group_name": "users",
@@ -1663,15 +1760,15 @@ class Permissions(pulumi.CustomResource):
             ])
         ```
 
-        ## Delta Live Tables usage
+        ## Lakeflow Declarative Pipelines usage
 
-        There are four assignable [permission levels](https://docs.databricks.com/security/access-control/dlt-acl.html#delta-live-tables-permissions) for databricks_pipeline: `CAN_VIEW`, `CAN_RUN`, `CAN_MANAGE`, and `IS_OWNER`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
+        There are four assignable [permission levels](https://docs.databricks.com/aws/en/security/auth/access-control#lakeflow-declarative-pipelines-acls) for databricks_pipeline: `CAN_VIEW`, `CAN_RUN`, `CAN_MANAGE`, and `IS_OWNER`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
 
-        - The creator of a DLT Pipeline has `IS_OWNER` permission. Destroying `Permissions` resource for a pipeline would revert ownership to the creator.
-        - A DLT pipeline must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the pipeline. Nothing would change, per se, if the pipeline was created through Pulumi.
-        - A DLT pipeline cannot have a group as an owner.
-        - DLT Pipelines triggered through _Start_ assume the permissions of the pipeline owner and not the user, and service principal who issued Run Now.
-        - Read [main documentation](https://docs.databricks.com/security/access-control/dlt-acl.html) for additional detail.
+        - The creator of a Lakeflow Declarative Pipeline has `IS_OWNER` permission. Destroying `Permissions` resource for a pipeline would revert ownership to the creator.
+        - A Lakeflow Declarative Pipeline must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the pipeline. Nothing would change, per se, if the pipeline was created through Pulumi.
+        - A Lakeflow Declarative Pipeline cannot have a group as an owner.
+        - Lakeflow Declarative Pipelines triggered through _Start_ assume the permissions of the pipeline owner and not the user, and service principal who issued Run Now.
+        - Read [main documentation](https://docs.databricks.com/aws/en/security/auth/access-control#lakeflow-declarative-pipelines-acls) for additional detail.
 
         ```python
         import pulumi
@@ -1680,7 +1777,7 @@ class Permissions(pulumi.CustomResource):
 
         me = databricks.get_current_user()
         eng = databricks.Group("eng", display_name="Engineering")
-        dlt_demo = databricks.Notebook("dlt_demo",
+        ldp_demo = databricks.Notebook("ldp_demo",
             content_base64=std.base64encode(input=\"\"\"import dlt
         json_path = "/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json"
         @dlt.table(
@@ -1690,9 +1787,9 @@ class Permissions(pulumi.CustomResource):
             return (spark.read.format("json").load(json_path))
         \"\"\").result,
             language="PYTHON",
-            path=f"{me.home}/DLT_Demo")
+            path=f"{me.home}/ldp_demo")
         this = databricks.Pipeline("this",
-            name=f"DLT Demo Pipeline ({me.alphanumeric})",
+            name=f"LDP Demo Pipeline ({me.alphanumeric})",
             storage="/test/tf-pipeline",
             configuration={
                 "key1": "value1",
@@ -1700,7 +1797,7 @@ class Permissions(pulumi.CustomResource):
             },
             libraries=[{
                 "notebook": {
-                    "path": dlt_demo.id,
+                    "path": ldp_demo.id,
                 },
             }],
             continuous=False,
@@ -1708,7 +1805,7 @@ class Permissions(pulumi.CustomResource):
                 "includes": ["com.databricks.include"],
                 "excludes": ["com.databricks.exclude"],
             })
-        dlt_usage = databricks.Permissions("dlt_usage",
+        ldp_usage = databricks.Permissions("ldp_usage",
             pipeline_id=this.id,
             access_controls=[
                 {
@@ -2198,7 +2295,31 @@ class Permissions(pulumi.CustomResource):
             ])
         ```
 
-        ## SQL Alert usage
+        ## SQL Alert (AlertV2) usage
+
+        [Alert V2](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) which is the new version of SQL Alert have 4 possible permission levels: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        auto = databricks.Group("auto", display_name="Automation")
+        eng = databricks.Group("eng", display_name="Engineering")
+        app_usage = databricks.Permissions("app_usage",
+            alert_v2_id="12345",
+            access_controls=[
+                {
+                    "group_name": auto.display_name,
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_EDIT",
+                },
+            ])
+        ```
+
+        ## SQL Alert (legacy) usage
 
         [SQL alerts](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
 
@@ -2233,6 +2354,29 @@ class Permissions(pulumi.CustomResource):
         eng = databricks.Group("eng", display_name="Engineering")
         app_usage = databricks.Permissions("app_usage",
             app_name="myapp",
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_USE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
+            ])
+        ```
+
+        ## Lakebase Database Instances usage
+
+        [Databricks Lakebase](https://docs.databricks.com/aws/en/oltp/) have two possible permissions: `CAN_USE` and `CAN_MANAGE`:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        eng = databricks.Group("eng", display_name="Engineering")
+        app_usage = databricks.Permissions("app_usage",
+            database_instance_name="my_database",
             access_controls=[
                 {
                     "group_name": "users",
@@ -2285,11 +2429,13 @@ class Permissions(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_controls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict']]]]] = None,
+                 alert_v2_id: Optional[pulumi.Input[builtins.str]] = None,
                  app_name: Optional[pulumi.Input[builtins.str]] = None,
                  authorization: Optional[pulumi.Input[builtins.str]] = None,
                  cluster_id: Optional[pulumi.Input[builtins.str]] = None,
                  cluster_policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  dashboard_id: Optional[pulumi.Input[builtins.str]] = None,
+                 database_instance_name: Optional[pulumi.Input[builtins.str]] = None,
                  directory_id: Optional[pulumi.Input[builtins.str]] = None,
                  directory_path: Optional[pulumi.Input[builtins.str]] = None,
                  experiment_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -2322,11 +2468,13 @@ class Permissions(pulumi.CustomResource):
             if access_controls is None and not opts.urn:
                 raise TypeError("Missing required property 'access_controls'")
             __props__.__dict__["access_controls"] = access_controls
+            __props__.__dict__["alert_v2_id"] = alert_v2_id
             __props__.__dict__["app_name"] = app_name
             __props__.__dict__["authorization"] = authorization
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["cluster_policy_id"] = cluster_policy_id
             __props__.__dict__["dashboard_id"] = dashboard_id
+            __props__.__dict__["database_instance_name"] = database_instance_name
             __props__.__dict__["directory_id"] = directory_id
             __props__.__dict__["directory_path"] = directory_path
             __props__.__dict__["experiment_id"] = experiment_id
@@ -2358,11 +2506,13 @@ class Permissions(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_controls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict']]]]] = None,
+            alert_v2_id: Optional[pulumi.Input[builtins.str]] = None,
             app_name: Optional[pulumi.Input[builtins.str]] = None,
             authorization: Optional[pulumi.Input[builtins.str]] = None,
             cluster_id: Optional[pulumi.Input[builtins.str]] = None,
             cluster_policy_id: Optional[pulumi.Input[builtins.str]] = None,
             dashboard_id: Optional[pulumi.Input[builtins.str]] = None,
+            database_instance_name: Optional[pulumi.Input[builtins.str]] = None,
             directory_id: Optional[pulumi.Input[builtins.str]] = None,
             directory_path: Optional[pulumi.Input[builtins.str]] = None,
             experiment_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -2397,11 +2547,13 @@ class Permissions(pulumi.CustomResource):
         __props__ = _PermissionsState.__new__(_PermissionsState)
 
         __props__.__dict__["access_controls"] = access_controls
+        __props__.__dict__["alert_v2_id"] = alert_v2_id
         __props__.__dict__["app_name"] = app_name
         __props__.__dict__["authorization"] = authorization
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["cluster_policy_id"] = cluster_policy_id
         __props__.__dict__["dashboard_id"] = dashboard_id
+        __props__.__dict__["database_instance_name"] = database_instance_name
         __props__.__dict__["directory_id"] = directory_id
         __props__.__dict__["directory_path"] = directory_path
         __props__.__dict__["experiment_id"] = experiment_id
@@ -2430,6 +2582,11 @@ class Permissions(pulumi.CustomResource):
         return pulumi.get(self, "access_controls")
 
     @property
+    @pulumi.getter(name="alertV2Id")
+    def alert_v2_id(self) -> pulumi.Output[Optional[builtins.str]]:
+        return pulumi.get(self, "alert_v2_id")
+
+    @property
     @pulumi.getter(name="appName")
     def app_name(self) -> pulumi.Output[Optional[builtins.str]]:
         return pulumi.get(self, "app_name")
@@ -2453,6 +2610,11 @@ class Permissions(pulumi.CustomResource):
     @pulumi.getter(name="dashboardId")
     def dashboard_id(self) -> pulumi.Output[Optional[builtins.str]]:
         return pulumi.get(self, "dashboard_id")
+
+    @property
+    @pulumi.getter(name="databaseInstanceName")
+    def database_instance_name(self) -> pulumi.Output[Optional[builtins.str]]:
+        return pulumi.get(self, "database_instance_name")
 
     @property
     @pulumi.getter(name="directoryId")

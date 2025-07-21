@@ -92,11 +92,12 @@ type LookupServicePrincipalArgs struct {
 	ExternalId *string `pulumi:"externalId"`
 	// Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
 	Home *string `pulumi:"home"`
-	// The id of the service principal.
+	// The id of the service principal (SCIM ID).
 	Id *string `pulumi:"id"`
 	// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
 	Repos *string `pulumi:"repos"`
-	SpId  *string `pulumi:"spId"`
+	// Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+	ScimId *string `pulumi:"scimId"`
 }
 
 // A collection of values returned by getServicePrincipal.
@@ -112,11 +113,12 @@ type LookupServicePrincipalResult struct {
 	ExternalId string `pulumi:"externalId"`
 	// Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
 	Home string `pulumi:"home"`
-	// The id of the service principal.
+	// The id of the service principal (SCIM ID).
 	Id string `pulumi:"id"`
 	// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
 	Repos string `pulumi:"repos"`
-	SpId  string `pulumi:"spId"`
+	// same as `id`.
+	ScimId string `pulumi:"scimId"`
 }
 
 func LookupServicePrincipalOutput(ctx *pulumi.Context, args LookupServicePrincipalOutputArgs, opts ...pulumi.InvokeOption) LookupServicePrincipalResultOutput {
@@ -142,11 +144,12 @@ type LookupServicePrincipalOutputArgs struct {
 	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
 	// Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
 	Home pulumi.StringPtrInput `pulumi:"home"`
-	// The id of the service principal.
+	// The id of the service principal (SCIM ID).
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
 	Repos pulumi.StringPtrInput `pulumi:"repos"`
-	SpId  pulumi.StringPtrInput `pulumi:"spId"`
+	// Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+	ScimId pulumi.StringPtrInput `pulumi:"scimId"`
 }
 
 func (LookupServicePrincipalOutputArgs) ElementType() reflect.Type {
@@ -197,7 +200,7 @@ func (o LookupServicePrincipalResultOutput) Home() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.Home }).(pulumi.StringOutput)
 }
 
-// The id of the service principal.
+// The id of the service principal (SCIM ID).
 func (o LookupServicePrincipalResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -207,8 +210,9 @@ func (o LookupServicePrincipalResultOutput) Repos() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.Repos }).(pulumi.StringOutput)
 }
 
-func (o LookupServicePrincipalResultOutput) SpId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.SpId }).(pulumi.StringOutput)
+// same as `id`.
+func (o LookupServicePrincipalResultOutput) ScimId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.ScimId }).(pulumi.StringOutput)
 }
 
 func init() {

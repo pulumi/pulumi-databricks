@@ -70,6 +70,11 @@ export type CatalogWorkspaceBinding = import("./catalogWorkspaceBinding").Catalo
 export const CatalogWorkspaceBinding: typeof import("./catalogWorkspaceBinding").CatalogWorkspaceBinding = null as any;
 utilities.lazyLoad(exports, ["CatalogWorkspaceBinding"], () => require("./catalogWorkspaceBinding"));
 
+export { CleanRoomsCleanRoomArgs, CleanRoomsCleanRoomState } from "./cleanRoomsCleanRoom";
+export type CleanRoomsCleanRoom = import("./cleanRoomsCleanRoom").CleanRoomsCleanRoom;
+export const CleanRoomsCleanRoom: typeof import("./cleanRoomsCleanRoom").CleanRoomsCleanRoom = null as any;
+utilities.lazyLoad(exports, ["CleanRoomsCleanRoom"], () => require("./cleanRoomsCleanRoom"));
+
 export { ClusterArgs, ClusterState } from "./cluster";
 export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
@@ -155,6 +160,11 @@ export type ExternalLocation = import("./externalLocation").ExternalLocation;
 export const ExternalLocation: typeof import("./externalLocation").ExternalLocation = null as any;
 utilities.lazyLoad(exports, ["ExternalLocation"], () => require("./externalLocation"));
 
+export { ExternalMetadataArgs, ExternalMetadataState } from "./externalMetadata";
+export type ExternalMetadata = import("./externalMetadata").ExternalMetadata;
+export const ExternalMetadata: typeof import("./externalMetadata").ExternalMetadata = null as any;
+utilities.lazyLoad(exports, ["ExternalMetadata"], () => require("./externalMetadata"));
+
 export { FileArgs, FileState } from "./file";
 export type File = import("./file").File;
 export const File: typeof import("./file").File = null as any;
@@ -235,6 +245,16 @@ export const getCatalogs: typeof import("./getCatalogs").getCatalogs = null as a
 export const getCatalogsOutput: typeof import("./getCatalogs").getCatalogsOutput = null as any;
 utilities.lazyLoad(exports, ["getCatalogs","getCatalogsOutput"], () => require("./getCatalogs"));
 
+export { GetCleanRoomsCleanRoomArgs, GetCleanRoomsCleanRoomResult, GetCleanRoomsCleanRoomOutputArgs } from "./getCleanRoomsCleanRoom";
+export const getCleanRoomsCleanRoom: typeof import("./getCleanRoomsCleanRoom").getCleanRoomsCleanRoom = null as any;
+export const getCleanRoomsCleanRoomOutput: typeof import("./getCleanRoomsCleanRoom").getCleanRoomsCleanRoomOutput = null as any;
+utilities.lazyLoad(exports, ["getCleanRoomsCleanRoom","getCleanRoomsCleanRoomOutput"], () => require("./getCleanRoomsCleanRoom"));
+
+export { GetCleanRoomsCleanRoomsResult } from "./getCleanRoomsCleanRooms";
+export const getCleanRoomsCleanRooms: typeof import("./getCleanRoomsCleanRooms").getCleanRoomsCleanRooms = null as any;
+export const getCleanRoomsCleanRoomsOutput: typeof import("./getCleanRoomsCleanRooms").getCleanRoomsCleanRoomsOutput = null as any;
+utilities.lazyLoad(exports, ["getCleanRoomsCleanRooms","getCleanRoomsCleanRoomsOutput"], () => require("./getCleanRoomsCleanRooms"));
+
 export { GetClusterArgs, GetClusterResult, GetClusterOutputArgs } from "./getCluster";
 export const getCluster: typeof import("./getCluster").getCluster = null as any;
 export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
@@ -305,6 +325,16 @@ export const getExternalLocations: typeof import("./getExternalLocations").getEx
 export const getExternalLocationsOutput: typeof import("./getExternalLocations").getExternalLocationsOutput = null as any;
 utilities.lazyLoad(exports, ["getExternalLocations","getExternalLocationsOutput"], () => require("./getExternalLocations"));
 
+export { GetExternalMetadataArgs, GetExternalMetadataResult, GetExternalMetadataOutputArgs } from "./getExternalMetadata";
+export const getExternalMetadata: typeof import("./getExternalMetadata").getExternalMetadata = null as any;
+export const getExternalMetadataOutput: typeof import("./getExternalMetadata").getExternalMetadataOutput = null as any;
+utilities.lazyLoad(exports, ["getExternalMetadata","getExternalMetadataOutput"], () => require("./getExternalMetadata"));
+
+export { GetExternalMetadatasResult } from "./getExternalMetadatas";
+export const getExternalMetadatas: typeof import("./getExternalMetadatas").getExternalMetadatas = null as any;
+export const getExternalMetadatasOutput: typeof import("./getExternalMetadatas").getExternalMetadatasOutput = null as any;
+utilities.lazyLoad(exports, ["getExternalMetadatas","getExternalMetadatasOutput"], () => require("./getExternalMetadatas"));
+
 export { GetFunctionsArgs, GetFunctionsResult, GetFunctionsOutputArgs } from "./getFunctions";
 export const getFunctions: typeof import("./getFunctions").getFunctions = null as any;
 export const getFunctionsOutput: typeof import("./getFunctions").getFunctionsOutput = null as any;
@@ -334,6 +364,16 @@ export { GetJobsArgs, GetJobsResult, GetJobsOutputArgs } from "./getJobs";
 export const getJobs: typeof import("./getJobs").getJobs = null as any;
 export const getJobsOutput: typeof import("./getJobs").getJobsOutput = null as any;
 utilities.lazyLoad(exports, ["getJobs","getJobsOutput"], () => require("./getJobs"));
+
+export { GetMaterializedFeaturesFeatureTagArgs, GetMaterializedFeaturesFeatureTagResult, GetMaterializedFeaturesFeatureTagOutputArgs } from "./getMaterializedFeaturesFeatureTag";
+export const getMaterializedFeaturesFeatureTag: typeof import("./getMaterializedFeaturesFeatureTag").getMaterializedFeaturesFeatureTag = null as any;
+export const getMaterializedFeaturesFeatureTagOutput: typeof import("./getMaterializedFeaturesFeatureTag").getMaterializedFeaturesFeatureTagOutput = null as any;
+utilities.lazyLoad(exports, ["getMaterializedFeaturesFeatureTag","getMaterializedFeaturesFeatureTagOutput"], () => require("./getMaterializedFeaturesFeatureTag"));
+
+export { GetMaterializedFeaturesFeatureTagsResult } from "./getMaterializedFeaturesFeatureTags";
+export const getMaterializedFeaturesFeatureTags: typeof import("./getMaterializedFeaturesFeatureTags").getMaterializedFeaturesFeatureTags = null as any;
+export const getMaterializedFeaturesFeatureTagsOutput: typeof import("./getMaterializedFeaturesFeatureTags").getMaterializedFeaturesFeatureTagsOutput = null as any;
+utilities.lazyLoad(exports, ["getMaterializedFeaturesFeatureTags","getMaterializedFeaturesFeatureTagsOutput"], () => require("./getMaterializedFeaturesFeatureTags"));
 
 export { GetMetastoreArgs, GetMetastoreResult, GetMetastoreOutputArgs } from "./getMetastore";
 export const getMetastore: typeof import("./getMetastore").getMetastore = null as any;
@@ -614,6 +654,11 @@ export { LibraryArgs, LibraryState } from "./library";
 export type Library = import("./library").Library;
 export const Library: typeof import("./library").Library = null as any;
 utilities.lazyLoad(exports, ["Library"], () => require("./library"));
+
+export { MaterializedFeaturesFeatureTagArgs, MaterializedFeaturesFeatureTagState } from "./materializedFeaturesFeatureTag";
+export type MaterializedFeaturesFeatureTag = import("./materializedFeaturesFeatureTag").MaterializedFeaturesFeatureTag;
+export const MaterializedFeaturesFeatureTag: typeof import("./materializedFeaturesFeatureTag").MaterializedFeaturesFeatureTag = null as any;
+utilities.lazyLoad(exports, ["MaterializedFeaturesFeatureTag"], () => require("./materializedFeaturesFeatureTag"));
 
 export { MetastoreArgs, MetastoreState } from "./metastore";
 export type Metastore = import("./metastore").Metastore;
@@ -1003,6 +1048,8 @@ const _module = {
                 return new Catalog(name, <any>undefined, { urn })
             case "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding":
                 return new CatalogWorkspaceBinding(name, <any>undefined, { urn })
+            case "databricks:index/cleanRoomsCleanRoom:CleanRoomsCleanRoom":
+                return new CleanRoomsCleanRoom(name, <any>undefined, { urn })
             case "databricks:index/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
             case "databricks:index/clusterPolicy:ClusterPolicy":
@@ -1037,6 +1084,8 @@ const _module = {
                 return new Entitlements(name, <any>undefined, { urn })
             case "databricks:index/externalLocation:ExternalLocation":
                 return new ExternalLocation(name, <any>undefined, { urn })
+            case "databricks:index/externalMetadata:ExternalMetadata":
+                return new ExternalMetadata(name, <any>undefined, { urn })
             case "databricks:index/file:File":
                 return new File(name, <any>undefined, { urn })
             case "databricks:index/gitCredential:GitCredential":
@@ -1067,6 +1116,8 @@ const _module = {
                 return new LakehouseMonitor(name, <any>undefined, { urn })
             case "databricks:index/library:Library":
                 return new Library(name, <any>undefined, { urn })
+            case "databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag":
+                return new MaterializedFeaturesFeatureTag(name, <any>undefined, { urn })
             case "databricks:index/metastore:Metastore":
                 return new Metastore(name, <any>undefined, { urn })
             case "databricks:index/metastoreAssignment:MetastoreAssignment":
@@ -1223,6 +1274,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/budget", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/budgetPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/catalog", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/catalogWorkspaceBinding", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/cleanRoomsCleanRoom", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/cluster", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/clusterPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/complianceSecurityProfileWorkspaceSetting", _module)
@@ -1240,6 +1292,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/disableLegacyFeatures
 pulumi.runtime.registerResourceModule("databricks", "index/enhancedSecurityMonitoringWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/entitlements", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/externalLocation", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/externalMetadata", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/file", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/gitCredential", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/globalInitScript", _module)
@@ -1255,6 +1308,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/ipAccessList", _modul
 pulumi.runtime.registerResourceModule("databricks", "index/job", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/lakehouseMonitor", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/library", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/materializedFeaturesFeatureTag", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/metastore", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/metastoreAssignment", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/metastoreDataAccess", _module)

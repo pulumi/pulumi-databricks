@@ -54,14 +54,14 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+     * Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Lakeflow Declarative Pipelines system will automatically create the storage location under the catalog and schema.
      * 
      */
     @Import(name="gatewayStorageName")
     private @Nullable Output<String> gatewayStorageName;
 
     /**
-     * @return Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+     * @return Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Lakeflow Declarative Pipelines system will automatically create the storage location under the catalog and schema.
      * 
      */
     public Optional<Output<String>> gatewayStorageName() {
@@ -163,7 +163,7 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param gatewayStorageName Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+         * @param gatewayStorageName Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Lakeflow Declarative Pipelines system will automatically create the storage location under the catalog and schema.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param gatewayStorageName Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+         * @param gatewayStorageName Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Lakeflow Declarative Pipelines system will automatically create the storage location under the catalog and schema.
          * 
          * @return builder
          * 

@@ -65,10 +65,11 @@ public final class GetAlertV2Result {
      */
     private @Nullable String queryText;
     /**
-     * @return (string) - The run as username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+     * @return (string) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      * 
      */
-    private String runAsUserName;
+    private @Nullable String runAsUserName;
     /**
      * @return (CronSchedule) -
      * 
@@ -157,11 +158,12 @@ public final class GetAlertV2Result {
         return Optional.ofNullable(this.queryText);
     }
     /**
-     * @return (string) - The run as username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+     * @return (string) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      * 
      */
-    public String runAsUserName() {
-        return this.runAsUserName;
+    public Optional<String> runAsUserName() {
+        return Optional.ofNullable(this.runAsUserName);
     }
     /**
      * @return (CronSchedule) -
@@ -204,7 +206,7 @@ public final class GetAlertV2Result {
         private String ownerUserName;
         private @Nullable String parentPath;
         private @Nullable String queryText;
-        private String runAsUserName;
+        private @Nullable String runAsUserName;
         private @Nullable GetAlertV2Schedule schedule;
         private String updateTime;
         private @Nullable String warehouseId;
@@ -296,10 +298,8 @@ public final class GetAlertV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder runAsUserName(String runAsUserName) {
-            if (runAsUserName == null) {
-              throw new MissingRequiredPropertyException("GetAlertV2Result", "runAsUserName");
-            }
+        public Builder runAsUserName(@Nullable String runAsUserName) {
+
             this.runAsUserName = runAsUserName;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -76,6 +77,21 @@ public final class OnlineStoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The number of read replicas for the online store. Defaults to 0
+     * 
+     */
+    @Import(name="readReplicaCount")
+    private @Nullable Output<Integer> readReplicaCount;
+
+    /**
+     * @return The number of read replicas for the online store. Defaults to 0
+     * 
+     */
+    public Optional<Output<Integer>> readReplicaCount() {
+        return Optional.ofNullable(this.readReplicaCount);
+    }
+
+    /**
      * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      * 
      */
@@ -97,6 +113,7 @@ public final class OnlineStoreState extends com.pulumi.resources.ResourceArgs {
         this.creationTime = $.creationTime;
         this.creator = $.creator;
         this.name = $.name;
+        this.readReplicaCount = $.readReplicaCount;
         this.state = $.state;
     }
 
@@ -200,6 +217,27 @@ public final class OnlineStoreState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param readReplicaCount The number of read replicas for the online store. Defaults to 0
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readReplicaCount(@Nullable Output<Integer> readReplicaCount) {
+            $.readReplicaCount = readReplicaCount;
+            return this;
+        }
+
+        /**
+         * @param readReplicaCount The number of read replicas for the online store. Defaults to 0
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readReplicaCount(Integer readReplicaCount) {
+            return readReplicaCount(Output.of(readReplicaCount));
         }
 
         /**

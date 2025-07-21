@@ -56,7 +56,7 @@ export class OnlineStore extends pulumi.CustomResource {
     /**
      * The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
-    public readonly capacity!: pulumi.Output<string | undefined>;
+    public readonly capacity!: pulumi.Output<string>;
     /**
      * (string) - The timestamp when the online store was created
      */
@@ -70,6 +70,10 @@ export class OnlineStore extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The number of read replicas for the online store. Defaults to 0
+     */
+    public readonly readReplicaCount!: pulumi.Output<number | undefined>;
+    /**
      * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -81,7 +85,7 @@ export class OnlineStore extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: OnlineStoreArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: OnlineStoreArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OnlineStoreArgs | OnlineStoreState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -91,11 +95,16 @@ export class OnlineStore extends pulumi.CustomResource {
             resourceInputs["creationTime"] = state ? state.creationTime : undefined;
             resourceInputs["creator"] = state ? state.creator : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["readReplicaCount"] = state ? state.readReplicaCount : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as OnlineStoreArgs | undefined;
+            if ((!args || args.capacity === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'capacity'");
+            }
             resourceInputs["capacity"] = args ? args.capacity : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["readReplicaCount"] = args ? args.readReplicaCount : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -126,6 +135,10 @@ export interface OnlineStoreState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The number of read replicas for the online store. Defaults to 0
+     */
+    readReplicaCount?: pulumi.Input<number>;
+    /**
      * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     state?: pulumi.Input<string>;
@@ -138,9 +151,13 @@ export interface OnlineStoreArgs {
     /**
      * The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
-    capacity?: pulumi.Input<string>;
+    capacity: pulumi.Input<string>;
     /**
      * The name of the online store. This is the unique identifier for the online store
      */
     name?: pulumi.Input<string>;
+    /**
+     * The number of read replicas for the online store. Defaults to 0
+     */
+    readReplicaCount?: pulumi.Input<number>;
 }

@@ -193,15 +193,15 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ## Delta Live Tables usage
+ * ## Lakeflow Declarative Pipelines usage
  *
- * There are four assignable [permission levels](https://docs.databricks.com/security/access-control/dlt-acl.html#delta-live-tables-permissions) for databricks_pipeline: `CAN_VIEW`, `CAN_RUN`, `CAN_MANAGE`, and `IS_OWNER`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
+ * There are four assignable [permission levels](https://docs.databricks.com/aws/en/security/auth/access-control#lakeflow-declarative-pipelines-acls) for databricks_pipeline: `CAN_VIEW`, `CAN_RUN`, `CAN_MANAGE`, and `IS_OWNER`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
  *
- * - The creator of a DLT Pipeline has `IS_OWNER` permission. Destroying `databricks.Permissions` resource for a pipeline would revert ownership to the creator.
- * - A DLT pipeline must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the pipeline. Nothing would change, per se, if the pipeline was created through Pulumi.
- * - A DLT pipeline cannot have a group as an owner.
- * - DLT Pipelines triggered through _Start_ assume the permissions of the pipeline owner and not the user, and service principal who issued Run Now.
- * - Read [main documentation](https://docs.databricks.com/security/access-control/dlt-acl.html) for additional detail.
+ * - The creator of a Lakeflow Declarative Pipeline has `IS_OWNER` permission. Destroying `databricks.Permissions` resource for a pipeline would revert ownership to the creator.
+ * - A Lakeflow Declarative Pipeline must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the pipeline. Nothing would change, per se, if the pipeline was created through Pulumi.
+ * - A Lakeflow Declarative Pipeline cannot have a group as an owner.
+ * - Lakeflow Declarative Pipelines triggered through _Start_ assume the permissions of the pipeline owner and not the user, and service principal who issued Run Now.
+ * - Read [main documentation](https://docs.databricks.com/aws/en/security/auth/access-control#lakeflow-declarative-pipelines-acls) for additional detail.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -210,7 +210,7 @@ import * as utilities from "./utilities";
  *
  * const me = databricks.getCurrentUser({});
  * const eng = new databricks.Group("eng", {displayName: "Engineering"});
- * const dltDemo = new databricks.Notebook("dlt_demo", {
+ * const ldpDemo = new databricks.Notebook("ldp_demo", {
  *     contentBase64: std.base64encode({
  *         input: `import dlt
  * json_path = "/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json"
@@ -222,10 +222,10 @@ import * as utilities from "./utilities";
  * `,
  *     }).then(invoke => invoke.result),
  *     language: "PYTHON",
- *     path: me.then(me => `${me.home}/DLT_Demo`),
+ *     path: me.then(me => `${me.home}/ldp_demo`),
  * });
  * const _this = new databricks.Pipeline("this", {
- *     name: me.then(me => `DLT Demo Pipeline (${me.alphanumeric})`),
+ *     name: me.then(me => `LDP Demo Pipeline (${me.alphanumeric})`),
  *     storage: "/test/tf-pipeline",
  *     configuration: {
  *         key1: "value1",
@@ -233,7 +233,7 @@ import * as utilities from "./utilities";
  *     },
  *     libraries: [{
  *         notebook: {
- *             path: dltDemo.id,
+ *             path: ldpDemo.id,
  *         },
  *     }],
  *     continuous: false,
@@ -242,7 +242,7 @@ import * as utilities from "./utilities";
  *         excludes: ["com.databricks.exclude"],
  *     },
  * });
- * const dltUsage = new databricks.Permissions("dlt_usage", {
+ * const ldpUsage = new databricks.Permissions("ldp_usage", {
  *     pipelineId: _this.id,
  *     accessControls: [
  *         {
@@ -760,7 +760,32 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ## SQL Alert usage
+ * ## SQL Alert (AlertV2) usage
+ *
+ * [Alert V2](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) which is the new version of SQL Alert have 4 possible permission levels: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const auto = new databricks.Group("auto", {displayName: "Automation"});
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const appUsage = new databricks.Permissions("app_usage", {
+ *     alertV2Id: "12345",
+ *     accessControls: [
+ *         {
+ *             groupName: auto.displayName,
+ *             permissionLevel: "CAN_RUN",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_EDIT",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## SQL Alert (legacy) usage
  *
  * [SQL alerts](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
  *
@@ -796,6 +821,30 @@ import * as utilities from "./utilities";
  * const eng = new databricks.Group("eng", {displayName: "Engineering"});
  * const appUsage = new databricks.Permissions("app_usage", {
  *     appName: "myapp",
+ *     accessControls: [
+ *         {
+ *             groupName: "users",
+ *             permissionLevel: "CAN_USE",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_MANAGE",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Lakebase Database Instances usage
+ *
+ * [Databricks Lakebase](https://docs.databricks.com/aws/en/oltp/) have two possible permissions: `CAN_USE` and `CAN_MANAGE`:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const appUsage = new databricks.Permissions("app_usage", {
+ *     databaseInstanceName: "my_database",
  *     accessControls: [
  *         {
  *             groupName: "users",
@@ -862,11 +911,13 @@ export class Permissions extends pulumi.CustomResource {
     }
 
     public readonly accessControls!: pulumi.Output<outputs.PermissionsAccessControl[]>;
+    public readonly alertV2Id!: pulumi.Output<string | undefined>;
     public readonly appName!: pulumi.Output<string | undefined>;
     public readonly authorization!: pulumi.Output<string | undefined>;
     public readonly clusterId!: pulumi.Output<string | undefined>;
     public readonly clusterPolicyId!: pulumi.Output<string | undefined>;
     public readonly dashboardId!: pulumi.Output<string | undefined>;
+    public readonly databaseInstanceName!: pulumi.Output<string | undefined>;
     public readonly directoryId!: pulumi.Output<string | undefined>;
     public readonly directoryPath!: pulumi.Output<string | undefined>;
     public readonly experimentId!: pulumi.Output<string | undefined>;
@@ -905,11 +956,13 @@ export class Permissions extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PermissionsState | undefined;
             resourceInputs["accessControls"] = state ? state.accessControls : undefined;
+            resourceInputs["alertV2Id"] = state ? state.alertV2Id : undefined;
             resourceInputs["appName"] = state ? state.appName : undefined;
             resourceInputs["authorization"] = state ? state.authorization : undefined;
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
             resourceInputs["clusterPolicyId"] = state ? state.clusterPolicyId : undefined;
             resourceInputs["dashboardId"] = state ? state.dashboardId : undefined;
+            resourceInputs["databaseInstanceName"] = state ? state.databaseInstanceName : undefined;
             resourceInputs["directoryId"] = state ? state.directoryId : undefined;
             resourceInputs["directoryPath"] = state ? state.directoryPath : undefined;
             resourceInputs["experimentId"] = state ? state.experimentId : undefined;
@@ -936,11 +989,13 @@ export class Permissions extends pulumi.CustomResource {
                 throw new Error("Missing required property 'accessControls'");
             }
             resourceInputs["accessControls"] = args ? args.accessControls : undefined;
+            resourceInputs["alertV2Id"] = args ? args.alertV2Id : undefined;
             resourceInputs["appName"] = args ? args.appName : undefined;
             resourceInputs["authorization"] = args ? args.authorization : undefined;
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["clusterPolicyId"] = args ? args.clusterPolicyId : undefined;
             resourceInputs["dashboardId"] = args ? args.dashboardId : undefined;
+            resourceInputs["databaseInstanceName"] = args ? args.databaseInstanceName : undefined;
             resourceInputs["directoryId"] = args ? args.directoryId : undefined;
             resourceInputs["directoryPath"] = args ? args.directoryPath : undefined;
             resourceInputs["experimentId"] = args ? args.experimentId : undefined;
@@ -972,11 +1027,13 @@ export class Permissions extends pulumi.CustomResource {
  */
 export interface PermissionsState {
     accessControls?: pulumi.Input<pulumi.Input<inputs.PermissionsAccessControl>[]>;
+    alertV2Id?: pulumi.Input<string>;
     appName?: pulumi.Input<string>;
     authorization?: pulumi.Input<string>;
     clusterId?: pulumi.Input<string>;
     clusterPolicyId?: pulumi.Input<string>;
     dashboardId?: pulumi.Input<string>;
+    databaseInstanceName?: pulumi.Input<string>;
     directoryId?: pulumi.Input<string>;
     directoryPath?: pulumi.Input<string>;
     experimentId?: pulumi.Input<string>;
@@ -1007,11 +1064,13 @@ export interface PermissionsState {
  */
 export interface PermissionsArgs {
     accessControls: pulumi.Input<pulumi.Input<inputs.PermissionsAccessControl>[]>;
+    alertV2Id?: pulumi.Input<string>;
     appName?: pulumi.Input<string>;
     authorization?: pulumi.Input<string>;
     clusterId?: pulumi.Input<string>;
     clusterPolicyId?: pulumi.Input<string>;
     dashboardId?: pulumi.Input<string>;
+    databaseInstanceName?: pulumi.Input<string>;
     directoryId?: pulumi.Input<string>;
     directoryPath?: pulumi.Input<string>;
     experimentId?: pulumi.Input<string>;

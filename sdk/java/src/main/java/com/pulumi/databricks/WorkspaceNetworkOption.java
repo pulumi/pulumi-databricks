@@ -15,6 +15,54 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Workspace network options allow configuration of network settings for Databricks workspaces by selecting which network policy to associate with the workspace.
+ * 
+ * Each workspace is always associated with exactly one network policy that controls which network destinations can be accessed from the Databricks environment. By default, workspaces are associated with the `default-policy` network policy.
+ * 
+ * This resource has the following characteristics:
+ * 
+ * - You cannot create or delete a workspace&#39;s network option
+ * - You can only update it to associate the workspace with a different policy
+ * - This resource is used to change the network policy assignment for existing workspaces
+ * 
+ * &gt; **Note** This resource can only be used with an account-level provider!
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.WorkspaceNetworkOption;
+ * import com.pulumi.databricks.WorkspaceNetworkOptionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleWorkspaceNetworkOption = new WorkspaceNetworkOption("exampleWorkspaceNetworkOption", WorkspaceNetworkOptionArgs.builder()
+ *             .workspaceId("9999999999999999")
+ *             .networkPolicyId("default-policy")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.

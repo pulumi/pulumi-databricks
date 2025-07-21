@@ -32,7 +32,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Use `databricks.Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
+ * Use `databricks.Pipeline` to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
  * 
  * &gt; This resource can only be used with a workspace-level provider!
  * 
@@ -69,9 +69,9 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var dltDemo = new Notebook("dltDemo");
+ *         var ldpDemo = new Notebook("ldpDemo");
  * 
- *         var dltDemoRepo = new Repo("dltDemoRepo");
+ *         var ldpDemoRepo = new Repo("ldpDemoRepo");
  * 
  *         var this_ = new Pipeline("this", PipelineArgs.builder()
  *             .name("Pipeline Name")
@@ -94,17 +94,17 @@ import javax.annotation.Nullable;
  *             .libraries(            
  *                 PipelineLibraryArgs.builder()
  *                     .notebook(PipelineLibraryNotebookArgs.builder()
- *                         .path(dltDemo.id())
+ *                         .path(ldpDemo.id())
  *                         .build())
  *                     .build(),
  *                 PipelineLibraryArgs.builder()
  *                     .file(PipelineLibraryFileArgs.builder()
- *                         .path(dltDemoRepo.path().applyValue(_path -> String.format("%s/pipeline.sql", _path)))
+ *                         .path(ldpDemoRepo.path().applyValue(_path -> String.format("%s/pipeline.sql", _path)))
  *                         .build())
  *                     .build(),
  *                 PipelineLibraryArgs.builder()
  *                     .glob(PipelineLibraryGlobArgs.builder()
- *                         .include(dltDemoRepo.path().applyValue(_path -> String.format("%s/subfolder/**", _path)))
+ *                         .include(ldpDemoRepo.path().applyValue(_path -> String.format("%s/subfolder/**", _path)))
  *                         .build())
  *                     .build())
  *             .continuous(false)
@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  * The following resources are often used in the same context:
  * 
  * * End to end workspace management guide.
- * * databricks.getPipelines to retrieve [Delta Live Tables](https://docs.databricks.com/aws/en/dlt) pipeline data.
+ * * databricks.getPipelines to retrieve [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) data.
  * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
  * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
  * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -176,14 +176,14 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowDuplicateNames);
     }
     /**
-     * optional string specifying ID of the budget policy for this DLT pipeline.
+     * optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
      * 
      */
     @Export(name="budgetPolicyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> budgetPolicyId;
 
     /**
-     * @return optional string specifying ID of the budget policy for this DLT pipeline.
+     * @return optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
      * 
      */
     public Output<Optional<String>> budgetPolicyId() {
@@ -210,14 +210,14 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return this.cause;
     }
     /**
-     * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+     * optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
      * 
      */
     @Export(name="channel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> channel;
 
     /**
-     * @return optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+     * @return optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
      * 
      */
     public Output<Optional<String>> channel() {
@@ -230,14 +230,14 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
-     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
      * 
      */
     @Export(name="clusters", refs={List.class,PipelineCluster.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PipelineCluster>> clusters;
 
     /**
-     * @return blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+     * @return blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
      * 
      */
     public Output<Optional<List<PipelineCluster>>> clusters() {
@@ -326,14 +326,14 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.environment);
     }
     /**
-     * an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+     * an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
      * 
      */
     @Export(name="eventLog", refs={PipelineEventLog.class}, tree="[0]")
     private Output</* @Nullable */ PipelineEventLog> eventLog;
 
     /**
-     * @return an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+     * @return an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
      * 
      */
     public Output<Optional<PipelineEventLog>> eventLog() {
@@ -492,14 +492,14 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.schema);
     }
     /**
-     * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+     * An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
      * 
      */
     @Export(name="serverless", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> serverless;
 
     /**
-     * @return An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+     * @return An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
      * 
      */
     public Output<Optional<Boolean>> serverless() {
@@ -560,14 +560,14 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.trigger);
     }
     /**
-     * URL of the DLT pipeline on the given workspace.
+     * URL of the Lakeflow Declarative Pipeline on the given workspace.
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return URL of the DLT pipeline on the given workspace.
+     * @return URL of the Lakeflow Declarative Pipeline on the given workspace.
      * 
      */
     public Output<String> url() {

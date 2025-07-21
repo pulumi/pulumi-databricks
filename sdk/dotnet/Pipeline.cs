@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// Use `databricks.Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
+    /// Use `databricks.Pipeline` to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!
     /// 
@@ -24,9 +24,9 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dltDemo = new Databricks.Notebook("dlt_demo");
+    ///     var ldpDemo = new Databricks.Notebook("ldp_demo");
     /// 
-    ///     var dltDemoRepo = new Databricks.Repo("dlt_demo");
+    ///     var ldpDemoRepo = new Databricks.Repo("ldp_demo");
     /// 
     ///     var @this = new Databricks.Pipeline("this", new()
     ///     {
@@ -64,21 +64,21 @@ namespace Pulumi.Databricks
     ///             {
     ///                 Notebook = new Databricks.Inputs.PipelineLibraryNotebookArgs
     ///                 {
-    ///                     Path = dltDemo.Id,
+    ///                     Path = ldpDemo.Id,
     ///                 },
     ///             },
     ///             new Databricks.Inputs.PipelineLibraryArgs
     ///             {
     ///                 File = new Databricks.Inputs.PipelineLibraryFileArgs
     ///                 {
-    ///                     Path = dltDemoRepo.Path.Apply(path =&gt; $"{path}/pipeline.sql"),
+    ///                     Path = ldpDemoRepo.Path.Apply(path =&gt; $"{path}/pipeline.sql"),
     ///                 },
     ///             },
     ///             new Databricks.Inputs.PipelineLibraryArgs
     ///             {
     ///                 Glob = new Databricks.Inputs.PipelineLibraryGlobArgs
     ///                 {
-    ///                     Include = dltDemoRepo.Path.Apply(path =&gt; $"{path}/subfolder/**"),
+    ///                     Include = ldpDemoRepo.Path.Apply(path =&gt; $"{path}/subfolder/**"),
     ///                 },
     ///             },
     ///         },
@@ -111,7 +111,7 @@ namespace Pulumi.Databricks
     /// The following resources are often used in the same context:
     /// 
     /// * End to end workspace management guide.
-    /// * databricks.getPipelines to retrieve [Delta Live Tables](https://docs.databricks.com/aws/en/dlt) pipeline data.
+    /// * databricks.getPipelines to retrieve [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) data.
     /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
     /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
     /// * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -148,7 +148,7 @@ namespace Pulumi.Databricks
         public Output<bool?> AllowDuplicateNames { get; private set; } = null!;
 
         /// <summary>
-        /// optional string specifying ID of the budget policy for this DLT pipeline.
+        /// optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
         /// </summary>
         [Output("budgetPolicyId")]
         public Output<string?> BudgetPolicyId { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.Databricks
         public Output<string> Cause { get; private set; } = null!;
 
         /// <summary>
-        /// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+        /// optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         /// </summary>
         [Output("channel")]
         public Output<string?> Channel { get; private set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.Databricks
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+        /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         /// </summary>
         [Output("clusters")]
         public Output<ImmutableArray<Outputs.PipelineCluster>> Clusters { get; private set; } = null!;
@@ -214,7 +214,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.PipelineEnvironment?> Environment { get; private set; } = null!;
 
         /// <summary>
-        /// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+        /// an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
         /// </summary>
         [Output("eventLog")]
         public Output<Outputs.PipelineEventLog?> EventLog { get; private set; } = null!;
@@ -289,7 +289,7 @@ namespace Pulumi.Databricks
         public Output<string?> Schema { get; private set; } = null!;
 
         /// <summary>
-        /// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        /// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         /// </summary>
         [Output("serverless")]
         public Output<bool?> Serverless { get; private set; } = null!;
@@ -319,7 +319,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.PipelineTrigger?> Trigger { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the DLT pipeline on the given workspace.
+        /// URL of the Lakeflow Declarative Pipeline on the given workspace.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -377,7 +377,7 @@ namespace Pulumi.Databricks
         public Input<bool>? AllowDuplicateNames { get; set; }
 
         /// <summary>
-        /// optional string specifying ID of the budget policy for this DLT pipeline.
+        /// optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
         /// </summary>
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
@@ -392,7 +392,7 @@ namespace Pulumi.Databricks
         public Input<string>? Cause { get; set; }
 
         /// <summary>
-        /// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+        /// optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         /// </summary>
         [Input("channel")]
         public Input<string>? Channel { get; set; }
@@ -404,7 +404,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.PipelineClusterArgs>? _clusters;
 
         /// <summary>
-        /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+        /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         /// </summary>
         public InputList<Inputs.PipelineClusterArgs> Clusters
         {
@@ -455,7 +455,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.PipelineEnvironmentArgs>? Environment { get; set; }
 
         /// <summary>
-        /// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+        /// an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
         /// </summary>
         [Input("eventLog")]
         public Input<Inputs.PipelineEventLogArgs>? EventLog { get; set; }
@@ -546,7 +546,7 @@ namespace Pulumi.Databricks
         public Input<string>? Schema { get; set; }
 
         /// <summary>
-        /// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        /// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         /// </summary>
         [Input("serverless")]
         public Input<bool>? Serverless { get; set; }
@@ -582,7 +582,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.PipelineTriggerArgs>? Trigger { get; set; }
 
         /// <summary>
-        /// URL of the DLT pipeline on the given workspace.
+        /// URL of the Lakeflow Declarative Pipeline on the given workspace.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
@@ -602,7 +602,7 @@ namespace Pulumi.Databricks
         public Input<bool>? AllowDuplicateNames { get; set; }
 
         /// <summary>
-        /// optional string specifying ID of the budget policy for this DLT pipeline.
+        /// optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
         /// </summary>
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
@@ -617,7 +617,7 @@ namespace Pulumi.Databricks
         public Input<string>? Cause { get; set; }
 
         /// <summary>
-        /// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+        /// optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         /// </summary>
         [Input("channel")]
         public Input<string>? Channel { get; set; }
@@ -629,7 +629,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.PipelineClusterGetArgs>? _clusters;
 
         /// <summary>
-        /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+        /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         /// </summary>
         public InputList<Inputs.PipelineClusterGetArgs> Clusters
         {
@@ -680,7 +680,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.PipelineEnvironmentGetArgs>? Environment { get; set; }
 
         /// <summary>
-        /// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+        /// an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
         /// </summary>
         [Input("eventLog")]
         public Input<Inputs.PipelineEventLogGetArgs>? EventLog { get; set; }
@@ -771,7 +771,7 @@ namespace Pulumi.Databricks
         public Input<string>? Schema { get; set; }
 
         /// <summary>
-        /// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        /// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         /// </summary>
         [Input("serverless")]
         public Input<bool>? Serverless { get; set; }
@@ -807,7 +807,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.PipelineTriggerGetArgs>? Trigger { get; set; }
 
         /// <summary>
-        /// URL of the DLT pipeline on the given workspace.
+        /// URL of the Lakeflow Declarative Pipeline on the given workspace.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

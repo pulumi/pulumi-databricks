@@ -47,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Catalog{}
 	case "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding":
 		r = &CatalogWorkspaceBinding{}
+	case "databricks:index/cleanRoomsCleanRoom:CleanRoomsCleanRoom":
+		r = &CleanRoomsCleanRoom{}
 	case "databricks:index/cluster:Cluster":
 		r = &Cluster{}
 	case "databricks:index/clusterPolicy:ClusterPolicy":
@@ -81,6 +83,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Entitlements{}
 	case "databricks:index/externalLocation:ExternalLocation":
 		r = &ExternalLocation{}
+	case "databricks:index/externalMetadata:ExternalMetadata":
+		r = &ExternalMetadata{}
 	case "databricks:index/file:File":
 		r = &File{}
 	case "databricks:index/gitCredential:GitCredential":
@@ -111,6 +115,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LakehouseMonitor{}
 	case "databricks:index/library:Library":
 		r = &Library{}
+	case "databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag":
+		r = &MaterializedFeaturesFeatureTag{}
 	case "databricks:index/metastore:Metastore":
 		r = &Metastore{}
 	case "databricks:index/metastoreAssignment:MetastoreAssignment":
@@ -347,6 +353,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/cleanRoomsCleanRoom",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/cluster",
 		&module{version},
 	)
@@ -432,6 +443,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/externalMetadata",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/file",
 		&module{version},
 	)
@@ -503,6 +519,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/library",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/materializedFeaturesFeatureTag",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

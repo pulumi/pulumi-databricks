@@ -108,6 +108,23 @@ public final class GetAlertV2Args extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * (string) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * 
+     */
+    @Import(name="runAsUserName")
+    private @Nullable Output<String> runAsUserName;
+
+    /**
+     * @return (string) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * 
+     */
+    public Optional<Output<String>> runAsUserName() {
+        return Optional.ofNullable(this.runAsUserName);
+    }
+
+    /**
      * (CronSchedule) -
      * 
      */
@@ -146,6 +163,7 @@ public final class GetAlertV2Args extends com.pulumi.resources.InvokeArgs {
         this.evaluation = $.evaluation;
         this.parentPath = $.parentPath;
         this.queryText = $.queryText;
+        this.runAsUserName = $.runAsUserName;
         this.schedule = $.schedule;
         this.warehouseId = $.warehouseId;
     }
@@ -292,6 +310,29 @@ public final class GetAlertV2Args extends com.pulumi.resources.InvokeArgs {
          */
         public Builder queryText(String queryText) {
             return queryText(Output.of(queryText));
+        }
+
+        /**
+         * @param runAsUserName (string) - The run as username or application ID of service principal.
+         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runAsUserName(@Nullable Output<String> runAsUserName) {
+            $.runAsUserName = runAsUserName;
+            return this;
+        }
+
+        /**
+         * @param runAsUserName (string) - The run as username or application ID of service principal.
+         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runAsUserName(String runAsUserName) {
+            return runAsUserName(Output.of(runAsUserName));
         }
 
         /**

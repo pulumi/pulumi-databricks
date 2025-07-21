@@ -13,23 +13,27 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingProvisionedThroughputAiGatewayRateLimit
     {
-        public readonly int Calls;
+        public readonly int? Calls;
         /// <summary>
         /// The key field for a tag.
         /// </summary>
         public readonly string? Key;
+        public readonly string? Principal;
         public readonly string RenewalPeriod;
 
         [OutputConstructor]
         private ModelServingProvisionedThroughputAiGatewayRateLimit(
-            int calls,
+            int? calls,
 
             string? key,
+
+            string? principal,
 
             string renewalPeriod)
         {
             Calls = calls;
             Key = key;
+            Principal = principal;
             RenewalPeriod = renewalPeriod;
         }
     }

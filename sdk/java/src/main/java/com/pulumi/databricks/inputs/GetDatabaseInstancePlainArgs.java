@@ -4,8 +4,10 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetDatabaseInstanceParentInstanceRef;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,6 +34,21 @@ public final class GetDatabaseInstancePlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
+     * (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+     * 
+     */
+    @Import(name="enableReadableSecondaries")
+    private @Nullable Boolean enableReadableSecondaries;
+
+    /**
+     * @return (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+     * 
+     */
+    public Optional<Boolean> enableReadableSecondaries() {
+        return Optional.ofNullable(this.enableReadableSecondaries);
+    }
+
+    /**
      * The name of the instance. This is the unique identifier for the instance
      * 
      */
@@ -44,6 +61,63 @@ public final class GetDatabaseInstancePlainArgs extends com.pulumi.resources.Inv
      */
     public String name() {
         return this.name;
+    }
+
+    /**
+     * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
+     * 
+     */
+    @Import(name="nodeCount")
+    private @Nullable Integer nodeCount;
+
+    /**
+     * @return (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
+     * 
+     */
+    public Optional<Integer> nodeCount() {
+        return Optional.ofNullable(this.nodeCount);
+    }
+
+    /**
+     * (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+     * child instance.
+     * Input: For specifying the parent instance to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     * 
+     */
+    @Import(name="parentInstanceRef")
+    private @Nullable GetDatabaseInstanceParentInstanceRef parentInstanceRef;
+
+    /**
+     * @return (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+     * child instance.
+     * Input: For specifying the parent instance to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     * 
+     */
+    public Optional<GetDatabaseInstanceParentInstanceRef> parentInstanceRef() {
+        return Optional.ofNullable(this.parentInstanceRef);
+    }
+
+    /**
+     * (integer) - The retention window for the instance. This is the time window in days
+     * for which the historical data is retained. The default value is 7 days.
+     * Valid values are 2 to 35 days
+     * 
+     */
+    @Import(name="retentionWindowInDays")
+    private @Nullable Integer retentionWindowInDays;
+
+    /**
+     * @return (integer) - The retention window for the instance. This is the time window in days
+     * for which the historical data is retained. The default value is 7 days.
+     * Valid values are 2 to 35 days
+     * 
+     */
+    public Optional<Integer> retentionWindowInDays() {
+        return Optional.ofNullable(this.retentionWindowInDays);
     }
 
     /**
@@ -65,7 +139,11 @@ public final class GetDatabaseInstancePlainArgs extends com.pulumi.resources.Inv
 
     private GetDatabaseInstancePlainArgs(GetDatabaseInstancePlainArgs $) {
         this.capacity = $.capacity;
+        this.enableReadableSecondaries = $.enableReadableSecondaries;
         this.name = $.name;
+        this.nodeCount = $.nodeCount;
+        this.parentInstanceRef = $.parentInstanceRef;
+        this.retentionWindowInDays = $.retentionWindowInDays;
         this.stopped = $.stopped;
     }
 
@@ -99,6 +177,17 @@ public final class GetDatabaseInstancePlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
+         * @param enableReadableSecondaries (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableReadableSecondaries(@Nullable Boolean enableReadableSecondaries) {
+            $.enableReadableSecondaries = enableReadableSecondaries;
+            return this;
+        }
+
+        /**
          * @param name The name of the instance. This is the unique identifier for the instance
          * 
          * @return builder
@@ -106,6 +195,45 @@ public final class GetDatabaseInstancePlainArgs extends com.pulumi.resources.Inv
          */
         public Builder name(String name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param nodeCount (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+         * 1 primary and 0 secondaries
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeCount(@Nullable Integer nodeCount) {
+            $.nodeCount = nodeCount;
+            return this;
+        }
+
+        /**
+         * @param parentInstanceRef (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+         * child instance.
+         * Input: For specifying the parent instance to create a child instance. Optional.
+         * Output: Only populated if provided as input to create a child instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentInstanceRef(@Nullable GetDatabaseInstanceParentInstanceRef parentInstanceRef) {
+            $.parentInstanceRef = parentInstanceRef;
+            return this;
+        }
+
+        /**
+         * @param retentionWindowInDays (integer) - The retention window for the instance. This is the time window in days
+         * for which the historical data is retained. The default value is 7 days.
+         * Valid values are 2 to 35 days
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retentionWindowInDays(@Nullable Integer retentionWindowInDays) {
+            $.retentionWindowInDays = retentionWindowInDays;
             return this;
         }
 

@@ -5,8 +5,12 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.DatabaseInstanceChildInstanceRefArgs;
+import com.pulumi.databricks.inputs.DatabaseInstanceParentInstanceRefArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -29,6 +33,23 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> capacity() {
         return Optional.ofNullable(this.capacity);
+    }
+
+    /**
+     * (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+     * parent instance
+     * 
+     */
+    @Import(name="childInstanceRefs")
+    private @Nullable Output<List<DatabaseInstanceChildInstanceRefArgs>> childInstanceRefs;
+
+    /**
+     * @return (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+     * parent instance
+     * 
+     */
+    public Optional<Output<List<DatabaseInstanceChildInstanceRefArgs>>> childInstanceRefs() {
+        return Optional.ofNullable(this.childInstanceRefs);
     }
 
     /**
@@ -62,6 +83,63 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
+     * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    @Import(name="effectiveEnableReadableSecondaries")
+    private @Nullable Output<Boolean> effectiveEnableReadableSecondaries;
+
+    /**
+     * @return (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
+     * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    public Optional<Output<Boolean>> effectiveEnableReadableSecondaries() {
+        return Optional.ofNullable(this.effectiveEnableReadableSecondaries);
+    }
+
+    /**
+     * (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
+     * `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    @Import(name="effectiveNodeCount")
+    private @Nullable Output<Integer> effectiveNodeCount;
+
+    /**
+     * @return (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
+     * `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    public Optional<Output<Integer>> effectiveNodeCount() {
+        return Optional.ofNullable(this.effectiveNodeCount);
+    }
+
+    /**
+     * (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
+     * `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    @Import(name="effectiveRetentionWindowInDays")
+    private @Nullable Output<Integer> effectiveRetentionWindowInDays;
+
+    /**
+     * @return (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
+     * `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    public Optional<Output<Integer>> effectiveRetentionWindowInDays() {
+        return Optional.ofNullable(this.effectiveRetentionWindowInDays);
+    }
+
+    /**
      * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
      * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
      * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
@@ -81,6 +159,21 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Whether to enable secondaries to serve read-only traffic. Defaults to false
+     * 
+     */
+    @Import(name="enableReadableSecondaries")
+    private @Nullable Output<Boolean> enableReadableSecondaries;
+
+    /**
+     * @return Whether to enable secondaries to serve read-only traffic. Defaults to false
+     * 
+     */
+    public Optional<Output<Boolean>> enableReadableSecondaries() {
+        return Optional.ofNullable(this.enableReadableSecondaries);
+    }
+
+    /**
      * The name of the instance. This is the unique identifier for the instance
      * 
      */
@@ -93,6 +186,44 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
+     * 
+     */
+    @Import(name="nodeCount")
+    private @Nullable Output<Integer> nodeCount;
+
+    /**
+     * @return The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
+     * 
+     */
+    public Optional<Output<Integer>> nodeCount() {
+        return Optional.ofNullable(this.nodeCount);
+    }
+
+    /**
+     * The ref of the parent instance. This is only available if the instance is
+     * child instance.
+     * Input: For specifying the parent instance to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     * 
+     */
+    @Import(name="parentInstanceRef")
+    private @Nullable Output<DatabaseInstanceParentInstanceRefArgs> parentInstanceRef;
+
+    /**
+     * @return The ref of the parent instance. This is only available if the instance is
+     * child instance.
+     * Input: For specifying the parent instance to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     * 
+     */
+    public Optional<Output<DatabaseInstanceParentInstanceRefArgs>> parentInstanceRef() {
+        return Optional.ofNullable(this.parentInstanceRef);
     }
 
     /**
@@ -111,6 +242,23 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+     * enable_readable_secondaries is true
+     * 
+     */
+    @Import(name="readOnlyDns")
+    private @Nullable Output<String> readOnlyDns;
+
+    /**
+     * @return (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+     * enable_readable_secondaries is true
+     * 
+     */
+    public Optional<Output<String>> readOnlyDns() {
+        return Optional.ofNullable(this.readOnlyDns);
+    }
+
+    /**
      * (string) - The DNS endpoint to connect to the instance for read+write access
      * 
      */
@@ -123,6 +271,25 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> readWriteDns() {
         return Optional.ofNullable(this.readWriteDns);
+    }
+
+    /**
+     * The retention window for the instance. This is the time window in days
+     * for which the historical data is retained. The default value is 7 days.
+     * Valid values are 2 to 35 days
+     * 
+     */
+    @Import(name="retentionWindowInDays")
+    private @Nullable Output<Integer> retentionWindowInDays;
+
+    /**
+     * @return The retention window for the instance. This is the time window in days
+     * for which the historical data is retained. The default value is 7 days.
+     * Valid values are 2 to 35 days
+     * 
+     */
+    public Optional<Output<Integer>> retentionWindowInDays() {
+        return Optional.ofNullable(this.retentionWindowInDays);
     }
 
     /**
@@ -156,14 +323,14 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (string) - An immutable UUID identifier for the instance
+     * (string) - Id of the ref database instance
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return (string) - An immutable UUID identifier for the instance
+     * @return (string) - Id of the ref database instance
      * 
      */
     public Optional<Output<String>> uid() {
@@ -174,12 +341,21 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
     private DatabaseInstanceState(DatabaseInstanceState $) {
         this.capacity = $.capacity;
+        this.childInstanceRefs = $.childInstanceRefs;
         this.creationTime = $.creationTime;
         this.creator = $.creator;
+        this.effectiveEnableReadableSecondaries = $.effectiveEnableReadableSecondaries;
+        this.effectiveNodeCount = $.effectiveNodeCount;
+        this.effectiveRetentionWindowInDays = $.effectiveRetentionWindowInDays;
         this.effectiveStopped = $.effectiveStopped;
+        this.enableReadableSecondaries = $.enableReadableSecondaries;
         this.name = $.name;
+        this.nodeCount = $.nodeCount;
+        this.parentInstanceRef = $.parentInstanceRef;
         this.pgVersion = $.pgVersion;
+        this.readOnlyDns = $.readOnlyDns;
         this.readWriteDns = $.readWriteDns;
+        this.retentionWindowInDays = $.retentionWindowInDays;
         this.state = $.state;
         this.stopped = $.stopped;
         this.uid = $.uid;
@@ -225,6 +401,40 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param childInstanceRefs (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+         * parent instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder childInstanceRefs(@Nullable Output<List<DatabaseInstanceChildInstanceRefArgs>> childInstanceRefs) {
+            $.childInstanceRefs = childInstanceRefs;
+            return this;
+        }
+
+        /**
+         * @param childInstanceRefs (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+         * parent instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder childInstanceRefs(List<DatabaseInstanceChildInstanceRefArgs> childInstanceRefs) {
+            return childInstanceRefs(Output.of(childInstanceRefs));
+        }
+
+        /**
+         * @param childInstanceRefs (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+         * parent instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder childInstanceRefs(DatabaseInstanceChildInstanceRefArgs... childInstanceRefs) {
+            return childInstanceRefs(List.of(childInstanceRefs));
+        }
+
+        /**
          * @param creationTime (string) - The timestamp when the instance was created
          * 
          * @return builder
@@ -267,6 +477,81 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param effectiveEnableReadableSecondaries (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
+         * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+         * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveEnableReadableSecondaries(@Nullable Output<Boolean> effectiveEnableReadableSecondaries) {
+            $.effectiveEnableReadableSecondaries = effectiveEnableReadableSecondaries;
+            return this;
+        }
+
+        /**
+         * @param effectiveEnableReadableSecondaries (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
+         * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+         * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveEnableReadableSecondaries(Boolean effectiveEnableReadableSecondaries) {
+            return effectiveEnableReadableSecondaries(Output.of(effectiveEnableReadableSecondaries));
+        }
+
+        /**
+         * @param effectiveNodeCount (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
+         * `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+         * `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveNodeCount(@Nullable Output<Integer> effectiveNodeCount) {
+            $.effectiveNodeCount = effectiveNodeCount;
+            return this;
+        }
+
+        /**
+         * @param effectiveNodeCount (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
+         * `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+         * `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveNodeCount(Integer effectiveNodeCount) {
+            return effectiveNodeCount(Output.of(effectiveNodeCount));
+        }
+
+        /**
+         * @param effectiveRetentionWindowInDays (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
+         * `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+         * `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveRetentionWindowInDays(@Nullable Output<Integer> effectiveRetentionWindowInDays) {
+            $.effectiveRetentionWindowInDays = effectiveRetentionWindowInDays;
+            return this;
+        }
+
+        /**
+         * @param effectiveRetentionWindowInDays (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
+         * `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+         * `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveRetentionWindowInDays(Integer effectiveRetentionWindowInDays) {
+            return effectiveRetentionWindowInDays(Output.of(effectiveRetentionWindowInDays));
+        }
+
+        /**
          * @param effectiveStopped (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
          * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
          * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
@@ -292,6 +577,27 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param enableReadableSecondaries Whether to enable secondaries to serve read-only traffic. Defaults to false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableReadableSecondaries(@Nullable Output<Boolean> enableReadableSecondaries) {
+            $.enableReadableSecondaries = enableReadableSecondaries;
+            return this;
+        }
+
+        /**
+         * @param enableReadableSecondaries Whether to enable secondaries to serve read-only traffic. Defaults to false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableReadableSecondaries(Boolean enableReadableSecondaries) {
+            return enableReadableSecondaries(Output.of(enableReadableSecondaries));
+        }
+
+        /**
          * @param name The name of the instance. This is the unique identifier for the instance
          * 
          * @return builder
@@ -310,6 +616,56 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param nodeCount The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+         * 1 primary and 0 secondaries
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeCount(@Nullable Output<Integer> nodeCount) {
+            $.nodeCount = nodeCount;
+            return this;
+        }
+
+        /**
+         * @param nodeCount The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+         * 1 primary and 0 secondaries
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeCount(Integer nodeCount) {
+            return nodeCount(Output.of(nodeCount));
+        }
+
+        /**
+         * @param parentInstanceRef The ref of the parent instance. This is only available if the instance is
+         * child instance.
+         * Input: For specifying the parent instance to create a child instance. Optional.
+         * Output: Only populated if provided as input to create a child instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentInstanceRef(@Nullable Output<DatabaseInstanceParentInstanceRefArgs> parentInstanceRef) {
+            $.parentInstanceRef = parentInstanceRef;
+            return this;
+        }
+
+        /**
+         * @param parentInstanceRef The ref of the parent instance. This is only available if the instance is
+         * child instance.
+         * Input: For specifying the parent instance to create a child instance. Optional.
+         * Output: Only populated if provided as input to create a child instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentInstanceRef(DatabaseInstanceParentInstanceRefArgs parentInstanceRef) {
+            return parentInstanceRef(Output.of(parentInstanceRef));
         }
 
         /**
@@ -334,6 +690,29 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param readOnlyDns (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+         * enable_readable_secondaries is true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnlyDns(@Nullable Output<String> readOnlyDns) {
+            $.readOnlyDns = readOnlyDns;
+            return this;
+        }
+
+        /**
+         * @param readOnlyDns (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+         * enable_readable_secondaries is true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnlyDns(String readOnlyDns) {
+            return readOnlyDns(Output.of(readOnlyDns));
+        }
+
+        /**
          * @param readWriteDns (string) - The DNS endpoint to connect to the instance for read+write access
          * 
          * @return builder
@@ -352,6 +731,31 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder readWriteDns(String readWriteDns) {
             return readWriteDns(Output.of(readWriteDns));
+        }
+
+        /**
+         * @param retentionWindowInDays The retention window for the instance. This is the time window in days
+         * for which the historical data is retained. The default value is 7 days.
+         * Valid values are 2 to 35 days
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retentionWindowInDays(@Nullable Output<Integer> retentionWindowInDays) {
+            $.retentionWindowInDays = retentionWindowInDays;
+            return this;
+        }
+
+        /**
+         * @param retentionWindowInDays The retention window for the instance. This is the time window in days
+         * for which the historical data is retained. The default value is 7 days.
+         * Valid values are 2 to 35 days
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retentionWindowInDays(Integer retentionWindowInDays) {
+            return retentionWindowInDays(Output.of(retentionWindowInDays));
         }
 
         /**
@@ -397,7 +801,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param uid (string) - An immutable UUID identifier for the instance
+         * @param uid (string) - Id of the ref database instance
          * 
          * @return builder
          * 
@@ -408,7 +812,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param uid (string) - An immutable UUID identifier for the instance
+         * @param uid (string) - Id of the ref database instance
          * 
          * @return builder
          * 

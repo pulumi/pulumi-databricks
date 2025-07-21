@@ -94,6 +94,13 @@ namespace Pulumi.Databricks
         public string? QueryText { get; set; }
 
         /// <summary>
+        /// (string) - The run as username or application ID of service principal.
+        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+        /// </summary>
+        [Input("runAsUserName")]
+        public string? RunAsUserName { get; set; }
+
+        /// <summary>
         /// (CronSchedule) -
         /// </summary>
         [Input("schedule")]
@@ -148,6 +155,13 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("queryText")]
         public Input<string>? QueryText { get; set; }
+
+        /// <summary>
+        /// (string) - The run as username or application ID of service principal.
+        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+        /// </summary>
+        [Input("runAsUserName")]
+        public Input<string>? RunAsUserName { get; set; }
 
         /// <summary>
         /// (CronSchedule) -
@@ -212,9 +226,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string? QueryText;
         /// <summary>
-        /// (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+        /// (string) - The run as username or application ID of service principal.
+        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         /// </summary>
-        public readonly string RunAsUserName;
+        public readonly string? RunAsUserName;
         /// <summary>
         /// (CronSchedule) -
         /// </summary>
@@ -250,7 +265,7 @@ namespace Pulumi.Databricks
 
             string? queryText,
 
-            string runAsUserName,
+            string? runAsUserName,
 
             Outputs.GetAlertV2ScheduleResult? schedule,
 

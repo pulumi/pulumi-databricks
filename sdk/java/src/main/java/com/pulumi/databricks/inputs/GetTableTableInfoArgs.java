@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.GetTableTableInfoDeltaRuntimePropertiesKvpai
 import com.pulumi.databricks.inputs.GetTableTableInfoEffectivePredictiveOptimizationFlagArgs;
 import com.pulumi.databricks.inputs.GetTableTableInfoEncryptionDetailsArgs;
 import com.pulumi.databricks.inputs.GetTableTableInfoRowFilterArgs;
+import com.pulumi.databricks.inputs.GetTableTableInfoSecurableKindManifestArgs;
 import com.pulumi.databricks.inputs.GetTableTableInfoTableConstraintArgs;
 import com.pulumi.databricks.inputs.GetTableTableInfoViewDependenciesArgs;
 import java.lang.Boolean;
@@ -236,6 +237,13 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.schemaName);
     }
 
+    @Import(name="securableKindManifest")
+    private @Nullable Output<GetTableTableInfoSecurableKindManifestArgs> securableKindManifest;
+
+    public Optional<Output<GetTableTableInfoSecurableKindManifestArgs>> securableKindManifest() {
+        return Optional.ofNullable(this.securableKindManifest);
+    }
+
     @Import(name="sqlPath")
     private @Nullable Output<String> sqlPath;
 
@@ -355,6 +363,7 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
         this.properties = $.properties;
         this.rowFilter = $.rowFilter;
         this.schemaName = $.schemaName;
+        this.securableKindManifest = $.securableKindManifest;
         this.sqlPath = $.sqlPath;
         this.storageCredentialName = $.storageCredentialName;
         this.storageLocation = $.storageLocation;
@@ -675,6 +684,15 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder schemaName(String schemaName) {
             return schemaName(Output.of(schemaName));
+        }
+
+        public Builder securableKindManifest(@Nullable Output<GetTableTableInfoSecurableKindManifestArgs> securableKindManifest) {
+            $.securableKindManifest = securableKindManifest;
+            return this;
+        }
+
+        public Builder securableKindManifest(GetTableTableInfoSecurableKindManifestArgs securableKindManifest) {
+            return securableKindManifest(Output.of(securableKindManifest));
         }
 
         public Builder sqlPath(@Nullable Output<String> sqlPath) {

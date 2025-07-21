@@ -106,14 +106,14 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The id of the service principal.
+     * The id of the service principal (SCIM ID).
      * 
      */
     @Import(name="id")
     private @Nullable String id;
 
     /**
-     * @return The id of the service principal.
+     * @return The id of the service principal (SCIM ID).
      * 
      */
     public Optional<String> id() {
@@ -135,11 +135,19 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.repos);
     }
 
-    @Import(name="spId")
-    private @Nullable String spId;
+    /**
+     * Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+     * 
+     */
+    @Import(name="scimId")
+    private @Nullable String scimId;
 
-    public Optional<String> spId() {
-        return Optional.ofNullable(this.spId);
+    /**
+     * @return Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+     * 
+     */
+    public Optional<String> scimId() {
+        return Optional.ofNullable(this.scimId);
     }
 
     private GetServicePrincipalPlainArgs() {}
@@ -153,7 +161,7 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
         this.home = $.home;
         this.id = $.id;
         this.repos = $.repos;
-        this.spId = $.spId;
+        this.scimId = $.scimId;
     }
 
     public static Builder builder() {
@@ -241,7 +249,7 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param id The id of the service principal.
+         * @param id The id of the service principal (SCIM ID).
          * 
          * @return builder
          * 
@@ -262,8 +270,14 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
             return this;
         }
 
-        public Builder spId(@Nullable String spId) {
-            $.spId = spId;
+        /**
+         * @param scimId Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scimId(@Nullable String scimId) {
+            $.scimId = scimId;
             return this;
         }
 

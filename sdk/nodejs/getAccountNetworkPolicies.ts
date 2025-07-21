@@ -6,6 +6,22 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * This data source can be used to fetch the list of network policies.
+ *
+ * > **Note** This data source can only be used with an account-level provider!
+ *
+ * ## Example Usage
+ *
+ * Getting a list of all network policies:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getAccountNetworkPolicies({});
+ * ```
+ */
 export function getAccountNetworkPolicies(opts?: pulumi.InvokeOptions): Promise<GetAccountNetworkPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies", {
@@ -22,6 +38,22 @@ export interface GetAccountNetworkPoliciesResult {
     readonly id: string;
     readonly items: outputs.GetAccountNetworkPoliciesItem[];
 }
+/**
+ * This data source can be used to fetch the list of network policies.
+ *
+ * > **Note** This data source can only be used with an account-level provider!
+ *
+ * ## Example Usage
+ *
+ * Getting a list of all network policies:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getAccountNetworkPolicies({});
+ * ```
+ */
 export function getAccountNetworkPoliciesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountNetworkPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies", {

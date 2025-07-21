@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.AppResourceDatabaseArgs;
 import com.pulumi.databricks.inputs.AppResourceJobArgs;
 import com.pulumi.databricks.inputs.AppResourceSecretArgs;
 import com.pulumi.databricks.inputs.AppResourceServingEndpointArgs;
@@ -20,6 +21,21 @@ import javax.annotation.Nullable;
 public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppResourceArgs Empty = new AppResourceArgs();
+
+    /**
+     * attribute
+     * 
+     */
+    @Import(name="database")
+    private @Nullable Output<AppResourceDatabaseArgs> database;
+
+    /**
+     * @return attribute
+     * 
+     */
+    public Optional<Output<AppResourceDatabaseArgs>> database() {
+        return Optional.ofNullable(this.database);
+    }
 
     /**
      * The description of the resource.
@@ -133,6 +149,7 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
     private AppResourceArgs() {}
 
     private AppResourceArgs(AppResourceArgs $) {
+        this.database = $.database;
         this.description = $.description;
         this.job = $.job;
         this.name = $.name;
@@ -158,6 +175,27 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(AppResourceArgs defaults) {
             $ = new AppResourceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param database attribute
+         * 
+         * @return builder
+         * 
+         */
+        public Builder database(@Nullable Output<AppResourceDatabaseArgs> database) {
+            $.database = database;
+            return this;
+        }
+
+        /**
+         * @param database attribute
+         * 
+         * @return builder
+         * 
+         */
+        public Builder database(AppResourceDatabaseArgs database) {
+            return database(Output.of(database));
         }
 
         /**

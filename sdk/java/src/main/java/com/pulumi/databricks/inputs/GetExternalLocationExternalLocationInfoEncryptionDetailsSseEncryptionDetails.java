@@ -14,16 +14,32 @@ public final class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEn
 
     public static final GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails Empty = new GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails();
 
+    /**
+     * Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+     * 
+     */
     @Import(name="algorithm")
     private @Nullable String algorithm;
 
+    /**
+     * @return Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+     * 
+     */
     public Optional<String> algorithm() {
         return Optional.ofNullable(this.algorithm);
     }
 
+    /**
+     * ARN of the SSE-KMS key used with the S3 location, when `algorithm = &#34;SSE-KMS&#34;`.
+     * 
+     */
     @Import(name="awsKmsKeyArn")
     private @Nullable String awsKmsKeyArn;
 
+    /**
+     * @return ARN of the SSE-KMS key used with the S3 location, when `algorithm = &#34;SSE-KMS&#34;`.
+     * 
+     */
     public Optional<String> awsKmsKeyArn() {
         return Optional.ofNullable(this.awsKmsKeyArn);
     }
@@ -53,11 +69,23 @@ public final class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEn
             $ = new GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param algorithm Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder algorithm(@Nullable String algorithm) {
             $.algorithm = algorithm;
             return this;
         }
 
+        /**
+         * @param awsKmsKeyArn ARN of the SSE-KMS key used with the S3 location, when `algorithm = &#34;SSE-KMS&#34;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsKmsKeyArn(@Nullable String awsKmsKeyArn) {
             $.awsKmsKeyArn = awsKmsKeyArn;
             return this;

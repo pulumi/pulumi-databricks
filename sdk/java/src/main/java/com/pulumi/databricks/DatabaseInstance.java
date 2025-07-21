@@ -10,15 +10,23 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.DatabaseInstanceArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.DatabaseInstanceState;
+import com.pulumi.databricks.outputs.DatabaseInstanceChildInstanceRef;
+import com.pulumi.databricks.outputs.DatabaseInstanceParentInstanceRef;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Database Instances are managed Postgres instances, composed of a primary Postgres compute instance and 0 or more read replica instances.
+ * Lakebase Database Instances are managed Postgres instances, composed of a primary Postgres compute instance and 0 or more read replica instances.
  * 
  * ## Example Usage
+ * 
+ * ### Basic Example
+ * 
+ * This example creates a simple Database Instance with the specified name and capacity.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -46,6 +54,88 @@ import javax.annotation.Nullable;
  *         var this_ = new DatabaseInstance("this", DatabaseInstanceArgs.builder()
  *             .name("my-database-instance")
  *             .capacity("CU_2")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Example with Readable Secondaries
+ * 
+ * This example creates a Database Instance with readable secondaries (and HA) enabled.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabaseInstance;
+ * import com.pulumi.databricks.DatabaseInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new DatabaseInstance("this", DatabaseInstanceArgs.builder()
+ *             .name("my-database-instance")
+ *             .capacity("CU_2")
+ *             .nodeCount(2)
+ *             .enableReadableSecondaries(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Example Child Instance Created From Parent
+ * 
+ * This example creates a child Database Instance from a specified parent Database Instance at the current point in time.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabaseInstance;
+ * import com.pulumi.databricks.DatabaseInstanceArgs;
+ * import com.pulumi.databricks.inputs.DatabaseInstanceParentInstanceRefArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var child = new DatabaseInstance("child", DatabaseInstanceArgs.builder()
+ *             .name("my-database-instance")
+ *             .capacity("CU_2")
+ *             .parentInstanceRef(DatabaseInstanceParentInstanceRefArgs.builder()
+ *                 .name("my-parent-instance")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -92,6 +182,22 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.capacity);
     }
     /**
+     * (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+     * parent instance
+     * 
+     */
+    @Export(name="childInstanceRefs", refs={List.class,DatabaseInstanceChildInstanceRef.class}, tree="[0,1]")
+    private Output<List<DatabaseInstanceChildInstanceRef>> childInstanceRefs;
+
+    /**
+     * @return (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+     * parent instance
+     * 
+     */
+    public Output<List<DatabaseInstanceChildInstanceRef>> childInstanceRefs() {
+        return this.childInstanceRefs;
+    }
+    /**
      * (string) - The timestamp when the instance was created
      * 
      */
@@ -120,6 +226,60 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.creator;
     }
     /**
+     * (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
+     * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    @Export(name="effectiveEnableReadableSecondaries", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> effectiveEnableReadableSecondaries;
+
+    /**
+     * @return (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
+     * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    public Output<Boolean> effectiveEnableReadableSecondaries() {
+        return this.effectiveEnableReadableSecondaries;
+    }
+    /**
+     * (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
+     * `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    @Export(name="effectiveNodeCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> effectiveNodeCount;
+
+    /**
+     * @return (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
+     * `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    public Output<Integer> effectiveNodeCount() {
+        return this.effectiveNodeCount;
+    }
+    /**
+     * (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
+     * `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    @Export(name="effectiveRetentionWindowInDays", refs={Integer.class}, tree="[0]")
+    private Output<Integer> effectiveRetentionWindowInDays;
+
+    /**
+     * @return (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
+     * `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    public Output<Integer> effectiveRetentionWindowInDays() {
+        return this.effectiveRetentionWindowInDays;
+    }
+    /**
      * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
      * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
      * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
@@ -138,6 +298,20 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.effectiveStopped;
     }
     /**
+     * Whether to enable secondaries to serve read-only traffic. Defaults to false
+     * 
+     */
+    @Export(name="enableReadableSecondaries", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableReadableSecondaries;
+
+    /**
+     * @return Whether to enable secondaries to serve read-only traffic. Defaults to false
+     * 
+     */
+    public Output<Optional<Boolean>> enableReadableSecondaries() {
+        return Codegen.optional(this.enableReadableSecondaries);
+    }
+    /**
      * The name of the instance. This is the unique identifier for the instance
      * 
      */
@@ -150,6 +324,42 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
+     * 
+     */
+    @Export(name="nodeCount", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> nodeCount;
+
+    /**
+     * @return The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
+     * 
+     */
+    public Output<Optional<Integer>> nodeCount() {
+        return Codegen.optional(this.nodeCount);
+    }
+    /**
+     * The ref of the parent instance. This is only available if the instance is
+     * child instance.
+     * Input: For specifying the parent instance to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     * 
+     */
+    @Export(name="parentInstanceRef", refs={DatabaseInstanceParentInstanceRef.class}, tree="[0]")
+    private Output</* @Nullable */ DatabaseInstanceParentInstanceRef> parentInstanceRef;
+
+    /**
+     * @return The ref of the parent instance. This is only available if the instance is
+     * child instance.
+     * Input: For specifying the parent instance to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     * 
+     */
+    public Output<Optional<DatabaseInstanceParentInstanceRef>> parentInstanceRef() {
+        return Codegen.optional(this.parentInstanceRef);
     }
     /**
      * (string) - The version of Postgres running on the instance
@@ -166,6 +376,22 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.pgVersion;
     }
     /**
+     * (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+     * enable_readable_secondaries is true
+     * 
+     */
+    @Export(name="readOnlyDns", refs={String.class}, tree="[0]")
+    private Output<String> readOnlyDns;
+
+    /**
+     * @return (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+     * enable_readable_secondaries is true
+     * 
+     */
+    public Output<String> readOnlyDns() {
+        return this.readOnlyDns;
+    }
+    /**
      * (string) - The DNS endpoint to connect to the instance for read+write access
      * 
      */
@@ -178,6 +404,24 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> readWriteDns() {
         return this.readWriteDns;
+    }
+    /**
+     * The retention window for the instance. This is the time window in days
+     * for which the historical data is retained. The default value is 7 days.
+     * Valid values are 2 to 35 days
+     * 
+     */
+    @Export(name="retentionWindowInDays", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> retentionWindowInDays;
+
+    /**
+     * @return The retention window for the instance. This is the time window in days
+     * for which the historical data is retained. The default value is 7 days.
+     * Valid values are 2 to 35 days
+     * 
+     */
+    public Output<Optional<Integer>> retentionWindowInDays() {
+        return Codegen.optional(this.retentionWindowInDays);
     }
     /**
      * (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
@@ -208,14 +452,14 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.stopped);
     }
     /**
-     * (string) - An immutable UUID identifier for the instance
+     * (string) - Id of the ref database instance
      * 
      */
     @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
-     * @return (string) - An immutable UUID identifier for the instance
+     * @return (string) - Id of the ref database instance
      * 
      */
     public Output<String> uid() {

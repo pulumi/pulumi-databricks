@@ -133,9 +133,6 @@ namespace Pulumi.Databricks
         [Output("enableFileEvents")]
         public Output<bool?> EnableFileEvents { get; private set; } = null!;
 
-        /// <summary>
-        /// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-        /// </summary>
         [Output("encryptionDetails")]
         public Output<Outputs.ExternalLocationEncryptionDetails?> EncryptionDetails { get; private set; } = null!;
 
@@ -275,9 +272,6 @@ namespace Pulumi.Databricks
         [Input("enableFileEvents")]
         public Input<bool>? EnableFileEvents { get; set; }
 
-        /// <summary>
-        /// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-        /// </summary>
         [Input("encryptionDetails")]
         public Input<Inputs.ExternalLocationEncryptionDetailsArgs>? EncryptionDetails { get; set; }
 
@@ -388,9 +382,6 @@ namespace Pulumi.Databricks
         [Input("enableFileEvents")]
         public Input<bool>? EnableFileEvents { get; set; }
 
-        /// <summary>
-        /// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-        /// </summary>
         [Input("encryptionDetails")]
         public Input<Inputs.ExternalLocationEncryptionDetailsGetArgs>? EncryptionDetails { get; set; }
 

@@ -16,14 +16,14 @@ public final class GetPipelinesPlainArgs extends com.pulumi.resources.InvokeArgs
     public static final GetPipelinesPlainArgs Empty = new GetPipelinesPlainArgs();
 
     /**
-     * List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+     * List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+     * @return List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
      * 
      */
     public Optional<List<String>> ids() {
@@ -31,14 +31,14 @@ public final class GetPipelinesPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+     * Filter Lakeflow Declarative Pipelines by name for a given search term. `%` is the supported wildcard operator.
      * 
      */
     @Import(name="pipelineName")
     private @Nullable String pipelineName;
 
     /**
-     * @return Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+     * @return Filter Lakeflow Declarative Pipelines by name for a given search term. `%` is the supported wildcard operator.
      * 
      */
     public Optional<String> pipelineName() {
@@ -71,7 +71,7 @@ public final class GetPipelinesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param ids List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+         * @param ids List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class GetPipelinesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param ids List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+         * @param ids List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class GetPipelinesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param pipelineName Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+         * @param pipelineName Filter Lakeflow Declarative Pipelines by name for a given search term. `%` is the supported wildcard operator.
          * 
          * @return builder
          * 

@@ -16,7 +16,7 @@ public final class GetAppAppResourceServingEndpoint {
      */
     private String name;
     /**
-     * @return Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      * 
      */
     private String permission;
@@ -30,7 +30,7 @@ public final class GetAppAppResourceServingEndpoint {
         return this.name;
     }
     /**
-     * @return Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      * 
      */
     public String permission() {

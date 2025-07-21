@@ -62,7 +62,20 @@ class AwaitableGetAccountNetworkPoliciesResult(GetAccountNetworkPoliciesResult):
 
 def get_account_network_policies(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountNetworkPoliciesResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source can be used to fetch the list of network policies.
+
+    > **Note** This data source can only be used with an account-level provider!
+
+    ## Example Usage
+
+    Getting a list of all network policies:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_account_network_policies()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -73,7 +86,20 @@ def get_account_network_policies(opts: Optional[pulumi.InvokeOptions] = None) ->
         items=pulumi.get(__ret__, 'items'))
 def get_account_network_policies_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountNetworkPoliciesResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source can be used to fetch the list of network policies.
+
+    > **Note** This data source can only be used with an account-level provider!
+
+    ## Example Usage
+
+    Getting a list of all network policies:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_account_network_policies()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

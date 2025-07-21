@@ -16,11 +16,15 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Used to specify how many calls are allowed for a key within the renewal_period.
         /// </summary>
-        public readonly int Calls;
+        public readonly int? Calls;
         /// <summary>
-        /// Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        /// Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
         /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// Principal field for a user, user group, or service principal to apply rate limiting to. Accepts a user email, group name, or service principal application ID.
+        /// </summary>
+        public readonly string? Principal;
         /// <summary>
         /// Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
         /// </summary>
@@ -28,14 +32,17 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private ModelServingAiGatewayRateLimit(
-            int calls,
+            int? calls,
 
             string? key,
+
+            string? principal,
 
             string renewalPeriod)
         {
             Calls = calls;
             Key = key;
+            Principal = principal;
             RenewalPeriod = renewalPeriod;
         }
     }

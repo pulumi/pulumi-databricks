@@ -108,14 +108,14 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
     }
 
     /**
-     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+     * A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
      * 
      */
     @Import(name="encryptionDetails")
     private @Nullable GetExternalLocationExternalLocationInfoEncryptionDetails encryptionDetails;
 
     /**
-     * @return The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+     * @return A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
      * 
      */
     public Optional<GetExternalLocationExternalLocationInfoEncryptionDetails> encryptionDetails() {
@@ -355,7 +355,7 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
         }
 
         /**
-         * @param encryptionDetails The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+         * @param encryptionDetails A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
          * 
          * @return builder
          * 

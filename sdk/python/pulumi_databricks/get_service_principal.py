@@ -27,7 +27,7 @@ class GetServicePrincipalResult:
     """
     A collection of values returned by getServicePrincipal.
     """
-    def __init__(__self__, acl_principal_id=None, active=None, application_id=None, display_name=None, external_id=None, home=None, id=None, repos=None, sp_id=None):
+    def __init__(__self__, acl_principal_id=None, active=None, application_id=None, display_name=None, external_id=None, home=None, id=None, repos=None, scim_id=None):
         if acl_principal_id and not isinstance(acl_principal_id, str):
             raise TypeError("Expected argument 'acl_principal_id' to be a str")
         pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -52,9 +52,9 @@ class GetServicePrincipalResult:
         if repos and not isinstance(repos, str):
             raise TypeError("Expected argument 'repos' to be a str")
         pulumi.set(__self__, "repos", repos)
-        if sp_id and not isinstance(sp_id, str):
-            raise TypeError("Expected argument 'sp_id' to be a str")
-        pulumi.set(__self__, "sp_id", sp_id)
+        if scim_id and not isinstance(scim_id, str):
+            raise TypeError("Expected argument 'scim_id' to be a str")
+        pulumi.set(__self__, "scim_id", scim_id)
 
     @property
     @pulumi.getter(name="aclPrincipalId")
@@ -105,7 +105,7 @@ class GetServicePrincipalResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        The id of the service principal.
+        The id of the service principal (SCIM ID).
         """
         return pulumi.get(self, "id")
 
@@ -118,9 +118,12 @@ class GetServicePrincipalResult:
         return pulumi.get(self, "repos")
 
     @property
-    @pulumi.getter(name="spId")
-    def sp_id(self) -> builtins.str:
-        return pulumi.get(self, "sp_id")
+    @pulumi.getter(name="scimId")
+    def scim_id(self) -> builtins.str:
+        """
+        same as `id`.
+        """
+        return pulumi.get(self, "scim_id")
 
 
 class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
@@ -137,7 +140,7 @@ class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
             home=self.home,
             id=self.id,
             repos=self.repos,
-            sp_id=self.sp_id)
+            scim_id=self.scim_id)
 
 
 def get_service_principal(acl_principal_id: Optional[builtins.str] = None,
@@ -148,7 +151,7 @@ def get_service_principal(acl_principal_id: Optional[builtins.str] = None,
                           home: Optional[builtins.str] = None,
                           id: Optional[builtins.str] = None,
                           repos: Optional[builtins.str] = None,
-                          sp_id: Optional[builtins.str] = None,
+                          scim_id: Optional[builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalResult:
     """
     Retrieves information about databricks_service_principal.
@@ -190,8 +193,9 @@ def get_service_principal(acl_principal_id: Optional[builtins.str] = None,
     :param builtins.str display_name: Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
     :param builtins.str external_id: ID of the service principal in an external identity provider.
     :param builtins.str home: Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
-    :param builtins.str id: The id of the service principal.
+    :param builtins.str id: The id of the service principal (SCIM ID).
     :param builtins.str repos: Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+    :param builtins.str scim_id: Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
     """
     __args__ = dict()
     __args__['aclPrincipalId'] = acl_principal_id
@@ -202,7 +206,7 @@ def get_service_principal(acl_principal_id: Optional[builtins.str] = None,
     __args__['home'] = home
     __args__['id'] = id
     __args__['repos'] = repos
-    __args__['spId'] = sp_id
+    __args__['scimId'] = scim_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getServicePrincipal:getServicePrincipal', __args__, opts=opts, typ=GetServicePrincipalResult).value
 
@@ -215,7 +219,7 @@ def get_service_principal(acl_principal_id: Optional[builtins.str] = None,
         home=pulumi.get(__ret__, 'home'),
         id=pulumi.get(__ret__, 'id'),
         repos=pulumi.get(__ret__, 'repos'),
-        sp_id=pulumi.get(__ret__, 'sp_id'))
+        scim_id=pulumi.get(__ret__, 'scim_id'))
 def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                  active: Optional[pulumi.Input[Optional[builtins.bool]]] = None,
                                  application_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
@@ -224,7 +228,7 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
                                  home: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                  id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                  repos: Optional[pulumi.Input[Optional[builtins.str]]] = None,
-                                 sp_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                                 scim_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePrincipalResult]:
     """
     Retrieves information about databricks_service_principal.
@@ -266,8 +270,9 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
     :param builtins.str display_name: Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
     :param builtins.str external_id: ID of the service principal in an external identity provider.
     :param builtins.str home: Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
-    :param builtins.str id: The id of the service principal.
+    :param builtins.str id: The id of the service principal (SCIM ID).
     :param builtins.str repos: Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+    :param builtins.str scim_id: Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
     """
     __args__ = dict()
     __args__['aclPrincipalId'] = acl_principal_id
@@ -278,7 +283,7 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
     __args__['home'] = home
     __args__['id'] = id
     __args__['repos'] = repos
-    __args__['spId'] = sp_id
+    __args__['scimId'] = scim_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getServicePrincipal:getServicePrincipal', __args__, opts=opts, typ=GetServicePrincipalResult)
     return __ret__.apply(lambda __response__: GetServicePrincipalResult(
@@ -290,4 +295,4 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
         home=pulumi.get(__response__, 'home'),
         id=pulumi.get(__response__, 'id'),
         repos=pulumi.get(__response__, 'repos'),
-        sp_id=pulumi.get(__response__, 'sp_id')))
+        scim_id=pulumi.get(__response__, 'scim_id')))

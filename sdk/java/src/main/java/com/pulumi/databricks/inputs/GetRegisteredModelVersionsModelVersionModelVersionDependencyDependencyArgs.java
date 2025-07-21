@@ -5,6 +5,8 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs;
+import com.pulumi.databricks.inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs;
 import java.util.List;
@@ -16,6 +18,20 @@ import javax.annotation.Nullable;
 public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs Empty = new GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs();
+
+    @Import(name="connections")
+    private @Nullable Output<List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs>> connections;
+
+    public Optional<Output<List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs>>> connections() {
+        return Optional.ofNullable(this.connections);
+    }
+
+    @Import(name="credentials")
+    private @Nullable Output<List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs>> credentials;
+
+    public Optional<Output<List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs>>> credentials() {
+        return Optional.ofNullable(this.credentials);
+    }
 
     /**
      * A function that is dependent on a SQL object:
@@ -50,6 +66,8 @@ public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyD
     private GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs() {}
 
     private GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs $) {
+        this.connections = $.connections;
+        this.credentials = $.credentials;
         this.functions = $.functions;
         this.tables = $.tables;
     }
@@ -70,6 +88,32 @@ public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyD
 
         public Builder(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs defaults) {
             $ = new GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder connections(@Nullable Output<List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs>> connections) {
+            $.connections = connections;
+            return this;
+        }
+
+        public Builder connections(List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs> connections) {
+            return connections(Output.of(connections));
+        }
+
+        public Builder connections(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs... connections) {
+            return connections(List.of(connections));
+        }
+
+        public Builder credentials(@Nullable Output<List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs>> credentials) {
+            $.credentials = credentials;
+            return this;
+        }
+
+        public Builder credentials(List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs> credentials) {
+            return credentials(Output.of(credentials));
+        }
+
+        public Builder credentials(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs... credentials) {
+            return credentials(List.of(credentials));
         }
 
         /**

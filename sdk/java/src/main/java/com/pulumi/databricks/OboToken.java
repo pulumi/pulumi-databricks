@@ -153,7 +153,7 @@ import javax.annotation.Nullable;
  * * databricks.GroupMember to attach users and groups as group members.
  * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
  * * databricks.ServicePrincipal to manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to databricks.Group within workspace.
- * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+ * * databricks.Grants to manage data access in Unity Catalog.
  * 
  * ## Import
  * 

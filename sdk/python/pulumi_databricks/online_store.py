@@ -20,28 +20,31 @@ __all__ = ['OnlineStoreArgs', 'OnlineStore']
 @pulumi.input_type
 class OnlineStoreArgs:
     def __init__(__self__, *,
-                 capacity: Optional[pulumi.Input[builtins.str]] = None,
-                 name: Optional[pulumi.Input[builtins.str]] = None):
+                 capacity: pulumi.Input[builtins.str],
+                 name: Optional[pulumi.Input[builtins.str]] = None,
+                 read_replica_count: Optional[pulumi.Input[builtins.int]] = None):
         """
         The set of arguments for constructing a OnlineStore resource.
         :param pulumi.Input[builtins.str] capacity: The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         :param pulumi.Input[builtins.str] name: The name of the online store. This is the unique identifier for the online store
+        :param pulumi.Input[builtins.int] read_replica_count: The number of read replicas for the online store. Defaults to 0
         """
-        if capacity is not None:
-            pulumi.set(__self__, "capacity", capacity)
+        pulumi.set(__self__, "capacity", capacity)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if read_replica_count is not None:
+            pulumi.set(__self__, "read_replica_count", read_replica_count)
 
     @property
     @pulumi.getter
-    def capacity(self) -> Optional[pulumi.Input[builtins.str]]:
+    def capacity(self) -> pulumi.Input[builtins.str]:
         """
         The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         """
         return pulumi.get(self, "capacity")
 
     @capacity.setter
-    def capacity(self, value: Optional[pulumi.Input[builtins.str]]):
+    def capacity(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "capacity", value)
 
     @property
@@ -56,6 +59,18 @@ class OnlineStoreArgs:
     def name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="readReplicaCount")
+    def read_replica_count(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of read replicas for the online store. Defaults to 0
+        """
+        return pulumi.get(self, "read_replica_count")
+
+    @read_replica_count.setter
+    def read_replica_count(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "read_replica_count", value)
+
 
 @pulumi.input_type
 class _OnlineStoreState:
@@ -64,6 +79,7 @@ class _OnlineStoreState:
                  creation_time: Optional[pulumi.Input[builtins.str]] = None,
                  creator: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 read_replica_count: Optional[pulumi.Input[builtins.int]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering OnlineStore resources.
@@ -71,6 +87,7 @@ class _OnlineStoreState:
         :param pulumi.Input[builtins.str] creation_time: (string) - The timestamp when the online store was created
         :param pulumi.Input[builtins.str] creator: (string) - The email of the creator of the online store
         :param pulumi.Input[builtins.str] name: The name of the online store. This is the unique identifier for the online store
+        :param pulumi.Input[builtins.int] read_replica_count: The number of read replicas for the online store. Defaults to 0
         :param pulumi.Input[builtins.str] state: (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         """
         if capacity is not None:
@@ -81,6 +98,8 @@ class _OnlineStoreState:
             pulumi.set(__self__, "creator", creator)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if read_replica_count is not None:
+            pulumi.set(__self__, "read_replica_count", read_replica_count)
         if state is not None:
             pulumi.set(__self__, "state", state)
 
@@ -133,6 +152,18 @@ class _OnlineStoreState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="readReplicaCount")
+    def read_replica_count(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of read replicas for the online store. Defaults to 0
+        """
+        return pulumi.get(self, "read_replica_count")
+
+    @read_replica_count.setter
+    def read_replica_count(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "read_replica_count", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -153,6 +184,7 @@ class OnlineStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 read_replica_count: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
         """
         ## Import
@@ -179,12 +211,13 @@ class OnlineStore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] capacity: The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         :param pulumi.Input[builtins.str] name: The name of the online store. This is the unique identifier for the online store
+        :param pulumi.Input[builtins.int] read_replica_count: The number of read replicas for the online store. Defaults to 0
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[OnlineStoreArgs] = None,
+                 args: OnlineStoreArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -224,6 +257,7 @@ class OnlineStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 read_replica_count: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -233,8 +267,11 @@ class OnlineStore(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OnlineStoreArgs.__new__(OnlineStoreArgs)
 
+            if capacity is None and not opts.urn:
+                raise TypeError("Missing required property 'capacity'")
             __props__.__dict__["capacity"] = capacity
             __props__.__dict__["name"] = name
+            __props__.__dict__["read_replica_count"] = read_replica_count
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["creator"] = None
             __props__.__dict__["state"] = None
@@ -252,6 +289,7 @@ class OnlineStore(pulumi.CustomResource):
             creation_time: Optional[pulumi.Input[builtins.str]] = None,
             creator: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
+            read_replica_count: Optional[pulumi.Input[builtins.int]] = None,
             state: Optional[pulumi.Input[builtins.str]] = None) -> 'OnlineStore':
         """
         Get an existing OnlineStore resource's state with the given name, id, and optional extra
@@ -264,6 +302,7 @@ class OnlineStore(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] creation_time: (string) - The timestamp when the online store was created
         :param pulumi.Input[builtins.str] creator: (string) - The email of the creator of the online store
         :param pulumi.Input[builtins.str] name: The name of the online store. This is the unique identifier for the online store
+        :param pulumi.Input[builtins.int] read_replica_count: The number of read replicas for the online store. Defaults to 0
         :param pulumi.Input[builtins.str] state: (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -274,12 +313,13 @@ class OnlineStore(pulumi.CustomResource):
         __props__.__dict__["creation_time"] = creation_time
         __props__.__dict__["creator"] = creator
         __props__.__dict__["name"] = name
+        __props__.__dict__["read_replica_count"] = read_replica_count
         __props__.__dict__["state"] = state
         return OnlineStore(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def capacity(self) -> pulumi.Output[Optional[builtins.str]]:
+    def capacity(self) -> pulumi.Output[builtins.str]:
         """
         The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         """
@@ -308,6 +348,14 @@ class OnlineStore(pulumi.CustomResource):
         The name of the online store. This is the unique identifier for the online store
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="readReplicaCount")
+    def read_replica_count(self) -> pulumi.Output[Optional[builtins.int]]:
+        """
+        The number of read replicas for the online store. Defaults to 0
+        """
+        return pulumi.get(self, "read_replica_count")
 
     @property
     @pulumi.getter

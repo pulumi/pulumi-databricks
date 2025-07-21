@@ -356,6 +356,10 @@ export interface AppPendingDeploymentStatus {
 
 export interface AppResource {
     /**
+     * attribute
+     */
+    database?: outputs.AppResourceDatabase;
+    /**
      * The description of the resource.
      *
      * Exactly one of the following attributes must be provided:
@@ -385,6 +389,21 @@ export interface AppResource {
      * attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
      */
     ucSecurable?: outputs.AppResourceUcSecurable;
+}
+
+export interface AppResourceDatabase {
+    /**
+     * The name of database.
+     */
+    databaseName: string;
+    /**
+     * The name of database instance.
+     */
+    instanceName: string;
+    /**
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     */
+    permission: string;
 }
 
 export interface AppResourceJob {
@@ -584,20 +603,188 @@ export interface BudgetPolicyCustomTag {
     value?: string;
 }
 
+export interface CleanRoomsCleanRoomOutputCatalog {
+    /**
+     * The name of the output catalog in UC.
+     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+     * The field will always exist if status is CREATED
+     */
+    catalogName?: string;
+    /**
+     * (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+     */
+    status: string;
+}
+
+export interface CleanRoomsCleanRoomRemoteDetailedInfo {
+    /**
+     * (string) - Central clean room ID
+     */
+    centralCleanRoomId: string;
+    /**
+     * Cloud vendor (aws,azure,gcp) of the central clean room
+     */
+    cloudVendor?: string;
+    /**
+     * Collaborators in the central clean room. There should one and only one collaborator
+     * in the list that satisfies the owner condition:
+     *
+     * 1. It has the creator's globalMetastoreId (determined by caller of CreateCleanRoom).
+     *
+     * 2. Its inviteRecipientEmail is empty
+     */
+    collaborators?: outputs.CleanRoomsCleanRoomRemoteDetailedInfoCollaborator[];
+    /**
+     * (ComplianceSecurityProfile) -
+     */
+    complianceSecurityProfile: outputs.CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile;
+    /**
+     * (CleanRoomCollaborator) - Collaborator who creates the clean room
+     */
+    creator: outputs.CleanRoomsCleanRoomRemoteDetailedInfoCreator;
+    /**
+     * Egress network policy to apply to the central clean room workspace
+     */
+    egressNetworkPolicy?: outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy;
+    region?: string;
+}
+
+export interface CleanRoomsCleanRoomRemoteDetailedInfoCollaborator {
+    /**
+     * Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+     */
+    collaboratorAlias: string;
+    /**
+     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+     * these values and could change in the future
+     */
+    displayName: string;
+    /**
+     * The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     */
+    globalMetastoreId?: string;
+    /**
+     * Email of the user who is receiving the clean room "invitation". It should be empty
+     * for the creator of the clean room, and non-empty for the invitees of the clean room.
+     * It is only returned in the output when clean room creator calls GET
+     */
+    inviteRecipientEmail?: string;
+    /**
+     * Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+     * inviteRecipientEmail is specified.
+     * It should be empty when the collaborator is the creator of the clean room
+     */
+    inviteRecipientWorkspaceId?: number;
+    /**
+     * (string) - Organization name
+     * configured in the metastore
+     */
+    organizationName: string;
+}
+
+export interface CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile {
+    /**
+     * The list of compliance standards that the compliance security profile is configured to enforce
+     */
+    complianceStandards?: string[];
+    /**
+     * Whether the compliance security profile is enabled
+     */
+    isEnabled?: boolean;
+}
+
+export interface CleanRoomsCleanRoomRemoteDetailedInfoCreator {
+    /**
+     * Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+     */
+    collaboratorAlias: string;
+    /**
+     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+     * these values and could change in the future
+     */
+    displayName: string;
+    /**
+     * The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     */
+    globalMetastoreId?: string;
+    /**
+     * Email of the user who is receiving the clean room "invitation". It should be empty
+     * for the creator of the clean room, and non-empty for the invitees of the clean room.
+     * It is only returned in the output when clean room creator calls GET
+     */
+    inviteRecipientEmail?: string;
+    /**
+     * Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+     * inviteRecipientEmail is specified.
+     * It should be empty when the collaborator is the creator of the clean room
+     */
+    inviteRecipientWorkspaceId?: number;
+    /**
+     * (string) - Organization name
+     * configured in the metastore
+     */
+    organizationName: string;
+}
+
+export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy {
+    /**
+     * The access policy enforced for egress traffic to the internet
+     */
+    internetAccess?: outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess;
+}
+
+export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess {
+    allowedInternetDestinations?: outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination[];
+    allowedStorageDestinations?: outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination[];
+    /**
+     * Optional. If not specified, assume the policy is enforced for all workloads
+     */
+    logOnlyMode?: outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode;
+    /**
+     * . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+     */
+    restrictionMode?: string;
+}
+
+export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination {
+    destination?: string;
+    /**
+     * . Possible values are: `TCP`
+     */
+    protocol?: string;
+    type?: string;
+}
+
+export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination {
+    allowedPaths?: string[];
+    azureContainer?: string;
+    azureDnsZone?: string;
+    azureStorageAccount?: string;
+    azureStorageService?: string;
+    bucketName?: string;
+    region?: string;
+    type?: string;
+}
+
+export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode {
+    /**
+     * . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+     */
+    logOnlyModeType?: string;
+    workloads?: string[];
+}
+
 export interface ClusterAutoscale {
     /**
      * The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
      *
-     * When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `numWorkers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `numWorkers` is `0`, provider checks for presence of the required Spark configurations:
-     *
-     * * `spark.master` must have prefix `local`, like `local[*]`
-     * * `spark.databricks.cluster.profile` must have value `singleNode`
-     *
-     * and also `customTag` entry:
-     *
-     * * `"ResourceClass" = "SingleNode"`
-     *
-     * The following example demonstrates how to create an single node cluster:
+     * To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `isSingleNode = true` and `kind = "CLASSIC_PREVIEW"` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
      *
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
@@ -614,13 +801,8 @@ export interface ClusterAutoscale {
      *     sparkVersion: latestLts.then(latestLts => latestLts.id),
      *     nodeTypeId: smallest.then(smallest => smallest.id),
      *     autoterminationMinutes: 20,
-     *     sparkConf: {
-     *         "spark.databricks.cluster.profile": "singleNode",
-     *         "spark.master": "local[*]",
-     *     },
-     *     customTags: {
-     *         ResourceClass: "SingleNode",
-     *     },
+     *     isSingleNode: true,
+     *     kind: "CLASSIC_PREVIEW",
      * });
      * ```
      */
@@ -1092,6 +1274,82 @@ export interface CustomAppIntegrationTokenAccessPolicy {
     refreshTokenTtlInMinutes?: number;
 }
 
+export interface DatabaseInstanceChildInstanceRef {
+    /**
+     * Branch time of the ref database instance.
+     * For a parent ref instance, this is the point in time on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the point in time on the instance from which the child
+     * instance was created.
+     * Input: For specifying the point in time to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     */
+    branchTime?: string;
+    /**
+     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
+     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the LSN on the instance from which the child instance
+     * was created
+     */
+    effectiveLsn: string;
+    /**
+     * User-specified WAL LSN of the ref database instance.
+     *
+     * Input: For specifying the WAL LSN to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     */
+    lsn?: string;
+    /**
+     * The name of the instance. This is the unique identifier for the instance
+     */
+    name?: string;
+    /**
+     * (string) - Id of the ref database instance
+     */
+    uid: string;
+}
+
+export interface DatabaseInstanceParentInstanceRef {
+    /**
+     * Branch time of the ref database instance.
+     * For a parent ref instance, this is the point in time on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the point in time on the instance from which the child
+     * instance was created.
+     * Input: For specifying the point in time to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     */
+    branchTime?: string;
+    /**
+     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
+     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the LSN on the instance from which the child instance
+     * was created
+     */
+    effectiveLsn: string;
+    /**
+     * User-specified WAL LSN of the ref database instance.
+     *
+     * Input: For specifying the WAL LSN to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     */
+    lsn?: string;
+    /**
+     * The name of the instance. This is the unique identifier for the instance
+     */
+    name?: string;
+    /**
+     * (string) - Id of the ref database instance
+     */
+    uid: string;
+}
+
 export interface DefaultNamespaceSettingNamespace {
     /**
      * The value for the setting.
@@ -1122,11 +1380,20 @@ export interface EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonit
 }
 
 export interface ExternalLocationEncryptionDetails {
+    /**
+     * a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+     */
     sseEncryptionDetails?: outputs.ExternalLocationEncryptionDetailsSseEncryptionDetails;
 }
 
 export interface ExternalLocationEncryptionDetailsSseEncryptionDetails {
+    /**
+     * Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+     */
     algorithm?: string;
+    /**
+     * Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
+     */
     awsKmsKeyArn?: string;
 }
 
@@ -1560,9 +1827,10 @@ export interface GetAlertsV2Result {
      */
     queryText?: string;
     /**
-     * (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+     * (string) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      */
-    runAsUserName: string;
+    runAsUserName?: string;
     /**
      * (CronSchedule) -
      */
@@ -1879,6 +2147,10 @@ export interface GetAppAppPendingDeploymentStatus {
 
 export interface GetAppAppResource {
     /**
+     * attribute
+     */
+    database?: outputs.GetAppAppResourceDatabase;
+    /**
      * The description of the resource.
      */
     description?: string;
@@ -1908,13 +2180,28 @@ export interface GetAppAppResource {
     ucSecurable?: outputs.GetAppAppResourceUcSecurable;
 }
 
+export interface GetAppAppResourceDatabase {
+    /**
+     * The name of database.
+     */
+    databaseName: string;
+    /**
+     * The name of database instance.
+     */
+    instanceName: string;
+    /**
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     */
+    permission: string;
+}
+
 export interface GetAppAppResourceJob {
     /**
      * Id of the job to grant permission on.
      */
     id: string;
     /**
-     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      */
     permission: string;
 }
@@ -1925,7 +2212,7 @@ export interface GetAppAppResourceSecret {
      */
     key: string;
     /**
-     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      */
     permission: string;
     /**
@@ -1940,7 +2227,7 @@ export interface GetAppAppResourceServingEndpoint {
      */
     name: string;
     /**
-     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      */
     permission: string;
 }
@@ -1951,14 +2238,14 @@ export interface GetAppAppResourceSqlWarehouse {
      */
     id: string;
     /**
-     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      */
     permission: string;
 }
 
 export interface GetAppAppResourceUcSecurable {
     /**
-     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      */
     permission: string;
     /**
@@ -2142,6 +2429,10 @@ export interface GetAppsAppPendingDeploymentStatus {
 
 export interface GetAppsAppResource {
     /**
+     * attribute
+     */
+    database?: outputs.GetAppsAppResourceDatabase;
+    /**
      * The description of the resource.
      */
     description?: string;
@@ -2171,13 +2462,28 @@ export interface GetAppsAppResource {
     ucSecurable?: outputs.GetAppsAppResourceUcSecurable;
 }
 
+export interface GetAppsAppResourceDatabase {
+    /**
+     * The name of database.
+     */
+    databaseName: string;
+    /**
+     * The name of database instance.
+     */
+    instanceName: string;
+    /**
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     */
+    permission: string;
+}
+
 export interface GetAppsAppResourceJob {
     /**
      * Id of the job to grant permission on.
      */
     id: string;
     /**
-     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      */
     permission: string;
 }
@@ -2188,7 +2494,7 @@ export interface GetAppsAppResourceSecret {
      */
     key: string;
     /**
-     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      */
     permission: string;
     /**
@@ -2203,7 +2509,7 @@ export interface GetAppsAppResourceServingEndpoint {
      */
     name: string;
     /**
-     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      */
     permission: string;
 }
@@ -2214,14 +2520,14 @@ export interface GetAppsAppResourceSqlWarehouse {
      */
     id: string;
     /**
-     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      */
     permission: string;
 }
 
 export interface GetAppsAppResourceUcSecurable {
     /**
-     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      */
     permission: string;
     /**
@@ -2382,6 +2688,483 @@ export interface GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag {
 
 export interface GetCatalogCatalogInfoProvisioningInfo {
     state?: string;
+}
+
+export interface GetCleanRoomsCleanRoomOutputCatalog {
+    /**
+     * (string) - The name of the output catalog in UC.
+     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+     * The field will always exist if status is CREATED
+     */
+    catalogName?: string;
+    /**
+     * (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+     */
+    status: string;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfo {
+    /**
+     * (string) - Central clean room ID
+     */
+    centralCleanRoomId: string;
+    /**
+     * (string) - Cloud vendor (aws,azure,gcp) of the central clean room
+     */
+    cloudVendor?: string;
+    /**
+     * (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
+     * in the list that satisfies the owner condition:
+     */
+    collaborators?: outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCollaborator[];
+    /**
+     * (ComplianceSecurityProfile) -
+     */
+    complianceSecurityProfile: outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile;
+    /**
+     * (CleanRoomCollaborator) - Collaborator who creates the clean room
+     */
+    creator: outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCreator;
+    /**
+     * (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
+     */
+    egressNetworkPolicy?: outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy;
+    /**
+     * (string) -
+     */
+    region?: string;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoCollaborator {
+    /**
+     * (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+     */
+    collaboratorAlias: string;
+    /**
+     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+     * these values and could change in the future
+     */
+    displayName: string;
+    /**
+     * (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     */
+    globalMetastoreId?: string;
+    /**
+     * (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+     * for the creator of the clean room, and non-empty for the invitees of the clean room.
+     * It is only returned in the output when clean room creator calls GET
+     */
+    inviteRecipientEmail?: string;
+    /**
+     * (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+     * inviteRecipientEmail is specified.
+     * It should be empty when the collaborator is the creator of the clean room
+     */
+    inviteRecipientWorkspaceId?: number;
+    /**
+     * (string) - Organization name
+     * configured in the metastore
+     */
+    organizationName: string;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile {
+    /**
+     * (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
+     */
+    complianceStandards?: string[];
+    /**
+     * (boolean) - Whether the compliance security profile is enabled
+     */
+    isEnabled?: boolean;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoCreator {
+    /**
+     * (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+     */
+    collaboratorAlias: string;
+    /**
+     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+     * these values and could change in the future
+     */
+    displayName: string;
+    /**
+     * (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     */
+    globalMetastoreId?: string;
+    /**
+     * (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+     * for the creator of the clean room, and non-empty for the invitees of the clean room.
+     * It is only returned in the output when clean room creator calls GET
+     */
+    inviteRecipientEmail?: string;
+    /**
+     * (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+     * inviteRecipientEmail is specified.
+     * It should be empty when the collaborator is the creator of the clean room
+     */
+    inviteRecipientWorkspaceId?: number;
+    /**
+     * (string) - Organization name
+     * configured in the metastore
+     */
+    organizationName: string;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy {
+    /**
+     * (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
+     */
+    internetAccess?: outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess {
+    /**
+     * (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination) -
+     */
+    allowedInternetDestinations?: outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination[];
+    /**
+     * (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination) -
+     */
+    allowedStorageDestinations?: outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination[];
+    /**
+     * (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
+     */
+    logOnlyMode?: outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode;
+    /**
+     * (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+     */
+    restrictionMode?: string;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination {
+    /**
+     * (string) -
+     */
+    destination?: string;
+    /**
+     * (string) - . Possible values are: `TCP`
+     */
+    protocol?: string;
+    /**
+     * (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+     */
+    type?: string;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination {
+    /**
+     * (list of string) -
+     */
+    allowedPaths?: string[];
+    /**
+     * (string) -
+     */
+    azureContainer?: string;
+    /**
+     * (string) -
+     */
+    azureDnsZone?: string;
+    /**
+     * (string) -
+     */
+    azureStorageAccount?: string;
+    /**
+     * (string) -
+     */
+    azureStorageService?: string;
+    /**
+     * (string) -
+     */
+    bucketName?: string;
+    /**
+     * (string) -
+     */
+    region?: string;
+    /**
+     * (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+     */
+    type?: string;
+}
+
+export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode {
+    /**
+     * (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+     */
+    logOnlyModeType?: string;
+    /**
+     * (list of ) -
+     */
+    workloads?: string[];
+}
+
+export interface GetCleanRoomsCleanRoomsCleanRoom {
+    /**
+     * (string) - Whether clean room access is restricted due to [CSP](https://docs.databricks.com/en/security/privacy/security-profile.html). Possible values are: `CSP_MISMATCH`, `NO_RESTRICTION`
+     */
+    accessRestricted: string;
+    /**
+     * (string) -
+     */
+    comment?: string;
+    /**
+     * (integer) - When the clean room was created, in epoch milliseconds
+     */
+    createdAt: number;
+    /**
+     * (string) - The alias of the collaborator tied to the local clean room
+     */
+    localCollaboratorAlias: string;
+    /**
+     * (string) - The name of the clean room.
+     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+     */
+    name?: string;
+    /**
+     * (CleanRoomOutputCatalog) - Output catalog of the clean room. It is an output only field. Output catalog is manipulated
+     * using the separate CreateCleanRoomOutputCatalog API
+     */
+    outputCatalog: outputs.GetCleanRoomsCleanRoomsCleanRoomOutputCatalog;
+    /**
+     * (string) - This is Databricks username of the owner of the local clean room securable for permission management
+     */
+    owner?: string;
+    /**
+     * (CleanRoomRemoteDetail) - Central clean room details. During creation, users need to specify
+     * cloud_vendor, region, and collaborators.global_metastore_id.
+     * This field will not be filled in the ListCleanRooms call
+     */
+    remoteDetailedInfo?: outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfo;
+    /**
+     * (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+     */
+    status: string;
+    /**
+     * (integer) - When the clean room was last updated, in epoch milliseconds
+     */
+    updatedAt: number;
+}
+
+export interface GetCleanRoomsCleanRoomsCleanRoomOutputCatalog {
+    /**
+     * (string) - The name of the output catalog in UC.
+     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+     * The field will always exist if status is CREATED
+     */
+    catalogName?: string;
+    /**
+     * (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+     */
+    status: string;
+}
+
+export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfo {
+    /**
+     * (string) - Central clean room ID
+     */
+    centralCleanRoomId: string;
+    /**
+     * (string) - Cloud vendor (aws,azure,gcp) of the central clean room
+     */
+    cloudVendor?: string;
+    /**
+     * (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
+     * in the list that satisfies the owner condition:
+     */
+    collaborators?: outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCollaborator[];
+    /**
+     * (ComplianceSecurityProfile) -
+     */
+    complianceSecurityProfile: outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile;
+    /**
+     * (CleanRoomCollaborator) - Collaborator who creates the clean room
+     */
+    creator: outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCreator;
+    /**
+     * (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
+     */
+    egressNetworkPolicy?: outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy;
+    /**
+     * (string) -
+     */
+    region?: string;
+}
+
+export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCollaborator {
+    /**
+     * (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+     */
+    collaboratorAlias: string;
+    /**
+     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+     * these values and could change in the future
+     */
+    displayName: string;
+    /**
+     * (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     */
+    globalMetastoreId?: string;
+    /**
+     * (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+     * for the creator of the clean room, and non-empty for the invitees of the clean room.
+     * It is only returned in the output when clean room creator calls GET
+     */
+    inviteRecipientEmail?: string;
+    /**
+     * (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+     * inviteRecipientEmail is specified.
+     * It should be empty when the collaborator is the creator of the clean room
+     */
+    inviteRecipientWorkspaceId?: number;
+    /**
+     * (string) - Organization name
+     * configured in the metastore
+     */
+    organizationName: string;
+}
+
+export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile {
+    /**
+     * (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
+     */
+    complianceStandards?: string[];
+    /**
+     * (boolean) - Whether the compliance security profile is enabled
+     */
+    isEnabled?: boolean;
+}
+
+export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCreator {
+    /**
+     * (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+     */
+    collaboratorAlias: string;
+    /**
+     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+     * these values and could change in the future
+     */
+    displayName: string;
+    /**
+     * (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     */
+    globalMetastoreId?: string;
+    /**
+     * (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+     * for the creator of the clean room, and non-empty for the invitees of the clean room.
+     * It is only returned in the output when clean room creator calls GET
+     */
+    inviteRecipientEmail?: string;
+    /**
+     * (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+     * inviteRecipientEmail is specified.
+     * It should be empty when the collaborator is the creator of the clean room
+     */
+    inviteRecipientWorkspaceId?: number;
+    /**
+     * (string) - Organization name
+     * configured in the metastore
+     */
+    organizationName: string;
+}
+
+export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy {
+    /**
+     * (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
+     */
+    internetAccess?: outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess;
+}
+
+export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess {
+    /**
+     * (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination) -
+     */
+    allowedInternetDestinations?: outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination[];
+    /**
+     * (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination) -
+     */
+    allowedStorageDestinations?: outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination[];
+    /**
+     * (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
+     */
+    logOnlyMode?: outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode;
+    /**
+     * (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+     */
+    restrictionMode?: string;
+}
+
+export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination {
+    /**
+     * (string) -
+     */
+    destination?: string;
+    /**
+     * (string) - . Possible values are: `TCP`
+     */
+    protocol?: string;
+    /**
+     * (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+     */
+    type?: string;
+}
+
+export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination {
+    /**
+     * (list of string) -
+     */
+    allowedPaths?: string[];
+    /**
+     * (string) -
+     */
+    azureContainer?: string;
+    /**
+     * (string) -
+     */
+    azureDnsZone?: string;
+    /**
+     * (string) -
+     */
+    azureStorageAccount?: string;
+    /**
+     * (string) -
+     */
+    azureStorageService?: string;
+    /**
+     * (string) -
+     */
+    bucketName?: string;
+    /**
+     * (string) -
+     */
+    region?: string;
+    /**
+     * (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+     */
+    type?: string;
+}
+
+export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode {
+    /**
+     * (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+     */
+    logOnlyModeType?: string;
+    /**
+     * (list of ) -
+     */
+    workloads?: string[];
 }
 
 export interface GetClusterClusterInfo {
@@ -3028,11 +3811,86 @@ export interface GetDashboardsDashboard {
     warehouseId?: string;
 }
 
+export interface GetDatabaseInstanceChildInstanceRef {
+    /**
+     * (string) - Branch time of the ref database instance.
+     * For a parent ref instance, this is the point in time on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the point in time on the instance from which the child
+     * instance was created.
+     * Input: For specifying the point in time to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     */
+    branchTime?: string;
+    /**
+     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
+     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the LSN on the instance from which the child instance
+     * was created
+     */
+    effectiveLsn: string;
+    /**
+     * (string) - User-specified WAL LSN of the ref database instance.
+     */
+    lsn?: string;
+    /**
+     * The name of the instance. This is the unique identifier for the instance
+     */
+    name?: string;
+    /**
+     * (string) - Id of the ref database instance
+     */
+    uid: string;
+}
+
+export interface GetDatabaseInstanceParentInstanceRef {
+    /**
+     * (string) - Branch time of the ref database instance.
+     * For a parent ref instance, this is the point in time on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the point in time on the instance from which the child
+     * instance was created.
+     * Input: For specifying the point in time to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     */
+    branchTime?: string;
+    /**
+     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
+     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the LSN on the instance from which the child instance
+     * was created
+     */
+    effectiveLsn: string;
+    /**
+     * (string) - User-specified WAL LSN of the ref database instance.
+     */
+    lsn?: string;
+    /**
+     * The name of the instance. This is the unique identifier for the instance
+     */
+    name?: string;
+    /**
+     * (string) - Id of the ref database instance
+     */
+    uid: string;
+}
+
 export interface GetDatabaseInstancesDatabaseInstance {
     /**
      * (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
     capacity?: string;
+    /**
+     * (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+     * parent instance
+     */
+    childInstanceRefs: outputs.GetDatabaseInstancesDatabaseInstanceChildInstanceRef[];
     /**
      * (string) - The timestamp when the instance was created
      */
@@ -3042,23 +3900,68 @@ export interface GetDatabaseInstancesDatabaseInstance {
      */
     creator: string;
     /**
+     * (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
+     * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     */
+    effectiveEnableReadableSecondaries: boolean;
+    /**
+     * (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
+     * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     */
+    effectiveNodeCount: number;
+    /**
+     * (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
+     * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     */
+    effectiveRetentionWindowInDays: number;
+    /**
      * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
      * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
      * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      */
     effectiveStopped: boolean;
     /**
-     * (string) - The name of the instance. This is the unique identifier for the instance
+     * (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+     */
+    enableReadableSecondaries?: boolean;
+    /**
+     * (string) - Name of the ref database instance
      */
     name: string;
+    /**
+     * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
+     */
+    nodeCount?: number;
+    /**
+     * (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+     * child instance.
+     * Input: For specifying the parent instance to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     */
+    parentInstanceRef?: outputs.GetDatabaseInstancesDatabaseInstanceParentInstanceRef;
     /**
      * (string) - The version of Postgres running on the instance
      */
     pgVersion: string;
     /**
+     * (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+     * enableReadableSecondaries is true
+     */
+    readOnlyDns: string;
+    /**
      * (string) - The DNS endpoint to connect to the instance for read+write access
      */
     readWriteDns: string;
+    /**
+     * (integer) - The retention window for the instance. This is the time window in days
+     * for which the historical data is retained. The default value is 7 days.
+     * Valid values are 2 to 35 days
+     */
+    retentionWindowInDays?: number;
     /**
      * (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
@@ -3068,7 +3971,77 @@ export interface GetDatabaseInstancesDatabaseInstance {
      */
     stopped?: boolean;
     /**
-     * (string) - An immutable UUID identifier for the instance
+     * (string) - Id of the ref database instance
+     */
+    uid: string;
+}
+
+export interface GetDatabaseInstancesDatabaseInstanceChildInstanceRef {
+    /**
+     * (string) - Branch time of the ref database instance.
+     * For a parent ref instance, this is the point in time on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the point in time on the instance from which the child
+     * instance was created.
+     * Input: For specifying the point in time to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     */
+    branchTime?: string;
+    /**
+     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
+     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the LSN on the instance from which the child instance
+     * was created
+     */
+    effectiveLsn: string;
+    /**
+     * (string) - User-specified WAL LSN of the ref database instance.
+     */
+    lsn?: string;
+    /**
+     * (string) - Name of the ref database instance
+     */
+    name?: string;
+    /**
+     * (string) - Id of the ref database instance
+     */
+    uid: string;
+}
+
+export interface GetDatabaseInstancesDatabaseInstanceParentInstanceRef {
+    /**
+     * (string) - Branch time of the ref database instance.
+     * For a parent ref instance, this is the point in time on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the point in time on the instance from which the child
+     * instance was created.
+     * Input: For specifying the point in time to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     */
+    branchTime?: string;
+    /**
+     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
+     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * instance was created.
+     * For a child ref instance, this is the LSN on the instance from which the child instance
+     * was created
+     */
+    effectiveLsn: string;
+    /**
+     * (string) - User-specified WAL LSN of the ref database instance.
+     */
+    lsn?: string;
+    /**
+     * (string) - Name of the ref database instance
+     */
+    name?: string;
+    /**
+     * (string) - Id of the ref database instance
      */
     uid: string;
 }
@@ -3105,7 +4078,7 @@ export interface GetExternalLocationExternalLocationInfo {
     credentialName?: string;
     enableFileEvents?: boolean;
     /**
-     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+     * A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
      */
     encryptionDetails?: outputs.GetExternalLocationExternalLocationInfoEncryptionDetails;
     fallback?: boolean;
@@ -3142,11 +4115,20 @@ export interface GetExternalLocationExternalLocationInfo {
 }
 
 export interface GetExternalLocationExternalLocationInfoEncryptionDetails {
+    /**
+     * a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+     */
     sseEncryptionDetails?: outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails;
 }
 
 export interface GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails {
+    /**
+     * Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+     */
     algorithm?: string;
+    /**
+     * ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`.
+     */
     awsKmsKeyArn?: string;
 }
 
@@ -3191,6 +4173,65 @@ export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedPu
 export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqs {
     managedResourceId?: string;
     queueUrl?: string;
+}
+
+export interface GetExternalMetadatasExternalMetadata {
+    /**
+     * (list of string) - List of columns associated with the external metadata object
+     */
+    columns?: string[];
+    /**
+     * (string) - Time at which this external metadata object was created
+     */
+    createTime: string;
+    /**
+     * (string) - Username of external metadata object creator
+     */
+    createdBy: string;
+    /**
+     * (string) - User-provided free-form text description
+     */
+    description?: string;
+    /**
+     * (string) - Type of entity within the external system
+     */
+    entityType: string;
+    /**
+     * (string) - Unique identifier of the external metadata object
+     */
+    id: string;
+    /**
+     * (string) - Unique identifier of parent metastore
+     */
+    metastoreId: string;
+    /**
+     * (string) - Name of the external metadata object
+     */
+    name: string;
+    /**
+     * (string) - Owner of the external metadata object
+     */
+    owner?: string;
+    /**
+     * (object) - A map of key-value properties attached to the external metadata object
+     */
+    properties?: {[key: string]: string};
+    /**
+     * (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+     */
+    systemType: string;
+    /**
+     * (string) - Time at which this external metadata object was last modified
+     */
+    updateTime: string;
+    /**
+     * (string) - Username of user who last modified external metadata object
+     */
+    updatedBy: string;
+    /**
+     * (string) - URL associated with the external metadata object
+     */
+    url?: string;
 }
 
 export interface GetFunctionsFunction {
@@ -3437,8 +4478,18 @@ export interface GetFunctionsFunctionRoutineDependency {
 }
 
 export interface GetFunctionsFunctionRoutineDependencyDependency {
+    connections?: outputs.GetFunctionsFunctionRoutineDependencyDependencyConnection[];
+    credentials?: outputs.GetFunctionsFunctionRoutineDependencyDependencyCredential[];
     functions?: outputs.GetFunctionsFunctionRoutineDependencyDependencyFunction[];
     tables?: outputs.GetFunctionsFunctionRoutineDependencyDependencyTable[];
+}
+
+export interface GetFunctionsFunctionRoutineDependencyDependencyConnection {
+    connectionName?: string;
+}
+
+export interface GetFunctionsFunctionRoutineDependencyDependencyCredential {
+    credentialName?: string;
 }
 
 export interface GetFunctionsFunctionRoutineDependencyDependencyFunction {
@@ -5014,6 +6065,17 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccess {
     id: string;
 }
 
+export interface GetMaterializedFeaturesFeatureTagsFeatureTag {
+    /**
+     * (string) -
+     */
+    key: string;
+    /**
+     * (string) -
+     */
+    value?: string;
+}
+
 export interface GetMetastoreMetastoreInfo {
     cloud?: string;
     createdAt?: number;
@@ -5266,7 +6328,7 @@ export interface GetOnlineStoresOnlineStore {
     /**
      * (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
-    capacity?: string;
+    capacity: string;
     /**
      * (string) - The timestamp when the online store was created
      */
@@ -5279,6 +6341,10 @@ export interface GetOnlineStoresOnlineStore {
      * (string) - The name of the online store. This is the unique identifier for the online store
      */
     name: string;
+    /**
+     * (integer) - The number of read replicas for the online store. Defaults to 0
+     */
+    readReplicaCount?: number;
     /**
      * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
@@ -5573,6 +6639,8 @@ export interface GetRegisteredModelVersionsModelVersionModelVersionDependency {
 }
 
 export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency {
+    connections?: outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection[];
+    credentials?: outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential[];
     /**
      * A function that is dependent on a SQL object:
      */
@@ -5581,6 +6649,14 @@ export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDep
      * A table that is dependent on a SQL object
      */
     tables?: outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable[];
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection {
+    connectionName?: string;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential {
+    credentialName?: string;
 }
 
 export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction {
@@ -5755,8 +6831,9 @@ export interface GetServingEndpointsEndpointAiGatewayInferenceTableConfig {
 }
 
 export interface GetServingEndpointsEndpointAiGatewayRateLimit {
-    calls: number;
+    calls?: number;
     key?: string;
+    principal?: string;
     renewalPeriod: string;
 }
 
@@ -6136,6 +7213,7 @@ export interface GetTableTableInfo {
      * Name of parent schema relative to its parent catalog.
      */
     schemaName?: string;
+    securableKindManifest?: outputs.GetTableTableInfoSecurableKindManifest;
     sqlPath?: string;
     storageCredentialName?: string;
     storageLocation?: string;
@@ -6207,6 +7285,34 @@ export interface GetTableTableInfoRowFilter {
     inputColumnNames: string[];
 }
 
+export interface GetTableTableInfoSecurableKindManifest {
+    assignablePrivileges?: string[];
+    capabilities?: string[];
+    options?: outputs.GetTableTableInfoSecurableKindManifestOption[];
+    securableKind?: string;
+    securableType?: string;
+}
+
+export interface GetTableTableInfoSecurableKindManifestOption {
+    allowedValues?: string[];
+    defaultValue?: string;
+    description?: string;
+    hint?: string;
+    isCopiable?: boolean;
+    isCreatable?: boolean;
+    isHidden?: boolean;
+    isLoggable?: boolean;
+    isRequired?: boolean;
+    isSecret?: boolean;
+    isUpdatable?: boolean;
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     */
+    name?: string;
+    oauthStage?: string;
+    type?: string;
+}
+
 export interface GetTableTableInfoTableConstraint {
     foreignKeyConstraint?: outputs.GetTableTableInfoTableConstraintForeignKeyConstraint;
     namedTableConstraint?: outputs.GetTableTableInfoTableConstraintNamedTableConstraint;
@@ -6221,6 +7327,7 @@ export interface GetTableTableInfoTableConstraintForeignKeyConstraint {
     name: string;
     parentColumns: string[];
     parentTable: string;
+    rely?: boolean;
 }
 
 export interface GetTableTableInfoTableConstraintNamedTableConstraint {
@@ -6236,6 +7343,7 @@ export interface GetTableTableInfoTableConstraintPrimaryKeyConstraint {
      * Full name of the databricks_table: _`catalog`.`schema`.`table`_
      */
     name: string;
+    rely?: boolean;
     timeseriesColumns?: string[];
 }
 
@@ -6244,8 +7352,18 @@ export interface GetTableTableInfoViewDependencies {
 }
 
 export interface GetTableTableInfoViewDependenciesDependency {
+    connection?: outputs.GetTableTableInfoViewDependenciesDependencyConnection;
+    credential?: outputs.GetTableTableInfoViewDependenciesDependencyCredential;
     function?: outputs.GetTableTableInfoViewDependenciesDependencyFunction;
     table?: outputs.GetTableTableInfoViewDependenciesDependencyTable;
+}
+
+export interface GetTableTableInfoViewDependenciesDependencyConnection {
+    connectionName?: string;
+}
+
+export interface GetTableTableInfoViewDependenciesDependencyCredential {
+    credentialName?: string;
 }
 
 export interface GetTableTableInfoViewDependenciesDependencyFunction {
@@ -6625,6 +7743,7 @@ export interface JobJobCluster {
 }
 
 export interface JobJobClusterNewCluster {
+    __applyPolicyDefaultValuesAllowLists?: string[];
     applyPolicyDefaultValues?: boolean;
     autoscale?: outputs.JobJobClusterNewClusterAutoscale;
     awsAttributes?: outputs.JobJobClusterNewClusterAwsAttributes;
@@ -8539,6 +9658,7 @@ export interface JobTaskLibraryPypi {
 }
 
 export interface JobTaskNewCluster {
+    __applyPolicyDefaultValuesAllowLists?: string[];
     applyPolicyDefaultValues?: boolean;
     autoscale?: outputs.JobTaskNewClusterAutoscale;
     awsAttributes?: outputs.JobTaskNewClusterAwsAttributes;
@@ -9528,6 +10648,8 @@ export interface ModelServingAiGatewayGuardrails {
 export interface ModelServingAiGatewayGuardrailsInput {
     /**
      * List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+     *
+     * @deprecated Please use 'pii' and 'safety' instead.
      */
     invalidKeywords?: string[];
     /**
@@ -9540,6 +10662,8 @@ export interface ModelServingAiGatewayGuardrailsInput {
     safety?: boolean;
     /**
      * The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+     *
+     * @deprecated Please use 'pii' and 'safety' instead.
      */
     validTopics?: string[];
 }
@@ -9554,6 +10678,8 @@ export interface ModelServingAiGatewayGuardrailsInputPii {
 export interface ModelServingAiGatewayGuardrailsOutput {
     /**
      * List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+     *
+     * @deprecated Please use 'pii' and 'safety' instead.
      */
     invalidKeywords?: string[];
     /**
@@ -9566,6 +10692,8 @@ export interface ModelServingAiGatewayGuardrailsOutput {
     safety?: boolean;
     /**
      * The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+     *
+     * @deprecated Please use 'pii' and 'safety' instead.
      */
     validTopics?: string[];
 }
@@ -9600,11 +10728,15 @@ export interface ModelServingAiGatewayRateLimit {
     /**
      * Used to specify how many calls are allowed for a key within the renewal_period.
      */
-    calls: number;
+    calls?: number;
     /**
-     * Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+     * Key field for a serving endpoint rate limit. Currently, `user`, `userGroup`, `servicePrincipal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
      */
     key?: string;
+    /**
+     * Principal field for a user, user group, or service principal to apply rate limiting to. Accepts a user email, group name, or service principal application ID.
+     */
+    principal?: string;
     /**
      * Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
      */
@@ -10011,7 +11143,11 @@ export interface ModelServingConfigTrafficConfig {
 }
 
 export interface ModelServingConfigTrafficConfigRoute {
-    servedModelName: string;
+    /**
+     * The name of the served entity this route configures traffic for. This needs to match the name of a `servedEntity` block.
+     */
+    servedEntityName?: string;
+    servedModelName?: string;
     /**
      * The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
      */
@@ -10119,11 +11255,12 @@ export interface ModelServingProvisionedThroughputAiGatewayInferenceTableConfig 
 }
 
 export interface ModelServingProvisionedThroughputAiGatewayRateLimit {
-    calls: number;
+    calls?: number;
     /**
      * The key field for a tag.
      */
     key?: string;
+    principal?: string;
     renewalPeriod: string;
 }
 
@@ -10172,7 +11309,11 @@ export interface ModelServingProvisionedThroughputConfigTrafficConfig {
 }
 
 export interface ModelServingProvisionedThroughputConfigTrafficConfigRoute {
-    servedModelName: string;
+    /**
+     * The name of the served entity this route configures traffic for. This needs to match the name of a `servedEntity` block.
+     */
+    servedEntityName?: string;
+    servedModelName?: string;
     /**
      * The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
      */
@@ -10196,7 +11337,7 @@ export interface ModelServingRateLimit {
      */
     calls: number;
     /**
-     * Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+     * Key field for a serving endpoint rate limit. Currently, `user`, `userGroup`, `servicePrincipal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
      */
     key?: string;
     /**
@@ -10323,6 +11464,9 @@ export interface MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServic
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigTargetRules {
+    /**
+     * (AWS only) - list containing information about configure AWS Private Endpoints.
+     */
     awsPrivateEndpointRules?: outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule[];
     /**
      * (Azure only) - list containing information about configure Azure Private Endpoints.
@@ -10333,6 +11477,9 @@ export interface MwsNetworkConnectivityConfigEgressConfigTargetRules {
 export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule {
     accountId?: string;
     connectionState?: string;
+    /**
+     * time in epoch milliseconds when this object was created.
+     */
     creationTime?: number;
     deactivated?: boolean;
     deactivatedAt?: number;
@@ -10345,12 +11492,18 @@ export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEn
     networkConnectivityConfigId?: string;
     resourceNames?: string[];
     ruleId?: string;
+    /**
+     * time in epoch milliseconds when this object was updated.
+     */
     updatedTime?: number;
     vpcEndpointId?: string;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
     connectionState?: string;
+    /**
+     * time in epoch milliseconds when this object was created.
+     */
     creationTime?: number;
     deactivated?: boolean;
     deactivatedAt?: number;
@@ -10363,6 +11516,9 @@ export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivate
     networkConnectivityConfigId?: string;
     resourceId?: string;
     ruleId?: string;
+    /**
+     * time in epoch milliseconds when this object was updated.
+     */
     updatedTime?: number;
 }
 
@@ -10377,11 +11533,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -10448,11 +11604,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.85.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -10854,7 +12010,7 @@ export interface PipelineGatewayDefinition {
      */
     gatewayStorageCatalog: string;
     /**
-     * Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+     * Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Lakeflow Declarative Pipelines system will automatically create the storage location under the catalog and schema.
      */
     gatewayStorageName?: string;
     /**
