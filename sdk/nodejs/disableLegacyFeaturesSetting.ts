@@ -9,11 +9,12 @@ import * as utilities from "./utilities";
 /**
  * > This resource can only be used with an account-level provider!
  *
- * > This setting is currently in private preview, and only available for enrolled customers.
- *
  * The `databricks.DisableLegacyFeaturesSetting` resource allows you to disable legacy features on newly created workspaces.
  *
+ * > Before disabling legacy features, make sure that default catalog for the workspace is set to value different than `hiveMetastore`!  You can set it using the databricks.DefaultNamespaceSetting resource.
+ *
  * When this setting is on, the following applies to new workspaces:
+ *
  * - Disables the use of DBFS root and mounts.
  * - Hive Metastore will not be provisioned.
  * - Disables the use of 'No-isolation clusters'.
@@ -25,10 +26,22 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = new databricks.DisableLegacyFeaturesSetting("this", {disableLegacyFeatures: {
+ * // Change default catalog to anything than `hive_metastore`
+ * const _this = new databricks.DefaultNamespaceSetting("this", {namespace: {
+ *     value: "default_catalog",
+ * }});
+ * // Disable legacy features
+ * const thisDisableLegacyFeaturesSetting = new databricks.DisableLegacyFeaturesSetting("this", {disableLegacyFeatures: {
  *     value: true,
  * }});
  * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * databricks.DisableLegacyAccessSetting to disable legacy access, enabled by default when creating new workspaces with the `disableLegacyFeatures` account level setting turned on.
+ * * databricks.DisableLegacyDbfsSetting to disable legacy DBFS, enabled by default when creating new workspaces with the `disableLegacyFeatures` account level setting turned on.
  *
  * ## Import
  *

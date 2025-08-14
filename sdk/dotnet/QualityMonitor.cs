@@ -214,7 +214,7 @@ namespace Pulumi.Databricks
         /// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
         /// </summary>
         [Output("monitorVersion")]
-        public Output<string> MonitorVersion { get; private set; } = null!;
+        public Output<int> MonitorVersion { get; private set; } = null!;
 
         /// <summary>
         /// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
@@ -504,7 +504,7 @@ namespace Pulumi.Databricks
         /// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
         /// </summary>
         [Input("monitorVersion")]
-        public Input<string>? MonitorVersion { get; set; }
+        public Input<int>? MonitorVersion { get; set; }
 
         /// <summary>
         /// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:

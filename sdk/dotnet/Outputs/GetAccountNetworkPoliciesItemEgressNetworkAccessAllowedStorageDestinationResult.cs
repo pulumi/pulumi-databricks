@@ -22,11 +22,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? AzureStorageService;
         /// <summary>
-        /// (string) -
+        /// (string)
         /// </summary>
         public readonly string? BucketName;
         /// <summary>
-        /// (string) -
+        /// (string)
         /// </summary>
         public readonly string? Region;
         /// <summary>

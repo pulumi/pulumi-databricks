@@ -25,9 +25,21 @@ public final class JobLibraryArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.cran);
     }
 
+    /**
+     * @deprecated
+     * The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
+     * 
+     */
+    @Deprecated /* The `egg` library type is deprecated. Please use `whl` or `pypi` instead. */
     @Import(name="egg")
     private @Nullable Output<String> egg;
 
+    /**
+     * @deprecated
+     * The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
+     * 
+     */
+    @Deprecated /* The `egg` library type is deprecated. Please use `whl` or `pypi` instead. */
     public Optional<Output<String>> egg() {
         return Optional.ofNullable(this.egg);
     }
@@ -106,11 +118,27 @@ public final class JobLibraryArgs extends com.pulumi.resources.ResourceArgs {
             return cran(Output.of(cran));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
+         * 
+         */
+        @Deprecated /* The `egg` library type is deprecated. Please use `whl` or `pypi` instead. */
         public Builder egg(@Nullable Output<String> egg) {
             $.egg = egg;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
+         * 
+         */
+        @Deprecated /* The `egg` library type is deprecated. Please use `whl` or `pypi` instead. */
         public Builder egg(String egg) {
             return egg(Output.of(egg));
         }

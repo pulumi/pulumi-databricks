@@ -43,7 +43,7 @@ public final class GetExternalLocationExternalLocationInfo {
     private @Nullable String credentialName;
     private @Nullable Boolean enableFileEvents;
     /**
-     * @return The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+     * @return A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
      * 
      */
     private @Nullable GetExternalLocationExternalLocationInfoEncryptionDetails encryptionDetails;
@@ -129,7 +129,7 @@ public final class GetExternalLocationExternalLocationInfo {
         return Optional.ofNullable(this.enableFileEvents);
     }
     /**
-     * @return The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+     * @return A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
      * 
      */
     public Optional<GetExternalLocationExternalLocationInfoEncryptionDetails> encryptionDetails() {

@@ -214,6 +214,18 @@ export class ModelServing extends pulumi.CustomResource {
      */
     public readonly config!: pulumi.Output<outputs.ModelServingConfig>;
     /**
+     * The description of the model serving endpoint.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * A block with Email notification setting.
+     */
+    public readonly emailNotifications!: pulumi.Output<outputs.ModelServingEmailNotifications | undefined>;
+    /**
+     * Invocation url of the endpoint.
+     */
+    public /*out*/ readonly endpointUrl!: pulumi.Output<string>;
+    /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */
     public readonly name!: pulumi.Output<string>;
@@ -252,6 +264,9 @@ export class ModelServing extends pulumi.CustomResource {
             resourceInputs["aiGateway"] = state ? state.aiGateway : undefined;
             resourceInputs["budgetPolicyId"] = state ? state.budgetPolicyId : undefined;
             resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["emailNotifications"] = state ? state.emailNotifications : undefined;
+            resourceInputs["endpointUrl"] = state ? state.endpointUrl : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["rateLimits"] = state ? state.rateLimits : undefined;
             resourceInputs["routeOptimized"] = state ? state.routeOptimized : undefined;
@@ -262,10 +277,13 @@ export class ModelServing extends pulumi.CustomResource {
             resourceInputs["aiGateway"] = args ? args.aiGateway : undefined;
             resourceInputs["budgetPolicyId"] = args ? args.budgetPolicyId : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["emailNotifications"] = args ? args.emailNotifications : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["rateLimits"] = args ? args.rateLimits : undefined;
             resourceInputs["routeOptimized"] = args ? args.routeOptimized : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["endpointUrl"] = undefined /*out*/;
             resourceInputs["servingEndpointId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -289,6 +307,18 @@ export interface ModelServingState {
      * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
      */
     config?: pulumi.Input<inputs.ModelServingConfig>;
+    /**
+     * The description of the model serving endpoint.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * A block with Email notification setting.
+     */
+    emailNotifications?: pulumi.Input<inputs.ModelServingEmailNotifications>;
+    /**
+     * Invocation url of the endpoint.
+     */
+    endpointUrl?: pulumi.Input<string>;
     /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */
@@ -329,6 +359,14 @@ export interface ModelServingArgs {
      * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
      */
     config?: pulumi.Input<inputs.ModelServingConfig>;
+    /**
+     * The description of the model serving endpoint.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * A block with Email notification setting.
+     */
+    emailNotifications?: pulumi.Input<inputs.ModelServingEmailNotifications>;
     /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */

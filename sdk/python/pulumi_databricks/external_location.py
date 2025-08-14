@@ -42,7 +42,6 @@ class ExternalLocationArgs:
         :param pulumi.Input[_builtins.str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
         :param pulumi.Input[_builtins.bool] enable_file_events: indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
-        :param pulumi.Input['ExternalLocationEncryptionDetailsArgs'] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         :param pulumi.Input[_builtins.bool] fallback: Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
         :param pulumi.Input[_builtins.bool] force_destroy: Destroy external location regardless of its dependents.
         :param pulumi.Input[_builtins.bool] force_update: Update external location regardless of its dependents.
@@ -132,9 +131,6 @@ class ExternalLocationArgs:
     @_builtins.property
     @pulumi.getter(name="encryptionDetails")
     def encryption_details(self) -> Optional[pulumi.Input['ExternalLocationEncryptionDetailsArgs']]:
-        """
-        The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-        """
         return pulumi.get(self, "encryption_details")
 
     @encryption_details.setter
@@ -288,7 +284,6 @@ class _ExternalLocationState:
         :param pulumi.Input[_builtins.str] credential_id: Unique ID of the location's storage credential.
         :param pulumi.Input[_builtins.str] credential_name: Name of the StorageCredential to use with this external location.
         :param pulumi.Input[_builtins.bool] enable_file_events: indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
-        :param pulumi.Input['ExternalLocationEncryptionDetailsArgs'] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         :param pulumi.Input[_builtins.bool] fallback: Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
         :param pulumi.Input[_builtins.bool] force_destroy: Destroy external location regardless of its dependents.
         :param pulumi.Input[_builtins.bool] force_update: Update external location regardless of its dependents.
@@ -428,9 +423,6 @@ class _ExternalLocationState:
     @_builtins.property
     @pulumi.getter(name="encryptionDetails")
     def encryption_details(self) -> Optional[pulumi.Input['ExternalLocationEncryptionDetailsArgs']]:
-        """
-        The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-        """
         return pulumi.get(self, "encryption_details")
 
     @encryption_details.setter
@@ -677,7 +669,6 @@ class ExternalLocation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
         :param pulumi.Input[_builtins.str] credential_name: Name of the StorageCredential to use with this external location.
         :param pulumi.Input[_builtins.bool] enable_file_events: indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
-        :param pulumi.Input[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict']] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         :param pulumi.Input[_builtins.bool] fallback: Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
         :param pulumi.Input[_builtins.bool] force_destroy: Destroy external location regardless of its dependents.
         :param pulumi.Input[_builtins.bool] force_update: Update external location regardless of its dependents.
@@ -864,7 +855,6 @@ class ExternalLocation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] credential_id: Unique ID of the location's storage credential.
         :param pulumi.Input[_builtins.str] credential_name: Name of the StorageCredential to use with this external location.
         :param pulumi.Input[_builtins.bool] enable_file_events: indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
-        :param pulumi.Input[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict']] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         :param pulumi.Input[_builtins.bool] fallback: Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
         :param pulumi.Input[_builtins.bool] force_destroy: Destroy external location regardless of its dependents.
         :param pulumi.Input[_builtins.bool] force_update: Update external location regardless of its dependents.
@@ -960,9 +950,6 @@ class ExternalLocation(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="encryptionDetails")
     def encryption_details(self) -> pulumi.Output[Optional['outputs.ExternalLocationEncryptionDetails']]:
-        """
-        The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-        """
         return pulumi.get(self, "encryption_details")
 
     @_builtins.property

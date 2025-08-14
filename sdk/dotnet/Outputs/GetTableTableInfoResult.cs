@@ -56,6 +56,7 @@ namespace Pulumi.Databricks.Outputs
         /// Name of parent schema relative to its parent catalog.
         /// </summary>
         public readonly string? SchemaName;
+        public readonly Outputs.GetTableTableInfoSecurableKindManifestResult? SecurableKindManifest;
         public readonly string? SqlPath;
         public readonly string? StorageCredentialName;
         public readonly string? StorageLocation;
@@ -122,6 +123,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? schemaName,
 
+            Outputs.GetTableTableInfoSecurableKindManifestResult? securableKindManifest,
+
             string? sqlPath,
 
             string? storageCredentialName,
@@ -164,6 +167,7 @@ namespace Pulumi.Databricks.Outputs
             Properties = properties;
             RowFilter = rowFilter;
             SchemaName = schemaName;
+            SecurableKindManifest = securableKindManifest;
             SqlPath = sqlPath;
             StorageCredentialName = storageCredentialName;
             StorageLocation = storageLocation;

@@ -18,6 +18,7 @@ import com.pulumi.databricks.outputs.LakehouseMonitorSchedule;
 import com.pulumi.databricks.outputs.LakehouseMonitorSnapshot;
 import com.pulumi.databricks.outputs.LakehouseMonitorTimeSeries;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -317,14 +318,14 @@ public class LakehouseMonitor extends com.pulumi.resources.CustomResource {
      * The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
      * 
      */
-    @Export(name="monitorVersion", refs={String.class}, tree="[0]")
-    private Output<String> monitorVersion;
+    @Export(name="monitorVersion", refs={Integer.class}, tree="[0]")
+    private Output<Integer> monitorVersion;
 
     /**
      * @return The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
      * 
      */
-    public Output<String> monitorVersion() {
+    public Output<Integer> monitorVersion() {
         return this.monitorVersion;
     }
     /**

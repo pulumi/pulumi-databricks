@@ -149,6 +149,9 @@ export class Share extends pulumi.CustomResource {
         return obj['__pulumiType'] === Share.__pulumiType;
     }
 
+    /**
+     * User-supplied free-form text.
+     */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
      * Time when the share was created.
@@ -217,6 +220,9 @@ export class Share extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Share resources.
  */
 export interface ShareState {
+    /**
+     * User-supplied free-form text.
+     */
     comment?: pulumi.Input<string>;
     /**
      * Time when the share was created.
@@ -245,6 +251,9 @@ export interface ShareState {
  * The set of arguments for constructing a Share resource.
  */
 export interface ShareArgs {
+    /**
+     * User-supplied free-form text.
+     */
     comment?: pulumi.Input<string>;
     /**
      * Time when the share was created.

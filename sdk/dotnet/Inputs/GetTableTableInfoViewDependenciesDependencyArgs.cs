@@ -12,6 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetTableTableInfoViewDependenciesDependencyInputArgs : global::Pulumi.ResourceArgs
     {
+        [Input("connection")]
+        public Input<Inputs.GetTableTableInfoViewDependenciesDependencyConnectionInputArgs>? Connection { get; set; }
+
+        [Input("credential")]
+        public Input<Inputs.GetTableTableInfoViewDependenciesDependencyCredentialInputArgs>? Credential { get; set; }
+
         [Input("function")]
         public Input<Inputs.GetTableTableInfoViewDependenciesDependencyFunctionInputArgs>? Function { get; set; }
 

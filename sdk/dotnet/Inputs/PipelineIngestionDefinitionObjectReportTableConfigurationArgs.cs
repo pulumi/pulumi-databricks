@@ -36,6 +36,9 @@ namespace Pulumi.Databricks.Inputs
             set => _primaryKeys = value;
         }
 
+        [Input("queryBasedConnectorConfig")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfigArgs>? QueryBasedConnectorConfig { get; set; }
+
         [Input("salesforceIncludeFormulaFields")]
         public Input<bool>? SalesforceIncludeFormulaFields { get; set; }
 

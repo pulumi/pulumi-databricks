@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAccountNetworkPoliciesItemEgressNetworkAccessPolicyEnforcementResult
     {
         /// <summary>
-        /// (list of ) - When empty, it means dry run for all products.
+        /// (list of string) - When empty, it means dry run for all products.
         /// When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
         /// </summary>
         public readonly ImmutableArray<string> DryRunModeProductFilters;

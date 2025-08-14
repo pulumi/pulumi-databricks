@@ -25,13 +25,13 @@ namespace Pulumi.Databricks.Inputs
         public string? AzureStorageService { get; set; }
 
         /// <summary>
-        /// (string) -
+        /// (string)
         /// </summary>
         [Input("bucketName")]
         public string? BucketName { get; set; }
 
         /// <summary>
-        /// (string) -
+        /// (string)
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }

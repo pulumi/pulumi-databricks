@@ -23,6 +23,7 @@ public final class ClusterGcpAttributes {
      * 
      */
     private @Nullable Integer bootDiskSize;
+    private @Nullable Integer firstOnDemand;
     /**
      * @return Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
      * 
@@ -61,6 +62,9 @@ public final class ClusterGcpAttributes {
      */
     public Optional<Integer> bootDiskSize() {
         return Optional.ofNullable(this.bootDiskSize);
+    }
+    public Optional<Integer> firstOnDemand() {
+        return Optional.ofNullable(this.firstOnDemand);
     }
     /**
      * @return Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
@@ -105,6 +109,7 @@ public final class ClusterGcpAttributes {
     public static final class Builder {
         private @Nullable String availability;
         private @Nullable Integer bootDiskSize;
+        private @Nullable Integer firstOnDemand;
         private @Nullable String googleServiceAccount;
         private @Nullable Integer localSsdCount;
         private @Nullable Boolean usePreemptibleExecutors;
@@ -114,6 +119,7 @@ public final class ClusterGcpAttributes {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
     	      this.bootDiskSize = defaults.bootDiskSize;
+    	      this.firstOnDemand = defaults.firstOnDemand;
     	      this.googleServiceAccount = defaults.googleServiceAccount;
     	      this.localSsdCount = defaults.localSsdCount;
     	      this.usePreemptibleExecutors = defaults.usePreemptibleExecutors;
@@ -130,6 +136,12 @@ public final class ClusterGcpAttributes {
         public Builder bootDiskSize(@Nullable Integer bootDiskSize) {
 
             this.bootDiskSize = bootDiskSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder firstOnDemand(@Nullable Integer firstOnDemand) {
+
+            this.firstOnDemand = firstOnDemand;
             return this;
         }
         @CustomType.Setter
@@ -160,6 +172,7 @@ public final class ClusterGcpAttributes {
             final var _resultValue = new ClusterGcpAttributes();
             _resultValue.availability = availability;
             _resultValue.bootDiskSize = bootDiskSize;
+            _resultValue.firstOnDemand = firstOnDemand;
             _resultValue.googleServiceAccount = googleServiceAccount;
             _resultValue.localSsdCount = localSsdCount;
             _resultValue.usePreemptibleExecutors = usePreemptibleExecutors;

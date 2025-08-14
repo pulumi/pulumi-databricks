@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+        /// </summary>
         [Input("algorithm")]
         public string? Algorithm { get; set; }
 
+        /// <summary>
+        /// ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`.
+        /// </summary>
         [Input("awsKmsKeyArn")]
         public string? AwsKmsKeyArn { get; set; }
 

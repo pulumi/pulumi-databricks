@@ -108,6 +108,8 @@ type ModelServingProvisionedThroughput struct {
 	BudgetPolicyId pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
 	// The model serving endpoint configuration.
 	Config ModelServingProvisionedThroughputConfigOutput `pulumi:"config"`
+	// A block with Email notification setting.
+	EmailNotifications ModelServingProvisionedThroughputEmailNotificationsPtrOutput `pulumi:"emailNotifications"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
@@ -155,6 +157,8 @@ type modelServingProvisionedThroughputState struct {
 	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
 	// The model serving endpoint configuration.
 	Config *ModelServingProvisionedThroughputConfig `pulumi:"config"`
+	// A block with Email notification setting.
+	EmailNotifications *ModelServingProvisionedThroughputEmailNotifications `pulumi:"emailNotifications"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
@@ -170,6 +174,8 @@ type ModelServingProvisionedThroughputState struct {
 	BudgetPolicyId pulumi.StringPtrInput
 	// The model serving endpoint configuration.
 	Config ModelServingProvisionedThroughputConfigPtrInput
+	// A block with Email notification setting.
+	EmailNotifications ModelServingProvisionedThroughputEmailNotificationsPtrInput
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
@@ -189,6 +195,8 @@ type modelServingProvisionedThroughputArgs struct {
 	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
 	// The model serving endpoint configuration.
 	Config ModelServingProvisionedThroughputConfig `pulumi:"config"`
+	// A block with Email notification setting.
+	EmailNotifications *ModelServingProvisionedThroughputEmailNotifications `pulumi:"emailNotifications"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name *string `pulumi:"name"`
 	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
@@ -203,6 +211,8 @@ type ModelServingProvisionedThroughputArgs struct {
 	BudgetPolicyId pulumi.StringPtrInput
 	// The model serving endpoint configuration.
 	Config ModelServingProvisionedThroughputConfigInput
+	// A block with Email notification setting.
+	EmailNotifications ModelServingProvisionedThroughputEmailNotificationsPtrInput
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name pulumi.StringPtrInput
 	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
@@ -313,6 +323,13 @@ func (o ModelServingProvisionedThroughputOutput) Config() ModelServingProvisione
 	return o.ApplyT(func(v *ModelServingProvisionedThroughput) ModelServingProvisionedThroughputConfigOutput {
 		return v.Config
 	}).(ModelServingProvisionedThroughputConfigOutput)
+}
+
+// A block with Email notification setting.
+func (o ModelServingProvisionedThroughputOutput) EmailNotifications() ModelServingProvisionedThroughputEmailNotificationsPtrOutput {
+	return o.ApplyT(func(v *ModelServingProvisionedThroughput) ModelServingProvisionedThroughputEmailNotificationsPtrOutput {
+		return v.EmailNotifications
+	}).(ModelServingProvisionedThroughputEmailNotificationsPtrOutput)
 }
 
 // The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.

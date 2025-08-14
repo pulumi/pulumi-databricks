@@ -178,11 +178,12 @@ import (
 // The following resources are often used in the same context:
 //
 // * End to end workspace management guide.
-// * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+// * Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
 // * Group data to retrieve information about Group members, entitlements and instance profiles.
 // * GroupMember to attach users and groups as group members.
 // * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-// * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and more to manage secrets for the service principal (only for AWS deployments)
+// * Grants to manage data access in Unity Catalog.
+// * ServicePrincipalSecret to manage secrets for a service principal.
 //
 // ## Import
 //

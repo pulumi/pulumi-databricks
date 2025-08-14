@@ -14,11 +14,12 @@ import (
 
 // > This resource can only be used with an account-level provider!
 //
-// > This setting is currently in private preview, and only available for enrolled customers.
-//
 // The `DisableLegacyFeaturesSetting` resource allows you to disable legacy features on newly created workspaces.
 //
+// > Before disabling legacy features, make sure that default catalog for the workspace is set to value different than `hiveMetastore`!  You can set it using the DefaultNamespaceSetting resource.
+//
 // When this setting is on, the following applies to new workspaces:
+//
 // - Disables the use of DBFS root and mounts.
 // - Hive Metastore will not be provisioned.
 // - Disables the use of 'No-isolation clusters'.
@@ -38,7 +39,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewDisableLegacyFeaturesSetting(ctx, "this", &databricks.DisableLegacyFeaturesSettingArgs{
+//			// Change default catalog to anything than `hive_metastore`
+//			_, err := databricks.NewDefaultNamespaceSetting(ctx, "this", &databricks.DefaultNamespaceSettingArgs{
+//				Namespace: &databricks.DefaultNamespaceSettingNamespaceArgs{
+//					Value: pulumi.String("default_catalog"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Disable legacy features
+//			_, err = databricks.NewDisableLegacyFeaturesSetting(ctx, "this", &databricks.DisableLegacyFeaturesSettingArgs{
 //				DisableLegacyFeatures: &databricks.DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs{
 //					Value: pulumi.Bool(true),
 //				},
@@ -51,6 +62,13 @@ import (
 //	}
 //
 // ```
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * DisableLegacyAccessSetting to disable legacy access, enabled by default when creating new workspaces with the `disableLegacyFeatures` account level setting turned on.
+// * DisableLegacyDbfsSetting to disable legacy DBFS, enabled by default when creating new workspaces with the `disableLegacyFeatures` account level setting turned on.
 //
 // ## Import
 //

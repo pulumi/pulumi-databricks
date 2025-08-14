@@ -30,6 +30,13 @@ public final class GetClusterClusterInfoGcpAttributes extends com.pulumi.resourc
         return Optional.ofNullable(this.bootDiskSize);
     }
 
+    @Import(name="firstOnDemand")
+    private @Nullable Integer firstOnDemand;
+
+    public Optional<Integer> firstOnDemand() {
+        return Optional.ofNullable(this.firstOnDemand);
+    }
+
     @Import(name="googleServiceAccount")
     private @Nullable String googleServiceAccount;
 
@@ -63,6 +70,7 @@ public final class GetClusterClusterInfoGcpAttributes extends com.pulumi.resourc
     private GetClusterClusterInfoGcpAttributes(GetClusterClusterInfoGcpAttributes $) {
         this.availability = $.availability;
         this.bootDiskSize = $.bootDiskSize;
+        this.firstOnDemand = $.firstOnDemand;
         this.googleServiceAccount = $.googleServiceAccount;
         this.localSsdCount = $.localSsdCount;
         this.usePreemptibleExecutors = $.usePreemptibleExecutors;
@@ -94,6 +102,11 @@ public final class GetClusterClusterInfoGcpAttributes extends com.pulumi.resourc
 
         public Builder bootDiskSize(@Nullable Integer bootDiskSize) {
             $.bootDiskSize = bootDiskSize;
+            return this;
+        }
+
+        public Builder firstOnDemand(@Nullable Integer firstOnDemand) {
+            $.firstOnDemand = firstOnDemand;
             return this;
         }
 

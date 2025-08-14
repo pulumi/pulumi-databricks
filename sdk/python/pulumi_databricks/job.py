@@ -60,6 +60,7 @@ class JobArgs:
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]] = None,
                  timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  trigger: Optional[pulumi.Input['JobTriggerArgs']] = None,
+                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  webhook_notifications: Optional[pulumi.Input['JobWebhookNotificationsArgs']] = None):
         """
         The set of arguments for constructing a Job resource.
@@ -72,7 +73,7 @@ class JobArgs:
         :param pulumi.Input[_builtins.str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param pulumi.Input[_builtins.str] edit_mode: If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
         :param pulumi.Input['JobEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
-        :param pulumi.Input['JobGitSourceArgs'] git_source: Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        :param pulumi.Input['JobGitSourceArgs'] git_source: Specifies the a Git repository for task source code. See git_source Configuration Block below.
         :param pulumi.Input['JobHealthArgs'] health: An optional block that specifies the health conditions for the job documented below.
         :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterArgs']]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
         :param pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
@@ -80,12 +81,12 @@ class JobArgs:
         :param pulumi.Input[_builtins.int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         :param pulumi.Input[_builtins.str] name: An optional name for the job. The default value is Untitled.
         :param pulumi.Input['JobNotificationSettingsArgs'] notification_settings: An optional block controlling the notification settings on the job level documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]] parameters: Specifices job parameter for the job. See parameter Configuration Block
+        :param pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]] parameters: Specifies job parameter for the job. See parameter Configuration Block
         :param pulumi.Input[_builtins.str] performance_target: The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
                * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
                * `STANDARD`: Enables cost-efficient execution of serverless workloads.
         :param pulumi.Input['JobQueueArgs'] queue: The queue status for the job. See queue Configuration Block below.
-        :param pulumi.Input['JobRunAsArgs'] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        :param pulumi.Input['JobRunAsArgs'] run_as: The user or the service principal the job runs as. See run_as Configuration Block below.
         :param pulumi.Input['JobScheduleArgs'] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: An optional map of the tags associated with the job. See tags Configuration Map
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
@@ -207,6 +208,8 @@ class JobArgs:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
         if trigger is not None:
             pulumi.set(__self__, "trigger", trigger)
+        if usage_policy_id is not None:
+            pulumi.set(__self__, "usage_policy_id", usage_policy_id)
         if webhook_notifications is not None:
             pulumi.set(__self__, "webhook_notifications", webhook_notifications)
 
@@ -347,7 +350,7 @@ class JobArgs:
     @pulumi.getter(name="gitSource")
     def git_source(self) -> Optional[pulumi.Input['JobGitSourceArgs']]:
         """
-        Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        Specifies the a Git repository for task source code. See git_source Configuration Block below.
         """
         return pulumi.get(self, "git_source")
 
@@ -473,7 +476,7 @@ class JobArgs:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]]]:
         """
-        Specifices job parameter for the job. See parameter Configuration Block
+        Specifies job parameter for the job. See parameter Configuration Block
         """
         return pulumi.get(self, "parameters")
 
@@ -541,7 +544,7 @@ class JobArgs:
     @pulumi.getter(name="runAs")
     def run_as(self) -> Optional[pulumi.Input['JobRunAsArgs']]:
         """
-        The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        The user or the service principal the job runs as. See run_as Configuration Block below.
         """
         return pulumi.get(self, "run_as")
 
@@ -650,6 +653,15 @@ class JobArgs:
         pulumi.set(self, "trigger", value)
 
     @_builtins.property
+    @pulumi.getter(name="usagePolicyId")
+    def usage_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "usage_policy_id")
+
+    @usage_policy_id.setter
+    def usage_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "usage_policy_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="webhookNotifications")
     def webhook_notifications(self) -> Optional[pulumi.Input['JobWebhookNotificationsArgs']]:
         """
@@ -705,6 +717,7 @@ class _JobState:
                  timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  trigger: Optional[pulumi.Input['JobTriggerArgs']] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
+                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  webhook_notifications: Optional[pulumi.Input['JobWebhookNotificationsArgs']] = None):
         """
         Input properties used for looking up and filtering Job resources.
@@ -717,7 +730,7 @@ class _JobState:
         :param pulumi.Input[_builtins.str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param pulumi.Input[_builtins.str] edit_mode: If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
         :param pulumi.Input['JobEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
-        :param pulumi.Input['JobGitSourceArgs'] git_source: Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        :param pulumi.Input['JobGitSourceArgs'] git_source: Specifies the a Git repository for task source code. See git_source Configuration Block below.
         :param pulumi.Input['JobHealthArgs'] health: An optional block that specifies the health conditions for the job documented below.
         :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterArgs']]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
         :param pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
@@ -725,12 +738,12 @@ class _JobState:
         :param pulumi.Input[_builtins.int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         :param pulumi.Input[_builtins.str] name: An optional name for the job. The default value is Untitled.
         :param pulumi.Input['JobNotificationSettingsArgs'] notification_settings: An optional block controlling the notification settings on the job level documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]] parameters: Specifices job parameter for the job. See parameter Configuration Block
+        :param pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]] parameters: Specifies job parameter for the job. See parameter Configuration Block
         :param pulumi.Input[_builtins.str] performance_target: The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
                * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
                * `STANDARD`: Enables cost-efficient execution of serverless workloads.
         :param pulumi.Input['JobQueueArgs'] queue: The queue status for the job. See queue Configuration Block below.
-        :param pulumi.Input['JobRunAsArgs'] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        :param pulumi.Input['JobRunAsArgs'] run_as: The user or the service principal the job runs as. See run_as Configuration Block below.
         :param pulumi.Input['JobScheduleArgs'] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: An optional map of the tags associated with the job. See tags Configuration Map
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
@@ -855,6 +868,8 @@ class _JobState:
             pulumi.set(__self__, "trigger", trigger)
         if url is not None:
             pulumi.set(__self__, "url", url)
+        if usage_policy_id is not None:
+            pulumi.set(__self__, "usage_policy_id", usage_policy_id)
         if webhook_notifications is not None:
             pulumi.set(__self__, "webhook_notifications", webhook_notifications)
 
@@ -995,7 +1010,7 @@ class _JobState:
     @pulumi.getter(name="gitSource")
     def git_source(self) -> Optional[pulumi.Input['JobGitSourceArgs']]:
         """
-        Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        Specifies the a Git repository for task source code. See git_source Configuration Block below.
         """
         return pulumi.get(self, "git_source")
 
@@ -1121,7 +1136,7 @@ class _JobState:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]]]:
         """
-        Specifices job parameter for the job. See parameter Configuration Block
+        Specifies job parameter for the job. See parameter Configuration Block
         """
         return pulumi.get(self, "parameters")
 
@@ -1189,7 +1204,7 @@ class _JobState:
     @pulumi.getter(name="runAs")
     def run_as(self) -> Optional[pulumi.Input['JobRunAsArgs']]:
         """
-        The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        The user or the service principal the job runs as. See run_as Configuration Block below.
         """
         return pulumi.get(self, "run_as")
 
@@ -1310,6 +1325,15 @@ class _JobState:
         pulumi.set(self, "url", value)
 
     @_builtins.property
+    @pulumi.getter(name="usagePolicyId")
+    def usage_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "usage_policy_id")
+
+    @usage_policy_id.setter
+    def usage_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "usage_policy_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="webhookNotifications")
     def webhook_notifications(self) -> Optional[pulumi.Input['JobWebhookNotificationsArgs']]:
         """
@@ -1367,6 +1391,7 @@ class Job(pulumi.CustomResource):
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]]] = None,
                  timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  trigger: Optional[pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict']]] = None,
+                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  webhook_notifications: Optional[pulumi.Input[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict']]] = None,
                  __props__=None):
         """
@@ -1473,7 +1498,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param pulumi.Input[_builtins.str] edit_mode: If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
         :param pulumi.Input[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
-        :param pulumi.Input[Union['JobGitSourceArgs', 'JobGitSourceArgsDict']] git_source: Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        :param pulumi.Input[Union['JobGitSourceArgs', 'JobGitSourceArgsDict']] git_source: Specifies the a Git repository for task source code. See git_source Configuration Block below.
         :param pulumi.Input[Union['JobHealthArgs', 'JobHealthArgsDict']] health: An optional block that specifies the health conditions for the job documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['JobJobClusterArgs', 'JobJobClusterArgsDict']]]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
         :param pulumi.Input[Sequence[pulumi.Input[Union['JobLibraryArgs', 'JobLibraryArgsDict']]]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
@@ -1481,12 +1506,12 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         :param pulumi.Input[_builtins.str] name: An optional name for the job. The default value is Untitled.
         :param pulumi.Input[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict']] notification_settings: An optional block controlling the notification settings on the job level documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]] parameters: Specifices job parameter for the job. See parameter Configuration Block
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]] parameters: Specifies job parameter for the job. See parameter Configuration Block
         :param pulumi.Input[_builtins.str] performance_target: The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
                * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
                * `STANDARD`: Enables cost-efficient execution of serverless workloads.
         :param pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict']] queue: The queue status for the job. See queue Configuration Block below.
-        :param pulumi.Input[Union['JobRunAsArgs', 'JobRunAsArgsDict']] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        :param pulumi.Input[Union['JobRunAsArgs', 'JobRunAsArgsDict']] run_as: The user or the service principal the job runs as. See run_as Configuration Block below.
         :param pulumi.Input[Union['JobScheduleArgs', 'JobScheduleArgsDict']] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: An optional map of the tags associated with the job. See tags Configuration Map
         :param pulumi.Input[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
@@ -1647,6 +1672,7 @@ class Job(pulumi.CustomResource):
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]]] = None,
                  timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  trigger: Optional[pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict']]] = None,
+                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  webhook_notifications: Optional[pulumi.Input[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1696,6 +1722,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["tasks"] = tasks
             __props__.__dict__["timeout_seconds"] = timeout_seconds
             __props__.__dict__["trigger"] = trigger
+            __props__.__dict__["usage_policy_id"] = usage_policy_id
             __props__.__dict__["webhook_notifications"] = webhook_notifications
             __props__.__dict__["url"] = None
         super(Job, __self__).__init__(
@@ -1748,6 +1775,7 @@ class Job(pulumi.CustomResource):
             timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
             trigger: Optional[pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict']]] = None,
             url: Optional[pulumi.Input[_builtins.str]] = None,
+            usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
             webhook_notifications: Optional[pulumi.Input[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict']]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
@@ -1765,7 +1793,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param pulumi.Input[_builtins.str] edit_mode: If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
         :param pulumi.Input[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
-        :param pulumi.Input[Union['JobGitSourceArgs', 'JobGitSourceArgsDict']] git_source: Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        :param pulumi.Input[Union['JobGitSourceArgs', 'JobGitSourceArgsDict']] git_source: Specifies the a Git repository for task source code. See git_source Configuration Block below.
         :param pulumi.Input[Union['JobHealthArgs', 'JobHealthArgsDict']] health: An optional block that specifies the health conditions for the job documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['JobJobClusterArgs', 'JobJobClusterArgsDict']]]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
         :param pulumi.Input[Sequence[pulumi.Input[Union['JobLibraryArgs', 'JobLibraryArgsDict']]]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
@@ -1773,12 +1801,12 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         :param pulumi.Input[_builtins.str] name: An optional name for the job. The default value is Untitled.
         :param pulumi.Input[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict']] notification_settings: An optional block controlling the notification settings on the job level documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]] parameters: Specifices job parameter for the job. See parameter Configuration Block
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]] parameters: Specifies job parameter for the job. See parameter Configuration Block
         :param pulumi.Input[_builtins.str] performance_target: The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
                * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
                * `STANDARD`: Enables cost-efficient execution of serverless workloads.
         :param pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict']] queue: The queue status for the job. See queue Configuration Block below.
-        :param pulumi.Input[Union['JobRunAsArgs', 'JobRunAsArgsDict']] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        :param pulumi.Input[Union['JobRunAsArgs', 'JobRunAsArgsDict']] run_as: The user or the service principal the job runs as. See run_as Configuration Block below.
         :param pulumi.Input[Union['JobScheduleArgs', 'JobScheduleArgsDict']] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: An optional map of the tags associated with the job. See tags Configuration Map
         :param pulumi.Input[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
@@ -1831,6 +1859,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["timeout_seconds"] = timeout_seconds
         __props__.__dict__["trigger"] = trigger
         __props__.__dict__["url"] = url
+        __props__.__dict__["usage_policy_id"] = usage_policy_id
         __props__.__dict__["webhook_notifications"] = webhook_notifications
         return Job(resource_name, opts=opts, __props__=__props__)
 
@@ -1923,7 +1952,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="gitSource")
     def git_source(self) -> pulumi.Output[Optional['outputs.JobGitSource']]:
         """
-        Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        Specifies the a Git repository for task source code. See git_source Configuration Block below.
         """
         return pulumi.get(self, "git_source")
 
@@ -2005,7 +2034,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Optional[Sequence['outputs.JobParameter']]]:
         """
-        Specifices job parameter for the job. See parameter Configuration Block
+        Specifies job parameter for the job. See parameter Configuration Block
         """
         return pulumi.get(self, "parameters")
 
@@ -2049,7 +2078,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="runAs")
     def run_as(self) -> pulumi.Output['outputs.JobRunAs']:
         """
-        The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        The user or the service principal the job runs as. See run_as Configuration Block below.
         """
         return pulumi.get(self, "run_as")
 
@@ -2124,6 +2153,11 @@ class Job(pulumi.CustomResource):
         URL of the job on the given workspace
         """
         return pulumi.get(self, "url")
+
+    @_builtins.property
+    @pulumi.getter(name="usagePolicyId")
+    def usage_policy_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "usage_policy_id")
 
     @_builtins.property
     @pulumi.getter(name="webhookNotifications")

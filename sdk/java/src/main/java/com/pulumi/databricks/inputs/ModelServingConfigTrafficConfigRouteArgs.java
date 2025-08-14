@@ -9,17 +9,34 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ModelServingConfigTrafficConfigRouteArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ModelServingConfigTrafficConfigRouteArgs Empty = new ModelServingConfigTrafficConfigRouteArgs();
 
-    @Import(name="servedModelName", required=true)
-    private Output<String> servedModelName;
+    /**
+     * The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+     * 
+     */
+    @Import(name="servedEntityName")
+    private @Nullable Output<String> servedEntityName;
 
-    public Output<String> servedModelName() {
-        return this.servedModelName;
+    /**
+     * @return The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+     * 
+     */
+    public Optional<Output<String>> servedEntityName() {
+        return Optional.ofNullable(this.servedEntityName);
+    }
+
+    @Import(name="servedModelName")
+    private @Nullable Output<String> servedModelName;
+
+    public Optional<Output<String>> servedModelName() {
+        return Optional.ofNullable(this.servedModelName);
     }
 
     /**
@@ -40,6 +57,7 @@ public final class ModelServingConfigTrafficConfigRouteArgs extends com.pulumi.r
     private ModelServingConfigTrafficConfigRouteArgs() {}
 
     private ModelServingConfigTrafficConfigRouteArgs(ModelServingConfigTrafficConfigRouteArgs $) {
+        this.servedEntityName = $.servedEntityName;
         this.servedModelName = $.servedModelName;
         this.trafficPercentage = $.trafficPercentage;
     }
@@ -62,7 +80,28 @@ public final class ModelServingConfigTrafficConfigRouteArgs extends com.pulumi.r
             $ = new ModelServingConfigTrafficConfigRouteArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder servedModelName(Output<String> servedModelName) {
+        /**
+         * @param servedEntityName The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servedEntityName(@Nullable Output<String> servedEntityName) {
+            $.servedEntityName = servedEntityName;
+            return this;
+        }
+
+        /**
+         * @param servedEntityName The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servedEntityName(String servedEntityName) {
+            return servedEntityName(Output.of(servedEntityName));
+        }
+
+        public Builder servedModelName(@Nullable Output<String> servedModelName) {
             $.servedModelName = servedModelName;
             return this;
         }
@@ -93,9 +132,6 @@ public final class ModelServingConfigTrafficConfigRouteArgs extends com.pulumi.r
         }
 
         public ModelServingConfigTrafficConfigRouteArgs build() {
-            if ($.servedModelName == null) {
-                throw new MissingRequiredPropertyException("ModelServingConfigTrafficConfigRouteArgs", "servedModelName");
-            }
             if ($.trafficPercentage == null) {
                 throw new MissingRequiredPropertyException("ModelServingConfigTrafficConfigRouteArgs", "trafficPercentage");
             }

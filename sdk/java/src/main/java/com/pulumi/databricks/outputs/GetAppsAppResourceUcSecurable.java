@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAppsAppResourceUcSecurable {
     /**
-     * @return Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      * 
      */
     private String permission;
@@ -28,7 +28,7 @@ public final class GetAppsAppResourceUcSecurable {
 
     private GetAppsAppResourceUcSecurable() {}
     /**
-     * @return Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      * 
      */
     public String permission() {

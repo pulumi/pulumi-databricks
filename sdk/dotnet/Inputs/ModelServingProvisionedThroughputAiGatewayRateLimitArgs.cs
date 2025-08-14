@@ -12,14 +12,17 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingProvisionedThroughputAiGatewayRateLimitArgs : global::Pulumi.ResourceArgs
     {
-        [Input("calls", required: true)]
-        public Input<int> Calls { get; set; } = null!;
+        [Input("calls")]
+        public Input<int>? Calls { get; set; }
 
         /// <summary>
         /// The key field for a tag.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
+
+        [Input("principal")]
+        public Input<string>? Principal { get; set; }
 
         [Input("renewalPeriod", required: true)]
         public Input<string> RenewalPeriod { get; set; } = null!;

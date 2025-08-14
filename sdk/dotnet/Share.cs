@@ -165,6 +165,9 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/share:Share")]
     public partial class Share : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// User-supplied free-form text.
+        /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
@@ -253,6 +256,9 @@ namespace Pulumi.Databricks
 
     public sealed class ShareArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// User-supplied free-form text.
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
@@ -308,6 +314,9 @@ namespace Pulumi.Databricks
 
     public sealed class ShareState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// User-supplied free-form text.
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 

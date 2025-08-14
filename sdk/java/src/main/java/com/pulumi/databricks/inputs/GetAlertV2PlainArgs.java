@@ -62,14 +62,14 @@ public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * (AlertV2Evaluation) -
+     * (AlertV2Evaluation)
      * 
      */
     @Import(name="evaluation")
     private @Nullable GetAlertV2Evaluation evaluation;
 
     /**
-     * @return (AlertV2Evaluation) -
+     * @return (AlertV2Evaluation)
      * 
      */
     public Optional<GetAlertV2Evaluation> evaluation() {
@@ -107,14 +107,31 @@ public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * (CronSchedule) -
+     * (string) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * 
+     */
+    @Import(name="runAsUserName")
+    private @Nullable String runAsUserName;
+
+    /**
+     * @return (string) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * 
+     */
+    public Optional<String> runAsUserName() {
+        return Optional.ofNullable(this.runAsUserName);
+    }
+
+    /**
+     * (CronSchedule)
      * 
      */
     @Import(name="schedule")
     private @Nullable GetAlertV2Schedule schedule;
 
     /**
-     * @return (CronSchedule) -
+     * @return (CronSchedule)
      * 
      */
     public Optional<GetAlertV2Schedule> schedule() {
@@ -145,6 +162,7 @@ public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
         this.evaluation = $.evaluation;
         this.parentPath = $.parentPath;
         this.queryText = $.queryText;
+        this.runAsUserName = $.runAsUserName;
         this.schedule = $.schedule;
         this.warehouseId = $.warehouseId;
     }
@@ -201,7 +219,7 @@ public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param evaluation (AlertV2Evaluation) -
+         * @param evaluation (AlertV2Evaluation)
          * 
          * @return builder
          * 
@@ -234,7 +252,19 @@ public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param schedule (CronSchedule) -
+         * @param runAsUserName (string) - The run as username or application ID of service principal.
+         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runAsUserName(@Nullable String runAsUserName) {
+            $.runAsUserName = runAsUserName;
+            return this;
+        }
+
+        /**
+         * @param schedule (CronSchedule)
          * 
          * @return builder
          * 

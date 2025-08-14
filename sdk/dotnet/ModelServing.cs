@@ -256,6 +256,24 @@ namespace Pulumi.Databricks
         public Output<Outputs.ModelServingConfig> Config { get; private set; } = null!;
 
         /// <summary>
+        /// The description of the model serving endpoint.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// A block with Email notification setting.
+        /// </summary>
+        [Output("emailNotifications")]
+        public Output<Outputs.ModelServingEmailNotifications?> EmailNotifications { get; private set; } = null!;
+
+        /// <summary>
+        /// Invocation url of the endpoint.
+        /// </summary>
+        [Output("endpointUrl")]
+        public Output<string> EndpointUrl { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         /// </summary>
         [Output("name")]
@@ -350,6 +368,18 @@ namespace Pulumi.Databricks
         public Input<Inputs.ModelServingConfigArgs>? Config { get; set; }
 
         /// <summary>
+        /// The description of the model serving endpoint.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// A block with Email notification setting.
+        /// </summary>
+        [Input("emailNotifications")]
+        public Input<Inputs.ModelServingEmailNotificationsArgs>? EmailNotifications { get; set; }
+
+        /// <summary>
         /// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         /// </summary>
         [Input("name")]
@@ -411,6 +441,24 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("config")]
         public Input<Inputs.ModelServingConfigGetArgs>? Config { get; set; }
+
+        /// <summary>
+        /// The description of the model serving endpoint.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// A block with Email notification setting.
+        /// </summary>
+        [Input("emailNotifications")]
+        public Input<Inputs.ModelServingEmailNotificationsGetArgs>? EmailNotifications { get; set; }
+
+        /// <summary>
+        /// Invocation url of the endpoint.
+        /// </summary>
+        [Input("endpointUrl")]
+        public Input<string>? EndpointUrl { get; set; }
 
         /// <summary>
         /// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.

@@ -16,14 +16,14 @@ public final class GetAlertV2EvaluationThreshold extends com.pulumi.resources.In
     public static final GetAlertV2EvaluationThreshold Empty = new GetAlertV2EvaluationThreshold();
 
     /**
-     * (AlertV2OperandColumn) -
+     * (AlertV2OperandColumn)
      * 
      */
     @Import(name="column")
     private @Nullable GetAlertV2EvaluationThresholdColumn column;
 
     /**
-     * @return (AlertV2OperandColumn) -
+     * @return (AlertV2OperandColumn)
      * 
      */
     public Optional<GetAlertV2EvaluationThresholdColumn> column() {
@@ -31,14 +31,14 @@ public final class GetAlertV2EvaluationThreshold extends com.pulumi.resources.In
     }
 
     /**
-     * (AlertV2OperandValue) -
+     * (AlertV2OperandValue)
      * 
      */
     @Import(name="value")
     private @Nullable GetAlertV2EvaluationThresholdValue value;
 
     /**
-     * @return (AlertV2OperandValue) -
+     * @return (AlertV2OperandValue)
      * 
      */
     public Optional<GetAlertV2EvaluationThresholdValue> value() {
@@ -71,7 +71,7 @@ public final class GetAlertV2EvaluationThreshold extends com.pulumi.resources.In
         }
 
         /**
-         * @param column (AlertV2OperandColumn) -
+         * @param column (AlertV2OperandColumn)
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class GetAlertV2EvaluationThreshold extends com.pulumi.resources.In
         }
 
         /**
-         * @param value (AlertV2OperandValue) -
+         * @param value (AlertV2OperandValue)
          * 
          * @return builder
          * 

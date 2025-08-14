@@ -19,14 +19,14 @@ public final class MlflowExperimentArgs extends com.pulumi.resources.ResourceArg
     public static final MlflowExperimentArgs Empty = new MlflowExperimentArgs();
 
     /**
-     * Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+     * Path to artifact location of the MLflow experiment.
      * 
      */
     @Import(name="artifactLocation")
     private @Nullable Output<String> artifactLocation;
 
     /**
-     * @return Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+     * @return Path to artifact location of the MLflow experiment.
      * 
      */
     public Optional<Output<String>> artifactLocation() {
@@ -142,7 +142,7 @@ public final class MlflowExperimentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param artifactLocation Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+         * @param artifactLocation Path to artifact location of the MLflow experiment.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class MlflowExperimentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param artifactLocation Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+         * @param artifactLocation Path to artifact location of the MLflow experiment.
          * 
          * @return builder
          * 

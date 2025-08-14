@@ -27,7 +27,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? PermissionLevel { get; set; }
 
         /// <summary>
-        /// Application ID of the service_principal.
+        /// Application ID (**not service principal name!**) of the service_principal.
         /// </summary>
         [Input("servicePrincipalName")]
         public Input<string>? ServicePrincipalName { get; set; }

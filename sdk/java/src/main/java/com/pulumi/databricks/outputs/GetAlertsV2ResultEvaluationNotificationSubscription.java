@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAlertsV2ResultEvaluationNotificationSubscription {
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     private @Nullable String destinationId;
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     private @Nullable String userEmail;
 
     private GetAlertsV2ResultEvaluationNotificationSubscription() {}
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     public Optional<String> destinationId() {
         return Optional.ofNullable(this.destinationId);
     }
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     public Optional<String> userEmail() {

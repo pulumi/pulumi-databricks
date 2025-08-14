@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,7 +17,7 @@ public final class GetOnlineStoresOnlineStore {
      * @return (string) - The capacity of the online store. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
      * 
      */
-    private @Nullable String capacity;
+    private String capacity;
     /**
      * @return (string) - The timestamp when the online store was created
      * 
@@ -33,6 +34,11 @@ public final class GetOnlineStoresOnlineStore {
      */
     private String name;
     /**
+     * @return (integer) - The number of read replicas for the online store. Defaults to 0
+     * 
+     */
+    private @Nullable Integer readReplicaCount;
+    /**
      * @return (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      * 
      */
@@ -43,8 +49,8 @@ public final class GetOnlineStoresOnlineStore {
      * @return (string) - The capacity of the online store. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
      * 
      */
-    public Optional<String> capacity() {
-        return Optional.ofNullable(this.capacity);
+    public String capacity() {
+        return this.capacity;
     }
     /**
      * @return (string) - The timestamp when the online store was created
@@ -68,6 +74,13 @@ public final class GetOnlineStoresOnlineStore {
         return this.name;
     }
     /**
+     * @return (integer) - The number of read replicas for the online store. Defaults to 0
+     * 
+     */
+    public Optional<Integer> readReplicaCount() {
+        return Optional.ofNullable(this.readReplicaCount);
+    }
+    /**
      * @return (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      * 
      */
@@ -84,10 +97,11 @@ public final class GetOnlineStoresOnlineStore {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String capacity;
+        private String capacity;
         private String creationTime;
         private String creator;
         private String name;
+        private @Nullable Integer readReplicaCount;
         private String state;
         public Builder() {}
         public Builder(GetOnlineStoresOnlineStore defaults) {
@@ -96,12 +110,15 @@ public final class GetOnlineStoresOnlineStore {
     	      this.creationTime = defaults.creationTime;
     	      this.creator = defaults.creator;
     	      this.name = defaults.name;
+    	      this.readReplicaCount = defaults.readReplicaCount;
     	      this.state = defaults.state;
         }
 
         @CustomType.Setter
-        public Builder capacity(@Nullable String capacity) {
-
+        public Builder capacity(String capacity) {
+            if (capacity == null) {
+              throw new MissingRequiredPropertyException("GetOnlineStoresOnlineStore", "capacity");
+            }
             this.capacity = capacity;
             return this;
         }
@@ -130,6 +147,12 @@ public final class GetOnlineStoresOnlineStore {
             return this;
         }
         @CustomType.Setter
+        public Builder readReplicaCount(@Nullable Integer readReplicaCount) {
+
+            this.readReplicaCount = readReplicaCount;
+            return this;
+        }
+        @CustomType.Setter
         public Builder state(String state) {
             if (state == null) {
               throw new MissingRequiredPropertyException("GetOnlineStoresOnlineStore", "state");
@@ -143,6 +166,7 @@ public final class GetOnlineStoresOnlineStore {
             _resultValue.creationTime = creationTime;
             _resultValue.creator = creator;
             _resultValue.name = name;
+            _resultValue.readReplicaCount = readReplicaCount;
             _resultValue.state = state;
             return _resultValue;
         }

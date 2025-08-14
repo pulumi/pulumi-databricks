@@ -13,6 +13,39 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineEnvironment
     {
+        /// <summary>
+        /// a list of pip dependencies, as supported by the version of pip in this environment. Each dependency is a [pip requirement file line](https://pip.pypa.io/en/stable/reference/requirements-file-format/).  See [API docs](https://docs.databricks.com/api/azure/workspace/pipelines/create#environment-dependencies) for more information.
+        /// 
+        /// Example:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = new Databricks.Pipeline("this", new()
+        ///     {
+        ///         Name = "Serverless demo",
+        ///         Serverless = true,
+        ///         Catalog = "main",
+        ///         Schema = "ldp_demo",
+        ///         Environment = new Databricks.Inputs.PipelineEnvironmentArgs
+        ///         {
+        ///             Dependencies = new[]
+        ///             {
+        ///                 "foo==0.0.1",
+        ///                 "-r /Workspace/Users/user.name/my-pipeline/requirements.txt",
+        ///                 "/Volumes/main/default/libs/my_lib.whl",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public readonly ImmutableArray<string> Dependencies;
 
         [OutputConstructor]

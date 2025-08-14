@@ -41,7 +41,7 @@ class GetServicePrincipalsResult:
     @pulumi.getter(name="applicationIds")
     def application_ids(self) -> Sequence[_builtins.str]:
         """
-        List of `application_ids` of service principals Individual service principal can be retrieved using ServicePrincipal data source
+        List of `application_ids` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source
         """
         return pulumi.get(self, "application_ids")
 
@@ -79,7 +79,7 @@ def get_service_principals(application_ids: Optional[Sequence[_builtins.str]] = 
     > This data source can be used with an account or workspace-level provider.
 
 
-    :param Sequence[_builtins.str] application_ids: List of `application_ids` of service principals Individual service principal can be retrieved using ServicePrincipal data source
+    :param Sequence[_builtins.str] application_ids: List of `application_ids` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source
     :param _builtins.str display_name_contains: Only return ServicePrincipal display name that match the given name string
     """
     __args__ = dict()
@@ -101,7 +101,7 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
     > This data source can be used with an account or workspace-level provider.
 
 
-    :param Sequence[_builtins.str] application_ids: List of `application_ids` of service principals Individual service principal can be retrieved using ServicePrincipal data source
+    :param Sequence[_builtins.str] application_ids: List of `application_ids` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source
     :param _builtins.str display_name_contains: Only return ServicePrincipal display name that match the given name string
     """
     __args__ = dict()

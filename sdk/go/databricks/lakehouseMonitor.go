@@ -197,7 +197,7 @@ type LakehouseMonitor struct {
 	InferenceLog            LakehouseMonitorInferenceLogPtrOutput `pulumi:"inferenceLog"`
 	LatestMonitorFailureMsg pulumi.StringPtrOutput                `pulumi:"latestMonitorFailureMsg"`
 	// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-	MonitorVersion pulumi.StringOutput `pulumi:"monitorVersion"`
+	MonitorVersion pulumi.IntOutput `pulumi:"monitorVersion"`
 	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
 	Notifications LakehouseMonitorNotificationsPtrOutput `pulumi:"notifications"`
 	// Schema where output metric tables are created
@@ -278,7 +278,7 @@ type lakehouseMonitorState struct {
 	InferenceLog            *LakehouseMonitorInferenceLog `pulumi:"inferenceLog"`
 	LatestMonitorFailureMsg *string                       `pulumi:"latestMonitorFailureMsg"`
 	// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-	MonitorVersion *string `pulumi:"monitorVersion"`
+	MonitorVersion *int `pulumi:"monitorVersion"`
 	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
 	Notifications *LakehouseMonitorNotifications `pulumi:"notifications"`
 	// Schema where output metric tables are created
@@ -321,7 +321,7 @@ type LakehouseMonitorState struct {
 	InferenceLog            LakehouseMonitorInferenceLogPtrInput
 	LatestMonitorFailureMsg pulumi.StringPtrInput
 	// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-	MonitorVersion pulumi.StringPtrInput
+	MonitorVersion pulumi.IntPtrInput
 	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
 	Notifications LakehouseMonitorNotificationsPtrInput
 	// Schema where output metric tables are created
@@ -547,8 +547,8 @@ func (o LakehouseMonitorOutput) LatestMonitorFailureMsg() pulumi.StringPtrOutput
 }
 
 // The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-func (o LakehouseMonitorOutput) MonitorVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringOutput { return v.MonitorVersion }).(pulumi.StringOutput)
+func (o LakehouseMonitorOutput) MonitorVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v *LakehouseMonitor) pulumi.IntOutput { return v.MonitorVersion }).(pulumi.IntOutput)
 }
 
 // The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:

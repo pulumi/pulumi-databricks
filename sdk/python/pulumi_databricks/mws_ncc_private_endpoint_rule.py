@@ -38,20 +38,22 @@ class MwsNccPrivateEndpointRuleArgs:
         """
         The set of arguments for constructing a MwsNccPrivateEndpointRule resource.
         :param pulumi.Input[_builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
-        :param pulumi.Input[_builtins.str] connection_state: The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+        :param pulumi.Input[_builtins.str] connection_state: The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
                The possible values are:
                * `PENDING`: The endpoint has been created and pending approval.
                * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
                * `REJECTED`: Connection was rejected by the private link resource owner.
                * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
+               * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
         :param pulumi.Input[_builtins.int] creation_time: Time in epoch milliseconds when this object was created.
         :param pulumi.Input[_builtins.bool] deactivated: Whether this private endpoint is deactivated.
         :param pulumi.Input[_builtins.int] deactivated_at: Time in epoch milliseconds when this object was deactivated.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_names: Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
-        :param pulumi.Input[_builtins.bool] enabled: Activation status. Only used by private endpoints towards an AWS S3 service.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_names: * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `group_id`.
+               * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `resource_names`.
+        :param pulumi.Input[_builtins.bool] enabled: Activation status. Only used by private endpoints towards an AWS S3 service. Update this field to activate/deactivate this private endpoint to allow egress access from serverless compute resources. Can only be updated after a private endpoint rule towards an AWS S3 service is successfully created.
         :param pulumi.Input[_builtins.str] endpoint_name: The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
         :param pulumi.Input[_builtins.str] endpoint_service: Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
-        :param pulumi.Input[_builtins.str] group_id: The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] group_id: Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domain_names`.
         :param pulumi.Input[_builtins.str] resource_id: The Azure resource ID of the target resource. Change forces creation of a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_names: Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
         :param pulumi.Input[_builtins.str] rule_id: the ID of a private endpoint rule.
@@ -115,12 +117,13 @@ class MwsNccPrivateEndpointRuleArgs:
     @pulumi.getter(name="connectionState")
     def connection_state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+        The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
         The possible values are:
         * `PENDING`: The endpoint has been created and pending approval.
         * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
         * `REJECTED`: Connection was rejected by the private link resource owner.
         * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
+        * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
         """
         return pulumi.get(self, "connection_state")
 
@@ -168,7 +171,8 @@ class MwsNccPrivateEndpointRuleArgs:
     @pulumi.getter(name="domainNames")
     def domain_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+        * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `group_id`.
+        * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `resource_names`.
         """
         return pulumi.get(self, "domain_names")
 
@@ -180,7 +184,7 @@ class MwsNccPrivateEndpointRuleArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Activation status. Only used by private endpoints towards an AWS S3 service.
+        Activation status. Only used by private endpoints towards an AWS S3 service. Update this field to activate/deactivate this private endpoint to allow egress access from serverless compute resources. Can only be updated after a private endpoint rule towards an AWS S3 service is successfully created.
         """
         return pulumi.get(self, "enabled")
 
@@ -216,7 +220,7 @@ class MwsNccPrivateEndpointRuleArgs:
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
+        Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domain_names`.
         """
         return pulumi.get(self, "group_id")
 
@@ -306,20 +310,22 @@ class _MwsNccPrivateEndpointRuleState:
                  vpc_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MwsNccPrivateEndpointRule resources.
-        :param pulumi.Input[_builtins.str] connection_state: The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+        :param pulumi.Input[_builtins.str] connection_state: The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
                The possible values are:
                * `PENDING`: The endpoint has been created and pending approval.
                * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
                * `REJECTED`: Connection was rejected by the private link resource owner.
                * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
+               * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
         :param pulumi.Input[_builtins.int] creation_time: Time in epoch milliseconds when this object was created.
         :param pulumi.Input[_builtins.bool] deactivated: Whether this private endpoint is deactivated.
         :param pulumi.Input[_builtins.int] deactivated_at: Time in epoch milliseconds when this object was deactivated.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_names: Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
-        :param pulumi.Input[_builtins.bool] enabled: Activation status. Only used by private endpoints towards an AWS S3 service.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_names: * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `group_id`.
+               * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `resource_names`.
+        :param pulumi.Input[_builtins.bool] enabled: Activation status. Only used by private endpoints towards an AWS S3 service. Update this field to activate/deactivate this private endpoint to allow egress access from serverless compute resources. Can only be updated after a private endpoint rule towards an AWS S3 service is successfully created.
         :param pulumi.Input[_builtins.str] endpoint_name: The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
         :param pulumi.Input[_builtins.str] endpoint_service: Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
-        :param pulumi.Input[_builtins.str] group_id: The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] group_id: Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domain_names`.
         :param pulumi.Input[_builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] resource_id: The Azure resource ID of the target resource. Change forces creation of a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_names: Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
@@ -373,12 +379,13 @@ class _MwsNccPrivateEndpointRuleState:
     @pulumi.getter(name="connectionState")
     def connection_state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+        The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
         The possible values are:
         * `PENDING`: The endpoint has been created and pending approval.
         * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
         * `REJECTED`: Connection was rejected by the private link resource owner.
         * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
+        * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
         """
         return pulumi.get(self, "connection_state")
 
@@ -426,7 +433,8 @@ class _MwsNccPrivateEndpointRuleState:
     @pulumi.getter(name="domainNames")
     def domain_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+        * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `group_id`.
+        * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `resource_names`.
         """
         return pulumi.get(self, "domain_names")
 
@@ -438,7 +446,7 @@ class _MwsNccPrivateEndpointRuleState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Activation status. Only used by private endpoints towards an AWS S3 service.
+        Activation status. Only used by private endpoints towards an AWS S3 service. Update this field to activate/deactivate this private endpoint to allow egress access from serverless compute resources. Can only be updated after a private endpoint rule towards an AWS S3 service is successfully created.
         """
         return pulumi.get(self, "enabled")
 
@@ -474,7 +482,7 @@ class _MwsNccPrivateEndpointRuleState:
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
+        Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domain_names`.
         """
         return pulumi.get(self, "group_id")
 
@@ -587,7 +595,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        Create a private endpoint to an Azure storage account
+        Create private endpoints to an Azure storage account and an Azure standard load balancer.
 
         ```python
         import pulumi
@@ -603,9 +611,13 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
             network_connectivity_config_id=ncc.network_connectivity_config_id,
             resource_id="/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa",
             group_id="blob")
+        slb = databricks.MwsNccPrivateEndpointRule("slb",
+            network_connectivity_config_id=ncc.network_connectivity_config_id,
+            resource_id="/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Network/privatelinkServices/example-private-link-service",
+            domain_names=["my-example.exampledomain.com"])
         ```
 
-        Create a private endpoint rule to an AWS VPC endpoint and to an S3 bucket
+        Create a private endpoint rule to an AWS VPC endpoint and to an S3 bucket.
 
         ```python
         import pulumi
@@ -619,6 +631,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
             region=region)
         storage = databricks.MwsNccPrivateEndpointRule("storage",
             network_connectivity_config_id=ncc.network_connectivity_config_id,
+            endpoint_service="com.amazonaws.us-east-1.s3",
             resource_names=["bucket"])
         vpce = databricks.MwsNccPrivateEndpointRule("vpce",
             network_connectivity_config_id=ncc.network_connectivity_config_id,
@@ -655,20 +668,22 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] connection_state: The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+        :param pulumi.Input[_builtins.str] connection_state: The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
                The possible values are:
                * `PENDING`: The endpoint has been created and pending approval.
                * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
                * `REJECTED`: Connection was rejected by the private link resource owner.
                * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
+               * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
         :param pulumi.Input[_builtins.int] creation_time: Time in epoch milliseconds when this object was created.
         :param pulumi.Input[_builtins.bool] deactivated: Whether this private endpoint is deactivated.
         :param pulumi.Input[_builtins.int] deactivated_at: Time in epoch milliseconds when this object was deactivated.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_names: Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
-        :param pulumi.Input[_builtins.bool] enabled: Activation status. Only used by private endpoints towards an AWS S3 service.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_names: * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `group_id`.
+               * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `resource_names`.
+        :param pulumi.Input[_builtins.bool] enabled: Activation status. Only used by private endpoints towards an AWS S3 service. Update this field to activate/deactivate this private endpoint to allow egress access from serverless compute resources. Can only be updated after a private endpoint rule towards an AWS S3 service is successfully created.
         :param pulumi.Input[_builtins.str] endpoint_name: The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
         :param pulumi.Input[_builtins.str] endpoint_service: Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
-        :param pulumi.Input[_builtins.str] group_id: The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] group_id: Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domain_names`.
         :param pulumi.Input[_builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] resource_id: The Azure resource ID of the target resource. Change forces creation of a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_names: Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
@@ -691,7 +706,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        Create a private endpoint to an Azure storage account
+        Create private endpoints to an Azure storage account and an Azure standard load balancer.
 
         ```python
         import pulumi
@@ -707,9 +722,13 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
             network_connectivity_config_id=ncc.network_connectivity_config_id,
             resource_id="/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa",
             group_id="blob")
+        slb = databricks.MwsNccPrivateEndpointRule("slb",
+            network_connectivity_config_id=ncc.network_connectivity_config_id,
+            resource_id="/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Network/privatelinkServices/example-private-link-service",
+            domain_names=["my-example.exampledomain.com"])
         ```
 
-        Create a private endpoint rule to an AWS VPC endpoint and to an S3 bucket
+        Create a private endpoint rule to an AWS VPC endpoint and to an S3 bucket.
 
         ```python
         import pulumi
@@ -723,6 +742,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
             region=region)
         storage = databricks.MwsNccPrivateEndpointRule("storage",
             network_connectivity_config_id=ncc.network_connectivity_config_id,
+            endpoint_service="com.amazonaws.us-east-1.s3",
             resource_names=["bucket"])
         vpce = databricks.MwsNccPrivateEndpointRule("vpce",
             network_connectivity_config_id=ncc.network_connectivity_config_id,
@@ -848,20 +868,22 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] connection_state: The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+        :param pulumi.Input[_builtins.str] connection_state: The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
                The possible values are:
                * `PENDING`: The endpoint has been created and pending approval.
                * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
                * `REJECTED`: Connection was rejected by the private link resource owner.
                * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
+               * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
         :param pulumi.Input[_builtins.int] creation_time: Time in epoch milliseconds when this object was created.
         :param pulumi.Input[_builtins.bool] deactivated: Whether this private endpoint is deactivated.
         :param pulumi.Input[_builtins.int] deactivated_at: Time in epoch milliseconds when this object was deactivated.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_names: Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
-        :param pulumi.Input[_builtins.bool] enabled: Activation status. Only used by private endpoints towards an AWS S3 service.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_names: * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `group_id`.
+               * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `resource_names`.
+        :param pulumi.Input[_builtins.bool] enabled: Activation status. Only used by private endpoints towards an AWS S3 service. Update this field to activate/deactivate this private endpoint to allow egress access from serverless compute resources. Can only be updated after a private endpoint rule towards an AWS S3 service is successfully created.
         :param pulumi.Input[_builtins.str] endpoint_name: The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
         :param pulumi.Input[_builtins.str] endpoint_service: Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
-        :param pulumi.Input[_builtins.str] group_id: The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] group_id: Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domain_names`.
         :param pulumi.Input[_builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] resource_id: The Azure resource ID of the target resource. Change forces creation of a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_names: Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
@@ -900,12 +922,13 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
     @pulumi.getter(name="connectionState")
     def connection_state(self) -> pulumi.Output[_builtins.str]:
         """
-        The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+        The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
         The possible values are:
         * `PENDING`: The endpoint has been created and pending approval.
         * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
         * `REJECTED`: Connection was rejected by the private link resource owner.
         * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
+        * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
         """
         return pulumi.get(self, "connection_state")
 
@@ -937,7 +960,8 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
     @pulumi.getter(name="domainNames")
     def domain_names(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. List of target AWS resource FQDNs accessible via the VPC endpoint service. Conflicts with `resource_names`.
+        * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `group_id`.
+        * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `resource_names`.
         """
         return pulumi.get(self, "domain_names")
 
@@ -945,7 +969,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[_builtins.bool]:
         """
-        Activation status. Only used by private endpoints towards an AWS S3 service.
+        Activation status. Only used by private endpoints towards an AWS S3 service. Update this field to activate/deactivate this private endpoint to allow egress access from serverless compute resources. Can only be updated after a private endpoint rule towards an AWS S3 service is successfully created.
         """
         return pulumi.get(self, "enabled")
 
@@ -969,7 +993,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
+        Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domain_names`.
         """
         return pulumi.get(self, "group_id")
 

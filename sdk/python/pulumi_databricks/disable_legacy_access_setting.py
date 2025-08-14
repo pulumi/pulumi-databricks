@@ -26,6 +26,7 @@ class DisableLegacyAccessSettingArgs:
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DisableLegacyAccessSetting resource.
+        :param pulumi.Input['DisableLegacyAccessSettingDisableLegacyAccessArgs'] disable_legacy_access: The configuration details.
         """
         pulumi.set(__self__, "disable_legacy_access", disable_legacy_access)
         if etag is not None:
@@ -36,6 +37,9 @@ class DisableLegacyAccessSettingArgs:
     @_builtins.property
     @pulumi.getter(name="disableLegacyAccess")
     def disable_legacy_access(self) -> pulumi.Input['DisableLegacyAccessSettingDisableLegacyAccessArgs']:
+        """
+        The configuration details.
+        """
         return pulumi.get(self, "disable_legacy_access")
 
     @disable_legacy_access.setter
@@ -69,6 +73,7 @@ class _DisableLegacyAccessSettingState:
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DisableLegacyAccessSetting resources.
+        :param pulumi.Input['DisableLegacyAccessSettingDisableLegacyAccessArgs'] disable_legacy_access: The configuration details.
         """
         if disable_legacy_access is not None:
             pulumi.set(__self__, "disable_legacy_access", disable_legacy_access)
@@ -80,6 +85,9 @@ class _DisableLegacyAccessSettingState:
     @_builtins.property
     @pulumi.getter(name="disableLegacyAccess")
     def disable_legacy_access(self) -> Optional[pulumi.Input['DisableLegacyAccessSettingDisableLegacyAccessArgs']]:
+        """
+        The configuration details.
+        """
         return pulumi.get(self, "disable_legacy_access")
 
     @disable_legacy_access.setter
@@ -116,9 +124,42 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
                  setting_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a DisableLegacyAccessSetting resource with the given unique name, props, and options.
+        The `DisableLegacyAccessSetting` resource allows you to disable legacy access. It has the following impact:
+
+        1. Disables direct access to Hive Metastores from the workspace. However, you can still access a Hive Metastore through Hive Metastore federation.
+        2. Disables Fallback Mode on any External Location access from the workspace.
+        3. Disables Databricks Runtime versions prior to 13.3LTS.
+
+        > This resource can only be used with a workspace-level provider!
+
+        > It may take 5 minutes to take effect and requires a restart of clusters and SQL warehouses.
+
+        > Please also set the default namespace using DefaultNamespaceSetting to any value other than `hive_metastore` to avoid potential issues.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.DisableLegacyAccessSetting("this", disable_legacy_access={
+            "value": True,
+        })
+        ```
+
+        ## Import
+
+        This resource can be imported by predefined name `global`:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting this global
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['DisableLegacyAccessSettingDisableLegacyAccessArgs', 'DisableLegacyAccessSettingDisableLegacyAccessArgsDict']] disable_legacy_access: The configuration details.
         """
         ...
     @overload
@@ -127,7 +168,39 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
                  args: DisableLegacyAccessSettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a DisableLegacyAccessSetting resource with the given unique name, props, and options.
+        The `DisableLegacyAccessSetting` resource allows you to disable legacy access. It has the following impact:
+
+        1. Disables direct access to Hive Metastores from the workspace. However, you can still access a Hive Metastore through Hive Metastore federation.
+        2. Disables Fallback Mode on any External Location access from the workspace.
+        3. Disables Databricks Runtime versions prior to 13.3LTS.
+
+        > This resource can only be used with a workspace-level provider!
+
+        > It may take 5 minutes to take effect and requires a restart of clusters and SQL warehouses.
+
+        > Please also set the default namespace using DefaultNamespaceSetting to any value other than `hive_metastore` to avoid potential issues.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.DisableLegacyAccessSetting("this", disable_legacy_access={
+            "value": True,
+        })
+        ```
+
+        ## Import
+
+        This resource can be imported by predefined name `global`:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting this global
+        ```
+
         :param str resource_name: The name of the resource.
         :param DisableLegacyAccessSettingArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -180,6 +253,7 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['DisableLegacyAccessSettingDisableLegacyAccessArgs', 'DisableLegacyAccessSettingDisableLegacyAccessArgsDict']] disable_legacy_access: The configuration details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -193,6 +267,9 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="disableLegacyAccess")
     def disable_legacy_access(self) -> pulumi.Output['outputs.DisableLegacyAccessSettingDisableLegacyAccess']:
+        """
+        The configuration details.
+        """
         return pulumi.get(self, "disable_legacy_access")
 
     @_builtins.property

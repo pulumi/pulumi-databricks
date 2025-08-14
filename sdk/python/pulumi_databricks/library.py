@@ -37,6 +37,9 @@ class LibraryArgs:
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
         if egg is not None:
+            warnings.warn("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""", DeprecationWarning)
+            pulumi.log.warn("""egg is deprecated: The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
+        if egg is not None:
             pulumi.set(__self__, "egg", egg)
         if jar is not None:
             pulumi.set(__self__, "jar", jar)
@@ -71,6 +74,7 @@ class LibraryArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "egg")
 
@@ -153,6 +157,9 @@ class _LibraryState:
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
         if egg is not None:
+            warnings.warn("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""", DeprecationWarning)
+            pulumi.log.warn("""egg is deprecated: The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
+        if egg is not None:
             pulumi.set(__self__, "egg", egg)
         if jar is not None:
             pulumi.set(__self__, "jar", jar)
@@ -187,6 +194,7 @@ class _LibraryState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "egg")
 
@@ -363,13 +371,9 @@ class Library(pulumi.CustomResource):
         * get_clusters data to retrieve a list of Cluster ids.
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
         * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
-        * DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-        * get_dbfs_file_paths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-        * DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
         * GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
         * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
-        * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
-        * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
+        * Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
 
         ## Import
@@ -483,13 +487,9 @@ class Library(pulumi.CustomResource):
         * get_clusters data to retrieve a list of Cluster ids.
         * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
         * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
-        * DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-        * get_dbfs_file_paths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-        * DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
         * GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
         * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
-        * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
-        * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
+        * Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
 
         ## Import
@@ -594,6 +594,7 @@ class Library(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "egg")
 

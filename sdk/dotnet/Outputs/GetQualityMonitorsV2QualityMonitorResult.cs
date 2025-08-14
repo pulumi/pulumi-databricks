@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetQualityMonitorsV2QualityMonitorResult
     {
         /// <summary>
-        /// (AnomalyDetectionConfig) -
+        /// (AnomalyDetectionConfig)
         /// </summary>
         public readonly Outputs.GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigResult AnomalyDetectionConfig;
         /// <summary>

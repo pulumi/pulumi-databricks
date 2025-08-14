@@ -16,7 +16,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement e
     public static final GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement Empty = new GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement();
 
     /**
-     * (list of ) - When empty, it means dry run for all products.
+     * (list of string) - When empty, it means dry run for all products.
      * When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
      * 
      */
@@ -24,7 +24,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement e
     private @Nullable List<String> dryRunModeProductFilters;
 
     /**
-     * @return (list of ) - When empty, it means dry run for all products.
+     * @return (list of string) - When empty, it means dry run for all products.
      * When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
      * 
      */
@@ -77,7 +77,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement e
         }
 
         /**
-         * @param dryRunModeProductFilters (list of ) - When empty, it means dry run for all products.
+         * @param dryRunModeProductFilters (list of string) - When empty, it means dry run for all products.
          * When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
          * 
          * @return builder
@@ -89,7 +89,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement e
         }
 
         /**
-         * @param dryRunModeProductFilters (list of ) - When empty, it means dry run for all products.
+         * @param dryRunModeProductFilters (list of string) - When empty, it means dry run for all products.
          * When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
          * 
          * @return builder

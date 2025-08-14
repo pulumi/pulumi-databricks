@@ -25,7 +25,7 @@ public final class GetAlertsV2ResultEvaluationNotification {
      */
     private @Nullable Integer retriggerSeconds;
     /**
-     * @return (list of AlertV2Subscription) -
+     * @return (list of AlertV2Subscription)
      * 
      */
     private @Nullable List<GetAlertsV2ResultEvaluationNotificationSubscription> subscriptions;
@@ -46,7 +46,7 @@ public final class GetAlertsV2ResultEvaluationNotification {
         return Optional.ofNullable(this.retriggerSeconds);
     }
     /**
-     * @return (list of AlertV2Subscription) -
+     * @return (list of AlertV2Subscription)
      * 
      */
     public List<GetAlertsV2ResultEvaluationNotificationSubscription> subscriptions() {

@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAlertsV2ResultEvaluationThresholdValue {
     /**
-     * @return (boolean) -
+     * @return (boolean)
      * 
      */
     private @Nullable Boolean boolValue;
     /**
-     * @return (number) -
+     * @return (number)
      * 
      */
     private @Nullable Double doubleValue;
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     private @Nullable String stringValue;
 
     private GetAlertsV2ResultEvaluationThresholdValue() {}
     /**
-     * @return (boolean) -
+     * @return (boolean)
      * 
      */
     public Optional<Boolean> boolValue() {
         return Optional.ofNullable(this.boolValue);
     }
     /**
-     * @return (number) -
+     * @return (number)
      * 
      */
     public Optional<Double> doubleValue() {
         return Optional.ofNullable(this.doubleValue);
     }
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     public Optional<String> stringValue() {

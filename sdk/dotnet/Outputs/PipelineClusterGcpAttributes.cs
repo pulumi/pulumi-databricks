@@ -14,6 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class PipelineClusterGcpAttributes
     {
         public readonly string? Availability;
+        public readonly int? FirstOnDemand;
         public readonly string? GoogleServiceAccount;
         public readonly int? LocalSsdCount;
         public readonly string? ZoneId;
@@ -22,6 +23,8 @@ namespace Pulumi.Databricks.Outputs
         private PipelineClusterGcpAttributes(
             string? availability,
 
+            int? firstOnDemand,
+
             string? googleServiceAccount,
 
             int? localSsdCount,
@@ -29,6 +32,7 @@ namespace Pulumi.Databricks.Outputs
             string? zoneId)
         {
             Availability = availability;
+            FirstOnDemand = firstOnDemand;
             GoogleServiceAccount = googleServiceAccount;
             LocalSsdCount = localSsdCount;
             ZoneId = zoneId;

@@ -31,7 +31,7 @@ class MlflowExperimentArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]] = None):
         """
         The set of arguments for constructing a MlflowExperiment resource.
-        :param pulumi.Input[_builtins.str] artifact_location: Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+        :param pulumi.Input[_builtins.str] artifact_location: Path to artifact location of the MLflow experiment.
         :param pulumi.Input[_builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         :param pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]] tags: Tags for the MLflow experiment.
         """
@@ -59,7 +59,7 @@ class MlflowExperimentArgs:
     @pulumi.getter(name="artifactLocation")
     def artifact_location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+        Path to artifact location of the MLflow experiment.
         """
         return pulumi.get(self, "artifact_location")
 
@@ -151,7 +151,7 @@ class _MlflowExperimentState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering MlflowExperiment resources.
-        :param pulumi.Input[_builtins.str] artifact_location: Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+        :param pulumi.Input[_builtins.str] artifact_location: Path to artifact location of the MLflow experiment.
         :param pulumi.Input[_builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         :param pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]] tags: Tags for the MLflow experiment.
         """
@@ -179,7 +179,7 @@ class _MlflowExperimentState:
     @pulumi.getter(name="artifactLocation")
     def artifact_location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+        Path to artifact location of the MLflow experiment.
         """
         return pulumi.get(self, "artifact_location")
 
@@ -287,7 +287,7 @@ class MlflowExperiment(pulumi.CustomResource):
         me = databricks.get_current_user()
         this = databricks.MlflowExperiment("this",
             name=f"{me.home}/Sample",
-            artifact_location="dbfs:/tmp/my-experiment",
+            artifact_location="s3://bucket/my-experiment",
             tags=[
                 {
                     "key": "key1",
@@ -340,7 +340,7 @@ class MlflowExperiment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] artifact_location: Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+        :param pulumi.Input[_builtins.str] artifact_location: Path to artifact location of the MLflow experiment.
         :param pulumi.Input[_builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         :param pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]] tags: Tags for the MLflow experiment.
         """
@@ -364,7 +364,7 @@ class MlflowExperiment(pulumi.CustomResource):
         me = databricks.get_current_user()
         this = databricks.MlflowExperiment("this",
             name=f"{me.home}/Sample",
-            artifact_location="dbfs:/tmp/my-experiment",
+            artifact_location="s3://bucket/my-experiment",
             tags=[
                 {
                     "key": "key1",
@@ -480,7 +480,7 @@ class MlflowExperiment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] artifact_location: Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+        :param pulumi.Input[_builtins.str] artifact_location: Path to artifact location of the MLflow experiment.
         :param pulumi.Input[_builtins.str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         :param pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]] tags: Tags for the MLflow experiment.
         """
@@ -502,7 +502,7 @@ class MlflowExperiment(pulumi.CustomResource):
     @pulumi.getter(name="artifactLocation")
     def artifact_location(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+        Path to artifact location of the MLflow experiment.
         """
         return pulumi.get(self, "artifact_location")
 

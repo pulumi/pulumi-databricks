@@ -137,7 +137,7 @@ import (
 // * GroupMember to attach users and groups as group members.
 // * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
 // * ServicePrincipal to manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to Group within workspace.
-// * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+// * Grants to manage data access in Unity Catalog.
 //
 // ## Import
 //

@@ -17,11 +17,12 @@ import javax.annotation.Nullable;
 /**
  * &gt; This resource can only be used with an account-level provider!
  * 
- * &gt; This setting is currently in private preview, and only available for enrolled customers.
- * 
  * The `databricks.DisableLegacyFeaturesSetting` resource allows you to disable legacy features on newly created workspaces.
  * 
+ * &gt; Before disabling legacy features, make sure that default catalog for the workspace is set to value different than `hive_metastore`!  You can set it using the databricks.DefaultNamespaceSetting resource.
+ * 
  * When this setting is on, the following applies to new workspaces:
+ * 
  * - Disables the use of DBFS root and mounts.
  * - Hive Metastore will not be provisioned.
  * - Disables the use of &#39;No-isolation clusters&#39;.
@@ -37,6 +38,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DefaultNamespaceSetting;
+ * import com.pulumi.databricks.DefaultNamespaceSettingArgs;
+ * import com.pulumi.databricks.inputs.DefaultNamespaceSettingNamespaceArgs;
  * import com.pulumi.databricks.DisableLegacyFeaturesSetting;
  * import com.pulumi.databricks.DisableLegacyFeaturesSettingArgs;
  * import com.pulumi.databricks.inputs.DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs;
@@ -53,7 +57,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new DisableLegacyFeaturesSetting("this", DisableLegacyFeaturesSettingArgs.builder()
+ *         // Change default catalog to anything than `hive_metastore`
+ *         var this_ = new DefaultNamespaceSetting("this", DefaultNamespaceSettingArgs.builder()
+ *             .namespace(DefaultNamespaceSettingNamespaceArgs.builder()
+ *                 .value("default_catalog")
+ *                 .build())
+ *             .build());
+ * 
+ *         // Disable legacy features
+ *         var thisDisableLegacyFeaturesSetting = new DisableLegacyFeaturesSetting("thisDisableLegacyFeaturesSetting", DisableLegacyFeaturesSettingArgs.builder()
  *             .disableLegacyFeatures(DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs.builder()
  *                 .value(true)
  *                 .build())
@@ -64,6 +76,13 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * databricks.DisableLegacyAccessSetting to disable legacy access, enabled by default when creating new workspaces with the `disable_legacy_features` account level setting turned on.
+ * * databricks.DisableLegacyDbfsSetting to disable legacy DBFS, enabled by default when creating new workspaces with the `disable_legacy_features` account level setting turned on.
  * 
  * ## Import
  * 

@@ -24,6 +24,8 @@ class ModelServingArgs:
                  ai_gateway: Optional[pulumi.Input['ModelServingAiGatewayArgs']] = None,
                  budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  config: Optional[pulumi.Input['ModelServingConfigArgs']] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 email_notifications: Optional[pulumi.Input['ModelServingEmailNotificationsArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]] = None,
                  route_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -33,6 +35,8 @@ class ModelServingArgs:
         :param pulumi.Input['ModelServingAiGatewayArgs'] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this serving endpoint.
         :param pulumi.Input['ModelServingConfigArgs'] config: The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
+        :param pulumi.Input[_builtins.str] description: The description of the model serving endpoint.
+        :param pulumi.Input['ModelServingEmailNotificationsArgs'] email_notifications: A block with Email notification setting.
         :param pulumi.Input[_builtins.str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.bool] route_optimized: A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
@@ -44,6 +48,10 @@ class ModelServingArgs:
             pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if email_notifications is not None:
+            pulumi.set(__self__, "email_notifications", email_notifications)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if rate_limits is not None:
@@ -91,6 +99,30 @@ class ModelServingArgs:
     @config.setter
     def config(self, value: Optional[pulumi.Input['ModelServingConfigArgs']]):
         pulumi.set(self, "config", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The description of the model serving endpoint.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="emailNotifications")
+    def email_notifications(self) -> Optional[pulumi.Input['ModelServingEmailNotificationsArgs']]:
+        """
+        A block with Email notification setting.
+        """
+        return pulumi.get(self, "email_notifications")
+
+    @email_notifications.setter
+    def email_notifications(self, value: Optional[pulumi.Input['ModelServingEmailNotificationsArgs']]):
+        pulumi.set(self, "email_notifications", value)
 
     @_builtins.property
     @pulumi.getter
@@ -148,6 +180,9 @@ class _ModelServingState:
                  ai_gateway: Optional[pulumi.Input['ModelServingAiGatewayArgs']] = None,
                  budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  config: Optional[pulumi.Input['ModelServingConfigArgs']] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 email_notifications: Optional[pulumi.Input['ModelServingEmailNotificationsArgs']] = None,
+                 endpoint_url: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]] = None,
                  route_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -158,6 +193,9 @@ class _ModelServingState:
         :param pulumi.Input['ModelServingAiGatewayArgs'] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this serving endpoint.
         :param pulumi.Input['ModelServingConfigArgs'] config: The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
+        :param pulumi.Input[_builtins.str] description: The description of the model serving endpoint.
+        :param pulumi.Input['ModelServingEmailNotificationsArgs'] email_notifications: A block with Email notification setting.
+        :param pulumi.Input[_builtins.str] endpoint_url: Invocation url of the endpoint.
         :param pulumi.Input[_builtins.str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.bool] route_optimized: A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
@@ -170,6 +208,12 @@ class _ModelServingState:
             pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if email_notifications is not None:
+            pulumi.set(__self__, "email_notifications", email_notifications)
+        if endpoint_url is not None:
+            pulumi.set(__self__, "endpoint_url", endpoint_url)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if rate_limits is not None:
@@ -219,6 +263,42 @@ class _ModelServingState:
     @config.setter
     def config(self, value: Optional[pulumi.Input['ModelServingConfigArgs']]):
         pulumi.set(self, "config", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The description of the model serving endpoint.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="emailNotifications")
+    def email_notifications(self) -> Optional[pulumi.Input['ModelServingEmailNotificationsArgs']]:
+        """
+        A block with Email notification setting.
+        """
+        return pulumi.get(self, "email_notifications")
+
+    @email_notifications.setter
+    def email_notifications(self, value: Optional[pulumi.Input['ModelServingEmailNotificationsArgs']]):
+        pulumi.set(self, "email_notifications", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endpointUrl")
+    def endpoint_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Invocation url of the endpoint.
+        """
+        return pulumi.get(self, "endpoint_url")
+
+    @endpoint_url.setter
+    def endpoint_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "endpoint_url", value)
 
     @_builtins.property
     @pulumi.getter
@@ -291,6 +371,8 @@ class ModelServing(pulumi.CustomResource):
                  ai_gateway: Optional[pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']]] = None,
                  budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  config: Optional[pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 email_notifications: Optional[pulumi.Input[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
                  route_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -465,6 +547,8 @@ class ModelServing(pulumi.CustomResource):
         :param pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this serving endpoint.
         :param pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']] config: The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
+        :param pulumi.Input[_builtins.str] description: The description of the model serving endpoint.
+        :param pulumi.Input[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict']] email_notifications: A block with Email notification setting.
         :param pulumi.Input[_builtins.str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.bool] route_optimized: A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
@@ -658,6 +742,8 @@ class ModelServing(pulumi.CustomResource):
                  ai_gateway: Optional[pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']]] = None,
                  budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  config: Optional[pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 email_notifications: Optional[pulumi.Input[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
                  route_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -674,10 +760,13 @@ class ModelServing(pulumi.CustomResource):
             __props__.__dict__["ai_gateway"] = ai_gateway
             __props__.__dict__["budget_policy_id"] = budget_policy_id
             __props__.__dict__["config"] = config
+            __props__.__dict__["description"] = description
+            __props__.__dict__["email_notifications"] = email_notifications
             __props__.__dict__["name"] = name
             __props__.__dict__["rate_limits"] = rate_limits
             __props__.__dict__["route_optimized"] = route_optimized
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["endpoint_url"] = None
             __props__.__dict__["serving_endpoint_id"] = None
         super(ModelServing, __self__).__init__(
             'databricks:index/modelServing:ModelServing',
@@ -692,6 +781,9 @@ class ModelServing(pulumi.CustomResource):
             ai_gateway: Optional[pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']]] = None,
             budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
             config: Optional[pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']]] = None,
+            description: Optional[pulumi.Input[_builtins.str]] = None,
+            email_notifications: Optional[pulumi.Input[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict']]] = None,
+            endpoint_url: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
             route_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -707,6 +799,9 @@ class ModelServing(pulumi.CustomResource):
         :param pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this serving endpoint.
         :param pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']] config: The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
+        :param pulumi.Input[_builtins.str] description: The description of the model serving endpoint.
+        :param pulumi.Input[Union['ModelServingEmailNotificationsArgs', 'ModelServingEmailNotificationsArgsDict']] email_notifications: A block with Email notification setting.
+        :param pulumi.Input[_builtins.str] endpoint_url: Invocation url of the endpoint.
         :param pulumi.Input[_builtins.str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.bool] route_optimized: A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
@@ -720,6 +815,9 @@ class ModelServing(pulumi.CustomResource):
         __props__.__dict__["ai_gateway"] = ai_gateway
         __props__.__dict__["budget_policy_id"] = budget_policy_id
         __props__.__dict__["config"] = config
+        __props__.__dict__["description"] = description
+        __props__.__dict__["email_notifications"] = email_notifications
+        __props__.__dict__["endpoint_url"] = endpoint_url
         __props__.__dict__["name"] = name
         __props__.__dict__["rate_limits"] = rate_limits
         __props__.__dict__["route_optimized"] = route_optimized
@@ -750,6 +848,30 @@ class ModelServing(pulumi.CustomResource):
         The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
         """
         return pulumi.get(self, "config")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The description of the model serving endpoint.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="emailNotifications")
+    def email_notifications(self) -> pulumi.Output[Optional['outputs.ModelServingEmailNotifications']]:
+        """
+        A block with Email notification setting.
+        """
+        return pulumi.get(self, "email_notifications")
+
+    @_builtins.property
+    @pulumi.getter(name="endpointUrl")
+    def endpoint_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        Invocation url of the endpoint.
+        """
+        return pulumi.get(self, "endpoint_url")
 
     @_builtins.property
     @pulumi.getter

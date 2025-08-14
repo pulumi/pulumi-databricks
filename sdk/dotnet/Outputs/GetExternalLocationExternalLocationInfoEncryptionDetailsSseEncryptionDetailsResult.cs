@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsResult
     {
+        /// <summary>
+        /// Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+        /// </summary>
         public readonly string? Algorithm;
+        /// <summary>
+        /// ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`.
+        /// </summary>
         public readonly string? AwsKmsKeyArn;
 
         [OutputConstructor]

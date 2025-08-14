@@ -157,13 +157,9 @@ namespace Pulumi.Databricks
     /// * databricks.getClusters data to retrieve a list of databricks.Cluster ids.
     /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
     /// * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
-    /// * databricks.DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-    /// * databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-    /// * databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
     /// * databricks.GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all databricks.Cluster and databricks_job.
     /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
-    /// * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
-    /// * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
+    /// * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
     /// * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
     /// 
     /// ## Import

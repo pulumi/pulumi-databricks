@@ -642,7 +642,7 @@ class User(pulumi.CustomResource):
         The following resources are often used in the same context:
 
         * End to end workspace management guide.
-        * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        * Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
         * Group data to retrieve information about Group members, entitlements and instance profiles.
         * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
         * GroupMember to attach users and groups as group members.
@@ -772,7 +772,7 @@ class User(pulumi.CustomResource):
         The following resources are often used in the same context:
 
         * End to end workspace management guide.
-        * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        * Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
         * Group data to retrieve information about Group members, entitlements and instance profiles.
         * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
         * GroupMember to attach users and groups as group members.

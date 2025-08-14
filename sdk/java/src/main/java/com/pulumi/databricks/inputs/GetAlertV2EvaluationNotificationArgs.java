@@ -49,14 +49,14 @@ public final class GetAlertV2EvaluationNotificationArgs extends com.pulumi.resou
     }
 
     /**
-     * (list of AlertV2Subscription) -
+     * (list of AlertV2Subscription)
      * 
      */
     @Import(name="subscriptions")
     private @Nullable Output<List<GetAlertV2EvaluationNotificationSubscriptionArgs>> subscriptions;
 
     /**
-     * @return (list of AlertV2Subscription) -
+     * @return (list of AlertV2Subscription)
      * 
      */
     public Optional<Output<List<GetAlertV2EvaluationNotificationSubscriptionArgs>>> subscriptions() {
@@ -132,7 +132,7 @@ public final class GetAlertV2EvaluationNotificationArgs extends com.pulumi.resou
         }
 
         /**
-         * @param subscriptions (list of AlertV2Subscription) -
+         * @param subscriptions (list of AlertV2Subscription)
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class GetAlertV2EvaluationNotificationArgs extends com.pulumi.resou
         }
 
         /**
-         * @param subscriptions (list of AlertV2Subscription) -
+         * @param subscriptions (list of AlertV2Subscription)
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class GetAlertV2EvaluationNotificationArgs extends com.pulumi.resou
         }
 
         /**
-         * @param subscriptions (list of AlertV2Subscription) -
+         * @param subscriptions (list of AlertV2Subscription)
          * 
          * @return builder
          * 

@@ -171,18 +171,20 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.queryText);
     }
     /**
-     * (string) - The run as username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+     * The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      * 
      */
     @Export(name="runAsUserName", refs={String.class}, tree="[0]")
-    private Output<String> runAsUserName;
+    private Output</* @Nullable */ String> runAsUserName;
 
     /**
-     * @return (string) - The run as username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+     * @return The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      * 
      */
-    public Output<String> runAsUserName() {
-        return this.runAsUserName;
+    public Output<Optional<String>> runAsUserName() {
+        return Codegen.optional(this.runAsUserName);
     }
     @Export(name="schedule", refs={AlertV2Schedule.class}, tree="[0]")
     private Output</* @Nullable */ AlertV2Schedule> schedule;

@@ -56,8 +56,8 @@ import * as utilities from "./utilities";
  * * End to end workspace management guide.
  * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
  * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
- * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
- * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+ * * databricks.SqlEndpoint to manage Databricks SQL [Warehouses](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+ * * databricks.Grants to manage data access in Unity Catalog.
  *
  * ## Import
  *

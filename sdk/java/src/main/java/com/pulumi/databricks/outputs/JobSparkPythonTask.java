@@ -19,7 +19,7 @@ public final class JobSparkPythonTask {
      */
     private @Nullable List<String> parameters;
     /**
-     * @return The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
+     * @return The URI of the Python file to be executed. Cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
      * 
      */
     private String pythonFile;
@@ -40,7 +40,7 @@ public final class JobSparkPythonTask {
         return this.parameters == null ? List.of() : this.parameters;
     }
     /**
-     * @return The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
+     * @return The URI of the Python file to be executed. Cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
      * 
      */
     public String pythonFile() {

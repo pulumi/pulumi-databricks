@@ -12,6 +12,22 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs : global::Pulumi.InvokeArgs
     {
+        [Input("connections")]
+        private List<Inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs>? _connections;
+        public List<Inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs> Connections
+        {
+            get => _connections ?? (_connections = new List<Inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs>());
+            set => _connections = value;
+        }
+
+        [Input("credentials")]
+        private List<Inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs>? _credentials;
+        public List<Inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs> Credentials
+        {
+            get => _credentials ?? (_credentials = new List<Inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs>());
+            set => _credentials = value;
+        }
+
         [Input("functions")]
         private List<Inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs>? _functions;
 

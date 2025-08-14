@@ -42,7 +42,7 @@ class SqlTableArgs:
         The set of arguments for constructing a SqlTable resource.
         :param pulumi.Input[_builtins.str] catalog_name: Name of parent catalog. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
-        :param pulumi.Input[_builtins.str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+        :param pulumi.Input[_builtins.str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cluster_keys: a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
         :param pulumi.Input[_builtins.str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
@@ -116,7 +116,7 @@ class SqlTableArgs:
     @pulumi.getter(name="tableType")
     def table_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+        Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "table_type")
 
@@ -322,7 +322,7 @@ class _SqlTableState:
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
-        :param pulumi.Input[_builtins.str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+        :param pulumi.Input[_builtins.str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
         :param pulumi.Input[_builtins.str] warehouse_id: All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
         """
@@ -538,7 +538,7 @@ class _SqlTableState:
     @pulumi.getter(name="tableType")
     def table_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+        Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "table_type")
 
@@ -632,7 +632,7 @@ class SqlTable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
-        :param pulumi.Input[_builtins.str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+        :param pulumi.Input[_builtins.str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
         :param pulumi.Input[_builtins.str] warehouse_id: All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
         """
@@ -777,7 +777,7 @@ class SqlTable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
-        :param pulumi.Input[_builtins.str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+        :param pulumi.Input[_builtins.str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
         :param pulumi.Input[_builtins.str] warehouse_id: All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
         """
@@ -920,7 +920,7 @@ class SqlTable(pulumi.CustomResource):
     @pulumi.getter(name="tableType")
     def table_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+        Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "table_type")
 

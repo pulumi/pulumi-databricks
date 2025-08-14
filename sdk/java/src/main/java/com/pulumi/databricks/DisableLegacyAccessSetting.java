@@ -14,11 +14,81 @@ import com.pulumi.databricks.outputs.DisableLegacyAccessSettingDisableLegacyAcce
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * The `databricks.DisableLegacyAccessSetting` resource allows you to disable legacy access. It has the following impact:
+ * 
+ * 1. Disables direct access to Hive Metastores from the workspace. However, you can still access a Hive Metastore through Hive Metastore federation.
+ * 2. Disables Fallback Mode on any External Location access from the workspace.
+ * 3. Disables Databricks Runtime versions prior to 13.3LTS.
+ * 
+ * &gt; This resource can only be used with a workspace-level provider!
+ * 
+ * &gt; It may take 5 minutes to take effect and requires a restart of clusters and SQL warehouses.
+ * 
+ * &gt; Please also set the default namespace using databricks.DefaultNamespaceSetting to any value other than `hive_metastore` to avoid potential issues.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DisableLegacyAccessSetting;
+ * import com.pulumi.databricks.DisableLegacyAccessSettingArgs;
+ * import com.pulumi.databricks.inputs.DisableLegacyAccessSettingDisableLegacyAccessArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new DisableLegacyAccessSetting("this", DisableLegacyAccessSettingArgs.builder()
+ *             .disableLegacyAccess(DisableLegacyAccessSettingDisableLegacyAccessArgs.builder()
+ *                 .value(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * This resource can be imported by predefined name `global`:
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting this global
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting")
 public class DisableLegacyAccessSetting extends com.pulumi.resources.CustomResource {
+    /**
+     * The configuration details.
+     * 
+     */
     @Export(name="disableLegacyAccess", refs={DisableLegacyAccessSettingDisableLegacyAccess.class}, tree="[0]")
     private Output<DisableLegacyAccessSettingDisableLegacyAccess> disableLegacyAccess;
 
+    /**
+     * @return The configuration details.
+     * 
+     */
     public Output<DisableLegacyAccessSettingDisableLegacyAccess> disableLegacyAccess() {
         return this.disableLegacyAccess;
     }

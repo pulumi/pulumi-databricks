@@ -17,14 +17,14 @@ public final class GetAlertV2EvaluationThresholdArgs extends com.pulumi.resource
     public static final GetAlertV2EvaluationThresholdArgs Empty = new GetAlertV2EvaluationThresholdArgs();
 
     /**
-     * (AlertV2OperandColumn) -
+     * (AlertV2OperandColumn)
      * 
      */
     @Import(name="column")
     private @Nullable Output<GetAlertV2EvaluationThresholdColumnArgs> column;
 
     /**
-     * @return (AlertV2OperandColumn) -
+     * @return (AlertV2OperandColumn)
      * 
      */
     public Optional<Output<GetAlertV2EvaluationThresholdColumnArgs>> column() {
@@ -32,14 +32,14 @@ public final class GetAlertV2EvaluationThresholdArgs extends com.pulumi.resource
     }
 
     /**
-     * (AlertV2OperandValue) -
+     * (AlertV2OperandValue)
      * 
      */
     @Import(name="value")
     private @Nullable Output<GetAlertV2EvaluationThresholdValueArgs> value;
 
     /**
-     * @return (AlertV2OperandValue) -
+     * @return (AlertV2OperandValue)
      * 
      */
     public Optional<Output<GetAlertV2EvaluationThresholdValueArgs>> value() {
@@ -72,7 +72,7 @@ public final class GetAlertV2EvaluationThresholdArgs extends com.pulumi.resource
         }
 
         /**
-         * @param column (AlertV2OperandColumn) -
+         * @param column (AlertV2OperandColumn)
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class GetAlertV2EvaluationThresholdArgs extends com.pulumi.resource
         }
 
         /**
-         * @param column (AlertV2OperandColumn) -
+         * @param column (AlertV2OperandColumn)
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class GetAlertV2EvaluationThresholdArgs extends com.pulumi.resource
         }
 
         /**
-         * @param value (AlertV2OperandValue) -
+         * @param value (AlertV2OperandValue)
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GetAlertV2EvaluationThresholdArgs extends com.pulumi.resource
         }
 
         /**
-         * @param value (AlertV2OperandValue) -
+         * @param value (AlertV2OperandValue)
          * 
          * @return builder
          * 

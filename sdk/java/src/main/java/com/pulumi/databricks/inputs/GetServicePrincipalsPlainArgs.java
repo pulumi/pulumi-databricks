@@ -16,14 +16,14 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
     public static final GetServicePrincipalsPlainArgs Empty = new GetServicePrincipalsPlainArgs();
 
     /**
-     * List of `application_ids` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
+     * List of `application_ids` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
      * 
      */
     @Import(name="applicationIds")
     private @Nullable List<String> applicationIds;
 
     /**
-     * @return List of `application_ids` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
+     * @return List of `application_ids` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
      * 
      */
     public Optional<List<String>> applicationIds() {
@@ -71,7 +71,7 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param applicationIds List of `application_ids` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
+         * @param applicationIds List of `application_ids` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param applicationIds List of `application_ids` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
+         * @param applicationIds List of `application_ids` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
          * 
          * @return builder
          * 

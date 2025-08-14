@@ -64,7 +64,7 @@ class _QualityMonitorV2State:
                  object_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering QualityMonitorV2 resources.
-        :param pulumi.Input['QualityMonitorV2AnomalyDetectionConfigArgs'] anomaly_detection_config: (AnomalyDetectionConfig) -
+        :param pulumi.Input['QualityMonitorV2AnomalyDetectionConfigArgs'] anomaly_detection_config: (AnomalyDetectionConfig)
         :param pulumi.Input[_builtins.str] object_id: The uuid of the request object. For example, schema id
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: schema
         """
@@ -79,7 +79,7 @@ class _QualityMonitorV2State:
     @pulumi.getter(name="anomalyDetectionConfig")
     def anomaly_detection_config(self) -> Optional[pulumi.Input['QualityMonitorV2AnomalyDetectionConfigArgs']]:
         """
-        (AnomalyDetectionConfig) -
+        (AnomalyDetectionConfig)
         """
         return pulumi.get(self, "anomaly_detection_config")
 
@@ -263,7 +263,7 @@ class QualityMonitorV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['QualityMonitorV2AnomalyDetectionConfigArgs', 'QualityMonitorV2AnomalyDetectionConfigArgsDict']] anomaly_detection_config: (AnomalyDetectionConfig) -
+        :param pulumi.Input[Union['QualityMonitorV2AnomalyDetectionConfigArgs', 'QualityMonitorV2AnomalyDetectionConfigArgsDict']] anomaly_detection_config: (AnomalyDetectionConfig)
         :param pulumi.Input[_builtins.str] object_id: The uuid of the request object. For example, schema id
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: schema
         """
@@ -280,7 +280,7 @@ class QualityMonitorV2(pulumi.CustomResource):
     @pulumi.getter(name="anomalyDetectionConfig")
     def anomaly_detection_config(self) -> pulumi.Output['outputs.QualityMonitorV2AnomalyDetectionConfig']:
         """
-        (AnomalyDetectionConfig) -
+        (AnomalyDetectionConfig)
         """
         return pulumi.get(self, "anomaly_detection_config")
 

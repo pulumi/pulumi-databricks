@@ -19,13 +19,13 @@ namespace Pulumi.Databricks.Inputs
         public string? Aggregation { get; set; }
 
         /// <summary>
-        /// (string) -
+        /// (string)
         /// </summary>
         [Input("display")]
         public string? Display { get; set; }
 
         /// <summary>
-        /// (string) -
+        /// (string)
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }

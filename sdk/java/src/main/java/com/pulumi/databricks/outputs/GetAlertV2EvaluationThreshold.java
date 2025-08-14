@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAlertV2EvaluationThreshold {
     /**
-     * @return (AlertV2OperandColumn) -
+     * @return (AlertV2OperandColumn)
      * 
      */
     private @Nullable GetAlertV2EvaluationThresholdColumn column;
     /**
-     * @return (AlertV2OperandValue) -
+     * @return (AlertV2OperandValue)
      * 
      */
     private @Nullable GetAlertV2EvaluationThresholdValue value;
 
     private GetAlertV2EvaluationThreshold() {}
     /**
-     * @return (AlertV2OperandColumn) -
+     * @return (AlertV2OperandColumn)
      * 
      */
     public Optional<GetAlertV2EvaluationThresholdColumn> column() {
         return Optional.ofNullable(this.column);
     }
     /**
-     * @return (AlertV2OperandValue) -
+     * @return (AlertV2OperandValue)
      * 
      */
     public Optional<GetAlertV2EvaluationThresholdValue> value() {

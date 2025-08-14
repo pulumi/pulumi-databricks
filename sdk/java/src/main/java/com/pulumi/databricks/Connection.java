@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.ConnectionArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ConnectionState;
+import com.pulumi.databricks.outputs.ConnectionEnvironmentSettings;
 import com.pulumi.databricks.outputs.ConnectionProvisioningInfo;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -134,6 +135,172 @@ import javax.annotation.Nullable;
  * 
  * Create a connection to builtin Hive Metastore
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Connection;
+ * import com.pulumi.databricks.ConnectionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var hms = new Connection("hms", ConnectionArgs.builder()
+ *             .name("hms-builtin")
+ *             .connectionType("HIVE_METASTORE")
+ *             .comment("This is a connection to builtin HMS")
+ *             .options(Map.of("builtin", "true"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Create a HTTP connection with bearer token
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Connection;
+ * import com.pulumi.databricks.ConnectionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var httpBearer = new Connection("httpBearer", ConnectionArgs.builder()
+ *             .name("http_bearer")
+ *             .connectionType("HTTP")
+ *             .comment("This is a connection to a HTTP service")
+ *             .options(Map.ofEntries(
+ *                 Map.entry("host", "https://example.com"),
+ *                 Map.entry("port", "8433"),
+ *                 Map.entry("base_path", "/api/"),
+ *                 Map.entry("bearer_token", "bearer_token")
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Create a HTTP connection with OAuth M2M
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Connection;
+ * import com.pulumi.databricks.ConnectionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var httpOauth = new Connection("httpOauth", ConnectionArgs.builder()
+ *             .name("http_oauth")
+ *             .connectionType("HTTP")
+ *             .comment("This is a connection to a HTTP service")
+ *             .options(Map.ofEntries(
+ *                 Map.entry("host", "https://example.com"),
+ *                 Map.entry("port", "8433"),
+ *                 Map.entry("base_path", "/api/"),
+ *                 Map.entry("client_id", "client_id"),
+ *                 Map.entry("client_secret", "client_secret"),
+ *                 Map.entry("oauth_scope", "channels:read channels:history chat:write"),
+ *                 Map.entry("token_endpoint", "https://authorization-server.com/oauth/token")
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Create a PowerBI connection with OAuth M2M
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Connection;
+ * import com.pulumi.databricks.ConnectionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var pbi = new Connection("pbi", ConnectionArgs.builder()
+ *             .name("test-pbi")
+ *             .connectionType("POWER_BI")
+ *             .options(Map.ofEntries(
+ *                 Map.entry("authorization_endpoint", "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize"),
+ *                 Map.entry("client_id", "client_id"),
+ *                 Map.entry("client_secret", "client_secret")
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * This resource can be imported by `id`:
@@ -242,6 +409,12 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<String> credentialType() {
         return this.credentialType;
+    }
+    @Export(name="environmentSettings", refs={ConnectionEnvironmentSettings.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionEnvironmentSettings> environmentSettings;
+
+    public Output<Optional<ConnectionEnvironmentSettings>> environmentSettings() {
+        return Codegen.optional(this.environmentSettings);
     }
     /**
      * Full name of connection.

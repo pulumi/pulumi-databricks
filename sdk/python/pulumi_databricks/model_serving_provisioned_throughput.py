@@ -24,6 +24,7 @@ class ModelServingProvisionedThroughputArgs:
                  config: pulumi.Input['ModelServingProvisionedThroughputConfigArgs'],
                  ai_gateway: Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayArgs']] = None,
                  budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 email_notifications: Optional[pulumi.Input['ModelServingProvisionedThroughputEmailNotificationsArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputTagArgs']]]] = None):
         """
@@ -31,6 +32,7 @@ class ModelServingProvisionedThroughputArgs:
         :param pulumi.Input['ModelServingProvisionedThroughputConfigArgs'] config: The model serving endpoint configuration.
         :param pulumi.Input['ModelServingProvisionedThroughputAiGatewayArgs'] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this serving endpoint.
+        :param pulumi.Input['ModelServingProvisionedThroughputEmailNotificationsArgs'] email_notifications: A block with Email notification setting.
         :param pulumi.Input[_builtins.str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputTagArgs']]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
@@ -39,6 +41,8 @@ class ModelServingProvisionedThroughputArgs:
             pulumi.set(__self__, "ai_gateway", ai_gateway)
         if budget_policy_id is not None:
             pulumi.set(__self__, "budget_policy_id", budget_policy_id)
+        if email_notifications is not None:
+            pulumi.set(__self__, "email_notifications", email_notifications)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if tags is not None:
@@ -81,6 +85,18 @@ class ModelServingProvisionedThroughputArgs:
         pulumi.set(self, "budget_policy_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="emailNotifications")
+    def email_notifications(self) -> Optional[pulumi.Input['ModelServingProvisionedThroughputEmailNotificationsArgs']]:
+        """
+        A block with Email notification setting.
+        """
+        return pulumi.get(self, "email_notifications")
+
+    @email_notifications.setter
+    def email_notifications(self, value: Optional[pulumi.Input['ModelServingProvisionedThroughputEmailNotificationsArgs']]):
+        pulumi.set(self, "email_notifications", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -111,6 +127,7 @@ class _ModelServingProvisionedThroughputState:
                  ai_gateway: Optional[pulumi.Input['ModelServingProvisionedThroughputAiGatewayArgs']] = None,
                  budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  config: Optional[pulumi.Input['ModelServingProvisionedThroughputConfigArgs']] = None,
+                 email_notifications: Optional[pulumi.Input['ModelServingProvisionedThroughputEmailNotificationsArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  serving_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputTagArgs']]]] = None):
@@ -119,6 +136,7 @@ class _ModelServingProvisionedThroughputState:
         :param pulumi.Input['ModelServingProvisionedThroughputAiGatewayArgs'] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this serving endpoint.
         :param pulumi.Input['ModelServingProvisionedThroughputConfigArgs'] config: The model serving endpoint configuration.
+        :param pulumi.Input['ModelServingProvisionedThroughputEmailNotificationsArgs'] email_notifications: A block with Email notification setting.
         :param pulumi.Input[_builtins.str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         :param pulumi.Input[_builtins.str] serving_endpoint_id: Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingProvisionedThroughputTagArgs']]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
@@ -129,6 +147,8 @@ class _ModelServingProvisionedThroughputState:
             pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if email_notifications is not None:
+            pulumi.set(__self__, "email_notifications", email_notifications)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if serving_endpoint_id is not None:
@@ -171,6 +191,18 @@ class _ModelServingProvisionedThroughputState:
     @config.setter
     def config(self, value: Optional[pulumi.Input['ModelServingProvisionedThroughputConfigArgs']]):
         pulumi.set(self, "config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="emailNotifications")
+    def email_notifications(self) -> Optional[pulumi.Input['ModelServingProvisionedThroughputEmailNotificationsArgs']]:
+        """
+        A block with Email notification setting.
+        """
+        return pulumi.get(self, "email_notifications")
+
+    @email_notifications.setter
+    def email_notifications(self, value: Optional[pulumi.Input['ModelServingProvisionedThroughputEmailNotificationsArgs']]):
+        pulumi.set(self, "email_notifications", value)
 
     @_builtins.property
     @pulumi.getter
@@ -218,6 +250,7 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
                  ai_gateway: Optional[pulumi.Input[Union['ModelServingProvisionedThroughputAiGatewayArgs', 'ModelServingProvisionedThroughputAiGatewayArgsDict']]] = None,
                  budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  config: Optional[pulumi.Input[Union['ModelServingProvisionedThroughputConfigArgs', 'ModelServingProvisionedThroughputConfigArgsDict']]] = None,
+                 email_notifications: Optional[pulumi.Input[Union['ModelServingProvisionedThroughputEmailNotificationsArgs', 'ModelServingProvisionedThroughputEmailNotificationsArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingProvisionedThroughputTagArgs', 'ModelServingProvisionedThroughputTagArgsDict']]]]] = None,
                  __props__=None):
@@ -297,6 +330,7 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
         :param pulumi.Input[Union['ModelServingProvisionedThroughputAiGatewayArgs', 'ModelServingProvisionedThroughputAiGatewayArgsDict']] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this serving endpoint.
         :param pulumi.Input[Union['ModelServingProvisionedThroughputConfigArgs', 'ModelServingProvisionedThroughputConfigArgsDict']] config: The model serving endpoint configuration.
+        :param pulumi.Input[Union['ModelServingProvisionedThroughputEmailNotificationsArgs', 'ModelServingProvisionedThroughputEmailNotificationsArgsDict']] email_notifications: A block with Email notification setting.
         :param pulumi.Input[_builtins.str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingProvisionedThroughputTagArgs', 'ModelServingProvisionedThroughputTagArgsDict']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
@@ -395,6 +429,7 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
                  ai_gateway: Optional[pulumi.Input[Union['ModelServingProvisionedThroughputAiGatewayArgs', 'ModelServingProvisionedThroughputAiGatewayArgsDict']]] = None,
                  budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  config: Optional[pulumi.Input[Union['ModelServingProvisionedThroughputConfigArgs', 'ModelServingProvisionedThroughputConfigArgsDict']]] = None,
+                 email_notifications: Optional[pulumi.Input[Union['ModelServingProvisionedThroughputEmailNotificationsArgs', 'ModelServingProvisionedThroughputEmailNotificationsArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingProvisionedThroughputTagArgs', 'ModelServingProvisionedThroughputTagArgsDict']]]]] = None,
                  __props__=None):
@@ -411,6 +446,7 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
+            __props__.__dict__["email_notifications"] = email_notifications
             __props__.__dict__["name"] = name
             __props__.__dict__["tags"] = tags
             __props__.__dict__["serving_endpoint_id"] = None
@@ -427,6 +463,7 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
             ai_gateway: Optional[pulumi.Input[Union['ModelServingProvisionedThroughputAiGatewayArgs', 'ModelServingProvisionedThroughputAiGatewayArgsDict']]] = None,
             budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
             config: Optional[pulumi.Input[Union['ModelServingProvisionedThroughputConfigArgs', 'ModelServingProvisionedThroughputConfigArgsDict']]] = None,
+            email_notifications: Optional[pulumi.Input[Union['ModelServingProvisionedThroughputEmailNotificationsArgs', 'ModelServingProvisionedThroughputEmailNotificationsArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             serving_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingProvisionedThroughputTagArgs', 'ModelServingProvisionedThroughputTagArgsDict']]]]] = None) -> 'ModelServingProvisionedThroughput':
@@ -440,6 +477,7 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
         :param pulumi.Input[Union['ModelServingProvisionedThroughputAiGatewayArgs', 'ModelServingProvisionedThroughputAiGatewayArgsDict']] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this serving endpoint.
         :param pulumi.Input[Union['ModelServingProvisionedThroughputConfigArgs', 'ModelServingProvisionedThroughputConfigArgsDict']] config: The model serving endpoint configuration.
+        :param pulumi.Input[Union['ModelServingProvisionedThroughputEmailNotificationsArgs', 'ModelServingProvisionedThroughputEmailNotificationsArgsDict']] email_notifications: A block with Email notification setting.
         :param pulumi.Input[_builtins.str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         :param pulumi.Input[_builtins.str] serving_endpoint_id: Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingProvisionedThroughputTagArgs', 'ModelServingProvisionedThroughputTagArgsDict']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
@@ -451,6 +489,7 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
         __props__.__dict__["ai_gateway"] = ai_gateway
         __props__.__dict__["budget_policy_id"] = budget_policy_id
         __props__.__dict__["config"] = config
+        __props__.__dict__["email_notifications"] = email_notifications
         __props__.__dict__["name"] = name
         __props__.__dict__["serving_endpoint_id"] = serving_endpoint_id
         __props__.__dict__["tags"] = tags
@@ -479,6 +518,14 @@ class ModelServingProvisionedThroughput(pulumi.CustomResource):
         The model serving endpoint configuration.
         """
         return pulumi.get(self, "config")
+
+    @_builtins.property
+    @pulumi.getter(name="emailNotifications")
+    def email_notifications(self) -> pulumi.Output[Optional['outputs.ModelServingProvisionedThroughputEmailNotifications']]:
+        """
+        A block with Email notification setting.
+        """
+        return pulumi.get(self, "email_notifications")
 
     @_builtins.property
     @pulumi.getter

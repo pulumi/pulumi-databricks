@@ -56,8 +56,9 @@ type AlertV2 struct {
 	ParentPath pulumi.StringPtrOutput `pulumi:"parentPath"`
 	// Text of the query to be run
 	QueryText pulumi.StringPtrOutput `pulumi:"queryText"`
-	// (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
-	RunAsUserName pulumi.StringOutput      `pulumi:"runAsUserName"`
+	// The run as username or application ID of service principal.
+	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+	RunAsUserName pulumi.StringPtrOutput   `pulumi:"runAsUserName"`
 	Schedule      AlertV2SchedulePtrOutput `pulumi:"schedule"`
 	// (string) - The timestamp indicating when the alert was updated
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -112,7 +113,8 @@ type alertV2State struct {
 	ParentPath *string `pulumi:"parentPath"`
 	// Text of the query to be run
 	QueryText *string `pulumi:"queryText"`
-	// (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+	// The run as username or application ID of service principal.
+	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
 	RunAsUserName *string          `pulumi:"runAsUserName"`
 	Schedule      *AlertV2Schedule `pulumi:"schedule"`
 	// (string) - The timestamp indicating when the alert was updated
@@ -139,7 +141,8 @@ type AlertV2State struct {
 	ParentPath pulumi.StringPtrInput
 	// Text of the query to be run
 	QueryText pulumi.StringPtrInput
-	// (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+	// The run as username or application ID of service principal.
+	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
 	RunAsUserName pulumi.StringPtrInput
 	Schedule      AlertV2SchedulePtrInput
 	// (string) - The timestamp indicating when the alert was updated
@@ -163,8 +166,11 @@ type alertV2Args struct {
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath *string `pulumi:"parentPath"`
 	// Text of the query to be run
-	QueryText *string          `pulumi:"queryText"`
-	Schedule  *AlertV2Schedule `pulumi:"schedule"`
+	QueryText *string `pulumi:"queryText"`
+	// The run as username or application ID of service principal.
+	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+	RunAsUserName *string          `pulumi:"runAsUserName"`
+	Schedule      *AlertV2Schedule `pulumi:"schedule"`
 	// ID of the SQL warehouse attached to the alert
 	WarehouseId *string `pulumi:"warehouseId"`
 }
@@ -182,7 +188,10 @@ type AlertV2Args struct {
 	ParentPath pulumi.StringPtrInput
 	// Text of the query to be run
 	QueryText pulumi.StringPtrInput
-	Schedule  AlertV2SchedulePtrInput
+	// The run as username or application ID of service principal.
+	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+	RunAsUserName pulumi.StringPtrInput
+	Schedule      AlertV2SchedulePtrInput
 	// ID of the SQL warehouse attached to the alert
 	WarehouseId pulumi.StringPtrInput
 }
@@ -318,9 +327,10 @@ func (o AlertV2Output) QueryText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.QueryText }).(pulumi.StringPtrOutput)
 }
 
-// (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
-func (o AlertV2Output) RunAsUserName() pulumi.StringOutput {
-	return o.ApplyT(func(v *AlertV2) pulumi.StringOutput { return v.RunAsUserName }).(pulumi.StringOutput)
+// The run as username or application ID of service principal.
+// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+func (o AlertV2Output) RunAsUserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.RunAsUserName }).(pulumi.StringPtrOutput)
 }
 
 func (o AlertV2Output) Schedule() AlertV2SchedulePtrOutput {

@@ -16,9 +16,107 @@ public final class PipelineEnvironmentArgs extends com.pulumi.resources.Resource
 
     public static final PipelineEnvironmentArgs Empty = new PipelineEnvironmentArgs();
 
+    /**
+     * a list of pip dependencies, as supported by the version of pip in this environment. Each dependency is a [pip requirement file line](https://pip.pypa.io/en/stable/reference/requirements-file-format/).  See [API docs](https://docs.databricks.com/api/azure/workspace/pipelines/create#environment-dependencies) for more information.
+     * 
+     * Example:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Pipeline;
+     * import com.pulumi.databricks.PipelineArgs;
+     * import com.pulumi.databricks.inputs.PipelineEnvironmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var this_ = new Pipeline("this", PipelineArgs.builder()
+     *             .name("Serverless demo")
+     *             .serverless(true)
+     *             .catalog("main")
+     *             .schema("ldp_demo")
+     *             .environment(PipelineEnvironmentArgs.builder()
+     *                 .dependencies(                
+     *                     "foo==0.0.1",
+     *                     "-r /Workspace/Users/user.name/my-pipeline/requirements.txt",
+     *                     "/Volumes/main/default/libs/my_lib.whl")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     @Import(name="dependencies")
     private @Nullable Output<List<String>> dependencies;
 
+    /**
+     * @return a list of pip dependencies, as supported by the version of pip in this environment. Each dependency is a [pip requirement file line](https://pip.pypa.io/en/stable/reference/requirements-file-format/).  See [API docs](https://docs.databricks.com/api/azure/workspace/pipelines/create#environment-dependencies) for more information.
+     * 
+     * Example:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Pipeline;
+     * import com.pulumi.databricks.PipelineArgs;
+     * import com.pulumi.databricks.inputs.PipelineEnvironmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var this_ = new Pipeline("this", PipelineArgs.builder()
+     *             .name("Serverless demo")
+     *             .serverless(true)
+     *             .catalog("main")
+     *             .schema("ldp_demo")
+     *             .environment(PipelineEnvironmentArgs.builder()
+     *                 .dependencies(                
+     *                     "foo==0.0.1",
+     *                     "-r /Workspace/Users/user.name/my-pipeline/requirements.txt",
+     *                     "/Volumes/main/default/libs/my_lib.whl")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public Optional<Output<List<String>>> dependencies() {
         return Optional.ofNullable(this.dependencies);
     }
@@ -47,15 +145,168 @@ public final class PipelineEnvironmentArgs extends com.pulumi.resources.Resource
             $ = new PipelineEnvironmentArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dependencies a list of pip dependencies, as supported by the version of pip in this environment. Each dependency is a [pip requirement file line](https://pip.pypa.io/en/stable/reference/requirements-file-format/).  See [API docs](https://docs.databricks.com/api/azure/workspace/pipelines/create#environment-dependencies) for more information.
+         * 
+         * Example:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
+         * <pre>
+         * {@code
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.databricks.Pipeline;
+         * import com.pulumi.databricks.PipelineArgs;
+         * import com.pulumi.databricks.inputs.PipelineEnvironmentArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var this_ = new Pipeline("this", PipelineArgs.builder()
+         *             .name("Serverless demo")
+         *             .serverless(true)
+         *             .catalog("main")
+         *             .schema("ldp_demo")
+         *             .environment(PipelineEnvironmentArgs.builder()
+         *                 .dependencies(                
+         *                     "foo==0.0.1",
+         *                     "-r /Workspace/Users/user.name/my-pipeline/requirements.txt",
+         *                     "/Volumes/main/default/libs/my_lib.whl")
+         *                 .build())
+         *             .build());
+         * 
+         *     }
+         * }
+         * }
+         * </pre>
+         * &lt;!--End PulumiCodeChooser --&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder dependencies(@Nullable Output<List<String>> dependencies) {
             $.dependencies = dependencies;
             return this;
         }
 
+        /**
+         * @param dependencies a list of pip dependencies, as supported by the version of pip in this environment. Each dependency is a [pip requirement file line](https://pip.pypa.io/en/stable/reference/requirements-file-format/).  See [API docs](https://docs.databricks.com/api/azure/workspace/pipelines/create#environment-dependencies) for more information.
+         * 
+         * Example:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
+         * <pre>
+         * {@code
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.databricks.Pipeline;
+         * import com.pulumi.databricks.PipelineArgs;
+         * import com.pulumi.databricks.inputs.PipelineEnvironmentArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var this_ = new Pipeline("this", PipelineArgs.builder()
+         *             .name("Serverless demo")
+         *             .serverless(true)
+         *             .catalog("main")
+         *             .schema("ldp_demo")
+         *             .environment(PipelineEnvironmentArgs.builder()
+         *                 .dependencies(                
+         *                     "foo==0.0.1",
+         *                     "-r /Workspace/Users/user.name/my-pipeline/requirements.txt",
+         *                     "/Volumes/main/default/libs/my_lib.whl")
+         *                 .build())
+         *             .build());
+         * 
+         *     }
+         * }
+         * }
+         * </pre>
+         * &lt;!--End PulumiCodeChooser --&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder dependencies(List<String> dependencies) {
             return dependencies(Output.of(dependencies));
         }
 
+        /**
+         * @param dependencies a list of pip dependencies, as supported by the version of pip in this environment. Each dependency is a [pip requirement file line](https://pip.pypa.io/en/stable/reference/requirements-file-format/).  See [API docs](https://docs.databricks.com/api/azure/workspace/pipelines/create#environment-dependencies) for more information.
+         * 
+         * Example:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
+         * <pre>
+         * {@code
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.databricks.Pipeline;
+         * import com.pulumi.databricks.PipelineArgs;
+         * import com.pulumi.databricks.inputs.PipelineEnvironmentArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var this_ = new Pipeline("this", PipelineArgs.builder()
+         *             .name("Serverless demo")
+         *             .serverless(true)
+         *             .catalog("main")
+         *             .schema("ldp_demo")
+         *             .environment(PipelineEnvironmentArgs.builder()
+         *                 .dependencies(                
+         *                     "foo==0.0.1",
+         *                     "-r /Workspace/Users/user.name/my-pipeline/requirements.txt",
+         *                     "/Volumes/main/default/libs/my_lib.whl")
+         *                 .build())
+         *             .build());
+         * 
+         *     }
+         * }
+         * }
+         * </pre>
+         * &lt;!--End PulumiCodeChooser --&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder dependencies(String... dependencies) {
             return dependencies(List.of(dependencies));
         }

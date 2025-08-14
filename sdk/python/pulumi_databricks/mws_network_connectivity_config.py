@@ -31,8 +31,11 @@ class MwsNetworkConnectivityConfigArgs:
         """
         The set of arguments for constructing a MwsNetworkConnectivityConfig resource.
         :param pulumi.Input[_builtins.str] region: Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
-        :param pulumi.Input[_builtins.str] name: Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.int] creation_time: time in epoch milliseconds when this object was created.
+        :param pulumi.Input['MwsNetworkConnectivityConfigEgressConfigArgs'] egress_config: block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
+        :param pulumi.Input[_builtins.str] name: Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account
+        :param pulumi.Input[_builtins.int] updated_time: time in epoch milliseconds when this object was updated.
         """
         pulumi.set(__self__, "region", region)
         if account_id is not None:
@@ -72,6 +75,9 @@ class MwsNetworkConnectivityConfigArgs:
     @_builtins.property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        time in epoch milliseconds when this object was created.
+        """
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
@@ -81,6 +87,9 @@ class MwsNetworkConnectivityConfigArgs:
     @_builtins.property
     @pulumi.getter(name="egressConfig")
     def egress_config(self) -> Optional[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigArgs']]:
+        """
+        block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
+        """
         return pulumi.get(self, "egress_config")
 
     @egress_config.setter
@@ -91,7 +100,7 @@ class MwsNetworkConnectivityConfigArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+        Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
@@ -114,6 +123,9 @@ class MwsNetworkConnectivityConfigArgs:
     @_builtins.property
     @pulumi.getter(name="updatedTime")
     def updated_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        time in epoch milliseconds when this object was updated.
+        """
         return pulumi.get(self, "updated_time")
 
     @updated_time.setter
@@ -133,9 +145,12 @@ class _MwsNetworkConnectivityConfigState:
                  updated_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering MwsNetworkConnectivityConfig resources.
-        :param pulumi.Input[_builtins.str] name: Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.int] creation_time: time in epoch milliseconds when this object was created.
+        :param pulumi.Input['MwsNetworkConnectivityConfigEgressConfigArgs'] egress_config: block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
+        :param pulumi.Input[_builtins.str] name: Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account
         :param pulumi.Input[_builtins.str] region: Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.int] updated_time: time in epoch milliseconds when this object was updated.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -164,6 +179,9 @@ class _MwsNetworkConnectivityConfigState:
     @_builtins.property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        time in epoch milliseconds when this object was created.
+        """
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
@@ -173,6 +191,9 @@ class _MwsNetworkConnectivityConfigState:
     @_builtins.property
     @pulumi.getter(name="egressConfig")
     def egress_config(self) -> Optional[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigArgs']]:
+        """
+        block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
+        """
         return pulumi.get(self, "egress_config")
 
     @egress_config.setter
@@ -183,7 +204,7 @@ class _MwsNetworkConnectivityConfigState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+        Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
@@ -218,6 +239,9 @@ class _MwsNetworkConnectivityConfigState:
     @_builtins.property
     @pulumi.getter(name="updatedTime")
     def updated_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        time in epoch milliseconds when this object was updated.
+        """
         return pulumi.get(self, "updated_time")
 
     @updated_time.setter
@@ -293,9 +317,12 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] name: Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.int] creation_time: time in epoch milliseconds when this object was created.
+        :param pulumi.Input[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict']] egress_config: block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
+        :param pulumi.Input[_builtins.str] name: Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account
         :param pulumi.Input[_builtins.str] region: Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.int] updated_time: time in epoch milliseconds when this object was updated.
         """
         ...
     @overload
@@ -419,9 +446,12 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] name: Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.int] creation_time: time in epoch milliseconds when this object was created.
+        :param pulumi.Input[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict']] egress_config: block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
+        :param pulumi.Input[_builtins.str] name: Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account
         :param pulumi.Input[_builtins.str] region: Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.int] updated_time: time in epoch milliseconds when this object was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -444,18 +474,24 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> pulumi.Output[_builtins.int]:
+        """
+        time in epoch milliseconds when this object was created.
+        """
         return pulumi.get(self, "creation_time")
 
     @_builtins.property
     @pulumi.getter(name="egressConfig")
     def egress_config(self) -> pulumi.Output['outputs.MwsNetworkConnectivityConfigEgressConfig']:
+        """
+        block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
+        """
         return pulumi.get(self, "egress_config")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+        Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
@@ -478,5 +514,8 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="updatedTime")
     def updated_time(self) -> pulumi.Output[_builtins.int]:
+        """
+        time in epoch milliseconds when this object was updated.
+        """
         return pulumi.get(self, "updated_time")
 

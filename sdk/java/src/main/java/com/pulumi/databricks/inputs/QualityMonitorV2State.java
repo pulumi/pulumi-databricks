@@ -17,14 +17,14 @@ public final class QualityMonitorV2State extends com.pulumi.resources.ResourceAr
     public static final QualityMonitorV2State Empty = new QualityMonitorV2State();
 
     /**
-     * (AnomalyDetectionConfig) -
+     * (AnomalyDetectionConfig)
      * 
      */
     @Import(name="anomalyDetectionConfig")
     private @Nullable Output<QualityMonitorV2AnomalyDetectionConfigArgs> anomalyDetectionConfig;
 
     /**
-     * @return (AnomalyDetectionConfig) -
+     * @return (AnomalyDetectionConfig)
      * 
      */
     public Optional<Output<QualityMonitorV2AnomalyDetectionConfigArgs>> anomalyDetectionConfig() {
@@ -88,7 +88,7 @@ public final class QualityMonitorV2State extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param anomalyDetectionConfig (AnomalyDetectionConfig) -
+         * @param anomalyDetectionConfig (AnomalyDetectionConfig)
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class QualityMonitorV2State extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param anomalyDetectionConfig (AnomalyDetectionConfig) -
+         * @param anomalyDetectionConfig (AnomalyDetectionConfig)
          * 
          * @return builder
          * 

@@ -16,6 +16,34 @@ public final class NotificationDestinationConfigSlackArgs extends com.pulumi.res
 
     public static final NotificationDestinationConfigSlackArgs Empty = new NotificationDestinationConfigSlackArgs();
 
+    @Import(name="channelId")
+    private @Nullable Output<String> channelId;
+
+    public Optional<Output<String>> channelId() {
+        return Optional.ofNullable(this.channelId);
+    }
+
+    @Import(name="channelIdSet")
+    private @Nullable Output<Boolean> channelIdSet;
+
+    public Optional<Output<Boolean>> channelIdSet() {
+        return Optional.ofNullable(this.channelIdSet);
+    }
+
+    @Import(name="oauthToken")
+    private @Nullable Output<String> oauthToken;
+
+    public Optional<Output<String>> oauthToken() {
+        return Optional.ofNullable(this.oauthToken);
+    }
+
+    @Import(name="oauthTokenSet")
+    private @Nullable Output<Boolean> oauthTokenSet;
+
+    public Optional<Output<Boolean>> oauthTokenSet() {
+        return Optional.ofNullable(this.oauthTokenSet);
+    }
+
     /**
      * The Slack webhook URL.
      * 
@@ -41,6 +69,10 @@ public final class NotificationDestinationConfigSlackArgs extends com.pulumi.res
     private NotificationDestinationConfigSlackArgs() {}
 
     private NotificationDestinationConfigSlackArgs(NotificationDestinationConfigSlackArgs $) {
+        this.channelId = $.channelId;
+        this.channelIdSet = $.channelIdSet;
+        this.oauthToken = $.oauthToken;
+        this.oauthTokenSet = $.oauthTokenSet;
         this.url = $.url;
         this.urlSet = $.urlSet;
     }
@@ -61,6 +93,42 @@ public final class NotificationDestinationConfigSlackArgs extends com.pulumi.res
 
         public Builder(NotificationDestinationConfigSlackArgs defaults) {
             $ = new NotificationDestinationConfigSlackArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder channelId(@Nullable Output<String> channelId) {
+            $.channelId = channelId;
+            return this;
+        }
+
+        public Builder channelId(String channelId) {
+            return channelId(Output.of(channelId));
+        }
+
+        public Builder channelIdSet(@Nullable Output<Boolean> channelIdSet) {
+            $.channelIdSet = channelIdSet;
+            return this;
+        }
+
+        public Builder channelIdSet(Boolean channelIdSet) {
+            return channelIdSet(Output.of(channelIdSet));
+        }
+
+        public Builder oauthToken(@Nullable Output<String> oauthToken) {
+            $.oauthToken = oauthToken;
+            return this;
+        }
+
+        public Builder oauthToken(String oauthToken) {
+            return oauthToken(Output.of(oauthToken));
+        }
+
+        public Builder oauthTokenSet(@Nullable Output<Boolean> oauthTokenSet) {
+            $.oauthTokenSet = oauthTokenSet;
+            return this;
+        }
+
+        public Builder oauthTokenSet(Boolean oauthTokenSet) {
+            return oauthTokenSet(Output.of(oauthTokenSet));
         }
 
         /**

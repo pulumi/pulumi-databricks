@@ -72,7 +72,7 @@ import (
 type QualityMonitorV2 struct {
 	pulumi.CustomResourceState
 
-	// (AnomalyDetectionConfig) -
+	// (AnomalyDetectionConfig)
 	AnomalyDetectionConfig QualityMonitorV2AnomalyDetectionConfigOutput `pulumi:"anomalyDetectionConfig"`
 	// The uuid of the request object. For example, schema id
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
@@ -116,7 +116,7 @@ func GetQualityMonitorV2(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering QualityMonitorV2 resources.
 type qualityMonitorV2State struct {
-	// (AnomalyDetectionConfig) -
+	// (AnomalyDetectionConfig)
 	AnomalyDetectionConfig *QualityMonitorV2AnomalyDetectionConfig `pulumi:"anomalyDetectionConfig"`
 	// The uuid of the request object. For example, schema id
 	ObjectId *string `pulumi:"objectId"`
@@ -125,7 +125,7 @@ type qualityMonitorV2State struct {
 }
 
 type QualityMonitorV2State struct {
-	// (AnomalyDetectionConfig) -
+	// (AnomalyDetectionConfig)
 	AnomalyDetectionConfig QualityMonitorV2AnomalyDetectionConfigPtrInput
 	// The uuid of the request object. For example, schema id
 	ObjectId pulumi.StringPtrInput
@@ -239,7 +239,7 @@ func (o QualityMonitorV2Output) ToQualityMonitorV2OutputWithContext(ctx context.
 	return o
 }
 
-// (AnomalyDetectionConfig) -
+// (AnomalyDetectionConfig)
 func (o QualityMonitorV2Output) AnomalyDetectionConfig() QualityMonitorV2AnomalyDetectionConfigOutput {
 	return o.ApplyT(func(v *QualityMonitorV2) QualityMonitorV2AnomalyDetectionConfigOutput {
 		return v.AnomalyDetectionConfig

@@ -91,10 +91,11 @@ namespace Pulumi.Databricks
         public Output<string?> QueryText { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+        /// The run as username or application ID of service principal.
+        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         /// </summary>
         [Output("runAsUserName")]
-        public Output<string> RunAsUserName { get; private set; } = null!;
+        public Output<string?> RunAsUserName { get; private set; } = null!;
 
         [Output("schedule")]
         public Output<Outputs.AlertV2Schedule?> Schedule { get; private set; } = null!;
@@ -190,6 +191,13 @@ namespace Pulumi.Databricks
         [Input("queryText")]
         public Input<string>? QueryText { get; set; }
 
+        /// <summary>
+        /// The run as username or application ID of service principal.
+        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+        /// </summary>
+        [Input("runAsUserName")]
+        public Input<string>? RunAsUserName { get; set; }
+
         [Input("schedule")]
         public Input<Inputs.AlertV2ScheduleArgs>? Schedule { get; set; }
 
@@ -259,7 +267,8 @@ namespace Pulumi.Databricks
         public Input<string>? QueryText { get; set; }
 
         /// <summary>
-        /// (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+        /// The run as username or application ID of service principal.
+        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         /// </summary>
         [Input("runAsUserName")]
         public Input<string>? RunAsUserName { get; set; }

@@ -60,7 +60,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// object describing input parameters. Consists of the single attribute:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetFunctionsFunctionInputParamResult> InputParams;
+        public readonly Outputs.GetFunctionsFunctionInputParamsResult? InputParams;
         /// <summary>
         /// Boolean flag specifying whether the function is deterministic.
         /// </summary>
@@ -92,7 +92,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Table function return parameters.  See `input_params` for description.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetFunctionsFunctionReturnParamResult> ReturnParams;
+        public readonly Outputs.GetFunctionsFunctionReturnParamsResult? ReturnParams;
         /// <summary>
         /// Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
         /// </summary>
@@ -104,7 +104,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Function dependencies.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetFunctionsFunctionRoutineDependencyResult> RoutineDependencies;
+        public readonly Outputs.GetFunctionsFunctionRoutineDependenciesResult? RoutineDependencies;
         /// <summary>
         /// Name of databricks_schema.
         /// </summary>
@@ -158,7 +158,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? functionId,
 
-            ImmutableArray<Outputs.GetFunctionsFunctionInputParamResult> inputParams,
+            Outputs.GetFunctionsFunctionInputParamsResult? inputParams,
 
             bool? isDeterministic,
 
@@ -174,13 +174,13 @@ namespace Pulumi.Databricks.Outputs
 
             string? properties,
 
-            ImmutableArray<Outputs.GetFunctionsFunctionReturnParamResult> returnParams,
+            Outputs.GetFunctionsFunctionReturnParamsResult? returnParams,
 
             string? routineBody,
 
             string? routineDefinition,
 
-            ImmutableArray<Outputs.GetFunctionsFunctionRoutineDependencyResult> routineDependencies,
+            Outputs.GetFunctionsFunctionRoutineDependenciesResult? routineDependencies,
 
             string? schemaName,
 

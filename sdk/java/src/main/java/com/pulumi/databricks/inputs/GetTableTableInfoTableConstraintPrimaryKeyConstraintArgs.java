@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -39,6 +40,13 @@ public final class GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs exte
         return this.name;
     }
 
+    @Import(name="rely")
+    private @Nullable Output<Boolean> rely;
+
+    public Optional<Output<Boolean>> rely() {
+        return Optional.ofNullable(this.rely);
+    }
+
     @Import(name="timeseriesColumns")
     private @Nullable Output<List<String>> timeseriesColumns;
 
@@ -51,6 +59,7 @@ public final class GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs exte
     private GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs(GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs $) {
         this.childColumns = $.childColumns;
         this.name = $.name;
+        this.rely = $.rely;
         this.timeseriesColumns = $.timeseriesColumns;
     }
 
@@ -104,6 +113,15 @@ public final class GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs exte
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder rely(@Nullable Output<Boolean> rely) {
+            $.rely = rely;
+            return this;
+        }
+
+        public Builder rely(Boolean rely) {
+            return rely(Output.of(rely));
         }
 
         public Builder timeseriesColumns(@Nullable Output<List<String>> timeseriesColumns) {

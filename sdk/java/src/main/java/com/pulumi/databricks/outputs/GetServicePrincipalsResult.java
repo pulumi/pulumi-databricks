@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetServicePrincipalsResult {
     /**
-     * @return List of `application_ids` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
+     * @return List of `application_ids` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
      * 
      */
     private List<String> applicationIds;
@@ -25,7 +25,7 @@ public final class GetServicePrincipalsResult {
 
     private GetServicePrincipalsResult() {}
     /**
-     * @return List of `application_ids` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
+     * @return List of `application_ids` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
      * 
      */
     public List<String> applicationIds() {

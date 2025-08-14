@@ -60,7 +60,7 @@ namespace Pulumi.Databricks
     /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
     /// * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
     /// * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.
-    /// * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+    /// * databricks.Grants to manage data access in Unity Catalog.
     /// 
     /// ## Import
     /// 
@@ -112,7 +112,7 @@ namespace Pulumi.Databricks
         public Output<string> CreatorName { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+        /// (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         /// </summary>
         [Output("dataSourceId")]
         public Output<string> DataSourceId { get; private set; } = null!;
@@ -126,9 +126,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
         /// 
-        /// * **For AWS**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements) and might require an update to its instance profile role to [add a trust relationship](https://docs.databricks.com/sql/admin/serverless.html#aws-instance-profile-setup).
-        /// 
-        /// * **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
+        /// * If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
         /// </summary>
         [Output("enableServerlessCompute")]
         public Output<bool> EnableServerlessCompute { get; private set; } = null!;
@@ -273,7 +271,7 @@ namespace Pulumi.Databricks
         public Input<string> ClusterSize { get; set; } = null!;
 
         /// <summary>
-        /// ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+        /// (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         /// </summary>
         [Input("dataSourceId")]
         public Input<string>? DataSourceId { get; set; }
@@ -287,9 +285,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
         /// 
-        /// * **For AWS**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements) and might require an update to its instance profile role to [add a trust relationship](https://docs.databricks.com/sql/admin/serverless.html#aws-instance-profile-setup).
-        /// 
-        /// * **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
+        /// * If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
         /// </summary>
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
@@ -366,7 +362,7 @@ namespace Pulumi.Databricks
         public Input<string>? CreatorName { get; set; }
 
         /// <summary>
-        /// ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+        /// (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         /// </summary>
         [Input("dataSourceId")]
         public Input<string>? DataSourceId { get; set; }
@@ -380,9 +376,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
         /// 
-        /// * **For AWS**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements) and might require an update to its instance profile role to [add a trust relationship](https://docs.databricks.com/sql/admin/serverless.html#aws-instance-profile-setup).
-        /// 
-        /// * **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
+        /// * If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
         /// </summary>
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }

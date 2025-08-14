@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class DisableLegacyAccessSettingDisableLegacyAccess
     {
+        /// <summary>
+        /// The boolean value for the setting.
+        /// </summary>
         public readonly bool Value;
 
         [OutputConstructor]

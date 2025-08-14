@@ -63,7 +63,7 @@ type SqlTable struct {
 	StorageCredentialName pulumi.StringPtrOutput `pulumi:"storageCredentialName"`
 	// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
 	StorageLocation pulumi.StringPtrOutput `pulumi:"storageLocation"`
-	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
 	TableType pulumi.StringOutput `pulumi:"tableType"`
 	// SQL text defining the view (for `tableType == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
 	ViewDefinition pulumi.StringPtrOutput `pulumi:"viewDefinition"`
@@ -137,7 +137,7 @@ type sqlTableState struct {
 	StorageCredentialName *string `pulumi:"storageCredentialName"`
 	// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
 	StorageLocation *string `pulumi:"storageLocation"`
-	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
 	TableType *string `pulumi:"tableType"`
 	// SQL text defining the view (for `tableType == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
 	ViewDefinition *string `pulumi:"viewDefinition"`
@@ -173,7 +173,7 @@ type SqlTableState struct {
 	StorageCredentialName pulumi.StringPtrInput
 	// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
 	StorageLocation pulumi.StringPtrInput
-	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
 	TableType pulumi.StringPtrInput
 	// SQL text defining the view (for `tableType == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
 	ViewDefinition pulumi.StringPtrInput
@@ -212,7 +212,7 @@ type sqlTableArgs struct {
 	StorageCredentialName *string `pulumi:"storageCredentialName"`
 	// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
 	StorageLocation *string `pulumi:"storageLocation"`
-	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
 	TableType string `pulumi:"tableType"`
 	// SQL text defining the view (for `tableType == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
 	ViewDefinition *string `pulumi:"viewDefinition"`
@@ -248,7 +248,7 @@ type SqlTableArgs struct {
 	StorageCredentialName pulumi.StringPtrInput
 	// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
 	StorageLocation pulumi.StringPtrInput
-	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
 	TableType pulumi.StringInput
 	// SQL text defining the view (for `tableType == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
 	ViewDefinition pulumi.StringPtrInput
@@ -415,7 +415,7 @@ func (o SqlTableOutput) StorageLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringPtrOutput { return v.StorageLocation }).(pulumi.StringPtrOutput)
 }
 
-// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
 func (o SqlTableOutput) TableType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringOutput { return v.TableType }).(pulumi.StringOutput)
 }

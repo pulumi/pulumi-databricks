@@ -46,6 +46,7 @@ __all__ = [
     'AppPendingDeploymentDeploymentArtifacts',
     'AppPendingDeploymentStatus',
     'AppResource',
+    'AppResourceDatabase',
     'AppResourceJob',
     'AppResourceSecret',
     'AppResourceServingEndpoint',
@@ -64,6 +65,33 @@ __all__ = [
     'BudgetFilterTagValue',
     'BudgetFilterWorkspaceId',
     'BudgetPolicyCustomTag',
+    'CleanRoomAssetForeignTable',
+    'CleanRoomAssetForeignTableColumn',
+    'CleanRoomAssetForeignTableColumnMask',
+    'CleanRoomAssetForeignTableLocalDetails',
+    'CleanRoomAssetNotebook',
+    'CleanRoomAssetNotebookReview',
+    'CleanRoomAssetTable',
+    'CleanRoomAssetTableColumn',
+    'CleanRoomAssetTableColumnMask',
+    'CleanRoomAssetTableLocalDetails',
+    'CleanRoomAssetTableLocalDetailsPartition',
+    'CleanRoomAssetTableLocalDetailsPartitionValue',
+    'CleanRoomAssetView',
+    'CleanRoomAssetViewColumn',
+    'CleanRoomAssetViewColumnMask',
+    'CleanRoomAssetViewLocalDetails',
+    'CleanRoomAssetVolumeLocalDetails',
+    'CleanRoomsCleanRoomOutputCatalog',
+    'CleanRoomsCleanRoomRemoteDetailedInfo',
+    'CleanRoomsCleanRoomRemoteDetailedInfoCollaborator',
+    'CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile',
+    'CleanRoomsCleanRoomRemoteDetailedInfoCreator',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination',
+    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode',
     'ClusterAutoscale',
     'ClusterAwsAttributes',
     'ClusterAzureAttributes',
@@ -96,12 +124,27 @@ __all__ = [
     'ClusterWorkloadType',
     'ClusterWorkloadTypeClients',
     'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace',
+    'ConnectionEnvironmentSettings',
     'ConnectionProvisioningInfo',
     'CredentialAwsIamRole',
     'CredentialAzureManagedIdentity',
     'CredentialAzureServicePrincipal',
     'CredentialDatabricksGcpServiceAccount',
     'CustomAppIntegrationTokenAccessPolicy',
+    'DatabaseInstanceChildInstanceRef',
+    'DatabaseInstanceParentInstanceRef',
+    'DatabaseSyncedDatabaseTableDataSynchronizationStatus',
+    'DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatus',
+    'DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgress',
+    'DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatus',
+    'DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSync',
+    'DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfo',
+    'DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatus',
+    'DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgress',
+    'DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatus',
+    'DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgress',
+    'DatabaseSyncedDatabaseTableSpec',
+    'DatabaseSyncedDatabaseTableSpecNewPipelineSpec',
     'DefaultNamespaceSettingNamespace',
     'DisableLegacyAccessSettingDisableLegacyAccess',
     'DisableLegacyDbfsSettingDisableLegacyDbfs',
@@ -418,6 +461,7 @@ __all__ = [
     'ModelServingConfigServedModel',
     'ModelServingConfigTrafficConfig',
     'ModelServingConfigTrafficConfigRoute',
+    'ModelServingEmailNotifications',
     'ModelServingProvisionedThroughputAiGateway',
     'ModelServingProvisionedThroughputAiGatewayFallbackConfig',
     'ModelServingProvisionedThroughputAiGatewayGuardrails',
@@ -432,6 +476,7 @@ __all__ = [
     'ModelServingProvisionedThroughputConfigServedEntity',
     'ModelServingProvisionedThroughputConfigTrafficConfig',
     'ModelServingProvisionedThroughputConfigTrafficConfigRoute',
+    'ModelServingProvisionedThroughputEmailNotifications',
     'ModelServingProvisionedThroughputTag',
     'ModelServingRateLimit',
     'ModelServingTag',
@@ -504,11 +549,15 @@ __all__ = [
     'PipelineIngestionDefinitionObject',
     'PipelineIngestionDefinitionObjectReport',
     'PipelineIngestionDefinitionObjectReportTableConfiguration',
+    'PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfig',
     'PipelineIngestionDefinitionObjectSchema',
     'PipelineIngestionDefinitionObjectSchemaTableConfiguration',
+    'PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfig',
     'PipelineIngestionDefinitionObjectTable',
     'PipelineIngestionDefinitionObjectTableTableConfiguration',
+    'PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig',
     'PipelineIngestionDefinitionTableConfiguration',
+    'PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig',
     'PipelineLatestUpdate',
     'PipelineLibrary',
     'PipelineLibraryFile',
@@ -521,6 +570,11 @@ __all__ = [
     'PipelineTrigger',
     'PipelineTriggerCron',
     'PipelineTriggerManual',
+    'PolicyInfoColumnMask',
+    'PolicyInfoColumnMaskUsing',
+    'PolicyInfoMatchColumn',
+    'PolicyInfoRowFilter',
+    'PolicyInfoRowFilterUsing',
     'QualityMonitorCustomMetric',
     'QualityMonitorDataClassificationConfig',
     'QualityMonitorInferenceLog',
@@ -635,6 +689,7 @@ __all__ = [
     'GetAppAppPendingDeploymentDeploymentArtifactsResult',
     'GetAppAppPendingDeploymentStatusResult',
     'GetAppAppResourceResult',
+    'GetAppAppResourceDatabaseResult',
     'GetAppAppResourceJobResult',
     'GetAppAppResourceSecretResult',
     'GetAppAppResourceServingEndpointResult',
@@ -650,6 +705,7 @@ __all__ = [
     'GetAppsAppPendingDeploymentDeploymentArtifactsResult',
     'GetAppsAppPendingDeploymentStatusResult',
     'GetAppsAppResourceResult',
+    'GetAppsAppResourceDatabaseResult',
     'GetAppsAppResourceJobResult',
     'GetAppsAppResourceSecretResult',
     'GetAppsAppResourceServingEndpointResult',
@@ -661,6 +717,98 @@ __all__ = [
     'GetCatalogCatalogInfoResult',
     'GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagResult',
     'GetCatalogCatalogInfoProvisioningInfoResult',
+    'GetCleanRoomAssetForeignTableResult',
+    'GetCleanRoomAssetForeignTableColumnResult',
+    'GetCleanRoomAssetForeignTableColumnMaskResult',
+    'GetCleanRoomAssetForeignTableLocalDetailsResult',
+    'GetCleanRoomAssetNotebookResult',
+    'GetCleanRoomAssetNotebookReviewResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMaskResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableLocalDetailsResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetNotebookResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReviewResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetTableResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMaskResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValueResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetViewResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMaskResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetViewLocalDetailsResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetailsResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableColumnResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableColumnMaskResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableLocalDetailsResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionNotebookResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionNotebookReviewResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableColumnResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableColumnMaskResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsPartitionResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsPartitionValueResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewColumnResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewColumnMaskResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewLocalDetailsResult',
+    'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionVolumeLocalDetailsResult',
+    'GetCleanRoomAssetTableResult',
+    'GetCleanRoomAssetTableColumnResult',
+    'GetCleanRoomAssetTableColumnMaskResult',
+    'GetCleanRoomAssetTableLocalDetailsResult',
+    'GetCleanRoomAssetTableLocalDetailsPartitionResult',
+    'GetCleanRoomAssetTableLocalDetailsPartitionValueResult',
+    'GetCleanRoomAssetViewResult',
+    'GetCleanRoomAssetViewColumnResult',
+    'GetCleanRoomAssetViewColumnMaskResult',
+    'GetCleanRoomAssetViewLocalDetailsResult',
+    'GetCleanRoomAssetVolumeLocalDetailsResult',
+    'GetCleanRoomAssetsAssetResult',
+    'GetCleanRoomAssetsAssetForeignTableResult',
+    'GetCleanRoomAssetsAssetForeignTableColumnResult',
+    'GetCleanRoomAssetsAssetForeignTableColumnMaskResult',
+    'GetCleanRoomAssetsAssetForeignTableLocalDetailsResult',
+    'GetCleanRoomAssetsAssetNotebookResult',
+    'GetCleanRoomAssetsAssetNotebookReviewResult',
+    'GetCleanRoomAssetsAssetTableResult',
+    'GetCleanRoomAssetsAssetTableColumnResult',
+    'GetCleanRoomAssetsAssetTableColumnMaskResult',
+    'GetCleanRoomAssetsAssetTableLocalDetailsResult',
+    'GetCleanRoomAssetsAssetTableLocalDetailsPartitionResult',
+    'GetCleanRoomAssetsAssetTableLocalDetailsPartitionValueResult',
+    'GetCleanRoomAssetsAssetViewResult',
+    'GetCleanRoomAssetsAssetViewColumnResult',
+    'GetCleanRoomAssetsAssetViewColumnMaskResult',
+    'GetCleanRoomAssetsAssetViewLocalDetailsResult',
+    'GetCleanRoomAssetsAssetVolumeLocalDetailsResult',
+    'GetCleanRoomAutoApprovalRulesRuleResult',
+    'GetCleanRoomsCleanRoomOutputCatalogResult',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoResult',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorResult',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileResult',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorResult',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyResult',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessResult',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationResult',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationResult',
+    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeResult',
+    'GetCleanRoomsCleanRoomsCleanRoomResult',
+    'GetCleanRoomsCleanRoomsCleanRoomOutputCatalogResult',
+    'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoResult',
+    'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorResult',
+    'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileResult',
+    'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCreatorResult',
+    'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyResult',
+    'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessResult',
+    'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationResult',
+    'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationResult',
+    'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeResult',
     'GetClusterClusterInfoResult',
     'GetClusterClusterInfoAutoscaleResult',
     'GetClusterClusterInfoAwsAttributesResult',
@@ -720,7 +868,37 @@ __all__ = [
     'GetClustersFilterByResult',
     'GetCurrentMetastoreMetastoreInfoResult',
     'GetDashboardsDashboardResult',
+    'GetDatabaseDatabaseCatalogsDatabaseCatalogResult',
+    'GetDatabaseInstanceChildInstanceRefResult',
+    'GetDatabaseInstanceParentInstanceRefResult',
     'GetDatabaseInstancesDatabaseInstanceResult',
+    'GetDatabaseInstancesDatabaseInstanceChildInstanceRefResult',
+    'GetDatabaseInstancesDatabaseInstanceParentInstanceRefResult',
+    'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusResult',
+    'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusResult',
+    'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgressResult',
+    'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatusResult',
+    'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncResult',
+    'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfoResult',
+    'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusResult',
+    'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgressResult',
+    'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusResult',
+    'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgressResult',
+    'GetDatabaseSyncedDatabaseTableSpecResult',
+    'GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecResult',
+    'GetDatabaseSyncedDatabaseTablesSyncedTableResult',
+    'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusResult',
+    'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusContinuousUpdateStatusResult',
+    'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgressResult',
+    'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusFailedStatusResult',
+    'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusLastSyncResult',
+    'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusLastSyncDeltaTableSyncInfoResult',
+    'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusProvisioningStatusResult',
+    'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgressResult',
+    'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusTriggeredUpdateStatusResult',
+    'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgressResult',
+    'GetDatabaseSyncedDatabaseTablesSyncedTableSpecResult',
+    'GetDatabaseSyncedDatabaseTablesSyncedTableSpecNewPipelineSpecResult',
     'GetDbfsFilePathsPathListResult',
     'GetExternalLocationExternalLocationInfoResult',
     'GetExternalLocationExternalLocationInfoEncryptionDetailsResult',
@@ -732,15 +910,18 @@ __all__ = [
     'GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqsResult',
     'GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsubResult',
     'GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsResult',
+    'GetExternalMetadatasExternalMetadataResult',
     'GetFunctionsFunctionResult',
-    'GetFunctionsFunctionInputParamResult',
-    'GetFunctionsFunctionInputParamParameterResult',
-    'GetFunctionsFunctionReturnParamResult',
-    'GetFunctionsFunctionReturnParamParameterResult',
-    'GetFunctionsFunctionRoutineDependencyResult',
-    'GetFunctionsFunctionRoutineDependencyDependencyResult',
-    'GetFunctionsFunctionRoutineDependencyDependencyFunctionResult',
-    'GetFunctionsFunctionRoutineDependencyDependencyTableResult',
+    'GetFunctionsFunctionInputParamsResult',
+    'GetFunctionsFunctionInputParamsParameterResult',
+    'GetFunctionsFunctionReturnParamsResult',
+    'GetFunctionsFunctionReturnParamsParameterResult',
+    'GetFunctionsFunctionRoutineDependenciesResult',
+    'GetFunctionsFunctionRoutineDependenciesDependencyResult',
+    'GetFunctionsFunctionRoutineDependenciesDependencyConnectionResult',
+    'GetFunctionsFunctionRoutineDependenciesDependencyCredentialResult',
+    'GetFunctionsFunctionRoutineDependenciesDependencyFunctionResult',
+    'GetFunctionsFunctionRoutineDependenciesDependencyTableResult',
     'GetInstancePoolPoolInfoResult',
     'GetInstancePoolPoolInfoAwsAttributesResult',
     'GetInstancePoolPoolInfoAzureAttributesResult',
@@ -959,6 +1140,7 @@ __all__ = [
     'GetJobJobSettingsSettingsWebhookNotificationsOnStartResult',
     'GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededResult',
     'GetJobJobSettingsSettingsWebhookNotificationsOnSuccessResult',
+    'GetMaterializedFeaturesFeatureTagsFeatureTagResult',
     'GetMetastoreMetastoreInfoResult',
     'GetMlflowExperimentTagResult',
     'GetMlflowModelLatestVersionResult',
@@ -974,6 +1156,17 @@ __all__ = [
     'GetNotebookPathsNotebookPathListResult',
     'GetNotificationDestinationsNotificationDestinationResult',
     'GetOnlineStoresOnlineStoreResult',
+    'GetPolicyInfoColumnMaskResult',
+    'GetPolicyInfoColumnMaskUsingResult',
+    'GetPolicyInfoMatchColumnResult',
+    'GetPolicyInfoRowFilterResult',
+    'GetPolicyInfoRowFilterUsingResult',
+    'GetPolicyInfosPolicyResult',
+    'GetPolicyInfosPolicyColumnMaskResult',
+    'GetPolicyInfosPolicyColumnMaskUsingResult',
+    'GetPolicyInfosPolicyMatchColumnResult',
+    'GetPolicyInfosPolicyRowFilterResult',
+    'GetPolicyInfosPolicyRowFilterUsingResult',
     'GetQualityMonitorV2AnomalyDetectionConfigResult',
     'GetQualityMonitorsV2QualityMonitorResult',
     'GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigResult',
@@ -986,6 +1179,8 @@ __all__ = [
     'GetRegisteredModelVersionsModelVersionAliasResult',
     'GetRegisteredModelVersionsModelVersionModelVersionDependencyResult',
     'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyResult',
+    'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionResult',
+    'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialResult',
     'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionResult',
     'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableResult',
     'GetSchemaSchemaInfoResult',
@@ -1042,12 +1237,16 @@ __all__ = [
     'GetTableTableInfoEncryptionDetailsResult',
     'GetTableTableInfoEncryptionDetailsSseEncryptionDetailsResult',
     'GetTableTableInfoRowFilterResult',
+    'GetTableTableInfoSecurableKindManifestResult',
+    'GetTableTableInfoSecurableKindManifestOptionResult',
     'GetTableTableInfoTableConstraintResult',
     'GetTableTableInfoTableConstraintForeignKeyConstraintResult',
     'GetTableTableInfoTableConstraintNamedTableConstraintResult',
     'GetTableTableInfoTableConstraintPrimaryKeyConstraintResult',
     'GetTableTableInfoViewDependenciesResult',
     'GetTableTableInfoViewDependenciesDependencyResult',
+    'GetTableTableInfoViewDependenciesDependencyConnectionResult',
+    'GetTableTableInfoViewDependenciesDependencyCredentialResult',
     'GetTableTableInfoViewDependenciesDependencyFunctionResult',
     'GetTableTableInfoViewDependenciesDependencyTableResult',
     'GetVolumeVolumeInfoResult',
@@ -2516,6 +2715,7 @@ class AppResource(dict):
 
     def __init__(__self__, *,
                  name: _builtins.str,
+                 database: Optional['outputs.AppResourceDatabase'] = None,
                  description: Optional[_builtins.str] = None,
                  job: Optional['outputs.AppResourceJob'] = None,
                  secret: Optional['outputs.AppResourceSecret'] = None,
@@ -2524,6 +2724,7 @@ class AppResource(dict):
                  uc_securable: Optional['outputs.AppResourceUcSecurable'] = None):
         """
         :param _builtins.str name: The name of the resource.
+        :param 'AppResourceDatabaseArgs' database: attribute
         :param _builtins.str description: The description of the resource.
                
                Exactly one of the following attributes must be provided:
@@ -2534,6 +2735,8 @@ class AppResource(dict):
         :param 'AppResourceUcSecurableArgs' uc_securable: attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
         """
         pulumi.set(__self__, "name", name)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if job is not None:
@@ -2554,6 +2757,14 @@ class AppResource(dict):
         The name of the resource.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> Optional['outputs.AppResourceDatabase']:
+        """
+        attribute
+        """
+        return pulumi.get(self, "database")
 
     @_builtins.property
     @pulumi.getter
@@ -2604,6 +2815,65 @@ class AppResource(dict):
         attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
         """
         return pulumi.get(self, "uc_securable")
+
+
+@pulumi.output_type
+class AppResourceDatabase(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseName":
+            suggest = "database_name"
+        elif key == "instanceName":
+            suggest = "instance_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppResourceDatabase. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppResourceDatabase.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppResourceDatabase.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database_name: _builtins.str,
+                 instance_name: _builtins.str,
+                 permission: _builtins.str):
+        """
+        :param _builtins.str database_name: The name of database.
+        :param _builtins.str instance_name: The name of database instance.
+        :param _builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        """
+        pulumi.set(__self__, "database_name", database_name)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "permission", permission)
+
+    @_builtins.property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> _builtins.str:
+        """
+        The name of database.
+        """
+        return pulumi.get(self, "database_name")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> _builtins.str:
+        """
+        The name of database instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def permission(self) -> _builtins.str:
+        """
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        """
+        return pulumi.get(self, "permission")
 
 
 @pulumi.output_type
@@ -3388,6 +3658,1940 @@ class BudgetPolicyCustomTag(dict):
 
 
 @pulumi.output_type
+class CleanRoomAssetForeignTable(dict):
+    def __init__(__self__, *,
+                 columns: Optional[Sequence['outputs.CleanRoomAssetForeignTableColumn']] = None):
+        """
+        :param Sequence['CleanRoomAssetForeignTableColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Optional[Sequence['outputs.CleanRoomAssetForeignTableColumn']]:
+        """
+        (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class CleanRoomAssetForeignTableColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "partitionIndex":
+            suggest = "partition_index"
+        elif key == "typeIntervalType":
+            suggest = "type_interval_type"
+        elif key == "typeJson":
+            suggest = "type_json"
+        elif key == "typeName":
+            suggest = "type_name"
+        elif key == "typePrecision":
+            suggest = "type_precision"
+        elif key == "typeScale":
+            suggest = "type_scale"
+        elif key == "typeText":
+            suggest = "type_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomAssetForeignTableColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomAssetForeignTableColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomAssetForeignTableColumn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 mask: Optional['outputs.CleanRoomAssetForeignTableColumnMask'] = None,
+                 name: Optional[_builtins.str] = None,
+                 nullable: Optional[_builtins.bool] = None,
+                 partition_index: Optional[_builtins.int] = None,
+                 position: Optional[_builtins.int] = None,
+                 type_interval_type: Optional[_builtins.str] = None,
+                 type_json: Optional[_builtins.str] = None,
+                 type_name: Optional[_builtins.str] = None,
+                 type_precision: Optional[_builtins.int] = None,
+                 type_scale: Optional[_builtins.int] = None,
+                 type_text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
+               This is also the name displayed in the clean room UI.
+               
+               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+               
+               For notebooks, the name is the notebook file name.
+               For jar analyses, the name is the jar analysis name
+        :param _builtins.bool nullable: Whether field may be Null (default: true)
+        :param _builtins.int partition_index: Partition index for column
+        :param _builtins.int position: Ordinal position of column (starting at position 0)
+        :param _builtins.str type_interval_type: Format of IntervalType
+        :param _builtins.str type_json: Full data type specification, JSON-serialized
+        :param _builtins.str type_name: . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        :param _builtins.int type_precision: Digits of precision; required for DecimalTypes
+        :param _builtins.int type_scale: Digits to right of decimal; Required for DecimalTypes
+        :param _builtins.str type_text: Full data type specification as SQL/catalogString text
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if partition_index is not None:
+            pulumi.set(__self__, "partition_index", partition_index)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if type_interval_type is not None:
+            pulumi.set(__self__, "type_interval_type", type_interval_type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
+        if type_name is not None:
+            pulumi.set(__self__, "type_name", type_name)
+        if type_precision is not None:
+            pulumi.set(__self__, "type_precision", type_precision)
+        if type_scale is not None:
+            pulumi.set(__self__, "type_scale", type_scale)
+        if type_text is not None:
+            pulumi.set(__self__, "type_text", type_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def mask(self) -> Optional['outputs.CleanRoomAssetForeignTableColumnMask']:
+        return pulumi.get(self, "mask")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        A fully qualified name that uniquely identifies the asset within the clean room.
+        This is also the name displayed in the clean room UI.
+
+        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+
+        For notebooks, the name is the notebook file name.
+        For jar analyses, the name is the jar analysis name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nullable(self) -> Optional[_builtins.bool]:
+        """
+        Whether field may be Null (default: true)
+        """
+        return pulumi.get(self, "nullable")
+
+    @_builtins.property
+    @pulumi.getter(name="partitionIndex")
+    def partition_index(self) -> Optional[_builtins.int]:
+        """
+        Partition index for column
+        """
+        return pulumi.get(self, "partition_index")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> Optional[_builtins.int]:
+        """
+        Ordinal position of column (starting at position 0)
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="typeIntervalType")
+    def type_interval_type(self) -> Optional[_builtins.str]:
+        """
+        Format of IntervalType
+        """
+        return pulumi.get(self, "type_interval_type")
+
+    @_builtins.property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[_builtins.str]:
+        """
+        Full data type specification, JSON-serialized
+        """
+        return pulumi.get(self, "type_json")
+
+    @_builtins.property
+    @pulumi.getter(name="typeName")
+    def type_name(self) -> Optional[_builtins.str]:
+        """
+        . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        """
+        return pulumi.get(self, "type_name")
+
+    @_builtins.property
+    @pulumi.getter(name="typePrecision")
+    def type_precision(self) -> Optional[_builtins.int]:
+        """
+        Digits of precision; required for DecimalTypes
+        """
+        return pulumi.get(self, "type_precision")
+
+    @_builtins.property
+    @pulumi.getter(name="typeScale")
+    def type_scale(self) -> Optional[_builtins.int]:
+        """
+        Digits to right of decimal; Required for DecimalTypes
+        """
+        return pulumi.get(self, "type_scale")
+
+    @_builtins.property
+    @pulumi.getter(name="typeText")
+    def type_text(self) -> Optional[_builtins.str]:
+        """
+        Full data type specification as SQL/catalogString text
+        """
+        return pulumi.get(self, "type_text")
+
+
+@pulumi.output_type
+class CleanRoomAssetForeignTableColumnMask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "functionName":
+            suggest = "function_name"
+        elif key == "usingColumnNames":
+            suggest = "using_column_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomAssetForeignTableColumnMask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomAssetForeignTableColumnMask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomAssetForeignTableColumnMask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 function_name: Optional[_builtins.str] = None,
+                 using_column_names: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str function_name: The full name of the column mask SQL UDF
+        :param Sequence[_builtins.str] using_column_names: The list of additional table columns to be passed as input to the column mask function. The
+               first arg of the mask function should be of the type of the column being masked and the
+               types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if using_column_names is not None:
+            pulumi.set(__self__, "using_column_names", using_column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[_builtins.str]:
+        """
+        The full name of the column mask SQL UDF
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="usingColumnNames")
+    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of additional table columns to be passed as input to the column mask function. The
+        first arg of the mask function should be of the type of the column being masked and the
+        types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        return pulumi.get(self, "using_column_names")
+
+
+@pulumi.output_type
+class CleanRoomAssetForeignTableLocalDetails(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localName":
+            suggest = "local_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomAssetForeignTableLocalDetails. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomAssetForeignTableLocalDetails.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomAssetForeignTableLocalDetails.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_name: _builtins.str):
+        pulumi.set(__self__, "local_name", local_name)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        return pulumi.get(self, "local_name")
+
+
+@pulumi.output_type
+class CleanRoomAssetNotebook(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notebookContent":
+            suggest = "notebook_content"
+        elif key == "reviewState":
+            suggest = "review_state"
+        elif key == "runnerCollaboratorAliases":
+            suggest = "runner_collaborator_aliases"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomAssetNotebook. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomAssetNotebook.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomAssetNotebook.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 notebook_content: _builtins.str,
+                 etag: Optional[_builtins.str] = None,
+                 review_state: Optional[_builtins.str] = None,
+                 reviews: Optional[Sequence['outputs.CleanRoomAssetNotebookReview']] = None,
+                 runner_collaborator_aliases: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str notebook_content: Base 64 representation of the notebook contents.
+               This is the same format as returned by :method:workspace/export with the format of **HTML**
+        :param _builtins.str etag: (string) - Server generated etag that represents the notebook version
+        :param _builtins.str review_state: (string) - Top-level status derived from all reviews. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        :param Sequence['CleanRoomAssetNotebookReviewArgs'] reviews: (list of CleanRoomNotebookReview) - All existing approvals or rejections
+        :param Sequence[_builtins.str] runner_collaborator_aliases: collaborators that can run the notebook
+        """
+        pulumi.set(__self__, "notebook_content", notebook_content)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if review_state is not None:
+            pulumi.set(__self__, "review_state", review_state)
+        if reviews is not None:
+            pulumi.set(__self__, "reviews", reviews)
+        if runner_collaborator_aliases is not None:
+            pulumi.set(__self__, "runner_collaborator_aliases", runner_collaborator_aliases)
+
+    @_builtins.property
+    @pulumi.getter(name="notebookContent")
+    def notebook_content(self) -> _builtins.str:
+        """
+        Base 64 representation of the notebook contents.
+        This is the same format as returned by :method:workspace/export with the format of **HTML**
+        """
+        return pulumi.get(self, "notebook_content")
+
+    @_builtins.property
+    @pulumi.getter
+    def etag(self) -> Optional[_builtins.str]:
+        """
+        (string) - Server generated etag that represents the notebook version
+        """
+        return pulumi.get(self, "etag")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewState")
+    def review_state(self) -> Optional[_builtins.str]:
+        """
+        (string) - Top-level status derived from all reviews. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        """
+        return pulumi.get(self, "review_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def reviews(self) -> Optional[Sequence['outputs.CleanRoomAssetNotebookReview']]:
+        """
+        (list of CleanRoomNotebookReview) - All existing approvals or rejections
+        """
+        return pulumi.get(self, "reviews")
+
+    @_builtins.property
+    @pulumi.getter(name="runnerCollaboratorAliases")
+    def runner_collaborator_aliases(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        collaborators that can run the notebook
+        """
+        return pulumi.get(self, "runner_collaborator_aliases")
+
+
+@pulumi.output_type
+class CleanRoomAssetNotebookReview(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdAtMillis":
+            suggest = "created_at_millis"
+        elif key == "reviewState":
+            suggest = "review_state"
+        elif key == "reviewSubReason":
+            suggest = "review_sub_reason"
+        elif key == "reviewerCollaboratorAlias":
+            suggest = "reviewer_collaborator_alias"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomAssetNotebookReview. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomAssetNotebookReview.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomAssetNotebookReview.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 created_at_millis: Optional[_builtins.int] = None,
+                 review_state: Optional[_builtins.str] = None,
+                 review_sub_reason: Optional[_builtins.str] = None,
+                 reviewer_collaborator_alias: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int created_at_millis: When the review was submitted, in epoch milliseconds
+        :param _builtins.str review_state: (string) - Top-level status derived from all reviews. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        :param _builtins.str review_sub_reason: Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
+        :param _builtins.str reviewer_collaborator_alias: Collaborator alias of the reviewer
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if created_at_millis is not None:
+            pulumi.set(__self__, "created_at_millis", created_at_millis)
+        if review_state is not None:
+            pulumi.set(__self__, "review_state", review_state)
+        if review_sub_reason is not None:
+            pulumi.set(__self__, "review_sub_reason", review_sub_reason)
+        if reviewer_collaborator_alias is not None:
+            pulumi.set(__self__, "reviewer_collaborator_alias", reviewer_collaborator_alias)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAtMillis")
+    def created_at_millis(self) -> Optional[_builtins.int]:
+        """
+        When the review was submitted, in epoch milliseconds
+        """
+        return pulumi.get(self, "created_at_millis")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewState")
+    def review_state(self) -> Optional[_builtins.str]:
+        """
+        (string) - Top-level status derived from all reviews. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        """
+        return pulumi.get(self, "review_state")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewSubReason")
+    def review_sub_reason(self) -> Optional[_builtins.str]:
+        """
+        Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
+        """
+        return pulumi.get(self, "review_sub_reason")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewerCollaboratorAlias")
+    def reviewer_collaborator_alias(self) -> Optional[_builtins.str]:
+        """
+        Collaborator alias of the reviewer
+        """
+        return pulumi.get(self, "reviewer_collaborator_alias")
+
+
+@pulumi.output_type
+class CleanRoomAssetTable(dict):
+    def __init__(__self__, *,
+                 columns: Optional[Sequence['outputs.CleanRoomAssetTableColumn']] = None):
+        """
+        :param Sequence['CleanRoomAssetTableColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Optional[Sequence['outputs.CleanRoomAssetTableColumn']]:
+        """
+        (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class CleanRoomAssetTableColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "partitionIndex":
+            suggest = "partition_index"
+        elif key == "typeIntervalType":
+            suggest = "type_interval_type"
+        elif key == "typeJson":
+            suggest = "type_json"
+        elif key == "typeName":
+            suggest = "type_name"
+        elif key == "typePrecision":
+            suggest = "type_precision"
+        elif key == "typeScale":
+            suggest = "type_scale"
+        elif key == "typeText":
+            suggest = "type_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomAssetTableColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomAssetTableColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomAssetTableColumn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 mask: Optional['outputs.CleanRoomAssetTableColumnMask'] = None,
+                 name: Optional[_builtins.str] = None,
+                 nullable: Optional[_builtins.bool] = None,
+                 partition_index: Optional[_builtins.int] = None,
+                 position: Optional[_builtins.int] = None,
+                 type_interval_type: Optional[_builtins.str] = None,
+                 type_json: Optional[_builtins.str] = None,
+                 type_name: Optional[_builtins.str] = None,
+                 type_precision: Optional[_builtins.int] = None,
+                 type_scale: Optional[_builtins.int] = None,
+                 type_text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
+               This is also the name displayed in the clean room UI.
+               
+               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+               
+               For notebooks, the name is the notebook file name.
+               For jar analyses, the name is the jar analysis name
+        :param _builtins.bool nullable: Whether field may be Null (default: true)
+        :param _builtins.int partition_index: Partition index for column
+        :param _builtins.int position: Ordinal position of column (starting at position 0)
+        :param _builtins.str type_interval_type: Format of IntervalType
+        :param _builtins.str type_json: Full data type specification, JSON-serialized
+        :param _builtins.str type_name: . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        :param _builtins.int type_precision: Digits of precision; required for DecimalTypes
+        :param _builtins.int type_scale: Digits to right of decimal; Required for DecimalTypes
+        :param _builtins.str type_text: Full data type specification as SQL/catalogString text
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if partition_index is not None:
+            pulumi.set(__self__, "partition_index", partition_index)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if type_interval_type is not None:
+            pulumi.set(__self__, "type_interval_type", type_interval_type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
+        if type_name is not None:
+            pulumi.set(__self__, "type_name", type_name)
+        if type_precision is not None:
+            pulumi.set(__self__, "type_precision", type_precision)
+        if type_scale is not None:
+            pulumi.set(__self__, "type_scale", type_scale)
+        if type_text is not None:
+            pulumi.set(__self__, "type_text", type_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def mask(self) -> Optional['outputs.CleanRoomAssetTableColumnMask']:
+        return pulumi.get(self, "mask")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        A fully qualified name that uniquely identifies the asset within the clean room.
+        This is also the name displayed in the clean room UI.
+
+        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+
+        For notebooks, the name is the notebook file name.
+        For jar analyses, the name is the jar analysis name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nullable(self) -> Optional[_builtins.bool]:
+        """
+        Whether field may be Null (default: true)
+        """
+        return pulumi.get(self, "nullable")
+
+    @_builtins.property
+    @pulumi.getter(name="partitionIndex")
+    def partition_index(self) -> Optional[_builtins.int]:
+        """
+        Partition index for column
+        """
+        return pulumi.get(self, "partition_index")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> Optional[_builtins.int]:
+        """
+        Ordinal position of column (starting at position 0)
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="typeIntervalType")
+    def type_interval_type(self) -> Optional[_builtins.str]:
+        """
+        Format of IntervalType
+        """
+        return pulumi.get(self, "type_interval_type")
+
+    @_builtins.property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[_builtins.str]:
+        """
+        Full data type specification, JSON-serialized
+        """
+        return pulumi.get(self, "type_json")
+
+    @_builtins.property
+    @pulumi.getter(name="typeName")
+    def type_name(self) -> Optional[_builtins.str]:
+        """
+        . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        """
+        return pulumi.get(self, "type_name")
+
+    @_builtins.property
+    @pulumi.getter(name="typePrecision")
+    def type_precision(self) -> Optional[_builtins.int]:
+        """
+        Digits of precision; required for DecimalTypes
+        """
+        return pulumi.get(self, "type_precision")
+
+    @_builtins.property
+    @pulumi.getter(name="typeScale")
+    def type_scale(self) -> Optional[_builtins.int]:
+        """
+        Digits to right of decimal; Required for DecimalTypes
+        """
+        return pulumi.get(self, "type_scale")
+
+    @_builtins.property
+    @pulumi.getter(name="typeText")
+    def type_text(self) -> Optional[_builtins.str]:
+        """
+        Full data type specification as SQL/catalogString text
+        """
+        return pulumi.get(self, "type_text")
+
+
+@pulumi.output_type
+class CleanRoomAssetTableColumnMask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "functionName":
+            suggest = "function_name"
+        elif key == "usingColumnNames":
+            suggest = "using_column_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomAssetTableColumnMask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomAssetTableColumnMask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomAssetTableColumnMask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 function_name: Optional[_builtins.str] = None,
+                 using_column_names: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str function_name: The full name of the column mask SQL UDF
+        :param Sequence[_builtins.str] using_column_names: The list of additional table columns to be passed as input to the column mask function. The
+               first arg of the mask function should be of the type of the column being masked and the
+               types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if using_column_names is not None:
+            pulumi.set(__self__, "using_column_names", using_column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[_builtins.str]:
+        """
+        The full name of the column mask SQL UDF
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="usingColumnNames")
+    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of additional table columns to be passed as input to the column mask function. The
+        first arg of the mask function should be of the type of the column being masked and the
+        types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        return pulumi.get(self, "using_column_names")
+
+
+@pulumi.output_type
+class CleanRoomAssetTableLocalDetails(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localName":
+            suggest = "local_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomAssetTableLocalDetails. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomAssetTableLocalDetails.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomAssetTableLocalDetails.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_name: _builtins.str,
+                 partitions: Optional[Sequence['outputs.CleanRoomAssetTableLocalDetailsPartition']] = None):
+        """
+        :param Sequence['CleanRoomAssetTableLocalDetailsPartitionArgs'] partitions: Partition filtering specification for a shared table
+        """
+        pulumi.set(__self__, "local_name", local_name)
+        if partitions is not None:
+            pulumi.set(__self__, "partitions", partitions)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        return pulumi.get(self, "local_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def partitions(self) -> Optional[Sequence['outputs.CleanRoomAssetTableLocalDetailsPartition']]:
+        """
+        Partition filtering specification for a shared table
+        """
+        return pulumi.get(self, "partitions")
+
+
+@pulumi.output_type
+class CleanRoomAssetTableLocalDetailsPartition(dict):
+    def __init__(__self__, *,
+                 values: Optional[Sequence['outputs.CleanRoomAssetTableLocalDetailsPartitionValue']] = None):
+        """
+        :param Sequence['CleanRoomAssetTableLocalDetailsPartitionValueArgs'] values: The value of the partition column. When this value is not set, it means `null` value.
+               When this field is set, field `recipient_property_key` can not be set
+        """
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence['outputs.CleanRoomAssetTableLocalDetailsPartitionValue']]:
+        """
+        The value of the partition column. When this value is not set, it means `null` value.
+        When this field is set, field `recipient_property_key` can not be set
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class CleanRoomAssetTableLocalDetailsPartitionValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "recipientPropertyKey":
+            suggest = "recipient_property_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomAssetTableLocalDetailsPartitionValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomAssetTableLocalDetailsPartitionValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomAssetTableLocalDetailsPartitionValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 op: Optional[_builtins.str] = None,
+                 recipient_property_key: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
+               This is also the name displayed in the clean room UI.
+               
+               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+               
+               For notebooks, the name is the notebook file name.
+               For jar analyses, the name is the jar analysis name
+        :param _builtins.str op: The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
+        :param _builtins.str recipient_property_key: The key of a Delta Sharing recipient's property. For example "databricks-account-id".
+               When this field is set, field `value` can not be set
+        :param _builtins.str value: The value of the partition column. When this value is not set, it means `null` value.
+               When this field is set, field `recipient_property_key` can not be set
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if recipient_property_key is not None:
+            pulumi.set(__self__, "recipient_property_key", recipient_property_key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        A fully qualified name that uniquely identifies the asset within the clean room.
+        This is also the name displayed in the clean room UI.
+
+        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+
+        For notebooks, the name is the notebook file name.
+        For jar analyses, the name is the jar analysis name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def op(self) -> Optional[_builtins.str]:
+        """
+        The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
+        """
+        return pulumi.get(self, "op")
+
+    @_builtins.property
+    @pulumi.getter(name="recipientPropertyKey")
+    def recipient_property_key(self) -> Optional[_builtins.str]:
+        """
+        The key of a Delta Sharing recipient's property. For example "databricks-account-id".
+        When this field is set, field `value` can not be set
+        """
+        return pulumi.get(self, "recipient_property_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        The value of the partition column. When this value is not set, it means `null` value.
+        When this field is set, field `recipient_property_key` can not be set
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class CleanRoomAssetView(dict):
+    def __init__(__self__, *,
+                 columns: Optional[Sequence['outputs.CleanRoomAssetViewColumn']] = None):
+        """
+        :param Sequence['CleanRoomAssetViewColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Optional[Sequence['outputs.CleanRoomAssetViewColumn']]:
+        """
+        (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class CleanRoomAssetViewColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "partitionIndex":
+            suggest = "partition_index"
+        elif key == "typeIntervalType":
+            suggest = "type_interval_type"
+        elif key == "typeJson":
+            suggest = "type_json"
+        elif key == "typeName":
+            suggest = "type_name"
+        elif key == "typePrecision":
+            suggest = "type_precision"
+        elif key == "typeScale":
+            suggest = "type_scale"
+        elif key == "typeText":
+            suggest = "type_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomAssetViewColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomAssetViewColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomAssetViewColumn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 mask: Optional['outputs.CleanRoomAssetViewColumnMask'] = None,
+                 name: Optional[_builtins.str] = None,
+                 nullable: Optional[_builtins.bool] = None,
+                 partition_index: Optional[_builtins.int] = None,
+                 position: Optional[_builtins.int] = None,
+                 type_interval_type: Optional[_builtins.str] = None,
+                 type_json: Optional[_builtins.str] = None,
+                 type_name: Optional[_builtins.str] = None,
+                 type_precision: Optional[_builtins.int] = None,
+                 type_scale: Optional[_builtins.int] = None,
+                 type_text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
+               This is also the name displayed in the clean room UI.
+               
+               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+               
+               For notebooks, the name is the notebook file name.
+               For jar analyses, the name is the jar analysis name
+        :param _builtins.bool nullable: Whether field may be Null (default: true)
+        :param _builtins.int partition_index: Partition index for column
+        :param _builtins.int position: Ordinal position of column (starting at position 0)
+        :param _builtins.str type_interval_type: Format of IntervalType
+        :param _builtins.str type_json: Full data type specification, JSON-serialized
+        :param _builtins.str type_name: . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        :param _builtins.int type_precision: Digits of precision; required for DecimalTypes
+        :param _builtins.int type_scale: Digits to right of decimal; Required for DecimalTypes
+        :param _builtins.str type_text: Full data type specification as SQL/catalogString text
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if partition_index is not None:
+            pulumi.set(__self__, "partition_index", partition_index)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if type_interval_type is not None:
+            pulumi.set(__self__, "type_interval_type", type_interval_type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
+        if type_name is not None:
+            pulumi.set(__self__, "type_name", type_name)
+        if type_precision is not None:
+            pulumi.set(__self__, "type_precision", type_precision)
+        if type_scale is not None:
+            pulumi.set(__self__, "type_scale", type_scale)
+        if type_text is not None:
+            pulumi.set(__self__, "type_text", type_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def mask(self) -> Optional['outputs.CleanRoomAssetViewColumnMask']:
+        return pulumi.get(self, "mask")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        A fully qualified name that uniquely identifies the asset within the clean room.
+        This is also the name displayed in the clean room UI.
+
+        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+
+        For notebooks, the name is the notebook file name.
+        For jar analyses, the name is the jar analysis name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nullable(self) -> Optional[_builtins.bool]:
+        """
+        Whether field may be Null (default: true)
+        """
+        return pulumi.get(self, "nullable")
+
+    @_builtins.property
+    @pulumi.getter(name="partitionIndex")
+    def partition_index(self) -> Optional[_builtins.int]:
+        """
+        Partition index for column
+        """
+        return pulumi.get(self, "partition_index")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> Optional[_builtins.int]:
+        """
+        Ordinal position of column (starting at position 0)
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="typeIntervalType")
+    def type_interval_type(self) -> Optional[_builtins.str]:
+        """
+        Format of IntervalType
+        """
+        return pulumi.get(self, "type_interval_type")
+
+    @_builtins.property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[_builtins.str]:
+        """
+        Full data type specification, JSON-serialized
+        """
+        return pulumi.get(self, "type_json")
+
+    @_builtins.property
+    @pulumi.getter(name="typeName")
+    def type_name(self) -> Optional[_builtins.str]:
+        """
+        . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        """
+        return pulumi.get(self, "type_name")
+
+    @_builtins.property
+    @pulumi.getter(name="typePrecision")
+    def type_precision(self) -> Optional[_builtins.int]:
+        """
+        Digits of precision; required for DecimalTypes
+        """
+        return pulumi.get(self, "type_precision")
+
+    @_builtins.property
+    @pulumi.getter(name="typeScale")
+    def type_scale(self) -> Optional[_builtins.int]:
+        """
+        Digits to right of decimal; Required for DecimalTypes
+        """
+        return pulumi.get(self, "type_scale")
+
+    @_builtins.property
+    @pulumi.getter(name="typeText")
+    def type_text(self) -> Optional[_builtins.str]:
+        """
+        Full data type specification as SQL/catalogString text
+        """
+        return pulumi.get(self, "type_text")
+
+
+@pulumi.output_type
+class CleanRoomAssetViewColumnMask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "functionName":
+            suggest = "function_name"
+        elif key == "usingColumnNames":
+            suggest = "using_column_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomAssetViewColumnMask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomAssetViewColumnMask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomAssetViewColumnMask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 function_name: Optional[_builtins.str] = None,
+                 using_column_names: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str function_name: The full name of the column mask SQL UDF
+        :param Sequence[_builtins.str] using_column_names: The list of additional table columns to be passed as input to the column mask function. The
+               first arg of the mask function should be of the type of the column being masked and the
+               types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if using_column_names is not None:
+            pulumi.set(__self__, "using_column_names", using_column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[_builtins.str]:
+        """
+        The full name of the column mask SQL UDF
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="usingColumnNames")
+    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of additional table columns to be passed as input to the column mask function. The
+        first arg of the mask function should be of the type of the column being masked and the
+        types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        return pulumi.get(self, "using_column_names")
+
+
+@pulumi.output_type
+class CleanRoomAssetViewLocalDetails(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localName":
+            suggest = "local_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomAssetViewLocalDetails. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomAssetViewLocalDetails.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomAssetViewLocalDetails.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_name: _builtins.str):
+        pulumi.set(__self__, "local_name", local_name)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        return pulumi.get(self, "local_name")
+
+
+@pulumi.output_type
+class CleanRoomAssetVolumeLocalDetails(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localName":
+            suggest = "local_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomAssetVolumeLocalDetails. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomAssetVolumeLocalDetails.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomAssetVolumeLocalDetails.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_name: _builtins.str):
+        pulumi.set(__self__, "local_name", local_name)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        return pulumi.get(self, "local_name")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomOutputCatalog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "catalogName":
+            suggest = "catalog_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomsCleanRoomOutputCatalog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomsCleanRoomOutputCatalog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomsCleanRoomOutputCatalog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 catalog_name: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str catalog_name: The name of the output catalog in UC.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+               The field will always exist if status is CREATED
+        :param _builtins.str status: (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        """
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the output catalog in UC.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+        The field will always exist if status is CREATED
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomRemoteDetailedInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "centralCleanRoomId":
+            suggest = "central_clean_room_id"
+        elif key == "cloudVendor":
+            suggest = "cloud_vendor"
+        elif key == "complianceSecurityProfile":
+            suggest = "compliance_security_profile"
+        elif key == "egressNetworkPolicy":
+            suggest = "egress_network_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomsCleanRoomRemoteDetailedInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 central_clean_room_id: Optional[_builtins.str] = None,
+                 cloud_vendor: Optional[_builtins.str] = None,
+                 collaborators: Optional[Sequence['outputs.CleanRoomsCleanRoomRemoteDetailedInfoCollaborator']] = None,
+                 compliance_security_profile: Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile'] = None,
+                 creator: Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoCreator'] = None,
+                 egress_network_policy: Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy'] = None,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str central_clean_room_id: (string) - Central clean room ID
+        :param _builtins.str cloud_vendor: Cloud vendor (aws,azure,gcp) of the central clean room
+        :param Sequence['CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs'] collaborators: Collaborators in the central clean room. There should one and only one collaborator
+               in the list that satisfies the owner condition:
+               
+               1. It has the creator's global_metastore_id (determined by caller of CreateCleanRoom).
+               
+               2. Its invite_recipient_email is empty
+        :param 'CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs' compliance_security_profile: (ComplianceSecurityProfile)
+        :param 'CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs' creator: (CleanRoomCollaborator) - Collaborator who creates the clean room
+        :param 'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs' egress_network_policy: Egress network policy to apply to the central clean room workspace
+        """
+        if central_clean_room_id is not None:
+            pulumi.set(__self__, "central_clean_room_id", central_clean_room_id)
+        if cloud_vendor is not None:
+            pulumi.set(__self__, "cloud_vendor", cloud_vendor)
+        if collaborators is not None:
+            pulumi.set(__self__, "collaborators", collaborators)
+        if compliance_security_profile is not None:
+            pulumi.set(__self__, "compliance_security_profile", compliance_security_profile)
+        if creator is not None:
+            pulumi.set(__self__, "creator", creator)
+        if egress_network_policy is not None:
+            pulumi.set(__self__, "egress_network_policy", egress_network_policy)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="centralCleanRoomId")
+    def central_clean_room_id(self) -> Optional[_builtins.str]:
+        """
+        (string) - Central clean room ID
+        """
+        return pulumi.get(self, "central_clean_room_id")
+
+    @_builtins.property
+    @pulumi.getter(name="cloudVendor")
+    def cloud_vendor(self) -> Optional[_builtins.str]:
+        """
+        Cloud vendor (aws,azure,gcp) of the central clean room
+        """
+        return pulumi.get(self, "cloud_vendor")
+
+    @_builtins.property
+    @pulumi.getter
+    def collaborators(self) -> Optional[Sequence['outputs.CleanRoomsCleanRoomRemoteDetailedInfoCollaborator']]:
+        """
+        Collaborators in the central clean room. There should one and only one collaborator
+        in the list that satisfies the owner condition:
+
+        1. It has the creator's global_metastore_id (determined by caller of CreateCleanRoom).
+
+        2. Its invite_recipient_email is empty
+        """
+        return pulumi.get(self, "collaborators")
+
+    @_builtins.property
+    @pulumi.getter(name="complianceSecurityProfile")
+    def compliance_security_profile(self) -> Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile']:
+        """
+        (ComplianceSecurityProfile)
+        """
+        return pulumi.get(self, "compliance_security_profile")
+
+    @_builtins.property
+    @pulumi.getter
+    def creator(self) -> Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoCreator']:
+        """
+        (CleanRoomCollaborator) - Collaborator who creates the clean room
+        """
+        return pulumi.get(self, "creator")
+
+    @_builtins.property
+    @pulumi.getter(name="egressNetworkPolicy")
+    def egress_network_policy(self) -> Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy']:
+        """
+        Egress network policy to apply to the central clean room workspace
+        """
+        return pulumi.get(self, "egress_network_policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomRemoteDetailedInfoCollaborator(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "collaboratorAlias":
+            suggest = "collaborator_alias"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "globalMetastoreId":
+            suggest = "global_metastore_id"
+        elif key == "inviteRecipientEmail":
+            suggest = "invite_recipient_email"
+        elif key == "inviteRecipientWorkspaceId":
+            suggest = "invite_recipient_workspace_id"
+        elif key == "organizationName":
+            suggest = "organization_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomsCleanRoomRemoteDetailedInfoCollaborator. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoCollaborator.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoCollaborator.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 collaborator_alias: _builtins.str,
+                 display_name: Optional[_builtins.str] = None,
+                 global_metastore_id: Optional[_builtins.str] = None,
+                 invite_recipient_email: Optional[_builtins.str] = None,
+                 invite_recipient_workspace_id: Optional[_builtins.int] = None,
+                 organization_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str collaborator_alias: Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        :param _builtins.str display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+               these values and could change in the future
+        :param _builtins.str global_metastore_id: The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        :param _builtins.str invite_recipient_email: Email of the user who is receiving the clean room "invitation". It should be empty
+               for the creator of the clean room, and non-empty for the invitees of the clean room.
+               It is only returned in the output when clean room creator calls GET
+        :param _builtins.int invite_recipient_workspace_id: Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+               invite_recipient_email is specified.
+               It should be empty when the collaborator is the creator of the clean room
+        :param _builtins.str organization_name: (string) - Organization name
+               configured in the metastore
+        """
+        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if global_metastore_id is not None:
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if invite_recipient_email is not None:
+            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
+        if invite_recipient_workspace_id is not None:
+            pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
+        if organization_name is not None:
+            pulumi.set(__self__, "organization_name", organization_name)
+
+    @_builtins.property
+    @pulumi.getter(name="collaboratorAlias")
+    def collaborator_alias(self) -> _builtins.str:
+        """
+        Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        return pulumi.get(self, "collaborator_alias")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="globalMetastoreId")
+    def global_metastore_id(self) -> Optional[_builtins.str]:
+        """
+        The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        return pulumi.get(self, "global_metastore_id")
+
+    @_builtins.property
+    @pulumi.getter(name="inviteRecipientEmail")
+    def invite_recipient_email(self) -> Optional[_builtins.str]:
+        """
+        Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        return pulumi.get(self, "invite_recipient_email")
+
+    @_builtins.property
+    @pulumi.getter(name="inviteRecipientWorkspaceId")
+    def invite_recipient_workspace_id(self) -> Optional[_builtins.int]:
+        """
+        Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+        return pulumi.get(self, "invite_recipient_workspace_id")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+        return pulumi.get(self, "organization_name")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "complianceStandards":
+            suggest = "compliance_standards"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compliance_standards: Optional[Sequence[_builtins.str]] = None,
+                 is_enabled: Optional[_builtins.bool] = None):
+        """
+        :param Sequence[_builtins.str] compliance_standards: The list of compliance standards that the compliance security profile is configured to enforce
+        :param _builtins.bool is_enabled: Whether the compliance security profile is enabled
+        """
+        if compliance_standards is not None:
+            pulumi.set(__self__, "compliance_standards", compliance_standards)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="complianceStandards")
+    def compliance_standards(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of compliance standards that the compliance security profile is configured to enforce
+        """
+        return pulumi.get(self, "compliance_standards")
+
+    @_builtins.property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the compliance security profile is enabled
+        """
+        return pulumi.get(self, "is_enabled")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomRemoteDetailedInfoCreator(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "collaboratorAlias":
+            suggest = "collaborator_alias"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "globalMetastoreId":
+            suggest = "global_metastore_id"
+        elif key == "inviteRecipientEmail":
+            suggest = "invite_recipient_email"
+        elif key == "inviteRecipientWorkspaceId":
+            suggest = "invite_recipient_workspace_id"
+        elif key == "organizationName":
+            suggest = "organization_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomsCleanRoomRemoteDetailedInfoCreator. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoCreator.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoCreator.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 collaborator_alias: _builtins.str,
+                 display_name: Optional[_builtins.str] = None,
+                 global_metastore_id: Optional[_builtins.str] = None,
+                 invite_recipient_email: Optional[_builtins.str] = None,
+                 invite_recipient_workspace_id: Optional[_builtins.int] = None,
+                 organization_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str collaborator_alias: Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        :param _builtins.str display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+               these values and could change in the future
+        :param _builtins.str global_metastore_id: The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        :param _builtins.str invite_recipient_email: Email of the user who is receiving the clean room "invitation". It should be empty
+               for the creator of the clean room, and non-empty for the invitees of the clean room.
+               It is only returned in the output when clean room creator calls GET
+        :param _builtins.int invite_recipient_workspace_id: Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+               invite_recipient_email is specified.
+               It should be empty when the collaborator is the creator of the clean room
+        :param _builtins.str organization_name: (string) - Organization name
+               configured in the metastore
+        """
+        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if global_metastore_id is not None:
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if invite_recipient_email is not None:
+            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
+        if invite_recipient_workspace_id is not None:
+            pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
+        if organization_name is not None:
+            pulumi.set(__self__, "organization_name", organization_name)
+
+    @_builtins.property
+    @pulumi.getter(name="collaboratorAlias")
+    def collaborator_alias(self) -> _builtins.str:
+        """
+        Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        return pulumi.get(self, "collaborator_alias")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="globalMetastoreId")
+    def global_metastore_id(self) -> Optional[_builtins.str]:
+        """
+        The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        return pulumi.get(self, "global_metastore_id")
+
+    @_builtins.property
+    @pulumi.getter(name="inviteRecipientEmail")
+    def invite_recipient_email(self) -> Optional[_builtins.str]:
+        """
+        Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        return pulumi.get(self, "invite_recipient_email")
+
+    @_builtins.property
+    @pulumi.getter(name="inviteRecipientWorkspaceId")
+    def invite_recipient_workspace_id(self) -> Optional[_builtins.int]:
+        """
+        Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+        return pulumi.get(self, "invite_recipient_workspace_id")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+        return pulumi.get(self, "organization_name")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "internetAccess":
+            suggest = "internet_access"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 internet_access: Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess'] = None):
+        """
+        :param 'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs' internet_access: The access policy enforced for egress traffic to the internet
+        """
+        if internet_access is not None:
+            pulumi.set(__self__, "internet_access", internet_access)
+
+    @_builtins.property
+    @pulumi.getter(name="internetAccess")
+    def internet_access(self) -> Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess']:
+        """
+        The access policy enforced for egress traffic to the internet
+        """
+        return pulumi.get(self, "internet_access")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedInternetDestinations":
+            suggest = "allowed_internet_destinations"
+        elif key == "allowedStorageDestinations":
+            suggest = "allowed_storage_destinations"
+        elif key == "logOnlyMode":
+            suggest = "log_only_mode"
+        elif key == "restrictionMode":
+            suggest = "restriction_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_internet_destinations: Optional[Sequence['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination']] = None,
+                 allowed_storage_destinations: Optional[Sequence['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination']] = None,
+                 log_only_mode: Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode'] = None,
+                 restriction_mode: Optional[_builtins.str] = None):
+        """
+        :param 'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs' log_only_mode: Optional. If not specified, assume the policy is enforced for all workloads
+        :param _builtins.str restriction_mode: . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+        """
+        if allowed_internet_destinations is not None:
+            pulumi.set(__self__, "allowed_internet_destinations", allowed_internet_destinations)
+        if allowed_storage_destinations is not None:
+            pulumi.set(__self__, "allowed_storage_destinations", allowed_storage_destinations)
+        if log_only_mode is not None:
+            pulumi.set(__self__, "log_only_mode", log_only_mode)
+        if restriction_mode is not None:
+            pulumi.set(__self__, "restriction_mode", restriction_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedInternetDestinations")
+    def allowed_internet_destinations(self) -> Optional[Sequence['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination']]:
+        return pulumi.get(self, "allowed_internet_destinations")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedStorageDestinations")
+    def allowed_storage_destinations(self) -> Optional[Sequence['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination']]:
+        return pulumi.get(self, "allowed_storage_destinations")
+
+    @_builtins.property
+    @pulumi.getter(name="logOnlyMode")
+    def log_only_mode(self) -> Optional['outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode']:
+        """
+        Optional. If not specified, assume the policy is enforced for all workloads
+        """
+        return pulumi.get(self, "log_only_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="restrictionMode")
+    def restriction_mode(self) -> Optional[_builtins.str]:
+        """
+        . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+        """
+        return pulumi.get(self, "restriction_mode")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination(dict):
+    def __init__(__self__, *,
+                 destination: Optional[_builtins.str] = None,
+                 protocol: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str protocol: . Possible values are: `TCP`
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def destination(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "destination")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[_builtins.str]:
+        """
+        . Possible values are: `TCP`
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedPaths":
+            suggest = "allowed_paths"
+        elif key == "azureContainer":
+            suggest = "azure_container"
+        elif key == "azureDnsZone":
+            suggest = "azure_dns_zone"
+        elif key == "azureStorageAccount":
+            suggest = "azure_storage_account"
+        elif key == "azureStorageService":
+            suggest = "azure_storage_service"
+        elif key == "bucketName":
+            suggest = "bucket_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_paths: Optional[Sequence[_builtins.str]] = None,
+                 azure_container: Optional[_builtins.str] = None,
+                 azure_dns_zone: Optional[_builtins.str] = None,
+                 azure_storage_account: Optional[_builtins.str] = None,
+                 azure_storage_service: Optional[_builtins.str] = None,
+                 bucket_name: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        if allowed_paths is not None:
+            pulumi.set(__self__, "allowed_paths", allowed_paths)
+        if azure_container is not None:
+            pulumi.set(__self__, "azure_container", azure_container)
+        if azure_dns_zone is not None:
+            pulumi.set(__self__, "azure_dns_zone", azure_dns_zone)
+        if azure_storage_account is not None:
+            pulumi.set(__self__, "azure_storage_account", azure_storage_account)
+        if azure_storage_service is not None:
+            pulumi.set(__self__, "azure_storage_service", azure_storage_service)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedPaths")
+    def allowed_paths(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "allowed_paths")
+
+    @_builtins.property
+    @pulumi.getter(name="azureContainer")
+    def azure_container(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "azure_container")
+
+    @_builtins.property
+    @pulumi.getter(name="azureDnsZone")
+    def azure_dns_zone(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "azure_dns_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="azureStorageAccount")
+    def azure_storage_account(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "azure_storage_account")
+
+    @_builtins.property
+    @pulumi.getter(name="azureStorageService")
+    def azure_storage_service(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "azure_storage_service")
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "bucket_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logOnlyModeType":
+            suggest = "log_only_mode_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 log_only_mode_type: Optional[_builtins.str] = None,
+                 workloads: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str log_only_mode_type: . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+        """
+        if log_only_mode_type is not None:
+            pulumi.set(__self__, "log_only_mode_type", log_only_mode_type)
+        if workloads is not None:
+            pulumi.set(__self__, "workloads", workloads)
+
+    @_builtins.property
+    @pulumi.getter(name="logOnlyModeType")
+    def log_only_mode_type(self) -> Optional[_builtins.str]:
+        """
+        . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+        """
+        return pulumi.get(self, "log_only_mode_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def workloads(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "workloads")
+
+
+@pulumi.output_type
 class ClusterAutoscale(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3414,16 +5618,7 @@ class ClusterAutoscale(dict):
         """
         :param _builtins.int max_workers: The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
                
-               When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
-               
-               * `spark.master` must have prefix `local`, like `local[*]`
-               * `spark.databricks.cluster.profile` must have value `singleNode`
-               
-               and also `custom_tag` entry:
-               
-               * `"ResourceClass" = "SingleNode"`
-               
-               The following example demonstrates how to create an single node cluster:
+               To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `is_single_node = true` and `kind = "CLASSIC_PREVIEW"` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
                
                ```python
                import pulumi
@@ -3436,13 +5631,8 @@ class ClusterAutoscale(dict):
                    spark_version=latest_lts.id,
                    node_type_id=smallest.id,
                    autotermination_minutes=20,
-                   spark_conf={
-                       "spark.databricks.cluster.profile": "singleNode",
-                       "spark.master": "local[*]",
-                   },
-                   custom_tags={
-                       "ResourceClass": "SingleNode",
-                   })
+                   is_single_node=True,
+                   kind="CLASSIC_PREVIEW")
                ```
         :param _builtins.int min_workers: The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
         """
@@ -3457,16 +5647,7 @@ class ClusterAutoscale(dict):
         """
         The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
 
-        When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
-
-        * `spark.master` must have prefix `local`, like `local[*]`
-        * `spark.databricks.cluster.profile` must have value `singleNode`
-
-        and also `custom_tag` entry:
-
-        * `"ResourceClass" = "SingleNode"`
-
-        The following example demonstrates how to create an single node cluster:
+        To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `is_single_node = true` and `kind = "CLASSIC_PREVIEW"` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
 
         ```python
         import pulumi
@@ -3479,13 +5660,8 @@ class ClusterAutoscale(dict):
             spark_version=latest_lts.id,
             node_type_id=smallest.id,
             autotermination_minutes=20,
-            spark_conf={
-                "spark.databricks.cluster.profile": "singleNode",
-                "spark.master": "local[*]",
-            },
-            custom_tags={
-                "ResourceClass": "SingleNode",
-            })
+            is_single_node=True,
+            kind="CLASSIC_PREVIEW")
         ```
         """
         return pulumi.get(self, "max_workers")
@@ -4199,6 +6375,8 @@ class ClusterGcpAttributes(dict):
         suggest = None
         if key == "bootDiskSize":
             suggest = "boot_disk_size"
+        elif key == "firstOnDemand":
+            suggest = "first_on_demand"
         elif key == "googleServiceAccount":
             suggest = "google_service_account"
         elif key == "localSsdCount":
@@ -4222,6 +6400,7 @@ class ClusterGcpAttributes(dict):
     def __init__(__self__, *,
                  availability: Optional[_builtins.str] = None,
                  boot_disk_size: Optional[_builtins.int] = None,
+                 first_on_demand: Optional[_builtins.int] = None,
                  google_service_account: Optional[_builtins.str] = None,
                  local_ssd_count: Optional[_builtins.int] = None,
                  use_preemptible_executors: Optional[_builtins.bool] = None,
@@ -4241,6 +6420,8 @@ class ClusterGcpAttributes(dict):
             pulumi.set(__self__, "availability", availability)
         if boot_disk_size is not None:
             pulumi.set(__self__, "boot_disk_size", boot_disk_size)
+        if first_on_demand is not None:
+            pulumi.set(__self__, "first_on_demand", first_on_demand)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
         if local_ssd_count is not None:
@@ -4265,6 +6446,11 @@ class ClusterGcpAttributes(dict):
         Boot disk size in GB
         """
         return pulumi.get(self, "boot_disk_size")
+
+    @_builtins.property
+    @pulumi.getter(name="firstOnDemand")
+    def first_on_demand(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "first_on_demand")
 
     @_builtins.property
     @pulumi.getter(name="googleServiceAccount")
@@ -4617,6 +6803,7 @@ class ClusterLibrary(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "egg")
 
@@ -4746,6 +6933,7 @@ class ClusterPolicyLibrary(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "egg")
 
@@ -4946,6 +7134,46 @@ class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspac
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> _builtins.bool:
         return pulumi.get(self, "is_enabled")
+
+
+@pulumi.output_type
+class ConnectionEnvironmentSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "environmentVersion":
+            suggest = "environment_version"
+        elif key == "javaDependencies":
+            suggest = "java_dependencies"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionEnvironmentSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionEnvironmentSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionEnvironmentSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 environment_version: Optional[_builtins.str] = None,
+                 java_dependencies: Optional[Sequence[_builtins.str]] = None):
+        if environment_version is not None:
+            pulumi.set(__self__, "environment_version", environment_version)
+        if java_dependencies is not None:
+            pulumi.set(__self__, "java_dependencies", java_dependencies)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentVersion")
+    def environment_version(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "environment_version")
+
+    @_builtins.property
+    @pulumi.getter(name="javaDependencies")
+    def java_dependencies(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "java_dependencies")
 
 
 @pulumi.output_type
@@ -5262,6 +7490,1224 @@ class CustomAppIntegrationTokenAccessPolicy(dict):
 
 
 @pulumi.output_type
+class DatabaseInstanceChildInstanceRef(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "branchTime":
+            suggest = "branch_time"
+        elif key == "effectiveLsn":
+            suggest = "effective_lsn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceChildInstanceRef. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceChildInstanceRef.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceChildInstanceRef.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch_time: Optional[_builtins.str] = None,
+                 effective_lsn: Optional[_builtins.str] = None,
+                 lsn: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 uid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str branch_time: Branch time of the ref database instance.
+               For a parent ref instance, this is the point in time on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the point in time on the instance from which the child
+               instance was created.
+               Input: For specifying the point in time to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param _builtins.str effective_lsn: (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+               `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+               For a parent ref instance, this is the LSN on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the LSN on the instance from which the child instance
+               was created
+        :param _builtins.str lsn: User-specified WAL LSN of the ref database instance.
+               
+               Input: For specifying the WAL LSN to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param _builtins.str name: The name of the instance. This is the unique identifier for the instance
+        :param _builtins.str uid: (string) - Id of the ref database instance
+        """
+        if branch_time is not None:
+            pulumi.set(__self__, "branch_time", branch_time)
+        if effective_lsn is not None:
+            pulumi.set(__self__, "effective_lsn", effective_lsn)
+        if lsn is not None:
+            pulumi.set(__self__, "lsn", lsn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @_builtins.property
+    @pulumi.getter(name="branchTime")
+    def branch_time(self) -> Optional[_builtins.str]:
+        """
+        Branch time of the ref database instance.
+        For a parent ref instance, this is the point in time on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the point in time on the instance from which the child
+        instance was created.
+        Input: For specifying the point in time to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "branch_time")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveLsn")
+    def effective_lsn(self) -> Optional[_builtins.str]:
+        """
+        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+        For a parent ref instance, this is the LSN on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the LSN on the instance from which the child instance
+        was created
+        """
+        return pulumi.get(self, "effective_lsn")
+
+    @_builtins.property
+    @pulumi.getter
+    def lsn(self) -> Optional[_builtins.str]:
+        """
+        User-specified WAL LSN of the ref database instance.
+
+        Input: For specifying the WAL LSN to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "lsn")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the instance. This is the unique identifier for the instance
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def uid(self) -> Optional[_builtins.str]:
+        """
+        (string) - Id of the ref database instance
+        """
+        return pulumi.get(self, "uid")
+
+
+@pulumi.output_type
+class DatabaseInstanceParentInstanceRef(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "branchTime":
+            suggest = "branch_time"
+        elif key == "effectiveLsn":
+            suggest = "effective_lsn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceParentInstanceRef. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceParentInstanceRef.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceParentInstanceRef.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch_time: Optional[_builtins.str] = None,
+                 effective_lsn: Optional[_builtins.str] = None,
+                 lsn: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 uid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str branch_time: Branch time of the ref database instance.
+               For a parent ref instance, this is the point in time on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the point in time on the instance from which the child
+               instance was created.
+               Input: For specifying the point in time to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param _builtins.str effective_lsn: (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+               `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+               For a parent ref instance, this is the LSN on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the LSN on the instance from which the child instance
+               was created
+        :param _builtins.str lsn: User-specified WAL LSN of the ref database instance.
+               
+               Input: For specifying the WAL LSN to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param _builtins.str name: The name of the instance. This is the unique identifier for the instance
+        :param _builtins.str uid: (string) - Id of the ref database instance
+        """
+        if branch_time is not None:
+            pulumi.set(__self__, "branch_time", branch_time)
+        if effective_lsn is not None:
+            pulumi.set(__self__, "effective_lsn", effective_lsn)
+        if lsn is not None:
+            pulumi.set(__self__, "lsn", lsn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @_builtins.property
+    @pulumi.getter(name="branchTime")
+    def branch_time(self) -> Optional[_builtins.str]:
+        """
+        Branch time of the ref database instance.
+        For a parent ref instance, this is the point in time on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the point in time on the instance from which the child
+        instance was created.
+        Input: For specifying the point in time to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "branch_time")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveLsn")
+    def effective_lsn(self) -> Optional[_builtins.str]:
+        """
+        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+        For a parent ref instance, this is the LSN on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the LSN on the instance from which the child instance
+        was created
+        """
+        return pulumi.get(self, "effective_lsn")
+
+    @_builtins.property
+    @pulumi.getter
+    def lsn(self) -> Optional[_builtins.str]:
+        """
+        User-specified WAL LSN of the ref database instance.
+
+        Input: For specifying the WAL LSN to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "lsn")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the instance. This is the unique identifier for the instance
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def uid(self) -> Optional[_builtins.str]:
+        """
+        (string) - Id of the ref database instance
+        """
+        return pulumi.get(self, "uid")
+
+
+@pulumi.output_type
+class DatabaseSyncedDatabaseTableDataSynchronizationStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "continuousUpdateStatus":
+            suggest = "continuous_update_status"
+        elif key == "detailedState":
+            suggest = "detailed_state"
+        elif key == "failedStatus":
+            suggest = "failed_status"
+        elif key == "lastSync":
+            suggest = "last_sync"
+        elif key == "pipelineId":
+            suggest = "pipeline_id"
+        elif key == "provisioningStatus":
+            suggest = "provisioning_status"
+        elif key == "triggeredUpdateStatus":
+            suggest = "triggered_update_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseSyncedDatabaseTableDataSynchronizationStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 continuous_update_status: Optional['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatus'] = None,
+                 detailed_state: Optional[_builtins.str] = None,
+                 failed_status: Optional['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatus'] = None,
+                 last_sync: Optional['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSync'] = None,
+                 message: Optional[_builtins.str] = None,
+                 pipeline_id: Optional[_builtins.str] = None,
+                 provisioning_status: Optional['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatus'] = None,
+                 triggered_update_status: Optional['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatus'] = None):
+        """
+        :param _builtins.str detailed_state: (string) - The state of the synced table. Possible values are: `SYNCED_TABLED_OFFLINE`, `SYNCED_TABLE_OFFLINE_FAILED`, `SYNCED_TABLE_ONLINE`, `SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE`, `SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE`, `SYNCED_TABLE_ONLINE_PIPELINE_FAILED`, `SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE`, `SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES`, `SYNCED_TABLE_PROVISIONING`, `SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT`, `SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES`
+        :param 'DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncArgs' last_sync: (SyncedTablePosition) - Summary of the last successful synchronization from source to destination.
+        :param _builtins.str message: (string) - A text description of the current state of the synced table
+        :param _builtins.str pipeline_id: (string) - ID of the associated pipeline. The pipeline ID may have been provided by the client
+               (in the case of bin packing), or generated by the server (when creating a new pipeline)
+        """
+        if continuous_update_status is not None:
+            pulumi.set(__self__, "continuous_update_status", continuous_update_status)
+        if detailed_state is not None:
+            pulumi.set(__self__, "detailed_state", detailed_state)
+        if failed_status is not None:
+            pulumi.set(__self__, "failed_status", failed_status)
+        if last_sync is not None:
+            pulumi.set(__self__, "last_sync", last_sync)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if pipeline_id is not None:
+            pulumi.set(__self__, "pipeline_id", pipeline_id)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+        if triggered_update_status is not None:
+            pulumi.set(__self__, "triggered_update_status", triggered_update_status)
+
+    @_builtins.property
+    @pulumi.getter(name="continuousUpdateStatus")
+    def continuous_update_status(self) -> Optional['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatus']:
+        return pulumi.get(self, "continuous_update_status")
+
+    @_builtins.property
+    @pulumi.getter(name="detailedState")
+    def detailed_state(self) -> Optional[_builtins.str]:
+        """
+        (string) - The state of the synced table. Possible values are: `SYNCED_TABLED_OFFLINE`, `SYNCED_TABLE_OFFLINE_FAILED`, `SYNCED_TABLE_ONLINE`, `SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE`, `SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE`, `SYNCED_TABLE_ONLINE_PIPELINE_FAILED`, `SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE`, `SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES`, `SYNCED_TABLE_PROVISIONING`, `SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT`, `SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES`
+        """
+        return pulumi.get(self, "detailed_state")
+
+    @_builtins.property
+    @pulumi.getter(name="failedStatus")
+    def failed_status(self) -> Optional['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatus']:
+        return pulumi.get(self, "failed_status")
+
+    @_builtins.property
+    @pulumi.getter(name="lastSync")
+    def last_sync(self) -> Optional['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSync']:
+        """
+        (SyncedTablePosition) - Summary of the last successful synchronization from source to destination.
+        """
+        return pulumi.get(self, "last_sync")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        (string) - A text description of the current state of the synced table
+        """
+        return pulumi.get(self, "message")
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineId")
+    def pipeline_id(self) -> Optional[_builtins.str]:
+        """
+        (string) - ID of the associated pipeline. The pipeline ID may have been provided by the client
+        (in the case of bin packing), or generated by the server (when creating a new pipeline)
+        """
+        return pulumi.get(self, "pipeline_id")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatus']:
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter(name="triggeredUpdateStatus")
+    def triggered_update_status(self) -> Optional['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatus']:
+        return pulumi.get(self, "triggered_update_status")
+
+
+@pulumi.output_type
+class DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "initialPipelineSyncProgress":
+            suggest = "initial_pipeline_sync_progress"
+        elif key == "lastProcessedCommitVersion":
+            suggest = "last_processed_commit_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 initial_pipeline_sync_progress: Optional['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgress'] = None,
+                 last_processed_commit_version: Optional[_builtins.int] = None,
+                 timestamp: Optional[_builtins.str] = None):
+        """
+        :param 'DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgressArgs' initial_pipeline_sync_progress: (SyncedTablePipelineProgress) - Details about initial data synchronization. Only populated when in the
+               PROVISIONING_INITIAL_SNAPSHOT state
+        :param _builtins.int last_processed_commit_version: (integer) - The last source table Delta version that was successfully synced to the synced table
+        :param _builtins.str timestamp: (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+               table. This is when the data is available in the synced table
+        """
+        if initial_pipeline_sync_progress is not None:
+            pulumi.set(__self__, "initial_pipeline_sync_progress", initial_pipeline_sync_progress)
+        if last_processed_commit_version is not None:
+            pulumi.set(__self__, "last_processed_commit_version", last_processed_commit_version)
+        if timestamp is not None:
+            pulumi.set(__self__, "timestamp", timestamp)
+
+    @_builtins.property
+    @pulumi.getter(name="initialPipelineSyncProgress")
+    def initial_pipeline_sync_progress(self) -> Optional['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgress']:
+        """
+        (SyncedTablePipelineProgress) - Details about initial data synchronization. Only populated when in the
+        PROVISIONING_INITIAL_SNAPSHOT state
+        """
+        return pulumi.get(self, "initial_pipeline_sync_progress")
+
+    @_builtins.property
+    @pulumi.getter(name="lastProcessedCommitVersion")
+    def last_processed_commit_version(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The last source table Delta version that was successfully synced to the synced table
+        """
+        return pulumi.get(self, "last_processed_commit_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def timestamp(self) -> Optional[_builtins.str]:
+        """
+        (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+        table. This is when the data is available in the synced table
+        """
+        return pulumi.get(self, "timestamp")
+
+
+@pulumi.output_type
+class DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgress(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "estimatedCompletionTimeSeconds":
+            suggest = "estimated_completion_time_seconds"
+        elif key == "latestVersionCurrentlyProcessing":
+            suggest = "latest_version_currently_processing"
+        elif key == "provisioningPhase":
+            suggest = "provisioning_phase"
+        elif key == "syncProgressCompletion":
+            suggest = "sync_progress_completion"
+        elif key == "syncedRowCount":
+            suggest = "synced_row_count"
+        elif key == "totalRowCount":
+            suggest = "total_row_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgress. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgress.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgress.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 estimated_completion_time_seconds: Optional[_builtins.float] = None,
+                 latest_version_currently_processing: Optional[_builtins.int] = None,
+                 provisioning_phase: Optional[_builtins.str] = None,
+                 sync_progress_completion: Optional[_builtins.float] = None,
+                 synced_row_count: Optional[_builtins.int] = None,
+                 total_row_count: Optional[_builtins.int] = None):
+        """
+        :param _builtins.float estimated_completion_time_seconds: (number) - The estimated time remaining to complete this update in seconds
+        :param _builtins.int latest_version_currently_processing: (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+               have completely processed this version yet
+        :param _builtins.str provisioning_phase: (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+        :param _builtins.float sync_progress_completion: (number) - The completion ratio of this update. This is a number between 0 and 1
+        :param _builtins.int synced_row_count: (integer) - The number of rows that have been synced in this update
+        :param _builtins.int total_row_count: (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+        """
+        if estimated_completion_time_seconds is not None:
+            pulumi.set(__self__, "estimated_completion_time_seconds", estimated_completion_time_seconds)
+        if latest_version_currently_processing is not None:
+            pulumi.set(__self__, "latest_version_currently_processing", latest_version_currently_processing)
+        if provisioning_phase is not None:
+            pulumi.set(__self__, "provisioning_phase", provisioning_phase)
+        if sync_progress_completion is not None:
+            pulumi.set(__self__, "sync_progress_completion", sync_progress_completion)
+        if synced_row_count is not None:
+            pulumi.set(__self__, "synced_row_count", synced_row_count)
+        if total_row_count is not None:
+            pulumi.set(__self__, "total_row_count", total_row_count)
+
+    @_builtins.property
+    @pulumi.getter(name="estimatedCompletionTimeSeconds")
+    def estimated_completion_time_seconds(self) -> Optional[_builtins.float]:
+        """
+        (number) - The estimated time remaining to complete this update in seconds
+        """
+        return pulumi.get(self, "estimated_completion_time_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="latestVersionCurrentlyProcessing")
+    def latest_version_currently_processing(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+        have completely processed this version yet
+        """
+        return pulumi.get(self, "latest_version_currently_processing")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningPhase")
+    def provisioning_phase(self) -> Optional[_builtins.str]:
+        """
+        (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+        """
+        return pulumi.get(self, "provisioning_phase")
+
+    @_builtins.property
+    @pulumi.getter(name="syncProgressCompletion")
+    def sync_progress_completion(self) -> Optional[_builtins.float]:
+        """
+        (number) - The completion ratio of this update. This is a number between 0 and 1
+        """
+        return pulumi.get(self, "sync_progress_completion")
+
+    @_builtins.property
+    @pulumi.getter(name="syncedRowCount")
+    def synced_row_count(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The number of rows that have been synced in this update
+        """
+        return pulumi.get(self, "synced_row_count")
+
+    @_builtins.property
+    @pulumi.getter(name="totalRowCount")
+    def total_row_count(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+        """
+        return pulumi.get(self, "total_row_count")
+
+
+@pulumi.output_type
+class DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastProcessedCommitVersion":
+            suggest = "last_processed_commit_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 last_processed_commit_version: Optional[_builtins.int] = None,
+                 timestamp: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int last_processed_commit_version: (integer) - The last source table Delta version that was successfully synced to the synced table
+        :param _builtins.str timestamp: (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+               table. This is when the data is available in the synced table
+        """
+        if last_processed_commit_version is not None:
+            pulumi.set(__self__, "last_processed_commit_version", last_processed_commit_version)
+        if timestamp is not None:
+            pulumi.set(__self__, "timestamp", timestamp)
+
+    @_builtins.property
+    @pulumi.getter(name="lastProcessedCommitVersion")
+    def last_processed_commit_version(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The last source table Delta version that was successfully synced to the synced table
+        """
+        return pulumi.get(self, "last_processed_commit_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def timestamp(self) -> Optional[_builtins.str]:
+        """
+        (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+        table. This is when the data is available in the synced table
+        """
+        return pulumi.get(self, "timestamp")
+
+
+@pulumi.output_type
+class DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSync(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deltaTableSyncInfo":
+            suggest = "delta_table_sync_info"
+        elif key == "syncEndTimestamp":
+            suggest = "sync_end_timestamp"
+        elif key == "syncStartTimestamp":
+            suggest = "sync_start_timestamp"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSync. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSync.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSync.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delta_table_sync_info: Optional['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfo'] = None,
+                 sync_end_timestamp: Optional[_builtins.str] = None,
+                 sync_start_timestamp: Optional[_builtins.str] = None):
+        """
+        :param 'DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfoArgs' delta_table_sync_info: (DeltaTableSyncInfo)
+        :param _builtins.str sync_end_timestamp: (string) - The end timestamp of the most recent successful synchronization.
+               This is the time when the data is available in the synced table
+        :param _builtins.str sync_start_timestamp: (string) - The starting timestamp of the most recent successful synchronization from the source table
+               to the destination (synced) table.
+               Note this is the starting timestamp of the sync operation, not the end time.
+               E.g., for a batch, this is the time when the sync operation started
+        """
+        if delta_table_sync_info is not None:
+            pulumi.set(__self__, "delta_table_sync_info", delta_table_sync_info)
+        if sync_end_timestamp is not None:
+            pulumi.set(__self__, "sync_end_timestamp", sync_end_timestamp)
+        if sync_start_timestamp is not None:
+            pulumi.set(__self__, "sync_start_timestamp", sync_start_timestamp)
+
+    @_builtins.property
+    @pulumi.getter(name="deltaTableSyncInfo")
+    def delta_table_sync_info(self) -> Optional['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfo']:
+        """
+        (DeltaTableSyncInfo)
+        """
+        return pulumi.get(self, "delta_table_sync_info")
+
+    @_builtins.property
+    @pulumi.getter(name="syncEndTimestamp")
+    def sync_end_timestamp(self) -> Optional[_builtins.str]:
+        """
+        (string) - The end timestamp of the most recent successful synchronization.
+        This is the time when the data is available in the synced table
+        """
+        return pulumi.get(self, "sync_end_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="syncStartTimestamp")
+    def sync_start_timestamp(self) -> Optional[_builtins.str]:
+        """
+        (string) - The starting timestamp of the most recent successful synchronization from the source table
+        to the destination (synced) table.
+        Note this is the starting timestamp of the sync operation, not the end time.
+        E.g., for a batch, this is the time when the sync operation started
+        """
+        return pulumi.get(self, "sync_start_timestamp")
+
+
+@pulumi.output_type
+class DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deltaCommitTimestamp":
+            suggest = "delta_commit_timestamp"
+        elif key == "deltaCommitVersion":
+            suggest = "delta_commit_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delta_commit_timestamp: Optional[_builtins.str] = None,
+                 delta_commit_version: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str delta_commit_timestamp: (string) - The timestamp when the above Delta version was committed in the source Delta table.
+               Note: This is the Delta commit time, not the time the data was written to the synced table
+        :param _builtins.int delta_commit_version: (integer) - The Delta Lake commit version that was last successfully synced
+        """
+        if delta_commit_timestamp is not None:
+            pulumi.set(__self__, "delta_commit_timestamp", delta_commit_timestamp)
+        if delta_commit_version is not None:
+            pulumi.set(__self__, "delta_commit_version", delta_commit_version)
+
+    @_builtins.property
+    @pulumi.getter(name="deltaCommitTimestamp")
+    def delta_commit_timestamp(self) -> Optional[_builtins.str]:
+        """
+        (string) - The timestamp when the above Delta version was committed in the source Delta table.
+        Note: This is the Delta commit time, not the time the data was written to the synced table
+        """
+        return pulumi.get(self, "delta_commit_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deltaCommitVersion")
+    def delta_commit_version(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The Delta Lake commit version that was last successfully synced
+        """
+        return pulumi.get(self, "delta_commit_version")
+
+
+@pulumi.output_type
+class DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "initialPipelineSyncProgress":
+            suggest = "initial_pipeline_sync_progress"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 initial_pipeline_sync_progress: Optional['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgress'] = None):
+        """
+        :param 'DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgressArgs' initial_pipeline_sync_progress: (SyncedTablePipelineProgress) - Details about initial data synchronization. Only populated when in the
+               PROVISIONING_INITIAL_SNAPSHOT state
+        """
+        if initial_pipeline_sync_progress is not None:
+            pulumi.set(__self__, "initial_pipeline_sync_progress", initial_pipeline_sync_progress)
+
+    @_builtins.property
+    @pulumi.getter(name="initialPipelineSyncProgress")
+    def initial_pipeline_sync_progress(self) -> Optional['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgress']:
+        """
+        (SyncedTablePipelineProgress) - Details about initial data synchronization. Only populated when in the
+        PROVISIONING_INITIAL_SNAPSHOT state
+        """
+        return pulumi.get(self, "initial_pipeline_sync_progress")
+
+
+@pulumi.output_type
+class DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgress(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "estimatedCompletionTimeSeconds":
+            suggest = "estimated_completion_time_seconds"
+        elif key == "latestVersionCurrentlyProcessing":
+            suggest = "latest_version_currently_processing"
+        elif key == "provisioningPhase":
+            suggest = "provisioning_phase"
+        elif key == "syncProgressCompletion":
+            suggest = "sync_progress_completion"
+        elif key == "syncedRowCount":
+            suggest = "synced_row_count"
+        elif key == "totalRowCount":
+            suggest = "total_row_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgress. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgress.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgress.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 estimated_completion_time_seconds: Optional[_builtins.float] = None,
+                 latest_version_currently_processing: Optional[_builtins.int] = None,
+                 provisioning_phase: Optional[_builtins.str] = None,
+                 sync_progress_completion: Optional[_builtins.float] = None,
+                 synced_row_count: Optional[_builtins.int] = None,
+                 total_row_count: Optional[_builtins.int] = None):
+        """
+        :param _builtins.float estimated_completion_time_seconds: (number) - The estimated time remaining to complete this update in seconds
+        :param _builtins.int latest_version_currently_processing: (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+               have completely processed this version yet
+        :param _builtins.str provisioning_phase: (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+        :param _builtins.float sync_progress_completion: (number) - The completion ratio of this update. This is a number between 0 and 1
+        :param _builtins.int synced_row_count: (integer) - The number of rows that have been synced in this update
+        :param _builtins.int total_row_count: (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+        """
+        if estimated_completion_time_seconds is not None:
+            pulumi.set(__self__, "estimated_completion_time_seconds", estimated_completion_time_seconds)
+        if latest_version_currently_processing is not None:
+            pulumi.set(__self__, "latest_version_currently_processing", latest_version_currently_processing)
+        if provisioning_phase is not None:
+            pulumi.set(__self__, "provisioning_phase", provisioning_phase)
+        if sync_progress_completion is not None:
+            pulumi.set(__self__, "sync_progress_completion", sync_progress_completion)
+        if synced_row_count is not None:
+            pulumi.set(__self__, "synced_row_count", synced_row_count)
+        if total_row_count is not None:
+            pulumi.set(__self__, "total_row_count", total_row_count)
+
+    @_builtins.property
+    @pulumi.getter(name="estimatedCompletionTimeSeconds")
+    def estimated_completion_time_seconds(self) -> Optional[_builtins.float]:
+        """
+        (number) - The estimated time remaining to complete this update in seconds
+        """
+        return pulumi.get(self, "estimated_completion_time_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="latestVersionCurrentlyProcessing")
+    def latest_version_currently_processing(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+        have completely processed this version yet
+        """
+        return pulumi.get(self, "latest_version_currently_processing")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningPhase")
+    def provisioning_phase(self) -> Optional[_builtins.str]:
+        """
+        (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+        """
+        return pulumi.get(self, "provisioning_phase")
+
+    @_builtins.property
+    @pulumi.getter(name="syncProgressCompletion")
+    def sync_progress_completion(self) -> Optional[_builtins.float]:
+        """
+        (number) - The completion ratio of this update. This is a number between 0 and 1
+        """
+        return pulumi.get(self, "sync_progress_completion")
+
+    @_builtins.property
+    @pulumi.getter(name="syncedRowCount")
+    def synced_row_count(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The number of rows that have been synced in this update
+        """
+        return pulumi.get(self, "synced_row_count")
+
+    @_builtins.property
+    @pulumi.getter(name="totalRowCount")
+    def total_row_count(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+        """
+        return pulumi.get(self, "total_row_count")
+
+
+@pulumi.output_type
+class DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastProcessedCommitVersion":
+            suggest = "last_processed_commit_version"
+        elif key == "triggeredUpdateProgress":
+            suggest = "triggered_update_progress"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 last_processed_commit_version: Optional[_builtins.int] = None,
+                 timestamp: Optional[_builtins.str] = None,
+                 triggered_update_progress: Optional['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgress'] = None):
+        """
+        :param _builtins.int last_processed_commit_version: (integer) - The last source table Delta version that was successfully synced to the synced table
+        :param _builtins.str timestamp: (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+               table. This is when the data is available in the synced table
+        :param 'DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgressArgs' triggered_update_progress: (SyncedTablePipelineProgress) - Progress of the active data synchronization pipeline
+        """
+        if last_processed_commit_version is not None:
+            pulumi.set(__self__, "last_processed_commit_version", last_processed_commit_version)
+        if timestamp is not None:
+            pulumi.set(__self__, "timestamp", timestamp)
+        if triggered_update_progress is not None:
+            pulumi.set(__self__, "triggered_update_progress", triggered_update_progress)
+
+    @_builtins.property
+    @pulumi.getter(name="lastProcessedCommitVersion")
+    def last_processed_commit_version(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The last source table Delta version that was successfully synced to the synced table
+        """
+        return pulumi.get(self, "last_processed_commit_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def timestamp(self) -> Optional[_builtins.str]:
+        """
+        (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+        table. This is when the data is available in the synced table
+        """
+        return pulumi.get(self, "timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="triggeredUpdateProgress")
+    def triggered_update_progress(self) -> Optional['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgress']:
+        """
+        (SyncedTablePipelineProgress) - Progress of the active data synchronization pipeline
+        """
+        return pulumi.get(self, "triggered_update_progress")
+
+
+@pulumi.output_type
+class DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgress(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "estimatedCompletionTimeSeconds":
+            suggest = "estimated_completion_time_seconds"
+        elif key == "latestVersionCurrentlyProcessing":
+            suggest = "latest_version_currently_processing"
+        elif key == "provisioningPhase":
+            suggest = "provisioning_phase"
+        elif key == "syncProgressCompletion":
+            suggest = "sync_progress_completion"
+        elif key == "syncedRowCount":
+            suggest = "synced_row_count"
+        elif key == "totalRowCount":
+            suggest = "total_row_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgress. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgress.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgress.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 estimated_completion_time_seconds: Optional[_builtins.float] = None,
+                 latest_version_currently_processing: Optional[_builtins.int] = None,
+                 provisioning_phase: Optional[_builtins.str] = None,
+                 sync_progress_completion: Optional[_builtins.float] = None,
+                 synced_row_count: Optional[_builtins.int] = None,
+                 total_row_count: Optional[_builtins.int] = None):
+        """
+        :param _builtins.float estimated_completion_time_seconds: (number) - The estimated time remaining to complete this update in seconds
+        :param _builtins.int latest_version_currently_processing: (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+               have completely processed this version yet
+        :param _builtins.str provisioning_phase: (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+        :param _builtins.float sync_progress_completion: (number) - The completion ratio of this update. This is a number between 0 and 1
+        :param _builtins.int synced_row_count: (integer) - The number of rows that have been synced in this update
+        :param _builtins.int total_row_count: (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+        """
+        if estimated_completion_time_seconds is not None:
+            pulumi.set(__self__, "estimated_completion_time_seconds", estimated_completion_time_seconds)
+        if latest_version_currently_processing is not None:
+            pulumi.set(__self__, "latest_version_currently_processing", latest_version_currently_processing)
+        if provisioning_phase is not None:
+            pulumi.set(__self__, "provisioning_phase", provisioning_phase)
+        if sync_progress_completion is not None:
+            pulumi.set(__self__, "sync_progress_completion", sync_progress_completion)
+        if synced_row_count is not None:
+            pulumi.set(__self__, "synced_row_count", synced_row_count)
+        if total_row_count is not None:
+            pulumi.set(__self__, "total_row_count", total_row_count)
+
+    @_builtins.property
+    @pulumi.getter(name="estimatedCompletionTimeSeconds")
+    def estimated_completion_time_seconds(self) -> Optional[_builtins.float]:
+        """
+        (number) - The estimated time remaining to complete this update in seconds
+        """
+        return pulumi.get(self, "estimated_completion_time_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="latestVersionCurrentlyProcessing")
+    def latest_version_currently_processing(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+        have completely processed this version yet
+        """
+        return pulumi.get(self, "latest_version_currently_processing")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningPhase")
+    def provisioning_phase(self) -> Optional[_builtins.str]:
+        """
+        (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+        """
+        return pulumi.get(self, "provisioning_phase")
+
+    @_builtins.property
+    @pulumi.getter(name="syncProgressCompletion")
+    def sync_progress_completion(self) -> Optional[_builtins.float]:
+        """
+        (number) - The completion ratio of this update. This is a number between 0 and 1
+        """
+        return pulumi.get(self, "sync_progress_completion")
+
+    @_builtins.property
+    @pulumi.getter(name="syncedRowCount")
+    def synced_row_count(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The number of rows that have been synced in this update
+        """
+        return pulumi.get(self, "synced_row_count")
+
+    @_builtins.property
+    @pulumi.getter(name="totalRowCount")
+    def total_row_count(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+        """
+        return pulumi.get(self, "total_row_count")
+
+
+@pulumi.output_type
+class DatabaseSyncedDatabaseTableSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createDatabaseObjectsIfMissing":
+            suggest = "create_database_objects_if_missing"
+        elif key == "existingPipelineId":
+            suggest = "existing_pipeline_id"
+        elif key == "newPipelineSpec":
+            suggest = "new_pipeline_spec"
+        elif key == "primaryKeyColumns":
+            suggest = "primary_key_columns"
+        elif key == "schedulingPolicy":
+            suggest = "scheduling_policy"
+        elif key == "sourceTableFullName":
+            suggest = "source_table_full_name"
+        elif key == "timeseriesKey":
+            suggest = "timeseries_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseSyncedDatabaseTableSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseSyncedDatabaseTableSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseSyncedDatabaseTableSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 create_database_objects_if_missing: Optional[_builtins.bool] = None,
+                 existing_pipeline_id: Optional[_builtins.str] = None,
+                 new_pipeline_spec: Optional['outputs.DatabaseSyncedDatabaseTableSpecNewPipelineSpec'] = None,
+                 primary_key_columns: Optional[Sequence[_builtins.str]] = None,
+                 scheduling_policy: Optional[_builtins.str] = None,
+                 source_table_full_name: Optional[_builtins.str] = None,
+                 timeseries_key: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool create_database_objects_if_missing: If true, the synced table's logical database and schema resources in PG
+               will be created if they do not already exist
+        :param _builtins.str existing_pipeline_id: At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+               
+               If existing_pipeline_id is defined, the synced table will be bin packed into the existing pipeline
+               referenced. This avoids creating a new pipeline and allows sharing existing compute.
+               In this case, the scheduling_policy of this synced table must match the scheduling policy of the existing pipeline
+        :param 'DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs' new_pipeline_spec: At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+               
+               If new_pipeline_spec is defined, a new pipeline is created for this synced table. The location pointed to is used
+               to store intermediate files (checkpoints, event logs etc). The caller must have write permissions to create Delta
+               tables in the specified catalog and schema. Again, note this requires write permissions, whereas the source table
+               only requires read permissions
+        :param Sequence[_builtins.str] primary_key_columns: Primary Key columns to be used for data insert/update in the destination
+        :param _builtins.str scheduling_policy: Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+        :param _builtins.str source_table_full_name: Three-part (catalog, schema, table) name of the source Delta table
+        :param _builtins.str timeseries_key: Time series key to deduplicate (tie-break) rows with the same primary key
+        """
+        if create_database_objects_if_missing is not None:
+            pulumi.set(__self__, "create_database_objects_if_missing", create_database_objects_if_missing)
+        if existing_pipeline_id is not None:
+            pulumi.set(__self__, "existing_pipeline_id", existing_pipeline_id)
+        if new_pipeline_spec is not None:
+            pulumi.set(__self__, "new_pipeline_spec", new_pipeline_spec)
+        if primary_key_columns is not None:
+            pulumi.set(__self__, "primary_key_columns", primary_key_columns)
+        if scheduling_policy is not None:
+            pulumi.set(__self__, "scheduling_policy", scheduling_policy)
+        if source_table_full_name is not None:
+            pulumi.set(__self__, "source_table_full_name", source_table_full_name)
+        if timeseries_key is not None:
+            pulumi.set(__self__, "timeseries_key", timeseries_key)
+
+    @_builtins.property
+    @pulumi.getter(name="createDatabaseObjectsIfMissing")
+    def create_database_objects_if_missing(self) -> Optional[_builtins.bool]:
+        """
+        If true, the synced table's logical database and schema resources in PG
+        will be created if they do not already exist
+        """
+        return pulumi.get(self, "create_database_objects_if_missing")
+
+    @_builtins.property
+    @pulumi.getter(name="existingPipelineId")
+    def existing_pipeline_id(self) -> Optional[_builtins.str]:
+        """
+        At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+
+        If existing_pipeline_id is defined, the synced table will be bin packed into the existing pipeline
+        referenced. This avoids creating a new pipeline and allows sharing existing compute.
+        In this case, the scheduling_policy of this synced table must match the scheduling policy of the existing pipeline
+        """
+        return pulumi.get(self, "existing_pipeline_id")
+
+    @_builtins.property
+    @pulumi.getter(name="newPipelineSpec")
+    def new_pipeline_spec(self) -> Optional['outputs.DatabaseSyncedDatabaseTableSpecNewPipelineSpec']:
+        """
+        At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+
+        If new_pipeline_spec is defined, a new pipeline is created for this synced table. The location pointed to is used
+        to store intermediate files (checkpoints, event logs etc). The caller must have write permissions to create Delta
+        tables in the specified catalog and schema. Again, note this requires write permissions, whereas the source table
+        only requires read permissions
+        """
+        return pulumi.get(self, "new_pipeline_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="primaryKeyColumns")
+    def primary_key_columns(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Primary Key columns to be used for data insert/update in the destination
+        """
+        return pulumi.get(self, "primary_key_columns")
+
+    @_builtins.property
+    @pulumi.getter(name="schedulingPolicy")
+    def scheduling_policy(self) -> Optional[_builtins.str]:
+        """
+        Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+        """
+        return pulumi.get(self, "scheduling_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceTableFullName")
+    def source_table_full_name(self) -> Optional[_builtins.str]:
+        """
+        Three-part (catalog, schema, table) name of the source Delta table
+        """
+        return pulumi.get(self, "source_table_full_name")
+
+    @_builtins.property
+    @pulumi.getter(name="timeseriesKey")
+    def timeseries_key(self) -> Optional[_builtins.str]:
+        """
+        Time series key to deduplicate (tie-break) rows with the same primary key
+        """
+        return pulumi.get(self, "timeseries_key")
+
+
+@pulumi.output_type
+class DatabaseSyncedDatabaseTableSpecNewPipelineSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storageCatalog":
+            suggest = "storage_catalog"
+        elif key == "storageSchema":
+            suggest = "storage_schema"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseSyncedDatabaseTableSpecNewPipelineSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseSyncedDatabaseTableSpecNewPipelineSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseSyncedDatabaseTableSpecNewPipelineSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 storage_catalog: Optional[_builtins.str] = None,
+                 storage_schema: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str storage_catalog: This field needs to be specified if the destination catalog is a managed postgres catalog.
+               
+               UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
+               This needs to be a standard catalog where the user has permissions to create Delta tables
+        :param _builtins.str storage_schema: This field needs to be specified if the destination catalog is a managed postgres catalog.
+               
+               UC schema for the pipeline to store intermediate files (checkpoints, event logs etc).
+               This needs to be in the standard catalog where the user has permissions to create Delta tables
+        """
+        if storage_catalog is not None:
+            pulumi.set(__self__, "storage_catalog", storage_catalog)
+        if storage_schema is not None:
+            pulumi.set(__self__, "storage_schema", storage_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="storageCatalog")
+    def storage_catalog(self) -> Optional[_builtins.str]:
+        """
+        This field needs to be specified if the destination catalog is a managed postgres catalog.
+
+        UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
+        This needs to be a standard catalog where the user has permissions to create Delta tables
+        """
+        return pulumi.get(self, "storage_catalog")
+
+    @_builtins.property
+    @pulumi.getter(name="storageSchema")
+    def storage_schema(self) -> Optional[_builtins.str]:
+        """
+        This field needs to be specified if the destination catalog is a managed postgres catalog.
+
+        UC schema for the pipeline to store intermediate files (checkpoints, event logs etc).
+        This needs to be in the standard catalog where the user has permissions to create Delta tables
+        """
+        return pulumi.get(self, "storage_schema")
+
+
+@pulumi.output_type
 class DefaultNamespaceSettingNamespace(dict):
     def __init__(__self__, *,
                  value: Optional[_builtins.str] = None):
@@ -5284,11 +8730,17 @@ class DefaultNamespaceSettingNamespace(dict):
 class DisableLegacyAccessSettingDisableLegacyAccess(dict):
     def __init__(__self__, *,
                  value: _builtins.bool):
+        """
+        :param _builtins.bool value: The boolean value for the setting.
+        """
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> _builtins.bool:
+        """
+        The boolean value for the setting.
+        """
         return pulumi.get(self, "value")
 
 
@@ -5378,12 +8830,18 @@ class ExternalLocationEncryptionDetails(dict):
 
     def __init__(__self__, *,
                  sse_encryption_details: Optional['outputs.ExternalLocationEncryptionDetailsSseEncryptionDetails'] = None):
+        """
+        :param 'ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs' sse_encryption_details: a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+        """
         if sse_encryption_details is not None:
             pulumi.set(__self__, "sse_encryption_details", sse_encryption_details)
 
     @_builtins.property
     @pulumi.getter(name="sseEncryptionDetails")
     def sse_encryption_details(self) -> Optional['outputs.ExternalLocationEncryptionDetailsSseEncryptionDetails']:
+        """
+        a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+        """
         return pulumi.get(self, "sse_encryption_details")
 
 
@@ -5409,6 +8867,10 @@ class ExternalLocationEncryptionDetailsSseEncryptionDetails(dict):
     def __init__(__self__, *,
                  algorithm: Optional[_builtins.str] = None,
                  aws_kms_key_arn: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str algorithm: Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+        :param _builtins.str aws_kms_key_arn: Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
+        """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
         if aws_kms_key_arn is not None:
@@ -5417,11 +8879,17 @@ class ExternalLocationEncryptionDetailsSseEncryptionDetails(dict):
     @_builtins.property
     @pulumi.getter
     def algorithm(self) -> Optional[_builtins.str]:
+        """
+        Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+        """
         return pulumi.get(self, "algorithm")
 
     @_builtins.property
     @pulumi.getter(name="awsKmsKeyArn")
     def aws_kms_key_arn(self) -> Optional[_builtins.str]:
+        """
+        Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
+        """
         return pulumi.get(self, "aws_kms_key_arn")
 
 
@@ -6800,8 +10268,8 @@ class JobEnvironmentSpec(dict):
                  environment_version: Optional[_builtins.str] = None,
                  jar_dependencies: Optional[Sequence[_builtins.str]] = None):
         """
-        :param _builtins.str client: client version used by the environment.
         :param Sequence[_builtins.str] dependencies: List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
+        :param _builtins.str environment_version: client version used by the environment. Each version comes with a specific Python version and a set of Python packages.
         """
         if client is not None:
             pulumi.set(__self__, "client", client)
@@ -6815,9 +10283,6 @@ class JobEnvironmentSpec(dict):
     @_builtins.property
     @pulumi.getter
     def client(self) -> Optional[_builtins.str]:
-        """
-        client version used by the environment.
-        """
         return pulumi.get(self, "client")
 
     @_builtins.property
@@ -6831,6 +10296,9 @@ class JobEnvironmentSpec(dict):
     @_builtins.property
     @pulumi.getter(name="environmentVersion")
     def environment_version(self) -> Optional[_builtins.str]:
+        """
+        client version used by the environment. Each version comes with a specific Python version and a set of Python packages.
+        """
         return pulumi.get(self, "environment_version")
 
     @_builtins.property
@@ -7129,7 +10597,9 @@ class JobJobClusterNewCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "applyPolicyDefaultValues":
+        if key == "__applyPolicyDefaultValuesAllowLists":
+            suggest = "__apply_policy_default_values_allow_lists"
+        elif key == "applyPolicyDefaultValues":
             suggest = "apply_policy_default_values"
         elif key == "awsAttributes":
             suggest = "aws_attributes"
@@ -7206,6 +10676,7 @@ class JobJobClusterNewCluster(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 __apply_policy_default_values_allow_lists: Optional[Sequence[_builtins.str]] = None,
                  apply_policy_default_values: Optional[_builtins.bool] = None,
                  autoscale: Optional['outputs.JobJobClusterNewClusterAutoscale'] = None,
                  aws_attributes: Optional['outputs.JobJobClusterNewClusterAwsAttributes'] = None,
@@ -7245,6 +10716,8 @@ class JobJobClusterNewCluster(dict):
         :param Sequence['JobJobClusterNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         :param 'JobJobClusterNewClusterWorkloadTypeArgs' workload_type: isn't supported
         """
+        if __apply_policy_default_values_allow_lists is not None:
+            pulumi.set(__self__, "__apply_policy_default_values_allow_lists", __apply_policy_default_values_allow_lists)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -7315,6 +10788,11 @@ class JobJobClusterNewCluster(dict):
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
+
+    @_builtins.property
+    @pulumi.getter(name="__applyPolicyDefaultValuesAllowLists")
+    def __apply_policy_default_values_allow_lists(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "__apply_policy_default_values_allow_lists")
 
     @_builtins.property
     @pulumi.getter(name="applyPolicyDefaultValues")
@@ -8046,6 +11524,8 @@ class JobJobClusterNewClusterGcpAttributes(dict):
         suggest = None
         if key == "bootDiskSize":
             suggest = "boot_disk_size"
+        elif key == "firstOnDemand":
+            suggest = "first_on_demand"
         elif key == "googleServiceAccount":
             suggest = "google_service_account"
         elif key == "localSsdCount":
@@ -8069,6 +11549,7 @@ class JobJobClusterNewClusterGcpAttributes(dict):
     def __init__(__self__, *,
                  availability: Optional[_builtins.str] = None,
                  boot_disk_size: Optional[_builtins.int] = None,
+                 first_on_demand: Optional[_builtins.int] = None,
                  google_service_account: Optional[_builtins.str] = None,
                  local_ssd_count: Optional[_builtins.int] = None,
                  use_preemptible_executors: Optional[_builtins.bool] = None,
@@ -8077,6 +11558,8 @@ class JobJobClusterNewClusterGcpAttributes(dict):
             pulumi.set(__self__, "availability", availability)
         if boot_disk_size is not None:
             pulumi.set(__self__, "boot_disk_size", boot_disk_size)
+        if first_on_demand is not None:
+            pulumi.set(__self__, "first_on_demand", first_on_demand)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
         if local_ssd_count is not None:
@@ -8095,6 +11578,11 @@ class JobJobClusterNewClusterGcpAttributes(dict):
     @pulumi.getter(name="bootDiskSize")
     def boot_disk_size(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "boot_disk_size")
+
+    @_builtins.property
+    @pulumi.getter(name="firstOnDemand")
+    def first_on_demand(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "first_on_demand")
 
     @_builtins.property
     @pulumi.getter(name="googleServiceAccount")
@@ -8372,6 +11860,7 @@ class JobJobClusterNewClusterLibrary(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "egg")
 
@@ -8534,6 +12023,7 @@ class JobLibrary(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "egg")
 
@@ -9553,6 +13043,8 @@ class JobNewClusterGcpAttributes(dict):
         suggest = None
         if key == "bootDiskSize":
             suggest = "boot_disk_size"
+        elif key == "firstOnDemand":
+            suggest = "first_on_demand"
         elif key == "googleServiceAccount":
             suggest = "google_service_account"
         elif key == "localSsdCount":
@@ -9576,6 +13068,7 @@ class JobNewClusterGcpAttributes(dict):
     def __init__(__self__, *,
                  availability: Optional[_builtins.str] = None,
                  boot_disk_size: Optional[_builtins.int] = None,
+                 first_on_demand: Optional[_builtins.int] = None,
                  google_service_account: Optional[_builtins.str] = None,
                  local_ssd_count: Optional[_builtins.int] = None,
                  use_preemptible_executors: Optional[_builtins.bool] = None,
@@ -9584,6 +13077,8 @@ class JobNewClusterGcpAttributes(dict):
             pulumi.set(__self__, "availability", availability)
         if boot_disk_size is not None:
             pulumi.set(__self__, "boot_disk_size", boot_disk_size)
+        if first_on_demand is not None:
+            pulumi.set(__self__, "first_on_demand", first_on_demand)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
         if local_ssd_count is not None:
@@ -9602,6 +13097,11 @@ class JobNewClusterGcpAttributes(dict):
     @pulumi.getter(name="bootDiskSize")
     def boot_disk_size(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "boot_disk_size")
+
+    @_builtins.property
+    @pulumi.getter(name="firstOnDemand")
+    def first_on_demand(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "first_on_demand")
 
     @_builtins.property
     @pulumi.getter(name="googleServiceAccount")
@@ -9879,6 +13379,7 @@ class JobNewClusterLibrary(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "egg")
 
@@ -10583,7 +14084,7 @@ class JobSparkPythonTask(dict):
                  parameters: Optional[Sequence[_builtins.str]] = None,
                  source: Optional[_builtins.str] = None):
         """
-        :param _builtins.str python_file: The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
+        :param _builtins.str python_file: The URI of the Python file to be executed. Cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
         :param Sequence[_builtins.str] parameters: (List) Command line parameters passed to the Python file.
         :param _builtins.str source: Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the python_file has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
                * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
@@ -10599,7 +14100,7 @@ class JobSparkPythonTask(dict):
     @pulumi.getter(name="pythonFile")
     def python_file(self) -> _builtins.str:
         """
-        The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
+        The URI of the Python file to be executed. Cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
         """
         return pulumi.get(self, "python_file")
 
@@ -13114,6 +16615,7 @@ class JobTaskForEachTaskTaskLibrary(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "egg")
 
@@ -14133,6 +17635,8 @@ class JobTaskForEachTaskTaskNewClusterGcpAttributes(dict):
         suggest = None
         if key == "bootDiskSize":
             suggest = "boot_disk_size"
+        elif key == "firstOnDemand":
+            suggest = "first_on_demand"
         elif key == "googleServiceAccount":
             suggest = "google_service_account"
         elif key == "localSsdCount":
@@ -14156,6 +17660,7 @@ class JobTaskForEachTaskTaskNewClusterGcpAttributes(dict):
     def __init__(__self__, *,
                  availability: Optional[_builtins.str] = None,
                  boot_disk_size: Optional[_builtins.int] = None,
+                 first_on_demand: Optional[_builtins.int] = None,
                  google_service_account: Optional[_builtins.str] = None,
                  local_ssd_count: Optional[_builtins.int] = None,
                  use_preemptible_executors: Optional[_builtins.bool] = None,
@@ -14164,6 +17669,8 @@ class JobTaskForEachTaskTaskNewClusterGcpAttributes(dict):
             pulumi.set(__self__, "availability", availability)
         if boot_disk_size is not None:
             pulumi.set(__self__, "boot_disk_size", boot_disk_size)
+        if first_on_demand is not None:
+            pulumi.set(__self__, "first_on_demand", first_on_demand)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
         if local_ssd_count is not None:
@@ -14182,6 +17689,11 @@ class JobTaskForEachTaskTaskNewClusterGcpAttributes(dict):
     @pulumi.getter(name="bootDiskSize")
     def boot_disk_size(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "boot_disk_size")
+
+    @_builtins.property
+    @pulumi.getter(name="firstOnDemand")
+    def first_on_demand(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "first_on_demand")
 
     @_builtins.property
     @pulumi.getter(name="googleServiceAccount")
@@ -14459,6 +17971,7 @@ class JobTaskForEachTaskTaskNewClusterLibrary(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "egg")
 
@@ -15376,7 +18889,7 @@ class JobTaskForEachTaskTaskSparkPythonTask(dict):
                  parameters: Optional[Sequence[_builtins.str]] = None,
                  source: Optional[_builtins.str] = None):
         """
-        :param _builtins.str python_file: The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
+        :param _builtins.str python_file: The URI of the Python file to be executed. Cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
         :param Sequence[_builtins.str] parameters: (List) Command line parameters passed to the Python file.
         :param _builtins.str source: Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the python_file has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
                * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
@@ -15392,7 +18905,7 @@ class JobTaskForEachTaskTaskSparkPythonTask(dict):
     @pulumi.getter(name="pythonFile")
     def python_file(self) -> _builtins.str:
         """
-        The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
+        The URI of the Python file to be executed. Cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
         """
         return pulumi.get(self, "python_file")
 
@@ -16328,6 +19841,7 @@ class JobTaskLibrary(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "egg")
 
@@ -16430,7 +19944,9 @@ class JobTaskNewCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "applyPolicyDefaultValues":
+        if key == "__applyPolicyDefaultValuesAllowLists":
+            suggest = "__apply_policy_default_values_allow_lists"
+        elif key == "applyPolicyDefaultValues":
             suggest = "apply_policy_default_values"
         elif key == "awsAttributes":
             suggest = "aws_attributes"
@@ -16507,6 +20023,7 @@ class JobTaskNewCluster(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 __apply_policy_default_values_allow_lists: Optional[Sequence[_builtins.str]] = None,
                  apply_policy_default_values: Optional[_builtins.bool] = None,
                  autoscale: Optional['outputs.JobTaskNewClusterAutoscale'] = None,
                  aws_attributes: Optional['outputs.JobTaskNewClusterAwsAttributes'] = None,
@@ -16546,6 +20063,8 @@ class JobTaskNewCluster(dict):
         :param Sequence['JobTaskNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         :param 'JobTaskNewClusterWorkloadTypeArgs' workload_type: isn't supported
         """
+        if __apply_policy_default_values_allow_lists is not None:
+            pulumi.set(__self__, "__apply_policy_default_values_allow_lists", __apply_policy_default_values_allow_lists)
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -16616,6 +20135,11 @@ class JobTaskNewCluster(dict):
             pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
+
+    @_builtins.property
+    @pulumi.getter(name="__applyPolicyDefaultValuesAllowLists")
+    def __apply_policy_default_values_allow_lists(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "__apply_policy_default_values_allow_lists")
 
     @_builtins.property
     @pulumi.getter(name="applyPolicyDefaultValues")
@@ -17347,6 +20871,8 @@ class JobTaskNewClusterGcpAttributes(dict):
         suggest = None
         if key == "bootDiskSize":
             suggest = "boot_disk_size"
+        elif key == "firstOnDemand":
+            suggest = "first_on_demand"
         elif key == "googleServiceAccount":
             suggest = "google_service_account"
         elif key == "localSsdCount":
@@ -17370,6 +20896,7 @@ class JobTaskNewClusterGcpAttributes(dict):
     def __init__(__self__, *,
                  availability: Optional[_builtins.str] = None,
                  boot_disk_size: Optional[_builtins.int] = None,
+                 first_on_demand: Optional[_builtins.int] = None,
                  google_service_account: Optional[_builtins.str] = None,
                  local_ssd_count: Optional[_builtins.int] = None,
                  use_preemptible_executors: Optional[_builtins.bool] = None,
@@ -17378,6 +20905,8 @@ class JobTaskNewClusterGcpAttributes(dict):
             pulumi.set(__self__, "availability", availability)
         if boot_disk_size is not None:
             pulumi.set(__self__, "boot_disk_size", boot_disk_size)
+        if first_on_demand is not None:
+            pulumi.set(__self__, "first_on_demand", first_on_demand)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
         if local_ssd_count is not None:
@@ -17396,6 +20925,11 @@ class JobTaskNewClusterGcpAttributes(dict):
     @pulumi.getter(name="bootDiskSize")
     def boot_disk_size(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "boot_disk_size")
+
+    @_builtins.property
+    @pulumi.getter(name="firstOnDemand")
+    def first_on_demand(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "first_on_demand")
 
     @_builtins.property
     @pulumi.getter(name="googleServiceAccount")
@@ -17673,6 +21207,7 @@ class JobTaskNewClusterLibrary(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "egg")
 
@@ -18590,7 +22125,7 @@ class JobTaskSparkPythonTask(dict):
                  parameters: Optional[Sequence[_builtins.str]] = None,
                  source: Optional[_builtins.str] = None):
         """
-        :param _builtins.str python_file: The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
+        :param _builtins.str python_file: The URI of the Python file to be executed. Cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
         :param Sequence[_builtins.str] parameters: (List) Command line parameters passed to the Python file.
         :param _builtins.str source: Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the python_file has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
                * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
@@ -18606,7 +22141,7 @@ class JobTaskSparkPythonTask(dict):
     @pulumi.getter(name="pythonFile")
     def python_file(self) -> _builtins.str:
         """
-        The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
+        The URI of the Python file to be executed. Cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
         """
         return pulumi.get(self, "python_file")
 
@@ -20936,6 +24471,7 @@ class ModelServingAiGatewayGuardrailsInput(dict):
 
     @_builtins.property
     @pulumi.getter(name="invalidKeywords")
+    @_utilities.deprecated("""Please use 'pii' and 'safety' instead.""")
     def invalid_keywords(self) -> Optional[Sequence[_builtins.str]]:
         """
         List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
@@ -20960,6 +24496,7 @@ class ModelServingAiGatewayGuardrailsInput(dict):
 
     @_builtins.property
     @pulumi.getter(name="validTopics")
+    @_utilities.deprecated("""Please use 'pii' and 'safety' instead.""")
     def valid_topics(self) -> Optional[Sequence[_builtins.str]]:
         """
         The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
@@ -21029,6 +24566,7 @@ class ModelServingAiGatewayGuardrailsOutput(dict):
 
     @_builtins.property
     @pulumi.getter(name="invalidKeywords")
+    @_utilities.deprecated("""Please use 'pii' and 'safety' instead.""")
     def invalid_keywords(self) -> Optional[Sequence[_builtins.str]]:
         """
         List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
@@ -21053,6 +24591,7 @@ class ModelServingAiGatewayGuardrailsOutput(dict):
 
     @_builtins.property
     @pulumi.getter(name="validTopics")
+    @_utilities.deprecated("""Please use 'pii' and 'safety' instead.""")
     def valid_topics(self) -> Optional[Sequence[_builtins.str]]:
         """
         The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
@@ -21175,26 +24714,23 @@ class ModelServingAiGatewayRateLimit(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 calls: _builtins.int,
                  renewal_period: _builtins.str,
-                 key: Optional[_builtins.str] = None):
+                 calls: Optional[_builtins.int] = None,
+                 key: Optional[_builtins.str] = None,
+                 principal: Optional[_builtins.str] = None):
         """
-        :param _builtins.int calls: Used to specify how many calls are allowed for a key within the renewal_period.
         :param _builtins.str renewal_period: Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
-        :param _builtins.str key: Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        :param _builtins.int calls: Used to specify how many calls are allowed for a key within the renewal_period.
+        :param _builtins.str key: Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
+        :param _builtins.str principal: Principal field for a user, user group, or service principal to apply rate limiting to. Accepts a user email, group name, or service principal application ID.
         """
-        pulumi.set(__self__, "calls", calls)
         pulumi.set(__self__, "renewal_period", renewal_period)
+        if calls is not None:
+            pulumi.set(__self__, "calls", calls)
         if key is not None:
             pulumi.set(__self__, "key", key)
-
-    @_builtins.property
-    @pulumi.getter
-    def calls(self) -> _builtins.int:
-        """
-        Used to specify how many calls are allowed for a key within the renewal_period.
-        """
-        return pulumi.get(self, "calls")
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
 
     @_builtins.property
     @pulumi.getter(name="renewalPeriod")
@@ -21206,11 +24742,27 @@ class ModelServingAiGatewayRateLimit(dict):
 
     @_builtins.property
     @pulumi.getter
+    def calls(self) -> Optional[_builtins.int]:
+        """
+        Used to specify how many calls are allowed for a key within the renewal_period.
+        """
+        return pulumi.get(self, "calls")
+
+    @_builtins.property
+    @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
         """
-        Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
         """
         return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> Optional[_builtins.str]:
+        """
+        Principal field for a user, user group, or service principal to apply rate limiting to. Accepts a user email, group name, or service principal application ID.
+        """
+        return pulumi.get(self, "principal")
 
 
 @pulumi.output_type
@@ -22793,10 +26345,12 @@ class ModelServingConfigTrafficConfigRoute(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "servedModelName":
-            suggest = "served_model_name"
-        elif key == "trafficPercentage":
+        if key == "trafficPercentage":
             suggest = "traffic_percentage"
+        elif key == "servedEntityName":
+            suggest = "served_entity_name"
+        elif key == "servedModelName":
+            suggest = "served_model_name"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ModelServingConfigTrafficConfigRoute. Access the value via the '{suggest}' property getter instead.")
@@ -22810,18 +26364,18 @@ class ModelServingConfigTrafficConfigRoute(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 served_model_name: _builtins.str,
-                 traffic_percentage: _builtins.int):
+                 traffic_percentage: _builtins.int,
+                 served_entity_name: Optional[_builtins.str] = None,
+                 served_model_name: Optional[_builtins.str] = None):
         """
         :param _builtins.int traffic_percentage: The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
+        :param _builtins.str served_entity_name: The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
         """
-        pulumi.set(__self__, "served_model_name", served_model_name)
         pulumi.set(__self__, "traffic_percentage", traffic_percentage)
-
-    @_builtins.property
-    @pulumi.getter(name="servedModelName")
-    def served_model_name(self) -> _builtins.str:
-        return pulumi.get(self, "served_model_name")
+        if served_entity_name is not None:
+            pulumi.set(__self__, "served_entity_name", served_entity_name)
+        if served_model_name is not None:
+            pulumi.set(__self__, "served_model_name", served_model_name)
 
     @_builtins.property
     @pulumi.getter(name="trafficPercentage")
@@ -22830,6 +26384,69 @@ class ModelServingConfigTrafficConfigRoute(dict):
         The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
         """
         return pulumi.get(self, "traffic_percentage")
+
+    @_builtins.property
+    @pulumi.getter(name="servedEntityName")
+    def served_entity_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+        """
+        return pulumi.get(self, "served_entity_name")
+
+    @_builtins.property
+    @pulumi.getter(name="servedModelName")
+    def served_model_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "served_model_name")
+
+
+@pulumi.output_type
+class ModelServingEmailNotifications(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "onUpdateFailures":
+            suggest = "on_update_failures"
+        elif key == "onUpdateSuccesses":
+            suggest = "on_update_successes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ModelServingEmailNotifications. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ModelServingEmailNotifications.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ModelServingEmailNotifications.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 on_update_failures: Optional[Sequence[_builtins.str]] = None,
+                 on_update_successes: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] on_update_failures: a list of email addresses to be notified when an endpoint fails to update its configuration or state.
+        :param Sequence[_builtins.str] on_update_successes: a list of email addresses to be notified when an endpoint successfully updates its configuration or state.
+        """
+        if on_update_failures is not None:
+            pulumi.set(__self__, "on_update_failures", on_update_failures)
+        if on_update_successes is not None:
+            pulumi.set(__self__, "on_update_successes", on_update_successes)
+
+    @_builtins.property
+    @pulumi.getter(name="onUpdateFailures")
+    def on_update_failures(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        a list of email addresses to be notified when an endpoint fails to update its configuration or state.
+        """
+        return pulumi.get(self, "on_update_failures")
+
+    @_builtins.property
+    @pulumi.getter(name="onUpdateSuccesses")
+    def on_update_successes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        a list of email addresses to be notified when an endpoint successfully updates its configuration or state.
+        """
+        return pulumi.get(self, "on_update_successes")
 
 
 @pulumi.output_type
@@ -23237,21 +26854,20 @@ class ModelServingProvisionedThroughputAiGatewayRateLimit(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 calls: _builtins.int,
                  renewal_period: _builtins.str,
-                 key: Optional[_builtins.str] = None):
+                 calls: Optional[_builtins.int] = None,
+                 key: Optional[_builtins.str] = None,
+                 principal: Optional[_builtins.str] = None):
         """
         :param _builtins.str key: The key field for a tag.
         """
-        pulumi.set(__self__, "calls", calls)
         pulumi.set(__self__, "renewal_period", renewal_period)
+        if calls is not None:
+            pulumi.set(__self__, "calls", calls)
         if key is not None:
             pulumi.set(__self__, "key", key)
-
-    @_builtins.property
-    @pulumi.getter
-    def calls(self) -> _builtins.int:
-        return pulumi.get(self, "calls")
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
 
     @_builtins.property
     @pulumi.getter(name="renewalPeriod")
@@ -23260,11 +26876,21 @@ class ModelServingProvisionedThroughputAiGatewayRateLimit(dict):
 
     @_builtins.property
     @pulumi.getter
+    def calls(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "calls")
+
+    @_builtins.property
+    @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
         """
         The key field for a tag.
         """
         return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "principal")
 
 
 @pulumi.output_type
@@ -23433,10 +27059,12 @@ class ModelServingProvisionedThroughputConfigTrafficConfigRoute(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "servedModelName":
-            suggest = "served_model_name"
-        elif key == "trafficPercentage":
+        if key == "trafficPercentage":
             suggest = "traffic_percentage"
+        elif key == "servedEntityName":
+            suggest = "served_entity_name"
+        elif key == "servedModelName":
+            suggest = "served_model_name"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ModelServingProvisionedThroughputConfigTrafficConfigRoute. Access the value via the '{suggest}' property getter instead.")
@@ -23450,18 +27078,18 @@ class ModelServingProvisionedThroughputConfigTrafficConfigRoute(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 served_model_name: _builtins.str,
-                 traffic_percentage: _builtins.int):
+                 traffic_percentage: _builtins.int,
+                 served_entity_name: Optional[_builtins.str] = None,
+                 served_model_name: Optional[_builtins.str] = None):
         """
         :param _builtins.int traffic_percentage: The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
+        :param _builtins.str served_entity_name: The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
         """
-        pulumi.set(__self__, "served_model_name", served_model_name)
         pulumi.set(__self__, "traffic_percentage", traffic_percentage)
-
-    @_builtins.property
-    @pulumi.getter(name="servedModelName")
-    def served_model_name(self) -> _builtins.str:
-        return pulumi.get(self, "served_model_name")
+        if served_entity_name is not None:
+            pulumi.set(__self__, "served_entity_name", served_entity_name)
+        if served_model_name is not None:
+            pulumi.set(__self__, "served_model_name", served_model_name)
 
     @_builtins.property
     @pulumi.getter(name="trafficPercentage")
@@ -23470,6 +27098,69 @@ class ModelServingProvisionedThroughputConfigTrafficConfigRoute(dict):
         The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
         """
         return pulumi.get(self, "traffic_percentage")
+
+    @_builtins.property
+    @pulumi.getter(name="servedEntityName")
+    def served_entity_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+        """
+        return pulumi.get(self, "served_entity_name")
+
+    @_builtins.property
+    @pulumi.getter(name="servedModelName")
+    def served_model_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "served_model_name")
+
+
+@pulumi.output_type
+class ModelServingProvisionedThroughputEmailNotifications(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "onUpdateFailures":
+            suggest = "on_update_failures"
+        elif key == "onUpdateSuccesses":
+            suggest = "on_update_successes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ModelServingProvisionedThroughputEmailNotifications. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ModelServingProvisionedThroughputEmailNotifications.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ModelServingProvisionedThroughputEmailNotifications.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 on_update_failures: Optional[Sequence[_builtins.str]] = None,
+                 on_update_successes: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] on_update_failures: a list of email addresses to be notified when an endpoint fails to update its configuration or state.
+        :param Sequence[_builtins.str] on_update_successes: a list of email addresses to be notified when an endpoint successfully updates its configuration or state.
+        """
+        if on_update_failures is not None:
+            pulumi.set(__self__, "on_update_failures", on_update_failures)
+        if on_update_successes is not None:
+            pulumi.set(__self__, "on_update_successes", on_update_successes)
+
+    @_builtins.property
+    @pulumi.getter(name="onUpdateFailures")
+    def on_update_failures(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        a list of email addresses to be notified when an endpoint fails to update its configuration or state.
+        """
+        return pulumi.get(self, "on_update_failures")
+
+    @_builtins.property
+    @pulumi.getter(name="onUpdateSuccesses")
+    def on_update_successes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        a list of email addresses to be notified when an endpoint successfully updates its configuration or state.
+        """
+        return pulumi.get(self, "on_update_successes")
 
 
 @pulumi.output_type
@@ -23528,7 +27219,7 @@ class ModelServingRateLimit(dict):
         """
         :param _builtins.int calls: Used to specify how many calls are allowed for a key within the renewal_period.
         :param _builtins.str renewal_period: Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
-        :param _builtins.str key: Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        :param _builtins.str key: Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
         """
         pulumi.set(__self__, "calls", calls)
         pulumi.set(__self__, "renewal_period", renewal_period)
@@ -23555,7 +27246,7 @@ class ModelServingRateLimit(dict):
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
         """
-        Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
         """
         return pulumi.get(self, "key")
 
@@ -24243,6 +27934,7 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRules(dict):
                  aws_private_endpoint_rules: Optional[Sequence['outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule']] = None,
                  azure_private_endpoint_rules: Optional[Sequence['outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule']] = None):
         """
+        :param Sequence['MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs'] aws_private_endpoint_rules: (AWS only) - list containing information about configure AWS Private Endpoints.
         :param Sequence['MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs'] azure_private_endpoint_rules: (Azure only) - list containing information about configure Azure Private Endpoints.
         """
         if aws_private_endpoint_rules is not None:
@@ -24253,6 +27945,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRules(dict):
     @_builtins.property
     @pulumi.getter(name="awsPrivateEndpointRules")
     def aws_private_endpoint_rules(self) -> Optional[Sequence['outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule']]:
+        """
+        (AWS only) - list containing information about configure AWS Private Endpoints.
+        """
         return pulumi.get(self, "aws_private_endpoint_rules")
 
     @_builtins.property
@@ -24318,7 +28013,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule(
                  updated_time: Optional[_builtins.int] = None,
                  vpc_endpoint_id: Optional[_builtins.str] = None):
         """
+        :param _builtins.int creation_time: time in epoch milliseconds when this object was created.
         :param _builtins.str network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account
+        :param _builtins.int updated_time: time in epoch milliseconds when this object was updated.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -24360,6 +28057,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule(
     @_builtins.property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> Optional[_builtins.int]:
+        """
+        time in epoch milliseconds when this object was created.
+        """
         return pulumi.get(self, "creation_time")
 
     @_builtins.property
@@ -24408,6 +28108,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule(
     @_builtins.property
     @pulumi.getter(name="updatedTime")
     def updated_time(self) -> Optional[_builtins.int]:
+        """
+        time in epoch milliseconds when this object was updated.
+        """
         return pulumi.get(self, "updated_time")
 
     @_builtins.property
@@ -24466,7 +28169,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRul
                  rule_id: Optional[_builtins.str] = None,
                  updated_time: Optional[_builtins.int] = None):
         """
+        :param _builtins.int creation_time: time in epoch milliseconds when this object was created.
         :param _builtins.str network_connectivity_config_id: Canonical unique identifier of Network Connectivity Config in Databricks Account
+        :param _builtins.int updated_time: time in epoch milliseconds when this object was updated.
         """
         if connection_state is not None:
             pulumi.set(__self__, "connection_state", connection_state)
@@ -24499,6 +28204,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRul
     @_builtins.property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> Optional[_builtins.int]:
+        """
+        time in epoch milliseconds when this object was created.
+        """
         return pulumi.get(self, "creation_time")
 
     @_builtins.property
@@ -24547,6 +28255,9 @@ class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRul
     @_builtins.property
     @pulumi.getter(name="updatedTime")
     def updated_time(self) -> Optional[_builtins.int]:
+        """
+        time in epoch milliseconds when this object was updated.
+        """
         return pulumi.get(self, "updated_time")
 
 
@@ -24675,13 +28386,13 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.87.1/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "pod_ip_range_name")
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.87.1/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -24953,13 +28664,13 @@ class MwsWorkspacesGcpManagedNetworkConfig(dict):
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.87.1/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.84.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.87.1/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -25364,7 +29075,15 @@ class NotificationDestinationConfigSlack(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "urlSet":
+        if key == "channelId":
+            suggest = "channel_id"
+        elif key == "channelIdSet":
+            suggest = "channel_id_set"
+        elif key == "oauthToken":
+            suggest = "oauth_token"
+        elif key == "oauthTokenSet":
+            suggest = "oauth_token_set"
+        elif key == "urlSet":
             suggest = "url_set"
 
         if suggest:
@@ -25379,15 +29098,47 @@ class NotificationDestinationConfigSlack(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 channel_id: Optional[_builtins.str] = None,
+                 channel_id_set: Optional[_builtins.bool] = None,
+                 oauth_token: Optional[_builtins.str] = None,
+                 oauth_token_set: Optional[_builtins.bool] = None,
                  url: Optional[_builtins.str] = None,
                  url_set: Optional[_builtins.bool] = None):
         """
         :param _builtins.str url: The Slack webhook URL.
         """
+        if channel_id is not None:
+            pulumi.set(__self__, "channel_id", channel_id)
+        if channel_id_set is not None:
+            pulumi.set(__self__, "channel_id_set", channel_id_set)
+        if oauth_token is not None:
+            pulumi.set(__self__, "oauth_token", oauth_token)
+        if oauth_token_set is not None:
+            pulumi.set(__self__, "oauth_token_set", oauth_token_set)
         if url is not None:
             pulumi.set(__self__, "url", url)
         if url_set is not None:
             pulumi.set(__self__, "url_set", url_set)
+
+    @_builtins.property
+    @pulumi.getter(name="channelId")
+    def channel_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "channel_id")
+
+    @_builtins.property
+    @pulumi.getter(name="channelIdSet")
+    def channel_id_set(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "channel_id_set")
+
+    @_builtins.property
+    @pulumi.getter(name="oauthToken")
+    def oauth_token(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "oauth_token")
+
+    @_builtins.property
+    @pulumi.getter(name="oauthTokenSet")
+    def oauth_token_set(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "oauth_token_set")
 
     @_builtins.property
     @pulumi.getter
@@ -26032,7 +29783,7 @@ class PermissionsAccessControl(dict):
         :param _builtins.str permission_level: permission level according to specific resource. See examples above for the reference.
                
                Exactly one of the below arguments is required:
-        :param _builtins.str service_principal_name: Application ID of the service_principal.
+        :param _builtins.str service_principal_name: Application ID (**not service principal name!**) of the service_principal.
         :param _builtins.str user_name: name of the user.
         """
         if group_name is not None:
@@ -26066,7 +29817,7 @@ class PermissionsAccessControl(dict):
     @pulumi.getter(name="servicePrincipalName")
     def service_principal_name(self) -> Optional[_builtins.str]:
         """
-        Application ID of the service_principal.
+        Application ID (**not service principal name!**) of the service_principal.
         """
         return pulumi.get(self, "service_principal_name")
 
@@ -26688,7 +30439,9 @@ class PipelineClusterGcpAttributes(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "googleServiceAccount":
+        if key == "firstOnDemand":
+            suggest = "first_on_demand"
+        elif key == "googleServiceAccount":
             suggest = "google_service_account"
         elif key == "localSsdCount":
             suggest = "local_ssd_count"
@@ -26708,11 +30461,14 @@ class PipelineClusterGcpAttributes(dict):
 
     def __init__(__self__, *,
                  availability: Optional[_builtins.str] = None,
+                 first_on_demand: Optional[_builtins.int] = None,
                  google_service_account: Optional[_builtins.str] = None,
                  local_ssd_count: Optional[_builtins.int] = None,
                  zone_id: Optional[_builtins.str] = None):
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
+        if first_on_demand is not None:
+            pulumi.set(__self__, "first_on_demand", first_on_demand)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
         if local_ssd_count is not None:
@@ -26724,6 +30480,11 @@ class PipelineClusterGcpAttributes(dict):
     @pulumi.getter
     def availability(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "availability")
+
+    @_builtins.property
+    @pulumi.getter(name="firstOnDemand")
+    def first_on_demand(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "first_on_demand")
 
     @_builtins.property
     @pulumi.getter(name="googleServiceAccount")
@@ -27015,12 +30776,58 @@ class PipelineDeployment(dict):
 class PipelineEnvironment(dict):
     def __init__(__self__, *,
                  dependencies: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] dependencies: a list of pip dependencies, as supported by the version of pip in this environment. Each dependency is a [pip requirement file line](https://pip.pypa.io/en/stable/reference/requirements-file-format/).  See [API docs](https://docs.databricks.com/api/azure/workspace/pipelines/create#environment-dependencies) for more information.
+               
+               Example:
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               
+               this = databricks.Pipeline("this",
+                   name="Serverless demo",
+                   serverless=True,
+                   catalog="main",
+                   schema="ldp_demo",
+                   environment={
+                       "dependencies": [
+                           "foo==0.0.1",
+                           "-r /Workspace/Users/user.name/my-pipeline/requirements.txt",
+                           "/Volumes/main/default/libs/my_lib.whl",
+                       ],
+                   })
+               ```
+        """
         if dependencies is not None:
             pulumi.set(__self__, "dependencies", dependencies)
 
     @_builtins.property
     @pulumi.getter
     def dependencies(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        a list of pip dependencies, as supported by the version of pip in this environment. Each dependency is a [pip requirement file line](https://pip.pypa.io/en/stable/reference/requirements-file-format/).  See [API docs](https://docs.databricks.com/api/azure/workspace/pipelines/create#environment-dependencies) for more information.
+
+        Example:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.Pipeline("this",
+            name="Serverless demo",
+            serverless=True,
+            catalog="main",
+            schema="ldp_demo",
+            environment={
+                "dependencies": [
+                    "foo==0.0.1",
+                    "-r /Workspace/Users/user.name/my-pipeline/requirements.txt",
+                    "/Volumes/main/default/libs/my_lib.whl",
+                ],
+            })
+        ```
+        """
         return pulumi.get(self, "dependencies")
 
 
@@ -27134,7 +30941,7 @@ class PipelineGatewayDefinition(dict):
         :param _builtins.str gateway_storage_catalog: Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
         :param _builtins.str gateway_storage_schema: Required, Immutable. The name of the schema for the gateway pipelines's storage location.
         :param _builtins.str connection_id: Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
-        :param _builtins.str gateway_storage_name: Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+        :param _builtins.str gateway_storage_name: Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Lakeflow Declarative Pipelines system will automatically create the storage location under the catalog and schema.
         """
         pulumi.set(__self__, "connection_name", connection_name)
         pulumi.set(__self__, "gateway_storage_catalog", gateway_storage_catalog)
@@ -27177,7 +30984,7 @@ class PipelineGatewayDefinition(dict):
     @pulumi.getter(name="gatewayStorageName")
     def gateway_storage_name(self) -> Optional[_builtins.str]:
         """
-        Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+        Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Lakeflow Declarative Pipelines system will automatically create the storage location under the catalog and schema.
         """
         return pulumi.get(self, "gateway_storage_name")
 
@@ -27363,6 +31170,8 @@ class PipelineIngestionDefinitionObjectReportTableConfiguration(dict):
             suggest = "include_columns"
         elif key == "primaryKeys":
             suggest = "primary_keys"
+        elif key == "queryBasedConnectorConfig":
+            suggest = "query_based_connector_config"
         elif key == "salesforceIncludeFormulaFields":
             suggest = "salesforce_include_formula_fields"
         elif key == "scdType":
@@ -27385,6 +31194,7 @@ class PipelineIngestionDefinitionObjectReportTableConfiguration(dict):
                  exclude_columns: Optional[Sequence[_builtins.str]] = None,
                  include_columns: Optional[Sequence[_builtins.str]] = None,
                  primary_keys: Optional[Sequence[_builtins.str]] = None,
+                 query_based_connector_config: Optional['outputs.PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfig'] = None,
                  salesforce_include_formula_fields: Optional[_builtins.bool] = None,
                  scd_type: Optional[_builtins.str] = None,
                  sequence_bies: Optional[Sequence[_builtins.str]] = None):
@@ -27394,6 +31204,8 @@ class PipelineIngestionDefinitionObjectReportTableConfiguration(dict):
             pulumi.set(__self__, "include_columns", include_columns)
         if primary_keys is not None:
             pulumi.set(__self__, "primary_keys", primary_keys)
+        if query_based_connector_config is not None:
+            pulumi.set(__self__, "query_based_connector_config", query_based_connector_config)
         if salesforce_include_formula_fields is not None:
             pulumi.set(__self__, "salesforce_include_formula_fields", salesforce_include_formula_fields)
         if scd_type is not None:
@@ -27417,6 +31229,11 @@ class PipelineIngestionDefinitionObjectReportTableConfiguration(dict):
         return pulumi.get(self, "primary_keys")
 
     @_builtins.property
+    @pulumi.getter(name="queryBasedConnectorConfig")
+    def query_based_connector_config(self) -> Optional['outputs.PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfig']:
+        return pulumi.get(self, "query_based_connector_config")
+
+    @_builtins.property
     @pulumi.getter(name="salesforceIncludeFormulaFields")
     def salesforce_include_formula_fields(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "salesforce_include_formula_fields")
@@ -27430,6 +31247,56 @@ class PipelineIngestionDefinitionObjectReportTableConfiguration(dict):
     @pulumi.getter(name="sequenceBies")
     def sequence_bies(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "sequence_bies")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cursorColumns":
+            suggest = "cursor_columns"
+        elif key == "deletionCondition":
+            suggest = "deletion_condition"
+        elif key == "hardDeletionSyncMinIntervalInSeconds":
+            suggest = "hard_deletion_sync_min_interval_in_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cursor_columns: Optional[Sequence[_builtins.str]] = None,
+                 deletion_condition: Optional[_builtins.str] = None,
+                 hard_deletion_sync_min_interval_in_seconds: Optional[_builtins.int] = None):
+        if cursor_columns is not None:
+            pulumi.set(__self__, "cursor_columns", cursor_columns)
+        if deletion_condition is not None:
+            pulumi.set(__self__, "deletion_condition", deletion_condition)
+        if hard_deletion_sync_min_interval_in_seconds is not None:
+            pulumi.set(__self__, "hard_deletion_sync_min_interval_in_seconds", hard_deletion_sync_min_interval_in_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="cursorColumns")
+    def cursor_columns(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "cursor_columns")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionCondition")
+    def deletion_condition(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "deletion_condition")
+
+    @_builtins.property
+    @pulumi.getter(name="hardDeletionSyncMinIntervalInSeconds")
+    def hard_deletion_sync_min_interval_in_seconds(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "hard_deletion_sync_min_interval_in_seconds")
 
 
 @pulumi.output_type
@@ -27510,6 +31377,8 @@ class PipelineIngestionDefinitionObjectSchemaTableConfiguration(dict):
             suggest = "include_columns"
         elif key == "primaryKeys":
             suggest = "primary_keys"
+        elif key == "queryBasedConnectorConfig":
+            suggest = "query_based_connector_config"
         elif key == "salesforceIncludeFormulaFields":
             suggest = "salesforce_include_formula_fields"
         elif key == "scdType":
@@ -27532,6 +31401,7 @@ class PipelineIngestionDefinitionObjectSchemaTableConfiguration(dict):
                  exclude_columns: Optional[Sequence[_builtins.str]] = None,
                  include_columns: Optional[Sequence[_builtins.str]] = None,
                  primary_keys: Optional[Sequence[_builtins.str]] = None,
+                 query_based_connector_config: Optional['outputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfig'] = None,
                  salesforce_include_formula_fields: Optional[_builtins.bool] = None,
                  scd_type: Optional[_builtins.str] = None,
                  sequence_bies: Optional[Sequence[_builtins.str]] = None):
@@ -27541,6 +31411,8 @@ class PipelineIngestionDefinitionObjectSchemaTableConfiguration(dict):
             pulumi.set(__self__, "include_columns", include_columns)
         if primary_keys is not None:
             pulumi.set(__self__, "primary_keys", primary_keys)
+        if query_based_connector_config is not None:
+            pulumi.set(__self__, "query_based_connector_config", query_based_connector_config)
         if salesforce_include_formula_fields is not None:
             pulumi.set(__self__, "salesforce_include_formula_fields", salesforce_include_formula_fields)
         if scd_type is not None:
@@ -27564,6 +31436,11 @@ class PipelineIngestionDefinitionObjectSchemaTableConfiguration(dict):
         return pulumi.get(self, "primary_keys")
 
     @_builtins.property
+    @pulumi.getter(name="queryBasedConnectorConfig")
+    def query_based_connector_config(self) -> Optional['outputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfig']:
+        return pulumi.get(self, "query_based_connector_config")
+
+    @_builtins.property
     @pulumi.getter(name="salesforceIncludeFormulaFields")
     def salesforce_include_formula_fields(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "salesforce_include_formula_fields")
@@ -27577,6 +31454,56 @@ class PipelineIngestionDefinitionObjectSchemaTableConfiguration(dict):
     @pulumi.getter(name="sequenceBies")
     def sequence_bies(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "sequence_bies")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cursorColumns":
+            suggest = "cursor_columns"
+        elif key == "deletionCondition":
+            suggest = "deletion_condition"
+        elif key == "hardDeletionSyncMinIntervalInSeconds":
+            suggest = "hard_deletion_sync_min_interval_in_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cursor_columns: Optional[Sequence[_builtins.str]] = None,
+                 deletion_condition: Optional[_builtins.str] = None,
+                 hard_deletion_sync_min_interval_in_seconds: Optional[_builtins.int] = None):
+        if cursor_columns is not None:
+            pulumi.set(__self__, "cursor_columns", cursor_columns)
+        if deletion_condition is not None:
+            pulumi.set(__self__, "deletion_condition", deletion_condition)
+        if hard_deletion_sync_min_interval_in_seconds is not None:
+            pulumi.set(__self__, "hard_deletion_sync_min_interval_in_seconds", hard_deletion_sync_min_interval_in_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="cursorColumns")
+    def cursor_columns(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "cursor_columns")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionCondition")
+    def deletion_condition(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "deletion_condition")
+
+    @_builtins.property
+    @pulumi.getter(name="hardDeletionSyncMinIntervalInSeconds")
+    def hard_deletion_sync_min_interval_in_seconds(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "hard_deletion_sync_min_interval_in_seconds")
 
 
 @pulumi.output_type
@@ -27677,6 +31604,8 @@ class PipelineIngestionDefinitionObjectTableTableConfiguration(dict):
             suggest = "include_columns"
         elif key == "primaryKeys":
             suggest = "primary_keys"
+        elif key == "queryBasedConnectorConfig":
+            suggest = "query_based_connector_config"
         elif key == "salesforceIncludeFormulaFields":
             suggest = "salesforce_include_formula_fields"
         elif key == "scdType":
@@ -27699,6 +31628,7 @@ class PipelineIngestionDefinitionObjectTableTableConfiguration(dict):
                  exclude_columns: Optional[Sequence[_builtins.str]] = None,
                  include_columns: Optional[Sequence[_builtins.str]] = None,
                  primary_keys: Optional[Sequence[_builtins.str]] = None,
+                 query_based_connector_config: Optional['outputs.PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig'] = None,
                  salesforce_include_formula_fields: Optional[_builtins.bool] = None,
                  scd_type: Optional[_builtins.str] = None,
                  sequence_bies: Optional[Sequence[_builtins.str]] = None):
@@ -27708,6 +31638,8 @@ class PipelineIngestionDefinitionObjectTableTableConfiguration(dict):
             pulumi.set(__self__, "include_columns", include_columns)
         if primary_keys is not None:
             pulumi.set(__self__, "primary_keys", primary_keys)
+        if query_based_connector_config is not None:
+            pulumi.set(__self__, "query_based_connector_config", query_based_connector_config)
         if salesforce_include_formula_fields is not None:
             pulumi.set(__self__, "salesforce_include_formula_fields", salesforce_include_formula_fields)
         if scd_type is not None:
@@ -27731,6 +31663,11 @@ class PipelineIngestionDefinitionObjectTableTableConfiguration(dict):
         return pulumi.get(self, "primary_keys")
 
     @_builtins.property
+    @pulumi.getter(name="queryBasedConnectorConfig")
+    def query_based_connector_config(self) -> Optional['outputs.PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig']:
+        return pulumi.get(self, "query_based_connector_config")
+
+    @_builtins.property
     @pulumi.getter(name="salesforceIncludeFormulaFields")
     def salesforce_include_formula_fields(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "salesforce_include_formula_fields")
@@ -27747,6 +31684,56 @@ class PipelineIngestionDefinitionObjectTableTableConfiguration(dict):
 
 
 @pulumi.output_type
+class PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cursorColumns":
+            suggest = "cursor_columns"
+        elif key == "deletionCondition":
+            suggest = "deletion_condition"
+        elif key == "hardDeletionSyncMinIntervalInSeconds":
+            suggest = "hard_deletion_sync_min_interval_in_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cursor_columns: Optional[Sequence[_builtins.str]] = None,
+                 deletion_condition: Optional[_builtins.str] = None,
+                 hard_deletion_sync_min_interval_in_seconds: Optional[_builtins.int] = None):
+        if cursor_columns is not None:
+            pulumi.set(__self__, "cursor_columns", cursor_columns)
+        if deletion_condition is not None:
+            pulumi.set(__self__, "deletion_condition", deletion_condition)
+        if hard_deletion_sync_min_interval_in_seconds is not None:
+            pulumi.set(__self__, "hard_deletion_sync_min_interval_in_seconds", hard_deletion_sync_min_interval_in_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="cursorColumns")
+    def cursor_columns(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "cursor_columns")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionCondition")
+    def deletion_condition(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "deletion_condition")
+
+    @_builtins.property
+    @pulumi.getter(name="hardDeletionSyncMinIntervalInSeconds")
+    def hard_deletion_sync_min_interval_in_seconds(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "hard_deletion_sync_min_interval_in_seconds")
+
+
+@pulumi.output_type
 class PipelineIngestionDefinitionTableConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -27757,6 +31744,8 @@ class PipelineIngestionDefinitionTableConfiguration(dict):
             suggest = "include_columns"
         elif key == "primaryKeys":
             suggest = "primary_keys"
+        elif key == "queryBasedConnectorConfig":
+            suggest = "query_based_connector_config"
         elif key == "salesforceIncludeFormulaFields":
             suggest = "salesforce_include_formula_fields"
         elif key == "scdType":
@@ -27779,6 +31768,7 @@ class PipelineIngestionDefinitionTableConfiguration(dict):
                  exclude_columns: Optional[Sequence[_builtins.str]] = None,
                  include_columns: Optional[Sequence[_builtins.str]] = None,
                  primary_keys: Optional[Sequence[_builtins.str]] = None,
+                 query_based_connector_config: Optional['outputs.PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig'] = None,
                  salesforce_include_formula_fields: Optional[_builtins.bool] = None,
                  scd_type: Optional[_builtins.str] = None,
                  sequence_bies: Optional[Sequence[_builtins.str]] = None):
@@ -27788,6 +31778,8 @@ class PipelineIngestionDefinitionTableConfiguration(dict):
             pulumi.set(__self__, "include_columns", include_columns)
         if primary_keys is not None:
             pulumi.set(__self__, "primary_keys", primary_keys)
+        if query_based_connector_config is not None:
+            pulumi.set(__self__, "query_based_connector_config", query_based_connector_config)
         if salesforce_include_formula_fields is not None:
             pulumi.set(__self__, "salesforce_include_formula_fields", salesforce_include_formula_fields)
         if scd_type is not None:
@@ -27811,6 +31803,11 @@ class PipelineIngestionDefinitionTableConfiguration(dict):
         return pulumi.get(self, "primary_keys")
 
     @_builtins.property
+    @pulumi.getter(name="queryBasedConnectorConfig")
+    def query_based_connector_config(self) -> Optional['outputs.PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig']:
+        return pulumi.get(self, "query_based_connector_config")
+
+    @_builtins.property
     @pulumi.getter(name="salesforceIncludeFormulaFields")
     def salesforce_include_formula_fields(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "salesforce_include_formula_fields")
@@ -27824,6 +31821,56 @@ class PipelineIngestionDefinitionTableConfiguration(dict):
     @pulumi.getter(name="sequenceBies")
     def sequence_bies(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "sequence_bies")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cursorColumns":
+            suggest = "cursor_columns"
+        elif key == "deletionCondition":
+            suggest = "deletion_condition"
+        elif key == "hardDeletionSyncMinIntervalInSeconds":
+            suggest = "hard_deletion_sync_min_interval_in_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cursor_columns: Optional[Sequence[_builtins.str]] = None,
+                 deletion_condition: Optional[_builtins.str] = None,
+                 hard_deletion_sync_min_interval_in_seconds: Optional[_builtins.int] = None):
+        if cursor_columns is not None:
+            pulumi.set(__self__, "cursor_columns", cursor_columns)
+        if deletion_condition is not None:
+            pulumi.set(__self__, "deletion_condition", deletion_condition)
+        if hard_deletion_sync_min_interval_in_seconds is not None:
+            pulumi.set(__self__, "hard_deletion_sync_min_interval_in_seconds", hard_deletion_sync_min_interval_in_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="cursorColumns")
+    def cursor_columns(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "cursor_columns")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionCondition")
+    def deletion_condition(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "deletion_condition")
+
+    @_builtins.property
+    @pulumi.getter(name="hardDeletionSyncMinIntervalInSeconds")
+    def hard_deletion_sync_min_interval_in_seconds(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "hard_deletion_sync_min_interval_in_seconds")
 
 
 @pulumi.output_type
@@ -28222,6 +32269,180 @@ class PipelineTriggerCron(dict):
 class PipelineTriggerManual(dict):
     def __init__(__self__):
         pass
+
+
+@pulumi.output_type
+class PolicyInfoColumnMask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "functionName":
+            suggest = "function_name"
+        elif key == "onColumn":
+            suggest = "on_column"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyInfoColumnMask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyInfoColumnMask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyInfoColumnMask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 function_name: _builtins.str,
+                 on_column: _builtins.str,
+                 usings: Optional[Sequence['outputs.PolicyInfoColumnMaskUsing']] = None):
+        """
+        :param _builtins.str on_column: The alias of the column to be masked. The alias must refer to one of matched columns.
+               The values of the column is passed to the column mask function as the first argument.
+               Required on create and update
+        """
+        pulumi.set(__self__, "function_name", function_name)
+        pulumi.set(__self__, "on_column", on_column)
+        if usings is not None:
+            pulumi.set(__self__, "usings", usings)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> _builtins.str:
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="onColumn")
+    def on_column(self) -> _builtins.str:
+        """
+        The alias of the column to be masked. The alias must refer to one of matched columns.
+        The values of the column is passed to the column mask function as the first argument.
+        Required on create and update
+        """
+        return pulumi.get(self, "on_column")
+
+    @_builtins.property
+    @pulumi.getter
+    def usings(self) -> Optional[Sequence['outputs.PolicyInfoColumnMaskUsing']]:
+        return pulumi.get(self, "usings")
+
+
+@pulumi.output_type
+class PolicyInfoColumnMaskUsing(dict):
+    def __init__(__self__, *,
+                 alias: Optional[_builtins.str] = None,
+                 constant: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str constant: A constant literal
+        """
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if constant is not None:
+            pulumi.set(__self__, "constant", constant)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter
+    def constant(self) -> Optional[_builtins.str]:
+        """
+        A constant literal
+        """
+        return pulumi.get(self, "constant")
+
+
+@pulumi.output_type
+class PolicyInfoMatchColumn(dict):
+    def __init__(__self__, *,
+                 alias: Optional[_builtins.str] = None,
+                 condition: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str condition: The condition expression used to match a table column
+        """
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter
+    def condition(self) -> Optional[_builtins.str]:
+        """
+        The condition expression used to match a table column
+        """
+        return pulumi.get(self, "condition")
+
+
+@pulumi.output_type
+class PolicyInfoRowFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "functionName":
+            suggest = "function_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyInfoRowFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyInfoRowFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyInfoRowFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 function_name: _builtins.str,
+                 usings: Optional[Sequence['outputs.PolicyInfoRowFilterUsing']] = None):
+        pulumi.set(__self__, "function_name", function_name)
+        if usings is not None:
+            pulumi.set(__self__, "usings", usings)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> _builtins.str:
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def usings(self) -> Optional[Sequence['outputs.PolicyInfoRowFilterUsing']]:
+        return pulumi.get(self, "usings")
+
+
+@pulumi.output_type
+class PolicyInfoRowFilterUsing(dict):
+    def __init__(__self__, *,
+                 alias: Optional[_builtins.str] = None,
+                 constant: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str constant: A constant literal
+        """
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if constant is not None:
+            pulumi.set(__self__, "constant", constant)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter
+    def constant(self) -> Optional[_builtins.str]:
+        """
+        A constant literal
+        """
+        return pulumi.get(self, "constant")
 
 
 @pulumi.output_type
@@ -32287,8 +36508,8 @@ class GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedStorageDestinationR
         """
         :param _builtins.str azure_storage_account: (string) - The Azure storage account name
         :param _builtins.str azure_storage_service: (string) - The Azure storage service type (blob, dfs, etc.)
-        :param _builtins.str bucket_name: (string) -
-        :param _builtins.str region: (string) -
+        :param _builtins.str bucket_name: (string)
+        :param _builtins.str region: (string)
         :param _builtins.str storage_destination_type: (string) - The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
         """
         if azure_storage_account is not None:
@@ -32322,7 +36543,7 @@ class GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedStorageDestinationR
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[_builtins.str]:
         """
-        (string) -
+        (string)
         """
         return pulumi.get(self, "bucket_name")
 
@@ -32330,7 +36551,7 @@ class GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedStorageDestinationR
     @pulumi.getter
     def region(self) -> Optional[_builtins.str]:
         """
-        (string) -
+        (string)
         """
         return pulumi.get(self, "region")
 
@@ -32349,7 +36570,7 @@ class GetAccountNetworkPoliciesItemEgressNetworkAccessPolicyEnforcementResult(di
                  dry_run_mode_product_filters: Optional[Sequence[_builtins.str]] = None,
                  enforcement_mode: Optional[_builtins.str] = None):
         """
-        :param Sequence[_builtins.str] dry_run_mode_product_filters: (list of ) - When empty, it means dry run for all products.
+        :param Sequence[_builtins.str] dry_run_mode_product_filters: (list of string) - When empty, it means dry run for all products.
                When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
         :param _builtins.str enforcement_mode: (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
                while DRY_RUN only logs violations without blocking. When not specified,
@@ -32364,7 +36585,7 @@ class GetAccountNetworkPoliciesItemEgressNetworkAccessPolicyEnforcementResult(di
     @pulumi.getter(name="dryRunModeProductFilters")
     def dry_run_mode_product_filters(self) -> Optional[Sequence[_builtins.str]]:
         """
-        (list of ) - When empty, it means dry run for all products.
+        (list of string) - When empty, it means dry run for all products.
         When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
         """
         return pulumi.get(self, "dry_run_mode_product_filters")
@@ -32495,8 +36716,8 @@ class GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationResult(
         """
         :param _builtins.str azure_storage_account: (string) - The Azure storage account name
         :param _builtins.str azure_storage_service: (string) - The Azure storage service type (blob, dfs, etc.)
-        :param _builtins.str bucket_name: (string) -
-        :param _builtins.str region: (string) -
+        :param _builtins.str bucket_name: (string)
+        :param _builtins.str region: (string)
         :param _builtins.str storage_destination_type: (string) - The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
         """
         if azure_storage_account is not None:
@@ -32530,7 +36751,7 @@ class GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationResult(
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[_builtins.str]:
         """
-        (string) -
+        (string)
         """
         return pulumi.get(self, "bucket_name")
 
@@ -32538,7 +36759,7 @@ class GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationResult(
     @pulumi.getter
     def region(self) -> Optional[_builtins.str]:
         """
-        (string) -
+        (string)
         """
         return pulumi.get(self, "region")
 
@@ -32557,7 +36778,7 @@ class GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementResult(dict):
                  dry_run_mode_product_filters: Optional[Sequence[_builtins.str]] = None,
                  enforcement_mode: Optional[_builtins.str] = None):
         """
-        :param Sequence[_builtins.str] dry_run_mode_product_filters: (list of ) - When empty, it means dry run for all products.
+        :param Sequence[_builtins.str] dry_run_mode_product_filters: (list of string) - When empty, it means dry run for all products.
                When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
         :param _builtins.str enforcement_mode: (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
                while DRY_RUN only logs violations without blocking. When not specified,
@@ -32572,7 +36793,7 @@ class GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementResult(dict):
     @pulumi.getter(name="dryRunModeProductFilters")
     def dry_run_mode_product_filters(self) -> Optional[Sequence[_builtins.str]]:
         """
-        (list of ) - When empty, it means dry run for all products.
+        (list of string) - When empty, it means dry run for all products.
         When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
         """
         return pulumi.get(self, "dry_run_mode_product_filters")
@@ -32686,7 +36907,7 @@ class GetAlertV2EvaluationNotificationResult(dict):
         """
         :param _builtins.bool notify_on_ok: (boolean) - Whether to notify alert subscribers when alert returns back to normal
         :param _builtins.int retrigger_seconds: (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
-        :param Sequence['GetAlertV2EvaluationNotificationSubscriptionArgs'] subscriptions: (list of AlertV2Subscription) -
+        :param Sequence['GetAlertV2EvaluationNotificationSubscriptionArgs'] subscriptions: (list of AlertV2Subscription)
         """
         if notify_on_ok is not None:
             pulumi.set(__self__, "notify_on_ok", notify_on_ok)
@@ -32715,7 +36936,7 @@ class GetAlertV2EvaluationNotificationResult(dict):
     @pulumi.getter
     def subscriptions(self) -> Optional[Sequence['outputs.GetAlertV2EvaluationNotificationSubscriptionResult']]:
         """
-        (list of AlertV2Subscription) -
+        (list of AlertV2Subscription)
         """
         return pulumi.get(self, "subscriptions")
 
@@ -32726,8 +36947,8 @@ class GetAlertV2EvaluationNotificationSubscriptionResult(dict):
                  destination_id: Optional[_builtins.str] = None,
                  user_email: Optional[_builtins.str] = None):
         """
-        :param _builtins.str destination_id: (string) -
-        :param _builtins.str user_email: (string) -
+        :param _builtins.str destination_id: (string)
+        :param _builtins.str user_email: (string)
         """
         if destination_id is not None:
             pulumi.set(__self__, "destination_id", destination_id)
@@ -32738,7 +36959,7 @@ class GetAlertV2EvaluationNotificationSubscriptionResult(dict):
     @pulumi.getter(name="destinationId")
     def destination_id(self) -> Optional[_builtins.str]:
         """
-        (string) -
+        (string)
         """
         return pulumi.get(self, "destination_id")
 
@@ -32746,7 +36967,7 @@ class GetAlertV2EvaluationNotificationSubscriptionResult(dict):
     @pulumi.getter(name="userEmail")
     def user_email(self) -> Optional[_builtins.str]:
         """
-        (string) -
+        (string)
         """
         return pulumi.get(self, "user_email")
 
@@ -32759,8 +36980,8 @@ class GetAlertV2EvaluationSourceResult(dict):
                  name: Optional[_builtins.str] = None):
         """
         :param _builtins.str aggregation: (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
-        :param _builtins.str display: (string) -
-        :param _builtins.str name: (string) -
+        :param _builtins.str display: (string)
+        :param _builtins.str name: (string)
         """
         if aggregation is not None:
             pulumi.set(__self__, "aggregation", aggregation)
@@ -32781,7 +37002,7 @@ class GetAlertV2EvaluationSourceResult(dict):
     @pulumi.getter
     def display(self) -> Optional[_builtins.str]:
         """
-        (string) -
+        (string)
         """
         return pulumi.get(self, "display")
 
@@ -32789,7 +37010,7 @@ class GetAlertV2EvaluationSourceResult(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        (string) -
+        (string)
         """
         return pulumi.get(self, "name")
 
@@ -32800,8 +37021,8 @@ class GetAlertV2EvaluationThresholdResult(dict):
                  column: Optional['outputs.GetAlertV2EvaluationThresholdColumnResult'] = None,
                  value: Optional['outputs.GetAlertV2EvaluationThresholdValueResult'] = None):
         """
-        :param 'GetAlertV2EvaluationThresholdColumnArgs' column: (AlertV2OperandColumn) -
-        :param 'GetAlertV2EvaluationThresholdValueArgs' value: (AlertV2OperandValue) -
+        :param 'GetAlertV2EvaluationThresholdColumnArgs' column: (AlertV2OperandColumn)
+        :param 'GetAlertV2EvaluationThresholdValueArgs' value: (AlertV2OperandValue)
         """
         if column is not None:
             pulumi.set(__self__, "column", column)
@@ -32812,7 +37033,7 @@ class GetAlertV2EvaluationThresholdResult(dict):
     @pulumi.getter
     def column(self) -> Optional['outputs.GetAlertV2EvaluationThresholdColumnResult']:
         """
-        (AlertV2OperandColumn) -
+        (AlertV2OperandColumn)
         """
         return pulumi.get(self, "column")
 
@@ -32820,7 +37041,7 @@ class GetAlertV2EvaluationThresholdResult(dict):
     @pulumi.getter
     def value(self) -> Optional['outputs.GetAlertV2EvaluationThresholdValueResult']:
         """
-        (AlertV2OperandValue) -
+        (AlertV2OperandValue)
         """
         return pulumi.get(self, "value")
 
@@ -32833,8 +37054,8 @@ class GetAlertV2EvaluationThresholdColumnResult(dict):
                  name: Optional[_builtins.str] = None):
         """
         :param _builtins.str aggregation: (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
-        :param _builtins.str display: (string) -
-        :param _builtins.str name: (string) -
+        :param _builtins.str display: (string)
+        :param _builtins.str name: (string)
         """
         if aggregation is not None:
             pulumi.set(__self__, "aggregation", aggregation)
@@ -32855,7 +37076,7 @@ class GetAlertV2EvaluationThresholdColumnResult(dict):
     @pulumi.getter
     def display(self) -> Optional[_builtins.str]:
         """
-        (string) -
+        (string)
         """
         return pulumi.get(self, "display")
 
@@ -32863,7 +37084,7 @@ class GetAlertV2EvaluationThresholdColumnResult(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        (string) -
+        (string)
         """
         return pulumi.get(self, "name")
 
@@ -32875,9 +37096,9 @@ class GetAlertV2EvaluationThresholdValueResult(dict):
                  double_value: Optional[_builtins.float] = None,
                  string_value: Optional[_builtins.str] = None):
         """
-        :param _builtins.bool bool_value: (boolean) -
-        :param _builtins.float double_value: (number) -
-        :param _builtins.str string_value: (string) -
+        :param _builtins.bool bool_value: (boolean)
+        :param _builtins.float double_value: (number)
+        :param _builtins.str string_value: (string)
         """
         if bool_value is not None:
             pulumi.set(__self__, "bool_value", bool_value)
@@ -32890,7 +37111,7 @@ class GetAlertV2EvaluationThresholdValueResult(dict):
     @pulumi.getter(name="boolValue")
     def bool_value(self) -> Optional[_builtins.bool]:
         """
-        (boolean) -
+        (boolean)
         """
         return pulumi.get(self, "bool_value")
 
@@ -32898,7 +37119,7 @@ class GetAlertV2EvaluationThresholdValueResult(dict):
     @pulumi.getter(name="doubleValue")
     def double_value(self) -> Optional[_builtins.float]:
         """
-        (number) -
+        (number)
         """
         return pulumi.get(self, "double_value")
 
@@ -32906,7 +37127,7 @@ class GetAlertV2EvaluationThresholdValueResult(dict):
     @pulumi.getter(name="stringValue")
     def string_value(self) -> Optional[_builtins.str]:
         """
-        (string) -
+        (string)
         """
         return pulumi.get(self, "string_value")
 
@@ -32967,7 +37188,6 @@ class GetAlertsV2ResultResult(dict):
                  id: _builtins.str,
                  lifecycle_state: _builtins.str,
                  owner_user_name: _builtins.str,
-                 run_as_user_name: _builtins.str,
                  update_time: _builtins.str,
                  custom_description: Optional[_builtins.str] = None,
                  custom_summary: Optional[_builtins.str] = None,
@@ -32975,6 +37195,7 @@ class GetAlertsV2ResultResult(dict):
                  evaluation: Optional['outputs.GetAlertsV2ResultEvaluationResult'] = None,
                  parent_path: Optional[_builtins.str] = None,
                  query_text: Optional[_builtins.str] = None,
+                 run_as_user_name: Optional[_builtins.str] = None,
                  schedule: Optional['outputs.GetAlertsV2ResultScheduleResult'] = None,
                  warehouse_id: Optional[_builtins.str] = None):
         """
@@ -32982,22 +37203,22 @@ class GetAlertsV2ResultResult(dict):
         :param _builtins.str id: (string) - UUID identifying the alert
         :param _builtins.str lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
         :param _builtins.str owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
-        :param _builtins.str run_as_user_name: (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
         :param _builtins.str update_time: (string) - The timestamp indicating when the alert was updated
         :param _builtins.str custom_description: (string) - Custom description for the alert. support mustache template
         :param _builtins.str custom_summary: (string) - Custom summary for the alert. support mustache template
         :param _builtins.str display_name: (string) - The display name of the alert
-        :param 'GetAlertsV2ResultEvaluationArgs' evaluation: (AlertV2Evaluation) -
+        :param 'GetAlertsV2ResultEvaluationArgs' evaluation: (AlertV2Evaluation)
         :param _builtins.str parent_path: (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param _builtins.str query_text: (string) - Text of the query to be run
-        :param 'GetAlertsV2ResultScheduleArgs' schedule: (CronSchedule) -
+        :param _builtins.str run_as_user_name: (string) - The run as username or application ID of service principal.
+               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+        :param 'GetAlertsV2ResultScheduleArgs' schedule: (CronSchedule)
         :param _builtins.str warehouse_id: (string) - ID of the SQL warehouse attached to the alert
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "lifecycle_state", lifecycle_state)
         pulumi.set(__self__, "owner_user_name", owner_user_name)
-        pulumi.set(__self__, "run_as_user_name", run_as_user_name)
         pulumi.set(__self__, "update_time", update_time)
         if custom_description is not None:
             pulumi.set(__self__, "custom_description", custom_description)
@@ -33011,6 +37232,8 @@ class GetAlertsV2ResultResult(dict):
             pulumi.set(__self__, "parent_path", parent_path)
         if query_text is not None:
             pulumi.set(__self__, "query_text", query_text)
+        if run_as_user_name is not None:
+            pulumi.set(__self__, "run_as_user_name", run_as_user_name)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if warehouse_id is not None:
@@ -33049,14 +37272,6 @@ class GetAlertsV2ResultResult(dict):
         return pulumi.get(self, "owner_user_name")
 
     @_builtins.property
-    @pulumi.getter(name="runAsUserName")
-    def run_as_user_name(self) -> _builtins.str:
-        """
-        (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
-        """
-        return pulumi.get(self, "run_as_user_name")
-
-    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> _builtins.str:
         """
@@ -33092,7 +37307,7 @@ class GetAlertsV2ResultResult(dict):
     @pulumi.getter
     def evaluation(self) -> Optional['outputs.GetAlertsV2ResultEvaluationResult']:
         """
-        (AlertV2Evaluation) -
+        (AlertV2Evaluation)
         """
         return pulumi.get(self, "evaluation")
 
@@ -33113,10 +37328,19 @@ class GetAlertsV2ResultResult(dict):
         return pulumi.get(self, "query_text")
 
     @_builtins.property
+    @pulumi.getter(name="runAsUserName")
+    def run_as_user_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The run as username or application ID of service principal.
+        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+        """
+        return pulumi.get(self, "run_as_user_name")
+
+    @_builtins.property
     @pulumi.getter
     def schedule(self) -> Optional['outputs.GetAlertsV2ResultScheduleResult']:
         """
-        (CronSchedule) -
+        (CronSchedule)
         """
         return pulumi.get(self, "schedule")
 
@@ -33227,7 +37451,7 @@ class GetAlertsV2ResultEvaluationNotificationResult(dict):
         """
         :param _builtins.bool notify_on_ok: (boolean) - Whether to notify alert subscribers when alert returns back to normal
         :param _builtins.int retrigger_seconds: (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
-        :param Sequence['GetAlertsV2ResultEvaluationNotificationSubscriptionArgs'] subscriptions: (list of AlertV2Subscription) -
+        :param Sequence['GetAlertsV2ResultEvaluationNotificationSubscriptionArgs'] subscriptions: (list of AlertV2Subscription)
         """
         if notify_on_ok is not None:
             pulumi.set(__self__, "notify_on_ok", notify_on_ok)
@@ -33256,7 +37480,7 @@ class GetAlertsV2ResultEvaluationNotificationResult(dict):
     @pulumi.getter
     def subscriptions(self) -> Optional[Sequence['outputs.GetAlertsV2ResultEvaluationNotificationSubscriptionResult']]:
         """
-        (list of AlertV2Subscription) -
+        (list of AlertV2Subscription)
         """
         return pulumi.get(self, "subscriptions")
 
@@ -33267,8 +37491,8 @@ class GetAlertsV2ResultEvaluationNotificationSubscriptionResult(dict):
                  destination_id: Optional[_builtins.str] = None,
                  user_email: Optional[_builtins.str] = None):
         """
-        :param _builtins.str destination_id: (string) -
-        :param _builtins.str user_email: (string) -
+        :param _builtins.str destination_id: (string)
+        :param _builtins.str user_email: (string)
         """
         if destination_id is not None:
             pulumi.set(__self__, "destination_id", destination_id)
@@ -33279,7 +37503,7 @@ class GetAlertsV2ResultEvaluationNotificationSubscriptionResult(dict):
     @pulumi.getter(name="destinationId")
     def destination_id(self) -> Optional[_builtins.str]:
         """
-        (string) -
+        (string)
         """
         return pulumi.get(self, "destination_id")
 
@@ -33287,7 +37511,7 @@ class GetAlertsV2ResultEvaluationNotificationSubscriptionResult(dict):
     @pulumi.getter(name="userEmail")
     def user_email(self) -> Optional[_builtins.str]:
         """
-        (string) -
+        (string)
         """
         return pulumi.get(self, "user_email")
 
@@ -33300,8 +37524,8 @@ class GetAlertsV2ResultEvaluationSourceResult(dict):
                  name: Optional[_builtins.str] = None):
         """
         :param _builtins.str aggregation: (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
-        :param _builtins.str display: (string) -
-        :param _builtins.str name: (string) -
+        :param _builtins.str display: (string)
+        :param _builtins.str name: (string)
         """
         if aggregation is not None:
             pulumi.set(__self__, "aggregation", aggregation)
@@ -33322,7 +37546,7 @@ class GetAlertsV2ResultEvaluationSourceResult(dict):
     @pulumi.getter
     def display(self) -> Optional[_builtins.str]:
         """
-        (string) -
+        (string)
         """
         return pulumi.get(self, "display")
 
@@ -33330,7 +37554,7 @@ class GetAlertsV2ResultEvaluationSourceResult(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        (string) -
+        (string)
         """
         return pulumi.get(self, "name")
 
@@ -33341,8 +37565,8 @@ class GetAlertsV2ResultEvaluationThresholdResult(dict):
                  column: Optional['outputs.GetAlertsV2ResultEvaluationThresholdColumnResult'] = None,
                  value: Optional['outputs.GetAlertsV2ResultEvaluationThresholdValueResult'] = None):
         """
-        :param 'GetAlertsV2ResultEvaluationThresholdColumnArgs' column: (AlertV2OperandColumn) -
-        :param 'GetAlertsV2ResultEvaluationThresholdValueArgs' value: (AlertV2OperandValue) -
+        :param 'GetAlertsV2ResultEvaluationThresholdColumnArgs' column: (AlertV2OperandColumn)
+        :param 'GetAlertsV2ResultEvaluationThresholdValueArgs' value: (AlertV2OperandValue)
         """
         if column is not None:
             pulumi.set(__self__, "column", column)
@@ -33353,7 +37577,7 @@ class GetAlertsV2ResultEvaluationThresholdResult(dict):
     @pulumi.getter
     def column(self) -> Optional['outputs.GetAlertsV2ResultEvaluationThresholdColumnResult']:
         """
-        (AlertV2OperandColumn) -
+        (AlertV2OperandColumn)
         """
         return pulumi.get(self, "column")
 
@@ -33361,7 +37585,7 @@ class GetAlertsV2ResultEvaluationThresholdResult(dict):
     @pulumi.getter
     def value(self) -> Optional['outputs.GetAlertsV2ResultEvaluationThresholdValueResult']:
         """
-        (AlertV2OperandValue) -
+        (AlertV2OperandValue)
         """
         return pulumi.get(self, "value")
 
@@ -33374,8 +37598,8 @@ class GetAlertsV2ResultEvaluationThresholdColumnResult(dict):
                  name: Optional[_builtins.str] = None):
         """
         :param _builtins.str aggregation: (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
-        :param _builtins.str display: (string) -
-        :param _builtins.str name: (string) -
+        :param _builtins.str display: (string)
+        :param _builtins.str name: (string)
         """
         if aggregation is not None:
             pulumi.set(__self__, "aggregation", aggregation)
@@ -33396,7 +37620,7 @@ class GetAlertsV2ResultEvaluationThresholdColumnResult(dict):
     @pulumi.getter
     def display(self) -> Optional[_builtins.str]:
         """
-        (string) -
+        (string)
         """
         return pulumi.get(self, "display")
 
@@ -33404,7 +37628,7 @@ class GetAlertsV2ResultEvaluationThresholdColumnResult(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        (string) -
+        (string)
         """
         return pulumi.get(self, "name")
 
@@ -33416,9 +37640,9 @@ class GetAlertsV2ResultEvaluationThresholdValueResult(dict):
                  double_value: Optional[_builtins.float] = None,
                  string_value: Optional[_builtins.str] = None):
         """
-        :param _builtins.bool bool_value: (boolean) -
-        :param _builtins.float double_value: (number) -
-        :param _builtins.str string_value: (string) -
+        :param _builtins.bool bool_value: (boolean)
+        :param _builtins.float double_value: (number)
+        :param _builtins.str string_value: (string)
         """
         if bool_value is not None:
             pulumi.set(__self__, "bool_value", bool_value)
@@ -33431,7 +37655,7 @@ class GetAlertsV2ResultEvaluationThresholdValueResult(dict):
     @pulumi.getter(name="boolValue")
     def bool_value(self) -> Optional[_builtins.bool]:
         """
-        (boolean) -
+        (boolean)
         """
         return pulumi.get(self, "bool_value")
 
@@ -33439,7 +37663,7 @@ class GetAlertsV2ResultEvaluationThresholdValueResult(dict):
     @pulumi.getter(name="doubleValue")
     def double_value(self) -> Optional[_builtins.float]:
         """
-        (number) -
+        (number)
         """
         return pulumi.get(self, "double_value")
 
@@ -33447,7 +37671,7 @@ class GetAlertsV2ResultEvaluationThresholdValueResult(dict):
     @pulumi.getter(name="stringValue")
     def string_value(self) -> Optional[_builtins.str]:
         """
-        (string) -
+        (string)
         """
         return pulumi.get(self, "string_value")
 
@@ -34043,6 +38267,7 @@ class GetAppAppPendingDeploymentStatusResult(dict):
 class GetAppAppResourceResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
+                 database: Optional['outputs.GetAppAppResourceDatabaseResult'] = None,
                  description: Optional[_builtins.str] = None,
                  job: Optional['outputs.GetAppAppResourceJobResult'] = None,
                  secret: Optional['outputs.GetAppAppResourceSecretResult'] = None,
@@ -34051,6 +38276,7 @@ class GetAppAppResourceResult(dict):
                  uc_securable: Optional['outputs.GetAppAppResourceUcSecurableResult'] = None):
         """
         :param _builtins.str name: The name of the app.
+        :param 'GetAppAppResourceDatabaseArgs' database: attribute
         :param _builtins.str description: The description of the resource.
         :param 'GetAppAppResourceJobArgs' job: attribute
         :param 'GetAppAppResourceSecretArgs' secret: attribute
@@ -34059,6 +38285,8 @@ class GetAppAppResourceResult(dict):
         :param 'GetAppAppResourceUcSecurableArgs' uc_securable: attribute
         """
         pulumi.set(__self__, "name", name)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if job is not None:
@@ -34079,6 +38307,14 @@ class GetAppAppResourceResult(dict):
         The name of the app.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> Optional['outputs.GetAppAppResourceDatabaseResult']:
+        """
+        attribute
+        """
+        return pulumi.get(self, "database")
 
     @_builtins.property
     @pulumi.getter
@@ -34130,13 +38366,53 @@ class GetAppAppResourceResult(dict):
 
 
 @pulumi.output_type
+class GetAppAppResourceDatabaseResult(dict):
+    def __init__(__self__, *,
+                 database_name: _builtins.str,
+                 instance_name: _builtins.str,
+                 permission: _builtins.str):
+        """
+        :param _builtins.str database_name: The name of database.
+        :param _builtins.str instance_name: The name of database instance.
+        :param _builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        """
+        pulumi.set(__self__, "database_name", database_name)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "permission", permission)
+
+    @_builtins.property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> _builtins.str:
+        """
+        The name of database.
+        """
+        return pulumi.get(self, "database_name")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> _builtins.str:
+        """
+        The name of database instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def permission(self) -> _builtins.str:
+        """
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        """
+        return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
 class GetAppAppResourceJobResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str,
                  permission: _builtins.str):
         """
         :param _builtins.str id: Id of the job to grant permission on.
-        :param _builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param _builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permission", permission)
@@ -34153,7 +38429,7 @@ class GetAppAppResourceJobResult(dict):
     @pulumi.getter
     def permission(self) -> _builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -34166,7 +38442,7 @@ class GetAppAppResourceSecretResult(dict):
                  scope: _builtins.str):
         """
         :param _builtins.str key: Key of the secret to grant permission on.
-        :param _builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param _builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         :param _builtins.str scope: Scope of the secret to grant permission on.
         """
         pulumi.set(__self__, "key", key)
@@ -34185,7 +38461,7 @@ class GetAppAppResourceSecretResult(dict):
     @pulumi.getter
     def permission(self) -> _builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -34205,7 +38481,7 @@ class GetAppAppResourceServingEndpointResult(dict):
                  permission: _builtins.str):
         """
         :param _builtins.str name: The name of the app.
-        :param _builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param _builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "permission", permission)
@@ -34222,7 +38498,7 @@ class GetAppAppResourceServingEndpointResult(dict):
     @pulumi.getter
     def permission(self) -> _builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -34234,7 +38510,7 @@ class GetAppAppResourceSqlWarehouseResult(dict):
                  permission: _builtins.str):
         """
         :param _builtins.str id: Id of the job to grant permission on.
-        :param _builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param _builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permission", permission)
@@ -34251,7 +38527,7 @@ class GetAppAppResourceSqlWarehouseResult(dict):
     @pulumi.getter
     def permission(self) -> _builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -34263,7 +38539,7 @@ class GetAppAppResourceUcSecurableResult(dict):
                  securable_full_name: _builtins.str,
                  securable_type: _builtins.str):
         """
-        :param _builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param _builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         :param _builtins.str securable_full_name: the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
         :param _builtins.str securable_type: the type of UC securable, i.e. `VOLUME`.
         """
@@ -34275,7 +38551,7 @@ class GetAppAppResourceUcSecurableResult(dict):
     @pulumi.getter
     def permission(self) -> _builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -34838,6 +39114,7 @@ class GetAppsAppPendingDeploymentStatusResult(dict):
 class GetAppsAppResourceResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
+                 database: Optional['outputs.GetAppsAppResourceDatabaseResult'] = None,
                  description: Optional[_builtins.str] = None,
                  job: Optional['outputs.GetAppsAppResourceJobResult'] = None,
                  secret: Optional['outputs.GetAppsAppResourceSecretResult'] = None,
@@ -34846,6 +39123,7 @@ class GetAppsAppResourceResult(dict):
                  uc_securable: Optional['outputs.GetAppsAppResourceUcSecurableResult'] = None):
         """
         :param _builtins.str name: Name of the serving endpoint to grant permission on.
+        :param 'GetAppsAppResourceDatabaseArgs' database: attribute
         :param _builtins.str description: The description of the resource.
         :param 'GetAppsAppResourceJobArgs' job: attribute
         :param 'GetAppsAppResourceSecretArgs' secret: attribute
@@ -34854,6 +39132,8 @@ class GetAppsAppResourceResult(dict):
         :param 'GetAppsAppResourceUcSecurableArgs' uc_securable: attribute
         """
         pulumi.set(__self__, "name", name)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if job is not None:
@@ -34874,6 +39154,14 @@ class GetAppsAppResourceResult(dict):
         Name of the serving endpoint to grant permission on.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> Optional['outputs.GetAppsAppResourceDatabaseResult']:
+        """
+        attribute
+        """
+        return pulumi.get(self, "database")
 
     @_builtins.property
     @pulumi.getter
@@ -34925,13 +39213,53 @@ class GetAppsAppResourceResult(dict):
 
 
 @pulumi.output_type
+class GetAppsAppResourceDatabaseResult(dict):
+    def __init__(__self__, *,
+                 database_name: _builtins.str,
+                 instance_name: _builtins.str,
+                 permission: _builtins.str):
+        """
+        :param _builtins.str database_name: The name of database.
+        :param _builtins.str instance_name: The name of database instance.
+        :param _builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        """
+        pulumi.set(__self__, "database_name", database_name)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "permission", permission)
+
+    @_builtins.property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> _builtins.str:
+        """
+        The name of database.
+        """
+        return pulumi.get(self, "database_name")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> _builtins.str:
+        """
+        The name of database instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def permission(self) -> _builtins.str:
+        """
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        """
+        return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
 class GetAppsAppResourceJobResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str,
                  permission: _builtins.str):
         """
         :param _builtins.str id: Id of the job to grant permission on.
-        :param _builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param _builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permission", permission)
@@ -34948,7 +39276,7 @@ class GetAppsAppResourceJobResult(dict):
     @pulumi.getter
     def permission(self) -> _builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -34961,7 +39289,7 @@ class GetAppsAppResourceSecretResult(dict):
                  scope: _builtins.str):
         """
         :param _builtins.str key: Key of the secret to grant permission on.
-        :param _builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param _builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         :param _builtins.str scope: Scope of the secret to grant permission on.
         """
         pulumi.set(__self__, "key", key)
@@ -34980,7 +39308,7 @@ class GetAppsAppResourceSecretResult(dict):
     @pulumi.getter
     def permission(self) -> _builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -35000,7 +39328,7 @@ class GetAppsAppResourceServingEndpointResult(dict):
                  permission: _builtins.str):
         """
         :param _builtins.str name: Name of the serving endpoint to grant permission on.
-        :param _builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param _builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "permission", permission)
@@ -35017,7 +39345,7 @@ class GetAppsAppResourceServingEndpointResult(dict):
     @pulumi.getter
     def permission(self) -> _builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -35029,7 +39357,7 @@ class GetAppsAppResourceSqlWarehouseResult(dict):
                  permission: _builtins.str):
         """
         :param _builtins.str id: Id of the job to grant permission on.
-        :param _builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param _builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "permission", permission)
@@ -35046,7 +39374,7 @@ class GetAppsAppResourceSqlWarehouseResult(dict):
     @pulumi.getter
     def permission(self) -> _builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -35058,7 +39386,7 @@ class GetAppsAppResourceUcSecurableResult(dict):
                  securable_full_name: _builtins.str,
                  securable_type: _builtins.str):
         """
-        :param _builtins.str permission: Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        :param _builtins.str permission: Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         :param _builtins.str securable_full_name: the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
         :param _builtins.str securable_type: the type of UC securable, i.e. `VOLUME`.
         """
@@ -35070,7 +39398,7 @@ class GetAppsAppResourceUcSecurableResult(dict):
     @pulumi.getter
     def permission(self) -> _builtins.str:
         """
-        Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         """
         return pulumi.get(self, "permission")
 
@@ -35539,6 +39867,5539 @@ class GetCatalogCatalogInfoProvisioningInfoResult(dict):
     @pulumi.getter
     def state(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetForeignTableResult(dict):
+    def __init__(__self__, *,
+                 columns: Sequence['outputs.GetCleanRoomAssetForeignTableColumnResult']):
+        """
+        :param Sequence['GetCleanRoomAssetForeignTableColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Sequence['outputs.GetCleanRoomAssetForeignTableColumnResult']:
+        """
+        (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetForeignTableColumnResult(dict):
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 mask: Optional['outputs.GetCleanRoomAssetForeignTableColumnMaskResult'] = None,
+                 name: Optional[_builtins.str] = None,
+                 nullable: Optional[_builtins.bool] = None,
+                 partition_index: Optional[_builtins.int] = None,
+                 position: Optional[_builtins.int] = None,
+                 type_interval_type: Optional[_builtins.str] = None,
+                 type_json: Optional[_builtins.str] = None,
+                 type_name: Optional[_builtins.str] = None,
+                 type_precision: Optional[_builtins.int] = None,
+                 type_scale: Optional[_builtins.int] = None,
+                 type_text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str comment: (string) - User-provided free-form text description
+        :param 'GetCleanRoomAssetForeignTableColumnMaskArgs' mask: (ColumnMask)
+        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
+               This is also the name displayed in the clean room UI.
+               
+               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+               
+               For notebooks, the name is the notebook file name.
+               For jar analyses, the name is the jar analysis name
+        :param _builtins.bool nullable: (boolean) - Whether field may be Null (default: true)
+        :param _builtins.int partition_index: (integer) - Partition index for column
+        :param _builtins.int position: (integer) - Ordinal position of column (starting at position 0)
+        :param _builtins.str type_interval_type: (string) - Format of IntervalType
+        :param _builtins.str type_json: (string) - Full data type specification, JSON-serialized
+        :param _builtins.str type_name: (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        :param _builtins.int type_precision: (integer) - Digits of precision; required for DecimalTypes
+        :param _builtins.int type_scale: (integer) - Digits to right of decimal; Required for DecimalTypes
+        :param _builtins.str type_text: (string) - Full data type specification as SQL/catalogString text
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if partition_index is not None:
+            pulumi.set(__self__, "partition_index", partition_index)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if type_interval_type is not None:
+            pulumi.set(__self__, "type_interval_type", type_interval_type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
+        if type_name is not None:
+            pulumi.set(__self__, "type_name", type_name)
+        if type_precision is not None:
+            pulumi.set(__self__, "type_precision", type_precision)
+        if type_scale is not None:
+            pulumi.set(__self__, "type_scale", type_scale)
+        if type_text is not None:
+            pulumi.set(__self__, "type_text", type_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-provided free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def mask(self) -> Optional['outputs.GetCleanRoomAssetForeignTableColumnMaskResult']:
+        """
+        (ColumnMask)
+        """
+        return pulumi.get(self, "mask")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        A fully qualified name that uniquely identifies the asset within the clean room.
+        This is also the name displayed in the clean room UI.
+
+        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+
+        For notebooks, the name is the notebook file name.
+        For jar analyses, the name is the jar analysis name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nullable(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether field may be Null (default: true)
+        """
+        return pulumi.get(self, "nullable")
+
+    @_builtins.property
+    @pulumi.getter(name="partitionIndex")
+    def partition_index(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Partition index for column
+        """
+        return pulumi.get(self, "partition_index")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Ordinal position of column (starting at position 0)
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="typeIntervalType")
+    def type_interval_type(self) -> Optional[_builtins.str]:
+        """
+        (string) - Format of IntervalType
+        """
+        return pulumi.get(self, "type_interval_type")
+
+    @_builtins.property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification, JSON-serialized
+        """
+        return pulumi.get(self, "type_json")
+
+    @_builtins.property
+    @pulumi.getter(name="typeName")
+    def type_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        """
+        return pulumi.get(self, "type_name")
+
+    @_builtins.property
+    @pulumi.getter(name="typePrecision")
+    def type_precision(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits of precision; required for DecimalTypes
+        """
+        return pulumi.get(self, "type_precision")
+
+    @_builtins.property
+    @pulumi.getter(name="typeScale")
+    def type_scale(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits to right of decimal; Required for DecimalTypes
+        """
+        return pulumi.get(self, "type_scale")
+
+    @_builtins.property
+    @pulumi.getter(name="typeText")
+    def type_text(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification as SQL/catalogString text
+        """
+        return pulumi.get(self, "type_text")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetForeignTableColumnMaskResult(dict):
+    def __init__(__self__, *,
+                 function_name: Optional[_builtins.str] = None,
+                 using_column_names: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str function_name: (string) - The full name of the column mask SQL UDF
+        :param Sequence[_builtins.str] using_column_names: (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+               first arg of the mask function should be of the type of the column being masked and the
+               types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if using_column_names is not None:
+            pulumi.set(__self__, "using_column_names", using_column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The full name of the column mask SQL UDF
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="usingColumnNames")
+    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+        first arg of the mask function should be of the type of the column being masked and the
+        types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        return pulumi.get(self, "using_column_names")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetForeignTableLocalDetailsResult(dict):
+    def __init__(__self__, *,
+                 local_name: _builtins.str):
+        """
+        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
+               in the format of *catalog*.*schema*.*volume_name*
+        """
+        pulumi.set(__self__, "local_name", local_name)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the volume in its owner's local metastore,
+        in the format of *catalog*.*schema*.*volume_name*
+        """
+        return pulumi.get(self, "local_name")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetNotebookResult(dict):
+    def __init__(__self__, *,
+                 etag: _builtins.str,
+                 notebook_content: _builtins.str,
+                 review_state: _builtins.str,
+                 reviews: Sequence['outputs.GetCleanRoomAssetNotebookReviewResult'],
+                 runner_collaborator_aliases: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str etag: (string) - Server generated etag that represents the notebook version
+        :param _builtins.str notebook_content: (string) - Base 64 representation of the notebook contents.
+               This is the same format as returned by :method:workspace/export with the format of **HTML**
+        :param _builtins.str review_state: (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        :param Sequence['GetCleanRoomAssetNotebookReviewArgs'] reviews: (list of CleanRoomNotebookReview) - All existing approvals or rejections
+        :param Sequence[_builtins.str] runner_collaborator_aliases: (list of string) - collaborators that can run the notebook
+        """
+        pulumi.set(__self__, "etag", etag)
+        pulumi.set(__self__, "notebook_content", notebook_content)
+        pulumi.set(__self__, "review_state", review_state)
+        pulumi.set(__self__, "reviews", reviews)
+        if runner_collaborator_aliases is not None:
+            pulumi.set(__self__, "runner_collaborator_aliases", runner_collaborator_aliases)
+
+    @_builtins.property
+    @pulumi.getter
+    def etag(self) -> _builtins.str:
+        """
+        (string) - Server generated etag that represents the notebook version
+        """
+        return pulumi.get(self, "etag")
+
+    @_builtins.property
+    @pulumi.getter(name="notebookContent")
+    def notebook_content(self) -> _builtins.str:
+        """
+        (string) - Base 64 representation of the notebook contents.
+        This is the same format as returned by :method:workspace/export with the format of **HTML**
+        """
+        return pulumi.get(self, "notebook_content")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewState")
+    def review_state(self) -> _builtins.str:
+        """
+        (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        """
+        return pulumi.get(self, "review_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def reviews(self) -> Sequence['outputs.GetCleanRoomAssetNotebookReviewResult']:
+        """
+        (list of CleanRoomNotebookReview) - All existing approvals or rejections
+        """
+        return pulumi.get(self, "reviews")
+
+    @_builtins.property
+    @pulumi.getter(name="runnerCollaboratorAliases")
+    def runner_collaborator_aliases(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - collaborators that can run the notebook
+        """
+        return pulumi.get(self, "runner_collaborator_aliases")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetNotebookReviewResult(dict):
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 created_at_millis: Optional[_builtins.int] = None,
+                 review_state: Optional[_builtins.str] = None,
+                 review_sub_reason: Optional[_builtins.str] = None,
+                 reviewer_collaborator_alias: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str comment: (string) - User-provided free-form text description
+        :param _builtins.int created_at_millis: (integer) - When the review was submitted, in epoch milliseconds
+        :param _builtins.str review_state: (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        :param _builtins.str review_sub_reason: (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
+        :param _builtins.str reviewer_collaborator_alias: (string) - Collaborator alias of the reviewer
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if created_at_millis is not None:
+            pulumi.set(__self__, "created_at_millis", created_at_millis)
+        if review_state is not None:
+            pulumi.set(__self__, "review_state", review_state)
+        if review_sub_reason is not None:
+            pulumi.set(__self__, "review_sub_reason", review_sub_reason)
+        if reviewer_collaborator_alias is not None:
+            pulumi.set(__self__, "reviewer_collaborator_alias", reviewer_collaborator_alias)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-provided free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAtMillis")
+    def created_at_millis(self) -> Optional[_builtins.int]:
+        """
+        (integer) - When the review was submitted, in epoch milliseconds
+        """
+        return pulumi.get(self, "created_at_millis")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewState")
+    def review_state(self) -> Optional[_builtins.str]:
+        """
+        (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        """
+        return pulumi.get(self, "review_state")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewSubReason")
+    def review_sub_reason(self) -> Optional[_builtins.str]:
+        """
+        (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
+        """
+        return pulumi.get(self, "review_sub_reason")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewerCollaboratorAlias")
+    def reviewer_collaborator_alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - Collaborator alias of the reviewer
+        """
+        return pulumi.get(self, "reviewer_collaborator_alias")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableResult(dict):
+    def __init__(__self__, *,
+                 columns: Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnResult']):
+        """
+        :param Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnResult']:
+        """
+        (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnResult(dict):
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 mask: Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMaskResult'] = None,
+                 name: Optional[_builtins.str] = None,
+                 nullable: Optional[_builtins.bool] = None,
+                 partition_index: Optional[_builtins.int] = None,
+                 position: Optional[_builtins.int] = None,
+                 type_interval_type: Optional[_builtins.str] = None,
+                 type_json: Optional[_builtins.str] = None,
+                 type_name: Optional[_builtins.str] = None,
+                 type_precision: Optional[_builtins.int] = None,
+                 type_scale: Optional[_builtins.int] = None,
+                 type_text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str comment: (string) - User-provided free-form text description
+        :param 'GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMaskArgs' mask: (ColumnMask)
+        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
+               This is also the name displayed in the clean room UI.
+               
+               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+               
+               For notebooks, the name is the notebook file name.
+               For jar analyses, the name is the jar analysis name
+        :param _builtins.bool nullable: (boolean) - Whether field may be Null (default: true)
+        :param _builtins.int partition_index: (integer) - Partition index for column
+        :param _builtins.int position: (integer) - Ordinal position of column (starting at position 0)
+        :param _builtins.str type_interval_type: (string) - Format of IntervalType
+        :param _builtins.str type_json: (string) - Full data type specification, JSON-serialized
+        :param _builtins.str type_name: (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        :param _builtins.int type_precision: (integer) - Digits of precision; required for DecimalTypes
+        :param _builtins.int type_scale: (integer) - Digits to right of decimal; Required for DecimalTypes
+        :param _builtins.str type_text: (string) - Full data type specification as SQL/catalogString text
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if partition_index is not None:
+            pulumi.set(__self__, "partition_index", partition_index)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if type_interval_type is not None:
+            pulumi.set(__self__, "type_interval_type", type_interval_type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
+        if type_name is not None:
+            pulumi.set(__self__, "type_name", type_name)
+        if type_precision is not None:
+            pulumi.set(__self__, "type_precision", type_precision)
+        if type_scale is not None:
+            pulumi.set(__self__, "type_scale", type_scale)
+        if type_text is not None:
+            pulumi.set(__self__, "type_text", type_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-provided free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def mask(self) -> Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMaskResult']:
+        """
+        (ColumnMask)
+        """
+        return pulumi.get(self, "mask")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        A fully qualified name that uniquely identifies the asset within the clean room.
+        This is also the name displayed in the clean room UI.
+
+        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+
+        For notebooks, the name is the notebook file name.
+        For jar analyses, the name is the jar analysis name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nullable(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether field may be Null (default: true)
+        """
+        return pulumi.get(self, "nullable")
+
+    @_builtins.property
+    @pulumi.getter(name="partitionIndex")
+    def partition_index(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Partition index for column
+        """
+        return pulumi.get(self, "partition_index")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Ordinal position of column (starting at position 0)
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="typeIntervalType")
+    def type_interval_type(self) -> Optional[_builtins.str]:
+        """
+        (string) - Format of IntervalType
+        """
+        return pulumi.get(self, "type_interval_type")
+
+    @_builtins.property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification, JSON-serialized
+        """
+        return pulumi.get(self, "type_json")
+
+    @_builtins.property
+    @pulumi.getter(name="typeName")
+    def type_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        """
+        return pulumi.get(self, "type_name")
+
+    @_builtins.property
+    @pulumi.getter(name="typePrecision")
+    def type_precision(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits of precision; required for DecimalTypes
+        """
+        return pulumi.get(self, "type_precision")
+
+    @_builtins.property
+    @pulumi.getter(name="typeScale")
+    def type_scale(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits to right of decimal; Required for DecimalTypes
+        """
+        return pulumi.get(self, "type_scale")
+
+    @_builtins.property
+    @pulumi.getter(name="typeText")
+    def type_text(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification as SQL/catalogString text
+        """
+        return pulumi.get(self, "type_text")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMaskResult(dict):
+    def __init__(__self__, *,
+                 function_name: Optional[_builtins.str] = None,
+                 using_column_names: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str function_name: (string) - The full name of the column mask SQL UDF
+        :param Sequence[_builtins.str] using_column_names: (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+               first arg of the mask function should be of the type of the column being masked and the
+               types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if using_column_names is not None:
+            pulumi.set(__self__, "using_column_names", using_column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The full name of the column mask SQL UDF
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="usingColumnNames")
+    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+        first arg of the mask function should be of the type of the column being masked and the
+        types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        return pulumi.get(self, "using_column_names")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableLocalDetailsResult(dict):
+    def __init__(__self__, *,
+                 local_name: _builtins.str):
+        """
+        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
+               in the format of *catalog*.*schema*.*volume_name*
+        """
+        pulumi.set(__self__, "local_name", local_name)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the volume in its owner's local metastore,
+        in the format of *catalog*.*schema*.*volume_name*
+        """
+        return pulumi.get(self, "local_name")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetNotebookResult(dict):
+    def __init__(__self__, *,
+                 etag: _builtins.str,
+                 notebook_content: _builtins.str,
+                 review_state: _builtins.str,
+                 reviews: Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReviewResult'],
+                 runner_collaborator_aliases: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str etag: (string) - Server generated etag that represents the notebook version
+        :param _builtins.str notebook_content: (string) - Base 64 representation of the notebook contents.
+               This is the same format as returned by :method:workspace/export with the format of **HTML**
+        :param _builtins.str review_state: (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        :param Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReviewArgs'] reviews: (list of CleanRoomNotebookReview) - All existing approvals or rejections
+        :param Sequence[_builtins.str] runner_collaborator_aliases: (list of string) - collaborators that can run the notebook
+        """
+        pulumi.set(__self__, "etag", etag)
+        pulumi.set(__self__, "notebook_content", notebook_content)
+        pulumi.set(__self__, "review_state", review_state)
+        pulumi.set(__self__, "reviews", reviews)
+        if runner_collaborator_aliases is not None:
+            pulumi.set(__self__, "runner_collaborator_aliases", runner_collaborator_aliases)
+
+    @_builtins.property
+    @pulumi.getter
+    def etag(self) -> _builtins.str:
+        """
+        (string) - Server generated etag that represents the notebook version
+        """
+        return pulumi.get(self, "etag")
+
+    @_builtins.property
+    @pulumi.getter(name="notebookContent")
+    def notebook_content(self) -> _builtins.str:
+        """
+        (string) - Base 64 representation of the notebook contents.
+        This is the same format as returned by :method:workspace/export with the format of **HTML**
+        """
+        return pulumi.get(self, "notebook_content")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewState")
+    def review_state(self) -> _builtins.str:
+        """
+        (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        """
+        return pulumi.get(self, "review_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def reviews(self) -> Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReviewResult']:
+        """
+        (list of CleanRoomNotebookReview) - All existing approvals or rejections
+        """
+        return pulumi.get(self, "reviews")
+
+    @_builtins.property
+    @pulumi.getter(name="runnerCollaboratorAliases")
+    def runner_collaborator_aliases(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - collaborators that can run the notebook
+        """
+        return pulumi.get(self, "runner_collaborator_aliases")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReviewResult(dict):
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 created_at_millis: Optional[_builtins.int] = None,
+                 review_state: Optional[_builtins.str] = None,
+                 review_sub_reason: Optional[_builtins.str] = None,
+                 reviewer_collaborator_alias: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str comment: (string) - User-provided free-form text description
+        :param _builtins.int created_at_millis: (integer) - When the review was submitted, in epoch milliseconds
+        :param _builtins.str review_state: (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        :param _builtins.str review_sub_reason: (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
+        :param _builtins.str reviewer_collaborator_alias: (string) - Collaborator alias of the reviewer
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if created_at_millis is not None:
+            pulumi.set(__self__, "created_at_millis", created_at_millis)
+        if review_state is not None:
+            pulumi.set(__self__, "review_state", review_state)
+        if review_sub_reason is not None:
+            pulumi.set(__self__, "review_sub_reason", review_sub_reason)
+        if reviewer_collaborator_alias is not None:
+            pulumi.set(__self__, "reviewer_collaborator_alias", reviewer_collaborator_alias)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-provided free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAtMillis")
+    def created_at_millis(self) -> Optional[_builtins.int]:
+        """
+        (integer) - When the review was submitted, in epoch milliseconds
+        """
+        return pulumi.get(self, "created_at_millis")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewState")
+    def review_state(self) -> Optional[_builtins.str]:
+        """
+        (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        """
+        return pulumi.get(self, "review_state")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewSubReason")
+    def review_sub_reason(self) -> Optional[_builtins.str]:
+        """
+        (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
+        """
+        return pulumi.get(self, "review_sub_reason")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewerCollaboratorAlias")
+    def reviewer_collaborator_alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - Collaborator alias of the reviewer
+        """
+        return pulumi.get(self, "reviewer_collaborator_alias")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetTableResult(dict):
+    def __init__(__self__, *,
+                 columns: Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnResult']):
+        """
+        :param Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnResult']:
+        """
+        (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnResult(dict):
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 mask: Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMaskResult'] = None,
+                 name: Optional[_builtins.str] = None,
+                 nullable: Optional[_builtins.bool] = None,
+                 partition_index: Optional[_builtins.int] = None,
+                 position: Optional[_builtins.int] = None,
+                 type_interval_type: Optional[_builtins.str] = None,
+                 type_json: Optional[_builtins.str] = None,
+                 type_name: Optional[_builtins.str] = None,
+                 type_precision: Optional[_builtins.int] = None,
+                 type_scale: Optional[_builtins.int] = None,
+                 type_text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str comment: (string) - User-provided free-form text description
+        :param 'GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMaskArgs' mask: (ColumnMask)
+        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
+               This is also the name displayed in the clean room UI.
+               
+               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+               
+               For notebooks, the name is the notebook file name.
+               For jar analyses, the name is the jar analysis name
+        :param _builtins.bool nullable: (boolean) - Whether field may be Null (default: true)
+        :param _builtins.int partition_index: (integer) - Partition index for column
+        :param _builtins.int position: (integer) - Ordinal position of column (starting at position 0)
+        :param _builtins.str type_interval_type: (string) - Format of IntervalType
+        :param _builtins.str type_json: (string) - Full data type specification, JSON-serialized
+        :param _builtins.str type_name: (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        :param _builtins.int type_precision: (integer) - Digits of precision; required for DecimalTypes
+        :param _builtins.int type_scale: (integer) - Digits to right of decimal; Required for DecimalTypes
+        :param _builtins.str type_text: (string) - Full data type specification as SQL/catalogString text
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if partition_index is not None:
+            pulumi.set(__self__, "partition_index", partition_index)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if type_interval_type is not None:
+            pulumi.set(__self__, "type_interval_type", type_interval_type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
+        if type_name is not None:
+            pulumi.set(__self__, "type_name", type_name)
+        if type_precision is not None:
+            pulumi.set(__self__, "type_precision", type_precision)
+        if type_scale is not None:
+            pulumi.set(__self__, "type_scale", type_scale)
+        if type_text is not None:
+            pulumi.set(__self__, "type_text", type_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-provided free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def mask(self) -> Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMaskResult']:
+        """
+        (ColumnMask)
+        """
+        return pulumi.get(self, "mask")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        A fully qualified name that uniquely identifies the asset within the clean room.
+        This is also the name displayed in the clean room UI.
+
+        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+
+        For notebooks, the name is the notebook file name.
+        For jar analyses, the name is the jar analysis name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nullable(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether field may be Null (default: true)
+        """
+        return pulumi.get(self, "nullable")
+
+    @_builtins.property
+    @pulumi.getter(name="partitionIndex")
+    def partition_index(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Partition index for column
+        """
+        return pulumi.get(self, "partition_index")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Ordinal position of column (starting at position 0)
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="typeIntervalType")
+    def type_interval_type(self) -> Optional[_builtins.str]:
+        """
+        (string) - Format of IntervalType
+        """
+        return pulumi.get(self, "type_interval_type")
+
+    @_builtins.property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification, JSON-serialized
+        """
+        return pulumi.get(self, "type_json")
+
+    @_builtins.property
+    @pulumi.getter(name="typeName")
+    def type_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        """
+        return pulumi.get(self, "type_name")
+
+    @_builtins.property
+    @pulumi.getter(name="typePrecision")
+    def type_precision(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits of precision; required for DecimalTypes
+        """
+        return pulumi.get(self, "type_precision")
+
+    @_builtins.property
+    @pulumi.getter(name="typeScale")
+    def type_scale(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits to right of decimal; Required for DecimalTypes
+        """
+        return pulumi.get(self, "type_scale")
+
+    @_builtins.property
+    @pulumi.getter(name="typeText")
+    def type_text(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification as SQL/catalogString text
+        """
+        return pulumi.get(self, "type_text")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMaskResult(dict):
+    def __init__(__self__, *,
+                 function_name: Optional[_builtins.str] = None,
+                 using_column_names: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str function_name: (string) - The full name of the column mask SQL UDF
+        :param Sequence[_builtins.str] using_column_names: (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+               first arg of the mask function should be of the type of the column being masked and the
+               types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if using_column_names is not None:
+            pulumi.set(__self__, "using_column_names", using_column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The full name of the column mask SQL UDF
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="usingColumnNames")
+    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+        first arg of the mask function should be of the type of the column being masked and the
+        types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        return pulumi.get(self, "using_column_names")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsResult(dict):
+    def __init__(__self__, *,
+                 local_name: _builtins.str,
+                 partitions: Optional[Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionResult']] = None):
+        """
+        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
+               in the format of *catalog*.*schema*.*volume_name*
+        :param Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionArgs'] partitions: (list of Partition) - Partition filtering specification for a shared table
+        """
+        pulumi.set(__self__, "local_name", local_name)
+        if partitions is not None:
+            pulumi.set(__self__, "partitions", partitions)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the volume in its owner's local metastore,
+        in the format of *catalog*.*schema*.*volume_name*
+        """
+        return pulumi.get(self, "local_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def partitions(self) -> Optional[Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionResult']]:
+        """
+        (list of Partition) - Partition filtering specification for a shared table
+        """
+        return pulumi.get(self, "partitions")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionResult(dict):
+    def __init__(__self__, *,
+                 values: Optional[Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValueResult']] = None):
+        """
+        :param Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValueArgs'] values: (string) - The value of the partition column. When this value is not set, it means `null` value.
+               When this field is set, field `recipient_property_key` can not be set
+        """
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValueResult']]:
+        """
+        (string) - The value of the partition column. When this value is not set, it means `null` value.
+        When this field is set, field `recipient_property_key` can not be set
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValueResult(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 op: Optional[_builtins.str] = None,
+                 recipient_property_key: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
+               This is also the name displayed in the clean room UI.
+               
+               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+               
+               For notebooks, the name is the notebook file name.
+               For jar analyses, the name is the jar analysis name
+        :param _builtins.str op: (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
+        :param _builtins.str recipient_property_key: (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
+               When this field is set, field `value` can not be set
+        :param _builtins.str value: (string) - The value of the partition column. When this value is not set, it means `null` value.
+               When this field is set, field `recipient_property_key` can not be set
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if recipient_property_key is not None:
+            pulumi.set(__self__, "recipient_property_key", recipient_property_key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        A fully qualified name that uniquely identifies the asset within the clean room.
+        This is also the name displayed in the clean room UI.
+
+        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+
+        For notebooks, the name is the notebook file name.
+        For jar analyses, the name is the jar analysis name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def op(self) -> Optional[_builtins.str]:
+        """
+        (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
+        """
+        return pulumi.get(self, "op")
+
+    @_builtins.property
+    @pulumi.getter(name="recipientPropertyKey")
+    def recipient_property_key(self) -> Optional[_builtins.str]:
+        """
+        (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
+        When this field is set, field `value` can not be set
+        """
+        return pulumi.get(self, "recipient_property_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        (string) - The value of the partition column. When this value is not set, it means `null` value.
+        When this field is set, field `recipient_property_key` can not be set
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetViewResult(dict):
+    def __init__(__self__, *,
+                 columns: Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnResult']):
+        """
+        :param Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnResult']:
+        """
+        (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnResult(dict):
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 mask: Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMaskResult'] = None,
+                 name: Optional[_builtins.str] = None,
+                 nullable: Optional[_builtins.bool] = None,
+                 partition_index: Optional[_builtins.int] = None,
+                 position: Optional[_builtins.int] = None,
+                 type_interval_type: Optional[_builtins.str] = None,
+                 type_json: Optional[_builtins.str] = None,
+                 type_name: Optional[_builtins.str] = None,
+                 type_precision: Optional[_builtins.int] = None,
+                 type_scale: Optional[_builtins.int] = None,
+                 type_text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str comment: (string) - User-provided free-form text description
+        :param 'GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMaskArgs' mask: (ColumnMask)
+        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
+               This is also the name displayed in the clean room UI.
+               
+               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+               
+               For notebooks, the name is the notebook file name.
+               For jar analyses, the name is the jar analysis name
+        :param _builtins.bool nullable: (boolean) - Whether field may be Null (default: true)
+        :param _builtins.int partition_index: (integer) - Partition index for column
+        :param _builtins.int position: (integer) - Ordinal position of column (starting at position 0)
+        :param _builtins.str type_interval_type: (string) - Format of IntervalType
+        :param _builtins.str type_json: (string) - Full data type specification, JSON-serialized
+        :param _builtins.str type_name: (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        :param _builtins.int type_precision: (integer) - Digits of precision; required for DecimalTypes
+        :param _builtins.int type_scale: (integer) - Digits to right of decimal; Required for DecimalTypes
+        :param _builtins.str type_text: (string) - Full data type specification as SQL/catalogString text
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if partition_index is not None:
+            pulumi.set(__self__, "partition_index", partition_index)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if type_interval_type is not None:
+            pulumi.set(__self__, "type_interval_type", type_interval_type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
+        if type_name is not None:
+            pulumi.set(__self__, "type_name", type_name)
+        if type_precision is not None:
+            pulumi.set(__self__, "type_precision", type_precision)
+        if type_scale is not None:
+            pulumi.set(__self__, "type_scale", type_scale)
+        if type_text is not None:
+            pulumi.set(__self__, "type_text", type_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-provided free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def mask(self) -> Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMaskResult']:
+        """
+        (ColumnMask)
+        """
+        return pulumi.get(self, "mask")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        A fully qualified name that uniquely identifies the asset within the clean room.
+        This is also the name displayed in the clean room UI.
+
+        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+
+        For notebooks, the name is the notebook file name.
+        For jar analyses, the name is the jar analysis name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nullable(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether field may be Null (default: true)
+        """
+        return pulumi.get(self, "nullable")
+
+    @_builtins.property
+    @pulumi.getter(name="partitionIndex")
+    def partition_index(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Partition index for column
+        """
+        return pulumi.get(self, "partition_index")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Ordinal position of column (starting at position 0)
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="typeIntervalType")
+    def type_interval_type(self) -> Optional[_builtins.str]:
+        """
+        (string) - Format of IntervalType
+        """
+        return pulumi.get(self, "type_interval_type")
+
+    @_builtins.property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification, JSON-serialized
+        """
+        return pulumi.get(self, "type_json")
+
+    @_builtins.property
+    @pulumi.getter(name="typeName")
+    def type_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        """
+        return pulumi.get(self, "type_name")
+
+    @_builtins.property
+    @pulumi.getter(name="typePrecision")
+    def type_precision(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits of precision; required for DecimalTypes
+        """
+        return pulumi.get(self, "type_precision")
+
+    @_builtins.property
+    @pulumi.getter(name="typeScale")
+    def type_scale(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits to right of decimal; Required for DecimalTypes
+        """
+        return pulumi.get(self, "type_scale")
+
+    @_builtins.property
+    @pulumi.getter(name="typeText")
+    def type_text(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification as SQL/catalogString text
+        """
+        return pulumi.get(self, "type_text")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMaskResult(dict):
+    def __init__(__self__, *,
+                 function_name: Optional[_builtins.str] = None,
+                 using_column_names: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str function_name: (string) - The full name of the column mask SQL UDF
+        :param Sequence[_builtins.str] using_column_names: (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+               first arg of the mask function should be of the type of the column being masked and the
+               types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if using_column_names is not None:
+            pulumi.set(__self__, "using_column_names", using_column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The full name of the column mask SQL UDF
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="usingColumnNames")
+    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+        first arg of the mask function should be of the type of the column being masked and the
+        types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        return pulumi.get(self, "using_column_names")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetViewLocalDetailsResult(dict):
+    def __init__(__self__, *,
+                 local_name: _builtins.str):
+        """
+        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
+               in the format of *catalog*.*schema*.*volume_name*
+        """
+        pulumi.set(__self__, "local_name", local_name)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the volume in its owner's local metastore,
+        in the format of *catalog*.*schema*.*volume_name*
+        """
+        return pulumi.get(self, "local_name")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetailsResult(dict):
+    def __init__(__self__, *,
+                 local_name: _builtins.str):
+        """
+        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
+               in the format of *catalog*.*schema*.*volume_name*
+        """
+        pulumi.set(__self__, "local_name", local_name)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the volume in its owner's local metastore,
+        in the format of *catalog*.*schema*.*volume_name*
+        """
+        return pulumi.get(self, "local_name")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionResult(dict):
+    def __init__(__self__, *,
+                 added_at: _builtins.int,
+                 asset_type: _builtins.str,
+                 name: _builtins.str,
+                 owner_collaborator_alias: _builtins.str,
+                 status: _builtins.str,
+                 clean_room_name: Optional[_builtins.str] = None,
+                 foreign_table: Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableResult'] = None,
+                 foreign_table_local_details: Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableLocalDetailsResult'] = None,
+                 notebook: Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionNotebookResult'] = None,
+                 table: Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableResult'] = None,
+                 table_local_details: Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsResult'] = None,
+                 view: Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewResult'] = None,
+                 view_local_details: Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewLocalDetailsResult'] = None,
+                 volume_local_details: Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionVolumeLocalDetailsResult'] = None):
+        """
+        :param _builtins.int added_at: (integer) - When the asset is added to the clean room, in epoch milliseconds
+        :param _builtins.str asset_type: Asset type. Only NOTEBOOK_FILE is supported. Possible values are: `FOREIGN_TABLE`, `NOTEBOOK_FILE`, `TABLE`, `VIEW`, `VOLUME`
+        :param _builtins.str name: Name of the asset
+        :param _builtins.str owner_collaborator_alias: (string) - The alias of the collaborator who owns this asset
+        :param _builtins.str status: (string) - Status of the asset. Possible values are: `ACTIVE`, `PENDING`, `PERMISSION_DENIED`
+        :param _builtins.str clean_room_name: Name of the clean room
+        :param 'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableArgs' foreign_table: (CleanRoomAssetForeignTable) - Foreign table details available to all collaborators of the clean room.
+               Present if and only if **asset_type** is **FOREIGN_TABLE**
+        :param 'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableLocalDetailsArgs' foreign_table_local_details: (CleanRoomAssetForeignTableLocalDetails) - Local details for a foreign that are only available to its owner.
+               Present if and only if **asset_type** is **FOREIGN_TABLE**
+        :param 'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionNotebookArgs' notebook: (CleanRoomAssetNotebook) - Notebook details available to all collaborators of the clean room.
+               Present if and only if **asset_type** is **NOTEBOOK_FILE**
+        :param 'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableArgs' table: (CleanRoomAssetTable) - Table details available to all collaborators of the clean room.
+               Present if and only if **asset_type** is **TABLE**
+        :param 'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsArgs' table_local_details: (CleanRoomAssetTableLocalDetails) - Local details for a table that are only available to its owner.
+               Present if and only if **asset_type** is **TABLE**
+        :param 'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewArgs' view: (CleanRoomAssetView) - View details available to all collaborators of the clean room.
+               Present if and only if **asset_type** is **VIEW**
+        :param 'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewLocalDetailsArgs' view_local_details: (CleanRoomAssetViewLocalDetails) - Local details for a view that are only available to its owner.
+               Present if and only if **asset_type** is **VIEW**
+        :param 'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionVolumeLocalDetailsArgs' volume_local_details: (CleanRoomAssetVolumeLocalDetails) - Local details for a volume that are only available to its owner.
+               Present if and only if **asset_type** is **VOLUME**
+        """
+        pulumi.set(__self__, "added_at", added_at)
+        pulumi.set(__self__, "asset_type", asset_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "owner_collaborator_alias", owner_collaborator_alias)
+        pulumi.set(__self__, "status", status)
+        if clean_room_name is not None:
+            pulumi.set(__self__, "clean_room_name", clean_room_name)
+        if foreign_table is not None:
+            pulumi.set(__self__, "foreign_table", foreign_table)
+        if foreign_table_local_details is not None:
+            pulumi.set(__self__, "foreign_table_local_details", foreign_table_local_details)
+        if notebook is not None:
+            pulumi.set(__self__, "notebook", notebook)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+        if table_local_details is not None:
+            pulumi.set(__self__, "table_local_details", table_local_details)
+        if view is not None:
+            pulumi.set(__self__, "view", view)
+        if view_local_details is not None:
+            pulumi.set(__self__, "view_local_details", view_local_details)
+        if volume_local_details is not None:
+            pulumi.set(__self__, "volume_local_details", volume_local_details)
+
+    @_builtins.property
+    @pulumi.getter(name="addedAt")
+    def added_at(self) -> _builtins.int:
+        """
+        (integer) - When the asset is added to the clean room, in epoch milliseconds
+        """
+        return pulumi.get(self, "added_at")
+
+    @_builtins.property
+    @pulumi.getter(name="assetType")
+    def asset_type(self) -> _builtins.str:
+        """
+        Asset type. Only NOTEBOOK_FILE is supported. Possible values are: `FOREIGN_TABLE`, `NOTEBOOK_FILE`, `TABLE`, `VIEW`, `VOLUME`
+        """
+        return pulumi.get(self, "asset_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the asset
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="ownerCollaboratorAlias")
+    def owner_collaborator_alias(self) -> _builtins.str:
+        """
+        (string) - The alias of the collaborator who owns this asset
+        """
+        return pulumi.get(self, "owner_collaborator_alias")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        (string) - Status of the asset. Possible values are: `ACTIVE`, `PENDING`, `PERMISSION_DENIED`
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="cleanRoomName")
+    def clean_room_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the clean room
+        """
+        return pulumi.get(self, "clean_room_name")
+
+    @_builtins.property
+    @pulumi.getter(name="foreignTable")
+    def foreign_table(self) -> Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableResult']:
+        """
+        (CleanRoomAssetForeignTable) - Foreign table details available to all collaborators of the clean room.
+        Present if and only if **asset_type** is **FOREIGN_TABLE**
+        """
+        return pulumi.get(self, "foreign_table")
+
+    @_builtins.property
+    @pulumi.getter(name="foreignTableLocalDetails")
+    def foreign_table_local_details(self) -> Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableLocalDetailsResult']:
+        """
+        (CleanRoomAssetForeignTableLocalDetails) - Local details for a foreign that are only available to its owner.
+        Present if and only if **asset_type** is **FOREIGN_TABLE**
+        """
+        return pulumi.get(self, "foreign_table_local_details")
+
+    @_builtins.property
+    @pulumi.getter
+    def notebook(self) -> Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionNotebookResult']:
+        """
+        (CleanRoomAssetNotebook) - Notebook details available to all collaborators of the clean room.
+        Present if and only if **asset_type** is **NOTEBOOK_FILE**
+        """
+        return pulumi.get(self, "notebook")
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableResult']:
+        """
+        (CleanRoomAssetTable) - Table details available to all collaborators of the clean room.
+        Present if and only if **asset_type** is **TABLE**
+        """
+        return pulumi.get(self, "table")
+
+    @_builtins.property
+    @pulumi.getter(name="tableLocalDetails")
+    def table_local_details(self) -> Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsResult']:
+        """
+        (CleanRoomAssetTableLocalDetails) - Local details for a table that are only available to its owner.
+        Present if and only if **asset_type** is **TABLE**
+        """
+        return pulumi.get(self, "table_local_details")
+
+    @_builtins.property
+    @pulumi.getter
+    def view(self) -> Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewResult']:
+        """
+        (CleanRoomAssetView) - View details available to all collaborators of the clean room.
+        Present if and only if **asset_type** is **VIEW**
+        """
+        return pulumi.get(self, "view")
+
+    @_builtins.property
+    @pulumi.getter(name="viewLocalDetails")
+    def view_local_details(self) -> Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewLocalDetailsResult']:
+        """
+        (CleanRoomAssetViewLocalDetails) - Local details for a view that are only available to its owner.
+        Present if and only if **asset_type** is **VIEW**
+        """
+        return pulumi.get(self, "view_local_details")
+
+    @_builtins.property
+    @pulumi.getter(name="volumeLocalDetails")
+    def volume_local_details(self) -> Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionVolumeLocalDetailsResult']:
+        """
+        (CleanRoomAssetVolumeLocalDetails) - Local details for a volume that are only available to its owner.
+        Present if and only if **asset_type** is **VOLUME**
+        """
+        return pulumi.get(self, "volume_local_details")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableResult(dict):
+    def __init__(__self__, *,
+                 columns: Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableColumnResult']):
+        """
+        :param Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableColumnResult']:
+        """
+        (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableColumnResult(dict):
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 mask: Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableColumnMaskResult'] = None,
+                 name: Optional[_builtins.str] = None,
+                 nullable: Optional[_builtins.bool] = None,
+                 partition_index: Optional[_builtins.int] = None,
+                 position: Optional[_builtins.int] = None,
+                 type_interval_type: Optional[_builtins.str] = None,
+                 type_json: Optional[_builtins.str] = None,
+                 type_name: Optional[_builtins.str] = None,
+                 type_precision: Optional[_builtins.int] = None,
+                 type_scale: Optional[_builtins.int] = None,
+                 type_text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str comment: (string) - User-provided free-form text description
+        :param 'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableColumnMaskArgs' mask: (ColumnMask)
+        :param _builtins.str name: Name of the asset
+        :param _builtins.bool nullable: (boolean) - Whether field may be Null (default: true)
+        :param _builtins.int partition_index: (integer) - Partition index for column
+        :param _builtins.int position: (integer) - Ordinal position of column (starting at position 0)
+        :param _builtins.str type_interval_type: (string) - Format of IntervalType
+        :param _builtins.str type_json: (string) - Full data type specification, JSON-serialized
+        :param _builtins.str type_name: (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        :param _builtins.int type_precision: (integer) - Digits of precision; required for DecimalTypes
+        :param _builtins.int type_scale: (integer) - Digits to right of decimal; Required for DecimalTypes
+        :param _builtins.str type_text: (string) - Full data type specification as SQL/catalogString text
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if partition_index is not None:
+            pulumi.set(__self__, "partition_index", partition_index)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if type_interval_type is not None:
+            pulumi.set(__self__, "type_interval_type", type_interval_type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
+        if type_name is not None:
+            pulumi.set(__self__, "type_name", type_name)
+        if type_precision is not None:
+            pulumi.set(__self__, "type_precision", type_precision)
+        if type_scale is not None:
+            pulumi.set(__self__, "type_scale", type_scale)
+        if type_text is not None:
+            pulumi.set(__self__, "type_text", type_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-provided free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def mask(self) -> Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableColumnMaskResult']:
+        """
+        (ColumnMask)
+        """
+        return pulumi.get(self, "mask")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the asset
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nullable(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether field may be Null (default: true)
+        """
+        return pulumi.get(self, "nullable")
+
+    @_builtins.property
+    @pulumi.getter(name="partitionIndex")
+    def partition_index(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Partition index for column
+        """
+        return pulumi.get(self, "partition_index")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Ordinal position of column (starting at position 0)
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="typeIntervalType")
+    def type_interval_type(self) -> Optional[_builtins.str]:
+        """
+        (string) - Format of IntervalType
+        """
+        return pulumi.get(self, "type_interval_type")
+
+    @_builtins.property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification, JSON-serialized
+        """
+        return pulumi.get(self, "type_json")
+
+    @_builtins.property
+    @pulumi.getter(name="typeName")
+    def type_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        """
+        return pulumi.get(self, "type_name")
+
+    @_builtins.property
+    @pulumi.getter(name="typePrecision")
+    def type_precision(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits of precision; required for DecimalTypes
+        """
+        return pulumi.get(self, "type_precision")
+
+    @_builtins.property
+    @pulumi.getter(name="typeScale")
+    def type_scale(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits to right of decimal; Required for DecimalTypes
+        """
+        return pulumi.get(self, "type_scale")
+
+    @_builtins.property
+    @pulumi.getter(name="typeText")
+    def type_text(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification as SQL/catalogString text
+        """
+        return pulumi.get(self, "type_text")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableColumnMaskResult(dict):
+    def __init__(__self__, *,
+                 function_name: Optional[_builtins.str] = None,
+                 using_column_names: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str function_name: (string) - The full name of the column mask SQL UDF
+        :param Sequence[_builtins.str] using_column_names: (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+               first arg of the mask function should be of the type of the column being masked and the
+               types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if using_column_names is not None:
+            pulumi.set(__self__, "using_column_names", using_column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The full name of the column mask SQL UDF
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="usingColumnNames")
+    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+        first arg of the mask function should be of the type of the column being masked and the
+        types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        return pulumi.get(self, "using_column_names")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableLocalDetailsResult(dict):
+    def __init__(__self__, *,
+                 local_name: _builtins.str):
+        """
+        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
+               in the format of *catalog*.*schema*.*volume_name*
+        """
+        pulumi.set(__self__, "local_name", local_name)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the volume in its owner's local metastore,
+        in the format of *catalog*.*schema*.*volume_name*
+        """
+        return pulumi.get(self, "local_name")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionNotebookResult(dict):
+    def __init__(__self__, *,
+                 etag: _builtins.str,
+                 notebook_content: _builtins.str,
+                 review_state: _builtins.str,
+                 reviews: Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionNotebookReviewResult'],
+                 runner_collaborator_aliases: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str etag: (string) - Server generated etag that represents the notebook version
+        :param _builtins.str notebook_content: (string) - Base 64 representation of the notebook contents.
+               This is the same format as returned by :method:workspace/export with the format of **HTML**
+        :param _builtins.str review_state: (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        :param Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionNotebookReviewArgs'] reviews: (list of CleanRoomNotebookReview) - All existing approvals or rejections
+        :param Sequence[_builtins.str] runner_collaborator_aliases: (list of string) - collaborators that can run the notebook
+        """
+        pulumi.set(__self__, "etag", etag)
+        pulumi.set(__self__, "notebook_content", notebook_content)
+        pulumi.set(__self__, "review_state", review_state)
+        pulumi.set(__self__, "reviews", reviews)
+        if runner_collaborator_aliases is not None:
+            pulumi.set(__self__, "runner_collaborator_aliases", runner_collaborator_aliases)
+
+    @_builtins.property
+    @pulumi.getter
+    def etag(self) -> _builtins.str:
+        """
+        (string) - Server generated etag that represents the notebook version
+        """
+        return pulumi.get(self, "etag")
+
+    @_builtins.property
+    @pulumi.getter(name="notebookContent")
+    def notebook_content(self) -> _builtins.str:
+        """
+        (string) - Base 64 representation of the notebook contents.
+        This is the same format as returned by :method:workspace/export with the format of **HTML**
+        """
+        return pulumi.get(self, "notebook_content")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewState")
+    def review_state(self) -> _builtins.str:
+        """
+        (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        """
+        return pulumi.get(self, "review_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def reviews(self) -> Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionNotebookReviewResult']:
+        """
+        (list of CleanRoomNotebookReview) - All existing approvals or rejections
+        """
+        return pulumi.get(self, "reviews")
+
+    @_builtins.property
+    @pulumi.getter(name="runnerCollaboratorAliases")
+    def runner_collaborator_aliases(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - collaborators that can run the notebook
+        """
+        return pulumi.get(self, "runner_collaborator_aliases")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionNotebookReviewResult(dict):
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 created_at_millis: Optional[_builtins.int] = None,
+                 review_state: Optional[_builtins.str] = None,
+                 review_sub_reason: Optional[_builtins.str] = None,
+                 reviewer_collaborator_alias: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str comment: (string) - User-provided free-form text description
+        :param _builtins.int created_at_millis: (integer) - When the review was submitted, in epoch milliseconds
+        :param _builtins.str review_state: (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        :param _builtins.str review_sub_reason: (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
+        :param _builtins.str reviewer_collaborator_alias: (string) - Collaborator alias of the reviewer
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if created_at_millis is not None:
+            pulumi.set(__self__, "created_at_millis", created_at_millis)
+        if review_state is not None:
+            pulumi.set(__self__, "review_state", review_state)
+        if review_sub_reason is not None:
+            pulumi.set(__self__, "review_sub_reason", review_sub_reason)
+        if reviewer_collaborator_alias is not None:
+            pulumi.set(__self__, "reviewer_collaborator_alias", reviewer_collaborator_alias)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-provided free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAtMillis")
+    def created_at_millis(self) -> Optional[_builtins.int]:
+        """
+        (integer) - When the review was submitted, in epoch milliseconds
+        """
+        return pulumi.get(self, "created_at_millis")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewState")
+    def review_state(self) -> Optional[_builtins.str]:
+        """
+        (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        """
+        return pulumi.get(self, "review_state")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewSubReason")
+    def review_sub_reason(self) -> Optional[_builtins.str]:
+        """
+        (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
+        """
+        return pulumi.get(self, "review_sub_reason")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewerCollaboratorAlias")
+    def reviewer_collaborator_alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - Collaborator alias of the reviewer
+        """
+        return pulumi.get(self, "reviewer_collaborator_alias")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableResult(dict):
+    def __init__(__self__, *,
+                 columns: Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableColumnResult']):
+        """
+        :param Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableColumnResult']:
+        """
+        (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableColumnResult(dict):
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 mask: Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableColumnMaskResult'] = None,
+                 name: Optional[_builtins.str] = None,
+                 nullable: Optional[_builtins.bool] = None,
+                 partition_index: Optional[_builtins.int] = None,
+                 position: Optional[_builtins.int] = None,
+                 type_interval_type: Optional[_builtins.str] = None,
+                 type_json: Optional[_builtins.str] = None,
+                 type_name: Optional[_builtins.str] = None,
+                 type_precision: Optional[_builtins.int] = None,
+                 type_scale: Optional[_builtins.int] = None,
+                 type_text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str comment: (string) - User-provided free-form text description
+        :param 'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableColumnMaskArgs' mask: (ColumnMask)
+        :param _builtins.str name: Name of the asset
+        :param _builtins.bool nullable: (boolean) - Whether field may be Null (default: true)
+        :param _builtins.int partition_index: (integer) - Partition index for column
+        :param _builtins.int position: (integer) - Ordinal position of column (starting at position 0)
+        :param _builtins.str type_interval_type: (string) - Format of IntervalType
+        :param _builtins.str type_json: (string) - Full data type specification, JSON-serialized
+        :param _builtins.str type_name: (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        :param _builtins.int type_precision: (integer) - Digits of precision; required for DecimalTypes
+        :param _builtins.int type_scale: (integer) - Digits to right of decimal; Required for DecimalTypes
+        :param _builtins.str type_text: (string) - Full data type specification as SQL/catalogString text
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if partition_index is not None:
+            pulumi.set(__self__, "partition_index", partition_index)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if type_interval_type is not None:
+            pulumi.set(__self__, "type_interval_type", type_interval_type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
+        if type_name is not None:
+            pulumi.set(__self__, "type_name", type_name)
+        if type_precision is not None:
+            pulumi.set(__self__, "type_precision", type_precision)
+        if type_scale is not None:
+            pulumi.set(__self__, "type_scale", type_scale)
+        if type_text is not None:
+            pulumi.set(__self__, "type_text", type_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-provided free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def mask(self) -> Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableColumnMaskResult']:
+        """
+        (ColumnMask)
+        """
+        return pulumi.get(self, "mask")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the asset
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nullable(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether field may be Null (default: true)
+        """
+        return pulumi.get(self, "nullable")
+
+    @_builtins.property
+    @pulumi.getter(name="partitionIndex")
+    def partition_index(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Partition index for column
+        """
+        return pulumi.get(self, "partition_index")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Ordinal position of column (starting at position 0)
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="typeIntervalType")
+    def type_interval_type(self) -> Optional[_builtins.str]:
+        """
+        (string) - Format of IntervalType
+        """
+        return pulumi.get(self, "type_interval_type")
+
+    @_builtins.property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification, JSON-serialized
+        """
+        return pulumi.get(self, "type_json")
+
+    @_builtins.property
+    @pulumi.getter(name="typeName")
+    def type_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        """
+        return pulumi.get(self, "type_name")
+
+    @_builtins.property
+    @pulumi.getter(name="typePrecision")
+    def type_precision(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits of precision; required for DecimalTypes
+        """
+        return pulumi.get(self, "type_precision")
+
+    @_builtins.property
+    @pulumi.getter(name="typeScale")
+    def type_scale(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits to right of decimal; Required for DecimalTypes
+        """
+        return pulumi.get(self, "type_scale")
+
+    @_builtins.property
+    @pulumi.getter(name="typeText")
+    def type_text(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification as SQL/catalogString text
+        """
+        return pulumi.get(self, "type_text")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableColumnMaskResult(dict):
+    def __init__(__self__, *,
+                 function_name: Optional[_builtins.str] = None,
+                 using_column_names: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str function_name: (string) - The full name of the column mask SQL UDF
+        :param Sequence[_builtins.str] using_column_names: (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+               first arg of the mask function should be of the type of the column being masked and the
+               types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if using_column_names is not None:
+            pulumi.set(__self__, "using_column_names", using_column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The full name of the column mask SQL UDF
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="usingColumnNames")
+    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+        first arg of the mask function should be of the type of the column being masked and the
+        types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        return pulumi.get(self, "using_column_names")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsResult(dict):
+    def __init__(__self__, *,
+                 local_name: _builtins.str,
+                 partitions: Optional[Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsPartitionResult']] = None):
+        """
+        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
+               in the format of *catalog*.*schema*.*volume_name*
+        :param Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsPartitionArgs'] partitions: (list of Partition) - Partition filtering specification for a shared table
+        """
+        pulumi.set(__self__, "local_name", local_name)
+        if partitions is not None:
+            pulumi.set(__self__, "partitions", partitions)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the volume in its owner's local metastore,
+        in the format of *catalog*.*schema*.*volume_name*
+        """
+        return pulumi.get(self, "local_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def partitions(self) -> Optional[Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsPartitionResult']]:
+        """
+        (list of Partition) - Partition filtering specification for a shared table
+        """
+        return pulumi.get(self, "partitions")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsPartitionResult(dict):
+    def __init__(__self__, *,
+                 values: Optional[Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsPartitionValueResult']] = None):
+        """
+        :param Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsPartitionValueArgs'] values: (string) - The value of the partition column. When this value is not set, it means `null` value.
+               When this field is set, field `recipient_property_key` can not be set
+        """
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsPartitionValueResult']]:
+        """
+        (string) - The value of the partition column. When this value is not set, it means `null` value.
+        When this field is set, field `recipient_property_key` can not be set
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsPartitionValueResult(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 op: Optional[_builtins.str] = None,
+                 recipient_property_key: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Name of the asset
+        :param _builtins.str op: (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
+        :param _builtins.str recipient_property_key: (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
+               When this field is set, field `value` can not be set
+        :param _builtins.str value: (string) - The value of the partition column. When this value is not set, it means `null` value.
+               When this field is set, field `recipient_property_key` can not be set
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if recipient_property_key is not None:
+            pulumi.set(__self__, "recipient_property_key", recipient_property_key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the asset
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def op(self) -> Optional[_builtins.str]:
+        """
+        (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
+        """
+        return pulumi.get(self, "op")
+
+    @_builtins.property
+    @pulumi.getter(name="recipientPropertyKey")
+    def recipient_property_key(self) -> Optional[_builtins.str]:
+        """
+        (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
+        When this field is set, field `value` can not be set
+        """
+        return pulumi.get(self, "recipient_property_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        (string) - The value of the partition column. When this value is not set, it means `null` value.
+        When this field is set, field `recipient_property_key` can not be set
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewResult(dict):
+    def __init__(__self__, *,
+                 columns: Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewColumnResult']):
+        """
+        :param Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Sequence['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewColumnResult']:
+        """
+        (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewColumnResult(dict):
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 mask: Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewColumnMaskResult'] = None,
+                 name: Optional[_builtins.str] = None,
+                 nullable: Optional[_builtins.bool] = None,
+                 partition_index: Optional[_builtins.int] = None,
+                 position: Optional[_builtins.int] = None,
+                 type_interval_type: Optional[_builtins.str] = None,
+                 type_json: Optional[_builtins.str] = None,
+                 type_name: Optional[_builtins.str] = None,
+                 type_precision: Optional[_builtins.int] = None,
+                 type_scale: Optional[_builtins.int] = None,
+                 type_text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str comment: (string) - User-provided free-form text description
+        :param 'GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewColumnMaskArgs' mask: (ColumnMask)
+        :param _builtins.str name: Name of the asset
+        :param _builtins.bool nullable: (boolean) - Whether field may be Null (default: true)
+        :param _builtins.int partition_index: (integer) - Partition index for column
+        :param _builtins.int position: (integer) - Ordinal position of column (starting at position 0)
+        :param _builtins.str type_interval_type: (string) - Format of IntervalType
+        :param _builtins.str type_json: (string) - Full data type specification, JSON-serialized
+        :param _builtins.str type_name: (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        :param _builtins.int type_precision: (integer) - Digits of precision; required for DecimalTypes
+        :param _builtins.int type_scale: (integer) - Digits to right of decimal; Required for DecimalTypes
+        :param _builtins.str type_text: (string) - Full data type specification as SQL/catalogString text
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if partition_index is not None:
+            pulumi.set(__self__, "partition_index", partition_index)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if type_interval_type is not None:
+            pulumi.set(__self__, "type_interval_type", type_interval_type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
+        if type_name is not None:
+            pulumi.set(__self__, "type_name", type_name)
+        if type_precision is not None:
+            pulumi.set(__self__, "type_precision", type_precision)
+        if type_scale is not None:
+            pulumi.set(__self__, "type_scale", type_scale)
+        if type_text is not None:
+            pulumi.set(__self__, "type_text", type_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-provided free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def mask(self) -> Optional['outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewColumnMaskResult']:
+        """
+        (ColumnMask)
+        """
+        return pulumi.get(self, "mask")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the asset
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nullable(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether field may be Null (default: true)
+        """
+        return pulumi.get(self, "nullable")
+
+    @_builtins.property
+    @pulumi.getter(name="partitionIndex")
+    def partition_index(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Partition index for column
+        """
+        return pulumi.get(self, "partition_index")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Ordinal position of column (starting at position 0)
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="typeIntervalType")
+    def type_interval_type(self) -> Optional[_builtins.str]:
+        """
+        (string) - Format of IntervalType
+        """
+        return pulumi.get(self, "type_interval_type")
+
+    @_builtins.property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification, JSON-serialized
+        """
+        return pulumi.get(self, "type_json")
+
+    @_builtins.property
+    @pulumi.getter(name="typeName")
+    def type_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        """
+        return pulumi.get(self, "type_name")
+
+    @_builtins.property
+    @pulumi.getter(name="typePrecision")
+    def type_precision(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits of precision; required for DecimalTypes
+        """
+        return pulumi.get(self, "type_precision")
+
+    @_builtins.property
+    @pulumi.getter(name="typeScale")
+    def type_scale(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits to right of decimal; Required for DecimalTypes
+        """
+        return pulumi.get(self, "type_scale")
+
+    @_builtins.property
+    @pulumi.getter(name="typeText")
+    def type_text(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification as SQL/catalogString text
+        """
+        return pulumi.get(self, "type_text")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewColumnMaskResult(dict):
+    def __init__(__self__, *,
+                 function_name: Optional[_builtins.str] = None,
+                 using_column_names: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str function_name: (string) - The full name of the column mask SQL UDF
+        :param Sequence[_builtins.str] using_column_names: (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+               first arg of the mask function should be of the type of the column being masked and the
+               types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if using_column_names is not None:
+            pulumi.set(__self__, "using_column_names", using_column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The full name of the column mask SQL UDF
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="usingColumnNames")
+    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+        first arg of the mask function should be of the type of the column being masked and the
+        types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        return pulumi.get(self, "using_column_names")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewLocalDetailsResult(dict):
+    def __init__(__self__, *,
+                 local_name: _builtins.str):
+        """
+        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
+               in the format of *catalog*.*schema*.*volume_name*
+        """
+        pulumi.set(__self__, "local_name", local_name)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the volume in its owner's local metastore,
+        in the format of *catalog*.*schema*.*volume_name*
+        """
+        return pulumi.get(self, "local_name")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionVolumeLocalDetailsResult(dict):
+    def __init__(__self__, *,
+                 local_name: _builtins.str):
+        """
+        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
+               in the format of *catalog*.*schema*.*volume_name*
+        """
+        pulumi.set(__self__, "local_name", local_name)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the volume in its owner's local metastore,
+        in the format of *catalog*.*schema*.*volume_name*
+        """
+        return pulumi.get(self, "local_name")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetTableResult(dict):
+    def __init__(__self__, *,
+                 columns: Sequence['outputs.GetCleanRoomAssetTableColumnResult']):
+        """
+        :param Sequence['GetCleanRoomAssetTableColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Sequence['outputs.GetCleanRoomAssetTableColumnResult']:
+        """
+        (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetTableColumnResult(dict):
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 mask: Optional['outputs.GetCleanRoomAssetTableColumnMaskResult'] = None,
+                 name: Optional[_builtins.str] = None,
+                 nullable: Optional[_builtins.bool] = None,
+                 partition_index: Optional[_builtins.int] = None,
+                 position: Optional[_builtins.int] = None,
+                 type_interval_type: Optional[_builtins.str] = None,
+                 type_json: Optional[_builtins.str] = None,
+                 type_name: Optional[_builtins.str] = None,
+                 type_precision: Optional[_builtins.int] = None,
+                 type_scale: Optional[_builtins.int] = None,
+                 type_text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str comment: (string) - User-provided free-form text description
+        :param 'GetCleanRoomAssetTableColumnMaskArgs' mask: (ColumnMask)
+        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
+               This is also the name displayed in the clean room UI.
+               
+               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+               
+               For notebooks, the name is the notebook file name.
+               For jar analyses, the name is the jar analysis name
+        :param _builtins.bool nullable: (boolean) - Whether field may be Null (default: true)
+        :param _builtins.int partition_index: (integer) - Partition index for column
+        :param _builtins.int position: (integer) - Ordinal position of column (starting at position 0)
+        :param _builtins.str type_interval_type: (string) - Format of IntervalType
+        :param _builtins.str type_json: (string) - Full data type specification, JSON-serialized
+        :param _builtins.str type_name: (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        :param _builtins.int type_precision: (integer) - Digits of precision; required for DecimalTypes
+        :param _builtins.int type_scale: (integer) - Digits to right of decimal; Required for DecimalTypes
+        :param _builtins.str type_text: (string) - Full data type specification as SQL/catalogString text
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if partition_index is not None:
+            pulumi.set(__self__, "partition_index", partition_index)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if type_interval_type is not None:
+            pulumi.set(__self__, "type_interval_type", type_interval_type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
+        if type_name is not None:
+            pulumi.set(__self__, "type_name", type_name)
+        if type_precision is not None:
+            pulumi.set(__self__, "type_precision", type_precision)
+        if type_scale is not None:
+            pulumi.set(__self__, "type_scale", type_scale)
+        if type_text is not None:
+            pulumi.set(__self__, "type_text", type_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-provided free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def mask(self) -> Optional['outputs.GetCleanRoomAssetTableColumnMaskResult']:
+        """
+        (ColumnMask)
+        """
+        return pulumi.get(self, "mask")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        A fully qualified name that uniquely identifies the asset within the clean room.
+        This is also the name displayed in the clean room UI.
+
+        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+
+        For notebooks, the name is the notebook file name.
+        For jar analyses, the name is the jar analysis name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nullable(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether field may be Null (default: true)
+        """
+        return pulumi.get(self, "nullable")
+
+    @_builtins.property
+    @pulumi.getter(name="partitionIndex")
+    def partition_index(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Partition index for column
+        """
+        return pulumi.get(self, "partition_index")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Ordinal position of column (starting at position 0)
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="typeIntervalType")
+    def type_interval_type(self) -> Optional[_builtins.str]:
+        """
+        (string) - Format of IntervalType
+        """
+        return pulumi.get(self, "type_interval_type")
+
+    @_builtins.property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification, JSON-serialized
+        """
+        return pulumi.get(self, "type_json")
+
+    @_builtins.property
+    @pulumi.getter(name="typeName")
+    def type_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        """
+        return pulumi.get(self, "type_name")
+
+    @_builtins.property
+    @pulumi.getter(name="typePrecision")
+    def type_precision(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits of precision; required for DecimalTypes
+        """
+        return pulumi.get(self, "type_precision")
+
+    @_builtins.property
+    @pulumi.getter(name="typeScale")
+    def type_scale(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits to right of decimal; Required for DecimalTypes
+        """
+        return pulumi.get(self, "type_scale")
+
+    @_builtins.property
+    @pulumi.getter(name="typeText")
+    def type_text(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification as SQL/catalogString text
+        """
+        return pulumi.get(self, "type_text")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetTableColumnMaskResult(dict):
+    def __init__(__self__, *,
+                 function_name: Optional[_builtins.str] = None,
+                 using_column_names: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str function_name: (string) - The full name of the column mask SQL UDF
+        :param Sequence[_builtins.str] using_column_names: (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+               first arg of the mask function should be of the type of the column being masked and the
+               types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if using_column_names is not None:
+            pulumi.set(__self__, "using_column_names", using_column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The full name of the column mask SQL UDF
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="usingColumnNames")
+    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+        first arg of the mask function should be of the type of the column being masked and the
+        types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        return pulumi.get(self, "using_column_names")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetTableLocalDetailsResult(dict):
+    def __init__(__self__, *,
+                 local_name: _builtins.str,
+                 partitions: Optional[Sequence['outputs.GetCleanRoomAssetTableLocalDetailsPartitionResult']] = None):
+        """
+        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
+               in the format of *catalog*.*schema*.*volume_name*
+        :param Sequence['GetCleanRoomAssetTableLocalDetailsPartitionArgs'] partitions: (list of Partition) - Partition filtering specification for a shared table
+        """
+        pulumi.set(__self__, "local_name", local_name)
+        if partitions is not None:
+            pulumi.set(__self__, "partitions", partitions)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the volume in its owner's local metastore,
+        in the format of *catalog*.*schema*.*volume_name*
+        """
+        return pulumi.get(self, "local_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def partitions(self) -> Optional[Sequence['outputs.GetCleanRoomAssetTableLocalDetailsPartitionResult']]:
+        """
+        (list of Partition) - Partition filtering specification for a shared table
+        """
+        return pulumi.get(self, "partitions")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetTableLocalDetailsPartitionResult(dict):
+    def __init__(__self__, *,
+                 values: Optional[Sequence['outputs.GetCleanRoomAssetTableLocalDetailsPartitionValueResult']] = None):
+        """
+        :param Sequence['GetCleanRoomAssetTableLocalDetailsPartitionValueArgs'] values: (string) - The value of the partition column. When this value is not set, it means `null` value.
+               When this field is set, field `recipient_property_key` can not be set
+        """
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence['outputs.GetCleanRoomAssetTableLocalDetailsPartitionValueResult']]:
+        """
+        (string) - The value of the partition column. When this value is not set, it means `null` value.
+        When this field is set, field `recipient_property_key` can not be set
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetTableLocalDetailsPartitionValueResult(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 op: Optional[_builtins.str] = None,
+                 recipient_property_key: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
+               This is also the name displayed in the clean room UI.
+               
+               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+               
+               For notebooks, the name is the notebook file name.
+               For jar analyses, the name is the jar analysis name
+        :param _builtins.str op: (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
+        :param _builtins.str recipient_property_key: (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
+               When this field is set, field `value` can not be set
+        :param _builtins.str value: (string) - The value of the partition column. When this value is not set, it means `null` value.
+               When this field is set, field `recipient_property_key` can not be set
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if recipient_property_key is not None:
+            pulumi.set(__self__, "recipient_property_key", recipient_property_key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        A fully qualified name that uniquely identifies the asset within the clean room.
+        This is also the name displayed in the clean room UI.
+
+        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+
+        For notebooks, the name is the notebook file name.
+        For jar analyses, the name is the jar analysis name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def op(self) -> Optional[_builtins.str]:
+        """
+        (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
+        """
+        return pulumi.get(self, "op")
+
+    @_builtins.property
+    @pulumi.getter(name="recipientPropertyKey")
+    def recipient_property_key(self) -> Optional[_builtins.str]:
+        """
+        (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
+        When this field is set, field `value` can not be set
+        """
+        return pulumi.get(self, "recipient_property_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        (string) - The value of the partition column. When this value is not set, it means `null` value.
+        When this field is set, field `recipient_property_key` can not be set
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetViewResult(dict):
+    def __init__(__self__, *,
+                 columns: Sequence['outputs.GetCleanRoomAssetViewColumnResult']):
+        """
+        :param Sequence['GetCleanRoomAssetViewColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Sequence['outputs.GetCleanRoomAssetViewColumnResult']:
+        """
+        (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetViewColumnResult(dict):
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 mask: Optional['outputs.GetCleanRoomAssetViewColumnMaskResult'] = None,
+                 name: Optional[_builtins.str] = None,
+                 nullable: Optional[_builtins.bool] = None,
+                 partition_index: Optional[_builtins.int] = None,
+                 position: Optional[_builtins.int] = None,
+                 type_interval_type: Optional[_builtins.str] = None,
+                 type_json: Optional[_builtins.str] = None,
+                 type_name: Optional[_builtins.str] = None,
+                 type_precision: Optional[_builtins.int] = None,
+                 type_scale: Optional[_builtins.int] = None,
+                 type_text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str comment: (string) - User-provided free-form text description
+        :param 'GetCleanRoomAssetViewColumnMaskArgs' mask: (ColumnMask)
+        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
+               This is also the name displayed in the clean room UI.
+               
+               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+               
+               For notebooks, the name is the notebook file name.
+               For jar analyses, the name is the jar analysis name
+        :param _builtins.bool nullable: (boolean) - Whether field may be Null (default: true)
+        :param _builtins.int partition_index: (integer) - Partition index for column
+        :param _builtins.int position: (integer) - Ordinal position of column (starting at position 0)
+        :param _builtins.str type_interval_type: (string) - Format of IntervalType
+        :param _builtins.str type_json: (string) - Full data type specification, JSON-serialized
+        :param _builtins.str type_name: (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        :param _builtins.int type_precision: (integer) - Digits of precision; required for DecimalTypes
+        :param _builtins.int type_scale: (integer) - Digits to right of decimal; Required for DecimalTypes
+        :param _builtins.str type_text: (string) - Full data type specification as SQL/catalogString text
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if partition_index is not None:
+            pulumi.set(__self__, "partition_index", partition_index)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if type_interval_type is not None:
+            pulumi.set(__self__, "type_interval_type", type_interval_type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
+        if type_name is not None:
+            pulumi.set(__self__, "type_name", type_name)
+        if type_precision is not None:
+            pulumi.set(__self__, "type_precision", type_precision)
+        if type_scale is not None:
+            pulumi.set(__self__, "type_scale", type_scale)
+        if type_text is not None:
+            pulumi.set(__self__, "type_text", type_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-provided free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def mask(self) -> Optional['outputs.GetCleanRoomAssetViewColumnMaskResult']:
+        """
+        (ColumnMask)
+        """
+        return pulumi.get(self, "mask")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        A fully qualified name that uniquely identifies the asset within the clean room.
+        This is also the name displayed in the clean room UI.
+
+        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
+
+        For notebooks, the name is the notebook file name.
+        For jar analyses, the name is the jar analysis name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nullable(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether field may be Null (default: true)
+        """
+        return pulumi.get(self, "nullable")
+
+    @_builtins.property
+    @pulumi.getter(name="partitionIndex")
+    def partition_index(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Partition index for column
+        """
+        return pulumi.get(self, "partition_index")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Ordinal position of column (starting at position 0)
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="typeIntervalType")
+    def type_interval_type(self) -> Optional[_builtins.str]:
+        """
+        (string) - Format of IntervalType
+        """
+        return pulumi.get(self, "type_interval_type")
+
+    @_builtins.property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification, JSON-serialized
+        """
+        return pulumi.get(self, "type_json")
+
+    @_builtins.property
+    @pulumi.getter(name="typeName")
+    def type_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        """
+        return pulumi.get(self, "type_name")
+
+    @_builtins.property
+    @pulumi.getter(name="typePrecision")
+    def type_precision(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits of precision; required for DecimalTypes
+        """
+        return pulumi.get(self, "type_precision")
+
+    @_builtins.property
+    @pulumi.getter(name="typeScale")
+    def type_scale(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits to right of decimal; Required for DecimalTypes
+        """
+        return pulumi.get(self, "type_scale")
+
+    @_builtins.property
+    @pulumi.getter(name="typeText")
+    def type_text(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification as SQL/catalogString text
+        """
+        return pulumi.get(self, "type_text")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetViewColumnMaskResult(dict):
+    def __init__(__self__, *,
+                 function_name: Optional[_builtins.str] = None,
+                 using_column_names: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str function_name: (string) - The full name of the column mask SQL UDF
+        :param Sequence[_builtins.str] using_column_names: (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+               first arg of the mask function should be of the type of the column being masked and the
+               types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if using_column_names is not None:
+            pulumi.set(__self__, "using_column_names", using_column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The full name of the column mask SQL UDF
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="usingColumnNames")
+    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+        first arg of the mask function should be of the type of the column being masked and the
+        types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        return pulumi.get(self, "using_column_names")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetViewLocalDetailsResult(dict):
+    def __init__(__self__, *,
+                 local_name: _builtins.str):
+        """
+        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
+               in the format of *catalog*.*schema*.*volume_name*
+        """
+        pulumi.set(__self__, "local_name", local_name)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the volume in its owner's local metastore,
+        in the format of *catalog*.*schema*.*volume_name*
+        """
+        return pulumi.get(self, "local_name")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetVolumeLocalDetailsResult(dict):
+    def __init__(__self__, *,
+                 local_name: _builtins.str):
+        """
+        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
+               in the format of *catalog*.*schema*.*volume_name*
+        """
+        pulumi.set(__self__, "local_name", local_name)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the volume in its owner's local metastore,
+        in the format of *catalog*.*schema*.*volume_name*
+        """
+        return pulumi.get(self, "local_name")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetsAssetResult(dict):
+    def __init__(__self__, *,
+                 added_at: _builtins.int,
+                 asset_type: _builtins.str,
+                 name: _builtins.str,
+                 owner_collaborator_alias: _builtins.str,
+                 status: _builtins.str,
+                 clean_room_name: Optional[_builtins.str] = None,
+                 foreign_table: Optional['outputs.GetCleanRoomAssetsAssetForeignTableResult'] = None,
+                 foreign_table_local_details: Optional['outputs.GetCleanRoomAssetsAssetForeignTableLocalDetailsResult'] = None,
+                 notebook: Optional['outputs.GetCleanRoomAssetsAssetNotebookResult'] = None,
+                 table: Optional['outputs.GetCleanRoomAssetsAssetTableResult'] = None,
+                 table_local_details: Optional['outputs.GetCleanRoomAssetsAssetTableLocalDetailsResult'] = None,
+                 view: Optional['outputs.GetCleanRoomAssetsAssetViewResult'] = None,
+                 view_local_details: Optional['outputs.GetCleanRoomAssetsAssetViewLocalDetailsResult'] = None,
+                 volume_local_details: Optional['outputs.GetCleanRoomAssetsAssetVolumeLocalDetailsResult'] = None):
+        """
+        :param _builtins.int added_at: (integer) - When the asset is added to the clean room, in epoch milliseconds
+        :param _builtins.str asset_type: (string) - The type of the asset. Possible values are: `FOREIGN_TABLE`, `NOTEBOOK_FILE`, `TABLE`, `VIEW`, `VOLUME`
+        :param _builtins.str name: (string) - The name of the partition column
+        :param _builtins.str owner_collaborator_alias: (string) - The alias of the collaborator who owns this asset
+        :param _builtins.str status: (string) - Status of the asset. Possible values are: `ACTIVE`, `PENDING`, `PERMISSION_DENIED`
+        :param _builtins.str clean_room_name: Name of the clean room
+        :param 'GetCleanRoomAssetsAssetForeignTableArgs' foreign_table: (CleanRoomAssetForeignTable) - Foreign table details available to all collaborators of the clean room.
+               Present if and only if **asset_type** is **FOREIGN_TABLE**
+        :param 'GetCleanRoomAssetsAssetForeignTableLocalDetailsArgs' foreign_table_local_details: (CleanRoomAssetForeignTableLocalDetails) - Local details for a foreign that are only available to its owner.
+               Present if and only if **asset_type** is **FOREIGN_TABLE**
+        :param 'GetCleanRoomAssetsAssetNotebookArgs' notebook: (CleanRoomAssetNotebook) - Notebook details available to all collaborators of the clean room.
+               Present if and only if **asset_type** is **NOTEBOOK_FILE**
+        :param 'GetCleanRoomAssetsAssetTableArgs' table: (CleanRoomAssetTable) - Table details available to all collaborators of the clean room.
+               Present if and only if **asset_type** is **TABLE**
+        :param 'GetCleanRoomAssetsAssetTableLocalDetailsArgs' table_local_details: (CleanRoomAssetTableLocalDetails) - Local details for a table that are only available to its owner.
+               Present if and only if **asset_type** is **TABLE**
+        :param 'GetCleanRoomAssetsAssetViewArgs' view: (CleanRoomAssetView) - View details available to all collaborators of the clean room.
+               Present if and only if **asset_type** is **VIEW**
+        :param 'GetCleanRoomAssetsAssetViewLocalDetailsArgs' view_local_details: (CleanRoomAssetViewLocalDetails) - Local details for a view that are only available to its owner.
+               Present if and only if **asset_type** is **VIEW**
+        :param 'GetCleanRoomAssetsAssetVolumeLocalDetailsArgs' volume_local_details: (CleanRoomAssetVolumeLocalDetails) - Local details for a volume that are only available to its owner.
+               Present if and only if **asset_type** is **VOLUME**
+        """
+        pulumi.set(__self__, "added_at", added_at)
+        pulumi.set(__self__, "asset_type", asset_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "owner_collaborator_alias", owner_collaborator_alias)
+        pulumi.set(__self__, "status", status)
+        if clean_room_name is not None:
+            pulumi.set(__self__, "clean_room_name", clean_room_name)
+        if foreign_table is not None:
+            pulumi.set(__self__, "foreign_table", foreign_table)
+        if foreign_table_local_details is not None:
+            pulumi.set(__self__, "foreign_table_local_details", foreign_table_local_details)
+        if notebook is not None:
+            pulumi.set(__self__, "notebook", notebook)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+        if table_local_details is not None:
+            pulumi.set(__self__, "table_local_details", table_local_details)
+        if view is not None:
+            pulumi.set(__self__, "view", view)
+        if view_local_details is not None:
+            pulumi.set(__self__, "view_local_details", view_local_details)
+        if volume_local_details is not None:
+            pulumi.set(__self__, "volume_local_details", volume_local_details)
+
+    @_builtins.property
+    @pulumi.getter(name="addedAt")
+    def added_at(self) -> _builtins.int:
+        """
+        (integer) - When the asset is added to the clean room, in epoch milliseconds
+        """
+        return pulumi.get(self, "added_at")
+
+    @_builtins.property
+    @pulumi.getter(name="assetType")
+    def asset_type(self) -> _builtins.str:
+        """
+        (string) - The type of the asset. Possible values are: `FOREIGN_TABLE`, `NOTEBOOK_FILE`, `TABLE`, `VIEW`, `VOLUME`
+        """
+        return pulumi.get(self, "asset_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The name of the partition column
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="ownerCollaboratorAlias")
+    def owner_collaborator_alias(self) -> _builtins.str:
+        """
+        (string) - The alias of the collaborator who owns this asset
+        """
+        return pulumi.get(self, "owner_collaborator_alias")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        (string) - Status of the asset. Possible values are: `ACTIVE`, `PENDING`, `PERMISSION_DENIED`
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="cleanRoomName")
+    def clean_room_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the clean room
+        """
+        return pulumi.get(self, "clean_room_name")
+
+    @_builtins.property
+    @pulumi.getter(name="foreignTable")
+    def foreign_table(self) -> Optional['outputs.GetCleanRoomAssetsAssetForeignTableResult']:
+        """
+        (CleanRoomAssetForeignTable) - Foreign table details available to all collaborators of the clean room.
+        Present if and only if **asset_type** is **FOREIGN_TABLE**
+        """
+        return pulumi.get(self, "foreign_table")
+
+    @_builtins.property
+    @pulumi.getter(name="foreignTableLocalDetails")
+    def foreign_table_local_details(self) -> Optional['outputs.GetCleanRoomAssetsAssetForeignTableLocalDetailsResult']:
+        """
+        (CleanRoomAssetForeignTableLocalDetails) - Local details for a foreign that are only available to its owner.
+        Present if and only if **asset_type** is **FOREIGN_TABLE**
+        """
+        return pulumi.get(self, "foreign_table_local_details")
+
+    @_builtins.property
+    @pulumi.getter
+    def notebook(self) -> Optional['outputs.GetCleanRoomAssetsAssetNotebookResult']:
+        """
+        (CleanRoomAssetNotebook) - Notebook details available to all collaborators of the clean room.
+        Present if and only if **asset_type** is **NOTEBOOK_FILE**
+        """
+        return pulumi.get(self, "notebook")
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> Optional['outputs.GetCleanRoomAssetsAssetTableResult']:
+        """
+        (CleanRoomAssetTable) - Table details available to all collaborators of the clean room.
+        Present if and only if **asset_type** is **TABLE**
+        """
+        return pulumi.get(self, "table")
+
+    @_builtins.property
+    @pulumi.getter(name="tableLocalDetails")
+    def table_local_details(self) -> Optional['outputs.GetCleanRoomAssetsAssetTableLocalDetailsResult']:
+        """
+        (CleanRoomAssetTableLocalDetails) - Local details for a table that are only available to its owner.
+        Present if and only if **asset_type** is **TABLE**
+        """
+        return pulumi.get(self, "table_local_details")
+
+    @_builtins.property
+    @pulumi.getter
+    def view(self) -> Optional['outputs.GetCleanRoomAssetsAssetViewResult']:
+        """
+        (CleanRoomAssetView) - View details available to all collaborators of the clean room.
+        Present if and only if **asset_type** is **VIEW**
+        """
+        return pulumi.get(self, "view")
+
+    @_builtins.property
+    @pulumi.getter(name="viewLocalDetails")
+    def view_local_details(self) -> Optional['outputs.GetCleanRoomAssetsAssetViewLocalDetailsResult']:
+        """
+        (CleanRoomAssetViewLocalDetails) - Local details for a view that are only available to its owner.
+        Present if and only if **asset_type** is **VIEW**
+        """
+        return pulumi.get(self, "view_local_details")
+
+    @_builtins.property
+    @pulumi.getter(name="volumeLocalDetails")
+    def volume_local_details(self) -> Optional['outputs.GetCleanRoomAssetsAssetVolumeLocalDetailsResult']:
+        """
+        (CleanRoomAssetVolumeLocalDetails) - Local details for a volume that are only available to its owner.
+        Present if and only if **asset_type** is **VOLUME**
+        """
+        return pulumi.get(self, "volume_local_details")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetsAssetForeignTableResult(dict):
+    def __init__(__self__, *,
+                 columns: Sequence['outputs.GetCleanRoomAssetsAssetForeignTableColumnResult']):
+        """
+        :param Sequence['GetCleanRoomAssetsAssetForeignTableColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Sequence['outputs.GetCleanRoomAssetsAssetForeignTableColumnResult']:
+        """
+        (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetsAssetForeignTableColumnResult(dict):
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 mask: Optional['outputs.GetCleanRoomAssetsAssetForeignTableColumnMaskResult'] = None,
+                 name: Optional[_builtins.str] = None,
+                 nullable: Optional[_builtins.bool] = None,
+                 partition_index: Optional[_builtins.int] = None,
+                 position: Optional[_builtins.int] = None,
+                 type_interval_type: Optional[_builtins.str] = None,
+                 type_json: Optional[_builtins.str] = None,
+                 type_name: Optional[_builtins.str] = None,
+                 type_precision: Optional[_builtins.int] = None,
+                 type_scale: Optional[_builtins.int] = None,
+                 type_text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str comment: (string) - User-provided free-form text description
+        :param 'GetCleanRoomAssetsAssetForeignTableColumnMaskArgs' mask: (ColumnMask)
+        :param _builtins.str name: (string) - The name of the partition column
+        :param _builtins.bool nullable: (boolean) - Whether field may be Null (default: true)
+        :param _builtins.int partition_index: (integer) - Partition index for column
+        :param _builtins.int position: (integer) - Ordinal position of column (starting at position 0)
+        :param _builtins.str type_interval_type: (string) - Format of IntervalType
+        :param _builtins.str type_json: (string) - Full data type specification, JSON-serialized
+        :param _builtins.str type_name: (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        :param _builtins.int type_precision: (integer) - Digits of precision; required for DecimalTypes
+        :param _builtins.int type_scale: (integer) - Digits to right of decimal; Required for DecimalTypes
+        :param _builtins.str type_text: (string) - Full data type specification as SQL/catalogString text
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if partition_index is not None:
+            pulumi.set(__self__, "partition_index", partition_index)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if type_interval_type is not None:
+            pulumi.set(__self__, "type_interval_type", type_interval_type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
+        if type_name is not None:
+            pulumi.set(__self__, "type_name", type_name)
+        if type_precision is not None:
+            pulumi.set(__self__, "type_precision", type_precision)
+        if type_scale is not None:
+            pulumi.set(__self__, "type_scale", type_scale)
+        if type_text is not None:
+            pulumi.set(__self__, "type_text", type_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-provided free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def mask(self) -> Optional['outputs.GetCleanRoomAssetsAssetForeignTableColumnMaskResult']:
+        """
+        (ColumnMask)
+        """
+        return pulumi.get(self, "mask")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The name of the partition column
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nullable(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether field may be Null (default: true)
+        """
+        return pulumi.get(self, "nullable")
+
+    @_builtins.property
+    @pulumi.getter(name="partitionIndex")
+    def partition_index(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Partition index for column
+        """
+        return pulumi.get(self, "partition_index")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Ordinal position of column (starting at position 0)
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="typeIntervalType")
+    def type_interval_type(self) -> Optional[_builtins.str]:
+        """
+        (string) - Format of IntervalType
+        """
+        return pulumi.get(self, "type_interval_type")
+
+    @_builtins.property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification, JSON-serialized
+        """
+        return pulumi.get(self, "type_json")
+
+    @_builtins.property
+    @pulumi.getter(name="typeName")
+    def type_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        """
+        return pulumi.get(self, "type_name")
+
+    @_builtins.property
+    @pulumi.getter(name="typePrecision")
+    def type_precision(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits of precision; required for DecimalTypes
+        """
+        return pulumi.get(self, "type_precision")
+
+    @_builtins.property
+    @pulumi.getter(name="typeScale")
+    def type_scale(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits to right of decimal; Required for DecimalTypes
+        """
+        return pulumi.get(self, "type_scale")
+
+    @_builtins.property
+    @pulumi.getter(name="typeText")
+    def type_text(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification as SQL/catalogString text
+        """
+        return pulumi.get(self, "type_text")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetsAssetForeignTableColumnMaskResult(dict):
+    def __init__(__self__, *,
+                 function_name: Optional[_builtins.str] = None,
+                 using_column_names: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str function_name: (string) - The full name of the column mask SQL UDF
+        :param Sequence[_builtins.str] using_column_names: (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+               first arg of the mask function should be of the type of the column being masked and the
+               types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if using_column_names is not None:
+            pulumi.set(__self__, "using_column_names", using_column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The full name of the column mask SQL UDF
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="usingColumnNames")
+    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+        first arg of the mask function should be of the type of the column being masked and the
+        types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        return pulumi.get(self, "using_column_names")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetsAssetForeignTableLocalDetailsResult(dict):
+    def __init__(__self__, *,
+                 local_name: _builtins.str):
+        """
+        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
+               in the format of *catalog*.*schema*.*volume_name*
+        """
+        pulumi.set(__self__, "local_name", local_name)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the volume in its owner's local metastore,
+        in the format of *catalog*.*schema*.*volume_name*
+        """
+        return pulumi.get(self, "local_name")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetsAssetNotebookResult(dict):
+    def __init__(__self__, *,
+                 etag: _builtins.str,
+                 notebook_content: _builtins.str,
+                 review_state: _builtins.str,
+                 reviews: Sequence['outputs.GetCleanRoomAssetsAssetNotebookReviewResult'],
+                 runner_collaborator_aliases: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str etag: (string) - Server generated etag that represents the notebook version
+        :param _builtins.str notebook_content: (string) - Base 64 representation of the notebook contents.
+               This is the same format as returned by :method:workspace/export with the format of **HTML**
+        :param _builtins.str review_state: (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        :param Sequence['GetCleanRoomAssetsAssetNotebookReviewArgs'] reviews: (list of CleanRoomNotebookReview) - All existing approvals or rejections
+        :param Sequence[_builtins.str] runner_collaborator_aliases: (list of string) - collaborators that can run the notebook
+        """
+        pulumi.set(__self__, "etag", etag)
+        pulumi.set(__self__, "notebook_content", notebook_content)
+        pulumi.set(__self__, "review_state", review_state)
+        pulumi.set(__self__, "reviews", reviews)
+        if runner_collaborator_aliases is not None:
+            pulumi.set(__self__, "runner_collaborator_aliases", runner_collaborator_aliases)
+
+    @_builtins.property
+    @pulumi.getter
+    def etag(self) -> _builtins.str:
+        """
+        (string) - Server generated etag that represents the notebook version
+        """
+        return pulumi.get(self, "etag")
+
+    @_builtins.property
+    @pulumi.getter(name="notebookContent")
+    def notebook_content(self) -> _builtins.str:
+        """
+        (string) - Base 64 representation of the notebook contents.
+        This is the same format as returned by :method:workspace/export with the format of **HTML**
+        """
+        return pulumi.get(self, "notebook_content")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewState")
+    def review_state(self) -> _builtins.str:
+        """
+        (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        """
+        return pulumi.get(self, "review_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def reviews(self) -> Sequence['outputs.GetCleanRoomAssetsAssetNotebookReviewResult']:
+        """
+        (list of CleanRoomNotebookReview) - All existing approvals or rejections
+        """
+        return pulumi.get(self, "reviews")
+
+    @_builtins.property
+    @pulumi.getter(name="runnerCollaboratorAliases")
+    def runner_collaborator_aliases(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - collaborators that can run the notebook
+        """
+        return pulumi.get(self, "runner_collaborator_aliases")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetsAssetNotebookReviewResult(dict):
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 created_at_millis: Optional[_builtins.int] = None,
+                 review_state: Optional[_builtins.str] = None,
+                 review_sub_reason: Optional[_builtins.str] = None,
+                 reviewer_collaborator_alias: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str comment: (string) - User-provided free-form text description
+        :param _builtins.int created_at_millis: (integer) - When the review was submitted, in epoch milliseconds
+        :param _builtins.str review_state: (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        :param _builtins.str review_sub_reason: (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
+        :param _builtins.str reviewer_collaborator_alias: (string) - Collaborator alias of the reviewer
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if created_at_millis is not None:
+            pulumi.set(__self__, "created_at_millis", created_at_millis)
+        if review_state is not None:
+            pulumi.set(__self__, "review_state", review_state)
+        if review_sub_reason is not None:
+            pulumi.set(__self__, "review_sub_reason", review_sub_reason)
+        if reviewer_collaborator_alias is not None:
+            pulumi.set(__self__, "reviewer_collaborator_alias", reviewer_collaborator_alias)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-provided free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAtMillis")
+    def created_at_millis(self) -> Optional[_builtins.int]:
+        """
+        (integer) - When the review was submitted, in epoch milliseconds
+        """
+        return pulumi.get(self, "created_at_millis")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewState")
+    def review_state(self) -> Optional[_builtins.str]:
+        """
+        (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
+        """
+        return pulumi.get(self, "review_state")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewSubReason")
+    def review_sub_reason(self) -> Optional[_builtins.str]:
+        """
+        (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
+        """
+        return pulumi.get(self, "review_sub_reason")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewerCollaboratorAlias")
+    def reviewer_collaborator_alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - Collaborator alias of the reviewer
+        """
+        return pulumi.get(self, "reviewer_collaborator_alias")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetsAssetTableResult(dict):
+    def __init__(__self__, *,
+                 columns: Sequence['outputs.GetCleanRoomAssetsAssetTableColumnResult']):
+        """
+        :param Sequence['GetCleanRoomAssetsAssetTableColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Sequence['outputs.GetCleanRoomAssetsAssetTableColumnResult']:
+        """
+        (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetsAssetTableColumnResult(dict):
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 mask: Optional['outputs.GetCleanRoomAssetsAssetTableColumnMaskResult'] = None,
+                 name: Optional[_builtins.str] = None,
+                 nullable: Optional[_builtins.bool] = None,
+                 partition_index: Optional[_builtins.int] = None,
+                 position: Optional[_builtins.int] = None,
+                 type_interval_type: Optional[_builtins.str] = None,
+                 type_json: Optional[_builtins.str] = None,
+                 type_name: Optional[_builtins.str] = None,
+                 type_precision: Optional[_builtins.int] = None,
+                 type_scale: Optional[_builtins.int] = None,
+                 type_text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str comment: (string) - User-provided free-form text description
+        :param 'GetCleanRoomAssetsAssetTableColumnMaskArgs' mask: (ColumnMask)
+        :param _builtins.str name: (string) - The name of the partition column
+        :param _builtins.bool nullable: (boolean) - Whether field may be Null (default: true)
+        :param _builtins.int partition_index: (integer) - Partition index for column
+        :param _builtins.int position: (integer) - Ordinal position of column (starting at position 0)
+        :param _builtins.str type_interval_type: (string) - Format of IntervalType
+        :param _builtins.str type_json: (string) - Full data type specification, JSON-serialized
+        :param _builtins.str type_name: (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        :param _builtins.int type_precision: (integer) - Digits of precision; required for DecimalTypes
+        :param _builtins.int type_scale: (integer) - Digits to right of decimal; Required for DecimalTypes
+        :param _builtins.str type_text: (string) - Full data type specification as SQL/catalogString text
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if partition_index is not None:
+            pulumi.set(__self__, "partition_index", partition_index)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if type_interval_type is not None:
+            pulumi.set(__self__, "type_interval_type", type_interval_type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
+        if type_name is not None:
+            pulumi.set(__self__, "type_name", type_name)
+        if type_precision is not None:
+            pulumi.set(__self__, "type_precision", type_precision)
+        if type_scale is not None:
+            pulumi.set(__self__, "type_scale", type_scale)
+        if type_text is not None:
+            pulumi.set(__self__, "type_text", type_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-provided free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def mask(self) -> Optional['outputs.GetCleanRoomAssetsAssetTableColumnMaskResult']:
+        """
+        (ColumnMask)
+        """
+        return pulumi.get(self, "mask")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The name of the partition column
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nullable(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether field may be Null (default: true)
+        """
+        return pulumi.get(self, "nullable")
+
+    @_builtins.property
+    @pulumi.getter(name="partitionIndex")
+    def partition_index(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Partition index for column
+        """
+        return pulumi.get(self, "partition_index")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Ordinal position of column (starting at position 0)
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="typeIntervalType")
+    def type_interval_type(self) -> Optional[_builtins.str]:
+        """
+        (string) - Format of IntervalType
+        """
+        return pulumi.get(self, "type_interval_type")
+
+    @_builtins.property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification, JSON-serialized
+        """
+        return pulumi.get(self, "type_json")
+
+    @_builtins.property
+    @pulumi.getter(name="typeName")
+    def type_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        """
+        return pulumi.get(self, "type_name")
+
+    @_builtins.property
+    @pulumi.getter(name="typePrecision")
+    def type_precision(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits of precision; required for DecimalTypes
+        """
+        return pulumi.get(self, "type_precision")
+
+    @_builtins.property
+    @pulumi.getter(name="typeScale")
+    def type_scale(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits to right of decimal; Required for DecimalTypes
+        """
+        return pulumi.get(self, "type_scale")
+
+    @_builtins.property
+    @pulumi.getter(name="typeText")
+    def type_text(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification as SQL/catalogString text
+        """
+        return pulumi.get(self, "type_text")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetsAssetTableColumnMaskResult(dict):
+    def __init__(__self__, *,
+                 function_name: Optional[_builtins.str] = None,
+                 using_column_names: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str function_name: (string) - The full name of the column mask SQL UDF
+        :param Sequence[_builtins.str] using_column_names: (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+               first arg of the mask function should be of the type of the column being masked and the
+               types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if using_column_names is not None:
+            pulumi.set(__self__, "using_column_names", using_column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The full name of the column mask SQL UDF
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="usingColumnNames")
+    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+        first arg of the mask function should be of the type of the column being masked and the
+        types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        return pulumi.get(self, "using_column_names")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetsAssetTableLocalDetailsResult(dict):
+    def __init__(__self__, *,
+                 local_name: _builtins.str,
+                 partitions: Optional[Sequence['outputs.GetCleanRoomAssetsAssetTableLocalDetailsPartitionResult']] = None):
+        """
+        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
+               in the format of *catalog*.*schema*.*volume_name*
+        :param Sequence['GetCleanRoomAssetsAssetTableLocalDetailsPartitionArgs'] partitions: (list of Partition) - Partition filtering specification for a shared table
+        """
+        pulumi.set(__self__, "local_name", local_name)
+        if partitions is not None:
+            pulumi.set(__self__, "partitions", partitions)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the volume in its owner's local metastore,
+        in the format of *catalog*.*schema*.*volume_name*
+        """
+        return pulumi.get(self, "local_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def partitions(self) -> Optional[Sequence['outputs.GetCleanRoomAssetsAssetTableLocalDetailsPartitionResult']]:
+        """
+        (list of Partition) - Partition filtering specification for a shared table
+        """
+        return pulumi.get(self, "partitions")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetsAssetTableLocalDetailsPartitionResult(dict):
+    def __init__(__self__, *,
+                 values: Optional[Sequence['outputs.GetCleanRoomAssetsAssetTableLocalDetailsPartitionValueResult']] = None):
+        """
+        :param Sequence['GetCleanRoomAssetsAssetTableLocalDetailsPartitionValueArgs'] values: (string) - The value of the partition column. When this value is not set, it means `null` value.
+               When this field is set, field `recipient_property_key` can not be set
+        """
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence['outputs.GetCleanRoomAssetsAssetTableLocalDetailsPartitionValueResult']]:
+        """
+        (string) - The value of the partition column. When this value is not set, it means `null` value.
+        When this field is set, field `recipient_property_key` can not be set
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetsAssetTableLocalDetailsPartitionValueResult(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 op: Optional[_builtins.str] = None,
+                 recipient_property_key: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: (string) - The name of the partition column
+        :param _builtins.str op: (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
+        :param _builtins.str recipient_property_key: (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
+               When this field is set, field `value` can not be set
+        :param _builtins.str value: (string) - The value of the partition column. When this value is not set, it means `null` value.
+               When this field is set, field `recipient_property_key` can not be set
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if recipient_property_key is not None:
+            pulumi.set(__self__, "recipient_property_key", recipient_property_key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The name of the partition column
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def op(self) -> Optional[_builtins.str]:
+        """
+        (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
+        """
+        return pulumi.get(self, "op")
+
+    @_builtins.property
+    @pulumi.getter(name="recipientPropertyKey")
+    def recipient_property_key(self) -> Optional[_builtins.str]:
+        """
+        (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
+        When this field is set, field `value` can not be set
+        """
+        return pulumi.get(self, "recipient_property_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        (string) - The value of the partition column. When this value is not set, it means `null` value.
+        When this field is set, field `recipient_property_key` can not be set
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetsAssetViewResult(dict):
+    def __init__(__self__, *,
+                 columns: Sequence['outputs.GetCleanRoomAssetsAssetViewColumnResult']):
+        """
+        :param Sequence['GetCleanRoomAssetsAssetViewColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Sequence['outputs.GetCleanRoomAssetsAssetViewColumnResult']:
+        """
+        (list of ColumnInfo) - The metadata information of the columns in the view
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetsAssetViewColumnResult(dict):
+    def __init__(__self__, *,
+                 comment: Optional[_builtins.str] = None,
+                 mask: Optional['outputs.GetCleanRoomAssetsAssetViewColumnMaskResult'] = None,
+                 name: Optional[_builtins.str] = None,
+                 nullable: Optional[_builtins.bool] = None,
+                 partition_index: Optional[_builtins.int] = None,
+                 position: Optional[_builtins.int] = None,
+                 type_interval_type: Optional[_builtins.str] = None,
+                 type_json: Optional[_builtins.str] = None,
+                 type_name: Optional[_builtins.str] = None,
+                 type_precision: Optional[_builtins.int] = None,
+                 type_scale: Optional[_builtins.int] = None,
+                 type_text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str comment: (string) - User-provided free-form text description
+        :param 'GetCleanRoomAssetsAssetViewColumnMaskArgs' mask: (ColumnMask)
+        :param _builtins.str name: (string) - The name of the partition column
+        :param _builtins.bool nullable: (boolean) - Whether field may be Null (default: true)
+        :param _builtins.int partition_index: (integer) - Partition index for column
+        :param _builtins.int position: (integer) - Ordinal position of column (starting at position 0)
+        :param _builtins.str type_interval_type: (string) - Format of IntervalType
+        :param _builtins.str type_json: (string) - Full data type specification, JSON-serialized
+        :param _builtins.str type_name: (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        :param _builtins.int type_precision: (integer) - Digits of precision; required for DecimalTypes
+        :param _builtins.int type_scale: (integer) - Digits to right of decimal; Required for DecimalTypes
+        :param _builtins.str type_text: (string) - Full data type specification as SQL/catalogString text
+        """
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if partition_index is not None:
+            pulumi.set(__self__, "partition_index", partition_index)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if type_interval_type is not None:
+            pulumi.set(__self__, "type_interval_type", type_interval_type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
+        if type_name is not None:
+            pulumi.set(__self__, "type_name", type_name)
+        if type_precision is not None:
+            pulumi.set(__self__, "type_precision", type_precision)
+        if type_scale is not None:
+            pulumi.set(__self__, "type_scale", type_scale)
+        if type_text is not None:
+            pulumi.set(__self__, "type_text", type_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-provided free-form text description
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def mask(self) -> Optional['outputs.GetCleanRoomAssetsAssetViewColumnMaskResult']:
+        """
+        (ColumnMask)
+        """
+        return pulumi.get(self, "mask")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The name of the partition column
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nullable(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether field may be Null (default: true)
+        """
+        return pulumi.get(self, "nullable")
+
+    @_builtins.property
+    @pulumi.getter(name="partitionIndex")
+    def partition_index(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Partition index for column
+        """
+        return pulumi.get(self, "partition_index")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Ordinal position of column (starting at position 0)
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="typeIntervalType")
+    def type_interval_type(self) -> Optional[_builtins.str]:
+        """
+        (string) - Format of IntervalType
+        """
+        return pulumi.get(self, "type_interval_type")
+
+    @_builtins.property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification, JSON-serialized
+        """
+        return pulumi.get(self, "type_json")
+
+    @_builtins.property
+    @pulumi.getter(name="typeName")
+    def type_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
+        """
+        return pulumi.get(self, "type_name")
+
+    @_builtins.property
+    @pulumi.getter(name="typePrecision")
+    def type_precision(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits of precision; required for DecimalTypes
+        """
+        return pulumi.get(self, "type_precision")
+
+    @_builtins.property
+    @pulumi.getter(name="typeScale")
+    def type_scale(self) -> Optional[_builtins.int]:
+        """
+        (integer) - Digits to right of decimal; Required for DecimalTypes
+        """
+        return pulumi.get(self, "type_scale")
+
+    @_builtins.property
+    @pulumi.getter(name="typeText")
+    def type_text(self) -> Optional[_builtins.str]:
+        """
+        (string) - Full data type specification as SQL/catalogString text
+        """
+        return pulumi.get(self, "type_text")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetsAssetViewColumnMaskResult(dict):
+    def __init__(__self__, *,
+                 function_name: Optional[_builtins.str] = None,
+                 using_column_names: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str function_name: (string) - The full name of the column mask SQL UDF
+        :param Sequence[_builtins.str] using_column_names: (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+               first arg of the mask function should be of the type of the column being masked and the
+               types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if using_column_names is not None:
+            pulumi.set(__self__, "using_column_names", using_column_names)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The full name of the column mask SQL UDF
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="usingColumnNames")
+    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
+        first arg of the mask function should be of the type of the column being masked and the
+        types of the rest of the args should match the types of columns in 'using_column_names'
+        """
+        return pulumi.get(self, "using_column_names")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetsAssetViewLocalDetailsResult(dict):
+    def __init__(__self__, *,
+                 local_name: _builtins.str):
+        """
+        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
+               in the format of *catalog*.*schema*.*volume_name*
+        """
+        pulumi.set(__self__, "local_name", local_name)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the volume in its owner's local metastore,
+        in the format of *catalog*.*schema*.*volume_name*
+        """
+        return pulumi.get(self, "local_name")
+
+
+@pulumi.output_type
+class GetCleanRoomAssetsAssetVolumeLocalDetailsResult(dict):
+    def __init__(__self__, *,
+                 local_name: _builtins.str):
+        """
+        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
+               in the format of *catalog*.*schema*.*volume_name*
+        """
+        pulumi.set(__self__, "local_name", local_name)
+
+    @_builtins.property
+    @pulumi.getter(name="localName")
+    def local_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the volume in its owner's local metastore,
+        in the format of *catalog*.*schema*.*volume_name*
+        """
+        return pulumi.get(self, "local_name")
+
+
+@pulumi.output_type
+class GetCleanRoomAutoApprovalRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 created_at: _builtins.int,
+                 rule_id: _builtins.str,
+                 rule_owner_collaborator_alias: _builtins.str,
+                 author_collaborator_alias: Optional[_builtins.str] = None,
+                 author_scope: Optional[_builtins.str] = None,
+                 clean_room_name: Optional[_builtins.str] = None,
+                 runner_collaborator_alias: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int created_at: (integer) - Timestamp of when the rule was created, in epoch milliseconds
+        :param _builtins.str rule_id: (string) - A generated UUID identifying the rule
+        :param _builtins.str rule_owner_collaborator_alias: (string) - The owner of the rule to whom the rule applies
+        :param _builtins.str author_collaborator_alias: (string) - Collaborator alias of the author covered by the rule.
+               Only one of `author_collaborator_alias` and `author_scope` can be set
+        :param _builtins.str author_scope: (string) - Scope of authors covered by the rule.
+               Only one of `author_collaborator_alias` and `author_scope` can be set. Possible values are: `ANY_AUTHOR`
+        :param _builtins.str runner_collaborator_alias: (string) - Collaborator alias of the runner covered by the rule
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "rule_id", rule_id)
+        pulumi.set(__self__, "rule_owner_collaborator_alias", rule_owner_collaborator_alias)
+        if author_collaborator_alias is not None:
+            pulumi.set(__self__, "author_collaborator_alias", author_collaborator_alias)
+        if author_scope is not None:
+            pulumi.set(__self__, "author_scope", author_scope)
+        if clean_room_name is not None:
+            pulumi.set(__self__, "clean_room_name", clean_room_name)
+        if runner_collaborator_alias is not None:
+            pulumi.set(__self__, "runner_collaborator_alias", runner_collaborator_alias)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.int:
+        """
+        (integer) - Timestamp of when the rule was created, in epoch milliseconds
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> _builtins.str:
+        """
+        (string) - A generated UUID identifying the rule
+        """
+        return pulumi.get(self, "rule_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleOwnerCollaboratorAlias")
+    def rule_owner_collaborator_alias(self) -> _builtins.str:
+        """
+        (string) - The owner of the rule to whom the rule applies
+        """
+        return pulumi.get(self, "rule_owner_collaborator_alias")
+
+    @_builtins.property
+    @pulumi.getter(name="authorCollaboratorAlias")
+    def author_collaborator_alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - Collaborator alias of the author covered by the rule.
+        Only one of `author_collaborator_alias` and `author_scope` can be set
+        """
+        return pulumi.get(self, "author_collaborator_alias")
+
+    @_builtins.property
+    @pulumi.getter(name="authorScope")
+    def author_scope(self) -> Optional[_builtins.str]:
+        """
+        (string) - Scope of authors covered by the rule.
+        Only one of `author_collaborator_alias` and `author_scope` can be set. Possible values are: `ANY_AUTHOR`
+        """
+        return pulumi.get(self, "author_scope")
+
+    @_builtins.property
+    @pulumi.getter(name="cleanRoomName")
+    def clean_room_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "clean_room_name")
+
+    @_builtins.property
+    @pulumi.getter(name="runnerCollaboratorAlias")
+    def runner_collaborator_alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - Collaborator alias of the runner covered by the rule
+        """
+        return pulumi.get(self, "runner_collaborator_alias")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomOutputCatalogResult(dict):
+    def __init__(__self__, *,
+                 status: _builtins.str,
+                 catalog_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str status: (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        :param _builtins.str catalog_name: (string) - The name of the output catalog in UC.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+               The field will always exist if status is CREATED
+        """
+        pulumi.set(__self__, "status", status)
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The name of the output catalog in UC.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+        The field will always exist if status is CREATED
+        """
+        return pulumi.get(self, "catalog_name")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoResult(dict):
+    def __init__(__self__, *,
+                 central_clean_room_id: _builtins.str,
+                 compliance_security_profile: 'outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileResult',
+                 creator: 'outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorResult',
+                 cloud_vendor: Optional[_builtins.str] = None,
+                 collaborators: Optional[Sequence['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorResult']] = None,
+                 egress_network_policy: Optional['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyResult'] = None,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str central_clean_room_id: (string) - Central clean room ID
+        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs' compliance_security_profile: (ComplianceSecurityProfile)
+        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs' creator: (CleanRoomCollaborator) - Collaborator who creates the clean room
+        :param _builtins.str cloud_vendor: (string) - Cloud vendor (aws,azure,gcp) of the central clean room
+        :param Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs'] collaborators: (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
+               in the list that satisfies the owner condition:
+        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs' egress_network_policy: (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
+        :param _builtins.str region: (string)
+        """
+        pulumi.set(__self__, "central_clean_room_id", central_clean_room_id)
+        pulumi.set(__self__, "compliance_security_profile", compliance_security_profile)
+        pulumi.set(__self__, "creator", creator)
+        if cloud_vendor is not None:
+            pulumi.set(__self__, "cloud_vendor", cloud_vendor)
+        if collaborators is not None:
+            pulumi.set(__self__, "collaborators", collaborators)
+        if egress_network_policy is not None:
+            pulumi.set(__self__, "egress_network_policy", egress_network_policy)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="centralCleanRoomId")
+    def central_clean_room_id(self) -> _builtins.str:
+        """
+        (string) - Central clean room ID
+        """
+        return pulumi.get(self, "central_clean_room_id")
+
+    @_builtins.property
+    @pulumi.getter(name="complianceSecurityProfile")
+    def compliance_security_profile(self) -> 'outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileResult':
+        """
+        (ComplianceSecurityProfile)
+        """
+        return pulumi.get(self, "compliance_security_profile")
+
+    @_builtins.property
+    @pulumi.getter
+    def creator(self) -> 'outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorResult':
+        """
+        (CleanRoomCollaborator) - Collaborator who creates the clean room
+        """
+        return pulumi.get(self, "creator")
+
+    @_builtins.property
+    @pulumi.getter(name="cloudVendor")
+    def cloud_vendor(self) -> Optional[_builtins.str]:
+        """
+        (string) - Cloud vendor (aws,azure,gcp) of the central clean room
+        """
+        return pulumi.get(self, "cloud_vendor")
+
+    @_builtins.property
+    @pulumi.getter
+    def collaborators(self) -> Optional[Sequence['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorResult']]:
+        """
+        (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
+        in the list that satisfies the owner condition:
+        """
+        return pulumi.get(self, "collaborators")
+
+    @_builtins.property
+    @pulumi.getter(name="egressNetworkPolicy")
+    def egress_network_policy(self) -> Optional['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyResult']:
+        """
+        (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
+        """
+        return pulumi.get(self, "egress_network_policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        (string)
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorResult(dict):
+    def __init__(__self__, *,
+                 collaborator_alias: _builtins.str,
+                 display_name: _builtins.str,
+                 invite_recipient_workspace_id: _builtins.int,
+                 organization_name: _builtins.str,
+                 global_metastore_id: Optional[_builtins.str] = None,
+                 invite_recipient_email: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str collaborator_alias: (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        :param _builtins.str display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+               these values and could change in the future
+        :param _builtins.int invite_recipient_workspace_id: (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+               invite_recipient_email is specified.
+               It should be empty when the collaborator is the creator of the clean room
+        :param _builtins.str organization_name: (string) - Organization name
+               configured in the metastore
+        :param _builtins.str global_metastore_id: (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        :param _builtins.str invite_recipient_email: (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+               for the creator of the clean room, and non-empty for the invitees of the clean room.
+               It is only returned in the output when clean room creator calls GET
+        """
+        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
+        pulumi.set(__self__, "organization_name", organization_name)
+        if global_metastore_id is not None:
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if invite_recipient_email is not None:
+            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
+
+    @_builtins.property
+    @pulumi.getter(name="collaboratorAlias")
+    def collaborator_alias(self) -> _builtins.str:
+        """
+        (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        return pulumi.get(self, "collaborator_alias")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="inviteRecipientWorkspaceId")
+    def invite_recipient_workspace_id(self) -> _builtins.int:
+        """
+        (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+        return pulumi.get(self, "invite_recipient_workspace_id")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> _builtins.str:
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+        return pulumi.get(self, "organization_name")
+
+    @_builtins.property
+    @pulumi.getter(name="globalMetastoreId")
+    def global_metastore_id(self) -> Optional[_builtins.str]:
+        """
+        (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        return pulumi.get(self, "global_metastore_id")
+
+    @_builtins.property
+    @pulumi.getter(name="inviteRecipientEmail")
+    def invite_recipient_email(self) -> Optional[_builtins.str]:
+        """
+        (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        return pulumi.get(self, "invite_recipient_email")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileResult(dict):
+    def __init__(__self__, *,
+                 compliance_standards: Optional[Sequence[_builtins.str]] = None,
+                 is_enabled: Optional[_builtins.bool] = None):
+        """
+        :param Sequence[_builtins.str] compliance_standards: (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
+        :param _builtins.bool is_enabled: (boolean) - Whether the compliance security profile is enabled
+        """
+        if compliance_standards is not None:
+            pulumi.set(__self__, "compliance_standards", compliance_standards)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="complianceStandards")
+    def compliance_standards(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
+        """
+        return pulumi.get(self, "compliance_standards")
+
+    @_builtins.property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether the compliance security profile is enabled
+        """
+        return pulumi.get(self, "is_enabled")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorResult(dict):
+    def __init__(__self__, *,
+                 collaborator_alias: _builtins.str,
+                 display_name: _builtins.str,
+                 invite_recipient_workspace_id: _builtins.int,
+                 organization_name: _builtins.str,
+                 global_metastore_id: Optional[_builtins.str] = None,
+                 invite_recipient_email: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str collaborator_alias: (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        :param _builtins.str display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+               these values and could change in the future
+        :param _builtins.int invite_recipient_workspace_id: (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+               invite_recipient_email is specified.
+               It should be empty when the collaborator is the creator of the clean room
+        :param _builtins.str organization_name: (string) - Organization name
+               configured in the metastore
+        :param _builtins.str global_metastore_id: (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        :param _builtins.str invite_recipient_email: (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+               for the creator of the clean room, and non-empty for the invitees of the clean room.
+               It is only returned in the output when clean room creator calls GET
+        """
+        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
+        pulumi.set(__self__, "organization_name", organization_name)
+        if global_metastore_id is not None:
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if invite_recipient_email is not None:
+            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
+
+    @_builtins.property
+    @pulumi.getter(name="collaboratorAlias")
+    def collaborator_alias(self) -> _builtins.str:
+        """
+        (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        return pulumi.get(self, "collaborator_alias")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="inviteRecipientWorkspaceId")
+    def invite_recipient_workspace_id(self) -> _builtins.int:
+        """
+        (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+        return pulumi.get(self, "invite_recipient_workspace_id")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> _builtins.str:
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+        return pulumi.get(self, "organization_name")
+
+    @_builtins.property
+    @pulumi.getter(name="globalMetastoreId")
+    def global_metastore_id(self) -> Optional[_builtins.str]:
+        """
+        (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        return pulumi.get(self, "global_metastore_id")
+
+    @_builtins.property
+    @pulumi.getter(name="inviteRecipientEmail")
+    def invite_recipient_email(self) -> Optional[_builtins.str]:
+        """
+        (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        return pulumi.get(self, "invite_recipient_email")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyResult(dict):
+    def __init__(__self__, *,
+                 internet_access: Optional['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessResult'] = None):
+        """
+        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs' internet_access: (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
+        """
+        if internet_access is not None:
+            pulumi.set(__self__, "internet_access", internet_access)
+
+    @_builtins.property
+    @pulumi.getter(name="internetAccess")
+    def internet_access(self) -> Optional['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessResult']:
+        """
+        (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
+        """
+        return pulumi.get(self, "internet_access")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessResult(dict):
+    def __init__(__self__, *,
+                 allowed_internet_destinations: Optional[Sequence['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationResult']] = None,
+                 allowed_storage_destinations: Optional[Sequence['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationResult']] = None,
+                 log_only_mode: Optional['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeResult'] = None,
+                 restriction_mode: Optional[_builtins.str] = None):
+        """
+        :param Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs'] allowed_internet_destinations: (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination)
+        :param Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs'] allowed_storage_destinations: (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination)
+        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs' log_only_mode: (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
+        :param _builtins.str restriction_mode: (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+        """
+        if allowed_internet_destinations is not None:
+            pulumi.set(__self__, "allowed_internet_destinations", allowed_internet_destinations)
+        if allowed_storage_destinations is not None:
+            pulumi.set(__self__, "allowed_storage_destinations", allowed_storage_destinations)
+        if log_only_mode is not None:
+            pulumi.set(__self__, "log_only_mode", log_only_mode)
+        if restriction_mode is not None:
+            pulumi.set(__self__, "restriction_mode", restriction_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedInternetDestinations")
+    def allowed_internet_destinations(self) -> Optional[Sequence['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationResult']]:
+        """
+        (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination)
+        """
+        return pulumi.get(self, "allowed_internet_destinations")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedStorageDestinations")
+    def allowed_storage_destinations(self) -> Optional[Sequence['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationResult']]:
+        """
+        (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination)
+        """
+        return pulumi.get(self, "allowed_storage_destinations")
+
+    @_builtins.property
+    @pulumi.getter(name="logOnlyMode")
+    def log_only_mode(self) -> Optional['outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeResult']:
+        """
+        (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
+        """
+        return pulumi.get(self, "log_only_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="restrictionMode")
+    def restriction_mode(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+        """
+        return pulumi.get(self, "restriction_mode")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationResult(dict):
+    def __init__(__self__, *,
+                 destination: Optional[_builtins.str] = None,
+                 protocol: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str destination: (string)
+        :param _builtins.str protocol: (string) - . Possible values are: `TCP`
+        :param _builtins.str type: (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def destination(self) -> Optional[_builtins.str]:
+        """
+        (string)
+        """
+        return pulumi.get(self, "destination")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `TCP`
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationResult(dict):
+    def __init__(__self__, *,
+                 allowed_paths: Optional[Sequence[_builtins.str]] = None,
+                 azure_container: Optional[_builtins.str] = None,
+                 azure_dns_zone: Optional[_builtins.str] = None,
+                 azure_storage_account: Optional[_builtins.str] = None,
+                 azure_storage_service: Optional[_builtins.str] = None,
+                 bucket_name: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] allowed_paths: (list of string)
+        :param _builtins.str azure_container: (string)
+        :param _builtins.str azure_dns_zone: (string)
+        :param _builtins.str azure_storage_account: (string)
+        :param _builtins.str azure_storage_service: (string)
+        :param _builtins.str bucket_name: (string)
+        :param _builtins.str region: (string)
+        :param _builtins.str type: (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        if allowed_paths is not None:
+            pulumi.set(__self__, "allowed_paths", allowed_paths)
+        if azure_container is not None:
+            pulumi.set(__self__, "azure_container", azure_container)
+        if azure_dns_zone is not None:
+            pulumi.set(__self__, "azure_dns_zone", azure_dns_zone)
+        if azure_storage_account is not None:
+            pulumi.set(__self__, "azure_storage_account", azure_storage_account)
+        if azure_storage_service is not None:
+            pulumi.set(__self__, "azure_storage_service", azure_storage_service)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedPaths")
+    def allowed_paths(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string)
+        """
+        return pulumi.get(self, "allowed_paths")
+
+    @_builtins.property
+    @pulumi.getter(name="azureContainer")
+    def azure_container(self) -> Optional[_builtins.str]:
+        """
+        (string)
+        """
+        return pulumi.get(self, "azure_container")
+
+    @_builtins.property
+    @pulumi.getter(name="azureDnsZone")
+    def azure_dns_zone(self) -> Optional[_builtins.str]:
+        """
+        (string)
+        """
+        return pulumi.get(self, "azure_dns_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="azureStorageAccount")
+    def azure_storage_account(self) -> Optional[_builtins.str]:
+        """
+        (string)
+        """
+        return pulumi.get(self, "azure_storage_account")
+
+    @_builtins.property
+    @pulumi.getter(name="azureStorageService")
+    def azure_storage_service(self) -> Optional[_builtins.str]:
+        """
+        (string)
+        """
+        return pulumi.get(self, "azure_storage_service")
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[_builtins.str]:
+        """
+        (string)
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        (string)
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeResult(dict):
+    def __init__(__self__, *,
+                 log_only_mode_type: Optional[_builtins.str] = None,
+                 workloads: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str log_only_mode_type: (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+        :param Sequence[_builtins.str] workloads: (list of string)
+        """
+        if log_only_mode_type is not None:
+            pulumi.set(__self__, "log_only_mode_type", log_only_mode_type)
+        if workloads is not None:
+            pulumi.set(__self__, "workloads", workloads)
+
+    @_builtins.property
+    @pulumi.getter(name="logOnlyModeType")
+    def log_only_mode_type(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+        """
+        return pulumi.get(self, "log_only_mode_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def workloads(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string)
+        """
+        return pulumi.get(self, "workloads")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomResult(dict):
+    def __init__(__self__, *,
+                 access_restricted: _builtins.str,
+                 created_at: _builtins.int,
+                 local_collaborator_alias: _builtins.str,
+                 output_catalog: 'outputs.GetCleanRoomsCleanRoomsCleanRoomOutputCatalogResult',
+                 status: _builtins.str,
+                 updated_at: _builtins.int,
+                 comment: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 owner: Optional[_builtins.str] = None,
+                 remote_detailed_info: Optional['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoResult'] = None):
+        """
+        :param _builtins.str access_restricted: (string) - Whether clean room access is restricted due to [CSP](https://docs.databricks.com/en/security/privacy/security-profile.html). Possible values are: `CSP_MISMATCH`, `NO_RESTRICTION`
+        :param _builtins.int created_at: (integer) - When the clean room was created, in epoch milliseconds
+        :param _builtins.str local_collaborator_alias: (string) - The alias of the collaborator tied to the local clean room
+        :param 'GetCleanRoomsCleanRoomsCleanRoomOutputCatalogArgs' output_catalog: (CleanRoomOutputCatalog) - Output catalog of the clean room. It is an output only field. Output catalog is manipulated
+               using the separate CreateCleanRoomOutputCatalog API
+        :param _builtins.str status: (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        :param _builtins.int updated_at: (integer) - When the clean room was last updated, in epoch milliseconds
+        :param _builtins.str comment: (string)
+        :param _builtins.str name: (string) - The name of the clean room.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        :param _builtins.str owner: (string) - This is Databricks username of the owner of the local clean room securable for permission management
+        :param 'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoArgs' remote_detailed_info: (CleanRoomRemoteDetail) - Central clean room details. During creation, users need to specify
+               cloud_vendor, region, and collaborators.global_metastore_id.
+               This field will not be filled in the ListCleanRooms call
+        """
+        pulumi.set(__self__, "access_restricted", access_restricted)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "local_collaborator_alias", local_collaborator_alias)
+        pulumi.set(__self__, "output_catalog", output_catalog)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "updated_at", updated_at)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if remote_detailed_info is not None:
+            pulumi.set(__self__, "remote_detailed_info", remote_detailed_info)
+
+    @_builtins.property
+    @pulumi.getter(name="accessRestricted")
+    def access_restricted(self) -> _builtins.str:
+        """
+        (string) - Whether clean room access is restricted due to [CSP](https://docs.databricks.com/en/security/privacy/security-profile.html). Possible values are: `CSP_MISMATCH`, `NO_RESTRICTION`
+        """
+        return pulumi.get(self, "access_restricted")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.int:
+        """
+        (integer) - When the clean room was created, in epoch milliseconds
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="localCollaboratorAlias")
+    def local_collaborator_alias(self) -> _builtins.str:
+        """
+        (string) - The alias of the collaborator tied to the local clean room
+        """
+        return pulumi.get(self, "local_collaborator_alias")
+
+    @_builtins.property
+    @pulumi.getter(name="outputCatalog")
+    def output_catalog(self) -> 'outputs.GetCleanRoomsCleanRoomsCleanRoomOutputCatalogResult':
+        """
+        (CleanRoomOutputCatalog) - Output catalog of the clean room. It is an output only field. Output catalog is manipulated
+        using the separate CreateCleanRoomOutputCatalog API
+        """
+        return pulumi.get(self, "output_catalog")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.int:
+        """
+        (integer) - When the clean room was last updated, in epoch milliseconds
+        """
+        return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string)
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The name of the clean room.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def owner(self) -> Optional[_builtins.str]:
+        """
+        (string) - This is Databricks username of the owner of the local clean room securable for permission management
+        """
+        return pulumi.get(self, "owner")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteDetailedInfo")
+    def remote_detailed_info(self) -> Optional['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoResult']:
+        """
+        (CleanRoomRemoteDetail) - Central clean room details. During creation, users need to specify
+        cloud_vendor, region, and collaborators.global_metastore_id.
+        This field will not be filled in the ListCleanRooms call
+        """
+        return pulumi.get(self, "remote_detailed_info")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomOutputCatalogResult(dict):
+    def __init__(__self__, *,
+                 status: _builtins.str,
+                 catalog_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str status: (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        :param _builtins.str catalog_name: (string) - The name of the output catalog in UC.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+               The field will always exist if status is CREATED
+        """
+        pulumi.set(__self__, "status", status)
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - The name of the output catalog in UC.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
+        The field will always exist if status is CREATED
+        """
+        return pulumi.get(self, "catalog_name")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoResult(dict):
+    def __init__(__self__, *,
+                 central_clean_room_id: _builtins.str,
+                 compliance_security_profile: 'outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileResult',
+                 creator: 'outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCreatorResult',
+                 cloud_vendor: Optional[_builtins.str] = None,
+                 collaborators: Optional[Sequence['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorResult']] = None,
+                 egress_network_policy: Optional['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyResult'] = None,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str central_clean_room_id: (string) - Central clean room ID
+        :param 'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs' compliance_security_profile: (ComplianceSecurityProfile)
+        :param 'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs' creator: (CleanRoomCollaborator) - Collaborator who creates the clean room
+        :param _builtins.str cloud_vendor: (string) - Cloud vendor (aws,azure,gcp) of the central clean room
+        :param Sequence['GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs'] collaborators: (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
+               in the list that satisfies the owner condition:
+        :param 'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs' egress_network_policy: (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
+        :param _builtins.str region: (string)
+        """
+        pulumi.set(__self__, "central_clean_room_id", central_clean_room_id)
+        pulumi.set(__self__, "compliance_security_profile", compliance_security_profile)
+        pulumi.set(__self__, "creator", creator)
+        if cloud_vendor is not None:
+            pulumi.set(__self__, "cloud_vendor", cloud_vendor)
+        if collaborators is not None:
+            pulumi.set(__self__, "collaborators", collaborators)
+        if egress_network_policy is not None:
+            pulumi.set(__self__, "egress_network_policy", egress_network_policy)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="centralCleanRoomId")
+    def central_clean_room_id(self) -> _builtins.str:
+        """
+        (string) - Central clean room ID
+        """
+        return pulumi.get(self, "central_clean_room_id")
+
+    @_builtins.property
+    @pulumi.getter(name="complianceSecurityProfile")
+    def compliance_security_profile(self) -> 'outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileResult':
+        """
+        (ComplianceSecurityProfile)
+        """
+        return pulumi.get(self, "compliance_security_profile")
+
+    @_builtins.property
+    @pulumi.getter
+    def creator(self) -> 'outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCreatorResult':
+        """
+        (CleanRoomCollaborator) - Collaborator who creates the clean room
+        """
+        return pulumi.get(self, "creator")
+
+    @_builtins.property
+    @pulumi.getter(name="cloudVendor")
+    def cloud_vendor(self) -> Optional[_builtins.str]:
+        """
+        (string) - Cloud vendor (aws,azure,gcp) of the central clean room
+        """
+        return pulumi.get(self, "cloud_vendor")
+
+    @_builtins.property
+    @pulumi.getter
+    def collaborators(self) -> Optional[Sequence['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorResult']]:
+        """
+        (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
+        in the list that satisfies the owner condition:
+        """
+        return pulumi.get(self, "collaborators")
+
+    @_builtins.property
+    @pulumi.getter(name="egressNetworkPolicy")
+    def egress_network_policy(self) -> Optional['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyResult']:
+        """
+        (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
+        """
+        return pulumi.get(self, "egress_network_policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        (string)
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorResult(dict):
+    def __init__(__self__, *,
+                 collaborator_alias: _builtins.str,
+                 display_name: _builtins.str,
+                 invite_recipient_workspace_id: _builtins.int,
+                 organization_name: _builtins.str,
+                 global_metastore_id: Optional[_builtins.str] = None,
+                 invite_recipient_email: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str collaborator_alias: (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        :param _builtins.str display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+               these values and could change in the future
+        :param _builtins.int invite_recipient_workspace_id: (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+               invite_recipient_email is specified.
+               It should be empty when the collaborator is the creator of the clean room
+        :param _builtins.str organization_name: (string) - Organization name
+               configured in the metastore
+        :param _builtins.str global_metastore_id: (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        :param _builtins.str invite_recipient_email: (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+               for the creator of the clean room, and non-empty for the invitees of the clean room.
+               It is only returned in the output when clean room creator calls GET
+        """
+        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
+        pulumi.set(__self__, "organization_name", organization_name)
+        if global_metastore_id is not None:
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if invite_recipient_email is not None:
+            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
+
+    @_builtins.property
+    @pulumi.getter(name="collaboratorAlias")
+    def collaborator_alias(self) -> _builtins.str:
+        """
+        (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        return pulumi.get(self, "collaborator_alias")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="inviteRecipientWorkspaceId")
+    def invite_recipient_workspace_id(self) -> _builtins.int:
+        """
+        (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+        return pulumi.get(self, "invite_recipient_workspace_id")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> _builtins.str:
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+        return pulumi.get(self, "organization_name")
+
+    @_builtins.property
+    @pulumi.getter(name="globalMetastoreId")
+    def global_metastore_id(self) -> Optional[_builtins.str]:
+        """
+        (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        return pulumi.get(self, "global_metastore_id")
+
+    @_builtins.property
+    @pulumi.getter(name="inviteRecipientEmail")
+    def invite_recipient_email(self) -> Optional[_builtins.str]:
+        """
+        (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        return pulumi.get(self, "invite_recipient_email")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileResult(dict):
+    def __init__(__self__, *,
+                 compliance_standards: Optional[Sequence[_builtins.str]] = None,
+                 is_enabled: Optional[_builtins.bool] = None):
+        """
+        :param Sequence[_builtins.str] compliance_standards: (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
+        :param _builtins.bool is_enabled: (boolean) - Whether the compliance security profile is enabled
+        """
+        if compliance_standards is not None:
+            pulumi.set(__self__, "compliance_standards", compliance_standards)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="complianceStandards")
+    def compliance_standards(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
+        """
+        return pulumi.get(self, "compliance_standards")
+
+    @_builtins.property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether the compliance security profile is enabled
+        """
+        return pulumi.get(self, "is_enabled")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCreatorResult(dict):
+    def __init__(__self__, *,
+                 collaborator_alias: _builtins.str,
+                 display_name: _builtins.str,
+                 invite_recipient_workspace_id: _builtins.int,
+                 organization_name: _builtins.str,
+                 global_metastore_id: Optional[_builtins.str] = None,
+                 invite_recipient_email: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str collaborator_alias: (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        :param _builtins.str display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+               these values and could change in the future
+        :param _builtins.int invite_recipient_workspace_id: (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+               invite_recipient_email is specified.
+               It should be empty when the collaborator is the creator of the clean room
+        :param _builtins.str organization_name: (string) - Organization name
+               configured in the metastore
+        :param _builtins.str global_metastore_id: (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        :param _builtins.str invite_recipient_email: (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+               for the creator of the clean room, and non-empty for the invitees of the clean room.
+               It is only returned in the output when clean room creator calls GET
+        """
+        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
+        pulumi.set(__self__, "organization_name", organization_name)
+        if global_metastore_id is not None:
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if invite_recipient_email is not None:
+            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
+
+    @_builtins.property
+    @pulumi.getter(name="collaboratorAlias")
+    def collaborator_alias(self) -> _builtins.str:
+        """
+        (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
+        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
+        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
+        """
+        return pulumi.get(self, "collaborator_alias")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
+        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
+        these values and could change in the future
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="inviteRecipientWorkspaceId")
+    def invite_recipient_workspace_id(self) -> _builtins.int:
+        """
+        (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
+        invite_recipient_email is specified.
+        It should be empty when the collaborator is the creator of the clean room
+        """
+        return pulumi.get(self, "invite_recipient_workspace_id")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationName")
+    def organization_name(self) -> _builtins.str:
+        """
+        (string) - Organization name
+        configured in the metastore
+        """
+        return pulumi.get(self, "organization_name")
+
+    @_builtins.property
+    @pulumi.getter(name="globalMetastoreId")
+    def global_metastore_id(self) -> Optional[_builtins.str]:
+        """
+        (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        """
+        return pulumi.get(self, "global_metastore_id")
+
+    @_builtins.property
+    @pulumi.getter(name="inviteRecipientEmail")
+    def invite_recipient_email(self) -> Optional[_builtins.str]:
+        """
+        (string) - Email of the user who is receiving the clean room "invitation". It should be empty
+        for the creator of the clean room, and non-empty for the invitees of the clean room.
+        It is only returned in the output when clean room creator calls GET
+        """
+        return pulumi.get(self, "invite_recipient_email")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyResult(dict):
+    def __init__(__self__, *,
+                 internet_access: Optional['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessResult'] = None):
+        """
+        :param 'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs' internet_access: (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
+        """
+        if internet_access is not None:
+            pulumi.set(__self__, "internet_access", internet_access)
+
+    @_builtins.property
+    @pulumi.getter(name="internetAccess")
+    def internet_access(self) -> Optional['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessResult']:
+        """
+        (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
+        """
+        return pulumi.get(self, "internet_access")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessResult(dict):
+    def __init__(__self__, *,
+                 allowed_internet_destinations: Optional[Sequence['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationResult']] = None,
+                 allowed_storage_destinations: Optional[Sequence['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationResult']] = None,
+                 log_only_mode: Optional['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeResult'] = None,
+                 restriction_mode: Optional[_builtins.str] = None):
+        """
+        :param Sequence['GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs'] allowed_internet_destinations: (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination)
+        :param Sequence['GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs'] allowed_storage_destinations: (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination)
+        :param 'GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs' log_only_mode: (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
+        :param _builtins.str restriction_mode: (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+        """
+        if allowed_internet_destinations is not None:
+            pulumi.set(__self__, "allowed_internet_destinations", allowed_internet_destinations)
+        if allowed_storage_destinations is not None:
+            pulumi.set(__self__, "allowed_storage_destinations", allowed_storage_destinations)
+        if log_only_mode is not None:
+            pulumi.set(__self__, "log_only_mode", log_only_mode)
+        if restriction_mode is not None:
+            pulumi.set(__self__, "restriction_mode", restriction_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedInternetDestinations")
+    def allowed_internet_destinations(self) -> Optional[Sequence['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationResult']]:
+        """
+        (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination)
+        """
+        return pulumi.get(self, "allowed_internet_destinations")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedStorageDestinations")
+    def allowed_storage_destinations(self) -> Optional[Sequence['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationResult']]:
+        """
+        (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination)
+        """
+        return pulumi.get(self, "allowed_storage_destinations")
+
+    @_builtins.property
+    @pulumi.getter(name="logOnlyMode")
+    def log_only_mode(self) -> Optional['outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeResult']:
+        """
+        (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
+        """
+        return pulumi.get(self, "log_only_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="restrictionMode")
+    def restriction_mode(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
+        """
+        return pulumi.get(self, "restriction_mode")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationResult(dict):
+    def __init__(__self__, *,
+                 destination: Optional[_builtins.str] = None,
+                 protocol: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str destination: (string)
+        :param _builtins.str protocol: (string) - . Possible values are: `TCP`
+        :param _builtins.str type: (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def destination(self) -> Optional[_builtins.str]:
+        """
+        (string)
+        """
+        return pulumi.get(self, "destination")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `TCP`
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationResult(dict):
+    def __init__(__self__, *,
+                 allowed_paths: Optional[Sequence[_builtins.str]] = None,
+                 azure_container: Optional[_builtins.str] = None,
+                 azure_dns_zone: Optional[_builtins.str] = None,
+                 azure_storage_account: Optional[_builtins.str] = None,
+                 azure_storage_service: Optional[_builtins.str] = None,
+                 bucket_name: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] allowed_paths: (list of string)
+        :param _builtins.str azure_container: (string)
+        :param _builtins.str azure_dns_zone: (string)
+        :param _builtins.str azure_storage_account: (string)
+        :param _builtins.str azure_storage_service: (string)
+        :param _builtins.str bucket_name: (string)
+        :param _builtins.str region: (string)
+        :param _builtins.str type: (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        if allowed_paths is not None:
+            pulumi.set(__self__, "allowed_paths", allowed_paths)
+        if azure_container is not None:
+            pulumi.set(__self__, "azure_container", azure_container)
+        if azure_dns_zone is not None:
+            pulumi.set(__self__, "azure_dns_zone", azure_dns_zone)
+        if azure_storage_account is not None:
+            pulumi.set(__self__, "azure_storage_account", azure_storage_account)
+        if azure_storage_service is not None:
+            pulumi.set(__self__, "azure_storage_service", azure_storage_service)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedPaths")
+    def allowed_paths(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string)
+        """
+        return pulumi.get(self, "allowed_paths")
+
+    @_builtins.property
+    @pulumi.getter(name="azureContainer")
+    def azure_container(self) -> Optional[_builtins.str]:
+        """
+        (string)
+        """
+        return pulumi.get(self, "azure_container")
+
+    @_builtins.property
+    @pulumi.getter(name="azureDnsZone")
+    def azure_dns_zone(self) -> Optional[_builtins.str]:
+        """
+        (string)
+        """
+        return pulumi.get(self, "azure_dns_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="azureStorageAccount")
+    def azure_storage_account(self) -> Optional[_builtins.str]:
+        """
+        (string)
+        """
+        return pulumi.get(self, "azure_storage_account")
+
+    @_builtins.property
+    @pulumi.getter(name="azureStorageService")
+    def azure_storage_service(self) -> Optional[_builtins.str]:
+        """
+        (string)
+        """
+        return pulumi.get(self, "azure_storage_service")
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[_builtins.str]:
+        """
+        (string)
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        (string)
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeResult(dict):
+    def __init__(__self__, *,
+                 log_only_mode_type: Optional[_builtins.str] = None,
+                 workloads: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str log_only_mode_type: (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+        :param Sequence[_builtins.str] workloads: (list of string)
+        """
+        if log_only_mode_type is not None:
+            pulumi.set(__self__, "log_only_mode_type", log_only_mode_type)
+        if workloads is not None:
+            pulumi.set(__self__, "workloads", workloads)
+
+    @_builtins.property
+    @pulumi.getter(name="logOnlyModeType")
+    def log_only_mode_type(self) -> Optional[_builtins.str]:
+        """
+        (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
+        """
+        return pulumi.get(self, "log_only_mode_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def workloads(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string)
+        """
+        return pulumi.get(self, "workloads")
 
 
 @pulumi.output_type
@@ -36513,6 +46374,7 @@ class GetClusterClusterInfoGcpAttributesResult(dict):
     def __init__(__self__, *,
                  availability: Optional[_builtins.str] = None,
                  boot_disk_size: Optional[_builtins.int] = None,
+                 first_on_demand: Optional[_builtins.int] = None,
                  google_service_account: Optional[_builtins.str] = None,
                  local_ssd_count: Optional[_builtins.int] = None,
                  use_preemptible_executors: Optional[_builtins.bool] = None,
@@ -36521,6 +46383,8 @@ class GetClusterClusterInfoGcpAttributesResult(dict):
             pulumi.set(__self__, "availability", availability)
         if boot_disk_size is not None:
             pulumi.set(__self__, "boot_disk_size", boot_disk_size)
+        if first_on_demand is not None:
+            pulumi.set(__self__, "first_on_demand", first_on_demand)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
         if local_ssd_count is not None:
@@ -36539,6 +46403,11 @@ class GetClusterClusterInfoGcpAttributesResult(dict):
     @pulumi.getter(name="bootDiskSize")
     def boot_disk_size(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "boot_disk_size")
+
+    @_builtins.property
+    @pulumi.getter(name="firstOnDemand")
+    def first_on_demand(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "first_on_demand")
 
     @_builtins.property
     @pulumi.getter(name="googleServiceAccount")
@@ -37475,6 +47344,7 @@ class GetClusterClusterInfoSpecGcpAttributesResult(dict):
     def __init__(__self__, *,
                  availability: Optional[_builtins.str] = None,
                  boot_disk_size: Optional[_builtins.int] = None,
+                 first_on_demand: Optional[_builtins.int] = None,
                  google_service_account: Optional[_builtins.str] = None,
                  local_ssd_count: Optional[_builtins.int] = None,
                  use_preemptible_executors: Optional[_builtins.bool] = None,
@@ -37483,6 +47353,8 @@ class GetClusterClusterInfoSpecGcpAttributesResult(dict):
             pulumi.set(__self__, "availability", availability)
         if boot_disk_size is not None:
             pulumi.set(__self__, "boot_disk_size", boot_disk_size)
+        if first_on_demand is not None:
+            pulumi.set(__self__, "first_on_demand", first_on_demand)
         if google_service_account is not None:
             pulumi.set(__self__, "google_service_account", google_service_account)
         if local_ssd_count is not None:
@@ -37501,6 +47373,11 @@ class GetClusterClusterInfoSpecGcpAttributesResult(dict):
     @pulumi.getter(name="bootDiskSize")
     def boot_disk_size(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "boot_disk_size")
+
+    @_builtins.property
+    @pulumi.getter(name="firstOnDemand")
+    def first_on_demand(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "first_on_demand")
 
     @_builtins.property
     @pulumi.getter(name="googleServiceAccount")
@@ -37749,6 +47626,7 @@ class GetClusterClusterInfoSpecLibraryResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "egg")
 
@@ -38316,44 +48194,338 @@ class GetDashboardsDashboardResult(dict):
 
 
 @pulumi.output_type
+class GetDatabaseDatabaseCatalogsDatabaseCatalogResult(dict):
+    def __init__(__self__, *,
+                 create_database_if_not_exists: _builtins.bool,
+                 database_instance_name: _builtins.str,
+                 database_name: _builtins.str,
+                 name: _builtins.str,
+                 uid: _builtins.str):
+        """
+        :param _builtins.bool create_database_if_not_exists: (boolean)
+        :param _builtins.str database_instance_name: (string) - The name of the DatabaseInstance housing the database
+        :param _builtins.str database_name: (string) - The name of the database (in a instance) associated with the catalog
+        :param _builtins.str name: (string) - The name of the catalog in UC
+        :param _builtins.str uid: (string)
+        """
+        pulumi.set(__self__, "create_database_if_not_exists", create_database_if_not_exists)
+        pulumi.set(__self__, "database_instance_name", database_instance_name)
+        pulumi.set(__self__, "database_name", database_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "uid", uid)
+
+    @_builtins.property
+    @pulumi.getter(name="createDatabaseIfNotExists")
+    def create_database_if_not_exists(self) -> _builtins.bool:
+        """
+        (boolean)
+        """
+        return pulumi.get(self, "create_database_if_not_exists")
+
+    @_builtins.property
+    @pulumi.getter(name="databaseInstanceName")
+    def database_instance_name(self) -> _builtins.str:
+        """
+        (string) - The name of the DatabaseInstance housing the database
+        """
+        return pulumi.get(self, "database_instance_name")
+
+    @_builtins.property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> _builtins.str:
+        """
+        (string) - The name of the database (in a instance) associated with the catalog
+        """
+        return pulumi.get(self, "database_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The name of the catalog in UC
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def uid(self) -> _builtins.str:
+        """
+        (string)
+        """
+        return pulumi.get(self, "uid")
+
+
+@pulumi.output_type
+class GetDatabaseInstanceChildInstanceRefResult(dict):
+    def __init__(__self__, *,
+                 effective_lsn: _builtins.str,
+                 uid: _builtins.str,
+                 branch_time: Optional[_builtins.str] = None,
+                 lsn: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str effective_lsn: (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+               `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+               For a parent ref instance, this is the LSN on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the LSN on the instance from which the child instance
+               was created
+        :param _builtins.str uid: (string) - Id of the ref database instance
+        :param _builtins.str branch_time: (string) - Branch time of the ref database instance.
+               For a parent ref instance, this is the point in time on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the point in time on the instance from which the child
+               instance was created.
+               Input: For specifying the point in time to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param _builtins.str lsn: (string) - User-specified WAL LSN of the ref database instance.
+        :param _builtins.str name: The name of the instance. This is the unique identifier for the instance
+        """
+        pulumi.set(__self__, "effective_lsn", effective_lsn)
+        pulumi.set(__self__, "uid", uid)
+        if branch_time is not None:
+            pulumi.set(__self__, "branch_time", branch_time)
+        if lsn is not None:
+            pulumi.set(__self__, "lsn", lsn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveLsn")
+    def effective_lsn(self) -> _builtins.str:
+        """
+        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+        For a parent ref instance, this is the LSN on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the LSN on the instance from which the child instance
+        was created
+        """
+        return pulumi.get(self, "effective_lsn")
+
+    @_builtins.property
+    @pulumi.getter
+    def uid(self) -> _builtins.str:
+        """
+        (string) - Id of the ref database instance
+        """
+        return pulumi.get(self, "uid")
+
+    @_builtins.property
+    @pulumi.getter(name="branchTime")
+    def branch_time(self) -> Optional[_builtins.str]:
+        """
+        (string) - Branch time of the ref database instance.
+        For a parent ref instance, this is the point in time on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the point in time on the instance from which the child
+        instance was created.
+        Input: For specifying the point in time to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "branch_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def lsn(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-specified WAL LSN of the ref database instance.
+        """
+        return pulumi.get(self, "lsn")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the instance. This is the unique identifier for the instance
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetDatabaseInstanceParentInstanceRefResult(dict):
+    def __init__(__self__, *,
+                 effective_lsn: _builtins.str,
+                 uid: _builtins.str,
+                 branch_time: Optional[_builtins.str] = None,
+                 lsn: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str effective_lsn: (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+               `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+               For a parent ref instance, this is the LSN on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the LSN on the instance from which the child instance
+               was created
+        :param _builtins.str uid: (string) - Id of the ref database instance
+        :param _builtins.str branch_time: (string) - Branch time of the ref database instance.
+               For a parent ref instance, this is the point in time on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the point in time on the instance from which the child
+               instance was created.
+               Input: For specifying the point in time to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param _builtins.str lsn: (string) - User-specified WAL LSN of the ref database instance.
+        :param _builtins.str name: The name of the instance. This is the unique identifier for the instance
+        """
+        pulumi.set(__self__, "effective_lsn", effective_lsn)
+        pulumi.set(__self__, "uid", uid)
+        if branch_time is not None:
+            pulumi.set(__self__, "branch_time", branch_time)
+        if lsn is not None:
+            pulumi.set(__self__, "lsn", lsn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveLsn")
+    def effective_lsn(self) -> _builtins.str:
+        """
+        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+        For a parent ref instance, this is the LSN on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the LSN on the instance from which the child instance
+        was created
+        """
+        return pulumi.get(self, "effective_lsn")
+
+    @_builtins.property
+    @pulumi.getter
+    def uid(self) -> _builtins.str:
+        """
+        (string) - Id of the ref database instance
+        """
+        return pulumi.get(self, "uid")
+
+    @_builtins.property
+    @pulumi.getter(name="branchTime")
+    def branch_time(self) -> Optional[_builtins.str]:
+        """
+        (string) - Branch time of the ref database instance.
+        For a parent ref instance, this is the point in time on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the point in time on the instance from which the child
+        instance was created.
+        Input: For specifying the point in time to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "branch_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def lsn(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-specified WAL LSN of the ref database instance.
+        """
+        return pulumi.get(self, "lsn")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the instance. This is the unique identifier for the instance
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GetDatabaseInstancesDatabaseInstanceResult(dict):
     def __init__(__self__, *,
+                 child_instance_refs: Sequence['outputs.GetDatabaseInstancesDatabaseInstanceChildInstanceRefResult'],
                  creation_time: _builtins.str,
                  creator: _builtins.str,
+                 effective_enable_readable_secondaries: _builtins.bool,
+                 effective_node_count: _builtins.int,
+                 effective_retention_window_in_days: _builtins.int,
                  effective_stopped: _builtins.bool,
                  name: _builtins.str,
                  pg_version: _builtins.str,
+                 read_only_dns: _builtins.str,
                  read_write_dns: _builtins.str,
                  state: _builtins.str,
                  uid: _builtins.str,
                  capacity: Optional[_builtins.str] = None,
+                 enable_readable_secondaries: Optional[_builtins.bool] = None,
+                 node_count: Optional[_builtins.int] = None,
+                 parent_instance_ref: Optional['outputs.GetDatabaseInstancesDatabaseInstanceParentInstanceRefResult'] = None,
+                 retention_window_in_days: Optional[_builtins.int] = None,
                  stopped: Optional[_builtins.bool] = None):
         """
+        :param Sequence['GetDatabaseInstancesDatabaseInstanceChildInstanceRefArgs'] child_instance_refs: (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+               parent instance
         :param _builtins.str creation_time: (string) - The timestamp when the instance was created
         :param _builtins.str creator: (string) - The email of the creator of the instance
+        :param _builtins.bool effective_enable_readable_secondaries: (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
+               `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        :param _builtins.int effective_node_count: (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
+               `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        :param _builtins.int effective_retention_window_in_days: (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
+               `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
         :param _builtins.bool effective_stopped: (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
                `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
                `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
-        :param _builtins.str name: (string) - The name of the instance. This is the unique identifier for the instance
+        :param _builtins.str name: (string) - Name of the ref database instance
         :param _builtins.str pg_version: (string) - The version of Postgres running on the instance
+        :param _builtins.str read_only_dns: (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+               enable_readable_secondaries is true
         :param _builtins.str read_write_dns: (string) - The DNS endpoint to connect to the instance for read+write access
         :param _builtins.str state: (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-        :param _builtins.str uid: (string) - An immutable UUID identifier for the instance
+        :param _builtins.str uid: (string) - Id of the ref database instance
         :param _builtins.str capacity: (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        :param _builtins.bool enable_readable_secondaries: (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+        :param _builtins.int node_count: (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+               1 primary and 0 secondaries
+        :param 'GetDatabaseInstancesDatabaseInstanceParentInstanceRefArgs' parent_instance_ref: (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+               child instance.
+               Input: For specifying the parent instance to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param _builtins.int retention_window_in_days: (integer) - The retention window for the instance. This is the time window in days
+               for which the historical data is retained. The default value is 7 days.
+               Valid values are 2 to 35 days
         :param _builtins.bool stopped: (boolean) - Whether the instance is stopped
         """
+        pulumi.set(__self__, "child_instance_refs", child_instance_refs)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "creator", creator)
+        pulumi.set(__self__, "effective_enable_readable_secondaries", effective_enable_readable_secondaries)
+        pulumi.set(__self__, "effective_node_count", effective_node_count)
+        pulumi.set(__self__, "effective_retention_window_in_days", effective_retention_window_in_days)
         pulumi.set(__self__, "effective_stopped", effective_stopped)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "pg_version", pg_version)
+        pulumi.set(__self__, "read_only_dns", read_only_dns)
         pulumi.set(__self__, "read_write_dns", read_write_dns)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "uid", uid)
         if capacity is not None:
             pulumi.set(__self__, "capacity", capacity)
+        if enable_readable_secondaries is not None:
+            pulumi.set(__self__, "enable_readable_secondaries", enable_readable_secondaries)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
+        if parent_instance_ref is not None:
+            pulumi.set(__self__, "parent_instance_ref", parent_instance_ref)
+        if retention_window_in_days is not None:
+            pulumi.set(__self__, "retention_window_in_days", retention_window_in_days)
         if stopped is not None:
             pulumi.set(__self__, "stopped", stopped)
+
+    @_builtins.property
+    @pulumi.getter(name="childInstanceRefs")
+    def child_instance_refs(self) -> Sequence['outputs.GetDatabaseInstancesDatabaseInstanceChildInstanceRefResult']:
+        """
+        (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+        parent instance
+        """
+        return pulumi.get(self, "child_instance_refs")
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
@@ -38372,6 +48544,36 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
         return pulumi.get(self, "creator")
 
     @_builtins.property
+    @pulumi.getter(name="effectiveEnableReadableSecondaries")
+    def effective_enable_readable_secondaries(self) -> _builtins.bool:
+        """
+        (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
+        `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        """
+        return pulumi.get(self, "effective_enable_readable_secondaries")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveNodeCount")
+    def effective_node_count(self) -> _builtins.int:
+        """
+        (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
+        `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        """
+        return pulumi.get(self, "effective_node_count")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveRetentionWindowInDays")
+    def effective_retention_window_in_days(self) -> _builtins.int:
+        """
+        (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
+        `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        """
+        return pulumi.get(self, "effective_retention_window_in_days")
+
+    @_builtins.property
     @pulumi.getter(name="effectiveStopped")
     def effective_stopped(self) -> _builtins.bool:
         """
@@ -38385,7 +48587,7 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - The name of the instance. This is the unique identifier for the instance
+        (string) - Name of the ref database instance
         """
         return pulumi.get(self, "name")
 
@@ -38396,6 +48598,15 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
         (string) - The version of Postgres running on the instance
         """
         return pulumi.get(self, "pg_version")
+
+    @_builtins.property
+    @pulumi.getter(name="readOnlyDns")
+    def read_only_dns(self) -> _builtins.str:
+        """
+        (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+        enable_readable_secondaries is true
+        """
+        return pulumi.get(self, "read_only_dns")
 
     @_builtins.property
     @pulumi.getter(name="readWriteDns")
@@ -38417,7 +48628,7 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
     @pulumi.getter
     def uid(self) -> _builtins.str:
         """
-        (string) - An immutable UUID identifier for the instance
+        (string) - Id of the ref database instance
         """
         return pulumi.get(self, "uid")
 
@@ -38430,12 +48641,1662 @@ class GetDatabaseInstancesDatabaseInstanceResult(dict):
         return pulumi.get(self, "capacity")
 
     @_builtins.property
+    @pulumi.getter(name="enableReadableSecondaries")
+    def enable_readable_secondaries(self) -> Optional[_builtins.bool]:
+        """
+        (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+        """
+        return pulumi.get(self, "enable_readable_secondaries")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+        1 primary and 0 secondaries
+        """
+        return pulumi.get(self, "node_count")
+
+    @_builtins.property
+    @pulumi.getter(name="parentInstanceRef")
+    def parent_instance_ref(self) -> Optional['outputs.GetDatabaseInstancesDatabaseInstanceParentInstanceRefResult']:
+        """
+        (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+        child instance.
+        Input: For specifying the parent instance to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "parent_instance_ref")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionWindowInDays")
+    def retention_window_in_days(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The retention window for the instance. This is the time window in days
+        for which the historical data is retained. The default value is 7 days.
+        Valid values are 2 to 35 days
+        """
+        return pulumi.get(self, "retention_window_in_days")
+
+    @_builtins.property
     @pulumi.getter
     def stopped(self) -> Optional[_builtins.bool]:
         """
         (boolean) - Whether the instance is stopped
         """
         return pulumi.get(self, "stopped")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesDatabaseInstanceChildInstanceRefResult(dict):
+    def __init__(__self__, *,
+                 effective_lsn: _builtins.str,
+                 uid: _builtins.str,
+                 branch_time: Optional[_builtins.str] = None,
+                 lsn: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str effective_lsn: (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+               `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+               For a parent ref instance, this is the LSN on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the LSN on the instance from which the child instance
+               was created
+        :param _builtins.str uid: (string) - Id of the ref database instance
+        :param _builtins.str branch_time: (string) - Branch time of the ref database instance.
+               For a parent ref instance, this is the point in time on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the point in time on the instance from which the child
+               instance was created.
+               Input: For specifying the point in time to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param _builtins.str lsn: (string) - User-specified WAL LSN of the ref database instance.
+        :param _builtins.str name: (string) - Name of the ref database instance
+        """
+        pulumi.set(__self__, "effective_lsn", effective_lsn)
+        pulumi.set(__self__, "uid", uid)
+        if branch_time is not None:
+            pulumi.set(__self__, "branch_time", branch_time)
+        if lsn is not None:
+            pulumi.set(__self__, "lsn", lsn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveLsn")
+    def effective_lsn(self) -> _builtins.str:
+        """
+        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+        For a parent ref instance, this is the LSN on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the LSN on the instance from which the child instance
+        was created
+        """
+        return pulumi.get(self, "effective_lsn")
+
+    @_builtins.property
+    @pulumi.getter
+    def uid(self) -> _builtins.str:
+        """
+        (string) - Id of the ref database instance
+        """
+        return pulumi.get(self, "uid")
+
+    @_builtins.property
+    @pulumi.getter(name="branchTime")
+    def branch_time(self) -> Optional[_builtins.str]:
+        """
+        (string) - Branch time of the ref database instance.
+        For a parent ref instance, this is the point in time on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the point in time on the instance from which the child
+        instance was created.
+        Input: For specifying the point in time to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "branch_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def lsn(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-specified WAL LSN of the ref database instance.
+        """
+        return pulumi.get(self, "lsn")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Name of the ref database instance
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesDatabaseInstanceParentInstanceRefResult(dict):
+    def __init__(__self__, *,
+                 effective_lsn: _builtins.str,
+                 uid: _builtins.str,
+                 branch_time: Optional[_builtins.str] = None,
+                 lsn: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str effective_lsn: (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+               `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+               `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+               For a parent ref instance, this is the LSN on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the LSN on the instance from which the child instance
+               was created
+        :param _builtins.str uid: (string) - Id of the ref database instance
+        :param _builtins.str branch_time: (string) - Branch time of the ref database instance.
+               For a parent ref instance, this is the point in time on the parent instance from which the
+               instance was created.
+               For a child ref instance, this is the point in time on the instance from which the child
+               instance was created.
+               Input: For specifying the point in time to create a child instance. Optional.
+               Output: Only populated if provided as input to create a child instance
+        :param _builtins.str lsn: (string) - User-specified WAL LSN of the ref database instance.
+        :param _builtins.str name: (string) - Name of the ref database instance
+        """
+        pulumi.set(__self__, "effective_lsn", effective_lsn)
+        pulumi.set(__self__, "uid", uid)
+        if branch_time is not None:
+            pulumi.set(__self__, "branch_time", branch_time)
+        if lsn is not None:
+            pulumi.set(__self__, "lsn", lsn)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveLsn")
+    def effective_lsn(self) -> _builtins.str:
+        """
+        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+        For a parent ref instance, this is the LSN on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the LSN on the instance from which the child instance
+        was created
+        """
+        return pulumi.get(self, "effective_lsn")
+
+    @_builtins.property
+    @pulumi.getter
+    def uid(self) -> _builtins.str:
+        """
+        (string) - Id of the ref database instance
+        """
+        return pulumi.get(self, "uid")
+
+    @_builtins.property
+    @pulumi.getter(name="branchTime")
+    def branch_time(self) -> Optional[_builtins.str]:
+        """
+        (string) - Branch time of the ref database instance.
+        For a parent ref instance, this is the point in time on the parent instance from which the
+        instance was created.
+        For a child ref instance, this is the point in time on the instance from which the child
+        instance was created.
+        Input: For specifying the point in time to create a child instance. Optional.
+        Output: Only populated if provided as input to create a child instance
+        """
+        return pulumi.get(self, "branch_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def lsn(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-specified WAL LSN of the ref database instance.
+        """
+        return pulumi.get(self, "lsn")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Name of the ref database instance
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTableDataSynchronizationStatusResult(dict):
+    def __init__(__self__, *,
+                 detailed_state: _builtins.str,
+                 last_sync: 'outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncResult',
+                 message: _builtins.str,
+                 pipeline_id: _builtins.str,
+                 continuous_update_status: Optional['outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusResult'] = None,
+                 failed_status: Optional['outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatusResult'] = None,
+                 provisioning_status: Optional['outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusResult'] = None,
+                 triggered_update_status: Optional['outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusResult'] = None):
+        """
+        :param _builtins.str detailed_state: (string) - The state of the synced table. Possible values are: `SYNCED_TABLED_OFFLINE`, `SYNCED_TABLE_OFFLINE_FAILED`, `SYNCED_TABLE_ONLINE`, `SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE`, `SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE`, `SYNCED_TABLE_ONLINE_PIPELINE_FAILED`, `SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE`, `SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES`, `SYNCED_TABLE_PROVISIONING`, `SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT`, `SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES`
+        :param 'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncArgs' last_sync: (SyncedTablePosition) - Summary of the last successful synchronization from source to destination.
+        :param _builtins.str message: (string) - A text description of the current state of the synced table
+        :param _builtins.str pipeline_id: (string) - ID of the associated pipeline. The pipeline ID may have been provided by the client
+               (in the case of bin packing), or generated by the server (when creating a new pipeline)
+        :param 'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusArgs' continuous_update_status: (SyncedTableContinuousUpdateStatus)
+        :param 'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatusArgs' failed_status: (SyncedTableFailedStatus)
+        :param 'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusArgs' provisioning_status: (SyncedTableProvisioningStatus)
+        :param 'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusArgs' triggered_update_status: (SyncedTableTriggeredUpdateStatus)
+        """
+        pulumi.set(__self__, "detailed_state", detailed_state)
+        pulumi.set(__self__, "last_sync", last_sync)
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "pipeline_id", pipeline_id)
+        if continuous_update_status is not None:
+            pulumi.set(__self__, "continuous_update_status", continuous_update_status)
+        if failed_status is not None:
+            pulumi.set(__self__, "failed_status", failed_status)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+        if triggered_update_status is not None:
+            pulumi.set(__self__, "triggered_update_status", triggered_update_status)
+
+    @_builtins.property
+    @pulumi.getter(name="detailedState")
+    def detailed_state(self) -> _builtins.str:
+        """
+        (string) - The state of the synced table. Possible values are: `SYNCED_TABLED_OFFLINE`, `SYNCED_TABLE_OFFLINE_FAILED`, `SYNCED_TABLE_ONLINE`, `SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE`, `SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE`, `SYNCED_TABLE_ONLINE_PIPELINE_FAILED`, `SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE`, `SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES`, `SYNCED_TABLE_PROVISIONING`, `SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT`, `SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES`
+        """
+        return pulumi.get(self, "detailed_state")
+
+    @_builtins.property
+    @pulumi.getter(name="lastSync")
+    def last_sync(self) -> 'outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncResult':
+        """
+        (SyncedTablePosition) - Summary of the last successful synchronization from source to destination.
+        """
+        return pulumi.get(self, "last_sync")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        (string) - A text description of the current state of the synced table
+        """
+        return pulumi.get(self, "message")
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineId")
+    def pipeline_id(self) -> _builtins.str:
+        """
+        (string) - ID of the associated pipeline. The pipeline ID may have been provided by the client
+        (in the case of bin packing), or generated by the server (when creating a new pipeline)
+        """
+        return pulumi.get(self, "pipeline_id")
+
+    @_builtins.property
+    @pulumi.getter(name="continuousUpdateStatus")
+    def continuous_update_status(self) -> Optional['outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusResult']:
+        """
+        (SyncedTableContinuousUpdateStatus)
+        """
+        return pulumi.get(self, "continuous_update_status")
+
+    @_builtins.property
+    @pulumi.getter(name="failedStatus")
+    def failed_status(self) -> Optional['outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatusResult']:
+        """
+        (SyncedTableFailedStatus)
+        """
+        return pulumi.get(self, "failed_status")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional['outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusResult']:
+        """
+        (SyncedTableProvisioningStatus)
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter(name="triggeredUpdateStatus")
+    def triggered_update_status(self) -> Optional['outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusResult']:
+        """
+        (SyncedTableTriggeredUpdateStatus)
+        """
+        return pulumi.get(self, "triggered_update_status")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusResult(dict):
+    def __init__(__self__, *,
+                 initial_pipeline_sync_progress: 'outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgressResult',
+                 last_processed_commit_version: _builtins.int,
+                 timestamp: _builtins.str):
+        """
+        :param 'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgressArgs' initial_pipeline_sync_progress: (SyncedTablePipelineProgress) - Details about initial data synchronization. Only populated when in the
+               PROVISIONING_INITIAL_SNAPSHOT state
+        :param _builtins.int last_processed_commit_version: (integer) - The last source table Delta version that was successfully synced to the synced table
+        :param _builtins.str timestamp: (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+               table. This is when the data is available in the synced table
+        """
+        pulumi.set(__self__, "initial_pipeline_sync_progress", initial_pipeline_sync_progress)
+        pulumi.set(__self__, "last_processed_commit_version", last_processed_commit_version)
+        pulumi.set(__self__, "timestamp", timestamp)
+
+    @_builtins.property
+    @pulumi.getter(name="initialPipelineSyncProgress")
+    def initial_pipeline_sync_progress(self) -> 'outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgressResult':
+        """
+        (SyncedTablePipelineProgress) - Details about initial data synchronization. Only populated when in the
+        PROVISIONING_INITIAL_SNAPSHOT state
+        """
+        return pulumi.get(self, "initial_pipeline_sync_progress")
+
+    @_builtins.property
+    @pulumi.getter(name="lastProcessedCommitVersion")
+    def last_processed_commit_version(self) -> _builtins.int:
+        """
+        (integer) - The last source table Delta version that was successfully synced to the synced table
+        """
+        return pulumi.get(self, "last_processed_commit_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def timestamp(self) -> _builtins.str:
+        """
+        (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+        table. This is when the data is available in the synced table
+        """
+        return pulumi.get(self, "timestamp")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgressResult(dict):
+    def __init__(__self__, *,
+                 estimated_completion_time_seconds: _builtins.float,
+                 latest_version_currently_processing: _builtins.int,
+                 provisioning_phase: _builtins.str,
+                 sync_progress_completion: _builtins.float,
+                 synced_row_count: _builtins.int,
+                 total_row_count: _builtins.int):
+        """
+        :param _builtins.float estimated_completion_time_seconds: (number) - The estimated time remaining to complete this update in seconds
+        :param _builtins.int latest_version_currently_processing: (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+               have completely processed this version yet
+        :param _builtins.str provisioning_phase: (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+        :param _builtins.float sync_progress_completion: (number) - The completion ratio of this update. This is a number between 0 and 1
+        :param _builtins.int synced_row_count: (integer) - The number of rows that have been synced in this update
+        :param _builtins.int total_row_count: (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+        """
+        pulumi.set(__self__, "estimated_completion_time_seconds", estimated_completion_time_seconds)
+        pulumi.set(__self__, "latest_version_currently_processing", latest_version_currently_processing)
+        pulumi.set(__self__, "provisioning_phase", provisioning_phase)
+        pulumi.set(__self__, "sync_progress_completion", sync_progress_completion)
+        pulumi.set(__self__, "synced_row_count", synced_row_count)
+        pulumi.set(__self__, "total_row_count", total_row_count)
+
+    @_builtins.property
+    @pulumi.getter(name="estimatedCompletionTimeSeconds")
+    def estimated_completion_time_seconds(self) -> _builtins.float:
+        """
+        (number) - The estimated time remaining to complete this update in seconds
+        """
+        return pulumi.get(self, "estimated_completion_time_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="latestVersionCurrentlyProcessing")
+    def latest_version_currently_processing(self) -> _builtins.int:
+        """
+        (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+        have completely processed this version yet
+        """
+        return pulumi.get(self, "latest_version_currently_processing")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningPhase")
+    def provisioning_phase(self) -> _builtins.str:
+        """
+        (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+        """
+        return pulumi.get(self, "provisioning_phase")
+
+    @_builtins.property
+    @pulumi.getter(name="syncProgressCompletion")
+    def sync_progress_completion(self) -> _builtins.float:
+        """
+        (number) - The completion ratio of this update. This is a number between 0 and 1
+        """
+        return pulumi.get(self, "sync_progress_completion")
+
+    @_builtins.property
+    @pulumi.getter(name="syncedRowCount")
+    def synced_row_count(self) -> _builtins.int:
+        """
+        (integer) - The number of rows that have been synced in this update
+        """
+        return pulumi.get(self, "synced_row_count")
+
+    @_builtins.property
+    @pulumi.getter(name="totalRowCount")
+    def total_row_count(self) -> _builtins.int:
+        """
+        (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+        """
+        return pulumi.get(self, "total_row_count")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatusResult(dict):
+    def __init__(__self__, *,
+                 last_processed_commit_version: _builtins.int,
+                 timestamp: _builtins.str):
+        """
+        :param _builtins.int last_processed_commit_version: (integer) - The last source table Delta version that was successfully synced to the synced table
+        :param _builtins.str timestamp: (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+               table. This is when the data is available in the synced table
+        """
+        pulumi.set(__self__, "last_processed_commit_version", last_processed_commit_version)
+        pulumi.set(__self__, "timestamp", timestamp)
+
+    @_builtins.property
+    @pulumi.getter(name="lastProcessedCommitVersion")
+    def last_processed_commit_version(self) -> _builtins.int:
+        """
+        (integer) - The last source table Delta version that was successfully synced to the synced table
+        """
+        return pulumi.get(self, "last_processed_commit_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def timestamp(self) -> _builtins.str:
+        """
+        (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+        table. This is when the data is available in the synced table
+        """
+        return pulumi.get(self, "timestamp")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncResult(dict):
+    def __init__(__self__, *,
+                 delta_table_sync_info: 'outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfoResult',
+                 sync_end_timestamp: _builtins.str,
+                 sync_start_timestamp: _builtins.str):
+        """
+        :param 'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfoArgs' delta_table_sync_info: (DeltaTableSyncInfo)
+        :param _builtins.str sync_end_timestamp: (string) - The end timestamp of the most recent successful synchronization.
+               This is the time when the data is available in the synced table
+        :param _builtins.str sync_start_timestamp: (string) - The starting timestamp of the most recent successful synchronization from the source table
+               to the destination (synced) table.
+               Note this is the starting timestamp of the sync operation, not the end time.
+               E.g., for a batch, this is the time when the sync operation started
+        """
+        pulumi.set(__self__, "delta_table_sync_info", delta_table_sync_info)
+        pulumi.set(__self__, "sync_end_timestamp", sync_end_timestamp)
+        pulumi.set(__self__, "sync_start_timestamp", sync_start_timestamp)
+
+    @_builtins.property
+    @pulumi.getter(name="deltaTableSyncInfo")
+    def delta_table_sync_info(self) -> 'outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfoResult':
+        """
+        (DeltaTableSyncInfo)
+        """
+        return pulumi.get(self, "delta_table_sync_info")
+
+    @_builtins.property
+    @pulumi.getter(name="syncEndTimestamp")
+    def sync_end_timestamp(self) -> _builtins.str:
+        """
+        (string) - The end timestamp of the most recent successful synchronization.
+        This is the time when the data is available in the synced table
+        """
+        return pulumi.get(self, "sync_end_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="syncStartTimestamp")
+    def sync_start_timestamp(self) -> _builtins.str:
+        """
+        (string) - The starting timestamp of the most recent successful synchronization from the source table
+        to the destination (synced) table.
+        Note this is the starting timestamp of the sync operation, not the end time.
+        E.g., for a batch, this is the time when the sync operation started
+        """
+        return pulumi.get(self, "sync_start_timestamp")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfoResult(dict):
+    def __init__(__self__, *,
+                 delta_commit_timestamp: _builtins.str,
+                 delta_commit_version: _builtins.int):
+        """
+        :param _builtins.str delta_commit_timestamp: (string) - The timestamp when the above Delta version was committed in the source Delta table.
+               Note: This is the Delta commit time, not the time the data was written to the synced table
+        :param _builtins.int delta_commit_version: (integer) - The Delta Lake commit version that was last successfully synced
+        """
+        pulumi.set(__self__, "delta_commit_timestamp", delta_commit_timestamp)
+        pulumi.set(__self__, "delta_commit_version", delta_commit_version)
+
+    @_builtins.property
+    @pulumi.getter(name="deltaCommitTimestamp")
+    def delta_commit_timestamp(self) -> _builtins.str:
+        """
+        (string) - The timestamp when the above Delta version was committed in the source Delta table.
+        Note: This is the Delta commit time, not the time the data was written to the synced table
+        """
+        return pulumi.get(self, "delta_commit_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deltaCommitVersion")
+    def delta_commit_version(self) -> _builtins.int:
+        """
+        (integer) - The Delta Lake commit version that was last successfully synced
+        """
+        return pulumi.get(self, "delta_commit_version")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusResult(dict):
+    def __init__(__self__, *,
+                 initial_pipeline_sync_progress: 'outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgressResult'):
+        """
+        :param 'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgressArgs' initial_pipeline_sync_progress: (SyncedTablePipelineProgress) - Details about initial data synchronization. Only populated when in the
+               PROVISIONING_INITIAL_SNAPSHOT state
+        """
+        pulumi.set(__self__, "initial_pipeline_sync_progress", initial_pipeline_sync_progress)
+
+    @_builtins.property
+    @pulumi.getter(name="initialPipelineSyncProgress")
+    def initial_pipeline_sync_progress(self) -> 'outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgressResult':
+        """
+        (SyncedTablePipelineProgress) - Details about initial data synchronization. Only populated when in the
+        PROVISIONING_INITIAL_SNAPSHOT state
+        """
+        return pulumi.get(self, "initial_pipeline_sync_progress")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgressResult(dict):
+    def __init__(__self__, *,
+                 estimated_completion_time_seconds: _builtins.float,
+                 latest_version_currently_processing: _builtins.int,
+                 provisioning_phase: _builtins.str,
+                 sync_progress_completion: _builtins.float,
+                 synced_row_count: _builtins.int,
+                 total_row_count: _builtins.int):
+        """
+        :param _builtins.float estimated_completion_time_seconds: (number) - The estimated time remaining to complete this update in seconds
+        :param _builtins.int latest_version_currently_processing: (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+               have completely processed this version yet
+        :param _builtins.str provisioning_phase: (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+        :param _builtins.float sync_progress_completion: (number) - The completion ratio of this update. This is a number between 0 and 1
+        :param _builtins.int synced_row_count: (integer) - The number of rows that have been synced in this update
+        :param _builtins.int total_row_count: (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+        """
+        pulumi.set(__self__, "estimated_completion_time_seconds", estimated_completion_time_seconds)
+        pulumi.set(__self__, "latest_version_currently_processing", latest_version_currently_processing)
+        pulumi.set(__self__, "provisioning_phase", provisioning_phase)
+        pulumi.set(__self__, "sync_progress_completion", sync_progress_completion)
+        pulumi.set(__self__, "synced_row_count", synced_row_count)
+        pulumi.set(__self__, "total_row_count", total_row_count)
+
+    @_builtins.property
+    @pulumi.getter(name="estimatedCompletionTimeSeconds")
+    def estimated_completion_time_seconds(self) -> _builtins.float:
+        """
+        (number) - The estimated time remaining to complete this update in seconds
+        """
+        return pulumi.get(self, "estimated_completion_time_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="latestVersionCurrentlyProcessing")
+    def latest_version_currently_processing(self) -> _builtins.int:
+        """
+        (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+        have completely processed this version yet
+        """
+        return pulumi.get(self, "latest_version_currently_processing")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningPhase")
+    def provisioning_phase(self) -> _builtins.str:
+        """
+        (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+        """
+        return pulumi.get(self, "provisioning_phase")
+
+    @_builtins.property
+    @pulumi.getter(name="syncProgressCompletion")
+    def sync_progress_completion(self) -> _builtins.float:
+        """
+        (number) - The completion ratio of this update. This is a number between 0 and 1
+        """
+        return pulumi.get(self, "sync_progress_completion")
+
+    @_builtins.property
+    @pulumi.getter(name="syncedRowCount")
+    def synced_row_count(self) -> _builtins.int:
+        """
+        (integer) - The number of rows that have been synced in this update
+        """
+        return pulumi.get(self, "synced_row_count")
+
+    @_builtins.property
+    @pulumi.getter(name="totalRowCount")
+    def total_row_count(self) -> _builtins.int:
+        """
+        (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+        """
+        return pulumi.get(self, "total_row_count")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusResult(dict):
+    def __init__(__self__, *,
+                 last_processed_commit_version: _builtins.int,
+                 timestamp: _builtins.str,
+                 triggered_update_progress: 'outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgressResult'):
+        """
+        :param _builtins.int last_processed_commit_version: (integer) - The last source table Delta version that was successfully synced to the synced table
+        :param _builtins.str timestamp: (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+               table. This is when the data is available in the synced table
+        :param 'GetDatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgressArgs' triggered_update_progress: (SyncedTablePipelineProgress) - Progress of the active data synchronization pipeline
+        """
+        pulumi.set(__self__, "last_processed_commit_version", last_processed_commit_version)
+        pulumi.set(__self__, "timestamp", timestamp)
+        pulumi.set(__self__, "triggered_update_progress", triggered_update_progress)
+
+    @_builtins.property
+    @pulumi.getter(name="lastProcessedCommitVersion")
+    def last_processed_commit_version(self) -> _builtins.int:
+        """
+        (integer) - The last source table Delta version that was successfully synced to the synced table
+        """
+        return pulumi.get(self, "last_processed_commit_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def timestamp(self) -> _builtins.str:
+        """
+        (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+        table. This is when the data is available in the synced table
+        """
+        return pulumi.get(self, "timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="triggeredUpdateProgress")
+    def triggered_update_progress(self) -> 'outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgressResult':
+        """
+        (SyncedTablePipelineProgress) - Progress of the active data synchronization pipeline
+        """
+        return pulumi.get(self, "triggered_update_progress")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgressResult(dict):
+    def __init__(__self__, *,
+                 estimated_completion_time_seconds: _builtins.float,
+                 latest_version_currently_processing: _builtins.int,
+                 provisioning_phase: _builtins.str,
+                 sync_progress_completion: _builtins.float,
+                 synced_row_count: _builtins.int,
+                 total_row_count: _builtins.int):
+        """
+        :param _builtins.float estimated_completion_time_seconds: (number) - The estimated time remaining to complete this update in seconds
+        :param _builtins.int latest_version_currently_processing: (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+               have completely processed this version yet
+        :param _builtins.str provisioning_phase: (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+        :param _builtins.float sync_progress_completion: (number) - The completion ratio of this update. This is a number between 0 and 1
+        :param _builtins.int synced_row_count: (integer) - The number of rows that have been synced in this update
+        :param _builtins.int total_row_count: (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+        """
+        pulumi.set(__self__, "estimated_completion_time_seconds", estimated_completion_time_seconds)
+        pulumi.set(__self__, "latest_version_currently_processing", latest_version_currently_processing)
+        pulumi.set(__self__, "provisioning_phase", provisioning_phase)
+        pulumi.set(__self__, "sync_progress_completion", sync_progress_completion)
+        pulumi.set(__self__, "synced_row_count", synced_row_count)
+        pulumi.set(__self__, "total_row_count", total_row_count)
+
+    @_builtins.property
+    @pulumi.getter(name="estimatedCompletionTimeSeconds")
+    def estimated_completion_time_seconds(self) -> _builtins.float:
+        """
+        (number) - The estimated time remaining to complete this update in seconds
+        """
+        return pulumi.get(self, "estimated_completion_time_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="latestVersionCurrentlyProcessing")
+    def latest_version_currently_processing(self) -> _builtins.int:
+        """
+        (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+        have completely processed this version yet
+        """
+        return pulumi.get(self, "latest_version_currently_processing")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningPhase")
+    def provisioning_phase(self) -> _builtins.str:
+        """
+        (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+        """
+        return pulumi.get(self, "provisioning_phase")
+
+    @_builtins.property
+    @pulumi.getter(name="syncProgressCompletion")
+    def sync_progress_completion(self) -> _builtins.float:
+        """
+        (number) - The completion ratio of this update. This is a number between 0 and 1
+        """
+        return pulumi.get(self, "sync_progress_completion")
+
+    @_builtins.property
+    @pulumi.getter(name="syncedRowCount")
+    def synced_row_count(self) -> _builtins.int:
+        """
+        (integer) - The number of rows that have been synced in this update
+        """
+        return pulumi.get(self, "synced_row_count")
+
+    @_builtins.property
+    @pulumi.getter(name="totalRowCount")
+    def total_row_count(self) -> _builtins.int:
+        """
+        (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+        """
+        return pulumi.get(self, "total_row_count")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTableSpecResult(dict):
+    def __init__(__self__, *,
+                 create_database_objects_if_missing: _builtins.bool,
+                 existing_pipeline_id: _builtins.str,
+                 new_pipeline_spec: 'outputs.GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecResult',
+                 primary_key_columns: Optional[Sequence[_builtins.str]] = None,
+                 scheduling_policy: Optional[_builtins.str] = None,
+                 source_table_full_name: Optional[_builtins.str] = None,
+                 timeseries_key: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool create_database_objects_if_missing: (boolean) - If true, the synced table's logical database and schema resources in PG
+               will be created if they do not already exist
+        :param _builtins.str existing_pipeline_id: (string) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+        :param 'GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs' new_pipeline_spec: (NewPipelineSpec) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+        :param Sequence[_builtins.str] primary_key_columns: (list of string) - Primary Key columns to be used for data insert/update in the destination
+        :param _builtins.str scheduling_policy: (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+        :param _builtins.str source_table_full_name: (string) - Three-part (catalog, schema, table) name of the source Delta table
+        :param _builtins.str timeseries_key: (string) - Time series key to deduplicate (tie-break) rows with the same primary key
+        """
+        pulumi.set(__self__, "create_database_objects_if_missing", create_database_objects_if_missing)
+        pulumi.set(__self__, "existing_pipeline_id", existing_pipeline_id)
+        pulumi.set(__self__, "new_pipeline_spec", new_pipeline_spec)
+        if primary_key_columns is not None:
+            pulumi.set(__self__, "primary_key_columns", primary_key_columns)
+        if scheduling_policy is not None:
+            pulumi.set(__self__, "scheduling_policy", scheduling_policy)
+        if source_table_full_name is not None:
+            pulumi.set(__self__, "source_table_full_name", source_table_full_name)
+        if timeseries_key is not None:
+            pulumi.set(__self__, "timeseries_key", timeseries_key)
+
+    @_builtins.property
+    @pulumi.getter(name="createDatabaseObjectsIfMissing")
+    def create_database_objects_if_missing(self) -> _builtins.bool:
+        """
+        (boolean) - If true, the synced table's logical database and schema resources in PG
+        will be created if they do not already exist
+        """
+        return pulumi.get(self, "create_database_objects_if_missing")
+
+    @_builtins.property
+    @pulumi.getter(name="existingPipelineId")
+    def existing_pipeline_id(self) -> _builtins.str:
+        """
+        (string) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+        """
+        return pulumi.get(self, "existing_pipeline_id")
+
+    @_builtins.property
+    @pulumi.getter(name="newPipelineSpec")
+    def new_pipeline_spec(self) -> 'outputs.GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecResult':
+        """
+        (NewPipelineSpec) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+        """
+        return pulumi.get(self, "new_pipeline_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="primaryKeyColumns")
+    def primary_key_columns(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - Primary Key columns to be used for data insert/update in the destination
+        """
+        return pulumi.get(self, "primary_key_columns")
+
+    @_builtins.property
+    @pulumi.getter(name="schedulingPolicy")
+    def scheduling_policy(self) -> Optional[_builtins.str]:
+        """
+        (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+        """
+        return pulumi.get(self, "scheduling_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceTableFullName")
+    def source_table_full_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Three-part (catalog, schema, table) name of the source Delta table
+        """
+        return pulumi.get(self, "source_table_full_name")
+
+    @_builtins.property
+    @pulumi.getter(name="timeseriesKey")
+    def timeseries_key(self) -> Optional[_builtins.str]:
+        """
+        (string) - Time series key to deduplicate (tie-break) rows with the same primary key
+        """
+        return pulumi.get(self, "timeseries_key")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecResult(dict):
+    def __init__(__self__, *,
+                 storage_catalog: Optional[_builtins.str] = None,
+                 storage_schema: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str storage_catalog: (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
+        :param _builtins.str storage_schema: (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
+        """
+        if storage_catalog is not None:
+            pulumi.set(__self__, "storage_catalog", storage_catalog)
+        if storage_schema is not None:
+            pulumi.set(__self__, "storage_schema", storage_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="storageCatalog")
+    def storage_catalog(self) -> Optional[_builtins.str]:
+        """
+        (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
+        """
+        return pulumi.get(self, "storage_catalog")
+
+    @_builtins.property
+    @pulumi.getter(name="storageSchema")
+    def storage_schema(self) -> Optional[_builtins.str]:
+        """
+        (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
+        """
+        return pulumi.get(self, "storage_schema")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTablesSyncedTableResult(dict):
+    def __init__(__self__, *,
+                 data_synchronization_status: 'outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusResult',
+                 database_instance_name: _builtins.str,
+                 effective_database_instance_name: _builtins.str,
+                 effective_logical_database_name: _builtins.str,
+                 logical_database_name: _builtins.str,
+                 name: _builtins.str,
+                 unity_catalog_provisioning_state: _builtins.str,
+                 spec: Optional['outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpecResult'] = None):
+        """
+        :param 'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusArgs' data_synchronization_status: (SyncedTableStatus) - Synced Table data synchronization status
+        :param _builtins.str database_instance_name: (string) - Name of the target database instance. This is required when creating synced database tables in standard catalogs.
+               This is optional when creating synced database tables in registered catalogs. If this field is specified
+               when creating synced database tables in registered catalogs, the database instance name MUST
+               match that of the registered catalog (or the request will be rejected)
+        :param _builtins.str effective_database_instance_name: (string) - The name of the database instance that this table is registered to. This field is always returned, and for
+               tables inside database catalogs is inferred database instance associated with the catalog
+        :param _builtins.str effective_logical_database_name: (string) - The name of the logical database that this table is registered to
+        :param _builtins.str logical_database_name: (string) - Target Postgres database object (logical database) name for this table.
+        :param _builtins.str name: (string) - Full three-part (catalog, schema, table) name of the table
+        :param _builtins.str unity_catalog_provisioning_state: (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
+               state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
+               may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
+        :param 'GetDatabaseSyncedDatabaseTablesSyncedTableSpecArgs' spec: (SyncedTableSpec)
+        """
+        pulumi.set(__self__, "data_synchronization_status", data_synchronization_status)
+        pulumi.set(__self__, "database_instance_name", database_instance_name)
+        pulumi.set(__self__, "effective_database_instance_name", effective_database_instance_name)
+        pulumi.set(__self__, "effective_logical_database_name", effective_logical_database_name)
+        pulumi.set(__self__, "logical_database_name", logical_database_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "unity_catalog_provisioning_state", unity_catalog_provisioning_state)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+
+    @_builtins.property
+    @pulumi.getter(name="dataSynchronizationStatus")
+    def data_synchronization_status(self) -> 'outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusResult':
+        """
+        (SyncedTableStatus) - Synced Table data synchronization status
+        """
+        return pulumi.get(self, "data_synchronization_status")
+
+    @_builtins.property
+    @pulumi.getter(name="databaseInstanceName")
+    def database_instance_name(self) -> _builtins.str:
+        """
+        (string) - Name of the target database instance. This is required when creating synced database tables in standard catalogs.
+        This is optional when creating synced database tables in registered catalogs. If this field is specified
+        when creating synced database tables in registered catalogs, the database instance name MUST
+        match that of the registered catalog (or the request will be rejected)
+        """
+        return pulumi.get(self, "database_instance_name")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveDatabaseInstanceName")
+    def effective_database_instance_name(self) -> _builtins.str:
+        """
+        (string) - The name of the database instance that this table is registered to. This field is always returned, and for
+        tables inside database catalogs is inferred database instance associated with the catalog
+        """
+        return pulumi.get(self, "effective_database_instance_name")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveLogicalDatabaseName")
+    def effective_logical_database_name(self) -> _builtins.str:
+        """
+        (string) - The name of the logical database that this table is registered to
+        """
+        return pulumi.get(self, "effective_logical_database_name")
+
+    @_builtins.property
+    @pulumi.getter(name="logicalDatabaseName")
+    def logical_database_name(self) -> _builtins.str:
+        """
+        (string) - Target Postgres database object (logical database) name for this table.
+        """
+        return pulumi.get(self, "logical_database_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Full three-part (catalog, schema, table) name of the table
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="unityCatalogProvisioningState")
+    def unity_catalog_provisioning_state(self) -> _builtins.str:
+        """
+        (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
+        state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
+        may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
+        """
+        return pulumi.get(self, "unity_catalog_provisioning_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def spec(self) -> Optional['outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpecResult']:
+        """
+        (SyncedTableSpec)
+        """
+        return pulumi.get(self, "spec")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusResult(dict):
+    def __init__(__self__, *,
+                 detailed_state: _builtins.str,
+                 last_sync: 'outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusLastSyncResult',
+                 message: _builtins.str,
+                 pipeline_id: _builtins.str,
+                 continuous_update_status: Optional['outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusContinuousUpdateStatusResult'] = None,
+                 failed_status: Optional['outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusFailedStatusResult'] = None,
+                 provisioning_status: Optional['outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusProvisioningStatusResult'] = None,
+                 triggered_update_status: Optional['outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusTriggeredUpdateStatusResult'] = None):
+        """
+        :param _builtins.str detailed_state: (string) - The state of the synced table. Possible values are: `SYNCED_TABLED_OFFLINE`, `SYNCED_TABLE_OFFLINE_FAILED`, `SYNCED_TABLE_ONLINE`, `SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE`, `SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE`, `SYNCED_TABLE_ONLINE_PIPELINE_FAILED`, `SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE`, `SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES`, `SYNCED_TABLE_PROVISIONING`, `SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT`, `SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES`
+        :param 'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusLastSyncArgs' last_sync: (SyncedTablePosition) - Summary of the last successful synchronization from source to destination.
+        :param _builtins.str message: (string) - A text description of the current state of the synced table
+        :param _builtins.str pipeline_id: (string) - ID of the associated pipeline. The pipeline ID may have been provided by the client
+               (in the case of bin packing), or generated by the server (when creating a new pipeline)
+        :param 'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusContinuousUpdateStatusArgs' continuous_update_status: (SyncedTableContinuousUpdateStatus)
+        :param 'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusFailedStatusArgs' failed_status: (SyncedTableFailedStatus)
+        :param 'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusProvisioningStatusArgs' provisioning_status: (SyncedTableProvisioningStatus)
+        :param 'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusTriggeredUpdateStatusArgs' triggered_update_status: (SyncedTableTriggeredUpdateStatus)
+        """
+        pulumi.set(__self__, "detailed_state", detailed_state)
+        pulumi.set(__self__, "last_sync", last_sync)
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "pipeline_id", pipeline_id)
+        if continuous_update_status is not None:
+            pulumi.set(__self__, "continuous_update_status", continuous_update_status)
+        if failed_status is not None:
+            pulumi.set(__self__, "failed_status", failed_status)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+        if triggered_update_status is not None:
+            pulumi.set(__self__, "triggered_update_status", triggered_update_status)
+
+    @_builtins.property
+    @pulumi.getter(name="detailedState")
+    def detailed_state(self) -> _builtins.str:
+        """
+        (string) - The state of the synced table. Possible values are: `SYNCED_TABLED_OFFLINE`, `SYNCED_TABLE_OFFLINE_FAILED`, `SYNCED_TABLE_ONLINE`, `SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE`, `SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE`, `SYNCED_TABLE_ONLINE_PIPELINE_FAILED`, `SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE`, `SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES`, `SYNCED_TABLE_PROVISIONING`, `SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT`, `SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES`
+        """
+        return pulumi.get(self, "detailed_state")
+
+    @_builtins.property
+    @pulumi.getter(name="lastSync")
+    def last_sync(self) -> 'outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusLastSyncResult':
+        """
+        (SyncedTablePosition) - Summary of the last successful synchronization from source to destination.
+        """
+        return pulumi.get(self, "last_sync")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        (string) - A text description of the current state of the synced table
+        """
+        return pulumi.get(self, "message")
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineId")
+    def pipeline_id(self) -> _builtins.str:
+        """
+        (string) - ID of the associated pipeline. The pipeline ID may have been provided by the client
+        (in the case of bin packing), or generated by the server (when creating a new pipeline)
+        """
+        return pulumi.get(self, "pipeline_id")
+
+    @_builtins.property
+    @pulumi.getter(name="continuousUpdateStatus")
+    def continuous_update_status(self) -> Optional['outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusContinuousUpdateStatusResult']:
+        """
+        (SyncedTableContinuousUpdateStatus)
+        """
+        return pulumi.get(self, "continuous_update_status")
+
+    @_builtins.property
+    @pulumi.getter(name="failedStatus")
+    def failed_status(self) -> Optional['outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusFailedStatusResult']:
+        """
+        (SyncedTableFailedStatus)
+        """
+        return pulumi.get(self, "failed_status")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional['outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusProvisioningStatusResult']:
+        """
+        (SyncedTableProvisioningStatus)
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter(name="triggeredUpdateStatus")
+    def triggered_update_status(self) -> Optional['outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusTriggeredUpdateStatusResult']:
+        """
+        (SyncedTableTriggeredUpdateStatus)
+        """
+        return pulumi.get(self, "triggered_update_status")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusContinuousUpdateStatusResult(dict):
+    def __init__(__self__, *,
+                 initial_pipeline_sync_progress: 'outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgressResult',
+                 last_processed_commit_version: _builtins.int,
+                 timestamp: _builtins.str):
+        """
+        :param 'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgressArgs' initial_pipeline_sync_progress: (SyncedTablePipelineProgress) - Details about initial data synchronization. Only populated when in the
+               PROVISIONING_INITIAL_SNAPSHOT state
+        :param _builtins.int last_processed_commit_version: (integer) - The last source table Delta version that was successfully synced to the synced table
+        :param _builtins.str timestamp: (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+               table. This is when the data is available in the synced table
+        """
+        pulumi.set(__self__, "initial_pipeline_sync_progress", initial_pipeline_sync_progress)
+        pulumi.set(__self__, "last_processed_commit_version", last_processed_commit_version)
+        pulumi.set(__self__, "timestamp", timestamp)
+
+    @_builtins.property
+    @pulumi.getter(name="initialPipelineSyncProgress")
+    def initial_pipeline_sync_progress(self) -> 'outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgressResult':
+        """
+        (SyncedTablePipelineProgress) - Details about initial data synchronization. Only populated when in the
+        PROVISIONING_INITIAL_SNAPSHOT state
+        """
+        return pulumi.get(self, "initial_pipeline_sync_progress")
+
+    @_builtins.property
+    @pulumi.getter(name="lastProcessedCommitVersion")
+    def last_processed_commit_version(self) -> _builtins.int:
+        """
+        (integer) - The last source table Delta version that was successfully synced to the synced table
+        """
+        return pulumi.get(self, "last_processed_commit_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def timestamp(self) -> _builtins.str:
+        """
+        (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+        table. This is when the data is available in the synced table
+        """
+        return pulumi.get(self, "timestamp")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgressResult(dict):
+    def __init__(__self__, *,
+                 estimated_completion_time_seconds: _builtins.float,
+                 latest_version_currently_processing: _builtins.int,
+                 provisioning_phase: _builtins.str,
+                 sync_progress_completion: _builtins.float,
+                 synced_row_count: _builtins.int,
+                 total_row_count: _builtins.int):
+        """
+        :param _builtins.float estimated_completion_time_seconds: (number) - The estimated time remaining to complete this update in seconds
+        :param _builtins.int latest_version_currently_processing: (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+               have completely processed this version yet
+        :param _builtins.str provisioning_phase: (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+        :param _builtins.float sync_progress_completion: (number) - The completion ratio of this update. This is a number between 0 and 1
+        :param _builtins.int synced_row_count: (integer) - The number of rows that have been synced in this update
+        :param _builtins.int total_row_count: (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+        """
+        pulumi.set(__self__, "estimated_completion_time_seconds", estimated_completion_time_seconds)
+        pulumi.set(__self__, "latest_version_currently_processing", latest_version_currently_processing)
+        pulumi.set(__self__, "provisioning_phase", provisioning_phase)
+        pulumi.set(__self__, "sync_progress_completion", sync_progress_completion)
+        pulumi.set(__self__, "synced_row_count", synced_row_count)
+        pulumi.set(__self__, "total_row_count", total_row_count)
+
+    @_builtins.property
+    @pulumi.getter(name="estimatedCompletionTimeSeconds")
+    def estimated_completion_time_seconds(self) -> _builtins.float:
+        """
+        (number) - The estimated time remaining to complete this update in seconds
+        """
+        return pulumi.get(self, "estimated_completion_time_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="latestVersionCurrentlyProcessing")
+    def latest_version_currently_processing(self) -> _builtins.int:
+        """
+        (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+        have completely processed this version yet
+        """
+        return pulumi.get(self, "latest_version_currently_processing")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningPhase")
+    def provisioning_phase(self) -> _builtins.str:
+        """
+        (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+        """
+        return pulumi.get(self, "provisioning_phase")
+
+    @_builtins.property
+    @pulumi.getter(name="syncProgressCompletion")
+    def sync_progress_completion(self) -> _builtins.float:
+        """
+        (number) - The completion ratio of this update. This is a number between 0 and 1
+        """
+        return pulumi.get(self, "sync_progress_completion")
+
+    @_builtins.property
+    @pulumi.getter(name="syncedRowCount")
+    def synced_row_count(self) -> _builtins.int:
+        """
+        (integer) - The number of rows that have been synced in this update
+        """
+        return pulumi.get(self, "synced_row_count")
+
+    @_builtins.property
+    @pulumi.getter(name="totalRowCount")
+    def total_row_count(self) -> _builtins.int:
+        """
+        (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+        """
+        return pulumi.get(self, "total_row_count")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusFailedStatusResult(dict):
+    def __init__(__self__, *,
+                 last_processed_commit_version: _builtins.int,
+                 timestamp: _builtins.str):
+        """
+        :param _builtins.int last_processed_commit_version: (integer) - The last source table Delta version that was successfully synced to the synced table
+        :param _builtins.str timestamp: (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+               table. This is when the data is available in the synced table
+        """
+        pulumi.set(__self__, "last_processed_commit_version", last_processed_commit_version)
+        pulumi.set(__self__, "timestamp", timestamp)
+
+    @_builtins.property
+    @pulumi.getter(name="lastProcessedCommitVersion")
+    def last_processed_commit_version(self) -> _builtins.int:
+        """
+        (integer) - The last source table Delta version that was successfully synced to the synced table
+        """
+        return pulumi.get(self, "last_processed_commit_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def timestamp(self) -> _builtins.str:
+        """
+        (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+        table. This is when the data is available in the synced table
+        """
+        return pulumi.get(self, "timestamp")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusLastSyncResult(dict):
+    def __init__(__self__, *,
+                 delta_table_sync_info: 'outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusLastSyncDeltaTableSyncInfoResult',
+                 sync_end_timestamp: _builtins.str,
+                 sync_start_timestamp: _builtins.str):
+        """
+        :param 'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusLastSyncDeltaTableSyncInfoArgs' delta_table_sync_info: (DeltaTableSyncInfo)
+        :param _builtins.str sync_end_timestamp: (string) - The end timestamp of the most recent successful synchronization.
+               This is the time when the data is available in the synced table
+        :param _builtins.str sync_start_timestamp: (string) - The starting timestamp of the most recent successful synchronization from the source table
+               to the destination (synced) table.
+               Note this is the starting timestamp of the sync operation, not the end time.
+               E.g., for a batch, this is the time when the sync operation started
+        """
+        pulumi.set(__self__, "delta_table_sync_info", delta_table_sync_info)
+        pulumi.set(__self__, "sync_end_timestamp", sync_end_timestamp)
+        pulumi.set(__self__, "sync_start_timestamp", sync_start_timestamp)
+
+    @_builtins.property
+    @pulumi.getter(name="deltaTableSyncInfo")
+    def delta_table_sync_info(self) -> 'outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusLastSyncDeltaTableSyncInfoResult':
+        """
+        (DeltaTableSyncInfo)
+        """
+        return pulumi.get(self, "delta_table_sync_info")
+
+    @_builtins.property
+    @pulumi.getter(name="syncEndTimestamp")
+    def sync_end_timestamp(self) -> _builtins.str:
+        """
+        (string) - The end timestamp of the most recent successful synchronization.
+        This is the time when the data is available in the synced table
+        """
+        return pulumi.get(self, "sync_end_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="syncStartTimestamp")
+    def sync_start_timestamp(self) -> _builtins.str:
+        """
+        (string) - The starting timestamp of the most recent successful synchronization from the source table
+        to the destination (synced) table.
+        Note this is the starting timestamp of the sync operation, not the end time.
+        E.g., for a batch, this is the time when the sync operation started
+        """
+        return pulumi.get(self, "sync_start_timestamp")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusLastSyncDeltaTableSyncInfoResult(dict):
+    def __init__(__self__, *,
+                 delta_commit_timestamp: _builtins.str,
+                 delta_commit_version: _builtins.int):
+        """
+        :param _builtins.str delta_commit_timestamp: (string) - The timestamp when the above Delta version was committed in the source Delta table.
+               Note: This is the Delta commit time, not the time the data was written to the synced table
+        :param _builtins.int delta_commit_version: (integer) - The Delta Lake commit version that was last successfully synced
+        """
+        pulumi.set(__self__, "delta_commit_timestamp", delta_commit_timestamp)
+        pulumi.set(__self__, "delta_commit_version", delta_commit_version)
+
+    @_builtins.property
+    @pulumi.getter(name="deltaCommitTimestamp")
+    def delta_commit_timestamp(self) -> _builtins.str:
+        """
+        (string) - The timestamp when the above Delta version was committed in the source Delta table.
+        Note: This is the Delta commit time, not the time the data was written to the synced table
+        """
+        return pulumi.get(self, "delta_commit_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deltaCommitVersion")
+    def delta_commit_version(self) -> _builtins.int:
+        """
+        (integer) - The Delta Lake commit version that was last successfully synced
+        """
+        return pulumi.get(self, "delta_commit_version")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusProvisioningStatusResult(dict):
+    def __init__(__self__, *,
+                 initial_pipeline_sync_progress: 'outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgressResult'):
+        """
+        :param 'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgressArgs' initial_pipeline_sync_progress: (SyncedTablePipelineProgress) - Details about initial data synchronization. Only populated when in the
+               PROVISIONING_INITIAL_SNAPSHOT state
+        """
+        pulumi.set(__self__, "initial_pipeline_sync_progress", initial_pipeline_sync_progress)
+
+    @_builtins.property
+    @pulumi.getter(name="initialPipelineSyncProgress")
+    def initial_pipeline_sync_progress(self) -> 'outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgressResult':
+        """
+        (SyncedTablePipelineProgress) - Details about initial data synchronization. Only populated when in the
+        PROVISIONING_INITIAL_SNAPSHOT state
+        """
+        return pulumi.get(self, "initial_pipeline_sync_progress")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgressResult(dict):
+    def __init__(__self__, *,
+                 estimated_completion_time_seconds: _builtins.float,
+                 latest_version_currently_processing: _builtins.int,
+                 provisioning_phase: _builtins.str,
+                 sync_progress_completion: _builtins.float,
+                 synced_row_count: _builtins.int,
+                 total_row_count: _builtins.int):
+        """
+        :param _builtins.float estimated_completion_time_seconds: (number) - The estimated time remaining to complete this update in seconds
+        :param _builtins.int latest_version_currently_processing: (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+               have completely processed this version yet
+        :param _builtins.str provisioning_phase: (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+        :param _builtins.float sync_progress_completion: (number) - The completion ratio of this update. This is a number between 0 and 1
+        :param _builtins.int synced_row_count: (integer) - The number of rows that have been synced in this update
+        :param _builtins.int total_row_count: (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+        """
+        pulumi.set(__self__, "estimated_completion_time_seconds", estimated_completion_time_seconds)
+        pulumi.set(__self__, "latest_version_currently_processing", latest_version_currently_processing)
+        pulumi.set(__self__, "provisioning_phase", provisioning_phase)
+        pulumi.set(__self__, "sync_progress_completion", sync_progress_completion)
+        pulumi.set(__self__, "synced_row_count", synced_row_count)
+        pulumi.set(__self__, "total_row_count", total_row_count)
+
+    @_builtins.property
+    @pulumi.getter(name="estimatedCompletionTimeSeconds")
+    def estimated_completion_time_seconds(self) -> _builtins.float:
+        """
+        (number) - The estimated time remaining to complete this update in seconds
+        """
+        return pulumi.get(self, "estimated_completion_time_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="latestVersionCurrentlyProcessing")
+    def latest_version_currently_processing(self) -> _builtins.int:
+        """
+        (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+        have completely processed this version yet
+        """
+        return pulumi.get(self, "latest_version_currently_processing")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningPhase")
+    def provisioning_phase(self) -> _builtins.str:
+        """
+        (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+        """
+        return pulumi.get(self, "provisioning_phase")
+
+    @_builtins.property
+    @pulumi.getter(name="syncProgressCompletion")
+    def sync_progress_completion(self) -> _builtins.float:
+        """
+        (number) - The completion ratio of this update. This is a number between 0 and 1
+        """
+        return pulumi.get(self, "sync_progress_completion")
+
+    @_builtins.property
+    @pulumi.getter(name="syncedRowCount")
+    def synced_row_count(self) -> _builtins.int:
+        """
+        (integer) - The number of rows that have been synced in this update
+        """
+        return pulumi.get(self, "synced_row_count")
+
+    @_builtins.property
+    @pulumi.getter(name="totalRowCount")
+    def total_row_count(self) -> _builtins.int:
+        """
+        (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+        """
+        return pulumi.get(self, "total_row_count")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusTriggeredUpdateStatusResult(dict):
+    def __init__(__self__, *,
+                 last_processed_commit_version: _builtins.int,
+                 timestamp: _builtins.str,
+                 triggered_update_progress: 'outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgressResult'):
+        """
+        :param _builtins.int last_processed_commit_version: (integer) - The last source table Delta version that was successfully synced to the synced table
+        :param _builtins.str timestamp: (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+               table. This is when the data is available in the synced table
+        :param 'GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgressArgs' triggered_update_progress: (SyncedTablePipelineProgress) - Progress of the active data synchronization pipeline
+        """
+        pulumi.set(__self__, "last_processed_commit_version", last_processed_commit_version)
+        pulumi.set(__self__, "timestamp", timestamp)
+        pulumi.set(__self__, "triggered_update_progress", triggered_update_progress)
+
+    @_builtins.property
+    @pulumi.getter(name="lastProcessedCommitVersion")
+    def last_processed_commit_version(self) -> _builtins.int:
+        """
+        (integer) - The last source table Delta version that was successfully synced to the synced table
+        """
+        return pulumi.get(self, "last_processed_commit_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def timestamp(self) -> _builtins.str:
+        """
+        (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+        table. This is when the data is available in the synced table
+        """
+        return pulumi.get(self, "timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="triggeredUpdateProgress")
+    def triggered_update_progress(self) -> 'outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgressResult':
+        """
+        (SyncedTablePipelineProgress) - Progress of the active data synchronization pipeline
+        """
+        return pulumi.get(self, "triggered_update_progress")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgressResult(dict):
+    def __init__(__self__, *,
+                 estimated_completion_time_seconds: _builtins.float,
+                 latest_version_currently_processing: _builtins.int,
+                 provisioning_phase: _builtins.str,
+                 sync_progress_completion: _builtins.float,
+                 synced_row_count: _builtins.int,
+                 total_row_count: _builtins.int):
+        """
+        :param _builtins.float estimated_completion_time_seconds: (number) - The estimated time remaining to complete this update in seconds
+        :param _builtins.int latest_version_currently_processing: (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+               have completely processed this version yet
+        :param _builtins.str provisioning_phase: (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+        :param _builtins.float sync_progress_completion: (number) - The completion ratio of this update. This is a number between 0 and 1
+        :param _builtins.int synced_row_count: (integer) - The number of rows that have been synced in this update
+        :param _builtins.int total_row_count: (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+        """
+        pulumi.set(__self__, "estimated_completion_time_seconds", estimated_completion_time_seconds)
+        pulumi.set(__self__, "latest_version_currently_processing", latest_version_currently_processing)
+        pulumi.set(__self__, "provisioning_phase", provisioning_phase)
+        pulumi.set(__self__, "sync_progress_completion", sync_progress_completion)
+        pulumi.set(__self__, "synced_row_count", synced_row_count)
+        pulumi.set(__self__, "total_row_count", total_row_count)
+
+    @_builtins.property
+    @pulumi.getter(name="estimatedCompletionTimeSeconds")
+    def estimated_completion_time_seconds(self) -> _builtins.float:
+        """
+        (number) - The estimated time remaining to complete this update in seconds
+        """
+        return pulumi.get(self, "estimated_completion_time_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="latestVersionCurrentlyProcessing")
+    def latest_version_currently_processing(self) -> _builtins.int:
+        """
+        (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+        have completely processed this version yet
+        """
+        return pulumi.get(self, "latest_version_currently_processing")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningPhase")
+    def provisioning_phase(self) -> _builtins.str:
+        """
+        (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+        """
+        return pulumi.get(self, "provisioning_phase")
+
+    @_builtins.property
+    @pulumi.getter(name="syncProgressCompletion")
+    def sync_progress_completion(self) -> _builtins.float:
+        """
+        (number) - The completion ratio of this update. This is a number between 0 and 1
+        """
+        return pulumi.get(self, "sync_progress_completion")
+
+    @_builtins.property
+    @pulumi.getter(name="syncedRowCount")
+    def synced_row_count(self) -> _builtins.int:
+        """
+        (integer) - The number of rows that have been synced in this update
+        """
+        return pulumi.get(self, "synced_row_count")
+
+    @_builtins.property
+    @pulumi.getter(name="totalRowCount")
+    def total_row_count(self) -> _builtins.int:
+        """
+        (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+        """
+        return pulumi.get(self, "total_row_count")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTablesSyncedTableSpecResult(dict):
+    def __init__(__self__, *,
+                 create_database_objects_if_missing: _builtins.bool,
+                 existing_pipeline_id: _builtins.str,
+                 new_pipeline_spec: 'outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpecNewPipelineSpecResult',
+                 primary_key_columns: Optional[Sequence[_builtins.str]] = None,
+                 scheduling_policy: Optional[_builtins.str] = None,
+                 source_table_full_name: Optional[_builtins.str] = None,
+                 timeseries_key: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool create_database_objects_if_missing: (boolean) - If true, the synced table's logical database and schema resources in PG
+               will be created if they do not already exist
+        :param _builtins.str existing_pipeline_id: (string) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+        :param 'GetDatabaseSyncedDatabaseTablesSyncedTableSpecNewPipelineSpecArgs' new_pipeline_spec: (NewPipelineSpec) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+        :param Sequence[_builtins.str] primary_key_columns: (list of string) - Primary Key columns to be used for data insert/update in the destination
+        :param _builtins.str scheduling_policy: (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+        :param _builtins.str source_table_full_name: (string) - Three-part (catalog, schema, table) name of the source Delta table
+        :param _builtins.str timeseries_key: (string) - Time series key to deduplicate (tie-break) rows with the same primary key
+        """
+        pulumi.set(__self__, "create_database_objects_if_missing", create_database_objects_if_missing)
+        pulumi.set(__self__, "existing_pipeline_id", existing_pipeline_id)
+        pulumi.set(__self__, "new_pipeline_spec", new_pipeline_spec)
+        if primary_key_columns is not None:
+            pulumi.set(__self__, "primary_key_columns", primary_key_columns)
+        if scheduling_policy is not None:
+            pulumi.set(__self__, "scheduling_policy", scheduling_policy)
+        if source_table_full_name is not None:
+            pulumi.set(__self__, "source_table_full_name", source_table_full_name)
+        if timeseries_key is not None:
+            pulumi.set(__self__, "timeseries_key", timeseries_key)
+
+    @_builtins.property
+    @pulumi.getter(name="createDatabaseObjectsIfMissing")
+    def create_database_objects_if_missing(self) -> _builtins.bool:
+        """
+        (boolean) - If true, the synced table's logical database and schema resources in PG
+        will be created if they do not already exist
+        """
+        return pulumi.get(self, "create_database_objects_if_missing")
+
+    @_builtins.property
+    @pulumi.getter(name="existingPipelineId")
+    def existing_pipeline_id(self) -> _builtins.str:
+        """
+        (string) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+        """
+        return pulumi.get(self, "existing_pipeline_id")
+
+    @_builtins.property
+    @pulumi.getter(name="newPipelineSpec")
+    def new_pipeline_spec(self) -> 'outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpecNewPipelineSpecResult':
+        """
+        (NewPipelineSpec) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+        """
+        return pulumi.get(self, "new_pipeline_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="primaryKeyColumns")
+    def primary_key_columns(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - Primary Key columns to be used for data insert/update in the destination
+        """
+        return pulumi.get(self, "primary_key_columns")
+
+    @_builtins.property
+    @pulumi.getter(name="schedulingPolicy")
+    def scheduling_policy(self) -> Optional[_builtins.str]:
+        """
+        (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+        """
+        return pulumi.get(self, "scheduling_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceTableFullName")
+    def source_table_full_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Three-part (catalog, schema, table) name of the source Delta table
+        """
+        return pulumi.get(self, "source_table_full_name")
+
+    @_builtins.property
+    @pulumi.getter(name="timeseriesKey")
+    def timeseries_key(self) -> Optional[_builtins.str]:
+        """
+        (string) - Time series key to deduplicate (tie-break) rows with the same primary key
+        """
+        return pulumi.get(self, "timeseries_key")
+
+
+@pulumi.output_type
+class GetDatabaseSyncedDatabaseTablesSyncedTableSpecNewPipelineSpecResult(dict):
+    def __init__(__self__, *,
+                 storage_catalog: Optional[_builtins.str] = None,
+                 storage_schema: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str storage_catalog: (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
+        :param _builtins.str storage_schema: (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
+        """
+        if storage_catalog is not None:
+            pulumi.set(__self__, "storage_catalog", storage_catalog)
+        if storage_schema is not None:
+            pulumi.set(__self__, "storage_schema", storage_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="storageCatalog")
+    def storage_catalog(self) -> Optional[_builtins.str]:
+        """
+        (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
+        """
+        return pulumi.get(self, "storage_catalog")
+
+    @_builtins.property
+    @pulumi.getter(name="storageSchema")
+    def storage_schema(self) -> Optional[_builtins.str]:
+        """
+        (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
+        """
+        return pulumi.get(self, "storage_schema")
 
 
 @pulumi.output_type
@@ -38492,7 +50353,7 @@ class GetExternalLocationExternalLocationInfoResult(dict):
         :param _builtins.str created_by: Username of catalog creator.
         :param _builtins.str credential_id: Unique ID of storage credential.
         :param _builtins.str credential_name: Name of the StorageCredential to use with this external location.
-        :param 'GetExternalLocationExternalLocationInfoEncryptionDetailsArgs' encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        :param 'GetExternalLocationExternalLocationInfoEncryptionDetailsArgs' encryption_details: A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
         :param _builtins.str metastore_id: Unique identifier of the parent Metastore.
         :param _builtins.str name: The name of the external location
         :param _builtins.str owner: Username/groupname/sp application_id of the external location owner.
@@ -38592,7 +50453,7 @@ class GetExternalLocationExternalLocationInfoResult(dict):
     @pulumi.getter(name="encryptionDetails")
     def encryption_details(self) -> Optional['outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsResult']:
         """
-        The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
         """
         return pulumi.get(self, "encryption_details")
 
@@ -38672,12 +50533,18 @@ class GetExternalLocationExternalLocationInfoResult(dict):
 class GetExternalLocationExternalLocationInfoEncryptionDetailsResult(dict):
     def __init__(__self__, *,
                  sse_encryption_details: Optional['outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsResult'] = None):
+        """
+        :param 'GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs' sse_encryption_details: a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+        """
         if sse_encryption_details is not None:
             pulumi.set(__self__, "sse_encryption_details", sse_encryption_details)
 
     @_builtins.property
     @pulumi.getter(name="sseEncryptionDetails")
     def sse_encryption_details(self) -> Optional['outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsResult']:
+        """
+        a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+        """
         return pulumi.get(self, "sse_encryption_details")
 
 
@@ -38686,6 +50553,10 @@ class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetai
     def __init__(__self__, *,
                  algorithm: Optional[_builtins.str] = None,
                  aws_kms_key_arn: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str algorithm: Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+        :param _builtins.str aws_kms_key_arn: ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`.
+        """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
         if aws_kms_key_arn is not None:
@@ -38694,11 +50565,17 @@ class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetai
     @_builtins.property
     @pulumi.getter
     def algorithm(self) -> Optional[_builtins.str]:
+        """
+        Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
+        """
         return pulumi.get(self, "algorithm")
 
     @_builtins.property
     @pulumi.getter(name="awsKmsKeyArn")
     def aws_kms_key_arn(self) -> Optional[_builtins.str]:
+        """
+        ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`.
+        """
         return pulumi.get(self, "aws_kms_key_arn")
 
 
@@ -38914,6 +50791,172 @@ class GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsResult(dic
 
 
 @pulumi.output_type
+class GetExternalMetadatasExternalMetadataResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 created_by: _builtins.str,
+                 entity_type: _builtins.str,
+                 id: _builtins.str,
+                 metastore_id: _builtins.str,
+                 name: _builtins.str,
+                 system_type: _builtins.str,
+                 update_time: _builtins.str,
+                 updated_by: _builtins.str,
+                 columns: Optional[Sequence[_builtins.str]] = None,
+                 description: Optional[_builtins.str] = None,
+                 owner: Optional[_builtins.str] = None,
+                 properties: Optional[Mapping[str, _builtins.str]] = None,
+                 url: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create_time: (string) - Time at which this external metadata object was created
+        :param _builtins.str created_by: (string) - Username of external metadata object creator
+        :param _builtins.str entity_type: (string) - Type of entity within the external system
+        :param _builtins.str id: (string) - Unique identifier of the external metadata object
+        :param _builtins.str metastore_id: (string) - Unique identifier of parent metastore
+        :param _builtins.str name: (string) - Name of the external metadata object
+        :param _builtins.str system_type: (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        :param _builtins.str update_time: (string) - Time at which this external metadata object was last modified
+        :param _builtins.str updated_by: (string) - Username of user who last modified external metadata object
+        :param Sequence[_builtins.str] columns: (list of string) - List of columns associated with the external metadata object
+        :param _builtins.str description: (string) - User-provided free-form text description
+        :param _builtins.str owner: (string) - Owner of the external metadata object
+        :param Mapping[str, _builtins.str] properties: (object) - A map of key-value properties attached to the external metadata object
+        :param _builtins.str url: (string) - URL associated with the external metadata object
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "entity_type", entity_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "metastore_id", metastore_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "system_type", system_type)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "updated_by", updated_by)
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        (string) - Time at which this external metadata object was created
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> _builtins.str:
+        """
+        (string) - Username of external metadata object creator
+        """
+        return pulumi.get(self, "created_by")
+
+    @_builtins.property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> _builtins.str:
+        """
+        (string) - Type of entity within the external system
+        """
+        return pulumi.get(self, "entity_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Unique identifier of the external metadata object
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="metastoreId")
+    def metastore_id(self) -> _builtins.str:
+        """
+        (string) - Unique identifier of parent metastore
+        """
+        return pulumi.get(self, "metastore_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Name of the external metadata object
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="systemType")
+    def system_type(self) -> _builtins.str:
+        """
+        (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        """
+        return pulumi.get(self, "system_type")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        (string) - Time at which this external metadata object was last modified
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> _builtins.str:
+        """
+        (string) - Username of user who last modified external metadata object
+        """
+        return pulumi.get(self, "updated_by")
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - List of columns associated with the external metadata object
+        """
+        return pulumi.get(self, "columns")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        (string) - User-provided free-form text description
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def owner(self) -> Optional[_builtins.str]:
+        """
+        (string) - Owner of the external metadata object
+        """
+        return pulumi.get(self, "owner")
+
+    @_builtins.property
+    @pulumi.getter
+    def properties(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (object) - A map of key-value properties attached to the external metadata object
+        """
+        return pulumi.get(self, "properties")
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[_builtins.str]:
+        """
+        (string) - URL associated with the external metadata object
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
 class GetFunctionsFunctionResult(dict):
     def __init__(__self__, *,
                  browse_only: Optional[_builtins.bool] = None,
@@ -38927,7 +50970,7 @@ class GetFunctionsFunctionResult(dict):
                  full_data_type: Optional[_builtins.str] = None,
                  full_name: Optional[_builtins.str] = None,
                  function_id: Optional[_builtins.str] = None,
-                 input_params: Optional[Sequence['outputs.GetFunctionsFunctionInputParamResult']] = None,
+                 input_params: Optional['outputs.GetFunctionsFunctionInputParamsResult'] = None,
                  is_deterministic: Optional[_builtins.bool] = None,
                  is_null_call: Optional[_builtins.bool] = None,
                  metastore_id: Optional[_builtins.str] = None,
@@ -38935,10 +50978,10 @@ class GetFunctionsFunctionResult(dict):
                  owner: Optional[_builtins.str] = None,
                  parameter_style: Optional[_builtins.str] = None,
                  properties: Optional[_builtins.str] = None,
-                 return_params: Optional[Sequence['outputs.GetFunctionsFunctionReturnParamResult']] = None,
+                 return_params: Optional['outputs.GetFunctionsFunctionReturnParamsResult'] = None,
                  routine_body: Optional[_builtins.str] = None,
                  routine_definition: Optional[_builtins.str] = None,
-                 routine_dependencies: Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyResult']] = None,
+                 routine_dependencies: Optional['outputs.GetFunctionsFunctionRoutineDependenciesResult'] = None,
                  schema_name: Optional[_builtins.str] = None,
                  security_type: Optional[_builtins.str] = None,
                  specific_name: Optional[_builtins.str] = None,
@@ -38958,7 +51001,7 @@ class GetFunctionsFunctionResult(dict):
         :param _builtins.str full_data_type: Pretty printed function data type.
         :param _builtins.str full_name: Full name of function, in form of catalog_name.schema_name.function__name
         :param _builtins.str function_id: Id of Function, relative to parent schema.
-        :param Sequence['GetFunctionsFunctionInputParamArgs'] input_params: object describing input parameters. Consists of the single attribute:
+        :param 'GetFunctionsFunctionInputParamsArgs' input_params: object describing input parameters. Consists of the single attribute:
         :param _builtins.bool is_deterministic: Boolean flag specifying whether the function is deterministic.
         :param _builtins.bool is_null_call: Boolean flag whether function null call.
         :param _builtins.str metastore_id: Unique identifier of parent metastore.
@@ -38966,10 +51009,10 @@ class GetFunctionsFunctionResult(dict):
         :param _builtins.str owner: Username of current owner of function.
         :param _builtins.str parameter_style: Function parameter style. `S` is the value for SQL.
         :param _builtins.str properties: JSON-serialized key-value pair map, encoded (escaped) as a string.
-        :param Sequence['GetFunctionsFunctionReturnParamArgs'] return_params: Table function return parameters.  See `input_params` for description.
+        :param 'GetFunctionsFunctionReturnParamsArgs' return_params: Table function return parameters.  See `input_params` for description.
         :param _builtins.str routine_body: Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
         :param _builtins.str routine_definition: Function body.
-        :param Sequence['GetFunctionsFunctionRoutineDependencyArgs'] routine_dependencies: Function dependencies.
+        :param 'GetFunctionsFunctionRoutineDependenciesArgs' routine_dependencies: Function dependencies.
         :param _builtins.str schema_name: Name of databricks_schema.
         :param _builtins.str security_type: Function security type. (Enum: `DEFINER`).
         :param _builtins.str specific_name: Specific name of the function; Reserved for future use.
@@ -39129,7 +51172,7 @@ class GetFunctionsFunctionResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="inputParams")
-    def input_params(self) -> Optional[Sequence['outputs.GetFunctionsFunctionInputParamResult']]:
+    def input_params(self) -> Optional['outputs.GetFunctionsFunctionInputParamsResult']:
         """
         object describing input parameters. Consists of the single attribute:
         """
@@ -39193,7 +51236,7 @@ class GetFunctionsFunctionResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="returnParams")
-    def return_params(self) -> Optional[Sequence['outputs.GetFunctionsFunctionReturnParamResult']]:
+    def return_params(self) -> Optional['outputs.GetFunctionsFunctionReturnParamsResult']:
         """
         Table function return parameters.  See `input_params` for description.
         """
@@ -39217,7 +51260,7 @@ class GetFunctionsFunctionResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="routineDependencies")
-    def routine_dependencies(self) -> Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyResult']]:
+    def routine_dependencies(self) -> Optional['outputs.GetFunctionsFunctionRoutineDependenciesResult']:
         """
         Function dependencies.
         """
@@ -39281,18 +51324,18 @@ class GetFunctionsFunctionResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionsFunctionInputParamResult(dict):
+class GetFunctionsFunctionInputParamsResult(dict):
     def __init__(__self__, *,
-                 parameters: Optional[Sequence['outputs.GetFunctionsFunctionInputParamParameterResult']] = None):
+                 parameters: Optional[Sequence['outputs.GetFunctionsFunctionInputParamsParameterResult']] = None):
         """
-        :param Sequence['GetFunctionsFunctionInputParamParameterArgs'] parameters: The array of definitions of the function's parameters:
+        :param Sequence['GetFunctionsFunctionInputParamsParameterArgs'] parameters: The array of definitions of the function's parameters:
         """
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[Sequence['outputs.GetFunctionsFunctionInputParamParameterResult']]:
+    def parameters(self) -> Optional[Sequence['outputs.GetFunctionsFunctionInputParamsParameterResult']]:
         """
         The array of definitions of the function's parameters:
         """
@@ -39300,7 +51343,7 @@ class GetFunctionsFunctionInputParamResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionsFunctionInputParamParameterResult(dict):
+class GetFunctionsFunctionInputParamsParameterResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  position: _builtins.int,
@@ -39447,18 +51490,18 @@ class GetFunctionsFunctionInputParamParameterResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionsFunctionReturnParamResult(dict):
+class GetFunctionsFunctionReturnParamsResult(dict):
     def __init__(__self__, *,
-                 parameters: Optional[Sequence['outputs.GetFunctionsFunctionReturnParamParameterResult']] = None):
+                 parameters: Optional[Sequence['outputs.GetFunctionsFunctionReturnParamsParameterResult']] = None):
         """
-        :param Sequence['GetFunctionsFunctionReturnParamParameterArgs'] parameters: The array of definitions of the function's parameters:
+        :param Sequence['GetFunctionsFunctionReturnParamsParameterArgs'] parameters: The array of definitions of the function's parameters:
         """
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[Sequence['outputs.GetFunctionsFunctionReturnParamParameterResult']]:
+    def parameters(self) -> Optional[Sequence['outputs.GetFunctionsFunctionReturnParamsParameterResult']]:
         """
         The array of definitions of the function's parameters:
         """
@@ -39466,7 +51509,7 @@ class GetFunctionsFunctionReturnParamResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionsFunctionReturnParamParameterResult(dict):
+class GetFunctionsFunctionReturnParamsParameterResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  position: _builtins.int,
@@ -39613,41 +51656,83 @@ class GetFunctionsFunctionReturnParamParameterResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionsFunctionRoutineDependencyResult(dict):
+class GetFunctionsFunctionRoutineDependenciesResult(dict):
     def __init__(__self__, *,
-                 dependencies: Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyResult']] = None):
+                 dependencies: Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependenciesDependencyResult']] = None):
         if dependencies is not None:
             pulumi.set(__self__, "dependencies", dependencies)
 
     @_builtins.property
     @pulumi.getter
-    def dependencies(self) -> Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyResult']]:
+    def dependencies(self) -> Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependenciesDependencyResult']]:
         return pulumi.get(self, "dependencies")
 
 
 @pulumi.output_type
-class GetFunctionsFunctionRoutineDependencyDependencyResult(dict):
+class GetFunctionsFunctionRoutineDependenciesDependencyResult(dict):
     def __init__(__self__, *,
-                 functions: Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyFunctionResult']] = None,
-                 tables: Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyTableResult']] = None):
-        if functions is not None:
-            pulumi.set(__self__, "functions", functions)
-        if tables is not None:
-            pulumi.set(__self__, "tables", tables)
+                 connection: Optional['outputs.GetFunctionsFunctionRoutineDependenciesDependencyConnectionResult'] = None,
+                 credential: Optional['outputs.GetFunctionsFunctionRoutineDependenciesDependencyCredentialResult'] = None,
+                 function: Optional['outputs.GetFunctionsFunctionRoutineDependenciesDependencyFunctionResult'] = None,
+                 table: Optional['outputs.GetFunctionsFunctionRoutineDependenciesDependencyTableResult'] = None):
+        if connection is not None:
+            pulumi.set(__self__, "connection", connection)
+        if credential is not None:
+            pulumi.set(__self__, "credential", credential)
+        if function is not None:
+            pulumi.set(__self__, "function", function)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
 
     @_builtins.property
     @pulumi.getter
-    def functions(self) -> Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyFunctionResult']]:
-        return pulumi.get(self, "functions")
+    def connection(self) -> Optional['outputs.GetFunctionsFunctionRoutineDependenciesDependencyConnectionResult']:
+        return pulumi.get(self, "connection")
 
     @_builtins.property
     @pulumi.getter
-    def tables(self) -> Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyTableResult']]:
-        return pulumi.get(self, "tables")
+    def credential(self) -> Optional['outputs.GetFunctionsFunctionRoutineDependenciesDependencyCredentialResult']:
+        return pulumi.get(self, "credential")
+
+    @_builtins.property
+    @pulumi.getter
+    def function(self) -> Optional['outputs.GetFunctionsFunctionRoutineDependenciesDependencyFunctionResult']:
+        return pulumi.get(self, "function")
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> Optional['outputs.GetFunctionsFunctionRoutineDependenciesDependencyTableResult']:
+        return pulumi.get(self, "table")
 
 
 @pulumi.output_type
-class GetFunctionsFunctionRoutineDependencyDependencyFunctionResult(dict):
+class GetFunctionsFunctionRoutineDependenciesDependencyConnectionResult(dict):
+    def __init__(__self__, *,
+                 connection_name: Optional[_builtins.str] = None):
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "connection_name")
+
+
+@pulumi.output_type
+class GetFunctionsFunctionRoutineDependenciesDependencyCredentialResult(dict):
+    def __init__(__self__, *,
+                 credential_name: Optional[_builtins.str] = None):
+        if credential_name is not None:
+            pulumi.set(__self__, "credential_name", credential_name)
+
+    @_builtins.property
+    @pulumi.getter(name="credentialName")
+    def credential_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "credential_name")
+
+
+@pulumi.output_type
+class GetFunctionsFunctionRoutineDependenciesDependencyFunctionResult(dict):
     def __init__(__self__, *,
                  function_full_name: _builtins.str):
         pulumi.set(__self__, "function_full_name", function_full_name)
@@ -39659,7 +51744,7 @@ class GetFunctionsFunctionRoutineDependencyDependencyFunctionResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionsFunctionRoutineDependencyDependencyTableResult(dict):
+class GetFunctionsFunctionRoutineDependenciesDependencyTableResult(dict):
     def __init__(__self__, *,
                  table_full_name: _builtins.str):
         pulumi.set(__self__, "table_full_name", table_full_name)
@@ -41683,6 +53768,7 @@ class GetJobJobSettingsSettingsLibraryResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "egg")
 
@@ -43936,6 +56022,7 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "egg")
 
@@ -45589,6 +57676,7 @@ class GetJobJobSettingsSettingsTaskLibraryResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "egg")
 
@@ -47428,6 +59516,36 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnSuccessResult(dict):
 
 
 @pulumi.output_type
+class GetMaterializedFeaturesFeatureTagsFeatureTagResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: (string)
+        :param _builtins.str value: (string)
+        """
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        (string)
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        (string)
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class GetMetastoreMetastoreInfoResult(dict):
     def __init__(__self__, *,
                  cloud: Optional[_builtins.str] = None,
@@ -48310,24 +60428,35 @@ class GetNotificationDestinationsNotificationDestinationResult(dict):
 @pulumi.output_type
 class GetOnlineStoresOnlineStoreResult(dict):
     def __init__(__self__, *,
+                 capacity: _builtins.str,
                  creation_time: _builtins.str,
                  creator: _builtins.str,
                  name: _builtins.str,
                  state: _builtins.str,
-                 capacity: Optional[_builtins.str] = None):
+                 read_replica_count: Optional[_builtins.int] = None):
         """
+        :param _builtins.str capacity: (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         :param _builtins.str creation_time: (string) - The timestamp when the online store was created
         :param _builtins.str creator: (string) - The email of the creator of the online store
         :param _builtins.str name: (string) - The name of the online store. This is the unique identifier for the online store
         :param _builtins.str state: (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-        :param _builtins.str capacity: (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        :param _builtins.int read_replica_count: (integer) - The number of read replicas for the online store. Defaults to 0
         """
+        pulumi.set(__self__, "capacity", capacity)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "creator", creator)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "state", state)
-        if capacity is not None:
-            pulumi.set(__self__, "capacity", capacity)
+        if read_replica_count is not None:
+            pulumi.set(__self__, "read_replica_count", read_replica_count)
+
+    @_builtins.property
+    @pulumi.getter
+    def capacity(self) -> _builtins.str:
+        """
+        (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        """
+        return pulumi.get(self, "capacity")
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
@@ -48362,12 +60491,603 @@ class GetOnlineStoresOnlineStoreResult(dict):
         return pulumi.get(self, "state")
 
     @_builtins.property
+    @pulumi.getter(name="readReplicaCount")
+    def read_replica_count(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The number of read replicas for the online store. Defaults to 0
+        """
+        return pulumi.get(self, "read_replica_count")
+
+
+@pulumi.output_type
+class GetPolicyInfoColumnMaskResult(dict):
+    def __init__(__self__, *,
+                 function_name: _builtins.str,
+                 on_column: _builtins.str,
+                 usings: Optional[Sequence['outputs.GetPolicyInfoColumnMaskUsingResult']] = None):
+        """
+        :param _builtins.str function_name: (string) - The fully qualified name of the row filter function.
+               The function is called on each row of the target table. It should return a boolean value
+               indicating whether the row should be visible to the user.
+               Required on create and update
+        :param _builtins.str on_column: (string) - The alias of the column to be masked. The alias must refer to one of matched columns.
+               The values of the column is passed to the column mask function as the first argument.
+               Required on create and update
+        :param Sequence['GetPolicyInfoColumnMaskUsingArgs'] usings: (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
+               The type of each column should match the positional argument of the row filter function
+        """
+        pulumi.set(__self__, "function_name", function_name)
+        pulumi.set(__self__, "on_column", on_column)
+        if usings is not None:
+            pulumi.set(__self__, "usings", usings)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the row filter function.
+        The function is called on each row of the target table. It should return a boolean value
+        indicating whether the row should be visible to the user.
+        Required on create and update
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="onColumn")
+    def on_column(self) -> _builtins.str:
+        """
+        (string) - The alias of the column to be masked. The alias must refer to one of matched columns.
+        The values of the column is passed to the column mask function as the first argument.
+        Required on create and update
+        """
+        return pulumi.get(self, "on_column")
+
+    @_builtins.property
     @pulumi.getter
-    def capacity(self) -> Optional[_builtins.str]:
+    def usings(self) -> Optional[Sequence['outputs.GetPolicyInfoColumnMaskUsingResult']]:
         """
-        (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
+        The type of each column should match the positional argument of the row filter function
         """
-        return pulumi.get(self, "capacity")
+        return pulumi.get(self, "usings")
+
+
+@pulumi.output_type
+class GetPolicyInfoColumnMaskUsingResult(dict):
+    def __init__(__self__, *,
+                 alias: Optional[_builtins.str] = None,
+                 constant: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str alias: (string) - Optional alias of the matched column
+        :param _builtins.str constant: (string) - A constant literal
+        """
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if constant is not None:
+            pulumi.set(__self__, "constant", constant)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - Optional alias of the matched column
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter
+    def constant(self) -> Optional[_builtins.str]:
+        """
+        (string) - A constant literal
+        """
+        return pulumi.get(self, "constant")
+
+
+@pulumi.output_type
+class GetPolicyInfoMatchColumnResult(dict):
+    def __init__(__self__, *,
+                 alias: Optional[_builtins.str] = None,
+                 condition: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str alias: (string) - Optional alias of the matched column
+        :param _builtins.str condition: (string) - The condition expression used to match a table column
+        """
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - Optional alias of the matched column
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter
+    def condition(self) -> Optional[_builtins.str]:
+        """
+        (string) - The condition expression used to match a table column
+        """
+        return pulumi.get(self, "condition")
+
+
+@pulumi.output_type
+class GetPolicyInfoRowFilterResult(dict):
+    def __init__(__self__, *,
+                 function_name: _builtins.str,
+                 usings: Optional[Sequence['outputs.GetPolicyInfoRowFilterUsingResult']] = None):
+        """
+        :param _builtins.str function_name: (string) - The fully qualified name of the row filter function.
+               The function is called on each row of the target table. It should return a boolean value
+               indicating whether the row should be visible to the user.
+               Required on create and update
+        :param Sequence['GetPolicyInfoRowFilterUsingArgs'] usings: (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
+               The type of each column should match the positional argument of the row filter function
+        """
+        pulumi.set(__self__, "function_name", function_name)
+        if usings is not None:
+            pulumi.set(__self__, "usings", usings)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the row filter function.
+        The function is called on each row of the target table. It should return a boolean value
+        indicating whether the row should be visible to the user.
+        Required on create and update
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def usings(self) -> Optional[Sequence['outputs.GetPolicyInfoRowFilterUsingResult']]:
+        """
+        (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
+        The type of each column should match the positional argument of the row filter function
+        """
+        return pulumi.get(self, "usings")
+
+
+@pulumi.output_type
+class GetPolicyInfoRowFilterUsingResult(dict):
+    def __init__(__self__, *,
+                 alias: Optional[_builtins.str] = None,
+                 constant: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str alias: (string) - Optional alias of the matched column
+        :param _builtins.str constant: (string) - A constant literal
+        """
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if constant is not None:
+            pulumi.set(__self__, "constant", constant)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - Optional alias of the matched column
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter
+    def constant(self) -> Optional[_builtins.str]:
+        """
+        (string) - A constant literal
+        """
+        return pulumi.get(self, "constant")
+
+
+@pulumi.output_type
+class GetPolicyInfosPolicyResult(dict):
+    def __init__(__self__, *,
+                 created_at: _builtins.int,
+                 created_by: _builtins.str,
+                 for_securable_type: _builtins.str,
+                 id: _builtins.str,
+                 policy_type: _builtins.str,
+                 to_principals: Sequence[_builtins.str],
+                 updated_at: _builtins.int,
+                 updated_by: _builtins.str,
+                 column_mask: Optional['outputs.GetPolicyInfosPolicyColumnMaskResult'] = None,
+                 comment: Optional[_builtins.str] = None,
+                 except_principals: Optional[Sequence[_builtins.str]] = None,
+                 match_columns: Optional[Sequence['outputs.GetPolicyInfosPolicyMatchColumnResult']] = None,
+                 name: Optional[_builtins.str] = None,
+                 on_securable_fullname: Optional[_builtins.str] = None,
+                 on_securable_type: Optional[_builtins.str] = None,
+                 row_filter: Optional['outputs.GetPolicyInfosPolicyRowFilterResult'] = None,
+                 when_condition: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int created_at: (integer) - Time at which the policy was created, in epoch milliseconds. Output only
+        :param _builtins.str created_by: (string) - Username of the user who created the policy. Output only
+        :param _builtins.str for_securable_type: (string) - Type of securables that the policy should take effect on.
+               Only `table` is supported at this moment.
+               Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        :param _builtins.str id: (string) - Unique identifier of the policy. This field is output only and is generated by the system
+        :param _builtins.str policy_type: (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        :param Sequence[_builtins.str] to_principals: (list of string) - List of user or group names that the policy applies to.
+               Required on create and optional on update
+        :param _builtins.int updated_at: (integer) - Time at which the policy was last modified, in epoch milliseconds. Output only
+        :param _builtins.str updated_by: (string) - Username of the user who last modified the policy. Output only
+        :param 'GetPolicyInfosPolicyColumnMaskArgs' column_mask: (ColumnMaskOptions) - Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
+               Required on create and optional on update. When specified on update,
+               the new options will replace the existing options as a whole
+        :param _builtins.str comment: (string) - Optional description of the policy
+        :param Sequence[_builtins.str] except_principals: (list of string) - Optional list of user or group names that should be excluded from the policy
+        :param Sequence['GetPolicyInfosPolicyMatchColumnArgs'] match_columns: (list of MatchColumn) - Optional list of condition expressions used to match table columns.
+               Only valid when `for_securable_type` is `table`.
+               When specified, the policy only applies to tables whose columns satisfy all match conditions
+        :param _builtins.str name: (string) - Name of the policy. Required on create and ignored on update.
+               To update the name, use the `new_name` field
+        :param _builtins.str on_securable_fullname: Required. The fully qualified name of securable to list policies for
+        :param _builtins.str on_securable_type: Required. The type of the securable to list policies for
+        :param 'GetPolicyInfosPolicyRowFilterArgs' row_filter: (RowFilterOptions) - Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
+               Required on create and optional on update. When specified on update,
+               the new options will replace the existing options as a whole
+        :param _builtins.str when_condition: (string) - Optional condition when the policy should take effect
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "for_securable_type", for_securable_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "policy_type", policy_type)
+        pulumi.set(__self__, "to_principals", to_principals)
+        pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "updated_by", updated_by)
+        if column_mask is not None:
+            pulumi.set(__self__, "column_mask", column_mask)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if except_principals is not None:
+            pulumi.set(__self__, "except_principals", except_principals)
+        if match_columns is not None:
+            pulumi.set(__self__, "match_columns", match_columns)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if on_securable_fullname is not None:
+            pulumi.set(__self__, "on_securable_fullname", on_securable_fullname)
+        if on_securable_type is not None:
+            pulumi.set(__self__, "on_securable_type", on_securable_type)
+        if row_filter is not None:
+            pulumi.set(__self__, "row_filter", row_filter)
+        if when_condition is not None:
+            pulumi.set(__self__, "when_condition", when_condition)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.int:
+        """
+        (integer) - Time at which the policy was created, in epoch milliseconds. Output only
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> _builtins.str:
+        """
+        (string) - Username of the user who created the policy. Output only
+        """
+        return pulumi.get(self, "created_by")
+
+    @_builtins.property
+    @pulumi.getter(name="forSecurableType")
+    def for_securable_type(self) -> _builtins.str:
+        """
+        (string) - Type of securables that the policy should take effect on.
+        Only `table` is supported at this moment.
+        Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        """
+        return pulumi.get(self, "for_securable_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (string) - Unique identifier of the policy. This field is output only and is generated by the system
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="policyType")
+    def policy_type(self) -> _builtins.str:
+        """
+        (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
+        """
+        return pulumi.get(self, "policy_type")
+
+    @_builtins.property
+    @pulumi.getter(name="toPrincipals")
+    def to_principals(self) -> Sequence[_builtins.str]:
+        """
+        (list of string) - List of user or group names that the policy applies to.
+        Required on create and optional on update
+        """
+        return pulumi.get(self, "to_principals")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.int:
+        """
+        (integer) - Time at which the policy was last modified, in epoch milliseconds. Output only
+        """
+        return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> _builtins.str:
+        """
+        (string) - Username of the user who last modified the policy. Output only
+        """
+        return pulumi.get(self, "updated_by")
+
+    @_builtins.property
+    @pulumi.getter(name="columnMask")
+    def column_mask(self) -> Optional['outputs.GetPolicyInfosPolicyColumnMaskResult']:
+        """
+        (ColumnMaskOptions) - Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
+        Required on create and optional on update. When specified on update,
+        the new options will replace the existing options as a whole
+        """
+        return pulumi.get(self, "column_mask")
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        (string) - Optional description of the policy
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter(name="exceptPrincipals")
+    def except_principals(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (list of string) - Optional list of user or group names that should be excluded from the policy
+        """
+        return pulumi.get(self, "except_principals")
+
+    @_builtins.property
+    @pulumi.getter(name="matchColumns")
+    def match_columns(self) -> Optional[Sequence['outputs.GetPolicyInfosPolicyMatchColumnResult']]:
+        """
+        (list of MatchColumn) - Optional list of condition expressions used to match table columns.
+        Only valid when `for_securable_type` is `table`.
+        When specified, the policy only applies to tables whose columns satisfy all match conditions
+        """
+        return pulumi.get(self, "match_columns")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Name of the policy. Required on create and ignored on update.
+        To update the name, use the `new_name` field
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="onSecurableFullname")
+    def on_securable_fullname(self) -> Optional[_builtins.str]:
+        """
+        Required. The fully qualified name of securable to list policies for
+        """
+        return pulumi.get(self, "on_securable_fullname")
+
+    @_builtins.property
+    @pulumi.getter(name="onSecurableType")
+    def on_securable_type(self) -> Optional[_builtins.str]:
+        """
+        Required. The type of the securable to list policies for
+        """
+        return pulumi.get(self, "on_securable_type")
+
+    @_builtins.property
+    @pulumi.getter(name="rowFilter")
+    def row_filter(self) -> Optional['outputs.GetPolicyInfosPolicyRowFilterResult']:
+        """
+        (RowFilterOptions) - Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
+        Required on create and optional on update. When specified on update,
+        the new options will replace the existing options as a whole
+        """
+        return pulumi.get(self, "row_filter")
+
+    @_builtins.property
+    @pulumi.getter(name="whenCondition")
+    def when_condition(self) -> Optional[_builtins.str]:
+        """
+        (string) - Optional condition when the policy should take effect
+        """
+        return pulumi.get(self, "when_condition")
+
+
+@pulumi.output_type
+class GetPolicyInfosPolicyColumnMaskResult(dict):
+    def __init__(__self__, *,
+                 function_name: _builtins.str,
+                 on_column: _builtins.str,
+                 usings: Optional[Sequence['outputs.GetPolicyInfosPolicyColumnMaskUsingResult']] = None):
+        """
+        :param _builtins.str function_name: (string) - The fully qualified name of the row filter function.
+               The function is called on each row of the target table. It should return a boolean value
+               indicating whether the row should be visible to the user.
+               Required on create and update
+        :param _builtins.str on_column: (string) - The alias of the column to be masked. The alias must refer to one of matched columns.
+               The values of the column is passed to the column mask function as the first argument.
+               Required on create and update
+        :param Sequence['GetPolicyInfosPolicyColumnMaskUsingArgs'] usings: (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
+               The type of each column should match the positional argument of the row filter function
+        """
+        pulumi.set(__self__, "function_name", function_name)
+        pulumi.set(__self__, "on_column", on_column)
+        if usings is not None:
+            pulumi.set(__self__, "usings", usings)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the row filter function.
+        The function is called on each row of the target table. It should return a boolean value
+        indicating whether the row should be visible to the user.
+        Required on create and update
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="onColumn")
+    def on_column(self) -> _builtins.str:
+        """
+        (string) - The alias of the column to be masked. The alias must refer to one of matched columns.
+        The values of the column is passed to the column mask function as the first argument.
+        Required on create and update
+        """
+        return pulumi.get(self, "on_column")
+
+    @_builtins.property
+    @pulumi.getter
+    def usings(self) -> Optional[Sequence['outputs.GetPolicyInfosPolicyColumnMaskUsingResult']]:
+        """
+        (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
+        The type of each column should match the positional argument of the row filter function
+        """
+        return pulumi.get(self, "usings")
+
+
+@pulumi.output_type
+class GetPolicyInfosPolicyColumnMaskUsingResult(dict):
+    def __init__(__self__, *,
+                 alias: Optional[_builtins.str] = None,
+                 constant: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str alias: (string) - Optional alias of the matched column
+        :param _builtins.str constant: (string) - A constant literal
+        """
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if constant is not None:
+            pulumi.set(__self__, "constant", constant)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - Optional alias of the matched column
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter
+    def constant(self) -> Optional[_builtins.str]:
+        """
+        (string) - A constant literal
+        """
+        return pulumi.get(self, "constant")
+
+
+@pulumi.output_type
+class GetPolicyInfosPolicyMatchColumnResult(dict):
+    def __init__(__self__, *,
+                 alias: Optional[_builtins.str] = None,
+                 condition: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str alias: (string) - Optional alias of the matched column
+        :param _builtins.str condition: (string) - The condition expression used to match a table column
+        """
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - Optional alias of the matched column
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter
+    def condition(self) -> Optional[_builtins.str]:
+        """
+        (string) - The condition expression used to match a table column
+        """
+        return pulumi.get(self, "condition")
+
+
+@pulumi.output_type
+class GetPolicyInfosPolicyRowFilterResult(dict):
+    def __init__(__self__, *,
+                 function_name: _builtins.str,
+                 usings: Optional[Sequence['outputs.GetPolicyInfosPolicyRowFilterUsingResult']] = None):
+        """
+        :param _builtins.str function_name: (string) - The fully qualified name of the row filter function.
+               The function is called on each row of the target table. It should return a boolean value
+               indicating whether the row should be visible to the user.
+               Required on create and update
+        :param Sequence['GetPolicyInfosPolicyRowFilterUsingArgs'] usings: (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
+               The type of each column should match the positional argument of the row filter function
+        """
+        pulumi.set(__self__, "function_name", function_name)
+        if usings is not None:
+            pulumi.set(__self__, "usings", usings)
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> _builtins.str:
+        """
+        (string) - The fully qualified name of the row filter function.
+        The function is called on each row of the target table. It should return a boolean value
+        indicating whether the row should be visible to the user.
+        Required on create and update
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def usings(self) -> Optional[Sequence['outputs.GetPolicyInfosPolicyRowFilterUsingResult']]:
+        """
+        (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
+        The type of each column should match the positional argument of the row filter function
+        """
+        return pulumi.get(self, "usings")
+
+
+@pulumi.output_type
+class GetPolicyInfosPolicyRowFilterUsingResult(dict):
+    def __init__(__self__, *,
+                 alias: Optional[_builtins.str] = None,
+                 constant: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str alias: (string) - Optional alias of the matched column
+        :param _builtins.str constant: (string) - A constant literal
+        """
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if constant is not None:
+            pulumi.set(__self__, "constant", constant)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        (string) - Optional alias of the matched column
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter
+    def constant(self) -> Optional[_builtins.str]:
+        """
+        (string) - A constant literal
+        """
+        return pulumi.get(self, "constant")
 
 
 @pulumi.output_type
@@ -48406,7 +61126,7 @@ class GetQualityMonitorsV2QualityMonitorResult(dict):
                  object_id: _builtins.str,
                  object_type: _builtins.str):
         """
-        :param 'GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigArgs' anomaly_detection_config: (AnomalyDetectionConfig) -
+        :param 'GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigArgs' anomaly_detection_config: (AnomalyDetectionConfig)
         :param _builtins.str object_id: (string) - The uuid of the request object. For example, schema id
         :param _builtins.str object_type: (string) - The type of the monitored object. Can be one of the following: schema
         """
@@ -48418,7 +61138,7 @@ class GetQualityMonitorsV2QualityMonitorResult(dict):
     @pulumi.getter(name="anomalyDetectionConfig")
     def anomaly_detection_config(self) -> 'outputs.GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigResult':
         """
-        (AnomalyDetectionConfig) -
+        (AnomalyDetectionConfig)
         """
         return pulumi.get(self, "anomaly_detection_config")
 
@@ -49184,16 +61904,32 @@ class GetRegisteredModelVersionsModelVersionModelVersionDependencyResult(dict):
 @pulumi.output_type
 class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyResult(dict):
     def __init__(__self__, *,
+                 connections: Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionResult']] = None,
+                 credentials: Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialResult']] = None,
                  functions: Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionResult']] = None,
                  tables: Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableResult']] = None):
         """
         :param Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs'] functions: A function that is dependent on a SQL object:
         :param Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs'] tables: A table that is dependent on a SQL object
         """
+        if connections is not None:
+            pulumi.set(__self__, "connections", connections)
+        if credentials is not None:
+            pulumi.set(__self__, "credentials", credentials)
         if functions is not None:
             pulumi.set(__self__, "functions", functions)
         if tables is not None:
             pulumi.set(__self__, "tables", tables)
+
+    @_builtins.property
+    @pulumi.getter
+    def connections(self) -> Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionResult']]:
+        return pulumi.get(self, "connections")
+
+    @_builtins.property
+    @pulumi.getter
+    def credentials(self) -> Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialResult']]:
+        return pulumi.get(self, "credentials")
 
     @_builtins.property
     @pulumi.getter
@@ -49210,6 +61946,32 @@ class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyResu
         A table that is dependent on a SQL object
         """
         return pulumi.get(self, "tables")
+
+
+@pulumi.output_type
+class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionResult(dict):
+    def __init__(__self__, *,
+                 connection_name: Optional[_builtins.str] = None):
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "connection_name")
+
+
+@pulumi.output_type
+class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialResult(dict):
+    def __init__(__self__, *,
+                 credential_name: Optional[_builtins.str] = None):
+        if credential_name is not None:
+            pulumi.set(__self__, "credential_name", credential_name)
+
+    @_builtins.property
+    @pulumi.getter(name="credentialName")
+    def credential_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "credential_name")
 
 
 @pulumi.output_type
@@ -49842,18 +62604,17 @@ class GetServingEndpointsEndpointAiGatewayInferenceTableConfigResult(dict):
 @pulumi.output_type
 class GetServingEndpointsEndpointAiGatewayRateLimitResult(dict):
     def __init__(__self__, *,
-                 calls: _builtins.int,
                  renewal_period: _builtins.str,
-                 key: Optional[_builtins.str] = None):
-        pulumi.set(__self__, "calls", calls)
+                 calls: Optional[_builtins.int] = None,
+                 key: Optional[_builtins.str] = None,
+                 principal: Optional[_builtins.str] = None):
         pulumi.set(__self__, "renewal_period", renewal_period)
+        if calls is not None:
+            pulumi.set(__self__, "calls", calls)
         if key is not None:
             pulumi.set(__self__, "key", key)
-
-    @_builtins.property
-    @pulumi.getter
-    def calls(self) -> _builtins.int:
-        return pulumi.get(self, "calls")
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
 
     @_builtins.property
     @pulumi.getter(name="renewalPeriod")
@@ -49862,8 +62623,18 @@ class GetServingEndpointsEndpointAiGatewayRateLimitResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    def calls(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "calls")
+
+    @_builtins.property
+    @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "principal")
 
 
 @pulumi.output_type
@@ -51299,6 +64070,7 @@ class GetTableTableInfoResult(dict):
                  properties: Optional[Mapping[str, _builtins.str]] = None,
                  row_filter: Optional['outputs.GetTableTableInfoRowFilterResult'] = None,
                  schema_name: Optional[_builtins.str] = None,
+                 securable_kind_manifest: Optional['outputs.GetTableTableInfoSecurableKindManifestResult'] = None,
                  sql_path: Optional[_builtins.str] = None,
                  storage_credential_name: Optional[_builtins.str] = None,
                  storage_location: Optional[_builtins.str] = None,
@@ -51365,6 +64137,8 @@ class GetTableTableInfoResult(dict):
             pulumi.set(__self__, "row_filter", row_filter)
         if schema_name is not None:
             pulumi.set(__self__, "schema_name", schema_name)
+        if securable_kind_manifest is not None:
+            pulumi.set(__self__, "securable_kind_manifest", securable_kind_manifest)
         if sql_path is not None:
             pulumi.set(__self__, "sql_path", sql_path)
         if storage_credential_name is not None:
@@ -51516,6 +64290,11 @@ class GetTableTableInfoResult(dict):
         Name of parent schema relative to its parent catalog.
         """
         return pulumi.get(self, "schema_name")
+
+    @_builtins.property
+    @pulumi.getter(name="securableKindManifest")
+    def securable_kind_manifest(self) -> Optional['outputs.GetTableTableInfoSecurableKindManifestResult']:
+        return pulumi.get(self, "securable_kind_manifest")
 
     @_builtins.property
     @pulumi.getter(name="sqlPath")
@@ -51803,6 +64582,174 @@ class GetTableTableInfoRowFilterResult(dict):
 
 
 @pulumi.output_type
+class GetTableTableInfoSecurableKindManifestResult(dict):
+    def __init__(__self__, *,
+                 assignable_privileges: Optional[Sequence[_builtins.str]] = None,
+                 capabilities: Optional[Sequence[_builtins.str]] = None,
+                 options: Optional[Sequence['outputs.GetTableTableInfoSecurableKindManifestOptionResult']] = None,
+                 securable_kind: Optional[_builtins.str] = None,
+                 securable_type: Optional[_builtins.str] = None):
+        if assignable_privileges is not None:
+            pulumi.set(__self__, "assignable_privileges", assignable_privileges)
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if securable_kind is not None:
+            pulumi.set(__self__, "securable_kind", securable_kind)
+        if securable_type is not None:
+            pulumi.set(__self__, "securable_type", securable_type)
+
+    @_builtins.property
+    @pulumi.getter(name="assignablePrivileges")
+    def assignable_privileges(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "assignable_privileges")
+
+    @_builtins.property
+    @pulumi.getter
+    def capabilities(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "capabilities")
+
+    @_builtins.property
+    @pulumi.getter
+    def options(self) -> Optional[Sequence['outputs.GetTableTableInfoSecurableKindManifestOptionResult']]:
+        return pulumi.get(self, "options")
+
+    @_builtins.property
+    @pulumi.getter(name="securableKind")
+    def securable_kind(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "securable_kind")
+
+    @_builtins.property
+    @pulumi.getter(name="securableType")
+    def securable_type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "securable_type")
+
+
+@pulumi.output_type
+class GetTableTableInfoSecurableKindManifestOptionResult(dict):
+    def __init__(__self__, *,
+                 allowed_values: Optional[Sequence[_builtins.str]] = None,
+                 default_value: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 hint: Optional[_builtins.str] = None,
+                 is_copiable: Optional[_builtins.bool] = None,
+                 is_creatable: Optional[_builtins.bool] = None,
+                 is_hidden: Optional[_builtins.bool] = None,
+                 is_loggable: Optional[_builtins.bool] = None,
+                 is_required: Optional[_builtins.bool] = None,
+                 is_secret: Optional[_builtins.bool] = None,
+                 is_updatable: Optional[_builtins.bool] = None,
+                 name: Optional[_builtins.str] = None,
+                 oauth_stage: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        if allowed_values is not None:
+            pulumi.set(__self__, "allowed_values", allowed_values)
+        if default_value is not None:
+            pulumi.set(__self__, "default_value", default_value)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if hint is not None:
+            pulumi.set(__self__, "hint", hint)
+        if is_copiable is not None:
+            pulumi.set(__self__, "is_copiable", is_copiable)
+        if is_creatable is not None:
+            pulumi.set(__self__, "is_creatable", is_creatable)
+        if is_hidden is not None:
+            pulumi.set(__self__, "is_hidden", is_hidden)
+        if is_loggable is not None:
+            pulumi.set(__self__, "is_loggable", is_loggable)
+        if is_required is not None:
+            pulumi.set(__self__, "is_required", is_required)
+        if is_secret is not None:
+            pulumi.set(__self__, "is_secret", is_secret)
+        if is_updatable is not None:
+            pulumi.set(__self__, "is_updatable", is_updatable)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if oauth_stage is not None:
+            pulumi.set(__self__, "oauth_stage", oauth_stage)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "allowed_values")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "default_value")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def hint(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "hint")
+
+    @_builtins.property
+    @pulumi.getter(name="isCopiable")
+    def is_copiable(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "is_copiable")
+
+    @_builtins.property
+    @pulumi.getter(name="isCreatable")
+    def is_creatable(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "is_creatable")
+
+    @_builtins.property
+    @pulumi.getter(name="isHidden")
+    def is_hidden(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "is_hidden")
+
+    @_builtins.property
+    @pulumi.getter(name="isLoggable")
+    def is_loggable(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "is_loggable")
+
+    @_builtins.property
+    @pulumi.getter(name="isRequired")
+    def is_required(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "is_required")
+
+    @_builtins.property
+    @pulumi.getter(name="isSecret")
+    def is_secret(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "is_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="isUpdatable")
+    def is_updatable(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "is_updatable")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="oauthStage")
+    def oauth_stage(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "oauth_stage")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class GetTableTableInfoTableConstraintResult(dict):
     def __init__(__self__, *,
                  foreign_key_constraint: Optional['outputs.GetTableTableInfoTableConstraintForeignKeyConstraintResult'] = None,
@@ -51837,7 +64784,8 @@ class GetTableTableInfoTableConstraintForeignKeyConstraintResult(dict):
                  child_columns: Sequence[_builtins.str],
                  name: _builtins.str,
                  parent_columns: Sequence[_builtins.str],
-                 parent_table: _builtins.str):
+                 parent_table: _builtins.str,
+                 rely: Optional[_builtins.bool] = None):
         """
         :param _builtins.str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
         """
@@ -51845,6 +64793,8 @@ class GetTableTableInfoTableConstraintForeignKeyConstraintResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "parent_columns", parent_columns)
         pulumi.set(__self__, "parent_table", parent_table)
+        if rely is not None:
+            pulumi.set(__self__, "rely", rely)
 
     @_builtins.property
     @pulumi.getter(name="childColumns")
@@ -51868,6 +64818,11 @@ class GetTableTableInfoTableConstraintForeignKeyConstraintResult(dict):
     @pulumi.getter(name="parentTable")
     def parent_table(self) -> _builtins.str:
         return pulumi.get(self, "parent_table")
+
+    @_builtins.property
+    @pulumi.getter
+    def rely(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "rely")
 
 
 @pulumi.output_type
@@ -51893,12 +64848,15 @@ class GetTableTableInfoTableConstraintPrimaryKeyConstraintResult(dict):
     def __init__(__self__, *,
                  child_columns: Sequence[_builtins.str],
                  name: _builtins.str,
+                 rely: Optional[_builtins.bool] = None,
                  timeseries_columns: Optional[Sequence[_builtins.str]] = None):
         """
         :param _builtins.str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
         """
         pulumi.set(__self__, "child_columns", child_columns)
         pulumi.set(__self__, "name", name)
+        if rely is not None:
+            pulumi.set(__self__, "rely", rely)
         if timeseries_columns is not None:
             pulumi.set(__self__, "timeseries_columns", timeseries_columns)
 
@@ -51914,6 +64872,11 @@ class GetTableTableInfoTableConstraintPrimaryKeyConstraintResult(dict):
         Full name of the databricks_table: _`catalog`.`schema`.`table`_
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def rely(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "rely")
 
     @_builtins.property
     @pulumi.getter(name="timeseriesColumns")
@@ -51937,12 +64900,28 @@ class GetTableTableInfoViewDependenciesResult(dict):
 @pulumi.output_type
 class GetTableTableInfoViewDependenciesDependencyResult(dict):
     def __init__(__self__, *,
+                 connection: Optional['outputs.GetTableTableInfoViewDependenciesDependencyConnectionResult'] = None,
+                 credential: Optional['outputs.GetTableTableInfoViewDependenciesDependencyCredentialResult'] = None,
                  function: Optional['outputs.GetTableTableInfoViewDependenciesDependencyFunctionResult'] = None,
                  table: Optional['outputs.GetTableTableInfoViewDependenciesDependencyTableResult'] = None):
+        if connection is not None:
+            pulumi.set(__self__, "connection", connection)
+        if credential is not None:
+            pulumi.set(__self__, "credential", credential)
         if function is not None:
             pulumi.set(__self__, "function", function)
         if table is not None:
             pulumi.set(__self__, "table", table)
+
+    @_builtins.property
+    @pulumi.getter
+    def connection(self) -> Optional['outputs.GetTableTableInfoViewDependenciesDependencyConnectionResult']:
+        return pulumi.get(self, "connection")
+
+    @_builtins.property
+    @pulumi.getter
+    def credential(self) -> Optional['outputs.GetTableTableInfoViewDependenciesDependencyCredentialResult']:
+        return pulumi.get(self, "credential")
 
     @_builtins.property
     @pulumi.getter
@@ -51953,6 +64932,32 @@ class GetTableTableInfoViewDependenciesDependencyResult(dict):
     @pulumi.getter
     def table(self) -> Optional['outputs.GetTableTableInfoViewDependenciesDependencyTableResult']:
         return pulumi.get(self, "table")
+
+
+@pulumi.output_type
+class GetTableTableInfoViewDependenciesDependencyConnectionResult(dict):
+    def __init__(__self__, *,
+                 connection_name: Optional[_builtins.str] = None):
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "connection_name")
+
+
+@pulumi.output_type
+class GetTableTableInfoViewDependenciesDependencyCredentialResult(dict):
+    def __init__(__self__, *,
+                 credential_name: Optional[_builtins.str] = None):
+        if credential_name is not None:
+            pulumi.set(__self__, "credential_name", credential_name)
+
+    @_builtins.property
+    @pulumi.getter(name="credentialName")
+    def credential_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "credential_name")
 
 
 @pulumi.output_type

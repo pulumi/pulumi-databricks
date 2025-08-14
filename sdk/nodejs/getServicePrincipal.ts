@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  *
  * - End to end workspace management guide.
  * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
- * - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+ * - databricks.Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
  * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
  * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
  * - databricks.GroupMember to attach users and groups as group members.
@@ -54,6 +54,7 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
         "home": args.home,
         "id": args.id,
         "repos": args.repos,
+        "scimId": args.scimId,
         "spId": args.spId,
     }, opts);
 }
@@ -71,7 +72,7 @@ export interface GetServicePrincipalArgs {
      */
     active?: boolean;
     /**
-     * ID of the service principal. The service principal must exist before this resource can be retrieved.
+     * Application ID of the service principal. The service principal must exist before this resource can be retrieved.
      */
     applicationId?: string;
     /**
@@ -87,13 +88,17 @@ export interface GetServicePrincipalArgs {
      */
     home?: string;
     /**
-     * The id of the service principal.
+     * The id of the service principal (SCIM ID).
      */
     id?: string;
     /**
      * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      */
     repos?: string;
+    /**
+     * Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+     */
+    scimId?: string;
     spId?: string;
 }
 
@@ -109,6 +114,9 @@ export interface GetServicePrincipalResult {
      * Whether service principal is active or not.
      */
     readonly active: boolean;
+    /**
+     * Application ID of the service principal.
+     */
     readonly applicationId: string;
     /**
      * Display name of the service principal, e.g. `Foo SPN`.
@@ -123,13 +131,17 @@ export interface GetServicePrincipalResult {
      */
     readonly home: string;
     /**
-     * The id of the service principal.
+     * The id of the service principal (SCIM ID).
      */
     readonly id: string;
     /**
      * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      */
     readonly repos: string;
+    /**
+     * same as `id`.
+     */
+    readonly scimId: string;
     readonly spId: string;
 }
 /**
@@ -163,7 +175,7 @@ export interface GetServicePrincipalResult {
  *
  * - End to end workspace management guide.
  * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
- * - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+ * - databricks.Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
  * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
  * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
  * - databricks.GroupMember to attach users and groups as group members.
@@ -182,6 +194,7 @@ export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, 
         "home": args.home,
         "id": args.id,
         "repos": args.repos,
+        "scimId": args.scimId,
         "spId": args.spId,
     }, opts);
 }
@@ -199,7 +212,7 @@ export interface GetServicePrincipalOutputArgs {
      */
     active?: pulumi.Input<boolean>;
     /**
-     * ID of the service principal. The service principal must exist before this resource can be retrieved.
+     * Application ID of the service principal. The service principal must exist before this resource can be retrieved.
      */
     applicationId?: pulumi.Input<string>;
     /**
@@ -215,12 +228,16 @@ export interface GetServicePrincipalOutputArgs {
      */
     home?: pulumi.Input<string>;
     /**
-     * The id of the service principal.
+     * The id of the service principal (SCIM ID).
      */
     id?: pulumi.Input<string>;
     /**
      * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      */
     repos?: pulumi.Input<string>;
+    /**
+     * Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+     */
+    scimId?: pulumi.Input<string>;
     spId?: pulumi.Input<string>;
 }

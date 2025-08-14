@@ -16,7 +16,7 @@ public final class GetAppAppResourceJob {
      */
     private String id;
     /**
-     * @return Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      * 
      */
     private String permission;
@@ -30,7 +30,7 @@ public final class GetAppAppResourceJob {
         return this.id;
     }
     /**
-     * @return Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      * 
      */
     public String permission() {

@@ -39,13 +39,11 @@ class SqlEndpointArgs:
         :param pulumi.Input[_builtins.str] cluster_size: The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
         :param pulumi.Input[_builtins.int] auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
         :param pulumi.Input['SqlEndpointChannelArgs'] channel: block, consisting of following fields:
-        :param pulumi.Input[_builtins.str] data_source_id: ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+        :param pulumi.Input[_builtins.str] data_source_id: (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         :param pulumi.Input[_builtins.bool] enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
         :param pulumi.Input[_builtins.bool] enable_serverless_compute: Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
                
-               * **For AWS**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements) and might require an update to its instance profile role to [add a trust relationship](https://docs.databricks.com/sql/admin/serverless.html#aws-instance-profile-setup).
-               
-               * **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
+               * If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
         :param pulumi.Input[_builtins.int] max_num_clusters: Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
         :param pulumi.Input[_builtins.int] min_num_clusters: Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
         :param pulumi.Input[_builtins.str] name: Name of the SQL warehouse. Must be unique.
@@ -119,7 +117,7 @@ class SqlEndpointArgs:
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+        (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         """
         return pulumi.get(self, "data_source_id")
 
@@ -145,9 +143,7 @@ class SqlEndpointArgs:
         """
         Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
 
-        * **For AWS**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements) and might require an update to its instance profile role to [add a trust relationship](https://docs.databricks.com/sql/admin/serverless.html#aws-instance-profile-setup).
-
-        * **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
+        * If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
         """
         return pulumi.get(self, "enable_serverless_compute")
 
@@ -266,13 +262,11 @@ class _SqlEndpointState:
         :param pulumi.Input['SqlEndpointChannelArgs'] channel: block, consisting of following fields:
         :param pulumi.Input[_builtins.str] cluster_size: The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
         :param pulumi.Input[_builtins.str] creator_name: The username of the user who created the endpoint.
-        :param pulumi.Input[_builtins.str] data_source_id: ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+        :param pulumi.Input[_builtins.str] data_source_id: (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         :param pulumi.Input[_builtins.bool] enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
         :param pulumi.Input[_builtins.bool] enable_serverless_compute: Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
                
-               * **For AWS**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements) and might require an update to its instance profile role to [add a trust relationship](https://docs.databricks.com/sql/admin/serverless.html#aws-instance-profile-setup).
-               
-               * **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
+               * If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
         :param pulumi.Input[Sequence[pulumi.Input['SqlEndpointHealthArgs']]] healths: Health status of the endpoint.
         :param pulumi.Input[_builtins.str] jdbc_url: JDBC connection string.
         :param pulumi.Input[_builtins.int] max_num_clusters: Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
@@ -379,7 +373,7 @@ class _SqlEndpointState:
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+        (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         """
         return pulumi.get(self, "data_source_id")
 
@@ -405,9 +399,7 @@ class _SqlEndpointState:
         """
         Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
 
-        * **For AWS**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements) and might require an update to its instance profile role to [add a trust relationship](https://docs.databricks.com/sql/admin/serverless.html#aws-instance-profile-setup).
-
-        * **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
+        * If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
         """
         return pulumi.get(self, "enable_serverless_compute")
 
@@ -626,7 +618,7 @@ class SqlEndpoint(pulumi.CustomResource):
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
         * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
-        * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+        * Grants to manage data access in Unity Catalog.
 
         ## Import
 
@@ -655,13 +647,11 @@ class SqlEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
         :param pulumi.Input[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict']] channel: block, consisting of following fields:
         :param pulumi.Input[_builtins.str] cluster_size: The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
-        :param pulumi.Input[_builtins.str] data_source_id: ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+        :param pulumi.Input[_builtins.str] data_source_id: (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         :param pulumi.Input[_builtins.bool] enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
         :param pulumi.Input[_builtins.bool] enable_serverless_compute: Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
                
-               * **For AWS**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements) and might require an update to its instance profile role to [add a trust relationship](https://docs.databricks.com/sql/admin/serverless.html#aws-instance-profile-setup).
-               
-               * **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
+               * If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
         :param pulumi.Input[_builtins.int] max_num_clusters: Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
         :param pulumi.Input[_builtins.int] min_num_clusters: Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
         :param pulumi.Input[_builtins.str] name: Name of the SQL warehouse. Must be unique.
@@ -712,7 +702,7 @@ class SqlEndpoint(pulumi.CustomResource):
         * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
         * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
         * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
-        * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+        * Grants to manage data access in Unity Catalog.
 
         ## Import
 
@@ -836,13 +826,11 @@ class SqlEndpoint(pulumi.CustomResource):
         :param pulumi.Input[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict']] channel: block, consisting of following fields:
         :param pulumi.Input[_builtins.str] cluster_size: The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
         :param pulumi.Input[_builtins.str] creator_name: The username of the user who created the endpoint.
-        :param pulumi.Input[_builtins.str] data_source_id: ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+        :param pulumi.Input[_builtins.str] data_source_id: (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         :param pulumi.Input[_builtins.bool] enable_photon: Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
         :param pulumi.Input[_builtins.bool] enable_serverless_compute: Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
                
-               * **For AWS**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements) and might require an update to its instance profile role to [add a trust relationship](https://docs.databricks.com/sql/admin/serverless.html#aws-instance-profile-setup).
-               
-               * **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
+               * If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
         :param pulumi.Input[Sequence[pulumi.Input[Union['SqlEndpointHealthArgs', 'SqlEndpointHealthArgsDict']]]] healths: Health status of the endpoint.
         :param pulumi.Input[_builtins.str] jdbc_url: JDBC connection string.
         :param pulumi.Input[_builtins.int] max_num_clusters: Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
@@ -918,7 +906,7 @@ class SqlEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> pulumi.Output[_builtins.str]:
         """
-        ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
+        (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         """
         return pulumi.get(self, "data_source_id")
 
@@ -936,9 +924,7 @@ class SqlEndpoint(pulumi.CustomResource):
         """
         Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
 
-        * **For AWS**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements) and might require an update to its instance profile role to [add a trust relationship](https://docs.databricks.com/sql/admin/serverless.html#aws-instance-profile-setup).
-
-        * **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
+        * If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
         """
         return pulumi.get(self, "enable_serverless_compute")
 

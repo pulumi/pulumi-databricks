@@ -114,6 +114,138 @@ import (
 //
 // # Create a connection to builtin Hive Metastore
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewConnection(ctx, "hms", &databricks.ConnectionArgs{
+//				Name:           pulumi.String("hms-builtin"),
+//				ConnectionType: pulumi.String("HIVE_METASTORE"),
+//				Comment:        pulumi.String("This is a connection to builtin HMS"),
+//				Options: pulumi.StringMap{
+//					"builtin": pulumi.String("true"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Create a HTTP connection with bearer token
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewConnection(ctx, "http_bearer", &databricks.ConnectionArgs{
+//				Name:           pulumi.String("http_bearer"),
+//				ConnectionType: pulumi.String("HTTP"),
+//				Comment:        pulumi.String("This is a connection to a HTTP service"),
+//				Options: pulumi.StringMap{
+//					"host":         pulumi.String("https://example.com"),
+//					"port":         pulumi.String("8433"),
+//					"base_path":    pulumi.String("/api/"),
+//					"bearer_token": pulumi.String("bearer_token"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Create a HTTP connection with OAuth M2M
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewConnection(ctx, "http_oauth", &databricks.ConnectionArgs{
+//				Name:           pulumi.String("http_oauth"),
+//				ConnectionType: pulumi.String("HTTP"),
+//				Comment:        pulumi.String("This is a connection to a HTTP service"),
+//				Options: pulumi.StringMap{
+//					"host":           pulumi.String("https://example.com"),
+//					"port":           pulumi.String("8433"),
+//					"base_path":      pulumi.String("/api/"),
+//					"client_id":      pulumi.String("client_id"),
+//					"client_secret":  pulumi.String("client_secret"),
+//					"oauth_scope":    pulumi.String("channels:read channels:history chat:write"),
+//					"token_endpoint": pulumi.String("https://authorization-server.com/oauth/token"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Create a PowerBI connection with OAuth M2M
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewConnection(ctx, "pbi", &databricks.ConnectionArgs{
+//				Name:           pulumi.String("test-pbi"),
+//				ConnectionType: pulumi.String("POWER_BI"),
+//				Options: pulumi.StringMap{
+//					"authorization_endpoint": pulumi.String("https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize"),
+//					"client_id":              pulumi.String("client_id"),
+//					"client_secret":          pulumi.String("client_secret"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by `id`:
@@ -149,7 +281,8 @@ type Connection struct {
 	// Username of connection creator.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// The type of credential for this connection.
-	CredentialType pulumi.StringOutput `pulumi:"credentialType"`
+	CredentialType      pulumi.StringOutput                    `pulumi:"credentialType"`
+	EnvironmentSettings ConnectionEnvironmentSettingsPtrOutput `pulumi:"environmentSettings"`
 	// Full name of connection.
 	FullName pulumi.StringOutput `pulumi:"fullName"`
 	// Unique ID of the UC metastore for this connection.
@@ -223,7 +356,8 @@ type connectionState struct {
 	// Username of connection creator.
 	CreatedBy *string `pulumi:"createdBy"`
 	// The type of credential for this connection.
-	CredentialType *string `pulumi:"credentialType"`
+	CredentialType      *string                        `pulumi:"credentialType"`
+	EnvironmentSettings *ConnectionEnvironmentSettings `pulumi:"environmentSettings"`
 	// Full name of connection.
 	FullName *string `pulumi:"fullName"`
 	// Unique ID of the UC metastore for this connection.
@@ -261,7 +395,8 @@ type ConnectionState struct {
 	// Username of connection creator.
 	CreatedBy pulumi.StringPtrInput
 	// The type of credential for this connection.
-	CredentialType pulumi.StringPtrInput
+	CredentialType      pulumi.StringPtrInput
+	EnvironmentSettings ConnectionEnvironmentSettingsPtrInput
 	// Full name of connection.
 	FullName pulumi.StringPtrInput
 	// Unique ID of the UC metastore for this connection.
@@ -295,7 +430,8 @@ type connectionArgs struct {
 	// Free-form text. Change forces creation of a new resource.
 	Comment *string `pulumi:"comment"`
 	// Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
-	ConnectionType *string `pulumi:"connectionType"`
+	ConnectionType      *string                        `pulumi:"connectionType"`
+	EnvironmentSettings *ConnectionEnvironmentSettings `pulumi:"environmentSettings"`
 	// Name of the Connection.
 	Name *string `pulumi:"name"`
 	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
@@ -313,7 +449,8 @@ type ConnectionArgs struct {
 	// Free-form text. Change forces creation of a new resource.
 	Comment pulumi.StringPtrInput
 	// Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
-	ConnectionType pulumi.StringPtrInput
+	ConnectionType      pulumi.StringPtrInput
+	EnvironmentSettings ConnectionEnvironmentSettingsPtrInput
 	// Name of the Connection.
 	Name pulumi.StringPtrInput
 	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
@@ -441,6 +578,10 @@ func (o ConnectionOutput) CreatedBy() pulumi.StringOutput {
 // The type of credential for this connection.
 func (o ConnectionOutput) CredentialType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.CredentialType }).(pulumi.StringOutput)
+}
+
+func (o ConnectionOutput) EnvironmentSettings() ConnectionEnvironmentSettingsPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionEnvironmentSettingsPtrOutput { return v.EnvironmentSettings }).(ConnectionEnvironmentSettingsPtrOutput)
 }
 
 // Full name of connection.

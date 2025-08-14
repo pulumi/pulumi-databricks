@@ -33,6 +33,7 @@ class ShareArgs:
                  updated_by: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Share resource.
+        :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
         :param pulumi.Input[_builtins.int] created_at: Time when the share was created.
         :param pulumi.Input[_builtins.str] created_by: The principal that created the share.
         :param pulumi.Input[_builtins.str] name: Name of share. Change forces creation of a new resource.
@@ -62,6 +63,9 @@ class ShareArgs:
     @_builtins.property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        User-supplied free-form text.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -177,6 +181,7 @@ class _ShareState:
                  updated_by: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Share resources.
+        :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
         :param pulumi.Input[_builtins.int] created_at: Time when the share was created.
         :param pulumi.Input[_builtins.str] created_by: The principal that created the share.
         :param pulumi.Input[_builtins.str] name: Name of share. Change forces creation of a new resource.
@@ -206,6 +211,9 @@ class _ShareState:
     @_builtins.property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        User-supplied free-form text.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -435,6 +443,7 @@ class Share(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
         :param pulumi.Input[_builtins.int] created_at: Time when the share was created.
         :param pulumi.Input[_builtins.str] created_by: The principal that created the share.
         :param pulumi.Input[_builtins.str] name: Name of share. Change forces creation of a new resource.
@@ -627,6 +636,7 @@ class Share(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
         :param pulumi.Input[_builtins.int] created_at: Time when the share was created.
         :param pulumi.Input[_builtins.str] created_by: The principal that created the share.
         :param pulumi.Input[_builtins.str] name: Name of share. Change forces creation of a new resource.
@@ -651,6 +661,9 @@ class Share(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        User-supplied free-form text.
+        """
         return pulumi.get(self, "comment")
 
     @_builtins.property

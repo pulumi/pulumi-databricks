@@ -50,14 +50,14 @@ public final class PermissionsAccessControlArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Application ID of the service_principal.
+     * Application ID (**not service principal name!**) of the service_principal.
      * 
      */
     @Import(name="servicePrincipalName")
     private @Nullable Output<String> servicePrincipalName;
 
     /**
-     * @return Application ID of the service_principal.
+     * @return Application ID (**not service principal name!**) of the service_principal.
      * 
      */
     public Optional<Output<String>> servicePrincipalName() {
@@ -153,7 +153,7 @@ public final class PermissionsAccessControlArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param servicePrincipalName Application ID of the service_principal.
+         * @param servicePrincipalName Application ID (**not service principal name!**) of the service_principal.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class PermissionsAccessControlArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param servicePrincipalName Application ID of the service_principal.
+         * @param servicePrincipalName Application ID (**not service principal name!**) of the service_principal.
          * 
          * @return builder
          * 

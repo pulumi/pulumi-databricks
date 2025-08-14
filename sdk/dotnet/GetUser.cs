@@ -53,7 +53,7 @@ namespace Pulumi.Databricks
         /// 
         /// - End to end workspace management guide.
         /// - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-        /// - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        /// - databricks.Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
         /// - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
         /// - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
         /// - databricks.GroupMember to attach users and groups as group members.
@@ -106,7 +106,7 @@ namespace Pulumi.Databricks
         /// 
         /// - End to end workspace management guide.
         /// - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-        /// - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        /// - databricks.Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
         /// - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
         /// - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
         /// - databricks.GroupMember to attach users and groups as group members.
@@ -159,7 +159,7 @@ namespace Pulumi.Databricks
         /// 
         /// - End to end workspace management guide.
         /// - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-        /// - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        /// - databricks.Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
         /// - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
         /// - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
         /// - databricks.GroupMember to attach users and groups as group members.

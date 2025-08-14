@@ -53,7 +53,7 @@ namespace Pulumi.Databricks
         /// 
         /// - End to end workspace management guide.
         /// - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-        /// - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        /// - databricks.Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
         /// - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
         /// - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
         /// - databricks.GroupMember to attach users and groups as group members.
@@ -105,7 +105,7 @@ namespace Pulumi.Databricks
         /// 
         /// - End to end workspace management guide.
         /// - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-        /// - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        /// - databricks.Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
         /// - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
         /// - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
         /// - databricks.GroupMember to attach users and groups as group members.
@@ -157,7 +157,7 @@ namespace Pulumi.Databricks
         /// 
         /// - End to end workspace management guide.
         /// - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-        /// - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        /// - databricks.Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
         /// - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
         /// - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
         /// - databricks.GroupMember to attach users and groups as group members.
@@ -184,7 +184,7 @@ namespace Pulumi.Databricks
         public bool? Active { get; set; }
 
         /// <summary>
-        /// ID of the service principal. The service principal must exist before this resource can be retrieved.
+        /// Application ID of the service principal. The service principal must exist before this resource can be retrieved.
         /// </summary>
         [Input("applicationId")]
         public string? ApplicationId { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.Databricks
         public string? Home { get; set; }
 
         /// <summary>
-        /// The id of the service principal.
+        /// The id of the service principal (SCIM ID).
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
@@ -218,6 +218,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("repos")]
         public string? Repos { get; set; }
+
+        /// <summary>
+        /// Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+        /// </summary>
+        [Input("scimId")]
+        public string? ScimId { get; set; }
 
         [Input("spId")]
         public string? SpId { get; set; }
@@ -243,7 +249,7 @@ namespace Pulumi.Databricks
         public Input<bool>? Active { get; set; }
 
         /// <summary>
-        /// ID of the service principal. The service principal must exist before this resource can be retrieved.
+        /// Application ID of the service principal. The service principal must exist before this resource can be retrieved.
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
@@ -267,7 +273,7 @@ namespace Pulumi.Databricks
         public Input<string>? Home { get; set; }
 
         /// <summary>
-        /// The id of the service principal.
+        /// The id of the service principal (SCIM ID).
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -277,6 +283,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("repos")]
         public Input<string>? Repos { get; set; }
+
+        /// <summary>
+        /// Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+        /// </summary>
+        [Input("scimId")]
+        public Input<string>? ScimId { get; set; }
 
         [Input("spId")]
         public Input<string>? SpId { get; set; }
@@ -299,6 +311,9 @@ namespace Pulumi.Databricks
         /// Whether service principal is active or not.
         /// </summary>
         public readonly bool Active;
+        /// <summary>
+        /// Application ID of the service principal.
+        /// </summary>
         public readonly string ApplicationId;
         /// <summary>
         /// Display name of the service principal, e.g. `Foo SPN`.
@@ -313,13 +328,17 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Home;
         /// <summary>
-        /// The id of the service principal.
+        /// The id of the service principal (SCIM ID).
         /// </summary>
         public readonly string Id;
         /// <summary>
         /// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
         /// </summary>
         public readonly string Repos;
+        /// <summary>
+        /// same as `id`.
+        /// </summary>
+        public readonly string ScimId;
         public readonly string SpId;
 
         [OutputConstructor]
@@ -340,6 +359,8 @@ namespace Pulumi.Databricks
 
             string repos,
 
+            string scimId,
+
             string spId)
         {
             AclPrincipalId = aclPrincipalId;
@@ -350,6 +371,7 @@ namespace Pulumi.Databricks
             Home = home;
             Id = id;
             Repos = repos;
+            ScimId = scimId;
             SpId = spId;
         }
     }

@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Inputs
         private InputList<Inputs.GetAlertV2EvaluationNotificationSubscriptionInputArgs>? _subscriptions;
 
         /// <summary>
-        /// (list of AlertV2Subscription) -
+        /// (list of AlertV2Subscription)
         /// </summary>
         public InputList<Inputs.GetAlertV2EvaluationNotificationSubscriptionInputArgs> Subscriptions
         {

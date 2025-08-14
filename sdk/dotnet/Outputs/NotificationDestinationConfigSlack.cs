@@ -13,6 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class NotificationDestinationConfigSlack
     {
+        public readonly string? ChannelId;
+        public readonly bool? ChannelIdSet;
+        public readonly string? OauthToken;
+        public readonly bool? OauthTokenSet;
         /// <summary>
         /// The Slack webhook URL.
         /// </summary>
@@ -21,10 +25,22 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private NotificationDestinationConfigSlack(
+            string? channelId,
+
+            bool? channelIdSet,
+
+            string? oauthToken,
+
+            bool? oauthTokenSet,
+
             string? url,
 
             bool? urlSet)
         {
+            ChannelId = channelId;
+            ChannelIdSet = channelIdSet;
+            OauthToken = oauthToken;
+            OauthTokenSet = oauthTokenSet;
             Url = url;
             UrlSet = urlSet;
         }

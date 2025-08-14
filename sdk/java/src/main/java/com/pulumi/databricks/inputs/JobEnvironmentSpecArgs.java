@@ -16,17 +16,9 @@ public final class JobEnvironmentSpecArgs extends com.pulumi.resources.ResourceA
 
     public static final JobEnvironmentSpecArgs Empty = new JobEnvironmentSpecArgs();
 
-    /**
-     * client version used by the environment.
-     * 
-     */
     @Import(name="client")
     private @Nullable Output<String> client;
 
-    /**
-     * @return client version used by the environment.
-     * 
-     */
     public Optional<Output<String>> client() {
         return Optional.ofNullable(this.client);
     }
@@ -46,9 +38,17 @@ public final class JobEnvironmentSpecArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.dependencies);
     }
 
+    /**
+     * client version used by the environment. Each version comes with a specific Python version and a set of Python packages.
+     * 
+     */
     @Import(name="environmentVersion")
     private @Nullable Output<String> environmentVersion;
 
+    /**
+     * @return client version used by the environment. Each version comes with a specific Python version and a set of Python packages.
+     * 
+     */
     public Optional<Output<String>> environmentVersion() {
         return Optional.ofNullable(this.environmentVersion);
     }
@@ -87,23 +87,11 @@ public final class JobEnvironmentSpecArgs extends com.pulumi.resources.ResourceA
             $ = new JobEnvironmentSpecArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param client client version used by the environment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder client(@Nullable Output<String> client) {
             $.client = client;
             return this;
         }
 
-        /**
-         * @param client client version used by the environment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder client(String client) {
             return client(Output.of(client));
         }
@@ -139,11 +127,23 @@ public final class JobEnvironmentSpecArgs extends com.pulumi.resources.ResourceA
             return dependencies(List.of(dependencies));
         }
 
+        /**
+         * @param environmentVersion client version used by the environment. Each version comes with a specific Python version and a set of Python packages.
+         * 
+         * @return builder
+         * 
+         */
         public Builder environmentVersion(@Nullable Output<String> environmentVersion) {
             $.environmentVersion = environmentVersion;
             return this;
         }
 
+        /**
+         * @param environmentVersion client version used by the environment. Each version comes with a specific Python version and a set of Python packages.
+         * 
+         * @return builder
+         * 
+         */
         public Builder environmentVersion(String environmentVersion) {
             return environmentVersion(Output.of(environmentVersion));
         }

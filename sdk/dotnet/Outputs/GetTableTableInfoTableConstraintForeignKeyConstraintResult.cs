@@ -20,6 +20,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string Name;
         public readonly ImmutableArray<string> ParentColumns;
         public readonly string ParentTable;
+        public readonly bool? Rely;
 
         [OutputConstructor]
         private GetTableTableInfoTableConstraintForeignKeyConstraintResult(
@@ -29,12 +30,15 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<string> parentColumns,
 
-            string parentTable)
+            string parentTable,
+
+            bool? rely)
         {
             ChildColumns = childColumns;
             Name = name;
             ParentColumns = parentColumns;
             ParentTable = parentTable;
+            Rely = rely;
         }
     }
 }

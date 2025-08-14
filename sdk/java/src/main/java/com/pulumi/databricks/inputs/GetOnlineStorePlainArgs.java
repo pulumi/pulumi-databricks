@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,15 +20,15 @@ public final class GetOnlineStorePlainArgs extends com.pulumi.resources.InvokeAr
      * (string) - The capacity of the online store. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
      * 
      */
-    @Import(name="capacity")
-    private @Nullable String capacity;
+    @Import(name="capacity", required=true)
+    private String capacity;
 
     /**
      * @return (string) - The capacity of the online store. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
      * 
      */
-    public Optional<String> capacity() {
-        return Optional.ofNullable(this.capacity);
+    public String capacity() {
+        return this.capacity;
     }
 
     /**
@@ -45,11 +46,27 @@ public final class GetOnlineStorePlainArgs extends com.pulumi.resources.InvokeAr
         return this.name;
     }
 
+    /**
+     * (integer) - The number of read replicas for the online store. Defaults to 0
+     * 
+     */
+    @Import(name="readReplicaCount")
+    private @Nullable Integer readReplicaCount;
+
+    /**
+     * @return (integer) - The number of read replicas for the online store. Defaults to 0
+     * 
+     */
+    public Optional<Integer> readReplicaCount() {
+        return Optional.ofNullable(this.readReplicaCount);
+    }
+
     private GetOnlineStorePlainArgs() {}
 
     private GetOnlineStorePlainArgs(GetOnlineStorePlainArgs $) {
         this.capacity = $.capacity;
         this.name = $.name;
+        this.readReplicaCount = $.readReplicaCount;
     }
 
     public static Builder builder() {
@@ -76,7 +93,7 @@ public final class GetOnlineStorePlainArgs extends com.pulumi.resources.InvokeAr
          * @return builder
          * 
          */
-        public Builder capacity(@Nullable String capacity) {
+        public Builder capacity(String capacity) {
             $.capacity = capacity;
             return this;
         }
@@ -92,7 +109,21 @@ public final class GetOnlineStorePlainArgs extends com.pulumi.resources.InvokeAr
             return this;
         }
 
+        /**
+         * @param readReplicaCount (integer) - The number of read replicas for the online store. Defaults to 0
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readReplicaCount(@Nullable Integer readReplicaCount) {
+            $.readReplicaCount = readReplicaCount;
+            return this;
+        }
+
         public GetOnlineStorePlainArgs build() {
+            if ($.capacity == null) {
+                throw new MissingRequiredPropertyException("GetOnlineStorePlainArgs", "capacity");
+            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("GetOnlineStorePlainArgs", "name");
             }

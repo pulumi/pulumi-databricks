@@ -47,6 +47,13 @@ public final class ClusterGcpAttributesArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.bootDiskSize);
     }
 
+    @Import(name="firstOnDemand")
+    private @Nullable Output<Integer> firstOnDemand;
+
+    public Optional<Output<Integer>> firstOnDemand() {
+        return Optional.ofNullable(this.firstOnDemand);
+    }
+
     /**
      * Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
      * 
@@ -118,6 +125,7 @@ public final class ClusterGcpAttributesArgs extends com.pulumi.resources.Resourc
     private ClusterGcpAttributesArgs(ClusterGcpAttributesArgs $) {
         this.availability = $.availability;
         this.bootDiskSize = $.bootDiskSize;
+        this.firstOnDemand = $.firstOnDemand;
         this.googleServiceAccount = $.googleServiceAccount;
         this.localSsdCount = $.localSsdCount;
         this.usePreemptibleExecutors = $.usePreemptibleExecutors;
@@ -182,6 +190,15 @@ public final class ClusterGcpAttributesArgs extends com.pulumi.resources.Resourc
          */
         public Builder bootDiskSize(Integer bootDiskSize) {
             return bootDiskSize(Output.of(bootDiskSize));
+        }
+
+        public Builder firstOnDemand(@Nullable Output<Integer> firstOnDemand) {
+            $.firstOnDemand = firstOnDemand;
+            return this;
+        }
+
+        public Builder firstOnDemand(Integer firstOnDemand) {
+            return firstOnDemand(Output.of(firstOnDemand));
         }
 
         /**

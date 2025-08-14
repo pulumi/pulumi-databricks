@@ -23,6 +23,13 @@ public final class PipelineClusterGcpAttributesArgs extends com.pulumi.resources
         return Optional.ofNullable(this.availability);
     }
 
+    @Import(name="firstOnDemand")
+    private @Nullable Output<Integer> firstOnDemand;
+
+    public Optional<Output<Integer>> firstOnDemand() {
+        return Optional.ofNullable(this.firstOnDemand);
+    }
+
     @Import(name="googleServiceAccount")
     private @Nullable Output<String> googleServiceAccount;
 
@@ -48,6 +55,7 @@ public final class PipelineClusterGcpAttributesArgs extends com.pulumi.resources
 
     private PipelineClusterGcpAttributesArgs(PipelineClusterGcpAttributesArgs $) {
         this.availability = $.availability;
+        this.firstOnDemand = $.firstOnDemand;
         this.googleServiceAccount = $.googleServiceAccount;
         this.localSsdCount = $.localSsdCount;
         this.zoneId = $.zoneId;
@@ -78,6 +86,15 @@ public final class PipelineClusterGcpAttributesArgs extends com.pulumi.resources
 
         public Builder availability(String availability) {
             return availability(Output.of(availability));
+        }
+
+        public Builder firstOnDemand(@Nullable Output<Integer> firstOnDemand) {
+            $.firstOnDemand = firstOnDemand;
+            return this;
+        }
+
+        public Builder firstOnDemand(Integer firstOnDemand) {
+            return firstOnDemand(Output.of(firstOnDemand));
         }
 
         public Builder googleServiceAccount(@Nullable Output<String> googleServiceAccount) {

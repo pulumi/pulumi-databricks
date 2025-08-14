@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use `Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
+// Use `Pipeline` to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
 //
 // > This resource can only be used with a workspace-level provider!
 //
@@ -31,17 +31,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dltDemo, err := databricks.NewNotebook(ctx, "dlt_demo", nil)
+//			ldpDemo, err := databricks.NewNotebook(ctx, "ldp_demo", nil)
 //			if err != nil {
 //				return err
 //			}
-//			dltDemoRepo, err := databricks.NewRepo(ctx, "dlt_demo", nil)
+//			ldpDemoRepo, err := databricks.NewRepo(ctx, "ldp_demo", nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = databricks.NewPipeline(ctx, "this", &databricks.PipelineArgs{
 //				Name:    pulumi.String("Pipeline Name"),
-//				Storage: pulumi.String("/test/first-pipeline"),
+//				Catalog: pulumi.String("main"),
+//				Schema:  pulumi.String("ldp_demo"),
 //				Configuration: pulumi.StringMap{
 //					"key1": pulumi.String("value1"),
 //					"key2": pulumi.String("value2"),
@@ -65,19 +66,19 @@ import (
 //				Libraries: databricks.PipelineLibraryArray{
 //					&databricks.PipelineLibraryArgs{
 //						Notebook: &databricks.PipelineLibraryNotebookArgs{
-//							Path: dltDemo.ID(),
+//							Path: ldpDemo.ID(),
 //						},
 //					},
 //					&databricks.PipelineLibraryArgs{
 //						File: &databricks.PipelineLibraryFileArgs{
-//							Path: dltDemoRepo.Path.ApplyT(func(path string) (string, error) {
+//							Path: ldpDemoRepo.Path.ApplyT(func(path string) (string, error) {
 //								return fmt.Sprintf("%v/pipeline.sql", path), nil
 //							}).(pulumi.StringOutput),
 //						},
 //					},
 //					&databricks.PipelineLibraryArgs{
 //						Glob: &databricks.PipelineLibraryGlobArgs{
-//							Include: dltDemoRepo.Path.ApplyT(func(path string) (string, error) {
+//							Include: ldpDemoRepo.Path.ApplyT(func(path string) (string, error) {
 //								return fmt.Sprintf("%v/subfolder/**", path), nil
 //							}).(pulumi.StringOutput),
 //						},
@@ -113,7 +114,7 @@ import (
 // The following resources are often used in the same context:
 //
 // * End to end workspace management guide.
-// * getPipelines to retrieve [Delta Live Tables](https://docs.databricks.com/aws/en/dlt) pipeline data.
+// * getPipelines to retrieve [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) data.
 // * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
 // * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 // * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -144,15 +145,15 @@ type Pipeline struct {
 
 	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
 	AllowDuplicateNames pulumi.BoolPtrOutput `pulumi:"allowDuplicateNames"`
-	// optional string specifying ID of the budget policy for this DLT pipeline.
+	// optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
 	BudgetPolicyId pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
 	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
 	Catalog pulumi.StringPtrOutput `pulumi:"catalog"`
 	Cause   pulumi.StringOutput    `pulumi:"cause"`
-	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+	// optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
 	Channel   pulumi.StringPtrOutput `pulumi:"channel"`
 	ClusterId pulumi.StringOutput    `pulumi:"clusterId"`
-	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
 	Clusters PipelineClusterArrayOutput `pulumi:"clusters"`
 	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
 	Configuration pulumi.StringMapOutput `pulumi:"configuration"`
@@ -166,7 +167,7 @@ type Pipeline struct {
 	// optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
 	Edition     pulumi.StringPtrOutput       `pulumi:"edition"`
 	Environment PipelineEnvironmentPtrOutput `pulumi:"environment"`
-	// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+	// an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
 	EventLog             PipelineEventLogPtrOutput `pulumi:"eventLog"`
 	ExpectedLastModified pulumi.IntPtrOutput       `pulumi:"expectedLastModified"`
 	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
@@ -187,21 +188,21 @@ type Pipeline struct {
 	RestartWindow PipelineRestartWindowPtrOutput `pulumi:"restartWindow"`
 	// An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
 	RootPath      pulumi.StringPtrOutput `pulumi:"rootPath"`
-	RunAs         PipelineRunAsOutput    `pulumi:"runAs"`
+	RunAs         PipelineRunAsPtrOutput `pulumi:"runAs"`
 	RunAsUserName pulumi.StringOutput    `pulumi:"runAsUserName"`
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema pulumi.StringPtrOutput `pulumi:"schema"`
-	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+	// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless pulumi.BoolPtrOutput `pulumi:"serverless"`
 	State      pulumi.StringOutput  `pulumi:"state"`
-	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+	// A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage pulumi.StringPtrOutput `pulumi:"storage"`
 	// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target  pulumi.StringPtrOutput   `pulumi:"target"`
 	Trigger PipelineTriggerPtrOutput `pulumi:"trigger"`
-	// URL of the DLT pipeline on the given workspace.
+	// URL of the Lakeflow Declarative Pipeline on the given workspace.
 	Url pulumi.StringOutput `pulumi:"url"`
 }
 
@@ -237,15 +238,15 @@ func GetPipeline(ctx *pulumi.Context,
 type pipelineState struct {
 	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
 	AllowDuplicateNames *bool `pulumi:"allowDuplicateNames"`
-	// optional string specifying ID of the budget policy for this DLT pipeline.
+	// optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
 	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
 	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
 	Catalog *string `pulumi:"catalog"`
 	Cause   *string `pulumi:"cause"`
-	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+	// optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
 	Channel   *string `pulumi:"channel"`
 	ClusterId *string `pulumi:"clusterId"`
-	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
 	Clusters []PipelineCluster `pulumi:"clusters"`
 	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
 	Configuration map[string]string `pulumi:"configuration"`
@@ -259,7 +260,7 @@ type pipelineState struct {
 	// optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
 	Edition     *string              `pulumi:"edition"`
 	Environment *PipelineEnvironment `pulumi:"environment"`
-	// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+	// an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
 	EventLog             *PipelineEventLog `pulumi:"eventLog"`
 	ExpectedLastModified *int              `pulumi:"expectedLastModified"`
 	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
@@ -284,32 +285,32 @@ type pipelineState struct {
 	RunAsUserName *string        `pulumi:"runAsUserName"`
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema *string `pulumi:"schema"`
-	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+	// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless *bool   `pulumi:"serverless"`
 	State      *string `pulumi:"state"`
-	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+	// A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage *string `pulumi:"storage"`
 	// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
 	Tags map[string]string `pulumi:"tags"`
 	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target  *string          `pulumi:"target"`
 	Trigger *PipelineTrigger `pulumi:"trigger"`
-	// URL of the DLT pipeline on the given workspace.
+	// URL of the Lakeflow Declarative Pipeline on the given workspace.
 	Url *string `pulumi:"url"`
 }
 
 type PipelineState struct {
 	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
 	AllowDuplicateNames pulumi.BoolPtrInput
-	// optional string specifying ID of the budget policy for this DLT pipeline.
+	// optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
 	BudgetPolicyId pulumi.StringPtrInput
 	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
 	Catalog pulumi.StringPtrInput
 	Cause   pulumi.StringPtrInput
-	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+	// optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
 	Channel   pulumi.StringPtrInput
 	ClusterId pulumi.StringPtrInput
-	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
 	Clusters PipelineClusterArrayInput
 	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
 	Configuration pulumi.StringMapInput
@@ -323,7 +324,7 @@ type PipelineState struct {
 	// optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
 	Edition     pulumi.StringPtrInput
 	Environment PipelineEnvironmentPtrInput
-	// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+	// an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
 	EventLog             PipelineEventLogPtrInput
 	ExpectedLastModified pulumi.IntPtrInput
 	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
@@ -348,17 +349,17 @@ type PipelineState struct {
 	RunAsUserName pulumi.StringPtrInput
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema pulumi.StringPtrInput
-	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+	// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless pulumi.BoolPtrInput
 	State      pulumi.StringPtrInput
-	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+	// A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage pulumi.StringPtrInput
 	// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
 	Tags pulumi.StringMapInput
 	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target  pulumi.StringPtrInput
 	Trigger PipelineTriggerPtrInput
-	// URL of the DLT pipeline on the given workspace.
+	// URL of the Lakeflow Declarative Pipeline on the given workspace.
 	Url pulumi.StringPtrInput
 }
 
@@ -369,15 +370,15 @@ func (PipelineState) ElementType() reflect.Type {
 type pipelineArgs struct {
 	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
 	AllowDuplicateNames *bool `pulumi:"allowDuplicateNames"`
-	// optional string specifying ID of the budget policy for this DLT pipeline.
+	// optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
 	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
 	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
 	Catalog *string `pulumi:"catalog"`
 	Cause   *string `pulumi:"cause"`
-	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+	// optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
 	Channel   *string `pulumi:"channel"`
 	ClusterId *string `pulumi:"clusterId"`
-	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
 	Clusters []PipelineCluster `pulumi:"clusters"`
 	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
 	Configuration map[string]string `pulumi:"configuration"`
@@ -391,7 +392,7 @@ type pipelineArgs struct {
 	// optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
 	Edition     *string              `pulumi:"edition"`
 	Environment *PipelineEnvironment `pulumi:"environment"`
-	// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+	// an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
 	EventLog             *PipelineEventLog `pulumi:"eventLog"`
 	ExpectedLastModified *int              `pulumi:"expectedLastModified"`
 	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
@@ -416,17 +417,17 @@ type pipelineArgs struct {
 	RunAsUserName *string        `pulumi:"runAsUserName"`
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema *string `pulumi:"schema"`
-	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+	// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless *bool   `pulumi:"serverless"`
 	State      *string `pulumi:"state"`
-	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+	// A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage *string `pulumi:"storage"`
 	// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
 	Tags map[string]string `pulumi:"tags"`
 	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target  *string          `pulumi:"target"`
 	Trigger *PipelineTrigger `pulumi:"trigger"`
-	// URL of the DLT pipeline on the given workspace.
+	// URL of the Lakeflow Declarative Pipeline on the given workspace.
 	Url *string `pulumi:"url"`
 }
 
@@ -434,15 +435,15 @@ type pipelineArgs struct {
 type PipelineArgs struct {
 	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
 	AllowDuplicateNames pulumi.BoolPtrInput
-	// optional string specifying ID of the budget policy for this DLT pipeline.
+	// optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
 	BudgetPolicyId pulumi.StringPtrInput
 	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
 	Catalog pulumi.StringPtrInput
 	Cause   pulumi.StringPtrInput
-	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+	// optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
 	Channel   pulumi.StringPtrInput
 	ClusterId pulumi.StringPtrInput
-	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
 	Clusters PipelineClusterArrayInput
 	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
 	Configuration pulumi.StringMapInput
@@ -456,7 +457,7 @@ type PipelineArgs struct {
 	// optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
 	Edition     pulumi.StringPtrInput
 	Environment PipelineEnvironmentPtrInput
-	// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+	// an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
 	EventLog             PipelineEventLogPtrInput
 	ExpectedLastModified pulumi.IntPtrInput
 	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
@@ -481,17 +482,17 @@ type PipelineArgs struct {
 	RunAsUserName pulumi.StringPtrInput
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema pulumi.StringPtrInput
-	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+	// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless pulumi.BoolPtrInput
 	State      pulumi.StringPtrInput
-	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+	// A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage pulumi.StringPtrInput
 	// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
 	Tags pulumi.StringMapInput
 	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target  pulumi.StringPtrInput
 	Trigger PipelineTriggerPtrInput
-	// URL of the DLT pipeline on the given workspace.
+	// URL of the Lakeflow Declarative Pipeline on the given workspace.
 	Url pulumi.StringPtrInput
 }
 
@@ -587,7 +588,7 @@ func (o PipelineOutput) AllowDuplicateNames() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.AllowDuplicateNames }).(pulumi.BoolPtrOutput)
 }
 
-// optional string specifying ID of the budget policy for this DLT pipeline.
+// optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
 func (o PipelineOutput) BudgetPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
 }
@@ -601,7 +602,7 @@ func (o PipelineOutput) Cause() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Cause }).(pulumi.StringOutput)
 }
 
-// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+// optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
 func (o PipelineOutput) Channel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Channel }).(pulumi.StringPtrOutput)
 }
@@ -610,7 +611,7 @@ func (o PipelineOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
 func (o PipelineOutput) Clusters() PipelineClusterArrayOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineClusterArrayOutput { return v.Clusters }).(PipelineClusterArrayOutput)
 }
@@ -648,7 +649,7 @@ func (o PipelineOutput) Environment() PipelineEnvironmentPtrOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineEnvironmentPtrOutput { return v.Environment }).(PipelineEnvironmentPtrOutput)
 }
 
-// an optional block specifying a table where DLT Event Log will be stored.  Consists of the following fields:
+// an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
 func (o PipelineOutput) EventLog() PipelineEventLogPtrOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineEventLogPtrOutput { return v.EventLog }).(PipelineEventLogPtrOutput)
 }
@@ -711,8 +712,8 @@ func (o PipelineOutput) RootPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.RootPath }).(pulumi.StringPtrOutput)
 }
 
-func (o PipelineOutput) RunAs() PipelineRunAsOutput {
-	return o.ApplyT(func(v *Pipeline) PipelineRunAsOutput { return v.RunAs }).(PipelineRunAsOutput)
+func (o PipelineOutput) RunAs() PipelineRunAsPtrOutput {
+	return o.ApplyT(func(v *Pipeline) PipelineRunAsPtrOutput { return v.RunAs }).(PipelineRunAsPtrOutput)
 }
 
 func (o PipelineOutput) RunAsUserName() pulumi.StringOutput {
@@ -724,7 +725,7 @@ func (o PipelineOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Schema }).(pulumi.StringPtrOutput)
 }
 
-// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 func (o PipelineOutput) Serverless() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.Serverless }).(pulumi.BoolPtrOutput)
 }
@@ -733,7 +734,7 @@ func (o PipelineOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+// A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 func (o PipelineOutput) Storage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Storage }).(pulumi.StringPtrOutput)
 }
@@ -752,7 +753,7 @@ func (o PipelineOutput) Trigger() PipelineTriggerPtrOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineTriggerPtrOutput { return v.Trigger }).(PipelineTriggerPtrOutput)
 }
 
-// URL of the DLT pipeline on the given workspace.
+// URL of the Lakeflow Declarative Pipeline on the given workspace.
 func (o PipelineOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

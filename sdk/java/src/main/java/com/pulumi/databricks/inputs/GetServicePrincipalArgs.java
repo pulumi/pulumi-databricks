@@ -47,14 +47,14 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * ID of the service principal. The service principal must exist before this resource can be retrieved.
+     * Application ID of the service principal. The service principal must exist before this resource can be retrieved.
      * 
      */
     @Import(name="applicationId")
     private @Nullable Output<String> applicationId;
 
     /**
-     * @return ID of the service principal. The service principal must exist before this resource can be retrieved.
+     * @return Application ID of the service principal. The service principal must exist before this resource can be retrieved.
      * 
      */
     public Optional<Output<String>> applicationId() {
@@ -107,14 +107,14 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The id of the service principal.
+     * The id of the service principal (SCIM ID).
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return The id of the service principal.
+     * @return The id of the service principal (SCIM ID).
      * 
      */
     public Optional<Output<String>> id() {
@@ -136,6 +136,21 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.repos);
     }
 
+    /**
+     * Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+     * 
+     */
+    @Import(name="scimId")
+    private @Nullable Output<String> scimId;
+
+    /**
+     * @return Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+     * 
+     */
+    public Optional<Output<String>> scimId() {
+        return Optional.ofNullable(this.scimId);
+    }
+
     @Import(name="spId")
     private @Nullable Output<String> spId;
 
@@ -154,6 +169,7 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
         this.home = $.home;
         this.id = $.id;
         this.repos = $.repos;
+        this.scimId = $.scimId;
         this.spId = $.spId;
     }
 
@@ -218,7 +234,7 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param applicationId ID of the service principal. The service principal must exist before this resource can be retrieved.
+         * @param applicationId Application ID of the service principal. The service principal must exist before this resource can be retrieved.
          * 
          * @return builder
          * 
@@ -229,7 +245,7 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param applicationId ID of the service principal. The service principal must exist before this resource can be retrieved.
+         * @param applicationId Application ID of the service principal. The service principal must exist before this resource can be retrieved.
          * 
          * @return builder
          * 
@@ -302,7 +318,7 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param id The id of the service principal.
+         * @param id The id of the service principal (SCIM ID).
          * 
          * @return builder
          * 
@@ -313,7 +329,7 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param id The id of the service principal.
+         * @param id The id of the service principal (SCIM ID).
          * 
          * @return builder
          * 
@@ -341,6 +357,27 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder repos(String repos) {
             return repos(Output.of(repos));
+        }
+
+        /**
+         * @param scimId Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scimId(@Nullable Output<String> scimId) {
+            $.scimId = scimId;
+            return this;
+        }
+
+        /**
+         * @param scimId Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scimId(String scimId) {
+            return scimId(Output.of(scimId));
         }
 
         public Builder spId(@Nullable Output<String> spId) {

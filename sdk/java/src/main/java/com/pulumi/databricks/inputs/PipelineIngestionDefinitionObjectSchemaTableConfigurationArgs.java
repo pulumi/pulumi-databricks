@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -38,6 +39,13 @@ public final class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs
         return Optional.ofNullable(this.primaryKeys);
     }
 
+    @Import(name="queryBasedConnectorConfig")
+    private @Nullable Output<PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfigArgs> queryBasedConnectorConfig;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfigArgs>> queryBasedConnectorConfig() {
+        return Optional.ofNullable(this.queryBasedConnectorConfig);
+    }
+
     @Import(name="salesforceIncludeFormulaFields")
     private @Nullable Output<Boolean> salesforceIncludeFormulaFields;
 
@@ -65,6 +73,7 @@ public final class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs
         this.excludeColumns = $.excludeColumns;
         this.includeColumns = $.includeColumns;
         this.primaryKeys = $.primaryKeys;
+        this.queryBasedConnectorConfig = $.queryBasedConnectorConfig;
         this.salesforceIncludeFormulaFields = $.salesforceIncludeFormulaFields;
         this.scdType = $.scdType;
         this.sequenceBies = $.sequenceBies;
@@ -125,6 +134,15 @@ public final class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs
 
         public Builder primaryKeys(String... primaryKeys) {
             return primaryKeys(List.of(primaryKeys));
+        }
+
+        public Builder queryBasedConnectorConfig(@Nullable Output<PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfigArgs> queryBasedConnectorConfig) {
+            $.queryBasedConnectorConfig = queryBasedConnectorConfig;
+            return this;
+        }
+
+        public Builder queryBasedConnectorConfig(PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfigArgs queryBasedConnectorConfig) {
+            return queryBasedConnectorConfig(Output.of(queryBasedConnectorConfig));
         }
 
         public Builder salesforceIncludeFormulaFields(@Nullable Output<Boolean> salesforceIncludeFormulaFields) {

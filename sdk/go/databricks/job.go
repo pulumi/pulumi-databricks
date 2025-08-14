@@ -149,7 +149,7 @@ type Job struct {
 	Environments       JobEnvironmentArrayOutput      `pulumi:"environments"`
 	ExistingClusterId  pulumi.StringPtrOutput         `pulumi:"existingClusterId"`
 	Format             pulumi.StringOutput            `pulumi:"format"`
-	// Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+	// Specifies the a Git repository for task source code. See gitSource Configuration Block below.
 	GitSource JobGitSourcePtrOutput `pulumi:"gitSource"`
 	// An optional block that specifies the health conditions for the job documented below.
 	Health JobHealthPtrOutput `pulumi:"health"`
@@ -172,7 +172,7 @@ type Job struct {
 	NotebookTask JobNotebookTaskPtrOutput `pulumi:"notebookTask"`
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings JobNotificationSettingsPtrOutput `pulumi:"notificationSettings"`
-	// Specifices job parameter for the job. See parameter Configuration Block
+	// Specifies job parameter for the job. See parameter Configuration Block
 	Parameters JobParameterArrayOutput `pulumi:"parameters"`
 	// The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
 	// * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
@@ -186,7 +186,7 @@ type Job struct {
 	Queue JobQueuePtrOutput `pulumi:"queue"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	RetryOnTimeout pulumi.BoolPtrOutput `pulumi:"retryOnTimeout"`
-	// The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+	// The user or the service principal the job runs as. See runAs Configuration Block below.
 	RunAs JobRunAsOutput `pulumi:"runAs"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	RunJobTask JobRunJobTaskPtrOutput `pulumi:"runJobTask"`
@@ -207,7 +207,8 @@ type Job struct {
 	// The conditions that triggers the job to start. See trigger Configuration Block below.
 	Trigger JobTriggerPtrOutput `pulumi:"trigger"`
 	// URL of the job on the given workspace
-	Url pulumi.StringOutput `pulumi:"url"`
+	Url           pulumi.StringOutput    `pulumi:"url"`
+	UsagePolicyId pulumi.StringPtrOutput `pulumi:"usagePolicyId"`
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications JobWebhookNotificationsPtrOutput `pulumi:"webhookNotifications"`
 }
@@ -266,7 +267,7 @@ type jobState struct {
 	Environments       []JobEnvironment       `pulumi:"environments"`
 	ExistingClusterId  *string                `pulumi:"existingClusterId"`
 	Format             *string                `pulumi:"format"`
-	// Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+	// Specifies the a Git repository for task source code. See gitSource Configuration Block below.
 	GitSource *JobGitSource `pulumi:"gitSource"`
 	// An optional block that specifies the health conditions for the job documented below.
 	Health *JobHealth `pulumi:"health"`
@@ -289,7 +290,7 @@ type jobState struct {
 	NotebookTask *JobNotebookTask `pulumi:"notebookTask"`
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings *JobNotificationSettings `pulumi:"notificationSettings"`
-	// Specifices job parameter for the job. See parameter Configuration Block
+	// Specifies job parameter for the job. See parameter Configuration Block
 	Parameters []JobParameter `pulumi:"parameters"`
 	// The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
 	// * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
@@ -303,7 +304,7 @@ type jobState struct {
 	Queue *JobQueue `pulumi:"queue"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
-	// The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+	// The user or the service principal the job runs as. See runAs Configuration Block below.
 	RunAs *JobRunAs `pulumi:"runAs"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	RunJobTask *JobRunJobTask `pulumi:"runJobTask"`
@@ -324,7 +325,8 @@ type jobState struct {
 	// The conditions that triggers the job to start. See trigger Configuration Block below.
 	Trigger *JobTrigger `pulumi:"trigger"`
 	// URL of the job on the given workspace
-	Url *string `pulumi:"url"`
+	Url           *string `pulumi:"url"`
+	UsagePolicyId *string `pulumi:"usagePolicyId"`
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications *JobWebhookNotifications `pulumi:"webhookNotifications"`
 }
@@ -354,7 +356,7 @@ type JobState struct {
 	Environments       JobEnvironmentArrayInput
 	ExistingClusterId  pulumi.StringPtrInput
 	Format             pulumi.StringPtrInput
-	// Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+	// Specifies the a Git repository for task source code. See gitSource Configuration Block below.
 	GitSource JobGitSourcePtrInput
 	// An optional block that specifies the health conditions for the job documented below.
 	Health JobHealthPtrInput
@@ -377,7 +379,7 @@ type JobState struct {
 	NotebookTask JobNotebookTaskPtrInput
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings JobNotificationSettingsPtrInput
-	// Specifices job parameter for the job. See parameter Configuration Block
+	// Specifies job parameter for the job. See parameter Configuration Block
 	Parameters JobParameterArrayInput
 	// The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
 	// * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
@@ -391,7 +393,7 @@ type JobState struct {
 	Queue JobQueuePtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	RetryOnTimeout pulumi.BoolPtrInput
-	// The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+	// The user or the service principal the job runs as. See runAs Configuration Block below.
 	RunAs JobRunAsPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	RunJobTask JobRunJobTaskPtrInput
@@ -412,7 +414,8 @@ type JobState struct {
 	// The conditions that triggers the job to start. See trigger Configuration Block below.
 	Trigger JobTriggerPtrInput
 	// URL of the job on the given workspace
-	Url pulumi.StringPtrInput
+	Url           pulumi.StringPtrInput
+	UsagePolicyId pulumi.StringPtrInput
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications JobWebhookNotificationsPtrInput
 }
@@ -446,7 +449,7 @@ type jobArgs struct {
 	Environments       []JobEnvironment       `pulumi:"environments"`
 	ExistingClusterId  *string                `pulumi:"existingClusterId"`
 	Format             *string                `pulumi:"format"`
-	// Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+	// Specifies the a Git repository for task source code. See gitSource Configuration Block below.
 	GitSource *JobGitSource `pulumi:"gitSource"`
 	// An optional block that specifies the health conditions for the job documented below.
 	Health *JobHealth `pulumi:"health"`
@@ -469,7 +472,7 @@ type jobArgs struct {
 	NotebookTask *JobNotebookTask `pulumi:"notebookTask"`
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings *JobNotificationSettings `pulumi:"notificationSettings"`
-	// Specifices job parameter for the job. See parameter Configuration Block
+	// Specifies job parameter for the job. See parameter Configuration Block
 	Parameters []JobParameter `pulumi:"parameters"`
 	// The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
 	// * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
@@ -483,7 +486,7 @@ type jobArgs struct {
 	Queue *JobQueue `pulumi:"queue"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	RetryOnTimeout *bool `pulumi:"retryOnTimeout"`
-	// The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+	// The user or the service principal the job runs as. See runAs Configuration Block below.
 	RunAs *JobRunAs `pulumi:"runAs"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	RunJobTask *JobRunJobTask `pulumi:"runJobTask"`
@@ -502,7 +505,8 @@ type jobArgs struct {
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 	// The conditions that triggers the job to start. See trigger Configuration Block below.
-	Trigger *JobTrigger `pulumi:"trigger"`
+	Trigger       *JobTrigger `pulumi:"trigger"`
+	UsagePolicyId *string     `pulumi:"usagePolicyId"`
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications *JobWebhookNotifications `pulumi:"webhookNotifications"`
 }
@@ -533,7 +537,7 @@ type JobArgs struct {
 	Environments       JobEnvironmentArrayInput
 	ExistingClusterId  pulumi.StringPtrInput
 	Format             pulumi.StringPtrInput
-	// Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+	// Specifies the a Git repository for task source code. See gitSource Configuration Block below.
 	GitSource JobGitSourcePtrInput
 	// An optional block that specifies the health conditions for the job documented below.
 	Health JobHealthPtrInput
@@ -556,7 +560,7 @@ type JobArgs struct {
 	NotebookTask JobNotebookTaskPtrInput
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings JobNotificationSettingsPtrInput
-	// Specifices job parameter for the job. See parameter Configuration Block
+	// Specifies job parameter for the job. See parameter Configuration Block
 	Parameters JobParameterArrayInput
 	// The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
 	// * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
@@ -570,7 +574,7 @@ type JobArgs struct {
 	Queue JobQueuePtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	RetryOnTimeout pulumi.BoolPtrInput
-	// The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+	// The user or the service principal the job runs as. See runAs Configuration Block below.
 	RunAs JobRunAsPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	RunJobTask JobRunJobTaskPtrInput
@@ -589,7 +593,8 @@ type JobArgs struct {
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput
 	// The conditions that triggers the job to start. See trigger Configuration Block below.
-	Trigger JobTriggerPtrInput
+	Trigger       JobTriggerPtrInput
+	UsagePolicyId pulumi.StringPtrInput
 	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
 	WebhookNotifications JobWebhookNotificationsPtrInput
 }
@@ -741,7 +746,7 @@ func (o JobOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Format }).(pulumi.StringOutput)
 }
 
-// Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+// Specifies the a Git repository for task source code. See gitSource Configuration Block below.
 func (o JobOutput) GitSource() JobGitSourcePtrOutput {
 	return o.ApplyT(func(v *Job) JobGitSourcePtrOutput { return v.GitSource }).(JobGitSourcePtrOutput)
 }
@@ -797,7 +802,7 @@ func (o JobOutput) NotificationSettings() JobNotificationSettingsPtrOutput {
 	return o.ApplyT(func(v *Job) JobNotificationSettingsPtrOutput { return v.NotificationSettings }).(JobNotificationSettingsPtrOutput)
 }
 
-// Specifices job parameter for the job. See parameter Configuration Block
+// Specifies job parameter for the job. See parameter Configuration Block
 func (o JobOutput) Parameters() JobParameterArrayOutput {
 	return o.ApplyT(func(v *Job) JobParameterArrayOutput { return v.Parameters }).(JobParameterArrayOutput)
 }
@@ -829,7 +834,7 @@ func (o JobOutput) RetryOnTimeout() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.RetryOnTimeout }).(pulumi.BoolPtrOutput)
 }
 
-// The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+// The user or the service principal the job runs as. See runAs Configuration Block below.
 func (o JobOutput) RunAs() JobRunAsOutput {
 	return o.ApplyT(func(v *Job) JobRunAsOutput { return v.RunAs }).(JobRunAsOutput)
 }
@@ -882,6 +887,10 @@ func (o JobOutput) Trigger() JobTriggerPtrOutput {
 // URL of the job on the given workspace
 func (o JobOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o JobOutput) UsagePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.UsagePolicyId }).(pulumi.StringPtrOutput)
 }
 
 // (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
