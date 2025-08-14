@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Git credential that uses personal access token
+ * 
  * You can declare Pulumi-managed Git credential using following code:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -51,6 +53,43 @@ import javax.annotation.Nullable;
  *             .gitUsername("myuser")
  *             .gitProvider("azureDevOpsServices")
  *             .personalAccessToken("sometoken")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Git credential configuration for Azure Service Principal and Azure DevOps
+ * 
+ * Databricks now supports Azure service principal federation to Azure DevOps.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/repos/automate-with-ms-entra) on how to configure service principal federation, and after everything is configured, it could be used as simple as:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.GitCredential;
+ * import com.pulumi.databricks.GitCredentialArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ado = new GitCredential("ado", GitCredentialArgs.builder()
+ *             .gitProvider("azureDevOpsServicesAad")
  *             .build());
  * 
  *     }
@@ -91,14 +130,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/gitCredential:GitCredential")
 public class GitCredential extends com.pulumi.resources.CustomResource {
     /**
-     * specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it&#39;s already configured, the apply operation will fail.
+     * specify if settings need to be enforced (i.e., to overwrite previously set credential for service principals).
      * 
      */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it&#39;s already configured, the apply operation will fail.
+     * @return specify if settings need to be enforced (i.e., to overwrite previously set credential for service principals).
      * 
      */
     public Output<Optional<Boolean>> force() {
@@ -131,6 +170,34 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> gitUsername() {
         return Codegen.optional(this.gitUsername);
+    }
+    /**
+     * boolean flag specifying if the credential is the default for the given provider type.
+     * 
+     */
+    @Export(name="isDefaultForProvider", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isDefaultForProvider;
+
+    /**
+     * @return boolean flag specifying if the credential is the default for the given provider type.
+     * 
+     */
+    public Output<Optional<Boolean>> isDefaultForProvider() {
+        return Codegen.optional(this.isDefaultForProvider);
+    }
+    /**
+     * the name of the git credential, used for identification and ease of lookup.
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return the name of the git credential, used for identification and ease of lookup.
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
     }
     /**
      * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.

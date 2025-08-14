@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -24,7 +26,11 @@ export function getDatabaseInstance(args: GetDatabaseInstanceArgs, opts?: pulumi
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDatabaseInstance:getDatabaseInstance", {
         "capacity": args.capacity,
+        "enableReadableSecondaries": args.enableReadableSecondaries,
         "name": args.name,
+        "nodeCount": args.nodeCount,
+        "parentInstanceRef": args.parentInstanceRef,
+        "retentionWindowInDays": args.retentionWindowInDays,
         "stopped": args.stopped,
     }, opts);
 }
@@ -38,9 +44,31 @@ export interface GetDatabaseInstanceArgs {
      */
     capacity?: string;
     /**
+     * (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+     */
+    enableReadableSecondaries?: boolean;
+    /**
      * The name of the instance. This is the unique identifier for the instance
      */
     name: string;
+    /**
+     * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
+     */
+    nodeCount?: number;
+    /**
+     * (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+     * child instance.
+     * Input: For specifying the parent instance to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     */
+    parentInstanceRef?: inputs.GetDatabaseInstanceParentInstanceRef;
+    /**
+     * (integer) - The retention window for the instance. This is the time window in days
+     * for which the historical data is retained. The default value is 7 days.
+     * Valid values are 2 to 35 days
+     */
+    retentionWindowInDays?: number;
     /**
      * (boolean) - Whether the instance is stopped
      */
@@ -56,6 +84,11 @@ export interface GetDatabaseInstanceResult {
      */
     readonly capacity?: string;
     /**
+     * (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+     * parent instance
+     */
+    readonly childInstanceRefs: outputs.GetDatabaseInstanceChildInstanceRef[];
+    /**
      * (string) - The timestamp when the instance was created
      */
     readonly creationTime: string;
@@ -64,27 +97,72 @@ export interface GetDatabaseInstanceResult {
      */
     readonly creator: string;
     /**
+     * (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
+     * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     */
+    readonly effectiveEnableReadableSecondaries: boolean;
+    /**
+     * (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
+     * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     */
+    readonly effectiveNodeCount: number;
+    /**
+     * (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
+     * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     */
+    readonly effectiveRetentionWindowInDays: number;
+    /**
      * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
      * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
      * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      */
     readonly effectiveStopped: boolean;
     /**
+     * (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+     */
+    readonly enableReadableSecondaries?: boolean;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * (string) - The name of the instance. This is the unique identifier for the instance
+     * (string) - Name of the ref database instance
      */
     readonly name: string;
+    /**
+     * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
+     */
+    readonly nodeCount?: number;
+    /**
+     * (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+     * child instance.
+     * Input: For specifying the parent instance to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     */
+    readonly parentInstanceRef?: outputs.GetDatabaseInstanceParentInstanceRef;
     /**
      * (string) - The version of Postgres running on the instance
      */
     readonly pgVersion: string;
     /**
+     * (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+     * enableReadableSecondaries is true
+     */
+    readonly readOnlyDns: string;
+    /**
      * (string) - The DNS endpoint to connect to the instance for read+write access
      */
     readonly readWriteDns: string;
+    /**
+     * (integer) - The retention window for the instance. This is the time window in days
+     * for which the historical data is retained. The default value is 7 days.
+     * Valid values are 2 to 35 days
+     */
+    readonly retentionWindowInDays?: number;
     /**
      * (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
@@ -94,7 +172,7 @@ export interface GetDatabaseInstanceResult {
      */
     readonly stopped?: boolean;
     /**
-     * (string) - An immutable UUID identifier for the instance
+     * (string) - Id of the ref database instance
      */
     readonly uid: string;
 }
@@ -118,7 +196,11 @@ export function getDatabaseInstanceOutput(args: GetDatabaseInstanceOutputArgs, o
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDatabaseInstance:getDatabaseInstance", {
         "capacity": args.capacity,
+        "enableReadableSecondaries": args.enableReadableSecondaries,
         "name": args.name,
+        "nodeCount": args.nodeCount,
+        "parentInstanceRef": args.parentInstanceRef,
+        "retentionWindowInDays": args.retentionWindowInDays,
         "stopped": args.stopped,
     }, opts);
 }
@@ -132,9 +214,31 @@ export interface GetDatabaseInstanceOutputArgs {
      */
     capacity?: pulumi.Input<string>;
     /**
+     * (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+     */
+    enableReadableSecondaries?: pulumi.Input<boolean>;
+    /**
      * The name of the instance. This is the unique identifier for the instance
      */
     name: pulumi.Input<string>;
+    /**
+     * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
+     */
+    nodeCount?: pulumi.Input<number>;
+    /**
+     * (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+     * child instance.
+     * Input: For specifying the parent instance to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     */
+    parentInstanceRef?: pulumi.Input<inputs.GetDatabaseInstanceParentInstanceRefArgs>;
+    /**
+     * (integer) - The retention window for the instance. This is the time window in days
+     * for which the historical data is retained. The default value is 7 days.
+     * Valid values are 2 to 35 days
+     */
+    retentionWindowInDays?: pulumi.Input<number>;
     /**
      * (boolean) - Whether the instance is stopped
      */

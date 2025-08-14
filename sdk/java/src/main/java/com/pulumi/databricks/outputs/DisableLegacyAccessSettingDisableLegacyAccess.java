@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class DisableLegacyAccessSettingDisableLegacyAccess {
+    /**
+     * @return The boolean value for the setting.
+     * 
+     */
     private Boolean value;
 
     private DisableLegacyAccessSettingDisableLegacyAccess() {}
+    /**
+     * @return The boolean value for the setting.
+     * 
+     */
     public Boolean value() {
         return this.value;
     }

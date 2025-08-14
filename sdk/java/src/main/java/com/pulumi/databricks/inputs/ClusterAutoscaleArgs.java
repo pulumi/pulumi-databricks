@@ -18,16 +18,7 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
     /**
      * The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
      * 
-     * When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
-     * 
-     * * `spark.master` must have prefix `local`, like `local[*]`
-     * * `spark.databricks.cluster.profile` must have value `singleNode`
-     * 
-     * and also `custom_tag` entry:
-     * 
-     * * `&#34;ResourceClass&#34; = &#34;SingleNode&#34;`
-     * 
-     * The following example demonstrates how to create an single node cluster:
+     * To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `is_single_node = true` and `kind = &#34;CLASSIC_PREVIEW&#34;` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -68,11 +59,8 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
      *             .sparkVersion(latestLts.id())
      *             .nodeTypeId(smallest.id())
      *             .autoterminationMinutes(20)
-     *             .sparkConf(Map.ofEntries(
-     *                 Map.entry("spark.databricks.cluster.profile", "singleNode"),
-     *                 Map.entry("spark.master", "local[*]")
-     *             ))
-     *             .customTags(Map.of("ResourceClass", "SingleNode"))
+     *             .isSingleNode(true)
+     *             .kind("CLASSIC_PREVIEW")
      *             .build());
      * 
      *     }
@@ -88,16 +76,7 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
      * 
-     * When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
-     * 
-     * * `spark.master` must have prefix `local`, like `local[*]`
-     * * `spark.databricks.cluster.profile` must have value `singleNode`
-     * 
-     * and also `custom_tag` entry:
-     * 
-     * * `&#34;ResourceClass&#34; = &#34;SingleNode&#34;`
-     * 
-     * The following example demonstrates how to create an single node cluster:
+     * To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `is_single_node = true` and `kind = &#34;CLASSIC_PREVIEW&#34;` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -138,11 +117,8 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
      *             .sparkVersion(latestLts.id())
      *             .nodeTypeId(smallest.id())
      *             .autoterminationMinutes(20)
-     *             .sparkConf(Map.ofEntries(
-     *                 Map.entry("spark.databricks.cluster.profile", "singleNode"),
-     *                 Map.entry("spark.master", "local[*]")
-     *             ))
-     *             .customTags(Map.of("ResourceClass", "SingleNode"))
+     *             .isSingleNode(true)
+     *             .kind("CLASSIC_PREVIEW")
      *             .build());
      * 
      *     }
@@ -199,16 +175,7 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param maxWorkers The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
          * 
-         * When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
-         * 
-         * * `spark.master` must have prefix `local`, like `local[*]`
-         * * `spark.databricks.cluster.profile` must have value `singleNode`
-         * 
-         * and also `custom_tag` entry:
-         * 
-         * * `&#34;ResourceClass&#34; = &#34;SingleNode&#34;`
-         * 
-         * The following example demonstrates how to create an single node cluster:
+         * To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `is_single_node = true` and `kind = &#34;CLASSIC_PREVIEW&#34;` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
          * 
          * &lt;!--Start PulumiCodeChooser --&gt;
          * <pre>
@@ -249,11 +216,8 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
          *             .sparkVersion(latestLts.id())
          *             .nodeTypeId(smallest.id())
          *             .autoterminationMinutes(20)
-         *             .sparkConf(Map.ofEntries(
-         *                 Map.entry("spark.databricks.cluster.profile", "singleNode"),
-         *                 Map.entry("spark.master", "local[*]")
-         *             ))
-         *             .customTags(Map.of("ResourceClass", "SingleNode"))
+         *             .isSingleNode(true)
+         *             .kind("CLASSIC_PREVIEW")
          *             .build());
          * 
          *     }
@@ -273,16 +237,7 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param maxWorkers The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
          * 
-         * When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
-         * 
-         * * `spark.master` must have prefix `local`, like `local[*]`
-         * * `spark.databricks.cluster.profile` must have value `singleNode`
-         * 
-         * and also `custom_tag` entry:
-         * 
-         * * `&#34;ResourceClass&#34; = &#34;SingleNode&#34;`
-         * 
-         * The following example demonstrates how to create an single node cluster:
+         * To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `is_single_node = true` and `kind = &#34;CLASSIC_PREVIEW&#34;` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
          * 
          * &lt;!--Start PulumiCodeChooser --&gt;
          * <pre>
@@ -323,11 +278,8 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
          *             .sparkVersion(latestLts.id())
          *             .nodeTypeId(smallest.id())
          *             .autoterminationMinutes(20)
-         *             .sparkConf(Map.ofEntries(
-         *                 Map.entry("spark.databricks.cluster.profile", "singleNode"),
-         *                 Map.entry("spark.master", "local[*]")
-         *             ))
-         *             .customTags(Map.of("ResourceClass", "SingleNode"))
+         *             .isSingleNode(true)
+         *             .kind("CLASSIC_PREVIEW")
          *             .build());
          * 
          *     }

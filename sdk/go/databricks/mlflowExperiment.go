@@ -37,7 +37,7 @@ import (
 //			}
 //			_, err = databricks.NewMlflowExperiment(ctx, "this", &databricks.MlflowExperimentArgs{
 //				Name:             pulumi.Sprintf("%v/Sample", me.Home),
-//				ArtifactLocation: pulumi.String("dbfs:/tmp/my-experiment"),
+//				ArtifactLocation: pulumi.String("s3://bucket/my-experiment"),
 //				Tags: databricks.MlflowExperimentTagArray{
 //					&databricks.MlflowExperimentTagArgs{
 //						Key:   pulumi.String("key1"),
@@ -98,7 +98,7 @@ import (
 type MlflowExperiment struct {
 	pulumi.CustomResourceState
 
-	// Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+	// Path to artifact location of the MLflow experiment.
 	ArtifactLocation pulumi.StringPtrOutput `pulumi:"artifactLocation"`
 	CreationTime     pulumi.IntOutput       `pulumi:"creationTime"`
 	// Deprecated: Remove the description attribute as it no longer is used and will be removed in a future version.
@@ -142,7 +142,7 @@ func GetMlflowExperiment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MlflowExperiment resources.
 type mlflowExperimentState struct {
-	// Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+	// Path to artifact location of the MLflow experiment.
 	ArtifactLocation *string `pulumi:"artifactLocation"`
 	CreationTime     *int    `pulumi:"creationTime"`
 	// Deprecated: Remove the description attribute as it no longer is used and will be removed in a future version.
@@ -157,7 +157,7 @@ type mlflowExperimentState struct {
 }
 
 type MlflowExperimentState struct {
-	// Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+	// Path to artifact location of the MLflow experiment.
 	ArtifactLocation pulumi.StringPtrInput
 	CreationTime     pulumi.IntPtrInput
 	// Deprecated: Remove the description attribute as it no longer is used and will be removed in a future version.
@@ -176,7 +176,7 @@ func (MlflowExperimentState) ElementType() reflect.Type {
 }
 
 type mlflowExperimentArgs struct {
-	// Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+	// Path to artifact location of the MLflow experiment.
 	ArtifactLocation *string `pulumi:"artifactLocation"`
 	CreationTime     *int    `pulumi:"creationTime"`
 	// Deprecated: Remove the description attribute as it no longer is used and will be removed in a future version.
@@ -192,7 +192,7 @@ type mlflowExperimentArgs struct {
 
 // The set of arguments for constructing a MlflowExperiment resource.
 type MlflowExperimentArgs struct {
-	// Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+	// Path to artifact location of the MLflow experiment.
 	ArtifactLocation pulumi.StringPtrInput
 	CreationTime     pulumi.IntPtrInput
 	// Deprecated: Remove the description attribute as it no longer is used and will be removed in a future version.
@@ -293,7 +293,7 @@ func (o MlflowExperimentOutput) ToMlflowExperimentOutputWithContext(ctx context.
 	return o
 }
 
-// Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+// Path to artifact location of the MLflow experiment.
 func (o MlflowExperimentOutput) ArtifactLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MlflowExperiment) pulumi.StringPtrOutput { return v.ArtifactLocation }).(pulumi.StringPtrOutput)
 }

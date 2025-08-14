@@ -99,6 +99,110 @@ namespace Pulumi.Databricks
     /// 
     /// Create a connection to builtin Hive Metastore
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var hms = new Databricks.Connection("hms", new()
+    ///     {
+    ///         Name = "hms-builtin",
+    ///         ConnectionType = "HIVE_METASTORE",
+    ///         Comment = "This is a connection to builtin HMS",
+    ///         Options = 
+    ///         {
+    ///             { "builtin", "true" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Create a HTTP connection with bearer token
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var httpBearer = new Databricks.Connection("http_bearer", new()
+    ///     {
+    ///         Name = "http_bearer",
+    ///         ConnectionType = "HTTP",
+    ///         Comment = "This is a connection to a HTTP service",
+    ///         Options = 
+    ///         {
+    ///             { "host", "https://example.com" },
+    ///             { "port", "8433" },
+    ///             { "base_path", "/api/" },
+    ///             { "bearer_token", "bearer_token" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Create a HTTP connection with OAuth M2M
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var httpOauth = new Databricks.Connection("http_oauth", new()
+    ///     {
+    ///         Name = "http_oauth",
+    ///         ConnectionType = "HTTP",
+    ///         Comment = "This is a connection to a HTTP service",
+    ///         Options = 
+    ///         {
+    ///             { "host", "https://example.com" },
+    ///             { "port", "8433" },
+    ///             { "base_path", "/api/" },
+    ///             { "client_id", "client_id" },
+    ///             { "client_secret", "client_secret" },
+    ///             { "oauth_scope", "channels:read channels:history chat:write" },
+    ///             { "token_endpoint", "https://authorization-server.com/oauth/token" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Create a PowerBI connection with OAuth M2M
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pbi = new Databricks.Connection("pbi", new()
+    ///     {
+    ///         Name = "test-pbi",
+    ///         ConnectionType = "POWER_BI",
+    ///         Options = 
+    ///         {
+    ///             { "authorization_endpoint", "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize" },
+    ///             { "client_id", "client_id" },
+    ///             { "client_secret", "client_secret" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by `id`:
@@ -159,6 +263,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("credentialType")]
         public Output<string> CredentialType { get; private set; } = null!;
+
+        [Output("environmentSettings")]
+        public Output<Outputs.ConnectionEnvironmentSettings?> EnvironmentSettings { get; private set; } = null!;
 
         /// <summary>
         /// Full name of connection.
@@ -291,6 +398,9 @@ namespace Pulumi.Databricks
         [Input("connectionType")]
         public Input<string>? ConnectionType { get; set; }
 
+        [Input("environmentSettings")]
+        public Input<Inputs.ConnectionEnvironmentSettingsArgs>? EnvironmentSettings { get; set; }
+
         /// <summary>
         /// Name of the Connection.
         /// </summary>
@@ -380,6 +490,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("credentialType")]
         public Input<string>? CredentialType { get; set; }
+
+        [Input("environmentSettings")]
+        public Input<Inputs.ConnectionEnvironmentSettingsGetArgs>? EnvironmentSettings { get; set; }
 
         /// <summary>
         /// Full name of connection.

@@ -157,7 +157,7 @@ export class LakehouseMonitor extends pulumi.CustomResource {
     /**
      * The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
      */
-    public /*out*/ readonly monitorVersion!: pulumi.Output<string>;
+    public /*out*/ readonly monitorVersion!: pulumi.Output<number>;
     /**
      * The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
      */
@@ -310,7 +310,7 @@ export interface LakehouseMonitorState {
     /**
      * The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
      */
-    monitorVersion?: pulumi.Input<string>;
+    monitorVersion?: pulumi.Input<number>;
     /**
      * The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
      */

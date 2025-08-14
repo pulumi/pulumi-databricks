@@ -14,9 +14,17 @@ public final class DisableLegacyAccessSettingDisableLegacyAccessArgs extends com
 
     public static final DisableLegacyAccessSettingDisableLegacyAccessArgs Empty = new DisableLegacyAccessSettingDisableLegacyAccessArgs();
 
+    /**
+     * The boolean value for the setting.
+     * 
+     */
     @Import(name="value", required=true)
     private Output<Boolean> value;
 
+    /**
+     * @return The boolean value for the setting.
+     * 
+     */
     public Output<Boolean> value() {
         return this.value;
     }
@@ -45,11 +53,23 @@ public final class DisableLegacyAccessSettingDisableLegacyAccessArgs extends com
             $ = new DisableLegacyAccessSettingDisableLegacyAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param value The boolean value for the setting.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Output<Boolean> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value The boolean value for the setting.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Boolean value) {
             return value(Output.of(value));
         }

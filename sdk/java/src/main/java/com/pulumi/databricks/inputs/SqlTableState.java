@@ -220,14 +220,14 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
      * 
      */
     @Import(name="tableType")
     private @Nullable Output<String> tableType;
 
     /**
-     * @return Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+     * @return Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
      * 
      */
     public Optional<Output<String>> tableType() {
@@ -609,7 +609,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tableType Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+         * @param tableType Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
          * 
          * @return builder
          * 
@@ -620,7 +620,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tableType Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+         * @param tableType Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
          * 
          * @return builder
          * 

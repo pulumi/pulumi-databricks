@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetQualityMonitorV2Result {
     /**
-     * @return (AnomalyDetectionConfig) -
+     * @return (AnomalyDetectionConfig)
      * 
      */
     private GetQualityMonitorV2AnomalyDetectionConfig anomalyDetectionConfig;
@@ -34,7 +34,7 @@ public final class GetQualityMonitorV2Result {
 
     private GetQualityMonitorV2Result() {}
     /**
-     * @return (AnomalyDetectionConfig) -
+     * @return (AnomalyDetectionConfig)
      * 
      */
     public GetQualityMonitorV2AnomalyDetectionConfig anomalyDetectionConfig() {

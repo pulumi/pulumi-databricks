@@ -14,11 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAlertsV2ResultEvaluationNotificationSubscriptionResult
     {
         /// <summary>
-        /// (string) -
+        /// (string)
         /// </summary>
         public readonly string? DestinationId;
         /// <summary>
-        /// (string) -
+        /// (string)
         /// </summary>
         public readonly string? UserEmail;
 

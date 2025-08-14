@@ -21,6 +21,7 @@ namespace Pulumi.Databricks.Outputs
         /// Boot disk size in GB
         /// </summary>
         public readonly int? BootDiskSize;
+        public readonly int? FirstOnDemand;
         /// <summary>
         /// Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
         /// </summary>
@@ -47,6 +48,8 @@ namespace Pulumi.Databricks.Outputs
 
             int? bootDiskSize,
 
+            int? firstOnDemand,
+
             string? googleServiceAccount,
 
             int? localSsdCount,
@@ -57,6 +60,7 @@ namespace Pulumi.Databricks.Outputs
         {
             Availability = availability;
             BootDiskSize = bootDiskSize;
+            FirstOnDemand = firstOnDemand;
             GoogleServiceAccount = googleServiceAccount;
             LocalSsdCount = localSsdCount;
             UsePreemptibleExecutors = usePreemptibleExecutors;

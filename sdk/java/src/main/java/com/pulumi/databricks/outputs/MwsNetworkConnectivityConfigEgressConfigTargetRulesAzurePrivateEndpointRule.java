@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
     private @Nullable String connectionState;
+    /**
+     * @return time in epoch milliseconds when this object was created.
+     * 
+     */
     private @Nullable Integer creationTime;
     private @Nullable Boolean deactivated;
     private @Nullable Integer deactivatedAt;
@@ -28,12 +32,20 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
     private @Nullable String networkConnectivityConfigId;
     private @Nullable String resourceId;
     private @Nullable String ruleId;
+    /**
+     * @return time in epoch milliseconds when this object was updated.
+     * 
+     */
     private @Nullable Integer updatedTime;
 
     private MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule() {}
     public Optional<String> connectionState() {
         return Optional.ofNullable(this.connectionState);
     }
+    /**
+     * @return time in epoch milliseconds when this object was created.
+     * 
+     */
     public Optional<Integer> creationTime() {
         return Optional.ofNullable(this.creationTime);
     }
@@ -65,6 +77,10 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
     public Optional<String> ruleId() {
         return Optional.ofNullable(this.ruleId);
     }
+    /**
+     * @return time in epoch milliseconds when this object was updated.
+     * 
+     */
     public Optional<Integer> updatedTime() {
         return Optional.ofNullable(this.updatedTime);
     }

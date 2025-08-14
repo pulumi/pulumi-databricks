@@ -21,14 +21,22 @@ public final class ModelServingAiGatewayGuardrailsInputArgs extends com.pulumi.r
     /**
      * List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
      * 
+     * @deprecated
+     * Please use &#39;pii&#39; and &#39;safety&#39; instead.
+     * 
      */
+    @Deprecated /* Please use 'pii' and 'safety' instead. */
     @Import(name="invalidKeywords")
     private @Nullable Output<List<String>> invalidKeywords;
 
     /**
      * @return List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
      * 
+     * @deprecated
+     * Please use &#39;pii&#39; and &#39;safety&#39; instead.
+     * 
      */
+    @Deprecated /* Please use 'pii' and 'safety' instead. */
     public Optional<Output<List<String>>> invalidKeywords() {
         return Optional.ofNullable(this.invalidKeywords);
     }
@@ -66,14 +74,22 @@ public final class ModelServingAiGatewayGuardrailsInputArgs extends com.pulumi.r
     /**
      * The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
      * 
+     * @deprecated
+     * Please use &#39;pii&#39; and &#39;safety&#39; instead.
+     * 
      */
+    @Deprecated /* Please use 'pii' and 'safety' instead. */
     @Import(name="validTopics")
     private @Nullable Output<List<String>> validTopics;
 
     /**
      * @return The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
      * 
+     * @deprecated
+     * Please use &#39;pii&#39; and &#39;safety&#39; instead.
+     * 
      */
+    @Deprecated /* Please use 'pii' and 'safety' instead. */
     public Optional<Output<List<String>>> validTopics() {
         return Optional.ofNullable(this.validTopics);
     }
@@ -110,7 +126,11 @@ public final class ModelServingAiGatewayGuardrailsInputArgs extends com.pulumi.r
          * 
          * @return builder
          * 
+         * @deprecated
+         * Please use &#39;pii&#39; and &#39;safety&#39; instead.
+         * 
          */
+        @Deprecated /* Please use 'pii' and 'safety' instead. */
         public Builder invalidKeywords(@Nullable Output<List<String>> invalidKeywords) {
             $.invalidKeywords = invalidKeywords;
             return this;
@@ -121,7 +141,11 @@ public final class ModelServingAiGatewayGuardrailsInputArgs extends com.pulumi.r
          * 
          * @return builder
          * 
+         * @deprecated
+         * Please use &#39;pii&#39; and &#39;safety&#39; instead.
+         * 
          */
+        @Deprecated /* Please use 'pii' and 'safety' instead. */
         public Builder invalidKeywords(List<String> invalidKeywords) {
             return invalidKeywords(Output.of(invalidKeywords));
         }
@@ -131,7 +155,11 @@ public final class ModelServingAiGatewayGuardrailsInputArgs extends com.pulumi.r
          * 
          * @return builder
          * 
+         * @deprecated
+         * Please use &#39;pii&#39; and &#39;safety&#39; instead.
+         * 
          */
+        @Deprecated /* Please use 'pii' and 'safety' instead. */
         public Builder invalidKeywords(String... invalidKeywords) {
             return invalidKeywords(List.of(invalidKeywords));
         }
@@ -183,7 +211,11 @@ public final class ModelServingAiGatewayGuardrailsInputArgs extends com.pulumi.r
          * 
          * @return builder
          * 
+         * @deprecated
+         * Please use &#39;pii&#39; and &#39;safety&#39; instead.
+         * 
          */
+        @Deprecated /* Please use 'pii' and 'safety' instead. */
         public Builder validTopics(@Nullable Output<List<String>> validTopics) {
             $.validTopics = validTopics;
             return this;
@@ -194,7 +226,11 @@ public final class ModelServingAiGatewayGuardrailsInputArgs extends com.pulumi.r
          * 
          * @return builder
          * 
+         * @deprecated
+         * Please use &#39;pii&#39; and &#39;safety&#39; instead.
+         * 
          */
+        @Deprecated /* Please use 'pii' and 'safety' instead. */
         public Builder validTopics(List<String> validTopics) {
             return validTopics(Output.of(validTopics));
         }
@@ -204,7 +240,11 @@ public final class ModelServingAiGatewayGuardrailsInputArgs extends com.pulumi.r
          * 
          * @return builder
          * 
+         * @deprecated
+         * Please use &#39;pii&#39; and &#39;safety&#39; instead.
+         * 
          */
+        @Deprecated /* Please use 'pii' and 'safety' instead. */
         public Builder validTopics(String... validTopics) {
             return validTopics(List.of(validTopics));
         }

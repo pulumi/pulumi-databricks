@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * const me = databricks.getCurrentUser({});
  * const _this = new databricks.MlflowExperiment("this", {
  *     name: me.then(me => `${me.home}/Sample`),
- *     artifactLocation: "dbfs:/tmp/my-experiment",
+ *     artifactLocation: "s3://bucket/my-experiment",
  *     tags: [
  *         {
  *             key: "key1",
@@ -101,7 +101,7 @@ export class MlflowExperiment extends pulumi.CustomResource {
     }
 
     /**
-     * Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+     * Path to artifact location of the MLflow experiment.
      */
     public readonly artifactLocation!: pulumi.Output<string | undefined>;
     public readonly creationTime!: pulumi.Output<number>;
@@ -163,7 +163,7 @@ export class MlflowExperiment extends pulumi.CustomResource {
  */
 export interface MlflowExperimentState {
     /**
-     * Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+     * Path to artifact location of the MLflow experiment.
      */
     artifactLocation?: pulumi.Input<string>;
     creationTime?: pulumi.Input<number>;
@@ -189,7 +189,7 @@ export interface MlflowExperimentState {
  */
 export interface MlflowExperimentArgs {
     /**
-     * Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+     * Path to artifact location of the MLflow experiment.
      */
     artifactLocation?: pulumi.Input<string>;
     creationTime?: pulumi.Input<number>;

@@ -4,9 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetDatabaseInstancesDatabaseInstanceChildInstanceRef;
+import com.pulumi.databricks.outputs.GetDatabaseInstancesDatabaseInstanceParentInstanceRef;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,6 +23,12 @@ public final class GetDatabaseInstancesDatabaseInstance {
      */
     private @Nullable String capacity;
     /**
+     * @return (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+     * parent instance
+     * 
+     */
+    private List<GetDatabaseInstancesDatabaseInstanceChildInstanceRef> childInstanceRefs;
+    /**
      * @return (string) - The timestamp when the instance was created
      * 
      */
@@ -29,6 +39,27 @@ public final class GetDatabaseInstancesDatabaseInstance {
      */
     private String creator;
     /**
+     * @return (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
+     * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    private Boolean effectiveEnableReadableSecondaries;
+    /**
+     * @return (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
+     * `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    private Integer effectiveNodeCount;
+    /**
+     * @return (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
+     * `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    private Integer effectiveRetentionWindowInDays;
+    /**
      * @return (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
      * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
      * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
@@ -36,20 +67,52 @@ public final class GetDatabaseInstancesDatabaseInstance {
      */
     private Boolean effectiveStopped;
     /**
-     * @return (string) - The name of the instance. This is the unique identifier for the instance
+     * @return (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+     * 
+     */
+    private @Nullable Boolean enableReadableSecondaries;
+    /**
+     * @return (string) - Name of the ref database instance
      * 
      */
     private String name;
+    /**
+     * @return (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
+     * 
+     */
+    private @Nullable Integer nodeCount;
+    /**
+     * @return (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+     * child instance.
+     * Input: For specifying the parent instance to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     * 
+     */
+    private @Nullable GetDatabaseInstancesDatabaseInstanceParentInstanceRef parentInstanceRef;
     /**
      * @return (string) - The version of Postgres running on the instance
      * 
      */
     private String pgVersion;
     /**
+     * @return (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+     * enable_readable_secondaries is true
+     * 
+     */
+    private String readOnlyDns;
+    /**
      * @return (string) - The DNS endpoint to connect to the instance for read+write access
      * 
      */
     private String readWriteDns;
+    /**
+     * @return (integer) - The retention window for the instance. This is the time window in days
+     * for which the historical data is retained. The default value is 7 days.
+     * Valid values are 2 to 35 days
+     * 
+     */
+    private @Nullable Integer retentionWindowInDays;
     /**
      * @return (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      * 
@@ -61,7 +124,7 @@ public final class GetDatabaseInstancesDatabaseInstance {
      */
     private @Nullable Boolean stopped;
     /**
-     * @return (string) - An immutable UUID identifier for the instance
+     * @return (string) - Id of the ref database instance
      * 
      */
     private String uid;
@@ -73,6 +136,14 @@ public final class GetDatabaseInstancesDatabaseInstance {
      */
     public Optional<String> capacity() {
         return Optional.ofNullable(this.capacity);
+    }
+    /**
+     * @return (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+     * parent instance
+     * 
+     */
+    public List<GetDatabaseInstancesDatabaseInstanceChildInstanceRef> childInstanceRefs() {
+        return this.childInstanceRefs;
     }
     /**
      * @return (string) - The timestamp when the instance was created
@@ -89,6 +160,33 @@ public final class GetDatabaseInstancesDatabaseInstance {
         return this.creator;
     }
     /**
+     * @return (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
+     * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    public Boolean effectiveEnableReadableSecondaries() {
+        return this.effectiveEnableReadableSecondaries;
+    }
+    /**
+     * @return (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
+     * `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    public Integer effectiveNodeCount() {
+        return this.effectiveNodeCount;
+    }
+    /**
+     * @return (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
+     * `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    public Integer effectiveRetentionWindowInDays() {
+        return this.effectiveRetentionWindowInDays;
+    }
+    /**
      * @return (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
      * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
      * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
@@ -98,11 +196,36 @@ public final class GetDatabaseInstancesDatabaseInstance {
         return this.effectiveStopped;
     }
     /**
-     * @return (string) - The name of the instance. This is the unique identifier for the instance
+     * @return (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+     * 
+     */
+    public Optional<Boolean> enableReadableSecondaries() {
+        return Optional.ofNullable(this.enableReadableSecondaries);
+    }
+    /**
+     * @return (string) - Name of the ref database instance
      * 
      */
     public String name() {
         return this.name;
+    }
+    /**
+     * @return (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
+     * 
+     */
+    public Optional<Integer> nodeCount() {
+        return Optional.ofNullable(this.nodeCount);
+    }
+    /**
+     * @return (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+     * child instance.
+     * Input: For specifying the parent instance to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     * 
+     */
+    public Optional<GetDatabaseInstancesDatabaseInstanceParentInstanceRef> parentInstanceRef() {
+        return Optional.ofNullable(this.parentInstanceRef);
     }
     /**
      * @return (string) - The version of Postgres running on the instance
@@ -112,11 +235,28 @@ public final class GetDatabaseInstancesDatabaseInstance {
         return this.pgVersion;
     }
     /**
+     * @return (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+     * enable_readable_secondaries is true
+     * 
+     */
+    public String readOnlyDns() {
+        return this.readOnlyDns;
+    }
+    /**
      * @return (string) - The DNS endpoint to connect to the instance for read+write access
      * 
      */
     public String readWriteDns() {
         return this.readWriteDns;
+    }
+    /**
+     * @return (integer) - The retention window for the instance. This is the time window in days
+     * for which the historical data is retained. The default value is 7 days.
+     * Valid values are 2 to 35 days
+     * 
+     */
+    public Optional<Integer> retentionWindowInDays() {
+        return Optional.ofNullable(this.retentionWindowInDays);
     }
     /**
      * @return (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
@@ -133,7 +273,7 @@ public final class GetDatabaseInstancesDatabaseInstance {
         return Optional.ofNullable(this.stopped);
     }
     /**
-     * @return (string) - An immutable UUID identifier for the instance
+     * @return (string) - Id of the ref database instance
      * 
      */
     public String uid() {
@@ -150,12 +290,21 @@ public final class GetDatabaseInstancesDatabaseInstance {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String capacity;
+        private List<GetDatabaseInstancesDatabaseInstanceChildInstanceRef> childInstanceRefs;
         private String creationTime;
         private String creator;
+        private Boolean effectiveEnableReadableSecondaries;
+        private Integer effectiveNodeCount;
+        private Integer effectiveRetentionWindowInDays;
         private Boolean effectiveStopped;
+        private @Nullable Boolean enableReadableSecondaries;
         private String name;
+        private @Nullable Integer nodeCount;
+        private @Nullable GetDatabaseInstancesDatabaseInstanceParentInstanceRef parentInstanceRef;
         private String pgVersion;
+        private String readOnlyDns;
         private String readWriteDns;
+        private @Nullable Integer retentionWindowInDays;
         private String state;
         private @Nullable Boolean stopped;
         private String uid;
@@ -163,12 +312,21 @@ public final class GetDatabaseInstancesDatabaseInstance {
         public Builder(GetDatabaseInstancesDatabaseInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.capacity = defaults.capacity;
+    	      this.childInstanceRefs = defaults.childInstanceRefs;
     	      this.creationTime = defaults.creationTime;
     	      this.creator = defaults.creator;
+    	      this.effectiveEnableReadableSecondaries = defaults.effectiveEnableReadableSecondaries;
+    	      this.effectiveNodeCount = defaults.effectiveNodeCount;
+    	      this.effectiveRetentionWindowInDays = defaults.effectiveRetentionWindowInDays;
     	      this.effectiveStopped = defaults.effectiveStopped;
+    	      this.enableReadableSecondaries = defaults.enableReadableSecondaries;
     	      this.name = defaults.name;
+    	      this.nodeCount = defaults.nodeCount;
+    	      this.parentInstanceRef = defaults.parentInstanceRef;
     	      this.pgVersion = defaults.pgVersion;
+    	      this.readOnlyDns = defaults.readOnlyDns;
     	      this.readWriteDns = defaults.readWriteDns;
+    	      this.retentionWindowInDays = defaults.retentionWindowInDays;
     	      this.state = defaults.state;
     	      this.stopped = defaults.stopped;
     	      this.uid = defaults.uid;
@@ -179,6 +337,17 @@ public final class GetDatabaseInstancesDatabaseInstance {
 
             this.capacity = capacity;
             return this;
+        }
+        @CustomType.Setter
+        public Builder childInstanceRefs(List<GetDatabaseInstancesDatabaseInstanceChildInstanceRef> childInstanceRefs) {
+            if (childInstanceRefs == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "childInstanceRefs");
+            }
+            this.childInstanceRefs = childInstanceRefs;
+            return this;
+        }
+        public Builder childInstanceRefs(GetDatabaseInstancesDatabaseInstanceChildInstanceRef... childInstanceRefs) {
+            return childInstanceRefs(List.of(childInstanceRefs));
         }
         @CustomType.Setter
         public Builder creationTime(String creationTime) {
@@ -197,11 +366,41 @@ public final class GetDatabaseInstancesDatabaseInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder effectiveEnableReadableSecondaries(Boolean effectiveEnableReadableSecondaries) {
+            if (effectiveEnableReadableSecondaries == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "effectiveEnableReadableSecondaries");
+            }
+            this.effectiveEnableReadableSecondaries = effectiveEnableReadableSecondaries;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveNodeCount(Integer effectiveNodeCount) {
+            if (effectiveNodeCount == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "effectiveNodeCount");
+            }
+            this.effectiveNodeCount = effectiveNodeCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveRetentionWindowInDays(Integer effectiveRetentionWindowInDays) {
+            if (effectiveRetentionWindowInDays == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "effectiveRetentionWindowInDays");
+            }
+            this.effectiveRetentionWindowInDays = effectiveRetentionWindowInDays;
+            return this;
+        }
+        @CustomType.Setter
         public Builder effectiveStopped(Boolean effectiveStopped) {
             if (effectiveStopped == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "effectiveStopped");
             }
             this.effectiveStopped = effectiveStopped;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableReadableSecondaries(@Nullable Boolean enableReadableSecondaries) {
+
+            this.enableReadableSecondaries = enableReadableSecondaries;
             return this;
         }
         @CustomType.Setter
@@ -213,6 +412,18 @@ public final class GetDatabaseInstancesDatabaseInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder nodeCount(@Nullable Integer nodeCount) {
+
+            this.nodeCount = nodeCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parentInstanceRef(@Nullable GetDatabaseInstancesDatabaseInstanceParentInstanceRef parentInstanceRef) {
+
+            this.parentInstanceRef = parentInstanceRef;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pgVersion(String pgVersion) {
             if (pgVersion == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "pgVersion");
@@ -221,11 +432,25 @@ public final class GetDatabaseInstancesDatabaseInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder readOnlyDns(String readOnlyDns) {
+            if (readOnlyDns == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "readOnlyDns");
+            }
+            this.readOnlyDns = readOnlyDns;
+            return this;
+        }
+        @CustomType.Setter
         public Builder readWriteDns(String readWriteDns) {
             if (readWriteDns == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "readWriteDns");
             }
             this.readWriteDns = readWriteDns;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder retentionWindowInDays(@Nullable Integer retentionWindowInDays) {
+
+            this.retentionWindowInDays = retentionWindowInDays;
             return this;
         }
         @CustomType.Setter
@@ -253,12 +478,21 @@ public final class GetDatabaseInstancesDatabaseInstance {
         public GetDatabaseInstancesDatabaseInstance build() {
             final var _resultValue = new GetDatabaseInstancesDatabaseInstance();
             _resultValue.capacity = capacity;
+            _resultValue.childInstanceRefs = childInstanceRefs;
             _resultValue.creationTime = creationTime;
             _resultValue.creator = creator;
+            _resultValue.effectiveEnableReadableSecondaries = effectiveEnableReadableSecondaries;
+            _resultValue.effectiveNodeCount = effectiveNodeCount;
+            _resultValue.effectiveRetentionWindowInDays = effectiveRetentionWindowInDays;
             _resultValue.effectiveStopped = effectiveStopped;
+            _resultValue.enableReadableSecondaries = enableReadableSecondaries;
             _resultValue.name = name;
+            _resultValue.nodeCount = nodeCount;
+            _resultValue.parentInstanceRef = parentInstanceRef;
             _resultValue.pgVersion = pgVersion;
+            _resultValue.readOnlyDns = readOnlyDns;
             _resultValue.readWriteDns = readWriteDns;
+            _resultValue.retentionWindowInDays = retentionWindowInDays;
             _resultValue.state = state;
             _resultValue.stopped = stopped;
             _resultValue.uid = uid;

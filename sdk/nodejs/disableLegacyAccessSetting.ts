@@ -6,6 +6,40 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * The `databricks.DisableLegacyAccessSetting` resource allows you to disable legacy access. It has the following impact:
+ *
+ * 1. Disables direct access to Hive Metastores from the workspace. However, you can still access a Hive Metastore through Hive Metastore federation.
+ * 2. Disables Fallback Mode on any External Location access from the workspace.
+ * 3. Disables Databricks Runtime versions prior to 13.3LTS.
+ *
+ * > This resource can only be used with a workspace-level provider!
+ *
+ * > It may take 5 minutes to take effect and requires a restart of clusters and SQL warehouses.
+ *
+ * > Please also set the default namespace using databricks.DefaultNamespaceSetting to any value other than `hiveMetastore` to avoid potential issues.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.DisableLegacyAccessSetting("this", {disableLegacyAccess: {
+ *     value: true,
+ * }});
+ * ```
+ *
+ * ## Import
+ *
+ * This resource can be imported by predefined name `global`:
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting this global
+ * ```
+ */
 export class DisableLegacyAccessSetting extends pulumi.CustomResource {
     /**
      * Get an existing DisableLegacyAccessSetting resource's state with the given name, ID, and optional extra
@@ -34,6 +68,9 @@ export class DisableLegacyAccessSetting extends pulumi.CustomResource {
         return obj['__pulumiType'] === DisableLegacyAccessSetting.__pulumiType;
     }
 
+    /**
+     * The configuration details.
+     */
     public readonly disableLegacyAccess!: pulumi.Output<outputs.DisableLegacyAccessSettingDisableLegacyAccess>;
     public readonly etag!: pulumi.Output<string>;
     public readonly settingName!: pulumi.Output<string>;
@@ -72,6 +109,9 @@ export class DisableLegacyAccessSetting extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DisableLegacyAccessSetting resources.
  */
 export interface DisableLegacyAccessSettingState {
+    /**
+     * The configuration details.
+     */
     disableLegacyAccess?: pulumi.Input<inputs.DisableLegacyAccessSettingDisableLegacyAccess>;
     etag?: pulumi.Input<string>;
     settingName?: pulumi.Input<string>;
@@ -81,6 +121,9 @@ export interface DisableLegacyAccessSettingState {
  * The set of arguments for constructing a DisableLegacyAccessSetting resource.
  */
 export interface DisableLegacyAccessSettingArgs {
+    /**
+     * The configuration details.
+     */
     disableLegacyAccess: pulumi.Input<inputs.DisableLegacyAccessSettingDisableLegacyAccess>;
     etag?: pulumi.Input<string>;
     settingName?: pulumi.Input<string>;

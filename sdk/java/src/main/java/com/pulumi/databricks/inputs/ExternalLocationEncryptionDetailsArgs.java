@@ -15,9 +15,17 @@ public final class ExternalLocationEncryptionDetailsArgs extends com.pulumi.reso
 
     public static final ExternalLocationEncryptionDetailsArgs Empty = new ExternalLocationEncryptionDetailsArgs();
 
+    /**
+     * a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+     * 
+     */
     @Import(name="sseEncryptionDetails")
     private @Nullable Output<ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs> sseEncryptionDetails;
 
+    /**
+     * @return a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+     * 
+     */
     public Optional<Output<ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs>> sseEncryptionDetails() {
         return Optional.ofNullable(this.sseEncryptionDetails);
     }
@@ -46,11 +54,23 @@ public final class ExternalLocationEncryptionDetailsArgs extends com.pulumi.reso
             $ = new ExternalLocationEncryptionDetailsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param sseEncryptionDetails a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder sseEncryptionDetails(@Nullable Output<ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs> sseEncryptionDetails) {
             $.sseEncryptionDetails = sseEncryptionDetails;
             return this;
         }
 
+        /**
+         * @param sseEncryptionDetails a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder sseEncryptionDetails(ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs sseEncryptionDetails) {
             return sseEncryptionDetails(Output.of(sseEncryptionDetails));
         }

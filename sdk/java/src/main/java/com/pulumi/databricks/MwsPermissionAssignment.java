@@ -154,7 +154,7 @@ import javax.annotation.Nullable;
  * 
  * The following resources are used in the same context:
  * 
- * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+ * * databricks.Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
  * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
  * * databricks.GroupMember to attach users and groups as group members.
  * * databricks.PermissionAssignment to manage permission assignment from a workspace context

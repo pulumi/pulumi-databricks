@@ -16,14 +16,14 @@ public final class GetAlertV2EvaluationNotificationSubscriptionArgs extends com.
     public static final GetAlertV2EvaluationNotificationSubscriptionArgs Empty = new GetAlertV2EvaluationNotificationSubscriptionArgs();
 
     /**
-     * (string) -
+     * (string)
      * 
      */
     @Import(name="destinationId")
     private @Nullable Output<String> destinationId;
 
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     public Optional<Output<String>> destinationId() {
@@ -31,14 +31,14 @@ public final class GetAlertV2EvaluationNotificationSubscriptionArgs extends com.
     }
 
     /**
-     * (string) -
+     * (string)
      * 
      */
     @Import(name="userEmail")
     private @Nullable Output<String> userEmail;
 
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     public Optional<Output<String>> userEmail() {
@@ -71,7 +71,7 @@ public final class GetAlertV2EvaluationNotificationSubscriptionArgs extends com.
         }
 
         /**
-         * @param destinationId (string) -
+         * @param destinationId (string)
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class GetAlertV2EvaluationNotificationSubscriptionArgs extends com.
         }
 
         /**
-         * @param destinationId (string) -
+         * @param destinationId (string)
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class GetAlertV2EvaluationNotificationSubscriptionArgs extends com.
         }
 
         /**
-         * @param userEmail (string) -
+         * @param userEmail (string)
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class GetAlertV2EvaluationNotificationSubscriptionArgs extends com.
         }
 
         /**
-         * @param userEmail (string) -
+         * @param userEmail (string)
          * 
          * @return builder
          * 

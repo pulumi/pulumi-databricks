@@ -55,7 +55,7 @@ export interface GetQualityMonitorV2Args {
  */
 export interface GetQualityMonitorV2Result {
     /**
-     * (AnomalyDetectionConfig) -
+     * (AnomalyDetectionConfig)
      */
     readonly anomalyDetectionConfig: outputs.GetQualityMonitorV2AnomalyDetectionConfig;
     /**

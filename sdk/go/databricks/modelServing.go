@@ -238,6 +238,12 @@ type ModelServing struct {
 	BudgetPolicyId pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
 	// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
 	Config ModelServingConfigOutput `pulumi:"config"`
+	// The description of the model serving endpoint.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// A block with Email notification setting.
+	EmailNotifications ModelServingEmailNotificationsPtrOutput `pulumi:"emailNotifications"`
+	// Invocation url of the endpoint.
+	EndpointUrl pulumi.StringOutput `pulumi:"endpointUrl"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
@@ -288,6 +294,12 @@ type modelServingState struct {
 	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
 	// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
 	Config *ModelServingConfig `pulumi:"config"`
+	// The description of the model serving endpoint.
+	Description *string `pulumi:"description"`
+	// A block with Email notification setting.
+	EmailNotifications *ModelServingEmailNotifications `pulumi:"emailNotifications"`
+	// Invocation url of the endpoint.
+	EndpointUrl *string `pulumi:"endpointUrl"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name *string `pulumi:"name"`
 	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
@@ -309,6 +321,12 @@ type ModelServingState struct {
 	BudgetPolicyId pulumi.StringPtrInput
 	// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
 	Config ModelServingConfigPtrInput
+	// The description of the model serving endpoint.
+	Description pulumi.StringPtrInput
+	// A block with Email notification setting.
+	EmailNotifications ModelServingEmailNotificationsPtrInput
+	// Invocation url of the endpoint.
+	EndpointUrl pulumi.StringPtrInput
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name pulumi.StringPtrInput
 	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
@@ -334,6 +352,10 @@ type modelServingArgs struct {
 	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
 	// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
 	Config *ModelServingConfig `pulumi:"config"`
+	// The description of the model serving endpoint.
+	Description *string `pulumi:"description"`
+	// A block with Email notification setting.
+	EmailNotifications *ModelServingEmailNotifications `pulumi:"emailNotifications"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name *string `pulumi:"name"`
 	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
@@ -354,6 +376,10 @@ type ModelServingArgs struct {
 	BudgetPolicyId pulumi.StringPtrInput
 	// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
 	Config ModelServingConfigPtrInput
+	// The description of the model serving endpoint.
+	Description pulumi.StringPtrInput
+	// A block with Email notification setting.
+	EmailNotifications ModelServingEmailNotificationsPtrInput
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name pulumi.StringPtrInput
 	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
@@ -466,6 +492,21 @@ func (o ModelServingOutput) BudgetPolicyId() pulumi.StringPtrOutput {
 // The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
 func (o ModelServingOutput) Config() ModelServingConfigOutput {
 	return o.ApplyT(func(v *ModelServing) ModelServingConfigOutput { return v.Config }).(ModelServingConfigOutput)
+}
+
+// The description of the model serving endpoint.
+func (o ModelServingOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServing) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A block with Email notification setting.
+func (o ModelServingOutput) EmailNotifications() ModelServingEmailNotificationsPtrOutput {
+	return o.ApplyT(func(v *ModelServing) ModelServingEmailNotificationsPtrOutput { return v.EmailNotifications }).(ModelServingEmailNotificationsPtrOutput)
+}
+
+// Invocation url of the endpoint.
+func (o ModelServingOutput) EndpointUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ModelServing) pulumi.StringOutput { return v.EndpointUrl }).(pulumi.StringOutput)
 }
 
 // The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.

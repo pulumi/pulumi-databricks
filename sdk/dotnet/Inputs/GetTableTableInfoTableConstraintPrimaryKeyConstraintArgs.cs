@@ -26,6 +26,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("rely")]
+        public Input<bool>? Rely { get; set; }
+
         [Input("timeseriesColumns")]
         private InputList<string>? _timeseriesColumns;
         public InputList<string> TimeseriesColumns

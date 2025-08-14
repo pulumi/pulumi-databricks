@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > Please switch to File or WorkspaceFile to manage files. Databricks recommends against storing any production data or sensitive information in the DBFS root.
+//
 // This is a resource that lets you manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html). The best use cases are libraries for Cluster or databricks_job. You can also use DbfsFile and getDbfsFilePaths data sources.
 //
 // > This resource can only be used with a workspace-level provider!

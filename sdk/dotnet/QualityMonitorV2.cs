@@ -63,7 +63,7 @@ namespace Pulumi.Databricks
     public partial class QualityMonitorV2 : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (AnomalyDetectionConfig) -
+        /// (AnomalyDetectionConfig)
         /// </summary>
         [Output("anomalyDetectionConfig")]
         public Output<Outputs.QualityMonitorV2AnomalyDetectionConfig> AnomalyDetectionConfig { get; private set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.Databricks
     public sealed class QualityMonitorV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (AnomalyDetectionConfig) -
+        /// (AnomalyDetectionConfig)
         /// </summary>
         [Input("anomalyDetectionConfig")]
         public Input<Inputs.QualityMonitorV2AnomalyDetectionConfigGetArgs>? AnomalyDetectionConfig { get; set; }

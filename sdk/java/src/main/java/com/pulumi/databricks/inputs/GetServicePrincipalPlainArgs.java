@@ -46,14 +46,14 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * ID of the service principal. The service principal must exist before this resource can be retrieved.
+     * Application ID of the service principal. The service principal must exist before this resource can be retrieved.
      * 
      */
     @Import(name="applicationId")
     private @Nullable String applicationId;
 
     /**
-     * @return ID of the service principal. The service principal must exist before this resource can be retrieved.
+     * @return Application ID of the service principal. The service principal must exist before this resource can be retrieved.
      * 
      */
     public Optional<String> applicationId() {
@@ -106,14 +106,14 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The id of the service principal.
+     * The id of the service principal (SCIM ID).
      * 
      */
     @Import(name="id")
     private @Nullable String id;
 
     /**
-     * @return The id of the service principal.
+     * @return The id of the service principal (SCIM ID).
      * 
      */
     public Optional<String> id() {
@@ -135,6 +135,21 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.repos);
     }
 
+    /**
+     * Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+     * 
+     */
+    @Import(name="scimId")
+    private @Nullable String scimId;
+
+    /**
+     * @return Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+     * 
+     */
+    public Optional<String> scimId() {
+        return Optional.ofNullable(this.scimId);
+    }
+
     @Import(name="spId")
     private @Nullable String spId;
 
@@ -153,6 +168,7 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
         this.home = $.home;
         this.id = $.id;
         this.repos = $.repos;
+        this.scimId = $.scimId;
         this.spId = $.spId;
     }
 
@@ -197,7 +213,7 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param applicationId ID of the service principal. The service principal must exist before this resource can be retrieved.
+         * @param applicationId Application ID of the service principal. The service principal must exist before this resource can be retrieved.
          * 
          * @return builder
          * 
@@ -241,7 +257,7 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param id The id of the service principal.
+         * @param id The id of the service principal (SCIM ID).
          * 
          * @return builder
          * 
@@ -259,6 +275,17 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
          */
         public Builder repos(@Nullable String repos) {
             $.repos = repos;
+            return this;
+        }
+
+        /**
+         * @param scimId Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scimId(@Nullable String scimId) {
+            $.scimId = scimId;
             return this;
         }
 

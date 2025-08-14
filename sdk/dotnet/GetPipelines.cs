@@ -12,13 +12,13 @@ namespace Pulumi.Databricks
     public static class GetPipelines
     {
         /// <summary>
-        /// Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+        /// Retrieves a list of all databricks.Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
-        /// Get all Delta Live Tables pipelines:
+        /// Get all Lakeflow Declarative Pipelines:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -37,7 +37,7 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// 
-        /// Filter Delta Live Tables pipelines by name (exact match):
+        /// Filter Lakeflow Declarative Pipelines by name (exact match):
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -59,7 +59,7 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// 
-        /// Filter Delta Live Tables pipelines by name (wildcard search):
+        /// Filter Lakeflow Declarative Pipelines by name (wildcard search):
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -86,7 +86,7 @@ namespace Pulumi.Databricks
         /// The following resources are used in the same context:
         /// 
         /// * End to end workspace management guide.
-        /// * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+        /// * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
         /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
         /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         /// * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -95,13 +95,13 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPipelinesResult>("databricks:index/getPipelines:getPipelines", args ?? new GetPipelinesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+        /// Retrieves a list of all databricks.Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
-        /// Get all Delta Live Tables pipelines:
+        /// Get all Lakeflow Declarative Pipelines:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -120,7 +120,7 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// 
-        /// Filter Delta Live Tables pipelines by name (exact match):
+        /// Filter Lakeflow Declarative Pipelines by name (exact match):
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -142,7 +142,7 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// 
-        /// Filter Delta Live Tables pipelines by name (wildcard search):
+        /// Filter Lakeflow Declarative Pipelines by name (wildcard search):
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -169,7 +169,7 @@ namespace Pulumi.Databricks
         /// The following resources are used in the same context:
         /// 
         /// * End to end workspace management guide.
-        /// * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+        /// * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
         /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
         /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         /// * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -178,13 +178,13 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetPipelinesResult>("databricks:index/getPipelines:getPipelines", args ?? new GetPipelinesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+        /// Retrieves a list of all databricks.Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
         /// ## Example Usage
         /// 
-        /// Get all Delta Live Tables pipelines:
+        /// Get all Lakeflow Declarative Pipelines:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -203,7 +203,7 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// 
-        /// Filter Delta Live Tables pipelines by name (exact match):
+        /// Filter Lakeflow Declarative Pipelines by name (exact match):
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -225,7 +225,7 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// 
-        /// Filter Delta Live Tables pipelines by name (wildcard search):
+        /// Filter Lakeflow Declarative Pipelines by name (wildcard search):
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -252,7 +252,7 @@ namespace Pulumi.Databricks
         /// The following resources are used in the same context:
         /// 
         /// * End to end workspace management guide.
-        /// * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+        /// * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
         /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
         /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
         /// * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
@@ -268,7 +268,7 @@ namespace Pulumi.Databricks
         private List<string>? _ids;
 
         /// <summary>
-        /// List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+        /// List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
         /// </summary>
         public List<string> Ids
         {
@@ -277,7 +277,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+        /// Filter Lakeflow Declarative Pipelines by name for a given search term. `%` is the supported wildcard operator.
         /// </summary>
         [Input("pipelineName")]
         public string? PipelineName { get; set; }
@@ -294,7 +294,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _ids;
 
         /// <summary>
-        /// List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+        /// List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
         /// </summary>
         public InputList<string> Ids
         {
@@ -303,7 +303,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+        /// Filter Lakeflow Declarative Pipelines by name for a given search term. `%` is the supported wildcard operator.
         /// </summary>
         [Input("pipelineName")]
         public Input<string>? PipelineName { get; set; }
@@ -323,7 +323,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+        /// List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? PipelineName;

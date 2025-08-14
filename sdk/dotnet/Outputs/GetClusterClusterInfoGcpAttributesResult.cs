@@ -15,6 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly string? Availability;
         public readonly int? BootDiskSize;
+        public readonly int? FirstOnDemand;
         public readonly string? GoogleServiceAccount;
         public readonly int? LocalSsdCount;
         public readonly bool? UsePreemptibleExecutors;
@@ -26,6 +27,8 @@ namespace Pulumi.Databricks.Outputs
 
             int? bootDiskSize,
 
+            int? firstOnDemand,
+
             string? googleServiceAccount,
 
             int? localSsdCount,
@@ -36,6 +39,7 @@ namespace Pulumi.Databricks.Outputs
         {
             Availability = availability;
             BootDiskSize = bootDiskSize;
+            FirstOnDemand = firstOnDemand;
             GoogleServiceAccount = googleServiceAccount;
             LocalSsdCount = localSsdCount;
             UsePreemptibleExecutors = usePreemptibleExecutors;

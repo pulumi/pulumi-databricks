@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Outputs
     public sealed class AppResource
     {
         /// <summary>
+        /// attribute
+        /// </summary>
+        public readonly Outputs.AppResourceDatabase? Database;
+        /// <summary>
         /// The description of the resource.
         /// 
         /// Exactly one of the following attributes must be provided:
@@ -46,6 +50,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private AppResource(
+            Outputs.AppResourceDatabase? database,
+
             string? description,
 
             Outputs.AppResourceJob? job,
@@ -60,6 +66,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.AppResourceUcSecurable? ucSecurable)
         {
+            Database = database;
             Description = description;
             Job = job;
             Name = name;

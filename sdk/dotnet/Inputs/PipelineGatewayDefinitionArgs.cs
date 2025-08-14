@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> GatewayStorageCatalog { get; set; } = null!;
 
         /// <summary>
-        /// Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+        /// Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Lakeflow Declarative Pipelines system will automatically create the storage location under the catalog and schema.
         /// </summary>
         [Input("gatewayStorageName")]
         public Input<string>? GatewayStorageName { get; set; }

@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class DisableLegacyAccessSettingDisableLegacyAccessArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The boolean value for the setting.
+        /// </summary>
         [Input("value", required: true)]
         public Input<bool> Value { get; set; } = null!;
 

@@ -24,9 +24,21 @@ public final class GetJobJobSettingsSettingsLibrary extends com.pulumi.resources
         return Optional.ofNullable(this.cran);
     }
 
+    /**
+     * @deprecated
+     * The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
+     * 
+     */
+    @Deprecated /* The `egg` library type is deprecated. Please use `whl` or `pypi` instead. */
     @Import(name="egg")
     private @Nullable String egg;
 
+    /**
+     * @deprecated
+     * The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
+     * 
+     */
+    @Deprecated /* The `egg` library type is deprecated. Please use `whl` or `pypi` instead. */
     public Optional<String> egg() {
         return Optional.ofNullable(this.egg);
     }
@@ -101,6 +113,14 @@ public final class GetJobJobSettingsSettingsLibrary extends com.pulumi.resources
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
+         * 
+         */
+        @Deprecated /* The `egg` library type is deprecated. Please use `whl` or `pypi` instead. */
         public Builder egg(@Nullable String egg) {
             $.egg = egg;
             return this;

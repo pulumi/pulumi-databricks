@@ -209,14 +209,14 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifices the a Git repository for task source code. See git_source Configuration Block below.
+     * Specifies the a Git repository for task source code. See git_source Configuration Block below.
      * 
      */
     @Import(name="gitSource")
     private @Nullable Output<JobGitSourceArgs> gitSource;
 
     /**
-     * @return Specifices the a Git repository for task source code. See git_source Configuration Block below.
+     * @return Specifies the a Git repository for task source code. See git_source Configuration Block below.
      * 
      */
     public Optional<Output<JobGitSourceArgs>> gitSource() {
@@ -382,14 +382,14 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifices job parameter for the job. See parameter Configuration Block
+     * Specifies job parameter for the job. See parameter Configuration Block
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<JobParameterArgs>> parameters;
 
     /**
-     * @return Specifices job parameter for the job. See parameter Configuration Block
+     * @return Specifies job parameter for the job. See parameter Configuration Block
      * 
      */
     public Optional<Output<List<JobParameterArgs>>> parameters() {
@@ -488,14 +488,14 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+     * The user or the service principal the job runs as. See run_as Configuration Block below.
      * 
      */
     @Import(name="runAs")
     private @Nullable Output<JobRunAsArgs> runAs;
 
     /**
-     * @return The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+     * @return The user or the service principal the job runs as. See run_as Configuration Block below.
      * 
      */
     public Optional<Output<JobRunAsArgs>> runAs() {
@@ -653,6 +653,13 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.trigger);
     }
 
+    @Import(name="usagePolicyId")
+    private @Nullable Output<String> usagePolicyId;
+
+    public Optional<Output<String>> usagePolicyId() {
+        return Optional.ofNullable(this.usagePolicyId);
+    }
+
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      * 
@@ -710,6 +717,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         this.tasks = $.tasks;
         this.timeoutSeconds = $.timeoutSeconds;
         this.trigger = $.trigger;
+        this.usagePolicyId = $.usagePolicyId;
         this.webhookNotifications = $.webhookNotifications;
     }
 
@@ -956,7 +964,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gitSource Specifices the a Git repository for task source code. See git_source Configuration Block below.
+         * @param gitSource Specifies the a Git repository for task source code. See git_source Configuration Block below.
          * 
          * @return builder
          * 
@@ -967,7 +975,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gitSource Specifices the a Git repository for task source code. See git_source Configuration Block below.
+         * @param gitSource Specifies the a Git repository for task source code. See git_source Configuration Block below.
          * 
          * @return builder
          * 
@@ -1211,7 +1219,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters Specifices job parameter for the job. See parameter Configuration Block
+         * @param parameters Specifies job parameter for the job. See parameter Configuration Block
          * 
          * @return builder
          * 
@@ -1222,7 +1230,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters Specifices job parameter for the job. See parameter Configuration Block
+         * @param parameters Specifies job parameter for the job. See parameter Configuration Block
          * 
          * @return builder
          * 
@@ -1232,7 +1240,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters Specifices job parameter for the job. See parameter Configuration Block
+         * @param parameters Specifies job parameter for the job. See parameter Configuration Block
          * 
          * @return builder
          * 
@@ -1363,7 +1371,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runAs The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+         * @param runAs The user or the service principal the job runs as. See run_as Configuration Block below.
          * 
          * @return builder
          * 
@@ -1374,7 +1382,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runAs The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+         * @param runAs The user or the service principal the job runs as. See run_as Configuration Block below.
          * 
          * @return builder
          * 
@@ -1596,6 +1604,15 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder trigger(JobTriggerArgs trigger) {
             return trigger(Output.of(trigger));
+        }
+
+        public Builder usagePolicyId(@Nullable Output<String> usagePolicyId) {
+            $.usagePolicyId = usagePolicyId;
+            return this;
+        }
+
+        public Builder usagePolicyId(String usagePolicyId) {
+            return usagePolicyId(Output.of(usagePolicyId));
         }
 
         /**

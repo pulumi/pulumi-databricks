@@ -119,6 +119,10 @@ export class ModelServingProvisionedThroughput extends pulumi.CustomResource {
      */
     public readonly config!: pulumi.Output<outputs.ModelServingProvisionedThroughputConfig>;
     /**
+     * A block with Email notification setting.
+     */
+    public readonly emailNotifications!: pulumi.Output<outputs.ModelServingProvisionedThroughputEmailNotifications | undefined>;
+    /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */
     public readonly name!: pulumi.Output<string>;
@@ -147,6 +151,7 @@ export class ModelServingProvisionedThroughput extends pulumi.CustomResource {
             resourceInputs["aiGateway"] = state ? state.aiGateway : undefined;
             resourceInputs["budgetPolicyId"] = state ? state.budgetPolicyId : undefined;
             resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["emailNotifications"] = state ? state.emailNotifications : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["servingEndpointId"] = state ? state.servingEndpointId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -158,6 +163,7 @@ export class ModelServingProvisionedThroughput extends pulumi.CustomResource {
             resourceInputs["aiGateway"] = args ? args.aiGateway : undefined;
             resourceInputs["budgetPolicyId"] = args ? args.budgetPolicyId : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["emailNotifications"] = args ? args.emailNotifications : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["servingEndpointId"] = undefined /*out*/;
@@ -183,6 +189,10 @@ export interface ModelServingProvisionedThroughputState {
      * The model serving endpoint configuration.
      */
     config?: pulumi.Input<inputs.ModelServingProvisionedThroughputConfig>;
+    /**
+     * A block with Email notification setting.
+     */
+    emailNotifications?: pulumi.Input<inputs.ModelServingProvisionedThroughputEmailNotifications>;
     /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */
@@ -213,6 +223,10 @@ export interface ModelServingProvisionedThroughputArgs {
      * The model serving endpoint configuration.
      */
     config: pulumi.Input<inputs.ModelServingProvisionedThroughputConfig>;
+    /**
+     * A block with Email notification setting.
+     */
+    emailNotifications?: pulumi.Input<inputs.ModelServingProvisionedThroughputEmailNotifications>;
     /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */

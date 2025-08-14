@@ -13,17 +13,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingProvisionedThroughputAiGatewayRateLimit {
-    private Integer calls;
+    private @Nullable Integer calls;
     /**
      * @return The key field for a tag.
      * 
      */
     private @Nullable String key;
+    private @Nullable String principal;
     private String renewalPeriod;
 
     private ModelServingProvisionedThroughputAiGatewayRateLimit() {}
-    public Integer calls() {
-        return this.calls;
+    public Optional<Integer> calls() {
+        return Optional.ofNullable(this.calls);
     }
     /**
      * @return The key field for a tag.
@@ -31,6 +32,9 @@ public final class ModelServingProvisionedThroughputAiGatewayRateLimit {
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
+    }
+    public Optional<String> principal() {
+        return Optional.ofNullable(this.principal);
     }
     public String renewalPeriod() {
         return this.renewalPeriod;
@@ -45,22 +49,22 @@ public final class ModelServingProvisionedThroughputAiGatewayRateLimit {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer calls;
+        private @Nullable Integer calls;
         private @Nullable String key;
+        private @Nullable String principal;
         private String renewalPeriod;
         public Builder() {}
         public Builder(ModelServingProvisionedThroughputAiGatewayRateLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.calls = defaults.calls;
     	      this.key = defaults.key;
+    	      this.principal = defaults.principal;
     	      this.renewalPeriod = defaults.renewalPeriod;
         }
 
         @CustomType.Setter
-        public Builder calls(Integer calls) {
-            if (calls == null) {
-              throw new MissingRequiredPropertyException("ModelServingProvisionedThroughputAiGatewayRateLimit", "calls");
-            }
+        public Builder calls(@Nullable Integer calls) {
+
             this.calls = calls;
             return this;
         }
@@ -68,6 +72,12 @@ public final class ModelServingProvisionedThroughputAiGatewayRateLimit {
         public Builder key(@Nullable String key) {
 
             this.key = key;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder principal(@Nullable String principal) {
+
+            this.principal = principal;
             return this;
         }
         @CustomType.Setter
@@ -82,6 +92,7 @@ public final class ModelServingProvisionedThroughputAiGatewayRateLimit {
             final var _resultValue = new ModelServingProvisionedThroughputAiGatewayRateLimit();
             _resultValue.calls = calls;
             _resultValue.key = key;
+            _resultValue.principal = principal;
             _resultValue.renewalPeriod = renewalPeriod;
             return _resultValue;
         }

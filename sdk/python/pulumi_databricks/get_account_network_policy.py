@@ -92,7 +92,10 @@ def get_account_network_policy(account_id: Optional[_builtins.str] = None,
                                network_policy_id: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountNetworkPolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source can be used to get a single network policy.
+
+    > **Note** This data source can only be used with an account-level provider!
+
 
     :param _builtins.str account_id: (string) - The associated account ID for this Network Policy object
     :param Union['GetAccountNetworkPolicyEgressArgs', 'GetAccountNetworkPolicyEgressArgsDict'] egress: (NetworkPolicyEgress) - The network policies applying for egress traffic
@@ -115,7 +118,10 @@ def get_account_network_policy_output(account_id: Optional[pulumi.Input[Optional
                                       network_policy_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountNetworkPolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source can be used to get a single network policy.
+
+    > **Note** This data source can only be used with an account-level provider!
+
 
     :param _builtins.str account_id: (string) - The associated account ID for this Network Policy object
     :param Union['GetAccountNetworkPolicyEgressArgs', 'GetAccountNetworkPolicyEgressArgsDict'] egress: (NetworkPolicyEgress) - The network policies applying for egress traffic

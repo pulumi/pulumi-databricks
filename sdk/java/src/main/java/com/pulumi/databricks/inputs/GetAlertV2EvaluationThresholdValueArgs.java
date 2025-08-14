@@ -18,14 +18,14 @@ public final class GetAlertV2EvaluationThresholdValueArgs extends com.pulumi.res
     public static final GetAlertV2EvaluationThresholdValueArgs Empty = new GetAlertV2EvaluationThresholdValueArgs();
 
     /**
-     * (boolean) -
+     * (boolean)
      * 
      */
     @Import(name="boolValue")
     private @Nullable Output<Boolean> boolValue;
 
     /**
-     * @return (boolean) -
+     * @return (boolean)
      * 
      */
     public Optional<Output<Boolean>> boolValue() {
@@ -33,14 +33,14 @@ public final class GetAlertV2EvaluationThresholdValueArgs extends com.pulumi.res
     }
 
     /**
-     * (number) -
+     * (number)
      * 
      */
     @Import(name="doubleValue")
     private @Nullable Output<Double> doubleValue;
 
     /**
-     * @return (number) -
+     * @return (number)
      * 
      */
     public Optional<Output<Double>> doubleValue() {
@@ -48,14 +48,14 @@ public final class GetAlertV2EvaluationThresholdValueArgs extends com.pulumi.res
     }
 
     /**
-     * (string) -
+     * (string)
      * 
      */
     @Import(name="stringValue")
     private @Nullable Output<String> stringValue;
 
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     public Optional<Output<String>> stringValue() {
@@ -89,7 +89,7 @@ public final class GetAlertV2EvaluationThresholdValueArgs extends com.pulumi.res
         }
 
         /**
-         * @param boolValue (boolean) -
+         * @param boolValue (boolean)
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class GetAlertV2EvaluationThresholdValueArgs extends com.pulumi.res
         }
 
         /**
-         * @param boolValue (boolean) -
+         * @param boolValue (boolean)
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class GetAlertV2EvaluationThresholdValueArgs extends com.pulumi.res
         }
 
         /**
-         * @param doubleValue (number) -
+         * @param doubleValue (number)
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class GetAlertV2EvaluationThresholdValueArgs extends com.pulumi.res
         }
 
         /**
-         * @param doubleValue (number) -
+         * @param doubleValue (number)
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GetAlertV2EvaluationThresholdValueArgs extends com.pulumi.res
         }
 
         /**
-         * @param stringValue (string) -
+         * @param stringValue (string)
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class GetAlertV2EvaluationThresholdValueArgs extends com.pulumi.res
         }
 
         /**
-         * @param stringValue (string) -
+         * @param stringValue (string)
          * 
          * @return builder
          * 

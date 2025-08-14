@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -34,13 +35,15 @@ type OnlineStore struct {
 	pulumi.CustomResourceState
 
 	// The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-	Capacity pulumi.StringPtrOutput `pulumi:"capacity"`
+	Capacity pulumi.StringOutput `pulumi:"capacity"`
 	// (string) - The timestamp when the online store was created
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// (string) - The email of the creator of the online store
 	Creator pulumi.StringOutput `pulumi:"creator"`
 	// The name of the online store. This is the unique identifier for the online store
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The number of read replicas for the online store. Defaults to 0
+	ReadReplicaCount pulumi.IntPtrOutput `pulumi:"readReplicaCount"`
 	// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 	State pulumi.StringOutput `pulumi:"state"`
 }
@@ -49,9 +52,12 @@ type OnlineStore struct {
 func NewOnlineStore(ctx *pulumi.Context,
 	name string, args *OnlineStoreArgs, opts ...pulumi.ResourceOption) (*OnlineStore, error) {
 	if args == nil {
-		args = &OnlineStoreArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Capacity == nil {
+		return nil, errors.New("invalid value for required argument 'Capacity'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OnlineStore
 	err := ctx.RegisterResource("databricks:index/onlineStore:OnlineStore", name, args, &resource, opts...)
@@ -83,6 +89,8 @@ type onlineStoreState struct {
 	Creator *string `pulumi:"creator"`
 	// The name of the online store. This is the unique identifier for the online store
 	Name *string `pulumi:"name"`
+	// The number of read replicas for the online store. Defaults to 0
+	ReadReplicaCount *int `pulumi:"readReplicaCount"`
 	// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 	State *string `pulumi:"state"`
 }
@@ -96,6 +104,8 @@ type OnlineStoreState struct {
 	Creator pulumi.StringPtrInput
 	// The name of the online store. This is the unique identifier for the online store
 	Name pulumi.StringPtrInput
+	// The number of read replicas for the online store. Defaults to 0
+	ReadReplicaCount pulumi.IntPtrInput
 	// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 	State pulumi.StringPtrInput
 }
@@ -106,17 +116,21 @@ func (OnlineStoreState) ElementType() reflect.Type {
 
 type onlineStoreArgs struct {
 	// The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-	Capacity *string `pulumi:"capacity"`
+	Capacity string `pulumi:"capacity"`
 	// The name of the online store. This is the unique identifier for the online store
 	Name *string `pulumi:"name"`
+	// The number of read replicas for the online store. Defaults to 0
+	ReadReplicaCount *int `pulumi:"readReplicaCount"`
 }
 
 // The set of arguments for constructing a OnlineStore resource.
 type OnlineStoreArgs struct {
 	// The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-	Capacity pulumi.StringPtrInput
+	Capacity pulumi.StringInput
 	// The name of the online store. This is the unique identifier for the online store
 	Name pulumi.StringPtrInput
+	// The number of read replicas for the online store. Defaults to 0
+	ReadReplicaCount pulumi.IntPtrInput
 }
 
 func (OnlineStoreArgs) ElementType() reflect.Type {
@@ -207,8 +221,8 @@ func (o OnlineStoreOutput) ToOnlineStoreOutputWithContext(ctx context.Context) O
 }
 
 // The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-func (o OnlineStoreOutput) Capacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OnlineStore) pulumi.StringPtrOutput { return v.Capacity }).(pulumi.StringPtrOutput)
+func (o OnlineStoreOutput) Capacity() pulumi.StringOutput {
+	return o.ApplyT(func(v *OnlineStore) pulumi.StringOutput { return v.Capacity }).(pulumi.StringOutput)
 }
 
 // (string) - The timestamp when the online store was created
@@ -224,6 +238,11 @@ func (o OnlineStoreOutput) Creator() pulumi.StringOutput {
 // The name of the online store. This is the unique identifier for the online store
 func (o OnlineStoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OnlineStore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of read replicas for the online store. Defaults to 0
+func (o OnlineStoreOutput) ReadReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OnlineStore) pulumi.IntPtrOutput { return v.ReadReplicaCount }).(pulumi.IntPtrOutput)
 }
 
 // (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`

@@ -12,6 +12,18 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class NotificationDestinationConfigSlackGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("channelId")]
+        public Input<string>? ChannelId { get; set; }
+
+        [Input("channelIdSet")]
+        public Input<bool>? ChannelIdSet { get; set; }
+
+        [Input("oauthToken")]
+        public Input<string>? OauthToken { get; set; }
+
+        [Input("oauthTokenSet")]
+        public Input<bool>? OauthTokenSet { get; set; }
+
         [Input("url")]
         private Input<string>? _url;
 

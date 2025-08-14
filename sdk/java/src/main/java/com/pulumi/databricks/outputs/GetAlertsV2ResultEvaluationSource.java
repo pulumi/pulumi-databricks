@@ -17,12 +17,12 @@ public final class GetAlertsV2ResultEvaluationSource {
      */
     private @Nullable String aggregation;
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     private @Nullable String display;
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     private @Nullable String name;
@@ -36,14 +36,14 @@ public final class GetAlertsV2ResultEvaluationSource {
         return Optional.ofNullable(this.aggregation);
     }
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     public Optional<String> display() {
         return Optional.ofNullable(this.display);
     }
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     public Optional<String> name() {

@@ -4,6 +4,8 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection;
+import com.pulumi.databricks.outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential;
 import com.pulumi.databricks.outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction;
 import com.pulumi.databricks.outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable;
 import java.util.List;
@@ -12,6 +14,8 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency {
+    private @Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection> connections;
+    private @Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential> credentials;
     /**
      * @return A function that is dependent on a SQL object:
      * 
@@ -24,6 +28,12 @@ public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyD
     private @Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable> tables;
 
     private GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency() {}
+    public List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection> connections() {
+        return this.connections == null ? List.of() : this.connections;
+    }
+    public List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential> credentials() {
+        return this.credentials == null ? List.of() : this.credentials;
+    }
     /**
      * @return A function that is dependent on a SQL object:
      * 
@@ -48,15 +58,37 @@ public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyD
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection> connections;
+        private @Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential> credentials;
         private @Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction> functions;
         private @Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable> tables;
         public Builder() {}
         public Builder(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.connections = defaults.connections;
+    	      this.credentials = defaults.credentials;
     	      this.functions = defaults.functions;
     	      this.tables = defaults.tables;
         }
 
+        @CustomType.Setter
+        public Builder connections(@Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection> connections) {
+
+            this.connections = connections;
+            return this;
+        }
+        public Builder connections(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection... connections) {
+            return connections(List.of(connections));
+        }
+        @CustomType.Setter
+        public Builder credentials(@Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential> credentials) {
+
+            this.credentials = credentials;
+            return this;
+        }
+        public Builder credentials(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential... credentials) {
+            return credentials(List.of(credentials));
+        }
         @CustomType.Setter
         public Builder functions(@Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction> functions) {
 
@@ -77,6 +109,8 @@ public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyD
         }
         public GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency build() {
             final var _resultValue = new GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency();
+            _resultValue.connections = connections;
+            _resultValue.credentials = credentials;
             _resultValue.functions = functions;
             _resultValue.tables = tables;
             return _resultValue;

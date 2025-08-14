@@ -24,7 +24,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? PermissionLevel;
         /// <summary>
-        /// Application ID of the service_principal.
+        /// Application ID (**not service principal name!**) of the service_principal.
         /// </summary>
         public readonly string? ServicePrincipalName;
         /// <summary>

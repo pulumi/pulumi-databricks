@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MwsNetworkConnectivityConfigEgressConfigTargetRules
     {
+        /// <summary>
+        /// (AWS only) - list containing information about configure AWS Private Endpoints.
+        /// </summary>
         public readonly ImmutableArray<Outputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule> AwsPrivateEndpointRules;
         /// <summary>
         /// (Azure only) - list containing information about configure Azure Private Endpoints.

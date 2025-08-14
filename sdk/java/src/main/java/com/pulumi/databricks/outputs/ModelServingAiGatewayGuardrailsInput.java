@@ -17,7 +17,11 @@ public final class ModelServingAiGatewayGuardrailsInput {
     /**
      * @return List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
      * 
+     * @deprecated
+     * Please use &#39;pii&#39; and &#39;safety&#39; instead.
+     * 
      */
+    @Deprecated /* Please use 'pii' and 'safety' instead. */
     private @Nullable List<String> invalidKeywords;
     /**
      * @return Block with configuration for guardrail PII filter:
@@ -32,14 +36,22 @@ public final class ModelServingAiGatewayGuardrailsInput {
     /**
      * @return The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
      * 
+     * @deprecated
+     * Please use &#39;pii&#39; and &#39;safety&#39; instead.
+     * 
      */
+    @Deprecated /* Please use 'pii' and 'safety' instead. */
     private @Nullable List<String> validTopics;
 
     private ModelServingAiGatewayGuardrailsInput() {}
     /**
      * @return List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
      * 
+     * @deprecated
+     * Please use &#39;pii&#39; and &#39;safety&#39; instead.
+     * 
      */
+    @Deprecated /* Please use 'pii' and 'safety' instead. */
     public List<String> invalidKeywords() {
         return this.invalidKeywords == null ? List.of() : this.invalidKeywords;
     }
@@ -60,7 +72,11 @@ public final class ModelServingAiGatewayGuardrailsInput {
     /**
      * @return The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
      * 
+     * @deprecated
+     * Please use &#39;pii&#39; and &#39;safety&#39; instead.
+     * 
      */
+    @Deprecated /* Please use 'pii' and 'safety' instead. */
     public List<String> validTopics() {
         return this.validTopics == null ? List.of() : this.validTopics;
     }

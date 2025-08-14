@@ -14,6 +14,9 @@ namespace Pulumi.Databricks.Outputs
     public sealed class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule
     {
         public readonly string? ConnectionState;
+        /// <summary>
+        /// time in epoch milliseconds when this object was created.
+        /// </summary>
         public readonly int? CreationTime;
         public readonly bool? Deactivated;
         public readonly int? DeactivatedAt;
@@ -26,6 +29,9 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? NetworkConnectivityConfigId;
         public readonly string? ResourceId;
         public readonly string? RuleId;
+        /// <summary>
+        /// time in epoch milliseconds when this object was updated.
+        /// </summary>
         public readonly int? UpdatedTime;
 
         [OutputConstructor]

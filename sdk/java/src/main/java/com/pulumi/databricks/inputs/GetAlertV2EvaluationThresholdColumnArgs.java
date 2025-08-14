@@ -31,14 +31,14 @@ public final class GetAlertV2EvaluationThresholdColumnArgs extends com.pulumi.re
     }
 
     /**
-     * (string) -
+     * (string)
      * 
      */
     @Import(name="display")
     private @Nullable Output<String> display;
 
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     public Optional<Output<String>> display() {
@@ -46,14 +46,14 @@ public final class GetAlertV2EvaluationThresholdColumnArgs extends com.pulumi.re
     }
 
     /**
-     * (string) -
+     * (string)
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     public Optional<Output<String>> name() {
@@ -108,7 +108,7 @@ public final class GetAlertV2EvaluationThresholdColumnArgs extends com.pulumi.re
         }
 
         /**
-         * @param display (string) -
+         * @param display (string)
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class GetAlertV2EvaluationThresholdColumnArgs extends com.pulumi.re
         }
 
         /**
-         * @param display (string) -
+         * @param display (string)
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class GetAlertV2EvaluationThresholdColumnArgs extends com.pulumi.re
         }
 
         /**
-         * @param name (string) -
+         * @param name (string)
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class GetAlertV2EvaluationThresholdColumnArgs extends com.pulumi.re
         }
 
         /**
-         * @param name (string) -
+         * @param name (string)
          * 
          * @return builder
          * 

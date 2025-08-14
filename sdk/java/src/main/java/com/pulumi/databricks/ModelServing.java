@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ModelServingState;
 import com.pulumi.databricks.outputs.ModelServingAiGateway;
 import com.pulumi.databricks.outputs.ModelServingConfig;
+import com.pulumi.databricks.outputs.ModelServingEmailNotifications;
 import com.pulumi.databricks.outputs.ModelServingRateLimit;
 import com.pulumi.databricks.outputs.ModelServingTag;
 import java.lang.Boolean;
@@ -315,6 +316,48 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
      */
     public Output<ModelServingConfig> config() {
         return this.config;
+    }
+    /**
+     * The description of the model serving endpoint.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return The description of the model serving endpoint.
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
+    }
+    /**
+     * A block with Email notification setting.
+     * 
+     */
+    @Export(name="emailNotifications", refs={ModelServingEmailNotifications.class}, tree="[0]")
+    private Output</* @Nullable */ ModelServingEmailNotifications> emailNotifications;
+
+    /**
+     * @return A block with Email notification setting.
+     * 
+     */
+    public Output<Optional<ModelServingEmailNotifications>> emailNotifications() {
+        return Codegen.optional(this.emailNotifications);
+    }
+    /**
+     * Invocation url of the endpoint.
+     * 
+     */
+    @Export(name="endpointUrl", refs={String.class}, tree="[0]")
+    private Output<String> endpointUrl;
+
+    /**
+     * @return Invocation url of the endpoint.
+     * 
+     */
+    public Output<String> endpointUrl() {
+        return this.endpointUrl;
     }
     /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.

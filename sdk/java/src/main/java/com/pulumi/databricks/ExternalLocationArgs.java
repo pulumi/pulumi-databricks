@@ -64,17 +64,9 @@ public final class ExternalLocationArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.enableFileEvents);
     }
 
-    /**
-     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-     * 
-     */
     @Import(name="encryptionDetails")
     private @Nullable Output<ExternalLocationEncryptionDetailsArgs> encryptionDetails;
 
-    /**
-     * @return The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-     * 
-     */
     public Optional<Output<ExternalLocationEncryptionDetailsArgs>> encryptionDetails() {
         return Optional.ofNullable(this.encryptionDetails);
     }
@@ -329,23 +321,11 @@ public final class ExternalLocationArgs extends com.pulumi.resources.ResourceArg
             return enableFileEvents(Output.of(enableFileEvents));
         }
 
-        /**
-         * @param encryptionDetails The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-         * 
-         * @return builder
-         * 
-         */
         public Builder encryptionDetails(@Nullable Output<ExternalLocationEncryptionDetailsArgs> encryptionDetails) {
             $.encryptionDetails = encryptionDetails;
             return this;
         }
 
-        /**
-         * @param encryptionDetails The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-         * 
-         * @return builder
-         * 
-         */
         public Builder encryptionDetails(ExternalLocationEncryptionDetailsArgs encryptionDetails) {
             return encryptionDetails(Output.of(encryptionDetails));
         }

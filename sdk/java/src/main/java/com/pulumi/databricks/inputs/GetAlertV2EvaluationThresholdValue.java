@@ -17,14 +17,14 @@ public final class GetAlertV2EvaluationThresholdValue extends com.pulumi.resourc
     public static final GetAlertV2EvaluationThresholdValue Empty = new GetAlertV2EvaluationThresholdValue();
 
     /**
-     * (boolean) -
+     * (boolean)
      * 
      */
     @Import(name="boolValue")
     private @Nullable Boolean boolValue;
 
     /**
-     * @return (boolean) -
+     * @return (boolean)
      * 
      */
     public Optional<Boolean> boolValue() {
@@ -32,14 +32,14 @@ public final class GetAlertV2EvaluationThresholdValue extends com.pulumi.resourc
     }
 
     /**
-     * (number) -
+     * (number)
      * 
      */
     @Import(name="doubleValue")
     private @Nullable Double doubleValue;
 
     /**
-     * @return (number) -
+     * @return (number)
      * 
      */
     public Optional<Double> doubleValue() {
@@ -47,14 +47,14 @@ public final class GetAlertV2EvaluationThresholdValue extends com.pulumi.resourc
     }
 
     /**
-     * (string) -
+     * (string)
      * 
      */
     @Import(name="stringValue")
     private @Nullable String stringValue;
 
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     public Optional<String> stringValue() {
@@ -88,7 +88,7 @@ public final class GetAlertV2EvaluationThresholdValue extends com.pulumi.resourc
         }
 
         /**
-         * @param boolValue (boolean) -
+         * @param boolValue (boolean)
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class GetAlertV2EvaluationThresholdValue extends com.pulumi.resourc
         }
 
         /**
-         * @param doubleValue (number) -
+         * @param doubleValue (number)
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class GetAlertV2EvaluationThresholdValue extends com.pulumi.resourc
         }
 
         /**
-         * @param stringValue (string) -
+         * @param stringValue (string)
          * 
          * @return builder
          * 

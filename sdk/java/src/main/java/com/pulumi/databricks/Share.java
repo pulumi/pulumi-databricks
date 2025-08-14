@@ -169,9 +169,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/share:Share")
 public class Share extends com.pulumi.resources.CustomResource {
+    /**
+     * User-supplied free-form text.
+     * 
+     */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
+    /**
+     * @return User-supplied free-form text.
+     * 
+     */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }

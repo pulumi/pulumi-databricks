@@ -76,7 +76,7 @@ export class QualityMonitorV2 extends pulumi.CustomResource {
     }
 
     /**
-     * (AnomalyDetectionConfig) -
+     * (AnomalyDetectionConfig)
      */
     public /*out*/ readonly anomalyDetectionConfig!: pulumi.Output<outputs.QualityMonitorV2AnomalyDetectionConfig>;
     /**
@@ -126,7 +126,7 @@ export class QualityMonitorV2 extends pulumi.CustomResource {
  */
 export interface QualityMonitorV2State {
     /**
-     * (AnomalyDetectionConfig) -
+     * (AnomalyDetectionConfig)
      */
     anomalyDetectionConfig?: pulumi.Input<inputs.QualityMonitorV2AnomalyDetectionConfig>;
     /**

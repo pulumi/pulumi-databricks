@@ -109,7 +109,7 @@ export class SqlTable extends pulumi.CustomResource {
      */
     public readonly storageLocation!: pulumi.Output<string | undefined>;
     /**
-     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
      */
     public readonly tableType!: pulumi.Output<string>;
     /**
@@ -243,7 +243,7 @@ export interface SqlTableState {
      */
     storageLocation?: pulumi.Input<string>;
     /**
-     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
      */
     tableType?: pulumi.Input<string>;
     /**
@@ -311,7 +311,7 @@ export interface SqlTableArgs {
      */
     storageLocation?: pulumi.Input<string>;
     /**
-     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
      */
     tableType: pulumi.Input<string>;
     /**

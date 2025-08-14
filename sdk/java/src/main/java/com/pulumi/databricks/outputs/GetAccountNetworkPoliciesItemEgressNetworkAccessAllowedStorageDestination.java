@@ -22,12 +22,12 @@ public final class GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedStorag
      */
     private @Nullable String azureStorageService;
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     private @Nullable String bucketName;
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     private @Nullable String region;
@@ -53,14 +53,14 @@ public final class GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedStorag
         return Optional.ofNullable(this.azureStorageService);
     }
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     public Optional<String> bucketName() {
         return Optional.ofNullable(this.bucketName);
     }
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     public Optional<String> region() {

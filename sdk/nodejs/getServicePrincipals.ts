@@ -23,7 +23,7 @@ export function getServicePrincipals(args?: GetServicePrincipalsArgs, opts?: pul
  */
 export interface GetServicePrincipalsArgs {
     /**
-     * List of `applicationIds` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
+     * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
      */
     applicationIds?: string[];
     /**
@@ -37,7 +37,7 @@ export interface GetServicePrincipalsArgs {
  */
 export interface GetServicePrincipalsResult {
     /**
-     * List of `applicationIds` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
+     * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
      */
     readonly applicationIds: string[];
     readonly displayNameContains: string;
@@ -65,7 +65,7 @@ export function getServicePrincipalsOutput(args?: GetServicePrincipalsOutputArgs
  */
 export interface GetServicePrincipalsOutputArgs {
     /**
-     * List of `applicationIds` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
+     * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
      */
     applicationIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

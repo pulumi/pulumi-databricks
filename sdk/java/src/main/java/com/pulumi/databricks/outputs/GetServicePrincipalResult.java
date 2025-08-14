@@ -21,6 +21,10 @@ public final class GetServicePrincipalResult {
      * 
      */
     private Boolean active;
+    /**
+     * @return Application ID of the service principal.
+     * 
+     */
     private String applicationId;
     /**
      * @return Display name of the service principal, e.g. `Foo SPN`.
@@ -38,7 +42,7 @@ public final class GetServicePrincipalResult {
      */
     private String home;
     /**
-     * @return The id of the service principal.
+     * @return The id of the service principal (SCIM ID).
      * 
      */
     private String id;
@@ -47,6 +51,11 @@ public final class GetServicePrincipalResult {
      * 
      */
     private String repos;
+    /**
+     * @return same as `id`.
+     * 
+     */
+    private String scimId;
     private String spId;
 
     private GetServicePrincipalResult() {}
@@ -64,6 +73,10 @@ public final class GetServicePrincipalResult {
     public Boolean active() {
         return this.active;
     }
+    /**
+     * @return Application ID of the service principal.
+     * 
+     */
     public String applicationId() {
         return this.applicationId;
     }
@@ -89,7 +102,7 @@ public final class GetServicePrincipalResult {
         return this.home;
     }
     /**
-     * @return The id of the service principal.
+     * @return The id of the service principal (SCIM ID).
      * 
      */
     public String id() {
@@ -101,6 +114,13 @@ public final class GetServicePrincipalResult {
      */
     public String repos() {
         return this.repos;
+    }
+    /**
+     * @return same as `id`.
+     * 
+     */
+    public String scimId() {
+        return this.scimId;
     }
     public String spId() {
         return this.spId;
@@ -123,6 +143,7 @@ public final class GetServicePrincipalResult {
         private String home;
         private String id;
         private String repos;
+        private String scimId;
         private String spId;
         public Builder() {}
         public Builder(GetServicePrincipalResult defaults) {
@@ -135,6 +156,7 @@ public final class GetServicePrincipalResult {
     	      this.home = defaults.home;
     	      this.id = defaults.id;
     	      this.repos = defaults.repos;
+    	      this.scimId = defaults.scimId;
     	      this.spId = defaults.spId;
         }
 
@@ -203,6 +225,14 @@ public final class GetServicePrincipalResult {
             return this;
         }
         @CustomType.Setter
+        public Builder scimId(String scimId) {
+            if (scimId == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalResult", "scimId");
+            }
+            this.scimId = scimId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder spId(String spId) {
             if (spId == null) {
               throw new MissingRequiredPropertyException("GetServicePrincipalResult", "spId");
@@ -220,6 +250,7 @@ public final class GetServicePrincipalResult {
             _resultValue.home = home;
             _resultValue.id = id;
             _resultValue.repos = repos;
+            _resultValue.scimId = scimId;
             _resultValue.spId = spId;
             return _resultValue;
         }

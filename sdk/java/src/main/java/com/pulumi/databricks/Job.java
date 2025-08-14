@@ -313,14 +313,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return this.format;
     }
     /**
-     * Specifices the a Git repository for task source code. See git_source Configuration Block below.
+     * Specifies the a Git repository for task source code. See git_source Configuration Block below.
      * 
      */
     @Export(name="gitSource", refs={JobGitSource.class}, tree="[0]")
     private Output</* @Nullable */ JobGitSource> gitSource;
 
     /**
-     * @return Specifices the a Git repository for task source code. See git_source Configuration Block below.
+     * @return Specifies the a Git repository for task source code. See git_source Configuration Block below.
      * 
      */
     public Output<Optional<JobGitSource>> gitSource() {
@@ -459,14 +459,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notificationSettings);
     }
     /**
-     * Specifices job parameter for the job. See parameter Configuration Block
+     * Specifies job parameter for the job. See parameter Configuration Block
      * 
      */
     @Export(name="parameters", refs={List.class,JobParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<JobParameter>> parameters;
 
     /**
-     * @return Specifices job parameter for the job. See parameter Configuration Block
+     * @return Specifies job parameter for the job. See parameter Configuration Block
      * 
      */
     public Output<Optional<List<JobParameter>>> parameters() {
@@ -541,14 +541,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.retryOnTimeout);
     }
     /**
-     * The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+     * The user or the service principal the job runs as. See run_as Configuration Block below.
      * 
      */
     @Export(name="runAs", refs={JobRunAs.class}, tree="[0]")
     private Output<JobRunAs> runAs;
 
     /**
-     * @return The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+     * @return The user or the service principal the job runs as. See run_as Configuration Block below.
      * 
      */
     public Output<JobRunAs> runAs() {
@@ -685,6 +685,12 @@ public class Job extends com.pulumi.resources.CustomResource {
      */
     public Output<String> url() {
         return this.url;
+    }
+    @Export(name="usagePolicyId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> usagePolicyId;
+
+    public Output<Optional<String>> usagePolicyId() {
+        return Codegen.optional(this.usagePolicyId);
     }
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.

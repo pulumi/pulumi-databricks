@@ -24,6 +24,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("bootDiskSize")]
         public Input<int>? BootDiskSize { get; set; }
 
+        [Input("firstOnDemand")]
+        public Input<int>? FirstOnDemand { get; set; }
+
         /// <summary>
         /// Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
         /// </summary>

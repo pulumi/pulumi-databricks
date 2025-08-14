@@ -30,7 +30,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? DisplayName;
         /// <summary>
-        /// (AlertV2Evaluation) -
+        /// (AlertV2Evaluation)
         /// </summary>
         public readonly Outputs.GetAlertsV2ResultEvaluationResult? Evaluation;
         /// <summary>
@@ -54,11 +54,12 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? QueryText;
         /// <summary>
-        /// (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+        /// (string) - The run as username or application ID of service principal.
+        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         /// </summary>
-        public readonly string RunAsUserName;
+        public readonly string? RunAsUserName;
         /// <summary>
-        /// (CronSchedule) -
+        /// (CronSchedule)
         /// </summary>
         public readonly Outputs.GetAlertsV2ResultScheduleResult? Schedule;
         /// <summary>
@@ -92,7 +93,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? queryText,
 
-            string runAsUserName,
+            string? runAsUserName,
 
             Outputs.GetAlertsV2ResultScheduleResult? schedule,
 

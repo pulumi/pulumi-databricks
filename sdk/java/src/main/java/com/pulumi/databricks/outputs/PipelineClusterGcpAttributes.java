@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PipelineClusterGcpAttributes {
     private @Nullable String availability;
+    private @Nullable Integer firstOnDemand;
     private @Nullable String googleServiceAccount;
     private @Nullable Integer localSsdCount;
     private @Nullable String zoneId;
@@ -20,6 +21,9 @@ public final class PipelineClusterGcpAttributes {
     private PipelineClusterGcpAttributes() {}
     public Optional<String> availability() {
         return Optional.ofNullable(this.availability);
+    }
+    public Optional<Integer> firstOnDemand() {
+        return Optional.ofNullable(this.firstOnDemand);
     }
     public Optional<String> googleServiceAccount() {
         return Optional.ofNullable(this.googleServiceAccount);
@@ -41,6 +45,7 @@ public final class PipelineClusterGcpAttributes {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String availability;
+        private @Nullable Integer firstOnDemand;
         private @Nullable String googleServiceAccount;
         private @Nullable Integer localSsdCount;
         private @Nullable String zoneId;
@@ -48,6 +53,7 @@ public final class PipelineClusterGcpAttributes {
         public Builder(PipelineClusterGcpAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
+    	      this.firstOnDemand = defaults.firstOnDemand;
     	      this.googleServiceAccount = defaults.googleServiceAccount;
     	      this.localSsdCount = defaults.localSsdCount;
     	      this.zoneId = defaults.zoneId;
@@ -57,6 +63,12 @@ public final class PipelineClusterGcpAttributes {
         public Builder availability(@Nullable String availability) {
 
             this.availability = availability;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder firstOnDemand(@Nullable Integer firstOnDemand) {
+
+            this.firstOnDemand = firstOnDemand;
             return this;
         }
         @CustomType.Setter
@@ -80,6 +92,7 @@ public final class PipelineClusterGcpAttributes {
         public PipelineClusterGcpAttributes build() {
             final var _resultValue = new PipelineClusterGcpAttributes();
             _resultValue.availability = availability;
+            _resultValue.firstOnDemand = firstOnDemand;
             _resultValue.googleServiceAccount = googleServiceAccount;
             _resultValue.localSsdCount = localSsdCount;
             _resultValue.zoneId = zoneId;

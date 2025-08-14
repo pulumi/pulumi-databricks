@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NotificationDestinationConfigSlack {
+    private @Nullable String channelId;
+    private @Nullable Boolean channelIdSet;
+    private @Nullable String oauthToken;
+    private @Nullable Boolean oauthTokenSet;
     /**
      * @return The Slack webhook URL.
      * 
@@ -20,6 +24,18 @@ public final class NotificationDestinationConfigSlack {
     private @Nullable Boolean urlSet;
 
     private NotificationDestinationConfigSlack() {}
+    public Optional<String> channelId() {
+        return Optional.ofNullable(this.channelId);
+    }
+    public Optional<Boolean> channelIdSet() {
+        return Optional.ofNullable(this.channelIdSet);
+    }
+    public Optional<String> oauthToken() {
+        return Optional.ofNullable(this.oauthToken);
+    }
+    public Optional<Boolean> oauthTokenSet() {
+        return Optional.ofNullable(this.oauthTokenSet);
+    }
     /**
      * @return The Slack webhook URL.
      * 
@@ -40,15 +56,47 @@ public final class NotificationDestinationConfigSlack {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String channelId;
+        private @Nullable Boolean channelIdSet;
+        private @Nullable String oauthToken;
+        private @Nullable Boolean oauthTokenSet;
         private @Nullable String url;
         private @Nullable Boolean urlSet;
         public Builder() {}
         public Builder(NotificationDestinationConfigSlack defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.channelId = defaults.channelId;
+    	      this.channelIdSet = defaults.channelIdSet;
+    	      this.oauthToken = defaults.oauthToken;
+    	      this.oauthTokenSet = defaults.oauthTokenSet;
     	      this.url = defaults.url;
     	      this.urlSet = defaults.urlSet;
         }
 
+        @CustomType.Setter
+        public Builder channelId(@Nullable String channelId) {
+
+            this.channelId = channelId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder channelIdSet(@Nullable Boolean channelIdSet) {
+
+            this.channelIdSet = channelIdSet;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oauthToken(@Nullable String oauthToken) {
+
+            this.oauthToken = oauthToken;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oauthTokenSet(@Nullable Boolean oauthTokenSet) {
+
+            this.oauthTokenSet = oauthTokenSet;
+            return this;
+        }
         @CustomType.Setter
         public Builder url(@Nullable String url) {
 
@@ -63,6 +111,10 @@ public final class NotificationDestinationConfigSlack {
         }
         public NotificationDestinationConfigSlack build() {
             final var _resultValue = new NotificationDestinationConfigSlack();
+            _resultValue.channelId = channelId;
+            _resultValue.channelIdSet = channelIdSet;
+            _resultValue.oauthToken = oauthToken;
+            _resultValue.oauthTokenSet = oauthTokenSet;
             _resultValue.url = url;
             _resultValue.urlSet = urlSet;
             return _resultValue;

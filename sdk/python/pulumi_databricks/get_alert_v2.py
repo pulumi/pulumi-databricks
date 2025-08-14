@@ -108,7 +108,7 @@ class GetAlertV2Result:
     @pulumi.getter
     def evaluation(self) -> Optional['outputs.GetAlertV2EvaluationResult']:
         """
-        (AlertV2Evaluation) -
+        (AlertV2Evaluation)
         """
         return pulumi.get(self, "evaluation")
 
@@ -154,9 +154,10 @@ class GetAlertV2Result:
 
     @_builtins.property
     @pulumi.getter(name="runAsUserName")
-    def run_as_user_name(self) -> _builtins.str:
+    def run_as_user_name(self) -> Optional[_builtins.str]:
         """
-        (string) - The run as username. This field is set to "Unavailable" if the user has been deleted
+        (string) - The run as username or application ID of service principal.
+        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         """
         return pulumi.get(self, "run_as_user_name")
 
@@ -164,7 +165,7 @@ class GetAlertV2Result:
     @pulumi.getter
     def schedule(self) -> Optional['outputs.GetAlertV2ScheduleResult']:
         """
-        (CronSchedule) -
+        (CronSchedule)
         """
         return pulumi.get(self, "schedule")
 
@@ -213,6 +214,7 @@ def get_alert_v2(custom_description: Optional[_builtins.str] = None,
                  evaluation: Optional[Union['GetAlertV2EvaluationArgs', 'GetAlertV2EvaluationArgsDict']] = None,
                  parent_path: Optional[_builtins.str] = None,
                  query_text: Optional[_builtins.str] = None,
+                 run_as_user_name: Optional[_builtins.str] = None,
                  schedule: Optional[Union['GetAlertV2ScheduleArgs', 'GetAlertV2ScheduleArgsDict']] = None,
                  warehouse_id: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlertV2Result:
@@ -231,10 +233,12 @@ def get_alert_v2(custom_description: Optional[_builtins.str] = None,
     :param _builtins.str custom_description: (string) - Custom description for the alert. support mustache template
     :param _builtins.str custom_summary: (string) - Custom summary for the alert. support mustache template
     :param _builtins.str display_name: (string) - The display name of the alert
-    :param Union['GetAlertV2EvaluationArgs', 'GetAlertV2EvaluationArgsDict'] evaluation: (AlertV2Evaluation) -
+    :param Union['GetAlertV2EvaluationArgs', 'GetAlertV2EvaluationArgsDict'] evaluation: (AlertV2Evaluation)
     :param _builtins.str parent_path: (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
     :param _builtins.str query_text: (string) - Text of the query to be run
-    :param Union['GetAlertV2ScheduleArgs', 'GetAlertV2ScheduleArgsDict'] schedule: (CronSchedule) -
+    :param _builtins.str run_as_user_name: (string) - The run as username or application ID of service principal.
+           On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+    :param Union['GetAlertV2ScheduleArgs', 'GetAlertV2ScheduleArgsDict'] schedule: (CronSchedule)
     :param _builtins.str warehouse_id: (string) - ID of the SQL warehouse attached to the alert
     """
     __args__ = dict()
@@ -244,6 +248,7 @@ def get_alert_v2(custom_description: Optional[_builtins.str] = None,
     __args__['evaluation'] = evaluation
     __args__['parentPath'] = parent_path
     __args__['queryText'] = query_text
+    __args__['runAsUserName'] = run_as_user_name
     __args__['schedule'] = schedule
     __args__['warehouseId'] = warehouse_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -270,6 +275,7 @@ def get_alert_v2_output(custom_description: Optional[pulumi.Input[Optional[_buil
                         evaluation: Optional[pulumi.Input[Optional[Union['GetAlertV2EvaluationArgs', 'GetAlertV2EvaluationArgsDict']]]] = None,
                         parent_path: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         query_text: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                        run_as_user_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         schedule: Optional[pulumi.Input[Optional[Union['GetAlertV2ScheduleArgs', 'GetAlertV2ScheduleArgsDict']]]] = None,
                         warehouse_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertV2Result]:
@@ -288,10 +294,12 @@ def get_alert_v2_output(custom_description: Optional[pulumi.Input[Optional[_buil
     :param _builtins.str custom_description: (string) - Custom description for the alert. support mustache template
     :param _builtins.str custom_summary: (string) - Custom summary for the alert. support mustache template
     :param _builtins.str display_name: (string) - The display name of the alert
-    :param Union['GetAlertV2EvaluationArgs', 'GetAlertV2EvaluationArgsDict'] evaluation: (AlertV2Evaluation) -
+    :param Union['GetAlertV2EvaluationArgs', 'GetAlertV2EvaluationArgsDict'] evaluation: (AlertV2Evaluation)
     :param _builtins.str parent_path: (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
     :param _builtins.str query_text: (string) - Text of the query to be run
-    :param Union['GetAlertV2ScheduleArgs', 'GetAlertV2ScheduleArgsDict'] schedule: (CronSchedule) -
+    :param _builtins.str run_as_user_name: (string) - The run as username or application ID of service principal.
+           On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+    :param Union['GetAlertV2ScheduleArgs', 'GetAlertV2ScheduleArgsDict'] schedule: (CronSchedule)
     :param _builtins.str warehouse_id: (string) - ID of the SQL warehouse attached to the alert
     """
     __args__ = dict()
@@ -301,6 +309,7 @@ def get_alert_v2_output(custom_description: Optional[pulumi.Input[Optional[_buil
     __args__['evaluation'] = evaluation
     __args__['parentPath'] = parent_path
     __args__['queryText'] = query_text
+    __args__['runAsUserName'] = run_as_user_name
     __args__['schedule'] = schedule
     __args__['warehouseId'] = warehouse_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

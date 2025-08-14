@@ -14,9 +14,17 @@ public final class GetExternalLocationExternalLocationInfoEncryptionDetails exte
 
     public static final GetExternalLocationExternalLocationInfoEncryptionDetails Empty = new GetExternalLocationExternalLocationInfoEncryptionDetails();
 
+    /**
+     * a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+     * 
+     */
     @Import(name="sseEncryptionDetails")
     private @Nullable GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails sseEncryptionDetails;
 
+    /**
+     * @return a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+     * 
+     */
     public Optional<GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails> sseEncryptionDetails() {
         return Optional.ofNullable(this.sseEncryptionDetails);
     }
@@ -45,6 +53,12 @@ public final class GetExternalLocationExternalLocationInfoEncryptionDetails exte
             $ = new GetExternalLocationExternalLocationInfoEncryptionDetails(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param sseEncryptionDetails a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder sseEncryptionDetails(@Nullable GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails sseEncryptionDetails) {
             $.sseEncryptionDetails = sseEncryptionDetails;
             return this;

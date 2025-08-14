@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  *         var this_ = new MlflowExperiment("this", MlflowExperimentArgs.builder()
  *             .name(String.format("%s/Sample", me.home()))
- *             .artifactLocation("dbfs:/tmp/my-experiment")
+ *             .artifactLocation("s3://bucket/my-experiment")
  *             .tags(            
  *                 MlflowExperimentTagArgs.builder()
  *                     .key("key1")
@@ -113,14 +113,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/mlflowExperiment:MlflowExperiment")
 public class MlflowExperiment extends com.pulumi.resources.CustomResource {
     /**
-     * Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+     * Path to artifact location of the MLflow experiment.
      * 
      */
     @Export(name="artifactLocation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> artifactLocation;
 
     /**
-     * @return Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+     * @return Path to artifact location of the MLflow experiment.
      * 
      */
     public Output<Optional<String>> artifactLocation() {

@@ -4,6 +4,8 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetTableTableInfoViewDependenciesDependencyConnection;
+import com.pulumi.databricks.outputs.GetTableTableInfoViewDependenciesDependencyCredential;
 import com.pulumi.databricks.outputs.GetTableTableInfoViewDependenciesDependencyFunction;
 import com.pulumi.databricks.outputs.GetTableTableInfoViewDependenciesDependencyTable;
 import java.util.Objects;
@@ -12,10 +14,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTableTableInfoViewDependenciesDependency {
+    private @Nullable GetTableTableInfoViewDependenciesDependencyConnection connection;
+    private @Nullable GetTableTableInfoViewDependenciesDependencyCredential credential;
     private @Nullable GetTableTableInfoViewDependenciesDependencyFunction function;
     private @Nullable GetTableTableInfoViewDependenciesDependencyTable table;
 
     private GetTableTableInfoViewDependenciesDependency() {}
+    public Optional<GetTableTableInfoViewDependenciesDependencyConnection> connection() {
+        return Optional.ofNullable(this.connection);
+    }
+    public Optional<GetTableTableInfoViewDependenciesDependencyCredential> credential() {
+        return Optional.ofNullable(this.credential);
+    }
     public Optional<GetTableTableInfoViewDependenciesDependencyFunction> function() {
         return Optional.ofNullable(this.function);
     }
@@ -32,15 +42,31 @@ public final class GetTableTableInfoViewDependenciesDependency {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetTableTableInfoViewDependenciesDependencyConnection connection;
+        private @Nullable GetTableTableInfoViewDependenciesDependencyCredential credential;
         private @Nullable GetTableTableInfoViewDependenciesDependencyFunction function;
         private @Nullable GetTableTableInfoViewDependenciesDependencyTable table;
         public Builder() {}
         public Builder(GetTableTableInfoViewDependenciesDependency defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.connection = defaults.connection;
+    	      this.credential = defaults.credential;
     	      this.function = defaults.function;
     	      this.table = defaults.table;
         }
 
+        @CustomType.Setter
+        public Builder connection(@Nullable GetTableTableInfoViewDependenciesDependencyConnection connection) {
+
+            this.connection = connection;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder credential(@Nullable GetTableTableInfoViewDependenciesDependencyCredential credential) {
+
+            this.credential = credential;
+            return this;
+        }
         @CustomType.Setter
         public Builder function(@Nullable GetTableTableInfoViewDependenciesDependencyFunction function) {
 
@@ -55,6 +81,8 @@ public final class GetTableTableInfoViewDependenciesDependency {
         }
         public GetTableTableInfoViewDependenciesDependency build() {
             final var _resultValue = new GetTableTableInfoViewDependenciesDependency();
+            _resultValue.connection = connection;
+            _resultValue.credential = credential;
             _resultValue.function = function;
             _resultValue.table = table;
             return _resultValue;

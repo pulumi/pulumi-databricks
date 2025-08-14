@@ -26,7 +26,7 @@ class GetServicePrincipalResult:
     """
     A collection of values returned by getServicePrincipal.
     """
-    def __init__(__self__, acl_principal_id=None, active=None, application_id=None, display_name=None, external_id=None, home=None, id=None, repos=None, sp_id=None):
+    def __init__(__self__, acl_principal_id=None, active=None, application_id=None, display_name=None, external_id=None, home=None, id=None, repos=None, scim_id=None, sp_id=None):
         if acl_principal_id and not isinstance(acl_principal_id, str):
             raise TypeError("Expected argument 'acl_principal_id' to be a str")
         pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -51,6 +51,9 @@ class GetServicePrincipalResult:
         if repos and not isinstance(repos, str):
             raise TypeError("Expected argument 'repos' to be a str")
         pulumi.set(__self__, "repos", repos)
+        if scim_id and not isinstance(scim_id, str):
+            raise TypeError("Expected argument 'scim_id' to be a str")
+        pulumi.set(__self__, "scim_id", scim_id)
         if sp_id and not isinstance(sp_id, str):
             raise TypeError("Expected argument 'sp_id' to be a str")
         pulumi.set(__self__, "sp_id", sp_id)
@@ -74,6 +77,9 @@ class GetServicePrincipalResult:
     @_builtins.property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> _builtins.str:
+        """
+        Application ID of the service principal.
+        """
         return pulumi.get(self, "application_id")
 
     @_builtins.property
@@ -104,7 +110,7 @@ class GetServicePrincipalResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The id of the service principal.
+        The id of the service principal (SCIM ID).
         """
         return pulumi.get(self, "id")
 
@@ -115,6 +121,14 @@ class GetServicePrincipalResult:
         Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
         """
         return pulumi.get(self, "repos")
+
+    @_builtins.property
+    @pulumi.getter(name="scimId")
+    def scim_id(self) -> _builtins.str:
+        """
+        same as `id`.
+        """
+        return pulumi.get(self, "scim_id")
 
     @_builtins.property
     @pulumi.getter(name="spId")
@@ -136,6 +150,7 @@ class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
             home=self.home,
             id=self.id,
             repos=self.repos,
+            scim_id=self.scim_id,
             sp_id=self.sp_id)
 
 
@@ -147,6 +162,7 @@ def get_service_principal(acl_principal_id: Optional[_builtins.str] = None,
                           home: Optional[_builtins.str] = None,
                           id: Optional[_builtins.str] = None,
                           repos: Optional[_builtins.str] = None,
+                          scim_id: Optional[_builtins.str] = None,
                           sp_id: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalResult:
     """
@@ -175,7 +191,7 @@ def get_service_principal(acl_principal_id: Optional[_builtins.str] = None,
 
     - End to end workspace management guide.
     - get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
-    - Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+    - Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
     - Group data to retrieve information about Group members, entitlements and instance profiles.
     - GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
     - GroupMember to attach users and groups as group members.
@@ -185,12 +201,13 @@ def get_service_principal(acl_principal_id: Optional[_builtins.str] = None,
 
     :param _builtins.str acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
     :param _builtins.bool active: Whether service principal is active or not.
-    :param _builtins.str application_id: ID of the service principal. The service principal must exist before this resource can be retrieved.
+    :param _builtins.str application_id: Application ID of the service principal. The service principal must exist before this resource can be retrieved.
     :param _builtins.str display_name: Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
     :param _builtins.str external_id: ID of the service principal in an external identity provider.
     :param _builtins.str home: Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
-    :param _builtins.str id: The id of the service principal.
+    :param _builtins.str id: The id of the service principal (SCIM ID).
     :param _builtins.str repos: Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+    :param _builtins.str scim_id: Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
     """
     __args__ = dict()
     __args__['aclPrincipalId'] = acl_principal_id
@@ -201,6 +218,7 @@ def get_service_principal(acl_principal_id: Optional[_builtins.str] = None,
     __args__['home'] = home
     __args__['id'] = id
     __args__['repos'] = repos
+    __args__['scimId'] = scim_id
     __args__['spId'] = sp_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getServicePrincipal:getServicePrincipal', __args__, opts=opts, typ=GetServicePrincipalResult).value
@@ -214,6 +232,7 @@ def get_service_principal(acl_principal_id: Optional[_builtins.str] = None,
         home=pulumi.get(__ret__, 'home'),
         id=pulumi.get(__ret__, 'id'),
         repos=pulumi.get(__ret__, 'repos'),
+        scim_id=pulumi.get(__ret__, 'scim_id'),
         sp_id=pulumi.get(__ret__, 'sp_id'))
 def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  active: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
@@ -223,6 +242,7 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
                                  home: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  repos: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                 scim_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  sp_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePrincipalResult]:
     """
@@ -251,7 +271,7 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
 
     - End to end workspace management guide.
     - get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
-    - Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+    - Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
     - Group data to retrieve information about Group members, entitlements and instance profiles.
     - GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
     - GroupMember to attach users and groups as group members.
@@ -261,12 +281,13 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
 
     :param _builtins.str acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
     :param _builtins.bool active: Whether service principal is active or not.
-    :param _builtins.str application_id: ID of the service principal. The service principal must exist before this resource can be retrieved.
+    :param _builtins.str application_id: Application ID of the service principal. The service principal must exist before this resource can be retrieved.
     :param _builtins.str display_name: Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
     :param _builtins.str external_id: ID of the service principal in an external identity provider.
     :param _builtins.str home: Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
-    :param _builtins.str id: The id of the service principal.
+    :param _builtins.str id: The id of the service principal (SCIM ID).
     :param _builtins.str repos: Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+    :param _builtins.str scim_id: Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
     """
     __args__ = dict()
     __args__['aclPrincipalId'] = acl_principal_id
@@ -277,6 +298,7 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
     __args__['home'] = home
     __args__['id'] = id
     __args__['repos'] = repos
+    __args__['scimId'] = scim_id
     __args__['spId'] = sp_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getServicePrincipal:getServicePrincipal', __args__, opts=opts, typ=GetServicePrincipalResult)
@@ -289,4 +311,5 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
         home=pulumi.get(__response__, 'home'),
         id=pulumi.get(__response__, 'id'),
         repos=pulumi.get(__response__, 'repos'),
+        scim_id=pulumi.get(__response__, 'scim_id'),
         sp_id=pulumi.get(__response__, 'sp_id')))

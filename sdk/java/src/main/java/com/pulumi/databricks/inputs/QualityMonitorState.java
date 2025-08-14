@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.QualityMonitorScheduleArgs;
 import com.pulumi.databricks.inputs.QualityMonitorSnapshotArgs;
 import com.pulumi.databricks.inputs.QualityMonitorTimeSeriesArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -158,13 +159,13 @@ public final class QualityMonitorState extends com.pulumi.resources.ResourceArgs
      * 
      */
     @Import(name="monitorVersion")
-    private @Nullable Output<String> monitorVersion;
+    private @Nullable Output<Integer> monitorVersion;
 
     /**
      * @return The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
      * 
      */
-    public Optional<Output<String>> monitorVersion() {
+    public Optional<Output<Integer>> monitorVersion() {
         return Optional.ofNullable(this.monitorVersion);
     }
 
@@ -572,7 +573,7 @@ public final class QualityMonitorState extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder monitorVersion(@Nullable Output<String> monitorVersion) {
+        public Builder monitorVersion(@Nullable Output<Integer> monitorVersion) {
             $.monitorVersion = monitorVersion;
             return this;
         }
@@ -583,7 +584,7 @@ public final class QualityMonitorState extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder monitorVersion(String monitorVersion) {
+        public Builder monitorVersion(Integer monitorVersion) {
             return monitorVersion(Output.of(monitorVersion));
         }
 

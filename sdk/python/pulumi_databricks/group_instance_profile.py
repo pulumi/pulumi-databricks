@@ -128,7 +128,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
         * End to end workspace management guide.
         * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
         * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
-        * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        * Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
         * Group data to retrieve information about Group members, entitlements and instance profiles.
         * GroupMember to attach users and groups as group members.
         * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
@@ -175,7 +175,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
         * End to end workspace management guide.
         * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
         * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
-        * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        * Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
         * Group data to retrieve information about Group members, entitlements and instance profiles.
         * GroupMember to attach users and groups as group members.
         * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.

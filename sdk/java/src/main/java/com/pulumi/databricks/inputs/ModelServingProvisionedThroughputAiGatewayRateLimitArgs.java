@@ -17,11 +17,11 @@ public final class ModelServingProvisionedThroughputAiGatewayRateLimitArgs exten
 
     public static final ModelServingProvisionedThroughputAiGatewayRateLimitArgs Empty = new ModelServingProvisionedThroughputAiGatewayRateLimitArgs();
 
-    @Import(name="calls", required=true)
-    private Output<Integer> calls;
+    @Import(name="calls")
+    private @Nullable Output<Integer> calls;
 
-    public Output<Integer> calls() {
-        return this.calls;
+    public Optional<Output<Integer>> calls() {
+        return Optional.ofNullable(this.calls);
     }
 
     /**
@@ -39,6 +39,13 @@ public final class ModelServingProvisionedThroughputAiGatewayRateLimitArgs exten
         return Optional.ofNullable(this.key);
     }
 
+    @Import(name="principal")
+    private @Nullable Output<String> principal;
+
+    public Optional<Output<String>> principal() {
+        return Optional.ofNullable(this.principal);
+    }
+
     @Import(name="renewalPeriod", required=true)
     private Output<String> renewalPeriod;
 
@@ -51,6 +58,7 @@ public final class ModelServingProvisionedThroughputAiGatewayRateLimitArgs exten
     private ModelServingProvisionedThroughputAiGatewayRateLimitArgs(ModelServingProvisionedThroughputAiGatewayRateLimitArgs $) {
         this.calls = $.calls;
         this.key = $.key;
+        this.principal = $.principal;
         this.renewalPeriod = $.renewalPeriod;
     }
 
@@ -72,7 +80,7 @@ public final class ModelServingProvisionedThroughputAiGatewayRateLimitArgs exten
             $ = new ModelServingProvisionedThroughputAiGatewayRateLimitArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder calls(Output<Integer> calls) {
+        public Builder calls(@Nullable Output<Integer> calls) {
             $.calls = calls;
             return this;
         }
@@ -102,6 +110,15 @@ public final class ModelServingProvisionedThroughputAiGatewayRateLimitArgs exten
             return key(Output.of(key));
         }
 
+        public Builder principal(@Nullable Output<String> principal) {
+            $.principal = principal;
+            return this;
+        }
+
+        public Builder principal(String principal) {
+            return principal(Output.of(principal));
+        }
+
         public Builder renewalPeriod(Output<String> renewalPeriod) {
             $.renewalPeriod = renewalPeriod;
             return this;
@@ -112,9 +129,6 @@ public final class ModelServingProvisionedThroughputAiGatewayRateLimitArgs exten
         }
 
         public ModelServingProvisionedThroughputAiGatewayRateLimitArgs build() {
-            if ($.calls == null) {
-                throw new MissingRequiredPropertyException("ModelServingProvisionedThroughputAiGatewayRateLimitArgs", "calls");
-            }
             if ($.renewalPeriod == null) {
                 throw new MissingRequiredPropertyException("ModelServingProvisionedThroughputAiGatewayRateLimitArgs", "renewalPeriod");
             }

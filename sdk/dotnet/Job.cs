@@ -192,7 +192,7 @@ namespace Pulumi.Databricks
         public Output<string> Format { get; private set; } = null!;
 
         /// <summary>
-        /// Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        /// Specifies the a Git repository for task source code. See git_source Configuration Block below.
         /// </summary>
         [Output("gitSource")]
         public Output<Outputs.JobGitSource?> GitSource { get; private set; } = null!;
@@ -249,7 +249,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.JobNotificationSettings?> NotificationSettings { get; private set; } = null!;
 
         /// <summary>
-        /// Specifices job parameter for the job. See parameter Configuration Block
+        /// Specifies job parameter for the job. See parameter Configuration Block
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.JobParameter>> Parameters { get; private set; } = null!;
@@ -278,7 +278,7 @@ namespace Pulumi.Databricks
         public Output<bool?> RetryOnTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        /// The user or the service principal the job runs as. See run_as Configuration Block below.
         /// </summary>
         [Output("runAs")]
         public Output<Outputs.JobRunAs> RunAs { get; private set; } = null!;
@@ -330,6 +330,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
+
+        [Output("usagePolicyId")]
+        public Output<string?> UsagePolicyId { get; private set; } = null!;
 
         /// <summary>
         /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
@@ -448,7 +451,7 @@ namespace Pulumi.Databricks
         public Input<string>? Format { get; set; }
 
         /// <summary>
-        /// Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        /// Specifies the a Git repository for task source code. See git_source Configuration Block below.
         /// </summary>
         [Input("gitSource")]
         public Input<Inputs.JobGitSourceArgs>? GitSource { get; set; }
@@ -520,7 +523,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.JobParameterArgs>? _parameters;
 
         /// <summary>
-        /// Specifices job parameter for the job. See parameter Configuration Block
+        /// Specifies job parameter for the job. See parameter Configuration Block
         /// </summary>
         public InputList<Inputs.JobParameterArgs> Parameters
         {
@@ -552,7 +555,7 @@ namespace Pulumi.Databricks
         public Input<bool>? RetryOnTimeout { get; set; }
 
         /// <summary>
-        /// The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        /// The user or the service principal the job runs as. See run_as Configuration Block below.
         /// </summary>
         [Input("runAs")]
         public Input<Inputs.JobRunAsArgs>? RunAs { get; set; }
@@ -610,6 +613,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("trigger")]
         public Input<Inputs.JobTriggerArgs>? Trigger { get; set; }
+
+        [Input("usagePolicyId")]
+        public Input<string>? UsagePolicyId { get; set; }
 
         /// <summary>
         /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
@@ -690,7 +696,7 @@ namespace Pulumi.Databricks
         public Input<string>? Format { get; set; }
 
         /// <summary>
-        /// Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        /// Specifies the a Git repository for task source code. See git_source Configuration Block below.
         /// </summary>
         [Input("gitSource")]
         public Input<Inputs.JobGitSourceGetArgs>? GitSource { get; set; }
@@ -762,7 +768,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.JobParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Specifices job parameter for the job. See parameter Configuration Block
+        /// Specifies job parameter for the job. See parameter Configuration Block
         /// </summary>
         public InputList<Inputs.JobParameterGetArgs> Parameters
         {
@@ -794,7 +800,7 @@ namespace Pulumi.Databricks
         public Input<bool>? RetryOnTimeout { get; set; }
 
         /// <summary>
-        /// The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        /// The user or the service principal the job runs as. See run_as Configuration Block below.
         /// </summary>
         [Input("runAs")]
         public Input<Inputs.JobRunAsGetArgs>? RunAs { get; set; }
@@ -858,6 +864,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
+
+        [Input("usagePolicyId")]
+        public Input<string>? UsagePolicyId { get; set; }
 
         /// <summary>
         /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.

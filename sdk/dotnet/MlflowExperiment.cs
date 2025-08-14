@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
     ///     var @this = new Databricks.MlflowExperiment("this", new()
     ///     {
     ///         Name = $"{me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Home)}/Sample",
-    ///         ArtifactLocation = "dbfs:/tmp/my-experiment",
+    ///         ArtifactLocation = "s3://bucket/my-experiment",
     ///         Tags = new[]
     ///         {
     ///             new Databricks.Inputs.MlflowExperimentTagArgs
@@ -90,7 +90,7 @@ namespace Pulumi.Databricks
     public partial class MlflowExperiment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+        /// Path to artifact location of the MLflow experiment.
         /// </summary>
         [Output("artifactLocation")]
         public Output<string?> ArtifactLocation { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.Databricks
     public sealed class MlflowExperimentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+        /// Path to artifact location of the MLflow experiment.
         /// </summary>
         [Input("artifactLocation")]
         public Input<string>? ArtifactLocation { get; set; }
@@ -216,7 +216,7 @@ namespace Pulumi.Databricks
     public sealed class MlflowExperimentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+        /// Path to artifact location of the MLflow experiment.
         /// </summary>
         [Input("artifactLocation")]
         public Input<string>? ArtifactLocation { get; set; }

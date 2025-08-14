@@ -203,7 +203,7 @@ type QualityMonitor struct {
 	// ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
 	MonitorId pulumi.StringOutput `pulumi:"monitorId"`
 	// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-	MonitorVersion pulumi.StringOutput `pulumi:"monitorVersion"`
+	MonitorVersion pulumi.IntOutput `pulumi:"monitorVersion"`
 	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
 	Notifications QualityMonitorNotificationsPtrOutput `pulumi:"notifications"`
 	// Schema where output metric tables are created
@@ -286,7 +286,7 @@ type qualityMonitorState struct {
 	// ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
 	MonitorId *string `pulumi:"monitorId"`
 	// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-	MonitorVersion *string `pulumi:"monitorVersion"`
+	MonitorVersion *int `pulumi:"monitorVersion"`
 	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
 	Notifications *QualityMonitorNotifications `pulumi:"notifications"`
 	// Schema where output metric tables are created
@@ -331,7 +331,7 @@ type QualityMonitorState struct {
 	// ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
 	MonitorId pulumi.StringPtrInput
 	// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-	MonitorVersion pulumi.StringPtrInput
+	MonitorVersion pulumi.IntPtrInput
 	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
 	Notifications QualityMonitorNotificationsPtrInput
 	// Schema where output metric tables are created
@@ -566,8 +566,8 @@ func (o QualityMonitorOutput) MonitorId() pulumi.StringOutput {
 }
 
 // The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-func (o QualityMonitorOutput) MonitorVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *QualityMonitor) pulumi.StringOutput { return v.MonitorVersion }).(pulumi.StringOutput)
+func (o QualityMonitorOutput) MonitorVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v *QualityMonitor) pulumi.IntOutput { return v.MonitorVersion }).(pulumi.IntOutput)
 }
 
 // The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:

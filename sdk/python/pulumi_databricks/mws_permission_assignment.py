@@ -193,7 +193,7 @@ class MwsPermissionAssignment(pulumi.CustomResource):
 
         The following resources are used in the same context:
 
-        * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        * Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
         * Group data to retrieve information about Group members, entitlements and instance profiles.
         * GroupMember to attach users and groups as group members.
         * PermissionAssignment to manage permission assignment from a workspace context
@@ -284,7 +284,7 @@ class MwsPermissionAssignment(pulumi.CustomResource):
 
         The following resources are used in the same context:
 
-        * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        * Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
         * Group data to retrieve information about Group members, entitlements and instance profiles.
         * GroupMember to attach users and groups as group members.
         * PermissionAssignment to manage permission assignment from a workspace context

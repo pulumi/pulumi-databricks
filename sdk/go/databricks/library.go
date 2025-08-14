@@ -196,13 +196,9 @@ import (
 // * getClusters data to retrieve a list of Cluster ids.
 // * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
 // * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
-// * DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-// * getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-// * DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
 // * GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
 // * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
-// * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
-// * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
+// * Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
 // * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
 //
 // ## Import
@@ -211,8 +207,9 @@ import (
 type Library struct {
 	pulumi.CustomResourceState
 
-	ClusterId    pulumi.StringOutput    `pulumi:"clusterId"`
-	Cran         LibraryCranPtrOutput   `pulumi:"cran"`
+	ClusterId pulumi.StringOutput  `pulumi:"clusterId"`
+	Cran      LibraryCranPtrOutput `pulumi:"cran"`
+	// Deprecated: The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
 	Egg          pulumi.StringPtrOutput `pulumi:"egg"`
 	Jar          pulumi.StringPtrOutput `pulumi:"jar"`
 	LibraryId    pulumi.StringOutput    `pulumi:"libraryId"`
@@ -255,8 +252,9 @@ func GetLibrary(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Library resources.
 type libraryState struct {
-	ClusterId    *string       `pulumi:"clusterId"`
-	Cran         *LibraryCran  `pulumi:"cran"`
+	ClusterId *string      `pulumi:"clusterId"`
+	Cran      *LibraryCran `pulumi:"cran"`
+	// Deprecated: The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
 	Egg          *string       `pulumi:"egg"`
 	Jar          *string       `pulumi:"jar"`
 	LibraryId    *string       `pulumi:"libraryId"`
@@ -267,8 +265,9 @@ type libraryState struct {
 }
 
 type LibraryState struct {
-	ClusterId    pulumi.StringPtrInput
-	Cran         LibraryCranPtrInput
+	ClusterId pulumi.StringPtrInput
+	Cran      LibraryCranPtrInput
+	// Deprecated: The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
 	Egg          pulumi.StringPtrInput
 	Jar          pulumi.StringPtrInput
 	LibraryId    pulumi.StringPtrInput
@@ -283,8 +282,9 @@ func (LibraryState) ElementType() reflect.Type {
 }
 
 type libraryArgs struct {
-	ClusterId    string        `pulumi:"clusterId"`
-	Cran         *LibraryCran  `pulumi:"cran"`
+	ClusterId string       `pulumi:"clusterId"`
+	Cran      *LibraryCran `pulumi:"cran"`
+	// Deprecated: The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
 	Egg          *string       `pulumi:"egg"`
 	Jar          *string       `pulumi:"jar"`
 	LibraryId    *string       `pulumi:"libraryId"`
@@ -296,8 +296,9 @@ type libraryArgs struct {
 
 // The set of arguments for constructing a Library resource.
 type LibraryArgs struct {
-	ClusterId    pulumi.StringInput
-	Cran         LibraryCranPtrInput
+	ClusterId pulumi.StringInput
+	Cran      LibraryCranPtrInput
+	// Deprecated: The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
 	Egg          pulumi.StringPtrInput
 	Jar          pulumi.StringPtrInput
 	LibraryId    pulumi.StringPtrInput
@@ -402,6 +403,7 @@ func (o LibraryOutput) Cran() LibraryCranPtrOutput {
 	return o.ApplyT(func(v *Library) LibraryCranPtrOutput { return v.Cran }).(LibraryCranPtrOutput)
 }
 
+// Deprecated: The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
 func (o LibraryOutput) Egg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Library) pulumi.StringPtrOutput { return v.Egg }).(pulumi.StringPtrOutput)
 }

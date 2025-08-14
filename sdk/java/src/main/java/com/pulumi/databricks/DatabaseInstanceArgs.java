@@ -5,7 +5,9 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.DatabaseInstanceParentInstanceRefArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,6 +34,21 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Whether to enable secondaries to serve read-only traffic. Defaults to false
+     * 
+     */
+    @Import(name="enableReadableSecondaries")
+    private @Nullable Output<Boolean> enableReadableSecondaries;
+
+    /**
+     * @return Whether to enable secondaries to serve read-only traffic. Defaults to false
+     * 
+     */
+    public Optional<Output<Boolean>> enableReadableSecondaries() {
+        return Optional.ofNullable(this.enableReadableSecondaries);
+    }
+
+    /**
      * The name of the instance. This is the unique identifier for the instance
      * 
      */
@@ -44,6 +61,78 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
+     * 
+     */
+    @Import(name="nodeCount")
+    private @Nullable Output<Integer> nodeCount;
+
+    /**
+     * @return The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
+     * 
+     */
+    public Optional<Output<Integer>> nodeCount() {
+        return Optional.ofNullable(this.nodeCount);
+    }
+
+    /**
+     * The ref of the parent instance. This is only available if the instance is
+     * child instance.
+     * Input: For specifying the parent instance to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     * 
+     */
+    @Import(name="parentInstanceRef")
+    private @Nullable Output<DatabaseInstanceParentInstanceRefArgs> parentInstanceRef;
+
+    /**
+     * @return The ref of the parent instance. This is only available if the instance is
+     * child instance.
+     * Input: For specifying the parent instance to create a child instance. Optional.
+     * Output: Only populated if provided as input to create a child instance
+     * 
+     */
+    public Optional<Output<DatabaseInstanceParentInstanceRefArgs>> parentInstanceRef() {
+        return Optional.ofNullable(this.parentInstanceRef);
+    }
+
+    /**
+     * Purge the resource on delete
+     * 
+     */
+    @Import(name="purgeOnDelete")
+    private @Nullable Output<Boolean> purgeOnDelete;
+
+    /**
+     * @return Purge the resource on delete
+     * 
+     */
+    public Optional<Output<Boolean>> purgeOnDelete() {
+        return Optional.ofNullable(this.purgeOnDelete);
+    }
+
+    /**
+     * The retention window for the instance. This is the time window in days
+     * for which the historical data is retained. The default value is 7 days.
+     * Valid values are 2 to 35 days
+     * 
+     */
+    @Import(name="retentionWindowInDays")
+    private @Nullable Output<Integer> retentionWindowInDays;
+
+    /**
+     * @return The retention window for the instance. This is the time window in days
+     * for which the historical data is retained. The default value is 7 days.
+     * Valid values are 2 to 35 days
+     * 
+     */
+    public Optional<Output<Integer>> retentionWindowInDays() {
+        return Optional.ofNullable(this.retentionWindowInDays);
     }
 
     /**
@@ -65,7 +154,12 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
 
     private DatabaseInstanceArgs(DatabaseInstanceArgs $) {
         this.capacity = $.capacity;
+        this.enableReadableSecondaries = $.enableReadableSecondaries;
         this.name = $.name;
+        this.nodeCount = $.nodeCount;
+        this.parentInstanceRef = $.parentInstanceRef;
+        this.purgeOnDelete = $.purgeOnDelete;
+        this.retentionWindowInDays = $.retentionWindowInDays;
         this.stopped = $.stopped;
     }
 
@@ -109,6 +203,27 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param enableReadableSecondaries Whether to enable secondaries to serve read-only traffic. Defaults to false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableReadableSecondaries(@Nullable Output<Boolean> enableReadableSecondaries) {
+            $.enableReadableSecondaries = enableReadableSecondaries;
+            return this;
+        }
+
+        /**
+         * @param enableReadableSecondaries Whether to enable secondaries to serve read-only traffic. Defaults to false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableReadableSecondaries(Boolean enableReadableSecondaries) {
+            return enableReadableSecondaries(Output.of(enableReadableSecondaries));
+        }
+
+        /**
          * @param name The name of the instance. This is the unique identifier for the instance
          * 
          * @return builder
@@ -127,6 +242,102 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param nodeCount The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+         * 1 primary and 0 secondaries
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeCount(@Nullable Output<Integer> nodeCount) {
+            $.nodeCount = nodeCount;
+            return this;
+        }
+
+        /**
+         * @param nodeCount The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+         * 1 primary and 0 secondaries
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeCount(Integer nodeCount) {
+            return nodeCount(Output.of(nodeCount));
+        }
+
+        /**
+         * @param parentInstanceRef The ref of the parent instance. This is only available if the instance is
+         * child instance.
+         * Input: For specifying the parent instance to create a child instance. Optional.
+         * Output: Only populated if provided as input to create a child instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentInstanceRef(@Nullable Output<DatabaseInstanceParentInstanceRefArgs> parentInstanceRef) {
+            $.parentInstanceRef = parentInstanceRef;
+            return this;
+        }
+
+        /**
+         * @param parentInstanceRef The ref of the parent instance. This is only available if the instance is
+         * child instance.
+         * Input: For specifying the parent instance to create a child instance. Optional.
+         * Output: Only populated if provided as input to create a child instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentInstanceRef(DatabaseInstanceParentInstanceRefArgs parentInstanceRef) {
+            return parentInstanceRef(Output.of(parentInstanceRef));
+        }
+
+        /**
+         * @param purgeOnDelete Purge the resource on delete
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeOnDelete(@Nullable Output<Boolean> purgeOnDelete) {
+            $.purgeOnDelete = purgeOnDelete;
+            return this;
+        }
+
+        /**
+         * @param purgeOnDelete Purge the resource on delete
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeOnDelete(Boolean purgeOnDelete) {
+            return purgeOnDelete(Output.of(purgeOnDelete));
+        }
+
+        /**
+         * @param retentionWindowInDays The retention window for the instance. This is the time window in days
+         * for which the historical data is retained. The default value is 7 days.
+         * Valid values are 2 to 35 days
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retentionWindowInDays(@Nullable Output<Integer> retentionWindowInDays) {
+            $.retentionWindowInDays = retentionWindowInDays;
+            return this;
+        }
+
+        /**
+         * @param retentionWindowInDays The retention window for the instance. This is the time window in days
+         * for which the historical data is retained. The default value is 7 days.
+         * Valid values are 2 to 35 days
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retentionWindowInDays(Integer retentionWindowInDays) {
+            return retentionWindowInDays(Output.of(retentionWindowInDays));
         }
 
         /**

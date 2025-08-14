@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule {
     private @Nullable String accountId;
     private @Nullable String connectionState;
+    /**
+     * @return time in epoch milliseconds when this object was created.
+     * 
+     */
     private @Nullable Integer creationTime;
     private @Nullable Boolean deactivated;
     private @Nullable Integer deactivatedAt;
@@ -29,6 +33,10 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivate
     private @Nullable String networkConnectivityConfigId;
     private @Nullable List<String> resourceNames;
     private @Nullable String ruleId;
+    /**
+     * @return time in epoch milliseconds when this object was updated.
+     * 
+     */
     private @Nullable Integer updatedTime;
     private @Nullable String vpcEndpointId;
 
@@ -39,6 +47,10 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivate
     public Optional<String> connectionState() {
         return Optional.ofNullable(this.connectionState);
     }
+    /**
+     * @return time in epoch milliseconds when this object was created.
+     * 
+     */
     public Optional<Integer> creationTime() {
         return Optional.ofNullable(this.creationTime);
     }
@@ -70,6 +82,10 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivate
     public Optional<String> ruleId() {
         return Optional.ofNullable(this.ruleId);
     }
+    /**
+     * @return time in epoch milliseconds when this object was updated.
+     * 
+     */
     public Optional<Integer> updatedTime() {
         return Optional.ofNullable(this.updatedTime);
     }

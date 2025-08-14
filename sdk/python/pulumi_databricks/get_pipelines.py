@@ -49,7 +49,7 @@ class GetPipelinesResult:
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
         """
-        List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+        List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
         """
         return pulumi.get(self, "ids")
 
@@ -74,13 +74,13 @@ def get_pipelines(ids: Optional[Sequence[_builtins.str]] = None,
                   pipeline_name: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPipelinesResult:
     """
-    Retrieves a list of all Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+    Retrieves a list of all Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
 
     > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
-    Get all Delta Live Tables pipelines:
+    Get all Lakeflow Declarative Pipelines:
 
     ```python
     import pulumi
@@ -90,7 +90,7 @@ def get_pipelines(ids: Optional[Sequence[_builtins.str]] = None,
     pulumi.export("allPipelines", all.ids)
     ```
 
-    Filter Delta Live Tables pipelines by name (exact match):
+    Filter Lakeflow Declarative Pipelines by name (exact match):
 
     ```python
     import pulumi
@@ -100,7 +100,7 @@ def get_pipelines(ids: Optional[Sequence[_builtins.str]] = None,
     pulumi.export("myPipeline", this.ids)
     ```
 
-    Filter Delta Live Tables pipelines by name (wildcard search):
+    Filter Lakeflow Declarative Pipelines by name (wildcard search):
 
     ```python
     import pulumi
@@ -115,14 +115,14 @@ def get_pipelines(ids: Optional[Sequence[_builtins.str]] = None,
     The following resources are used in the same context:
 
     * End to end workspace management guide.
-    * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+    * Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
     * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
     * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
     * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
 
 
-    :param Sequence[_builtins.str] ids: List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
-    :param _builtins.str pipeline_name: Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+    :param Sequence[_builtins.str] ids: List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
+    :param _builtins.str pipeline_name: Filter Lakeflow Declarative Pipelines by name for a given search term. `%` is the supported wildcard operator.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -138,13 +138,13 @@ def get_pipelines_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.
                          pipeline_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelinesResult]:
     """
-    Retrieves a list of all Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+    Retrieves a list of all Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
 
     > This data source can only be used with a workspace-level provider!
 
     ## Example Usage
 
-    Get all Delta Live Tables pipelines:
+    Get all Lakeflow Declarative Pipelines:
 
     ```python
     import pulumi
@@ -154,7 +154,7 @@ def get_pipelines_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.
     pulumi.export("allPipelines", all.ids)
     ```
 
-    Filter Delta Live Tables pipelines by name (exact match):
+    Filter Lakeflow Declarative Pipelines by name (exact match):
 
     ```python
     import pulumi
@@ -164,7 +164,7 @@ def get_pipelines_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.
     pulumi.export("myPipeline", this.ids)
     ```
 
-    Filter Delta Live Tables pipelines by name (wildcard search):
+    Filter Lakeflow Declarative Pipelines by name (wildcard search):
 
     ```python
     import pulumi
@@ -179,14 +179,14 @@ def get_pipelines_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.
     The following resources are used in the same context:
 
     * End to end workspace management guide.
-    * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+    * Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
     * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
     * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
     * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
 
 
-    :param Sequence[_builtins.str] ids: List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
-    :param _builtins.str pipeline_name: Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+    :param Sequence[_builtins.str] ids: List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
+    :param _builtins.str pipeline_name: Filter Lakeflow Declarative Pipelines by name for a given search term. `%` is the supported wildcard operator.
     """
     __args__ = dict()
     __args__['ids'] = ids

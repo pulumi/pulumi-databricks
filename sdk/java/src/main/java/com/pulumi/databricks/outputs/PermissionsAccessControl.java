@@ -24,7 +24,7 @@ public final class PermissionsAccessControl {
      */
     private @Nullable String permissionLevel;
     /**
-     * @return Application ID of the service_principal.
+     * @return Application ID (**not service principal name!**) of the service_principal.
      * 
      */
     private @Nullable String servicePrincipalName;
@@ -52,7 +52,7 @@ public final class PermissionsAccessControl {
         return Optional.ofNullable(this.permissionLevel);
     }
     /**
-     * @return Application ID of the service_principal.
+     * @return Application ID (**not service principal name!**) of the service_principal.
      * 
      */
     public Optional<String> servicePrincipalName() {

@@ -272,7 +272,7 @@ class _LakehouseMonitorState:
                  drift_metrics_table_name: Optional[pulumi.Input[_builtins.str]] = None,
                  inference_log: Optional[pulumi.Input['LakehouseMonitorInferenceLogArgs']] = None,
                  latest_monitor_failure_msg: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 monitor_version: Optional[pulumi.Input[_builtins.int]] = None,
                  notifications: Optional[pulumi.Input['LakehouseMonitorNotificationsArgs']] = None,
                  output_schema_name: Optional[pulumi.Input[_builtins.str]] = None,
                  profile_metrics_table_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -294,7 +294,7 @@ class _LakehouseMonitorState:
         :param pulumi.Input['LakehouseMonitorDataClassificationConfigArgs'] data_classification_config: The data classification config for the monitor
         :param pulumi.Input[_builtins.str] drift_metrics_table_name: The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
         :param pulumi.Input['LakehouseMonitorInferenceLogArgs'] inference_log: Configuration for the inference log monitor
-        :param pulumi.Input[_builtins.str] monitor_version: The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
+        :param pulumi.Input[_builtins.int] monitor_version: The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
         :param pulumi.Input['LakehouseMonitorNotificationsArgs'] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[_builtins.str] output_schema_name: Schema where output metric tables are created
         :param pulumi.Input[_builtins.str] profile_metrics_table_name: The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
@@ -444,14 +444,14 @@ class _LakehouseMonitorState:
 
     @_builtins.property
     @pulumi.getter(name="monitorVersion")
-    def monitor_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor_version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
         """
         return pulumi.get(self, "monitor_version")
 
     @monitor_version.setter
-    def monitor_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor_version(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "monitor_version", value)
 
     @_builtins.property
@@ -902,7 +902,7 @@ class LakehouseMonitor(pulumi.CustomResource):
             drift_metrics_table_name: Optional[pulumi.Input[_builtins.str]] = None,
             inference_log: Optional[pulumi.Input[Union['LakehouseMonitorInferenceLogArgs', 'LakehouseMonitorInferenceLogArgsDict']]] = None,
             latest_monitor_failure_msg: Optional[pulumi.Input[_builtins.str]] = None,
-            monitor_version: Optional[pulumi.Input[_builtins.str]] = None,
+            monitor_version: Optional[pulumi.Input[_builtins.int]] = None,
             notifications: Optional[pulumi.Input[Union['LakehouseMonitorNotificationsArgs', 'LakehouseMonitorNotificationsArgsDict']]] = None,
             output_schema_name: Optional[pulumi.Input[_builtins.str]] = None,
             profile_metrics_table_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -929,7 +929,7 @@ class LakehouseMonitor(pulumi.CustomResource):
         :param pulumi.Input[Union['LakehouseMonitorDataClassificationConfigArgs', 'LakehouseMonitorDataClassificationConfigArgsDict']] data_classification_config: The data classification config for the monitor
         :param pulumi.Input[_builtins.str] drift_metrics_table_name: The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
         :param pulumi.Input[Union['LakehouseMonitorInferenceLogArgs', 'LakehouseMonitorInferenceLogArgsDict']] inference_log: Configuration for the inference log monitor
-        :param pulumi.Input[_builtins.str] monitor_version: The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
+        :param pulumi.Input[_builtins.int] monitor_version: The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
         :param pulumi.Input[Union['LakehouseMonitorNotificationsArgs', 'LakehouseMonitorNotificationsArgsDict']] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[_builtins.str] output_schema_name: Schema where output metric tables are created
         :param pulumi.Input[_builtins.str] profile_metrics_table_name: The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
@@ -1032,7 +1032,7 @@ class LakehouseMonitor(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="monitorVersion")
-    def monitor_version(self) -> pulumi.Output[_builtins.str]:
+    def monitor_version(self) -> pulumi.Output[_builtins.int]:
         """
         The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
         """

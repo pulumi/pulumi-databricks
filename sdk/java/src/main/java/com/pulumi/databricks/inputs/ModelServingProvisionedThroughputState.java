@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ModelServingProvisionedThroughputAiGatewayArgs;
 import com.pulumi.databricks.inputs.ModelServingProvisionedThroughputConfigArgs;
+import com.pulumi.databricks.inputs.ModelServingProvisionedThroughputEmailNotificationsArgs;
 import com.pulumi.databricks.inputs.ModelServingProvisionedThroughputTagArgs;
 import java.lang.String;
 import java.util.List;
@@ -65,6 +66,21 @@ public final class ModelServingProvisionedThroughputState extends com.pulumi.res
     }
 
     /**
+     * A block with Email notification setting.
+     * 
+     */
+    @Import(name="emailNotifications")
+    private @Nullable Output<ModelServingProvisionedThroughputEmailNotificationsArgs> emailNotifications;
+
+    /**
+     * @return A block with Email notification setting.
+     * 
+     */
+    public Optional<Output<ModelServingProvisionedThroughputEmailNotificationsArgs>> emailNotifications() {
+        return Optional.ofNullable(this.emailNotifications);
+    }
+
+    /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      * 
      */
@@ -115,6 +131,7 @@ public final class ModelServingProvisionedThroughputState extends com.pulumi.res
         this.aiGateway = $.aiGateway;
         this.budgetPolicyId = $.budgetPolicyId;
         this.config = $.config;
+        this.emailNotifications = $.emailNotifications;
         this.name = $.name;
         this.servingEndpointId = $.servingEndpointId;
         this.tags = $.tags;
@@ -199,6 +216,27 @@ public final class ModelServingProvisionedThroughputState extends com.pulumi.res
          */
         public Builder config(ModelServingProvisionedThroughputConfigArgs config) {
             return config(Output.of(config));
+        }
+
+        /**
+         * @param emailNotifications A block with Email notification setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailNotifications(@Nullable Output<ModelServingProvisionedThroughputEmailNotificationsArgs> emailNotifications) {
+            $.emailNotifications = emailNotifications;
+            return this;
+        }
+
+        /**
+         * @param emailNotifications A block with Email notification setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailNotifications(ModelServingProvisionedThroughputEmailNotificationsArgs emailNotifications) {
+            return emailNotifications(Output.of(emailNotifications));
         }
 
         /**

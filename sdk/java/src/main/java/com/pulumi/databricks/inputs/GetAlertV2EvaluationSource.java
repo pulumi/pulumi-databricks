@@ -30,14 +30,14 @@ public final class GetAlertV2EvaluationSource extends com.pulumi.resources.Invok
     }
 
     /**
-     * (string) -
+     * (string)
      * 
      */
     @Import(name="display")
     private @Nullable String display;
 
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     public Optional<String> display() {
@@ -45,14 +45,14 @@ public final class GetAlertV2EvaluationSource extends com.pulumi.resources.Invok
     }
 
     /**
-     * (string) -
+     * (string)
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     public Optional<String> name() {
@@ -97,7 +97,7 @@ public final class GetAlertV2EvaluationSource extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param display (string) -
+         * @param display (string)
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class GetAlertV2EvaluationSource extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param name (string) -
+         * @param name (string)
          * 
          * @return builder
          * 

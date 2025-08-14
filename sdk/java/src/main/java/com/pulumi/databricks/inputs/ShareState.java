@@ -18,9 +18,17 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
 
     public static final ShareState Empty = new ShareState();
 
+    /**
+     * User-supplied free-form text.
+     * 
+     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
+    /**
+     * @return User-supplied free-form text.
+     * 
+     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
@@ -153,11 +161,23 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
             $ = new ShareState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param comment User-supplied free-form text.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
+        /**
+         * @param comment User-supplied free-form text.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }

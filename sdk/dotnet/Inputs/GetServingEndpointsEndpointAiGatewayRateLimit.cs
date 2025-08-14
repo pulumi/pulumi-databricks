@@ -12,11 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetServingEndpointsEndpointAiGatewayRateLimitArgs : global::Pulumi.InvokeArgs
     {
-        [Input("calls", required: true)]
-        public int Calls { get; set; }
+        [Input("calls")]
+        public int? Calls { get; set; }
 
         [Input("key")]
         public string? Key { get; set; }
+
+        [Input("principal")]
+        public string? Principal { get; set; }
 
         [Input("renewalPeriod", required: true)]
         public string RenewalPeriod { get; set; } = null!;

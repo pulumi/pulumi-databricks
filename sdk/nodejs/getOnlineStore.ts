@@ -9,6 +9,7 @@ export function getOnlineStore(args: GetOnlineStoreArgs, opts?: pulumi.InvokeOpt
     return pulumi.runtime.invoke("databricks:index/getOnlineStore:getOnlineStore", {
         "capacity": args.capacity,
         "name": args.name,
+        "readReplicaCount": args.readReplicaCount,
     }, opts);
 }
 
@@ -19,11 +20,15 @@ export interface GetOnlineStoreArgs {
     /**
      * (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
-    capacity?: string;
+    capacity: string;
     /**
      * The name of the online store. This is the unique identifier for the online store
      */
     name: string;
+    /**
+     * (integer) - The number of read replicas for the online store. Defaults to 0
+     */
+    readReplicaCount?: number;
 }
 
 /**
@@ -33,7 +38,7 @@ export interface GetOnlineStoreResult {
     /**
      * (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
-    readonly capacity?: string;
+    readonly capacity: string;
     /**
      * (string) - The timestamp when the online store was created
      */
@@ -51,6 +56,10 @@ export interface GetOnlineStoreResult {
      */
     readonly name: string;
     /**
+     * (integer) - The number of read replicas for the online store. Defaults to 0
+     */
+    readonly readReplicaCount?: number;
+    /**
      * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     readonly state: string;
@@ -60,6 +69,7 @@ export function getOnlineStoreOutput(args: GetOnlineStoreOutputArgs, opts?: pulu
     return pulumi.runtime.invokeOutput("databricks:index/getOnlineStore:getOnlineStore", {
         "capacity": args.capacity,
         "name": args.name,
+        "readReplicaCount": args.readReplicaCount,
     }, opts);
 }
 
@@ -70,9 +80,13 @@ export interface GetOnlineStoreOutputArgs {
     /**
      * (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
-    capacity?: pulumi.Input<string>;
+    capacity: pulumi.Input<string>;
     /**
      * The name of the online store. This is the unique identifier for the online store
      */
     name: pulumi.Input<string>;
+    /**
+     * (integer) - The number of read replicas for the online store. Defaults to 0
+     */
+    readReplicaCount?: pulumi.Input<number>;
 }

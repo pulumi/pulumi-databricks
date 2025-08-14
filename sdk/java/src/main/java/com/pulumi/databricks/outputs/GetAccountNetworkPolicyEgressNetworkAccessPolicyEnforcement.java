@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
     /**
-     * @return (list of ) - When empty, it means dry run for all products.
+     * @return (list of string) - When empty, it means dry run for all products.
      * When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
      * 
      */
@@ -28,7 +28,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
 
     private GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement() {}
     /**
-     * @return (list of ) - When empty, it means dry run for all products.
+     * @return (list of string) - When empty, it means dry run for all products.
      * When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
      * 
      */

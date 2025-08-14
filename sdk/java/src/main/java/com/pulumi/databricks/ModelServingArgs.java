@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ModelServingAiGatewayArgs;
 import com.pulumi.databricks.inputs.ModelServingConfigArgs;
+import com.pulumi.databricks.inputs.ModelServingEmailNotificationsArgs;
 import com.pulumi.databricks.inputs.ModelServingRateLimitArgs;
 import com.pulumi.databricks.inputs.ModelServingTagArgs;
 import java.lang.Boolean;
@@ -64,6 +65,36 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ModelServingConfigArgs>> config() {
         return Optional.ofNullable(this.config);
+    }
+
+    /**
+     * The description of the model serving endpoint.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the model serving endpoint.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * A block with Email notification setting.
+     * 
+     */
+    @Import(name="emailNotifications")
+    private @Nullable Output<ModelServingEmailNotificationsArgs> emailNotifications;
+
+    /**
+     * @return A block with Email notification setting.
+     * 
+     */
+    public Optional<Output<ModelServingEmailNotificationsArgs>> emailNotifications() {
+        return Optional.ofNullable(this.emailNotifications);
     }
 
     /**
@@ -140,6 +171,8 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
         this.aiGateway = $.aiGateway;
         this.budgetPolicyId = $.budgetPolicyId;
         this.config = $.config;
+        this.description = $.description;
+        this.emailNotifications = $.emailNotifications;
         this.name = $.name;
         this.rateLimits = $.rateLimits;
         this.routeOptimized = $.routeOptimized;
@@ -225,6 +258,48 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder config(ModelServingConfigArgs config) {
             return config(Output.of(config));
+        }
+
+        /**
+         * @param description The description of the model serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the model serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
+         * @param emailNotifications A block with Email notification setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailNotifications(@Nullable Output<ModelServingEmailNotificationsArgs> emailNotifications) {
+            $.emailNotifications = emailNotifications;
+            return this;
+        }
+
+        /**
+         * @param emailNotifications A block with Email notification setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailNotifications(ModelServingEmailNotificationsArgs emailNotifications) {
+            return emailNotifications(Output.of(emailNotifications));
         }
 
         /**

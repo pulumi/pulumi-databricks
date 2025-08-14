@@ -45,7 +45,7 @@ class GetQualityMonitorV2Result:
     @pulumi.getter(name="anomalyDetectionConfig")
     def anomaly_detection_config(self) -> 'outputs.GetQualityMonitorV2AnomalyDetectionConfigResult':
         """
-        (AnomalyDetectionConfig) -
+        (AnomalyDetectionConfig)
         """
         return pulumi.get(self, "anomaly_detection_config")
 

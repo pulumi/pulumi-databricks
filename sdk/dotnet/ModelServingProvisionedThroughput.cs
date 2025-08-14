@@ -117,6 +117,12 @@ namespace Pulumi.Databricks
         public Output<Outputs.ModelServingProvisionedThroughputConfig> Config { get; private set; } = null!;
 
         /// <summary>
+        /// A block with Email notification setting.
+        /// </summary>
+        [Output("emailNotifications")]
+        public Output<Outputs.ModelServingProvisionedThroughputEmailNotifications?> EmailNotifications { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         /// </summary>
         [Output("name")]
@@ -199,6 +205,12 @@ namespace Pulumi.Databricks
         public Input<Inputs.ModelServingProvisionedThroughputConfigArgs> Config { get; set; } = null!;
 
         /// <summary>
+        /// A block with Email notification setting.
+        /// </summary>
+        [Input("emailNotifications")]
+        public Input<Inputs.ModelServingProvisionedThroughputEmailNotificationsArgs>? EmailNotifications { get; set; }
+
+        /// <summary>
         /// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         /// </summary>
         [Input("name")]
@@ -241,6 +253,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("config")]
         public Input<Inputs.ModelServingProvisionedThroughputConfigGetArgs>? Config { get; set; }
+
+        /// <summary>
+        /// A block with Email notification setting.
+        /// </summary>
+        [Input("emailNotifications")]
+        public Input<Inputs.ModelServingProvisionedThroughputEmailNotificationsGetArgs>? EmailNotifications { get; set; }
 
         /// <summary>
         /// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.

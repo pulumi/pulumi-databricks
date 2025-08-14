@@ -99,7 +99,7 @@ import (
 // The following resources are often used in the same context:
 //
 // * End to end workspace management guide.
-// * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+// * Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
 // * Grants to manage data access in Unity Catalog.
 // * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
 // * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.

@@ -145,14 +145,16 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (string) - The run as username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+     * The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      * 
      */
     @Import(name="runAsUserName")
     private @Nullable Output<String> runAsUserName;
 
     /**
-     * @return (string) - The run as username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+     * @return The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      * 
      */
     public Optional<Output<String>> runAsUserName() {
@@ -410,7 +412,8 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runAsUserName (string) - The run as username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+         * @param runAsUserName The run as username or application ID of service principal.
+         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
          * 
          * @return builder
          * 
@@ -421,7 +424,8 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runAsUserName (string) - The run as username. This field is set to &#34;Unavailable&#34; if the user has been deleted
+         * @param runAsUserName The run as username or application ID of service principal.
+         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
          * 
          * @return builder
          * 

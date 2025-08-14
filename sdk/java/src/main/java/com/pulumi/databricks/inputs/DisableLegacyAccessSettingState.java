@@ -16,9 +16,17 @@ public final class DisableLegacyAccessSettingState extends com.pulumi.resources.
 
     public static final DisableLegacyAccessSettingState Empty = new DisableLegacyAccessSettingState();
 
+    /**
+     * The configuration details.
+     * 
+     */
     @Import(name="disableLegacyAccess")
     private @Nullable Output<DisableLegacyAccessSettingDisableLegacyAccessArgs> disableLegacyAccess;
 
+    /**
+     * @return The configuration details.
+     * 
+     */
     public Optional<Output<DisableLegacyAccessSettingDisableLegacyAccessArgs>> disableLegacyAccess() {
         return Optional.ofNullable(this.disableLegacyAccess);
     }
@@ -63,11 +71,23 @@ public final class DisableLegacyAccessSettingState extends com.pulumi.resources.
             $ = new DisableLegacyAccessSettingState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param disableLegacyAccess The configuration details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableLegacyAccess(@Nullable Output<DisableLegacyAccessSettingDisableLegacyAccessArgs> disableLegacyAccess) {
             $.disableLegacyAccess = disableLegacyAccess;
             return this;
         }
 
+        /**
+         * @param disableLegacyAccess The configuration details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableLegacyAccess(DisableLegacyAccessSettingDisableLegacyAccessArgs disableLegacyAccess) {
             return disableLegacyAccess(Output.of(disableLegacyAccess));
         }

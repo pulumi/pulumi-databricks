@@ -17,9 +17,17 @@ public final class DisableLegacyAccessSettingArgs extends com.pulumi.resources.R
 
     public static final DisableLegacyAccessSettingArgs Empty = new DisableLegacyAccessSettingArgs();
 
+    /**
+     * The configuration details.
+     * 
+     */
     @Import(name="disableLegacyAccess", required=true)
     private Output<DisableLegacyAccessSettingDisableLegacyAccessArgs> disableLegacyAccess;
 
+    /**
+     * @return The configuration details.
+     * 
+     */
     public Output<DisableLegacyAccessSettingDisableLegacyAccessArgs> disableLegacyAccess() {
         return this.disableLegacyAccess;
     }
@@ -64,11 +72,23 @@ public final class DisableLegacyAccessSettingArgs extends com.pulumi.resources.R
             $ = new DisableLegacyAccessSettingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param disableLegacyAccess The configuration details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableLegacyAccess(Output<DisableLegacyAccessSettingDisableLegacyAccessArgs> disableLegacyAccess) {
             $.disableLegacyAccess = disableLegacyAccess;
             return this;
         }
 
+        /**
+         * @param disableLegacyAccess The configuration details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableLegacyAccess(DisableLegacyAccessSettingDisableLegacyAccessArgs disableLegacyAccess) {
             return disableLegacyAccess(Output.of(disableLegacyAccess));
         }

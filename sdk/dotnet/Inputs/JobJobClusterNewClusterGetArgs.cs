@@ -12,6 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobJobClusterNewClusterGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("__applyPolicyDefaultValuesAllowLists")]
+        private InputList<string>? ___applyPolicyDefaultValuesAllowLists;
+        public InputList<string> __applyPolicyDefaultValuesAllowLists
+        {
+            get => ___applyPolicyDefaultValuesAllowLists ?? (___applyPolicyDefaultValuesAllowLists = new InputList<string>());
+            set => ___applyPolicyDefaultValuesAllowLists = value;
+        }
+
         [Input("applyPolicyDefaultValues")]
         public Input<bool>? ApplyPolicyDefaultValues { get; set; }
 

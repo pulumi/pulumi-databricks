@@ -46,14 +46,14 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDesti
     }
 
     /**
-     * (string) -
+     * (string)
      * 
      */
     @Import(name="bucketName")
     private @Nullable Output<String> bucketName;
 
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     public Optional<Output<String>> bucketName() {
@@ -61,14 +61,14 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDesti
     }
 
     /**
-     * (string) -
+     * (string)
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return (string) -
+     * @return (string)
      * 
      */
     public Optional<Output<String>> region() {
@@ -161,7 +161,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDesti
         }
 
         /**
-         * @param bucketName (string) -
+         * @param bucketName (string)
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDesti
         }
 
         /**
-         * @param bucketName (string) -
+         * @param bucketName (string)
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDesti
         }
 
         /**
-         * @param region (string) -
+         * @param region (string)
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDesti
         }
 
         /**
-         * @param region (string) -
+         * @param region (string)
          * 
          * @return builder
          * 

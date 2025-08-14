@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobEnvironmentSpecGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// client version used by the environment.
-        /// </summary>
         [Input("client")]
         public Input<string>? Client { get; set; }
 
@@ -30,6 +27,9 @@ namespace Pulumi.Databricks.Inputs
             set => _dependencies = value;
         }
 
+        /// <summary>
+        /// client version used by the environment. Each version comes with a specific Python version and a set of Python packages.
+        /// </summary>
         [Input("environmentVersion")]
         public Input<string>? EnvironmentVersion { get; set; }
 

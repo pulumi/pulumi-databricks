@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -16,6 +17,7 @@ public final class PipelineIngestionDefinitionObjectTableTableConfiguration {
     private @Nullable List<String> excludeColumns;
     private @Nullable List<String> includeColumns;
     private @Nullable List<String> primaryKeys;
+    private @Nullable PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig queryBasedConnectorConfig;
     private @Nullable Boolean salesforceIncludeFormulaFields;
     private @Nullable String scdType;
     private @Nullable List<String> sequenceBies;
@@ -29,6 +31,9 @@ public final class PipelineIngestionDefinitionObjectTableTableConfiguration {
     }
     public List<String> primaryKeys() {
         return this.primaryKeys == null ? List.of() : this.primaryKeys;
+    }
+    public Optional<PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig> queryBasedConnectorConfig() {
+        return Optional.ofNullable(this.queryBasedConnectorConfig);
     }
     public Optional<Boolean> salesforceIncludeFormulaFields() {
         return Optional.ofNullable(this.salesforceIncludeFormulaFields);
@@ -52,6 +57,7 @@ public final class PipelineIngestionDefinitionObjectTableTableConfiguration {
         private @Nullable List<String> excludeColumns;
         private @Nullable List<String> includeColumns;
         private @Nullable List<String> primaryKeys;
+        private @Nullable PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig queryBasedConnectorConfig;
         private @Nullable Boolean salesforceIncludeFormulaFields;
         private @Nullable String scdType;
         private @Nullable List<String> sequenceBies;
@@ -61,6 +67,7 @@ public final class PipelineIngestionDefinitionObjectTableTableConfiguration {
     	      this.excludeColumns = defaults.excludeColumns;
     	      this.includeColumns = defaults.includeColumns;
     	      this.primaryKeys = defaults.primaryKeys;
+    	      this.queryBasedConnectorConfig = defaults.queryBasedConnectorConfig;
     	      this.salesforceIncludeFormulaFields = defaults.salesforceIncludeFormulaFields;
     	      this.scdType = defaults.scdType;
     	      this.sequenceBies = defaults.sequenceBies;
@@ -94,6 +101,12 @@ public final class PipelineIngestionDefinitionObjectTableTableConfiguration {
             return primaryKeys(List.of(primaryKeys));
         }
         @CustomType.Setter
+        public Builder queryBasedConnectorConfig(@Nullable PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig queryBasedConnectorConfig) {
+
+            this.queryBasedConnectorConfig = queryBasedConnectorConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder salesforceIncludeFormulaFields(@Nullable Boolean salesforceIncludeFormulaFields) {
 
             this.salesforceIncludeFormulaFields = salesforceIncludeFormulaFields;
@@ -119,6 +132,7 @@ public final class PipelineIngestionDefinitionObjectTableTableConfiguration {
             _resultValue.excludeColumns = excludeColumns;
             _resultValue.includeColumns = includeColumns;
             _resultValue.primaryKeys = primaryKeys;
+            _resultValue.queryBasedConnectorConfig = queryBasedConnectorConfig;
             _resultValue.salesforceIncludeFormulaFields = salesforceIncludeFormulaFields;
             _resultValue.scdType = scdType;
             _resultValue.sequenceBies = sequenceBies;

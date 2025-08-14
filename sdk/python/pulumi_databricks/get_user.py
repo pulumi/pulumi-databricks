@@ -192,7 +192,7 @@ def get_user(user_id: Optional[_builtins.str] = None,
 
     - End to end workspace management guide.
     - get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
-    - Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+    - Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
     - Group data to retrieve information about Group members, entitlements and instance profiles.
     - GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
     - GroupMember to attach users and groups as group members.
@@ -251,7 +251,7 @@ def get_user_output(user_id: Optional[pulumi.Input[Optional[_builtins.str]]] = N
 
     - End to end workspace management guide.
     - get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
-    - Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+    - Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
     - Group data to retrieve information about Group members, entitlements and instance profiles.
     - GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
     - GroupMember to attach users and groups as group members.

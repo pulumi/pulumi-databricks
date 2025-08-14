@@ -69,7 +69,7 @@ type LookupQualityMonitorV2Args struct {
 
 // A collection of values returned by getQualityMonitorV2.
 type LookupQualityMonitorV2Result struct {
-	// (AnomalyDetectionConfig) -
+	// (AnomalyDetectionConfig)
 	AnomalyDetectionConfig GetQualityMonitorV2AnomalyDetectionConfig `pulumi:"anomalyDetectionConfig"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -115,7 +115,7 @@ func (o LookupQualityMonitorV2ResultOutput) ToLookupQualityMonitorV2ResultOutput
 	return o
 }
 
-// (AnomalyDetectionConfig) -
+// (AnomalyDetectionConfig)
 func (o LookupQualityMonitorV2ResultOutput) AnomalyDetectionConfig() GetQualityMonitorV2AnomalyDetectionConfigOutput {
 	return o.ApplyT(func(v LookupQualityMonitorV2Result) GetQualityMonitorV2AnomalyDetectionConfig {
 		return v.AnomalyDetectionConfig

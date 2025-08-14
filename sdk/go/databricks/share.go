@@ -41,6 +41,7 @@ import (
 type Share struct {
 	pulumi.CustomResourceState
 
+	// User-supplied free-form text.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// Time when the share was created.
 	CreatedAt pulumi.IntOutput `pulumi:"createdAt"`
@@ -87,6 +88,7 @@ func GetShare(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Share resources.
 type shareState struct {
+	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
 	// Time when the share was created.
 	CreatedAt *int `pulumi:"createdAt"`
@@ -104,6 +106,7 @@ type shareState struct {
 }
 
 type ShareState struct {
+	// User-supplied free-form text.
 	Comment pulumi.StringPtrInput
 	// Time when the share was created.
 	CreatedAt pulumi.IntPtrInput
@@ -125,6 +128,7 @@ func (ShareState) ElementType() reflect.Type {
 }
 
 type shareArgs struct {
+	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
 	// Time when the share was created.
 	CreatedAt *int `pulumi:"createdAt"`
@@ -143,6 +147,7 @@ type shareArgs struct {
 
 // The set of arguments for constructing a Share resource.
 type ShareArgs struct {
+	// User-supplied free-form text.
 	Comment pulumi.StringPtrInput
 	// Time when the share was created.
 	CreatedAt pulumi.IntPtrInput
@@ -246,6 +251,7 @@ func (o ShareOutput) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 	return o
 }
 
+// User-supplied free-form text.
 func (o ShareOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Share) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }

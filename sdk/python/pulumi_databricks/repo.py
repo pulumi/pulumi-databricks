@@ -308,7 +308,7 @@ class Repo(pulumi.CustomResource):
         * End to end workspace management guide.
         * GitCredential to manage Git credentials.
         * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-        * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
+        * Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
         * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
@@ -380,7 +380,7 @@ class Repo(pulumi.CustomResource):
         * End to end workspace management guide.
         * GitCredential to manage Git credentials.
         * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-        * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/aws/en/dlt).
+        * Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
         * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.

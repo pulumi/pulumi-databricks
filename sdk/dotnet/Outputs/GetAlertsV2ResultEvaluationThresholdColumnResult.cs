@@ -18,11 +18,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Aggregation;
         /// <summary>
-        /// (string) -
+        /// (string)
         /// </summary>
         public readonly string? Display;
         /// <summary>
-        /// (string) -
+        /// (string)
         /// </summary>
         public readonly string? Name;
 

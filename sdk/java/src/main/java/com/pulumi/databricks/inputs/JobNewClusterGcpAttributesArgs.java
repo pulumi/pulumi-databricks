@@ -31,6 +31,13 @@ public final class JobNewClusterGcpAttributesArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.bootDiskSize);
     }
 
+    @Import(name="firstOnDemand")
+    private @Nullable Output<Integer> firstOnDemand;
+
+    public Optional<Output<Integer>> firstOnDemand() {
+        return Optional.ofNullable(this.firstOnDemand);
+    }
+
     @Import(name="googleServiceAccount")
     private @Nullable Output<String> googleServiceAccount;
 
@@ -64,6 +71,7 @@ public final class JobNewClusterGcpAttributesArgs extends com.pulumi.resources.R
     private JobNewClusterGcpAttributesArgs(JobNewClusterGcpAttributesArgs $) {
         this.availability = $.availability;
         this.bootDiskSize = $.bootDiskSize;
+        this.firstOnDemand = $.firstOnDemand;
         this.googleServiceAccount = $.googleServiceAccount;
         this.localSsdCount = $.localSsdCount;
         this.usePreemptibleExecutors = $.usePreemptibleExecutors;
@@ -104,6 +112,15 @@ public final class JobNewClusterGcpAttributesArgs extends com.pulumi.resources.R
 
         public Builder bootDiskSize(Integer bootDiskSize) {
             return bootDiskSize(Output.of(bootDiskSize));
+        }
+
+        public Builder firstOnDemand(@Nullable Output<Integer> firstOnDemand) {
+            $.firstOnDemand = firstOnDemand;
+            return this;
+        }
+
+        public Builder firstOnDemand(Integer firstOnDemand) {
+            return firstOnDemand(Output.of(firstOnDemand));
         }
 
         public Builder googleServiceAccount(@Nullable Output<String> googleServiceAccount) {

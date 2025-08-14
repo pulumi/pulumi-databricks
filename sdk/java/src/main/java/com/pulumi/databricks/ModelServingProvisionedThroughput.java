@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ModelServingProvisionedThroughputState;
 import com.pulumi.databricks.outputs.ModelServingProvisionedThroughputAiGateway;
 import com.pulumi.databricks.outputs.ModelServingProvisionedThroughputConfig;
+import com.pulumi.databricks.outputs.ModelServingProvisionedThroughputEmailNotifications;
 import com.pulumi.databricks.outputs.ModelServingProvisionedThroughputTag;
 import java.lang.String;
 import java.util.List;
@@ -161,6 +162,20 @@ public class ModelServingProvisionedThroughput extends com.pulumi.resources.Cust
      */
     public Output<ModelServingProvisionedThroughputConfig> config() {
         return this.config;
+    }
+    /**
+     * A block with Email notification setting.
+     * 
+     */
+    @Export(name="emailNotifications", refs={ModelServingProvisionedThroughputEmailNotifications.class}, tree="[0]")
+    private Output</* @Nullable */ ModelServingProvisionedThroughputEmailNotifications> emailNotifications;
+
+    /**
+     * @return A block with Email notification setting.
+     * 
+     */
+    public Output<Optional<ModelServingProvisionedThroughputEmailNotifications>> emailNotifications() {
+        return Codegen.optional(this.emailNotifications);
     }
     /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.

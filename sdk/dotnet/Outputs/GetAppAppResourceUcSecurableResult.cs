@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAppAppResourceUcSecurableResult
     {
         /// <summary>
-        /// Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        /// Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
         /// </summary>
         public readonly string Permission;
         /// <summary>

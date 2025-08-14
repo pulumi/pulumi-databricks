@@ -76,6 +76,78 @@ import * as utilities from "./utilities";
  *
  * Create a connection to builtin Hive Metastore
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const hms = new databricks.Connection("hms", {
+ *     name: "hms-builtin",
+ *     connectionType: "HIVE_METASTORE",
+ *     comment: "This is a connection to builtin HMS",
+ *     options: {
+ *         builtin: "true",
+ *     },
+ * });
+ * ```
+ *
+ * Create a HTTP connection with bearer token
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const httpBearer = new databricks.Connection("http_bearer", {
+ *     name: "http_bearer",
+ *     connectionType: "HTTP",
+ *     comment: "This is a connection to a HTTP service",
+ *     options: {
+ *         host: "https://example.com",
+ *         port: "8433",
+ *         base_path: "/api/",
+ *         bearer_token: "bearer_token",
+ *     },
+ * });
+ * ```
+ *
+ * Create a HTTP connection with OAuth M2M
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const httpOauth = new databricks.Connection("http_oauth", {
+ *     name: "http_oauth",
+ *     connectionType: "HTTP",
+ *     comment: "This is a connection to a HTTP service",
+ *     options: {
+ *         host: "https://example.com",
+ *         port: "8433",
+ *         base_path: "/api/",
+ *         client_id: "client_id",
+ *         client_secret: "client_secret",
+ *         oauth_scope: "channels:read channels:history chat:write",
+ *         token_endpoint: "https://authorization-server.com/oauth/token",
+ *     },
+ * });
+ * ```
+ *
+ * Create a PowerBI connection with OAuth M2M
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const pbi = new databricks.Connection("pbi", {
+ *     name: "test-pbi",
+ *     connectionType: "POWER_BI",
+ *     options: {
+ *         authorization_endpoint: "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize",
+ *         client_id: "client_id",
+ *         client_secret: "client_secret",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by `id`:
@@ -150,6 +222,7 @@ export class Connection extends pulumi.CustomResource {
      * The type of credential for this connection.
      */
     public /*out*/ readonly credentialType!: pulumi.Output<string>;
+    public readonly environmentSettings!: pulumi.Output<outputs.ConnectionEnvironmentSettings | undefined>;
     /**
      * Full name of connection.
      */
@@ -215,6 +288,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
             resourceInputs["credentialType"] = state ? state.credentialType : undefined;
+            resourceInputs["environmentSettings"] = state ? state.environmentSettings : undefined;
             resourceInputs["fullName"] = state ? state.fullName : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -231,6 +305,7 @@ export class Connection extends pulumi.CustomResource {
             const args = argsOrState as ConnectionArgs | undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["connectionType"] = args ? args.connectionType : undefined;
+            resourceInputs["environmentSettings"] = args ? args.environmentSettings : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["options"] = args?.options ? pulumi.secret(args.options) : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
@@ -283,6 +358,7 @@ export interface ConnectionState {
      * The type of credential for this connection.
      */
     credentialType?: pulumi.Input<string>;
+    environmentSettings?: pulumi.Input<inputs.ConnectionEnvironmentSettings>;
     /**
      * Full name of connection.
      */
@@ -342,6 +418,7 @@ export interface ConnectionArgs {
      * Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
      */
     connectionType?: pulumi.Input<string>;
+    environmentSettings?: pulumi.Input<inputs.ConnectionEnvironmentSettings>;
     /**
      * Name of the Connection.
      */

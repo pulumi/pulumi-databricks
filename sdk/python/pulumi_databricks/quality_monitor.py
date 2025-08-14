@@ -289,7 +289,7 @@ class _QualityMonitorState:
                  inference_log: Optional[pulumi.Input['QualityMonitorInferenceLogArgs']] = None,
                  latest_monitor_failure_msg: Optional[pulumi.Input[_builtins.str]] = None,
                  monitor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 monitor_version: Optional[pulumi.Input[_builtins.int]] = None,
                  notifications: Optional[pulumi.Input['QualityMonitorNotificationsArgs']] = None,
                  output_schema_name: Optional[pulumi.Input[_builtins.str]] = None,
                  profile_metrics_table_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -312,7 +312,7 @@ class _QualityMonitorState:
         :param pulumi.Input[_builtins.str] drift_metrics_table_name: The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
         :param pulumi.Input['QualityMonitorInferenceLogArgs'] inference_log: Configuration for the inference log monitor
         :param pulumi.Input[_builtins.str] monitor_id: ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
-        :param pulumi.Input[_builtins.str] monitor_version: The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
+        :param pulumi.Input[_builtins.int] monitor_version: The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
         :param pulumi.Input['QualityMonitorNotificationsArgs'] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[_builtins.str] output_schema_name: Schema where output metric tables are created
         :param pulumi.Input[_builtins.str] profile_metrics_table_name: The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
@@ -476,14 +476,14 @@ class _QualityMonitorState:
 
     @_builtins.property
     @pulumi.getter(name="monitorVersion")
-    def monitor_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor_version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
         """
         return pulumi.get(self, "monitor_version")
 
     @monitor_version.setter
-    def monitor_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor_version(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "monitor_version", value)
 
     @_builtins.property
@@ -947,7 +947,7 @@ class QualityMonitor(pulumi.CustomResource):
             inference_log: Optional[pulumi.Input[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']]] = None,
             latest_monitor_failure_msg: Optional[pulumi.Input[_builtins.str]] = None,
             monitor_id: Optional[pulumi.Input[_builtins.str]] = None,
-            monitor_version: Optional[pulumi.Input[_builtins.str]] = None,
+            monitor_version: Optional[pulumi.Input[_builtins.int]] = None,
             notifications: Optional[pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']]] = None,
             output_schema_name: Optional[pulumi.Input[_builtins.str]] = None,
             profile_metrics_table_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -975,7 +975,7 @@ class QualityMonitor(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] drift_metrics_table_name: The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
         :param pulumi.Input[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']] inference_log: Configuration for the inference log monitor
         :param pulumi.Input[_builtins.str] monitor_id: ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
-        :param pulumi.Input[_builtins.str] monitor_version: The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
+        :param pulumi.Input[_builtins.int] monitor_version: The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
         :param pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[_builtins.str] output_schema_name: Schema where output metric tables are created
         :param pulumi.Input[_builtins.str] profile_metrics_table_name: The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
@@ -1087,7 +1087,7 @@ class QualityMonitor(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="monitorVersion")
-    def monitor_version(self) -> pulumi.Output[_builtins.str]:
+    def monitor_version(self) -> pulumi.Output[_builtins.int]:
         """
         The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
         """

@@ -103,10 +103,40 @@ namespace Pulumi.Databricks
         public string? Capacity { get; set; }
 
         /// <summary>
+        /// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+        /// </summary>
+        [Input("enableReadableSecondaries")]
+        public bool? EnableReadableSecondaries { get; set; }
+
+        /// <summary>
         /// The name of the instance. This is the unique identifier for the instance
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
+
+        /// <summary>
+        /// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+        /// 1 primary and 0 secondaries
+        /// </summary>
+        [Input("nodeCount")]
+        public int? NodeCount { get; set; }
+
+        /// <summary>
+        /// (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+        /// child instance.
+        /// Input: For specifying the parent instance to create a child instance. Optional.
+        /// Output: Only populated if provided as input to create a child instance
+        /// </summary>
+        [Input("parentInstanceRef")]
+        public Inputs.GetDatabaseInstanceParentInstanceRefArgs? ParentInstanceRef { get; set; }
+
+        /// <summary>
+        /// (integer) - The retention window for the instance. This is the time window in days
+        /// for which the historical data is retained. The default value is 7 days.
+        /// Valid values are 2 to 35 days
+        /// </summary>
+        [Input("retentionWindowInDays")]
+        public int? RetentionWindowInDays { get; set; }
 
         /// <summary>
         /// (boolean) - Whether the instance is stopped
@@ -129,10 +159,40 @@ namespace Pulumi.Databricks
         public Input<string>? Capacity { get; set; }
 
         /// <summary>
+        /// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+        /// </summary>
+        [Input("enableReadableSecondaries")]
+        public Input<bool>? EnableReadableSecondaries { get; set; }
+
+        /// <summary>
         /// The name of the instance. This is the unique identifier for the instance
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+        /// 1 primary and 0 secondaries
+        /// </summary>
+        [Input("nodeCount")]
+        public Input<int>? NodeCount { get; set; }
+
+        /// <summary>
+        /// (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+        /// child instance.
+        /// Input: For specifying the parent instance to create a child instance. Optional.
+        /// Output: Only populated if provided as input to create a child instance
+        /// </summary>
+        [Input("parentInstanceRef")]
+        public Input<Inputs.GetDatabaseInstanceParentInstanceRefInputArgs>? ParentInstanceRef { get; set; }
+
+        /// <summary>
+        /// (integer) - The retention window for the instance. This is the time window in days
+        /// for which the historical data is retained. The default value is 7 days.
+        /// Valid values are 2 to 35 days
+        /// </summary>
+        [Input("retentionWindowInDays")]
+        public Input<int>? RetentionWindowInDays { get; set; }
 
         /// <summary>
         /// (boolean) - Whether the instance is stopped
@@ -155,6 +215,11 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string? Capacity;
         /// <summary>
+        /// (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
+        /// parent instance
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDatabaseInstanceChildInstanceRefResult> ChildInstanceRefs;
+        /// <summary>
         /// (string) - The timestamp when the instance was created
         /// </summary>
         public readonly string CreationTime;
@@ -163,27 +228,72 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Creator;
         /// <summary>
+        /// (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
+        /// `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        /// `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// </summary>
+        public readonly bool EffectiveEnableReadableSecondaries;
+        /// <summary>
+        /// (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
+        /// `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        /// `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// </summary>
+        public readonly int EffectiveNodeCount;
+        /// <summary>
+        /// (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
+        /// `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        /// `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// </summary>
+        public readonly int EffectiveRetentionWindowInDays;
+        /// <summary>
         /// (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
         /// `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
         /// `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
         /// </summary>
         public readonly bool EffectiveStopped;
         /// <summary>
+        /// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+        /// </summary>
+        public readonly bool? EnableReadableSecondaries;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (string) - The name of the instance. This is the unique identifier for the instance
+        /// (string) - Name of the ref database instance
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+        /// 1 primary and 0 secondaries
+        /// </summary>
+        public readonly int? NodeCount;
+        /// <summary>
+        /// (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
+        /// child instance.
+        /// Input: For specifying the parent instance to create a child instance. Optional.
+        /// Output: Only populated if provided as input to create a child instance
+        /// </summary>
+        public readonly Outputs.GetDatabaseInstanceParentInstanceRefResult? ParentInstanceRef;
         /// <summary>
         /// (string) - The version of Postgres running on the instance
         /// </summary>
         public readonly string PgVersion;
         /// <summary>
+        /// (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
+        /// enable_readable_secondaries is true
+        /// </summary>
+        public readonly string ReadOnlyDns;
+        /// <summary>
         /// (string) - The DNS endpoint to connect to the instance for read+write access
         /// </summary>
         public readonly string ReadWriteDns;
+        /// <summary>
+        /// (integer) - The retention window for the instance. This is the time window in days
+        /// for which the historical data is retained. The default value is 7 days.
+        /// Valid values are 2 to 35 days
+        /// </summary>
+        public readonly int? RetentionWindowInDays;
         /// <summary>
         /// (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         /// </summary>
@@ -193,7 +303,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly bool? Stopped;
         /// <summary>
-        /// (string) - An immutable UUID identifier for the instance
+        /// (string) - Id of the ref database instance
         /// </summary>
         public readonly string Uid;
 
@@ -201,19 +311,37 @@ namespace Pulumi.Databricks
         private GetDatabaseInstanceResult(
             string? capacity,
 
+            ImmutableArray<Outputs.GetDatabaseInstanceChildInstanceRefResult> childInstanceRefs,
+
             string creationTime,
 
             string creator,
 
+            bool effectiveEnableReadableSecondaries,
+
+            int effectiveNodeCount,
+
+            int effectiveRetentionWindowInDays,
+
             bool effectiveStopped,
+
+            bool? enableReadableSecondaries,
 
             string id,
 
             string name,
 
+            int? nodeCount,
+
+            Outputs.GetDatabaseInstanceParentInstanceRefResult? parentInstanceRef,
+
             string pgVersion,
 
+            string readOnlyDns,
+
             string readWriteDns,
+
+            int? retentionWindowInDays,
 
             string state,
 
@@ -222,13 +350,22 @@ namespace Pulumi.Databricks
             string uid)
         {
             Capacity = capacity;
+            ChildInstanceRefs = childInstanceRefs;
             CreationTime = creationTime;
             Creator = creator;
+            EffectiveEnableReadableSecondaries = effectiveEnableReadableSecondaries;
+            EffectiveNodeCount = effectiveNodeCount;
+            EffectiveRetentionWindowInDays = effectiveRetentionWindowInDays;
             EffectiveStopped = effectiveStopped;
+            EnableReadableSecondaries = enableReadableSecondaries;
             Id = id;
             Name = name;
+            NodeCount = nodeCount;
+            ParentInstanceRef = parentInstanceRef;
             PgVersion = pgVersion;
+            ReadOnlyDns = readOnlyDns;
             ReadWriteDns = readWriteDns;
+            RetentionWindowInDays = retentionWindowInDays;
             State = state;
             Stopped = stopped;
             Uid = uid;

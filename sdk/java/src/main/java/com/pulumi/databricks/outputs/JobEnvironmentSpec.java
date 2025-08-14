@@ -12,24 +12,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobEnvironmentSpec {
-    /**
-     * @return client version used by the environment.
-     * 
-     */
     private @Nullable String client;
     /**
      * @return List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
      * 
      */
     private @Nullable List<String> dependencies;
+    /**
+     * @return client version used by the environment. Each version comes with a specific Python version and a set of Python packages.
+     * 
+     */
     private @Nullable String environmentVersion;
     private @Nullable List<String> jarDependencies;
 
     private JobEnvironmentSpec() {}
-    /**
-     * @return client version used by the environment.
-     * 
-     */
     public Optional<String> client() {
         return Optional.ofNullable(this.client);
     }
@@ -40,6 +36,10 @@ public final class JobEnvironmentSpec {
     public List<String> dependencies() {
         return this.dependencies == null ? List.of() : this.dependencies;
     }
+    /**
+     * @return client version used by the environment. Each version comes with a specific Python version and a set of Python packages.
+     * 
+     */
     public Optional<String> environmentVersion() {
         return Optional.ofNullable(this.environmentVersion);
     }

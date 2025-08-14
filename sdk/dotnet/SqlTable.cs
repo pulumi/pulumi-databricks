@@ -117,7 +117,7 @@ namespace Pulumi.Databricks
         public Output<string?> StorageLocation { get; private set; } = null!;
 
         /// <summary>
-        /// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+        /// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
         /// </summary>
         [Output("tableType")]
         public Output<string> TableType { get; private set; } = null!;
@@ -288,7 +288,7 @@ namespace Pulumi.Databricks
         public Input<string>? StorageLocation { get; set; }
 
         /// <summary>
-        /// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+        /// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
         /// </summary>
         [Input("tableType", required: true)]
         public Input<string> TableType { get; set; } = null!;
@@ -429,7 +429,7 @@ namespace Pulumi.Databricks
         public Input<string>? StorageLocation { get; set; }
 
         /// <summary>
-        /// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
+        /// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
         /// </summary>
         [Input("tableType")]
         public Input<string>? TableType { get; set; }

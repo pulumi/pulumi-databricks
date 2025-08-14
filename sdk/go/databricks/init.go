@@ -47,6 +47,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Catalog{}
 	case "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding":
 		r = &CatalogWorkspaceBinding{}
+	case "databricks:index/cleanRoomAsset:CleanRoomAsset":
+		r = &CleanRoomAsset{}
+	case "databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule":
+		r = &CleanRoomAutoApprovalRule{}
+	case "databricks:index/cleanRoomsCleanRoom:CleanRoomsCleanRoom":
+		r = &CleanRoomsCleanRoom{}
 	case "databricks:index/cluster:Cluster":
 		r = &Cluster{}
 	case "databricks:index/clusterPolicy:ClusterPolicy":
@@ -61,8 +67,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomAppIntegration{}
 	case "databricks:index/dashboard:Dashboard":
 		r = &Dashboard{}
+	case "databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog":
+		r = &DatabaseDatabaseCatalog{}
 	case "databricks:index/databaseInstance:DatabaseInstance":
 		r = &DatabaseInstance{}
+	case "databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable":
+		r = &DatabaseSyncedDatabaseTable{}
 	case "databricks:index/dbfsFile:DbfsFile":
 		r = &DbfsFile{}
 	case "databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting":
@@ -81,6 +91,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Entitlements{}
 	case "databricks:index/externalLocation:ExternalLocation":
 		r = &ExternalLocation{}
+	case "databricks:index/externalMetadata:ExternalMetadata":
+		r = &ExternalMetadata{}
 	case "databricks:index/file:File":
 		r = &File{}
 	case "databricks:index/gitCredential:GitCredential":
@@ -111,6 +123,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LakehouseMonitor{}
 	case "databricks:index/library:Library":
 		r = &Library{}
+	case "databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag":
+		r = &MaterializedFeaturesFeatureTag{}
 	case "databricks:index/metastore:Metastore":
 		r = &Metastore{}
 	case "databricks:index/metastoreAssignment:MetastoreAssignment":
@@ -171,6 +185,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Permissions{}
 	case "databricks:index/pipeline:Pipeline":
 		r = &Pipeline{}
+	case "databricks:index/policyInfo:PolicyInfo":
+		r = &PolicyInfo{}
 	case "databricks:index/qualityMonitor:QualityMonitor":
 		r = &QualityMonitor{}
 	case "databricks:index/qualityMonitorV2:QualityMonitorV2":
@@ -347,6 +363,21 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/cleanRoomAsset",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/cleanRoomAutoApprovalRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/cleanRoomsCleanRoom",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/cluster",
 		&module{version},
 	)
@@ -382,7 +413,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/databaseDatabaseCatalog",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/databaseInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/databaseSyncedDatabaseTable",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -428,6 +469,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/externalLocation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/externalMetadata",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -503,6 +549,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/library",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/materializedFeaturesFeatureTag",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -653,6 +704,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/pipeline",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/policyInfo",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

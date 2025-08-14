@@ -86,14 +86,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/qualityMonitorV2:QualityMonitorV2")
 public class QualityMonitorV2 extends com.pulumi.resources.CustomResource {
     /**
-     * (AnomalyDetectionConfig) -
+     * (AnomalyDetectionConfig)
      * 
      */
     @Export(name="anomalyDetectionConfig", refs={QualityMonitorV2AnomalyDetectionConfig.class}, tree="[0]")
     private Output<QualityMonitorV2AnomalyDetectionConfig> anomalyDetectionConfig;
 
     /**
-     * @return (AnomalyDetectionConfig) -
+     * @return (AnomalyDetectionConfig)
      * 
      */
     public Output<QualityMonitorV2AnomalyDetectionConfig> anomalyDetectionConfig() {

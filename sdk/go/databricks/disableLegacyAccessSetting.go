@@ -12,9 +12,59 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `DisableLegacyAccessSetting` resource allows you to disable legacy access. It has the following impact:
+//
+// 1. Disables direct access to Hive Metastores from the workspace. However, you can still access a Hive Metastore through Hive Metastore federation.
+// 2. Disables Fallback Mode on any External Location access from the workspace.
+// 3. Disables Databricks Runtime versions prior to 13.3LTS.
+//
+// > This resource can only be used with a workspace-level provider!
+//
+// > It may take 5 minutes to take effect and requires a restart of clusters and SQL warehouses.
+//
+// > Please also set the default namespace using DefaultNamespaceSetting to any value other than `hiveMetastore` to avoid potential issues.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewDisableLegacyAccessSetting(ctx, "this", &databricks.DisableLegacyAccessSettingArgs{
+//				DisableLegacyAccess: &databricks.DisableLegacyAccessSettingDisableLegacyAccessArgs{
+//					Value: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// This resource can be imported by predefined name `global`:
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/disableLegacyAccessSetting:DisableLegacyAccessSetting this global
+// ```
 type DisableLegacyAccessSetting struct {
 	pulumi.CustomResourceState
 
+	// The configuration details.
 	DisableLegacyAccess DisableLegacyAccessSettingDisableLegacyAccessOutput `pulumi:"disableLegacyAccess"`
 	Etag                pulumi.StringOutput                                 `pulumi:"etag"`
 	SettingName         pulumi.StringOutput                                 `pulumi:"settingName"`
@@ -53,12 +103,14 @@ func GetDisableLegacyAccessSetting(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DisableLegacyAccessSetting resources.
 type disableLegacyAccessSettingState struct {
+	// The configuration details.
 	DisableLegacyAccess *DisableLegacyAccessSettingDisableLegacyAccess `pulumi:"disableLegacyAccess"`
 	Etag                *string                                        `pulumi:"etag"`
 	SettingName         *string                                        `pulumi:"settingName"`
 }
 
 type DisableLegacyAccessSettingState struct {
+	// The configuration details.
 	DisableLegacyAccess DisableLegacyAccessSettingDisableLegacyAccessPtrInput
 	Etag                pulumi.StringPtrInput
 	SettingName         pulumi.StringPtrInput
@@ -69,6 +121,7 @@ func (DisableLegacyAccessSettingState) ElementType() reflect.Type {
 }
 
 type disableLegacyAccessSettingArgs struct {
+	// The configuration details.
 	DisableLegacyAccess DisableLegacyAccessSettingDisableLegacyAccess `pulumi:"disableLegacyAccess"`
 	Etag                *string                                       `pulumi:"etag"`
 	SettingName         *string                                       `pulumi:"settingName"`
@@ -76,6 +129,7 @@ type disableLegacyAccessSettingArgs struct {
 
 // The set of arguments for constructing a DisableLegacyAccessSetting resource.
 type DisableLegacyAccessSettingArgs struct {
+	// The configuration details.
 	DisableLegacyAccess DisableLegacyAccessSettingDisableLegacyAccessInput
 	Etag                pulumi.StringPtrInput
 	SettingName         pulumi.StringPtrInput
@@ -168,6 +222,7 @@ func (o DisableLegacyAccessSettingOutput) ToDisableLegacyAccessSettingOutputWith
 	return o
 }
 
+// The configuration details.
 func (o DisableLegacyAccessSettingOutput) DisableLegacyAccess() DisableLegacyAccessSettingDisableLegacyAccessOutput {
 	return o.ApplyT(func(v *DisableLegacyAccessSetting) DisableLegacyAccessSettingDisableLegacyAccessOutput {
 		return v.DisableLegacyAccess

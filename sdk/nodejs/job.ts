@@ -169,7 +169,7 @@ export class Job extends pulumi.CustomResource {
     public readonly existingClusterId!: pulumi.Output<string | undefined>;
     public readonly format!: pulumi.Output<string>;
     /**
-     * Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+     * Specifies the a Git repository for task source code. See gitSource Configuration Block below.
      */
     public readonly gitSource!: pulumi.Output<outputs.JobGitSource | undefined>;
     /**
@@ -212,7 +212,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly notificationSettings!: pulumi.Output<outputs.JobNotificationSettings | undefined>;
     /**
-     * Specifices job parameter for the job. See parameter Configuration Block
+     * Specifies job parameter for the job. See parameter Configuration Block
      */
     public readonly parameters!: pulumi.Output<outputs.JobParameter[] | undefined>;
     /**
@@ -238,7 +238,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly retryOnTimeout!: pulumi.Output<boolean | undefined>;
     /**
-     * The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+     * The user or the service principal the job runs as. See runAs Configuration Block below.
      */
     public readonly runAs!: pulumi.Output<outputs.JobRunAs>;
     /**
@@ -281,6 +281,7 @@ export class Job extends pulumi.CustomResource {
      * URL of the job on the given workspace
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
+    public readonly usagePolicyId!: pulumi.Output<string | undefined>;
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
@@ -339,6 +340,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["timeoutSeconds"] = state ? state.timeoutSeconds : undefined;
             resourceInputs["trigger"] = state ? state.trigger : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["usagePolicyId"] = state ? state.usagePolicyId : undefined;
             resourceInputs["webhookNotifications"] = state ? state.webhookNotifications : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
@@ -381,6 +383,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["tasks"] = args ? args.tasks : undefined;
             resourceInputs["timeoutSeconds"] = args ? args.timeoutSeconds : undefined;
             resourceInputs["trigger"] = args ? args.trigger : undefined;
+            resourceInputs["usagePolicyId"] = args ? args.usagePolicyId : undefined;
             resourceInputs["webhookNotifications"] = args ? args.webhookNotifications : undefined;
             resourceInputs["url"] = undefined /*out*/;
         }
@@ -434,7 +437,7 @@ export interface JobState {
     existingClusterId?: pulumi.Input<string>;
     format?: pulumi.Input<string>;
     /**
-     * Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+     * Specifies the a Git repository for task source code. See gitSource Configuration Block below.
      */
     gitSource?: pulumi.Input<inputs.JobGitSource>;
     /**
@@ -477,7 +480,7 @@ export interface JobState {
      */
     notificationSettings?: pulumi.Input<inputs.JobNotificationSettings>;
     /**
-     * Specifices job parameter for the job. See parameter Configuration Block
+     * Specifies job parameter for the job. See parameter Configuration Block
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.JobParameter>[]>;
     /**
@@ -503,7 +506,7 @@ export interface JobState {
      */
     retryOnTimeout?: pulumi.Input<boolean>;
     /**
-     * The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+     * The user or the service principal the job runs as. See runAs Configuration Block below.
      */
     runAs?: pulumi.Input<inputs.JobRunAs>;
     /**
@@ -546,6 +549,7 @@ export interface JobState {
      * URL of the job on the given workspace
      */
     url?: pulumi.Input<string>;
+    usagePolicyId?: pulumi.Input<string>;
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
@@ -597,7 +601,7 @@ export interface JobArgs {
     existingClusterId?: pulumi.Input<string>;
     format?: pulumi.Input<string>;
     /**
-     * Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+     * Specifies the a Git repository for task source code. See gitSource Configuration Block below.
      */
     gitSource?: pulumi.Input<inputs.JobGitSource>;
     /**
@@ -640,7 +644,7 @@ export interface JobArgs {
      */
     notificationSettings?: pulumi.Input<inputs.JobNotificationSettings>;
     /**
-     * Specifices job parameter for the job. See parameter Configuration Block
+     * Specifies job parameter for the job. See parameter Configuration Block
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.JobParameter>[]>;
     /**
@@ -666,7 +670,7 @@ export interface JobArgs {
      */
     retryOnTimeout?: pulumi.Input<boolean>;
     /**
-     * The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+     * The user or the service principal the job runs as. See runAs Configuration Block below.
      */
     runAs?: pulumi.Input<inputs.JobRunAs>;
     /**
@@ -705,6 +709,7 @@ export interface JobArgs {
      * The conditions that triggers the job to start. See trigger Configuration Block below.
      */
     trigger?: pulumi.Input<inputs.JobTrigger>;
+    usagePolicyId?: pulumi.Input<string>;
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */

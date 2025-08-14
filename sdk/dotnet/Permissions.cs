@@ -306,15 +306,15 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// ## Delta Live Tables usage
+    /// ## Lakeflow Declarative Pipelines usage
     /// 
-    /// There are four assignable [permission levels](https://docs.databricks.com/security/access-control/dlt-acl.html#delta-live-tables-permissions) for databricks_pipeline: `CAN_VIEW`, `CAN_RUN`, `CAN_MANAGE`, and `IS_OWNER`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
+    /// There are four assignable [permission levels](https://docs.databricks.com/aws/en/security/auth/access-control#lakeflow-declarative-pipelines-acls) for databricks_pipeline: `CAN_VIEW`, `CAN_RUN`, `CAN_MANAGE`, and `IS_OWNER`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
     /// 
-    /// - The creator of a DLT Pipeline has `IS_OWNER` permission. Destroying `databricks.Permissions` resource for a pipeline would revert ownership to the creator.
-    /// - A DLT pipeline must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the pipeline. Nothing would change, per se, if the pipeline was created through Pulumi.
-    /// - A DLT pipeline cannot have a group as an owner.
-    /// - DLT Pipelines triggered through _Start_ assume the permissions of the pipeline owner and not the user, and service principal who issued Run Now.
-    /// - Read [main documentation](https://docs.databricks.com/security/access-control/dlt-acl.html) for additional detail.
+    /// - The creator of a Lakeflow Declarative Pipeline has `IS_OWNER` permission. Destroying `databricks.Permissions` resource for a pipeline would revert ownership to the creator.
+    /// - A Lakeflow Declarative Pipeline must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the pipeline. Nothing would change, per se, if the pipeline was created through Pulumi.
+    /// - A Lakeflow Declarative Pipeline cannot have a group as an owner.
+    /// - Lakeflow Declarative Pipelines triggered through _Start_ assume the permissions of the pipeline owner and not the user, and service principal who issued Run Now.
+    /// - Read [main documentation](https://docs.databricks.com/aws/en/security/auth/access-control#lakeflow-declarative-pipelines-acls) for additional detail.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -332,7 +332,7 @@ namespace Pulumi.Databricks
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var dltDemo = new Databricks.Notebook("dlt_demo", new()
+    ///     var ldpDemo = new Databricks.Notebook("ldp_demo", new()
     ///     {
     ///         ContentBase64 = Std.Base64encode.Invoke(new()
     ///         {
@@ -346,12 +346,12 @@ namespace Pulumi.Databricks
     /// ",
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///         Language = "PYTHON",
-    ///         Path = $"{me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Home)}/DLT_Demo",
+    ///         Path = $"{me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Home)}/ldp_demo",
     ///     });
     /// 
     ///     var @this = new Databricks.Pipeline("this", new()
     ///     {
-    ///         Name = $"DLT Demo Pipeline ({me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Alphanumeric)})",
+    ///         Name = $"LDP Demo Pipeline ({me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Alphanumeric)})",
     ///         Storage = "/test/tf-pipeline",
     ///         Configuration = 
     ///         {
@@ -364,7 +364,7 @@ namespace Pulumi.Databricks
     ///             {
     ///                 Notebook = new Databricks.Inputs.PipelineLibraryNotebookArgs
     ///                 {
-    ///                     Path = dltDemo.Id,
+    ///                     Path = ldpDemo.Id,
     ///                 },
     ///             },
     ///         },
@@ -382,7 +382,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var dltUsage = new Databricks.Permissions("dlt_usage", new()
+    ///     var ldpUsage = new Databricks.Permissions("ldp_usage", new()
     ///     {
     ///         PipelineId = @this.Id,
     ///         AccessControls = new[]
@@ -729,7 +729,7 @@ namespace Pulumi.Databricks
     ///     var @this = new Databricks.MlflowExperiment("this", new()
     ///     {
     ///         Name = $"{me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Home)}/Sample",
-    ///         ArtifactLocation = "dbfs:/tmp/my-experiment",
+    ///         ArtifactLocation = "s3://bucket/my-experiment",
     ///         Description = "My MLflow experiment description",
     ///     });
     /// 
@@ -1218,7 +1218,50 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// ## SQL Alert usage
+    /// ## SQL Alert (AlertV2) usage
+    /// 
+    /// [Alert V2](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) which is the new version of SQL Alert have 4 possible permission levels: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var auto = new Databricks.Group("auto", new()
+    ///     {
+    ///         DisplayName = "Automation",
+    ///     });
+    /// 
+    ///     var eng = new Databricks.Group("eng", new()
+    ///     {
+    ///         DisplayName = "Engineering",
+    ///     });
+    /// 
+    ///     var appUsage = new Databricks.Permissions("app_usage", new()
+    ///     {
+    ///         AlertV2Id = "12345",
+    ///         AccessControls = new[]
+    ///         {
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
+    ///             {
+    ///                 GroupName = auto.DisplayName,
+    ///                 PermissionLevel = "CAN_RUN",
+    ///             },
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
+    ///             {
+    ///                 GroupName = eng.DisplayName,
+    ///                 PermissionLevel = "CAN_EDIT",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## SQL Alert (legacy) usage
     /// 
     /// [SQL alerts](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
     /// 
@@ -1299,6 +1342,44 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ## Lakebase Database Instances usage
+    /// 
+    /// [Databricks Lakebase](https://docs.databricks.com/aws/en/oltp/) have two possible permissions: `CAN_USE` and `CAN_MANAGE`:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var eng = new Databricks.Group("eng", new()
+    ///     {
+    ///         DisplayName = "Engineering",
+    ///     });
+    /// 
+    ///     var appUsage = new Databricks.Permissions("app_usage", new()
+    ///     {
+    ///         DatabaseInstanceName = "my_database",
+    ///         AccessControls = new[]
+    ///         {
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
+    ///             {
+    ///                 GroupName = "users",
+    ///                 PermissionLevel = "CAN_USE",
+    ///             },
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
+    ///             {
+    ///                 GroupName = eng.DisplayName,
+    ///                 PermissionLevel = "CAN_MANAGE",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Instance Profiles
     /// 
     /// Instance Profiles are not managed by General Permissions API and therefore databricks.GroupInstanceProfile and databricks.UserInstanceProfile should be used to allow usage of specific AWS EC2 IAM roles to users or groups.
@@ -1329,6 +1410,9 @@ namespace Pulumi.Databricks
         [Output("accessControls")]
         public Output<ImmutableArray<Outputs.PermissionsAccessControl>> AccessControls { get; private set; } = null!;
 
+        [Output("alertV2Id")]
+        public Output<string?> AlertV2Id { get; private set; } = null!;
+
         [Output("appName")]
         public Output<string?> AppName { get; private set; } = null!;
 
@@ -1343,6 +1427,9 @@ namespace Pulumi.Databricks
 
         [Output("dashboardId")]
         public Output<string?> DashboardId { get; private set; } = null!;
+
+        [Output("databaseInstanceName")]
+        public Output<string?> DatabaseInstanceName { get; private set; } = null!;
 
         [Output("directoryId")]
         public Output<string?> DirectoryId { get; private set; } = null!;
@@ -1461,6 +1548,9 @@ namespace Pulumi.Databricks
             set => _accessControls = value;
         }
 
+        [Input("alertV2Id")]
+        public Input<string>? AlertV2Id { get; set; }
+
         [Input("appName")]
         public Input<string>? AppName { get; set; }
 
@@ -1475,6 +1565,9 @@ namespace Pulumi.Databricks
 
         [Input("dashboardId")]
         public Input<string>? DashboardId { get; set; }
+
+        [Input("databaseInstanceName")]
+        public Input<string>? DatabaseInstanceName { get; set; }
 
         [Input("directoryId")]
         public Input<string>? DirectoryId { get; set; }
@@ -1555,6 +1648,9 @@ namespace Pulumi.Databricks
             set => _accessControls = value;
         }
 
+        [Input("alertV2Id")]
+        public Input<string>? AlertV2Id { get; set; }
+
         [Input("appName")]
         public Input<string>? AppName { get; set; }
 
@@ -1569,6 +1665,9 @@ namespace Pulumi.Databricks
 
         [Input("dashboardId")]
         public Input<string>? DashboardId { get; set; }
+
+        [Input("databaseInstanceName")]
+        public Input<string>? DatabaseInstanceName { get; set; }
 
         [Input("directoryId")]
         public Input<string>? DirectoryId { get; set; }
