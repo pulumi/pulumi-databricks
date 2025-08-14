@@ -7089,15 +7089,6 @@
                     "odbc_params": true
                 }
             }
-        },
-        "datasources": {
-            "databricks_functions": {
-                "maxItemsOneOverrides": {
-                    "functions.$.input_params": true,
-                    "functions.$.return_params": true,
-                    "functions.$.routine_dependencies": true
-                }
-            }
         }
     },
     "ids": {
