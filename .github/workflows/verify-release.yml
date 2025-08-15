@@ -41,7 +41,6 @@ env:
   DATABRICKS_HOST: https://accounts.cloud.databricks.com
   DATABRICKS_PASSWORD: ${{ secrets.DATABRICKS_PASSWORD}}
   DATABRICKS_USERNAME: ${{ secrets.DATABRICKS_USERNAME }}
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
