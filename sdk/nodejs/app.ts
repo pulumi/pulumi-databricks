@@ -63,80 +63,80 @@ export class App extends pulumi.CustomResource {
         return obj['__pulumiType'] === App.__pulumiType;
     }
 
-    public /*out*/ readonly activeDeployment!: pulumi.Output<outputs.AppActiveDeployment>;
+    declare public /*out*/ readonly activeDeployment: pulumi.Output<outputs.AppActiveDeployment>;
     /**
      * attribute
      */
-    public /*out*/ readonly appStatus!: pulumi.Output<outputs.AppAppStatus>;
+    declare public /*out*/ readonly appStatus: pulumi.Output<outputs.AppAppStatus>;
     /**
      * The Budget Policy ID set for this resource.
      */
-    public readonly budgetPolicyId!: pulumi.Output<string | undefined>;
+    declare public readonly budgetPolicyId: pulumi.Output<string | undefined>;
     /**
      * attribute
      */
-    public /*out*/ readonly computeStatus!: pulumi.Output<outputs.AppComputeStatus>;
+    declare public /*out*/ readonly computeStatus: pulumi.Output<outputs.AppComputeStatus>;
     /**
      * The creation time of the app.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The email of the user that created the app.
      */
-    public /*out*/ readonly creator!: pulumi.Output<string>;
+    declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
      * The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
      */
-    public /*out*/ readonly defaultSourceCodePath!: pulumi.Output<string>;
+    declare public /*out*/ readonly defaultSourceCodePath: pulumi.Output<string>;
     /**
      * The description of the app.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The effective budget policy ID.
      */
-    public /*out*/ readonly effectiveBudgetPolicyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveBudgetPolicyId: pulumi.Output<string>;
     /**
      * A list of effective api scopes granted to the user access token.
      */
-    public /*out*/ readonly effectiveUserApiScopes!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly effectiveUserApiScopes: pulumi.Output<string[]>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly noCompute!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly oauth2AppClientId!: pulumi.Output<string>;
-    public /*out*/ readonly oauth2AppIntegrationId!: pulumi.Output<string>;
-    public /*out*/ readonly pendingDeployment!: pulumi.Output<outputs.AppPendingDeployment>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly noCompute: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly oauth2AppClientId: pulumi.Output<string>;
+    declare public /*out*/ readonly oauth2AppIntegrationId: pulumi.Output<string>;
+    declare public /*out*/ readonly pendingDeployment: pulumi.Output<outputs.AppPendingDeployment>;
     /**
      * A list of resources that the app have access to.
      */
-    public readonly resources!: pulumi.Output<outputs.AppResource[] | undefined>;
-    public /*out*/ readonly servicePrincipalClientId!: pulumi.Output<string>;
+    declare public readonly resources: pulumi.Output<outputs.AppResource[] | undefined>;
+    declare public /*out*/ readonly servicePrincipalClientId: pulumi.Output<string>;
     /**
      * id of the app service principal
      */
-    public /*out*/ readonly servicePrincipalId!: pulumi.Output<number>;
+    declare public /*out*/ readonly servicePrincipalId: pulumi.Output<number>;
     /**
      * name of the app service principal
      */
-    public /*out*/ readonly servicePrincipalName!: pulumi.Output<string>;
+    declare public /*out*/ readonly servicePrincipalName: pulumi.Output<string>;
     /**
      * The update time of the app.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * The email of the user that last updated the app.
      */
-    public /*out*/ readonly updater!: pulumi.Output<string>;
+    declare public /*out*/ readonly updater: pulumi.Output<string>;
     /**
      * The URL of the app once it is deployed.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
     /**
      * A list of api scopes granted to the user access token.
      */
-    public readonly userApiScopes!: pulumi.Output<string[] | undefined>;
+    declare public readonly userApiScopes: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a App resource with the given unique name, arguments, and options.
@@ -151,37 +151,37 @@ export class App extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppState | undefined;
-            resourceInputs["activeDeployment"] = state ? state.activeDeployment : undefined;
-            resourceInputs["appStatus"] = state ? state.appStatus : undefined;
-            resourceInputs["budgetPolicyId"] = state ? state.budgetPolicyId : undefined;
-            resourceInputs["computeStatus"] = state ? state.computeStatus : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["creator"] = state ? state.creator : undefined;
-            resourceInputs["defaultSourceCodePath"] = state ? state.defaultSourceCodePath : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["effectiveBudgetPolicyId"] = state ? state.effectiveBudgetPolicyId : undefined;
-            resourceInputs["effectiveUserApiScopes"] = state ? state.effectiveUserApiScopes : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["noCompute"] = state ? state.noCompute : undefined;
-            resourceInputs["oauth2AppClientId"] = state ? state.oauth2AppClientId : undefined;
-            resourceInputs["oauth2AppIntegrationId"] = state ? state.oauth2AppIntegrationId : undefined;
-            resourceInputs["pendingDeployment"] = state ? state.pendingDeployment : undefined;
-            resourceInputs["resources"] = state ? state.resources : undefined;
-            resourceInputs["servicePrincipalClientId"] = state ? state.servicePrincipalClientId : undefined;
-            resourceInputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
-            resourceInputs["servicePrincipalName"] = state ? state.servicePrincipalName : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["updater"] = state ? state.updater : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["userApiScopes"] = state ? state.userApiScopes : undefined;
+            resourceInputs["activeDeployment"] = state?.activeDeployment;
+            resourceInputs["appStatus"] = state?.appStatus;
+            resourceInputs["budgetPolicyId"] = state?.budgetPolicyId;
+            resourceInputs["computeStatus"] = state?.computeStatus;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["creator"] = state?.creator;
+            resourceInputs["defaultSourceCodePath"] = state?.defaultSourceCodePath;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["effectiveBudgetPolicyId"] = state?.effectiveBudgetPolicyId;
+            resourceInputs["effectiveUserApiScopes"] = state?.effectiveUserApiScopes;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["noCompute"] = state?.noCompute;
+            resourceInputs["oauth2AppClientId"] = state?.oauth2AppClientId;
+            resourceInputs["oauth2AppIntegrationId"] = state?.oauth2AppIntegrationId;
+            resourceInputs["pendingDeployment"] = state?.pendingDeployment;
+            resourceInputs["resources"] = state?.resources;
+            resourceInputs["servicePrincipalClientId"] = state?.servicePrincipalClientId;
+            resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
+            resourceInputs["servicePrincipalName"] = state?.servicePrincipalName;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["updater"] = state?.updater;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["userApiScopes"] = state?.userApiScopes;
         } else {
             const args = argsOrState as AppArgs | undefined;
-            resourceInputs["budgetPolicyId"] = args ? args.budgetPolicyId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["noCompute"] = args ? args.noCompute : undefined;
-            resourceInputs["resources"] = args ? args.resources : undefined;
-            resourceInputs["userApiScopes"] = args ? args.userApiScopes : undefined;
+            resourceInputs["budgetPolicyId"] = args?.budgetPolicyId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["noCompute"] = args?.noCompute;
+            resourceInputs["resources"] = args?.resources;
+            resourceInputs["userApiScopes"] = args?.userApiScopes;
             resourceInputs["activeDeployment"] = undefined /*out*/;
             resourceInputs["appStatus"] = undefined /*out*/;
             resourceInputs["computeStatus"] = undefined /*out*/;

@@ -70,11 +70,11 @@ export class MwsNccBinding extends pulumi.CustomResource {
     /**
      * Canonical unique identifier of Network Connectivity Config in Databricks Account.
      */
-    public readonly networkConnectivityConfigId!: pulumi.Output<string>;
+    declare public readonly networkConnectivityConfigId: pulumi.Output<string>;
     /**
      * Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
      */
-    public readonly workspaceId!: pulumi.Output<string>;
+    declare public readonly workspaceId: pulumi.Output<string>;
 
     /**
      * Create a MwsNccBinding resource with the given unique name, arguments, and options.
@@ -89,18 +89,18 @@ export class MwsNccBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MwsNccBindingState | undefined;
-            resourceInputs["networkConnectivityConfigId"] = state ? state.networkConnectivityConfigId : undefined;
-            resourceInputs["workspaceId"] = state ? state.workspaceId : undefined;
+            resourceInputs["networkConnectivityConfigId"] = state?.networkConnectivityConfigId;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as MwsNccBindingArgs | undefined;
-            if ((!args || args.networkConnectivityConfigId === undefined) && !opts.urn) {
+            if (args?.networkConnectivityConfigId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkConnectivityConfigId'");
             }
-            if ((!args || args.workspaceId === undefined) && !opts.urn) {
+            if (args?.workspaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceId'");
             }
-            resourceInputs["networkConnectivityConfigId"] = args ? args.networkConnectivityConfigId : undefined;
-            resourceInputs["workspaceId"] = args ? args.workspaceId : undefined;
+            resourceInputs["networkConnectivityConfigId"] = args?.networkConnectivityConfigId;
+            resourceInputs["workspaceId"] = args?.workspaceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MwsNccBinding.__pulumiType, name, resourceInputs, opts);

@@ -64,50 +64,50 @@ export class AlertV2 extends pulumi.CustomResource {
     /**
      * (string) - The timestamp indicating when the alert was created
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Custom description for the alert. support mustache template
      */
-    public readonly customDescription!: pulumi.Output<string | undefined>;
+    declare public readonly customDescription: pulumi.Output<string | undefined>;
     /**
      * Custom summary for the alert. support mustache template
      */
-    public readonly customSummary!: pulumi.Output<string | undefined>;
+    declare public readonly customSummary: pulumi.Output<string | undefined>;
     /**
      * The display name of the alert
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
-    public readonly evaluation!: pulumi.Output<outputs.AlertV2Evaluation | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public readonly evaluation: pulumi.Output<outputs.AlertV2Evaluation | undefined>;
     /**
      * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
      */
-    public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
+    declare public /*out*/ readonly lifecycleState: pulumi.Output<string>;
     /**
      * (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
      */
-    public /*out*/ readonly ownerUserName!: pulumi.Output<string>;
+    declare public /*out*/ readonly ownerUserName: pulumi.Output<string>;
     /**
      * The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      */
-    public readonly parentPath!: pulumi.Output<string | undefined>;
+    declare public readonly parentPath: pulumi.Output<string | undefined>;
     /**
      * Text of the query to be run
      */
-    public readonly queryText!: pulumi.Output<string | undefined>;
+    declare public readonly queryText: pulumi.Output<string | undefined>;
     /**
      * The run as username or application ID of service principal.
      * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      */
-    public readonly runAsUserName!: pulumi.Output<string | undefined>;
-    public readonly schedule!: pulumi.Output<outputs.AlertV2Schedule | undefined>;
+    declare public readonly runAsUserName: pulumi.Output<string | undefined>;
+    declare public readonly schedule: pulumi.Output<outputs.AlertV2Schedule | undefined>;
     /**
      * (string) - The timestamp indicating when the alert was updated
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * ID of the SQL warehouse attached to the alert
      */
-    public readonly warehouseId!: pulumi.Output<string | undefined>;
+    declare public readonly warehouseId: pulumi.Output<string | undefined>;
 
     /**
      * Create a AlertV2 resource with the given unique name, arguments, and options.
@@ -122,30 +122,30 @@ export class AlertV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlertV2State | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customDescription"] = state ? state.customDescription : undefined;
-            resourceInputs["customSummary"] = state ? state.customSummary : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["evaluation"] = state ? state.evaluation : undefined;
-            resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
-            resourceInputs["ownerUserName"] = state ? state.ownerUserName : undefined;
-            resourceInputs["parentPath"] = state ? state.parentPath : undefined;
-            resourceInputs["queryText"] = state ? state.queryText : undefined;
-            resourceInputs["runAsUserName"] = state ? state.runAsUserName : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["warehouseId"] = state ? state.warehouseId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customDescription"] = state?.customDescription;
+            resourceInputs["customSummary"] = state?.customSummary;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["evaluation"] = state?.evaluation;
+            resourceInputs["lifecycleState"] = state?.lifecycleState;
+            resourceInputs["ownerUserName"] = state?.ownerUserName;
+            resourceInputs["parentPath"] = state?.parentPath;
+            resourceInputs["queryText"] = state?.queryText;
+            resourceInputs["runAsUserName"] = state?.runAsUserName;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["warehouseId"] = state?.warehouseId;
         } else {
             const args = argsOrState as AlertV2Args | undefined;
-            resourceInputs["customDescription"] = args ? args.customDescription : undefined;
-            resourceInputs["customSummary"] = args ? args.customSummary : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["evaluation"] = args ? args.evaluation : undefined;
-            resourceInputs["parentPath"] = args ? args.parentPath : undefined;
-            resourceInputs["queryText"] = args ? args.queryText : undefined;
-            resourceInputs["runAsUserName"] = args ? args.runAsUserName : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["warehouseId"] = args ? args.warehouseId : undefined;
+            resourceInputs["customDescription"] = args?.customDescription;
+            resourceInputs["customSummary"] = args?.customSummary;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["evaluation"] = args?.evaluation;
+            resourceInputs["parentPath"] = args?.parentPath;
+            resourceInputs["queryText"] = args?.queryText;
+            resourceInputs["runAsUserName"] = args?.runAsUserName;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["warehouseId"] = args?.warehouseId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lifecycleState"] = undefined /*out*/;
             resourceInputs["ownerUserName"] = undefined /*out*/;

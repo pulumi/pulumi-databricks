@@ -71,19 +71,19 @@ export class MetastoreProvider extends pulumi.CustomResource {
     /**
      * The delta sharing authentication type. Valid values are `TOKEN`.
      */
-    public readonly authenticationType!: pulumi.Output<string>;
+    declare public readonly authenticationType: pulumi.Output<string>;
     /**
      * Description about the provider.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * Name of provider. Change forces creation of a new resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * This is the json file that is created from a recipient url.
      */
-    public readonly recipientProfileStr!: pulumi.Output<string>;
+    declare public readonly recipientProfileStr: pulumi.Output<string>;
 
     /**
      * Create a MetastoreProvider resource with the given unique name, arguments, and options.
@@ -98,21 +98,21 @@ export class MetastoreProvider extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetastoreProviderState | undefined;
-            resourceInputs["authenticationType"] = state ? state.authenticationType : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["recipientProfileStr"] = state ? state.recipientProfileStr : undefined;
+            resourceInputs["authenticationType"] = state?.authenticationType;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["recipientProfileStr"] = state?.recipientProfileStr;
         } else {
             const args = argsOrState as MetastoreProviderArgs | undefined;
-            if ((!args || args.authenticationType === undefined) && !opts.urn) {
+            if (args?.authenticationType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authenticationType'");
             }
-            if ((!args || args.recipientProfileStr === undefined) && !opts.urn) {
+            if (args?.recipientProfileStr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'recipientProfileStr'");
             }
-            resourceInputs["authenticationType"] = args ? args.authenticationType : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["authenticationType"] = args?.authenticationType;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["name"] = args?.name;
             resourceInputs["recipientProfileStr"] = args?.recipientProfileStr ? pulumi.secret(args.recipientProfileStr) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

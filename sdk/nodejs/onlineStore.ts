@@ -56,27 +56,27 @@ export class OnlineStore extends pulumi.CustomResource {
     /**
      * The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
-    public readonly capacity!: pulumi.Output<string>;
+    declare public readonly capacity: pulumi.Output<string>;
     /**
      * (string) - The timestamp when the online store was created
      */
-    public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTime: pulumi.Output<string>;
     /**
      * (string) - The email of the creator of the online store
      */
-    public /*out*/ readonly creator!: pulumi.Output<string>;
+    declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
      * The name of the online store. This is the unique identifier for the online store
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The number of read replicas for the online store. Defaults to 0
      */
-    public readonly readReplicaCount!: pulumi.Output<number | undefined>;
+    declare public readonly readReplicaCount: pulumi.Output<number | undefined>;
     /**
      * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a OnlineStore resource with the given unique name, arguments, and options.
@@ -91,20 +91,20 @@ export class OnlineStore extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OnlineStoreState | undefined;
-            resourceInputs["capacity"] = state ? state.capacity : undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["creator"] = state ? state.creator : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["readReplicaCount"] = state ? state.readReplicaCount : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["capacity"] = state?.capacity;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["creator"] = state?.creator;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["readReplicaCount"] = state?.readReplicaCount;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as OnlineStoreArgs | undefined;
-            if ((!args || args.capacity === undefined) && !opts.urn) {
+            if (args?.capacity === undefined && !opts.urn) {
                 throw new Error("Missing required property 'capacity'");
             }
-            resourceInputs["capacity"] = args ? args.capacity : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["readReplicaCount"] = args ? args.readReplicaCount : undefined;
+            resourceInputs["capacity"] = args?.capacity;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["readReplicaCount"] = args?.readReplicaCount;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

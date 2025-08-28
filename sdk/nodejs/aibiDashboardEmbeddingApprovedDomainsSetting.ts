@@ -86,9 +86,9 @@ export class AibiDashboardEmbeddingApprovedDomainsSetting extends pulumi.CustomR
     /**
      * block with following attributes:
      */
-    public readonly aibiDashboardEmbeddingApprovedDomains!: pulumi.Output<outputs.AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains>;
-    public readonly etag!: pulumi.Output<string>;
-    public readonly settingName!: pulumi.Output<string>;
+    declare public readonly aibiDashboardEmbeddingApprovedDomains: pulumi.Output<outputs.AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains>;
+    declare public readonly etag: pulumi.Output<string>;
+    declare public readonly settingName: pulumi.Output<string>;
 
     /**
      * Create a AibiDashboardEmbeddingApprovedDomainsSetting resource with the given unique name, arguments, and options.
@@ -103,17 +103,17 @@ export class AibiDashboardEmbeddingApprovedDomainsSetting extends pulumi.CustomR
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AibiDashboardEmbeddingApprovedDomainsSettingState | undefined;
-            resourceInputs["aibiDashboardEmbeddingApprovedDomains"] = state ? state.aibiDashboardEmbeddingApprovedDomains : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["settingName"] = state ? state.settingName : undefined;
+            resourceInputs["aibiDashboardEmbeddingApprovedDomains"] = state?.aibiDashboardEmbeddingApprovedDomains;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as AibiDashboardEmbeddingApprovedDomainsSettingArgs | undefined;
-            if ((!args || args.aibiDashboardEmbeddingApprovedDomains === undefined) && !opts.urn) {
+            if (args?.aibiDashboardEmbeddingApprovedDomains === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aibiDashboardEmbeddingApprovedDomains'");
             }
-            resourceInputs["aibiDashboardEmbeddingApprovedDomains"] = args ? args.aibiDashboardEmbeddingApprovedDomains : undefined;
-            resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["settingName"] = args ? args.settingName : undefined;
+            resourceInputs["aibiDashboardEmbeddingApprovedDomains"] = args?.aibiDashboardEmbeddingApprovedDomains;
+            resourceInputs["etag"] = args?.etag;
+            resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AibiDashboardEmbeddingApprovedDomainsSetting.__pulumiType, name, resourceInputs, opts);

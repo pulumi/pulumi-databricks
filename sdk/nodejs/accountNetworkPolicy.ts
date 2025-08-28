@@ -70,15 +70,15 @@ export class AccountNetworkPolicy extends pulumi.CustomResource {
     /**
      * The associated account ID for this Network Policy object
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The network policies applying for egress traffic
      */
-    public readonly egress!: pulumi.Output<outputs.AccountNetworkPolicyEgress | undefined>;
+    declare public readonly egress: pulumi.Output<outputs.AccountNetworkPolicyEgress | undefined>;
     /**
      * The unique identifier for the network policy
      */
-    public readonly networkPolicyId!: pulumi.Output<string | undefined>;
+    declare public readonly networkPolicyId: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccountNetworkPolicy resource with the given unique name, arguments, and options.
@@ -93,14 +93,14 @@ export class AccountNetworkPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountNetworkPolicyState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["egress"] = state ? state.egress : undefined;
-            resourceInputs["networkPolicyId"] = state ? state.networkPolicyId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["egress"] = state?.egress;
+            resourceInputs["networkPolicyId"] = state?.networkPolicyId;
         } else {
             const args = argsOrState as AccountNetworkPolicyArgs | undefined;
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["egress"] = args ? args.egress : undefined;
-            resourceInputs["networkPolicyId"] = args ? args.networkPolicyId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["egress"] = args?.egress;
+            resourceInputs["networkPolicyId"] = args?.networkPolicyId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccountNetworkPolicy.__pulumiType, name, resourceInputs, opts);

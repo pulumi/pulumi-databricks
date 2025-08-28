@@ -72,20 +72,20 @@ export class SystemSchema extends pulumi.CustomResource {
         return obj['__pulumiType'] === SystemSchema.__pulumiType;
     }
 
-    public /*out*/ readonly autoEnabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly autoEnabled: pulumi.Output<boolean>;
     /**
      * the full name of the system schema, in form of `system.<schema>`.
      */
-    public /*out*/ readonly fullName!: pulumi.Output<string>;
-    public /*out*/ readonly metastoreId!: pulumi.Output<string>;
+    declare public /*out*/ readonly fullName: pulumi.Output<string>;
+    declare public /*out*/ readonly metastoreId: pulumi.Output<string>;
     /**
      * name of the system schema.
      */
-    public readonly schema!: pulumi.Output<string>;
+    declare public readonly schema: pulumi.Output<string>;
     /**
      * The current state of enablement for the system schema.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a SystemSchema resource with the given unique name, arguments, and options.
@@ -100,17 +100,17 @@ export class SystemSchema extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SystemSchemaState | undefined;
-            resourceInputs["autoEnabled"] = state ? state.autoEnabled : undefined;
-            resourceInputs["fullName"] = state ? state.fullName : undefined;
-            resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
-            resourceInputs["schema"] = state ? state.schema : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["autoEnabled"] = state?.autoEnabled;
+            resourceInputs["fullName"] = state?.fullName;
+            resourceInputs["metastoreId"] = state?.metastoreId;
+            resourceInputs["schema"] = state?.schema;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as SystemSchemaArgs | undefined;
-            if ((!args || args.schema === undefined) && !opts.urn) {
+            if (args?.schema === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schema'");
             }
-            resourceInputs["schema"] = args ? args.schema : undefined;
+            resourceInputs["schema"] = args?.schema;
             resourceInputs["autoEnabled"] = undefined /*out*/;
             resourceInputs["fullName"] = undefined /*out*/;
             resourceInputs["metastoreId"] = undefined /*out*/;

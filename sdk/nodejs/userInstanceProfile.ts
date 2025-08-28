@@ -69,11 +69,11 @@ export class UserInstanceProfile extends pulumi.CustomResource {
     /**
      * This is the id of the instance profile resource.
      */
-    public readonly instanceProfileId!: pulumi.Output<string>;
+    declare public readonly instanceProfileId: pulumi.Output<string>;
     /**
      * This is the id of the user resource.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a UserInstanceProfile resource with the given unique name, arguments, and options.
@@ -88,18 +88,18 @@ export class UserInstanceProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserInstanceProfileState | undefined;
-            resourceInputs["instanceProfileId"] = state ? state.instanceProfileId : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["instanceProfileId"] = state?.instanceProfileId;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as UserInstanceProfileArgs | undefined;
-            if ((!args || args.instanceProfileId === undefined) && !opts.urn) {
+            if (args?.instanceProfileId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceProfileId'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["instanceProfileId"] = args ? args.instanceProfileId : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["instanceProfileId"] = args?.instanceProfileId;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UserInstanceProfile.__pulumiType, name, resourceInputs, opts);

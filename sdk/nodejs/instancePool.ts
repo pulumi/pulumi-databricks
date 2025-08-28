@@ -98,45 +98,45 @@ export class InstancePool extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstancePool.__pulumiType;
     }
 
-    public readonly awsAttributes!: pulumi.Output<outputs.InstancePoolAwsAttributes | undefined>;
-    public readonly azureAttributes!: pulumi.Output<outputs.InstancePoolAzureAttributes | undefined>;
+    declare public readonly awsAttributes: pulumi.Output<outputs.InstancePoolAwsAttributes | undefined>;
+    declare public readonly azureAttributes: pulumi.Output<outputs.InstancePoolAzureAttributes | undefined>;
     /**
      * (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS & Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
      */
-    public readonly customTags!: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly diskSpec!: pulumi.Output<outputs.InstancePoolDiskSpec | undefined>;
+    declare public readonly customTags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly diskSpec: pulumi.Output<outputs.InstancePoolDiskSpec | undefined>;
     /**
      * (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
      */
-    public readonly enableElasticDisk!: pulumi.Output<boolean | undefined>;
-    public readonly gcpAttributes!: pulumi.Output<outputs.InstancePoolGcpAttributes | undefined>;
+    declare public readonly enableElasticDisk: pulumi.Output<boolean | undefined>;
+    declare public readonly gcpAttributes: pulumi.Output<outputs.InstancePoolGcpAttributes | undefined>;
     /**
      * (Integer) The number of minutes that idle instances in excess of the minIdleInstances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
      */
-    public readonly idleInstanceAutoterminationMinutes!: pulumi.Output<number>;
-    public readonly instancePoolFleetAttributes!: pulumi.Output<outputs.InstancePoolInstancePoolFleetAttributes | undefined>;
-    public readonly instancePoolId!: pulumi.Output<string>;
+    declare public readonly idleInstanceAutoterminationMinutes: pulumi.Output<number>;
+    declare public readonly instancePoolFleetAttributes: pulumi.Output<outputs.InstancePoolInstancePoolFleetAttributes | undefined>;
+    declare public readonly instancePoolId: pulumi.Output<string>;
     /**
      * (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
      */
-    public readonly instancePoolName!: pulumi.Output<string>;
+    declare public readonly instancePoolName: pulumi.Output<string>;
     /**
      * (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
      */
-    public readonly maxCapacity!: pulumi.Output<number | undefined>;
+    declare public readonly maxCapacity: pulumi.Output<number | undefined>;
     /**
      * (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
      */
-    public readonly minIdleInstances!: pulumi.Output<number | undefined>;
+    declare public readonly minIdleInstances: pulumi.Output<number | undefined>;
     /**
      * (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool's idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
      */
-    public readonly nodeTypeId!: pulumi.Output<string | undefined>;
-    public readonly preloadedDockerImages!: pulumi.Output<outputs.InstancePoolPreloadedDockerImage[] | undefined>;
+    declare public readonly nodeTypeId: pulumi.Output<string | undefined>;
+    declare public readonly preloadedDockerImages: pulumi.Output<outputs.InstancePoolPreloadedDockerImage[] | undefined>;
     /**
      * (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via databricks.getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
      */
-    public readonly preloadedSparkVersions!: pulumi.Output<string[] | undefined>;
+    declare public readonly preloadedSparkVersions: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a InstancePool resource with the given unique name, arguments, and options.
@@ -151,44 +151,44 @@ export class InstancePool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstancePoolState | undefined;
-            resourceInputs["awsAttributes"] = state ? state.awsAttributes : undefined;
-            resourceInputs["azureAttributes"] = state ? state.azureAttributes : undefined;
-            resourceInputs["customTags"] = state ? state.customTags : undefined;
-            resourceInputs["diskSpec"] = state ? state.diskSpec : undefined;
-            resourceInputs["enableElasticDisk"] = state ? state.enableElasticDisk : undefined;
-            resourceInputs["gcpAttributes"] = state ? state.gcpAttributes : undefined;
-            resourceInputs["idleInstanceAutoterminationMinutes"] = state ? state.idleInstanceAutoterminationMinutes : undefined;
-            resourceInputs["instancePoolFleetAttributes"] = state ? state.instancePoolFleetAttributes : undefined;
-            resourceInputs["instancePoolId"] = state ? state.instancePoolId : undefined;
-            resourceInputs["instancePoolName"] = state ? state.instancePoolName : undefined;
-            resourceInputs["maxCapacity"] = state ? state.maxCapacity : undefined;
-            resourceInputs["minIdleInstances"] = state ? state.minIdleInstances : undefined;
-            resourceInputs["nodeTypeId"] = state ? state.nodeTypeId : undefined;
-            resourceInputs["preloadedDockerImages"] = state ? state.preloadedDockerImages : undefined;
-            resourceInputs["preloadedSparkVersions"] = state ? state.preloadedSparkVersions : undefined;
+            resourceInputs["awsAttributes"] = state?.awsAttributes;
+            resourceInputs["azureAttributes"] = state?.azureAttributes;
+            resourceInputs["customTags"] = state?.customTags;
+            resourceInputs["diskSpec"] = state?.diskSpec;
+            resourceInputs["enableElasticDisk"] = state?.enableElasticDisk;
+            resourceInputs["gcpAttributes"] = state?.gcpAttributes;
+            resourceInputs["idleInstanceAutoterminationMinutes"] = state?.idleInstanceAutoterminationMinutes;
+            resourceInputs["instancePoolFleetAttributes"] = state?.instancePoolFleetAttributes;
+            resourceInputs["instancePoolId"] = state?.instancePoolId;
+            resourceInputs["instancePoolName"] = state?.instancePoolName;
+            resourceInputs["maxCapacity"] = state?.maxCapacity;
+            resourceInputs["minIdleInstances"] = state?.minIdleInstances;
+            resourceInputs["nodeTypeId"] = state?.nodeTypeId;
+            resourceInputs["preloadedDockerImages"] = state?.preloadedDockerImages;
+            resourceInputs["preloadedSparkVersions"] = state?.preloadedSparkVersions;
         } else {
             const args = argsOrState as InstancePoolArgs | undefined;
-            if ((!args || args.idleInstanceAutoterminationMinutes === undefined) && !opts.urn) {
+            if (args?.idleInstanceAutoterminationMinutes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'idleInstanceAutoterminationMinutes'");
             }
-            if ((!args || args.instancePoolName === undefined) && !opts.urn) {
+            if (args?.instancePoolName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instancePoolName'");
             }
-            resourceInputs["awsAttributes"] = args ? args.awsAttributes : undefined;
-            resourceInputs["azureAttributes"] = args ? args.azureAttributes : undefined;
-            resourceInputs["customTags"] = args ? args.customTags : undefined;
-            resourceInputs["diskSpec"] = args ? args.diskSpec : undefined;
-            resourceInputs["enableElasticDisk"] = args ? args.enableElasticDisk : undefined;
-            resourceInputs["gcpAttributes"] = args ? args.gcpAttributes : undefined;
-            resourceInputs["idleInstanceAutoterminationMinutes"] = args ? args.idleInstanceAutoterminationMinutes : undefined;
-            resourceInputs["instancePoolFleetAttributes"] = args ? args.instancePoolFleetAttributes : undefined;
-            resourceInputs["instancePoolId"] = args ? args.instancePoolId : undefined;
-            resourceInputs["instancePoolName"] = args ? args.instancePoolName : undefined;
-            resourceInputs["maxCapacity"] = args ? args.maxCapacity : undefined;
-            resourceInputs["minIdleInstances"] = args ? args.minIdleInstances : undefined;
-            resourceInputs["nodeTypeId"] = args ? args.nodeTypeId : undefined;
-            resourceInputs["preloadedDockerImages"] = args ? args.preloadedDockerImages : undefined;
-            resourceInputs["preloadedSparkVersions"] = args ? args.preloadedSparkVersions : undefined;
+            resourceInputs["awsAttributes"] = args?.awsAttributes;
+            resourceInputs["azureAttributes"] = args?.azureAttributes;
+            resourceInputs["customTags"] = args?.customTags;
+            resourceInputs["diskSpec"] = args?.diskSpec;
+            resourceInputs["enableElasticDisk"] = args?.enableElasticDisk;
+            resourceInputs["gcpAttributes"] = args?.gcpAttributes;
+            resourceInputs["idleInstanceAutoterminationMinutes"] = args?.idleInstanceAutoterminationMinutes;
+            resourceInputs["instancePoolFleetAttributes"] = args?.instancePoolFleetAttributes;
+            resourceInputs["instancePoolId"] = args?.instancePoolId;
+            resourceInputs["instancePoolName"] = args?.instancePoolName;
+            resourceInputs["maxCapacity"] = args?.maxCapacity;
+            resourceInputs["minIdleInstances"] = args?.minIdleInstances;
+            resourceInputs["nodeTypeId"] = args?.nodeTypeId;
+            resourceInputs["preloadedDockerImages"] = args?.preloadedDockerImages;
+            resourceInputs["preloadedSparkVersions"] = args?.preloadedSparkVersions;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstancePool.__pulumiType, name, resourceInputs, opts);

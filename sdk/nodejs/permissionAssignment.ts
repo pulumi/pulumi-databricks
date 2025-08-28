@@ -128,11 +128,11 @@ export class PermissionAssignment extends pulumi.CustomResource {
      * * `"USER"` - Can access the workspace with basic privileges.
      * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
      */
-    public readonly permissions!: pulumi.Output<string[]>;
+    declare public readonly permissions: pulumi.Output<string[]>;
     /**
      * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
      */
-    public readonly principalId!: pulumi.Output<string>;
+    declare public readonly principalId: pulumi.Output<string>;
 
     /**
      * Create a PermissionAssignment resource with the given unique name, arguments, and options.
@@ -147,18 +147,18 @@ export class PermissionAssignment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PermissionAssignmentState | undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["principalId"] = state ? state.principalId : undefined;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["principalId"] = state?.principalId;
         } else {
             const args = argsOrState as PermissionAssignmentArgs | undefined;
-            if ((!args || args.permissions === undefined) && !opts.urn) {
+            if (args?.permissions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'permissions'");
             }
-            if ((!args || args.principalId === undefined) && !opts.urn) {
+            if (args?.principalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principalId'");
             }
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
-            resourceInputs["principalId"] = args ? args.principalId : undefined;
+            resourceInputs["permissions"] = args?.permissions;
+            resourceInputs["principalId"] = args?.principalId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PermissionAssignment.__pulumiType, name, resourceInputs, opts);

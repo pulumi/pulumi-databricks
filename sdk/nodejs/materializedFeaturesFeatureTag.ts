@@ -53,8 +53,8 @@ export class MaterializedFeaturesFeatureTag extends pulumi.CustomResource {
         return obj['__pulumiType'] === MaterializedFeaturesFeatureTag.__pulumiType;
     }
 
-    public readonly key!: pulumi.Output<string>;
-    public readonly value!: pulumi.Output<string | undefined>;
+    declare public readonly key: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string | undefined>;
 
     /**
      * Create a MaterializedFeaturesFeatureTag resource with the given unique name, arguments, and options.
@@ -69,15 +69,15 @@ export class MaterializedFeaturesFeatureTag extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MaterializedFeaturesFeatureTagState | undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as MaterializedFeaturesFeatureTagArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MaterializedFeaturesFeatureTag.__pulumiType, name, resourceInputs, opts);

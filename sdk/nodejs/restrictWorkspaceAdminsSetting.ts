@@ -86,12 +86,12 @@ export class RestrictWorkspaceAdminsSetting extends pulumi.CustomResource {
         return obj['__pulumiType'] === RestrictWorkspaceAdminsSetting.__pulumiType;
     }
 
-    public readonly etag!: pulumi.Output<string>;
+    declare public readonly etag: pulumi.Output<string>;
     /**
      * The configuration details.
      */
-    public readonly restrictWorkspaceAdmins!: pulumi.Output<outputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins>;
-    public readonly settingName!: pulumi.Output<string>;
+    declare public readonly restrictWorkspaceAdmins: pulumi.Output<outputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins>;
+    declare public readonly settingName: pulumi.Output<string>;
 
     /**
      * Create a RestrictWorkspaceAdminsSetting resource with the given unique name, arguments, and options.
@@ -106,17 +106,17 @@ export class RestrictWorkspaceAdminsSetting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RestrictWorkspaceAdminsSettingState | undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["restrictWorkspaceAdmins"] = state ? state.restrictWorkspaceAdmins : undefined;
-            resourceInputs["settingName"] = state ? state.settingName : undefined;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["restrictWorkspaceAdmins"] = state?.restrictWorkspaceAdmins;
+            resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as RestrictWorkspaceAdminsSettingArgs | undefined;
-            if ((!args || args.restrictWorkspaceAdmins === undefined) && !opts.urn) {
+            if (args?.restrictWorkspaceAdmins === undefined && !opts.urn) {
                 throw new Error("Missing required property 'restrictWorkspaceAdmins'");
             }
-            resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["restrictWorkspaceAdmins"] = args ? args.restrictWorkspaceAdmins : undefined;
-            resourceInputs["settingName"] = args ? args.settingName : undefined;
+            resourceInputs["etag"] = args?.etag;
+            resourceInputs["restrictWorkspaceAdmins"] = args?.restrictWorkspaceAdmins;
+            resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RestrictWorkspaceAdminsSetting.__pulumiType, name, resourceInputs, opts);

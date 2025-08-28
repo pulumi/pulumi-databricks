@@ -81,9 +81,9 @@ export class AibiDashboardEmbeddingAccessPolicySetting extends pulumi.CustomReso
     /**
      * block with following attributes:
      */
-    public readonly aibiDashboardEmbeddingAccessPolicy!: pulumi.Output<outputs.AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy>;
-    public readonly etag!: pulumi.Output<string>;
-    public readonly settingName!: pulumi.Output<string>;
+    declare public readonly aibiDashboardEmbeddingAccessPolicy: pulumi.Output<outputs.AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy>;
+    declare public readonly etag: pulumi.Output<string>;
+    declare public readonly settingName: pulumi.Output<string>;
 
     /**
      * Create a AibiDashboardEmbeddingAccessPolicySetting resource with the given unique name, arguments, and options.
@@ -98,17 +98,17 @@ export class AibiDashboardEmbeddingAccessPolicySetting extends pulumi.CustomReso
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AibiDashboardEmbeddingAccessPolicySettingState | undefined;
-            resourceInputs["aibiDashboardEmbeddingAccessPolicy"] = state ? state.aibiDashboardEmbeddingAccessPolicy : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["settingName"] = state ? state.settingName : undefined;
+            resourceInputs["aibiDashboardEmbeddingAccessPolicy"] = state?.aibiDashboardEmbeddingAccessPolicy;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as AibiDashboardEmbeddingAccessPolicySettingArgs | undefined;
-            if ((!args || args.aibiDashboardEmbeddingAccessPolicy === undefined) && !opts.urn) {
+            if (args?.aibiDashboardEmbeddingAccessPolicy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aibiDashboardEmbeddingAccessPolicy'");
             }
-            resourceInputs["aibiDashboardEmbeddingAccessPolicy"] = args ? args.aibiDashboardEmbeddingAccessPolicy : undefined;
-            resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["settingName"] = args ? args.settingName : undefined;
+            resourceInputs["aibiDashboardEmbeddingAccessPolicy"] = args?.aibiDashboardEmbeddingAccessPolicy;
+            resourceInputs["etag"] = args?.etag;
+            resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AibiDashboardEmbeddingAccessPolicySetting.__pulumiType, name, resourceInputs, opts);

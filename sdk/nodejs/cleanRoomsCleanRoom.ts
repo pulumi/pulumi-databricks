@@ -62,44 +62,44 @@ export class CleanRoomsCleanRoom extends pulumi.CustomResource {
     /**
      * (string) - Whether clean room access is restricted due to [CSP](https://docs.databricks.com/en/security/privacy/security-profile.html). Possible values are: `CSP_MISMATCH`, `NO_RESTRICTION`
      */
-    public /*out*/ readonly accessRestricted!: pulumi.Output<string>;
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly accessRestricted: pulumi.Output<string>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * (integer) - When the clean room was created, in epoch milliseconds
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<number>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<number>;
     /**
      * (string) - The alias of the collaborator tied to the local clean room
      */
-    public /*out*/ readonly localCollaboratorAlias!: pulumi.Output<string>;
+    declare public /*out*/ readonly localCollaboratorAlias: pulumi.Output<string>;
     /**
      * The name of the clean room.
      * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * (CleanRoomOutputCatalog) - Output catalog of the clean room. It is an output only field. Output catalog is manipulated
      * using the separate CreateCleanRoomOutputCatalog API
      */
-    public /*out*/ readonly outputCatalog!: pulumi.Output<outputs.CleanRoomsCleanRoomOutputCatalog>;
+    declare public /*out*/ readonly outputCatalog: pulumi.Output<outputs.CleanRoomsCleanRoomOutputCatalog>;
     /**
      * This is Databricks username of the owner of the local clean room securable for permission management
      */
-    public readonly owner!: pulumi.Output<string | undefined>;
+    declare public readonly owner: pulumi.Output<string | undefined>;
     /**
      * Central clean room details. During creation, users need to specify
      * cloud_vendor, region, and collaborators.global_metastore_id.
      * This field will not be filled in the ListCleanRooms call
      */
-    public readonly remoteDetailedInfo!: pulumi.Output<outputs.CleanRoomsCleanRoomRemoteDetailedInfo | undefined>;
+    declare public readonly remoteDetailedInfo: pulumi.Output<outputs.CleanRoomsCleanRoomRemoteDetailedInfo | undefined>;
     /**
      * (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * (integer) - When the clean room was last updated, in epoch milliseconds
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<number>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<number>;
 
     /**
      * Create a CleanRoomsCleanRoom resource with the given unique name, arguments, and options.
@@ -114,22 +114,22 @@ export class CleanRoomsCleanRoom extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CleanRoomsCleanRoomState | undefined;
-            resourceInputs["accessRestricted"] = state ? state.accessRestricted : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["localCollaboratorAlias"] = state ? state.localCollaboratorAlias : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["outputCatalog"] = state ? state.outputCatalog : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["remoteDetailedInfo"] = state ? state.remoteDetailedInfo : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["accessRestricted"] = state?.accessRestricted;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["localCollaboratorAlias"] = state?.localCollaboratorAlias;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["outputCatalog"] = state?.outputCatalog;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["remoteDetailedInfo"] = state?.remoteDetailedInfo;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as CleanRoomsCleanRoomArgs | undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["remoteDetailedInfo"] = args ? args.remoteDetailedInfo : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["remoteDetailedInfo"] = args?.remoteDetailedInfo;
             resourceInputs["accessRestricted"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["localCollaboratorAlias"] = undefined /*out*/;

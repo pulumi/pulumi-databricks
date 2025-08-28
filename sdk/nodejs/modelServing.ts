@@ -204,49 +204,49 @@ export class ModelServing extends pulumi.CustomResource {
     /**
      * A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
      */
-    public readonly aiGateway!: pulumi.Output<outputs.ModelServingAiGateway | undefined>;
+    declare public readonly aiGateway: pulumi.Output<outputs.ModelServingAiGateway | undefined>;
     /**
      * The Budget Policy ID set for this serving endpoint.
      */
-    public readonly budgetPolicyId!: pulumi.Output<string | undefined>;
+    declare public readonly budgetPolicyId: pulumi.Output<string | undefined>;
     /**
      * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
      */
-    public readonly config!: pulumi.Output<outputs.ModelServingConfig>;
+    declare public readonly config: pulumi.Output<outputs.ModelServingConfig>;
     /**
      * The description of the model serving endpoint.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A block with Email notification setting.
      */
-    public readonly emailNotifications!: pulumi.Output<outputs.ModelServingEmailNotifications | undefined>;
+    declare public readonly emailNotifications: pulumi.Output<outputs.ModelServingEmailNotifications | undefined>;
     /**
      * Invocation url of the endpoint.
      */
-    public /*out*/ readonly endpointUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpointUrl: pulumi.Output<string>;
     /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
      *
      * @deprecated Please use AI Gateway to manage rate limits.
      */
-    public readonly rateLimits!: pulumi.Output<outputs.ModelServingRateLimit[] | undefined>;
+    declare public readonly rateLimits: pulumi.Output<outputs.ModelServingRateLimit[] | undefined>;
     /**
      * A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
      */
-    public readonly routeOptimized!: pulumi.Output<boolean | undefined>;
+    declare public readonly routeOptimized: pulumi.Output<boolean | undefined>;
     /**
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
      */
-    public /*out*/ readonly servingEndpointId!: pulumi.Output<string>;
+    declare public /*out*/ readonly servingEndpointId: pulumi.Output<string>;
     /**
      * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
      */
-    public readonly tags!: pulumi.Output<outputs.ModelServingTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.ModelServingTag[] | undefined>;
 
     /**
      * Create a ModelServing resource with the given unique name, arguments, and options.
@@ -261,28 +261,28 @@ export class ModelServing extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ModelServingState | undefined;
-            resourceInputs["aiGateway"] = state ? state.aiGateway : undefined;
-            resourceInputs["budgetPolicyId"] = state ? state.budgetPolicyId : undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["emailNotifications"] = state ? state.emailNotifications : undefined;
-            resourceInputs["endpointUrl"] = state ? state.endpointUrl : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["rateLimits"] = state ? state.rateLimits : undefined;
-            resourceInputs["routeOptimized"] = state ? state.routeOptimized : undefined;
-            resourceInputs["servingEndpointId"] = state ? state.servingEndpointId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["aiGateway"] = state?.aiGateway;
+            resourceInputs["budgetPolicyId"] = state?.budgetPolicyId;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["emailNotifications"] = state?.emailNotifications;
+            resourceInputs["endpointUrl"] = state?.endpointUrl;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["rateLimits"] = state?.rateLimits;
+            resourceInputs["routeOptimized"] = state?.routeOptimized;
+            resourceInputs["servingEndpointId"] = state?.servingEndpointId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ModelServingArgs | undefined;
-            resourceInputs["aiGateway"] = args ? args.aiGateway : undefined;
-            resourceInputs["budgetPolicyId"] = args ? args.budgetPolicyId : undefined;
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["emailNotifications"] = args ? args.emailNotifications : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["rateLimits"] = args ? args.rateLimits : undefined;
-            resourceInputs["routeOptimized"] = args ? args.routeOptimized : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["aiGateway"] = args?.aiGateway;
+            resourceInputs["budgetPolicyId"] = args?.budgetPolicyId;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["emailNotifications"] = args?.emailNotifications;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["rateLimits"] = args?.rateLimits;
+            resourceInputs["routeOptimized"] = args?.routeOptimized;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["endpointUrl"] = undefined /*out*/;
             resourceInputs["servingEndpointId"] = undefined /*out*/;
         }

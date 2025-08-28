@@ -76,47 +76,47 @@ export class VectorSearchEndpoint extends pulumi.CustomResource {
     /**
      * The Budget Policy ID set for this resource.
      */
-    public readonly budgetPolicyId!: pulumi.Output<string>;
+    declare public readonly budgetPolicyId: pulumi.Output<string>;
     /**
      * Timestamp of endpoint creation (milliseconds).
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<number>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<number>;
     /**
      * Creator of the endpoint.
      */
-    public /*out*/ readonly creator!: pulumi.Output<string>;
+    declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
      * The effective budget policy ID.
      */
-    public /*out*/ readonly effectiveBudgetPolicyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveBudgetPolicyId: pulumi.Output<string>;
     /**
      * Unique internal identifier of the endpoint (UUID).
      */
-    public /*out*/ readonly endpointId!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpointId: pulumi.Output<string>;
     /**
      * Object describing the current status of the endpoint consisting of the following fields:
      */
-    public /*out*/ readonly endpointStatuses!: pulumi.Output<outputs.VectorSearchEndpointEndpointStatus[]>;
+    declare public /*out*/ readonly endpointStatuses: pulumi.Output<outputs.VectorSearchEndpointEndpointStatus[]>;
     /**
      * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
      */
-    public readonly endpointType!: pulumi.Output<string>;
+    declare public readonly endpointType: pulumi.Output<string>;
     /**
      * Timestamp of the last update to the endpoint (milliseconds).
      */
-    public /*out*/ readonly lastUpdatedTimestamp!: pulumi.Output<number>;
+    declare public /*out*/ readonly lastUpdatedTimestamp: pulumi.Output<number>;
     /**
      * User who last updated the endpoint.
      */
-    public /*out*/ readonly lastUpdatedUser!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUpdatedUser: pulumi.Output<string>;
     /**
      * Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Number of indexes on the endpoint.
      */
-    public /*out*/ readonly numIndexes!: pulumi.Output<number>;
+    declare public /*out*/ readonly numIndexes: pulumi.Output<number>;
 
     /**
      * Create a VectorSearchEndpoint resource with the given unique name, arguments, and options.
@@ -131,25 +131,25 @@ export class VectorSearchEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VectorSearchEndpointState | undefined;
-            resourceInputs["budgetPolicyId"] = state ? state.budgetPolicyId : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["creator"] = state ? state.creator : undefined;
-            resourceInputs["effectiveBudgetPolicyId"] = state ? state.effectiveBudgetPolicyId : undefined;
-            resourceInputs["endpointId"] = state ? state.endpointId : undefined;
-            resourceInputs["endpointStatuses"] = state ? state.endpointStatuses : undefined;
-            resourceInputs["endpointType"] = state ? state.endpointType : undefined;
-            resourceInputs["lastUpdatedTimestamp"] = state ? state.lastUpdatedTimestamp : undefined;
-            resourceInputs["lastUpdatedUser"] = state ? state.lastUpdatedUser : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["numIndexes"] = state ? state.numIndexes : undefined;
+            resourceInputs["budgetPolicyId"] = state?.budgetPolicyId;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["creator"] = state?.creator;
+            resourceInputs["effectiveBudgetPolicyId"] = state?.effectiveBudgetPolicyId;
+            resourceInputs["endpointId"] = state?.endpointId;
+            resourceInputs["endpointStatuses"] = state?.endpointStatuses;
+            resourceInputs["endpointType"] = state?.endpointType;
+            resourceInputs["lastUpdatedTimestamp"] = state?.lastUpdatedTimestamp;
+            resourceInputs["lastUpdatedUser"] = state?.lastUpdatedUser;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["numIndexes"] = state?.numIndexes;
         } else {
             const args = argsOrState as VectorSearchEndpointArgs | undefined;
-            if ((!args || args.endpointType === undefined) && !opts.urn) {
+            if (args?.endpointType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointType'");
             }
-            resourceInputs["budgetPolicyId"] = args ? args.budgetPolicyId : undefined;
-            resourceInputs["endpointType"] = args ? args.endpointType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["budgetPolicyId"] = args?.budgetPolicyId;
+            resourceInputs["endpointType"] = args?.endpointType;
+            resourceInputs["name"] = args?.name;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["effectiveBudgetPolicyId"] = undefined /*out*/;

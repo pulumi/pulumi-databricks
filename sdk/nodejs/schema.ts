@@ -95,40 +95,40 @@ export class Schema extends pulumi.CustomResource {
     /**
      * Name of parent catalog. Change forces creation of a new resource.
      */
-    public readonly catalogName!: pulumi.Output<string>;
+    declare public readonly catalogName: pulumi.Output<string>;
     /**
      * User-supplied free-form text.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
      */
-    public readonly enablePredictiveOptimization!: pulumi.Output<string>;
+    declare public readonly enablePredictiveOptimization: pulumi.Output<string>;
     /**
      * Delete schema regardless of its contents.
      */
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
-    public readonly metastoreId!: pulumi.Output<string>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
+    declare public readonly metastoreId: pulumi.Output<string>;
     /**
      * Name of Schema relative to parent catalog. Change forces creation of a new resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Username/groupname/sp applicationId of the schema owner.
      */
-    public readonly owner!: pulumi.Output<string>;
+    declare public readonly owner: pulumi.Output<string>;
     /**
      * Extensible Schema properties.
      */
-    public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly properties: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The unique identifier of the schema.
      */
-    public /*out*/ readonly schemaId!: pulumi.Output<string>;
+    declare public /*out*/ readonly schemaId: pulumi.Output<string>;
     /**
      * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      */
-    public readonly storageRoot!: pulumi.Output<string | undefined>;
+    declare public readonly storageRoot: pulumi.Output<string | undefined>;
 
     /**
      * Create a Schema resource with the given unique name, arguments, and options.
@@ -143,30 +143,30 @@ export class Schema extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SchemaState | undefined;
-            resourceInputs["catalogName"] = state ? state.catalogName : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["enablePredictiveOptimization"] = state ? state.enablePredictiveOptimization : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["properties"] = state ? state.properties : undefined;
-            resourceInputs["schemaId"] = state ? state.schemaId : undefined;
-            resourceInputs["storageRoot"] = state ? state.storageRoot : undefined;
+            resourceInputs["catalogName"] = state?.catalogName;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["enablePredictiveOptimization"] = state?.enablePredictiveOptimization;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["metastoreId"] = state?.metastoreId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["properties"] = state?.properties;
+            resourceInputs["schemaId"] = state?.schemaId;
+            resourceInputs["storageRoot"] = state?.storageRoot;
         } else {
             const args = argsOrState as SchemaArgs | undefined;
-            if ((!args || args.catalogName === undefined) && !opts.urn) {
+            if (args?.catalogName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'catalogName'");
             }
-            resourceInputs["catalogName"] = args ? args.catalogName : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["enablePredictiveOptimization"] = args ? args.enablePredictiveOptimization : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["storageRoot"] = args ? args.storageRoot : undefined;
+            resourceInputs["catalogName"] = args?.catalogName;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["enablePredictiveOptimization"] = args?.enablePredictiveOptimization;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["metastoreId"] = args?.metastoreId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["storageRoot"] = args?.storageRoot;
             resourceInputs["schemaId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -81,38 +81,38 @@ export class Dashboard extends pulumi.CustomResource {
         return obj['__pulumiType'] === Dashboard.__pulumiType;
     }
 
-    public readonly createTime!: pulumi.Output<string>;
-    public readonly dashboardChangeDetected!: pulumi.Output<boolean | undefined>;
-    public readonly dashboardId!: pulumi.Output<string>;
+    declare public readonly createTime: pulumi.Output<string>;
+    declare public readonly dashboardChangeDetected: pulumi.Output<boolean | undefined>;
+    declare public readonly dashboardId: pulumi.Output<string>;
     /**
      * The display name of the dashboard.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Whether to embed credentials in the dashboard. Default is `true`.
      */
-    public readonly embedCredentials!: pulumi.Output<boolean | undefined>;
-    public readonly etag!: pulumi.Output<string>;
+    declare public readonly embedCredentials: pulumi.Output<boolean | undefined>;
+    declare public readonly etag: pulumi.Output<string>;
     /**
      * The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
      */
-    public readonly filePath!: pulumi.Output<string | undefined>;
-    public readonly lifecycleState!: pulumi.Output<string>;
-    public readonly md5!: pulumi.Output<string>;
+    declare public readonly filePath: pulumi.Output<string | undefined>;
+    declare public readonly lifecycleState: pulumi.Output<string>;
+    declare public readonly md5: pulumi.Output<string>;
     /**
      * The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
      */
-    public readonly parentPath!: pulumi.Output<string>;
-    public readonly path!: pulumi.Output<string>;
+    declare public readonly parentPath: pulumi.Output<string>;
+    declare public readonly path: pulumi.Output<string>;
     /**
      * The contents of the dashboard in serialized string form. Conflicts with `filePath`.
      */
-    public readonly serializedDashboard!: pulumi.Output<string | undefined>;
-    public readonly updateTime!: pulumi.Output<string>;
+    declare public readonly serializedDashboard: pulumi.Output<string | undefined>;
+    declare public readonly updateTime: pulumi.Output<string>;
     /**
      * The warehouse ID used to run the dashboard.
      */
-    public readonly warehouseId!: pulumi.Output<string>;
+    declare public readonly warehouseId: pulumi.Output<string>;
 
     /**
      * Create a Dashboard resource with the given unique name, arguments, and options.
@@ -127,45 +127,45 @@ export class Dashboard extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DashboardState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dashboardChangeDetected"] = state ? state.dashboardChangeDetected : undefined;
-            resourceInputs["dashboardId"] = state ? state.dashboardId : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["embedCredentials"] = state ? state.embedCredentials : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["filePath"] = state ? state.filePath : undefined;
-            resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
-            resourceInputs["md5"] = state ? state.md5 : undefined;
-            resourceInputs["parentPath"] = state ? state.parentPath : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["serializedDashboard"] = state ? state.serializedDashboard : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["warehouseId"] = state ? state.warehouseId : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dashboardChangeDetected"] = state?.dashboardChangeDetected;
+            resourceInputs["dashboardId"] = state?.dashboardId;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["embedCredentials"] = state?.embedCredentials;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["filePath"] = state?.filePath;
+            resourceInputs["lifecycleState"] = state?.lifecycleState;
+            resourceInputs["md5"] = state?.md5;
+            resourceInputs["parentPath"] = state?.parentPath;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["serializedDashboard"] = state?.serializedDashboard;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["warehouseId"] = state?.warehouseId;
         } else {
             const args = argsOrState as DashboardArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.parentPath === undefined) && !opts.urn) {
+            if (args?.parentPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parentPath'");
             }
-            if ((!args || args.warehouseId === undefined) && !opts.urn) {
+            if (args?.warehouseId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'warehouseId'");
             }
-            resourceInputs["createTime"] = args ? args.createTime : undefined;
-            resourceInputs["dashboardChangeDetected"] = args ? args.dashboardChangeDetected : undefined;
-            resourceInputs["dashboardId"] = args ? args.dashboardId : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["embedCredentials"] = args ? args.embedCredentials : undefined;
-            resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["filePath"] = args ? args.filePath : undefined;
-            resourceInputs["lifecycleState"] = args ? args.lifecycleState : undefined;
-            resourceInputs["md5"] = args ? args.md5 : undefined;
-            resourceInputs["parentPath"] = args ? args.parentPath : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["serializedDashboard"] = args ? args.serializedDashboard : undefined;
-            resourceInputs["updateTime"] = args ? args.updateTime : undefined;
-            resourceInputs["warehouseId"] = args ? args.warehouseId : undefined;
+            resourceInputs["createTime"] = args?.createTime;
+            resourceInputs["dashboardChangeDetected"] = args?.dashboardChangeDetected;
+            resourceInputs["dashboardId"] = args?.dashboardId;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["embedCredentials"] = args?.embedCredentials;
+            resourceInputs["etag"] = args?.etag;
+            resourceInputs["filePath"] = args?.filePath;
+            resourceInputs["lifecycleState"] = args?.lifecycleState;
+            resourceInputs["md5"] = args?.md5;
+            resourceInputs["parentPath"] = args?.parentPath;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["serializedDashboard"] = args?.serializedDashboard;
+            resourceInputs["updateTime"] = args?.updateTime;
+            resourceInputs["warehouseId"] = args?.warehouseId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Dashboard.__pulumiType, name, resourceInputs, opts);

@@ -201,73 +201,73 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Free-form text. Change forces creation of a new resource.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * Unique ID of the connection.
      */
-    public /*out*/ readonly connectionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionId: pulumi.Output<string>;
     /**
      * Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
      */
-    public readonly connectionType!: pulumi.Output<string | undefined>;
+    declare public readonly connectionType: pulumi.Output<string | undefined>;
     /**
      * Time at which this connection was created, in epoch milliseconds.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<number>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<number>;
     /**
      * Username of connection creator.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
      * The type of credential for this connection.
      */
-    public /*out*/ readonly credentialType!: pulumi.Output<string>;
-    public readonly environmentSettings!: pulumi.Output<outputs.ConnectionEnvironmentSettings | undefined>;
+    declare public /*out*/ readonly credentialType: pulumi.Output<string>;
+    declare public readonly environmentSettings: pulumi.Output<outputs.ConnectionEnvironmentSettings | undefined>;
     /**
      * Full name of connection.
      */
-    public /*out*/ readonly fullName!: pulumi.Output<string>;
+    declare public /*out*/ readonly fullName: pulumi.Output<string>;
     /**
      * Unique ID of the UC metastore for this connection.
      */
-    public /*out*/ readonly metastoreId!: pulumi.Output<string>;
+    declare public /*out*/ readonly metastoreId: pulumi.Output<string>;
     /**
      * Name of the Connection.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      */
-    public readonly options!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly options: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of the connection owner.
      */
-    public readonly owner!: pulumi.Output<string>;
+    declare public readonly owner: pulumi.Output<string>;
     /**
      * Free-form connection properties. Change forces creation of a new resource.
      */
-    public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly properties: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Object with the status of an asynchronously provisioned resource.
      */
-    public /*out*/ readonly provisioningInfos!: pulumi.Output<outputs.ConnectionProvisioningInfo[]>;
+    declare public /*out*/ readonly provisioningInfos: pulumi.Output<outputs.ConnectionProvisioningInfo[]>;
     /**
      * Indicates whether the connection is read-only. Change forces creation of a new resource.
      */
-    public readonly readOnly!: pulumi.Output<boolean>;
-    public /*out*/ readonly securableType!: pulumi.Output<string>;
+    declare public readonly readOnly: pulumi.Output<boolean>;
+    declare public /*out*/ readonly securableType: pulumi.Output<string>;
     /**
      * Time at which connection this was last modified, in epoch milliseconds.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<number>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<number>;
     /**
      * Username of user who last modified the connection.
      */
-    public /*out*/ readonly updatedBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
     /**
      * URL of the remote data source, extracted from options.
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -282,35 +282,35 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["connectionId"] = state ? state.connectionId : undefined;
-            resourceInputs["connectionType"] = state ? state.connectionType : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["credentialType"] = state ? state.credentialType : undefined;
-            resourceInputs["environmentSettings"] = state ? state.environmentSettings : undefined;
-            resourceInputs["fullName"] = state ? state.fullName : undefined;
-            resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["options"] = state ? state.options : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["properties"] = state ? state.properties : undefined;
-            resourceInputs["provisioningInfos"] = state ? state.provisioningInfos : undefined;
-            resourceInputs["readOnly"] = state ? state.readOnly : undefined;
-            resourceInputs["securableType"] = state ? state.securableType : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["updatedBy"] = state ? state.updatedBy : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["connectionId"] = state?.connectionId;
+            resourceInputs["connectionType"] = state?.connectionType;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["credentialType"] = state?.credentialType;
+            resourceInputs["environmentSettings"] = state?.environmentSettings;
+            resourceInputs["fullName"] = state?.fullName;
+            resourceInputs["metastoreId"] = state?.metastoreId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["options"] = state?.options;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["properties"] = state?.properties;
+            resourceInputs["provisioningInfos"] = state?.provisioningInfos;
+            resourceInputs["readOnly"] = state?.readOnly;
+            resourceInputs["securableType"] = state?.securableType;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["updatedBy"] = state?.updatedBy;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["connectionType"] = args ? args.connectionType : undefined;
-            resourceInputs["environmentSettings"] = args ? args.environmentSettings : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["connectionType"] = args?.connectionType;
+            resourceInputs["environmentSettings"] = args?.environmentSettings;
+            resourceInputs["name"] = args?.name;
             resourceInputs["options"] = args?.options ? pulumi.secret(args.options) : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["readOnly"] = args ? args.readOnly : undefined;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["readOnly"] = args?.readOnly;
             resourceInputs["connectionId"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;

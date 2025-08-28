@@ -143,67 +143,67 @@ export class ServicePrincipal extends pulumi.CustomResource {
     /**
      * identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
      */
-    public readonly aclPrincipalId!: pulumi.Output<string>;
+    declare public readonly aclPrincipalId: pulumi.Output<string>;
     /**
      * Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
      */
-    public readonly active!: pulumi.Output<boolean | undefined>;
+    declare public readonly active: pulumi.Output<boolean | undefined>;
     /**
      * Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
      */
-    public readonly allowClusterCreate!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowClusterCreate: pulumi.Output<boolean | undefined>;
     /**
      * Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      */
-    public readonly allowInstancePoolCreate!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowInstancePoolCreate: pulumi.Output<boolean | undefined>;
     /**
      * This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * This is a field to allow the service principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
      */
-    public readonly databricksSqlAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly databricksSqlAccess: pulumi.Output<boolean | undefined>;
     /**
      * Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
      */
-    public readonly disableAsUserDeletion!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableAsUserDeletion: pulumi.Output<boolean | undefined>;
     /**
      * This is an alias for the service principal and can be the full name of the service principal.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * ID of the service principal in an external identity provider.
      */
-    public readonly externalId!: pulumi.Output<string | undefined>;
+    declare public readonly externalId: pulumi.Output<string | undefined>;
     /**
      * Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
      */
-    public readonly forceDeleteHomeDir!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDeleteHomeDir: pulumi.Output<boolean | undefined>;
     /**
      * This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
      */
-    public readonly forceDeleteRepos!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDeleteRepos: pulumi.Output<boolean | undefined>;
     /**
      * Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
      */
-    public readonly home!: pulumi.Output<string>;
+    declare public readonly home: pulumi.Output<string>;
     /**
      * Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
      */
-    public readonly repos!: pulumi.Output<string>;
+    declare public readonly repos: pulumi.Output<string>;
     /**
      * This is a field to allow the service principal to have access to a Databricks Workspace.
      */
-    public readonly workspaceAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly workspaceAccess: pulumi.Output<boolean | undefined>;
     /**
      * This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
      */
-    public readonly workspaceConsume!: pulumi.Output<boolean | undefined>;
+    declare public readonly workspaceConsume: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ServicePrincipal resource with the given unique name, arguments, and options.
@@ -218,40 +218,40 @@ export class ServicePrincipal extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePrincipalState | undefined;
-            resourceInputs["aclPrincipalId"] = state ? state.aclPrincipalId : undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["allowClusterCreate"] = state ? state.allowClusterCreate : undefined;
-            resourceInputs["allowInstancePoolCreate"] = state ? state.allowInstancePoolCreate : undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["databricksSqlAccess"] = state ? state.databricksSqlAccess : undefined;
-            resourceInputs["disableAsUserDeletion"] = state ? state.disableAsUserDeletion : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["externalId"] = state ? state.externalId : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["forceDeleteHomeDir"] = state ? state.forceDeleteHomeDir : undefined;
-            resourceInputs["forceDeleteRepos"] = state ? state.forceDeleteRepos : undefined;
-            resourceInputs["home"] = state ? state.home : undefined;
-            resourceInputs["repos"] = state ? state.repos : undefined;
-            resourceInputs["workspaceAccess"] = state ? state.workspaceAccess : undefined;
-            resourceInputs["workspaceConsume"] = state ? state.workspaceConsume : undefined;
+            resourceInputs["aclPrincipalId"] = state?.aclPrincipalId;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["allowClusterCreate"] = state?.allowClusterCreate;
+            resourceInputs["allowInstancePoolCreate"] = state?.allowInstancePoolCreate;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["databricksSqlAccess"] = state?.databricksSqlAccess;
+            resourceInputs["disableAsUserDeletion"] = state?.disableAsUserDeletion;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["externalId"] = state?.externalId;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["forceDeleteHomeDir"] = state?.forceDeleteHomeDir;
+            resourceInputs["forceDeleteRepos"] = state?.forceDeleteRepos;
+            resourceInputs["home"] = state?.home;
+            resourceInputs["repos"] = state?.repos;
+            resourceInputs["workspaceAccess"] = state?.workspaceAccess;
+            resourceInputs["workspaceConsume"] = state?.workspaceConsume;
         } else {
             const args = argsOrState as ServicePrincipalArgs | undefined;
-            resourceInputs["aclPrincipalId"] = args ? args.aclPrincipalId : undefined;
-            resourceInputs["active"] = args ? args.active : undefined;
-            resourceInputs["allowClusterCreate"] = args ? args.allowClusterCreate : undefined;
-            resourceInputs["allowInstancePoolCreate"] = args ? args.allowInstancePoolCreate : undefined;
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["databricksSqlAccess"] = args ? args.databricksSqlAccess : undefined;
-            resourceInputs["disableAsUserDeletion"] = args ? args.disableAsUserDeletion : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["externalId"] = args ? args.externalId : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["forceDeleteHomeDir"] = args ? args.forceDeleteHomeDir : undefined;
-            resourceInputs["forceDeleteRepos"] = args ? args.forceDeleteRepos : undefined;
-            resourceInputs["home"] = args ? args.home : undefined;
-            resourceInputs["repos"] = args ? args.repos : undefined;
-            resourceInputs["workspaceAccess"] = args ? args.workspaceAccess : undefined;
-            resourceInputs["workspaceConsume"] = args ? args.workspaceConsume : undefined;
+            resourceInputs["aclPrincipalId"] = args?.aclPrincipalId;
+            resourceInputs["active"] = args?.active;
+            resourceInputs["allowClusterCreate"] = args?.allowClusterCreate;
+            resourceInputs["allowInstancePoolCreate"] = args?.allowInstancePoolCreate;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["databricksSqlAccess"] = args?.databricksSqlAccess;
+            resourceInputs["disableAsUserDeletion"] = args?.disableAsUserDeletion;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["externalId"] = args?.externalId;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["forceDeleteHomeDir"] = args?.forceDeleteHomeDir;
+            resourceInputs["forceDeleteRepos"] = args?.forceDeleteRepos;
+            resourceInputs["home"] = args?.home;
+            resourceInputs["repos"] = args?.repos;
+            resourceInputs["workspaceAccess"] = args?.workspaceAccess;
+            resourceInputs["workspaceConsume"] = args?.workspaceConsume;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServicePrincipal.__pulumiType, name, resourceInputs, opts);

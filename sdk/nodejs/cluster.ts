@@ -48,21 +48,21 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Whether to use policy default values for missing cluster attributes.
      */
-    public readonly applyPolicyDefaultValues!: pulumi.Output<boolean | undefined>;
-    public readonly autoscale!: pulumi.Output<outputs.ClusterAutoscale | undefined>;
+    declare public readonly applyPolicyDefaultValues: pulumi.Output<boolean | undefined>;
+    declare public readonly autoscale: pulumi.Output<outputs.ClusterAutoscale | undefined>;
     /**
      * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
      */
-    public readonly autoterminationMinutes!: pulumi.Output<number | undefined>;
-    public readonly awsAttributes!: pulumi.Output<outputs.ClusterAwsAttributes | undefined>;
-    public readonly azureAttributes!: pulumi.Output<outputs.ClusterAzureAttributes | undefined>;
-    public /*out*/ readonly clusterId!: pulumi.Output<string>;
-    public readonly clusterLogConf!: pulumi.Output<outputs.ClusterClusterLogConf | undefined>;
-    public readonly clusterMountInfos!: pulumi.Output<outputs.ClusterClusterMountInfo[] | undefined>;
+    declare public readonly autoterminationMinutes: pulumi.Output<number | undefined>;
+    declare public readonly awsAttributes: pulumi.Output<outputs.ClusterAwsAttributes | undefined>;
+    declare public readonly azureAttributes: pulumi.Output<outputs.ClusterAzureAttributes | undefined>;
+    declare public /*out*/ readonly clusterId: pulumi.Output<string>;
+    declare public readonly clusterLogConf: pulumi.Output<outputs.ClusterClusterLogConf | undefined>;
+    declare public readonly clusterMountInfos: pulumi.Output<outputs.ClusterClusterMountInfo[] | undefined>;
     /**
      * Cluster name, which doesn't have to be unique. If not specified at creation, the cluster name will be an empty string.
      */
-    public readonly clusterName!: pulumi.Output<string | undefined>;
+    declare public readonly clusterName: pulumi.Output<string | undefined>;
     /**
      * should have tag `ResourceClass` set to value `Serverless`
      *
@@ -87,58 +87,58 @@ export class Cluster extends pulumi.CustomResource {
      * });
      * ```
      */
-    public readonly customTags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly customTags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
      * * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
      * * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
      * * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
      */
-    public readonly dataSecurityMode!: pulumi.Output<string | undefined>;
+    declare public readonly dataSecurityMode: pulumi.Output<string | undefined>;
     /**
      * (map) Tags that are added by Databricks by default, regardless of any `customTags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
      */
-    public /*out*/ readonly defaultTags!: pulumi.Output<{[key: string]: string}>;
-    public readonly dockerImage!: pulumi.Output<outputs.ClusterDockerImage | undefined>;
+    declare public /*out*/ readonly defaultTags: pulumi.Output<{[key: string]: string}>;
+    declare public readonly dockerImage: pulumi.Output<outputs.ClusterDockerImage | undefined>;
     /**
      * similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
      */
-    public readonly driverInstancePoolId!: pulumi.Output<string>;
+    declare public readonly driverInstancePoolId: pulumi.Output<string>;
     /**
      * The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `nodeTypeId` defined above.
      */
-    public readonly driverNodeTypeId!: pulumi.Output<string>;
+    declare public readonly driverNodeTypeId: pulumi.Output<string>;
     /**
      * If you don't want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster's Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance's local storage). To scale down EBS usage, make sure you have `autoterminationMinutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
      */
-    public readonly enableElasticDisk!: pulumi.Output<boolean>;
+    declare public readonly enableElasticDisk: pulumi.Output<boolean>;
     /**
      * Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster's local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and uses it to encrypt all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. *Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access.*
      */
-    public readonly enableLocalDiskEncryption!: pulumi.Output<boolean>;
-    public readonly gcpAttributes!: pulumi.Output<outputs.ClusterGcpAttributes | undefined>;
+    declare public readonly enableLocalDiskEncryption: pulumi.Output<boolean>;
+    declare public readonly gcpAttributes: pulumi.Output<outputs.ClusterGcpAttributes | undefined>;
     /**
      * An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster's ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
      */
-    public readonly idempotencyToken!: pulumi.Output<string | undefined>;
-    public readonly initScripts!: pulumi.Output<outputs.ClusterInitScript[] | undefined>;
+    declare public readonly idempotencyToken: pulumi.Output<string | undefined>;
+    declare public readonly initScripts: pulumi.Output<outputs.ClusterInitScript[] | undefined>;
     /**
      * To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster's request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
      */
-    public readonly instancePoolId!: pulumi.Output<string | undefined>;
+    declare public readonly instancePoolId: pulumi.Output<string | undefined>;
     /**
      * boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
      */
-    public readonly isPinned!: pulumi.Output<boolean | undefined>;
+    declare public readonly isPinned: pulumi.Output<boolean | undefined>;
     /**
      * When set to true, Databricks will automatically set single node related `customTags`, `sparkConf`, and `numWorkers`.
      */
-    public readonly isSingleNode!: pulumi.Output<boolean | undefined>;
+    declare public readonly isSingleNode: pulumi.Output<boolean | undefined>;
     /**
      * The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
      */
-    public readonly kind!: pulumi.Output<string | undefined>;
-    public readonly libraries!: pulumi.Output<outputs.ClusterLibrary[] | undefined>;
+    declare public readonly kind: pulumi.Output<string | undefined>;
+    declare public readonly libraries: pulumi.Output<outputs.ClusterLibrary[] | undefined>;
     /**
      * If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
      *
@@ -171,57 +171,57 @@ export class Cluster extends pulumi.CustomResource {
      * });
      * ```
      */
-    public readonly noWait!: pulumi.Output<boolean | undefined>;
+    declare public readonly noWait: pulumi.Output<boolean | undefined>;
     /**
      * Any supported databricks.getNodeType id. If `instancePoolId` is specified, this field is not needed.
      */
-    public readonly nodeTypeId!: pulumi.Output<string>;
+    declare public readonly nodeTypeId: pulumi.Output<string>;
     /**
      * Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
      */
-    public readonly numWorkers!: pulumi.Output<number | undefined>;
+    declare public readonly numWorkers: pulumi.Output<number | undefined>;
     /**
      * Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
      */
-    public readonly policyId!: pulumi.Output<string | undefined>;
-    public readonly remoteDiskThroughput!: pulumi.Output<number | undefined>;
+    declare public readonly policyId: pulumi.Output<string | undefined>;
+    declare public readonly remoteDiskThroughput: pulumi.Output<number | undefined>;
     /**
      * The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
      */
-    public readonly runtimeEngine!: pulumi.Output<string | undefined>;
+    declare public readonly runtimeEngine: pulumi.Output<string | undefined>;
     /**
      * The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      */
-    public readonly singleUserName!: pulumi.Output<string | undefined>;
+    declare public readonly singleUserName: pulumi.Output<string | undefined>;
     /**
      * should have following items:
      * * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
      * * `spark.databricks.cluster.profile` set to `serverless`
      */
-    public readonly sparkConf!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly sparkConf: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
      */
-    public readonly sparkEnvVars!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly sparkEnvVars: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported databricks.getSparkVersion id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
      */
-    public readonly sparkVersion!: pulumi.Output<string>;
+    declare public readonly sparkVersion: pulumi.Output<string>;
     /**
      * SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
      */
-    public readonly sshPublicKeys!: pulumi.Output<string[] | undefined>;
+    declare public readonly sshPublicKeys: pulumi.Output<string[] | undefined>;
     /**
      * (string) State of the cluster.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
-    public readonly totalInitialRemoteDiskSize!: pulumi.Output<number | undefined>;
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
+    declare public readonly totalInitialRemoteDiskSize: pulumi.Output<number | undefined>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
     /**
      * Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
      */
-    public readonly useMlRuntime!: pulumi.Output<boolean | undefined>;
-    public readonly workloadType!: pulumi.Output<outputs.ClusterWorkloadType | undefined>;
+    declare public readonly useMlRuntime: pulumi.Output<boolean | undefined>;
+    declare public readonly workloadType: pulumi.Output<outputs.ClusterWorkloadType | undefined>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -236,89 +236,89 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["applyPolicyDefaultValues"] = state ? state.applyPolicyDefaultValues : undefined;
-            resourceInputs["autoscale"] = state ? state.autoscale : undefined;
-            resourceInputs["autoterminationMinutes"] = state ? state.autoterminationMinutes : undefined;
-            resourceInputs["awsAttributes"] = state ? state.awsAttributes : undefined;
-            resourceInputs["azureAttributes"] = state ? state.azureAttributes : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["clusterLogConf"] = state ? state.clusterLogConf : undefined;
-            resourceInputs["clusterMountInfos"] = state ? state.clusterMountInfos : undefined;
-            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
-            resourceInputs["customTags"] = state ? state.customTags : undefined;
-            resourceInputs["dataSecurityMode"] = state ? state.dataSecurityMode : undefined;
-            resourceInputs["defaultTags"] = state ? state.defaultTags : undefined;
-            resourceInputs["dockerImage"] = state ? state.dockerImage : undefined;
-            resourceInputs["driverInstancePoolId"] = state ? state.driverInstancePoolId : undefined;
-            resourceInputs["driverNodeTypeId"] = state ? state.driverNodeTypeId : undefined;
-            resourceInputs["enableElasticDisk"] = state ? state.enableElasticDisk : undefined;
-            resourceInputs["enableLocalDiskEncryption"] = state ? state.enableLocalDiskEncryption : undefined;
-            resourceInputs["gcpAttributes"] = state ? state.gcpAttributes : undefined;
-            resourceInputs["idempotencyToken"] = state ? state.idempotencyToken : undefined;
-            resourceInputs["initScripts"] = state ? state.initScripts : undefined;
-            resourceInputs["instancePoolId"] = state ? state.instancePoolId : undefined;
-            resourceInputs["isPinned"] = state ? state.isPinned : undefined;
-            resourceInputs["isSingleNode"] = state ? state.isSingleNode : undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["libraries"] = state ? state.libraries : undefined;
-            resourceInputs["noWait"] = state ? state.noWait : undefined;
-            resourceInputs["nodeTypeId"] = state ? state.nodeTypeId : undefined;
-            resourceInputs["numWorkers"] = state ? state.numWorkers : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["remoteDiskThroughput"] = state ? state.remoteDiskThroughput : undefined;
-            resourceInputs["runtimeEngine"] = state ? state.runtimeEngine : undefined;
-            resourceInputs["singleUserName"] = state ? state.singleUserName : undefined;
-            resourceInputs["sparkConf"] = state ? state.sparkConf : undefined;
-            resourceInputs["sparkEnvVars"] = state ? state.sparkEnvVars : undefined;
-            resourceInputs["sparkVersion"] = state ? state.sparkVersion : undefined;
-            resourceInputs["sshPublicKeys"] = state ? state.sshPublicKeys : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["totalInitialRemoteDiskSize"] = state ? state.totalInitialRemoteDiskSize : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["useMlRuntime"] = state ? state.useMlRuntime : undefined;
-            resourceInputs["workloadType"] = state ? state.workloadType : undefined;
+            resourceInputs["applyPolicyDefaultValues"] = state?.applyPolicyDefaultValues;
+            resourceInputs["autoscale"] = state?.autoscale;
+            resourceInputs["autoterminationMinutes"] = state?.autoterminationMinutes;
+            resourceInputs["awsAttributes"] = state?.awsAttributes;
+            resourceInputs["azureAttributes"] = state?.azureAttributes;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["clusterLogConf"] = state?.clusterLogConf;
+            resourceInputs["clusterMountInfos"] = state?.clusterMountInfos;
+            resourceInputs["clusterName"] = state?.clusterName;
+            resourceInputs["customTags"] = state?.customTags;
+            resourceInputs["dataSecurityMode"] = state?.dataSecurityMode;
+            resourceInputs["defaultTags"] = state?.defaultTags;
+            resourceInputs["dockerImage"] = state?.dockerImage;
+            resourceInputs["driverInstancePoolId"] = state?.driverInstancePoolId;
+            resourceInputs["driverNodeTypeId"] = state?.driverNodeTypeId;
+            resourceInputs["enableElasticDisk"] = state?.enableElasticDisk;
+            resourceInputs["enableLocalDiskEncryption"] = state?.enableLocalDiskEncryption;
+            resourceInputs["gcpAttributes"] = state?.gcpAttributes;
+            resourceInputs["idempotencyToken"] = state?.idempotencyToken;
+            resourceInputs["initScripts"] = state?.initScripts;
+            resourceInputs["instancePoolId"] = state?.instancePoolId;
+            resourceInputs["isPinned"] = state?.isPinned;
+            resourceInputs["isSingleNode"] = state?.isSingleNode;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["libraries"] = state?.libraries;
+            resourceInputs["noWait"] = state?.noWait;
+            resourceInputs["nodeTypeId"] = state?.nodeTypeId;
+            resourceInputs["numWorkers"] = state?.numWorkers;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["remoteDiskThroughput"] = state?.remoteDiskThroughput;
+            resourceInputs["runtimeEngine"] = state?.runtimeEngine;
+            resourceInputs["singleUserName"] = state?.singleUserName;
+            resourceInputs["sparkConf"] = state?.sparkConf;
+            resourceInputs["sparkEnvVars"] = state?.sparkEnvVars;
+            resourceInputs["sparkVersion"] = state?.sparkVersion;
+            resourceInputs["sshPublicKeys"] = state?.sshPublicKeys;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["totalInitialRemoteDiskSize"] = state?.totalInitialRemoteDiskSize;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["useMlRuntime"] = state?.useMlRuntime;
+            resourceInputs["workloadType"] = state?.workloadType;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.sparkVersion === undefined) && !opts.urn) {
+            if (args?.sparkVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sparkVersion'");
             }
-            resourceInputs["applyPolicyDefaultValues"] = args ? args.applyPolicyDefaultValues : undefined;
-            resourceInputs["autoscale"] = args ? args.autoscale : undefined;
-            resourceInputs["autoterminationMinutes"] = args ? args.autoterminationMinutes : undefined;
-            resourceInputs["awsAttributes"] = args ? args.awsAttributes : undefined;
-            resourceInputs["azureAttributes"] = args ? args.azureAttributes : undefined;
-            resourceInputs["clusterLogConf"] = args ? args.clusterLogConf : undefined;
-            resourceInputs["clusterMountInfos"] = args ? args.clusterMountInfos : undefined;
-            resourceInputs["clusterName"] = args ? args.clusterName : undefined;
-            resourceInputs["customTags"] = args ? args.customTags : undefined;
-            resourceInputs["dataSecurityMode"] = args ? args.dataSecurityMode : undefined;
-            resourceInputs["dockerImage"] = args ? args.dockerImage : undefined;
-            resourceInputs["driverInstancePoolId"] = args ? args.driverInstancePoolId : undefined;
-            resourceInputs["driverNodeTypeId"] = args ? args.driverNodeTypeId : undefined;
-            resourceInputs["enableElasticDisk"] = args ? args.enableElasticDisk : undefined;
-            resourceInputs["enableLocalDiskEncryption"] = args ? args.enableLocalDiskEncryption : undefined;
-            resourceInputs["gcpAttributes"] = args ? args.gcpAttributes : undefined;
-            resourceInputs["idempotencyToken"] = args ? args.idempotencyToken : undefined;
-            resourceInputs["initScripts"] = args ? args.initScripts : undefined;
-            resourceInputs["instancePoolId"] = args ? args.instancePoolId : undefined;
-            resourceInputs["isPinned"] = args ? args.isPinned : undefined;
-            resourceInputs["isSingleNode"] = args ? args.isSingleNode : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["libraries"] = args ? args.libraries : undefined;
-            resourceInputs["noWait"] = args ? args.noWait : undefined;
-            resourceInputs["nodeTypeId"] = args ? args.nodeTypeId : undefined;
-            resourceInputs["numWorkers"] = args ? args.numWorkers : undefined;
-            resourceInputs["policyId"] = args ? args.policyId : undefined;
-            resourceInputs["remoteDiskThroughput"] = args ? args.remoteDiskThroughput : undefined;
-            resourceInputs["runtimeEngine"] = args ? args.runtimeEngine : undefined;
-            resourceInputs["singleUserName"] = args ? args.singleUserName : undefined;
-            resourceInputs["sparkConf"] = args ? args.sparkConf : undefined;
-            resourceInputs["sparkEnvVars"] = args ? args.sparkEnvVars : undefined;
-            resourceInputs["sparkVersion"] = args ? args.sparkVersion : undefined;
-            resourceInputs["sshPublicKeys"] = args ? args.sshPublicKeys : undefined;
-            resourceInputs["totalInitialRemoteDiskSize"] = args ? args.totalInitialRemoteDiskSize : undefined;
-            resourceInputs["useMlRuntime"] = args ? args.useMlRuntime : undefined;
-            resourceInputs["workloadType"] = args ? args.workloadType : undefined;
+            resourceInputs["applyPolicyDefaultValues"] = args?.applyPolicyDefaultValues;
+            resourceInputs["autoscale"] = args?.autoscale;
+            resourceInputs["autoterminationMinutes"] = args?.autoterminationMinutes;
+            resourceInputs["awsAttributes"] = args?.awsAttributes;
+            resourceInputs["azureAttributes"] = args?.azureAttributes;
+            resourceInputs["clusterLogConf"] = args?.clusterLogConf;
+            resourceInputs["clusterMountInfos"] = args?.clusterMountInfos;
+            resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["customTags"] = args?.customTags;
+            resourceInputs["dataSecurityMode"] = args?.dataSecurityMode;
+            resourceInputs["dockerImage"] = args?.dockerImage;
+            resourceInputs["driverInstancePoolId"] = args?.driverInstancePoolId;
+            resourceInputs["driverNodeTypeId"] = args?.driverNodeTypeId;
+            resourceInputs["enableElasticDisk"] = args?.enableElasticDisk;
+            resourceInputs["enableLocalDiskEncryption"] = args?.enableLocalDiskEncryption;
+            resourceInputs["gcpAttributes"] = args?.gcpAttributes;
+            resourceInputs["idempotencyToken"] = args?.idempotencyToken;
+            resourceInputs["initScripts"] = args?.initScripts;
+            resourceInputs["instancePoolId"] = args?.instancePoolId;
+            resourceInputs["isPinned"] = args?.isPinned;
+            resourceInputs["isSingleNode"] = args?.isSingleNode;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["libraries"] = args?.libraries;
+            resourceInputs["noWait"] = args?.noWait;
+            resourceInputs["nodeTypeId"] = args?.nodeTypeId;
+            resourceInputs["numWorkers"] = args?.numWorkers;
+            resourceInputs["policyId"] = args?.policyId;
+            resourceInputs["remoteDiskThroughput"] = args?.remoteDiskThroughput;
+            resourceInputs["runtimeEngine"] = args?.runtimeEngine;
+            resourceInputs["singleUserName"] = args?.singleUserName;
+            resourceInputs["sparkConf"] = args?.sparkConf;
+            resourceInputs["sparkEnvVars"] = args?.sparkEnvVars;
+            resourceInputs["sparkVersion"] = args?.sparkVersion;
+            resourceInputs["sshPublicKeys"] = args?.sshPublicKeys;
+            resourceInputs["totalInitialRemoteDiskSize"] = args?.totalInitialRemoteDiskSize;
+            resourceInputs["useMlRuntime"] = args?.useMlRuntime;
+            resourceInputs["workloadType"] = args?.workloadType;
             resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["defaultTags"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

@@ -149,18 +149,18 @@ export class Library extends pulumi.CustomResource {
         return obj['__pulumiType'] === Library.__pulumiType;
     }
 
-    public readonly clusterId!: pulumi.Output<string>;
-    public readonly cran!: pulumi.Output<outputs.LibraryCran | undefined>;
+    declare public readonly clusterId: pulumi.Output<string>;
+    declare public readonly cran: pulumi.Output<outputs.LibraryCran | undefined>;
     /**
      * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      */
-    public readonly egg!: pulumi.Output<string | undefined>;
-    public readonly jar!: pulumi.Output<string | undefined>;
-    public readonly libraryId!: pulumi.Output<string>;
-    public readonly maven!: pulumi.Output<outputs.LibraryMaven | undefined>;
-    public readonly pypi!: pulumi.Output<outputs.LibraryPypi | undefined>;
-    public readonly requirements!: pulumi.Output<string | undefined>;
-    public readonly whl!: pulumi.Output<string | undefined>;
+    declare public readonly egg: pulumi.Output<string | undefined>;
+    declare public readonly jar: pulumi.Output<string | undefined>;
+    declare public readonly libraryId: pulumi.Output<string>;
+    declare public readonly maven: pulumi.Output<outputs.LibraryMaven | undefined>;
+    declare public readonly pypi: pulumi.Output<outputs.LibraryPypi | undefined>;
+    declare public readonly requirements: pulumi.Output<string | undefined>;
+    declare public readonly whl: pulumi.Output<string | undefined>;
 
     /**
      * Create a Library resource with the given unique name, arguments, and options.
@@ -175,29 +175,29 @@ export class Library extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LibraryState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["cran"] = state ? state.cran : undefined;
-            resourceInputs["egg"] = state ? state.egg : undefined;
-            resourceInputs["jar"] = state ? state.jar : undefined;
-            resourceInputs["libraryId"] = state ? state.libraryId : undefined;
-            resourceInputs["maven"] = state ? state.maven : undefined;
-            resourceInputs["pypi"] = state ? state.pypi : undefined;
-            resourceInputs["requirements"] = state ? state.requirements : undefined;
-            resourceInputs["whl"] = state ? state.whl : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["cran"] = state?.cran;
+            resourceInputs["egg"] = state?.egg;
+            resourceInputs["jar"] = state?.jar;
+            resourceInputs["libraryId"] = state?.libraryId;
+            resourceInputs["maven"] = state?.maven;
+            resourceInputs["pypi"] = state?.pypi;
+            resourceInputs["requirements"] = state?.requirements;
+            resourceInputs["whl"] = state?.whl;
         } else {
             const args = argsOrState as LibraryArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["cran"] = args ? args.cran : undefined;
-            resourceInputs["egg"] = args ? args.egg : undefined;
-            resourceInputs["jar"] = args ? args.jar : undefined;
-            resourceInputs["libraryId"] = args ? args.libraryId : undefined;
-            resourceInputs["maven"] = args ? args.maven : undefined;
-            resourceInputs["pypi"] = args ? args.pypi : undefined;
-            resourceInputs["requirements"] = args ? args.requirements : undefined;
-            resourceInputs["whl"] = args ? args.whl : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["cran"] = args?.cran;
+            resourceInputs["egg"] = args?.egg;
+            resourceInputs["jar"] = args?.jar;
+            resourceInputs["libraryId"] = args?.libraryId;
+            resourceInputs["maven"] = args?.maven;
+            resourceInputs["pypi"] = args?.pypi;
+            resourceInputs["requirements"] = args?.requirements;
+            resourceInputs["whl"] = args?.whl;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Library.__pulumiType, name, resourceInputs, opts);

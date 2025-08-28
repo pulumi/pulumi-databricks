@@ -125,40 +125,40 @@ export class Group extends pulumi.CustomResource {
     /**
      * identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
      */
-    public readonly aclPrincipalId!: pulumi.Output<string>;
+    declare public readonly aclPrincipalId: pulumi.Output<string>;
     /**
      * This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and clusterId argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      */
-    public readonly allowClusterCreate!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowClusterCreate: pulumi.Output<boolean | undefined>;
     /**
      * This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      */
-    public readonly allowInstancePoolCreate!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowInstancePoolCreate: pulumi.Output<boolean | undefined>;
     /**
      * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      */
-    public readonly databricksSqlAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly databricksSqlAccess: pulumi.Output<boolean | undefined>;
     /**
      * This is the display name for the given group.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * ID of the group in an external identity provider.
      */
-    public readonly externalId!: pulumi.Output<string | undefined>;
+    declare public readonly externalId: pulumi.Output<string | undefined>;
     /**
      * Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
+    declare public readonly url: pulumi.Output<string>;
     /**
      * This is a field to allow the group to have access to a Databricks Workspace.
      */
-    public readonly workspaceAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly workspaceAccess: pulumi.Output<boolean | undefined>;
     /**
      * This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
      */
-    public readonly workspaceConsume!: pulumi.Output<boolean | undefined>;
+    declare public readonly workspaceConsume: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -173,28 +173,28 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            resourceInputs["aclPrincipalId"] = state ? state.aclPrincipalId : undefined;
-            resourceInputs["allowClusterCreate"] = state ? state.allowClusterCreate : undefined;
-            resourceInputs["allowInstancePoolCreate"] = state ? state.allowInstancePoolCreate : undefined;
-            resourceInputs["databricksSqlAccess"] = state ? state.databricksSqlAccess : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["externalId"] = state ? state.externalId : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["workspaceAccess"] = state ? state.workspaceAccess : undefined;
-            resourceInputs["workspaceConsume"] = state ? state.workspaceConsume : undefined;
+            resourceInputs["aclPrincipalId"] = state?.aclPrincipalId;
+            resourceInputs["allowClusterCreate"] = state?.allowClusterCreate;
+            resourceInputs["allowInstancePoolCreate"] = state?.allowInstancePoolCreate;
+            resourceInputs["databricksSqlAccess"] = state?.databricksSqlAccess;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["externalId"] = state?.externalId;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["workspaceAccess"] = state?.workspaceAccess;
+            resourceInputs["workspaceConsume"] = state?.workspaceConsume;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            resourceInputs["aclPrincipalId"] = args ? args.aclPrincipalId : undefined;
-            resourceInputs["allowClusterCreate"] = args ? args.allowClusterCreate : undefined;
-            resourceInputs["allowInstancePoolCreate"] = args ? args.allowInstancePoolCreate : undefined;
-            resourceInputs["databricksSqlAccess"] = args ? args.databricksSqlAccess : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["externalId"] = args ? args.externalId : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
-            resourceInputs["workspaceAccess"] = args ? args.workspaceAccess : undefined;
-            resourceInputs["workspaceConsume"] = args ? args.workspaceConsume : undefined;
+            resourceInputs["aclPrincipalId"] = args?.aclPrincipalId;
+            resourceInputs["allowClusterCreate"] = args?.allowClusterCreate;
+            resourceInputs["allowInstancePoolCreate"] = args?.allowInstancePoolCreate;
+            resourceInputs["databricksSqlAccess"] = args?.databricksSqlAccess;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["externalId"] = args?.externalId;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["url"] = args?.url;
+            resourceInputs["workspaceAccess"] = args?.workspaceAccess;
+            resourceInputs["workspaceConsume"] = args?.workspaceConsume;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Group.__pulumiType, name, resourceInputs, opts);

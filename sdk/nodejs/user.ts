@@ -146,67 +146,67 @@ export class User extends pulumi.CustomResource {
     /**
      * identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
      */
-    public readonly aclPrincipalId!: pulumi.Output<string>;
+    declare public readonly aclPrincipalId: pulumi.Output<string>;
     /**
      * Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
      */
-    public readonly active!: pulumi.Output<boolean | undefined>;
+    declare public readonly active: pulumi.Output<boolean | undefined>;
     /**
      * Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      */
-    public readonly allowClusterCreate!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowClusterCreate: pulumi.Output<boolean | undefined>;
     /**
      * Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      */
-    public readonly allowInstancePoolCreate!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowInstancePoolCreate: pulumi.Output<boolean | undefined>;
     /**
      * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      */
-    public readonly databricksSqlAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly databricksSqlAccess: pulumi.Output<boolean | undefined>;
     /**
      * Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
      */
-    public readonly disableAsUserDeletion!: pulumi.Output<boolean>;
+    declare public readonly disableAsUserDeletion: pulumi.Output<boolean>;
     /**
      * This is an alias for the username that can be the full name of the user.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * ID of the user in an external identity provider.
      */
-    public readonly externalId!: pulumi.Output<string | undefined>;
+    declare public readonly externalId: pulumi.Output<string | undefined>;
     /**
      * Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
      */
-    public readonly forceDeleteHomeDir!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDeleteHomeDir: pulumi.Output<boolean | undefined>;
     /**
      * This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
      */
-    public readonly forceDeleteRepos!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDeleteRepos: pulumi.Output<boolean | undefined>;
     /**
      * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      */
-    public readonly home!: pulumi.Output<string>;
+    declare public readonly home: pulumi.Output<string>;
     /**
      * Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
      */
-    public readonly repos!: pulumi.Output<string>;
+    declare public readonly repos: pulumi.Output<string>;
     /**
      * This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
      */
-    public readonly userName!: pulumi.Output<string>;
+    declare public readonly userName: pulumi.Output<string>;
     /**
      * This is a field to allow the user to have access to a Databricks Workspace.
      */
-    public readonly workspaceAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly workspaceAccess: pulumi.Output<boolean | undefined>;
     /**
      * This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
      */
-    public readonly workspaceConsume!: pulumi.Output<boolean | undefined>;
+    declare public readonly workspaceConsume: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -221,43 +221,43 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["aclPrincipalId"] = state ? state.aclPrincipalId : undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["allowClusterCreate"] = state ? state.allowClusterCreate : undefined;
-            resourceInputs["allowInstancePoolCreate"] = state ? state.allowInstancePoolCreate : undefined;
-            resourceInputs["databricksSqlAccess"] = state ? state.databricksSqlAccess : undefined;
-            resourceInputs["disableAsUserDeletion"] = state ? state.disableAsUserDeletion : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["externalId"] = state ? state.externalId : undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["forceDeleteHomeDir"] = state ? state.forceDeleteHomeDir : undefined;
-            resourceInputs["forceDeleteRepos"] = state ? state.forceDeleteRepos : undefined;
-            resourceInputs["home"] = state ? state.home : undefined;
-            resourceInputs["repos"] = state ? state.repos : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
-            resourceInputs["workspaceAccess"] = state ? state.workspaceAccess : undefined;
-            resourceInputs["workspaceConsume"] = state ? state.workspaceConsume : undefined;
+            resourceInputs["aclPrincipalId"] = state?.aclPrincipalId;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["allowClusterCreate"] = state?.allowClusterCreate;
+            resourceInputs["allowInstancePoolCreate"] = state?.allowInstancePoolCreate;
+            resourceInputs["databricksSqlAccess"] = state?.databricksSqlAccess;
+            resourceInputs["disableAsUserDeletion"] = state?.disableAsUserDeletion;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["externalId"] = state?.externalId;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["forceDeleteHomeDir"] = state?.forceDeleteHomeDir;
+            resourceInputs["forceDeleteRepos"] = state?.forceDeleteRepos;
+            resourceInputs["home"] = state?.home;
+            resourceInputs["repos"] = state?.repos;
+            resourceInputs["userName"] = state?.userName;
+            resourceInputs["workspaceAccess"] = state?.workspaceAccess;
+            resourceInputs["workspaceConsume"] = state?.workspaceConsume;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.userName === undefined) && !opts.urn) {
+            if (args?.userName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
-            resourceInputs["aclPrincipalId"] = args ? args.aclPrincipalId : undefined;
-            resourceInputs["active"] = args ? args.active : undefined;
-            resourceInputs["allowClusterCreate"] = args ? args.allowClusterCreate : undefined;
-            resourceInputs["allowInstancePoolCreate"] = args ? args.allowInstancePoolCreate : undefined;
-            resourceInputs["databricksSqlAccess"] = args ? args.databricksSqlAccess : undefined;
-            resourceInputs["disableAsUserDeletion"] = args ? args.disableAsUserDeletion : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["externalId"] = args ? args.externalId : undefined;
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["forceDeleteHomeDir"] = args ? args.forceDeleteHomeDir : undefined;
-            resourceInputs["forceDeleteRepos"] = args ? args.forceDeleteRepos : undefined;
-            resourceInputs["home"] = args ? args.home : undefined;
-            resourceInputs["repos"] = args ? args.repos : undefined;
-            resourceInputs["userName"] = args ? args.userName : undefined;
-            resourceInputs["workspaceAccess"] = args ? args.workspaceAccess : undefined;
-            resourceInputs["workspaceConsume"] = args ? args.workspaceConsume : undefined;
+            resourceInputs["aclPrincipalId"] = args?.aclPrincipalId;
+            resourceInputs["active"] = args?.active;
+            resourceInputs["allowClusterCreate"] = args?.allowClusterCreate;
+            resourceInputs["allowInstancePoolCreate"] = args?.allowInstancePoolCreate;
+            resourceInputs["databricksSqlAccess"] = args?.databricksSqlAccess;
+            resourceInputs["disableAsUserDeletion"] = args?.disableAsUserDeletion;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["externalId"] = args?.externalId;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["forceDeleteHomeDir"] = args?.forceDeleteHomeDir;
+            resourceInputs["forceDeleteRepos"] = args?.forceDeleteRepos;
+            resourceInputs["home"] = args?.home;
+            resourceInputs["repos"] = args?.repos;
+            resourceInputs["userName"] = args?.userName;
+            resourceInputs["workspaceAccess"] = args?.workspaceAccess;
+            resourceInputs["workspaceConsume"] = args?.workspaceConsume;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(User.__pulumiType, name, resourceInputs, opts);

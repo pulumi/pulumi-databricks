@@ -86,37 +86,37 @@ export class VectorSearchIndex extends pulumi.CustomResource {
     /**
      * Creator of the endpoint.
      */
-    public /*out*/ readonly creator!: pulumi.Output<string>;
+    declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
      * Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`. This field is a block and is documented below.
      */
-    public readonly deltaSyncIndexSpec!: pulumi.Output<outputs.VectorSearchIndexDeltaSyncIndexSpec | undefined>;
+    declare public readonly deltaSyncIndexSpec: pulumi.Output<outputs.VectorSearchIndexDeltaSyncIndexSpec | undefined>;
     /**
      * Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
      */
-    public readonly directAccessIndexSpec!: pulumi.Output<outputs.VectorSearchIndexDirectAccessIndexSpec | undefined>;
+    declare public readonly directAccessIndexSpec: pulumi.Output<outputs.VectorSearchIndexDirectAccessIndexSpec | undefined>;
     /**
      * The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
      */
-    public readonly endpointName!: pulumi.Output<string>;
+    declare public readonly endpointName: pulumi.Output<string>;
     /**
      * Mosaic AI Vector Search index type. Currently supported values are:
      * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
      * * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
      */
-    public readonly indexType!: pulumi.Output<string>;
+    declare public readonly indexType: pulumi.Output<string>;
     /**
      * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The column name that will be used as a primary key.
      */
-    public readonly primaryKey!: pulumi.Output<string>;
+    declare public readonly primaryKey: pulumi.Output<string>;
     /**
      * Object describing the current status of the index consisting of the following fields:
      */
-    public /*out*/ readonly statuses!: pulumi.Output<outputs.VectorSearchIndexStatus[]>;
+    declare public /*out*/ readonly statuses: pulumi.Output<outputs.VectorSearchIndexStatus[]>;
 
     /**
      * Create a VectorSearchIndex resource with the given unique name, arguments, and options.
@@ -131,31 +131,31 @@ export class VectorSearchIndex extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VectorSearchIndexState | undefined;
-            resourceInputs["creator"] = state ? state.creator : undefined;
-            resourceInputs["deltaSyncIndexSpec"] = state ? state.deltaSyncIndexSpec : undefined;
-            resourceInputs["directAccessIndexSpec"] = state ? state.directAccessIndexSpec : undefined;
-            resourceInputs["endpointName"] = state ? state.endpointName : undefined;
-            resourceInputs["indexType"] = state ? state.indexType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["primaryKey"] = state ? state.primaryKey : undefined;
-            resourceInputs["statuses"] = state ? state.statuses : undefined;
+            resourceInputs["creator"] = state?.creator;
+            resourceInputs["deltaSyncIndexSpec"] = state?.deltaSyncIndexSpec;
+            resourceInputs["directAccessIndexSpec"] = state?.directAccessIndexSpec;
+            resourceInputs["endpointName"] = state?.endpointName;
+            resourceInputs["indexType"] = state?.indexType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["primaryKey"] = state?.primaryKey;
+            resourceInputs["statuses"] = state?.statuses;
         } else {
             const args = argsOrState as VectorSearchIndexArgs | undefined;
-            if ((!args || args.endpointName === undefined) && !opts.urn) {
+            if (args?.endpointName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointName'");
             }
-            if ((!args || args.indexType === undefined) && !opts.urn) {
+            if (args?.indexType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'indexType'");
             }
-            if ((!args || args.primaryKey === undefined) && !opts.urn) {
+            if (args?.primaryKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'primaryKey'");
             }
-            resourceInputs["deltaSyncIndexSpec"] = args ? args.deltaSyncIndexSpec : undefined;
-            resourceInputs["directAccessIndexSpec"] = args ? args.directAccessIndexSpec : undefined;
-            resourceInputs["endpointName"] = args ? args.endpointName : undefined;
-            resourceInputs["indexType"] = args ? args.indexType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["primaryKey"] = args ? args.primaryKey : undefined;
+            resourceInputs["deltaSyncIndexSpec"] = args?.deltaSyncIndexSpec;
+            resourceInputs["directAccessIndexSpec"] = args?.directAccessIndexSpec;
+            resourceInputs["endpointName"] = args?.endpointName;
+            resourceInputs["indexType"] = args?.indexType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["primaryKey"] = args?.primaryKey;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["statuses"] = undefined /*out*/;
         }

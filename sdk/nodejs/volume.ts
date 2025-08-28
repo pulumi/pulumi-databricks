@@ -128,35 +128,35 @@ export class Volume extends pulumi.CustomResource {
     /**
      * Name of parent Catalog. Change forces creation of a new resource.
      */
-    public readonly catalogName!: pulumi.Output<string>;
+    declare public readonly catalogName: pulumi.Output<string>;
     /**
      * Free-form text.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * Name of the Volume
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Name of the volume owner.
      */
-    public readonly owner!: pulumi.Output<string>;
+    declare public readonly owner: pulumi.Output<string>;
     /**
      * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      */
-    public readonly schemaName!: pulumi.Output<string>;
+    declare public readonly schemaName: pulumi.Output<string>;
     /**
      * Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
      */
-    public readonly storageLocation!: pulumi.Output<string | undefined>;
+    declare public readonly storageLocation: pulumi.Output<string | undefined>;
     /**
      * base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
      */
-    public /*out*/ readonly volumePath!: pulumi.Output<string>;
+    declare public /*out*/ readonly volumePath: pulumi.Output<string>;
     /**
      * Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
      */
-    public readonly volumeType!: pulumi.Output<string>;
+    declare public readonly volumeType: pulumi.Output<string>;
 
     /**
      * Create a Volume resource with the given unique name, arguments, and options.
@@ -171,32 +171,32 @@ export class Volume extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeState | undefined;
-            resourceInputs["catalogName"] = state ? state.catalogName : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["schemaName"] = state ? state.schemaName : undefined;
-            resourceInputs["storageLocation"] = state ? state.storageLocation : undefined;
-            resourceInputs["volumePath"] = state ? state.volumePath : undefined;
-            resourceInputs["volumeType"] = state ? state.volumeType : undefined;
+            resourceInputs["catalogName"] = state?.catalogName;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["schemaName"] = state?.schemaName;
+            resourceInputs["storageLocation"] = state?.storageLocation;
+            resourceInputs["volumePath"] = state?.volumePath;
+            resourceInputs["volumeType"] = state?.volumeType;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
-            if ((!args || args.catalogName === undefined) && !opts.urn) {
+            if (args?.catalogName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'catalogName'");
             }
-            if ((!args || args.schemaName === undefined) && !opts.urn) {
+            if (args?.schemaName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schemaName'");
             }
-            if ((!args || args.volumeType === undefined) && !opts.urn) {
+            if (args?.volumeType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'volumeType'");
             }
-            resourceInputs["catalogName"] = args ? args.catalogName : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["schemaName"] = args ? args.schemaName : undefined;
-            resourceInputs["storageLocation"] = args ? args.storageLocation : undefined;
-            resourceInputs["volumeType"] = args ? args.volumeType : undefined;
+            resourceInputs["catalogName"] = args?.catalogName;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["schemaName"] = args?.schemaName;
+            resourceInputs["storageLocation"] = args?.storageLocation;
+            resourceInputs["volumeType"] = args?.volumeType;
             resourceInputs["volumePath"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

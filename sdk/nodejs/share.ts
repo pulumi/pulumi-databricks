@@ -152,28 +152,28 @@ export class Share extends pulumi.CustomResource {
     /**
      * User-supplied free-form text.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * Time when the share was created.
      */
-    public readonly createdAt!: pulumi.Output<number>;
+    declare public readonly createdAt: pulumi.Output<number>;
     /**
      * The principal that created the share.
      */
-    public readonly createdBy!: pulumi.Output<string>;
+    declare public readonly createdBy: pulumi.Output<string>;
     /**
      * Name of share. Change forces creation of a new resource.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly objects!: pulumi.Output<outputs.ShareObject[] | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly objects: pulumi.Output<outputs.ShareObject[] | undefined>;
     /**
      * User name/group name/sp applicationId of the share owner.
      */
-    public readonly owner!: pulumi.Output<string | undefined>;
-    public readonly storageLocation!: pulumi.Output<string | undefined>;
-    public readonly storageRoot!: pulumi.Output<string | undefined>;
-    public readonly updatedAt!: pulumi.Output<number>;
-    public readonly updatedBy!: pulumi.Output<string>;
+    declare public readonly owner: pulumi.Output<string | undefined>;
+    declare public readonly storageLocation: pulumi.Output<string | undefined>;
+    declare public readonly storageRoot: pulumi.Output<string | undefined>;
+    declare public readonly updatedAt: pulumi.Output<number>;
+    declare public readonly updatedBy: pulumi.Output<string>;
 
     /**
      * Create a Share resource with the given unique name, arguments, and options.
@@ -188,28 +188,28 @@ export class Share extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ShareState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["objects"] = state ? state.objects : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["storageLocation"] = state ? state.storageLocation : undefined;
-            resourceInputs["storageRoot"] = state ? state.storageRoot : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["updatedBy"] = state ? state.updatedBy : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["objects"] = state?.objects;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["storageLocation"] = state?.storageLocation;
+            resourceInputs["storageRoot"] = state?.storageRoot;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["updatedBy"] = state?.updatedBy;
         } else {
             const args = argsOrState as ShareArgs | undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["createdAt"] = args ? args.createdAt : undefined;
-            resourceInputs["createdBy"] = args ? args.createdBy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["objects"] = args ? args.objects : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["storageLocation"] = args ? args.storageLocation : undefined;
-            resourceInputs["storageRoot"] = args ? args.storageRoot : undefined;
-            resourceInputs["updatedAt"] = args ? args.updatedAt : undefined;
-            resourceInputs["updatedBy"] = args ? args.updatedBy : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["createdAt"] = args?.createdAt;
+            resourceInputs["createdBy"] = args?.createdBy;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["objects"] = args?.objects;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["storageLocation"] = args?.storageLocation;
+            resourceInputs["storageRoot"] = args?.storageRoot;
+            resourceInputs["updatedAt"] = args?.updatedAt;
+            resourceInputs["updatedBy"] = args?.updatedBy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Share.__pulumiType, name, resourceInputs, opts);

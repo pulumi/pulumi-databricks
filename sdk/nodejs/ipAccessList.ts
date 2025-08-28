@@ -97,19 +97,19 @@ export class IpAccessList extends pulumi.CustomResource {
     /**
      * Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * A string list of IP addresses and CIDR ranges.
      */
-    public readonly ipAddresses!: pulumi.Output<string[]>;
+    declare public readonly ipAddresses: pulumi.Output<string[]>;
     /**
      * This is the display name for the given IP ACL List.
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * Can only be "ALLOW" or "BLOCK".
      */
-    public readonly listType!: pulumi.Output<string>;
+    declare public readonly listType: pulumi.Output<string>;
 
     /**
      * Create a IpAccessList resource with the given unique name, arguments, and options.
@@ -124,25 +124,25 @@ export class IpAccessList extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IpAccessListState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["ipAddresses"] = state ? state.ipAddresses : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["listType"] = state ? state.listType : undefined;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["ipAddresses"] = state?.ipAddresses;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["listType"] = state?.listType;
         } else {
             const args = argsOrState as IpAccessListArgs | undefined;
-            if ((!args || args.ipAddresses === undefined) && !opts.urn) {
+            if (args?.ipAddresses === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipAddresses'");
             }
-            if ((!args || args.label === undefined) && !opts.urn) {
+            if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.listType === undefined) && !opts.urn) {
+            if (args?.listType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listType'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["ipAddresses"] = args ? args.ipAddresses : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["listType"] = args ? args.listType : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["ipAddresses"] = args?.ipAddresses;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["listType"] = args?.listType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IpAccessList.__pulumiType, name, resourceInputs, opts);

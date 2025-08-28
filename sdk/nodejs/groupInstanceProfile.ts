@@ -72,11 +72,11 @@ export class GroupInstanceProfile extends pulumi.CustomResource {
     /**
      * This is the id of the group resource.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * This is the id of the instance profile resource.
      */
-    public readonly instanceProfileId!: pulumi.Output<string>;
+    declare public readonly instanceProfileId: pulumi.Output<string>;
 
     /**
      * Create a GroupInstanceProfile resource with the given unique name, arguments, and options.
@@ -91,18 +91,18 @@ export class GroupInstanceProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupInstanceProfileState | undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["instanceProfileId"] = state ? state.instanceProfileId : undefined;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["instanceProfileId"] = state?.instanceProfileId;
         } else {
             const args = argsOrState as GroupInstanceProfileArgs | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.instanceProfileId === undefined) && !opts.urn) {
+            if (args?.instanceProfileId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceProfileId'");
             }
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["instanceProfileId"] = args ? args.instanceProfileId : undefined;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["instanceProfileId"] = args?.instanceProfileId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupInstanceProfile.__pulumiType, name, resourceInputs, opts);

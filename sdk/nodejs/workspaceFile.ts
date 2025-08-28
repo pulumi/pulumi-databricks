@@ -62,28 +62,28 @@ export class WorkspaceFile extends pulumi.CustomResource {
     /**
      * The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
      */
-    public readonly contentBase64!: pulumi.Output<string | undefined>;
-    public readonly md5!: pulumi.Output<string | undefined>;
+    declare public readonly contentBase64: pulumi.Output<string | undefined>;
+    declare public readonly md5: pulumi.Output<string | undefined>;
     /**
      * Unique identifier for a workspace file
      */
-    public readonly objectId!: pulumi.Output<number>;
+    declare public readonly objectId: pulumi.Output<number>;
     /**
      * The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
      */
-    public readonly path!: pulumi.Output<string>;
+    declare public readonly path: pulumi.Output<string>;
     /**
      * Path to file on local filesystem. Conflicts with `contentBase64`.
      */
-    public readonly source!: pulumi.Output<string | undefined>;
+    declare public readonly source: pulumi.Output<string | undefined>;
     /**
      * Routable URL of the workspace file
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
     /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      */
-    public /*out*/ readonly workspacePath!: pulumi.Output<string>;
+    declare public /*out*/ readonly workspacePath: pulumi.Output<string>;
 
     /**
      * Create a WorkspaceFile resource with the given unique name, arguments, and options.
@@ -98,23 +98,23 @@ export class WorkspaceFile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkspaceFileState | undefined;
-            resourceInputs["contentBase64"] = state ? state.contentBase64 : undefined;
-            resourceInputs["md5"] = state ? state.md5 : undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["workspacePath"] = state ? state.workspacePath : undefined;
+            resourceInputs["contentBase64"] = state?.contentBase64;
+            resourceInputs["md5"] = state?.md5;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["workspacePath"] = state?.workspacePath;
         } else {
             const args = argsOrState as WorkspaceFileArgs | undefined;
-            if ((!args || args.path === undefined) && !opts.urn) {
+            if (args?.path === undefined && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
-            resourceInputs["contentBase64"] = args ? args.contentBase64 : undefined;
-            resourceInputs["md5"] = args ? args.md5 : undefined;
-            resourceInputs["objectId"] = args ? args.objectId : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["contentBase64"] = args?.contentBase64;
+            resourceInputs["md5"] = args?.md5;
+            resourceInputs["objectId"] = args?.objectId;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["source"] = args?.source;
             resourceInputs["url"] = undefined /*out*/;
             resourceInputs["workspacePath"] = undefined /*out*/;
         }

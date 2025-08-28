@@ -96,27 +96,27 @@ export class GitCredential extends pulumi.CustomResource {
     /**
      * specify if settings need to be enforced (i.e., to overwrite previously set credential for service principals).
      */
-    public readonly force!: pulumi.Output<boolean | undefined>;
+    declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
      */
-    public readonly gitProvider!: pulumi.Output<string>;
+    declare public readonly gitProvider: pulumi.Output<string>;
     /**
      * user name at Git provider.
      */
-    public readonly gitUsername!: pulumi.Output<string | undefined>;
+    declare public readonly gitUsername: pulumi.Output<string | undefined>;
     /**
      * boolean flag specifying if the credential is the default for the given provider type.
      */
-    public readonly isDefaultForProvider!: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefaultForProvider: pulumi.Output<boolean | undefined>;
     /**
      * the name of the git credential, used for identification and ease of lookup.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      */
-    public readonly personalAccessToken!: pulumi.Output<string | undefined>;
+    declare public readonly personalAccessToken: pulumi.Output<string | undefined>;
 
     /**
      * Create a GitCredential resource with the given unique name, arguments, and options.
@@ -131,23 +131,23 @@ export class GitCredential extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GitCredentialState | undefined;
-            resourceInputs["force"] = state ? state.force : undefined;
-            resourceInputs["gitProvider"] = state ? state.gitProvider : undefined;
-            resourceInputs["gitUsername"] = state ? state.gitUsername : undefined;
-            resourceInputs["isDefaultForProvider"] = state ? state.isDefaultForProvider : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["personalAccessToken"] = state ? state.personalAccessToken : undefined;
+            resourceInputs["force"] = state?.force;
+            resourceInputs["gitProvider"] = state?.gitProvider;
+            resourceInputs["gitUsername"] = state?.gitUsername;
+            resourceInputs["isDefaultForProvider"] = state?.isDefaultForProvider;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["personalAccessToken"] = state?.personalAccessToken;
         } else {
             const args = argsOrState as GitCredentialArgs | undefined;
-            if ((!args || args.gitProvider === undefined) && !opts.urn) {
+            if (args?.gitProvider === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gitProvider'");
             }
-            resourceInputs["force"] = args ? args.force : undefined;
-            resourceInputs["gitProvider"] = args ? args.gitProvider : undefined;
-            resourceInputs["gitUsername"] = args ? args.gitUsername : undefined;
-            resourceInputs["isDefaultForProvider"] = args ? args.isDefaultForProvider : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["personalAccessToken"] = args ? args.personalAccessToken : undefined;
+            resourceInputs["force"] = args?.force;
+            resourceInputs["gitProvider"] = args?.gitProvider;
+            resourceInputs["gitUsername"] = args?.gitUsername;
+            resourceInputs["isDefaultForProvider"] = args?.isDefaultForProvider;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["personalAccessToken"] = args?.personalAccessToken;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GitCredential.__pulumiType, name, resourceInputs, opts);

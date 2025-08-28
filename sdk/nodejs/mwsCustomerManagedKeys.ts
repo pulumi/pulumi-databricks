@@ -277,29 +277,29 @@ export class MwsCustomerManagedKeys extends pulumi.CustomResource {
     /**
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * This field is a block and is documented below. This conflicts with `gcpKeyInfo`
      */
-    public readonly awsKeyInfo!: pulumi.Output<outputs.MwsCustomerManagedKeysAwsKeyInfo | undefined>;
+    declare public readonly awsKeyInfo: pulumi.Output<outputs.MwsCustomerManagedKeysAwsKeyInfo | undefined>;
     /**
      * (Integer) Time in epoch milliseconds when the customer key was created.
      */
-    public readonly creationTime!: pulumi.Output<number>;
+    declare public readonly creationTime: pulumi.Output<number>;
     /**
      * (String) ID of the encryption key configuration object.
      */
-    public readonly customerManagedKeyId!: pulumi.Output<string>;
+    declare public readonly customerManagedKeyId: pulumi.Output<string>;
     /**
      * This field is a block and is documented below. This conflicts with `awsKeyInfo`
      */
-    public readonly gcpKeyInfo!: pulumi.Output<outputs.MwsCustomerManagedKeysGcpKeyInfo | undefined>;
+    declare public readonly gcpKeyInfo: pulumi.Output<outputs.MwsCustomerManagedKeysGcpKeyInfo | undefined>;
     /**
      * *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
      * * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
      * * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
      */
-    public readonly useCases!: pulumi.Output<string[]>;
+    declare public readonly useCases: pulumi.Output<string[]>;
 
     /**
      * Create a MwsCustomerManagedKeys resource with the given unique name, arguments, and options.
@@ -314,26 +314,26 @@ export class MwsCustomerManagedKeys extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MwsCustomerManagedKeysState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["awsKeyInfo"] = state ? state.awsKeyInfo : undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["customerManagedKeyId"] = state ? state.customerManagedKeyId : undefined;
-            resourceInputs["gcpKeyInfo"] = state ? state.gcpKeyInfo : undefined;
-            resourceInputs["useCases"] = state ? state.useCases : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["awsKeyInfo"] = state?.awsKeyInfo;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["customerManagedKeyId"] = state?.customerManagedKeyId;
+            resourceInputs["gcpKeyInfo"] = state?.gcpKeyInfo;
+            resourceInputs["useCases"] = state?.useCases;
         } else {
             const args = argsOrState as MwsCustomerManagedKeysArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.useCases === undefined) && !opts.urn) {
+            if (args?.useCases === undefined && !opts.urn) {
                 throw new Error("Missing required property 'useCases'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["awsKeyInfo"] = args ? args.awsKeyInfo : undefined;
-            resourceInputs["creationTime"] = args ? args.creationTime : undefined;
-            resourceInputs["customerManagedKeyId"] = args ? args.customerManagedKeyId : undefined;
-            resourceInputs["gcpKeyInfo"] = args ? args.gcpKeyInfo : undefined;
-            resourceInputs["useCases"] = args ? args.useCases : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["awsKeyInfo"] = args?.awsKeyInfo;
+            resourceInputs["creationTime"] = args?.creationTime;
+            resourceInputs["customerManagedKeyId"] = args?.customerManagedKeyId;
+            resourceInputs["gcpKeyInfo"] = args?.gcpKeyInfo;
+            resourceInputs["useCases"] = args?.useCases;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MwsCustomerManagedKeys.__pulumiType, name, resourceInputs, opts);

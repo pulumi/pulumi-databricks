@@ -88,25 +88,25 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
         return obj['__pulumiType'] === MetastoreDataAccess.__pulumiType;
     }
 
-    public readonly awsIamRole!: pulumi.Output<outputs.MetastoreDataAccessAwsIamRole | undefined>;
-    public readonly azureManagedIdentity!: pulumi.Output<outputs.MetastoreDataAccessAzureManagedIdentity | undefined>;
-    public readonly azureServicePrincipal!: pulumi.Output<outputs.MetastoreDataAccessAzureServicePrincipal | undefined>;
-    public readonly cloudflareApiToken!: pulumi.Output<outputs.MetastoreDataAccessCloudflareApiToken | undefined>;
-    public readonly comment!: pulumi.Output<string | undefined>;
-    public readonly databricksGcpServiceAccount!: pulumi.Output<outputs.MetastoreDataAccessDatabricksGcpServiceAccount>;
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
-    public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
-    public readonly gcpServiceAccountKey!: pulumi.Output<outputs.MetastoreDataAccessGcpServiceAccountKey | undefined>;
+    declare public readonly awsIamRole: pulumi.Output<outputs.MetastoreDataAccessAwsIamRole | undefined>;
+    declare public readonly azureManagedIdentity: pulumi.Output<outputs.MetastoreDataAccessAzureManagedIdentity | undefined>;
+    declare public readonly azureServicePrincipal: pulumi.Output<outputs.MetastoreDataAccessAzureServicePrincipal | undefined>;
+    declare public readonly cloudflareApiToken: pulumi.Output<outputs.MetastoreDataAccessCloudflareApiToken | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
+    declare public readonly databricksGcpServiceAccount: pulumi.Output<outputs.MetastoreDataAccessDatabricksGcpServiceAccount>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
+    declare public readonly forceUpdate: pulumi.Output<boolean | undefined>;
+    declare public readonly gcpServiceAccountKey: pulumi.Output<outputs.MetastoreDataAccessGcpServiceAccountKey | undefined>;
     /**
      * whether to set this credential as the default for the metastore. In practice, this should always be true.
      */
-    public readonly isDefault!: pulumi.Output<boolean | undefined>;
-    public readonly isolationMode!: pulumi.Output<string>;
-    public readonly metastoreId!: pulumi.Output<string>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly owner!: pulumi.Output<string>;
-    public readonly readOnly!: pulumi.Output<boolean | undefined>;
-    public readonly skipValidation!: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefault: pulumi.Output<boolean | undefined>;
+    declare public readonly isolationMode: pulumi.Output<string>;
+    declare public readonly metastoreId: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly owner: pulumi.Output<string>;
+    declare public readonly readOnly: pulumi.Output<boolean | undefined>;
+    declare public readonly skipValidation: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a MetastoreDataAccess resource with the given unique name, arguments, and options.
@@ -121,40 +121,40 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetastoreDataAccessState | undefined;
-            resourceInputs["awsIamRole"] = state ? state.awsIamRole : undefined;
-            resourceInputs["azureManagedIdentity"] = state ? state.azureManagedIdentity : undefined;
-            resourceInputs["azureServicePrincipal"] = state ? state.azureServicePrincipal : undefined;
-            resourceInputs["cloudflareApiToken"] = state ? state.cloudflareApiToken : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["databricksGcpServiceAccount"] = state ? state.databricksGcpServiceAccount : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
-            resourceInputs["gcpServiceAccountKey"] = state ? state.gcpServiceAccountKey : undefined;
-            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
-            resourceInputs["isolationMode"] = state ? state.isolationMode : undefined;
-            resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["readOnly"] = state ? state.readOnly : undefined;
-            resourceInputs["skipValidation"] = state ? state.skipValidation : undefined;
+            resourceInputs["awsIamRole"] = state?.awsIamRole;
+            resourceInputs["azureManagedIdentity"] = state?.azureManagedIdentity;
+            resourceInputs["azureServicePrincipal"] = state?.azureServicePrincipal;
+            resourceInputs["cloudflareApiToken"] = state?.cloudflareApiToken;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["databricksGcpServiceAccount"] = state?.databricksGcpServiceAccount;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["forceUpdate"] = state?.forceUpdate;
+            resourceInputs["gcpServiceAccountKey"] = state?.gcpServiceAccountKey;
+            resourceInputs["isDefault"] = state?.isDefault;
+            resourceInputs["isolationMode"] = state?.isolationMode;
+            resourceInputs["metastoreId"] = state?.metastoreId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["readOnly"] = state?.readOnly;
+            resourceInputs["skipValidation"] = state?.skipValidation;
         } else {
             const args = argsOrState as MetastoreDataAccessArgs | undefined;
-            resourceInputs["awsIamRole"] = args ? args.awsIamRole : undefined;
-            resourceInputs["azureManagedIdentity"] = args ? args.azureManagedIdentity : undefined;
-            resourceInputs["azureServicePrincipal"] = args ? args.azureServicePrincipal : undefined;
-            resourceInputs["cloudflareApiToken"] = args ? args.cloudflareApiToken : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["databricksGcpServiceAccount"] = args ? args.databricksGcpServiceAccount : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
-            resourceInputs["gcpServiceAccountKey"] = args ? args.gcpServiceAccountKey : undefined;
-            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
-            resourceInputs["isolationMode"] = args ? args.isolationMode : undefined;
-            resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["readOnly"] = args ? args.readOnly : undefined;
-            resourceInputs["skipValidation"] = args ? args.skipValidation : undefined;
+            resourceInputs["awsIamRole"] = args?.awsIamRole;
+            resourceInputs["azureManagedIdentity"] = args?.azureManagedIdentity;
+            resourceInputs["azureServicePrincipal"] = args?.azureServicePrincipal;
+            resourceInputs["cloudflareApiToken"] = args?.cloudflareApiToken;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["databricksGcpServiceAccount"] = args?.databricksGcpServiceAccount;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["forceUpdate"] = args?.forceUpdate;
+            resourceInputs["gcpServiceAccountKey"] = args?.gcpServiceAccountKey;
+            resourceInputs["isDefault"] = args?.isDefault;
+            resourceInputs["isolationMode"] = args?.isolationMode;
+            resourceInputs["metastoreId"] = args?.metastoreId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["readOnly"] = args?.readOnly;
+            resourceInputs["skipValidation"] = args?.skipValidation;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MetastoreDataAccess.__pulumiType, name, resourceInputs, opts);

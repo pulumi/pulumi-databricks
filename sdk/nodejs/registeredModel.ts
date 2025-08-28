@@ -88,27 +88,27 @@ export class RegisteredModel extends pulumi.CustomResource {
     /**
      * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
      */
-    public readonly catalogName!: pulumi.Output<string>;
+    declare public readonly catalogName: pulumi.Output<string>;
     /**
      * The comment attached to the registered model.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * The name of the registered model.  *Change of this parameter forces recreation of the resource.*
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Name of the registered model owner.
      */
-    public readonly owner!: pulumi.Output<string>;
+    declare public readonly owner: pulumi.Output<string>;
     /**
      * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      */
-    public readonly schemaName!: pulumi.Output<string>;
+    declare public readonly schemaName: pulumi.Output<string>;
     /**
      * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
      */
-    public readonly storageLocation!: pulumi.Output<string>;
+    declare public readonly storageLocation: pulumi.Output<string>;
 
     /**
      * Create a RegisteredModel resource with the given unique name, arguments, and options.
@@ -123,26 +123,26 @@ export class RegisteredModel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegisteredModelState | undefined;
-            resourceInputs["catalogName"] = state ? state.catalogName : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["schemaName"] = state ? state.schemaName : undefined;
-            resourceInputs["storageLocation"] = state ? state.storageLocation : undefined;
+            resourceInputs["catalogName"] = state?.catalogName;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["schemaName"] = state?.schemaName;
+            resourceInputs["storageLocation"] = state?.storageLocation;
         } else {
             const args = argsOrState as RegisteredModelArgs | undefined;
-            if ((!args || args.catalogName === undefined) && !opts.urn) {
+            if (args?.catalogName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'catalogName'");
             }
-            if ((!args || args.schemaName === undefined) && !opts.urn) {
+            if (args?.schemaName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schemaName'");
             }
-            resourceInputs["catalogName"] = args ? args.catalogName : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["schemaName"] = args ? args.schemaName : undefined;
-            resourceInputs["storageLocation"] = args ? args.storageLocation : undefined;
+            resourceInputs["catalogName"] = args?.catalogName;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["schemaName"] = args?.schemaName;
+            resourceInputs["storageLocation"] = args?.storageLocation;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RegisteredModel.__pulumiType, name, resourceInputs, opts);

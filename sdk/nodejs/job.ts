@@ -133,159 +133,159 @@ export class Job extends pulumi.CustomResource {
      *
      * @deprecated always_running will be replaced by controlRunState in the next major release.
      */
-    public readonly alwaysRunning!: pulumi.Output<boolean | undefined>;
+    declare public readonly alwaysRunning: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
      */
-    public readonly budgetPolicyId!: pulumi.Output<string | undefined>;
+    declare public readonly budgetPolicyId: pulumi.Output<string | undefined>;
     /**
      * Configuration block to configure pause status. See continuous Configuration Block.
      */
-    public readonly continuous!: pulumi.Output<outputs.JobContinuous | undefined>;
+    declare public readonly continuous: pulumi.Output<outputs.JobContinuous | undefined>;
     /**
      * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
      *
      * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
      */
-    public readonly controlRunState!: pulumi.Output<boolean | undefined>;
+    declare public readonly controlRunState: pulumi.Output<boolean | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
-    public readonly dbtTask!: pulumi.Output<outputs.JobDbtTask | undefined>;
-    public readonly deployment!: pulumi.Output<outputs.JobDeployment | undefined>;
+    declare public readonly dbtTask: pulumi.Output<outputs.JobDbtTask | undefined>;
+    declare public readonly deployment: pulumi.Output<outputs.JobDeployment | undefined>;
     /**
      * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
      */
-    public readonly editMode!: pulumi.Output<string | undefined>;
+    declare public readonly editMode: pulumi.Output<string | undefined>;
     /**
      * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
-    public readonly emailNotifications!: pulumi.Output<outputs.JobEmailNotifications | undefined>;
-    public readonly environments!: pulumi.Output<outputs.JobEnvironment[] | undefined>;
-    public readonly existingClusterId!: pulumi.Output<string | undefined>;
-    public readonly format!: pulumi.Output<string>;
+    declare public readonly emailNotifications: pulumi.Output<outputs.JobEmailNotifications | undefined>;
+    declare public readonly environments: pulumi.Output<outputs.JobEnvironment[] | undefined>;
+    declare public readonly existingClusterId: pulumi.Output<string | undefined>;
+    declare public readonly format: pulumi.Output<string>;
     /**
      * Specifies the a Git repository for task source code. See gitSource Configuration Block below.
      */
-    public readonly gitSource!: pulumi.Output<outputs.JobGitSource | undefined>;
+    declare public readonly gitSource: pulumi.Output<outputs.JobGitSource | undefined>;
     /**
      * An optional block that specifies the health conditions for the job documented below.
      */
-    public readonly health!: pulumi.Output<outputs.JobHealth | undefined>;
+    declare public readonly health: pulumi.Output<outputs.JobHealth | undefined>;
     /**
      * A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
      */
-    public readonly jobClusters!: pulumi.Output<outputs.JobJobCluster[] | undefined>;
+    declare public readonly jobClusters: pulumi.Output<outputs.JobJobCluster[] | undefined>;
     /**
      * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
-    public readonly libraries!: pulumi.Output<outputs.JobLibrary[] | undefined>;
+    declare public readonly libraries: pulumi.Output<outputs.JobLibrary[] | undefined>;
     /**
      * (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
      */
-    public readonly maxConcurrentRuns!: pulumi.Output<number | undefined>;
+    declare public readonly maxConcurrentRuns: pulumi.Output<number | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
-    public readonly maxRetries!: pulumi.Output<number | undefined>;
+    declare public readonly maxRetries: pulumi.Output<number | undefined>;
     /**
      * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
      *
      * @deprecated should be used inside a task block and not inside a job block
      */
-    public readonly minRetryIntervalMillis!: pulumi.Output<number | undefined>;
+    declare public readonly minRetryIntervalMillis: pulumi.Output<number | undefined>;
     /**
      * An optional name for the job. The default value is Untitled.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly newCluster!: pulumi.Output<outputs.JobNewCluster | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly newCluster: pulumi.Output<outputs.JobNewCluster | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
-    public readonly notebookTask!: pulumi.Output<outputs.JobNotebookTask | undefined>;
+    declare public readonly notebookTask: pulumi.Output<outputs.JobNotebookTask | undefined>;
     /**
      * An optional block controlling the notification settings on the job level documented below.
      */
-    public readonly notificationSettings!: pulumi.Output<outputs.JobNotificationSettings | undefined>;
+    declare public readonly notificationSettings: pulumi.Output<outputs.JobNotificationSettings | undefined>;
     /**
      * Specifies job parameter for the job. See parameter Configuration Block
      */
-    public readonly parameters!: pulumi.Output<outputs.JobParameter[] | undefined>;
+    declare public readonly parameters: pulumi.Output<outputs.JobParameter[] | undefined>;
     /**
      * The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
      * * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
      * * `STANDARD`: Enables cost-efficient execution of serverless workloads.
      */
-    public readonly performanceTarget!: pulumi.Output<string | undefined>;
+    declare public readonly performanceTarget: pulumi.Output<string | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
-    public readonly pipelineTask!: pulumi.Output<outputs.JobPipelineTask | undefined>;
+    declare public readonly pipelineTask: pulumi.Output<outputs.JobPipelineTask | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
-    public readonly pythonWheelTask!: pulumi.Output<outputs.JobPythonWheelTask | undefined>;
+    declare public readonly pythonWheelTask: pulumi.Output<outputs.JobPythonWheelTask | undefined>;
     /**
      * The queue status for the job. See queue Configuration Block below.
      */
-    public readonly queue!: pulumi.Output<outputs.JobQueue | undefined>;
+    declare public readonly queue: pulumi.Output<outputs.JobQueue | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
-    public readonly retryOnTimeout!: pulumi.Output<boolean | undefined>;
+    declare public readonly retryOnTimeout: pulumi.Output<boolean | undefined>;
     /**
      * The user or the service principal the job runs as. See runAs Configuration Block below.
      */
-    public readonly runAs!: pulumi.Output<outputs.JobRunAs>;
+    declare public readonly runAs: pulumi.Output<outputs.JobRunAs>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
-    public readonly runJobTask!: pulumi.Output<outputs.JobRunJobTask | undefined>;
+    declare public readonly runJobTask: pulumi.Output<outputs.JobRunJobTask | undefined>;
     /**
      * An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
      */
-    public readonly schedule!: pulumi.Output<outputs.JobSchedule | undefined>;
+    declare public readonly schedule: pulumi.Output<outputs.JobSchedule | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
-    public readonly sparkJarTask!: pulumi.Output<outputs.JobSparkJarTask | undefined>;
+    declare public readonly sparkJarTask: pulumi.Output<outputs.JobSparkJarTask | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
-    public readonly sparkPythonTask!: pulumi.Output<outputs.JobSparkPythonTask | undefined>;
+    declare public readonly sparkPythonTask: pulumi.Output<outputs.JobSparkPythonTask | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
-    public readonly sparkSubmitTask!: pulumi.Output<outputs.JobSparkSubmitTask | undefined>;
+    declare public readonly sparkSubmitTask: pulumi.Output<outputs.JobSparkSubmitTask | undefined>;
     /**
      * An optional map of the tags associated with the job. See tags Configuration Map
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A list of task specification that the job will execute. See task Configuration Block below.
      */
-    public readonly tasks!: pulumi.Output<outputs.JobTask[] | undefined>;
+    declare public readonly tasks: pulumi.Output<outputs.JobTask[] | undefined>;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      */
-    public readonly timeoutSeconds!: pulumi.Output<number | undefined>;
+    declare public readonly timeoutSeconds: pulumi.Output<number | undefined>;
     /**
      * The conditions that triggers the job to start. See trigger Configuration Block below.
      */
-    public readonly trigger!: pulumi.Output<outputs.JobTrigger | undefined>;
+    declare public readonly trigger: pulumi.Output<outputs.JobTrigger | undefined>;
     /**
      * URL of the job on the given workspace
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
-    public readonly usagePolicyId!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
+    declare public readonly usagePolicyId: pulumi.Output<string | undefined>;
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
-    public readonly webhookNotifications!: pulumi.Output<outputs.JobWebhookNotifications | undefined>;
+    declare public readonly webhookNotifications: pulumi.Output<outputs.JobWebhookNotifications | undefined>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -300,91 +300,91 @@ export class Job extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
-            resourceInputs["alwaysRunning"] = state ? state.alwaysRunning : undefined;
-            resourceInputs["budgetPolicyId"] = state ? state.budgetPolicyId : undefined;
-            resourceInputs["continuous"] = state ? state.continuous : undefined;
-            resourceInputs["controlRunState"] = state ? state.controlRunState : undefined;
-            resourceInputs["dbtTask"] = state ? state.dbtTask : undefined;
-            resourceInputs["deployment"] = state ? state.deployment : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["editMode"] = state ? state.editMode : undefined;
-            resourceInputs["emailNotifications"] = state ? state.emailNotifications : undefined;
-            resourceInputs["environments"] = state ? state.environments : undefined;
-            resourceInputs["existingClusterId"] = state ? state.existingClusterId : undefined;
-            resourceInputs["format"] = state ? state.format : undefined;
-            resourceInputs["gitSource"] = state ? state.gitSource : undefined;
-            resourceInputs["health"] = state ? state.health : undefined;
-            resourceInputs["jobClusters"] = state ? state.jobClusters : undefined;
-            resourceInputs["libraries"] = state ? state.libraries : undefined;
-            resourceInputs["maxConcurrentRuns"] = state ? state.maxConcurrentRuns : undefined;
-            resourceInputs["maxRetries"] = state ? state.maxRetries : undefined;
-            resourceInputs["minRetryIntervalMillis"] = state ? state.minRetryIntervalMillis : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["newCluster"] = state ? state.newCluster : undefined;
-            resourceInputs["notebookTask"] = state ? state.notebookTask : undefined;
-            resourceInputs["notificationSettings"] = state ? state.notificationSettings : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["performanceTarget"] = state ? state.performanceTarget : undefined;
-            resourceInputs["pipelineTask"] = state ? state.pipelineTask : undefined;
-            resourceInputs["pythonWheelTask"] = state ? state.pythonWheelTask : undefined;
-            resourceInputs["queue"] = state ? state.queue : undefined;
-            resourceInputs["retryOnTimeout"] = state ? state.retryOnTimeout : undefined;
-            resourceInputs["runAs"] = state ? state.runAs : undefined;
-            resourceInputs["runJobTask"] = state ? state.runJobTask : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["sparkJarTask"] = state ? state.sparkJarTask : undefined;
-            resourceInputs["sparkPythonTask"] = state ? state.sparkPythonTask : undefined;
-            resourceInputs["sparkSubmitTask"] = state ? state.sparkSubmitTask : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tasks"] = state ? state.tasks : undefined;
-            resourceInputs["timeoutSeconds"] = state ? state.timeoutSeconds : undefined;
-            resourceInputs["trigger"] = state ? state.trigger : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["usagePolicyId"] = state ? state.usagePolicyId : undefined;
-            resourceInputs["webhookNotifications"] = state ? state.webhookNotifications : undefined;
+            resourceInputs["alwaysRunning"] = state?.alwaysRunning;
+            resourceInputs["budgetPolicyId"] = state?.budgetPolicyId;
+            resourceInputs["continuous"] = state?.continuous;
+            resourceInputs["controlRunState"] = state?.controlRunState;
+            resourceInputs["dbtTask"] = state?.dbtTask;
+            resourceInputs["deployment"] = state?.deployment;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["editMode"] = state?.editMode;
+            resourceInputs["emailNotifications"] = state?.emailNotifications;
+            resourceInputs["environments"] = state?.environments;
+            resourceInputs["existingClusterId"] = state?.existingClusterId;
+            resourceInputs["format"] = state?.format;
+            resourceInputs["gitSource"] = state?.gitSource;
+            resourceInputs["health"] = state?.health;
+            resourceInputs["jobClusters"] = state?.jobClusters;
+            resourceInputs["libraries"] = state?.libraries;
+            resourceInputs["maxConcurrentRuns"] = state?.maxConcurrentRuns;
+            resourceInputs["maxRetries"] = state?.maxRetries;
+            resourceInputs["minRetryIntervalMillis"] = state?.minRetryIntervalMillis;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["newCluster"] = state?.newCluster;
+            resourceInputs["notebookTask"] = state?.notebookTask;
+            resourceInputs["notificationSettings"] = state?.notificationSettings;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["performanceTarget"] = state?.performanceTarget;
+            resourceInputs["pipelineTask"] = state?.pipelineTask;
+            resourceInputs["pythonWheelTask"] = state?.pythonWheelTask;
+            resourceInputs["queue"] = state?.queue;
+            resourceInputs["retryOnTimeout"] = state?.retryOnTimeout;
+            resourceInputs["runAs"] = state?.runAs;
+            resourceInputs["runJobTask"] = state?.runJobTask;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["sparkJarTask"] = state?.sparkJarTask;
+            resourceInputs["sparkPythonTask"] = state?.sparkPythonTask;
+            resourceInputs["sparkSubmitTask"] = state?.sparkSubmitTask;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tasks"] = state?.tasks;
+            resourceInputs["timeoutSeconds"] = state?.timeoutSeconds;
+            resourceInputs["trigger"] = state?.trigger;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["usagePolicyId"] = state?.usagePolicyId;
+            resourceInputs["webhookNotifications"] = state?.webhookNotifications;
         } else {
             const args = argsOrState as JobArgs | undefined;
-            resourceInputs["alwaysRunning"] = args ? args.alwaysRunning : undefined;
-            resourceInputs["budgetPolicyId"] = args ? args.budgetPolicyId : undefined;
-            resourceInputs["continuous"] = args ? args.continuous : undefined;
-            resourceInputs["controlRunState"] = args ? args.controlRunState : undefined;
-            resourceInputs["dbtTask"] = args ? args.dbtTask : undefined;
-            resourceInputs["deployment"] = args ? args.deployment : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["editMode"] = args ? args.editMode : undefined;
-            resourceInputs["emailNotifications"] = args ? args.emailNotifications : undefined;
-            resourceInputs["environments"] = args ? args.environments : undefined;
-            resourceInputs["existingClusterId"] = args ? args.existingClusterId : undefined;
-            resourceInputs["format"] = args ? args.format : undefined;
-            resourceInputs["gitSource"] = args ? args.gitSource : undefined;
-            resourceInputs["health"] = args ? args.health : undefined;
-            resourceInputs["jobClusters"] = args ? args.jobClusters : undefined;
-            resourceInputs["libraries"] = args ? args.libraries : undefined;
-            resourceInputs["maxConcurrentRuns"] = args ? args.maxConcurrentRuns : undefined;
-            resourceInputs["maxRetries"] = args ? args.maxRetries : undefined;
-            resourceInputs["minRetryIntervalMillis"] = args ? args.minRetryIntervalMillis : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["newCluster"] = args ? args.newCluster : undefined;
-            resourceInputs["notebookTask"] = args ? args.notebookTask : undefined;
-            resourceInputs["notificationSettings"] = args ? args.notificationSettings : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["performanceTarget"] = args ? args.performanceTarget : undefined;
-            resourceInputs["pipelineTask"] = args ? args.pipelineTask : undefined;
-            resourceInputs["pythonWheelTask"] = args ? args.pythonWheelTask : undefined;
-            resourceInputs["queue"] = args ? args.queue : undefined;
-            resourceInputs["retryOnTimeout"] = args ? args.retryOnTimeout : undefined;
-            resourceInputs["runAs"] = args ? args.runAs : undefined;
-            resourceInputs["runJobTask"] = args ? args.runJobTask : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["sparkJarTask"] = args ? args.sparkJarTask : undefined;
-            resourceInputs["sparkPythonTask"] = args ? args.sparkPythonTask : undefined;
-            resourceInputs["sparkSubmitTask"] = args ? args.sparkSubmitTask : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tasks"] = args ? args.tasks : undefined;
-            resourceInputs["timeoutSeconds"] = args ? args.timeoutSeconds : undefined;
-            resourceInputs["trigger"] = args ? args.trigger : undefined;
-            resourceInputs["usagePolicyId"] = args ? args.usagePolicyId : undefined;
-            resourceInputs["webhookNotifications"] = args ? args.webhookNotifications : undefined;
+            resourceInputs["alwaysRunning"] = args?.alwaysRunning;
+            resourceInputs["budgetPolicyId"] = args?.budgetPolicyId;
+            resourceInputs["continuous"] = args?.continuous;
+            resourceInputs["controlRunState"] = args?.controlRunState;
+            resourceInputs["dbtTask"] = args?.dbtTask;
+            resourceInputs["deployment"] = args?.deployment;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["editMode"] = args?.editMode;
+            resourceInputs["emailNotifications"] = args?.emailNotifications;
+            resourceInputs["environments"] = args?.environments;
+            resourceInputs["existingClusterId"] = args?.existingClusterId;
+            resourceInputs["format"] = args?.format;
+            resourceInputs["gitSource"] = args?.gitSource;
+            resourceInputs["health"] = args?.health;
+            resourceInputs["jobClusters"] = args?.jobClusters;
+            resourceInputs["libraries"] = args?.libraries;
+            resourceInputs["maxConcurrentRuns"] = args?.maxConcurrentRuns;
+            resourceInputs["maxRetries"] = args?.maxRetries;
+            resourceInputs["minRetryIntervalMillis"] = args?.minRetryIntervalMillis;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["newCluster"] = args?.newCluster;
+            resourceInputs["notebookTask"] = args?.notebookTask;
+            resourceInputs["notificationSettings"] = args?.notificationSettings;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["performanceTarget"] = args?.performanceTarget;
+            resourceInputs["pipelineTask"] = args?.pipelineTask;
+            resourceInputs["pythonWheelTask"] = args?.pythonWheelTask;
+            resourceInputs["queue"] = args?.queue;
+            resourceInputs["retryOnTimeout"] = args?.retryOnTimeout;
+            resourceInputs["runAs"] = args?.runAs;
+            resourceInputs["runJobTask"] = args?.runJobTask;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["sparkJarTask"] = args?.sparkJarTask;
+            resourceInputs["sparkPythonTask"] = args?.sparkPythonTask;
+            resourceInputs["sparkSubmitTask"] = args?.sparkSubmitTask;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tasks"] = args?.tasks;
+            resourceInputs["timeoutSeconds"] = args?.timeoutSeconds;
+            resourceInputs["trigger"] = args?.trigger;
+            resourceInputs["usagePolicyId"] = args?.usagePolicyId;
+            resourceInputs["webhookNotifications"] = args?.webhookNotifications;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

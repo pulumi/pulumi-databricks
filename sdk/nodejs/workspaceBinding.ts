@@ -84,23 +84,23 @@ export class WorkspaceBinding extends pulumi.CustomResource {
     /**
      * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
      */
-    public readonly bindingType!: pulumi.Output<string | undefined>;
+    declare public readonly bindingType: pulumi.Output<string | undefined>;
     /**
      * @deprecated Please use 'securable_name' and 'securable_type instead.
      */
-    public readonly catalogName!: pulumi.Output<string | undefined>;
+    declare public readonly catalogName: pulumi.Output<string | undefined>;
     /**
      * Name of securable. Change forces creation of a new resource.
      */
-    public readonly securableName!: pulumi.Output<string>;
+    declare public readonly securableName: pulumi.Output<string>;
     /**
      * Type of securable. Can be `catalog`, `externalLocation`, `storageCredential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
      */
-    public readonly securableType!: pulumi.Output<string | undefined>;
+    declare public readonly securableType: pulumi.Output<string | undefined>;
     /**
      * ID of the workspace. Change forces creation of a new resource.
      */
-    public readonly workspaceId!: pulumi.Output<string>;
+    declare public readonly workspaceId: pulumi.Output<string>;
 
     /**
      * Create a WorkspaceBinding resource with the given unique name, arguments, and options.
@@ -115,21 +115,21 @@ export class WorkspaceBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkspaceBindingState | undefined;
-            resourceInputs["bindingType"] = state ? state.bindingType : undefined;
-            resourceInputs["catalogName"] = state ? state.catalogName : undefined;
-            resourceInputs["securableName"] = state ? state.securableName : undefined;
-            resourceInputs["securableType"] = state ? state.securableType : undefined;
-            resourceInputs["workspaceId"] = state ? state.workspaceId : undefined;
+            resourceInputs["bindingType"] = state?.bindingType;
+            resourceInputs["catalogName"] = state?.catalogName;
+            resourceInputs["securableName"] = state?.securableName;
+            resourceInputs["securableType"] = state?.securableType;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as WorkspaceBindingArgs | undefined;
-            if ((!args || args.workspaceId === undefined) && !opts.urn) {
+            if (args?.workspaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceId'");
             }
-            resourceInputs["bindingType"] = args ? args.bindingType : undefined;
-            resourceInputs["catalogName"] = args ? args.catalogName : undefined;
-            resourceInputs["securableName"] = args ? args.securableName : undefined;
-            resourceInputs["securableType"] = args ? args.securableType : undefined;
-            resourceInputs["workspaceId"] = args ? args.workspaceId : undefined;
+            resourceInputs["bindingType"] = args?.bindingType;
+            resourceInputs["catalogName"] = args?.catalogName;
+            resourceInputs["securableName"] = args?.securableName;
+            resourceInputs["securableType"] = args?.securableType;
+            resourceInputs["workspaceId"] = args?.workspaceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkspaceBinding.__pulumiType, name, resourceInputs, opts);

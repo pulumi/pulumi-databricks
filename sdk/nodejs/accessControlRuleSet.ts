@@ -238,13 +238,13 @@ export class AccessControlRuleSet extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessControlRuleSet.__pulumiType;
     }
 
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
      *
      * !> Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
      */
-    public readonly grantRules!: pulumi.Output<outputs.AccessControlRuleSetGrantRule[] | undefined>;
+    declare public readonly grantRules: pulumi.Output<outputs.AccessControlRuleSetGrantRule[] | undefined>;
     /**
      * Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
      * * `accounts/{account_id}/ruleSets/default` - account-level access control.
@@ -252,7 +252,7 @@ export class AccessControlRuleSet extends pulumi.CustomResource {
      * * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
      * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a AccessControlRuleSet resource with the given unique name, arguments, and options.
@@ -267,13 +267,13 @@ export class AccessControlRuleSet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessControlRuleSetState | undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["grantRules"] = state ? state.grantRules : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["grantRules"] = state?.grantRules;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as AccessControlRuleSetArgs | undefined;
-            resourceInputs["grantRules"] = args ? args.grantRules : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["grantRules"] = args?.grantRules;
+            resourceInputs["name"] = args?.name;
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

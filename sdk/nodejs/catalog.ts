@@ -87,55 +87,55 @@ export class Catalog extends pulumi.CustomResource {
     /**
      * User-supplied free-form text.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
      */
-    public readonly connectionName!: pulumi.Output<string | undefined>;
+    declare public readonly connectionName: pulumi.Output<string | undefined>;
     /**
      * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
      */
-    public readonly enablePredictiveOptimization!: pulumi.Output<string>;
+    declare public readonly enablePredictiveOptimization: pulumi.Output<string>;
     /**
      * Delete catalog regardless of its contents.
      */
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
     /**
      * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      */
-    public readonly isolationMode!: pulumi.Output<string>;
+    declare public readonly isolationMode: pulumi.Output<string>;
     /**
      * ID of the parent metastore.
      */
-    public readonly metastoreId!: pulumi.Output<string>;
+    declare public readonly metastoreId: pulumi.Output<string>;
     /**
      * Name of Catalog relative to parent metastore.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
      */
-    public readonly options!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly options: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Username/groupname/sp applicationId of the catalog owner.
      */
-    public readonly owner!: pulumi.Output<string>;
+    declare public readonly owner: pulumi.Output<string>;
     /**
      * Extensible Catalog properties.
      */
-    public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly properties: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
      */
-    public readonly providerName!: pulumi.Output<string | undefined>;
+    declare public readonly providerName: pulumi.Output<string | undefined>;
     /**
      * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
      */
-    public readonly shareName!: pulumi.Output<string | undefined>;
+    declare public readonly shareName: pulumi.Output<string | undefined>;
     /**
      * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
      */
-    public readonly storageRoot!: pulumi.Output<string | undefined>;
+    declare public readonly storageRoot: pulumi.Output<string | undefined>;
 
     /**
      * Create a Catalog resource with the given unique name, arguments, and options.
@@ -150,34 +150,34 @@ export class Catalog extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CatalogState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["connectionName"] = state ? state.connectionName : undefined;
-            resourceInputs["enablePredictiveOptimization"] = state ? state.enablePredictiveOptimization : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["isolationMode"] = state ? state.isolationMode : undefined;
-            resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["options"] = state ? state.options : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["properties"] = state ? state.properties : undefined;
-            resourceInputs["providerName"] = state ? state.providerName : undefined;
-            resourceInputs["shareName"] = state ? state.shareName : undefined;
-            resourceInputs["storageRoot"] = state ? state.storageRoot : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["connectionName"] = state?.connectionName;
+            resourceInputs["enablePredictiveOptimization"] = state?.enablePredictiveOptimization;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["isolationMode"] = state?.isolationMode;
+            resourceInputs["metastoreId"] = state?.metastoreId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["options"] = state?.options;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["properties"] = state?.properties;
+            resourceInputs["providerName"] = state?.providerName;
+            resourceInputs["shareName"] = state?.shareName;
+            resourceInputs["storageRoot"] = state?.storageRoot;
         } else {
             const args = argsOrState as CatalogArgs | undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["connectionName"] = args ? args.connectionName : undefined;
-            resourceInputs["enablePredictiveOptimization"] = args ? args.enablePredictiveOptimization : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["isolationMode"] = args ? args.isolationMode : undefined;
-            resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["options"] = args ? args.options : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["providerName"] = args ? args.providerName : undefined;
-            resourceInputs["shareName"] = args ? args.shareName : undefined;
-            resourceInputs["storageRoot"] = args ? args.storageRoot : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["connectionName"] = args?.connectionName;
+            resourceInputs["enablePredictiveOptimization"] = args?.enablePredictiveOptimization;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["isolationMode"] = args?.isolationMode;
+            resourceInputs["metastoreId"] = args?.metastoreId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["options"] = args?.options;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["providerName"] = args?.providerName;
+            resourceInputs["shareName"] = args?.shareName;
+            resourceInputs["storageRoot"] = args?.storageRoot;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Catalog.__pulumiType, name, resourceInputs, opts);

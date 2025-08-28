@@ -112,27 +112,27 @@ export class SqlGlobalConfig extends pulumi.CustomResource {
     /**
      * Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
      */
-    public readonly dataAccessConfig!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly dataAccessConfig: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * @deprecated This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
      */
-    public readonly enableServerlessCompute!: pulumi.Output<boolean>;
+    declare public readonly enableServerlessCompute: pulumi.Output<boolean>;
     /**
      * used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
      */
-    public readonly googleServiceAccount!: pulumi.Output<string | undefined>;
+    declare public readonly googleServiceAccount: pulumi.Output<string | undefined>;
     /**
      * databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
      */
-    public readonly instanceProfileArn!: pulumi.Output<string | undefined>;
+    declare public readonly instanceProfileArn: pulumi.Output<string | undefined>;
     /**
      * The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
      */
-    public readonly securityPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly securityPolicy: pulumi.Output<string | undefined>;
     /**
      * SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
      */
-    public readonly sqlConfigParams!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly sqlConfigParams: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a SqlGlobalConfig resource with the given unique name, arguments, and options.
@@ -147,20 +147,20 @@ export class SqlGlobalConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SqlGlobalConfigState | undefined;
-            resourceInputs["dataAccessConfig"] = state ? state.dataAccessConfig : undefined;
-            resourceInputs["enableServerlessCompute"] = state ? state.enableServerlessCompute : undefined;
-            resourceInputs["googleServiceAccount"] = state ? state.googleServiceAccount : undefined;
-            resourceInputs["instanceProfileArn"] = state ? state.instanceProfileArn : undefined;
-            resourceInputs["securityPolicy"] = state ? state.securityPolicy : undefined;
-            resourceInputs["sqlConfigParams"] = state ? state.sqlConfigParams : undefined;
+            resourceInputs["dataAccessConfig"] = state?.dataAccessConfig;
+            resourceInputs["enableServerlessCompute"] = state?.enableServerlessCompute;
+            resourceInputs["googleServiceAccount"] = state?.googleServiceAccount;
+            resourceInputs["instanceProfileArn"] = state?.instanceProfileArn;
+            resourceInputs["securityPolicy"] = state?.securityPolicy;
+            resourceInputs["sqlConfigParams"] = state?.sqlConfigParams;
         } else {
             const args = argsOrState as SqlGlobalConfigArgs | undefined;
-            resourceInputs["dataAccessConfig"] = args ? args.dataAccessConfig : undefined;
-            resourceInputs["enableServerlessCompute"] = args ? args.enableServerlessCompute : undefined;
-            resourceInputs["googleServiceAccount"] = args ? args.googleServiceAccount : undefined;
-            resourceInputs["instanceProfileArn"] = args ? args.instanceProfileArn : undefined;
-            resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
-            resourceInputs["sqlConfigParams"] = args ? args.sqlConfigParams : undefined;
+            resourceInputs["dataAccessConfig"] = args?.dataAccessConfig;
+            resourceInputs["enableServerlessCompute"] = args?.enableServerlessCompute;
+            resourceInputs["googleServiceAccount"] = args?.googleServiceAccount;
+            resourceInputs["instanceProfileArn"] = args?.instanceProfileArn;
+            resourceInputs["securityPolicy"] = args?.securityPolicy;
+            resourceInputs["sqlConfigParams"] = args?.sqlConfigParams;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SqlGlobalConfig.__pulumiType, name, resourceInputs, opts);

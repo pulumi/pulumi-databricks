@@ -64,24 +64,24 @@ export class DbfsFile extends pulumi.CustomResource {
     /**
      * Encoded file contents. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
      */
-    public readonly contentBase64!: pulumi.Output<string | undefined>;
+    declare public readonly contentBase64: pulumi.Output<string | undefined>;
     /**
      * Path, but with `dbfs:` prefix.
      */
-    public /*out*/ readonly dbfsPath!: pulumi.Output<string>;
+    declare public /*out*/ readonly dbfsPath: pulumi.Output<string>;
     /**
      * The file size of the file that is being tracked by this resource in bytes.
      */
-    public /*out*/ readonly fileSize!: pulumi.Output<number>;
-    public readonly md5!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly fileSize: pulumi.Output<number>;
+    declare public readonly md5: pulumi.Output<string | undefined>;
     /**
      * The path of the file in which you wish to save.
      */
-    public readonly path!: pulumi.Output<string>;
+    declare public readonly path: pulumi.Output<string>;
     /**
      * The full absolute path to the file. Conflicts with `contentBase64`.
      */
-    public readonly source!: pulumi.Output<string | undefined>;
+    declare public readonly source: pulumi.Output<string | undefined>;
 
     /**
      * Create a DbfsFile resource with the given unique name, arguments, and options.
@@ -96,21 +96,21 @@ export class DbfsFile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbfsFileState | undefined;
-            resourceInputs["contentBase64"] = state ? state.contentBase64 : undefined;
-            resourceInputs["dbfsPath"] = state ? state.dbfsPath : undefined;
-            resourceInputs["fileSize"] = state ? state.fileSize : undefined;
-            resourceInputs["md5"] = state ? state.md5 : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["contentBase64"] = state?.contentBase64;
+            resourceInputs["dbfsPath"] = state?.dbfsPath;
+            resourceInputs["fileSize"] = state?.fileSize;
+            resourceInputs["md5"] = state?.md5;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["source"] = state?.source;
         } else {
             const args = argsOrState as DbfsFileArgs | undefined;
-            if ((!args || args.path === undefined) && !opts.urn) {
+            if (args?.path === undefined && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
-            resourceInputs["contentBase64"] = args ? args.contentBase64 : undefined;
-            resourceInputs["md5"] = args ? args.md5 : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["contentBase64"] = args?.contentBase64;
+            resourceInputs["md5"] = args?.md5;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["source"] = args?.source;
             resourceInputs["dbfsPath"] = undefined /*out*/;
             resourceInputs["fileSize"] = undefined /*out*/;
         }

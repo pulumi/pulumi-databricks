@@ -131,29 +131,29 @@ export class SqlPermissions extends pulumi.CustomResource {
     /**
      * If this access control for using an anonymous function. Defaults to `false`.
      */
-    public readonly anonymousFunction!: pulumi.Output<boolean | undefined>;
+    declare public readonly anonymousFunction: pulumi.Output<boolean | undefined>;
     /**
      * If this access control for reading/writing any file. Defaults to `false`.
      */
-    public readonly anyFile!: pulumi.Output<boolean | undefined>;
+    declare public readonly anyFile: pulumi.Output<boolean | undefined>;
     /**
      * If this access control for the entire catalog. Defaults to `false`.
      */
-    public readonly catalog!: pulumi.Output<boolean | undefined>;
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly catalog: pulumi.Output<boolean | undefined>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * Name of the database. Has a default value of `default`.
      */
-    public readonly database!: pulumi.Output<string | undefined>;
-    public readonly privilegeAssignments!: pulumi.Output<outputs.SqlPermissionsPrivilegeAssignment[] | undefined>;
+    declare public readonly database: pulumi.Output<string | undefined>;
+    declare public readonly privilegeAssignments: pulumi.Output<outputs.SqlPermissionsPrivilegeAssignment[] | undefined>;
     /**
      * Name of the table. Can be combined with the `database`.
      */
-    public readonly table!: pulumi.Output<string | undefined>;
+    declare public readonly table: pulumi.Output<string | undefined>;
     /**
      * Name of the view. Can be combined with the `database`.
      */
-    public readonly view!: pulumi.Output<string | undefined>;
+    declare public readonly view: pulumi.Output<string | undefined>;
 
     /**
      * Create a SqlPermissions resource with the given unique name, arguments, and options.
@@ -168,24 +168,24 @@ export class SqlPermissions extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SqlPermissionsState | undefined;
-            resourceInputs["anonymousFunction"] = state ? state.anonymousFunction : undefined;
-            resourceInputs["anyFile"] = state ? state.anyFile : undefined;
-            resourceInputs["catalog"] = state ? state.catalog : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["privilegeAssignments"] = state ? state.privilegeAssignments : undefined;
-            resourceInputs["table"] = state ? state.table : undefined;
-            resourceInputs["view"] = state ? state.view : undefined;
+            resourceInputs["anonymousFunction"] = state?.anonymousFunction;
+            resourceInputs["anyFile"] = state?.anyFile;
+            resourceInputs["catalog"] = state?.catalog;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["privilegeAssignments"] = state?.privilegeAssignments;
+            resourceInputs["table"] = state?.table;
+            resourceInputs["view"] = state?.view;
         } else {
             const args = argsOrState as SqlPermissionsArgs | undefined;
-            resourceInputs["anonymousFunction"] = args ? args.anonymousFunction : undefined;
-            resourceInputs["anyFile"] = args ? args.anyFile : undefined;
-            resourceInputs["catalog"] = args ? args.catalog : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["privilegeAssignments"] = args ? args.privilegeAssignments : undefined;
-            resourceInputs["table"] = args ? args.table : undefined;
-            resourceInputs["view"] = args ? args.view : undefined;
+            resourceInputs["anonymousFunction"] = args?.anonymousFunction;
+            resourceInputs["anyFile"] = args?.anyFile;
+            resourceInputs["catalog"] = args?.catalog;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["privilegeAssignments"] = args?.privilegeAssignments;
+            resourceInputs["table"] = args?.table;
+            resourceInputs["view"] = args?.view;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SqlPermissions.__pulumiType, name, resourceInputs, opts);

@@ -144,15 +144,15 @@ export class NotificationDestination extends pulumi.CustomResource {
     /**
      * The configuration of the Notification Destination. It must contain exactly one of the following blocks:
      */
-    public readonly config!: pulumi.Output<outputs.NotificationDestinationConfig | undefined>;
+    declare public readonly config: pulumi.Output<outputs.NotificationDestinationConfig | undefined>;
     /**
      * the type of Notification Destination.
      */
-    public readonly destinationType!: pulumi.Output<string>;
+    declare public readonly destinationType: pulumi.Output<string>;
     /**
      * The display name of the Notification Destination.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
 
     /**
      * Create a NotificationDestination resource with the given unique name, arguments, and options.
@@ -167,17 +167,17 @@ export class NotificationDestination extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotificationDestinationState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["destinationType"] = state ? state.destinationType : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["destinationType"] = state?.destinationType;
+            resourceInputs["displayName"] = state?.displayName;
         } else {
             const args = argsOrState as NotificationDestinationArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["destinationType"] = args ? args.destinationType : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["destinationType"] = args?.destinationType;
+            resourceInputs["displayName"] = args?.displayName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NotificationDestination.__pulumiType, name, resourceInputs, opts);
