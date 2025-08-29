@@ -34,9 +34,9 @@ export class ComplianceSecurityProfileWorkspaceSetting extends pulumi.CustomReso
         return obj['__pulumiType'] === ComplianceSecurityProfileWorkspaceSetting.__pulumiType;
     }
 
-    public readonly complianceSecurityProfileWorkspace!: pulumi.Output<outputs.ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace>;
-    public readonly etag!: pulumi.Output<string>;
-    public readonly settingName!: pulumi.Output<string>;
+    declare public readonly complianceSecurityProfileWorkspace: pulumi.Output<outputs.ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace>;
+    declare public readonly etag: pulumi.Output<string>;
+    declare public readonly settingName: pulumi.Output<string>;
 
     /**
      * Create a ComplianceSecurityProfileWorkspaceSetting resource with the given unique name, arguments, and options.
@@ -51,17 +51,17 @@ export class ComplianceSecurityProfileWorkspaceSetting extends pulumi.CustomReso
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ComplianceSecurityProfileWorkspaceSettingState | undefined;
-            resourceInputs["complianceSecurityProfileWorkspace"] = state ? state.complianceSecurityProfileWorkspace : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["settingName"] = state ? state.settingName : undefined;
+            resourceInputs["complianceSecurityProfileWorkspace"] = state?.complianceSecurityProfileWorkspace;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as ComplianceSecurityProfileWorkspaceSettingArgs | undefined;
-            if ((!args || args.complianceSecurityProfileWorkspace === undefined) && !opts.urn) {
+            if (args?.complianceSecurityProfileWorkspace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'complianceSecurityProfileWorkspace'");
             }
-            resourceInputs["complianceSecurityProfileWorkspace"] = args ? args.complianceSecurityProfileWorkspace : undefined;
-            resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["settingName"] = args ? args.settingName : undefined;
+            resourceInputs["complianceSecurityProfileWorkspace"] = args?.complianceSecurityProfileWorkspace;
+            resourceInputs["etag"] = args?.etag;
+            resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ComplianceSecurityProfileWorkspaceSetting.__pulumiType, name, resourceInputs, opts);

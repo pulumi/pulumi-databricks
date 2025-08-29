@@ -60,78 +60,78 @@ export class PolicyInfo extends pulumi.CustomResource {
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      */
-    public readonly columnMask!: pulumi.Output<outputs.PolicyInfoColumnMask | undefined>;
+    declare public readonly columnMask: pulumi.Output<outputs.PolicyInfoColumnMask | undefined>;
     /**
      * Optional description of the policy
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * (integer) - Time at which the policy was created, in epoch milliseconds. Output only
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<number>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<number>;
     /**
      * (string) - Username of the user who created the policy. Output only
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
      * Optional list of user or group names that should be excluded from the policy
      */
-    public readonly exceptPrincipals!: pulumi.Output<string[] | undefined>;
+    declare public readonly exceptPrincipals: pulumi.Output<string[] | undefined>;
     /**
      * Type of securables that the policy should take effect on.
      * Only `table` is supported at this moment.
      * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
-    public readonly forSecurableType!: pulumi.Output<string>;
+    declare public readonly forSecurableType: pulumi.Output<string>;
     /**
      * Optional list of condition expressions used to match table columns.
      * Only valid when `forSecurableType` is `table`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      */
-    public readonly matchColumns!: pulumi.Output<outputs.PolicyInfoMatchColumn[] | undefined>;
+    declare public readonly matchColumns: pulumi.Output<outputs.PolicyInfoMatchColumn[] | undefined>;
     /**
      * Name of the policy. Required on create and ignored on update.
      * To update the name, use the `newName` field
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Full name of the securable on which the policy is defined.
      * Required on create and ignored on update
      */
-    public readonly onSecurableFullname!: pulumi.Output<string | undefined>;
+    declare public readonly onSecurableFullname: pulumi.Output<string | undefined>;
     /**
      * Type of the securable on which the policy is defined.
      * Only `catalog`, `schema` and `table` are supported at this moment.
      * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
-    public readonly onSecurableType!: pulumi.Output<string | undefined>;
+    declare public readonly onSecurableType: pulumi.Output<string | undefined>;
     /**
      * Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
      */
-    public readonly policyType!: pulumi.Output<string>;
+    declare public readonly policyType: pulumi.Output<string>;
     /**
      * Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      */
-    public readonly rowFilter!: pulumi.Output<outputs.PolicyInfoRowFilter | undefined>;
+    declare public readonly rowFilter: pulumi.Output<outputs.PolicyInfoRowFilter | undefined>;
     /**
      * List of user or group names that the policy applies to.
      * Required on create and optional on update
      */
-    public readonly toPrincipals!: pulumi.Output<string[]>;
+    declare public readonly toPrincipals: pulumi.Output<string[]>;
     /**
      * (integer) - Time at which the policy was last modified, in epoch milliseconds. Output only
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<number>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<number>;
     /**
      * (string) - Username of the user who last modified the policy. Output only
      */
-    public /*out*/ readonly updatedBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
     /**
      * Optional condition when the policy should take effect
      */
-    public readonly whenCondition!: pulumi.Output<string | undefined>;
+    declare public readonly whenCondition: pulumi.Output<string | undefined>;
 
     /**
      * Create a PolicyInfo resource with the given unique name, arguments, and options.
@@ -146,45 +146,45 @@ export class PolicyInfo extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyInfoState | undefined;
-            resourceInputs["columnMask"] = state ? state.columnMask : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["exceptPrincipals"] = state ? state.exceptPrincipals : undefined;
-            resourceInputs["forSecurableType"] = state ? state.forSecurableType : undefined;
-            resourceInputs["matchColumns"] = state ? state.matchColumns : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["onSecurableFullname"] = state ? state.onSecurableFullname : undefined;
-            resourceInputs["onSecurableType"] = state ? state.onSecurableType : undefined;
-            resourceInputs["policyType"] = state ? state.policyType : undefined;
-            resourceInputs["rowFilter"] = state ? state.rowFilter : undefined;
-            resourceInputs["toPrincipals"] = state ? state.toPrincipals : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["updatedBy"] = state ? state.updatedBy : undefined;
-            resourceInputs["whenCondition"] = state ? state.whenCondition : undefined;
+            resourceInputs["columnMask"] = state?.columnMask;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["exceptPrincipals"] = state?.exceptPrincipals;
+            resourceInputs["forSecurableType"] = state?.forSecurableType;
+            resourceInputs["matchColumns"] = state?.matchColumns;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["onSecurableFullname"] = state?.onSecurableFullname;
+            resourceInputs["onSecurableType"] = state?.onSecurableType;
+            resourceInputs["policyType"] = state?.policyType;
+            resourceInputs["rowFilter"] = state?.rowFilter;
+            resourceInputs["toPrincipals"] = state?.toPrincipals;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["updatedBy"] = state?.updatedBy;
+            resourceInputs["whenCondition"] = state?.whenCondition;
         } else {
             const args = argsOrState as PolicyInfoArgs | undefined;
-            if ((!args || args.forSecurableType === undefined) && !opts.urn) {
+            if (args?.forSecurableType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'forSecurableType'");
             }
-            if ((!args || args.policyType === undefined) && !opts.urn) {
+            if (args?.policyType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyType'");
             }
-            if ((!args || args.toPrincipals === undefined) && !opts.urn) {
+            if (args?.toPrincipals === undefined && !opts.urn) {
                 throw new Error("Missing required property 'toPrincipals'");
             }
-            resourceInputs["columnMask"] = args ? args.columnMask : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["exceptPrincipals"] = args ? args.exceptPrincipals : undefined;
-            resourceInputs["forSecurableType"] = args ? args.forSecurableType : undefined;
-            resourceInputs["matchColumns"] = args ? args.matchColumns : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["onSecurableFullname"] = args ? args.onSecurableFullname : undefined;
-            resourceInputs["onSecurableType"] = args ? args.onSecurableType : undefined;
-            resourceInputs["policyType"] = args ? args.policyType : undefined;
-            resourceInputs["rowFilter"] = args ? args.rowFilter : undefined;
-            resourceInputs["toPrincipals"] = args ? args.toPrincipals : undefined;
-            resourceInputs["whenCondition"] = args ? args.whenCondition : undefined;
+            resourceInputs["columnMask"] = args?.columnMask;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["exceptPrincipals"] = args?.exceptPrincipals;
+            resourceInputs["forSecurableType"] = args?.forSecurableType;
+            resourceInputs["matchColumns"] = args?.matchColumns;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["onSecurableFullname"] = args?.onSecurableFullname;
+            resourceInputs["onSecurableType"] = args?.onSecurableType;
+            resourceInputs["policyType"] = args?.policyType;
+            resourceInputs["rowFilter"] = args?.rowFilter;
+            resourceInputs["toPrincipals"] = args?.toPrincipals;
+            resourceInputs["whenCondition"] = args?.whenCondition;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

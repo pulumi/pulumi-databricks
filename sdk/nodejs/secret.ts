@@ -90,23 +90,23 @@ export class Secret extends pulumi.CustomResource {
     /**
      * (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
      */
-    public /*out*/ readonly configReference!: pulumi.Output<string>;
+    declare public /*out*/ readonly configReference: pulumi.Output<string>;
     /**
      * (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * (Integer) time secret was updated
      */
-    public /*out*/ readonly lastUpdatedTimestamp!: pulumi.Output<number>;
+    declare public /*out*/ readonly lastUpdatedTimestamp: pulumi.Output<number>;
     /**
      * (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      */
-    public readonly scope!: pulumi.Output<string>;
+    declare public readonly scope: pulumi.Output<string>;
     /**
      * (String) super secret sensitive value.
      */
-    public readonly stringValue!: pulumi.Output<string>;
+    declare public readonly stringValue: pulumi.Output<string>;
 
     /**
      * Create a Secret resource with the given unique name, arguments, and options.
@@ -121,24 +121,24 @@ export class Secret extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretState | undefined;
-            resourceInputs["configReference"] = state ? state.configReference : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["lastUpdatedTimestamp"] = state ? state.lastUpdatedTimestamp : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["stringValue"] = state ? state.stringValue : undefined;
+            resourceInputs["configReference"] = state?.configReference;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["lastUpdatedTimestamp"] = state?.lastUpdatedTimestamp;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["stringValue"] = state?.stringValue;
         } else {
             const args = argsOrState as SecretArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.scope === undefined) && !opts.urn) {
+            if (args?.scope === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scope'");
             }
-            if ((!args || args.stringValue === undefined) && !opts.urn) {
+            if (args?.stringValue === undefined && !opts.urn) {
                 throw new Error("Missing required property 'stringValue'");
             }
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["scope"] = args?.scope;
             resourceInputs["stringValue"] = args?.stringValue ? pulumi.secret(args.stringValue) : undefined;
             resourceInputs["configReference"] = undefined /*out*/;
             resourceInputs["lastUpdatedTimestamp"] = undefined /*out*/;

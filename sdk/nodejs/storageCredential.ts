@@ -131,51 +131,51 @@ export class StorageCredential extends pulumi.CustomResource {
         return obj['__pulumiType'] === StorageCredential.__pulumiType;
     }
 
-    public readonly awsIamRole!: pulumi.Output<outputs.StorageCredentialAwsIamRole | undefined>;
-    public readonly azureManagedIdentity!: pulumi.Output<outputs.StorageCredentialAzureManagedIdentity | undefined>;
-    public readonly azureServicePrincipal!: pulumi.Output<outputs.StorageCredentialAzureServicePrincipal | undefined>;
-    public readonly cloudflareApiToken!: pulumi.Output<outputs.StorageCredentialCloudflareApiToken | undefined>;
-    public readonly comment!: pulumi.Output<string | undefined>;
-    public readonly databricksGcpServiceAccount!: pulumi.Output<outputs.StorageCredentialDatabricksGcpServiceAccount>;
+    declare public readonly awsIamRole: pulumi.Output<outputs.StorageCredentialAwsIamRole | undefined>;
+    declare public readonly azureManagedIdentity: pulumi.Output<outputs.StorageCredentialAzureManagedIdentity | undefined>;
+    declare public readonly azureServicePrincipal: pulumi.Output<outputs.StorageCredentialAzureServicePrincipal | undefined>;
+    declare public readonly cloudflareApiToken: pulumi.Output<outputs.StorageCredentialCloudflareApiToken | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
+    declare public readonly databricksGcpServiceAccount: pulumi.Output<outputs.StorageCredentialDatabricksGcpServiceAccount>;
     /**
      * Delete storage credential regardless of its dependencies.
      */
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
     /**
      * Update storage credential regardless of its dependents.
      */
-    public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
-    public readonly gcpServiceAccountKey!: pulumi.Output<outputs.StorageCredentialGcpServiceAccountKey | undefined>;
+    declare public readonly forceUpdate: pulumi.Output<boolean | undefined>;
+    declare public readonly gcpServiceAccountKey: pulumi.Output<outputs.StorageCredentialGcpServiceAccountKey | undefined>;
     /**
      * Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
      *
      * `awsIamRole` optional configuration block for credential details for AWS:
      */
-    public readonly isolationMode!: pulumi.Output<string>;
+    declare public readonly isolationMode: pulumi.Output<string>;
     /**
      * Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
      */
-    public readonly metastoreId!: pulumi.Output<string>;
+    declare public readonly metastoreId: pulumi.Output<string>;
     /**
      * Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Username/groupname/sp applicationId of the storage credential owner.
      */
-    public readonly owner!: pulumi.Output<string>;
+    declare public readonly owner: pulumi.Output<string>;
     /**
      * Indicates whether the storage credential is only usable for read operations.
      */
-    public readonly readOnly!: pulumi.Output<boolean | undefined>;
+    declare public readonly readOnly: pulumi.Output<boolean | undefined>;
     /**
      * Suppress validation errors if any & force save the storage credential.
      */
-    public readonly skipValidation!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipValidation: pulumi.Output<boolean | undefined>;
     /**
      * Unique ID of storage credential.
      */
-    public /*out*/ readonly storageCredentialId!: pulumi.Output<string>;
+    declare public /*out*/ readonly storageCredentialId: pulumi.Output<string>;
 
     /**
      * Create a StorageCredential resource with the given unique name, arguments, and options.
@@ -190,39 +190,39 @@ export class StorageCredential extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StorageCredentialState | undefined;
-            resourceInputs["awsIamRole"] = state ? state.awsIamRole : undefined;
-            resourceInputs["azureManagedIdentity"] = state ? state.azureManagedIdentity : undefined;
-            resourceInputs["azureServicePrincipal"] = state ? state.azureServicePrincipal : undefined;
-            resourceInputs["cloudflareApiToken"] = state ? state.cloudflareApiToken : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["databricksGcpServiceAccount"] = state ? state.databricksGcpServiceAccount : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
-            resourceInputs["gcpServiceAccountKey"] = state ? state.gcpServiceAccountKey : undefined;
-            resourceInputs["isolationMode"] = state ? state.isolationMode : undefined;
-            resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["readOnly"] = state ? state.readOnly : undefined;
-            resourceInputs["skipValidation"] = state ? state.skipValidation : undefined;
-            resourceInputs["storageCredentialId"] = state ? state.storageCredentialId : undefined;
+            resourceInputs["awsIamRole"] = state?.awsIamRole;
+            resourceInputs["azureManagedIdentity"] = state?.azureManagedIdentity;
+            resourceInputs["azureServicePrincipal"] = state?.azureServicePrincipal;
+            resourceInputs["cloudflareApiToken"] = state?.cloudflareApiToken;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["databricksGcpServiceAccount"] = state?.databricksGcpServiceAccount;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["forceUpdate"] = state?.forceUpdate;
+            resourceInputs["gcpServiceAccountKey"] = state?.gcpServiceAccountKey;
+            resourceInputs["isolationMode"] = state?.isolationMode;
+            resourceInputs["metastoreId"] = state?.metastoreId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["readOnly"] = state?.readOnly;
+            resourceInputs["skipValidation"] = state?.skipValidation;
+            resourceInputs["storageCredentialId"] = state?.storageCredentialId;
         } else {
             const args = argsOrState as StorageCredentialArgs | undefined;
-            resourceInputs["awsIamRole"] = args ? args.awsIamRole : undefined;
-            resourceInputs["azureManagedIdentity"] = args ? args.azureManagedIdentity : undefined;
-            resourceInputs["azureServicePrincipal"] = args ? args.azureServicePrincipal : undefined;
-            resourceInputs["cloudflareApiToken"] = args ? args.cloudflareApiToken : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["databricksGcpServiceAccount"] = args ? args.databricksGcpServiceAccount : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
-            resourceInputs["gcpServiceAccountKey"] = args ? args.gcpServiceAccountKey : undefined;
-            resourceInputs["isolationMode"] = args ? args.isolationMode : undefined;
-            resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["readOnly"] = args ? args.readOnly : undefined;
-            resourceInputs["skipValidation"] = args ? args.skipValidation : undefined;
+            resourceInputs["awsIamRole"] = args?.awsIamRole;
+            resourceInputs["azureManagedIdentity"] = args?.azureManagedIdentity;
+            resourceInputs["azureServicePrincipal"] = args?.azureServicePrincipal;
+            resourceInputs["cloudflareApiToken"] = args?.cloudflareApiToken;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["databricksGcpServiceAccount"] = args?.databricksGcpServiceAccount;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["forceUpdate"] = args?.forceUpdate;
+            resourceInputs["gcpServiceAccountKey"] = args?.gcpServiceAccountKey;
+            resourceInputs["isolationMode"] = args?.isolationMode;
+            resourceInputs["metastoreId"] = args?.metastoreId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["readOnly"] = args?.readOnly;
+            resourceInputs["skipValidation"] = args?.skipValidation;
             resourceInputs["storageCredentialId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

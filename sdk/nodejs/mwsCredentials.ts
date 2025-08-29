@@ -103,24 +103,24 @@ export class MwsCredentials extends pulumi.CustomResource {
      *
      * @deprecated `accountId` should be set as part of the Databricks Config, not in the resource.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * (Integer) time of credentials registration
      */
-    public readonly creationTime!: pulumi.Output<number>;
+    declare public readonly creationTime: pulumi.Output<number>;
     /**
      * (String) identifier of credentials
      */
-    public readonly credentialsId!: pulumi.Output<string>;
+    declare public readonly credentialsId: pulumi.Output<string>;
     /**
      * name of credentials to register
      */
-    public readonly credentialsName!: pulumi.Output<string>;
-    public readonly externalId!: pulumi.Output<string>;
+    declare public readonly credentialsName: pulumi.Output<string>;
+    declare public readonly externalId: pulumi.Output<string>;
     /**
      * ARN of cross-account role
      */
-    public readonly roleArn!: pulumi.Output<string>;
+    declare public readonly roleArn: pulumi.Output<string>;
 
     /**
      * Create a MwsCredentials resource with the given unique name, arguments, and options.
@@ -135,26 +135,26 @@ export class MwsCredentials extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MwsCredentialsState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["credentialsId"] = state ? state.credentialsId : undefined;
-            resourceInputs["credentialsName"] = state ? state.credentialsName : undefined;
-            resourceInputs["externalId"] = state ? state.externalId : undefined;
-            resourceInputs["roleArn"] = state ? state.roleArn : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["credentialsId"] = state?.credentialsId;
+            resourceInputs["credentialsName"] = state?.credentialsName;
+            resourceInputs["externalId"] = state?.externalId;
+            resourceInputs["roleArn"] = state?.roleArn;
         } else {
             const args = argsOrState as MwsCredentialsArgs | undefined;
-            if ((!args || args.credentialsName === undefined) && !opts.urn) {
+            if (args?.credentialsName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'credentialsName'");
             }
-            if ((!args || args.roleArn === undefined) && !opts.urn) {
+            if (args?.roleArn === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleArn'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["creationTime"] = args ? args.creationTime : undefined;
-            resourceInputs["credentialsId"] = args ? args.credentialsId : undefined;
-            resourceInputs["credentialsName"] = args ? args.credentialsName : undefined;
-            resourceInputs["externalId"] = args ? args.externalId : undefined;
-            resourceInputs["roleArn"] = args ? args.roleArn : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["creationTime"] = args?.creationTime;
+            resourceInputs["credentialsId"] = args?.credentialsId;
+            resourceInputs["credentialsName"] = args?.credentialsName;
+            resourceInputs["externalId"] = args?.externalId;
+            resourceInputs["roleArn"] = args?.roleArn;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MwsCredentials.__pulumiType, name, resourceInputs, opts);

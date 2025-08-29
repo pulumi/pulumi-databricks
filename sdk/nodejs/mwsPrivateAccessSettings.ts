@@ -133,31 +133,31 @@ export class MwsPrivateAccessSettings extends pulumi.CustomResource {
     /**
      * @deprecated Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * An array of databricks.MwsVpcEndpoint `vpcEndpointId` (not `id`). Only used when `privateAccessLevel` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `publicAccessEnabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
      */
-    public readonly allowedVpcEndpointIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly allowedVpcEndpointIds: pulumi.Output<string[] | undefined>;
     /**
      * The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowedVpcEndpointIds` documentation for more details.
      */
-    public readonly privateAccessLevel!: pulumi.Output<string | undefined>;
+    declare public readonly privateAccessLevel: pulumi.Output<string | undefined>;
     /**
      * Canonical unique identifier of Private Access Settings in Databricks Account
      */
-    public readonly privateAccessSettingsId!: pulumi.Output<string>;
+    declare public readonly privateAccessSettingsId: pulumi.Output<string>;
     /**
      * Name of Private Access Settings in Databricks Account
      */
-    public readonly privateAccessSettingsName!: pulumi.Output<string>;
+    declare public readonly privateAccessSettingsName: pulumi.Output<string>;
     /**
      * If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
      */
-    public readonly publicAccessEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly publicAccessEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Region of AWS VPC or the Google Cloud VPC network
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a MwsPrivateAccessSettings resource with the given unique name, arguments, and options.
@@ -172,28 +172,28 @@ export class MwsPrivateAccessSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MwsPrivateAccessSettingsState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["allowedVpcEndpointIds"] = state ? state.allowedVpcEndpointIds : undefined;
-            resourceInputs["privateAccessLevel"] = state ? state.privateAccessLevel : undefined;
-            resourceInputs["privateAccessSettingsId"] = state ? state.privateAccessSettingsId : undefined;
-            resourceInputs["privateAccessSettingsName"] = state ? state.privateAccessSettingsName : undefined;
-            resourceInputs["publicAccessEnabled"] = state ? state.publicAccessEnabled : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["allowedVpcEndpointIds"] = state?.allowedVpcEndpointIds;
+            resourceInputs["privateAccessLevel"] = state?.privateAccessLevel;
+            resourceInputs["privateAccessSettingsId"] = state?.privateAccessSettingsId;
+            resourceInputs["privateAccessSettingsName"] = state?.privateAccessSettingsName;
+            resourceInputs["publicAccessEnabled"] = state?.publicAccessEnabled;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as MwsPrivateAccessSettingsArgs | undefined;
-            if ((!args || args.privateAccessSettingsName === undefined) && !opts.urn) {
+            if (args?.privateAccessSettingsName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privateAccessSettingsName'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["allowedVpcEndpointIds"] = args ? args.allowedVpcEndpointIds : undefined;
-            resourceInputs["privateAccessLevel"] = args ? args.privateAccessLevel : undefined;
-            resourceInputs["privateAccessSettingsId"] = args ? args.privateAccessSettingsId : undefined;
-            resourceInputs["privateAccessSettingsName"] = args ? args.privateAccessSettingsName : undefined;
-            resourceInputs["publicAccessEnabled"] = args ? args.publicAccessEnabled : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["allowedVpcEndpointIds"] = args?.allowedVpcEndpointIds;
+            resourceInputs["privateAccessLevel"] = args?.privateAccessLevel;
+            resourceInputs["privateAccessSettingsId"] = args?.privateAccessSettingsId;
+            resourceInputs["privateAccessSettingsName"] = args?.privateAccessSettingsName;
+            resourceInputs["publicAccessEnabled"] = args?.publicAccessEnabled;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MwsPrivateAccessSettings.__pulumiType, name, resourceInputs, opts);

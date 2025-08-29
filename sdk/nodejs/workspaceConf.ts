@@ -67,7 +67,7 @@ export class WorkspaceConf extends pulumi.CustomResource {
     /**
      * Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
      */
-    public readonly customConfig!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly customConfig: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a WorkspaceConf resource with the given unique name, arguments, and options.
@@ -82,10 +82,10 @@ export class WorkspaceConf extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkspaceConfState | undefined;
-            resourceInputs["customConfig"] = state ? state.customConfig : undefined;
+            resourceInputs["customConfig"] = state?.customConfig;
         } else {
             const args = argsOrState as WorkspaceConfArgs | undefined;
-            resourceInputs["customConfig"] = args ? args.customConfig : undefined;
+            resourceInputs["customConfig"] = args?.customConfig;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkspaceConf.__pulumiType, name, resourceInputs, opts);

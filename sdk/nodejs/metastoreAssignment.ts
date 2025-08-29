@@ -83,15 +83,15 @@ export class MetastoreAssignment extends pulumi.CustomResource {
      *
      * @deprecated Use databricks.DefaultNamespaceSetting resource instead
      */
-    public readonly defaultCatalogName!: pulumi.Output<string>;
+    declare public readonly defaultCatalogName: pulumi.Output<string>;
     /**
      * Unique identifier of the parent Metastore
      */
-    public readonly metastoreId!: pulumi.Output<string>;
+    declare public readonly metastoreId: pulumi.Output<string>;
     /**
      * id of the workspace for the assignment
      */
-    public readonly workspaceId!: pulumi.Output<string>;
+    declare public readonly workspaceId: pulumi.Output<string>;
 
     /**
      * Create a MetastoreAssignment resource with the given unique name, arguments, and options.
@@ -106,20 +106,20 @@ export class MetastoreAssignment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MetastoreAssignmentState | undefined;
-            resourceInputs["defaultCatalogName"] = state ? state.defaultCatalogName : undefined;
-            resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
-            resourceInputs["workspaceId"] = state ? state.workspaceId : undefined;
+            resourceInputs["defaultCatalogName"] = state?.defaultCatalogName;
+            resourceInputs["metastoreId"] = state?.metastoreId;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as MetastoreAssignmentArgs | undefined;
-            if ((!args || args.metastoreId === undefined) && !opts.urn) {
+            if (args?.metastoreId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'metastoreId'");
             }
-            if ((!args || args.workspaceId === undefined) && !opts.urn) {
+            if (args?.workspaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceId'");
             }
-            resourceInputs["defaultCatalogName"] = args ? args.defaultCatalogName : undefined;
-            resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
-            resourceInputs["workspaceId"] = args ? args.workspaceId : undefined;
+            resourceInputs["defaultCatalogName"] = args?.defaultCatalogName;
+            resourceInputs["metastoreId"] = args?.metastoreId;
+            resourceInputs["workspaceId"] = args?.workspaceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MetastoreAssignment.__pulumiType, name, resourceInputs, opts);

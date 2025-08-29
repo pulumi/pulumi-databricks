@@ -88,31 +88,31 @@ export class MwsNetworkConnectivityConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === MwsNetworkConnectivityConfig.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * time in epoch milliseconds when this object was created.
      */
-    public readonly creationTime!: pulumi.Output<number>;
+    declare public readonly creationTime: pulumi.Output<number>;
     /**
      * block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
      */
-    public readonly egressConfig!: pulumi.Output<outputs.MwsNetworkConnectivityConfigEgressConfig>;
+    declare public readonly egressConfig: pulumi.Output<outputs.MwsNetworkConnectivityConfigEgressConfig>;
     /**
      * Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Canonical unique identifier of Network Connectivity Config in Databricks Account
      */
-    public readonly networkConnectivityConfigId!: pulumi.Output<string>;
+    declare public readonly networkConnectivityConfigId: pulumi.Output<string>;
     /**
      * Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * time in epoch milliseconds when this object was updated.
      */
-    public readonly updatedTime!: pulumi.Output<number>;
+    declare public readonly updatedTime: pulumi.Output<number>;
 
     /**
      * Create a MwsNetworkConnectivityConfig resource with the given unique name, arguments, and options.
@@ -127,25 +127,25 @@ export class MwsNetworkConnectivityConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MwsNetworkConnectivityConfigState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["egressConfig"] = state ? state.egressConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkConnectivityConfigId"] = state ? state.networkConnectivityConfigId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["updatedTime"] = state ? state.updatedTime : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["egressConfig"] = state?.egressConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkConnectivityConfigId"] = state?.networkConnectivityConfigId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["updatedTime"] = state?.updatedTime;
         } else {
             const args = argsOrState as MwsNetworkConnectivityConfigArgs | undefined;
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["creationTime"] = args ? args.creationTime : undefined;
-            resourceInputs["egressConfig"] = args ? args.egressConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkConnectivityConfigId"] = args ? args.networkConnectivityConfigId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["updatedTime"] = args ? args.updatedTime : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["creationTime"] = args?.creationTime;
+            resourceInputs["egressConfig"] = args?.egressConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkConnectivityConfigId"] = args?.networkConnectivityConfigId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["updatedTime"] = args?.updatedTime;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MwsNetworkConnectivityConfig.__pulumiType, name, resourceInputs, opts);

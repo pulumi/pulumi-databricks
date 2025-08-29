@@ -80,26 +80,26 @@ export class CleanRoomAsset extends pulumi.CustomResource {
     /**
      * (integer) - When the asset is added to the clean room, in epoch milliseconds
      */
-    public /*out*/ readonly addedAt!: pulumi.Output<number>;
+    declare public /*out*/ readonly addedAt: pulumi.Output<number>;
     /**
      * The type of the asset. Possible values are: `FOREIGN_TABLE`, `NOTEBOOK_FILE`, `TABLE`, `VIEW`, `VOLUME`
      */
-    public readonly assetType!: pulumi.Output<string>;
+    declare public readonly assetType: pulumi.Output<string>;
     /**
      * The name of the clean room this asset belongs to.
      * This field is required for create operations and populated by the server for responses
      */
-    public readonly cleanRoomName!: pulumi.Output<string | undefined>;
+    declare public readonly cleanRoomName: pulumi.Output<string | undefined>;
     /**
      * Foreign table details available to all collaborators of the clean room.
      * Present if and only if **asset_type** is **FOREIGN_TABLE**
      */
-    public readonly foreignTable!: pulumi.Output<outputs.CleanRoomAssetForeignTable | undefined>;
+    declare public readonly foreignTable: pulumi.Output<outputs.CleanRoomAssetForeignTable | undefined>;
     /**
      * Local details for a foreign that are only available to its owner.
      * Present if and only if **asset_type** is **FOREIGN_TABLE**
      */
-    public readonly foreignTableLocalDetails!: pulumi.Output<outputs.CleanRoomAssetForeignTableLocalDetails | undefined>;
+    declare public readonly foreignTableLocalDetails: pulumi.Output<outputs.CleanRoomAssetForeignTableLocalDetails | undefined>;
     /**
      * A fully qualified name that uniquely identifies the asset within the clean room.
      * This is also the name displayed in the clean room UI.
@@ -109,45 +109,45 @@ export class CleanRoomAsset extends pulumi.CustomResource {
      * For notebooks, the name is the notebook file name.
      * For jar analyses, the name is the jar analysis name
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Notebook details available to all collaborators of the clean room.
      * Present if and only if **asset_type** is **NOTEBOOK_FILE**
      */
-    public readonly notebook!: pulumi.Output<outputs.CleanRoomAssetNotebook | undefined>;
+    declare public readonly notebook: pulumi.Output<outputs.CleanRoomAssetNotebook | undefined>;
     /**
      * (string) - The alias of the collaborator who owns this asset
      */
-    public /*out*/ readonly ownerCollaboratorAlias!: pulumi.Output<string>;
+    declare public /*out*/ readonly ownerCollaboratorAlias: pulumi.Output<string>;
     /**
      * (string) - Status of the asset. Possible values are: `ACTIVE`, `PENDING`, `PERMISSION_DENIED`
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Table details available to all collaborators of the clean room.
      * Present if and only if **asset_type** is **TABLE**
      */
-    public readonly table!: pulumi.Output<outputs.CleanRoomAssetTable | undefined>;
+    declare public readonly table: pulumi.Output<outputs.CleanRoomAssetTable | undefined>;
     /**
      * Local details for a table that are only available to its owner.
      * Present if and only if **asset_type** is **TABLE**
      */
-    public readonly tableLocalDetails!: pulumi.Output<outputs.CleanRoomAssetTableLocalDetails | undefined>;
+    declare public readonly tableLocalDetails: pulumi.Output<outputs.CleanRoomAssetTableLocalDetails | undefined>;
     /**
      * View details available to all collaborators of the clean room.
      * Present if and only if **asset_type** is **VIEW**
      */
-    public readonly view!: pulumi.Output<outputs.CleanRoomAssetView | undefined>;
+    declare public readonly view: pulumi.Output<outputs.CleanRoomAssetView | undefined>;
     /**
      * Local details for a view that are only available to its owner.
      * Present if and only if **asset_type** is **VIEW**
      */
-    public readonly viewLocalDetails!: pulumi.Output<outputs.CleanRoomAssetViewLocalDetails | undefined>;
+    declare public readonly viewLocalDetails: pulumi.Output<outputs.CleanRoomAssetViewLocalDetails | undefined>;
     /**
      * Local details for a volume that are only available to its owner.
      * Present if and only if **asset_type** is **VOLUME**
      */
-    public readonly volumeLocalDetails!: pulumi.Output<outputs.CleanRoomAssetVolumeLocalDetails | undefined>;
+    declare public readonly volumeLocalDetails: pulumi.Output<outputs.CleanRoomAssetVolumeLocalDetails | undefined>;
 
     /**
      * Create a CleanRoomAsset resource with the given unique name, arguments, and options.
@@ -162,36 +162,36 @@ export class CleanRoomAsset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CleanRoomAssetState | undefined;
-            resourceInputs["addedAt"] = state ? state.addedAt : undefined;
-            resourceInputs["assetType"] = state ? state.assetType : undefined;
-            resourceInputs["cleanRoomName"] = state ? state.cleanRoomName : undefined;
-            resourceInputs["foreignTable"] = state ? state.foreignTable : undefined;
-            resourceInputs["foreignTableLocalDetails"] = state ? state.foreignTableLocalDetails : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notebook"] = state ? state.notebook : undefined;
-            resourceInputs["ownerCollaboratorAlias"] = state ? state.ownerCollaboratorAlias : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["table"] = state ? state.table : undefined;
-            resourceInputs["tableLocalDetails"] = state ? state.tableLocalDetails : undefined;
-            resourceInputs["view"] = state ? state.view : undefined;
-            resourceInputs["viewLocalDetails"] = state ? state.viewLocalDetails : undefined;
-            resourceInputs["volumeLocalDetails"] = state ? state.volumeLocalDetails : undefined;
+            resourceInputs["addedAt"] = state?.addedAt;
+            resourceInputs["assetType"] = state?.assetType;
+            resourceInputs["cleanRoomName"] = state?.cleanRoomName;
+            resourceInputs["foreignTable"] = state?.foreignTable;
+            resourceInputs["foreignTableLocalDetails"] = state?.foreignTableLocalDetails;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notebook"] = state?.notebook;
+            resourceInputs["ownerCollaboratorAlias"] = state?.ownerCollaboratorAlias;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["table"] = state?.table;
+            resourceInputs["tableLocalDetails"] = state?.tableLocalDetails;
+            resourceInputs["view"] = state?.view;
+            resourceInputs["viewLocalDetails"] = state?.viewLocalDetails;
+            resourceInputs["volumeLocalDetails"] = state?.volumeLocalDetails;
         } else {
             const args = argsOrState as CleanRoomAssetArgs | undefined;
-            if ((!args || args.assetType === undefined) && !opts.urn) {
+            if (args?.assetType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'assetType'");
             }
-            resourceInputs["assetType"] = args ? args.assetType : undefined;
-            resourceInputs["cleanRoomName"] = args ? args.cleanRoomName : undefined;
-            resourceInputs["foreignTable"] = args ? args.foreignTable : undefined;
-            resourceInputs["foreignTableLocalDetails"] = args ? args.foreignTableLocalDetails : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notebook"] = args ? args.notebook : undefined;
-            resourceInputs["table"] = args ? args.table : undefined;
-            resourceInputs["tableLocalDetails"] = args ? args.tableLocalDetails : undefined;
-            resourceInputs["view"] = args ? args.view : undefined;
-            resourceInputs["viewLocalDetails"] = args ? args.viewLocalDetails : undefined;
-            resourceInputs["volumeLocalDetails"] = args ? args.volumeLocalDetails : undefined;
+            resourceInputs["assetType"] = args?.assetType;
+            resourceInputs["cleanRoomName"] = args?.cleanRoomName;
+            resourceInputs["foreignTable"] = args?.foreignTable;
+            resourceInputs["foreignTableLocalDetails"] = args?.foreignTableLocalDetails;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notebook"] = args?.notebook;
+            resourceInputs["table"] = args?.table;
+            resourceInputs["tableLocalDetails"] = args?.tableLocalDetails;
+            resourceInputs["view"] = args?.view;
+            resourceInputs["viewLocalDetails"] = args?.viewLocalDetails;
+            resourceInputs["volumeLocalDetails"] = args?.volumeLocalDetails;
             resourceInputs["addedAt"] = undefined /*out*/;
             resourceInputs["ownerCollaboratorAlias"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

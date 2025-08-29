@@ -108,19 +108,19 @@ export class OboToken extends pulumi.CustomResource {
     /**
      * Application ID of databricks.ServicePrincipal to create a PAT token for.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * Comment that describes the purpose of the token.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      */
-    public readonly lifetimeSeconds!: pulumi.Output<number | undefined>;
+    declare public readonly lifetimeSeconds: pulumi.Output<number | undefined>;
     /**
      * **Sensitive** value of the newly-created token.
      */
-    public /*out*/ readonly tokenValue!: pulumi.Output<string>;
+    declare public /*out*/ readonly tokenValue: pulumi.Output<string>;
 
     /**
      * Create a OboToken resource with the given unique name, arguments, and options.
@@ -135,18 +135,18 @@ export class OboToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OboTokenState | undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["lifetimeSeconds"] = state ? state.lifetimeSeconds : undefined;
-            resourceInputs["tokenValue"] = state ? state.tokenValue : undefined;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["lifetimeSeconds"] = state?.lifetimeSeconds;
+            resourceInputs["tokenValue"] = state?.tokenValue;
         } else {
             const args = argsOrState as OboTokenArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["lifetimeSeconds"] = args ? args.lifetimeSeconds : undefined;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["lifetimeSeconds"] = args?.lifetimeSeconds;
             resourceInputs["tokenValue"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

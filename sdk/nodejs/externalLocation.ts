@@ -99,78 +99,78 @@ export class ExternalLocation extends pulumi.CustomResource {
         return obj['__pulumiType'] === ExternalLocation.__pulumiType;
     }
 
-    public /*out*/ readonly browseOnly!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly browseOnly: pulumi.Output<boolean>;
     /**
      * User-supplied free-form text.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * Time at which this external location was created, in epoch milliseconds.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<number>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<number>;
     /**
      * Username of external location creator.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
      * Unique ID of the location's storage credential.
      */
-    public /*out*/ readonly credentialId!: pulumi.Output<string>;
+    declare public /*out*/ readonly credentialId: pulumi.Output<string>;
     /**
      * Name of the databricks.StorageCredential to use with this external location.
      */
-    public readonly credentialName!: pulumi.Output<string>;
+    declare public readonly credentialName: pulumi.Output<string>;
     /**
      * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
      */
-    public readonly enableFileEvents!: pulumi.Output<boolean | undefined>;
-    public readonly encryptionDetails!: pulumi.Output<outputs.ExternalLocationEncryptionDetails | undefined>;
+    declare public readonly enableFileEvents: pulumi.Output<boolean | undefined>;
+    declare public readonly encryptionDetails: pulumi.Output<outputs.ExternalLocationEncryptionDetails | undefined>;
     /**
      * Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
      */
-    public readonly fallback!: pulumi.Output<boolean | undefined>;
-    public readonly fileEventQueue!: pulumi.Output<outputs.ExternalLocationFileEventQueue | undefined>;
+    declare public readonly fallback: pulumi.Output<boolean | undefined>;
+    declare public readonly fileEventQueue: pulumi.Output<outputs.ExternalLocationFileEventQueue | undefined>;
     /**
      * Destroy external location regardless of its dependents.
      */
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
     /**
      * Update external location regardless of its dependents.
      */
-    public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceUpdate: pulumi.Output<boolean | undefined>;
     /**
      * Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
      */
-    public readonly isolationMode!: pulumi.Output<string>;
-    public readonly metastoreId!: pulumi.Output<string>;
+    declare public readonly isolationMode: pulumi.Output<string>;
+    declare public readonly metastoreId: pulumi.Output<string>;
     /**
      * Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Username/groupname/sp applicationId of the external location owner.
      */
-    public readonly owner!: pulumi.Output<string>;
+    declare public readonly owner: pulumi.Output<string>;
     /**
      * Indicates whether the external location is read-only.
      */
-    public readonly readOnly!: pulumi.Output<boolean | undefined>;
+    declare public readonly readOnly: pulumi.Output<boolean | undefined>;
     /**
      * Suppress validation errors if any & force save the external location
      */
-    public readonly skipValidation!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipValidation: pulumi.Output<boolean | undefined>;
     /**
      * Time at which external location this was last modified, in epoch milliseconds.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<number>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<number>;
     /**
      * Username of user who last modified the external location.
      */
-    public /*out*/ readonly updatedBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
     /**
      * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
 
     /**
      * Create a ExternalLocation resource with the given unique name, arguments, and options.
@@ -185,50 +185,50 @@ export class ExternalLocation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExternalLocationState | undefined;
-            resourceInputs["browseOnly"] = state ? state.browseOnly : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["credentialId"] = state ? state.credentialId : undefined;
-            resourceInputs["credentialName"] = state ? state.credentialName : undefined;
-            resourceInputs["enableFileEvents"] = state ? state.enableFileEvents : undefined;
-            resourceInputs["encryptionDetails"] = state ? state.encryptionDetails : undefined;
-            resourceInputs["fallback"] = state ? state.fallback : undefined;
-            resourceInputs["fileEventQueue"] = state ? state.fileEventQueue : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
-            resourceInputs["isolationMode"] = state ? state.isolationMode : undefined;
-            resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["readOnly"] = state ? state.readOnly : undefined;
-            resourceInputs["skipValidation"] = state ? state.skipValidation : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["updatedBy"] = state ? state.updatedBy : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["browseOnly"] = state?.browseOnly;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["credentialId"] = state?.credentialId;
+            resourceInputs["credentialName"] = state?.credentialName;
+            resourceInputs["enableFileEvents"] = state?.enableFileEvents;
+            resourceInputs["encryptionDetails"] = state?.encryptionDetails;
+            resourceInputs["fallback"] = state?.fallback;
+            resourceInputs["fileEventQueue"] = state?.fileEventQueue;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["forceUpdate"] = state?.forceUpdate;
+            resourceInputs["isolationMode"] = state?.isolationMode;
+            resourceInputs["metastoreId"] = state?.metastoreId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["readOnly"] = state?.readOnly;
+            resourceInputs["skipValidation"] = state?.skipValidation;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["updatedBy"] = state?.updatedBy;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as ExternalLocationArgs | undefined;
-            if ((!args || args.credentialName === undefined) && !opts.urn) {
+            if (args?.credentialName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'credentialName'");
             }
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["credentialName"] = args ? args.credentialName : undefined;
-            resourceInputs["enableFileEvents"] = args ? args.enableFileEvents : undefined;
-            resourceInputs["encryptionDetails"] = args ? args.encryptionDetails : undefined;
-            resourceInputs["fallback"] = args ? args.fallback : undefined;
-            resourceInputs["fileEventQueue"] = args ? args.fileEventQueue : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
-            resourceInputs["isolationMode"] = args ? args.isolationMode : undefined;
-            resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["readOnly"] = args ? args.readOnly : undefined;
-            resourceInputs["skipValidation"] = args ? args.skipValidation : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["credentialName"] = args?.credentialName;
+            resourceInputs["enableFileEvents"] = args?.enableFileEvents;
+            resourceInputs["encryptionDetails"] = args?.encryptionDetails;
+            resourceInputs["fallback"] = args?.fallback;
+            resourceInputs["fileEventQueue"] = args?.fileEventQueue;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["forceUpdate"] = args?.forceUpdate;
+            resourceInputs["isolationMode"] = args?.isolationMode;
+            resourceInputs["metastoreId"] = args?.metastoreId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["readOnly"] = args?.readOnly;
+            resourceInputs["skipValidation"] = args?.skipValidation;
+            resourceInputs["url"] = args?.url;
             resourceInputs["browseOnly"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;

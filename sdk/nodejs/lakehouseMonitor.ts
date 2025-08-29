@@ -127,81 +127,81 @@ export class LakehouseMonitor extends pulumi.CustomResource {
     /**
      * The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
      */
-    public readonly assetsDir!: pulumi.Output<string>;
+    declare public readonly assetsDir: pulumi.Output<string>;
     /**
      * Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
      * table.
      */
-    public readonly baselineTableName!: pulumi.Output<string | undefined>;
+    declare public readonly baselineTableName: pulumi.Output<string | undefined>;
     /**
      * Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
      */
-    public readonly customMetrics!: pulumi.Output<outputs.LakehouseMonitorCustomMetric[] | undefined>;
+    declare public readonly customMetrics: pulumi.Output<outputs.LakehouseMonitorCustomMetric[] | undefined>;
     /**
      * The ID of the generated dashboard.
      */
-    public /*out*/ readonly dashboardId!: pulumi.Output<string>;
+    declare public /*out*/ readonly dashboardId: pulumi.Output<string>;
     /**
      * The data classification config for the monitor
      */
-    public readonly dataClassificationConfig!: pulumi.Output<outputs.LakehouseMonitorDataClassificationConfig | undefined>;
+    declare public readonly dataClassificationConfig: pulumi.Output<outputs.LakehouseMonitorDataClassificationConfig | undefined>;
     /**
      * The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
      */
-    public /*out*/ readonly driftMetricsTableName!: pulumi.Output<string>;
+    declare public /*out*/ readonly driftMetricsTableName: pulumi.Output<string>;
     /**
      * Configuration for the inference log monitor
      */
-    public readonly inferenceLog!: pulumi.Output<outputs.LakehouseMonitorInferenceLog | undefined>;
-    public readonly latestMonitorFailureMsg!: pulumi.Output<string | undefined>;
+    declare public readonly inferenceLog: pulumi.Output<outputs.LakehouseMonitorInferenceLog | undefined>;
+    declare public readonly latestMonitorFailureMsg: pulumi.Output<string | undefined>;
     /**
      * The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
      */
-    public /*out*/ readonly monitorVersion!: pulumi.Output<number>;
+    declare public /*out*/ readonly monitorVersion: pulumi.Output<number>;
     /**
      * The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
      */
-    public readonly notifications!: pulumi.Output<outputs.LakehouseMonitorNotifications | undefined>;
+    declare public readonly notifications: pulumi.Output<outputs.LakehouseMonitorNotifications | undefined>;
     /**
      * Schema where output metric tables are created
      */
-    public readonly outputSchemaName!: pulumi.Output<string>;
+    declare public readonly outputSchemaName: pulumi.Output<string>;
     /**
      * The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
      */
-    public /*out*/ readonly profileMetricsTableName!: pulumi.Output<string>;
+    declare public /*out*/ readonly profileMetricsTableName: pulumi.Output<string>;
     /**
      * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      */
-    public readonly schedule!: pulumi.Output<outputs.LakehouseMonitorSchedule | undefined>;
+    declare public readonly schedule: pulumi.Output<outputs.LakehouseMonitorSchedule | undefined>;
     /**
      * Whether to skip creating a default dashboard summarizing data quality metrics.
      */
-    public readonly skipBuiltinDashboard!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipBuiltinDashboard: pulumi.Output<boolean | undefined>;
     /**
      * List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
      */
-    public readonly slicingExprs!: pulumi.Output<string[] | undefined>;
+    declare public readonly slicingExprs: pulumi.Output<string[] | undefined>;
     /**
      * Configuration for monitoring snapshot tables.
      */
-    public readonly snapshot!: pulumi.Output<outputs.LakehouseMonitorSnapshot | undefined>;
+    declare public readonly snapshot: pulumi.Output<outputs.LakehouseMonitorSnapshot | undefined>;
     /**
      * Status of the Monitor
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
      */
-    public readonly tableName!: pulumi.Output<string>;
+    declare public readonly tableName: pulumi.Output<string>;
     /**
      * Configuration for monitoring timeseries tables.
      */
-    public readonly timeSeries!: pulumi.Output<outputs.LakehouseMonitorTimeSeries | undefined>;
+    declare public readonly timeSeries: pulumi.Output<outputs.LakehouseMonitorTimeSeries | undefined>;
     /**
      * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
      */
-    public readonly warehouseId!: pulumi.Output<string | undefined>;
+    declare public readonly warehouseId: pulumi.Output<string | undefined>;
 
     /**
      * Create a LakehouseMonitor resource with the given unique name, arguments, and options.
@@ -216,52 +216,52 @@ export class LakehouseMonitor extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LakehouseMonitorState | undefined;
-            resourceInputs["assetsDir"] = state ? state.assetsDir : undefined;
-            resourceInputs["baselineTableName"] = state ? state.baselineTableName : undefined;
-            resourceInputs["customMetrics"] = state ? state.customMetrics : undefined;
-            resourceInputs["dashboardId"] = state ? state.dashboardId : undefined;
-            resourceInputs["dataClassificationConfig"] = state ? state.dataClassificationConfig : undefined;
-            resourceInputs["driftMetricsTableName"] = state ? state.driftMetricsTableName : undefined;
-            resourceInputs["inferenceLog"] = state ? state.inferenceLog : undefined;
-            resourceInputs["latestMonitorFailureMsg"] = state ? state.latestMonitorFailureMsg : undefined;
-            resourceInputs["monitorVersion"] = state ? state.monitorVersion : undefined;
-            resourceInputs["notifications"] = state ? state.notifications : undefined;
-            resourceInputs["outputSchemaName"] = state ? state.outputSchemaName : undefined;
-            resourceInputs["profileMetricsTableName"] = state ? state.profileMetricsTableName : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["skipBuiltinDashboard"] = state ? state.skipBuiltinDashboard : undefined;
-            resourceInputs["slicingExprs"] = state ? state.slicingExprs : undefined;
-            resourceInputs["snapshot"] = state ? state.snapshot : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tableName"] = state ? state.tableName : undefined;
-            resourceInputs["timeSeries"] = state ? state.timeSeries : undefined;
-            resourceInputs["warehouseId"] = state ? state.warehouseId : undefined;
+            resourceInputs["assetsDir"] = state?.assetsDir;
+            resourceInputs["baselineTableName"] = state?.baselineTableName;
+            resourceInputs["customMetrics"] = state?.customMetrics;
+            resourceInputs["dashboardId"] = state?.dashboardId;
+            resourceInputs["dataClassificationConfig"] = state?.dataClassificationConfig;
+            resourceInputs["driftMetricsTableName"] = state?.driftMetricsTableName;
+            resourceInputs["inferenceLog"] = state?.inferenceLog;
+            resourceInputs["latestMonitorFailureMsg"] = state?.latestMonitorFailureMsg;
+            resourceInputs["monitorVersion"] = state?.monitorVersion;
+            resourceInputs["notifications"] = state?.notifications;
+            resourceInputs["outputSchemaName"] = state?.outputSchemaName;
+            resourceInputs["profileMetricsTableName"] = state?.profileMetricsTableName;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["skipBuiltinDashboard"] = state?.skipBuiltinDashboard;
+            resourceInputs["slicingExprs"] = state?.slicingExprs;
+            resourceInputs["snapshot"] = state?.snapshot;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tableName"] = state?.tableName;
+            resourceInputs["timeSeries"] = state?.timeSeries;
+            resourceInputs["warehouseId"] = state?.warehouseId;
         } else {
             const args = argsOrState as LakehouseMonitorArgs | undefined;
-            if ((!args || args.assetsDir === undefined) && !opts.urn) {
+            if (args?.assetsDir === undefined && !opts.urn) {
                 throw new Error("Missing required property 'assetsDir'");
             }
-            if ((!args || args.outputSchemaName === undefined) && !opts.urn) {
+            if (args?.outputSchemaName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'outputSchemaName'");
             }
-            if ((!args || args.tableName === undefined) && !opts.urn) {
+            if (args?.tableName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tableName'");
             }
-            resourceInputs["assetsDir"] = args ? args.assetsDir : undefined;
-            resourceInputs["baselineTableName"] = args ? args.baselineTableName : undefined;
-            resourceInputs["customMetrics"] = args ? args.customMetrics : undefined;
-            resourceInputs["dataClassificationConfig"] = args ? args.dataClassificationConfig : undefined;
-            resourceInputs["inferenceLog"] = args ? args.inferenceLog : undefined;
-            resourceInputs["latestMonitorFailureMsg"] = args ? args.latestMonitorFailureMsg : undefined;
-            resourceInputs["notifications"] = args ? args.notifications : undefined;
-            resourceInputs["outputSchemaName"] = args ? args.outputSchemaName : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["skipBuiltinDashboard"] = args ? args.skipBuiltinDashboard : undefined;
-            resourceInputs["slicingExprs"] = args ? args.slicingExprs : undefined;
-            resourceInputs["snapshot"] = args ? args.snapshot : undefined;
-            resourceInputs["tableName"] = args ? args.tableName : undefined;
-            resourceInputs["timeSeries"] = args ? args.timeSeries : undefined;
-            resourceInputs["warehouseId"] = args ? args.warehouseId : undefined;
+            resourceInputs["assetsDir"] = args?.assetsDir;
+            resourceInputs["baselineTableName"] = args?.baselineTableName;
+            resourceInputs["customMetrics"] = args?.customMetrics;
+            resourceInputs["dataClassificationConfig"] = args?.dataClassificationConfig;
+            resourceInputs["inferenceLog"] = args?.inferenceLog;
+            resourceInputs["latestMonitorFailureMsg"] = args?.latestMonitorFailureMsg;
+            resourceInputs["notifications"] = args?.notifications;
+            resourceInputs["outputSchemaName"] = args?.outputSchemaName;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["skipBuiltinDashboard"] = args?.skipBuiltinDashboard;
+            resourceInputs["slicingExprs"] = args?.slicingExprs;
+            resourceInputs["snapshot"] = args?.snapshot;
+            resourceInputs["tableName"] = args?.tableName;
+            resourceInputs["timeSeries"] = args?.timeSeries;
+            resourceInputs["warehouseId"] = args?.warehouseId;
             resourceInputs["dashboardId"] = undefined /*out*/;
             resourceInputs["driftMetricsTableName"] = undefined /*out*/;
             resourceInputs["monitorVersion"] = undefined /*out*/;

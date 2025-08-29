@@ -105,16 +105,16 @@ export class MlflowModel extends pulumi.CustomResource {
     /**
      * The description of the MLflow model.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of MLflow model. Change of name triggers new resource.
      */
-    public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly registeredModelId!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly registeredModelId: pulumi.Output<string>;
     /**
      * Tags for the MLflow model.
      */
-    public readonly tags!: pulumi.Output<outputs.MlflowModelTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.MlflowModelTag[] | undefined>;
 
     /**
      * Create a MlflowModel resource with the given unique name, arguments, and options.
@@ -129,15 +129,15 @@ export class MlflowModel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MlflowModelState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["registeredModelId"] = state ? state.registeredModelId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["registeredModelId"] = state?.registeredModelId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as MlflowModelArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["registeredModelId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

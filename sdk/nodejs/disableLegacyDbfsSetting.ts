@@ -88,9 +88,9 @@ export class DisableLegacyDbfsSetting extends pulumi.CustomResource {
     /**
      * block with following attributes:
      */
-    public readonly disableLegacyDbfs!: pulumi.Output<outputs.DisableLegacyDbfsSettingDisableLegacyDbfs>;
-    public readonly etag!: pulumi.Output<string>;
-    public readonly settingName!: pulumi.Output<string>;
+    declare public readonly disableLegacyDbfs: pulumi.Output<outputs.DisableLegacyDbfsSettingDisableLegacyDbfs>;
+    declare public readonly etag: pulumi.Output<string>;
+    declare public readonly settingName: pulumi.Output<string>;
 
     /**
      * Create a DisableLegacyDbfsSetting resource with the given unique name, arguments, and options.
@@ -105,17 +105,17 @@ export class DisableLegacyDbfsSetting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DisableLegacyDbfsSettingState | undefined;
-            resourceInputs["disableLegacyDbfs"] = state ? state.disableLegacyDbfs : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["settingName"] = state ? state.settingName : undefined;
+            resourceInputs["disableLegacyDbfs"] = state?.disableLegacyDbfs;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as DisableLegacyDbfsSettingArgs | undefined;
-            if ((!args || args.disableLegacyDbfs === undefined) && !opts.urn) {
+            if (args?.disableLegacyDbfs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'disableLegacyDbfs'");
             }
-            resourceInputs["disableLegacyDbfs"] = args ? args.disableLegacyDbfs : undefined;
-            resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["settingName"] = args ? args.settingName : undefined;
+            resourceInputs["disableLegacyDbfs"] = args?.disableLegacyDbfs;
+            resourceInputs["etag"] = args?.etag;
+            resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DisableLegacyDbfsSetting.__pulumiType, name, resourceInputs, opts);

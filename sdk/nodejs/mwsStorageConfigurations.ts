@@ -103,20 +103,20 @@ export class MwsStorageConfigurations extends pulumi.CustomResource {
     /**
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * name of AWS S3 bucket
      */
-    public readonly bucketName!: pulumi.Output<string>;
-    public /*out*/ readonly creationTime!: pulumi.Output<number>;
+    declare public readonly bucketName: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTime: pulumi.Output<number>;
     /**
      * (String) id of storage config to be used for `databricksMwsWorkspace` resource.
      */
-    public /*out*/ readonly storageConfigurationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly storageConfigurationId: pulumi.Output<string>;
     /**
      * name under which this storage configuration is stored
      */
-    public readonly storageConfigurationName!: pulumi.Output<string>;
+    declare public readonly storageConfigurationName: pulumi.Output<string>;
 
     /**
      * Create a MwsStorageConfigurations resource with the given unique name, arguments, and options.
@@ -131,25 +131,25 @@ export class MwsStorageConfigurations extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MwsStorageConfigurationsState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["bucketName"] = state ? state.bucketName : undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["storageConfigurationId"] = state ? state.storageConfigurationId : undefined;
-            resourceInputs["storageConfigurationName"] = state ? state.storageConfigurationName : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["bucketName"] = state?.bucketName;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["storageConfigurationId"] = state?.storageConfigurationId;
+            resourceInputs["storageConfigurationName"] = state?.storageConfigurationName;
         } else {
             const args = argsOrState as MwsStorageConfigurationsArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.bucketName === undefined) && !opts.urn) {
+            if (args?.bucketName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucketName'");
             }
-            if ((!args || args.storageConfigurationName === undefined) && !opts.urn) {
+            if (args?.storageConfigurationName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageConfigurationName'");
             }
             resourceInputs["accountId"] = args?.accountId ? pulumi.secret(args.accountId) : undefined;
-            resourceInputs["bucketName"] = args ? args.bucketName : undefined;
-            resourceInputs["storageConfigurationName"] = args ? args.storageConfigurationName : undefined;
+            resourceInputs["bucketName"] = args?.bucketName;
+            resourceInputs["storageConfigurationName"] = args?.storageConfigurationName;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["storageConfigurationId"] = undefined /*out*/;
         }

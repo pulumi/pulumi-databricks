@@ -87,11 +87,11 @@ export class GroupRole extends pulumi.CustomResource {
     /**
      * This is the id of the group resource.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * Either a role name or the ARN/ID of the instance profile resource.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a GroupRole resource with the given unique name, arguments, and options.
@@ -106,18 +106,18 @@ export class GroupRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupRoleState | undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as GroupRoleArgs | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["role"] = args?.role;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupRole.__pulumiType, name, resourceInputs, opts);

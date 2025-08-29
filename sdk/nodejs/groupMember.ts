@@ -99,11 +99,11 @@ export class GroupMember extends pulumi.CustomResource {
     /**
      * This is the `id` attribute (SCIM ID) of the group resource.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * This is the `id` attribute (SCIM ID) of the group, service principal, or user.
      */
-    public readonly memberId!: pulumi.Output<string>;
+    declare public readonly memberId: pulumi.Output<string>;
 
     /**
      * Create a GroupMember resource with the given unique name, arguments, and options.
@@ -118,18 +118,18 @@ export class GroupMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupMemberState | undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["memberId"] = state ? state.memberId : undefined;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["memberId"] = state?.memberId;
         } else {
             const args = argsOrState as GroupMemberArgs | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.memberId === undefined) && !opts.urn) {
+            if (args?.memberId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'memberId'");
             }
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["memberId"] = args ? args.memberId : undefined;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["memberId"] = args?.memberId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupMember.__pulumiType, name, resourceInputs, opts);

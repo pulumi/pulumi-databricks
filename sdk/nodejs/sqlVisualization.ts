@@ -55,13 +55,13 @@ export class SqlVisualization extends pulumi.CustomResource {
         return obj['__pulumiType'] === SqlVisualization.__pulumiType;
     }
 
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly options!: pulumi.Output<string>;
-    public readonly queryId!: pulumi.Output<string>;
-    public readonly queryPlan!: pulumi.Output<string | undefined>;
-    public readonly type!: pulumi.Output<string>;
-    public readonly visualizationId!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly options: pulumi.Output<string>;
+    declare public readonly queryId: pulumi.Output<string>;
+    declare public readonly queryPlan: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string>;
+    declare public readonly visualizationId: pulumi.Output<string>;
 
     /**
      * Create a SqlVisualization resource with the given unique name, arguments, and options.
@@ -76,31 +76,31 @@ export class SqlVisualization extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SqlVisualizationState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["options"] = state ? state.options : undefined;
-            resourceInputs["queryId"] = state ? state.queryId : undefined;
-            resourceInputs["queryPlan"] = state ? state.queryPlan : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["visualizationId"] = state ? state.visualizationId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["options"] = state?.options;
+            resourceInputs["queryId"] = state?.queryId;
+            resourceInputs["queryPlan"] = state?.queryPlan;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["visualizationId"] = state?.visualizationId;
         } else {
             const args = argsOrState as SqlVisualizationArgs | undefined;
-            if ((!args || args.options === undefined) && !opts.urn) {
+            if (args?.options === undefined && !opts.urn) {
                 throw new Error("Missing required property 'options'");
             }
-            if ((!args || args.queryId === undefined) && !opts.urn) {
+            if (args?.queryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queryId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["options"] = args ? args.options : undefined;
-            resourceInputs["queryId"] = args ? args.queryId : undefined;
-            resourceInputs["queryPlan"] = args ? args.queryPlan : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["visualizationId"] = args ? args.visualizationId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["options"] = args?.options;
+            resourceInputs["queryId"] = args?.queryId;
+            resourceInputs["queryPlan"] = args?.queryPlan;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["visualizationId"] = args?.visualizationId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SqlVisualization.__pulumiType, name, resourceInputs, opts);

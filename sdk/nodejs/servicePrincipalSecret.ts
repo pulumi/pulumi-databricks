@@ -75,39 +75,39 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
     /**
      * UTC time when the secret was created.
      */
-    public readonly createTime!: pulumi.Output<string>;
+    declare public readonly createTime: pulumi.Output<string>;
     /**
      * UTC time when the secret will expire. If the field is not present, the secret does not expire.
      */
-    public readonly expireTime!: pulumi.Output<string>;
+    declare public readonly expireTime: pulumi.Output<string>;
     /**
      * The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
      */
-    public readonly lifetime!: pulumi.Output<string>;
+    declare public readonly lifetime: pulumi.Output<string>;
     /**
      * **Sensitive** Generated secret for the service principal.
      */
-    public readonly secret!: pulumi.Output<string>;
+    declare public readonly secret: pulumi.Output<string>;
     /**
      * Secret Hash.
      */
-    public readonly secretHash!: pulumi.Output<string>;
+    declare public readonly secretHash: pulumi.Output<string>;
     /**
      * SCIM ID of the databricks.ServicePrincipal (not application ID).
      */
-    public readonly servicePrincipalId!: pulumi.Output<string>;
+    declare public readonly servicePrincipalId: pulumi.Output<string>;
     /**
      * Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * Changing this argument forces recreation of the secret.
      */
-    public readonly timeRotating!: pulumi.Output<string | undefined>;
+    declare public readonly timeRotating: pulumi.Output<string | undefined>;
     /**
      * UTC time when the secret was updated.
      */
-    public readonly updateTime!: pulumi.Output<string>;
+    declare public readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a ServicePrincipalSecret resource with the given unique name, arguments, and options.
@@ -122,29 +122,29 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePrincipalSecretState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["lifetime"] = state ? state.lifetime : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["secretHash"] = state ? state.secretHash : undefined;
-            resourceInputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["timeRotating"] = state ? state.timeRotating : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["lifetime"] = state?.lifetime;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["secretHash"] = state?.secretHash;
+            resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["timeRotating"] = state?.timeRotating;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ServicePrincipalSecretArgs | undefined;
-            if ((!args || args.servicePrincipalId === undefined) && !opts.urn) {
+            if (args?.servicePrincipalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'servicePrincipalId'");
             }
-            resourceInputs["createTime"] = args ? args.createTime : undefined;
-            resourceInputs["expireTime"] = args ? args.expireTime : undefined;
-            resourceInputs["lifetime"] = args ? args.lifetime : undefined;
+            resourceInputs["createTime"] = args?.createTime;
+            resourceInputs["expireTime"] = args?.expireTime;
+            resourceInputs["lifetime"] = args?.lifetime;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
-            resourceInputs["secretHash"] = args ? args.secretHash : undefined;
-            resourceInputs["servicePrincipalId"] = args ? args.servicePrincipalId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["timeRotating"] = args ? args.timeRotating : undefined;
-            resourceInputs["updateTime"] = args ? args.updateTime : undefined;
+            resourceInputs["secretHash"] = args?.secretHash;
+            resourceInputs["servicePrincipalId"] = args?.servicePrincipalId;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["timeRotating"] = args?.timeRotating;
+            resourceInputs["updateTime"] = args?.updateTime;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["secret"] };

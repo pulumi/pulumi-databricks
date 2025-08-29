@@ -160,38 +160,38 @@ export class SqlQuery extends pulumi.CustomResource {
         return obj['__pulumiType'] === SqlQuery.__pulumiType;
     }
 
-    public readonly createdAt!: pulumi.Output<string>;
+    declare public readonly createdAt: pulumi.Output<string>;
     /**
      * Data source ID of a SQL warehouse
      */
-    public readonly dataSourceId!: pulumi.Output<string>;
+    declare public readonly dataSourceId: pulumi.Output<string>;
     /**
      * General description that conveys additional information about this query such as usage notes.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The title of this query that appears in list views, widget headings, and on the query page.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly parameters!: pulumi.Output<outputs.SqlQueryParameter[] | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly parameters: pulumi.Output<outputs.SqlQueryParameter[] | undefined>;
     /**
      * The identifier of the workspace folder containing the object.
      */
-    public readonly parent!: pulumi.Output<string | undefined>;
+    declare public readonly parent: pulumi.Output<string | undefined>;
     /**
      * The text of the query to be run.
      */
-    public readonly query!: pulumi.Output<string>;
+    declare public readonly query: pulumi.Output<string>;
     /**
      * Run as role. Possible values are `viewer`, `owner`.
      */
-    public readonly runAsRole!: pulumi.Output<string | undefined>;
+    declare public readonly runAsRole: pulumi.Output<string | undefined>;
     /**
      * @deprecated Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`.
      */
-    public readonly schedule!: pulumi.Output<outputs.SqlQuerySchedule | undefined>;
-    public readonly tags!: pulumi.Output<string[] | undefined>;
-    public readonly updatedAt!: pulumi.Output<string>;
+    declare public readonly schedule: pulumi.Output<outputs.SqlQuerySchedule | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
+    declare public readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a SqlQuery resource with the given unique name, arguments, and options.
@@ -206,36 +206,36 @@ export class SqlQuery extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SqlQueryState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["dataSourceId"] = state ? state.dataSourceId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["query"] = state ? state.query : undefined;
-            resourceInputs["runAsRole"] = state ? state.runAsRole : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dataSourceId"] = state?.dataSourceId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["query"] = state?.query;
+            resourceInputs["runAsRole"] = state?.runAsRole;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as SqlQueryArgs | undefined;
-            if ((!args || args.dataSourceId === undefined) && !opts.urn) {
+            if (args?.dataSourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataSourceId'");
             }
-            if ((!args || args.query === undefined) && !opts.urn) {
+            if (args?.query === undefined && !opts.urn) {
                 throw new Error("Missing required property 'query'");
             }
-            resourceInputs["createdAt"] = args ? args.createdAt : undefined;
-            resourceInputs["dataSourceId"] = args ? args.dataSourceId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["query"] = args ? args.query : undefined;
-            resourceInputs["runAsRole"] = args ? args.runAsRole : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["updatedAt"] = args ? args.updatedAt : undefined;
+            resourceInputs["createdAt"] = args?.createdAt;
+            resourceInputs["dataSourceId"] = args?.dataSourceId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["query"] = args?.query;
+            resourceInputs["runAsRole"] = args?.runAsRole;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["updatedAt"] = args?.updatedAt;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SqlQuery.__pulumiType, name, resourceInputs, opts);

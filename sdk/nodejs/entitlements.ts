@@ -132,37 +132,37 @@ export class Entitlements extends pulumi.CustomResource {
     /**
      * Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      */
-    public readonly allowClusterCreate!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowClusterCreate: pulumi.Output<boolean | undefined>;
     /**
      * Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      */
-    public readonly allowInstancePoolCreate!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowInstancePoolCreate: pulumi.Output<boolean | undefined>;
     /**
      * This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      */
-    public readonly databricksSqlAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly databricksSqlAccess: pulumi.Output<boolean | undefined>;
     /**
      * Canonical unique identifier for the group.
      */
-    public readonly groupId!: pulumi.Output<string | undefined>;
+    declare public readonly groupId: pulumi.Output<string | undefined>;
     /**
      * Canonical unique identifier for the service principal.
      *
      * The following entitlements are available.
      */
-    public readonly servicePrincipalId!: pulumi.Output<string | undefined>;
+    declare public readonly servicePrincipalId: pulumi.Output<string | undefined>;
     /**
      * Canonical unique identifier for the user.
      */
-    public readonly userId!: pulumi.Output<string | undefined>;
+    declare public readonly userId: pulumi.Output<string | undefined>;
     /**
      * This is a field to allow the principal to have access to a Databricks Workspace.
      */
-    public readonly workspaceAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly workspaceAccess: pulumi.Output<boolean | undefined>;
     /**
      * This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
      */
-    public readonly workspaceConsume!: pulumi.Output<boolean | undefined>;
+    declare public readonly workspaceConsume: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Entitlements resource with the given unique name, arguments, and options.
@@ -177,24 +177,24 @@ export class Entitlements extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EntitlementsState | undefined;
-            resourceInputs["allowClusterCreate"] = state ? state.allowClusterCreate : undefined;
-            resourceInputs["allowInstancePoolCreate"] = state ? state.allowInstancePoolCreate : undefined;
-            resourceInputs["databricksSqlAccess"] = state ? state.databricksSqlAccess : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["workspaceAccess"] = state ? state.workspaceAccess : undefined;
-            resourceInputs["workspaceConsume"] = state ? state.workspaceConsume : undefined;
+            resourceInputs["allowClusterCreate"] = state?.allowClusterCreate;
+            resourceInputs["allowInstancePoolCreate"] = state?.allowInstancePoolCreate;
+            resourceInputs["databricksSqlAccess"] = state?.databricksSqlAccess;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["workspaceAccess"] = state?.workspaceAccess;
+            resourceInputs["workspaceConsume"] = state?.workspaceConsume;
         } else {
             const args = argsOrState as EntitlementsArgs | undefined;
-            resourceInputs["allowClusterCreate"] = args ? args.allowClusterCreate : undefined;
-            resourceInputs["allowInstancePoolCreate"] = args ? args.allowInstancePoolCreate : undefined;
-            resourceInputs["databricksSqlAccess"] = args ? args.databricksSqlAccess : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["servicePrincipalId"] = args ? args.servicePrincipalId : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
-            resourceInputs["workspaceAccess"] = args ? args.workspaceAccess : undefined;
-            resourceInputs["workspaceConsume"] = args ? args.workspaceConsume : undefined;
+            resourceInputs["allowClusterCreate"] = args?.allowClusterCreate;
+            resourceInputs["allowInstancePoolCreate"] = args?.allowInstancePoolCreate;
+            resourceInputs["databricksSqlAccess"] = args?.databricksSqlAccess;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["servicePrincipalId"] = args?.servicePrincipalId;
+            resourceInputs["userId"] = args?.userId;
+            resourceInputs["workspaceAccess"] = args?.workspaceAccess;
+            resourceInputs["workspaceConsume"] = args?.workspaceConsume;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Entitlements.__pulumiType, name, resourceInputs, opts);

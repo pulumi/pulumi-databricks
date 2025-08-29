@@ -115,19 +115,19 @@ export class Budget extends pulumi.CustomResource {
     /**
      * The ID of the Databricks Account.
      */
-    public readonly accountId!: pulumi.Output<string>;
-    public readonly alertConfigurations!: pulumi.Output<outputs.BudgetAlertConfiguration[] | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly alertConfigurations: pulumi.Output<outputs.BudgetAlertConfiguration[] | undefined>;
     /**
      * The ID of the budget configuration.
      */
-    public readonly budgetConfigurationId!: pulumi.Output<string>;
-    public readonly createTime!: pulumi.Output<number>;
+    declare public readonly budgetConfigurationId: pulumi.Output<string>;
+    declare public readonly createTime: pulumi.Output<number>;
     /**
      * Name of the budget in Databricks Account.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
-    public readonly filter!: pulumi.Output<outputs.BudgetFilter | undefined>;
-    public readonly updateTime!: pulumi.Output<number>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public readonly filter: pulumi.Output<outputs.BudgetFilter | undefined>;
+    declare public readonly updateTime: pulumi.Output<number>;
 
     /**
      * Create a Budget resource with the given unique name, arguments, and options.
@@ -142,22 +142,22 @@ export class Budget extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BudgetState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["alertConfigurations"] = state ? state.alertConfigurations : undefined;
-            resourceInputs["budgetConfigurationId"] = state ? state.budgetConfigurationId : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["filter"] = state ? state.filter : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["alertConfigurations"] = state?.alertConfigurations;
+            resourceInputs["budgetConfigurationId"] = state?.budgetConfigurationId;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["filter"] = state?.filter;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as BudgetArgs | undefined;
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["alertConfigurations"] = args ? args.alertConfigurations : undefined;
-            resourceInputs["budgetConfigurationId"] = args ? args.budgetConfigurationId : undefined;
-            resourceInputs["createTime"] = args ? args.createTime : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["updateTime"] = args ? args.updateTime : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["alertConfigurations"] = args?.alertConfigurations;
+            resourceInputs["budgetConfigurationId"] = args?.budgetConfigurationId;
+            resourceInputs["createTime"] = args?.createTime;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["filter"] = args?.filter;
+            resourceInputs["updateTime"] = args?.updateTime;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Budget.__pulumiType, name, resourceInputs, opts);

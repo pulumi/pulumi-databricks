@@ -128,25 +128,25 @@ export class File extends pulumi.CustomResource {
     /**
      * Contents in base 64 format. Conflicts with `source`.
      */
-    public readonly contentBase64!: pulumi.Output<string | undefined>;
+    declare public readonly contentBase64: pulumi.Output<string | undefined>;
     /**
      * The file size of the file that is being tracked by this resource in bytes.
      */
-    public /*out*/ readonly fileSize!: pulumi.Output<number>;
-    public readonly md5!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly fileSize: pulumi.Output<number>;
+    declare public readonly md5: pulumi.Output<string | undefined>;
     /**
      * The last time stamp when the file was modified
      */
-    public /*out*/ readonly modificationTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly modificationTime: pulumi.Output<string>;
     /**
      * The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
      */
-    public readonly path!: pulumi.Output<string>;
-    public readonly remoteFileModified!: pulumi.Output<boolean | undefined>;
+    declare public readonly path: pulumi.Output<string>;
+    declare public readonly remoteFileModified: pulumi.Output<boolean | undefined>;
     /**
      * The full absolute path to the file. Conflicts with `contentBase64`.
      */
-    public readonly source!: pulumi.Output<string | undefined>;
+    declare public readonly source: pulumi.Output<string | undefined>;
 
     /**
      * Create a File resource with the given unique name, arguments, and options.
@@ -161,23 +161,23 @@ export class File extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FileState | undefined;
-            resourceInputs["contentBase64"] = state ? state.contentBase64 : undefined;
-            resourceInputs["fileSize"] = state ? state.fileSize : undefined;
-            resourceInputs["md5"] = state ? state.md5 : undefined;
-            resourceInputs["modificationTime"] = state ? state.modificationTime : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["remoteFileModified"] = state ? state.remoteFileModified : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["contentBase64"] = state?.contentBase64;
+            resourceInputs["fileSize"] = state?.fileSize;
+            resourceInputs["md5"] = state?.md5;
+            resourceInputs["modificationTime"] = state?.modificationTime;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["remoteFileModified"] = state?.remoteFileModified;
+            resourceInputs["source"] = state?.source;
         } else {
             const args = argsOrState as FileArgs | undefined;
-            if ((!args || args.path === undefined) && !opts.urn) {
+            if (args?.path === undefined && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
-            resourceInputs["contentBase64"] = args ? args.contentBase64 : undefined;
-            resourceInputs["md5"] = args ? args.md5 : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["remoteFileModified"] = args ? args.remoteFileModified : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["contentBase64"] = args?.contentBase64;
+            resourceInputs["md5"] = args?.md5;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["remoteFileModified"] = args?.remoteFileModified;
+            resourceInputs["source"] = args?.source;
             resourceInputs["fileSize"] = undefined /*out*/;
             resourceInputs["modificationTime"] = undefined /*out*/;
         }

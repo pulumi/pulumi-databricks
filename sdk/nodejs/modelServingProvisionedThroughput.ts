@@ -109,31 +109,31 @@ export class ModelServingProvisionedThroughput extends pulumi.CustomResource {
     /**
      * A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
      */
-    public readonly aiGateway!: pulumi.Output<outputs.ModelServingProvisionedThroughputAiGateway | undefined>;
+    declare public readonly aiGateway: pulumi.Output<outputs.ModelServingProvisionedThroughputAiGateway | undefined>;
     /**
      * The Budget Policy ID set for this serving endpoint.
      */
-    public readonly budgetPolicyId!: pulumi.Output<string | undefined>;
+    declare public readonly budgetPolicyId: pulumi.Output<string | undefined>;
     /**
      * The model serving endpoint configuration.
      */
-    public readonly config!: pulumi.Output<outputs.ModelServingProvisionedThroughputConfig>;
+    declare public readonly config: pulumi.Output<outputs.ModelServingProvisionedThroughputConfig>;
     /**
      * A block with Email notification setting.
      */
-    public readonly emailNotifications!: pulumi.Output<outputs.ModelServingProvisionedThroughputEmailNotifications | undefined>;
+    declare public readonly emailNotifications: pulumi.Output<outputs.ModelServingProvisionedThroughputEmailNotifications | undefined>;
     /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
      */
-    public /*out*/ readonly servingEndpointId!: pulumi.Output<string>;
+    declare public /*out*/ readonly servingEndpointId: pulumi.Output<string>;
     /**
      * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
      */
-    public readonly tags!: pulumi.Output<outputs.ModelServingProvisionedThroughputTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.ModelServingProvisionedThroughputTag[] | undefined>;
 
     /**
      * Create a ModelServingProvisionedThroughput resource with the given unique name, arguments, and options.
@@ -148,24 +148,24 @@ export class ModelServingProvisionedThroughput extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ModelServingProvisionedThroughputState | undefined;
-            resourceInputs["aiGateway"] = state ? state.aiGateway : undefined;
-            resourceInputs["budgetPolicyId"] = state ? state.budgetPolicyId : undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["emailNotifications"] = state ? state.emailNotifications : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["servingEndpointId"] = state ? state.servingEndpointId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["aiGateway"] = state?.aiGateway;
+            resourceInputs["budgetPolicyId"] = state?.budgetPolicyId;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["emailNotifications"] = state?.emailNotifications;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["servingEndpointId"] = state?.servingEndpointId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ModelServingProvisionedThroughputArgs | undefined;
-            if ((!args || args.config === undefined) && !opts.urn) {
+            if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            resourceInputs["aiGateway"] = args ? args.aiGateway : undefined;
-            resourceInputs["budgetPolicyId"] = args ? args.budgetPolicyId : undefined;
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["emailNotifications"] = args ? args.emailNotifications : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["aiGateway"] = args?.aiGateway;
+            resourceInputs["budgetPolicyId"] = args?.budgetPolicyId;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["emailNotifications"] = args?.emailNotifications;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["servingEndpointId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -89,19 +89,19 @@ export class Directory extends pulumi.CustomResource {
     /**
      * Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
      */
-    public readonly deleteRecursive!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteRecursive: pulumi.Output<boolean | undefined>;
     /**
      * Unique identifier for a DIRECTORY
      */
-    public readonly objectId!: pulumi.Output<number>;
+    declare public readonly objectId: pulumi.Output<number>;
     /**
      * The absolute path of the directory, beginning with "/", e.g. "/Demo".
      */
-    public readonly path!: pulumi.Output<string>;
+    declare public readonly path: pulumi.Output<string>;
     /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      */
-    public /*out*/ readonly workspacePath!: pulumi.Output<string>;
+    declare public /*out*/ readonly workspacePath: pulumi.Output<string>;
 
     /**
      * Create a Directory resource with the given unique name, arguments, and options.
@@ -116,18 +116,18 @@ export class Directory extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DirectoryState | undefined;
-            resourceInputs["deleteRecursive"] = state ? state.deleteRecursive : undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["workspacePath"] = state ? state.workspacePath : undefined;
+            resourceInputs["deleteRecursive"] = state?.deleteRecursive;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["workspacePath"] = state?.workspacePath;
         } else {
             const args = argsOrState as DirectoryArgs | undefined;
-            if ((!args || args.path === undefined) && !opts.urn) {
+            if (args?.path === undefined && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
-            resourceInputs["deleteRecursive"] = args ? args.deleteRecursive : undefined;
-            resourceInputs["objectId"] = args ? args.objectId : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
+            resourceInputs["deleteRecursive"] = args?.deleteRecursive;
+            resourceInputs["objectId"] = args?.objectId;
+            resourceInputs["path"] = args?.path;
             resourceInputs["workspacePath"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

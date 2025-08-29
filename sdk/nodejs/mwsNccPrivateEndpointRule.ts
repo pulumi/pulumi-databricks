@@ -118,7 +118,7 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === MwsNccPrivateEndpointRule.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
      * The possible values are:
@@ -128,64 +128,64 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
      * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
      * * `EXPIRED`: If the endpoint was created but not approved in 14 days, it will be EXPIRED.
      */
-    public readonly connectionState!: pulumi.Output<string>;
+    declare public readonly connectionState: pulumi.Output<string>;
     /**
      * Time in epoch milliseconds when this object was created.
      */
-    public readonly creationTime!: pulumi.Output<number>;
+    declare public readonly creationTime: pulumi.Output<number>;
     /**
      * Whether this private endpoint is deactivated.
      */
-    public readonly deactivated!: pulumi.Output<boolean | undefined>;
+    declare public readonly deactivated: pulumi.Output<boolean | undefined>;
     /**
      * Time in epoch milliseconds when this object was deactivated.
      */
-    public readonly deactivatedAt!: pulumi.Output<number | undefined>;
+    declare public readonly deactivatedAt: pulumi.Output<number | undefined>;
     /**
      * * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `groupId`.
      * * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `resourceNames`.
      */
-    public readonly domainNames!: pulumi.Output<string[] | undefined>;
+    declare public readonly domainNames: pulumi.Output<string[] | undefined>;
     /**
      * Activation status. Only used by private endpoints towards an AWS S3 service. Update this field to activate/deactivate this private endpoint to allow egress access from serverless compute resources. Can only be updated after a private endpoint rule towards an AWS S3 service is successfully created.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
      */
-    public readonly endpointName!: pulumi.Output<string>;
+    declare public readonly endpointName: pulumi.Output<string>;
     /**
      * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
      */
-    public readonly endpointService!: pulumi.Output<string | undefined>;
+    declare public readonly endpointService: pulumi.Output<string | undefined>;
     /**
      * Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domainNames`.
      */
-    public readonly groupId!: pulumi.Output<string | undefined>;
+    declare public readonly groupId: pulumi.Output<string | undefined>;
     /**
      * Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
      */
-    public readonly networkConnectivityConfigId!: pulumi.Output<string>;
+    declare public readonly networkConnectivityConfigId: pulumi.Output<string>;
     /**
      * The Azure resource ID of the target resource. Change forces creation of a new resource.
      */
-    public readonly resourceId!: pulumi.Output<string | undefined>;
+    declare public readonly resourceId: pulumi.Output<string | undefined>;
     /**
      * Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domainNames`.
      */
-    public readonly resourceNames!: pulumi.Output<string[] | undefined>;
+    declare public readonly resourceNames: pulumi.Output<string[] | undefined>;
     /**
      * the ID of a private endpoint rule.
      */
-    public readonly ruleId!: pulumi.Output<string>;
+    declare public readonly ruleId: pulumi.Output<string>;
     /**
      * Time in epoch milliseconds when this object was updated.
      */
-    public readonly updatedTime!: pulumi.Output<number>;
+    declare public readonly updatedTime: pulumi.Output<number>;
     /**
      * The AWS VPC endpoint ID. You can use this ID to identify the VPC endpoint created by Databricks.
      */
-    public readonly vpcEndpointId!: pulumi.Output<string>;
+    declare public readonly vpcEndpointId: pulumi.Output<string>;
 
     /**
      * Create a MwsNccPrivateEndpointRule resource with the given unique name, arguments, and options.
@@ -200,43 +200,43 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MwsNccPrivateEndpointRuleState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["connectionState"] = state ? state.connectionState : undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["deactivated"] = state ? state.deactivated : undefined;
-            resourceInputs["deactivatedAt"] = state ? state.deactivatedAt : undefined;
-            resourceInputs["domainNames"] = state ? state.domainNames : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["endpointName"] = state ? state.endpointName : undefined;
-            resourceInputs["endpointService"] = state ? state.endpointService : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["networkConnectivityConfigId"] = state ? state.networkConnectivityConfigId : undefined;
-            resourceInputs["resourceId"] = state ? state.resourceId : undefined;
-            resourceInputs["resourceNames"] = state ? state.resourceNames : undefined;
-            resourceInputs["ruleId"] = state ? state.ruleId : undefined;
-            resourceInputs["updatedTime"] = state ? state.updatedTime : undefined;
-            resourceInputs["vpcEndpointId"] = state ? state.vpcEndpointId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["connectionState"] = state?.connectionState;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["deactivated"] = state?.deactivated;
+            resourceInputs["deactivatedAt"] = state?.deactivatedAt;
+            resourceInputs["domainNames"] = state?.domainNames;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["endpointName"] = state?.endpointName;
+            resourceInputs["endpointService"] = state?.endpointService;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["networkConnectivityConfigId"] = state?.networkConnectivityConfigId;
+            resourceInputs["resourceId"] = state?.resourceId;
+            resourceInputs["resourceNames"] = state?.resourceNames;
+            resourceInputs["ruleId"] = state?.ruleId;
+            resourceInputs["updatedTime"] = state?.updatedTime;
+            resourceInputs["vpcEndpointId"] = state?.vpcEndpointId;
         } else {
             const args = argsOrState as MwsNccPrivateEndpointRuleArgs | undefined;
-            if ((!args || args.networkConnectivityConfigId === undefined) && !opts.urn) {
+            if (args?.networkConnectivityConfigId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkConnectivityConfigId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["connectionState"] = args ? args.connectionState : undefined;
-            resourceInputs["creationTime"] = args ? args.creationTime : undefined;
-            resourceInputs["deactivated"] = args ? args.deactivated : undefined;
-            resourceInputs["deactivatedAt"] = args ? args.deactivatedAt : undefined;
-            resourceInputs["domainNames"] = args ? args.domainNames : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["endpointName"] = args ? args.endpointName : undefined;
-            resourceInputs["endpointService"] = args ? args.endpointService : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["networkConnectivityConfigId"] = args ? args.networkConnectivityConfigId : undefined;
-            resourceInputs["resourceId"] = args ? args.resourceId : undefined;
-            resourceInputs["resourceNames"] = args ? args.resourceNames : undefined;
-            resourceInputs["ruleId"] = args ? args.ruleId : undefined;
-            resourceInputs["updatedTime"] = args ? args.updatedTime : undefined;
-            resourceInputs["vpcEndpointId"] = args ? args.vpcEndpointId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["connectionState"] = args?.connectionState;
+            resourceInputs["creationTime"] = args?.creationTime;
+            resourceInputs["deactivated"] = args?.deactivated;
+            resourceInputs["deactivatedAt"] = args?.deactivatedAt;
+            resourceInputs["domainNames"] = args?.domainNames;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["endpointName"] = args?.endpointName;
+            resourceInputs["endpointService"] = args?.endpointService;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["networkConnectivityConfigId"] = args?.networkConnectivityConfigId;
+            resourceInputs["resourceId"] = args?.resourceId;
+            resourceInputs["resourceNames"] = args?.resourceNames;
+            resourceInputs["ruleId"] = args?.ruleId;
+            resourceInputs["updatedTime"] = args?.updatedTime;
+            resourceInputs["vpcEndpointId"] = args?.vpcEndpointId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MwsNccPrivateEndpointRule.__pulumiType, name, resourceInputs, opts);

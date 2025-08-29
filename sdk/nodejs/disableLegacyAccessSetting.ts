@@ -71,9 +71,9 @@ export class DisableLegacyAccessSetting extends pulumi.CustomResource {
     /**
      * The configuration details.
      */
-    public readonly disableLegacyAccess!: pulumi.Output<outputs.DisableLegacyAccessSettingDisableLegacyAccess>;
-    public readonly etag!: pulumi.Output<string>;
-    public readonly settingName!: pulumi.Output<string>;
+    declare public readonly disableLegacyAccess: pulumi.Output<outputs.DisableLegacyAccessSettingDisableLegacyAccess>;
+    declare public readonly etag: pulumi.Output<string>;
+    declare public readonly settingName: pulumi.Output<string>;
 
     /**
      * Create a DisableLegacyAccessSetting resource with the given unique name, arguments, and options.
@@ -88,17 +88,17 @@ export class DisableLegacyAccessSetting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DisableLegacyAccessSettingState | undefined;
-            resourceInputs["disableLegacyAccess"] = state ? state.disableLegacyAccess : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["settingName"] = state ? state.settingName : undefined;
+            resourceInputs["disableLegacyAccess"] = state?.disableLegacyAccess;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as DisableLegacyAccessSettingArgs | undefined;
-            if ((!args || args.disableLegacyAccess === undefined) && !opts.urn) {
+            if (args?.disableLegacyAccess === undefined && !opts.urn) {
                 throw new Error("Missing required property 'disableLegacyAccess'");
             }
-            resourceInputs["disableLegacyAccess"] = args ? args.disableLegacyAccess : undefined;
-            resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["settingName"] = args ? args.settingName : undefined;
+            resourceInputs["disableLegacyAccess"] = args?.disableLegacyAccess;
+            resourceInputs["etag"] = args?.etag;
+            resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DisableLegacyAccessSetting.__pulumiType, name, resourceInputs, opts);

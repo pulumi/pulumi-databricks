@@ -86,11 +86,11 @@ export class ServicePrincipalRole extends pulumi.CustomResource {
     /**
      * This is the role name, role id, or instance profile resource.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
     /**
      * This is the id of the service principal resource.
      */
-    public readonly servicePrincipalId!: pulumi.Output<string>;
+    declare public readonly servicePrincipalId: pulumi.Output<string>;
 
     /**
      * Create a ServicePrincipalRole resource with the given unique name, arguments, and options.
@@ -105,18 +105,18 @@ export class ServicePrincipalRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePrincipalRoleState | undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
         } else {
             const args = argsOrState as ServicePrincipalRoleArgs | undefined;
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.servicePrincipalId === undefined) && !opts.urn) {
+            if (args?.servicePrincipalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'servicePrincipalId'");
             }
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["servicePrincipalId"] = args ? args.servicePrincipalId : undefined;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["servicePrincipalId"] = args?.servicePrincipalId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServicePrincipalRole.__pulumiType, name, resourceInputs, opts);

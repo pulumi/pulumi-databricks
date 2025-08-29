@@ -78,12 +78,12 @@ export class DefaultNamespaceSetting extends pulumi.CustomResource {
         return obj['__pulumiType'] === DefaultNamespaceSetting.__pulumiType;
     }
 
-    public readonly etag!: pulumi.Output<string>;
+    declare public readonly etag: pulumi.Output<string>;
     /**
      * The configuration details.
      */
-    public readonly namespace!: pulumi.Output<outputs.DefaultNamespaceSettingNamespace>;
-    public readonly settingName!: pulumi.Output<string>;
+    declare public readonly namespace: pulumi.Output<outputs.DefaultNamespaceSettingNamespace>;
+    declare public readonly settingName: pulumi.Output<string>;
 
     /**
      * Create a DefaultNamespaceSetting resource with the given unique name, arguments, and options.
@@ -98,17 +98,17 @@ export class DefaultNamespaceSetting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DefaultNamespaceSettingState | undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["settingName"] = state ? state.settingName : undefined;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as DefaultNamespaceSettingArgs | undefined;
-            if ((!args || args.namespace === undefined) && !opts.urn) {
+            if (args?.namespace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["settingName"] = args ? args.settingName : undefined;
+            resourceInputs["etag"] = args?.etag;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DefaultNamespaceSetting.__pulumiType, name, resourceInputs, opts);

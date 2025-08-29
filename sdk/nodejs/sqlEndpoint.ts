@@ -99,82 +99,82 @@ export class SqlEndpoint extends pulumi.CustomResource {
     /**
      * Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
      */
-    public readonly autoStopMins!: pulumi.Output<number | undefined>;
+    declare public readonly autoStopMins: pulumi.Output<number | undefined>;
     /**
      * block, consisting of following fields:
      */
-    public readonly channel!: pulumi.Output<outputs.SqlEndpointChannel | undefined>;
+    declare public readonly channel: pulumi.Output<outputs.SqlEndpointChannel | undefined>;
     /**
      * The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
      */
-    public readonly clusterSize!: pulumi.Output<string>;
+    declare public readonly clusterSize: pulumi.Output<string>;
     /**
      * The username of the user who created the endpoint.
      */
-    public /*out*/ readonly creatorName!: pulumi.Output<string>;
+    declare public /*out*/ readonly creatorName: pulumi.Output<string>;
     /**
      * (Deprecated) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
      */
-    public readonly dataSourceId!: pulumi.Output<string>;
+    declare public readonly dataSourceId: pulumi.Output<string>;
     /**
      * Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
      */
-    public readonly enablePhoton!: pulumi.Output<boolean | undefined>;
+    declare public readonly enablePhoton: pulumi.Output<boolean | undefined>;
     /**
      * Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
      *
      * * If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023 (between November 1, 2022 and May 19, 2023 for Azure), the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements).
      */
-    public readonly enableServerlessCompute!: pulumi.Output<boolean>;
+    declare public readonly enableServerlessCompute: pulumi.Output<boolean>;
     /**
      * Health status of the endpoint.
      */
-    public /*out*/ readonly healths!: pulumi.Output<outputs.SqlEndpointHealth[]>;
-    public readonly instanceProfileArn!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly healths: pulumi.Output<outputs.SqlEndpointHealth[]>;
+    declare public readonly instanceProfileArn: pulumi.Output<string | undefined>;
     /**
      * JDBC connection string.
      */
-    public /*out*/ readonly jdbcUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly jdbcUrl: pulumi.Output<string>;
     /**
      * Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
      */
-    public readonly maxNumClusters!: pulumi.Output<number | undefined>;
+    declare public readonly maxNumClusters: pulumi.Output<number | undefined>;
     /**
      * Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
      */
-    public readonly minNumClusters!: pulumi.Output<number | undefined>;
+    declare public readonly minNumClusters: pulumi.Output<number | undefined>;
     /**
      * Name of the SQL warehouse. Must be unique.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The current number of clusters used by the endpoint.
      */
-    public /*out*/ readonly numActiveSessions!: pulumi.Output<number>;
+    declare public /*out*/ readonly numActiveSessions: pulumi.Output<number>;
     /**
      * The current number of clusters used by the endpoint.
      */
-    public /*out*/ readonly numClusters!: pulumi.Output<number>;
+    declare public /*out*/ readonly numClusters: pulumi.Output<number>;
     /**
      * ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
      */
-    public /*out*/ readonly odbcParams!: pulumi.Output<outputs.SqlEndpointOdbcParams>;
+    declare public /*out*/ readonly odbcParams: pulumi.Output<outputs.SqlEndpointOdbcParams>;
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
      */
-    public readonly spotInstancePolicy!: pulumi.Output<string | undefined>;
+    declare public readonly spotInstancePolicy: pulumi.Output<string | undefined>;
     /**
      * The current state of the endpoint.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Databricks tags all endpoint resources with these tags.
      */
-    public readonly tags!: pulumi.Output<outputs.SqlEndpointTags | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.SqlEndpointTags | undefined>;
     /**
      * SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
      */
-    public readonly warehouseType!: pulumi.Output<string | undefined>;
+    declare public readonly warehouseType: pulumi.Output<string | undefined>;
 
     /**
      * Create a SqlEndpoint resource with the given unique name, arguments, and options.
@@ -189,44 +189,44 @@ export class SqlEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SqlEndpointState | undefined;
-            resourceInputs["autoStopMins"] = state ? state.autoStopMins : undefined;
-            resourceInputs["channel"] = state ? state.channel : undefined;
-            resourceInputs["clusterSize"] = state ? state.clusterSize : undefined;
-            resourceInputs["creatorName"] = state ? state.creatorName : undefined;
-            resourceInputs["dataSourceId"] = state ? state.dataSourceId : undefined;
-            resourceInputs["enablePhoton"] = state ? state.enablePhoton : undefined;
-            resourceInputs["enableServerlessCompute"] = state ? state.enableServerlessCompute : undefined;
-            resourceInputs["healths"] = state ? state.healths : undefined;
-            resourceInputs["instanceProfileArn"] = state ? state.instanceProfileArn : undefined;
-            resourceInputs["jdbcUrl"] = state ? state.jdbcUrl : undefined;
-            resourceInputs["maxNumClusters"] = state ? state.maxNumClusters : undefined;
-            resourceInputs["minNumClusters"] = state ? state.minNumClusters : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["numActiveSessions"] = state ? state.numActiveSessions : undefined;
-            resourceInputs["numClusters"] = state ? state.numClusters : undefined;
-            resourceInputs["odbcParams"] = state ? state.odbcParams : undefined;
-            resourceInputs["spotInstancePolicy"] = state ? state.spotInstancePolicy : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["warehouseType"] = state ? state.warehouseType : undefined;
+            resourceInputs["autoStopMins"] = state?.autoStopMins;
+            resourceInputs["channel"] = state?.channel;
+            resourceInputs["clusterSize"] = state?.clusterSize;
+            resourceInputs["creatorName"] = state?.creatorName;
+            resourceInputs["dataSourceId"] = state?.dataSourceId;
+            resourceInputs["enablePhoton"] = state?.enablePhoton;
+            resourceInputs["enableServerlessCompute"] = state?.enableServerlessCompute;
+            resourceInputs["healths"] = state?.healths;
+            resourceInputs["instanceProfileArn"] = state?.instanceProfileArn;
+            resourceInputs["jdbcUrl"] = state?.jdbcUrl;
+            resourceInputs["maxNumClusters"] = state?.maxNumClusters;
+            resourceInputs["minNumClusters"] = state?.minNumClusters;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["numActiveSessions"] = state?.numActiveSessions;
+            resourceInputs["numClusters"] = state?.numClusters;
+            resourceInputs["odbcParams"] = state?.odbcParams;
+            resourceInputs["spotInstancePolicy"] = state?.spotInstancePolicy;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["warehouseType"] = state?.warehouseType;
         } else {
             const args = argsOrState as SqlEndpointArgs | undefined;
-            if ((!args || args.clusterSize === undefined) && !opts.urn) {
+            if (args?.clusterSize === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterSize'");
             }
-            resourceInputs["autoStopMins"] = args ? args.autoStopMins : undefined;
-            resourceInputs["channel"] = args ? args.channel : undefined;
-            resourceInputs["clusterSize"] = args ? args.clusterSize : undefined;
-            resourceInputs["dataSourceId"] = args ? args.dataSourceId : undefined;
-            resourceInputs["enablePhoton"] = args ? args.enablePhoton : undefined;
-            resourceInputs["enableServerlessCompute"] = args ? args.enableServerlessCompute : undefined;
-            resourceInputs["instanceProfileArn"] = args ? args.instanceProfileArn : undefined;
-            resourceInputs["maxNumClusters"] = args ? args.maxNumClusters : undefined;
-            resourceInputs["minNumClusters"] = args ? args.minNumClusters : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["spotInstancePolicy"] = args ? args.spotInstancePolicy : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["warehouseType"] = args ? args.warehouseType : undefined;
+            resourceInputs["autoStopMins"] = args?.autoStopMins;
+            resourceInputs["channel"] = args?.channel;
+            resourceInputs["clusterSize"] = args?.clusterSize;
+            resourceInputs["dataSourceId"] = args?.dataSourceId;
+            resourceInputs["enablePhoton"] = args?.enablePhoton;
+            resourceInputs["enableServerlessCompute"] = args?.enableServerlessCompute;
+            resourceInputs["instanceProfileArn"] = args?.instanceProfileArn;
+            resourceInputs["maxNumClusters"] = args?.maxNumClusters;
+            resourceInputs["minNumClusters"] = args?.minNumClusters;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["spotInstancePolicy"] = args?.spotInstancePolicy;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["warehouseType"] = args?.warehouseType;
             resourceInputs["creatorName"] = undefined /*out*/;
             resourceInputs["healths"] = undefined /*out*/;
             resourceInputs["jdbcUrl"] = undefined /*out*/;

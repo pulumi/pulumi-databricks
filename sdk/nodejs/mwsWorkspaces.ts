@@ -290,106 +290,106 @@ export class MwsWorkspaces extends pulumi.CustomResource {
     /**
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * region of VPC.
      */
-    public readonly awsRegion!: pulumi.Output<string | undefined>;
-    public readonly cloud!: pulumi.Output<string>;
+    declare public readonly awsRegion: pulumi.Output<string | undefined>;
+    declare public readonly cloud: pulumi.Output<string>;
     /**
      * A block that specifies GCP workspace configurations, consisting of following blocks:
      */
-    public readonly cloudResourceContainer!: pulumi.Output<outputs.MwsWorkspacesCloudResourceContainer | undefined>;
+    declare public readonly cloudResourceContainer: pulumi.Output<outputs.MwsWorkspacesCloudResourceContainer | undefined>;
     /**
      * The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
      *
      * > Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
      */
-    public readonly computeMode!: pulumi.Output<string | undefined>;
+    declare public readonly computeMode: pulumi.Output<string | undefined>;
     /**
      * (Integer) time when workspace was created
      */
-    public readonly creationTime!: pulumi.Output<number>;
+    declare public readonly creationTime: pulumi.Output<number>;
     /**
      * `credentialsId` from credentials. This must not be specified when `computeMode` is set to `SERVERLESS`.
      */
-    public readonly credentialsId!: pulumi.Output<string | undefined>;
+    declare public readonly credentialsId: pulumi.Output<string | undefined>;
     /**
      * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
      */
-    public readonly customTags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly customTags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * @deprecated Use managedServicesCustomerManagedKeyId instead
      */
-    public readonly customerManagedKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly customerManagedKeyId: pulumi.Output<string | undefined>;
     /**
      * part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
      */
-    public readonly deploymentName!: pulumi.Output<string | undefined>;
+    declare public readonly deploymentName: pulumi.Output<string | undefined>;
     /**
      * (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
      */
-    public /*out*/ readonly effectiveComputeMode!: pulumi.Output<string>;
-    public readonly externalCustomerInfo!: pulumi.Output<outputs.MwsWorkspacesExternalCustomerInfo | undefined>;
-    public readonly gcpManagedNetworkConfig!: pulumi.Output<outputs.MwsWorkspacesGcpManagedNetworkConfig | undefined>;
+    declare public /*out*/ readonly effectiveComputeMode: pulumi.Output<string>;
+    declare public readonly externalCustomerInfo: pulumi.Output<outputs.MwsWorkspacesExternalCustomerInfo | undefined>;
+    declare public readonly gcpManagedNetworkConfig: pulumi.Output<outputs.MwsWorkspacesGcpManagedNetworkConfig | undefined>;
     /**
      * (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
      */
-    public /*out*/ readonly gcpWorkspaceSa!: pulumi.Output<string>;
+    declare public /*out*/ readonly gcpWorkspaceSa: pulumi.Output<string>;
     /**
      * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.87.1/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
-    public readonly gkeConfig!: pulumi.Output<outputs.MwsWorkspacesGkeConfig | undefined>;
-    public readonly isNoPublicIpEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly gkeConfig: pulumi.Output<outputs.MwsWorkspacesGkeConfig | undefined>;
+    declare public readonly isNoPublicIpEnabled: pulumi.Output<boolean | undefined>;
     /**
      * region of the subnet.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    declare public readonly location: pulumi.Output<string | undefined>;
     /**
      * `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
      */
-    public readonly managedServicesCustomerManagedKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly managedServicesCustomerManagedKeyId: pulumi.Output<string | undefined>;
     /**
      * `networkId` from networks.
      */
-    public readonly networkId!: pulumi.Output<string | undefined>;
+    declare public readonly networkId: pulumi.Output<string | undefined>;
     /**
      * The pricing tier of the workspace.
      */
-    public readonly pricingTier!: pulumi.Output<string>;
+    declare public readonly pricingTier: pulumi.Output<string>;
     /**
      * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
      */
-    public readonly privateAccessSettingsId!: pulumi.Output<string | undefined>;
+    declare public readonly privateAccessSettingsId: pulumi.Output<string | undefined>;
     /**
      * `storageConfigurationId` from storage configuration. This must not be specified when `computeMode` is set to `SERVERLESS`.
      */
-    public readonly storageConfigurationId!: pulumi.Output<string | undefined>;
+    declare public readonly storageConfigurationId: pulumi.Output<string | undefined>;
     /**
      * `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
      */
-    public readonly storageCustomerManagedKeyId!: pulumi.Output<string | undefined>;
-    public readonly token!: pulumi.Output<outputs.MwsWorkspacesToken | undefined>;
+    declare public readonly storageCustomerManagedKeyId: pulumi.Output<string | undefined>;
+    declare public readonly token: pulumi.Output<outputs.MwsWorkspacesToken | undefined>;
     /**
      * (String) workspace id
      */
-    public readonly workspaceId!: pulumi.Output<string>;
+    declare public readonly workspaceId: pulumi.Output<string>;
     /**
      * name of the workspace, will appear on UI.
      */
-    public readonly workspaceName!: pulumi.Output<string>;
+    declare public readonly workspaceName: pulumi.Output<string>;
     /**
      * (String) workspace status
      */
-    public readonly workspaceStatus!: pulumi.Output<string>;
+    declare public readonly workspaceStatus: pulumi.Output<string>;
     /**
      * (String) updates on workspace status
      */
-    public readonly workspaceStatusMessage!: pulumi.Output<string>;
+    declare public readonly workspaceStatusMessage: pulumi.Output<string>;
     /**
      * (String) URL of the workspace
      */
-    public readonly workspaceUrl!: pulumi.Output<string>;
+    declare public readonly workspaceUrl: pulumi.Output<string>;
 
     /**
      * Create a MwsWorkspaces resource with the given unique name, arguments, and options.
@@ -404,70 +404,70 @@ export class MwsWorkspaces extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MwsWorkspacesState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["awsRegion"] = state ? state.awsRegion : undefined;
-            resourceInputs["cloud"] = state ? state.cloud : undefined;
-            resourceInputs["cloudResourceContainer"] = state ? state.cloudResourceContainer : undefined;
-            resourceInputs["computeMode"] = state ? state.computeMode : undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["credentialsId"] = state ? state.credentialsId : undefined;
-            resourceInputs["customTags"] = state ? state.customTags : undefined;
-            resourceInputs["customerManagedKeyId"] = state ? state.customerManagedKeyId : undefined;
-            resourceInputs["deploymentName"] = state ? state.deploymentName : undefined;
-            resourceInputs["effectiveComputeMode"] = state ? state.effectiveComputeMode : undefined;
-            resourceInputs["externalCustomerInfo"] = state ? state.externalCustomerInfo : undefined;
-            resourceInputs["gcpManagedNetworkConfig"] = state ? state.gcpManagedNetworkConfig : undefined;
-            resourceInputs["gcpWorkspaceSa"] = state ? state.gcpWorkspaceSa : undefined;
-            resourceInputs["gkeConfig"] = state ? state.gkeConfig : undefined;
-            resourceInputs["isNoPublicIpEnabled"] = state ? state.isNoPublicIpEnabled : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["managedServicesCustomerManagedKeyId"] = state ? state.managedServicesCustomerManagedKeyId : undefined;
-            resourceInputs["networkId"] = state ? state.networkId : undefined;
-            resourceInputs["pricingTier"] = state ? state.pricingTier : undefined;
-            resourceInputs["privateAccessSettingsId"] = state ? state.privateAccessSettingsId : undefined;
-            resourceInputs["storageConfigurationId"] = state ? state.storageConfigurationId : undefined;
-            resourceInputs["storageCustomerManagedKeyId"] = state ? state.storageCustomerManagedKeyId : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["workspaceId"] = state ? state.workspaceId : undefined;
-            resourceInputs["workspaceName"] = state ? state.workspaceName : undefined;
-            resourceInputs["workspaceStatus"] = state ? state.workspaceStatus : undefined;
-            resourceInputs["workspaceStatusMessage"] = state ? state.workspaceStatusMessage : undefined;
-            resourceInputs["workspaceUrl"] = state ? state.workspaceUrl : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["awsRegion"] = state?.awsRegion;
+            resourceInputs["cloud"] = state?.cloud;
+            resourceInputs["cloudResourceContainer"] = state?.cloudResourceContainer;
+            resourceInputs["computeMode"] = state?.computeMode;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["credentialsId"] = state?.credentialsId;
+            resourceInputs["customTags"] = state?.customTags;
+            resourceInputs["customerManagedKeyId"] = state?.customerManagedKeyId;
+            resourceInputs["deploymentName"] = state?.deploymentName;
+            resourceInputs["effectiveComputeMode"] = state?.effectiveComputeMode;
+            resourceInputs["externalCustomerInfo"] = state?.externalCustomerInfo;
+            resourceInputs["gcpManagedNetworkConfig"] = state?.gcpManagedNetworkConfig;
+            resourceInputs["gcpWorkspaceSa"] = state?.gcpWorkspaceSa;
+            resourceInputs["gkeConfig"] = state?.gkeConfig;
+            resourceInputs["isNoPublicIpEnabled"] = state?.isNoPublicIpEnabled;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["managedServicesCustomerManagedKeyId"] = state?.managedServicesCustomerManagedKeyId;
+            resourceInputs["networkId"] = state?.networkId;
+            resourceInputs["pricingTier"] = state?.pricingTier;
+            resourceInputs["privateAccessSettingsId"] = state?.privateAccessSettingsId;
+            resourceInputs["storageConfigurationId"] = state?.storageConfigurationId;
+            resourceInputs["storageCustomerManagedKeyId"] = state?.storageCustomerManagedKeyId;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["workspaceId"] = state?.workspaceId;
+            resourceInputs["workspaceName"] = state?.workspaceName;
+            resourceInputs["workspaceStatus"] = state?.workspaceStatus;
+            resourceInputs["workspaceStatusMessage"] = state?.workspaceStatusMessage;
+            resourceInputs["workspaceUrl"] = state?.workspaceUrl;
         } else {
             const args = argsOrState as MwsWorkspacesArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.workspaceName === undefined) && !opts.urn) {
+            if (args?.workspaceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
             resourceInputs["accountId"] = args?.accountId ? pulumi.secret(args.accountId) : undefined;
-            resourceInputs["awsRegion"] = args ? args.awsRegion : undefined;
-            resourceInputs["cloud"] = args ? args.cloud : undefined;
-            resourceInputs["cloudResourceContainer"] = args ? args.cloudResourceContainer : undefined;
-            resourceInputs["computeMode"] = args ? args.computeMode : undefined;
-            resourceInputs["creationTime"] = args ? args.creationTime : undefined;
-            resourceInputs["credentialsId"] = args ? args.credentialsId : undefined;
-            resourceInputs["customTags"] = args ? args.customTags : undefined;
-            resourceInputs["customerManagedKeyId"] = args ? args.customerManagedKeyId : undefined;
-            resourceInputs["deploymentName"] = args ? args.deploymentName : undefined;
-            resourceInputs["externalCustomerInfo"] = args ? args.externalCustomerInfo : undefined;
-            resourceInputs["gcpManagedNetworkConfig"] = args ? args.gcpManagedNetworkConfig : undefined;
-            resourceInputs["gkeConfig"] = args ? args.gkeConfig : undefined;
-            resourceInputs["isNoPublicIpEnabled"] = args ? args.isNoPublicIpEnabled : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["managedServicesCustomerManagedKeyId"] = args ? args.managedServicesCustomerManagedKeyId : undefined;
-            resourceInputs["networkId"] = args ? args.networkId : undefined;
-            resourceInputs["pricingTier"] = args ? args.pricingTier : undefined;
-            resourceInputs["privateAccessSettingsId"] = args ? args.privateAccessSettingsId : undefined;
-            resourceInputs["storageConfigurationId"] = args ? args.storageConfigurationId : undefined;
-            resourceInputs["storageCustomerManagedKeyId"] = args ? args.storageCustomerManagedKeyId : undefined;
-            resourceInputs["token"] = args ? args.token : undefined;
-            resourceInputs["workspaceId"] = args ? args.workspaceId : undefined;
-            resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
-            resourceInputs["workspaceStatus"] = args ? args.workspaceStatus : undefined;
-            resourceInputs["workspaceStatusMessage"] = args ? args.workspaceStatusMessage : undefined;
-            resourceInputs["workspaceUrl"] = args ? args.workspaceUrl : undefined;
+            resourceInputs["awsRegion"] = args?.awsRegion;
+            resourceInputs["cloud"] = args?.cloud;
+            resourceInputs["cloudResourceContainer"] = args?.cloudResourceContainer;
+            resourceInputs["computeMode"] = args?.computeMode;
+            resourceInputs["creationTime"] = args?.creationTime;
+            resourceInputs["credentialsId"] = args?.credentialsId;
+            resourceInputs["customTags"] = args?.customTags;
+            resourceInputs["customerManagedKeyId"] = args?.customerManagedKeyId;
+            resourceInputs["deploymentName"] = args?.deploymentName;
+            resourceInputs["externalCustomerInfo"] = args?.externalCustomerInfo;
+            resourceInputs["gcpManagedNetworkConfig"] = args?.gcpManagedNetworkConfig;
+            resourceInputs["gkeConfig"] = args?.gkeConfig;
+            resourceInputs["isNoPublicIpEnabled"] = args?.isNoPublicIpEnabled;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["managedServicesCustomerManagedKeyId"] = args?.managedServicesCustomerManagedKeyId;
+            resourceInputs["networkId"] = args?.networkId;
+            resourceInputs["pricingTier"] = args?.pricingTier;
+            resourceInputs["privateAccessSettingsId"] = args?.privateAccessSettingsId;
+            resourceInputs["storageConfigurationId"] = args?.storageConfigurationId;
+            resourceInputs["storageCustomerManagedKeyId"] = args?.storageCustomerManagedKeyId;
+            resourceInputs["token"] = args?.token;
+            resourceInputs["workspaceId"] = args?.workspaceId;
+            resourceInputs["workspaceName"] = args?.workspaceName;
+            resourceInputs["workspaceStatus"] = args?.workspaceStatus;
+            resourceInputs["workspaceStatusMessage"] = args?.workspaceStatusMessage;
+            resourceInputs["workspaceUrl"] = args?.workspaceUrl;
             resourceInputs["effectiveComputeMode"] = undefined /*out*/;
             resourceInputs["gcpWorkspaceSa"] = undefined /*out*/;
         }

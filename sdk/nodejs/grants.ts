@@ -510,21 +510,21 @@ export class Grants extends pulumi.CustomResource {
         return obj['__pulumiType'] === Grants.__pulumiType;
     }
 
-    public readonly catalog!: pulumi.Output<string | undefined>;
-    public readonly credential!: pulumi.Output<string | undefined>;
-    public readonly externalLocation!: pulumi.Output<string | undefined>;
-    public readonly foreignConnection!: pulumi.Output<string | undefined>;
-    public readonly function!: pulumi.Output<string | undefined>;
-    public readonly grants!: pulumi.Output<outputs.GrantsGrant[]>;
-    public readonly metastore!: pulumi.Output<string | undefined>;
-    public readonly model!: pulumi.Output<string | undefined>;
-    public readonly pipeline!: pulumi.Output<string | undefined>;
-    public readonly recipient!: pulumi.Output<string | undefined>;
-    public readonly schema!: pulumi.Output<string | undefined>;
-    public readonly share!: pulumi.Output<string | undefined>;
-    public readonly storageCredential!: pulumi.Output<string | undefined>;
-    public readonly table!: pulumi.Output<string | undefined>;
-    public readonly volume!: pulumi.Output<string | undefined>;
+    declare public readonly catalog: pulumi.Output<string | undefined>;
+    declare public readonly credential: pulumi.Output<string | undefined>;
+    declare public readonly externalLocation: pulumi.Output<string | undefined>;
+    declare public readonly foreignConnection: pulumi.Output<string | undefined>;
+    declare public readonly function: pulumi.Output<string | undefined>;
+    declare public readonly grants: pulumi.Output<outputs.GrantsGrant[]>;
+    declare public readonly metastore: pulumi.Output<string | undefined>;
+    declare public readonly model: pulumi.Output<string | undefined>;
+    declare public readonly pipeline: pulumi.Output<string | undefined>;
+    declare public readonly recipient: pulumi.Output<string | undefined>;
+    declare public readonly schema: pulumi.Output<string | undefined>;
+    declare public readonly share: pulumi.Output<string | undefined>;
+    declare public readonly storageCredential: pulumi.Output<string | undefined>;
+    declare public readonly table: pulumi.Output<string | undefined>;
+    declare public readonly volume: pulumi.Output<string | undefined>;
 
     /**
      * Create a Grants resource with the given unique name, arguments, and options.
@@ -539,41 +539,41 @@ export class Grants extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GrantsState | undefined;
-            resourceInputs["catalog"] = state ? state.catalog : undefined;
-            resourceInputs["credential"] = state ? state.credential : undefined;
-            resourceInputs["externalLocation"] = state ? state.externalLocation : undefined;
-            resourceInputs["foreignConnection"] = state ? state.foreignConnection : undefined;
-            resourceInputs["function"] = state ? state.function : undefined;
-            resourceInputs["grants"] = state ? state.grants : undefined;
-            resourceInputs["metastore"] = state ? state.metastore : undefined;
-            resourceInputs["model"] = state ? state.model : undefined;
-            resourceInputs["pipeline"] = state ? state.pipeline : undefined;
-            resourceInputs["recipient"] = state ? state.recipient : undefined;
-            resourceInputs["schema"] = state ? state.schema : undefined;
-            resourceInputs["share"] = state ? state.share : undefined;
-            resourceInputs["storageCredential"] = state ? state.storageCredential : undefined;
-            resourceInputs["table"] = state ? state.table : undefined;
-            resourceInputs["volume"] = state ? state.volume : undefined;
+            resourceInputs["catalog"] = state?.catalog;
+            resourceInputs["credential"] = state?.credential;
+            resourceInputs["externalLocation"] = state?.externalLocation;
+            resourceInputs["foreignConnection"] = state?.foreignConnection;
+            resourceInputs["function"] = state?.function;
+            resourceInputs["grants"] = state?.grants;
+            resourceInputs["metastore"] = state?.metastore;
+            resourceInputs["model"] = state?.model;
+            resourceInputs["pipeline"] = state?.pipeline;
+            resourceInputs["recipient"] = state?.recipient;
+            resourceInputs["schema"] = state?.schema;
+            resourceInputs["share"] = state?.share;
+            resourceInputs["storageCredential"] = state?.storageCredential;
+            resourceInputs["table"] = state?.table;
+            resourceInputs["volume"] = state?.volume;
         } else {
             const args = argsOrState as GrantsArgs | undefined;
-            if ((!args || args.grants === undefined) && !opts.urn) {
+            if (args?.grants === undefined && !opts.urn) {
                 throw new Error("Missing required property 'grants'");
             }
-            resourceInputs["catalog"] = args ? args.catalog : undefined;
-            resourceInputs["credential"] = args ? args.credential : undefined;
-            resourceInputs["externalLocation"] = args ? args.externalLocation : undefined;
-            resourceInputs["foreignConnection"] = args ? args.foreignConnection : undefined;
-            resourceInputs["function"] = args ? args.function : undefined;
-            resourceInputs["grants"] = args ? args.grants : undefined;
-            resourceInputs["metastore"] = args ? args.metastore : undefined;
-            resourceInputs["model"] = args ? args.model : undefined;
-            resourceInputs["pipeline"] = args ? args.pipeline : undefined;
-            resourceInputs["recipient"] = args ? args.recipient : undefined;
-            resourceInputs["schema"] = args ? args.schema : undefined;
-            resourceInputs["share"] = args ? args.share : undefined;
-            resourceInputs["storageCredential"] = args ? args.storageCredential : undefined;
-            resourceInputs["table"] = args ? args.table : undefined;
-            resourceInputs["volume"] = args ? args.volume : undefined;
+            resourceInputs["catalog"] = args?.catalog;
+            resourceInputs["credential"] = args?.credential;
+            resourceInputs["externalLocation"] = args?.externalLocation;
+            resourceInputs["foreignConnection"] = args?.foreignConnection;
+            resourceInputs["function"] = args?.function;
+            resourceInputs["grants"] = args?.grants;
+            resourceInputs["metastore"] = args?.metastore;
+            resourceInputs["model"] = args?.model;
+            resourceInputs["pipeline"] = args?.pipeline;
+            resourceInputs["recipient"] = args?.recipient;
+            resourceInputs["schema"] = args?.schema;
+            resourceInputs["share"] = args?.share;
+            resourceInputs["storageCredential"] = args?.storageCredential;
+            resourceInputs["table"] = args?.table;
+            resourceInputs["volume"] = args?.volume;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Grants.__pulumiType, name, resourceInputs, opts);

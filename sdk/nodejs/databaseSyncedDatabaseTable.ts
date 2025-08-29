@@ -66,23 +66,23 @@ export class DatabaseSyncedDatabaseTable extends pulumi.CustomResource {
     /**
      * (SyncedTableStatus) - Synced Table data synchronization status
      */
-    public /*out*/ readonly dataSynchronizationStatus!: pulumi.Output<outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatus>;
+    declare public /*out*/ readonly dataSynchronizationStatus: pulumi.Output<outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatus>;
     /**
      * Name of the target database instance. This is required when creating synced database tables in standard catalogs.
      * This is optional when creating synced database tables in registered catalogs. If this field is specified
      * when creating synced database tables in registered catalogs, the database instance name MUST
      * match that of the registered catalog (or the request will be rejected)
      */
-    public readonly databaseInstanceName!: pulumi.Output<string>;
+    declare public readonly databaseInstanceName: pulumi.Output<string>;
     /**
      * (string) - The name of the database instance that this table is registered to. This field is always returned, and for
      * tables inside database catalogs is inferred database instance associated with the catalog
      */
-    public /*out*/ readonly effectiveDatabaseInstanceName!: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveDatabaseInstanceName: pulumi.Output<string>;
     /**
      * (string) - The name of the logical database that this table is registered to
      */
-    public /*out*/ readonly effectiveLogicalDatabaseName!: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveLogicalDatabaseName: pulumi.Output<string>;
     /**
      * Target Postgres database object (logical database) name for this table.
      *
@@ -95,18 +95,18 @@ export class DatabaseSyncedDatabaseTable extends pulumi.CustomResource {
      * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
      * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
      */
-    public readonly logicalDatabaseName!: pulumi.Output<string>;
+    declare public readonly logicalDatabaseName: pulumi.Output<string>;
     /**
      * Full three-part (catalog, schema, table) name of the table
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly spec!: pulumi.Output<outputs.DatabaseSyncedDatabaseTableSpec | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly spec: pulumi.Output<outputs.DatabaseSyncedDatabaseTableSpec | undefined>;
     /**
      * (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
      * state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
      * may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
      */
-    public /*out*/ readonly unityCatalogProvisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly unityCatalogProvisioningState: pulumi.Output<string>;
 
     /**
      * Create a DatabaseSyncedDatabaseTable resource with the given unique name, arguments, and options.
@@ -121,20 +121,20 @@ export class DatabaseSyncedDatabaseTable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseSyncedDatabaseTableState | undefined;
-            resourceInputs["dataSynchronizationStatus"] = state ? state.dataSynchronizationStatus : undefined;
-            resourceInputs["databaseInstanceName"] = state ? state.databaseInstanceName : undefined;
-            resourceInputs["effectiveDatabaseInstanceName"] = state ? state.effectiveDatabaseInstanceName : undefined;
-            resourceInputs["effectiveLogicalDatabaseName"] = state ? state.effectiveLogicalDatabaseName : undefined;
-            resourceInputs["logicalDatabaseName"] = state ? state.logicalDatabaseName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["spec"] = state ? state.spec : undefined;
-            resourceInputs["unityCatalogProvisioningState"] = state ? state.unityCatalogProvisioningState : undefined;
+            resourceInputs["dataSynchronizationStatus"] = state?.dataSynchronizationStatus;
+            resourceInputs["databaseInstanceName"] = state?.databaseInstanceName;
+            resourceInputs["effectiveDatabaseInstanceName"] = state?.effectiveDatabaseInstanceName;
+            resourceInputs["effectiveLogicalDatabaseName"] = state?.effectiveLogicalDatabaseName;
+            resourceInputs["logicalDatabaseName"] = state?.logicalDatabaseName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["spec"] = state?.spec;
+            resourceInputs["unityCatalogProvisioningState"] = state?.unityCatalogProvisioningState;
         } else {
             const args = argsOrState as DatabaseSyncedDatabaseTableArgs | undefined;
-            resourceInputs["databaseInstanceName"] = args ? args.databaseInstanceName : undefined;
-            resourceInputs["logicalDatabaseName"] = args ? args.logicalDatabaseName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["databaseInstanceName"] = args?.databaseInstanceName;
+            resourceInputs["logicalDatabaseName"] = args?.logicalDatabaseName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["spec"] = args?.spec;
             resourceInputs["dataSynchronizationStatus"] = undefined /*out*/;
             resourceInputs["effectiveDatabaseInstanceName"] = undefined /*out*/;
             resourceInputs["effectiveLogicalDatabaseName"] = undefined /*out*/;

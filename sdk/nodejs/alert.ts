@@ -60,59 +60,59 @@ export class Alert extends pulumi.CustomResource {
     /**
      * Trigger conditions of the alert. Block consists of the following attributes:
      */
-    public readonly condition!: pulumi.Output<outputs.AlertCondition>;
+    declare public readonly condition: pulumi.Output<outputs.AlertCondition>;
     /**
      * The timestamp string indicating when the alert was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
      */
-    public readonly customBody!: pulumi.Output<string | undefined>;
+    declare public readonly customBody: pulumi.Output<string | undefined>;
     /**
      * Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
      */
-    public readonly customSubject!: pulumi.Output<string | undefined>;
+    declare public readonly customSubject: pulumi.Output<string | undefined>;
     /**
      * Name of the alert.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The workspace state of the alert. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
      */
-    public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
+    declare public /*out*/ readonly lifecycleState: pulumi.Output<string>;
     /**
      * Whether to notify alert subscribers when alert returns back to normal.
      */
-    public readonly notifyOnOk!: pulumi.Output<boolean | undefined>;
+    declare public readonly notifyOnOk: pulumi.Output<boolean | undefined>;
     /**
      * Alert owner's username.
      */
-    public readonly ownerUserName!: pulumi.Output<string | undefined>;
+    declare public readonly ownerUserName: pulumi.Output<string | undefined>;
     /**
      * The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
      */
-    public readonly parentPath!: pulumi.Output<string | undefined>;
+    declare public readonly parentPath: pulumi.Output<string | undefined>;
     /**
      * ID of the query evaluated by the alert.
      */
-    public readonly queryId!: pulumi.Output<string>;
+    declare public readonly queryId: pulumi.Output<string>;
     /**
      * Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
      */
-    public readonly secondsToRetrigger!: pulumi.Output<number | undefined>;
+    declare public readonly secondsToRetrigger: pulumi.Output<number | undefined>;
     /**
      * Current state of the alert's trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The timestamp string when the alert was last triggered if the alert has been triggered before.
      */
-    public /*out*/ readonly triggerTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly triggerTime: pulumi.Output<string>;
     /**
      * The timestamp string indicating when the alert was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Alert resource with the given unique name, arguments, and options.
@@ -127,40 +127,40 @@ export class Alert extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlertState | undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customBody"] = state ? state.customBody : undefined;
-            resourceInputs["customSubject"] = state ? state.customSubject : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
-            resourceInputs["notifyOnOk"] = state ? state.notifyOnOk : undefined;
-            resourceInputs["ownerUserName"] = state ? state.ownerUserName : undefined;
-            resourceInputs["parentPath"] = state ? state.parentPath : undefined;
-            resourceInputs["queryId"] = state ? state.queryId : undefined;
-            resourceInputs["secondsToRetrigger"] = state ? state.secondsToRetrigger : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["triggerTime"] = state ? state.triggerTime : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customBody"] = state?.customBody;
+            resourceInputs["customSubject"] = state?.customSubject;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["lifecycleState"] = state?.lifecycleState;
+            resourceInputs["notifyOnOk"] = state?.notifyOnOk;
+            resourceInputs["ownerUserName"] = state?.ownerUserName;
+            resourceInputs["parentPath"] = state?.parentPath;
+            resourceInputs["queryId"] = state?.queryId;
+            resourceInputs["secondsToRetrigger"] = state?.secondsToRetrigger;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["triggerTime"] = state?.triggerTime;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AlertArgs | undefined;
-            if ((!args || args.condition === undefined) && !opts.urn) {
+            if (args?.condition === undefined && !opts.urn) {
                 throw new Error("Missing required property 'condition'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.queryId === undefined) && !opts.urn) {
+            if (args?.queryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queryId'");
             }
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["customBody"] = args ? args.customBody : undefined;
-            resourceInputs["customSubject"] = args ? args.customSubject : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["notifyOnOk"] = args ? args.notifyOnOk : undefined;
-            resourceInputs["ownerUserName"] = args ? args.ownerUserName : undefined;
-            resourceInputs["parentPath"] = args ? args.parentPath : undefined;
-            resourceInputs["queryId"] = args ? args.queryId : undefined;
-            resourceInputs["secondsToRetrigger"] = args ? args.secondsToRetrigger : undefined;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["customBody"] = args?.customBody;
+            resourceInputs["customSubject"] = args?.customSubject;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["notifyOnOk"] = args?.notifyOnOk;
+            resourceInputs["ownerUserName"] = args?.ownerUserName;
+            resourceInputs["parentPath"] = args?.parentPath;
+            resourceInputs["queryId"] = args?.queryId;
+            resourceInputs["secondsToRetrigger"] = args?.secondsToRetrigger;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lifecycleState"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
