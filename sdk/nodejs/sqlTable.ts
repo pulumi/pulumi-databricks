@@ -60,66 +60,66 @@ export class SqlTable extends pulumi.CustomResource {
     /**
      * Name of parent catalog. Change forces the creation of a new resource.
      */
-    public readonly catalogName!: pulumi.Output<string>;
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly catalogName: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
      */
-    public readonly clusterKeys!: pulumi.Output<string[] | undefined>;
-    public readonly columns!: pulumi.Output<outputs.SqlTableColumn[]>;
+    declare public readonly clusterKeys: pulumi.Output<string[] | undefined>;
+    declare public readonly columns: pulumi.Output<outputs.SqlTableColumn[]>;
     /**
      * User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
      */
-    public readonly dataSourceFormat!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly effectiveProperties!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly dataSourceFormat: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly effectiveProperties: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Map of user defined table options. Change forces creation of a new resource.
      */
-    public readonly options!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly options: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * User name/group name/sp applicationId of the table owner.
      */
-    public readonly owner!: pulumi.Output<string>;
+    declare public readonly owner: pulumi.Output<string>;
     /**
      * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`.
      */
-    public readonly partitions!: pulumi.Output<string[]>;
+    declare public readonly partitions: pulumi.Output<string[]>;
     /**
      * A map of table properties.
      */
-    public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly properties: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
      */
-    public readonly schemaName!: pulumi.Output<string>;
+    declare public readonly schemaName: pulumi.Output<string>;
     /**
      * For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
      */
-    public readonly storageCredentialName!: pulumi.Output<string | undefined>;
+    declare public readonly storageCredentialName: pulumi.Output<string | undefined>;
     /**
      * URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
      */
-    public readonly storageLocation!: pulumi.Output<string | undefined>;
+    declare public readonly storageLocation: pulumi.Output<string | undefined>;
     /**
      * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
      */
-    public readonly tableType!: pulumi.Output<string>;
+    declare public readonly tableType: pulumi.Output<string>;
     /**
      * SQL text defining the view (for `tableType == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
      */
-    public readonly viewDefinition!: pulumi.Output<string | undefined>;
+    declare public readonly viewDefinition: pulumi.Output<string | undefined>;
     /**
      * All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouseId` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `clusterId`.
      */
-    public readonly warehouseId!: pulumi.Output<string | undefined>;
+    declare public readonly warehouseId: pulumi.Output<string | undefined>;
 
     /**
      * Create a SqlTable resource with the given unique name, arguments, and options.
@@ -134,52 +134,52 @@ export class SqlTable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SqlTableState | undefined;
-            resourceInputs["catalogName"] = state ? state.catalogName : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["clusterKeys"] = state ? state.clusterKeys : undefined;
-            resourceInputs["columns"] = state ? state.columns : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["dataSourceFormat"] = state ? state.dataSourceFormat : undefined;
-            resourceInputs["effectiveProperties"] = state ? state.effectiveProperties : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["options"] = state ? state.options : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["partitions"] = state ? state.partitions : undefined;
-            resourceInputs["properties"] = state ? state.properties : undefined;
-            resourceInputs["schemaName"] = state ? state.schemaName : undefined;
-            resourceInputs["storageCredentialName"] = state ? state.storageCredentialName : undefined;
-            resourceInputs["storageLocation"] = state ? state.storageLocation : undefined;
-            resourceInputs["tableType"] = state ? state.tableType : undefined;
-            resourceInputs["viewDefinition"] = state ? state.viewDefinition : undefined;
-            resourceInputs["warehouseId"] = state ? state.warehouseId : undefined;
+            resourceInputs["catalogName"] = state?.catalogName;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["clusterKeys"] = state?.clusterKeys;
+            resourceInputs["columns"] = state?.columns;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["dataSourceFormat"] = state?.dataSourceFormat;
+            resourceInputs["effectiveProperties"] = state?.effectiveProperties;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["options"] = state?.options;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["partitions"] = state?.partitions;
+            resourceInputs["properties"] = state?.properties;
+            resourceInputs["schemaName"] = state?.schemaName;
+            resourceInputs["storageCredentialName"] = state?.storageCredentialName;
+            resourceInputs["storageLocation"] = state?.storageLocation;
+            resourceInputs["tableType"] = state?.tableType;
+            resourceInputs["viewDefinition"] = state?.viewDefinition;
+            resourceInputs["warehouseId"] = state?.warehouseId;
         } else {
             const args = argsOrState as SqlTableArgs | undefined;
-            if ((!args || args.catalogName === undefined) && !opts.urn) {
+            if (args?.catalogName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'catalogName'");
             }
-            if ((!args || args.schemaName === undefined) && !opts.urn) {
+            if (args?.schemaName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schemaName'");
             }
-            if ((!args || args.tableType === undefined) && !opts.urn) {
+            if (args?.tableType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tableType'");
             }
-            resourceInputs["catalogName"] = args ? args.catalogName : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["clusterKeys"] = args ? args.clusterKeys : undefined;
-            resourceInputs["columns"] = args ? args.columns : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["dataSourceFormat"] = args ? args.dataSourceFormat : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["options"] = args ? args.options : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["partitions"] = args ? args.partitions : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["schemaName"] = args ? args.schemaName : undefined;
-            resourceInputs["storageCredentialName"] = args ? args.storageCredentialName : undefined;
-            resourceInputs["storageLocation"] = args ? args.storageLocation : undefined;
-            resourceInputs["tableType"] = args ? args.tableType : undefined;
-            resourceInputs["viewDefinition"] = args ? args.viewDefinition : undefined;
-            resourceInputs["warehouseId"] = args ? args.warehouseId : undefined;
+            resourceInputs["catalogName"] = args?.catalogName;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["clusterKeys"] = args?.clusterKeys;
+            resourceInputs["columns"] = args?.columns;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["dataSourceFormat"] = args?.dataSourceFormat;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["options"] = args?.options;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["partitions"] = args?.partitions;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["schemaName"] = args?.schemaName;
+            resourceInputs["storageCredentialName"] = args?.storageCredentialName;
+            resourceInputs["storageLocation"] = args?.storageLocation;
+            resourceInputs["tableType"] = args?.tableType;
+            resourceInputs["viewDefinition"] = args?.viewDefinition;
+            resourceInputs["warehouseId"] = args?.warehouseId;
             resourceInputs["effectiveProperties"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

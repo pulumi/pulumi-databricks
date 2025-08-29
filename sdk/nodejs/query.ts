@@ -60,67 +60,67 @@ export class Query extends pulumi.CustomResource {
     /**
      * Whether to apply a 1000 row limit to the query result.
      */
-    public readonly applyAutoLimit!: pulumi.Output<boolean | undefined>;
+    declare public readonly applyAutoLimit: pulumi.Output<boolean | undefined>;
     /**
      * Name of the catalog where this query will be executed.
      */
-    public readonly catalog!: pulumi.Output<string | undefined>;
+    declare public readonly catalog: pulumi.Output<string | undefined>;
     /**
      * The timestamp string indicating when the query was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * General description that conveys additional information about this query such as usage notes.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of the query.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Username of the user who last saved changes to this query.
      */
-    public /*out*/ readonly lastModifierUserName!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModifierUserName: pulumi.Output<string>;
     /**
      * The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
      */
-    public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
+    declare public /*out*/ readonly lifecycleState: pulumi.Output<string>;
     /**
      * Query owner's username.
      */
-    public readonly ownerUserName!: pulumi.Output<string | undefined>;
+    declare public readonly ownerUserName: pulumi.Output<string | undefined>;
     /**
      * Query parameter definition.  Consists of following attributes (one of `*_value` is required):
      */
-    public readonly parameters!: pulumi.Output<outputs.QueryParameter[] | undefined>;
+    declare public readonly parameters: pulumi.Output<outputs.QueryParameter[] | undefined>;
     /**
      * The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
      */
-    public readonly parentPath!: pulumi.Output<string | undefined>;
+    declare public readonly parentPath: pulumi.Output<string | undefined>;
     /**
      * Text of SQL query.
      */
-    public readonly queryText!: pulumi.Output<string>;
+    declare public readonly queryText: pulumi.Output<string>;
     /**
      * Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
      */
-    public readonly runAsMode!: pulumi.Output<string | undefined>;
+    declare public readonly runAsMode: pulumi.Output<string | undefined>;
     /**
      * Name of the schema where this query will be executed.
      */
-    public readonly schema!: pulumi.Output<string | undefined>;
+    declare public readonly schema: pulumi.Output<string | undefined>;
     /**
      * Tags that will be added to the query.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The timestamp string indicating when the query was updated.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * ID of a SQL warehouse which will be used to execute this query.
      */
-    public readonly warehouseId!: pulumi.Output<string>;
+    declare public readonly warehouseId: pulumi.Output<string>;
 
     /**
      * Create a Query resource with the given unique name, arguments, and options.
@@ -135,45 +135,45 @@ export class Query extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QueryState | undefined;
-            resourceInputs["applyAutoLimit"] = state ? state.applyAutoLimit : undefined;
-            resourceInputs["catalog"] = state ? state.catalog : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["lastModifierUserName"] = state ? state.lastModifierUserName : undefined;
-            resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
-            resourceInputs["ownerUserName"] = state ? state.ownerUserName : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["parentPath"] = state ? state.parentPath : undefined;
-            resourceInputs["queryText"] = state ? state.queryText : undefined;
-            resourceInputs["runAsMode"] = state ? state.runAsMode : undefined;
-            resourceInputs["schema"] = state ? state.schema : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["warehouseId"] = state ? state.warehouseId : undefined;
+            resourceInputs["applyAutoLimit"] = state?.applyAutoLimit;
+            resourceInputs["catalog"] = state?.catalog;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["lastModifierUserName"] = state?.lastModifierUserName;
+            resourceInputs["lifecycleState"] = state?.lifecycleState;
+            resourceInputs["ownerUserName"] = state?.ownerUserName;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["parentPath"] = state?.parentPath;
+            resourceInputs["queryText"] = state?.queryText;
+            resourceInputs["runAsMode"] = state?.runAsMode;
+            resourceInputs["schema"] = state?.schema;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["warehouseId"] = state?.warehouseId;
         } else {
             const args = argsOrState as QueryArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.queryText === undefined) && !opts.urn) {
+            if (args?.queryText === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queryText'");
             }
-            if ((!args || args.warehouseId === undefined) && !opts.urn) {
+            if (args?.warehouseId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'warehouseId'");
             }
-            resourceInputs["applyAutoLimit"] = args ? args.applyAutoLimit : undefined;
-            resourceInputs["catalog"] = args ? args.catalog : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["ownerUserName"] = args ? args.ownerUserName : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["parentPath"] = args ? args.parentPath : undefined;
-            resourceInputs["queryText"] = args ? args.queryText : undefined;
-            resourceInputs["runAsMode"] = args ? args.runAsMode : undefined;
-            resourceInputs["schema"] = args ? args.schema : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["warehouseId"] = args ? args.warehouseId : undefined;
+            resourceInputs["applyAutoLimit"] = args?.applyAutoLimit;
+            resourceInputs["catalog"] = args?.catalog;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["ownerUserName"] = args?.ownerUserName;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["parentPath"] = args?.parentPath;
+            resourceInputs["queryText"] = args?.queryText;
+            resourceInputs["runAsMode"] = args?.runAsMode;
+            resourceInputs["schema"] = args?.schema;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["warehouseId"] = args?.warehouseId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lastModifierUserName"] = undefined /*out*/;
             resourceInputs["lifecycleState"] = undefined /*out*/;

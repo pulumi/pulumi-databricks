@@ -62,24 +62,24 @@ export class GlobalInitScript extends pulumi.CustomResource {
     /**
      * The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
      */
-    public readonly contentBase64!: pulumi.Output<string | undefined>;
+    declare public readonly contentBase64: pulumi.Output<string | undefined>;
     /**
      * specifies if the script is enabled for execution, or not
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
-    public readonly md5!: pulumi.Output<string | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
+    declare public readonly md5: pulumi.Output<string | undefined>;
     /**
      * the name of the script.  It should be unique
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      */
-    public readonly position!: pulumi.Output<number>;
+    declare public readonly position: pulumi.Output<number>;
     /**
      * Path to script's source code on local filesystem. Conflicts with `contentBase64`
      */
-    public readonly source!: pulumi.Output<string | undefined>;
+    declare public readonly source: pulumi.Output<string | undefined>;
 
     /**
      * Create a GlobalInitScript resource with the given unique name, arguments, and options.
@@ -94,20 +94,20 @@ export class GlobalInitScript extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalInitScriptState | undefined;
-            resourceInputs["contentBase64"] = state ? state.contentBase64 : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["md5"] = state ? state.md5 : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["position"] = state ? state.position : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["contentBase64"] = state?.contentBase64;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["md5"] = state?.md5;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["position"] = state?.position;
+            resourceInputs["source"] = state?.source;
         } else {
             const args = argsOrState as GlobalInitScriptArgs | undefined;
-            resourceInputs["contentBase64"] = args ? args.contentBase64 : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["md5"] = args ? args.md5 : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["position"] = args ? args.position : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["contentBase64"] = args?.contentBase64;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["md5"] = args?.md5;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["position"] = args?.position;
+            resourceInputs["source"] = args?.source;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GlobalInitScript.__pulumiType, name, resourceInputs, opts);

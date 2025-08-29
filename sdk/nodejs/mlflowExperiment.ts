@@ -103,23 +103,23 @@ export class MlflowExperiment extends pulumi.CustomResource {
     /**
      * Path to artifact location of the MLflow experiment.
      */
-    public readonly artifactLocation!: pulumi.Output<string | undefined>;
-    public readonly creationTime!: pulumi.Output<number>;
+    declare public readonly artifactLocation: pulumi.Output<string | undefined>;
+    declare public readonly creationTime: pulumi.Output<number>;
     /**
      * @deprecated Remove the description attribute as it no longer is used and will be removed in a future version.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly experimentId!: pulumi.Output<string>;
-    public readonly lastUpdateTime!: pulumi.Output<number>;
-    public readonly lifecycleStage!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly experimentId: pulumi.Output<string>;
+    declare public readonly lastUpdateTime: pulumi.Output<number>;
+    declare public readonly lifecycleStage: pulumi.Output<string>;
     /**
      * Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Tags for the MLflow experiment.
      */
-    public readonly tags!: pulumi.Output<outputs.MlflowExperimentTag[]>;
+    declare public readonly tags: pulumi.Output<outputs.MlflowExperimentTag[]>;
 
     /**
      * Create a MlflowExperiment resource with the given unique name, arguments, and options.
@@ -134,24 +134,24 @@ export class MlflowExperiment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MlflowExperimentState | undefined;
-            resourceInputs["artifactLocation"] = state ? state.artifactLocation : undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["experimentId"] = state ? state.experimentId : undefined;
-            resourceInputs["lastUpdateTime"] = state ? state.lastUpdateTime : undefined;
-            resourceInputs["lifecycleStage"] = state ? state.lifecycleStage : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["artifactLocation"] = state?.artifactLocation;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["experimentId"] = state?.experimentId;
+            resourceInputs["lastUpdateTime"] = state?.lastUpdateTime;
+            resourceInputs["lifecycleStage"] = state?.lifecycleStage;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as MlflowExperimentArgs | undefined;
-            resourceInputs["artifactLocation"] = args ? args.artifactLocation : undefined;
-            resourceInputs["creationTime"] = args ? args.creationTime : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["experimentId"] = args ? args.experimentId : undefined;
-            resourceInputs["lastUpdateTime"] = args ? args.lastUpdateTime : undefined;
-            resourceInputs["lifecycleStage"] = args ? args.lifecycleStage : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["artifactLocation"] = args?.artifactLocation;
+            resourceInputs["creationTime"] = args?.creationTime;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["experimentId"] = args?.experimentId;
+            resourceInputs["lastUpdateTime"] = args?.lastUpdateTime;
+            resourceInputs["lifecycleStage"] = args?.lifecycleStage;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MlflowExperiment.__pulumiType, name, resourceInputs, opts);

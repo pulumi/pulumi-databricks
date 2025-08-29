@@ -104,13 +104,13 @@ export class SqlDashboard extends pulumi.CustomResource {
         return obj['__pulumiType'] === SqlDashboard.__pulumiType;
     }
 
-    public readonly createdAt!: pulumi.Output<string>;
-    public readonly dashboardFiltersEnabled!: pulumi.Output<boolean | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly parent!: pulumi.Output<string | undefined>;
-    public readonly runAsRole!: pulumi.Output<string | undefined>;
-    public readonly tags!: pulumi.Output<string[] | undefined>;
-    public readonly updatedAt!: pulumi.Output<string>;
+    declare public readonly createdAt: pulumi.Output<string>;
+    declare public readonly dashboardFiltersEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly parent: pulumi.Output<string | undefined>;
+    declare public readonly runAsRole: pulumi.Output<string | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
+    declare public readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a SqlDashboard resource with the given unique name, arguments, and options.
@@ -125,22 +125,22 @@ export class SqlDashboard extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SqlDashboardState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["dashboardFiltersEnabled"] = state ? state.dashboardFiltersEnabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["runAsRole"] = state ? state.runAsRole : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dashboardFiltersEnabled"] = state?.dashboardFiltersEnabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["runAsRole"] = state?.runAsRole;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as SqlDashboardArgs | undefined;
-            resourceInputs["createdAt"] = args ? args.createdAt : undefined;
-            resourceInputs["dashboardFiltersEnabled"] = args ? args.dashboardFiltersEnabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["runAsRole"] = args ? args.runAsRole : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["updatedAt"] = args ? args.updatedAt : undefined;
+            resourceInputs["createdAt"] = args?.createdAt;
+            resourceInputs["dashboardFiltersEnabled"] = args?.dashboardFiltersEnabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["runAsRole"] = args?.runAsRole;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["updatedAt"] = args?.updatedAt;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SqlDashboard.__pulumiType, name, resourceInputs, opts);

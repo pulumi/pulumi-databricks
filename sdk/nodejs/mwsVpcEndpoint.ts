@@ -234,37 +234,37 @@ export class MwsVpcEndpoint extends pulumi.CustomResource {
     /**
      * Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
-    public readonly awsAccountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly awsAccountId: pulumi.Output<string>;
     /**
      * (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      */
-    public readonly awsEndpointServiceId!: pulumi.Output<string>;
+    declare public readonly awsEndpointServiceId: pulumi.Output<string>;
     /**
      * ID of configured aws_vpc_endpoint
      */
-    public readonly awsVpcEndpointId!: pulumi.Output<string | undefined>;
+    declare public readonly awsVpcEndpointId: pulumi.Output<string | undefined>;
     /**
      * a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
      */
-    public readonly gcpVpcEndpointInfo!: pulumi.Output<outputs.MwsVpcEndpointGcpVpcEndpointInfo | undefined>;
+    declare public readonly gcpVpcEndpointInfo: pulumi.Output<outputs.MwsVpcEndpointGcpVpcEndpointInfo | undefined>;
     /**
      * Region of AWS VPC
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * (AWS Only) State of VPC Endpoint
      */
-    public readonly state!: pulumi.Output<string>;
-    public readonly useCase!: pulumi.Output<string>;
+    declare public readonly state: pulumi.Output<string>;
+    declare public readonly useCase: pulumi.Output<string>;
     /**
      * Canonical unique identifier of VPC Endpoint in Databricks Account
      */
-    public readonly vpcEndpointId!: pulumi.Output<string>;
+    declare public readonly vpcEndpointId: pulumi.Output<string>;
     /**
      * Name of VPC Endpoint in Databricks Account
      */
-    public readonly vpcEndpointName!: pulumi.Output<string>;
+    declare public readonly vpcEndpointName: pulumi.Output<string>;
 
     /**
      * Create a MwsVpcEndpoint resource with the given unique name, arguments, and options.
@@ -279,31 +279,31 @@ export class MwsVpcEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MwsVpcEndpointState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["awsAccountId"] = state ? state.awsAccountId : undefined;
-            resourceInputs["awsEndpointServiceId"] = state ? state.awsEndpointServiceId : undefined;
-            resourceInputs["awsVpcEndpointId"] = state ? state.awsVpcEndpointId : undefined;
-            resourceInputs["gcpVpcEndpointInfo"] = state ? state.gcpVpcEndpointInfo : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["useCase"] = state ? state.useCase : undefined;
-            resourceInputs["vpcEndpointId"] = state ? state.vpcEndpointId : undefined;
-            resourceInputs["vpcEndpointName"] = state ? state.vpcEndpointName : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["awsAccountId"] = state?.awsAccountId;
+            resourceInputs["awsEndpointServiceId"] = state?.awsEndpointServiceId;
+            resourceInputs["awsVpcEndpointId"] = state?.awsVpcEndpointId;
+            resourceInputs["gcpVpcEndpointInfo"] = state?.gcpVpcEndpointInfo;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["useCase"] = state?.useCase;
+            resourceInputs["vpcEndpointId"] = state?.vpcEndpointId;
+            resourceInputs["vpcEndpointName"] = state?.vpcEndpointName;
         } else {
             const args = argsOrState as MwsVpcEndpointArgs | undefined;
-            if ((!args || args.vpcEndpointName === undefined) && !opts.urn) {
+            if (args?.vpcEndpointName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcEndpointName'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["awsAccountId"] = args ? args.awsAccountId : undefined;
-            resourceInputs["awsEndpointServiceId"] = args ? args.awsEndpointServiceId : undefined;
-            resourceInputs["awsVpcEndpointId"] = args ? args.awsVpcEndpointId : undefined;
-            resourceInputs["gcpVpcEndpointInfo"] = args ? args.gcpVpcEndpointInfo : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["useCase"] = args ? args.useCase : undefined;
-            resourceInputs["vpcEndpointId"] = args ? args.vpcEndpointId : undefined;
-            resourceInputs["vpcEndpointName"] = args ? args.vpcEndpointName : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["awsAccountId"] = args?.awsAccountId;
+            resourceInputs["awsEndpointServiceId"] = args?.awsEndpointServiceId;
+            resourceInputs["awsVpcEndpointId"] = args?.awsVpcEndpointId;
+            resourceInputs["gcpVpcEndpointInfo"] = args?.gcpVpcEndpointInfo;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["useCase"] = args?.useCase;
+            resourceInputs["vpcEndpointId"] = args?.vpcEndpointId;
+            resourceInputs["vpcEndpointName"] = args?.vpcEndpointName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MwsVpcEndpoint.__pulumiType, name, resourceInputs, opts);

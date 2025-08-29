@@ -34,18 +34,18 @@ export class Table extends pulumi.CustomResource {
         return obj['__pulumiType'] === Table.__pulumiType;
     }
 
-    public readonly catalogName!: pulumi.Output<string>;
-    public readonly columns!: pulumi.Output<outputs.TableColumn[]>;
-    public readonly comment!: pulumi.Output<string | undefined>;
-    public readonly dataSourceFormat!: pulumi.Output<string>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly owner!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly schemaName!: pulumi.Output<string>;
-    public readonly storageCredentialName!: pulumi.Output<string | undefined>;
-    public readonly storageLocation!: pulumi.Output<string | undefined>;
-    public readonly tableType!: pulumi.Output<string>;
-    public readonly viewDefinition!: pulumi.Output<string | undefined>;
+    declare public readonly catalogName: pulumi.Output<string>;
+    declare public readonly columns: pulumi.Output<outputs.TableColumn[]>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
+    declare public readonly dataSourceFormat: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly owner: pulumi.Output<string>;
+    declare public readonly properties: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly schemaName: pulumi.Output<string>;
+    declare public readonly storageCredentialName: pulumi.Output<string | undefined>;
+    declare public readonly storageLocation: pulumi.Output<string | undefined>;
+    declare public readonly tableType: pulumi.Output<string>;
+    declare public readonly viewDefinition: pulumi.Output<string | undefined>;
 
     /**
      * Create a Table resource with the given unique name, arguments, and options.
@@ -60,47 +60,47 @@ export class Table extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TableState | undefined;
-            resourceInputs["catalogName"] = state ? state.catalogName : undefined;
-            resourceInputs["columns"] = state ? state.columns : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["dataSourceFormat"] = state ? state.dataSourceFormat : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["properties"] = state ? state.properties : undefined;
-            resourceInputs["schemaName"] = state ? state.schemaName : undefined;
-            resourceInputs["storageCredentialName"] = state ? state.storageCredentialName : undefined;
-            resourceInputs["storageLocation"] = state ? state.storageLocation : undefined;
-            resourceInputs["tableType"] = state ? state.tableType : undefined;
-            resourceInputs["viewDefinition"] = state ? state.viewDefinition : undefined;
+            resourceInputs["catalogName"] = state?.catalogName;
+            resourceInputs["columns"] = state?.columns;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["dataSourceFormat"] = state?.dataSourceFormat;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["properties"] = state?.properties;
+            resourceInputs["schemaName"] = state?.schemaName;
+            resourceInputs["storageCredentialName"] = state?.storageCredentialName;
+            resourceInputs["storageLocation"] = state?.storageLocation;
+            resourceInputs["tableType"] = state?.tableType;
+            resourceInputs["viewDefinition"] = state?.viewDefinition;
         } else {
             const args = argsOrState as TableArgs | undefined;
-            if ((!args || args.catalogName === undefined) && !opts.urn) {
+            if (args?.catalogName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'catalogName'");
             }
-            if ((!args || args.columns === undefined) && !opts.urn) {
+            if (args?.columns === undefined && !opts.urn) {
                 throw new Error("Missing required property 'columns'");
             }
-            if ((!args || args.dataSourceFormat === undefined) && !opts.urn) {
+            if (args?.dataSourceFormat === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataSourceFormat'");
             }
-            if ((!args || args.schemaName === undefined) && !opts.urn) {
+            if (args?.schemaName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schemaName'");
             }
-            if ((!args || args.tableType === undefined) && !opts.urn) {
+            if (args?.tableType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tableType'");
             }
-            resourceInputs["catalogName"] = args ? args.catalogName : undefined;
-            resourceInputs["columns"] = args ? args.columns : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["dataSourceFormat"] = args ? args.dataSourceFormat : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["schemaName"] = args ? args.schemaName : undefined;
-            resourceInputs["storageCredentialName"] = args ? args.storageCredentialName : undefined;
-            resourceInputs["storageLocation"] = args ? args.storageLocation : undefined;
-            resourceInputs["tableType"] = args ? args.tableType : undefined;
-            resourceInputs["viewDefinition"] = args ? args.viewDefinition : undefined;
+            resourceInputs["catalogName"] = args?.catalogName;
+            resourceInputs["columns"] = args?.columns;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["dataSourceFormat"] = args?.dataSourceFormat;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["schemaName"] = args?.schemaName;
+            resourceInputs["storageCredentialName"] = args?.storageCredentialName;
+            resourceInputs["storageLocation"] = args?.storageLocation;
+            resourceInputs["tableType"] = args?.tableType;
+            resourceInputs["viewDefinition"] = args?.viewDefinition;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Table.__pulumiType, name, resourceInputs, opts);

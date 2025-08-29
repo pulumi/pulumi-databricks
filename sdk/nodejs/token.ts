@@ -72,18 +72,18 @@ export class Token extends pulumi.CustomResource {
     /**
      * (String) Comment that will appear on the user’s settings page for this token.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
-    public readonly creationTime!: pulumi.Output<number>;
-    public readonly expiryTime!: pulumi.Output<number>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
+    declare public readonly creationTime: pulumi.Output<number>;
+    declare public readonly expiryTime: pulumi.Output<number>;
     /**
      * (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
      */
-    public readonly lifetimeSeconds!: pulumi.Output<number | undefined>;
-    public readonly tokenId!: pulumi.Output<string>;
+    declare public readonly lifetimeSeconds: pulumi.Output<number | undefined>;
+    declare public readonly tokenId: pulumi.Output<string>;
     /**
      * **Sensitive** value of the newly-created token.
      */
-    public /*out*/ readonly tokenValue!: pulumi.Output<string>;
+    declare public /*out*/ readonly tokenValue: pulumi.Output<string>;
 
     /**
      * Create a Token resource with the given unique name, arguments, and options.
@@ -98,19 +98,19 @@ export class Token extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TokenState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["expiryTime"] = state ? state.expiryTime : undefined;
-            resourceInputs["lifetimeSeconds"] = state ? state.lifetimeSeconds : undefined;
-            resourceInputs["tokenId"] = state ? state.tokenId : undefined;
-            resourceInputs["tokenValue"] = state ? state.tokenValue : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["expiryTime"] = state?.expiryTime;
+            resourceInputs["lifetimeSeconds"] = state?.lifetimeSeconds;
+            resourceInputs["tokenId"] = state?.tokenId;
+            resourceInputs["tokenValue"] = state?.tokenValue;
         } else {
             const args = argsOrState as TokenArgs | undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["creationTime"] = args ? args.creationTime : undefined;
-            resourceInputs["expiryTime"] = args ? args.expiryTime : undefined;
-            resourceInputs["lifetimeSeconds"] = args ? args.lifetimeSeconds : undefined;
-            resourceInputs["tokenId"] = args ? args.tokenId : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["creationTime"] = args?.creationTime;
+            resourceInputs["expiryTime"] = args?.expiryTime;
+            resourceInputs["lifetimeSeconds"] = args?.lifetimeSeconds;
+            resourceInputs["tokenId"] = args?.tokenId;
             resourceInputs["tokenValue"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

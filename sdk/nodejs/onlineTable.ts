@@ -80,23 +80,23 @@ export class OnlineTable extends pulumi.CustomResource {
     /**
      * 3-level name of the Online Table to create.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * object containing specification of the online table:
      */
-    public readonly spec!: pulumi.Output<outputs.OnlineTableSpec | undefined>;
+    declare public readonly spec: pulumi.Output<outputs.OnlineTableSpec | undefined>;
     /**
      * object describing status of the online table:
      */
-    public /*out*/ readonly statuses!: pulumi.Output<outputs.OnlineTableStatus[]>;
+    declare public /*out*/ readonly statuses: pulumi.Output<outputs.OnlineTableStatus[]>;
     /**
      * Data serving REST API URL for this table.
      */
-    public /*out*/ readonly tableServingUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly tableServingUrl: pulumi.Output<string>;
     /**
      * The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
      */
-    public /*out*/ readonly unityCatalogProvisioningState!: pulumi.Output<string>;
+    declare public /*out*/ readonly unityCatalogProvisioningState: pulumi.Output<string>;
 
     /**
      * Create a OnlineTable resource with the given unique name, arguments, and options.
@@ -111,15 +111,15 @@ export class OnlineTable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OnlineTableState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["spec"] = state ? state.spec : undefined;
-            resourceInputs["statuses"] = state ? state.statuses : undefined;
-            resourceInputs["tableServingUrl"] = state ? state.tableServingUrl : undefined;
-            resourceInputs["unityCatalogProvisioningState"] = state ? state.unityCatalogProvisioningState : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["spec"] = state?.spec;
+            resourceInputs["statuses"] = state?.statuses;
+            resourceInputs["tableServingUrl"] = state?.tableServingUrl;
+            resourceInputs["unityCatalogProvisioningState"] = state?.unityCatalogProvisioningState;
         } else {
             const args = argsOrState as OnlineTableArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["spec"] = args?.spec;
             resourceInputs["statuses"] = undefined /*out*/;
             resourceInputs["tableServingUrl"] = undefined /*out*/;
             resourceInputs["unityCatalogProvisioningState"] = undefined /*out*/;

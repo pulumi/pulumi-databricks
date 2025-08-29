@@ -58,24 +58,24 @@ export class RecipientFederationPolicy extends pulumi.CustomResource {
     /**
      * Description of the policy. This is a user-provided description
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * (string) - System-generated timestamp indicating when the policy was created
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Name of the federation policy. A recipient can have multiple policies with different names.
      * The name must contain only lowercase alphanumeric characters, numbers, and hyphens
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the policy to use for validating OIDC claims in the federated tokens
      */
-    public readonly oidcPolicy!: pulumi.Output<outputs.RecipientFederationPolicyOidcPolicy | undefined>;
+    declare public readonly oidcPolicy: pulumi.Output<outputs.RecipientFederationPolicyOidcPolicy | undefined>;
     /**
      * (string) - System-generated timestamp indicating when the policy was last updated
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a RecipientFederationPolicy resource with the given unique name, arguments, and options.
@@ -90,16 +90,16 @@ export class RecipientFederationPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RecipientFederationPolicyState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["oidcPolicy"] = state ? state.oidcPolicy : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["oidcPolicy"] = state?.oidcPolicy;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as RecipientFederationPolicyArgs | undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["oidcPolicy"] = args ? args.oidcPolicy : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["oidcPolicy"] = args?.oidcPolicy;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

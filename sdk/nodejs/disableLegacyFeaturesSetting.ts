@@ -96,9 +96,9 @@ export class DisableLegacyFeaturesSetting extends pulumi.CustomResource {
     /**
      * block with following attributes:
      */
-    public readonly disableLegacyFeatures!: pulumi.Output<outputs.DisableLegacyFeaturesSettingDisableLegacyFeatures>;
-    public readonly etag!: pulumi.Output<string>;
-    public readonly settingName!: pulumi.Output<string>;
+    declare public readonly disableLegacyFeatures: pulumi.Output<outputs.DisableLegacyFeaturesSettingDisableLegacyFeatures>;
+    declare public readonly etag: pulumi.Output<string>;
+    declare public readonly settingName: pulumi.Output<string>;
 
     /**
      * Create a DisableLegacyFeaturesSetting resource with the given unique name, arguments, and options.
@@ -113,17 +113,17 @@ export class DisableLegacyFeaturesSetting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DisableLegacyFeaturesSettingState | undefined;
-            resourceInputs["disableLegacyFeatures"] = state ? state.disableLegacyFeatures : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["settingName"] = state ? state.settingName : undefined;
+            resourceInputs["disableLegacyFeatures"] = state?.disableLegacyFeatures;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as DisableLegacyFeaturesSettingArgs | undefined;
-            if ((!args || args.disableLegacyFeatures === undefined) && !opts.urn) {
+            if (args?.disableLegacyFeatures === undefined && !opts.urn) {
                 throw new Error("Missing required property 'disableLegacyFeatures'");
             }
-            resourceInputs["disableLegacyFeatures"] = args ? args.disableLegacyFeatures : undefined;
-            resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["settingName"] = args ? args.settingName : undefined;
+            resourceInputs["disableLegacyFeatures"] = args?.disableLegacyFeatures;
+            resourceInputs["etag"] = args?.etag;
+            resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DisableLegacyFeaturesSetting.__pulumiType, name, resourceInputs, opts);

@@ -78,15 +78,15 @@ export class QualityMonitorV2 extends pulumi.CustomResource {
     /**
      * (AnomalyDetectionConfig)
      */
-    public /*out*/ readonly anomalyDetectionConfig!: pulumi.Output<outputs.QualityMonitorV2AnomalyDetectionConfig>;
+    declare public /*out*/ readonly anomalyDetectionConfig: pulumi.Output<outputs.QualityMonitorV2AnomalyDetectionConfig>;
     /**
      * The uuid of the request object. For example, schema id
      */
-    public readonly objectId!: pulumi.Output<string>;
+    declare public readonly objectId: pulumi.Output<string>;
     /**
      * The type of the monitored object. Can be one of the following: schema
      */
-    public readonly objectType!: pulumi.Output<string>;
+    declare public readonly objectType: pulumi.Output<string>;
 
     /**
      * Create a QualityMonitorV2 resource with the given unique name, arguments, and options.
@@ -101,19 +101,19 @@ export class QualityMonitorV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QualityMonitorV2State | undefined;
-            resourceInputs["anomalyDetectionConfig"] = state ? state.anomalyDetectionConfig : undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["objectType"] = state ? state.objectType : undefined;
+            resourceInputs["anomalyDetectionConfig"] = state?.anomalyDetectionConfig;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["objectType"] = state?.objectType;
         } else {
             const args = argsOrState as QualityMonitorV2Args | undefined;
-            if ((!args || args.objectId === undefined) && !opts.urn) {
+            if (args?.objectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'objectId'");
             }
-            if ((!args || args.objectType === undefined) && !opts.urn) {
+            if (args?.objectType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'objectType'");
             }
-            resourceInputs["objectId"] = args ? args.objectId : undefined;
-            resourceInputs["objectType"] = args ? args.objectType : undefined;
+            resourceInputs["objectId"] = args?.objectId;
+            resourceInputs["objectType"] = args?.objectType;
             resourceInputs["anomalyDetectionConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

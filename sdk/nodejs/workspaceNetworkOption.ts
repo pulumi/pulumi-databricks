@@ -83,11 +83,11 @@ export class WorkspaceNetworkOption extends pulumi.CustomResource {
      * linked to one policy at a time. If no policy is explicitly assigned,
      * the workspace will use 'default-policy'
      */
-    public readonly networkPolicyId!: pulumi.Output<string | undefined>;
+    declare public readonly networkPolicyId: pulumi.Output<string | undefined>;
     /**
      * The workspace ID
      */
-    public readonly workspaceId!: pulumi.Output<string | undefined>;
+    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a WorkspaceNetworkOption resource with the given unique name, arguments, and options.
@@ -102,12 +102,12 @@ export class WorkspaceNetworkOption extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkspaceNetworkOptionState | undefined;
-            resourceInputs["networkPolicyId"] = state ? state.networkPolicyId : undefined;
-            resourceInputs["workspaceId"] = state ? state.workspaceId : undefined;
+            resourceInputs["networkPolicyId"] = state?.networkPolicyId;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as WorkspaceNetworkOptionArgs | undefined;
-            resourceInputs["networkPolicyId"] = args ? args.networkPolicyId : undefined;
-            resourceInputs["workspaceId"] = args ? args.workspaceId : undefined;
+            resourceInputs["networkPolicyId"] = args?.networkPolicyId;
+            resourceInputs["workspaceId"] = args?.workspaceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkspaceNetworkOption.__pulumiType, name, resourceInputs, opts);

@@ -34,9 +34,9 @@ export class EnhancedSecurityMonitoringWorkspaceSetting extends pulumi.CustomRes
         return obj['__pulumiType'] === EnhancedSecurityMonitoringWorkspaceSetting.__pulumiType;
     }
 
-    public readonly enhancedSecurityMonitoringWorkspace!: pulumi.Output<outputs.EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace>;
-    public readonly etag!: pulumi.Output<string>;
-    public readonly settingName!: pulumi.Output<string>;
+    declare public readonly enhancedSecurityMonitoringWorkspace: pulumi.Output<outputs.EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace>;
+    declare public readonly etag: pulumi.Output<string>;
+    declare public readonly settingName: pulumi.Output<string>;
 
     /**
      * Create a EnhancedSecurityMonitoringWorkspaceSetting resource with the given unique name, arguments, and options.
@@ -51,17 +51,17 @@ export class EnhancedSecurityMonitoringWorkspaceSetting extends pulumi.CustomRes
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EnhancedSecurityMonitoringWorkspaceSettingState | undefined;
-            resourceInputs["enhancedSecurityMonitoringWorkspace"] = state ? state.enhancedSecurityMonitoringWorkspace : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["settingName"] = state ? state.settingName : undefined;
+            resourceInputs["enhancedSecurityMonitoringWorkspace"] = state?.enhancedSecurityMonitoringWorkspace;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as EnhancedSecurityMonitoringWorkspaceSettingArgs | undefined;
-            if ((!args || args.enhancedSecurityMonitoringWorkspace === undefined) && !opts.urn) {
+            if (args?.enhancedSecurityMonitoringWorkspace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enhancedSecurityMonitoringWorkspace'");
             }
-            resourceInputs["enhancedSecurityMonitoringWorkspace"] = args ? args.enhancedSecurityMonitoringWorkspace : undefined;
-            resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["settingName"] = args ? args.settingName : undefined;
+            resourceInputs["enhancedSecurityMonitoringWorkspace"] = args?.enhancedSecurityMonitoringWorkspace;
+            resourceInputs["etag"] = args?.etag;
+            resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EnhancedSecurityMonitoringWorkspaceSetting.__pulumiType, name, resourceInputs, opts);

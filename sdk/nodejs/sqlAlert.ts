@@ -103,28 +103,28 @@ export class SqlAlert extends pulumi.CustomResource {
         return obj['__pulumiType'] === SqlAlert.__pulumiType;
     }
 
-    public readonly createdAt!: pulumi.Output<string>;
+    declare public readonly createdAt: pulumi.Output<string>;
     /**
      * Name of the alert.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Alert configuration options.
      */
-    public readonly options!: pulumi.Output<outputs.SqlAlertOptions>;
+    declare public readonly options: pulumi.Output<outputs.SqlAlertOptions>;
     /**
      * The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
      */
-    public readonly parent!: pulumi.Output<string | undefined>;
+    declare public readonly parent: pulumi.Output<string | undefined>;
     /**
      * ID of the query evaluated by the alert.
      */
-    public readonly queryId!: pulumi.Output<string>;
+    declare public readonly queryId: pulumi.Output<string>;
     /**
      * Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
      */
-    public readonly rearm!: pulumi.Output<number | undefined>;
-    public readonly updatedAt!: pulumi.Output<string>;
+    declare public readonly rearm: pulumi.Output<number | undefined>;
+    declare public readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a SqlAlert resource with the given unique name, arguments, and options.
@@ -139,28 +139,28 @@ export class SqlAlert extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SqlAlertState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["options"] = state ? state.options : undefined;
-            resourceInputs["parent"] = state ? state.parent : undefined;
-            resourceInputs["queryId"] = state ? state.queryId : undefined;
-            resourceInputs["rearm"] = state ? state.rearm : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["options"] = state?.options;
+            resourceInputs["parent"] = state?.parent;
+            resourceInputs["queryId"] = state?.queryId;
+            resourceInputs["rearm"] = state?.rearm;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as SqlAlertArgs | undefined;
-            if ((!args || args.options === undefined) && !opts.urn) {
+            if (args?.options === undefined && !opts.urn) {
                 throw new Error("Missing required property 'options'");
             }
-            if ((!args || args.queryId === undefined) && !opts.urn) {
+            if (args?.queryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queryId'");
             }
-            resourceInputs["createdAt"] = args ? args.createdAt : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["options"] = args ? args.options : undefined;
-            resourceInputs["parent"] = args ? args.parent : undefined;
-            resourceInputs["queryId"] = args ? args.queryId : undefined;
-            resourceInputs["rearm"] = args ? args.rearm : undefined;
-            resourceInputs["updatedAt"] = args ? args.updatedAt : undefined;
+            resourceInputs["createdAt"] = args?.createdAt;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["options"] = args?.options;
+            resourceInputs["parent"] = args?.parent;
+            resourceInputs["queryId"] = args?.queryId;
+            resourceInputs["rearm"] = args?.rearm;
+            resourceInputs["updatedAt"] = args?.updatedAt;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SqlAlert.__pulumiType, name, resourceInputs, opts);

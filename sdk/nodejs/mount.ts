@@ -39,21 +39,21 @@ export class Mount extends pulumi.CustomResource {
         return obj['__pulumiType'] === Mount.__pulumiType;
     }
 
-    public readonly abfs!: pulumi.Output<outputs.MountAbfs | undefined>;
-    public readonly adl!: pulumi.Output<outputs.MountAdl | undefined>;
-    public readonly clusterId!: pulumi.Output<string>;
-    public readonly encryptionType!: pulumi.Output<string | undefined>;
-    public readonly extraConfigs!: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly gs!: pulumi.Output<outputs.MountGs | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly resourceId!: pulumi.Output<string | undefined>;
-    public readonly s3!: pulumi.Output<outputs.MountS3 | undefined>;
+    declare public readonly abfs: pulumi.Output<outputs.MountAbfs | undefined>;
+    declare public readonly adl: pulumi.Output<outputs.MountAdl | undefined>;
+    declare public readonly clusterId: pulumi.Output<string>;
+    declare public readonly encryptionType: pulumi.Output<string | undefined>;
+    declare public readonly extraConfigs: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly gs: pulumi.Output<outputs.MountGs | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly resourceId: pulumi.Output<string | undefined>;
+    declare public readonly s3: pulumi.Output<outputs.MountS3 | undefined>;
     /**
      * (String) HDFS-compatible url
      */
-    public /*out*/ readonly source!: pulumi.Output<string>;
-    public readonly uri!: pulumi.Output<string | undefined>;
-    public readonly wasb!: pulumi.Output<outputs.MountWasb | undefined>;
+    declare public /*out*/ readonly source: pulumi.Output<string>;
+    declare public readonly uri: pulumi.Output<string | undefined>;
+    declare public readonly wasb: pulumi.Output<outputs.MountWasb | undefined>;
 
     /**
      * Create a Mount resource with the given unique name, arguments, and options.
@@ -68,31 +68,31 @@ export class Mount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MountState | undefined;
-            resourceInputs["abfs"] = state ? state.abfs : undefined;
-            resourceInputs["adl"] = state ? state.adl : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["encryptionType"] = state ? state.encryptionType : undefined;
-            resourceInputs["extraConfigs"] = state ? state.extraConfigs : undefined;
-            resourceInputs["gs"] = state ? state.gs : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["resourceId"] = state ? state.resourceId : undefined;
-            resourceInputs["s3"] = state ? state.s3 : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["uri"] = state ? state.uri : undefined;
-            resourceInputs["wasb"] = state ? state.wasb : undefined;
+            resourceInputs["abfs"] = state?.abfs;
+            resourceInputs["adl"] = state?.adl;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["encryptionType"] = state?.encryptionType;
+            resourceInputs["extraConfigs"] = state?.extraConfigs;
+            resourceInputs["gs"] = state?.gs;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["resourceId"] = state?.resourceId;
+            resourceInputs["s3"] = state?.s3;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["uri"] = state?.uri;
+            resourceInputs["wasb"] = state?.wasb;
         } else {
             const args = argsOrState as MountArgs | undefined;
-            resourceInputs["abfs"] = args ? args.abfs : undefined;
-            resourceInputs["adl"] = args ? args.adl : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["encryptionType"] = args ? args.encryptionType : undefined;
-            resourceInputs["extraConfigs"] = args ? args.extraConfigs : undefined;
-            resourceInputs["gs"] = args ? args.gs : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceId"] = args ? args.resourceId : undefined;
-            resourceInputs["s3"] = args ? args.s3 : undefined;
-            resourceInputs["uri"] = args ? args.uri : undefined;
-            resourceInputs["wasb"] = args ? args.wasb : undefined;
+            resourceInputs["abfs"] = args?.abfs;
+            resourceInputs["adl"] = args?.adl;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["encryptionType"] = args?.encryptionType;
+            resourceInputs["extraConfigs"] = args?.extraConfigs;
+            resourceInputs["gs"] = args?.gs;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceId"] = args?.resourceId;
+            resourceInputs["s3"] = args?.s3;
+            resourceInputs["uri"] = args?.uri;
+            resourceInputs["wasb"] = args?.wasb;
             resourceInputs["source"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

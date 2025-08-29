@@ -117,15 +117,15 @@ export class MwsPermissionAssignment extends pulumi.CustomResource {
      * * `"USER"` - Can access the workspace with basic privileges.
      * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
      */
-    public readonly permissions!: pulumi.Output<string[]>;
+    declare public readonly permissions: pulumi.Output<string[]>;
     /**
      * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.
      */
-    public readonly principalId!: pulumi.Output<string>;
+    declare public readonly principalId: pulumi.Output<string>;
     /**
      * Databricks workspace ID.
      */
-    public readonly workspaceId!: pulumi.Output<string>;
+    declare public readonly workspaceId: pulumi.Output<string>;
 
     /**
      * Create a MwsPermissionAssignment resource with the given unique name, arguments, and options.
@@ -140,23 +140,23 @@ export class MwsPermissionAssignment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MwsPermissionAssignmentState | undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["principalId"] = state ? state.principalId : undefined;
-            resourceInputs["workspaceId"] = state ? state.workspaceId : undefined;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["principalId"] = state?.principalId;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as MwsPermissionAssignmentArgs | undefined;
-            if ((!args || args.permissions === undefined) && !opts.urn) {
+            if (args?.permissions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'permissions'");
             }
-            if ((!args || args.principalId === undefined) && !opts.urn) {
+            if (args?.principalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principalId'");
             }
-            if ((!args || args.workspaceId === undefined) && !opts.urn) {
+            if (args?.workspaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceId'");
             }
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
-            resourceInputs["principalId"] = args ? args.principalId : undefined;
-            resourceInputs["workspaceId"] = args ? args.workspaceId : undefined;
+            resourceInputs["permissions"] = args?.permissions;
+            resourceInputs["principalId"] = args?.principalId;
+            resourceInputs["workspaceId"] = args?.workspaceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MwsPermissionAssignment.__pulumiType, name, resourceInputs, opts);

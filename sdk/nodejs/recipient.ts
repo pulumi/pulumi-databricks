@@ -93,79 +93,79 @@ export class Recipient extends pulumi.CustomResource {
         return obj['__pulumiType'] === Recipient.__pulumiType;
     }
 
-    public /*out*/ readonly activated!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly activated: pulumi.Output<boolean>;
     /**
      * Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
      */
-    public /*out*/ readonly activationUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly activationUrl: pulumi.Output<string>;
     /**
      * The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
      */
-    public readonly authenticationType!: pulumi.Output<string>;
+    declare public readonly authenticationType: pulumi.Output<string>;
     /**
      * Cloud vendor of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
      */
-    public /*out*/ readonly cloud!: pulumi.Output<string>;
+    declare public /*out*/ readonly cloud: pulumi.Output<string>;
     /**
      * Description about the recipient.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * Time at which this recipient was created, in epoch milliseconds.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<number>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<number>;
     /**
      * Username of recipient creator.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
      * Required when `authenticationType` is `DATABRICKS`.
      */
-    public readonly dataRecipientGlobalMetastoreId!: pulumi.Output<string | undefined>;
+    declare public readonly dataRecipientGlobalMetastoreId: pulumi.Output<string | undefined>;
     /**
      * Expiration timestamp of the token in epoch milliseconds.
      */
-    public readonly expirationTime!: pulumi.Output<number | undefined>;
+    declare public readonly expirationTime: pulumi.Output<number | undefined>;
     /**
      * Recipient IP access list.
      */
-    public readonly ipAccessList!: pulumi.Output<outputs.RecipientIpAccessList | undefined>;
+    declare public readonly ipAccessList: pulumi.Output<outputs.RecipientIpAccessList | undefined>;
     /**
      * Unique identifier of recipient's Unity Catalog metastore. This field is only present when the authenticationType is `DATABRICKS`.
      */
-    public /*out*/ readonly metastoreId!: pulumi.Output<string>;
+    declare public /*out*/ readonly metastoreId: pulumi.Output<string>;
     /**
      * Name of recipient. Change forces creation of a new resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Username/groupname/sp applicationId of the recipient owner.
      */
-    public readonly owner!: pulumi.Output<string | undefined>;
+    declare public readonly owner: pulumi.Output<string | undefined>;
     /**
      * Recipient properties - object consisting of following fields:
      */
-    public readonly propertiesKvpairs!: pulumi.Output<outputs.RecipientPropertiesKvpairs | undefined>;
+    declare public readonly propertiesKvpairs: pulumi.Output<outputs.RecipientPropertiesKvpairs | undefined>;
     /**
      * Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
      */
-    public /*out*/ readonly region!: pulumi.Output<string>;
+    declare public /*out*/ readonly region: pulumi.Output<string>;
     /**
      * The one-time sharing code provided by the data recipient.
      */
-    public readonly sharingCode!: pulumi.Output<string | undefined>;
+    declare public readonly sharingCode: pulumi.Output<string | undefined>;
     /**
      * List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
      */
-    public readonly tokens!: pulumi.Output<outputs.RecipientToken[]>;
+    declare public readonly tokens: pulumi.Output<outputs.RecipientToken[]>;
     /**
      * Time at which this recipient was updated, in epoch milliseconds.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<number>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<number>;
     /**
      * Username of recipient Token updater.
      */
-    public /*out*/ readonly updatedBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
 
     /**
      * Create a Recipient resource with the given unique name, arguments, and options.
@@ -180,40 +180,40 @@ export class Recipient extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RecipientState | undefined;
-            resourceInputs["activated"] = state ? state.activated : undefined;
-            resourceInputs["activationUrl"] = state ? state.activationUrl : undefined;
-            resourceInputs["authenticationType"] = state ? state.authenticationType : undefined;
-            resourceInputs["cloud"] = state ? state.cloud : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["dataRecipientGlobalMetastoreId"] = state ? state.dataRecipientGlobalMetastoreId : undefined;
-            resourceInputs["expirationTime"] = state ? state.expirationTime : undefined;
-            resourceInputs["ipAccessList"] = state ? state.ipAccessList : undefined;
-            resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["propertiesKvpairs"] = state ? state.propertiesKvpairs : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["sharingCode"] = state ? state.sharingCode : undefined;
-            resourceInputs["tokens"] = state ? state.tokens : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["updatedBy"] = state ? state.updatedBy : undefined;
+            resourceInputs["activated"] = state?.activated;
+            resourceInputs["activationUrl"] = state?.activationUrl;
+            resourceInputs["authenticationType"] = state?.authenticationType;
+            resourceInputs["cloud"] = state?.cloud;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["dataRecipientGlobalMetastoreId"] = state?.dataRecipientGlobalMetastoreId;
+            resourceInputs["expirationTime"] = state?.expirationTime;
+            resourceInputs["ipAccessList"] = state?.ipAccessList;
+            resourceInputs["metastoreId"] = state?.metastoreId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["propertiesKvpairs"] = state?.propertiesKvpairs;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["sharingCode"] = state?.sharingCode;
+            resourceInputs["tokens"] = state?.tokens;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["updatedBy"] = state?.updatedBy;
         } else {
             const args = argsOrState as RecipientArgs | undefined;
-            if ((!args || args.authenticationType === undefined) && !opts.urn) {
+            if (args?.authenticationType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authenticationType'");
             }
-            resourceInputs["authenticationType"] = args ? args.authenticationType : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["dataRecipientGlobalMetastoreId"] = args ? args.dataRecipientGlobalMetastoreId : undefined;
-            resourceInputs["expirationTime"] = args ? args.expirationTime : undefined;
-            resourceInputs["ipAccessList"] = args ? args.ipAccessList : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["propertiesKvpairs"] = args ? args.propertiesKvpairs : undefined;
+            resourceInputs["authenticationType"] = args?.authenticationType;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["dataRecipientGlobalMetastoreId"] = args?.dataRecipientGlobalMetastoreId;
+            resourceInputs["expirationTime"] = args?.expirationTime;
+            resourceInputs["ipAccessList"] = args?.ipAccessList;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["propertiesKvpairs"] = args?.propertiesKvpairs;
             resourceInputs["sharingCode"] = args?.sharingCode ? pulumi.secret(args.sharingCode) : undefined;
-            resourceInputs["tokens"] = args ? args.tokens : undefined;
+            resourceInputs["tokens"] = args?.tokens;
             resourceInputs["activated"] = undefined /*out*/;
             resourceInputs["activationUrl"] = undefined /*out*/;
             resourceInputs["cloud"] = undefined /*out*/;

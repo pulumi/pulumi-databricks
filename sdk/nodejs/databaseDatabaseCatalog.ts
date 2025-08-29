@@ -101,23 +101,23 @@ export class DatabaseDatabaseCatalog extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatabaseDatabaseCatalog.__pulumiType;
     }
 
-    public readonly createDatabaseIfNotExists!: pulumi.Output<boolean>;
+    declare public readonly createDatabaseIfNotExists: pulumi.Output<boolean>;
     /**
      * The name of the DatabaseInstance housing the database
      */
-    public readonly databaseInstanceName!: pulumi.Output<string>;
+    declare public readonly databaseInstanceName: pulumi.Output<string>;
     /**
      * The name of the database (in a instance) associated with the catalog
      */
-    public readonly databaseName!: pulumi.Output<string>;
+    declare public readonly databaseName: pulumi.Output<string>;
     /**
      * The name of the catalog in UC
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * (string)
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
 
     /**
      * Create a DatabaseDatabaseCatalog resource with the given unique name, arguments, and options.
@@ -132,23 +132,23 @@ export class DatabaseDatabaseCatalog extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseDatabaseCatalogState | undefined;
-            resourceInputs["createDatabaseIfNotExists"] = state ? state.createDatabaseIfNotExists : undefined;
-            resourceInputs["databaseInstanceName"] = state ? state.databaseInstanceName : undefined;
-            resourceInputs["databaseName"] = state ? state.databaseName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["createDatabaseIfNotExists"] = state?.createDatabaseIfNotExists;
+            resourceInputs["databaseInstanceName"] = state?.databaseInstanceName;
+            resourceInputs["databaseName"] = state?.databaseName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as DatabaseDatabaseCatalogArgs | undefined;
-            if ((!args || args.databaseInstanceName === undefined) && !opts.urn) {
+            if (args?.databaseInstanceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseInstanceName'");
             }
-            if ((!args || args.databaseName === undefined) && !opts.urn) {
+            if (args?.databaseName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseName'");
             }
-            resourceInputs["createDatabaseIfNotExists"] = args ? args.createDatabaseIfNotExists : undefined;
-            resourceInputs["databaseInstanceName"] = args ? args.databaseInstanceName : undefined;
-            resourceInputs["databaseName"] = args ? args.databaseName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["createDatabaseIfNotExists"] = args?.createDatabaseIfNotExists;
+            resourceInputs["databaseInstanceName"] = args?.databaseInstanceName;
+            resourceInputs["databaseName"] = args?.databaseName;
+            resourceInputs["name"] = args?.name;
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

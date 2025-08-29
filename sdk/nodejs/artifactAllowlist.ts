@@ -85,23 +85,23 @@ export class ArtifactAllowlist extends pulumi.CustomResource {
         return obj['__pulumiType'] === ArtifactAllowlist.__pulumiType;
     }
 
-    public readonly artifactMatchers!: pulumi.Output<outputs.ArtifactAllowlistArtifactMatcher[]>;
+    declare public readonly artifactMatchers: pulumi.Output<outputs.ArtifactAllowlistArtifactMatcher[]>;
     /**
      * The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
      */
-    public readonly artifactType!: pulumi.Output<string>;
+    declare public readonly artifactType: pulumi.Output<string>;
     /**
      * Time at which this artifact allowlist was set.
      */
-    public readonly createdAt!: pulumi.Output<number>;
+    declare public readonly createdAt: pulumi.Output<number>;
     /**
      * Identity that set the artifact allowlist.
      */
-    public readonly createdBy!: pulumi.Output<string>;
+    declare public readonly createdBy: pulumi.Output<string>;
     /**
      * ID of the parent metastore.
      */
-    public readonly metastoreId!: pulumi.Output<string>;
+    declare public readonly metastoreId: pulumi.Output<string>;
 
     /**
      * Create a ArtifactAllowlist resource with the given unique name, arguments, and options.
@@ -116,24 +116,24 @@ export class ArtifactAllowlist extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ArtifactAllowlistState | undefined;
-            resourceInputs["artifactMatchers"] = state ? state.artifactMatchers : undefined;
-            resourceInputs["artifactType"] = state ? state.artifactType : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
+            resourceInputs["artifactMatchers"] = state?.artifactMatchers;
+            resourceInputs["artifactType"] = state?.artifactType;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["metastoreId"] = state?.metastoreId;
         } else {
             const args = argsOrState as ArtifactAllowlistArgs | undefined;
-            if ((!args || args.artifactMatchers === undefined) && !opts.urn) {
+            if (args?.artifactMatchers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'artifactMatchers'");
             }
-            if ((!args || args.artifactType === undefined) && !opts.urn) {
+            if (args?.artifactType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'artifactType'");
             }
-            resourceInputs["artifactMatchers"] = args ? args.artifactMatchers : undefined;
-            resourceInputs["artifactType"] = args ? args.artifactType : undefined;
-            resourceInputs["createdAt"] = args ? args.createdAt : undefined;
-            resourceInputs["createdBy"] = args ? args.createdBy : undefined;
-            resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
+            resourceInputs["artifactMatchers"] = args?.artifactMatchers;
+            resourceInputs["artifactType"] = args?.artifactType;
+            resourceInputs["createdAt"] = args?.createdAt;
+            resourceInputs["createdBy"] = args?.createdBy;
+            resourceInputs["metastoreId"] = args?.metastoreId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ArtifactAllowlist.__pulumiType, name, resourceInputs, opts);

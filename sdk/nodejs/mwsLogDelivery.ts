@@ -97,47 +97,47 @@ export class MwsLogDelivery extends pulumi.CustomResource {
     /**
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Databricks log delivery configuration ID.
      */
-    public readonly configId!: pulumi.Output<string>;
+    declare public readonly configId: pulumi.Output<string>;
     /**
      * The optional human-readable name of the log delivery configuration. Defaults to empty.
      */
-    public readonly configName!: pulumi.Output<string | undefined>;
+    declare public readonly configName: pulumi.Output<string | undefined>;
     /**
      * The ID for a Databricks credential configuration that represents the AWS IAM role with policy and trust relationship as described in the main billable usage documentation page.
      */
-    public readonly credentialsId!: pulumi.Output<string>;
+    declare public readonly credentialsId: pulumi.Output<string>;
     /**
      * Defaults to empty, which means that logs are delivered to the root of the bucket. The value must be a valid S3 object key. It must not start or end with a slash character.
      */
-    public readonly deliveryPathPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly deliveryPathPrefix: pulumi.Output<string | undefined>;
     /**
      * The optional start month and year for delivery, specified in YYYY-MM format. Defaults to current year and month. Usage is not available before 2019-03.
      */
-    public readonly deliveryStartTime!: pulumi.Output<string>;
+    declare public readonly deliveryStartTime: pulumi.Output<string>;
     /**
      * The type of log delivery. `BILLABLE_USAGE` and `AUDIT_LOGS` are supported.
      */
-    public readonly logType!: pulumi.Output<string>;
+    declare public readonly logType: pulumi.Output<string>;
     /**
      * The file type of log delivery. Currently `CSV` (for `BILLABLE_USAGE`) and `JSON` (for `AUDIT_LOGS`) are supported.
      */
-    public readonly outputFormat!: pulumi.Output<string>;
+    declare public readonly outputFormat: pulumi.Output<string>;
     /**
      * Status of log delivery configuration. Set to ENABLED or DISABLED. Defaults to ENABLED. This is the only field you can update.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The ID for a Databricks storage configuration that represents the S3 bucket with bucket policy as described in the main billable usage documentation page.
      */
-    public readonly storageConfigurationId!: pulumi.Output<string>;
+    declare public readonly storageConfigurationId: pulumi.Output<string>;
     /**
      * By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the multitenant version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
      */
-    public readonly workspaceIdsFilters!: pulumi.Output<number[] | undefined>;
+    declare public readonly workspaceIdsFilters: pulumi.Output<number[] | undefined>;
 
     /**
      * Create a MwsLogDelivery resource with the given unique name, arguments, and options.
@@ -152,45 +152,45 @@ export class MwsLogDelivery extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MwsLogDeliveryState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["configId"] = state ? state.configId : undefined;
-            resourceInputs["configName"] = state ? state.configName : undefined;
-            resourceInputs["credentialsId"] = state ? state.credentialsId : undefined;
-            resourceInputs["deliveryPathPrefix"] = state ? state.deliveryPathPrefix : undefined;
-            resourceInputs["deliveryStartTime"] = state ? state.deliveryStartTime : undefined;
-            resourceInputs["logType"] = state ? state.logType : undefined;
-            resourceInputs["outputFormat"] = state ? state.outputFormat : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storageConfigurationId"] = state ? state.storageConfigurationId : undefined;
-            resourceInputs["workspaceIdsFilters"] = state ? state.workspaceIdsFilters : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["configId"] = state?.configId;
+            resourceInputs["configName"] = state?.configName;
+            resourceInputs["credentialsId"] = state?.credentialsId;
+            resourceInputs["deliveryPathPrefix"] = state?.deliveryPathPrefix;
+            resourceInputs["deliveryStartTime"] = state?.deliveryStartTime;
+            resourceInputs["logType"] = state?.logType;
+            resourceInputs["outputFormat"] = state?.outputFormat;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storageConfigurationId"] = state?.storageConfigurationId;
+            resourceInputs["workspaceIdsFilters"] = state?.workspaceIdsFilters;
         } else {
             const args = argsOrState as MwsLogDeliveryArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.credentialsId === undefined) && !opts.urn) {
+            if (args?.credentialsId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'credentialsId'");
             }
-            if ((!args || args.logType === undefined) && !opts.urn) {
+            if (args?.logType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'logType'");
             }
-            if ((!args || args.outputFormat === undefined) && !opts.urn) {
+            if (args?.outputFormat === undefined && !opts.urn) {
                 throw new Error("Missing required property 'outputFormat'");
             }
-            if ((!args || args.storageConfigurationId === undefined) && !opts.urn) {
+            if (args?.storageConfigurationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageConfigurationId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["configId"] = args ? args.configId : undefined;
-            resourceInputs["configName"] = args ? args.configName : undefined;
-            resourceInputs["credentialsId"] = args ? args.credentialsId : undefined;
-            resourceInputs["deliveryPathPrefix"] = args ? args.deliveryPathPrefix : undefined;
-            resourceInputs["deliveryStartTime"] = args ? args.deliveryStartTime : undefined;
-            resourceInputs["logType"] = args ? args.logType : undefined;
-            resourceInputs["outputFormat"] = args ? args.outputFormat : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["storageConfigurationId"] = args ? args.storageConfigurationId : undefined;
-            resourceInputs["workspaceIdsFilters"] = args ? args.workspaceIdsFilters : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["configId"] = args?.configId;
+            resourceInputs["configName"] = args?.configName;
+            resourceInputs["credentialsId"] = args?.credentialsId;
+            resourceInputs["deliveryPathPrefix"] = args?.deliveryPathPrefix;
+            resourceInputs["deliveryStartTime"] = args?.deliveryStartTime;
+            resourceInputs["logType"] = args?.logType;
+            resourceInputs["outputFormat"] = args?.outputFormat;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["storageConfigurationId"] = args?.storageConfigurationId;
+            resourceInputs["workspaceIdsFilters"] = args?.workspaceIdsFilters;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MwsLogDelivery.__pulumiType, name, resourceInputs, opts);

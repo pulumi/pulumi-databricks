@@ -57,32 +57,32 @@ export class CleanRoomAutoApprovalRule extends pulumi.CustomResource {
      * Collaborator alias of the author covered by the rule.
      * Only one of `authorCollaboratorAlias` and `authorScope` can be set
      */
-    public readonly authorCollaboratorAlias!: pulumi.Output<string | undefined>;
+    declare public readonly authorCollaboratorAlias: pulumi.Output<string | undefined>;
     /**
      * Scope of authors covered by the rule.
      * Only one of `authorCollaboratorAlias` and `authorScope` can be set. Possible values are: `ANY_AUTHOR`
      */
-    public readonly authorScope!: pulumi.Output<string | undefined>;
+    declare public readonly authorScope: pulumi.Output<string | undefined>;
     /**
      * The name of the clean room this auto-approval rule belongs to
      */
-    public readonly cleanRoomName!: pulumi.Output<string | undefined>;
+    declare public readonly cleanRoomName: pulumi.Output<string | undefined>;
     /**
      * (integer) - Timestamp of when the rule was created, in epoch milliseconds
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<number>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<number>;
     /**
      * (string) - A generated UUID identifying the rule
      */
-    public /*out*/ readonly ruleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly ruleId: pulumi.Output<string>;
     /**
      * (string) - The owner of the rule to whom the rule applies
      */
-    public /*out*/ readonly ruleOwnerCollaboratorAlias!: pulumi.Output<string>;
+    declare public /*out*/ readonly ruleOwnerCollaboratorAlias: pulumi.Output<string>;
     /**
      * Collaborator alias of the runner covered by the rule
      */
-    public readonly runnerCollaboratorAlias!: pulumi.Output<string | undefined>;
+    declare public readonly runnerCollaboratorAlias: pulumi.Output<string | undefined>;
 
     /**
      * Create a CleanRoomAutoApprovalRule resource with the given unique name, arguments, and options.
@@ -97,19 +97,19 @@ export class CleanRoomAutoApprovalRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CleanRoomAutoApprovalRuleState | undefined;
-            resourceInputs["authorCollaboratorAlias"] = state ? state.authorCollaboratorAlias : undefined;
-            resourceInputs["authorScope"] = state ? state.authorScope : undefined;
-            resourceInputs["cleanRoomName"] = state ? state.cleanRoomName : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["ruleId"] = state ? state.ruleId : undefined;
-            resourceInputs["ruleOwnerCollaboratorAlias"] = state ? state.ruleOwnerCollaboratorAlias : undefined;
-            resourceInputs["runnerCollaboratorAlias"] = state ? state.runnerCollaboratorAlias : undefined;
+            resourceInputs["authorCollaboratorAlias"] = state?.authorCollaboratorAlias;
+            resourceInputs["authorScope"] = state?.authorScope;
+            resourceInputs["cleanRoomName"] = state?.cleanRoomName;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["ruleId"] = state?.ruleId;
+            resourceInputs["ruleOwnerCollaboratorAlias"] = state?.ruleOwnerCollaboratorAlias;
+            resourceInputs["runnerCollaboratorAlias"] = state?.runnerCollaboratorAlias;
         } else {
             const args = argsOrState as CleanRoomAutoApprovalRuleArgs | undefined;
-            resourceInputs["authorCollaboratorAlias"] = args ? args.authorCollaboratorAlias : undefined;
-            resourceInputs["authorScope"] = args ? args.authorScope : undefined;
-            resourceInputs["cleanRoomName"] = args ? args.cleanRoomName : undefined;
-            resourceInputs["runnerCollaboratorAlias"] = args ? args.runnerCollaboratorAlias : undefined;
+            resourceInputs["authorCollaboratorAlias"] = args?.authorCollaboratorAlias;
+            resourceInputs["authorScope"] = args?.authorScope;
+            resourceInputs["cleanRoomName"] = args?.cleanRoomName;
+            resourceInputs["runnerCollaboratorAlias"] = args?.runnerCollaboratorAlias;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["ruleId"] = undefined /*out*/;
             resourceInputs["ruleOwnerCollaboratorAlias"] = undefined /*out*/;

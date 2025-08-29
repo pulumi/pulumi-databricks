@@ -95,15 +95,15 @@ export class SecretAcl extends pulumi.CustomResource {
     /**
      * `READ`, `WRITE` or `MANAGE`.
      */
-    public readonly permission!: pulumi.Output<string>;
+    declare public readonly permission: pulumi.Output<string>;
     /**
      * principal's identifier. It can be:
      */
-    public readonly principal!: pulumi.Output<string>;
+    declare public readonly principal: pulumi.Output<string>;
     /**
      * name of the scope
      */
-    public readonly scope!: pulumi.Output<string>;
+    declare public readonly scope: pulumi.Output<string>;
 
     /**
      * Create a SecretAcl resource with the given unique name, arguments, and options.
@@ -118,23 +118,23 @@ export class SecretAcl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretAclState | undefined;
-            resourceInputs["permission"] = state ? state.permission : undefined;
-            resourceInputs["principal"] = state ? state.principal : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
+            resourceInputs["permission"] = state?.permission;
+            resourceInputs["principal"] = state?.principal;
+            resourceInputs["scope"] = state?.scope;
         } else {
             const args = argsOrState as SecretAclArgs | undefined;
-            if ((!args || args.permission === undefined) && !opts.urn) {
+            if (args?.permission === undefined && !opts.urn) {
                 throw new Error("Missing required property 'permission'");
             }
-            if ((!args || args.principal === undefined) && !opts.urn) {
+            if (args?.principal === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principal'");
             }
-            if ((!args || args.scope === undefined) && !opts.urn) {
+            if (args?.scope === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scope'");
             }
-            resourceInputs["permission"] = args ? args.permission : undefined;
-            resourceInputs["principal"] = args ? args.principal : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
+            resourceInputs["permission"] = args?.permission;
+            resourceInputs["principal"] = args?.principal;
+            resourceInputs["scope"] = args?.scope;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecretAcl.__pulumiType, name, resourceInputs, opts);

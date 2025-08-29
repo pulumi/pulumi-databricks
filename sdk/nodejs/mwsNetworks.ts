@@ -155,45 +155,45 @@ export class MwsNetworks extends pulumi.CustomResource {
     /**
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      */
-    public readonly accountId!: pulumi.Output<string>;
-    public readonly creationTime!: pulumi.Output<number>;
-    public readonly errorMessages!: pulumi.Output<outputs.MwsNetworksErrorMessage[]>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly creationTime: pulumi.Output<number>;
+    declare public readonly errorMessages: pulumi.Output<outputs.MwsNetworksErrorMessage[]>;
     /**
      * a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
      */
-    public readonly gcpNetworkInfo!: pulumi.Output<outputs.MwsNetworksGcpNetworkInfo | undefined>;
+    declare public readonly gcpNetworkInfo: pulumi.Output<outputs.MwsNetworksGcpNetworkInfo | undefined>;
     /**
      * (String) id of network to be used for databricks.MwsWorkspaces resource.
      */
-    public readonly networkId!: pulumi.Output<string>;
+    declare public readonly networkId: pulumi.Output<string>;
     /**
      * name under which this network is registered
      */
-    public readonly networkName!: pulumi.Output<string>;
+    declare public readonly networkName: pulumi.Output<string>;
     /**
      * ids of aws_security_group
      */
-    public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly securityGroupIds: pulumi.Output<string[] | undefined>;
     /**
      * ids of aws_subnet
      */
-    public readonly subnetIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly subnetIds: pulumi.Output<string[] | undefined>;
     /**
      * mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections
      */
-    public readonly vpcEndpoints!: pulumi.Output<outputs.MwsNetworksVpcEndpoints>;
+    declare public readonly vpcEndpoints: pulumi.Output<outputs.MwsNetworksVpcEndpoints>;
     /**
      * aws_vpc id
      */
-    public readonly vpcId!: pulumi.Output<string | undefined>;
+    declare public readonly vpcId: pulumi.Output<string | undefined>;
     /**
      * (String) VPC attachment status
      */
-    public readonly vpcStatus!: pulumi.Output<string>;
+    declare public readonly vpcStatus: pulumi.Output<string>;
     /**
      * (Integer) id of associated workspace
      */
-    public readonly workspaceId!: pulumi.Output<string>;
+    declare public readonly workspaceId: pulumi.Output<string>;
 
     /**
      * Create a MwsNetworks resource with the given unique name, arguments, and options.
@@ -208,38 +208,38 @@ export class MwsNetworks extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MwsNetworksState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["errorMessages"] = state ? state.errorMessages : undefined;
-            resourceInputs["gcpNetworkInfo"] = state ? state.gcpNetworkInfo : undefined;
-            resourceInputs["networkId"] = state ? state.networkId : undefined;
-            resourceInputs["networkName"] = state ? state.networkName : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["subnetIds"] = state ? state.subnetIds : undefined;
-            resourceInputs["vpcEndpoints"] = state ? state.vpcEndpoints : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vpcStatus"] = state ? state.vpcStatus : undefined;
-            resourceInputs["workspaceId"] = state ? state.workspaceId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["errorMessages"] = state?.errorMessages;
+            resourceInputs["gcpNetworkInfo"] = state?.gcpNetworkInfo;
+            resourceInputs["networkId"] = state?.networkId;
+            resourceInputs["networkName"] = state?.networkName;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["subnetIds"] = state?.subnetIds;
+            resourceInputs["vpcEndpoints"] = state?.vpcEndpoints;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vpcStatus"] = state?.vpcStatus;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as MwsNetworksArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.networkName === undefined) && !opts.urn) {
+            if (args?.networkName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkName'");
             }
             resourceInputs["accountId"] = args?.accountId ? pulumi.secret(args.accountId) : undefined;
-            resourceInputs["creationTime"] = args ? args.creationTime : undefined;
-            resourceInputs["errorMessages"] = args ? args.errorMessages : undefined;
-            resourceInputs["gcpNetworkInfo"] = args ? args.gcpNetworkInfo : undefined;
-            resourceInputs["networkId"] = args ? args.networkId : undefined;
-            resourceInputs["networkName"] = args ? args.networkName : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["subnetIds"] = args ? args.subnetIds : undefined;
-            resourceInputs["vpcEndpoints"] = args ? args.vpcEndpoints : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vpcStatus"] = args ? args.vpcStatus : undefined;
-            resourceInputs["workspaceId"] = args ? args.workspaceId : undefined;
+            resourceInputs["creationTime"] = args?.creationTime;
+            resourceInputs["errorMessages"] = args?.errorMessages;
+            resourceInputs["gcpNetworkInfo"] = args?.gcpNetworkInfo;
+            resourceInputs["networkId"] = args?.networkId;
+            resourceInputs["networkName"] = args?.networkName;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["subnetIds"] = args?.subnetIds;
+            resourceInputs["vpcEndpoints"] = args?.vpcEndpoints;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vpcStatus"] = args?.vpcStatus;
+            resourceInputs["workspaceId"] = args?.workspaceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["accountId"] };

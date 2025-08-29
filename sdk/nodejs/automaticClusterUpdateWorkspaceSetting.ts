@@ -34,9 +34,9 @@ export class AutomaticClusterUpdateWorkspaceSetting extends pulumi.CustomResourc
         return obj['__pulumiType'] === AutomaticClusterUpdateWorkspaceSetting.__pulumiType;
     }
 
-    public readonly automaticClusterUpdateWorkspace!: pulumi.Output<outputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace>;
-    public readonly etag!: pulumi.Output<string>;
-    public readonly settingName!: pulumi.Output<string>;
+    declare public readonly automaticClusterUpdateWorkspace: pulumi.Output<outputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace>;
+    declare public readonly etag: pulumi.Output<string>;
+    declare public readonly settingName: pulumi.Output<string>;
 
     /**
      * Create a AutomaticClusterUpdateWorkspaceSetting resource with the given unique name, arguments, and options.
@@ -51,17 +51,17 @@ export class AutomaticClusterUpdateWorkspaceSetting extends pulumi.CustomResourc
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutomaticClusterUpdateWorkspaceSettingState | undefined;
-            resourceInputs["automaticClusterUpdateWorkspace"] = state ? state.automaticClusterUpdateWorkspace : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["settingName"] = state ? state.settingName : undefined;
+            resourceInputs["automaticClusterUpdateWorkspace"] = state?.automaticClusterUpdateWorkspace;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["settingName"] = state?.settingName;
         } else {
             const args = argsOrState as AutomaticClusterUpdateWorkspaceSettingArgs | undefined;
-            if ((!args || args.automaticClusterUpdateWorkspace === undefined) && !opts.urn) {
+            if (args?.automaticClusterUpdateWorkspace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'automaticClusterUpdateWorkspace'");
             }
-            resourceInputs["automaticClusterUpdateWorkspace"] = args ? args.automaticClusterUpdateWorkspace : undefined;
-            resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["settingName"] = args ? args.settingName : undefined;
+            resourceInputs["automaticClusterUpdateWorkspace"] = args?.automaticClusterUpdateWorkspace;
+            resourceInputs["etag"] = args?.etag;
+            resourceInputs["settingName"] = args?.settingName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AutomaticClusterUpdateWorkspaceSetting.__pulumiType, name, resourceInputs, opts);

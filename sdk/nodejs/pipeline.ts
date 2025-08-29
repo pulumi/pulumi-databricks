@@ -139,110 +139,110 @@ export class Pipeline extends pulumi.CustomResource {
     /**
      * Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
      */
-    public readonly allowDuplicateNames!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowDuplicateNames: pulumi.Output<boolean | undefined>;
     /**
      * optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
      */
-    public readonly budgetPolicyId!: pulumi.Output<string | undefined>;
+    declare public readonly budgetPolicyId: pulumi.Output<string | undefined>;
     /**
      * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
      */
-    public readonly catalog!: pulumi.Output<string | undefined>;
-    public readonly cause!: pulumi.Output<string>;
+    declare public readonly catalog: pulumi.Output<string | undefined>;
+    declare public readonly cause: pulumi.Output<string>;
     /**
      * optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
      */
-    public readonly channel!: pulumi.Output<string | undefined>;
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly channel: pulumi.Output<string | undefined>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
      */
-    public readonly clusters!: pulumi.Output<outputs.PipelineCluster[] | undefined>;
+    declare public readonly clusters: pulumi.Output<outputs.PipelineCluster[] | undefined>;
     /**
      * An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
      */
-    public readonly configuration!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly configuration: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A flag indicating whether to run the pipeline continuously. The default value is `false`.
      */
-    public readonly continuous!: pulumi.Output<boolean | undefined>;
-    public readonly creatorUserName!: pulumi.Output<string>;
+    declare public readonly continuous: pulumi.Output<boolean | undefined>;
+    declare public readonly creatorUserName: pulumi.Output<string>;
     /**
      * Deployment type of this pipeline. Supports following attributes:
      */
-    public readonly deployment!: pulumi.Output<outputs.PipelineDeployment | undefined>;
+    declare public readonly deployment: pulumi.Output<outputs.PipelineDeployment | undefined>;
     /**
      * A flag indicating whether to run the pipeline in development mode. The default value is `false`.
      */
-    public readonly development!: pulumi.Output<boolean | undefined>;
+    declare public readonly development: pulumi.Output<boolean | undefined>;
     /**
      * optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      */
-    public readonly edition!: pulumi.Output<string | undefined>;
-    public readonly environment!: pulumi.Output<outputs.PipelineEnvironment | undefined>;
+    declare public readonly edition: pulumi.Output<string | undefined>;
+    declare public readonly environment: pulumi.Output<outputs.PipelineEnvironment | undefined>;
     /**
      * an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
      */
-    public readonly eventLog!: pulumi.Output<outputs.PipelineEventLog | undefined>;
-    public readonly expectedLastModified!: pulumi.Output<number | undefined>;
+    declare public readonly eventLog: pulumi.Output<outputs.PipelineEventLog | undefined>;
+    declare public readonly expectedLastModified: pulumi.Output<number | undefined>;
     /**
      * Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
      */
-    public readonly filters!: pulumi.Output<outputs.PipelineFilters | undefined>;
+    declare public readonly filters: pulumi.Output<outputs.PipelineFilters | undefined>;
     /**
      * The definition of a gateway pipeline to support CDC. Consists of following attributes:
      */
-    public readonly gatewayDefinition!: pulumi.Output<outputs.PipelineGatewayDefinition | undefined>;
-    public readonly health!: pulumi.Output<string>;
-    public readonly ingestionDefinition!: pulumi.Output<outputs.PipelineIngestionDefinition | undefined>;
-    public readonly lastModified!: pulumi.Output<number>;
-    public readonly latestUpdates!: pulumi.Output<outputs.PipelineLatestUpdate[]>;
+    declare public readonly gatewayDefinition: pulumi.Output<outputs.PipelineGatewayDefinition | undefined>;
+    declare public readonly health: pulumi.Output<string>;
+    declare public readonly ingestionDefinition: pulumi.Output<outputs.PipelineIngestionDefinition | undefined>;
+    declare public readonly lastModified: pulumi.Output<number>;
+    declare public readonly latestUpdates: pulumi.Output<outputs.PipelineLatestUpdate[]>;
     /**
      * blocks - Specifies pipeline code.
      */
-    public readonly libraries!: pulumi.Output<outputs.PipelineLibrary[] | undefined>;
+    declare public readonly libraries: pulumi.Output<outputs.PipelineLibrary[] | undefined>;
     /**
      * A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly notifications!: pulumi.Output<outputs.PipelineNotification[] | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly notifications: pulumi.Output<outputs.PipelineNotification[] | undefined>;
     /**
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
-    public readonly photon!: pulumi.Output<boolean | undefined>;
-    public readonly restartWindow!: pulumi.Output<outputs.PipelineRestartWindow | undefined>;
+    declare public readonly photon: pulumi.Output<boolean | undefined>;
+    declare public readonly restartWindow: pulumi.Output<outputs.PipelineRestartWindow | undefined>;
     /**
      * An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
      */
-    public readonly rootPath!: pulumi.Output<string | undefined>;
-    public readonly runAs!: pulumi.Output<outputs.PipelineRunAs | undefined>;
-    public readonly runAsUserName!: pulumi.Output<string>;
+    declare public readonly rootPath: pulumi.Output<string | undefined>;
+    declare public readonly runAs: pulumi.Output<outputs.PipelineRunAs | undefined>;
+    declare public readonly runAsUserName: pulumi.Output<string>;
     /**
      * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
      */
-    public readonly schema!: pulumi.Output<string | undefined>;
+    declare public readonly schema: pulumi.Output<string | undefined>;
     /**
      * An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
      */
-    public readonly serverless!: pulumi.Output<boolean | undefined>;
-    public readonly state!: pulumi.Output<string>;
+    declare public readonly serverless: pulumi.Output<boolean | undefined>;
+    declare public readonly state: pulumi.Output<string>;
     /**
      * A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
      */
-    public readonly storage!: pulumi.Output<string | undefined>;
+    declare public readonly storage: pulumi.Output<string | undefined>;
     /**
      * A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      */
-    public readonly target!: pulumi.Output<string | undefined>;
-    public readonly trigger!: pulumi.Output<outputs.PipelineTrigger | undefined>;
+    declare public readonly target: pulumi.Output<string | undefined>;
+    declare public readonly trigger: pulumi.Output<outputs.PipelineTrigger | undefined>;
     /**
      * URL of the Lakeflow Declarative Pipeline on the given workspace.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
 
     /**
      * Create a Pipeline resource with the given unique name, arguments, and options.
@@ -257,84 +257,84 @@ export class Pipeline extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PipelineState | undefined;
-            resourceInputs["allowDuplicateNames"] = state ? state.allowDuplicateNames : undefined;
-            resourceInputs["budgetPolicyId"] = state ? state.budgetPolicyId : undefined;
-            resourceInputs["catalog"] = state ? state.catalog : undefined;
-            resourceInputs["cause"] = state ? state.cause : undefined;
-            resourceInputs["channel"] = state ? state.channel : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["clusters"] = state ? state.clusters : undefined;
-            resourceInputs["configuration"] = state ? state.configuration : undefined;
-            resourceInputs["continuous"] = state ? state.continuous : undefined;
-            resourceInputs["creatorUserName"] = state ? state.creatorUserName : undefined;
-            resourceInputs["deployment"] = state ? state.deployment : undefined;
-            resourceInputs["development"] = state ? state.development : undefined;
-            resourceInputs["edition"] = state ? state.edition : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["eventLog"] = state ? state.eventLog : undefined;
-            resourceInputs["expectedLastModified"] = state ? state.expectedLastModified : undefined;
-            resourceInputs["filters"] = state ? state.filters : undefined;
-            resourceInputs["gatewayDefinition"] = state ? state.gatewayDefinition : undefined;
-            resourceInputs["health"] = state ? state.health : undefined;
-            resourceInputs["ingestionDefinition"] = state ? state.ingestionDefinition : undefined;
-            resourceInputs["lastModified"] = state ? state.lastModified : undefined;
-            resourceInputs["latestUpdates"] = state ? state.latestUpdates : undefined;
-            resourceInputs["libraries"] = state ? state.libraries : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notifications"] = state ? state.notifications : undefined;
-            resourceInputs["photon"] = state ? state.photon : undefined;
-            resourceInputs["restartWindow"] = state ? state.restartWindow : undefined;
-            resourceInputs["rootPath"] = state ? state.rootPath : undefined;
-            resourceInputs["runAs"] = state ? state.runAs : undefined;
-            resourceInputs["runAsUserName"] = state ? state.runAsUserName : undefined;
-            resourceInputs["schema"] = state ? state.schema : undefined;
-            resourceInputs["serverless"] = state ? state.serverless : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["storage"] = state ? state.storage : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["target"] = state ? state.target : undefined;
-            resourceInputs["trigger"] = state ? state.trigger : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["allowDuplicateNames"] = state?.allowDuplicateNames;
+            resourceInputs["budgetPolicyId"] = state?.budgetPolicyId;
+            resourceInputs["catalog"] = state?.catalog;
+            resourceInputs["cause"] = state?.cause;
+            resourceInputs["channel"] = state?.channel;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["clusters"] = state?.clusters;
+            resourceInputs["configuration"] = state?.configuration;
+            resourceInputs["continuous"] = state?.continuous;
+            resourceInputs["creatorUserName"] = state?.creatorUserName;
+            resourceInputs["deployment"] = state?.deployment;
+            resourceInputs["development"] = state?.development;
+            resourceInputs["edition"] = state?.edition;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["eventLog"] = state?.eventLog;
+            resourceInputs["expectedLastModified"] = state?.expectedLastModified;
+            resourceInputs["filters"] = state?.filters;
+            resourceInputs["gatewayDefinition"] = state?.gatewayDefinition;
+            resourceInputs["health"] = state?.health;
+            resourceInputs["ingestionDefinition"] = state?.ingestionDefinition;
+            resourceInputs["lastModified"] = state?.lastModified;
+            resourceInputs["latestUpdates"] = state?.latestUpdates;
+            resourceInputs["libraries"] = state?.libraries;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notifications"] = state?.notifications;
+            resourceInputs["photon"] = state?.photon;
+            resourceInputs["restartWindow"] = state?.restartWindow;
+            resourceInputs["rootPath"] = state?.rootPath;
+            resourceInputs["runAs"] = state?.runAs;
+            resourceInputs["runAsUserName"] = state?.runAsUserName;
+            resourceInputs["schema"] = state?.schema;
+            resourceInputs["serverless"] = state?.serverless;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["storage"] = state?.storage;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["target"] = state?.target;
+            resourceInputs["trigger"] = state?.trigger;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as PipelineArgs | undefined;
-            resourceInputs["allowDuplicateNames"] = args ? args.allowDuplicateNames : undefined;
-            resourceInputs["budgetPolicyId"] = args ? args.budgetPolicyId : undefined;
-            resourceInputs["catalog"] = args ? args.catalog : undefined;
-            resourceInputs["cause"] = args ? args.cause : undefined;
-            resourceInputs["channel"] = args ? args.channel : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["clusters"] = args ? args.clusters : undefined;
-            resourceInputs["configuration"] = args ? args.configuration : undefined;
-            resourceInputs["continuous"] = args ? args.continuous : undefined;
-            resourceInputs["creatorUserName"] = args ? args.creatorUserName : undefined;
-            resourceInputs["deployment"] = args ? args.deployment : undefined;
-            resourceInputs["development"] = args ? args.development : undefined;
-            resourceInputs["edition"] = args ? args.edition : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["eventLog"] = args ? args.eventLog : undefined;
-            resourceInputs["expectedLastModified"] = args ? args.expectedLastModified : undefined;
-            resourceInputs["filters"] = args ? args.filters : undefined;
-            resourceInputs["gatewayDefinition"] = args ? args.gatewayDefinition : undefined;
-            resourceInputs["health"] = args ? args.health : undefined;
-            resourceInputs["ingestionDefinition"] = args ? args.ingestionDefinition : undefined;
-            resourceInputs["lastModified"] = args ? args.lastModified : undefined;
-            resourceInputs["latestUpdates"] = args ? args.latestUpdates : undefined;
-            resourceInputs["libraries"] = args ? args.libraries : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notifications"] = args ? args.notifications : undefined;
-            resourceInputs["photon"] = args ? args.photon : undefined;
-            resourceInputs["restartWindow"] = args ? args.restartWindow : undefined;
-            resourceInputs["rootPath"] = args ? args.rootPath : undefined;
-            resourceInputs["runAs"] = args ? args.runAs : undefined;
-            resourceInputs["runAsUserName"] = args ? args.runAsUserName : undefined;
-            resourceInputs["schema"] = args ? args.schema : undefined;
-            resourceInputs["serverless"] = args ? args.serverless : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["storage"] = args ? args.storage : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["target"] = args ? args.target : undefined;
-            resourceInputs["trigger"] = args ? args.trigger : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["allowDuplicateNames"] = args?.allowDuplicateNames;
+            resourceInputs["budgetPolicyId"] = args?.budgetPolicyId;
+            resourceInputs["catalog"] = args?.catalog;
+            resourceInputs["cause"] = args?.cause;
+            resourceInputs["channel"] = args?.channel;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["clusters"] = args?.clusters;
+            resourceInputs["configuration"] = args?.configuration;
+            resourceInputs["continuous"] = args?.continuous;
+            resourceInputs["creatorUserName"] = args?.creatorUserName;
+            resourceInputs["deployment"] = args?.deployment;
+            resourceInputs["development"] = args?.development;
+            resourceInputs["edition"] = args?.edition;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["eventLog"] = args?.eventLog;
+            resourceInputs["expectedLastModified"] = args?.expectedLastModified;
+            resourceInputs["filters"] = args?.filters;
+            resourceInputs["gatewayDefinition"] = args?.gatewayDefinition;
+            resourceInputs["health"] = args?.health;
+            resourceInputs["ingestionDefinition"] = args?.ingestionDefinition;
+            resourceInputs["lastModified"] = args?.lastModified;
+            resourceInputs["latestUpdates"] = args?.latestUpdates;
+            resourceInputs["libraries"] = args?.libraries;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notifications"] = args?.notifications;
+            resourceInputs["photon"] = args?.photon;
+            resourceInputs["restartWindow"] = args?.restartWindow;
+            resourceInputs["rootPath"] = args?.rootPath;
+            resourceInputs["runAs"] = args?.runAs;
+            resourceInputs["runAsUserName"] = args?.runAsUserName;
+            resourceInputs["schema"] = args?.schema;
+            resourceInputs["serverless"] = args?.serverless;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["storage"] = args?.storage;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["target"] = args?.target;
+            resourceInputs["trigger"] = args?.trigger;
+            resourceInputs["url"] = args?.url;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Pipeline.__pulumiType, name, resourceInputs, opts);

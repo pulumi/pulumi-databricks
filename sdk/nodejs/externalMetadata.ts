@@ -89,55 +89,55 @@ export class ExternalMetadata extends pulumi.CustomResource {
     /**
      * List of columns associated with the external metadata object
      */
-    public readonly columns!: pulumi.Output<string[] | undefined>;
+    declare public readonly columns: pulumi.Output<string[] | undefined>;
     /**
      * (string) - Time at which this external metadata object was created
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * (string) - Username of external metadata object creator
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
      * User-provided free-form text description
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Type of entity within the external system
      */
-    public readonly entityType!: pulumi.Output<string>;
+    declare public readonly entityType: pulumi.Output<string>;
     /**
      * (string) - Unique identifier of parent metastore
      */
-    public /*out*/ readonly metastoreId!: pulumi.Output<string>;
+    declare public /*out*/ readonly metastoreId: pulumi.Output<string>;
     /**
      * Name of the external metadata object
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Owner of the external metadata object
      */
-    public readonly owner!: pulumi.Output<string | undefined>;
+    declare public readonly owner: pulumi.Output<string | undefined>;
     /**
      * A map of key-value properties attached to the external metadata object
      */
-    public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly properties: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      */
-    public readonly systemType!: pulumi.Output<string>;
+    declare public readonly systemType: pulumi.Output<string>;
     /**
      * (string) - Time at which this external metadata object was last modified
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * (string) - Username of user who last modified external metadata object
      */
-    public /*out*/ readonly updatedBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
     /**
      * URL associated with the external metadata object
      */
-    public readonly url!: pulumi.Output<string | undefined>;
+    declare public readonly url: pulumi.Output<string | undefined>;
 
     /**
      * Create a ExternalMetadata resource with the given unique name, arguments, and options.
@@ -152,35 +152,35 @@ export class ExternalMetadata extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExternalMetadataState | undefined;
-            resourceInputs["columns"] = state ? state.columns : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["entityType"] = state ? state.entityType : undefined;
-            resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["properties"] = state ? state.properties : undefined;
-            resourceInputs["systemType"] = state ? state.systemType : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["updatedBy"] = state ? state.updatedBy : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["columns"] = state?.columns;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["entityType"] = state?.entityType;
+            resourceInputs["metastoreId"] = state?.metastoreId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["properties"] = state?.properties;
+            resourceInputs["systemType"] = state?.systemType;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["updatedBy"] = state?.updatedBy;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as ExternalMetadataArgs | undefined;
-            if ((!args || args.entityType === undefined) && !opts.urn) {
+            if (args?.entityType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entityType'");
             }
-            if ((!args || args.systemType === undefined) && !opts.urn) {
+            if (args?.systemType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'systemType'");
             }
-            resourceInputs["columns"] = args ? args.columns : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["entityType"] = args ? args.entityType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["systemType"] = args ? args.systemType : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["columns"] = args?.columns;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["entityType"] = args?.entityType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["systemType"] = args?.systemType;
+            resourceInputs["url"] = args?.url;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["metastoreId"] = undefined /*out*/;

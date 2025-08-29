@@ -62,37 +62,37 @@ export class Notebook extends pulumi.CustomResource {
     /**
      * The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
      */
-    public readonly contentBase64!: pulumi.Output<string | undefined>;
-    public readonly format!: pulumi.Output<string>;
+    declare public readonly contentBase64: pulumi.Output<string | undefined>;
+    declare public readonly format: pulumi.Output<string>;
     /**
      * One of `SCALA`, `PYTHON`, `SQL`, `R`.
      */
-    public readonly language!: pulumi.Output<string>;
-    public readonly md5!: pulumi.Output<string | undefined>;
+    declare public readonly language: pulumi.Output<string>;
+    declare public readonly md5: pulumi.Output<string | undefined>;
     /**
      * Unique identifier for a NOTEBOOK
      */
-    public readonly objectId!: pulumi.Output<number>;
+    declare public readonly objectId: pulumi.Output<number>;
     /**
      * @deprecated Always is a notebook
      */
-    public readonly objectType!: pulumi.Output<string>;
+    declare public readonly objectType: pulumi.Output<string>;
     /**
      * The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
      */
-    public readonly path!: pulumi.Output<string>;
+    declare public readonly path: pulumi.Output<string>;
     /**
      * Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
      */
-    public readonly source!: pulumi.Output<string | undefined>;
+    declare public readonly source: pulumi.Output<string | undefined>;
     /**
      * Routable URL of the notebook
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
     /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      */
-    public /*out*/ readonly workspacePath!: pulumi.Output<string>;
+    declare public /*out*/ readonly workspacePath: pulumi.Output<string>;
 
     /**
      * Create a Notebook resource with the given unique name, arguments, and options.
@@ -107,29 +107,29 @@ export class Notebook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotebookState | undefined;
-            resourceInputs["contentBase64"] = state ? state.contentBase64 : undefined;
-            resourceInputs["format"] = state ? state.format : undefined;
-            resourceInputs["language"] = state ? state.language : undefined;
-            resourceInputs["md5"] = state ? state.md5 : undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["objectType"] = state ? state.objectType : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["workspacePath"] = state ? state.workspacePath : undefined;
+            resourceInputs["contentBase64"] = state?.contentBase64;
+            resourceInputs["format"] = state?.format;
+            resourceInputs["language"] = state?.language;
+            resourceInputs["md5"] = state?.md5;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["objectType"] = state?.objectType;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["workspacePath"] = state?.workspacePath;
         } else {
             const args = argsOrState as NotebookArgs | undefined;
-            if ((!args || args.path === undefined) && !opts.urn) {
+            if (args?.path === undefined && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
-            resourceInputs["contentBase64"] = args ? args.contentBase64 : undefined;
-            resourceInputs["format"] = args ? args.format : undefined;
-            resourceInputs["language"] = args ? args.language : undefined;
-            resourceInputs["md5"] = args ? args.md5 : undefined;
-            resourceInputs["objectId"] = args ? args.objectId : undefined;
-            resourceInputs["objectType"] = args ? args.objectType : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["contentBase64"] = args?.contentBase64;
+            resourceInputs["format"] = args?.format;
+            resourceInputs["language"] = args?.language;
+            resourceInputs["md5"] = args?.md5;
+            resourceInputs["objectId"] = args?.objectId;
+            resourceInputs["objectType"] = args?.objectType;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["source"] = args?.source;
             resourceInputs["url"] = undefined /*out*/;
             resourceInputs["workspacePath"] = undefined /*out*/;
         }

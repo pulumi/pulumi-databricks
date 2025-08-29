@@ -94,32 +94,32 @@ export class Repo extends pulumi.CustomResource {
     /**
      * name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
      */
-    public readonly branch!: pulumi.Output<string>;
+    declare public readonly branch: pulumi.Output<string>;
     /**
      * Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
      */
-    public readonly commitHash!: pulumi.Output<string>;
+    declare public readonly commitHash: pulumi.Output<string>;
     /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      */
-    public readonly gitProvider!: pulumi.Output<string>;
+    declare public readonly gitProvider: pulumi.Output<string>;
     /**
      * path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
      */
-    public readonly path!: pulumi.Output<string>;
-    public readonly sparseCheckout!: pulumi.Output<outputs.RepoSparseCheckout | undefined>;
+    declare public readonly path: pulumi.Output<string>;
+    declare public readonly sparseCheckout: pulumi.Output<outputs.RepoSparseCheckout | undefined>;
     /**
      * name of the tag for initial checkout.  Conflicts with `branch`.
      */
-    public readonly tag!: pulumi.Output<string | undefined>;
+    declare public readonly tag: pulumi.Output<string | undefined>;
     /**
      * The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
     /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      */
-    public /*out*/ readonly workspacePath!: pulumi.Output<string>;
+    declare public /*out*/ readonly workspacePath: pulumi.Output<string>;
 
     /**
      * Create a Repo resource with the given unique name, arguments, and options.
@@ -134,26 +134,26 @@ export class Repo extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepoState | undefined;
-            resourceInputs["branch"] = state ? state.branch : undefined;
-            resourceInputs["commitHash"] = state ? state.commitHash : undefined;
-            resourceInputs["gitProvider"] = state ? state.gitProvider : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["sparseCheckout"] = state ? state.sparseCheckout : undefined;
-            resourceInputs["tag"] = state ? state.tag : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["workspacePath"] = state ? state.workspacePath : undefined;
+            resourceInputs["branch"] = state?.branch;
+            resourceInputs["commitHash"] = state?.commitHash;
+            resourceInputs["gitProvider"] = state?.gitProvider;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["sparseCheckout"] = state?.sparseCheckout;
+            resourceInputs["tag"] = state?.tag;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["workspacePath"] = state?.workspacePath;
         } else {
             const args = argsOrState as RepoArgs | undefined;
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["branch"] = args ? args.branch : undefined;
-            resourceInputs["commitHash"] = args ? args.commitHash : undefined;
-            resourceInputs["gitProvider"] = args ? args.gitProvider : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["sparseCheckout"] = args ? args.sparseCheckout : undefined;
-            resourceInputs["tag"] = args ? args.tag : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["branch"] = args?.branch;
+            resourceInputs["commitHash"] = args?.commitHash;
+            resourceInputs["gitProvider"] = args?.gitProvider;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["sparseCheckout"] = args?.sparseCheckout;
+            resourceInputs["tag"] = args?.tag;
+            resourceInputs["url"] = args?.url;
             resourceInputs["workspacePath"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

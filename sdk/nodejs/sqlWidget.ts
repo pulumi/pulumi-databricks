@@ -105,14 +105,14 @@ export class SqlWidget extends pulumi.CustomResource {
         return obj['__pulumiType'] === SqlWidget.__pulumiType;
     }
 
-    public readonly dashboardId!: pulumi.Output<string>;
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly parameters!: pulumi.Output<outputs.SqlWidgetParameter[] | undefined>;
-    public readonly position!: pulumi.Output<outputs.SqlWidgetPosition | undefined>;
-    public readonly text!: pulumi.Output<string | undefined>;
-    public readonly title!: pulumi.Output<string | undefined>;
-    public readonly visualizationId!: pulumi.Output<string | undefined>;
-    public readonly widgetId!: pulumi.Output<string>;
+    declare public readonly dashboardId: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly parameters: pulumi.Output<outputs.SqlWidgetParameter[] | undefined>;
+    declare public readonly position: pulumi.Output<outputs.SqlWidgetPosition | undefined>;
+    declare public readonly text: pulumi.Output<string | undefined>;
+    declare public readonly title: pulumi.Output<string | undefined>;
+    declare public readonly visualizationId: pulumi.Output<string | undefined>;
+    declare public readonly widgetId: pulumi.Output<string>;
 
     /**
      * Create a SqlWidget resource with the given unique name, arguments, and options.
@@ -127,27 +127,27 @@ export class SqlWidget extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SqlWidgetState | undefined;
-            resourceInputs["dashboardId"] = state ? state.dashboardId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["position"] = state ? state.position : undefined;
-            resourceInputs["text"] = state ? state.text : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
-            resourceInputs["visualizationId"] = state ? state.visualizationId : undefined;
-            resourceInputs["widgetId"] = state ? state.widgetId : undefined;
+            resourceInputs["dashboardId"] = state?.dashboardId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["position"] = state?.position;
+            resourceInputs["text"] = state?.text;
+            resourceInputs["title"] = state?.title;
+            resourceInputs["visualizationId"] = state?.visualizationId;
+            resourceInputs["widgetId"] = state?.widgetId;
         } else {
             const args = argsOrState as SqlWidgetArgs | undefined;
-            if ((!args || args.dashboardId === undefined) && !opts.urn) {
+            if (args?.dashboardId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dashboardId'");
             }
-            resourceInputs["dashboardId"] = args ? args.dashboardId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["position"] = args ? args.position : undefined;
-            resourceInputs["text"] = args ? args.text : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
-            resourceInputs["visualizationId"] = args ? args.visualizationId : undefined;
-            resourceInputs["widgetId"] = args ? args.widgetId : undefined;
+            resourceInputs["dashboardId"] = args?.dashboardId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["position"] = args?.position;
+            resourceInputs["text"] = args?.text;
+            resourceInputs["title"] = args?.title;
+            resourceInputs["visualizationId"] = args?.visualizationId;
+            resourceInputs["widgetId"] = args?.widgetId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SqlWidget.__pulumiType, name, resourceInputs, opts);

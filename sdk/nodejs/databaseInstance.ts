@@ -109,99 +109,99 @@ export class DatabaseInstance extends pulumi.CustomResource {
     /**
      * The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
-    public readonly capacity!: pulumi.Output<string | undefined>;
+    declare public readonly capacity: pulumi.Output<string | undefined>;
     /**
      * (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
      * parent instance
      */
-    public /*out*/ readonly childInstanceRefs!: pulumi.Output<outputs.DatabaseInstanceChildInstanceRef[]>;
+    declare public /*out*/ readonly childInstanceRefs: pulumi.Output<outputs.DatabaseInstanceChildInstanceRef[]>;
     /**
      * (string) - The timestamp when the instance was created
      */
-    public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTime: pulumi.Output<string>;
     /**
      * (string) - The email of the creator of the instance
      */
-    public /*out*/ readonly creator!: pulumi.Output<string>;
+    declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
      * (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
      * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
      * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      */
-    public /*out*/ readonly effectiveEnableReadableSecondaries!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly effectiveEnableReadableSecondaries: pulumi.Output<boolean>;
     /**
      * (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
      * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
      * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      */
-    public /*out*/ readonly effectiveNodeCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly effectiveNodeCount: pulumi.Output<number>;
     /**
      * (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
      * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
      * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      */
-    public /*out*/ readonly effectiveRetentionWindowInDays!: pulumi.Output<number>;
+    declare public /*out*/ readonly effectiveRetentionWindowInDays: pulumi.Output<number>;
     /**
      * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
      * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
      * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      */
-    public /*out*/ readonly effectiveStopped!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly effectiveStopped: pulumi.Output<boolean>;
     /**
      * Whether to enable secondaries to serve read-only traffic. Defaults to false
      */
-    public readonly enableReadableSecondaries!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableReadableSecondaries: pulumi.Output<boolean | undefined>;
     /**
      * The name of the instance. This is the unique identifier for the instance
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
      * 1 primary and 0 secondaries
      */
-    public readonly nodeCount!: pulumi.Output<number | undefined>;
+    declare public readonly nodeCount: pulumi.Output<number | undefined>;
     /**
      * The ref of the parent instance. This is only available if the instance is
      * child instance.
      * Input: For specifying the parent instance to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      */
-    public readonly parentInstanceRef!: pulumi.Output<outputs.DatabaseInstanceParentInstanceRef | undefined>;
+    declare public readonly parentInstanceRef: pulumi.Output<outputs.DatabaseInstanceParentInstanceRef | undefined>;
     /**
      * (string) - The version of Postgres running on the instance
      */
-    public /*out*/ readonly pgVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly pgVersion: pulumi.Output<string>;
     /**
      * Purge the resource on delete
      */
-    public readonly purgeOnDelete!: pulumi.Output<boolean | undefined>;
+    declare public readonly purgeOnDelete: pulumi.Output<boolean | undefined>;
     /**
      * (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
      * enableReadableSecondaries is true
      */
-    public /*out*/ readonly readOnlyDns!: pulumi.Output<string>;
+    declare public /*out*/ readonly readOnlyDns: pulumi.Output<string>;
     /**
      * (string) - The DNS endpoint to connect to the instance for read+write access
      */
-    public /*out*/ readonly readWriteDns!: pulumi.Output<string>;
+    declare public /*out*/ readonly readWriteDns: pulumi.Output<string>;
     /**
      * The retention window for the instance. This is the time window in days
      * for which the historical data is retained. The default value is 7 days.
      * Valid values are 2 to 35 days
      */
-    public readonly retentionWindowInDays!: pulumi.Output<number | undefined>;
+    declare public readonly retentionWindowInDays: pulumi.Output<number | undefined>;
     /**
      * (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Whether the instance is stopped
      */
-    public readonly stopped!: pulumi.Output<boolean | undefined>;
+    declare public readonly stopped: pulumi.Output<boolean | undefined>;
     /**
      * (string) - Id of the ref database instance
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
 
     /**
      * Create a DatabaseInstance resource with the given unique name, arguments, and options.
@@ -216,36 +216,36 @@ export class DatabaseInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseInstanceState | undefined;
-            resourceInputs["capacity"] = state ? state.capacity : undefined;
-            resourceInputs["childInstanceRefs"] = state ? state.childInstanceRefs : undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["creator"] = state ? state.creator : undefined;
-            resourceInputs["effectiveEnableReadableSecondaries"] = state ? state.effectiveEnableReadableSecondaries : undefined;
-            resourceInputs["effectiveNodeCount"] = state ? state.effectiveNodeCount : undefined;
-            resourceInputs["effectiveRetentionWindowInDays"] = state ? state.effectiveRetentionWindowInDays : undefined;
-            resourceInputs["effectiveStopped"] = state ? state.effectiveStopped : undefined;
-            resourceInputs["enableReadableSecondaries"] = state ? state.enableReadableSecondaries : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
-            resourceInputs["parentInstanceRef"] = state ? state.parentInstanceRef : undefined;
-            resourceInputs["pgVersion"] = state ? state.pgVersion : undefined;
-            resourceInputs["purgeOnDelete"] = state ? state.purgeOnDelete : undefined;
-            resourceInputs["readOnlyDns"] = state ? state.readOnlyDns : undefined;
-            resourceInputs["readWriteDns"] = state ? state.readWriteDns : undefined;
-            resourceInputs["retentionWindowInDays"] = state ? state.retentionWindowInDays : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stopped"] = state ? state.stopped : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["capacity"] = state?.capacity;
+            resourceInputs["childInstanceRefs"] = state?.childInstanceRefs;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["creator"] = state?.creator;
+            resourceInputs["effectiveEnableReadableSecondaries"] = state?.effectiveEnableReadableSecondaries;
+            resourceInputs["effectiveNodeCount"] = state?.effectiveNodeCount;
+            resourceInputs["effectiveRetentionWindowInDays"] = state?.effectiveRetentionWindowInDays;
+            resourceInputs["effectiveStopped"] = state?.effectiveStopped;
+            resourceInputs["enableReadableSecondaries"] = state?.enableReadableSecondaries;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeCount"] = state?.nodeCount;
+            resourceInputs["parentInstanceRef"] = state?.parentInstanceRef;
+            resourceInputs["pgVersion"] = state?.pgVersion;
+            resourceInputs["purgeOnDelete"] = state?.purgeOnDelete;
+            resourceInputs["readOnlyDns"] = state?.readOnlyDns;
+            resourceInputs["readWriteDns"] = state?.readWriteDns;
+            resourceInputs["retentionWindowInDays"] = state?.retentionWindowInDays;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stopped"] = state?.stopped;
+            resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as DatabaseInstanceArgs | undefined;
-            resourceInputs["capacity"] = args ? args.capacity : undefined;
-            resourceInputs["enableReadableSecondaries"] = args ? args.enableReadableSecondaries : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
-            resourceInputs["parentInstanceRef"] = args ? args.parentInstanceRef : undefined;
-            resourceInputs["purgeOnDelete"] = args ? args.purgeOnDelete : undefined;
-            resourceInputs["retentionWindowInDays"] = args ? args.retentionWindowInDays : undefined;
-            resourceInputs["stopped"] = args ? args.stopped : undefined;
+            resourceInputs["capacity"] = args?.capacity;
+            resourceInputs["enableReadableSecondaries"] = args?.enableReadableSecondaries;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeCount"] = args?.nodeCount;
+            resourceInputs["parentInstanceRef"] = args?.parentInstanceRef;
+            resourceInputs["purgeOnDelete"] = args?.purgeOnDelete;
+            resourceInputs["retentionWindowInDays"] = args?.retentionWindowInDays;
+            resourceInputs["stopped"] = args?.stopped;
             resourceInputs["childInstanceRefs"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;

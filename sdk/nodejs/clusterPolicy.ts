@@ -129,32 +129,32 @@ export class ClusterPolicy extends pulumi.CustomResource {
     /**
      * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policyFamilyId`
      */
-    public readonly definition!: pulumi.Output<string>;
+    declare public readonly definition: pulumi.Output<string>;
     /**
      * Additional human-readable description of the cluster policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly libraries!: pulumi.Output<outputs.ClusterPolicyLibrary[] | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly libraries: pulumi.Output<outputs.ClusterPolicyLibrary[] | undefined>;
     /**
      * Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
      */
-    public readonly maxClustersPerUser!: pulumi.Output<number | undefined>;
+    declare public readonly maxClustersPerUser: pulumi.Output<number | undefined>;
     /**
      * Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
      */
-    public readonly policyFamilyDefinitionOverrides!: pulumi.Output<string | undefined>;
+    declare public readonly policyFamilyDefinitionOverrides: pulumi.Output<string | undefined>;
     /**
      * ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
      */
-    public readonly policyFamilyId!: pulumi.Output<string | undefined>;
+    declare public readonly policyFamilyId: pulumi.Output<string | undefined>;
     /**
      * Canonical unique identifier for the cluster policy.
      */
-    public /*out*/ readonly policyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly policyId: pulumi.Output<string>;
 
     /**
      * Create a ClusterPolicy resource with the given unique name, arguments, and options.
@@ -169,23 +169,23 @@ export class ClusterPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterPolicyState | undefined;
-            resourceInputs["definition"] = state ? state.definition : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["libraries"] = state ? state.libraries : undefined;
-            resourceInputs["maxClustersPerUser"] = state ? state.maxClustersPerUser : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policyFamilyDefinitionOverrides"] = state ? state.policyFamilyDefinitionOverrides : undefined;
-            resourceInputs["policyFamilyId"] = state ? state.policyFamilyId : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
+            resourceInputs["definition"] = state?.definition;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["libraries"] = state?.libraries;
+            resourceInputs["maxClustersPerUser"] = state?.maxClustersPerUser;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policyFamilyDefinitionOverrides"] = state?.policyFamilyDefinitionOverrides;
+            resourceInputs["policyFamilyId"] = state?.policyFamilyId;
+            resourceInputs["policyId"] = state?.policyId;
         } else {
             const args = argsOrState as ClusterPolicyArgs | undefined;
-            resourceInputs["definition"] = args ? args.definition : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["libraries"] = args ? args.libraries : undefined;
-            resourceInputs["maxClustersPerUser"] = args ? args.maxClustersPerUser : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["policyFamilyDefinitionOverrides"] = args ? args.policyFamilyDefinitionOverrides : undefined;
-            resourceInputs["policyFamilyId"] = args ? args.policyFamilyId : undefined;
+            resourceInputs["definition"] = args?.definition;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["libraries"] = args?.libraries;
+            resourceInputs["maxClustersPerUser"] = args?.maxClustersPerUser;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["policyFamilyDefinitionOverrides"] = args?.policyFamilyDefinitionOverrides;
+            resourceInputs["policyFamilyId"] = args?.policyFamilyId;
             resourceInputs["policyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

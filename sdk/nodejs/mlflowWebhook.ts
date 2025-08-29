@@ -133,23 +133,23 @@ export class MlflowWebhook extends pulumi.CustomResource {
     /**
      * Optional description of the MLflow webhook.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
      *
      * Configuration must include one of `httpUrlSpec` or `jobSpec` blocks, but not both.
      */
-    public readonly events!: pulumi.Output<string[]>;
-    public readonly httpUrlSpec!: pulumi.Output<outputs.MlflowWebhookHttpUrlSpec | undefined>;
-    public readonly jobSpec!: pulumi.Output<outputs.MlflowWebhookJobSpec | undefined>;
+    declare public readonly events: pulumi.Output<string[]>;
+    declare public readonly httpUrlSpec: pulumi.Output<outputs.MlflowWebhookHttpUrlSpec | undefined>;
+    declare public readonly jobSpec: pulumi.Output<outputs.MlflowWebhookJobSpec | undefined>;
     /**
      * Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
      */
-    public readonly modelName!: pulumi.Output<string | undefined>;
+    declare public readonly modelName: pulumi.Output<string | undefined>;
     /**
      * Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    declare public readonly status: pulumi.Output<string | undefined>;
 
     /**
      * Create a MlflowWebhook resource with the given unique name, arguments, and options.
@@ -164,23 +164,23 @@ export class MlflowWebhook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MlflowWebhookState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["events"] = state ? state.events : undefined;
-            resourceInputs["httpUrlSpec"] = state ? state.httpUrlSpec : undefined;
-            resourceInputs["jobSpec"] = state ? state.jobSpec : undefined;
-            resourceInputs["modelName"] = state ? state.modelName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["events"] = state?.events;
+            resourceInputs["httpUrlSpec"] = state?.httpUrlSpec;
+            resourceInputs["jobSpec"] = state?.jobSpec;
+            resourceInputs["modelName"] = state?.modelName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as MlflowWebhookArgs | undefined;
-            if ((!args || args.events === undefined) && !opts.urn) {
+            if (args?.events === undefined && !opts.urn) {
                 throw new Error("Missing required property 'events'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["events"] = args ? args.events : undefined;
-            resourceInputs["httpUrlSpec"] = args ? args.httpUrlSpec : undefined;
-            resourceInputs["jobSpec"] = args ? args.jobSpec : undefined;
-            resourceInputs["modelName"] = args ? args.modelName : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["events"] = args?.events;
+            resourceInputs["httpUrlSpec"] = args?.httpUrlSpec;
+            resourceInputs["jobSpec"] = args?.jobSpec;
+            resourceInputs["modelName"] = args?.modelName;
+            resourceInputs["status"] = args?.status;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MlflowWebhook.__pulumiType, name, resourceInputs, opts);

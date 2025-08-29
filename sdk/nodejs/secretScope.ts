@@ -83,16 +83,16 @@ export class SecretScope extends pulumi.CustomResource {
     /**
      * Either `DATABRICKS` or `AZURE_KEYVAULT`
      */
-    public readonly backendType!: pulumi.Output<string>;
+    declare public readonly backendType: pulumi.Output<string>;
     /**
      * The principal with the only possible value `users` that is initially granted `MANAGE` permission to the created scope.  If it's omitted, then the databricks.SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer's user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
      */
-    public readonly initialManagePrincipal!: pulumi.Output<string | undefined>;
-    public readonly keyvaultMetadata!: pulumi.Output<outputs.SecretScopeKeyvaultMetadata | undefined>;
+    declare public readonly initialManagePrincipal: pulumi.Output<string | undefined>;
+    declare public readonly keyvaultMetadata: pulumi.Output<outputs.SecretScopeKeyvaultMetadata | undefined>;
     /**
      * Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a SecretScope resource with the given unique name, arguments, and options.
@@ -107,16 +107,16 @@ export class SecretScope extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretScopeState | undefined;
-            resourceInputs["backendType"] = state ? state.backendType : undefined;
-            resourceInputs["initialManagePrincipal"] = state ? state.initialManagePrincipal : undefined;
-            resourceInputs["keyvaultMetadata"] = state ? state.keyvaultMetadata : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["backendType"] = state?.backendType;
+            resourceInputs["initialManagePrincipal"] = state?.initialManagePrincipal;
+            resourceInputs["keyvaultMetadata"] = state?.keyvaultMetadata;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as SecretScopeArgs | undefined;
-            resourceInputs["backendType"] = args ? args.backendType : undefined;
-            resourceInputs["initialManagePrincipal"] = args ? args.initialManagePrincipal : undefined;
-            resourceInputs["keyvaultMetadata"] = args ? args.keyvaultMetadata : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["backendType"] = args?.backendType;
+            resourceInputs["initialManagePrincipal"] = args?.initialManagePrincipal;
+            resourceInputs["keyvaultMetadata"] = args?.keyvaultMetadata;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecretScope.__pulumiType, name, resourceInputs, opts);
