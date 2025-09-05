@@ -7,42 +7,43 @@ Always reference these instructions first and fallback to search or bash command
 ## Working Effectively
 
 ### Prerequisites and Environment Setup
-- Install required dependencies:
-  - Go 1.24+ (already available)
-  - Node.js 20+ with Yarn (already available)
-  - Python 3.12+ (already available) 
-  - .NET 8.0+ (already available)
-  - Gradle (already available)
+- All required dependencies are automatically installed via the `.github/workflows/copilot-setup-steps.yml` workflow
+- This includes Go, Node.js, Python, .NET, Gradle, and all necessary Pulumi tools
 
 ### Initial Repository Setup
-- Initialize the upstream submodule: `./scripts/upstream.sh init` -- takes 30 seconds
-- Create Pulumi bin directory and copy global binary: `mkdir -p .pulumi/bin && cp /usr/local/bin/pulumi .pulumi/bin/pulumi`
+- Initialize the upstream submodule: `make upstream`
 
-### Build Process and Limitations
+### Build Process
+- **ALWAYS use `make` targets** - Never run custom commands unless explicitly told to
+- **NEVER work directly in the `sdk/` folder** - All SDK generation and building is automated through `make`
+- If a `make` target fails, there is something wrong with the environment setup, not the target itself
 
-**CRITICAL BUILD LIMITATIONS**:
-- **NEVER build full provider** - Requires external Pulumi plugins that are blocked by network restrictions
-- **NEVER run** `make build`, `make provider`, `make schema` -- they WILL FAIL due to missing terraform converter plugin
-- **Python SDK builds FAIL** -- PyPI access is blocked, causing pip timeouts
-- **Java SDK builds FAIL** -- Missing lib directory structure in generated code
+### Available Make Targets
 
-### What DOES Work
+#### Primary Build Targets:
+- `make build` -- Build the provider and all SDKs
+- `make provider` -- Build the provider binary
+- `make schema` -- Generate the provider schema  
+- `make tfgen` -- Generate SDKs from schema
+- `make upstream` -- Initialize upstream submodule
 
-#### Working Build Commands:
-- `make upstream` -- Initialize upstream submodule (under 1 second if already done)
-- Provider unit tests: `cd provider && go test -v -run TestWithUserAgent` (3 seconds)
-- TypeScript SDK: `cd sdk/nodejs && yarn install && yarn run tsc` (7 seconds total)
-- .NET SDK: `cd sdk/dotnet && echo "1.0.0-alpha.0+dev" > version.txt && dotnet build` (12 seconds) 
-- Go SDK: `cd sdk && go build ./...` (under 1 second if cached)
+#### SDK Targets:
+- `make build_sdks` -- Build all SDK packages
+- `make generate_sdks` -- Generate all SDK source code
+- `make build_nodejs` -- Build TypeScript/Node.js SDK
+- `make build_python` -- Build Python SDK
+- `make build_dotnet` -- Build .NET SDK
+- `make build_go` -- Build Go SDK
+- `make build_java` -- Build Java SDK
 
-#### Working Validation Commands:
-- Lint Go code manually: `cd provider && go vet ./pkg/... ./disablelogs/...` (excludes cmd/ due to missing schema)
-- Run working unit tests: `cd provider && go test -v -run TestWithUserAgent`
-- Validate TypeScript compilation: `cd sdk/nodejs && yarn run tsc`
+#### Development Targets:
+- `make lint_provider` -- Lint provider Go code
+- `make test_provider` -- Run provider unit tests
 
-### NEVER CANCEL Operations:
-- **NEVER CANCEL** any build command once started - builds may take up to 60 seconds
-- Set timeouts to 120+ seconds for all build operations
+### Build Guidelines:
+- **NEVER CANCEL** any build command once started - builds may take several minutes
+- Set timeouts to 300+ seconds for build operations  
+- **DO NOT run tests in `examples/`** - They require Databricks credentials and will run in PR workflows
 
 ## Repository Structure
 
@@ -54,45 +55,45 @@ Always reference these instructions first and fallback to search or bash command
 - `examples/` -- Example Pulumi programs (test framework available but skipped)
 
 ### Important Files:
-- `Makefile` -- Primary build orchestration (many targets will fail due to network restrictions)
+- `Makefile` -- Primary build orchestration with all available targets
 - `provider/go.mod` -- Provider dependencies
-- `sdk/nodejs/package.json` -- TypeScript SDK configuration
-- `sdk/dotnet/Pulumi.Databricks.csproj` -- .NET SDK project
+- `.github/workflows/copilot-setup-steps.yml` -- Environment setup for AI coding agents
 - `.github/workflows/` -- CI/CD pipelines
 
 ## Development Workflow
 
 ### Making Code Changes:
-1. Initialize repository: `./scripts/upstream.sh init`
+1. Initialize repository: `make upstream`
 2. Make changes to provider code in `provider/`
-3. Validate with unit tests: `cd provider && go test -v -run TestWithUserAgent`
-4. **DO NOT attempt full builds** - they will fail due to network restrictions
+3. Validate with: `make lint_provider`
+4. Test with: `make test_provider`
+5. Build provider: `make provider`
+6. Generate and build SDKs: `make build_sdks`
 
 ### Validation Steps:
-- Always run `cd provider && go vet ./pkg/... ./disablelogs/...` (excludes cmd/ due to missing schema)
-- Test TypeScript SDK builds if making SDK-related changes
-- **SKIP Python and Java SDK validation** - they are blocked by network restrictions
+- Always use `make lint_provider` to lint provider code
+- Use `make test_provider` to run provider unit tests  
+- Use `make build` to validate the full build process
 
 ### Working with SDKs:
-- TypeScript SDK: Generated files are in `sdk/nodejs/` and can be built successfully
-- .NET SDK: Generated files are in `sdk/dotnet/` and can be built successfully  
-- Go SDK: Generated files are in `sdk/go/databricks/` and can be built successfully
-- **Python SDK: SKIP building** - pip access blocked
-- **Java SDK: SKIP building** - missing directory structure
+- **NEVER work directly in `sdk/` folders** - All SDK operations are automated via `make` targets
+- All SDKs are generated and built through `make` commands
+- TypeScript SDK: Use `make build_nodejs` 
+- Python SDK: Use `make build_python`
+- .NET SDK: Use `make build_dotnet`  
+- Go SDK: Use `make build_go`
+- Java SDK: Use `make build_java`
 
 ## Validation Scenarios
 
-Since the provider cannot be fully built due to network restrictions, validation must focus on:
-
 ### Code Quality Validation:
-- Go vet checks: `cd provider && go vet ./pkg/... ./disablelogs/...` (excludes cmd/ due to missing schema)
-- Unit test validation: `cd provider && go test -v -run TestWithUserAgent`
-- TypeScript compilation: `cd sdk/nodejs && yarn run tsc`
+- Use `make lint_provider` to lint provider Go code
+- Use `make test_provider` to run provider unit tests
+- Use `make build` to validate full build process
 
 ### Manual Code Review:
 - Check Go code follows standard patterns
 - Validate resource definitions in `provider/resources.go`
-- Review TypeScript types in generated SDK files
 - Ensure imports and dependencies are correct
 
 ## Common Tasks Reference
@@ -106,48 +107,38 @@ Since the provider cannot be fully built due to network restrictions, validation
 .golangci.yml         -- Go linter configuration
 .mise.toml            -- Mise tool configuration
 CONTRIBUTING.md       -- Contribution guidelines
-Makefile              -- Build orchestration (many targets fail)
+Makefile              -- Build orchestration with all available targets
 README.md             -- Project documentation
 devbox.json           -- Development environment
 provider/             -- Go provider implementation
 scripts/              -- Build utilities
-sdk/                  -- Generated SDKs
+sdk/                  -- Generated SDKs (managed via make targets)
 upstream/             -- Databricks Terraform provider submodule
 ```
 
 ### Common File Operations:
 - **Provider source**: `provider/resources.go` -- Resource definitions
 - **Provider tests**: `provider/resources_test.go` -- Unit tests  
-- **TypeScript SDK**: `sdk/nodejs/*.ts` -- Generated TypeScript resources
-- **Go SDK**: `sdk/go/databricks/*.go` -- Generated Go resources
+- **Generated SDKs**: All in `sdk/` directory, managed via `make` targets only
 
-### Working Unit Tests:
-Run provider unit tests that work: `cd provider && go test -v -run TestWithUserAgent`
+### Common Development Tasks:
+- Run provider tests: `make test_provider`
+- Build provider: `make provider` 
+- Generate schema: `make schema`
+- Build all SDKs: `make build_sdks`
 
-## Network Restrictions
+## Build Expectations
 
-The following operations WILL FAIL due to network access restrictions:
-- Downloading Pulumi plugins (`pulumi plugin install`)
-- Python package builds (PyPI access blocked)
-- Full provider schema generation (requires terraform converter plugin)
-- Full make targets (require external dependencies)
+- Provider builds: 1-3 minutes depending on system
+- SDK generation: 2-5 minutes for all SDKs
+- Individual SDK builds: 30 seconds to 2 minutes each
+- Full build (`make build`): 5-10 minutes total
 
-## Time Expectations (Measured)
-
-- Upstream initialization: Under 1 second (already done) or 30 seconds (first time)
-- TypeScript SDK build: 6 seconds (tsc compilation) + 1 second (yarn install if cached)
-- .NET SDK build: 12 seconds  
-- Go SDK build: Under 1 second (if dependencies cached) or 53 seconds (first time)
-- Unit tests: Under 3 seconds
-- Go vet: Under 1 second
-
-Set timeouts of 120+ seconds for build operations and NEVER CANCEL running builds.
+Set timeouts of 300+ seconds for build operations and NEVER CANCEL running builds.
 
 ## Critical Reminders
 
-- **ALWAYS** run `./scripts/upstream.sh init` before starting work
-- **NEVER** attempt `make build`, `make provider`, or `make schema` - they will fail
-- **ONLY** use the working build commands listed above
-- **FOCUS** validation on unit tests, Go vet, and TypeScript compilation
-- **EXPECT** Python and Java SDK builds to fail - this is normal
-- **SET** appropriate timeouts (120+ seconds) and never cancel builds prematurely
+- **ALWAYS** use `make` targets - never run custom commands unless explicitly instructed
+- **NEVER** work directly in `sdk/` folders - use `make` targets for all SDK operations  
+- **DO NOT** run tests in `examples/` - they require Databricks credentials
+- **FOCUS** on `make` targets for all development, building, and validation tasks
