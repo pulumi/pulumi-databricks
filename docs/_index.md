@@ -17,7 +17,7 @@ The Databricks provider is available as a package in all Pulumi languages:
 
 ## Overview
 
-Use the Databricks Pulumi provider to interact with almost all of [Databricks](http://databricks.com/) resources. ## Example Usage
+Use the Databricks Pulumi provider to interact with almost all of [Databricks](http://databricks.com/) resources.
 ## Configuration Reference
 
 Most provider arguments can be configured either directly in the `provider "databricks"` block or by setting an environment variable, listed for each argument below.

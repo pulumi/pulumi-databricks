@@ -48,4 +48,3 @@ Machine Learning
 * Create [MLflow experiments](resources/mlflow_experiment.md).
 * Create [models in the workspace model registry](resources/mlflow_model.md).
 * Create [model serving endpoints](resources/model_serving.md).
-
