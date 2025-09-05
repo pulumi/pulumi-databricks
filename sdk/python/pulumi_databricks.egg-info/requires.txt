@@ -1,6 +1,0 @@
-parver>=0.2.1
-pulumi<4.0.0,>=3.165.0
-semver>=2.8.1
-
-[:python_version < "3.11"]
-typing-extensions<5,>=4.11
