@@ -285,6 +285,54 @@ func Provider() tfbridge.ProviderInfo {
 					"https://github.com/pulumi/pulumi-databricks",
 				),
 			},
+			"databricks_account_setting_v2": {
+				ComputeID: func(
+					_ context.Context,
+					state resource.PropertyMap,
+				) (resource.ID, error) {
+					return attr(state, "name"), nil
+				},
+			},
+			"databricks_apps_settings_custom_template": {
+				ComputeID: func(
+					_ context.Context,
+					state resource.PropertyMap,
+				) (resource.ID, error) {
+					return attr(state, "name"), nil
+				},
+			},
+			"databricks_account_federation_policy": {
+				ComputeID: func(
+					_ context.Context,
+					state resource.PropertyMap,
+				) (resource.ID, error) {
+					return attr(state, "policy_id"), nil
+				},
+			},
+			"databricks_service_principal_federation_policy": {
+				ComputeID: func(
+					_ context.Context,
+					state resource.PropertyMap,
+				) (resource.ID, error) {
+					return attrWithSeparator(state, ",", "service_principal_id", "policy_id"), nil
+				},
+			},
+			"databricks_workspace_setting_v2": {
+				ComputeID: func(
+					_ context.Context,
+					state resource.PropertyMap,
+				) (resource.ID, error) {
+					return attr(state, "name"), nil
+				},
+			},
+			"databricks_entity_tag_assignment": {
+				ComputeID: func(
+					_ context.Context,
+					state resource.PropertyMap,
+				) (resource.ID, error) {
+					return attrWithSeparator(state, ",", "entity_type", "entity_name", "tag_key"), nil
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"databricks_aws_crossaccount_policy": {
